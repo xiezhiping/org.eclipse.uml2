@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.5 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,9 +50,9 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getVariables <em>Variable</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getNodes <em>Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#isMustIsolate <em>Must Isolate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getEdges <em>Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#isMustIsolate <em>Must Isolate</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
  *

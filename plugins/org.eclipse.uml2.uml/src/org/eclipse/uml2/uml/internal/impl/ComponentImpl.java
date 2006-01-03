@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.13 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.14 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,8 +128,8 @@ public class ComponentImpl
 						UMLPackage.COMPONENT__OWNED_CONNECTOR,
 						UMLPackage.COMPONENT__OWNED_BEHAVIOR,
 						UMLPackage.COMPONENT__OWNED_TRIGGER,
-						UMLPackage.COMPONENT__OWNED_OPERATION,
 						UMLPackage.COMPONENT__NESTED_CLASSIFIER,
+						UMLPackage.COMPONENT__OWNED_OPERATION,
 						UMLPackage.COMPONENT__OWNED_RECEPTION,
 						UMLPackage.COMPONENT__PACKAGED_ELEMENT}));
 		}
@@ -441,11 +441,11 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.COMPONENT__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.COMPONENT__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -511,18 +511,18 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COMPONENT__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.COMPONENT__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.COMPONENT__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
@@ -540,11 +540,11 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COMPONENT__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
@@ -642,10 +642,6 @@ public class ComponentImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.COMPONENT__GENERAL :
 				return getGenerals();
-			case UMLPackage.COMPONENT__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.COMPONENT__USE_CASE :
-				return getUseCases();
 			case UMLPackage.COMPONENT__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.COMPONENT__ATTRIBUTE :
@@ -654,6 +650,10 @@ public class ComponentImpl
 				return getRepresentation();
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.COMPONENT__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.COMPONENT__USE_CASE :
+				return getUseCases();
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
@@ -674,10 +674,10 @@ public class ComponentImpl
 				return getInterfaceRealizations();
 			case UMLPackage.COMPONENT__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.COMPONENT__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.COMPONENT__IS_ACTIVE :
@@ -782,14 +782,6 @@ public class ComponentImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COMPONENT__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.COMPONENT__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.COMPONENT__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -800,6 +792,14 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.COMPONENT__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.COMPONENT__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -831,13 +831,13 @@ public class ComponentImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COMPONENT__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -932,12 +932,6 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.COMPONENT__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.COMPONENT__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.COMPONENT__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -946,6 +940,12 @@ public class ComponentImpl
 				return;
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.COMPONENT__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.COMPONENT__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -971,11 +971,11 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.COMPONENT__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1081,12 +1081,6 @@ public class ComponentImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.COMPONENT__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.COMPONENT__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.COMPONENT__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.COMPONENT__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.COMPONENT__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.COMPONENT__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1097,6 +1091,12 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.COMPONENT__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.COMPONENT__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.COMPONENT__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.COMPONENT__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE) != null;
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
@@ -1122,12 +1122,12 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.COMPONENT__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.COMPONENT__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.COMPONENT__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.COMPONENT__IS_ACTIVE :

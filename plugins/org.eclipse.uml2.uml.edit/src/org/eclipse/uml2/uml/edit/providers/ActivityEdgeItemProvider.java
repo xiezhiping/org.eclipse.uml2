@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: ActivityEdgeItemProvider.java,v 1.2 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -67,16 +67,16 @@ public class ActivityEdgeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addActivityPropertyDescriptor(object);
-			addInGroupPropertyDescriptor(object);
-			addInPartitionPropertyDescriptor(object);
-			addInStructuredNodePropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 			addRedefinedEdgePropertyDescriptor(object);
+			addInPartitionPropertyDescriptor(object);
 			addGuardPropertyDescriptor(object);
 			addWeightPropertyDescriptor(object);
 			addInterruptsPropertyDescriptor(object);
-			addSourcePropertyDescriptor(object);
+			addInStructuredNodePropertyDescriptor(object);
+			addInGroupPropertyDescriptor(object);
+			addActivityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

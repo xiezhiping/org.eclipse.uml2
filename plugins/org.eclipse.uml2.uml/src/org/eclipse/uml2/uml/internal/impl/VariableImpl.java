@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
+ * $Id: VariableImpl.java,v 1.13 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,6 +39,7 @@ import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -62,15 +63,15 @@ import org.eclipse.uml2.uml.internal.operations.VariableOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getLowerValue <em>Lower Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getActivityScope <em>Activity Scope</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getActivityScope <em>Activity Scope</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class VariableImpl
-		extends TypedElementImpl
+		extends ConnectableElementImpl
 		implements Variable {
 
 	/**
@@ -643,16 +644,32 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
-					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+					UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
+				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.VARIABLE__TEMPLATE_PARAMETER);
+				if (templateParameter != null)
+					msgs = ((InternalEObject) templateParameter)
+						.eInverseRemove(this,
+							UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+							TemplateParameter.class, msgs);
+				return basicSetTemplateParameter((TemplateParameter) otherEnd,
+					msgs);
+			case UMLPackage.VARIABLE__END :
+				return ((InternalEList) getEnds()).basicAdd(otherEnd, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd, UMLPackage.VARIABLE__SCOPE,
 					msgs);
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -676,16 +693,23 @@ public class VariableImpl
 					otherEnd, msgs);
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.VARIABLE__END :
+				return ((InternalEList) getEnds()).basicRemove(otherEnd, msgs);
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				return basicSetUpperValue(null, msgs);
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return eBasicSetContainer(null,
-					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
 				return eBasicSetContainer(null, UMLPackage.VARIABLE__SCOPE,
 					msgs);
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return eBasicSetContainer(null,
+					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -698,13 +722,17 @@ public class VariableImpl
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
+					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
 					StructuredActivityNode.class, msgs);
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -744,6 +772,16 @@ public class VariableImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
+			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
+			case UMLPackage.VARIABLE__END :
+				return getEnds();
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				return isOrdered()
 					? Boolean.TRUE
@@ -760,10 +798,10 @@ public class VariableImpl
 				return getUpperValue();
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return getLowerValue();
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return getActivityScope();
 			case UMLPackage.VARIABLE__SCOPE :
 				return getScope();
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return getActivityScope();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -799,6 +837,16 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__TYPE :
 				setType((Type) newValue);
 				return;
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.VARIABLE__END :
+				getEnds().clear();
+				getEnds().addAll((Collection) newValue);
+				return;
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				setIsOrdered(((Boolean) newValue).booleanValue());
 				return;
@@ -817,11 +865,11 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				setLowerValue((ValueSpecification) newValue);
 				return;
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				setActivityScope((Activity) newValue);
-				return;
 			case UMLPackage.VARIABLE__SCOPE :
 				setScope((StructuredActivityNode) newValue);
+				return;
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				setActivityScope((Activity) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -855,6 +903,15 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__TYPE :
 				setType((Type) null);
 				return;
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.VARIABLE__END :
+				getEnds().clear();
+				return;
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				setIsOrdered(IS_ORDERED_EDEFAULT);
 				return;
@@ -873,11 +930,11 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				setLowerValue((ValueSpecification) null);
 				return;
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				setActivityScope((Activity) null);
-				return;
 			case UMLPackage.VARIABLE__SCOPE :
 				setScope((StructuredActivityNode) null);
+				return;
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				setActivityScope((Activity) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -917,6 +974,13 @@ public class VariableImpl
 				return eVirtualGet(UMLPackage.VARIABLE__NAME_EXPRESSION) != null;
 			case UMLPackage.VARIABLE__TYPE :
 				return eVirtualGet(UMLPackage.VARIABLE__TYPE) != null;
+			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
+				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
+				return isSetTemplateParameter();
+			case UMLPackage.VARIABLE__END :
+				EList end = (EList) eVirtualGet(UMLPackage.VARIABLE__END);
+				return end != null && !end.isEmpty();
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.VARIABLE__IS_UNIQUE :
@@ -929,10 +993,10 @@ public class VariableImpl
 				return eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE) != null;
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE) != null;
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return getActivityScope() != null;
 			case UMLPackage.VARIABLE__SCOPE :
 				return getScope() != null;
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return getActivityScope() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1026,13 +1090,13 @@ public class VariableImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Activity activityScope = getActivityScope();
-		if (activityScope != null) {
-			return activityScope;
-		}
 		StructuredActivityNode scope = getScope();
 		if (scope != null) {
 			return scope;
+		}
+		Activity activityScope = getActivityScope();
+		if (activityScope != null) {
+			return activityScope;
 		}
 		return super.basicGetNamespace();
 	}
@@ -1043,9 +1107,8 @@ public class VariableImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
-			|| eIsSet(UMLPackage.VARIABLE__ACTIVITY_SCOPE)
-			|| eIsSet(UMLPackage.VARIABLE__SCOPE);
+		return super.isSetNamespace() || eIsSet(UMLPackage.VARIABLE__SCOPE)
+			|| eIsSet(UMLPackage.VARIABLE__ACTIVITY_SCOPE);
 	}
 
 } //VariableImpl

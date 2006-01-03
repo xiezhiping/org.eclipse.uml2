@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.6 2005/12/21 20:13:06 khussey Exp $
+ * $Id: Package.java,v 1.7 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -32,8 +32,8 @@ import org.eclipse.emf.ecore.EClass;
  * In addition a package can be merged with other packages.
  * 
  * 
- * Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.
  * A Package can have one or more ProfileApplications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.
+ * Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -206,6 +206,7 @@ public interface Package
 	/**
 	 * Returns the value of the '<em><b>Profile Application</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ProfileApplication}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage <em>Applying Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -213,7 +214,8 @@ public interface Package
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Profile Application</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_ProfileApplication()
-	 * @model type="org.eclipse.uml2.uml.ProfileApplication" containment="true" resolveProxies="false" ordered="false"
+	 * @see org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage
+	 * @model type="org.eclipse.uml2.uml.ProfileApplication" opposite="applyingPackage" containment="true" resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	EList getProfileApplications();

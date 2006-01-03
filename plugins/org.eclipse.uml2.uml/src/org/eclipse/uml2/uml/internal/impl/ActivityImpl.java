@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.13 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -64,16 +64,16 @@ import org.eclipse.uml2.uml.internal.operations.ActivityOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getGroups <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getNodes <em>Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isReadOnly <em>Is Read Only</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartition <em>Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isSingleExecution <em>Is Single Execution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getGroups <em>Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getVariables <em>Variable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getEdges <em>Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartition <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isSingleExecution <em>Is Single Execution</em>}</li>
  * </ul>
  * </p>
  *
@@ -172,8 +172,8 @@ public class ActivityImpl
 						UMLPackage.ACTIVITY__COLLABORATION_USE,
 						UMLPackage.ACTIVITY__OWNED_SIGNATURE,
 						UMLPackage.ACTIVITY__INTERFACE_REALIZATION,
-						UMLPackage.ACTIVITY__GROUP, UMLPackage.ACTIVITY__NODE,
-						UMLPackage.ACTIVITY__EDGE}));
+						UMLPackage.ACTIVITY__NODE, UMLPackage.ACTIVITY__EDGE,
+						UMLPackage.ACTIVITY__GROUP}));
 		}
 		return ownedElement;
 	}
@@ -195,8 +195,8 @@ public class ActivityImpl
 						UMLPackage.ACTIVITY__OWNED_CONNECTOR,
 						UMLPackage.ACTIVITY__OWNED_BEHAVIOR,
 						UMLPackage.ACTIVITY__OWNED_TRIGGER,
-						UMLPackage.ACTIVITY__OWNED_OPERATION,
 						UMLPackage.ACTIVITY__NESTED_CLASSIFIER,
+						UMLPackage.ACTIVITY__OWNED_OPERATION,
 						UMLPackage.ACTIVITY__OWNED_RECEPTION,
 						UMLPackage.ACTIVITY__OWNED_PARAMETER,
 						UMLPackage.ACTIVITY__OWNED_PARAMETER_SET,
@@ -576,11 +576,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ACTIVITY__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ACTIVITY__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -602,8 +602,6 @@ public class ActivityImpl
 						this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
 						BehavioralFeature.class, msgs);
 				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
-			case UMLPackage.ACTIVITY__GROUP :
-				return ((InternalEList) getGroups()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return ((InternalEList) getVariables())
 					.basicAdd(otherEnd, msgs);
@@ -611,6 +609,8 @@ public class ActivityImpl
 				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__EDGE :
 				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY__GROUP :
+				return ((InternalEList) getGroups()).basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -659,18 +659,18 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
@@ -688,26 +688,23 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__GROUP :
-				return ((InternalEList) getGroups())
-					.basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);
@@ -715,6 +712,9 @@ public class ActivityImpl
 				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__EDGE :
 				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTIVITY__GROUP :
+				return ((InternalEList) getGroups())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -802,10 +802,6 @@ public class ActivityImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.ACTIVITY__GENERAL :
 				return getGenerals();
-			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.ACTIVITY__USE_CASE :
-				return getUseCases();
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.ACTIVITY__ATTRIBUTE :
@@ -814,6 +810,10 @@ public class ActivityImpl
 				return getRepresentation();
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.ACTIVITY__USE_CASE :
+				return getUseCases();
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
@@ -834,10 +834,10 @@ public class ActivityImpl
 				return getInterfaceRealizations();
 			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
@@ -848,10 +848,6 @@ public class ActivityImpl
 				return getOwnedReceptions();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return getExtensions();
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -866,26 +862,30 @@ public class ActivityImpl
 				return basicGetContext();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
-			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				return isReadOnly()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-			case UMLPackage.ACTIVITY__PARTITION :
-				return getPartition();
-			case UMLPackage.ACTIVITY__GROUP :
-				return getGroups();
-			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				return isSingleExecution()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
 				return getStructuredNodes();
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return getVariables();
 			case UMLPackage.ACTIVITY__NODE :
 				return getNodes();
+			case UMLPackage.ACTIVITY__IS_READ_ONLY :
+				return isReadOnly()
+					? Boolean.TRUE
+					: Boolean.FALSE;
 			case UMLPackage.ACTIVITY__EDGE :
 				return getEdges();
+			case UMLPackage.ACTIVITY__PARTITION :
+				return getPartition();
+			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
+				return isSingleExecution()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case UMLPackage.ACTIVITY__GROUP :
+				return getGroups();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -968,14 +968,6 @@ public class ActivityImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -986,6 +978,14 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -1017,13 +1017,13 @@ public class ActivityImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1035,9 +1035,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
@@ -1054,18 +1051,8 @@ public class ActivityImpl
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				setIsReadOnly(((Boolean) newValue).booleanValue());
-				return;
-			case UMLPackage.ACTIVITY__PARTITION :
-				setPartition((ActivityPartition) newValue);
-				return;
-			case UMLPackage.ACTIVITY__GROUP :
-				getGroups().clear();
-				getGroups().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				setIsSingleExecution(((Boolean) newValue).booleanValue());
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.ACTIVITY__VARIABLE :
 				getVariables().clear();
@@ -1075,9 +1062,22 @@ public class ActivityImpl
 				getNodes().clear();
 				getNodes().addAll((Collection) newValue);
 				return;
+			case UMLPackage.ACTIVITY__IS_READ_ONLY :
+				setIsReadOnly(((Boolean) newValue).booleanValue());
+				return;
 			case UMLPackage.ACTIVITY__EDGE :
 				getEdges().clear();
 				getEdges().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY__PARTITION :
+				setPartition((ActivityPartition) newValue);
+				return;
+			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
+				setIsSingleExecution(((Boolean) newValue).booleanValue());
+				return;
+			case UMLPackage.ACTIVITY__GROUP :
+				getGroups().clear();
+				getGroups().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1150,12 +1150,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.ACTIVITY__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -1164,6 +1158,12 @@ public class ActivityImpl
 				return;
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.ACTIVITY__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -1189,11 +1189,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1203,9 +1203,6 @@ public class ActivityImpl
 				return;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				return;
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
@@ -1219,17 +1216,8 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				return;
-			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
-				return;
-			case UMLPackage.ACTIVITY__PARTITION :
-				setPartition((ActivityPartition) null);
-				return;
-			case UMLPackage.ACTIVITY__GROUP :
-				getGroups().clear();
-				return;
-			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.ACTIVITY__VARIABLE :
 				getVariables().clear();
@@ -1237,8 +1225,20 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__NODE :
 				getNodes().clear();
 				return;
+			case UMLPackage.ACTIVITY__IS_READ_ONLY :
+				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+				return;
 			case UMLPackage.ACTIVITY__EDGE :
 				getEdges().clear();
+				return;
+			case UMLPackage.ACTIVITY__PARTITION :
+				setPartition((ActivityPartition) null);
+				return;
+			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
+				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
+				return;
+			case UMLPackage.ACTIVITY__GROUP :
+				getGroups().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1326,12 +1326,6 @@ public class ActivityImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ACTIVITY__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.ACTIVITY__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ACTIVITY__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.ACTIVITY__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1342,6 +1336,12 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ACTIVITY__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.ACTIVITY__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_SIGNATURE) != null;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
@@ -1367,12 +1367,12 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.ACTIVITY__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
@@ -1382,8 +1382,6 @@ public class ActivityImpl
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return !getExtensions().isEmpty();
-			case UMLPackage.ACTIVITY__SPECIFICATION :
-				return eVirtualGet(UMLPackage.ACTIVITY__SPECIFICATION) != null;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
@@ -1399,15 +1397,8 @@ public class ActivityImpl
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
-			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
-			case UMLPackage.ACTIVITY__PARTITION :
-				return eVirtualGet(UMLPackage.ACTIVITY__PARTITION) != null;
-			case UMLPackage.ACTIVITY__GROUP :
-				EList group = (EList) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
-				return group != null && !group.isEmpty();
-			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				return ((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0) != IS_SINGLE_EXECUTION_EDEFAULT;
+			case UMLPackage.ACTIVITY__SPECIFICATION :
+				return eVirtualGet(UMLPackage.ACTIVITY__SPECIFICATION) != null;
 			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
 				return !getStructuredNodes().isEmpty();
 			case UMLPackage.ACTIVITY__VARIABLE :
@@ -1416,9 +1407,18 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__NODE :
 				EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY__NODE);
 				return node != null && !node.isEmpty();
+			case UMLPackage.ACTIVITY__IS_READ_ONLY :
+				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 			case UMLPackage.ACTIVITY__EDGE :
 				EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
 				return edge != null && !edge.isEmpty();
+			case UMLPackage.ACTIVITY__PARTITION :
+				return eVirtualGet(UMLPackage.ACTIVITY__PARTITION) != null;
+			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
+				return ((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0) != IS_SINGLE_EXECUTION_EDEFAULT;
+			case UMLPackage.ACTIVITY__GROUP :
+				EList group = (EList) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
+				return group != null && !group.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1486,9 +1486,9 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements() || eIsSet(UMLPackage.ACTIVITY__GROUP)
-			|| eIsSet(UMLPackage.ACTIVITY__NODE)
-			|| eIsSet(UMLPackage.ACTIVITY__EDGE);
+		return super.isSetOwnedElements() || eIsSet(UMLPackage.ACTIVITY__NODE)
+			|| eIsSet(UMLPackage.ACTIVITY__EDGE)
+			|| eIsSet(UMLPackage.ACTIVITY__GROUP);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.9 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,20 +181,20 @@ public class BroadcastSignalActionImpl
 				return getRedefinedElements();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__HANDLER :
@@ -254,23 +254,23 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -334,20 +334,20 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -415,25 +415,25 @@ public class BroadcastSignalActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

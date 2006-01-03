@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.4 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -32,16 +32,16 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getRedefinedEdges <em>Redefined Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInterrupts <em>Interrupts</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}</li>
  * </ul>
  * </p>
  *

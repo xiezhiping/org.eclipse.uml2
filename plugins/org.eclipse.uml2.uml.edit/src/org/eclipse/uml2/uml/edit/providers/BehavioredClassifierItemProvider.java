@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.1 2005/12/07 14:20:25 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.2 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -268,11 +268,11 @@ public class BehavioredClassifierItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-			UMLFactory.eINSTANCE.createInteraction()));
+			UMLFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-			UMLFactory.eINSTANCE.createActivity()));
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,

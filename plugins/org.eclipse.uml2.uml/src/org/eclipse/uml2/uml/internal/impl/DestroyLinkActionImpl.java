@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.9 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,20 +135,20 @@ public class DestroyLinkActionImpl
 				return getRedefinedElements();
 			case UMLPackage.DESTROY_LINK_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.DESTROY_LINK_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.DESTROY_LINK_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.DESTROY_LINK_ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.DESTROY_LINK_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.DESTROY_LINK_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.DESTROY_LINK_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.DESTROY_LINK_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.DESTROY_LINK_ACTION__HANDLER :
@@ -209,25 +209,25 @@ public class DestroyLinkActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.DESTROY_LINK_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.DESTROY_LINK_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.DESTROY_LINK_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.DESTROY_LINK_ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.DESTROY_LINK_ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.DESTROY_LINK_ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.DESTROY_LINK_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.DESTROY_LINK_ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.10 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.11 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -22,6 +24,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
@@ -40,8 +45,10 @@ import org.eclipse.uml2.uml.internal.operations.ProfileApplicationOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getAppliedProfile <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#isStrict <em>Is Strict</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getApplyingPackage <em>Applying Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,6 +110,23 @@ public class ProfileApplicationImpl
 					new int[]{UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE}));
 		}
 		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSources() {
+		EList source = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__SOURCE);
+		if (source == null) {
+			eVirtualSet(
+				UMLPackage.PROFILE_APPLICATION__SOURCE,
+				source = new DerivedUnionEObjectEList(Element.class, this,
+					UMLPackage.PROFILE_APPLICATION__SOURCE,
+					new int[]{UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE}));
+		}
+		return source;
 	}
 
 	/**
@@ -186,8 +210,106 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.uml2.uml.Package getApplyingPackage() {
+		if (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE)
+			return null;
+		return (org.eclipse.uml2.uml.Package) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApplyingPackage(
+			org.eclipse.uml2.uml.Package newApplyingPackage) {
+		if (newApplyingPackage != eInternalContainer()
+			|| (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE && newApplyingPackage != null)) {
+			if (EcoreUtil.isAncestor(this, newApplyingPackage))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newApplyingPackage != null)
+				msgs = ((InternalEObject) newApplyingPackage).eInverseAdd(this,
+					UMLPackage.PACKAGE__PROFILE_APPLICATION,
+					org.eclipse.uml2.uml.Package.class, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newApplyingPackage,
+				UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE,
+				newApplyingPackage, newApplyingPackage));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EPackage getProfileDefinition() {
 		return ProfileApplicationOperations.getProfileDefinition(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PROFILE_APPLICATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PROFILE_APPLICATION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				return eBasicSetContainer(null,
+					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.PACKAGE__PROFILE_APPLICATION,
+					org.eclipse.uml2.uml.Package.class, msgs);
+		}
+		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**
@@ -221,6 +343,8 @@ public class ProfileApplicationImpl
 				return isStrict()
 					? Boolean.TRUE
 					: Boolean.FALSE;
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				return getApplyingPackage();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -246,6 +370,9 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				setIsStrict(((Boolean) newValue).booleanValue());
 				return;
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				setApplyingPackage((org.eclipse.uml2.uml.Package) newValue);
+				return;
 		}
 		eDynamicSet(featureID, newValue);
 	}
@@ -268,6 +395,9 @@ public class ProfileApplicationImpl
 				return;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				setIsStrict(IS_STRICT_EDEFAULT);
+				return;
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				setApplyingPackage((org.eclipse.uml2.uml.Package) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -300,6 +430,8 @@ public class ProfileApplicationImpl
 				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE) != null;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				return ((eFlags & IS_STRICT_EFLAG) != 0) != IS_STRICT_EDEFAULT;
+			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
+				return getApplyingPackage() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -328,6 +460,39 @@ public class ProfileApplicationImpl
 	public boolean isSetTargets() {
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSources() {
+		return super.isSetSources()
+			|| eIsSet(UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element basicGetOwner() {
+		org.eclipse.uml2.uml.Package applyingPackage = getApplyingPackage();
+		if (applyingPackage != null) {
+			return applyingPackage;
+		}
+		return super.basicGetOwner();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE);
 	}
 
 } //ProfileApplicationImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.3 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -83,19 +83,19 @@ public class OperationItemProvider
 			addTemplateParameterPropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
+			addInterfacePropertyDescriptor(object);
+			addClass_PropertyDescriptor(object);
 			addIsQueryPropertyDescriptor(object);
 			addIsOrderedPropertyDescriptor(object);
 			addIsUniquePropertyDescriptor(object);
 			addLowerPropertyDescriptor(object);
 			addUpperPropertyDescriptor(object);
-			addClass_PropertyDescriptor(object);
 			addPreconditionPropertyDescriptor(object);
 			addPostconditionPropertyDescriptor(object);
 			addRedefinedOperationPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
 			addBodyConditionPropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
-			addInterfacePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

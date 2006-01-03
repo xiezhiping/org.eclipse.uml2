@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.4 2005/12/21 20:13:06 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.5 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -432,32 +432,28 @@ public class UMLAdapterFactory
 			return createFeatureAdapter();
 		}
 
-		public Object caseUseCase(UseCase object) {
-			return createUseCaseAdapter();
+		public Object caseSubstitution(Substitution object) {
+			return createSubstitutionAdapter();
 		}
 
-		public Object caseBehavioredClassifier(BehavioredClassifier object) {
-			return createBehavioredClassifierAdapter();
+		public Object caseRealization(Realization object) {
+			return createRealizationAdapter();
 		}
 
-		public Object caseBehavior(Behavior object) {
-			return createBehaviorAdapter();
+		public Object caseAbstraction(Abstraction object) {
+			return createAbstractionAdapter();
 		}
 
-		public Object caseClass(org.eclipse.uml2.uml.Class object) {
-			return createClassAdapter();
+		public Object caseOpaqueExpression(OpaqueExpression object) {
+			return createOpaqueExpressionAdapter();
 		}
 
-		public Object caseEncapsulatedClassifier(EncapsulatedClassifier object) {
-			return createEncapsulatedClassifierAdapter();
+		public Object caseParameter(Parameter object) {
+			return createParameterAdapter();
 		}
 
-		public Object caseStructuredClassifier(StructuredClassifier object) {
-			return createStructuredClassifierAdapter();
-		}
-
-		public Object caseProperty(Property object) {
-			return createPropertyAdapter();
+		public Object caseMultiplicityElement(MultiplicityElement object) {
+			return createMultiplicityElementAdapter();
 		}
 
 		public Object caseConnectableElement(ConnectableElement object) {
@@ -468,13 +464,8 @@ public class UMLAdapterFactory
 			return createConnectorEndAdapter();
 		}
 
-		public Object caseMultiplicityElement(MultiplicityElement object) {
-			return createMultiplicityElementAdapter();
-		}
-
-		public Object caseConnectableElementTemplateParameter(
-				ConnectableElementTemplateParameter object) {
-			return createConnectableElementTemplateParameterAdapter();
+		public Object caseProperty(Property object) {
+			return createPropertyAdapter();
 		}
 
 		public Object caseDeploymentTarget(DeploymentTarget object) {
@@ -501,18 +492,6 @@ public class UMLAdapterFactory
 			return createManifestationAdapter();
 		}
 
-		public Object caseAbstraction(Abstraction object) {
-			return createAbstractionAdapter();
-		}
-
-		public Object caseOpaqueExpression(OpaqueExpression object) {
-			return createOpaqueExpressionAdapter();
-		}
-
-		public Object caseParameter(Parameter object) {
-			return createParameterAdapter();
-		}
-
 		public Object caseOperation(Operation object) {
 			return createOperationAdapter();
 		}
@@ -521,12 +500,20 @@ public class UMLAdapterFactory
 			return createBehavioralFeatureAdapter();
 		}
 
-		public Object caseParameterSet(ParameterSet object) {
-			return createParameterSetAdapter();
+		public Object caseBehavior(Behavior object) {
+			return createBehaviorAdapter();
 		}
 
-		public Object caseDataType(DataType object) {
-			return createDataTypeAdapter();
+		public Object caseClass(org.eclipse.uml2.uml.Class object) {
+			return createClassAdapter();
+		}
+
+		public Object caseBehavioredClassifier(BehavioredClassifier object) {
+			return createBehavioredClassifierAdapter();
+		}
+
+		public Object caseInterfaceRealization(InterfaceRealization object) {
+			return createInterfaceRealizationAdapter();
 		}
 
 		public Object caseInterface(Interface object) {
@@ -590,13 +577,12 @@ public class UMLAdapterFactory
 			return createProtocolConformanceAdapter();
 		}
 
-		public Object caseOperationTemplateParameter(
-				OperationTemplateParameter object) {
-			return createOperationTemplateParameterAdapter();
+		public Object caseEncapsulatedClassifier(EncapsulatedClassifier object) {
+			return createEncapsulatedClassifierAdapter();
 		}
 
-		public Object caseStructuralFeature(StructuralFeature object) {
-			return createStructuralFeatureAdapter();
+		public Object caseStructuredClassifier(StructuredClassifier object) {
+			return createStructuredClassifierAdapter();
 		}
 
 		public Object caseConnector(Connector object) {
@@ -627,12 +613,38 @@ public class UMLAdapterFactory
 			return createModelAdapter();
 		}
 
-		public Object caseInterfaceRealization(InterfaceRealization object) {
-			return createInterfaceRealizationAdapter();
+		public Object caseParameterSet(ParameterSet object) {
+			return createParameterSetAdapter();
 		}
 
-		public Object caseRealization(Realization object) {
-			return createRealizationAdapter();
+		public Object caseDataType(DataType object) {
+			return createDataTypeAdapter();
+		}
+
+		public Object caseOperationTemplateParameter(
+				OperationTemplateParameter object) {
+			return createOperationTemplateParameterAdapter();
+		}
+
+		public Object caseStructuralFeature(StructuralFeature object) {
+			return createStructuralFeatureAdapter();
+		}
+
+		public Object caseConnectableElementTemplateParameter(
+				ConnectableElementTemplateParameter object) {
+			return createConnectableElementTemplateParameterAdapter();
+		}
+
+		public Object caseCollaborationUse(CollaborationUse object) {
+			return createCollaborationUseAdapter();
+		}
+
+		public Object caseCollaboration(Collaboration object) {
+			return createCollaborationAdapter();
+		}
+
+		public Object caseUseCase(UseCase object) {
+			return createUseCaseAdapter();
 		}
 
 		public Object caseInclude(Include object) {
@@ -645,18 +657,6 @@ public class UMLAdapterFactory
 
 		public Object caseExtensionPoint(ExtensionPoint object) {
 			return createExtensionPointAdapter();
-		}
-
-		public Object caseSubstitution(Substitution object) {
-			return createSubstitutionAdapter();
-		}
-
-		public Object caseCollaborationUse(CollaborationUse object) {
-			return createCollaborationUseAdapter();
-		}
-
-		public Object caseCollaboration(Collaboration object) {
-			return createCollaborationAdapter();
 		}
 
 		public Object caseRedefinableTemplateSignature(
@@ -741,12 +741,117 @@ public class UMLAdapterFactory
 			return createFunctionBehaviorAdapter();
 		}
 
-		public Object caseActor(Actor object) {
-			return createActorAdapter();
+		public Object caseOpaqueAction(OpaqueAction object) {
+			return createOpaqueActionAdapter();
+		}
+
+		public Object caseAction(Action object) {
+			return createActionAdapter();
+		}
+
+		public Object caseExecutableNode(ExecutableNode object) {
+			return createExecutableNodeAdapter();
+		}
+
+		public Object caseActivityNode(ActivityNode object) {
+			return createActivityNodeAdapter();
+		}
+
+		public Object caseStructuredActivityNode(StructuredActivityNode object) {
+			return createStructuredActivityNodeAdapter();
+		}
+
+		public Object caseActivityGroup(ActivityGroup object) {
+			return createActivityGroupAdapter();
+		}
+
+		public Object caseActivity(Activity object) {
+			return createActivityAdapter();
+		}
+
+		public Object caseVariable(Variable object) {
+			return createVariableAdapter();
+		}
+
+		public Object caseActivityEdge(ActivityEdge object) {
+			return createActivityEdgeAdapter();
+		}
+
+		public Object caseActivityPartition(ActivityPartition object) {
+			return createActivityPartitionAdapter();
+		}
+
+		public Object caseInterruptibleActivityRegion(
+				InterruptibleActivityRegion object) {
+			return createInterruptibleActivityRegionAdapter();
+		}
+
+		public Object caseExceptionHandler(ExceptionHandler object) {
+			return createExceptionHandlerAdapter();
+		}
+
+		public Object caseObjectNode(ObjectNode object) {
+			return createObjectNodeAdapter();
+		}
+
+		public Object caseOutputPin(OutputPin object) {
+			return createOutputPinAdapter();
+		}
+
+		public Object casePin(Pin object) {
+			return createPinAdapter();
+		}
+
+		public Object caseInputPin(InputPin object) {
+			return createInputPinAdapter();
+		}
+
+		public Object caseValuePin(ValuePin object) {
+			return createValuePinAdapter();
+		}
+
+		public Object caseCallAction(CallAction object) {
+			return createCallActionAdapter();
+		}
+
+		public Object caseInvocationAction(InvocationAction object) {
+			return createInvocationActionAdapter();
+		}
+
+		public Object caseSendSignalAction(SendSignalAction object) {
+			return createSendSignalActionAdapter();
+		}
+
+		public Object caseCallOperationAction(CallOperationAction object) {
+			return createCallOperationActionAdapter();
+		}
+
+		public Object caseCallBehaviorAction(CallBehaviorAction object) {
+			return createCallBehaviorActionAdapter();
+		}
+
+		public Object caseSequenceNode(SequenceNode object) {
+			return createSequenceNodeAdapter();
 		}
 
 		public Object caseUsage(Usage object) {
 			return createUsageAdapter();
+		}
+
+		public Object caseControlNode(ControlNode object) {
+			return createControlNodeAdapter();
+		}
+
+		public Object caseControlFlow(ControlFlow object) {
+			return createControlFlowAdapter();
+		}
+
+		public Object caseInitialNode(InitialNode object) {
+			return createInitialNodeAdapter();
+		}
+
+		public Object caseActivityParameterNode(ActivityParameterNode object) {
+			return createActivityParameterNodeAdapter();
 		}
 
 		public Object caseMessage(Message object) {
@@ -779,67 +884,6 @@ public class UMLAdapterFactory
 
 		public Object caseGate(Gate object) {
 			return createGateAdapter();
-		}
-
-		public Object caseAction(Action object) {
-			return createActionAdapter();
-		}
-
-		public Object caseExecutableNode(ExecutableNode object) {
-			return createExecutableNodeAdapter();
-		}
-
-		public Object caseActivityNode(ActivityNode object) {
-			return createActivityNodeAdapter();
-		}
-
-		public Object caseActivityEdge(ActivityEdge object) {
-			return createActivityEdgeAdapter();
-		}
-
-		public Object caseActivity(Activity object) {
-			return createActivityAdapter();
-		}
-
-		public Object caseActivityPartition(ActivityPartition object) {
-			return createActivityPartitionAdapter();
-		}
-
-		public Object caseActivityGroup(ActivityGroup object) {
-			return createActivityGroupAdapter();
-		}
-
-		public Object caseStructuredActivityNode(StructuredActivityNode object) {
-			return createStructuredActivityNodeAdapter();
-		}
-
-		public Object caseVariable(Variable object) {
-			return createVariableAdapter();
-		}
-
-		public Object caseInterruptibleActivityRegion(
-				InterruptibleActivityRegion object) {
-			return createInterruptibleActivityRegionAdapter();
-		}
-
-		public Object caseExceptionHandler(ExceptionHandler object) {
-			return createExceptionHandlerAdapter();
-		}
-
-		public Object caseObjectNode(ObjectNode object) {
-			return createObjectNodeAdapter();
-		}
-
-		public Object caseOutputPin(OutputPin object) {
-			return createOutputPinAdapter();
-		}
-
-		public Object casePin(Pin object) {
-			return createPinAdapter();
-		}
-
-		public Object caseInputPin(InputPin object) {
-			return createInputPinAdapter();
 		}
 
 		public Object caseGeneralOrdering(GeneralOrdering object) {
@@ -918,16 +962,8 @@ public class UMLAdapterFactory
 			return createReceiveSignalEventAdapter();
 		}
 
-		public Object caseCombinedFragment(CombinedFragment object) {
-			return createCombinedFragmentAdapter();
-		}
-
-		public Object caseContinuation(Continuation object) {
-			return createContinuationAdapter();
-		}
-
-		public Object caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
-			return createConsiderIgnoreFragmentAdapter();
+		public Object caseActor(Actor object) {
+			return createActorAdapter();
 		}
 
 		public Object caseCallEvent(CallEvent object) {
@@ -944,6 +980,70 @@ public class UMLAdapterFactory
 
 		public Object caseAnyReceiveEvent(AnyReceiveEvent object) {
 			return createAnyReceiveEventAdapter();
+		}
+
+		public Object caseForkNode(ForkNode object) {
+			return createForkNodeAdapter();
+		}
+
+		public Object caseFlowFinalNode(FlowFinalNode object) {
+			return createFlowFinalNodeAdapter();
+		}
+
+		public Object caseFinalNode(FinalNode object) {
+			return createFinalNodeAdapter();
+		}
+
+		public Object caseCentralBufferNode(CentralBufferNode object) {
+			return createCentralBufferNodeAdapter();
+		}
+
+		public Object caseMergeNode(MergeNode object) {
+			return createMergeNodeAdapter();
+		}
+
+		public Object caseDecisionNode(DecisionNode object) {
+			return createDecisionNodeAdapter();
+		}
+
+		public Object caseActivityFinalNode(ActivityFinalNode object) {
+			return createActivityFinalNodeAdapter();
+		}
+
+		public Object caseComponentRealization(ComponentRealization object) {
+			return createComponentRealizationAdapter();
+		}
+
+		public Object caseComponent(Component object) {
+			return createComponentAdapter();
+		}
+
+		public Object caseNode(Node object) {
+			return createNodeAdapter();
+		}
+
+		public Object caseDevice(Device object) {
+			return createDeviceAdapter();
+		}
+
+		public Object caseExecutionEnvironment(ExecutionEnvironment object) {
+			return createExecutionEnvironmentAdapter();
+		}
+
+		public Object caseCommunicationPath(CommunicationPath object) {
+			return createCommunicationPathAdapter();
+		}
+
+		public Object caseCombinedFragment(CombinedFragment object) {
+			return createCombinedFragmentAdapter();
+		}
+
+		public Object caseContinuation(Continuation object) {
+			return createContinuationAdapter();
+		}
+
+		public Object caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
+			return createConsiderIgnoreFragmentAdapter();
 		}
 
 		public Object caseCreateObjectAction(CreateObjectAction object) {
@@ -1035,10 +1135,6 @@ public class UMLAdapterFactory
 			return createBroadcastSignalActionAdapter();
 		}
 
-		public Object caseInvocationAction(InvocationAction object) {
-			return createInvocationActionAdapter();
-		}
-
 		public Object caseSendObjectAction(SendObjectAction object) {
 			return createSendObjectActionAdapter();
 		}
@@ -1092,36 +1188,12 @@ public class UMLAdapterFactory
 			return createDurationObservationAdapter();
 		}
 
-		public Object caseOpaqueAction(OpaqueAction object) {
-			return createOpaqueActionAdapter();
+		public Object caseFinalState(FinalState object) {
+			return createFinalStateAdapter();
 		}
 
-		public Object caseValuePin(ValuePin object) {
-			return createValuePinAdapter();
-		}
-
-		public Object caseCallAction(CallAction object) {
-			return createCallActionAdapter();
-		}
-
-		public Object caseSendSignalAction(SendSignalAction object) {
-			return createSendSignalActionAdapter();
-		}
-
-		public Object caseCallOperationAction(CallOperationAction object) {
-			return createCallOperationActionAdapter();
-		}
-
-		public Object caseCallBehaviorAction(CallBehaviorAction object) {
-			return createCallBehaviorActionAdapter();
-		}
-
-		public Object caseInformationItem(InformationItem object) {
-			return createInformationItemAdapter();
-		}
-
-		public Object caseInformationFlow(InformationFlow object) {
-			return createInformationFlowAdapter();
+		public Object caseTimeEvent(TimeEvent object) {
+			return createTimeEventAdapter();
 		}
 
 		public Object caseVariableAction(VariableAction object) {
@@ -1155,6 +1227,14 @@ public class UMLAdapterFactory
 
 		public Object caseActionInputPin(ActionInputPin object) {
 			return createActionInputPinAdapter();
+		}
+
+		public Object caseInformationItem(InformationItem object) {
+			return createInformationItemAdapter();
+		}
+
+		public Object caseInformationFlow(InformationFlow object) {
+			return createInformationFlowAdapter();
 		}
 
 		public Object caseReadExtentAction(ReadExtentAction object) {
@@ -1208,50 +1288,6 @@ public class UMLAdapterFactory
 			return createReduceActionAdapter();
 		}
 
-		public Object caseControlNode(ControlNode object) {
-			return createControlNodeAdapter();
-		}
-
-		public Object caseControlFlow(ControlFlow object) {
-			return createControlFlowAdapter();
-		}
-
-		public Object caseInitialNode(InitialNode object) {
-			return createInitialNodeAdapter();
-		}
-
-		public Object caseActivityParameterNode(ActivityParameterNode object) {
-			return createActivityParameterNodeAdapter();
-		}
-
-		public Object caseForkNode(ForkNode object) {
-			return createForkNodeAdapter();
-		}
-
-		public Object caseFlowFinalNode(FlowFinalNode object) {
-			return createFlowFinalNodeAdapter();
-		}
-
-		public Object caseFinalNode(FinalNode object) {
-			return createFinalNodeAdapter();
-		}
-
-		public Object caseCentralBufferNode(CentralBufferNode object) {
-			return createCentralBufferNodeAdapter();
-		}
-
-		public Object caseMergeNode(MergeNode object) {
-			return createMergeNodeAdapter();
-		}
-
-		public Object caseDecisionNode(DecisionNode object) {
-			return createDecisionNodeAdapter();
-		}
-
-		public Object caseActivityFinalNode(ActivityFinalNode object) {
-			return createActivityFinalNodeAdapter();
-		}
-
 		public Object caseJoinNode(JoinNode object) {
 			return createJoinNodeAdapter();
 		}
@@ -1262,10 +1298,6 @@ public class UMLAdapterFactory
 
 		public Object caseObjectFlow(ObjectFlow object) {
 			return createObjectFlowAdapter();
-		}
-
-		public Object caseSequenceNode(SequenceNode object) {
-			return createSequenceNodeAdapter();
 		}
 
 		public Object caseConditionalNode(ConditionalNode object) {
@@ -1286,38 +1318,6 @@ public class UMLAdapterFactory
 
 		public Object caseExpansionRegion(ExpansionRegion object) {
 			return createExpansionRegionAdapter();
-		}
-
-		public Object caseComponentRealization(ComponentRealization object) {
-			return createComponentRealizationAdapter();
-		}
-
-		public Object caseComponent(Component object) {
-			return createComponentAdapter();
-		}
-
-		public Object caseNode(Node object) {
-			return createNodeAdapter();
-		}
-
-		public Object caseDevice(Device object) {
-			return createDeviceAdapter();
-		}
-
-		public Object caseExecutionEnvironment(ExecutionEnvironment object) {
-			return createExecutionEnvironmentAdapter();
-		}
-
-		public Object caseCommunicationPath(CommunicationPath object) {
-			return createCommunicationPathAdapter();
-		}
-
-		public Object caseFinalState(FinalState object) {
-			return createFinalStateAdapter();
-		}
-
-		public Object caseTimeEvent(TimeEvent object) {
-			return createTimeEventAdapter();
 		}
 
 		public Object caseProtocolTransition(ProtocolTransition object) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.9 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -169,20 +169,20 @@ public abstract class VariableActionImpl
 				return getRedefinedElements();
 			case UMLPackage.VARIABLE_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.VARIABLE_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.VARIABLE_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.VARIABLE_ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.VARIABLE_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.VARIABLE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.VARIABLE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.VARIABLE_ACTION__HANDLER :
@@ -236,23 +236,23 @@ public abstract class VariableActionImpl
 			case UMLPackage.VARIABLE_ACTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.VARIABLE_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.VARIABLE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.VARIABLE_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.VARIABLE_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.VARIABLE_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -309,20 +309,20 @@ public abstract class VariableActionImpl
 			case UMLPackage.VARIABLE_ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.VARIABLE_ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.VARIABLE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.VARIABLE_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.VARIABLE_ACTION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.VARIABLE_ACTION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -384,25 +384,25 @@ public abstract class VariableActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.VARIABLE_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.VARIABLE_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.VARIABLE_ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.VARIABLE_ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.VARIABLE_ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.VARIABLE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.VARIABLE_ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.VARIABLE_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

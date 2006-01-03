@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: ActivityNodeItemProvider.java,v 1.2 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -63,13 +63,13 @@ public class ActivityNodeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOutgoingPropertyDescriptor(object);
-			addInGroupPropertyDescriptor(object);
-			addInPartitionPropertyDescriptor(object);
 			addInStructuredNodePropertyDescriptor(object);
 			addActivityPropertyDescriptor(object);
+			addOutgoingPropertyDescriptor(object);
 			addIncomingPropertyDescriptor(object);
+			addInPartitionPropertyDescriptor(object);
 			addInInterruptibleRegionPropertyDescriptor(object);
+			addInGroupPropertyDescriptor(object);
 			addRedefinedNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

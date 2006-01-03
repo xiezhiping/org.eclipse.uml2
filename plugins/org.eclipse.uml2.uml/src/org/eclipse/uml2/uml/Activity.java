@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Activity.java,v 1.5 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,14 +48,14 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Activity#isReadOnly <em>Is Read Only</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getPartition <em>Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#isSingleExecution <em>Is Single Execution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getVariables <em>Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#isReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getPartition <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#isSingleExecution <em>Is Single Execution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
  * </ul>
  * </p>
  *

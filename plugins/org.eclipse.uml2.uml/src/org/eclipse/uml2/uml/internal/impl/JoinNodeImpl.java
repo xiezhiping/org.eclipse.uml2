@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.10 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -256,21 +256,21 @@ public class JoinNodeImpl
 					otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				return eBasicSetContainer(null, UMLPackage.JOIN_NODE__ACTIVITY,
 					msgs);
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.JOIN_NODE__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -319,20 +319,20 @@ public class JoinNodeImpl
 				return getRedefinedElements();
 			case UMLPackage.JOIN_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.JOIN_NODE__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				return getActivity();
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.JOIN_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.JOIN_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
@@ -376,23 +376,23 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.JOIN_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -440,20 +440,20 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.JOIN_NODE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -509,25 +509,25 @@ public class JoinNodeImpl
 				return isSetRedefinedElements();
 			case UMLPackage.JOIN_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.JOIN_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.JOIN_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.JOIN_NODE__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.JOIN_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.JOIN_NODE__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.JOIN_NODE__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.JOIN_NODE__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.JOIN_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.JOIN_NODE__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.JOIN_NODE__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.JOIN_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.JOIN_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

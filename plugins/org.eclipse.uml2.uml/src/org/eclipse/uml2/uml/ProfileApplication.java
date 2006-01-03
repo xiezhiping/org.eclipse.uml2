@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.4 2005/12/19 18:51:32 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.5 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getAppliedProfile <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#isStrict <em>Is Strict</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage <em>Applying Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +88,34 @@ public interface ProfileApplication
 	 * @generated
 	 */
 	void setIsStrict(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Applying Package</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Applying Package</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Applying Package</em>' container reference.
+	 * @see #setApplyingPackage(org.eclipse.uml2.uml.Package)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_ApplyingPackage()
+	 * @see org.eclipse.uml2.uml.Package#getProfileApplications
+	 * @model opposite="profileApplication" resolveProxies="false" required="true" ordered="false"
+	 * @generated
+	 */
+	org.eclipse.uml2.uml.Package getApplyingPackage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage <em>Applying Package</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Applying Package</em>' container reference.
+	 * @see #getApplyingPackage()
+	 * @generated
+	 */
+	void setApplyingPackage(org.eclipse.uml2.uml.Package value);
 
 	/**
 	 * <!-- begin-user-doc -->

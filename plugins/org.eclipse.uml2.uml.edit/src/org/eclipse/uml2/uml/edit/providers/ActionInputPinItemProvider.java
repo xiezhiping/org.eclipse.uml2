@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinItemProvider.java,v 1.3 2005/12/21 20:13:23 khussey Exp $
+ * $Id: ActionInputPinItemProvider.java,v 1.4 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -166,7 +166,27 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createOpaqueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createStructuredActivityNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createSendSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCallOperationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCallBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createSequenceNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -227,22 +247,6 @@ public class ActionInputPinItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createValueSpecificationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createOpaqueAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createSendSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCallBehaviorAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -311,10 +315,6 @@ public class ActionInputPinItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createReduceAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createSequenceNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,

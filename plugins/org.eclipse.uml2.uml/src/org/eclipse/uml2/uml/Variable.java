@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Variable.java,v 1.3 2005/12/12 16:58:35 khussey Exp $
+ * $Id: Variable.java,v 1.4 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -29,13 +29,14 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * Any values contained by a variable must conform to the type of the variable and have cardinalities allowed by the multiplicity of the variable.
  * 
  * 
+ * A variable is considered a connectable element.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Variable#getActivityScope <em>Activity Scope</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Variable#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Variable#getActivityScope <em>Activity Scope</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,7 +45,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @generated
  */
 public interface Variable
-		extends TypedElement, MultiplicityElement {
+		extends ConnectableElement, MultiplicityElement {
 
 	/**
 	 * Returns the value of the '<em><b>Activity Scope</b></em>' container reference.

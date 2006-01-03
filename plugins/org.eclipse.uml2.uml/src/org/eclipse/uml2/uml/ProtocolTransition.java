@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.9 2005/12/23 00:50:38 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.10 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17,8 +17,6 @@ import java.util.Map;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,7 +50,7 @@ public interface ProtocolTransition
 		extends Transition {
 
 	/**
-	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Post Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -60,44 +58,23 @@ public interface ProtocolTransition
 	 * 
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Post Condition</em>' containment reference.
+	 * @return the value of the '<em>Post Condition</em>' reference.
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolTransition_PostCondition()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model resolveProxies="false" ordered="false"
 	 * @generated
 	 */
 	Constraint getPostCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolTransition#getPostCondition <em>Post Condition</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolTransition#getPostCondition <em>Post Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Post Condition</em>' containment reference.
+	 * @param value the new value of the '<em>Post Condition</em>' reference.
 	 * @see #getPostCondition()
 	 * @generated
 	 */
 	void setPostCondition(Constraint value);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Post Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
-	 * @see #getPostCondition()
-	 * @generated
-	 */
-	Constraint createPostCondition(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Post Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
-	 * @see #getPostCondition()
-	 * @generated
-	 */
-	Constraint createPostCondition();
 
 	/**
 	 * Returns the value of the '<em><b>Referred</b></em>' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.9 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Property.java,v 1.10 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,13 +49,13 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerivedUnion <em>Is Derived Union</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAggregation <em>Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isComposite <em>Is Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getRedefinedProperties <em>Redefined Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOwningAssociation <em>Owning Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefaultValue <em>Default Value</em>}</li>

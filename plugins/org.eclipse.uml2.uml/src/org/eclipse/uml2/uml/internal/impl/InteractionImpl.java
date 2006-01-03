@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.12 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -308,8 +308,8 @@ public class InteractionImpl
 						UMLPackage.INTERACTION__OWNED_CONNECTOR,
 						UMLPackage.INTERACTION__OWNED_BEHAVIOR,
 						UMLPackage.INTERACTION__OWNED_TRIGGER,
-						UMLPackage.INTERACTION__OWNED_OPERATION,
 						UMLPackage.INTERACTION__NESTED_CLASSIFIER,
+						UMLPackage.INTERACTION__OWNED_OPERATION,
 						UMLPackage.INTERACTION__OWNED_RECEPTION,
 						UMLPackage.INTERACTION__OWNED_PARAMETER,
 						UMLPackage.INTERACTION__OWNED_PARAMETER_SET,
@@ -598,11 +598,11 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERACTION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.INTERACTION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.INTERACTION__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -693,18 +693,18 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.INTERACTION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.INTERACTION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERACTION__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
@@ -722,23 +722,23 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.INTERACTION__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERACTION__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERACTION__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.INTERACTION__COVERED :
 				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
 					msgs);
@@ -876,10 +876,6 @@ public class InteractionImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.INTERACTION__GENERAL :
 				return getGenerals();
-			case UMLPackage.INTERACTION__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.INTERACTION__USE_CASE :
-				return getUseCases();
 			case UMLPackage.INTERACTION__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.INTERACTION__ATTRIBUTE :
@@ -888,6 +884,10 @@ public class InteractionImpl
 				return getRepresentation();
 			case UMLPackage.INTERACTION__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.INTERACTION__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.INTERACTION__USE_CASE :
+				return getUseCases();
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
@@ -908,10 +908,10 @@ public class InteractionImpl
 				return getInterfaceRealizations();
 			case UMLPackage.INTERACTION__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.INTERACTION__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.INTERACTION__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.INTERACTION__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.INTERACTION__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.INTERACTION__IS_ACTIVE :
@@ -922,10 +922,6 @@ public class InteractionImpl
 				return getOwnedReceptions();
 			case UMLPackage.INTERACTION__EXTENSION :
 				return getExtensions();
-			case UMLPackage.INTERACTION__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.INTERACTION__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -940,6 +936,10 @@ public class InteractionImpl
 				return basicGetContext();
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.INTERACTION__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.INTERACTION__COVERED :
 				return getCovereds();
 			case UMLPackage.INTERACTION__GENERAL_ORDERING :
@@ -1040,14 +1040,6 @@ public class InteractionImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INTERACTION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.INTERACTION__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.INTERACTION__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -1058,6 +1050,14 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERACTION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERACTION__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -1089,13 +1089,13 @@ public class InteractionImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INTERACTION__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.INTERACTION__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERACTION__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.INTERACTION__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1107,9 +1107,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.INTERACTION__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
@@ -1125,6 +1122,9 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERACTION__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.INTERACTION__COVERED :
 				getCovereds().clear();
@@ -1231,12 +1231,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.INTERACTION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.INTERACTION__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.INTERACTION__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -1245,6 +1239,12 @@ public class InteractionImpl
 				return;
 			case UMLPackage.INTERACTION__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.INTERACTION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.INTERACTION__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -1270,11 +1270,11 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.INTERACTION__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.INTERACTION__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.INTERACTION__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.INTERACTION__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1284,9 +1284,6 @@ public class InteractionImpl
 				return;
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				return;
-			case UMLPackage.INTERACTION__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
@@ -1299,6 +1296,9 @@ public class InteractionImpl
 				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
+				return;
+			case UMLPackage.INTERACTION__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.INTERACTION__COVERED :
 				getCovereds().clear();
@@ -1413,12 +1413,6 @@ public class InteractionImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.INTERACTION__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.INTERACTION__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.INTERACTION__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.INTERACTION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.INTERACTION__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.INTERACTION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1429,6 +1423,12 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.INTERACTION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.INTERACTION__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.INTERACTION__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.INTERACTION__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.INTERACTION__OWNED_SIGNATURE) != null;
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
@@ -1454,12 +1454,12 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.INTERACTION__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.INTERACTION__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.INTERACTION__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.INTERACTION__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.INTERACTION__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.INTERACTION__IS_ACTIVE :
@@ -1469,8 +1469,6 @@ public class InteractionImpl
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.INTERACTION__EXTENSION :
 				return !getExtensions().isEmpty();
-			case UMLPackage.INTERACTION__SPECIFICATION :
-				return eVirtualGet(UMLPackage.INTERACTION__SPECIFICATION) != null;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.INTERACTION__REDEFINED_BEHAVIOR :
@@ -1486,6 +1484,8 @@ public class InteractionImpl
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
+			case UMLPackage.INTERACTION__SPECIFICATION :
+				return eVirtualGet(UMLPackage.INTERACTION__SPECIFICATION) != null;
 			case UMLPackage.INTERACTION__COVERED :
 				EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION__COVERED);
 				return covered != null && !covered.isEmpty();

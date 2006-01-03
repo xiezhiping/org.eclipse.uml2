@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.10 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,11 +59,11 @@ import org.eclipse.uml2.uml.internal.operations.ActivityNodeOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInInterruptibleRegions <em>In Interruptible Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getRedefinedNodes <em>Redefined Node</em>}</li>
  * </ul>
@@ -104,8 +104,8 @@ public abstract class ActivityNodeImpl
 			eVirtualSet(UMLPackage.ACTIVITY_NODE__IN_GROUP,
 				inGroup = new DerivedUnionEObjectEList(ActivityGroup.class,
 					this, UMLPackage.ACTIVITY_NODE__IN_GROUP, new int[]{
-						UMLPackage.ACTIVITY_NODE__IN_PARTITION,
 						UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
+						UMLPackage.ACTIVITY_NODE__IN_PARTITION,
 						UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION}));
 		}
 		return inGroup;
@@ -384,12 +384,6 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -400,9 +394,15 @@ public abstract class ActivityNodeImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return ((InternalEList) getIncomings())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
 					otherEnd, msgs);
@@ -429,21 +429,21 @@ public abstract class ActivityNodeImpl
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -509,20 +509,20 @@ public abstract class ActivityNodeImpl
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return getActivity();
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 		}
@@ -560,23 +560,23 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -618,20 +618,20 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -681,25 +681,25 @@ public abstract class ActivityNodeImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ACTIVITY_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.ACTIVITY_NODE__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
@@ -713,8 +713,8 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetInGroups() {
-		return eIsSet(UMLPackage.ACTIVITY_NODE__IN_PARTITION)
-			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE)
+		return eIsSet(UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE)
+			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_PARTITION)
 			|| eIsSet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.10 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,12 +206,6 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				return ((InternalEList) getOutgoings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -222,9 +216,15 @@ public class ExpansionRegionImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.EXPANSION_REGION__ACTIVITY, msgs);
+			case UMLPackage.EXPANSION_REGION__OUTGOING :
+				return ((InternalEList) getOutgoings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				return ((InternalEList) getIncomings())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
 					otherEnd, msgs);
@@ -247,10 +247,10 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				return ((InternalEList) getVariables())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__NODE :
-				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
+			case UMLPackage.EXPANSION_REGION__NODE :
+				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				return ((InternalEList) getInputElements()).basicAdd(otherEnd,
 					msgs);
@@ -280,21 +280,21 @@ public class ExpansionRegionImpl
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.EXPANSION_REGION__ACTIVITY, msgs);
+			case UMLPackage.EXPANSION_REGION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -322,10 +322,10 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.EXPANSION_REGION__NODE :
-				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+			case UMLPackage.EXPANSION_REGION__NODE :
+				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				return ((InternalEList) getInputElements()).basicRemove(
 					otherEnd, msgs);
@@ -375,20 +375,20 @@ public class ExpansionRegionImpl
 				return getRedefinedElements();
 			case UMLPackage.EXPANSION_REGION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.EXPANSION_REGION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.EXPANSION_REGION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				return getIncomings();
+			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.EXPANSION_REGION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.EXPANSION_REGION__HANDLER :
@@ -419,22 +419,22 @@ public class ExpansionRegionImpl
 				return getSubgroups();
 			case UMLPackage.EXPANSION_REGION__SUPER_GROUP :
 				return getSuperGroup();
-			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
-				return getContainedNodes();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				return getInActivity();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
 				return getContainedEdges();
+			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
+				return getContainedNodes();
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				return getVariables();
-			case UMLPackage.EXPANSION_REGION__NODE :
-				return getNodes();
+			case UMLPackage.EXPANSION_REGION__EDGE :
+				return getEdges();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				return isMustIsolate()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.EXPANSION_REGION__EDGE :
-				return getEdges();
+			case UMLPackage.EXPANSION_REGION__NODE :
+				return getNodes();
 			case UMLPackage.EXPANSION_REGION__MODE :
 				return getMode();
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
@@ -476,23 +476,23 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.EXPANSION_REGION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -533,16 +533,16 @@ public class ExpansionRegionImpl
 				getVariables().clear();
 				getVariables().addAll((Collection) newValue);
 				return;
-			case UMLPackage.EXPANSION_REGION__NODE :
-				getNodes().clear();
-				getNodes().addAll((Collection) newValue);
+			case UMLPackage.EXPANSION_REGION__EDGE :
+				getEdges().clear();
+				getEdges().addAll((Collection) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				setMustIsolate(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.EXPANSION_REGION__EDGE :
-				getEdges().clear();
-				getEdges().addAll((Collection) newValue);
+			case UMLPackage.EXPANSION_REGION__NODE :
+				getNodes().clear();
+				getNodes().addAll((Collection) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__MODE :
 				setMode((ExpansionKind) newValue);
@@ -587,20 +587,20 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.EXPANSION_REGION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -632,14 +632,14 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				getVariables().clear();
 				return;
-			case UMLPackage.EXPANSION_REGION__NODE :
-				getNodes().clear();
+			case UMLPackage.EXPANSION_REGION__EDGE :
+				getEdges().clear();
 				return;
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				setMustIsolate(MUST_ISOLATE_EDEFAULT);
 				return;
-			case UMLPackage.EXPANSION_REGION__EDGE :
-				getEdges().clear();
+			case UMLPackage.EXPANSION_REGION__NODE :
+				getNodes().clear();
 				return;
 			case UMLPackage.EXPANSION_REGION__MODE :
 				setMode(MODE_EDEFAULT);
@@ -692,25 +692,25 @@ public class ExpansionRegionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.EXPANSION_REGION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.EXPANSION_REGION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return isSetActivity();
+			case UMLPackage.EXPANSION_REGION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.EXPANSION_REGION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();
@@ -750,23 +750,23 @@ public class ExpansionRegionImpl
 				return isSetSubgroups();
 			case UMLPackage.EXPANSION_REGION__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
-				return isSetContainedNodes();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				return isSetInActivity();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
 				return isSetContainedEdges();
+			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
+				return isSetContainedNodes();
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				EList variable = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__VARIABLE);
 				return variable != null && !variable.isEmpty();
-			case UMLPackage.EXPANSION_REGION__NODE :
-				EList node = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__NODE);
-				return node != null && !node.isEmpty();
-			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
-				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				EList edge = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__EDGE);
 				return edge != null && !edge.isEmpty();
+			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
+				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
+			case UMLPackage.EXPANSION_REGION__NODE :
+				EList node = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__NODE);
+				return node != null && !node.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MODE :
 				return eVirtualGet(UMLPackage.EXPANSION_REGION__MODE,
 					MODE_EDEFAULT) != MODE_EDEFAULT;

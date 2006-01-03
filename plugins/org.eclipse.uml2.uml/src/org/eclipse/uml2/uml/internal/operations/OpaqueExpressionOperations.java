@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.8 2005/12/14 22:34:27 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.9 2006/01/03 18:02:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -88,40 +88,6 @@ public final class OpaqueExpressionOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateLanguageBodySize", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{opaqueExpression}));
-			}
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If there is only one body then the size of the language is exactly 0 (corresponding to the default language).
-	 * The there is only one body then the size of the language is exactly 0 (corresponding to the default language).
-	 * language->isEmpty() implies (body->size() <= 1)
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateOneBodyDefaultLanguage(
-			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OPAQUE_EXPRESSION__ONE_BODY_DEFAULT_LANGUAGE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneBodyDefaultLanguage", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{opaqueExpression}));
 			}
 			return false;

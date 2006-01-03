@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.3 2005/12/14 22:34:56 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.4 2006/01/03 18:02:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -256,15 +256,23 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createUseCase()));
+			UMLFactory.eINSTANCE.createAbstraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createClass()));
+			UMLFactory.eINSTANCE.createRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createBehavior()));
+			UMLFactory.eINSTANCE.createSubstitution()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -284,19 +292,7 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createAbstraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createManifestation()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -304,7 +300,15 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createDataType()));
+			UMLFactory.eINSTANCE.createClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -348,19 +352,15 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createSubstitution()));
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createCollaboration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -420,7 +420,11 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createActor()));
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -429,10 +433,6 @@ public class TemplateParameterSubstitutionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -468,6 +468,10 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createActor()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createCallEvent()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -481,6 +485,30 @@ public class TemplateParameterSubstitutionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createAnyReceiveEvent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createComponentRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createComponent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createDevice()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createExecutionEnvironment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createCommunicationPath()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
@@ -516,39 +544,15 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createTimeEvent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createInformationFlow()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createComponentRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createComponent()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createDevice()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createExecutionEnvironment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createCommunicationPath()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createTimeEvent()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,

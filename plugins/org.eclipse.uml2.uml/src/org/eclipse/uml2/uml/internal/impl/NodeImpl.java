@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.12 2005/12/14 22:34:19 khussey Exp $
+ * $Id: NodeImpl.java,v 1.13 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -237,8 +237,8 @@ public class NodeImpl
 						UMLPackage.NODE__OWNED_CONNECTOR,
 						UMLPackage.NODE__OWNED_BEHAVIOR,
 						UMLPackage.NODE__OWNED_TRIGGER,
-						UMLPackage.NODE__OWNED_OPERATION,
 						UMLPackage.NODE__NESTED_CLASSIFIER,
+						UMLPackage.NODE__OWNED_OPERATION,
 						UMLPackage.NODE__OWNED_RECEPTION,
 						UMLPackage.NODE__NESTED_NODE}));
 		}
@@ -364,11 +364,11 @@ public class NodeImpl
 			case UMLPackage.NODE__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.NODE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.NODE__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.NODE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.NODE__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -434,18 +434,18 @@ public class NodeImpl
 			case UMLPackage.NODE__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.NODE__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.NODE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.NODE__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.NODE__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.NODE__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.NODE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.NODE__OWNED_ATTRIBUTE :
@@ -463,11 +463,11 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.NODE__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.NODE__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.NODE__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.NODE__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
@@ -565,10 +565,6 @@ public class NodeImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.NODE__GENERAL :
 				return getGenerals();
-			case UMLPackage.NODE__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.NODE__USE_CASE :
-				return getUseCases();
 			case UMLPackage.NODE__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.NODE__ATTRIBUTE :
@@ -577,6 +573,10 @@ public class NodeImpl
 				return getRepresentation();
 			case UMLPackage.NODE__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.NODE__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.NODE__USE_CASE :
+				return getUseCases();
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.NODE__OWNED_ATTRIBUTE :
@@ -597,10 +597,10 @@ public class NodeImpl
 				return getInterfaceRealizations();
 			case UMLPackage.NODE__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.NODE__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.NODE__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.NODE__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.NODE__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.NODE__IS_ACTIVE :
@@ -699,14 +699,6 @@ public class NodeImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.NODE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.NODE__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.NODE__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -717,6 +709,14 @@ public class NodeImpl
 			case UMLPackage.NODE__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.NODE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.NODE__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -748,13 +748,13 @@ public class NodeImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.NODE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.NODE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.NODE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.NODE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -846,12 +846,6 @@ public class NodeImpl
 			case UMLPackage.NODE__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.NODE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.NODE__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.NODE__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -860,6 +854,12 @@ public class NodeImpl
 				return;
 			case UMLPackage.NODE__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.NODE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.NODE__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -885,11 +885,11 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.NODE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.NODE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.NODE__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.NODE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -992,12 +992,6 @@ public class NodeImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.NODE__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.NODE__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.NODE__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.NODE__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.NODE__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.NODE__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.NODE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1008,6 +1002,12 @@ public class NodeImpl
 			case UMLPackage.NODE__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.NODE__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.NODE__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.NODE__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.NODE__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.NODE__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.NODE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.NODE__OWNED_SIGNATURE) != null;
 			case UMLPackage.NODE__OWNED_ATTRIBUTE :
@@ -1033,12 +1033,12 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.NODE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.NODE__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.NODE__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.NODE__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.NODE__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.NODE__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.NODE__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.NODE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.NODE__IS_ACTIVE :

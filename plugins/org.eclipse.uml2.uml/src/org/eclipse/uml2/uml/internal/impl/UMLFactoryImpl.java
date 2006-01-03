@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.7 2005/12/21 20:13:08 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.8 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -308,18 +308,20 @@ public class UMLFactoryImpl
 				return createGeneralization();
 			case UMLPackage.GENERALIZATION_SET :
 				return createGeneralizationSet();
-			case UMLPackage.USE_CASE :
-				return createUseCase();
-			case UMLPackage.BEHAVIOR :
-				return createBehavior();
-			case UMLPackage.CLASS :
-				return createClass();
-			case UMLPackage.PROPERTY :
-				return createProperty();
+			case UMLPackage.SUBSTITUTION :
+				return createSubstitution();
+			case UMLPackage.REALIZATION :
+				return createRealization();
+			case UMLPackage.ABSTRACTION :
+				return createAbstraction();
+			case UMLPackage.OPAQUE_EXPRESSION :
+				return createOpaqueExpression();
+			case UMLPackage.PARAMETER :
+				return createParameter();
 			case UMLPackage.CONNECTOR_END :
 				return createConnectorEnd();
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
-				return createConnectableElementTemplateParameter();
+			case UMLPackage.PROPERTY :
+				return createProperty();
 			case UMLPackage.DEPLOYMENT :
 				return createDeployment();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION :
@@ -328,20 +330,16 @@ public class UMLFactoryImpl
 				return createArtifact();
 			case UMLPackage.MANIFESTATION :
 				return createManifestation();
-			case UMLPackage.ABSTRACTION :
-				return createAbstraction();
-			case UMLPackage.OPAQUE_EXPRESSION :
-				return createOpaqueExpression();
-			case UMLPackage.PARAMETER :
-				return createParameter();
 			case UMLPackage.OPERATION :
 				return createOperation();
 			case UMLPackage.BEHAVIORAL_FEATURE :
 				return createBehavioralFeature();
-			case UMLPackage.PARAMETER_SET :
-				return createParameterSet();
-			case UMLPackage.DATA_TYPE :
-				return createDataType();
+			case UMLPackage.BEHAVIOR :
+				return createBehavior();
+			case UMLPackage.CLASS :
+				return createClass();
+			case UMLPackage.INTERFACE_REALIZATION :
+				return createInterfaceRealization();
 			case UMLPackage.INTERFACE :
 				return createInterface();
 			case UMLPackage.RECEPTION :
@@ -368,8 +366,6 @@ public class UMLFactoryImpl
 				return createPseudostate();
 			case UMLPackage.PROTOCOL_CONFORMANCE :
 				return createProtocolConformance();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER :
-				return createOperationTemplateParameter();
 			case UMLPackage.CONNECTOR :
 				return createConnector();
 			case UMLPackage.EXTENSION :
@@ -384,22 +380,26 @@ public class UMLFactoryImpl
 				return createProfile();
 			case UMLPackage.MODEL :
 				return createModel();
-			case UMLPackage.INTERFACE_REALIZATION :
-				return createInterfaceRealization();
-			case UMLPackage.REALIZATION :
-				return createRealization();
+			case UMLPackage.PARAMETER_SET :
+				return createParameterSet();
+			case UMLPackage.DATA_TYPE :
+				return createDataType();
+			case UMLPackage.OPERATION_TEMPLATE_PARAMETER :
+				return createOperationTemplateParameter();
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
+				return createConnectableElementTemplateParameter();
+			case UMLPackage.COLLABORATION_USE :
+				return createCollaborationUse();
+			case UMLPackage.COLLABORATION :
+				return createCollaboration();
+			case UMLPackage.USE_CASE :
+				return createUseCase();
 			case UMLPackage.INCLUDE :
 				return createInclude();
 			case UMLPackage.EXTEND :
 				return createExtend();
 			case UMLPackage.EXTENSION_POINT :
 				return createExtensionPoint();
-			case UMLPackage.SUBSTITUTION :
-				return createSubstitution();
-			case UMLPackage.COLLABORATION_USE :
-				return createCollaborationUse();
-			case UMLPackage.COLLABORATION :
-				return createCollaboration();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE :
 				return createRedefinableTemplateSignature();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER :
@@ -438,10 +438,48 @@ public class UMLFactoryImpl
 				return createOpaqueBehavior();
 			case UMLPackage.FUNCTION_BEHAVIOR :
 				return createFunctionBehavior();
-			case UMLPackage.ACTOR :
-				return createActor();
+			case UMLPackage.OPAQUE_ACTION :
+				return createOpaqueAction();
+			case UMLPackage.ACTION :
+				return createAction();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE :
+				return createStructuredActivityNode();
+			case UMLPackage.ACTIVITY :
+				return createActivity();
+			case UMLPackage.VARIABLE :
+				return createVariable();
+			case UMLPackage.ACTIVITY_EDGE :
+				return createActivityEdge();
+			case UMLPackage.ACTIVITY_PARTITION :
+				return createActivityPartition();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION :
+				return createInterruptibleActivityRegion();
+			case UMLPackage.EXCEPTION_HANDLER :
+				return createExceptionHandler();
+			case UMLPackage.OUTPUT_PIN :
+				return createOutputPin();
+			case UMLPackage.PIN :
+				return createPin();
+			case UMLPackage.INPUT_PIN :
+				return createInputPin();
+			case UMLPackage.VALUE_PIN :
+				return createValuePin();
+			case UMLPackage.SEND_SIGNAL_ACTION :
+				return createSendSignalAction();
+			case UMLPackage.CALL_OPERATION_ACTION :
+				return createCallOperationAction();
+			case UMLPackage.CALL_BEHAVIOR_ACTION :
+				return createCallBehaviorAction();
+			case UMLPackage.SEQUENCE_NODE :
+				return createSequenceNode();
 			case UMLPackage.USAGE :
 				return createUsage();
+			case UMLPackage.CONTROL_FLOW :
+				return createControlFlow();
+			case UMLPackage.INITIAL_NODE :
+				return createInitialNode();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE :
+				return createActivityParameterNode();
 			case UMLPackage.MESSAGE :
 				return createMessage();
 			case UMLPackage.INTERACTION :
@@ -454,28 +492,6 @@ public class UMLFactoryImpl
 				return createInteractionUse();
 			case UMLPackage.GATE :
 				return createGate();
-			case UMLPackage.ACTION :
-				return createAction();
-			case UMLPackage.ACTIVITY_EDGE :
-				return createActivityEdge();
-			case UMLPackage.ACTIVITY :
-				return createActivity();
-			case UMLPackage.ACTIVITY_PARTITION :
-				return createActivityPartition();
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE :
-				return createStructuredActivityNode();
-			case UMLPackage.VARIABLE :
-				return createVariable();
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION :
-				return createInterruptibleActivityRegion();
-			case UMLPackage.EXCEPTION_HANDLER :
-				return createExceptionHandler();
-			case UMLPackage.OUTPUT_PIN :
-				return createOutputPin();
-			case UMLPackage.PIN :
-				return createPin();
-			case UMLPackage.INPUT_PIN :
-				return createInputPin();
 			case UMLPackage.GENERAL_ORDERING :
 				return createGeneralOrdering();
 			case UMLPackage.INTERACTION_OPERAND :
@@ -506,12 +522,8 @@ public class UMLFactoryImpl
 				return createReceiveOperationEvent();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT :
 				return createReceiveSignalEvent();
-			case UMLPackage.COMBINED_FRAGMENT :
-				return createCombinedFragment();
-			case UMLPackage.CONTINUATION :
-				return createContinuation();
-			case UMLPackage.CONSIDER_IGNORE_FRAGMENT :
-				return createConsiderIgnoreFragment();
+			case UMLPackage.ACTOR :
+				return createActor();
 			case UMLPackage.CALL_EVENT :
 				return createCallEvent();
 			case UMLPackage.CHANGE_EVENT :
@@ -520,6 +532,36 @@ public class UMLFactoryImpl
 				return createSignalEvent();
 			case UMLPackage.ANY_RECEIVE_EVENT :
 				return createAnyReceiveEvent();
+			case UMLPackage.FORK_NODE :
+				return createForkNode();
+			case UMLPackage.FLOW_FINAL_NODE :
+				return createFlowFinalNode();
+			case UMLPackage.CENTRAL_BUFFER_NODE :
+				return createCentralBufferNode();
+			case UMLPackage.MERGE_NODE :
+				return createMergeNode();
+			case UMLPackage.DECISION_NODE :
+				return createDecisionNode();
+			case UMLPackage.ACTIVITY_FINAL_NODE :
+				return createActivityFinalNode();
+			case UMLPackage.COMPONENT_REALIZATION :
+				return createComponentRealization();
+			case UMLPackage.COMPONENT :
+				return createComponent();
+			case UMLPackage.NODE :
+				return createNode();
+			case UMLPackage.DEVICE :
+				return createDevice();
+			case UMLPackage.EXECUTION_ENVIRONMENT :
+				return createExecutionEnvironment();
+			case UMLPackage.COMMUNICATION_PATH :
+				return createCommunicationPath();
+			case UMLPackage.COMBINED_FRAGMENT :
+				return createCombinedFragment();
+			case UMLPackage.CONTINUATION :
+				return createContinuation();
+			case UMLPackage.CONSIDER_IGNORE_FRAGMENT :
+				return createConsiderIgnoreFragment();
 			case UMLPackage.CREATE_OBJECT_ACTION :
 				return createCreateObjectAction();
 			case UMLPackage.DESTROY_OBJECT_ACTION :
@@ -578,20 +620,10 @@ public class UMLFactoryImpl
 				return createTimeObservation();
 			case UMLPackage.DURATION_OBSERVATION :
 				return createDurationObservation();
-			case UMLPackage.OPAQUE_ACTION :
-				return createOpaqueAction();
-			case UMLPackage.VALUE_PIN :
-				return createValuePin();
-			case UMLPackage.SEND_SIGNAL_ACTION :
-				return createSendSignalAction();
-			case UMLPackage.CALL_OPERATION_ACTION :
-				return createCallOperationAction();
-			case UMLPackage.CALL_BEHAVIOR_ACTION :
-				return createCallBehaviorAction();
-			case UMLPackage.INFORMATION_ITEM :
-				return createInformationItem();
-			case UMLPackage.INFORMATION_FLOW :
-				return createInformationFlow();
+			case UMLPackage.FINAL_STATE :
+				return createFinalState();
+			case UMLPackage.TIME_EVENT :
+				return createTimeEvent();
 			case UMLPackage.READ_VARIABLE_ACTION :
 				return createReadVariableAction();
 			case UMLPackage.CLEAR_VARIABLE_ACTION :
@@ -604,6 +636,10 @@ public class UMLFactoryImpl
 				return createRaiseExceptionAction();
 			case UMLPackage.ACTION_INPUT_PIN :
 				return createActionInputPin();
+			case UMLPackage.INFORMATION_ITEM :
+				return createInformationItem();
+			case UMLPackage.INFORMATION_FLOW :
+				return createInformationFlow();
 			case UMLPackage.READ_EXTENT_ACTION :
 				return createReadExtentAction();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION :
@@ -628,32 +664,12 @@ public class UMLFactoryImpl
 				return createUnmarshallAction();
 			case UMLPackage.REDUCE_ACTION :
 				return createReduceAction();
-			case UMLPackage.CONTROL_FLOW :
-				return createControlFlow();
-			case UMLPackage.INITIAL_NODE :
-				return createInitialNode();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE :
-				return createActivityParameterNode();
-			case UMLPackage.FORK_NODE :
-				return createForkNode();
-			case UMLPackage.FLOW_FINAL_NODE :
-				return createFlowFinalNode();
-			case UMLPackage.CENTRAL_BUFFER_NODE :
-				return createCentralBufferNode();
-			case UMLPackage.MERGE_NODE :
-				return createMergeNode();
-			case UMLPackage.DECISION_NODE :
-				return createDecisionNode();
-			case UMLPackage.ACTIVITY_FINAL_NODE :
-				return createActivityFinalNode();
 			case UMLPackage.JOIN_NODE :
 				return createJoinNode();
 			case UMLPackage.DATA_STORE_NODE :
 				return createDataStoreNode();
 			case UMLPackage.OBJECT_FLOW :
 				return createObjectFlow();
-			case UMLPackage.SEQUENCE_NODE :
-				return createSequenceNode();
 			case UMLPackage.CONDITIONAL_NODE :
 				return createConditionalNode();
 			case UMLPackage.CLAUSE :
@@ -664,22 +680,6 @@ public class UMLFactoryImpl
 				return createExpansionNode();
 			case UMLPackage.EXPANSION_REGION :
 				return createExpansionRegion();
-			case UMLPackage.COMPONENT_REALIZATION :
-				return createComponentRealization();
-			case UMLPackage.COMPONENT :
-				return createComponent();
-			case UMLPackage.NODE :
-				return createNode();
-			case UMLPackage.DEVICE :
-				return createDevice();
-			case UMLPackage.EXECUTION_ENVIRONMENT :
-				return createExecutionEnvironment();
-			case UMLPackage.COMMUNICATION_PATH :
-				return createCommunicationPath();
-			case UMLPackage.FINAL_STATE :
-				return createFinalState();
-			case UMLPackage.TIME_EVENT :
-				return createTimeEvent();
 			case UMLPackage.PROTOCOL_TRANSITION :
 				return createProtocolTransition();
 			case UMLPackage.ASSOCIATION_CLASS :
@@ -699,30 +699,30 @@ public class UMLFactoryImpl
 		switch (eDataType.getClassifierID()) {
 			case UMLPackage.VISIBILITY_KIND :
 				return createVisibilityKindFromString(eDataType, initialValue);
-			case UMLPackage.PARAMETER_DIRECTION_KIND :
-				return createParameterDirectionKindFromString(eDataType,
-					initialValue);
-			case UMLPackage.CALL_CONCURRENCY_KIND :
-				return createCallConcurrencyKindFromString(eDataType,
-					initialValue);
 			case UMLPackage.TRANSITION_KIND :
 				return createTransitionKindFromString(eDataType, initialValue);
 			case UMLPackage.PSEUDOSTATE_KIND :
 				return createPseudostateKindFromString(eDataType, initialValue);
-			case UMLPackage.PARAMETER_EFFECT_KIND :
-				return createParameterEffectKindFromString(eDataType,
+			case UMLPackage.CONNECTOR_KIND :
+				return createConnectorKindFromString(eDataType, initialValue);
+			case UMLPackage.CALL_CONCURRENCY_KIND :
+				return createCallConcurrencyKindFromString(eDataType,
 					initialValue);
 			case UMLPackage.AGGREGATION_KIND :
 				return createAggregationKindFromString(eDataType, initialValue);
-			case UMLPackage.CONNECTOR_KIND :
-				return createConnectorKindFromString(eDataType, initialValue);
+			case UMLPackage.PARAMETER_DIRECTION_KIND :
+				return createParameterDirectionKindFromString(eDataType,
+					initialValue);
+			case UMLPackage.PARAMETER_EFFECT_KIND :
+				return createParameterEffectKindFromString(eDataType,
+					initialValue);
+			case UMLPackage.OBJECT_NODE_ORDERING_KIND :
+				return createObjectNodeOrderingKindFromString(eDataType,
+					initialValue);
 			case UMLPackage.MESSAGE_KIND :
 				return createMessageKindFromString(eDataType, initialValue);
 			case UMLPackage.MESSAGE_SORT :
 				return createMessageSortFromString(eDataType, initialValue);
-			case UMLPackage.OBJECT_NODE_ORDERING_KIND :
-				return createObjectNodeOrderingKindFromString(eDataType,
-					initialValue);
 			case UMLPackage.INTERACTION_OPERATOR_KIND :
 				return createInteractionOperatorKindFromString(eDataType,
 					initialValue);
@@ -751,30 +751,30 @@ public class UMLFactoryImpl
 		switch (eDataType.getClassifierID()) {
 			case UMLPackage.VISIBILITY_KIND :
 				return convertVisibilityKindToString(eDataType, instanceValue);
-			case UMLPackage.PARAMETER_DIRECTION_KIND :
-				return convertParameterDirectionKindToString(eDataType,
-					instanceValue);
-			case UMLPackage.CALL_CONCURRENCY_KIND :
-				return convertCallConcurrencyKindToString(eDataType,
-					instanceValue);
 			case UMLPackage.TRANSITION_KIND :
 				return convertTransitionKindToString(eDataType, instanceValue);
 			case UMLPackage.PSEUDOSTATE_KIND :
 				return convertPseudostateKindToString(eDataType, instanceValue);
-			case UMLPackage.PARAMETER_EFFECT_KIND :
-				return convertParameterEffectKindToString(eDataType,
+			case UMLPackage.CONNECTOR_KIND :
+				return convertConnectorKindToString(eDataType, instanceValue);
+			case UMLPackage.CALL_CONCURRENCY_KIND :
+				return convertCallConcurrencyKindToString(eDataType,
 					instanceValue);
 			case UMLPackage.AGGREGATION_KIND :
 				return convertAggregationKindToString(eDataType, instanceValue);
-			case UMLPackage.CONNECTOR_KIND :
-				return convertConnectorKindToString(eDataType, instanceValue);
+			case UMLPackage.PARAMETER_DIRECTION_KIND :
+				return convertParameterDirectionKindToString(eDataType,
+					instanceValue);
+			case UMLPackage.PARAMETER_EFFECT_KIND :
+				return convertParameterEffectKindToString(eDataType,
+					instanceValue);
+			case UMLPackage.OBJECT_NODE_ORDERING_KIND :
+				return convertObjectNodeOrderingKindToString(eDataType,
+					instanceValue);
 			case UMLPackage.MESSAGE_KIND :
 				return convertMessageKindToString(eDataType, instanceValue);
 			case UMLPackage.MESSAGE_SORT :
 				return convertMessageSortToString(eDataType, instanceValue);
-			case UMLPackage.OBJECT_NODE_ORDERING_KIND :
-				return convertObjectNodeOrderingKindToString(eDataType,
-					instanceValue);
 			case UMLPackage.INTERACTION_OPERATOR_KIND :
 				return convertInteractionOperatorKindToString(eDataType,
 					instanceValue);

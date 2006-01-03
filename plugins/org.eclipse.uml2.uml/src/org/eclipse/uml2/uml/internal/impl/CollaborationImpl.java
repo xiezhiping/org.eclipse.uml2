@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.13 2005/12/22 15:20:22 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.14 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -423,18 +423,18 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.COLLABORATION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.COLLABORATION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.COLLABORATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
@@ -539,10 +539,6 @@ public class CollaborationImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.COLLABORATION__GENERAL :
 				return getGenerals();
-			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.COLLABORATION__USE_CASE :
-				return getUseCases();
 			case UMLPackage.COLLABORATION__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.COLLABORATION__ATTRIBUTE :
@@ -551,6 +547,10 @@ public class CollaborationImpl
 				return getRepresentation();
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.COLLABORATION__USE_CASE :
+				return getUseCases();
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
@@ -653,14 +653,6 @@ public class CollaborationImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.COLLABORATION__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.COLLABORATION__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -671,6 +663,14 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.COLLABORATION__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -773,12 +773,6 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.COLLABORATION__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.COLLABORATION__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -787,6 +781,12 @@ public class CollaborationImpl
 				return;
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.COLLABORATION__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -898,12 +898,6 @@ public class CollaborationImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.COLLABORATION__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.COLLABORATION__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.COLLABORATION__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.COLLABORATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -914,6 +908,12 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.COLLABORATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.COLLABORATION__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.COLLABORATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :

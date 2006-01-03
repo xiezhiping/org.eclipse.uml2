@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.12 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -263,11 +263,11 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -353,18 +353,18 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
@@ -382,23 +382,23 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				return ((InternalEList) getRegions()).basicRemove(otherEnd,
 					msgs);
@@ -498,10 +498,6 @@ public class ProtocolStateMachineImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERAL :
 				return getGenerals();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				return getUseCases();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ATTRIBUTE :
@@ -510,6 +506,10 @@ public class ProtocolStateMachineImpl
 				return getRepresentation();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
+				return getUseCases();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
@@ -530,10 +530,10 @@ public class ProtocolStateMachineImpl
 				return getInterfaceRealizations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ACTIVE :
@@ -544,10 +544,6 @@ public class ProtocolStateMachineImpl
 				return getOwnedReceptions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENSION :
 				return getExtensions();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -562,6 +558,10 @@ public class ProtocolStateMachineImpl
 				return basicGetContext();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				return getRegions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
@@ -654,14 +654,6 @@ public class ProtocolStateMachineImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -672,6 +664,14 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -703,13 +703,13 @@ public class ProtocolStateMachineImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -721,9 +721,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
@@ -739,6 +736,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				getRegions().clear();
@@ -831,12 +831,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -845,6 +839,12 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -870,11 +870,11 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -884,9 +884,6 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
@@ -899,6 +896,9 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				getRegions().clear();
@@ -1001,12 +1001,6 @@ public class ProtocolStateMachineImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1017,6 +1011,12 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE) != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
@@ -1042,12 +1042,12 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ACTIVE :
@@ -1057,8 +1057,6 @@ public class ProtocolStateMachineImpl
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENSION :
 				return !getExtensions().isEmpty();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
-				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION) != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
@@ -1074,6 +1072,8 @@ public class ProtocolStateMachineImpl
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
+				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION) != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				EList region = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__REGION);
 				return region != null && !region.isEmpty();

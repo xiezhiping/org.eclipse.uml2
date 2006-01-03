@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableItemProvider.java,v 1.2 2005/12/12 18:34:30 khussey Exp $
+ * $Id: VariableItemProvider.java,v 1.3 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -44,7 +44,7 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
  * @generated
  */
 public class VariableItemProvider
-		extends TypedElementItemProvider
+		extends ConnectableElementItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
@@ -74,8 +74,8 @@ public class VariableItemProvider
 			addLowerPropertyDescriptor(object);
 			addUpperValuePropertyDescriptor(object);
 			addLowerValuePropertyDescriptor(object);
-			addActivityScopePropertyDescriptor(object);
 			addScopePropertyDescriptor(object);
+			addActivityScopePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

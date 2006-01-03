@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.12 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -270,10 +270,6 @@ public class StereotypeImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.STEREOTYPE__GENERAL :
 				return getGenerals();
-			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.STEREOTYPE__USE_CASE :
-				return getUseCases();
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.STEREOTYPE__ATTRIBUTE :
@@ -282,6 +278,10 @@ public class StereotypeImpl
 				return getRepresentation();
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.STEREOTYPE__USE_CASE :
+				return getUseCases();
 			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
@@ -302,10 +302,10 @@ public class StereotypeImpl
 				return getInterfaceRealizations();
 			case UMLPackage.STEREOTYPE__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
@@ -400,14 +400,6 @@ public class StereotypeImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.STEREOTYPE__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -418,6 +410,14 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.STEREOTYPE__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -449,13 +449,13 @@ public class StereotypeImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -543,12 +543,6 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.STEREOTYPE__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -557,6 +551,12 @@ public class StereotypeImpl
 				return;
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.STEREOTYPE__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -582,11 +582,11 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -686,12 +686,6 @@ public class StereotypeImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.STEREOTYPE__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.STEREOTYPE__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.STEREOTYPE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -702,6 +696,12 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.STEREOTYPE__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.STEREOTYPE__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.STEREOTYPE__OWNED_SIGNATURE) != null;
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
@@ -727,12 +727,12 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.STEREOTYPE__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.9 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -392,20 +392,18 @@ public class ObjectFlowImpl
 				return getRedefinedElements();
 			case UMLPackage.OBJECT_FLOW__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				return getActivity();
-			case UMLPackage.OBJECT_FLOW__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				if (resolve)
+					return getSource();
+				return basicGetSource();
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				return getRedefinedEdges();
+			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				return getGuard();
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
@@ -414,10 +412,12 @@ public class ObjectFlowImpl
 				if (resolve)
 					return getInterrupts();
 				return basicGetInterrupts();
-			case UMLPackage.OBJECT_FLOW__SOURCE :
-				if (resolve)
-					return getSource();
-				return basicGetSource();
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
+				return getInStructuredNode();
+			case UMLPackage.OBJECT_FLOW__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				return getActivity();
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				return isMulticast()
 					? Boolean.TRUE
@@ -469,15 +469,8 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				setActivity((Activity) newValue);
-				return;
-			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				setSource((ActivityNode) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				setTarget((ActivityNode) newValue);
@@ -485,6 +478,10 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
 				getRedefinedEdges().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				setGuard((ValueSpecification) newValue);
@@ -495,8 +492,11 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) newValue);
 				return;
-			case UMLPackage.OBJECT_FLOW__SOURCE :
-				setSource((ActivityNode) newValue);
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
+				return;
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				setActivity((Activity) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				setIsMulticast(((Boolean) newValue).booleanValue());
@@ -542,20 +542,17 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				setActivity((Activity) null);
-				return;
-			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) null);
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				setSource((ActivityNode) null);
 				return;
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				setTarget((ActivityNode) null);
 				return;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
+				return;
+			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				setGuard((ValueSpecification) null);
@@ -566,8 +563,11 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) null);
 				return;
-			case UMLPackage.OBJECT_FLOW__SOURCE :
-				setSource((ActivityNode) null);
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) null);
+				return;
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				setActivity((Activity) null);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				setIsMulticast(IS_MULTICAST_EDEFAULT);
@@ -623,28 +623,28 @@ public class ObjectFlowImpl
 				return isSetRedefinedElements();
 			case UMLPackage.OBJECT_FLOW__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				return getActivity() != null;
-			case UMLPackage.OBJECT_FLOW__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
-			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+			case UMLPackage.OBJECT_FLOW__SOURCE :
+				return eVirtualGet(UMLPackage.OBJECT_FLOW__SOURCE) != null;
 			case UMLPackage.OBJECT_FLOW__TARGET :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__TARGET) != null;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				EList redefinedEdge = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__REDEFINED_EDGE);
 				return redefinedEdge != null && !redefinedEdge.isEmpty();
+			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__GUARD) != null;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__WEIGHT) != null;
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__INTERRUPTS) != null;
-			case UMLPackage.OBJECT_FLOW__SOURCE :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__SOURCE) != null;
+			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
+				return getInStructuredNode() != null;
+			case UMLPackage.OBJECT_FLOW__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.OBJECT_FLOW__ACTIVITY :
+				return getActivity() != null;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				return ((eFlags & IS_MULTICAST_EFLAG) != 0) != IS_MULTICAST_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :

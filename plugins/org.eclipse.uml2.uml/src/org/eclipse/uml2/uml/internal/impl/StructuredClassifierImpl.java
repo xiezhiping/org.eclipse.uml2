@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.13 2005/12/22 15:20:23 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.14 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -426,18 +426,18 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
@@ -533,10 +533,6 @@ public abstract class StructuredClassifierImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERAL :
 				return getGenerals();
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
-				return getUseCases();
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE :
@@ -545,6 +541,10 @@ public abstract class StructuredClassifierImpl
 				return getRepresentation();
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
+				return getUseCases();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
@@ -637,14 +637,6 @@ public abstract class StructuredClassifierImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -655,6 +647,14 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -738,12 +738,6 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -752,6 +746,12 @@ public abstract class StructuredClassifierImpl
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -848,12 +848,6 @@ public abstract class StructuredClassifierImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -864,6 +858,12 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE) != null;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_2="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_1RgZIcezEdmTJL3rR1ioJg" xmi:id="_BWooUBmMEdqvcs97umGEYQ" name="L1" appliedProfile="_BbZzkBmMEdqvcs97umGEYQ">
   <eAnnotations xmi:id="_s1ozMhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_uQHBcHMyEdqbfvlhqhRcCw" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.0/uml.xml"/>
+    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_gtrmYHx2EdqOYrJSNDmdDg" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.0/uml.xml"/>
   </eAnnotations>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BbZzkBmMEdqvcs97umGEYQ">
     <eAnnotations xmi:id="_BbZzkRmMEdqvcs97umGEYQ" source="attributes">
@@ -24,5 +24,20 @@
   </packageMerge>
   <packageMerge xmi:id="_HWusSBTbEdqZu-3Jy1-uYg">
     <mergedPackage href="Superstructure.uml2#_3ADC7B74022D3BAE542B0121"/>
+  </packageMerge>
+  <packageMerge xmi:id="_qbMZEHxsEdq7cMP_l1l5Gg">
+    <mergedPackage href="Superstructure.uml2#_3ADC7B74022D410C264F010C"/>
+  </packageMerge>
+  <packageMerge xmi:id="_4JxB4HxsEdq7cMP_l1l5Gg">
+    <mergedPackage href="Superstructure.uml2#_3ADC7B74022D3ADF556A0044"/>
+  </packageMerge>
+  <packageMerge xmi:id="_4e6ygHxsEdq7cMP_l1l5Gg">
+    <mergedPackage href="Superstructure.uml2#_3ADC7B74022D3BAF164701DA"/>
+  </packageMerge>
+  <packageMerge xmi:id="_4xP4oHxsEdq7cMP_l1l5Gg">
+    <mergedPackage href="Superstructure.uml2#_3ADC7B74022D3C9FD9B900CF"/>
+  </packageMerge>
+  <packageMerge xmi:id="_5EeWoHxsEdq7cMP_l1l5Gg">
+    <mergedPackage href="Superstructure.uml2#_3ADC7B74022D335C122001A4"/>
   </packageMerge>
 </uml:Model>

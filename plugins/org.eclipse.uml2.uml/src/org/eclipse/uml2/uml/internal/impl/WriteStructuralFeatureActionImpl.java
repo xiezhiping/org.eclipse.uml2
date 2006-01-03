@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.10 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -222,12 +222,6 @@ public abstract class WriteStructuralFeatureActionImpl
 					otherEnd, msgs);
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(
 					null,
@@ -236,9 +230,15 @@ public abstract class WriteStructuralFeatureActionImpl
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY, msgs);
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -298,20 +298,20 @@ public abstract class WriteStructuralFeatureActionImpl
 				return getRedefinedElements();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__HANDLER :
@@ -369,23 +369,23 @@ public abstract class WriteStructuralFeatureActionImpl
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -448,20 +448,20 @@ public abstract class WriteStructuralFeatureActionImpl
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -529,25 +529,25 @@ public abstract class WriteStructuralFeatureActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

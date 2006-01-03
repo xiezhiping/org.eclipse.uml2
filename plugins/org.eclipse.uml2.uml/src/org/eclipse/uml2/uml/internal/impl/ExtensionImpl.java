@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.11 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -271,10 +271,6 @@ public class ExtensionImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.EXTENSION__GENERAL :
 				return getGenerals();
-			case UMLPackage.EXTENSION__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.EXTENSION__USE_CASE :
-				return getUseCases();
 			case UMLPackage.EXTENSION__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.EXTENSION__ATTRIBUTE :
@@ -283,6 +279,10 @@ public class ExtensionImpl
 				return getRepresentation();
 			case UMLPackage.EXTENSION__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.EXTENSION__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.EXTENSION__USE_CASE :
+				return getUseCases();
 			case UMLPackage.EXTENSION__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :
@@ -393,12 +393,6 @@ public class ExtensionImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.EXTENSION__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.EXTENSION__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.EXTENSION__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.EXTENSION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.EXTENSION__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.EXTENSION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -409,6 +403,12 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.EXTENSION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.EXTENSION__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.EXTENSION__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.EXTENSION__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.EXTENSION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.EXTENSION__OWNED_SIGNATURE) != null;
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :

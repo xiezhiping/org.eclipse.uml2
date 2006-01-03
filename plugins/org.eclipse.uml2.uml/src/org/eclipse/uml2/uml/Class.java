@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.5 2005/12/22 15:20:22 khussey Exp $
+ * $Id: Class.java,v 1.6 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -35,8 +35,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Class#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#getNestedClassifiers <em>Nested Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#getSuperClasses <em>Super Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#isActive <em>Is Active</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#getOwnedReceptions <em>Owned Reception</em>}</li>

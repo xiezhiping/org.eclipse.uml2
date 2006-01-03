@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.12 2005/12/22 15:20:23 khussey Exp $
+ * $Id: SignalImpl.java,v 1.13 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -220,18 +220,18 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.SIGNAL__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.SIGNAL__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.SIGNAL__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.SIGNAL__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.SIGNAL__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
@@ -324,10 +324,6 @@ public class SignalImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.SIGNAL__GENERAL :
 				return getGenerals();
-			case UMLPackage.SIGNAL__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.SIGNAL__USE_CASE :
-				return getUseCases();
 			case UMLPackage.SIGNAL__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.SIGNAL__ATTRIBUTE :
@@ -336,6 +332,10 @@ public class SignalImpl
 				return getRepresentation();
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.SIGNAL__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.SIGNAL__USE_CASE :
+				return getUseCases();
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
@@ -422,14 +422,6 @@ public class SignalImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.SIGNAL__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.SIGNAL__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.SIGNAL__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -440,6 +432,14 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.SIGNAL__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.SIGNAL__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -519,12 +519,6 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.SIGNAL__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.SIGNAL__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.SIGNAL__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -533,6 +527,12 @@ public class SignalImpl
 				return;
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.SIGNAL__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.SIGNAL__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -626,12 +626,6 @@ public class SignalImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.SIGNAL__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.SIGNAL__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.SIGNAL__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.SIGNAL__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.SIGNAL__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.SIGNAL__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -642,6 +636,12 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.SIGNAL__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.SIGNAL__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.SIGNAL__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.SIGNAL__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.SIGNAL__OWNED_SIGNATURE) != null;
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :

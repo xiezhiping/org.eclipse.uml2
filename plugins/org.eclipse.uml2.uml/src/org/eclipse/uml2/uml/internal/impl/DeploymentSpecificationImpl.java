@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.12 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -334,11 +334,11 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -405,18 +405,18 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
@@ -541,10 +541,6 @@ public class DeploymentSpecificationImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERAL :
 				return getGenerals();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				return getUseCases();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ATTRIBUTE :
@@ -553,6 +549,10 @@ public class DeploymentSpecificationImpl
 				return getRepresentation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				return getUseCases();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
@@ -653,14 +653,6 @@ public class DeploymentSpecificationImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -671,6 +663,14 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -774,12 +774,6 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -788,6 +782,12 @@ public class DeploymentSpecificationImpl
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -902,12 +902,6 @@ public class DeploymentSpecificationImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -918,6 +912,12 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :

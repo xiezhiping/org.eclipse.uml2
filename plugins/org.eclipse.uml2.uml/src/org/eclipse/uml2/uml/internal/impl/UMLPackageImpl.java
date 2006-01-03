@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.9 2005/12/21 20:13:08 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.10 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -2849,10 +2849,20 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProfileApplication_ApplyingPackage() {
+		return (EReference) getProfileApplication().getEStructuralFeatures()
+			.get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProfile() {
 		if (profileEClass == null) {
 			profileEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(85);
+				UMLPackage.eNS_URI).getEClassifiers().get(78);
 		}
 		return profileEClass;
 	}
@@ -2892,7 +2902,7 @@ public class UMLPackageImpl
 	public EClass getStereotype() {
 		if (stereotypeEClass == null) {
 			stereotypeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(83);
+				UMLPackage.eNS_URI).getEClassifiers().get(76);
 		}
 		return stereotypeEClass;
 	}
@@ -2914,7 +2924,7 @@ public class UMLPackageImpl
 	public EClass getClass_() {
 		if (classEClass == null) {
 			classEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(35);
+				UMLPackage.eNS_URI).getEClassifiers().get(50);
 		}
 		return classEClass;
 	}
@@ -2925,7 +2935,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getClass_OwnedOperation() {
-		return (EReference) getClass_().getEStructuralFeatures().get(0);
+		return (EReference) getClass_().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2934,7 +2944,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getClass_NestedClassifier() {
-		return (EReference) getClass_().getEStructuralFeatures().get(1);
+		return (EReference) getClass_().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2981,7 +2991,7 @@ public class UMLPackageImpl
 	public EClass getBehavioredClassifier() {
 		if (behavioredClassifierEClass == null) {
 			behavioredClassifierEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(33);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(51);
 		}
 		return behavioredClassifierEClass;
 	}
@@ -3108,42 +3118,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getClassifier_OwnedUseCase() {
-		return (EReference) getClassifier().getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassifier_UseCase() {
-		return (EReference) getClassifier().getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassifier_Substitution() {
-		return (EReference) getClassifier().getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassifier_Attribute() {
-		return (EReference) getClassifier().getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassifier_Representation() {
 		return (EReference) getClassifier().getEStructuralFeatures().get(11);
 	}
 
@@ -3152,8 +3126,44 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassifier_CollaborationUse() {
+	public EReference getClassifier_UseCase() {
 		return (EReference) getClassifier().getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassifier_Substitution() {
+		return (EReference) getClassifier().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassifier_Attribute() {
+		return (EReference) getClassifier().getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassifier_Representation() {
+		return (EReference) getClassifier().getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassifier_CollaborationUse() {
+		return (EReference) getClassifier().getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -3349,7 +3359,7 @@ public class UMLPackageImpl
 	public EClass getUseCase() {
 		if (useCaseEClass == null) {
 			useCaseEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(32);
+				UMLPackage.eNS_URI).getEClassifiers().get(91);
 		}
 		return useCaseEClass;
 	}
@@ -3398,7 +3408,7 @@ public class UMLPackageImpl
 	public EClass getInclude() {
 		if (includeEClass == null) {
 			includeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(89);
+				UMLPackage.eNS_URI).getEClassifiers().get(92);
 		}
 		return includeEClass;
 	}
@@ -3429,7 +3439,7 @@ public class UMLPackageImpl
 	public EClass getExtend() {
 		if (extendEClass == null) {
 			extendEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(90);
+				UMLPackage.eNS_URI).getEClassifiers().get(93);
 		}
 		return extendEClass;
 	}
@@ -3518,7 +3528,7 @@ public class UMLPackageImpl
 	public EClass getExtensionPoint() {
 		if (extensionPointEClass == null) {
 			extensionPointEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(91);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(94);
 		}
 		return extensionPointEClass;
 	}
@@ -3540,7 +3550,7 @@ public class UMLPackageImpl
 	public EClass getSubstitution() {
 		if (substitutionEClass == null) {
 			substitutionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(92);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(32);
 		}
 		return substitutionEClass;
 	}
@@ -3571,7 +3581,7 @@ public class UMLPackageImpl
 	public EClass getRealization() {
 		if (realizationEClass == null) {
 			realizationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(88);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(33);
 		}
 		return realizationEClass;
 	}
@@ -3584,7 +3594,7 @@ public class UMLPackageImpl
 	public EClass getAbstraction() {
 		if (abstractionEClass == null) {
 			abstractionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(49);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(34);
 		}
 		return abstractionEClass;
 	}
@@ -3606,7 +3616,7 @@ public class UMLPackageImpl
 	public EClass getOpaqueExpression() {
 		if (opaqueExpressionEClass == null) {
 			opaqueExpressionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(50);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(35);
 		}
 		return opaqueExpressionEClass;
 	}
@@ -3659,7 +3669,7 @@ public class UMLPackageImpl
 	public EClass getParameter() {
 		if (parameterEClass == null) {
 			parameterEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(51);
+				UMLPackage.eNS_URI).getEClassifiers().get(36);
 		}
 		return parameterEClass;
 	}
@@ -3670,7 +3680,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getParameter_ParameterSet() {
-		return (EReference) getParameter().getEStructuralFeatures().get(4);
+		return (EReference) getParameter().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3679,7 +3689,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getParameter_Operation() {
-		return (EReference) getParameter().getEStructuralFeatures().get(3);
+		return (EReference) getParameter().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3688,7 +3698,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EAttribute getParameter_Direction() {
-		return (EAttribute) getParameter().getEStructuralFeatures().get(0);
+		return (EAttribute) getParameter().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3697,7 +3707,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EAttribute getParameter_Default() {
-		return (EAttribute) getParameter().getEStructuralFeatures().get(1);
+		return (EAttribute) getParameter().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3706,7 +3716,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getParameter_DefaultValue() {
-		return (EReference) getParameter().getEStructuralFeatures().get(2);
+		return (EReference) getParameter().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -3744,7 +3754,7 @@ public class UMLPackageImpl
 	public EClass getMultiplicityElement() {
 		if (multiplicityElementEClass == null) {
 			multiplicityElementEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(41);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(37);
 		}
 		return multiplicityElementEClass;
 	}
@@ -3817,7 +3827,7 @@ public class UMLPackageImpl
 	public EClass getConnectableElement() {
 		if (connectableElementEClass == null) {
 			connectableElementEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(39);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(38);
 		}
 		return connectableElementEClass;
 	}
@@ -3840,7 +3850,7 @@ public class UMLPackageImpl
 	public EClass getConnectorEnd() {
 		if (connectorEndEClass == null) {
 			connectorEndEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(40);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(39);
 		}
 		return connectorEndEClass;
 	}
@@ -3880,7 +3890,7 @@ public class UMLPackageImpl
 	public EClass getProperty() {
 		if (propertyEClass == null) {
 			propertyEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(38);
+				UMLPackage.eNS_URI).getEClassifiers().get(40);
 		}
 		return propertyEClass;
 	}
@@ -3891,7 +3901,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getProperty_Datatype() {
-		return (EReference) getProperty().getEStructuralFeatures().get(0);
+		return (EReference) getProperty().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -3900,15 +3910,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EAttribute getProperty_IsDerived() {
-		return (EAttribute) getProperty().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getProperty_IsDerivedUnion() {
 		return (EAttribute) getProperty().getEStructuralFeatures().get(2);
 	}
 
@@ -3917,7 +3918,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProperty_Default() {
+	public EAttribute getProperty_IsDerivedUnion() {
 		return (EAttribute) getProperty().getEStructuralFeatures().get(3);
 	}
 
@@ -3926,7 +3927,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProperty_Aggregation() {
+	public EAttribute getProperty_Default() {
 		return (EAttribute) getProperty().getEStructuralFeatures().get(4);
 	}
 
@@ -3935,7 +3936,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProperty_IsComposite() {
+	public EAttribute getProperty_Aggregation() {
 		return (EAttribute) getProperty().getEStructuralFeatures().get(5);
 	}
 
@@ -3944,8 +3945,17 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProperty_IsComposite() {
+		return (EAttribute) getProperty().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getProperty_Class_() {
-		return (EReference) getProperty().getEStructuralFeatures().get(6);
+		return (EReference) getProperty().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4028,7 +4038,7 @@ public class UMLPackageImpl
 	public EClass getDeploymentTarget() {
 		if (deploymentTargetEClass == null) {
 			deploymentTargetEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(43);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(41);
 		}
 		return deploymentTargetEClass;
 	}
@@ -4061,7 +4071,7 @@ public class UMLPackageImpl
 	public EClass getDeployment() {
 		if (deploymentEClass == null) {
 			deploymentEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(44);
+				UMLPackage.eNS_URI).getEClassifiers().get(42);
 		}
 		return deploymentEClass;
 	}
@@ -4101,7 +4111,7 @@ public class UMLPackageImpl
 	public EClass getDeployedArtifact() {
 		if (deployedArtifactEClass == null) {
 			deployedArtifactEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(45);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(43);
 		}
 		return deployedArtifactEClass;
 	}
@@ -4114,7 +4124,7 @@ public class UMLPackageImpl
 	public EClass getDeploymentSpecification() {
 		if (deploymentSpecificationEClass == null) {
 			deploymentSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(46);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(44);
 		}
 		return deploymentSpecificationEClass;
 	}
@@ -4157,7 +4167,7 @@ public class UMLPackageImpl
 	public EClass getArtifact() {
 		if (artifactEClass == null) {
 			artifactEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(47);
+				UMLPackage.eNS_URI).getEClassifiers().get(45);
 		}
 		return artifactEClass;
 	}
@@ -4215,7 +4225,7 @@ public class UMLPackageImpl
 	public EClass getManifestation() {
 		if (manifestationEClass == null) {
 			manifestationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(48);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(46);
 		}
 		return manifestationEClass;
 	}
@@ -4237,7 +4247,7 @@ public class UMLPackageImpl
 	public EClass getOperation() {
 		if (operationEClass == null) {
 			operationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(53);
+				UMLPackage.eNS_URI).getEClassifiers().get(47);
 		}
 		return operationEClass;
 	}
@@ -4248,24 +4258,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EAttribute getOperation_IsQuery() {
-		return (EAttribute) getOperation().getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOperation_IsOrdered() {
-		return (EAttribute) getOperation().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOperation_IsUnique() {
 		return (EAttribute) getOperation().getEStructuralFeatures().get(2);
 	}
 
@@ -4274,7 +4266,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperation_Lower() {
+	public EAttribute getOperation_IsOrdered() {
 		return (EAttribute) getOperation().getEStructuralFeatures().get(3);
 	}
 
@@ -4283,7 +4275,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOperation_Upper() {
+	public EAttribute getOperation_IsUnique() {
 		return (EAttribute) getOperation().getEStructuralFeatures().get(4);
 	}
 
@@ -4292,8 +4284,26 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOperation_Lower() {
+		return (EAttribute) getOperation().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperation_Upper() {
+		return (EAttribute) getOperation().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getOperation_Class_() {
-		return (EReference) getOperation().getEStructuralFeatures().get(5);
+		return (EReference) getOperation().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4302,15 +4312,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getOperation_Precondition() {
-		return (EReference) getOperation().getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOperation_Postcondition() {
 		return (EReference) getOperation().getEStructuralFeatures().get(7);
 	}
 
@@ -4319,7 +4320,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_RedefinedOperation() {
+	public EReference getOperation_Postcondition() {
 		return (EReference) getOperation().getEStructuralFeatures().get(8);
 	}
 
@@ -4328,7 +4329,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Datatype() {
+	public EReference getOperation_RedefinedOperation() {
 		return (EReference) getOperation().getEStructuralFeatures().get(9);
 	}
 
@@ -4337,7 +4338,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_BodyCondition() {
+	public EReference getOperation_Datatype() {
 		return (EReference) getOperation().getEStructuralFeatures().get(10);
 	}
 
@@ -4346,7 +4347,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Type() {
+	public EReference getOperation_BodyCondition() {
 		return (EReference) getOperation().getEStructuralFeatures().get(11);
 	}
 
@@ -4355,8 +4356,17 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Interface() {
+	public EReference getOperation_Type() {
 		return (EReference) getOperation().getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperation_Interface() {
+		return (EReference) getOperation().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4367,7 +4377,7 @@ public class UMLPackageImpl
 	public EClass getBehavioralFeature() {
 		if (behavioralFeatureEClass == null) {
 			behavioralFeatureEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(54);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(48);
 		}
 		return behavioralFeatureEClass;
 	}
@@ -4440,7 +4450,7 @@ public class UMLPackageImpl
 	public EClass getBehavior() {
 		if (behaviorEClass == null) {
 			behaviorEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(34);
+				UMLPackage.eNS_URI).getEClassifiers().get(49);
 		}
 		return behaviorEClass;
 	}
@@ -4451,7 +4461,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EAttribute getBehavior_IsReentrant() {
-		return (EAttribute) getBehavior().getEStructuralFeatures().get(1);
+		return (EAttribute) getBehavior().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4460,7 +4470,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getBehavior_RedefinedBehavior() {
-		return (EReference) getBehavior().getEStructuralFeatures().get(2);
+		return (EReference) getBehavior().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4469,7 +4479,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getBehavior_OwnedParameter() {
-		return (EReference) getBehavior().getEStructuralFeatures().get(3);
+		return (EReference) getBehavior().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -4478,7 +4488,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getBehavior_Context() {
-		return (EReference) getBehavior().getEStructuralFeatures().get(4);
+		return (EReference) getBehavior().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4487,7 +4497,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getBehavior_OwnedParameterSet() {
-		return (EReference) getBehavior().getEStructuralFeatures().get(5);
+		return (EReference) getBehavior().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4496,7 +4506,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getBehavior_Specification() {
-		return (EReference) getBehavior().getEStructuralFeatures().get(0);
+		return (EReference) getBehavior().getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -4507,7 +4517,7 @@ public class UMLPackageImpl
 	public EClass getParameterSet() {
 		if (parameterSetEClass == null) {
 			parameterSetEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(56);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(80);
 		}
 		return parameterSetEClass;
 	}
@@ -4538,7 +4548,7 @@ public class UMLPackageImpl
 	public EClass getDataType() {
 		if (dataTypeEClass == null) {
 			dataTypeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(57);
+				UMLPackage.eNS_URI).getEClassifiers().get(82);
 		}
 		return dataTypeEClass;
 	}
@@ -4569,7 +4579,7 @@ public class UMLPackageImpl
 	public EClass getInterface() {
 		if (interfaceEClass == null) {
 			interfaceEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(58);
+				UMLPackage.eNS_URI).getEClassifiers().get(53);
 		}
 		return interfaceEClass;
 	}
@@ -4589,15 +4599,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getInterface_NestedClassifier() {
-		return (EReference) getInterface().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInterface_RedefinedInterface() {
 		return (EReference) getInterface().getEStructuralFeatures().get(2);
 	}
 
@@ -4606,7 +4607,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_OwnedReception() {
+	public EReference getInterface_RedefinedInterface() {
 		return (EReference) getInterface().getEStructuralFeatures().get(3);
 	}
 
@@ -4615,7 +4616,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_Protocol() {
+	public EReference getInterface_OwnedReception() {
 		return (EReference) getInterface().getEStructuralFeatures().get(4);
 	}
 
@@ -4624,8 +4625,17 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_OwnedOperation() {
+	public EReference getInterface_Protocol() {
 		return (EReference) getInterface().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterface_OwnedOperation() {
+		return (EReference) getInterface().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4636,7 +4646,7 @@ public class UMLPackageImpl
 	public EClass getReception() {
 		if (receptionEClass == null) {
 			receptionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(59);
+				UMLPackage.eNS_URI).getEClassifiers().get(54);
 		}
 		return receptionEClass;
 	}
@@ -4658,7 +4668,7 @@ public class UMLPackageImpl
 	public EClass getSignal() {
 		if (signalEClass == null) {
 			signalEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(60);
+				UMLPackage.eNS_URI).getEClassifiers().get(55);
 		}
 		return signalEClass;
 	}
@@ -4680,7 +4690,7 @@ public class UMLPackageImpl
 	public EClass getProtocolStateMachine() {
 		if (protocolStateMachineEClass == null) {
 			protocolStateMachineEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(61);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(56);
 		}
 		return protocolStateMachineEClass;
 	}
@@ -4703,7 +4713,7 @@ public class UMLPackageImpl
 	public EClass getStateMachine() {
 		if (stateMachineEClass == null) {
 			stateMachineEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(62);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(57);
 		}
 		return stateMachineEClass;
 	}
@@ -4752,7 +4762,7 @@ public class UMLPackageImpl
 	public EClass getRegion() {
 		if (regionEClass == null) {
 			regionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(63);
+				UMLPackage.eNS_URI).getEClassifiers().get(58);
 		}
 		return regionEClass;
 	}
@@ -4810,7 +4820,7 @@ public class UMLPackageImpl
 	public EClass getVertex() {
 		if (vertexEClass == null) {
 			vertexEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(64);
+				UMLPackage.eNS_URI).getEClassifiers().get(59);
 		}
 		return vertexEClass;
 	}
@@ -4850,7 +4860,7 @@ public class UMLPackageImpl
 	public EClass getTransition() {
 		if (transitionEClass == null) {
 			transitionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(65);
+				UMLPackage.eNS_URI).getEClassifiers().get(60);
 		}
 		return transitionEClass;
 	}
@@ -4935,7 +4945,7 @@ public class UMLPackageImpl
 	public EClass getTrigger() {
 		if (triggerEClass == null) {
 			triggerEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(67);
+				UMLPackage.eNS_URI).getEClassifiers().get(62);
 		}
 		return triggerEClass;
 	}
@@ -4966,7 +4976,7 @@ public class UMLPackageImpl
 	public EClass getEvent() {
 		if (eventEClass == null) {
 			eventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(68);
+				UMLPackage.eNS_URI).getEClassifiers().get(63);
 		}
 		return eventEClass;
 	}
@@ -4979,7 +4989,7 @@ public class UMLPackageImpl
 	public EClass getPort() {
 		if (portEClass == null) {
 			portEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(69);
+				UMLPackage.eNS_URI).getEClassifiers().get(64);
 		}
 		return portEClass;
 	}
@@ -5046,7 +5056,7 @@ public class UMLPackageImpl
 	public EClass getState() {
 		if (stateEClass == null) {
 			stateEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(70);
+				UMLPackage.eNS_URI).getEClassifiers().get(65);
 		}
 		return stateEClass;
 	}
@@ -5185,7 +5195,7 @@ public class UMLPackageImpl
 	public EClass getConnectionPointReference() {
 		if (connectionPointReferenceEClass == null) {
 			connectionPointReferenceEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(71);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(66);
 		}
 		return connectionPointReferenceEClass;
 	}
@@ -5228,7 +5238,7 @@ public class UMLPackageImpl
 	public EClass getPseudostate() {
 		if (pseudostateEClass == null) {
 			pseudostateEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(72);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(67);
 		}
 		return pseudostateEClass;
 	}
@@ -5268,7 +5278,7 @@ public class UMLPackageImpl
 	public EClass getProtocolConformance() {
 		if (protocolConformanceEClass == null) {
 			protocolConformanceEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(74);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(69);
 		}
 		return protocolConformanceEClass;
 	}
@@ -5301,7 +5311,7 @@ public class UMLPackageImpl
 	public EClass getOperationTemplateParameter() {
 		if (operationTemplateParameterEClass == null) {
 			operationTemplateParameterEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(75);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(83);
 		}
 		return operationTemplateParameterEClass;
 	}
@@ -5314,7 +5324,7 @@ public class UMLPackageImpl
 	public EClass getStructuralFeature() {
 		if (structuralFeatureEClass == null) {
 			structuralFeatureEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(77);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(84);
 		}
 		return structuralFeatureEClass;
 	}
@@ -5395,7 +5405,7 @@ public class UMLPackageImpl
 	public EClass getConnectableElementTemplateParameter() {
 		if (connectableElementTemplateParameterEClass == null) {
 			connectableElementTemplateParameterEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(42);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(86);
 		}
 		return connectableElementTemplateParameterEClass;
 	}
@@ -5408,7 +5418,7 @@ public class UMLPackageImpl
 	public EClass getCollaborationUse() {
 		if (collaborationUseEClass == null) {
 			collaborationUseEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(93);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(89);
 		}
 		return collaborationUseEClass;
 	}
@@ -5441,7 +5451,7 @@ public class UMLPackageImpl
 	public EClass getCollaboration() {
 		if (collaborationEClass == null) {
 			collaborationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(94);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(90);
 		}
 		return collaborationEClass;
 	}
@@ -5463,7 +5473,7 @@ public class UMLPackageImpl
 	public EClass getStructuredClassifier() {
 		if (structuredClassifierEClass == null) {
 			structuredClassifierEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(37);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(71);
 		}
 		return structuredClassifierEClass;
 	}
@@ -5516,7 +5526,7 @@ public class UMLPackageImpl
 	public EClass getConnector() {
 		if (connectorEClass == null) {
 			connectorEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(79);
+				UMLPackage.eNS_URI).getEClassifiers().get(72);
 		}
 		return connectorEClass;
 	}
@@ -5660,7 +5670,7 @@ public class UMLPackageImpl
 	public EClass getInterfaceRealization() {
 		if (interfaceRealizationEClass == null) {
 			interfaceRealizationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(87);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(52);
 		}
 		return interfaceRealizationEClass;
 	}
@@ -5693,7 +5703,7 @@ public class UMLPackageImpl
 	public EClass getEncapsulatedClassifier() {
 		if (encapsulatedClassifierEClass == null) {
 			encapsulatedClassifierEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(36);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(70);
 		}
 		return encapsulatedClassifierEClass;
 	}
@@ -5716,7 +5726,7 @@ public class UMLPackageImpl
 	public EClass getExtension() {
 		if (extensionEClass == null) {
 			extensionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(81);
+				UMLPackage.eNS_URI).getEClassifiers().get(74);
 		}
 		return extensionEClass;
 	}
@@ -5747,7 +5757,7 @@ public class UMLPackageImpl
 	public EClass getExtensionEnd() {
 		if (extensionEndEClass == null) {
 			extensionEndEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(82);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(75);
 		}
 		return extensionEndEClass;
 	}
@@ -5760,7 +5770,7 @@ public class UMLPackageImpl
 	public EClass getImage() {
 		if (imageEClass == null) {
 			imageEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(84);
+				UMLPackage.eNS_URI).getEClassifiers().get(77);
 		}
 		return imageEClass;
 	}
@@ -6173,7 +6183,7 @@ public class UMLPackageImpl
 	public EClass getActor() {
 		if (actorEClass == null) {
 			actorEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(115);
+				UMLPackage.eNS_URI).getEClassifiers().get(172);
 		}
 		return actorEClass;
 	}
@@ -6186,7 +6196,7 @@ public class UMLPackageImpl
 	public EClass getUsage() {
 		if (usageEClass == null) {
 			usageEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(116);
+				UMLPackage.eNS_URI).getEClassifiers().get(139);
 		}
 		return usageEClass;
 	}
@@ -6199,7 +6209,7 @@ public class UMLPackageImpl
 	public EClass getMessage() {
 		if (messageEClass == null) {
 			messageEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(117);
+				UMLPackage.eNS_URI).getEClassifiers().get(144);
 		}
 		return messageEClass;
 	}
@@ -6284,7 +6294,7 @@ public class UMLPackageImpl
 	public EClass getMessageEnd() {
 		if (messageEndEClass == null) {
 			messageEndEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(120);
+				UMLPackage.eNS_URI).getEClassifiers().get(147);
 		}
 		return messageEndEClass;
 	}
@@ -6306,7 +6316,7 @@ public class UMLPackageImpl
 	public EClass getInteraction() {
 		if (interactionEClass == null) {
 			interactionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(121);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(148);
 		}
 		return interactionEClass;
 	}
@@ -6364,7 +6374,7 @@ public class UMLPackageImpl
 	public EClass getInteractionFragment() {
 		if (interactionFragmentEClass == null) {
 			interactionFragmentEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(122);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(149);
 		}
 		return interactionFragmentEClass;
 	}
@@ -6417,7 +6427,7 @@ public class UMLPackageImpl
 	public EClass getLifeline() {
 		if (lifelineEClass == null) {
 			lifelineEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(123);
+				UMLPackage.eNS_URI).getEClassifiers().get(150);
 		}
 		return lifelineEClass;
 	}
@@ -6475,7 +6485,7 @@ public class UMLPackageImpl
 	public EClass getPartDecomposition() {
 		if (partDecompositionEClass == null) {
 			partDecompositionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(124);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(151);
 		}
 		return partDecompositionEClass;
 	}
@@ -6488,7 +6498,7 @@ public class UMLPackageImpl
 	public EClass getInteractionUse() {
 		if (interactionUseEClass == null) {
 			interactionUseEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(125);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(152);
 		}
 		return interactionUseEClass;
 	}
@@ -6528,7 +6538,7 @@ public class UMLPackageImpl
 	public EClass getGate() {
 		if (gateEClass == null) {
 			gateEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(126);
+				UMLPackage.eNS_URI).getEClassifiers().get(153);
 		}
 		return gateEClass;
 	}
@@ -6541,7 +6551,7 @@ public class UMLPackageImpl
 	public EClass getAction() {
 		if (actionEClass == null) {
 			actionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(127);
+				UMLPackage.eNS_URI).getEClassifiers().get(116);
 		}
 		return actionEClass;
 	}
@@ -6599,7 +6609,7 @@ public class UMLPackageImpl
 	public EClass getExecutableNode() {
 		if (executableNodeEClass == null) {
 			executableNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(128);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(117);
 		}
 		return executableNodeEClass;
 	}
@@ -6621,7 +6631,7 @@ public class UMLPackageImpl
 	public EClass getActivityNode() {
 		if (activityNodeEClass == null) {
 			activityNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(129);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(118);
 		}
 		return activityNodeEClass;
 	}
@@ -6632,24 +6642,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityNode_Outgoing() {
-		return (EReference) getActivityNode().getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityNode_InGroup() {
-		return (EReference) getActivityNode().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityNode_InPartition() {
 		return (EReference) getActivityNode().getEStructuralFeatures().get(2);
 	}
 
@@ -6658,8 +6650,8 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivityNode_InStructuredNode() {
-		return (EReference) getActivityNode().getEStructuralFeatures().get(3);
+	public EReference getActivityNode_InGroup() {
+		return (EReference) getActivityNode().getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -6667,7 +6659,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivityNode_Activity() {
+	public EReference getActivityNode_InPartition() {
 		return (EReference) getActivityNode().getEStructuralFeatures().get(4);
 	}
 
@@ -6676,8 +6668,26 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getActivityNode_InStructuredNode() {
+		return (EReference) getActivityNode().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityNode_Activity() {
+		return (EReference) getActivityNode().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getActivityNode_Incoming() {
-		return (EReference) getActivityNode().getEStructuralFeatures().get(5);
+		return (EReference) getActivityNode().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -6686,7 +6696,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityNode_InInterruptibleRegion() {
-		return (EReference) getActivityNode().getEStructuralFeatures().get(6);
+		return (EReference) getActivityNode().getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -6706,7 +6716,7 @@ public class UMLPackageImpl
 	public EClass getActivityEdge() {
 		if (activityEdgeEClass == null) {
 			activityEdgeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(130);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(123);
 		}
 		return activityEdgeEClass;
 	}
@@ -6717,7 +6727,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityEdge_Activity() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(0);
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -6726,69 +6736,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityEdge_InGroup() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_InPartition() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_InStructuredNode() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_Target() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_RedefinedEdge() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_Guard() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_Weight() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivityEdge_Interrupts() {
 		return (EReference) getActivityEdge().getEStructuralFeatures().get(8);
 	}
 
@@ -6797,8 +6744,71 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getActivityEdge_InPartition() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityEdge_InStructuredNode() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityEdge_Target() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityEdge_RedefinedEdge() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityEdge_Guard() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityEdge_Weight() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivityEdge_Interrupts() {
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getActivityEdge_Source() {
-		return (EReference) getActivityEdge().getEStructuralFeatures().get(9);
+		return (EReference) getActivityEdge().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -6809,7 +6819,7 @@ public class UMLPackageImpl
 	public EClass getActivity() {
 		if (activityEClass == null) {
 			activityEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(131);
+				UMLPackage.eNS_URI).getEClassifiers().get(121);
 		}
 		return activityEClass;
 	}
@@ -6820,33 +6830,6 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EAttribute getActivity_IsReadOnly() {
-		return (EAttribute) getActivity().getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivity_Partition() {
-		return (EReference) getActivity().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivity_Group() {
-		return (EReference) getActivity().getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getActivity_IsSingleExecution() {
 		return (EAttribute) getActivity().getEStructuralFeatures().get(3);
 	}
 
@@ -6855,16 +6838,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActivity_StructuredNode() {
-		return (EReference) getActivity().getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getActivity_Variable() {
+	public EReference getActivity_Partition() {
 		return (EReference) getActivity().getEStructuralFeatures().get(5);
 	}
 
@@ -6873,8 +6847,44 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getActivity_Group() {
+		return (EReference) getActivity().getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getActivity_IsSingleExecution() {
+		return (EAttribute) getActivity().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivity_StructuredNode() {
+		return (EReference) getActivity().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getActivity_Variable() {
+		return (EReference) getActivity().getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getActivity_Node() {
-		return (EReference) getActivity().getEStructuralFeatures().get(6);
+		return (EReference) getActivity().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -6883,7 +6893,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivity_Edge() {
-		return (EReference) getActivity().getEStructuralFeatures().get(7);
+		return (EReference) getActivity().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -6894,7 +6904,7 @@ public class UMLPackageImpl
 	public EClass getActivityPartition() {
 		if (activityPartitionEClass == null) {
 			activityPartitionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(132);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(124);
 		}
 		return activityPartitionEClass;
 	}
@@ -6926,7 +6936,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getActivityPartition_Edge() {
 		return (EReference) getActivityPartition().getEStructuralFeatures()
-			.get(2);
+			.get(6);
 	}
 
 	/**
@@ -6936,7 +6946,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getActivityPartition_Node() {
 		return (EReference) getActivityPartition().getEStructuralFeatures()
-			.get(3);
+			.get(2);
 	}
 
 	/**
@@ -6946,7 +6956,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getActivityPartition_Subpartition() {
 		return (EReference) getActivityPartition().getEStructuralFeatures()
-			.get(4);
+			.get(3);
 	}
 
 	/**
@@ -6956,7 +6966,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getActivityPartition_SuperPartition() {
 		return (EReference) getActivityPartition().getEStructuralFeatures()
-			.get(5);
+			.get(4);
 	}
 
 	/**
@@ -6966,7 +6976,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getActivityPartition_Represents() {
 		return (EReference) getActivityPartition().getEStructuralFeatures()
-			.get(6);
+			.get(5);
 	}
 
 	/**
@@ -6977,7 +6987,7 @@ public class UMLPackageImpl
 	public EClass getActivityGroup() {
 		if (activityGroupEClass == null) {
 			activityGroupEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(133);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(120);
 		}
 		return activityGroupEClass;
 	}
@@ -7006,7 +7016,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityGroup_ContainedNode() {
-		return (EReference) getActivityGroup().getEStructuralFeatures().get(2);
+		return (EReference) getActivityGroup().getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -7015,7 +7025,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityGroup_InActivity() {
-		return (EReference) getActivityGroup().getEStructuralFeatures().get(3);
+		return (EReference) getActivityGroup().getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -7024,7 +7034,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getActivityGroup_ContainedEdge() {
-		return (EReference) getActivityGroup().getEStructuralFeatures().get(4);
+		return (EReference) getActivityGroup().getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7035,7 +7045,7 @@ public class UMLPackageImpl
 	public EClass getStructuredActivityNode() {
 		if (structuredActivityNodeEClass == null) {
 			structuredActivityNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(134);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(119);
 		}
 		return structuredActivityNodeEClass;
 	}
@@ -7057,7 +7067,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getStructuredActivityNode_Node() {
 		return (EReference) getStructuredActivityNode()
-			.getEStructuralFeatures().get(1);
+			.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -7077,7 +7087,7 @@ public class UMLPackageImpl
 	 */
 	public EReference getStructuredActivityNode_Edge() {
 		return (EReference) getStructuredActivityNode()
-			.getEStructuralFeatures().get(3);
+			.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7088,7 +7098,7 @@ public class UMLPackageImpl
 	public EClass getVariable() {
 		if (variableEClass == null) {
 			variableEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(135);
+				UMLPackage.eNS_URI).getEClassifiers().get(122);
 		}
 		return variableEClass;
 	}
@@ -7099,7 +7109,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getVariable_ActivityScope() {
-		return (EReference) getVariable().getEStructuralFeatures().get(0);
+		return (EReference) getVariable().getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -7108,7 +7118,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getVariable_Scope() {
-		return (EReference) getVariable().getEStructuralFeatures().get(1);
+		return (EReference) getVariable().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -7119,7 +7129,7 @@ public class UMLPackageImpl
 	public EClass getInterruptibleActivityRegion() {
 		if (interruptibleActivityRegionEClass == null) {
 			interruptibleActivityRegionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(136);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(125);
 		}
 		return interruptibleActivityRegionEClass;
 	}
@@ -7152,7 +7162,7 @@ public class UMLPackageImpl
 	public EClass getExceptionHandler() {
 		if (exceptionHandlerEClass == null) {
 			exceptionHandlerEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(137);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(126);
 		}
 		return exceptionHandlerEClass;
 	}
@@ -7205,7 +7215,7 @@ public class UMLPackageImpl
 	public EClass getObjectNode() {
 		if (objectNodeEClass == null) {
 			objectNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(138);
+				UMLPackage.eNS_URI).getEClassifiers().get(127);
 		}
 		return objectNodeEClass;
 	}
@@ -7263,7 +7273,7 @@ public class UMLPackageImpl
 	public EClass getOutputPin() {
 		if (outputPinEClass == null) {
 			outputPinEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(140);
+				UMLPackage.eNS_URI).getEClassifiers().get(129);
 		}
 		return outputPinEClass;
 	}
@@ -7276,7 +7286,7 @@ public class UMLPackageImpl
 	public EClass getPin() {
 		if (pinEClass == null) {
 			pinEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(141);
+				UMLPackage.eNS_URI).getEClassifiers().get(130);
 		}
 		return pinEClass;
 	}
@@ -7298,7 +7308,7 @@ public class UMLPackageImpl
 	public EClass getInputPin() {
 		if (inputPinEClass == null) {
 			inputPinEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(142);
+				UMLPackage.eNS_URI).getEClassifiers().get(131);
 		}
 		return inputPinEClass;
 	}
@@ -7311,7 +7321,7 @@ public class UMLPackageImpl
 	public EClass getGeneralOrdering() {
 		if (generalOrderingEClass == null) {
 			generalOrderingEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(143);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(154);
 		}
 		return generalOrderingEClass;
 	}
@@ -7344,7 +7354,7 @@ public class UMLPackageImpl
 	public EClass getOccurrenceSpecification() {
 		if (occurrenceSpecificationEClass == null) {
 			occurrenceSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(144);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(155);
 		}
 		return occurrenceSpecificationEClass;
 	}
@@ -7387,7 +7397,7 @@ public class UMLPackageImpl
 	public EClass getInteractionOperand() {
 		if (interactionOperandEClass == null) {
 			interactionOperandEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(145);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(156);
 		}
 		return interactionOperandEClass;
 	}
@@ -7420,7 +7430,7 @@ public class UMLPackageImpl
 	public EClass getInteractionConstraint() {
 		if (interactionConstraintEClass == null) {
 			interactionConstraintEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(146);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(157);
 		}
 		return interactionConstraintEClass;
 	}
@@ -7453,7 +7463,7 @@ public class UMLPackageImpl
 	public EClass getExecutionSpecification() {
 		if (executionSpecificationEClass == null) {
 			executionSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(147);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(158);
 		}
 		return executionSpecificationEClass;
 	}
@@ -7486,7 +7496,7 @@ public class UMLPackageImpl
 	public EClass getExecutionOccurrenceSpecification() {
 		if (executionOccurrenceSpecificationEClass == null) {
 			executionOccurrenceSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(148);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(159);
 		}
 		return executionOccurrenceSpecificationEClass;
 	}
@@ -7509,7 +7519,7 @@ public class UMLPackageImpl
 	public EClass getExecutionEvent() {
 		if (executionEventEClass == null) {
 			executionEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(149);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(160);
 		}
 		return executionEventEClass;
 	}
@@ -7522,7 +7532,7 @@ public class UMLPackageImpl
 	public EClass getStateInvariant() {
 		if (stateInvariantEClass == null) {
 			stateInvariantEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(150);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(161);
 		}
 		return stateInvariantEClass;
 	}
@@ -7544,7 +7554,7 @@ public class UMLPackageImpl
 	public EClass getActionExecutionSpecification() {
 		if (actionExecutionSpecificationEClass == null) {
 			actionExecutionSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(151);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(162);
 		}
 		return actionExecutionSpecificationEClass;
 	}
@@ -7567,7 +7577,7 @@ public class UMLPackageImpl
 	public EClass getBehaviorExecutionSpecification() {
 		if (behaviorExecutionSpecificationEClass == null) {
 			behaviorExecutionSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(152);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(163);
 		}
 		return behaviorExecutionSpecificationEClass;
 	}
@@ -7590,7 +7600,7 @@ public class UMLPackageImpl
 	public EClass getCreationEvent() {
 		if (creationEventEClass == null) {
 			creationEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(153);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(164);
 		}
 		return creationEventEClass;
 	}
@@ -7603,7 +7613,7 @@ public class UMLPackageImpl
 	public EClass getDestructionEvent() {
 		if (destructionEventEClass == null) {
 			destructionEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(154);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(165);
 		}
 		return destructionEventEClass;
 	}
@@ -7616,7 +7626,7 @@ public class UMLPackageImpl
 	public EClass getSendOperationEvent() {
 		if (sendOperationEventEClass == null) {
 			sendOperationEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(155);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(166);
 		}
 		return sendOperationEventEClass;
 	}
@@ -7639,7 +7649,7 @@ public class UMLPackageImpl
 	public EClass getMessageEvent() {
 		if (messageEventEClass == null) {
 			messageEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(156);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(167);
 		}
 		return messageEventEClass;
 	}
@@ -7652,7 +7662,7 @@ public class UMLPackageImpl
 	public EClass getSendSignalEvent() {
 		if (sendSignalEventEClass == null) {
 			sendSignalEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(157);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(168);
 		}
 		return sendSignalEventEClass;
 	}
@@ -7675,7 +7685,7 @@ public class UMLPackageImpl
 	public EClass getMessageOccurrenceSpecification() {
 		if (messageOccurrenceSpecificationEClass == null) {
 			messageOccurrenceSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(158);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(169);
 		}
 		return messageOccurrenceSpecificationEClass;
 	}
@@ -7688,7 +7698,7 @@ public class UMLPackageImpl
 	public EClass getReceiveOperationEvent() {
 		if (receiveOperationEventEClass == null) {
 			receiveOperationEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(159);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(170);
 		}
 		return receiveOperationEventEClass;
 	}
@@ -7711,7 +7721,7 @@ public class UMLPackageImpl
 	public EClass getReceiveSignalEvent() {
 		if (receiveSignalEventEClass == null) {
 			receiveSignalEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(160);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(171);
 		}
 		return receiveSignalEventEClass;
 	}
@@ -7734,7 +7744,7 @@ public class UMLPackageImpl
 	public EClass getCombinedFragment() {
 		if (combinedFragmentEClass == null) {
 			combinedFragmentEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(162);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(191);
 		}
 		return combinedFragmentEClass;
 	}
@@ -7777,7 +7787,7 @@ public class UMLPackageImpl
 	public EClass getContinuation() {
 		if (continuationEClass == null) {
 			continuationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(163);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(192);
 		}
 		return continuationEClass;
 	}
@@ -7799,7 +7809,7 @@ public class UMLPackageImpl
 	public EClass getConsiderIgnoreFragment() {
 		if (considerIgnoreFragmentEClass == null) {
 			considerIgnoreFragmentEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(164);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(193);
 		}
 		return considerIgnoreFragmentEClass;
 	}
@@ -7822,7 +7832,7 @@ public class UMLPackageImpl
 	public EClass getCallEvent() {
 		if (callEventEClass == null) {
 			callEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(165);
+				UMLPackage.eNS_URI).getEClassifiers().get(173);
 		}
 		return callEventEClass;
 	}
@@ -7844,7 +7854,7 @@ public class UMLPackageImpl
 	public EClass getChangeEvent() {
 		if (changeEventEClass == null) {
 			changeEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(166);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(174);
 		}
 		return changeEventEClass;
 	}
@@ -7866,7 +7876,7 @@ public class UMLPackageImpl
 	public EClass getSignalEvent() {
 		if (signalEventEClass == null) {
 			signalEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(167);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(175);
 		}
 		return signalEventEClass;
 	}
@@ -7888,7 +7898,7 @@ public class UMLPackageImpl
 	public EClass getAnyReceiveEvent() {
 		if (anyReceiveEventEClass == null) {
 			anyReceiveEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(168);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(176);
 		}
 		return anyReceiveEventEClass;
 	}
@@ -7901,7 +7911,7 @@ public class UMLPackageImpl
 	public EClass getCreateObjectAction() {
 		if (createObjectActionEClass == null) {
 			createObjectActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(169);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(194);
 		}
 		return createObjectActionEClass;
 	}
@@ -7934,7 +7944,7 @@ public class UMLPackageImpl
 	public EClass getDestroyObjectAction() {
 		if (destroyObjectActionEClass == null) {
 			destroyObjectActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(170);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(195);
 		}
 		return destroyObjectActionEClass;
 	}
@@ -7977,7 +7987,7 @@ public class UMLPackageImpl
 	public EClass getTestIdentityAction() {
 		if (testIdentityActionEClass == null) {
 			testIdentityActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(171);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(196);
 		}
 		return testIdentityActionEClass;
 	}
@@ -8020,7 +8030,7 @@ public class UMLPackageImpl
 	public EClass getReadSelfAction() {
 		if (readSelfActionEClass == null) {
 			readSelfActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(172);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(197);
 		}
 		return readSelfActionEClass;
 	}
@@ -8042,7 +8052,7 @@ public class UMLPackageImpl
 	public EClass getStructuralFeatureAction() {
 		if (structuralFeatureActionEClass == null) {
 			structuralFeatureActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(173);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(198);
 		}
 		return structuralFeatureActionEClass;
 	}
@@ -8075,7 +8085,7 @@ public class UMLPackageImpl
 	public EClass getReadStructuralFeatureAction() {
 		if (readStructuralFeatureActionEClass == null) {
 			readStructuralFeatureActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(174);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(199);
 		}
 		return readStructuralFeatureActionEClass;
 	}
@@ -8098,7 +8108,7 @@ public class UMLPackageImpl
 	public EClass getWriteStructuralFeatureAction() {
 		if (writeStructuralFeatureActionEClass == null) {
 			writeStructuralFeatureActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(175);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(200);
 		}
 		return writeStructuralFeatureActionEClass;
 	}
@@ -8121,7 +8131,7 @@ public class UMLPackageImpl
 	public EClass getClearStructuralFeatureAction() {
 		if (clearStructuralFeatureActionEClass == null) {
 			clearStructuralFeatureActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(176);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(201);
 		}
 		return clearStructuralFeatureActionEClass;
 	}
@@ -8134,7 +8144,7 @@ public class UMLPackageImpl
 	public EClass getRemoveStructuralFeatureValueAction() {
 		if (removeStructuralFeatureValueActionEClass == null) {
 			removeStructuralFeatureValueActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(177);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(202);
 		}
 		return removeStructuralFeatureValueActionEClass;
 	}
@@ -8167,7 +8177,7 @@ public class UMLPackageImpl
 	public EClass getAddStructuralFeatureValueAction() {
 		if (addStructuralFeatureValueActionEClass == null) {
 			addStructuralFeatureValueActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(178);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(203);
 		}
 		return addStructuralFeatureValueActionEClass;
 	}
@@ -8200,7 +8210,7 @@ public class UMLPackageImpl
 	public EClass getLinkAction() {
 		if (linkActionEClass == null) {
 			linkActionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(179);
+				UMLPackage.eNS_URI).getEClassifiers().get(204);
 		}
 		return linkActionEClass;
 	}
@@ -8231,7 +8241,7 @@ public class UMLPackageImpl
 	public EClass getLinkEndData() {
 		if (linkEndDataEClass == null) {
 			linkEndDataEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(180);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(205);
 		}
 		return linkEndDataEClass;
 	}
@@ -8271,7 +8281,7 @@ public class UMLPackageImpl
 	public EClass getQualifierValue() {
 		if (qualifierValueEClass == null) {
 			qualifierValueEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(181);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(206);
 		}
 		return qualifierValueEClass;
 	}
@@ -8302,7 +8312,7 @@ public class UMLPackageImpl
 	public EClass getReadLinkAction() {
 		if (readLinkActionEClass == null) {
 			readLinkActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(182);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(207);
 		}
 		return readLinkActionEClass;
 	}
@@ -8324,7 +8334,7 @@ public class UMLPackageImpl
 	public EClass getLinkEndCreationData() {
 		if (linkEndCreationDataEClass == null) {
 			linkEndCreationDataEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(183);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(208);
 		}
 		return linkEndCreationDataEClass;
 	}
@@ -8357,7 +8367,7 @@ public class UMLPackageImpl
 	public EClass getCreateLinkAction() {
 		if (createLinkActionEClass == null) {
 			createLinkActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(184);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(209);
 		}
 		return createLinkActionEClass;
 	}
@@ -8370,7 +8380,7 @@ public class UMLPackageImpl
 	public EClass getWriteLinkAction() {
 		if (writeLinkActionEClass == null) {
 			writeLinkActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(185);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(210);
 		}
 		return writeLinkActionEClass;
 	}
@@ -8383,7 +8393,7 @@ public class UMLPackageImpl
 	public EClass getDestroyLinkAction() {
 		if (destroyLinkActionEClass == null) {
 			destroyLinkActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(186);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(211);
 		}
 		return destroyLinkActionEClass;
 	}
@@ -8396,7 +8406,7 @@ public class UMLPackageImpl
 	public EClass getLinkEndDestructionData() {
 		if (linkEndDestructionDataEClass == null) {
 			linkEndDestructionDataEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(187);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(212);
 		}
 		return linkEndDestructionDataEClass;
 	}
@@ -8429,7 +8439,7 @@ public class UMLPackageImpl
 	public EClass getClearAssociationAction() {
 		if (clearAssociationActionEClass == null) {
 			clearAssociationActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(188);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(213);
 		}
 		return clearAssociationActionEClass;
 	}
@@ -8462,7 +8472,7 @@ public class UMLPackageImpl
 	public EClass getBroadcastSignalAction() {
 		if (broadcastSignalActionEClass == null) {
 			broadcastSignalActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(189);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(214);
 		}
 		return broadcastSignalActionEClass;
 	}
@@ -8485,7 +8495,7 @@ public class UMLPackageImpl
 	public EClass getInvocationAction() {
 		if (invocationActionEClass == null) {
 			invocationActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(190);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(134);
 		}
 		return invocationActionEClass;
 	}
@@ -8518,7 +8528,7 @@ public class UMLPackageImpl
 	public EClass getSendObjectAction() {
 		if (sendObjectActionEClass == null) {
 			sendObjectActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(191);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(215);
 		}
 		return sendObjectActionEClass;
 	}
@@ -8551,7 +8561,7 @@ public class UMLPackageImpl
 	public EClass getValueSpecificationAction() {
 		if (valueSpecificationActionEClass == null) {
 			valueSpecificationActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(192);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(216);
 		}
 		return valueSpecificationActionEClass;
 	}
@@ -8584,7 +8594,7 @@ public class UMLPackageImpl
 	public EClass getTimeExpression() {
 		if (timeExpressionEClass == null) {
 			timeExpressionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(193);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(217);
 		}
 		return timeExpressionEClass;
 	}
@@ -8615,7 +8625,7 @@ public class UMLPackageImpl
 	public EClass getObservation() {
 		if (observationEClass == null) {
 			observationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(194);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(218);
 		}
 		return observationEClass;
 	}
@@ -8628,7 +8638,7 @@ public class UMLPackageImpl
 	public EClass getDuration() {
 		if (durationEClass == null) {
 			durationEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(195);
+				UMLPackage.eNS_URI).getEClassifiers().get(219);
 		}
 		return durationEClass;
 	}
@@ -8659,7 +8669,7 @@ public class UMLPackageImpl
 	public EClass getValuePin() {
 		if (valuePinEClass == null) {
 			valuePinEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(205);
+				UMLPackage.eNS_URI).getEClassifiers().get(132);
 		}
 		return valuePinEClass;
 	}
@@ -8681,7 +8691,7 @@ public class UMLPackageImpl
 	public EClass getDurationInterval() {
 		if (durationIntervalEClass == null) {
 			durationIntervalEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(196);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(220);
 		}
 		return durationIntervalEClass;
 	}
@@ -8694,7 +8704,7 @@ public class UMLPackageImpl
 	public EClass getInterval() {
 		if (intervalEClass == null) {
 			intervalEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(197);
+				UMLPackage.eNS_URI).getEClassifiers().get(221);
 		}
 		return intervalEClass;
 	}
@@ -8725,7 +8735,7 @@ public class UMLPackageImpl
 	public EClass getTimeConstraint() {
 		if (timeConstraintEClass == null) {
 			timeConstraintEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(198);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(222);
 		}
 		return timeConstraintEClass;
 	}
@@ -8747,7 +8757,7 @@ public class UMLPackageImpl
 	public EClass getIntervalConstraint() {
 		if (intervalConstraintEClass == null) {
 			intervalConstraintEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(199);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(223);
 		}
 		return intervalConstraintEClass;
 	}
@@ -8760,7 +8770,7 @@ public class UMLPackageImpl
 	public EClass getTimeInterval() {
 		if (timeIntervalEClass == null) {
 			timeIntervalEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(200);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(224);
 		}
 		return timeIntervalEClass;
 	}
@@ -8773,7 +8783,7 @@ public class UMLPackageImpl
 	public EClass getDurationConstraint() {
 		if (durationConstraintEClass == null) {
 			durationConstraintEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(201);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(225);
 		}
 		return durationConstraintEClass;
 	}
@@ -8796,7 +8806,7 @@ public class UMLPackageImpl
 	public EClass getTimeObservation() {
 		if (timeObservationEClass == null) {
 			timeObservationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(202);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(226);
 		}
 		return timeObservationEClass;
 	}
@@ -8829,7 +8839,7 @@ public class UMLPackageImpl
 	public EClass getDurationObservation() {
 		if (durationObservationEClass == null) {
 			durationObservationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(203);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(227);
 		}
 		return durationObservationEClass;
 	}
@@ -8862,7 +8872,7 @@ public class UMLPackageImpl
 	public EClass getOpaqueAction() {
 		if (opaqueActionEClass == null) {
 			opaqueActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(204);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(115);
 		}
 		return opaqueActionEClass;
 	}
@@ -8911,7 +8921,7 @@ public class UMLPackageImpl
 	public EClass getCallAction() {
 		if (callActionEClass == null) {
 			callActionEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(206);
+				UMLPackage.eNS_URI).getEClassifiers().get(133);
 		}
 		return callActionEClass;
 	}
@@ -8942,7 +8952,7 @@ public class UMLPackageImpl
 	public EClass getSendSignalAction() {
 		if (sendSignalActionEClass == null) {
 			sendSignalActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(207);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(135);
 		}
 		return sendSignalActionEClass;
 	}
@@ -8975,7 +8985,7 @@ public class UMLPackageImpl
 	public EClass getCallOperationAction() {
 		if (callOperationActionEClass == null) {
 			callOperationActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(208);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(136);
 		}
 		return callOperationActionEClass;
 	}
@@ -9008,7 +9018,7 @@ public class UMLPackageImpl
 	public EClass getCallBehaviorAction() {
 		if (callBehaviorActionEClass == null) {
 			callBehaviorActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(209);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(137);
 		}
 		return callBehaviorActionEClass;
 	}
@@ -9031,7 +9041,7 @@ public class UMLPackageImpl
 	public EClass getInformationItem() {
 		if (informationItemEClass == null) {
 			informationItemEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(210);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(238);
 		}
 		return informationItemEClass;
 	}
@@ -9054,7 +9064,7 @@ public class UMLPackageImpl
 	public EClass getInformationFlow() {
 		if (informationFlowEClass == null) {
 			informationFlowEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(211);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(239);
 		}
 		return informationFlowEClass;
 	}
@@ -9137,7 +9147,7 @@ public class UMLPackageImpl
 	public EClass getModel() {
 		if (modelEClass == null) {
 			modelEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(86);
+				UMLPackage.eNS_URI).getEClassifiers().get(79);
 		}
 		return modelEClass;
 	}
@@ -9159,7 +9169,7 @@ public class UMLPackageImpl
 	public EClass getVariableAction() {
 		if (variableActionEClass == null) {
 			variableActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(212);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(230);
 		}
 		return variableActionEClass;
 	}
@@ -9181,7 +9191,7 @@ public class UMLPackageImpl
 	public EClass getReadVariableAction() {
 		if (readVariableActionEClass == null) {
 			readVariableActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(213);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(231);
 		}
 		return readVariableActionEClass;
 	}
@@ -9204,7 +9214,7 @@ public class UMLPackageImpl
 	public EClass getWriteVariableAction() {
 		if (writeVariableActionEClass == null) {
 			writeVariableActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(214);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(232);
 		}
 		return writeVariableActionEClass;
 	}
@@ -9227,7 +9237,7 @@ public class UMLPackageImpl
 	public EClass getClearVariableAction() {
 		if (clearVariableActionEClass == null) {
 			clearVariableActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(215);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(233);
 		}
 		return clearVariableActionEClass;
 	}
@@ -9240,7 +9250,7 @@ public class UMLPackageImpl
 	public EClass getAddVariableValueAction() {
 		if (addVariableValueActionEClass == null) {
 			addVariableValueActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(216);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(234);
 		}
 		return addVariableValueActionEClass;
 	}
@@ -9273,7 +9283,7 @@ public class UMLPackageImpl
 	public EClass getRemoveVariableValueAction() {
 		if (removeVariableValueActionEClass == null) {
 			removeVariableValueActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(217);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(235);
 		}
 		return removeVariableValueActionEClass;
 	}
@@ -9306,7 +9316,7 @@ public class UMLPackageImpl
 	public EClass getRaiseExceptionAction() {
 		if (raiseExceptionActionEClass == null) {
 			raiseExceptionActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(218);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(236);
 		}
 		return raiseExceptionActionEClass;
 	}
@@ -9329,7 +9339,7 @@ public class UMLPackageImpl
 	public EClass getActionInputPin() {
 		if (actionInputPinEClass == null) {
 			actionInputPinEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(219);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(237);
 		}
 		return actionInputPinEClass;
 	}
@@ -9351,7 +9361,7 @@ public class UMLPackageImpl
 	public EClass getReadExtentAction() {
 		if (readExtentActionEClass == null) {
 			readExtentActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(220);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(240);
 		}
 		return readExtentActionEClass;
 	}
@@ -9384,7 +9394,7 @@ public class UMLPackageImpl
 	public EClass getReclassifyObjectAction() {
 		if (reclassifyObjectActionEClass == null) {
 			reclassifyObjectActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(221);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(241);
 		}
 		return reclassifyObjectActionEClass;
 	}
@@ -9437,7 +9447,7 @@ public class UMLPackageImpl
 	public EClass getReadIsClassifiedObjectAction() {
 		if (readIsClassifiedObjectActionEClass == null) {
 			readIsClassifiedObjectActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(222);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(242);
 		}
 		return readIsClassifiedObjectActionEClass;
 	}
@@ -9490,7 +9500,7 @@ public class UMLPackageImpl
 	public EClass getStartClassifierBehaviorAction() {
 		if (startClassifierBehaviorActionEClass == null) {
 			startClassifierBehaviorActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(223);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(243);
 		}
 		return startClassifierBehaviorActionEClass;
 	}
@@ -9513,7 +9523,7 @@ public class UMLPackageImpl
 	public EClass getReadLinkObjectEndAction() {
 		if (readLinkObjectEndActionEClass == null) {
 			readLinkObjectEndActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(224);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(244);
 		}
 		return readLinkObjectEndActionEClass;
 	}
@@ -9556,7 +9566,7 @@ public class UMLPackageImpl
 	public EClass getReadLinkObjectEndQualifierAction() {
 		if (readLinkObjectEndQualifierActionEClass == null) {
 			readLinkObjectEndQualifierActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(225);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(245);
 		}
 		return readLinkObjectEndQualifierActionEClass;
 	}
@@ -9599,7 +9609,7 @@ public class UMLPackageImpl
 	public EClass getCreateLinkObjectAction() {
 		if (createLinkObjectActionEClass == null) {
 			createLinkObjectActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(226);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(246);
 		}
 		return createLinkObjectActionEClass;
 	}
@@ -9622,7 +9632,7 @@ public class UMLPackageImpl
 	public EClass getAcceptEventAction() {
 		if (acceptEventActionEClass == null) {
 			acceptEventActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(227);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(247);
 		}
 		return acceptEventActionEClass;
 	}
@@ -9665,7 +9675,7 @@ public class UMLPackageImpl
 	public EClass getAcceptCallAction() {
 		if (acceptCallActionEClass == null) {
 			acceptCallActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(228);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(248);
 		}
 		return acceptCallActionEClass;
 	}
@@ -9688,7 +9698,7 @@ public class UMLPackageImpl
 	public EClass getReplyAction() {
 		if (replyActionEClass == null) {
 			replyActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(229);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(249);
 		}
 		return replyActionEClass;
 	}
@@ -9728,7 +9738,7 @@ public class UMLPackageImpl
 	public EClass getUnmarshallAction() {
 		if (unmarshallActionEClass == null) {
 			unmarshallActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(230);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(250);
 		}
 		return unmarshallActionEClass;
 	}
@@ -9771,7 +9781,7 @@ public class UMLPackageImpl
 	public EClass getReduceAction() {
 		if (reduceActionEClass == null) {
 			reduceActionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(231);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(251);
 		}
 		return reduceActionEClass;
 	}
@@ -9820,7 +9830,7 @@ public class UMLPackageImpl
 	public EClass getControlNode() {
 		if (controlNodeEClass == null) {
 			controlNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(232);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(140);
 		}
 		return controlNodeEClass;
 	}
@@ -9833,7 +9843,7 @@ public class UMLPackageImpl
 	public EClass getControlFlow() {
 		if (controlFlowEClass == null) {
 			controlFlowEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(233);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(141);
 		}
 		return controlFlowEClass;
 	}
@@ -9846,7 +9856,7 @@ public class UMLPackageImpl
 	public EClass getInitialNode() {
 		if (initialNodeEClass == null) {
 			initialNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(234);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(142);
 		}
 		return initialNodeEClass;
 	}
@@ -9859,7 +9869,7 @@ public class UMLPackageImpl
 	public EClass getActivityParameterNode() {
 		if (activityParameterNodeEClass == null) {
 			activityParameterNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(235);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(143);
 		}
 		return activityParameterNodeEClass;
 	}
@@ -9882,7 +9892,7 @@ public class UMLPackageImpl
 	public EClass getForkNode() {
 		if (forkNodeEClass == null) {
 			forkNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(236);
+				UMLPackage.eNS_URI).getEClassifiers().get(177);
 		}
 		return forkNodeEClass;
 	}
@@ -9895,7 +9905,7 @@ public class UMLPackageImpl
 	public EClass getFlowFinalNode() {
 		if (flowFinalNodeEClass == null) {
 			flowFinalNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(237);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(178);
 		}
 		return flowFinalNodeEClass;
 	}
@@ -9908,7 +9918,7 @@ public class UMLPackageImpl
 	public EClass getFinalNode() {
 		if (finalNodeEClass == null) {
 			finalNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(238);
+				UMLPackage.eNS_URI).getEClassifiers().get(179);
 		}
 		return finalNodeEClass;
 	}
@@ -9921,7 +9931,7 @@ public class UMLPackageImpl
 	public EClass getCentralBufferNode() {
 		if (centralBufferNodeEClass == null) {
 			centralBufferNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(239);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(180);
 		}
 		return centralBufferNodeEClass;
 	}
@@ -9934,7 +9944,7 @@ public class UMLPackageImpl
 	public EClass getMergeNode() {
 		if (mergeNodeEClass == null) {
 			mergeNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(240);
+				UMLPackage.eNS_URI).getEClassifiers().get(181);
 		}
 		return mergeNodeEClass;
 	}
@@ -9947,7 +9957,7 @@ public class UMLPackageImpl
 	public EClass getDecisionNode() {
 		if (decisionNodeEClass == null) {
 			decisionNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(241);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(182);
 		}
 		return decisionNodeEClass;
 	}
@@ -9969,7 +9979,7 @@ public class UMLPackageImpl
 	public EClass getActivityFinalNode() {
 		if (activityFinalNodeEClass == null) {
 			activityFinalNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(242);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(183);
 		}
 		return activityFinalNodeEClass;
 	}
@@ -9982,7 +9992,7 @@ public class UMLPackageImpl
 	public EClass getJoinNode() {
 		if (joinNodeEClass == null) {
 			joinNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(243);
+				UMLPackage.eNS_URI).getEClassifiers().get(252);
 		}
 		return joinNodeEClass;
 	}
@@ -10013,7 +10023,7 @@ public class UMLPackageImpl
 	public EClass getDataStoreNode() {
 		if (dataStoreNodeEClass == null) {
 			dataStoreNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(244);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(253);
 		}
 		return dataStoreNodeEClass;
 	}
@@ -10026,7 +10036,7 @@ public class UMLPackageImpl
 	public EClass getObjectFlow() {
 		if (objectFlowEClass == null) {
 			objectFlowEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(245);
+				UMLPackage.eNS_URI).getEClassifiers().get(254);
 		}
 		return objectFlowEClass;
 	}
@@ -10075,7 +10085,7 @@ public class UMLPackageImpl
 	public EClass getSequenceNode() {
 		if (sequenceNodeEClass == null) {
 			sequenceNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(246);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(138);
 		}
 		return sequenceNodeEClass;
 	}
@@ -10097,7 +10107,7 @@ public class UMLPackageImpl
 	public EClass getConditionalNode() {
 		if (conditionalNodeEClass == null) {
 			conditionalNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(247);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(255);
 		}
 		return conditionalNodeEClass;
 	}
@@ -10150,7 +10160,7 @@ public class UMLPackageImpl
 	public EClass getClause() {
 		if (clauseEClass == null) {
 			clauseEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(248);
+				UMLPackage.eNS_URI).getEClassifiers().get(256);
 		}
 		return clauseEClass;
 	}
@@ -10217,7 +10227,7 @@ public class UMLPackageImpl
 	public EClass getLoopNode() {
 		if (loopNodeEClass == null) {
 			loopNodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(249);
+				UMLPackage.eNS_URI).getEClassifiers().get(257);
 		}
 		return loopNodeEClass;
 	}
@@ -10311,7 +10321,7 @@ public class UMLPackageImpl
 	public EClass getExpansionNode() {
 		if (expansionNodeEClass == null) {
 			expansionNodeEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(250);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(258);
 		}
 		return expansionNodeEClass;
 	}
@@ -10342,7 +10352,7 @@ public class UMLPackageImpl
 	public EClass getExpansionRegion() {
 		if (expansionRegionEClass == null) {
 			expansionRegionEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(251);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(259);
 		}
 		return expansionRegionEClass;
 	}
@@ -10385,7 +10395,7 @@ public class UMLPackageImpl
 	public EClass getComponentRealization() {
 		if (componentRealizationEClass == null) {
 			componentRealizationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(253);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(184);
 		}
 		return componentRealizationEClass;
 	}
@@ -10418,7 +10428,7 @@ public class UMLPackageImpl
 	public EClass getComponent() {
 		if (componentEClass == null) {
 			componentEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(254);
+				UMLPackage.eNS_URI).getEClassifiers().get(185);
 		}
 		return componentEClass;
 	}
@@ -10476,7 +10486,7 @@ public class UMLPackageImpl
 	public EClass getNode() {
 		if (nodeEClass == null) {
 			nodeEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(255);
+				UMLPackage.eNS_URI).getEClassifiers().get(186);
 		}
 		return nodeEClass;
 	}
@@ -10498,7 +10508,7 @@ public class UMLPackageImpl
 	public EClass getDevice() {
 		if (deviceEClass == null) {
 			deviceEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(256);
+				UMLPackage.eNS_URI).getEClassifiers().get(187);
 		}
 		return deviceEClass;
 	}
@@ -10511,7 +10521,7 @@ public class UMLPackageImpl
 	public EClass getExecutionEnvironment() {
 		if (executionEnvironmentEClass == null) {
 			executionEnvironmentEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(257);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(188);
 		}
 		return executionEnvironmentEClass;
 	}
@@ -10524,7 +10534,7 @@ public class UMLPackageImpl
 	public EClass getCommunicationPath() {
 		if (communicationPathEClass == null) {
 			communicationPathEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(258);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(189);
 		}
 		return communicationPathEClass;
 	}
@@ -10537,7 +10547,7 @@ public class UMLPackageImpl
 	public EClass getFinalState() {
 		if (finalStateEClass == null) {
 			finalStateEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(259);
+				UMLPackage.eNS_URI).getEClassifiers().get(228);
 		}
 		return finalStateEClass;
 	}
@@ -10550,7 +10560,7 @@ public class UMLPackageImpl
 	public EClass getTimeEvent() {
 		if (timeEventEClass == null) {
 			timeEventEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(260);
+				UMLPackage.eNS_URI).getEClassifiers().get(229);
 		}
 		return timeEventEClass;
 	}
@@ -10650,7 +10660,7 @@ public class UMLPackageImpl
 	public EEnum getCallConcurrencyKind() {
 		if (callConcurrencyKindEEnum == null) {
 			callConcurrencyKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(55);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(81);
 		}
 		return callConcurrencyKindEEnum;
 	}
@@ -10663,7 +10673,7 @@ public class UMLPackageImpl
 	public EEnum getTransitionKind() {
 		if (transitionKindEEnum == null) {
 			transitionKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(66);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(61);
 		}
 		return transitionKindEEnum;
 	}
@@ -10676,7 +10686,7 @@ public class UMLPackageImpl
 	public EEnum getPseudostateKind() {
 		if (pseudostateKindEEnum == null) {
 			pseudostateKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(73);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(68);
 		}
 		return pseudostateKindEEnum;
 	}
@@ -10689,7 +10699,7 @@ public class UMLPackageImpl
 	public EEnum getAggregationKind() {
 		if (aggregationKindEEnum == null) {
 			aggregationKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(78);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(85);
 		}
 		return aggregationKindEEnum;
 	}
@@ -10702,7 +10712,7 @@ public class UMLPackageImpl
 	public EEnum getParameterDirectionKind() {
 		if (parameterDirectionKindEEnum == null) {
 			parameterDirectionKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(52);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(87);
 		}
 		return parameterDirectionKindEEnum;
 	}
@@ -10715,7 +10725,7 @@ public class UMLPackageImpl
 	public EEnum getParameterEffectKind() {
 		if (parameterEffectKindEEnum == null) {
 			parameterEffectKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(76);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(88);
 		}
 		return parameterEffectKindEEnum;
 	}
@@ -10728,7 +10738,7 @@ public class UMLPackageImpl
 	public EEnum getConnectorKind() {
 		if (connectorKindEEnum == null) {
 			connectorKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(80);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(73);
 		}
 		return connectorKindEEnum;
 	}
@@ -10741,7 +10751,7 @@ public class UMLPackageImpl
 	public EEnum getMessageKind() {
 		if (messageKindEEnum == null) {
 			messageKindEEnum = (EEnum) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(118);
+				UMLPackage.eNS_URI).getEClassifiers().get(145);
 		}
 		return messageKindEEnum;
 	}
@@ -10754,7 +10764,7 @@ public class UMLPackageImpl
 	public EEnum getMessageSort() {
 		if (messageSortEEnum == null) {
 			messageSortEEnum = (EEnum) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(119);
+				UMLPackage.eNS_URI).getEClassifiers().get(146);
 		}
 		return messageSortEEnum;
 	}
@@ -10767,7 +10777,7 @@ public class UMLPackageImpl
 	public EEnum getObjectNodeOrderingKind() {
 		if (objectNodeOrderingKindEEnum == null) {
 			objectNodeOrderingKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(139);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(128);
 		}
 		return objectNodeOrderingKindEEnum;
 	}
@@ -10780,7 +10790,7 @@ public class UMLPackageImpl
 	public EEnum getInteractionOperatorKind() {
 		if (interactionOperatorKindEEnum == null) {
 			interactionOperatorKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(161);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(190);
 		}
 		return interactionOperatorKindEEnum;
 	}
@@ -10793,7 +10803,7 @@ public class UMLPackageImpl
 	public EEnum getExpansionKind() {
 		if (expansionKindEEnum == null) {
 			expansionKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(252);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(260);
 		}
 		return expansionKindEEnum;
 	}

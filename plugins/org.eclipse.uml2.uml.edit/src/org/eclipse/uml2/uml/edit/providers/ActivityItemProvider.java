@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.3 2005/12/21 20:13:24 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.4 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -77,14 +77,14 @@ public class ActivityItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsReadOnlyPropertyDescriptor(object);
-			addPartitionPropertyDescriptor(object);
-			addGroupPropertyDescriptor(object);
-			addIsSingleExecutionPropertyDescriptor(object);
 			addStructuredNodePropertyDescriptor(object);
 			addVariablePropertyDescriptor(object);
 			addNodePropertyDescriptor(object);
+			addIsReadOnlyPropertyDescriptor(object);
 			addEdgePropertyDescriptor(object);
+			addPartitionPropertyDescriptor(object);
+			addIsSingleExecutionPropertyDescriptor(object);
+			addGroupPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -256,10 +256,10 @@ public class ActivityItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__GROUP);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__VARIABLE);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__NODE);
 			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__EDGE);
+			childrenFeatures.add(UMLPackage.Literals.ACTIVITY__GROUP);
 		}
 		return childrenFeatures;
 	}
@@ -315,10 +315,10 @@ public class ActivityItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.ACTIVITY__GROUP :
 			case UMLPackage.ACTIVITY__VARIABLE :
 			case UMLPackage.ACTIVITY__NODE :
 			case UMLPackage.ACTIVITY__EDGE :
+			case UMLPackage.ACTIVITY__GROUP :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -338,40 +338,16 @@ public class ActivityItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createActivityPartition()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createStructuredActivityNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createInterruptibleActivityRegion()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createSequenceNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createConditionalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createLoopNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
-				.createExpansionRegion()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__VARIABLE, UMLFactory.eINSTANCE
 				.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
 				.createAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createOpaqueAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
@@ -388,6 +364,58 @@ public class ActivityItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
 				.createInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createValuePin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createSendSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createCallOperationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createCallBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createSequenceNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createInitialNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createActivityParameterNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createForkNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createFlowFinalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createCentralBufferNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createMergeNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createDecisionNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
+				.createActivityFinalNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
@@ -448,26 +476,6 @@ public class ActivityItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
 				.createValueSpecificationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createOpaqueAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createValuePin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createSendSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createCallBehaviorAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
@@ -543,47 +551,11 @@ public class ActivityItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createInitialNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createActivityParameterNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createForkNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createFlowFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createCentralBufferNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createMergeNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createDecisionNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createActivityFinalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
 				.createJoinNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
 				.createDataStoreNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
-				.createSequenceNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__NODE, UMLFactory.eINSTANCE
@@ -612,6 +584,34 @@ public class ActivityItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__EDGE, UMLFactory.eINSTANCE
 				.createObjectFlow()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createStructuredActivityNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createActivityPartition()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createInterruptibleActivityRegion()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createSequenceNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createConditionalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createLoopNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
+				.createExpansionRegion()));
 	}
 
 	/**
@@ -630,8 +630,8 @@ public class ActivityItemProvider
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
-			|| childFeature == UMLPackage.Literals.ACTIVITY__GROUP
-			|| childFeature == UMLPackage.Literals.ACTIVITY__NODE;
+			|| childFeature == UMLPackage.Literals.ACTIVITY__NODE
+			|| childFeature == UMLPackage.Literals.ACTIVITY__GROUP;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

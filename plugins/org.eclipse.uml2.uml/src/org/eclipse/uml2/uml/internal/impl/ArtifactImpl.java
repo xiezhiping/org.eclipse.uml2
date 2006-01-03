@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.12 2005/12/22 15:20:23 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.13 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -525,11 +525,11 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.ARTIFACT__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ARTIFACT__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ARTIFACT__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -586,18 +586,18 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ARTIFACT__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ARTIFACT__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
@@ -699,10 +699,6 @@ public class ArtifactImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.ARTIFACT__GENERAL :
 				return getGenerals();
-			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.ARTIFACT__USE_CASE :
-				return getUseCases();
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.ARTIFACT__ATTRIBUTE :
@@ -711,6 +707,10 @@ public class ArtifactImpl
 				return getRepresentation();
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.ARTIFACT__USE_CASE :
+				return getUseCases();
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.ARTIFACT__FILE_NAME :
@@ -805,14 +805,6 @@ public class ArtifactImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ARTIFACT__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -823,6 +815,14 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ARTIFACT__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -917,12 +917,6 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.ARTIFACT__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -931,6 +925,12 @@ public class ArtifactImpl
 				return;
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.ARTIFACT__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -1036,12 +1036,6 @@ public class ArtifactImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ARTIFACT__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ARTIFACT__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.ARTIFACT__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.ARTIFACT__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ARTIFACT__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.ARTIFACT__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1052,6 +1046,12 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ARTIFACT__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ARTIFACT__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.ARTIFACT__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.ARTIFACT__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ARTIFACT__OWNED_SIGNATURE) != null;
 			case UMLPackage.ARTIFACT__FILE_NAME :

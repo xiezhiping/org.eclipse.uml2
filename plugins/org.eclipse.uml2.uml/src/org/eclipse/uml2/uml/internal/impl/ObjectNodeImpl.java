@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.10 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -452,21 +452,21 @@ public abstract class ObjectNodeImpl
 					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.OBJECT_NODE__ACTIVITY, msgs);
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -515,20 +515,20 @@ public abstract class ObjectNodeImpl
 				return getRedefinedElements();
 			case UMLPackage.OBJECT_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return getActivity();
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.OBJECT_NODE__TYPE :
@@ -584,23 +584,23 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -661,20 +661,20 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -742,25 +742,25 @@ public abstract class ObjectNodeImpl
 				return isSetRedefinedElements();
 			case UMLPackage.OBJECT_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.OBJECT_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.OBJECT_NODE__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.OBJECT_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

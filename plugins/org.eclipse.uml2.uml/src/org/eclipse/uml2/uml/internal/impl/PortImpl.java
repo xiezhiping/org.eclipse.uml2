@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.13 2005/12/14 22:34:17 khussey Exp $
+ * $Id: PortImpl.java,v 1.14 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -472,6 +472,8 @@ public class PortImpl
 				return getTemplateBindings();
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
 				return getOwnedTemplateSignature();
+			case UMLPackage.PORT__CLASS_ :
+				return getClass_();
 			case UMLPackage.PORT__DATATYPE :
 				return getDatatype();
 			case UMLPackage.PORT__IS_DERIVED :
@@ -490,8 +492,6 @@ public class PortImpl
 				return isComposite()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.PORT__CLASS_ :
-				return getClass_();
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
@@ -883,6 +883,8 @@ public class PortImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE) != null;
+			case UMLPackage.PORT__CLASS_ :
+				return getClass_() != null;
 			case UMLPackage.PORT__DATATYPE :
 				return getDatatype() != null;
 			case UMLPackage.PORT__IS_DERIVED :
@@ -896,8 +898,6 @@ public class PortImpl
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.PORT__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
-			case UMLPackage.PORT__CLASS_ :
-				return getClass_() != null;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PROPERTY);
 				return redefinedProperty != null

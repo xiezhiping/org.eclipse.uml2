@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.12 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -225,17 +225,6 @@ public class OpaqueExpressionImpl
 	public boolean validateLanguageBodySize(DiagnosticChain diagnostics,
 			Map context) {
 		return OpaqueExpressionOperations.validateLanguageBodySize(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateOneBodyDefaultLanguage(DiagnosticChain diagnostics,
-			Map context) {
-		return OpaqueExpressionOperations.validateOneBodyDefaultLanguage(this,
 			diagnostics, context);
 	}
 

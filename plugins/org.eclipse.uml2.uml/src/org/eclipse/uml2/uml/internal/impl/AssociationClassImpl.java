@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.13 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -194,8 +194,8 @@ public class AssociationClassImpl
 						UMLPackage.ASSOCIATION_CLASS__OWNED_CONNECTOR,
 						UMLPackage.ASSOCIATION_CLASS__OWNED_BEHAVIOR,
 						UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER,
-						UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION,
 						UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER,
+						UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION,
 						UMLPackage.ASSOCIATION_CLASS__OWNED_RECEPTION,
 						UMLPackage.ASSOCIATION_CLASS__OWNED_END}));
 		}
@@ -518,11 +518,11 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -593,18 +593,18 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
@@ -622,11 +622,11 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
@@ -724,10 +724,6 @@ public class AssociationClassImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.ASSOCIATION_CLASS__GENERAL :
 				return getGenerals();
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
-				return getUseCases();
 			case UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.ASSOCIATION_CLASS__ATTRIBUTE :
@@ -736,6 +732,10 @@ public class AssociationClassImpl
 				return getRepresentation();
 			case UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
+				return getUseCases();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
@@ -756,10 +756,10 @@ public class AssociationClassImpl
 				return getInterfaceRealizations();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.ASSOCIATION_CLASS__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.ASSOCIATION_CLASS__IS_ACTIVE :
@@ -866,14 +866,6 @@ public class AssociationClassImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -884,6 +876,14 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -915,13 +915,13 @@ public class AssociationClassImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1020,12 +1020,6 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -1034,6 +1028,12 @@ public class AssociationClassImpl
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -1059,11 +1059,11 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1172,12 +1172,6 @@ public class AssociationClassImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ASSOCIATION_CLASS__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1188,6 +1182,12 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE) != null;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
@@ -1213,12 +1213,12 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.ASSOCIATION_CLASS__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.ASSOCIATION_CLASS__IS_ACTIVE :

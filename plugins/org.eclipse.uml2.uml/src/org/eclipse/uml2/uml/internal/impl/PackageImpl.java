@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.15 2005/12/22 20:21:23 khussey Exp $
+ * $Id: PackageImpl.java,v 1.16 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -648,9 +648,10 @@ public class PackageImpl
 		EList profileApplication = (EList) eVirtualGet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
 		if (profileApplication == null) {
 			eVirtualSet(UMLPackage.PACKAGE__PROFILE_APPLICATION,
-				profileApplication = new EObjectContainmentEList(
+				profileApplication = new EObjectContainmentWithInverseEList(
 					ProfileApplication.class, this,
-					UMLPackage.PACKAGE__PROFILE_APPLICATION));
+					UMLPackage.PACKAGE__PROFILE_APPLICATION,
+					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE));
 		}
 		return profileApplication;
 	}
@@ -988,6 +989,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
 				return ((InternalEList) getPackageMerges()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
+				return ((InternalEList) getProfileApplications()).basicAdd(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}

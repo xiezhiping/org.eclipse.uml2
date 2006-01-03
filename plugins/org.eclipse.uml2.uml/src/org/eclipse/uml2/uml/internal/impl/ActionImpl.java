@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ActionImpl.java,v 1.11 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -301,21 +301,21 @@ public class ActionImpl
 					otherEnd, msgs);
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.ACTION__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.ACTION__ACTIVITY :
 				return eBasicSetContainer(null, UMLPackage.ACTION__ACTIVITY,
 					msgs);
+			case UMLPackage.ACTION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ACTION__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.ACTION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -371,20 +371,20 @@ public class ActionImpl
 				return getRedefinedElements();
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACTION__HANDLER :
@@ -434,23 +434,23 @@ public class ActionImpl
 			case UMLPackage.ACTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -504,20 +504,20 @@ public class ActionImpl
 			case UMLPackage.ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.ACTION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.ACTION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -576,25 +576,25 @@ public class ActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

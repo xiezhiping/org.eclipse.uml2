@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.20 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.21 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,8 +99,8 @@ import org.eclipse.uml2.uml.internal.operations.TypeOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getMembers <em>Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getCollaborationUses <em>Collaboration Use</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#isAbstract <em>Is Abstract</em>}</li>
@@ -109,10 +109,10 @@ import org.eclipse.uml2.uml.internal.operations.TypeOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getInheritedMembers <em>Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getGenerals <em>General</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getRepresentation <em>Representation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedUseCases <em>Owned Use Case</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedSignature <em>Owned Signature</em>}</li>
  * </ul>
  * </p>
@@ -1633,11 +1633,11 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.CLASSIFIER__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -1695,18 +1695,18 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.CLASSIFIER__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 		}
@@ -1812,10 +1812,6 @@ public abstract class ClassifierImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.CLASSIFIER__GENERAL :
 				return getGenerals();
-			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.CLASSIFIER__USE_CASE :
-				return getUseCases();
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.CLASSIFIER__ATTRIBUTE :
@@ -1824,6 +1820,10 @@ public abstract class ClassifierImpl
 				return getRepresentation();
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.CLASSIFIER__USE_CASE :
+				return getUseCases();
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				return getOwnedSignature();
 		}
@@ -1908,14 +1908,6 @@ public abstract class ClassifierImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.CLASSIFIER__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -1926,6 +1918,14 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.CLASSIFIER__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -2001,12 +2001,6 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.CLASSIFIER__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -2015,6 +2009,12 @@ public abstract class ClassifierImpl
 				return;
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.CLASSIFIER__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -2105,12 +2105,6 @@ public abstract class ClassifierImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.CLASSIFIER__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.CLASSIFIER__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.CLASSIFIER__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.CLASSIFIER__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -2121,6 +2115,12 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.CLASSIFIER__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.CLASSIFIER__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.CLASSIFIER__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE) != null;
 		}

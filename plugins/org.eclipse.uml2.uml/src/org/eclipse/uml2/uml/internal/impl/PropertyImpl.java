@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.17 2005/12/14 22:34:17 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.18 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,13 +91,13 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#isDerivedUnion <em>Is Derived Union</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAggregation <em>Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#isComposite <em>Is Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedProperties <em>Redefined Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwningAssociation <em>Owning Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDefaultValue <em>Default Value</em>}</li>
@@ -634,8 +634,8 @@ public class PropertyImpl
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.PROPERTY__FEATURING_CLASSIFIER, new int[]{
-						UMLPackage.PROPERTY__DATATYPE,
 						UMLPackage.PROPERTY__CLASS_,
+						UMLPackage.PROPERTY__DATATYPE,
 						UMLPackage.PROPERTY__OWNING_ASSOCIATION}));
 		}
 		return featuringClassifier;
@@ -1728,6 +1728,8 @@ public class PropertyImpl
 				return getTemplateBindings();
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				return getOwnedTemplateSignature();
+			case UMLPackage.PROPERTY__CLASS_ :
+				return getClass_();
 			case UMLPackage.PROPERTY__DATATYPE :
 				return getDatatype();
 			case UMLPackage.PROPERTY__IS_DERIVED :
@@ -1746,8 +1748,6 @@ public class PropertyImpl
 				return isComposite()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.PROPERTY__CLASS_ :
-				return getClass_();
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
@@ -2096,6 +2096,8 @@ public class PropertyImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE) != null;
+			case UMLPackage.PROPERTY__CLASS_ :
+				return getClass_() != null;
 			case UMLPackage.PROPERTY__DATATYPE :
 				return getDatatype() != null;
 			case UMLPackage.PROPERTY__IS_DERIVED :
@@ -2109,8 +2111,6 @@ public class PropertyImpl
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
-			case UMLPackage.PROPERTY__CLASS_ :
-				return getClass_() != null;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
 				return redefinedProperty != null
@@ -2335,13 +2335,13 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		DataType datatype = getDatatype();
-		if (datatype != null) {
-			return datatype;
-		}
 		org.eclipse.uml2.uml.Class class_ = getClass_();
 		if (class_ != null) {
 			return class_;
+		}
+		DataType datatype = getDatatype();
+		if (datatype != null) {
+			return datatype;
 		}
 		Association owningAssociation = basicGetOwningAssociation();
 		if (owningAssociation != null) {
@@ -2356,8 +2356,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__DATATYPE)
-			|| eIsSet(UMLPackage.PROPERTY__CLASS_)
+		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__CLASS_)
+			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
 
@@ -2368,8 +2368,8 @@ public class PropertyImpl
 	 */
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__CLASS_)
+			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
 

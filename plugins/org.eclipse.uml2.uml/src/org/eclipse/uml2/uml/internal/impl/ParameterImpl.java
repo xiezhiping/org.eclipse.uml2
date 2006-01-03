@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.14 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.15 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -65,11 +65,11 @@ import org.eclipse.uml2.uml.internal.operations.ParameterOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getParameterSets <em>Parameter Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getParameterSets <em>Parameter Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#isException <em>Is Exception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#isStream <em>Is Stream</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getEffect <em>Effect</em>}</li>
@@ -1019,11 +1019,11 @@ public class ParameterImpl
 				return basicSetUpperValue(null, msgs);
 			case UMLPackage.PARAMETER__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
-			case UMLPackage.PARAMETER__DEFAULT_VALUE :
-				return basicSetDefaultValue(null, msgs);
 			case UMLPackage.PARAMETER__PARAMETER_SET :
 				return ((InternalEList) getParameterSets()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PARAMETER__DEFAULT_VALUE :
+				return basicSetDefaultValue(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1089,16 +1089,16 @@ public class ParameterImpl
 				return getUpperValue();
 			case UMLPackage.PARAMETER__LOWER_VALUE :
 				return getLowerValue();
+			case UMLPackage.PARAMETER__PARAMETER_SET :
+				return getParameterSets();
+			case UMLPackage.PARAMETER__OPERATION :
+				return getOperation();
 			case UMLPackage.PARAMETER__DIRECTION :
 				return getDirection();
 			case UMLPackage.PARAMETER__DEFAULT :
 				return getDefault();
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				return getDefaultValue();
-			case UMLPackage.PARAMETER__OPERATION :
-				return getOperation();
-			case UMLPackage.PARAMETER__PARAMETER_SET :
-				return getParameterSets();
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
 				return isException()
 					? Boolean.TRUE
@@ -1172,6 +1172,10 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__LOWER_VALUE :
 				setLowerValue((ValueSpecification) newValue);
 				return;
+			case UMLPackage.PARAMETER__PARAMETER_SET :
+				getParameterSets().clear();
+				getParameterSets().addAll((Collection) newValue);
+				return;
 			case UMLPackage.PARAMETER__DIRECTION :
 				setDirection((ParameterDirectionKind) newValue);
 				return;
@@ -1180,10 +1184,6 @@ public class ParameterImpl
 				return;
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) newValue);
-				return;
-			case UMLPackage.PARAMETER__PARAMETER_SET :
-				getParameterSets().clear();
-				getParameterSets().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
 				setIsException(((Boolean) newValue).booleanValue());
@@ -1253,6 +1253,9 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__LOWER_VALUE :
 				setLowerValue((ValueSpecification) null);
 				return;
+			case UMLPackage.PARAMETER__PARAMETER_SET :
+				getParameterSets().clear();
+				return;
 			case UMLPackage.PARAMETER__DIRECTION :
 				setDirection(DIRECTION_EDEFAULT);
 				return;
@@ -1261,9 +1264,6 @@ public class ParameterImpl
 				return;
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				setDefaultValue((ValueSpecification) null);
-				return;
-			case UMLPackage.PARAMETER__PARAMETER_SET :
-				getParameterSets().clear();
 				return;
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
 				setIsException(IS_EXCEPTION_EDEFAULT);
@@ -1331,6 +1331,11 @@ public class ParameterImpl
 				return eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE) != null;
 			case UMLPackage.PARAMETER__LOWER_VALUE :
 				return eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE) != null;
+			case UMLPackage.PARAMETER__PARAMETER_SET :
+				EList parameterSet = (EList) eVirtualGet(UMLPackage.PARAMETER__PARAMETER_SET);
+				return parameterSet != null && !parameterSet.isEmpty();
+			case UMLPackage.PARAMETER__OPERATION :
+				return getOperation() != null;
 			case UMLPackage.PARAMETER__DIRECTION :
 				return eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
 					DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
@@ -1338,11 +1343,6 @@ public class ParameterImpl
 				return isSetDefault();
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
 				return eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE) != null;
-			case UMLPackage.PARAMETER__OPERATION :
-				return getOperation() != null;
-			case UMLPackage.PARAMETER__PARAMETER_SET :
-				EList parameterSet = (EList) eVirtualGet(UMLPackage.PARAMETER__PARAMETER_SET);
-				return parameterSet != null && !parameterSet.isEmpty();
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
 				return ((eFlags & IS_EXCEPTION_EFLAG) != 0) != IS_EXCEPTION_EDEFAULT;
 			case UMLPackage.PARAMETER__IS_STREAM :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.10 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -399,21 +399,21 @@ public class TestIdentityActionImpl
 					otherEnd, msgs);
 			case UMLPackage.TEST_IDENTITY_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY, msgs);
+			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.TEST_IDENTITY_ACTION__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -475,20 +475,20 @@ public class TestIdentityActionImpl
 				return getRedefinedElements();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.TEST_IDENTITY_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.TEST_IDENTITY_ACTION__HANDLER :
@@ -544,23 +544,23 @@ public class TestIdentityActionImpl
 			case UMLPackage.TEST_IDENTITY_ACTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -623,20 +623,20 @@ public class TestIdentityActionImpl
 			case UMLPackage.TEST_IDENTITY_ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -704,25 +704,25 @@ public class TestIdentityActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.TEST_IDENTITY_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

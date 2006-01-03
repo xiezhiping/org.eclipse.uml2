@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.12 2005/12/22 22:44:53 khussey Exp $
+ * $Id: OperationImpl.java,v 1.13 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,21 +82,21 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getUpper <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getPostconditions <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedOperations <em>Redefined Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
  * </ul>
  * </p>
  *
@@ -499,9 +499,9 @@ public class OperationImpl
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.OPERATION__REDEFINITION_CONTEXT, new int[]{
+						UMLPackage.OPERATION__INTERFACE,
 						UMLPackage.OPERATION__CLASS_,
-						UMLPackage.OPERATION__DATATYPE,
-						UMLPackage.OPERATION__INTERFACE}));
+						UMLPackage.OPERATION__DATATYPE}));
 		}
 		return redefinitionContext;
 	}
@@ -1188,6 +1188,11 @@ public class OperationImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.OPERATION__INTERFACE, msgs);
 			case UMLPackage.OPERATION__CLASS_ :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1198,11 +1203,6 @@ public class OperationImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.OPERATION__DATATYPE, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OPERATION__INTERFACE, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1254,15 +1254,15 @@ public class OperationImpl
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return eBasicSetContainer(null,
+					UMLPackage.OPERATION__INTERFACE, msgs);
 			case UMLPackage.OPERATION__CLASS_ :
 				return eBasicSetContainer(null, UMLPackage.OPERATION__CLASS_,
 					msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				return eBasicSetContainer(null, UMLPackage.OPERATION__DATATYPE,
 					msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return eBasicSetContainer(null,
-					UMLPackage.OPERATION__INTERFACE, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1279,6 +1279,10 @@ public class OperationImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
+					msgs);
 			case UMLPackage.OPERATION__CLASS_ :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
@@ -1288,10 +1292,6 @@ public class OperationImpl
 					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_OPERATION, DataType.class,
 						msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
-					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -1379,6 +1379,10 @@ public class OperationImpl
 				return getTemplateBindings();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return getOwnedTemplateSignature();
+			case UMLPackage.OPERATION__INTERFACE :
+				return getInterface();
+			case UMLPackage.OPERATION__CLASS_ :
+				return getClass_();
 			case UMLPackage.OPERATION__IS_QUERY :
 				return isQuery()
 					? Boolean.TRUE
@@ -1395,8 +1399,6 @@ public class OperationImpl
 				return new Integer(getLower());
 			case UMLPackage.OPERATION__UPPER :
 				return new Integer(getUpper());
-			case UMLPackage.OPERATION__CLASS_ :
-				return getClass_();
 			case UMLPackage.OPERATION__PRECONDITION :
 				return getPreconditions();
 			case UMLPackage.OPERATION__POSTCONDITION :
@@ -1411,8 +1413,6 @@ public class OperationImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.OPERATION__INTERFACE :
-				return getInterface();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1498,6 +1498,12 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) newValue);
+				return;
+			case UMLPackage.OPERATION__CLASS_ :
+				setClass_((org.eclipse.uml2.uml.Class) newValue);
+				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery(((Boolean) newValue).booleanValue());
 				return;
@@ -1512,9 +1518,6 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__UPPER :
 				setUpper(((Integer) newValue).intValue());
-				return;
-			case UMLPackage.OPERATION__CLASS_ :
-				setClass_((org.eclipse.uml2.uml.Class) newValue);
 				return;
 			case UMLPackage.OPERATION__PRECONDITION :
 				getPreconditions().clear();
@@ -1536,9 +1539,6 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__TYPE :
 				setType((Type) newValue);
-				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1614,6 +1614,12 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) null);
+				return;
+			case UMLPackage.OPERATION__CLASS_ :
+				setClass_((org.eclipse.uml2.uml.Class) null);
+				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery(IS_QUERY_EDEFAULT);
 				return;
@@ -1628,9 +1634,6 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__UPPER :
 				setUpper(UPPER_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__CLASS_ :
-				setClass_((org.eclipse.uml2.uml.Class) null);
 				return;
 			case UMLPackage.OPERATION__PRECONDITION :
 				getPreconditions().clear();
@@ -1649,9 +1652,6 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__TYPE :
 				setType((Type) null);
-				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1739,6 +1739,10 @@ public class OperationImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE) != null;
+			case UMLPackage.OPERATION__INTERFACE :
+				return getInterface() != null;
+			case UMLPackage.OPERATION__CLASS_ :
+				return getClass_() != null;
 			case UMLPackage.OPERATION__IS_QUERY :
 				return ((eFlags & IS_QUERY_EFLAG) != 0) != IS_QUERY_EDEFAULT;
 			case UMLPackage.OPERATION__IS_ORDERED :
@@ -1749,8 +1753,6 @@ public class OperationImpl
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.OPERATION__UPPER :
 				return getUpper() != UPPER_EDEFAULT;
-			case UMLPackage.OPERATION__CLASS_ :
-				return getClass_() != null;
 			case UMLPackage.OPERATION__PRECONDITION :
 				EList precondition = (EList) eVirtualGet(UMLPackage.OPERATION__PRECONDITION);
 				return precondition != null && !precondition.isEmpty();
@@ -1767,8 +1769,6 @@ public class OperationImpl
 				return eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION) != null;
 			case UMLPackage.OPERATION__TYPE :
 				return basicGetType() != null;
-			case UMLPackage.OPERATION__INTERFACE :
-				return getInterface() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1922,9 +1922,9 @@ public class OperationImpl
 	 */
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
 			|| eIsSet(UMLPackage.OPERATION__CLASS_)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.6 2005/12/21 20:13:06 khussey Exp $
+ * $Id: Classifier.java,v 1.7 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A classifier is a type. It can specify a generalization hierarchy by referencing its general classifiers.  A classifier is also a namespace whose members can include features. Classifier is an abstract metaclass.
- * Extends a classifier with the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a UseCase.
  * Classifier is extended with the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
+ * Extends a classifier with the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a UseCase.
  * A classifier is a namespace whose members can include features. Classifier is an abstract metaclass.
  * 
  * A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers. A classifier can specify a generalization hierarchy by referencing its general classifiers.
@@ -47,12 +47,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getInheritedMembers <em>Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals <em>General</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getSubstitutions <em>Substitution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getRepresentation <em>Representation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getCollaborationUses <em>Collaboration Use</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getUseCases <em>Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getOwnedSignature <em>Owned Signature</em>}</li>
  * </ul>
  * </p>

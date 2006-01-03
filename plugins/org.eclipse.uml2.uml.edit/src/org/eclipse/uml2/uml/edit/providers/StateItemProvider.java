@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.1 2005/12/07 14:20:25 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.2 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -643,11 +643,11 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
-				.createInteraction()));
+				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
-				.createActivity()));
+				.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
@@ -671,11 +671,11 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
-				.createInteraction()));
+				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
-				.createActivity()));
+				.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
@@ -699,11 +699,11 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
-				.createInteraction()));
+				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
-				.createActivity()));
+				.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, UMLFactory.eINSTANCE

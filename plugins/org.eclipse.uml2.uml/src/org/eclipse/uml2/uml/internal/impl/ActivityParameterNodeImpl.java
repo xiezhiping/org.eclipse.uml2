@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.10 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -216,20 +216,20 @@ public class ActivityParameterNodeImpl
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				return getActivity();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				return getIncomings();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
@@ -289,23 +289,23 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -369,20 +369,20 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -453,25 +453,25 @@ public class ActivityParameterNodeImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

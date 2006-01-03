@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.11 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -215,10 +215,6 @@ public class InformationItemImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.INFORMATION_ITEM__GENERAL :
 				return getGenerals();
-			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.INFORMATION_ITEM__USE_CASE :
-				return getUseCases();
 			case UMLPackage.INFORMATION_ITEM__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.INFORMATION_ITEM__ATTRIBUTE :
@@ -227,6 +223,10 @@ public class InformationItemImpl
 				return getRepresentation();
 			case UMLPackage.INFORMATION_ITEM__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.INFORMATION_ITEM__USE_CASE :
+				return getUseCases();
 			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
@@ -313,14 +313,6 @@ public class InformationItemImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.INFORMATION_ITEM__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.INFORMATION_ITEM__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -331,6 +323,14 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INFORMATION_ITEM__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -410,12 +410,6 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.INFORMATION_ITEM__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.INFORMATION_ITEM__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -424,6 +418,12 @@ public class InformationItemImpl
 				return;
 			case UMLPackage.INFORMATION_ITEM__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.INFORMATION_ITEM__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -517,12 +517,6 @@ public class InformationItemImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.INFORMATION_ITEM__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -533,6 +527,12 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.INFORMATION_ITEM__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE) != null;
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :

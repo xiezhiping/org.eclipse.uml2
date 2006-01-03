@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.3 2006/01/03 18:02:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -94,12 +94,12 @@ public class ClassifierItemProvider
 			addInheritedMemberPropertyDescriptor(object);
 			addRedefinedClassifierPropertyDescriptor(object);
 			addGeneralPropertyDescriptor(object);
-			addOwnedUseCasePropertyDescriptor(object);
-			addUseCasePropertyDescriptor(object);
 			addSubstitutionPropertyDescriptor(object);
 			addAttributePropertyDescriptor(object);
 			addRepresentationPropertyDescriptor(object);
 			addCollaborationUsePropertyDescriptor(object);
+			addOwnedUseCasePropertyDescriptor(object);
+			addUseCasePropertyDescriptor(object);
 			addOwnedSignaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -560,11 +560,11 @@ public class ClassifierItemProvider
 				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 			childrenFeatures
 				.add(UMLPackage.Literals.CLASSIFIER__GENERALIZATION);
-			childrenFeatures
-				.add(UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE);
 			childrenFeatures.add(UMLPackage.Literals.CLASSIFIER__SUBSTITUTION);
 			childrenFeatures
 				.add(UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE);
+			childrenFeatures
+				.add(UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE);
 			childrenFeatures
 				.add(UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE);
 		}
@@ -615,9 +615,9 @@ public class ClassifierItemProvider
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.CLASSIFIER__GENERALIZATION :
-			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
+			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -654,16 +654,16 @@ public class ClassifierItemProvider
 			UMLFactory.eINSTANCE.createGeneralization()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE,
-			UMLFactory.eINSTANCE.createUseCase()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__SUBSTITUTION, UMLFactory.eINSTANCE
 				.createSubstitution()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE,
 			UMLFactory.eINSTANCE.createCollaborationUse()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE,
+			UMLFactory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE,

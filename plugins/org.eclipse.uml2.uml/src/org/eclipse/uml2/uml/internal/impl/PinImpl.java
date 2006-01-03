@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: PinImpl.java,v 1.9 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -166,20 +166,20 @@ public class PinImpl
 				return getRedefinedElements();
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.PIN__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.PIN__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.PIN__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.PIN__ACTIVITY :
 				return getActivity();
+			case UMLPackage.PIN__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.PIN__INCOMING :
 				return getIncomings();
+			case UMLPackage.PIN__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.PIN__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.PIN__TYPE :
@@ -239,23 +239,23 @@ public class PinImpl
 			case UMLPackage.PIN__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.PIN__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.PIN__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.PIN__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.PIN__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.PIN__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PIN__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -319,20 +319,20 @@ public class PinImpl
 			case UMLPackage.PIN__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.PIN__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.PIN__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.PIN__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.PIN__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.PIN__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.PIN__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -403,25 +403,25 @@ public class PinImpl
 				return isSetRedefinedElements();
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.PIN__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.PIN__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.PIN__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.PIN__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.PIN__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.PIN__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.PIN__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.PIN__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.PIN__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.PIN__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.PIN__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.PIN__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.PIN__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.PIN__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.PIN__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

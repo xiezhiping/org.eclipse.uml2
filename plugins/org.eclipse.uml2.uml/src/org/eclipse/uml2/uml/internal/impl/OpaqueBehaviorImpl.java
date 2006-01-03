@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.11 2005/12/14 22:34:17 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.12 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -219,10 +219,6 @@ public class OpaqueBehaviorImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
 				return getGenerals();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
-				return getUseCases();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.OPAQUE_BEHAVIOR__ATTRIBUTE :
@@ -231,6 +227,10 @@ public class OpaqueBehaviorImpl
 				return getRepresentation();
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
+				return getUseCases();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
@@ -251,10 +251,10 @@ public class OpaqueBehaviorImpl
 				return getInterfaceRealizations();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
@@ -265,10 +265,6 @@ public class OpaqueBehaviorImpl
 				return getOwnedReceptions();
 			case UMLPackage.OPAQUE_BEHAVIOR__EXTENSION :
 				return getExtensions();
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -283,6 +279,10 @@ public class OpaqueBehaviorImpl
 				return basicGetContext();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				return getBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :
@@ -369,14 +369,6 @@ public class OpaqueBehaviorImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -387,6 +379,14 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -418,13 +418,13 @@ public class OpaqueBehaviorImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -436,9 +436,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
@@ -454,6 +451,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				getBodies().clear();
@@ -534,12 +534,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -548,6 +542,12 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -573,11 +573,11 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -587,9 +587,6 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
@@ -602,6 +599,9 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				unsetBodies();
@@ -695,12 +695,6 @@ public class OpaqueBehaviorImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -711,6 +705,12 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
@@ -736,12 +736,12 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
@@ -751,8 +751,6 @@ public class OpaqueBehaviorImpl
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
-				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
@@ -768,6 +766,8 @@ public class OpaqueBehaviorImpl
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
+				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :

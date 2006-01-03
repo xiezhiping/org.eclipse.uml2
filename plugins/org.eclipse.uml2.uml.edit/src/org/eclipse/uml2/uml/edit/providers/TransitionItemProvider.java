@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.3 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -439,11 +439,11 @@ public class TransitionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createInteraction()));
+				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createActivity()));
+				.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__TRIGGER, UMLFactory.eINSTANCE

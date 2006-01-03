@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.13 2005/12/14 22:34:18 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.14 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,12 +63,12 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#isReentrant <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,8 +151,8 @@ public class BehaviorImpl
 						UMLPackage.BEHAVIOR__OWNED_CONNECTOR,
 						UMLPackage.BEHAVIOR__OWNED_BEHAVIOR,
 						UMLPackage.BEHAVIOR__OWNED_TRIGGER,
-						UMLPackage.BEHAVIOR__OWNED_OPERATION,
 						UMLPackage.BEHAVIOR__NESTED_CLASSIFIER,
+						UMLPackage.BEHAVIOR__OWNED_OPERATION,
 						UMLPackage.BEHAVIOR__OWNED_RECEPTION,
 						UMLPackage.BEHAVIOR__OWNED_PARAMETER,
 						UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET}));
@@ -518,11 +518,11 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -592,18 +592,18 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
@@ -621,23 +621,23 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
 				return ((InternalEList) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				return ((InternalEList) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -725,10 +725,6 @@ public class BehaviorImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.BEHAVIOR__GENERAL :
 				return getGenerals();
-			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.BEHAVIOR__USE_CASE :
-				return getUseCases();
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.BEHAVIOR__ATTRIBUTE :
@@ -737,6 +733,10 @@ public class BehaviorImpl
 				return getRepresentation();
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				return getUseCases();
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
@@ -757,10 +757,10 @@ public class BehaviorImpl
 				return getInterfaceRealizations();
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
 				return getOwnedTriggers();
-			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				return getOwnedOperations();
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
@@ -771,10 +771,6 @@ public class BehaviorImpl
 				return getOwnedReceptions();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return getExtensions();
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				return isReentrant()
 					? Boolean.TRUE
@@ -789,6 +785,10 @@ public class BehaviorImpl
 				return basicGetContext();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -871,14 +871,6 @@ public class BehaviorImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.BEHAVIOR__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -889,6 +881,14 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -920,13 +920,13 @@ public class BehaviorImpl
 				getOwnedTriggers().clear();
 				getOwnedTriggers().addAll((Collection) newValue);
 				return;
-			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
-				return;
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll((Collection) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -938,9 +938,6 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				getOwnedReceptions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
@@ -956,6 +953,9 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1028,12 +1028,6 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.BEHAVIOR__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -1042,6 +1036,12 @@ public class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -1067,11 +1067,11 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
 				return;
-			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				return;
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1081,9 +1081,6 @@ public class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				return;
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				setSpecification((BehavioralFeature) null);
 				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
@@ -1096,6 +1093,9 @@ public class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
+				return;
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				setSpecification((BehavioralFeature) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1183,12 +1183,6 @@ public class BehaviorImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.BEHAVIOR__GENERAL :
 				return isSetGenerals();
-			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.BEHAVIOR__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.BEHAVIOR__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1199,6 +1193,12 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.BEHAVIOR__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.BEHAVIOR__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE) != null;
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
@@ -1224,12 +1224,12 @@ public class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
 				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TRIGGER);
 				return ownedTrigger != null && !ownedTrigger.isEmpty();
-			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIOR__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
+			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
@@ -1239,8 +1239,6 @@ public class BehaviorImpl
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
-			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				return eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION) != null;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
@@ -1256,6 +1254,8 @@ public class BehaviorImpl
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
 					&& !ownedParameterSet.isEmpty();
+			case UMLPackage.BEHAVIOR__SPECIFICATION :
+				return eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION) != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

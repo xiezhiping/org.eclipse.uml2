@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: CollaborationUseItemProvider.java,v 1.3 2006/01/03 18:02:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -187,15 +187,7 @@ public class CollaborationUseItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createDeployment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
 			UMLFactory.eINSTANCE.createAbstraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createManifestation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
@@ -203,11 +195,19 @@ public class CollaborationUseItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createInterfaceRealization()));
+			UMLFactory.eINSTANCE.createSubstitution()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
-			UMLFactory.eINSTANCE.createSubstitution()));
+			UMLFactory.eINSTANCE.createDeployment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createManifestation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,
+			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING,

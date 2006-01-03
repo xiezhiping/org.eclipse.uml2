@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.4 2005/12/14 22:34:56 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.5 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -399,15 +399,19 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createUseCase()));
+				.createAbstraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createClass()));
+				.createRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createBehavior()));
+				.createSubstitution()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
@@ -423,19 +427,19 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createAbstraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createManifestation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+				.createClass()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createDataType()));
+				.createBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
@@ -471,19 +475,15 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createInterfaceRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createSubstitution()));
+				.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createCollaboration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createUseCase()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
@@ -543,7 +543,7 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createActor()));
+				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
@@ -552,10 +552,6 @@ public class PackageItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
@@ -591,6 +587,10 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createActor()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createCallEvent()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -604,6 +604,30 @@ public class PackageItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createAnyReceiveEvent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createComponentRealization()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createComponent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createDevice()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createExecutionEnvironment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createCommunicationPath()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
@@ -639,39 +663,15 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createTimeEvent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createInformationItem()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createInformationFlow()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createComponentRealization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createComponent()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createDevice()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createExecutionEnvironment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createCommunicationPath()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createTimeEvent()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE

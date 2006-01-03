@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.5 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -180,20 +180,6 @@ public interface OpaqueExpression
 	 * @generated
 	 */
 	boolean validateLanguageBodySize(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If there is only one body then the size of the language is exactly 0 (corresponding to the default language).
-	 * The there is only one body then the size of the language is exactly 0 (corresponding to the default language).
-	 * language->isEmpty() implies (body->size() <= 1)
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateOneBodyDefaultLanguage(DiagnosticChain diagnostics,
-			Map context);
 
 	/**
 	 * <!-- begin-user-doc -->

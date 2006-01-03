@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.12 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,16 +58,16 @@ import org.eclipse.uml2.uml.internal.operations.ActivityPartitionOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getInActivity <em>In Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#isDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#isExternal <em>Is External</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getEdges <em>Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSubpartitions <em>Subpartition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSuperPartition <em>Super Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getRepresents <em>Represents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getEdges <em>Edge</em>}</li>
  * </ul>
  * </p>
  *
@@ -617,8 +617,6 @@ public class ActivityPartitionImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
-			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
@@ -629,6 +627,8 @@ public class ActivityPartitionImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -655,8 +655,6 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
-			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
@@ -665,6 +663,8 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				return eBasicSetContainer(null,
 					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -723,12 +723,12 @@ public class ActivityPartitionImpl
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 				return getSuperGroup();
-			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
-				return getContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				return getInActivity();
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 				return getContainedEdges();
+			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
+				return getContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
 				return isDimension()
 					? Boolean.TRUE
@@ -737,8 +737,6 @@ public class ActivityPartitionImpl
 				return isExternal()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				return getEdges();
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return getNodes();
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
@@ -749,6 +747,8 @@ public class ActivityPartitionImpl
 				if (resolve)
 					return getRepresents();
 				return basicGetRepresents();
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				return getEdges();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -790,10 +790,6 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
 				setIsExternal(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				getEdges().clear();
-				getEdges().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				getNodes().clear();
 				getNodes().addAll((Collection) newValue);
@@ -807,6 +803,10 @@ public class ActivityPartitionImpl
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
 				setRepresents((Element) newValue);
+				return;
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				getEdges().clear();
+				getEdges().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -846,9 +846,6 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
 				setIsExternal(IS_EXTERNAL_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				getEdges().clear();
-				return;
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				getNodes().clear();
 				return;
@@ -860,6 +857,9 @@ public class ActivityPartitionImpl
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
 				setRepresents((Element) null);
+				return;
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				getEdges().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -901,19 +901,16 @@ public class ActivityPartitionImpl
 				return isSetSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
-				return isSetContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				return getInActivity() != null;
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 				return isSetContainedEdges();
+			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
+				return isSetContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
 				return ((eFlags & IS_DIMENSION_EFLAG) != 0) != IS_DIMENSION_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
 				return ((eFlags & IS_EXTERNAL_EFLAG) != 0) != IS_EXTERNAL_EDEFAULT;
-			case UMLPackage.ACTIVITY_PARTITION__EDGE :
-				EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EDGE);
-				return edge != null && !edge.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__NODE);
 				return node != null && !node.isEmpty();
@@ -924,6 +921,9 @@ public class ActivityPartitionImpl
 				return getSuperPartition() != null;
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
 				return eVirtualGet(UMLPackage.ACTIVITY_PARTITION__REPRESENTS) != null;
+			case UMLPackage.ACTIVITY_PARTITION__EDGE :
+				EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__EDGE);
+				return edge != null && !edge.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -940,12 +940,12 @@ public class ActivityPartitionImpl
 					return UMLPackage.ACTIVITY_GROUP__SUBGROUP;
 				case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 					return UMLPackage.ACTIVITY_GROUP__SUPER_GROUP;
-				case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
-					return UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE;
 				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 					return UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY;
 				case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 					return UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE;
+				case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
+					return UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE;
 				default :
 					return -1;
 			}
@@ -965,12 +965,12 @@ public class ActivityPartitionImpl
 					return UMLPackage.ACTIVITY_PARTITION__SUBGROUP;
 				case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 					return UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP;
-				case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
-					return UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE;
 				case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 					return UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY;
 				case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 					return UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE;
+				case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
+					return UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE;
 				default :
 					return -1;
 			}

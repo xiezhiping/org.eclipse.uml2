@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.3 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -82,8 +82,8 @@ public class ClassItemProvider
 			addClassifierBehaviorPropertyDescriptor(object);
 			addInterfaceRealizationPropertyDescriptor(object);
 			addOwnedTriggerPropertyDescriptor(object);
-			addOwnedOperationPropertyDescriptor(object);
 			addNestedClassifierPropertyDescriptor(object);
+			addOwnedOperationPropertyDescriptor(object);
 			addSuperClassPropertyDescriptor(object);
 			addIsActivePropertyDescriptor(object);
 			addOwnedReceptionPropertyDescriptor(object);
@@ -310,8 +310,8 @@ public class ClassItemProvider
 				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
 			childrenFeatures
 				.add(UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER);
-			childrenFeatures.add(UMLPackage.Literals.CLASS__OWNED_OPERATION);
 			childrenFeatures.add(UMLPackage.Literals.CLASS__NESTED_CLASSIFIER);
+			childrenFeatures.add(UMLPackage.Literals.CLASS__OWNED_OPERATION);
 			childrenFeatures.add(UMLPackage.Literals.CLASS__OWNED_RECEPTION);
 		}
 		return childrenFeatures;
@@ -370,8 +370,8 @@ public class ClassItemProvider
 			case UMLPackage.CLASS__OWNED_BEHAVIOR :
 			case UMLPackage.CLASS__INTERFACE_REALIZATION :
 			case UMLPackage.CLASS__OWNED_TRIGGER :
-			case UMLPackage.CLASS__OWNED_OPERATION :
 			case UMLPackage.CLASS__NESTED_CLASSIFIER :
+			case UMLPackage.CLASS__OWNED_OPERATION :
 			case UMLPackage.CLASS__OWNED_RECEPTION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -413,11 +413,11 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-			UMLFactory.eINSTANCE.createInteraction()));
+			UMLFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-			UMLFactory.eINSTANCE.createActivity()));
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
@@ -428,24 +428,8 @@ public class ClassItemProvider
 			UMLFactory.eINSTANCE.createTrigger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__OWNED_OPERATION, UMLFactory.eINSTANCE
-				.createOperation()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createAssociation()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createUseCase()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createClass()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -457,7 +441,11 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createDataType()));
+				.createClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -485,7 +473,15 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createDataType()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createCollaboration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createUseCase()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -505,7 +501,7 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createActor()));
+				.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -513,11 +509,7 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createInformationItem()));
+				.createActor()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
@@ -541,7 +533,15 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createInformationItem()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createAssociationClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__OWNED_OPERATION, UMLFactory.eINSTANCE
+				.createOperation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__OWNED_RECEPTION, UMLFactory.eINSTANCE

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.3 2005/12/22 15:20:22 khussey Exp $
+ * $Id: Interface.java,v 1.4 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -39,11 +39,11 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedAttributes <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedReceptions <em>Owned Reception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#getProtocol <em>Protocol</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Interface#getOwnedOperations <em>Owned Operation</em>}</li>
  * </ul>
  * </p>
  *

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Operation.java,v 1.5 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -38,19 +38,19 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getPostconditions <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getRedefinedOperations <em>Redefined Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
  * </ul>
  * </p>
  *

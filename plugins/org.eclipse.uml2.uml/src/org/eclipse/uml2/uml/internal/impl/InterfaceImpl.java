@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.12 2005/12/22 15:20:23 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.13 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -65,14 +65,14 @@ import org.eclipse.uml2.uml.internal.operations.InterfaceOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedReceptions <em>Owned Reception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getProtocol <em>Protocol</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,10 +130,10 @@ public class InterfaceImpl
 						UMLPackage.INTERFACE__OWNED_RULE,
 						UMLPackage.INTERFACE__OWNED_USE_CASE,
 						UMLPackage.INTERFACE__OWNED_ATTRIBUTE,
+						UMLPackage.INTERFACE__OWNED_OPERATION,
 						UMLPackage.INTERFACE__NESTED_CLASSIFIER,
 						UMLPackage.INTERFACE__OWNED_RECEPTION,
-						UMLPackage.INTERFACE__PROTOCOL,
-						UMLPackage.INTERFACE__OWNED_OPERATION}));
+						UMLPackage.INTERFACE__PROTOCOL}));
 		}
 		return ownedMember;
 	}
@@ -168,8 +168,8 @@ public class InterfaceImpl
 				feature = new DerivedUnionEObjectEList(Feature.class, this,
 					UMLPackage.INTERFACE__FEATURE, new int[]{
 						UMLPackage.INTERFACE__ATTRIBUTE,
-						UMLPackage.INTERFACE__OWNED_RECEPTION,
-						UMLPackage.INTERFACE__OWNED_OPERATION}));
+						UMLPackage.INTERFACE__OWNED_OPERATION,
+						UMLPackage.INTERFACE__OWNED_RECEPTION}));
 		}
 		return feature;
 	}
@@ -542,11 +542,11 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.INTERFACE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.INTERFACE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.INTERFACE__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -606,22 +606,25 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.INTERFACE__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.INTERFACE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.INTERFACE__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERFACE__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERFACE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
 				return ((InternalEList) getNestedClassifiers()).basicRemove(
@@ -631,9 +634,6 @@ public class InterfaceImpl
 					otherEnd, msgs);
 			case UMLPackage.INTERFACE__PROTOCOL :
 				return basicSetProtocol(null, msgs);
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
-					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -721,10 +721,6 @@ public class InterfaceImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.INTERFACE__GENERAL :
 				return getGenerals();
-			case UMLPackage.INTERFACE__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.INTERFACE__USE_CASE :
-				return getUseCases();
 			case UMLPackage.INTERFACE__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.INTERFACE__ATTRIBUTE :
@@ -733,10 +729,16 @@ public class InterfaceImpl
 				return getRepresentation();
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.INTERFACE__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.INTERFACE__USE_CASE :
+				return getUseCases();
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				return getOwnedOperations();
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
 				return getNestedClassifiers();
 			case UMLPackage.INTERFACE__REDEFINED_INTERFACE :
@@ -745,8 +747,6 @@ public class InterfaceImpl
 				return getOwnedReceptions();
 			case UMLPackage.INTERFACE__PROTOCOL :
 				return getProtocol();
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				return getOwnedOperations();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -829,14 +829,6 @@ public class InterfaceImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INTERFACE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.INTERFACE__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.INTERFACE__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -848,12 +840,24 @@ public class InterfaceImpl
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
 				return;
+			case UMLPackage.INTERFACE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERFACE__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
+				return;
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll((Collection) newValue);
 				return;
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
@@ -869,10 +873,6 @@ public class InterfaceImpl
 				return;
 			case UMLPackage.INTERFACE__PROTOCOL :
 				setProtocol((ProtocolStateMachine) newValue);
-				return;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -945,12 +945,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.INTERFACE__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.INTERFACE__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.INTERFACE__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -960,11 +954,20 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				return;
+			case UMLPackage.INTERFACE__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.INTERFACE__USE_CASE :
+				getUseCases().clear();
+				return;
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
 				return;
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
+				return;
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				getOwnedOperations().clear();
 				return;
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
@@ -977,9 +980,6 @@ public class InterfaceImpl
 				return;
 			case UMLPackage.INTERFACE__PROTOCOL :
 				setProtocol((ProtocolStateMachine) null);
-				return;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				getOwnedOperations().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1067,12 +1067,6 @@ public class InterfaceImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.INTERFACE__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.INTERFACE__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.INTERFACE__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.INTERFACE__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.INTERFACE__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.INTERFACE__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -1083,11 +1077,20 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.INTERFACE__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.INTERFACE__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.INTERFACE__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.INTERFACE__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.INTERFACE__OWNED_SIGNATURE) != null;
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
+				EList ownedOperation = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_OPERATION);
+				return ownedOperation != null && !ownedOperation.isEmpty();
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
 				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.INTERFACE__NESTED_CLASSIFIER);
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
@@ -1100,9 +1103,6 @@ public class InterfaceImpl
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UMLPackage.INTERFACE__PROTOCOL :
 				return eVirtualGet(UMLPackage.INTERFACE__PROTOCOL) != null;
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1125,10 +1125,10 @@ public class InterfaceImpl
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION)
 			|| eIsSet(UMLPackage.INTERFACE__NESTED_CLASSIFIER)
 			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
-			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL)
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
+			|| eIsSet(UMLPackage.INTERFACE__PROTOCOL);
 	}
 
 	/**
@@ -1148,8 +1148,8 @@ public class InterfaceImpl
 	 */
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION)
-			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION);
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_OPERATION)
+			|| eIsSet(UMLPackage.INTERFACE__OWNED_RECEPTION);
 	}
 
 } //InterfaceImpl

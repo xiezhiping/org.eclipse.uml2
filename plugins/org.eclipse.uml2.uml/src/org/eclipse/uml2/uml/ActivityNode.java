@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
+ * $Id: ActivityNode.java,v 1.4 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,20 +25,20 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes. Nodes can be replaced in generalization.
- * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes. Nodes can be contained in interruptible regions.
  * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes.
+ * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes. Nodes can be contained in interruptible regions.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getOutgoings <em>Outgoing</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInInterruptibleRegions <em>In Interruptible Region</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getRedefinedNodes <em>Redefined Node</em>}</li>
  * </ul>
  * </p>

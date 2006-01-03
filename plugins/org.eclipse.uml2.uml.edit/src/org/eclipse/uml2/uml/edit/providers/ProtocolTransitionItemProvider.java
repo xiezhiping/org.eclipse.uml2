@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.3 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -36,6 +36,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
+import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
 
 import org.eclipse.uml2.uml.ProtocolTransition;
@@ -267,6 +269,41 @@ public class ProtocolTransitionItemProvider
 	}
 
 	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD,
+					UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION},
+				collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, EObject value, Collection collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD,
+					UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION},
+				value, collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value,
+			collection);
+	}
+
+	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -275,6 +312,14 @@ public class ProtocolTransitionItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
+			return new SubsetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				value);
+		}
+		if (feature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION) {
 			return new SubsetSetCommand(
 				domain,
 				owner,

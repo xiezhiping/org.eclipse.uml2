@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: ActivityPartitionItemProvider.java,v 1.2 2006/01/03 18:02:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -68,16 +68,16 @@ public class ActivityPartitionItemProvider
 
 			addSubgroupPropertyDescriptor(object);
 			addSuperGroupPropertyDescriptor(object);
-			addContainedNodePropertyDescriptor(object);
 			addInActivityPropertyDescriptor(object);
 			addContainedEdgePropertyDescriptor(object);
+			addContainedNodePropertyDescriptor(object);
 			addIsDimensionPropertyDescriptor(object);
 			addIsExternalPropertyDescriptor(object);
-			addEdgePropertyDescriptor(object);
 			addNodePropertyDescriptor(object);
 			addSubpartitionPropertyDescriptor(object);
 			addSuperPartitionPropertyDescriptor(object);
 			addRepresentsPropertyDescriptor(object);
+			addEdgePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

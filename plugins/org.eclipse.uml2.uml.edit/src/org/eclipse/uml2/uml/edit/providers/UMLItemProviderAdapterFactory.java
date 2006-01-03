@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.7 2005/12/23 06:44:50 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.8 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4787,18 +4787,20 @@ public class UMLItemProviderAdapterFactory
 			generalizationItemProvider.dispose();
 		if (generalizationSetItemProvider != null)
 			generalizationSetItemProvider.dispose();
-		if (useCaseItemProvider != null)
-			useCaseItemProvider.dispose();
-		if (behaviorItemProvider != null)
-			behaviorItemProvider.dispose();
-		if (classItemProvider != null)
-			classItemProvider.dispose();
-		if (propertyItemProvider != null)
-			propertyItemProvider.dispose();
+		if (substitutionItemProvider != null)
+			substitutionItemProvider.dispose();
+		if (realizationItemProvider != null)
+			realizationItemProvider.dispose();
+		if (abstractionItemProvider != null)
+			abstractionItemProvider.dispose();
+		if (opaqueExpressionItemProvider != null)
+			opaqueExpressionItemProvider.dispose();
+		if (parameterItemProvider != null)
+			parameterItemProvider.dispose();
 		if (connectorEndItemProvider != null)
 			connectorEndItemProvider.dispose();
-		if (connectableElementTemplateParameterItemProvider != null)
-			connectableElementTemplateParameterItemProvider.dispose();
+		if (propertyItemProvider != null)
+			propertyItemProvider.dispose();
 		if (deploymentItemProvider != null)
 			deploymentItemProvider.dispose();
 		if (deploymentSpecificationItemProvider != null)
@@ -4807,20 +4809,16 @@ public class UMLItemProviderAdapterFactory
 			artifactItemProvider.dispose();
 		if (manifestationItemProvider != null)
 			manifestationItemProvider.dispose();
-		if (abstractionItemProvider != null)
-			abstractionItemProvider.dispose();
-		if (opaqueExpressionItemProvider != null)
-			opaqueExpressionItemProvider.dispose();
-		if (parameterItemProvider != null)
-			parameterItemProvider.dispose();
 		if (operationItemProvider != null)
 			operationItemProvider.dispose();
 		if (behavioralFeatureItemProvider != null)
 			behavioralFeatureItemProvider.dispose();
-		if (parameterSetItemProvider != null)
-			parameterSetItemProvider.dispose();
-		if (dataTypeItemProvider != null)
-			dataTypeItemProvider.dispose();
+		if (behaviorItemProvider != null)
+			behaviorItemProvider.dispose();
+		if (classItemProvider != null)
+			classItemProvider.dispose();
+		if (interfaceRealizationItemProvider != null)
+			interfaceRealizationItemProvider.dispose();
 		if (interfaceItemProvider != null)
 			interfaceItemProvider.dispose();
 		if (receptionItemProvider != null)
@@ -4847,8 +4845,6 @@ public class UMLItemProviderAdapterFactory
 			pseudostateItemProvider.dispose();
 		if (protocolConformanceItemProvider != null)
 			protocolConformanceItemProvider.dispose();
-		if (operationTemplateParameterItemProvider != null)
-			operationTemplateParameterItemProvider.dispose();
 		if (connectorItemProvider != null)
 			connectorItemProvider.dispose();
 		if (extensionItemProvider != null)
@@ -4863,22 +4859,26 @@ public class UMLItemProviderAdapterFactory
 			profileItemProvider.dispose();
 		if (modelItemProvider != null)
 			modelItemProvider.dispose();
-		if (interfaceRealizationItemProvider != null)
-			interfaceRealizationItemProvider.dispose();
-		if (realizationItemProvider != null)
-			realizationItemProvider.dispose();
+		if (parameterSetItemProvider != null)
+			parameterSetItemProvider.dispose();
+		if (dataTypeItemProvider != null)
+			dataTypeItemProvider.dispose();
+		if (operationTemplateParameterItemProvider != null)
+			operationTemplateParameterItemProvider.dispose();
+		if (connectableElementTemplateParameterItemProvider != null)
+			connectableElementTemplateParameterItemProvider.dispose();
+		if (collaborationUseItemProvider != null)
+			collaborationUseItemProvider.dispose();
+		if (collaborationItemProvider != null)
+			collaborationItemProvider.dispose();
+		if (useCaseItemProvider != null)
+			useCaseItemProvider.dispose();
 		if (includeItemProvider != null)
 			includeItemProvider.dispose();
 		if (extendItemProvider != null)
 			extendItemProvider.dispose();
 		if (extensionPointItemProvider != null)
 			extensionPointItemProvider.dispose();
-		if (substitutionItemProvider != null)
-			substitutionItemProvider.dispose();
-		if (collaborationUseItemProvider != null)
-			collaborationUseItemProvider.dispose();
-		if (collaborationItemProvider != null)
-			collaborationItemProvider.dispose();
 		if (redefinableTemplateSignatureItemProvider != null)
 			redefinableTemplateSignatureItemProvider.dispose();
 		if (classifierTemplateParameterItemProvider != null)
@@ -4917,10 +4917,48 @@ public class UMLItemProviderAdapterFactory
 			opaqueBehaviorItemProvider.dispose();
 		if (functionBehaviorItemProvider != null)
 			functionBehaviorItemProvider.dispose();
-		if (actorItemProvider != null)
-			actorItemProvider.dispose();
+		if (opaqueActionItemProvider != null)
+			opaqueActionItemProvider.dispose();
+		if (actionItemProvider != null)
+			actionItemProvider.dispose();
+		if (structuredActivityNodeItemProvider != null)
+			structuredActivityNodeItemProvider.dispose();
+		if (activityItemProvider != null)
+			activityItemProvider.dispose();
+		if (variableItemProvider != null)
+			variableItemProvider.dispose();
+		if (activityEdgeItemProvider != null)
+			activityEdgeItemProvider.dispose();
+		if (activityPartitionItemProvider != null)
+			activityPartitionItemProvider.dispose();
+		if (interruptibleActivityRegionItemProvider != null)
+			interruptibleActivityRegionItemProvider.dispose();
+		if (exceptionHandlerItemProvider != null)
+			exceptionHandlerItemProvider.dispose();
+		if (outputPinItemProvider != null)
+			outputPinItemProvider.dispose();
+		if (pinItemProvider != null)
+			pinItemProvider.dispose();
+		if (inputPinItemProvider != null)
+			inputPinItemProvider.dispose();
+		if (valuePinItemProvider != null)
+			valuePinItemProvider.dispose();
+		if (sendSignalActionItemProvider != null)
+			sendSignalActionItemProvider.dispose();
+		if (callOperationActionItemProvider != null)
+			callOperationActionItemProvider.dispose();
+		if (callBehaviorActionItemProvider != null)
+			callBehaviorActionItemProvider.dispose();
+		if (sequenceNodeItemProvider != null)
+			sequenceNodeItemProvider.dispose();
 		if (usageItemProvider != null)
 			usageItemProvider.dispose();
+		if (controlFlowItemProvider != null)
+			controlFlowItemProvider.dispose();
+		if (initialNodeItemProvider != null)
+			initialNodeItemProvider.dispose();
+		if (activityParameterNodeItemProvider != null)
+			activityParameterNodeItemProvider.dispose();
 		if (messageItemProvider != null)
 			messageItemProvider.dispose();
 		if (interactionItemProvider != null)
@@ -4933,28 +4971,6 @@ public class UMLItemProviderAdapterFactory
 			interactionUseItemProvider.dispose();
 		if (gateItemProvider != null)
 			gateItemProvider.dispose();
-		if (actionItemProvider != null)
-			actionItemProvider.dispose();
-		if (activityEdgeItemProvider != null)
-			activityEdgeItemProvider.dispose();
-		if (activityItemProvider != null)
-			activityItemProvider.dispose();
-		if (activityPartitionItemProvider != null)
-			activityPartitionItemProvider.dispose();
-		if (structuredActivityNodeItemProvider != null)
-			structuredActivityNodeItemProvider.dispose();
-		if (variableItemProvider != null)
-			variableItemProvider.dispose();
-		if (interruptibleActivityRegionItemProvider != null)
-			interruptibleActivityRegionItemProvider.dispose();
-		if (exceptionHandlerItemProvider != null)
-			exceptionHandlerItemProvider.dispose();
-		if (outputPinItemProvider != null)
-			outputPinItemProvider.dispose();
-		if (pinItemProvider != null)
-			pinItemProvider.dispose();
-		if (inputPinItemProvider != null)
-			inputPinItemProvider.dispose();
 		if (generalOrderingItemProvider != null)
 			generalOrderingItemProvider.dispose();
 		if (interactionOperandItemProvider != null)
@@ -4985,12 +5001,8 @@ public class UMLItemProviderAdapterFactory
 			receiveOperationEventItemProvider.dispose();
 		if (receiveSignalEventItemProvider != null)
 			receiveSignalEventItemProvider.dispose();
-		if (combinedFragmentItemProvider != null)
-			combinedFragmentItemProvider.dispose();
-		if (continuationItemProvider != null)
-			continuationItemProvider.dispose();
-		if (considerIgnoreFragmentItemProvider != null)
-			considerIgnoreFragmentItemProvider.dispose();
+		if (actorItemProvider != null)
+			actorItemProvider.dispose();
 		if (callEventItemProvider != null)
 			callEventItemProvider.dispose();
 		if (changeEventItemProvider != null)
@@ -4999,6 +5011,36 @@ public class UMLItemProviderAdapterFactory
 			signalEventItemProvider.dispose();
 		if (anyReceiveEventItemProvider != null)
 			anyReceiveEventItemProvider.dispose();
+		if (forkNodeItemProvider != null)
+			forkNodeItemProvider.dispose();
+		if (flowFinalNodeItemProvider != null)
+			flowFinalNodeItemProvider.dispose();
+		if (centralBufferNodeItemProvider != null)
+			centralBufferNodeItemProvider.dispose();
+		if (mergeNodeItemProvider != null)
+			mergeNodeItemProvider.dispose();
+		if (decisionNodeItemProvider != null)
+			decisionNodeItemProvider.dispose();
+		if (activityFinalNodeItemProvider != null)
+			activityFinalNodeItemProvider.dispose();
+		if (componentRealizationItemProvider != null)
+			componentRealizationItemProvider.dispose();
+		if (componentItemProvider != null)
+			componentItemProvider.dispose();
+		if (nodeItemProvider != null)
+			nodeItemProvider.dispose();
+		if (deviceItemProvider != null)
+			deviceItemProvider.dispose();
+		if (executionEnvironmentItemProvider != null)
+			executionEnvironmentItemProvider.dispose();
+		if (communicationPathItemProvider != null)
+			communicationPathItemProvider.dispose();
+		if (combinedFragmentItemProvider != null)
+			combinedFragmentItemProvider.dispose();
+		if (continuationItemProvider != null)
+			continuationItemProvider.dispose();
+		if (considerIgnoreFragmentItemProvider != null)
+			considerIgnoreFragmentItemProvider.dispose();
 		if (createObjectActionItemProvider != null)
 			createObjectActionItemProvider.dispose();
 		if (destroyObjectActionItemProvider != null)
@@ -5057,20 +5099,10 @@ public class UMLItemProviderAdapterFactory
 			timeObservationItemProvider.dispose();
 		if (durationObservationItemProvider != null)
 			durationObservationItemProvider.dispose();
-		if (opaqueActionItemProvider != null)
-			opaqueActionItemProvider.dispose();
-		if (valuePinItemProvider != null)
-			valuePinItemProvider.dispose();
-		if (sendSignalActionItemProvider != null)
-			sendSignalActionItemProvider.dispose();
-		if (callOperationActionItemProvider != null)
-			callOperationActionItemProvider.dispose();
-		if (callBehaviorActionItemProvider != null)
-			callBehaviorActionItemProvider.dispose();
-		if (informationItemItemProvider != null)
-			informationItemItemProvider.dispose();
-		if (informationFlowItemProvider != null)
-			informationFlowItemProvider.dispose();
+		if (finalStateItemProvider != null)
+			finalStateItemProvider.dispose();
+		if (timeEventItemProvider != null)
+			timeEventItemProvider.dispose();
 		if (readVariableActionItemProvider != null)
 			readVariableActionItemProvider.dispose();
 		if (clearVariableActionItemProvider != null)
@@ -5083,6 +5115,10 @@ public class UMLItemProviderAdapterFactory
 			raiseExceptionActionItemProvider.dispose();
 		if (actionInputPinItemProvider != null)
 			actionInputPinItemProvider.dispose();
+		if (informationItemItemProvider != null)
+			informationItemItemProvider.dispose();
+		if (informationFlowItemProvider != null)
+			informationFlowItemProvider.dispose();
 		if (readExtentActionItemProvider != null)
 			readExtentActionItemProvider.dispose();
 		if (reclassifyObjectActionItemProvider != null)
@@ -5107,32 +5143,12 @@ public class UMLItemProviderAdapterFactory
 			unmarshallActionItemProvider.dispose();
 		if (reduceActionItemProvider != null)
 			reduceActionItemProvider.dispose();
-		if (controlFlowItemProvider != null)
-			controlFlowItemProvider.dispose();
-		if (initialNodeItemProvider != null)
-			initialNodeItemProvider.dispose();
-		if (activityParameterNodeItemProvider != null)
-			activityParameterNodeItemProvider.dispose();
-		if (forkNodeItemProvider != null)
-			forkNodeItemProvider.dispose();
-		if (flowFinalNodeItemProvider != null)
-			flowFinalNodeItemProvider.dispose();
-		if (centralBufferNodeItemProvider != null)
-			centralBufferNodeItemProvider.dispose();
-		if (mergeNodeItemProvider != null)
-			mergeNodeItemProvider.dispose();
-		if (decisionNodeItemProvider != null)
-			decisionNodeItemProvider.dispose();
-		if (activityFinalNodeItemProvider != null)
-			activityFinalNodeItemProvider.dispose();
 		if (joinNodeItemProvider != null)
 			joinNodeItemProvider.dispose();
 		if (dataStoreNodeItemProvider != null)
 			dataStoreNodeItemProvider.dispose();
 		if (objectFlowItemProvider != null)
 			objectFlowItemProvider.dispose();
-		if (sequenceNodeItemProvider != null)
-			sequenceNodeItemProvider.dispose();
 		if (conditionalNodeItemProvider != null)
 			conditionalNodeItemProvider.dispose();
 		if (clauseItemProvider != null)
@@ -5143,22 +5159,6 @@ public class UMLItemProviderAdapterFactory
 			expansionNodeItemProvider.dispose();
 		if (expansionRegionItemProvider != null)
 			expansionRegionItemProvider.dispose();
-		if (componentRealizationItemProvider != null)
-			componentRealizationItemProvider.dispose();
-		if (componentItemProvider != null)
-			componentItemProvider.dispose();
-		if (nodeItemProvider != null)
-			nodeItemProvider.dispose();
-		if (deviceItemProvider != null)
-			deviceItemProvider.dispose();
-		if (executionEnvironmentItemProvider != null)
-			executionEnvironmentItemProvider.dispose();
-		if (communicationPathItemProvider != null)
-			communicationPathItemProvider.dispose();
-		if (finalStateItemProvider != null)
-			finalStateItemProvider.dispose();
-		if (timeEventItemProvider != null)
-			timeEventItemProvider.dispose();
 		if (protocolTransitionItemProvider != null)
 			protocolTransitionItemProvider.dispose();
 		if (associationClassItemProvider != null)

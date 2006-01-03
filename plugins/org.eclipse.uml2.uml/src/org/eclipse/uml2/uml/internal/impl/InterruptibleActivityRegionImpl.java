@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.9 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -242,12 +242,12 @@ public class InterruptibleActivityRegionImpl
 				return getSubgroups();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
 				return getSuperGroup();
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
-				return getContainedNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				return getInActivity();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_EDGE :
 				return getContainedEdges();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
+				return getContainedNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				return getNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
@@ -333,12 +333,12 @@ public class InterruptibleActivityRegionImpl
 				return isSetSubgroups();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
-				return isSetContainedNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				return getInActivity() != null;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_EDGE :
 				return isSetContainedEdges();
+			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
+				return isSetContainedNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				EList node = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
 				return node != null && !node.isEmpty();

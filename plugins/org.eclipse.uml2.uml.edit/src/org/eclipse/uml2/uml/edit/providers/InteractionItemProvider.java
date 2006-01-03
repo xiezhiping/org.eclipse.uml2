@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.3 2005/12/21 20:13:24 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.4 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -416,7 +416,27 @@ public class InteractionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
+				.createOpaqueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
 				.createStructuredActivityNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
+				.createSendSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
+				.createCallOperationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
+				.createCallBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
+				.createSequenceNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
@@ -477,22 +497,6 @@ public class InteractionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
 				.createValueSpecificationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
-				.createOpaqueAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
-				.createSendSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
-				.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
-				.createCallBehaviorAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
@@ -561,10 +565,6 @@ public class InteractionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
 				.createReduceAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE
-				.createSequenceNode()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__ACTION, UMLFactory.eINSTANCE

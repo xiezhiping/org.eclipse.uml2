@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.6 2005/12/14 22:34:16 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.7 2006/01/03 18:02:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -32,11 +32,11 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#isDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#isExternal <em>Is External</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getEdges <em>Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getSubpartitions <em>Subpartition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getSuperPartition <em>Super Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getRepresents <em>Represents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getEdges <em>Edge</em>}</li>
  * </ul>
  * </p>
  *

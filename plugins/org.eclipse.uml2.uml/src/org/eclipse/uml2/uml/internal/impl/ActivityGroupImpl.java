@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.9 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,8 +51,8 @@ import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getInActivity <em>In Activity</em>}</li>
  * </ul>
  * </p>
@@ -322,12 +322,12 @@ public abstract class ActivityGroupImpl
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 				return getSuperGroup();
-			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
-				return getContainedNodes();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				return getInActivity();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return getContainedEdges();
+			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
+				return getContainedNodes();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -395,12 +395,12 @@ public abstract class ActivityGroupImpl
 				return isSetSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
-				return isSetContainedNodes();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				return getInActivity() != null;
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return isSetContainedEdges();
+			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
+				return isSetContainedNodes();
 		}
 		return eDynamicIsSet(featureID);
 	}

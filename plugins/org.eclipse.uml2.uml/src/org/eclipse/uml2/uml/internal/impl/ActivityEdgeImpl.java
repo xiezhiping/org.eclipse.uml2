@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.10 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,18 +58,18 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedEdges <em>Redefined Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInPartitions <em>In Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInterrupts <em>Interrupts</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  * </ul>
  * </p>
  *
@@ -719,19 +719,13 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_EDGE__ACTIVITY, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				ActivityNode source = (ActivityNode) eVirtualGet(UMLPackage.ACTIVITY_EDGE__SOURCE);
+				if (source != null)
+					msgs = ((InternalEObject) source).eInverseRemove(this,
+						UMLPackage.ACTIVITY_NODE__OUTGOING, ActivityNode.class,
+						msgs);
+				return basicSetSource((ActivityNode) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				ActivityNode target = (ActivityNode) eVirtualGet(UMLPackage.ACTIVITY_EDGE__TARGET);
 				if (target != null)
@@ -739,6 +733,9 @@ public class ActivityEdgeImpl
 						UMLPackage.ACTIVITY_NODE__INCOMING, ActivityNode.class,
 						msgs);
 				return basicSetTarget((ActivityNode) otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				InterruptibleActivityRegion interrupts = (InterruptibleActivityRegion) eVirtualGet(UMLPackage.ACTIVITY_EDGE__INTERRUPTS);
 				if (interrupts != null)
@@ -749,13 +746,16 @@ public class ActivityEdgeImpl
 							InterruptibleActivityRegion.class, msgs);
 				return basicSetInterrupts(
 					(InterruptibleActivityRegion) otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				ActivityNode source = (ActivityNode) eVirtualGet(UMLPackage.ACTIVITY_EDGE__SOURCE);
-				if (source != null)
-					msgs = ((InternalEObject) source).eInverseRemove(this,
-						UMLPackage.ACTIVITY_NODE__OUTGOING, ActivityNode.class,
-						msgs);
-				return basicSetSource((ActivityNode) otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.ACTIVITY_EDGE__ACTIVITY, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -779,25 +779,25 @@ public class ActivityEdgeImpl
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_EDGE__ACTIVITY, msgs);
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				return basicSetSource(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__TARGET :
+				return basicSetTarget(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return ((InternalEList) getInPartitions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
-			case UMLPackage.ACTIVITY_EDGE__TARGET :
-				return basicSetTarget(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return basicSetGuard(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return basicSetWeight(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				return basicSetInterrupts(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				return basicSetSource(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return eBasicSetContainer(null,
+					UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return eBasicSetContainer(null,
+					UMLPackage.ACTIVITY_EDGE__ACTIVITY, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -810,13 +810,13 @@ public class ActivityEdgeImpl
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.ACTIVITY__EDGE, Activity.class, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
 					StructuredActivityNode.class, msgs);
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__EDGE, Activity.class, msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -860,20 +860,18 @@ public class ActivityEdgeImpl
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return getActivity();
-			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				if (resolve)
+					return getSource();
+				return basicGetSource();
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				return getRedefinedEdges();
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return getGuard();
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
@@ -882,10 +880,12 @@ public class ActivityEdgeImpl
 				if (resolve)
 					return getInterrupts();
 				return basicGetInterrupts();
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				if (resolve)
-					return getSource();
-				return basicGetSource();
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return getInStructuredNode();
+			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return getActivity();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -921,15 +921,8 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				setActivity((Activity) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				setSource((ActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				setTarget((ActivityNode) newValue);
@@ -937,6 +930,10 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
 				getRedefinedEdges().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				setGuard((ValueSpecification) newValue);
@@ -947,8 +944,11 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) newValue);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				setSource((ActivityNode) newValue);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				setActivity((Activity) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -982,20 +982,17 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				setActivity((Activity) null);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) null);
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				setSource((ActivityNode) null);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				setTarget((ActivityNode) null);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
+				return;
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				setGuard((ValueSpecification) null);
@@ -1006,8 +1003,11 @@ public class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				setInterrupts((InterruptibleActivityRegion) null);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				setSource((ActivityNode) null);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) null);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				setActivity((Activity) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1051,28 +1051,28 @@ public class ActivityEdgeImpl
 				return isSetRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return getActivity() != null;
-			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+			case UMLPackage.ACTIVITY_EDGE__SOURCE :
+				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__SOURCE) != null;
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__TARGET) != null;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				EList redefinedEdge = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
 				return redefinedEdge != null && !redefinedEdge.isEmpty();
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_EDGE__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__GUARD) != null;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__WEIGHT) != null;
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__INTERRUPTS) != null;
-			case UMLPackage.ACTIVITY_EDGE__SOURCE :
-				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__SOURCE) != null;
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return getInStructuredNode() != null;
+			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
+				return getActivity() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

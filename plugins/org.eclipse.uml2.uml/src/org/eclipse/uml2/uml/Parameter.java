@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.6 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Parameter.java,v 1.7 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -35,11 +35,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getParameterSets <em>Parameter Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefaultValue <em>Default Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getParameterSets <em>Parameter Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isException <em>Is Exception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isStream <em>Is Stream</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getEffect <em>Effect</em>}</li>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.13 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.14 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -273,6 +273,8 @@ public class ExtensionEndImpl
 				return getTemplateBindings();
 			case UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE :
 				return getOwnedTemplateSignature();
+			case UMLPackage.EXTENSION_END__CLASS_ :
+				return getClass_();
 			case UMLPackage.EXTENSION_END__DATATYPE :
 				return getDatatype();
 			case UMLPackage.EXTENSION_END__IS_DERIVED :
@@ -291,8 +293,6 @@ public class ExtensionEndImpl
 				return isComposite()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.EXTENSION_END__CLASS_ :
-				return getClass_();
 			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.EXTENSION_END__OWNING_ASSOCIATION :
@@ -394,6 +394,8 @@ public class ExtensionEndImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE) != null;
+			case UMLPackage.EXTENSION_END__CLASS_ :
+				return getClass_() != null;
 			case UMLPackage.EXTENSION_END__DATATYPE :
 				return getDatatype() != null;
 			case UMLPackage.EXTENSION_END__IS_DERIVED :
@@ -407,8 +409,6 @@ public class ExtensionEndImpl
 					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
 			case UMLPackage.EXTENSION_END__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
-			case UMLPackage.EXTENSION_END__CLASS_ :
-				return getClass_() != null;
 			case UMLPackage.EXTENSION_END__REDEFINED_PROPERTY :
 				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.EXTENSION_END__REDEFINED_PROPERTY);
 				return redefinedProperty != null

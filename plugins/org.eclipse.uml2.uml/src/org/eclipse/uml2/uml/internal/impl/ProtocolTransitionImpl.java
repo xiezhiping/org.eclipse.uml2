@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.17 2005/12/23 00:50:38 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.18 2006/01/03 18:01:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,13 +32,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
-import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.ProtocolTransition;
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.Trigger;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -62,7 +61,7 @@ import org.eclipse.uml2.uml.internal.operations.ProtocolTransitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getReferreds <em>Referred</em>}</li>
@@ -99,21 +98,18 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT,
-					new int[]{UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT,
-						UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION,
-						UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT,
-						UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT,
-						UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER,
-						UMLPackage.PROTOCOL_TRANSITION__EFFECT,
-						UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION}));
+	public EList getOwnedRules() {
+		EList ownedRule = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE);
+		if (ownedRule == null) {
+			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE,
+				ownedRule = new SupersetEObjectContainmentWithInverseEList(
+					Constraint.class, this,
+					UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE, new int[]{
+						UMLPackage.PROTOCOL_TRANSITION__GUARD,
+						UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION},
+					UMLPackage.CONSTRAINT__CONTEXT));
 		}
-		return ownedElement;
+		return ownedRule;
 	}
 
 	/**
@@ -164,76 +160,21 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPostCondition(Constraint newPostCondition,
-			NotificationChain msgs) {
+	public void setPostCondition(Constraint newPostCondition) {
+		if (newPostCondition != null
+			&& !getOwnedRules().contains(newPostCondition)) {
+			getOwnedRules().add(newPostCondition);
+		}
+		Constraint postCondition = newPostCondition;
 		Object oldPostCondition = eVirtualSet(
-			UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION, newPostCondition);
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
+			UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION, postCondition);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION,
 				oldPostCondition == EVIRTUAL_NO_VALUE
 					? null
-					: oldPostCondition, newPostCondition);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
+					: oldPostCondition, postCondition));
 
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPostCondition(Constraint newPostCondition) {
-		Constraint postCondition = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION);
-		if (newPostCondition != postCondition) {
-			NotificationChain msgs = null;
-			if (postCondition != null)
-				msgs = ((InternalEObject) postCondition).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION, null,
-					msgs);
-			if (newPostCondition != null)
-				msgs = ((InternalEObject) newPostCondition).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION, null,
-					msgs);
-			msgs = basicSetPostCondition(newPostCondition, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION,
-				newPostCondition, newPostCondition));
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPostCondition(EClass eClass) {
-		Constraint newPostCondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
-		setPostCondition(newPostCondition);
-		return newPostCondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPostCondition() {
-		Constraint newPostCondition = UMLFactory.eINSTANCE.createConstraint();
-		setPostCondition(newPostCondition);
-		return newPostCondition;
 	}
 
 	protected static class ReferredEList
@@ -392,6 +333,50 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicAdd(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
+					msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return eBasicSetContainer(otherEnd,
+					UMLPackage.PROTOCOL_TRANSITION__CONTAINER, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				Vertex target = (Vertex) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__TARGET);
+				if (target != null)
+					msgs = ((InternalEObject) target).eInverseRemove(this,
+						UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
+				return basicSetTarget((Vertex) otherEnd, msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
+				Vertex source = (Vertex) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__SOURCE);
+				if (source != null)
+					msgs = ((InternalEObject) source).eInverseRemove(this,
+						UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
+				return basicSetSource((Vertex) otherEnd, msgs);
+		}
+		return eDynamicInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -427,8 +412,6 @@ public class ProtocolTransitionImpl
 					msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				return basicSetSource(null, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
-				return basicSetPostCondition(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -744,16 +727,6 @@ public class ProtocolTransitionImpl
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION) != null;
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION);
 	}
 
 } //ProtocolTransitionImpl

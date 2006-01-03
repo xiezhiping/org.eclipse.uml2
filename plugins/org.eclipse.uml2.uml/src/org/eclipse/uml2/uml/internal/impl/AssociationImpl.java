@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.12 2005/12/14 22:34:18 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.13 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -465,11 +465,11 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicAdd(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.ASSOCIATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_SIGNATURE);
 				if (ownedSignature != null)
@@ -533,18 +533,18 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__POWERTYPE_EXTENT :
 				return ((InternalEList) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
 				return ((InternalEList) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				return ((InternalEList) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ASSOCIATION__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ASSOCIATION__OWNED_END :
@@ -640,10 +640,6 @@ public class AssociationImpl
 				return getRedefinedClassifiers();
 			case UMLPackage.ASSOCIATION__GENERAL :
 				return getGenerals();
-			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
-				return getOwnedUseCases();
-			case UMLPackage.ASSOCIATION__USE_CASE :
-				return getUseCases();
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
 				return getSubstitutions();
 			case UMLPackage.ASSOCIATION__ATTRIBUTE :
@@ -652,6 +648,10 @@ public class AssociationImpl
 				return getRepresentation();
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				return getCollaborationUses();
+			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
+				return getOwnedUseCases();
+			case UMLPackage.ASSOCIATION__USE_CASE :
+				return getUseCases();
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				return getOwnedSignature();
 			case UMLPackage.ASSOCIATION__RELATED_ELEMENT :
@@ -750,14 +750,6 @@ public class AssociationImpl
 				getGenerals().clear();
 				getGenerals().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ASSOCIATION__USE_CASE :
-				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
-				return;
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
 				getSubstitutions().clear();
 				getSubstitutions().addAll((Collection) newValue);
@@ -768,6 +760,14 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
 				getCollaborationUses().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				getOwnedUseCases().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ASSOCIATION__USE_CASE :
+				getUseCases().clear();
+				getUseCases().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) newValue);
@@ -858,12 +858,6 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__GENERAL :
 				getGenerals().clear();
 				return;
-			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
-				getOwnedUseCases().clear();
-				return;
-			case UMLPackage.ASSOCIATION__USE_CASE :
-				getUseCases().clear();
-				return;
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
 				getSubstitutions().clear();
 				return;
@@ -872,6 +866,12 @@ public class AssociationImpl
 				return;
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				getCollaborationUses().clear();
+				return;
+			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
+				getOwnedUseCases().clear();
+				return;
+			case UMLPackage.ASSOCIATION__USE_CASE :
+				getUseCases().clear();
 				return;
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				setOwnedSignature((RedefinableTemplateSignature) null);
@@ -974,12 +974,6 @@ public class AssociationImpl
 					&& !redefinedClassifier.isEmpty();
 			case UMLPackage.ASSOCIATION__GENERAL :
 				return !getGenerals().isEmpty();
-			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
-			case UMLPackage.ASSOCIATION__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ASSOCIATION__SUBSTITUTION :
 				EList substitution = (EList) eVirtualGet(UMLPackage.ASSOCIATION__SUBSTITUTION);
 				return substitution != null && !substitution.isEmpty();
@@ -990,6 +984,12 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__COLLABORATION_USE :
 				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ASSOCIATION__COLLABORATION_USE);
 				return collaborationUse != null && !collaborationUse.isEmpty();
+			case UMLPackage.ASSOCIATION__OWNED_USE_CASE :
+				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_USE_CASE);
+				return ownedUseCase != null && !ownedUseCase.isEmpty();
+			case UMLPackage.ASSOCIATION__USE_CASE :
+				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__USE_CASE);
+				return useCase != null && !useCase.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
 				return eVirtualGet(UMLPackage.ASSOCIATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.ASSOCIATION__RELATED_ELEMENT :

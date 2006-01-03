@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.12 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.13 2006/01/03 18:01:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -397,6 +397,9 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
 				return ((InternalEList) getPackageMerges()).basicAdd(otherEnd,
 					msgs);
+			case UMLPackage.PROFILE__PROFILE_APPLICATION :
+				return ((InternalEList) getProfileApplications()).basicAdd(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}

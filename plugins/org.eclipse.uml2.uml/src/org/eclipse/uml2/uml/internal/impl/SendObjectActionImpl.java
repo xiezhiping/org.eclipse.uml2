@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.10 2006/01/03 18:01:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -285,21 +285,21 @@ public class SendObjectActionImpl
 					otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				return eBasicSetContainer(null,
 					UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__ACTIVITY :
 				return eBasicSetContainer(null,
 					UMLPackage.SEND_OBJECT_ACTION__ACTIVITY, msgs);
+			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				return ((InternalEList) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
@@ -362,20 +362,20 @@ public class SendObjectActionImpl
 				return getRedefinedElements();
 			case UMLPackage.SEND_OBJECT_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.SEND_OBJECT_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
-				return getInPartitions();
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode();
 			case UMLPackage.SEND_OBJECT_ACTION__ACTIVITY :
 				return getActivity();
+			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
 				return getIncomings();
+			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
+				return getInPartitions();
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				return getInInterruptibleRegions();
+			case UMLPackage.SEND_OBJECT_ACTION__IN_GROUP :
+				return getInGroups();
 			case UMLPackage.SEND_OBJECT_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.SEND_OBJECT_ACTION__HANDLER :
@@ -435,23 +435,23 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
-				return;
-			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
-				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__ACTIVITY :
 				setActivity((Activity) newValue);
 				return;
+			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll((Collection) newValue);
+				return;
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll((Collection) newValue);
+				return;
+			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -518,20 +518,20 @@ public class SendObjectActionImpl
 			case UMLPackage.SEND_OBJECT_ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__ACTIVITY :
 				setActivity((Activity) null);
 				return;
+			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
+				getOutgoings().clear();
+				return;
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
@@ -602,25 +602,25 @@ public class SendObjectActionImpl
 				return isSetRedefinedElements();
 			case UMLPackage.SEND_OBJECT_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
-			case UMLPackage.SEND_OBJECT_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.SEND_OBJECT_ACTION__IN_STRUCTURED_NODE :
 				return getInStructuredNode() != null;
 			case UMLPackage.SEND_OBJECT_ACTION__ACTIVITY :
 				return getActivity() != null;
+			case UMLPackage.SEND_OBJECT_ACTION__OUTGOING :
+				EList outgoing = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__OUTGOING);
+				return outgoing != null && !outgoing.isEmpty();
 			case UMLPackage.SEND_OBJECT_ACTION__INCOMING :
 				EList incoming = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__INCOMING);
 				return incoming != null && !incoming.isEmpty();
+			case UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION :
+				EList inPartition = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__IN_PARTITION);
+				return inPartition != null && !inPartition.isEmpty();
 			case UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION);
 				return inInterruptibleRegion != null
 					&& !inInterruptibleRegion.isEmpty();
+			case UMLPackage.SEND_OBJECT_ACTION__IN_GROUP :
+				return isSetInGroups();
 			case UMLPackage.SEND_OBJECT_ACTION__REDEFINED_NODE :
 				EList redefinedNode = (EList) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__REDEFINED_NODE);
 				return redefinedNode != null && !redefinedNode.isEmpty();

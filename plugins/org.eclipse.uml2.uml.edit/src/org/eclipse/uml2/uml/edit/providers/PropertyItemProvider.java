@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.3 2005/12/14 22:34:56 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.4 2006/01/03 18:02:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,13 +87,13 @@ public class PropertyItemProvider
 			addDeployedElementPropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
+			addClass_PropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
 			addIsDerivedPropertyDescriptor(object);
 			addIsDerivedUnionPropertyDescriptor(object);
 			addDefaultPropertyDescriptor(object);
 			addAggregationPropertyDescriptor(object);
 			addIsCompositePropertyDescriptor(object);
-			addClass_PropertyDescriptor(object);
 			addRedefinedPropertyPropertyDescriptor(object);
 			addOwningAssociationPropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
