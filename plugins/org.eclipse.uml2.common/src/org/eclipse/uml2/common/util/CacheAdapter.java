@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.6 2005/12/23 15:39:12 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.7 2006/01/03 16:34:41 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -99,9 +99,7 @@ public class CacheAdapter
 
 	public void setTarget(Notifier target) {
 
-		if (adapting) {
-			this.target = target;
-		} else {
+		if (!adapting) {
 			super.setTarget(target);
 		}
 	}
