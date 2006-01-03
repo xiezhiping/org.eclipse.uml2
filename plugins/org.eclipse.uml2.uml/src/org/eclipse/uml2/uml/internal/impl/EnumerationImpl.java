@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.12 2006/01/03 18:01:57 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.13 2006/01/03 19:50:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
