@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.4 2005/12/23 15:39:28 khussey Exp $
+ * $Id: UMLUtil.java,v 1.5 2006/01/03 19:45:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3132,6 +3132,25 @@ public class UMLUtil
 			}
 		}
 
+		protected boolean isCompositeSubset(Property property) {
+
+			for (Iterator subsettedProperties = property
+				.getSubsettedProperties().iterator(); subsettedProperties
+				.hasNext();) {
+
+				Property subsettedProperty = (Property) subsettedProperties
+					.next();
+
+				if (subsettedProperty.isComposite()
+					|| isCompositeSubset(subsettedProperty)) {
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
 		protected void processSubsettingProperties(Map options,
 				DiagnosticChain diagnostics, Map context) {
 
@@ -3190,7 +3209,9 @@ public class UMLUtil
 									EReference subsettedEReference = (EReference) subsettedEStructuralFeature;
 									EReference eReference = (EReference) eModelElement;
 
-									if (subsettedEReference.isContainment()) {
+									if (subsettedEReference.isContainment()
+										|| isCompositeSubset(subsettedProperty)) {
+
 										eReference.setContainment(false);
 									}
 
