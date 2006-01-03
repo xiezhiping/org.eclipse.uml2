@@ -15610,7 +15610,7 @@
             <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_tnj_hRTaEdqZu-3Jy1-uYg" canonical="false"/>
           </children>
           <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_tnj_eBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="Text" lineColor="0" showStereotype="None"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tnj_eRTaEdqZu-3Jy1-uYg" x="1490" y="4165" width="3225" height="1422"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tnj_eRTaEdqZu-3Jy1-uYg" x="-636" y="4134" width="3225" height="1422"/>
         </children>
         <children xmi:id="_tnj_hhTaEdqZu-3Jy1-uYg" sourceEdges="_tntJUBTaEdqZu-3Jy1-uYg _toJ1ZxTaEdqZu-3Jy1-uYg" targetEdges="_tnj_lRTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D3CBDA5F701B4">
           <children xmi:id="_tnj_iRTaEdqZu-3Jy1-uYg" type="ImageCompartment" element="_3ADC7B74022D3CBDA5F701B4">
@@ -15757,7 +15757,7 @@
             <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_tomhcRTaEdqZu-3Jy1-uYg" canonical="false"/>
           </children>
           <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_tomhZBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" italic="true" showListStereotype="Text" showListSignature="true" lineColor="0" showStereotype="None"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tomhZRTaEdqZu-3Jy1-uYg" x="1911" y="1693"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tomhZRTaEdqZu-3Jy1-uYg" x="-539" y="1590"/>
         </children>
         <children xmi:id="_pW3i8BjPEdqPB8O80Bm3OQ" type="Text">
           <children xmi:id="_pW3i8xjPEdqPB8O80Bm3OQ" type="DiagramName"/>
@@ -15909,6 +15909,12 @@
           <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ioGywXGhEdqziYxiZo0YtA" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ioGywnGhEdqziYxiZo0YtA" x="17920" y="10678"/>
         </children>
+        <children xmi:id="_eoTUcHxZEdq7cMP_l1l5Gg" type="Text">
+          <children xmi:id="_eoTUcXxZEdq7cMP_l1l5Gg" type="DiagramName"/>
+          <children xmi:id="_eoTUcnxZEdq7cMP_l1l5Gg" type="Description"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_eoTUc3xZEdq7cMP_l1l5Gg" fontHeight="10" description="{subsets owner,&#xD;&#xA;subsets source}" fillColor="13434879" lineColor="3342489"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_eoTUdHxZEdq7cMP_l1l5Gg" x="3498" y="5406"/>
+        </children>
         <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_rutndhTaEdqZu-3Jy1-uYg"/>
         <edges xmi:id="_tnaOnBTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D3CBDA7FA0395" source="_tnaOfhTaEdqZu-3Jy1-uYg" target="_tnaOjRTaEdqZu-3Jy1-uYg">
           <children xmi:id="_tnaOnxTaEdqZu-3Jy1-uYg" visible="false" type="NameLabel" element="_3ADC7B74022D3CBDA7FA0395">
@@ -16016,9 +16022,9 @@
             <children xmi:id="_tntJgBTaEdqZu-3Jy1-uYg" type="ToMultiplicity" element="_3ADC7B74022D3CA1877301D1"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_tntJfxTaEdqZu-3Jy1-uYg" x="-120" y="326"/>
           </children>
-          <children xmi:id="_tntJgRTaEdqZu-3Jy1-uYg" visible="false" type="ToRoleLabel" element="_3ADC7B74022D3CA1877301D1">
+          <children xmi:id="_tntJgRTaEdqZu-3Jy1-uYg" type="ToRoleLabel" element="_3ADC7B74022D3CA1877301D1">
             <children xmi:id="_tntJgxTaEdqZu-3Jy1-uYg" type="ToRole" element="_3ADC7B74022D3CA1877301D1"/>
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_tntJghTaEdqZu-3Jy1-uYg" x="-922" y="364"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_tntJghTaEdqZu-3Jy1-uYg" x="1465" y="485"/>
           </children>
           <children xmi:id="_tntJhBTaEdqZu-3Jy1-uYg" type="FromMultiplicityLabel" element="_3ADC7B74022D3CA1877301CF">
             <children xmi:id="_tntJhhTaEdqZu-3Jy1-uYg" type="FromMultiplicity" element="_3ADC7B74022D3CA1877301CF"/>
@@ -16488,6 +16494,13 @@
         </ownedComment>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_l1JQAF0oEdq3-fC14hmVtA"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_3ADC7B74022D3CA1877301D1" name="applyingPackage" type="_3ADC7B74022D3CA18745029B" subsettedProperty="_3ADC7B74022D3DFCAC7900D9 _3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3CA187710277">
+        <eAnnotations xmi:id="_aGLNEHxZEdq7cMP_l1l5Gg" source="appliedStereotypes">
+          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_aGLNEXxZEdq7cMP_l1l5Gg" isTransient="true" isResolveProxies="false"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruQ7hhTaEdqZu-3Jy1-uYg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruQ7hRTaEdqZu-3Jy1-uYg" value="1"/>
+      </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CBDA5E903C7" name="Extension">
       <ownedComment xmi:id="_ruHKfhTaEdqZu-3Jy1-uYg" body="Extension is a kind of Association. One end of the Extension is an ordinary Property and the other end is an ExtensionEnd. The former ties the Extension to a Class, while the latter ties the Extension to a Stereotype that extends the Class." annotatedElement="_3ADC7B74022D3CBDA5E903C7">
@@ -16689,12 +16702,8 @@
         </eAnnotations>
       </ownedComment>
     </ownedMember>
-    <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CA187710277" name="A_profileApplication_package" memberEnd="_3ADC7B74022D3CA1877301CF _3ADC7B74022D3CA1877301D1">
+    <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CA187710277" name="A_profileApplication_applyingPackage" memberEnd="_3ADC7B74022D3CA1877301CF _3ADC7B74022D3CA1877301D1">
       <generalization xmi:id="_Dg0jIWgIEdqYUPcXYU0YUA" general="_3ADC7B74022D3DFCA805021A"/>
-      <ownedEnd xmi:id="_3ADC7B74022D3CA1877301D1" type="_3ADC7B74022D3CA18745029B" association="_3ADC7B74022D3CA187710277">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruQ7hhTaEdqZu-3Jy1-uYg" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruQ7hRTaEdqZu-3Jy1-uYg" value="1"/>
-      </ownedEnd>
     </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CB24B21012C" name="A_ownedStereotype_profile" memberEnd="_3ADC7B74022D3CB24B21030C _3ADC7B74022D3CB24B210316">
       <generalization xmi:id="_fXAN0EoiEdq2-6lg1JCB1A" general="_3ADC7B74022D3DE6E0F402CA"/>
