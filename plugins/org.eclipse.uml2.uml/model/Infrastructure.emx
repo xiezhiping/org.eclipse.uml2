@@ -14356,14 +14356,6 @@
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="__NpH0TdhEdqq1tCaRkgBQQ" body="language->notEmpty() implies (body->size() = language->size())" language="OCL"/>
         </ownedRule>
-        <ownedRule xmi:id="_ih2cUDdiEdqq1tCaRkgBQQ" name="one_body_default_language" constrainedElement="_3ADC7B74022D3DE6D62D0024">
-          <ownedComment xmi:id="_z313wDdiEdqq1tCaRkgBQQ" body="If there is only one body then the size of the language is exactly 0 (corresponding to the default language)." annotatedElement="_ih2cUDdiEdqq1tCaRkgBQQ">
-            <eAnnotations xmi:id="_z3_BsDdiEdqq1tCaRkgBQQ" source="appliedStereotypes">
-              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_z3_BsTdiEdqq1tCaRkgBQQ"/>
-            </eAnnotations>
-          </ownedComment>
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="_ih2cUTdiEdqq1tCaRkgBQQ" body="language->isEmpty() implies (body->size() &lt;= 1)" language="OCL"/>
-        </ownedRule>
         <generalization xmi:id="_3ADC7B74022D3DE6D7A30004" general="_3ADC7B74022D3DE6C7F30294"/>
         <ownedAttribute xmi:id="_3ADC7B74022D41FC52E503B5" name="body" type="_3ADC7B74022D3CA010B103C3" isOrdered="true" association="_3ADC7B74022D41FC52E500D0" aggregation="composite">
           <eAnnotations xmi:id="_yANmICkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
