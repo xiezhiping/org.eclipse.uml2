@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.9 2006/01/03 19:51:58 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.10 2006/01/04 16:15:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -109,25 +109,26 @@ public class UMLItemProviderAdapterFactory
 
 					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
 						.next();
+					boolean isBaseReference = eStructuralFeature.getName()
+						.startsWith(Extension.METACLASS_ROLE_PREFIX);
+					String[] filterFlags = isBaseReference
+						|| (eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature)
+							.isContainment())
+						? new String[]{"org.eclipse.ui.views.properties.expert"} //$NON-NLS-1$
+						: null;
 
-					if (!eStructuralFeature.getName().startsWith(
-						Extension.METACLASS_ROLE_PREFIX)
-						&& (!(eStructuralFeature instanceof EReference) || !((EReference) eStructuralFeature)
-							.isContainment())) {
-
-						itemPropertyDescriptors.add(new ItemPropertyDescriptor(
-							((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-							getFeatureText(eStructuralFeature),
-							getResourceLocator().getString(
-								"_UI_Property_description", //$NON-NLS-1$
-								new Object[]{
-									getFeatureText(eStructuralFeature),
-									eStructuralFeature.getEType().getName()}),
-							eStructuralFeature, eStructuralFeature
-								.isChangeable(),
-							ItemPropertyDescriptor.GENERIC_VALUE_IMAGE));
-					}
+					itemPropertyDescriptors.add(new UMLItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+							.getRootAdapterFactory(), null,
+						getFeatureText(eStructuralFeature),
+						getResourceLocator().getString(
+							"_UI_Property_description", //$NON-NLS-1$
+							new Object[]{getFeatureText(eStructuralFeature),
+								eStructuralFeature.getEType().getName()}),
+						eStructuralFeature, !isBaseReference
+							&& eStructuralFeature.isChangeable(),
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+						getTypeText(object), filterFlags));
 				}
 
 				return itemPropertyDescriptors;
@@ -137,6 +138,7 @@ public class UMLItemProviderAdapterFactory
 
 				if (object instanceof EObject
 					&& UMLUtil.getStereotype((EObject) object) != null) {
+
 					return super.getText(object)
 						+ " -> " //$NON-NLS-1$
 						+ UMLUtil.getQualifiedText(UMLUtil
@@ -149,7 +151,8 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Comment} instances.
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.uml2.uml.Comment} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

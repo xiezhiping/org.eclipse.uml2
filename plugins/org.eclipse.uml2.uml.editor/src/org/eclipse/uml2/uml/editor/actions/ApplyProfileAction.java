@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.2 2006/01/04 16:15:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -21,6 +21,7 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -131,6 +132,10 @@ public class ApplyProfileAction
 							}
 						}
 					}, label));
+
+				if (workbenchPart instanceof IViewerProvider) {
+					((IViewerProvider) workbenchPart).getViewer().refresh();
+				}
 			}
 		}
 	}
