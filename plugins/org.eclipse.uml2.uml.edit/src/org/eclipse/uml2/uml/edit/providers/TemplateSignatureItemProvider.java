@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureItemProvider.java,v 1.4 2006/01/03 19:51:58 khussey Exp $
+ * $Id: TemplateSignatureItemProvider.java,v 1.5 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -175,10 +175,11 @@ public class TemplateSignatureItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_TemplateSignature_type"); //$NON-NLS-1$
+		return appendType(appendKeywords(new StringBuffer(), object),
+			"_UI_TemplateSignature_type").toString(); //$NON-NLS-1$
 	}
 
 	/**

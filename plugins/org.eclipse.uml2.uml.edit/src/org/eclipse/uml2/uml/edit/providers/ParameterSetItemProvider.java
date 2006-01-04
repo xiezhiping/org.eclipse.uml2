@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -28,6 +29,8 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -140,13 +143,38 @@ public class ParameterSetItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((ParameterSet) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_ParameterSet_type") : //$NON-NLS-1$
-			getString("_UI_ParameterSet_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_ParameterSet_type"); //$NON-NLS-1$
+
+		ParameterSet parameterSet = (ParameterSet) object;
+		String label = parameterSet.getLabel(shouldTranslate());
+
+		if (!UML2Util.isEmpty(label)) {
+			appendString(text, label);
+		} else {
+
+			for (Iterator p = parameterSet.getParameters().iterator(); p
+				.hasNext();) {
+
+				Parameter parameter = (Parameter) p.next();
+				String parameterLabel = parameter.getLabel(shouldTranslate());
+
+				if (!UML2Util.isEmpty(parameterLabel)) {
+					appendString(text, parameterLabel);
+				} else {
+					appendType(text, parameter);
+				}
+
+				if (p.hasNext()) {
+					text.append(',');
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

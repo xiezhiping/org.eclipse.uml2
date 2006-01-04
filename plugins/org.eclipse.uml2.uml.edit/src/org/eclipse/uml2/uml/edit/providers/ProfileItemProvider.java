@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -39,7 +39,6 @@ import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
-import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -153,13 +152,12 @@ public class ProfileItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Profile) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_Profile_type") : //$NON-NLS-1$
-			getString("_UI_Profile_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Profile_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

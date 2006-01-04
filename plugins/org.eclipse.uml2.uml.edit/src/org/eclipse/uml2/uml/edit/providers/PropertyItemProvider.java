@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.5 2006/01/03 19:51:58 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.6 2006/01/04 16:16:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -42,8 +42,10 @@ import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -589,13 +591,32 @@ public class PropertyItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Property) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_Property_type") : //$NON-NLS-1$
-			getString("_UI_Property_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Property_type"); //$NON-NLS-1$
+
+		Property property = (Property) object;
+		String label = property.getLabel(shouldTranslate());
+
+		if (!UML2Util.isEmpty(label)) {
+			appendString(text, label);
+		} else if (property.getAssociation() != null) {
+			Type type = property.getType();
+
+			if (type != null) {
+				String typeName = type.getName();
+
+				if (!UML2Util.isEmpty(typeName)) {
+					appendString(text, Character
+						.toLowerCase(typeName.charAt(0))
+						+ typeName.substring(1));
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -104,13 +105,20 @@ public class LiteralUnlimitedNaturalItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((LiteralUnlimitedNatural) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_LiteralUnlimitedNatural_type") : //$NON-NLS-1$
-			getString("_UI_LiteralUnlimitedNatural_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_LiteralUnlimitedNatural_type"); //$NON-NLS-1$
+
+		LiteralUnlimitedNatural literalUnlimitedNatural = (LiteralUnlimitedNatural) object;
+		String label = literalUnlimitedNatural.getLabel(shouldTranslate());
+
+		appendString(text, !UML2Util.isEmpty(label)
+			? label
+			: literalUnlimitedNatural.stringValue());
+
+		return text.toString();
 	}
 
 	/**

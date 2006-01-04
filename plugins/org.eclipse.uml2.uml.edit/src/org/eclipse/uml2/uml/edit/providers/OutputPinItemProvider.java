@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPinItemProvider.java,v 1.1 2005/12/07 14:20:25 khussey Exp $
+ * $Id: OutputPinItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -80,13 +79,12 @@ public class OutputPinItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((OutputPin) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_OutputPin_type") : //$NON-NLS-1$
-			getString("_UI_OutputPin_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_OutputPin_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

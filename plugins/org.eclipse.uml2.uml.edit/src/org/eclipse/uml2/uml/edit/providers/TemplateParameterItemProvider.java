@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.5 2006/01/03 19:51:58 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.6 2006/01/04 16:16:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -229,10 +229,12 @@ public class TemplateParameterItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return getString("_UI_TemplateParameter_type"); //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_TemplateParameter_type"), ((TemplateParameter) object).getParameteredElement()).toString(); //$NON-NLS-1$
 	}
 
 	/**

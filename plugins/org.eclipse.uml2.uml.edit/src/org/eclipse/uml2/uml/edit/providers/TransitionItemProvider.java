@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.4 2006/01/03 19:51:58 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.5 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -351,13 +351,12 @@ public class TransitionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Transition) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_Transition_type") : //$NON-NLS-1$
-			getString("_UI_Transition_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Transition_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

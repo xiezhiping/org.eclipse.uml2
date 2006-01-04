@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.2 2005/12/12 16:59:38 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -122,11 +122,12 @@ public class ProfileApplicationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		ProfileApplication profileApplication = (ProfileApplication) object;
-		return getString("_UI_ProfileApplication_type") + " " + profileApplication.isStrict(); //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_ProfileApplication_type"), ((ProfileApplication) object).getAppliedProfile()).toString(); //$NON-NLS-1$
 	}
 
 	/**

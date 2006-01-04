@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.3 2006/01/04 16:16:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -40,8 +41,11 @@ import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -235,13 +239,57 @@ public class AssociationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Association) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_Association_type") : //$NON-NLS-1$
-			getString("_UI_Association_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_Association_type"); //$NON-NLS-1$
+
+		Association association = (Association) object;
+		String label = association.getLabel(shouldTranslate());
+
+		if (!UML2Util.isEmpty(label)) {
+			appendString(text, label);
+		} else {
+			List memberEnds = association.getMemberEnds();
+
+			if (!memberEnds.isEmpty()) {
+				appendString(text, "A"); //$NON-NLS-1$
+
+				for (Iterator me = memberEnds.iterator(); me.hasNext();) {
+					Property memberEnd = (Property) me.next();
+					String memberEndName = memberEnd.getName();
+
+					text.append('_');
+
+					if (!UML2Util.isEmpty(memberEndName)) {
+						text.append(memberEndName);
+					} else {
+						Type type = memberEnd.getType();
+
+						if (type != null) {
+							String typeName = type.getName();
+
+							if (!UML2Util.isEmpty(typeName)) {
+								memberEndName = Character.toLowerCase(typeName
+									.charAt(0))
+									+ typeName.substring(1);
+							}
+						}
+
+						if (!UML2Util.isEmpty(memberEndName)) {
+							text.append(memberEndName);
+						} else {
+							text.append('<');
+							text.append(getTypeText(memberEnd));
+							text.append('>');
+						}
+					}
+				}
+			}
+		}
+
+		return text.toString();
 	}
 
 	/**

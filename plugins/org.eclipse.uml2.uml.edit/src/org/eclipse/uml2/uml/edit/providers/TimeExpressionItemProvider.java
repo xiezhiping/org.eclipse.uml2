@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionItemProvider.java,v 1.2 2005/12/21 20:13:23 khussey Exp $
+ * $Id: TimeExpressionItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -120,13 +121,20 @@ public class TimeExpressionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((TimeExpression) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_TimeExpression_type") : //$NON-NLS-1$
-			getString("_UI_TimeExpression_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_TimeExpression_type"); //$NON-NLS-1$
+
+		TimeExpression timeExpression = (TimeExpression) object;
+		String label = timeExpression.getLabel(shouldTranslate());
+
+		appendString(text, !UML2Util.isEmpty(label)
+			? label
+			: timeExpression.stringValue());
+
+		return text.toString();
 	}
 
 	/**

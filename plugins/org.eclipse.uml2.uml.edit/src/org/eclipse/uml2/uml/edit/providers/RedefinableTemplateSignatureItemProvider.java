@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.4 2006/01/03 19:51:58 khussey Exp $
+ * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.5 2006/01/04 16:16:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -241,13 +241,12 @@ public class RedefinableTemplateSignatureItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((RedefinableTemplateSignature) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_RedefinableTemplateSignature_type") : //$NON-NLS-1$
-			getString("_UI_RedefinableTemplateSignature_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_RedefinableTemplateSignature_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

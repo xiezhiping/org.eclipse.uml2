@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: ValueSpecificationActionItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -161,13 +161,12 @@ public class ValueSpecificationActionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((ValueSpecificationAction) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_ValueSpecificationAction_type") : //$NON-NLS-1$
-			getString("_UI_ValueSpecificationAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_ValueSpecificationAction_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

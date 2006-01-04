@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImageItemProvider.java,v 1.4 2006/01/03 19:59:27 khussey Exp $
+ * $Id: ImageItemProvider.java,v 1.5 2006/01/04 16:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -144,13 +144,11 @@ public class ImageItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Image) object).getFormat();
-		return label == null || label.length() == 0
-			? getString("_UI_Image_type") : //$NON-NLS-1$
-			getString("_UI_Image_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendType(appendKeywords(new StringBuffer(), object),
+			"_UI_Image_type").toString(); //$NON-NLS-1$
 	}
 
 	/**

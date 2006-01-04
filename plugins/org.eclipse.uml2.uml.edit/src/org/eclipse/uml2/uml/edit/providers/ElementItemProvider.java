@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,23 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.3 2005/12/23 06:45:31 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.4 2006/01/04 16:16:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.MissingResourceException;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -39,10 +37,12 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptorDecorator;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
@@ -85,7 +85,7 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	public List getPropertyDescriptorsGen(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -96,6 +96,17 @@ public class ElementItemProvider
 		return itemPropertyDescriptors;
 	}
 
+	public List getPropertyDescriptors(Object object) {
+
+		if (itemPropertyDescriptors == null) {
+			getPropertyDescriptorsGen(object);
+
+			addStereotypeApplicationPropertyDescriptors(object);
+		}
+
+		return itemPropertyDescriptors;
+	}
+	
 	/**
 	 * This adds a property descriptor for the Owned Element feature.
 	 * <!-- begin-user-doc -->
@@ -274,6 +285,32 @@ public class ElementItemProvider
 		return UMLEditPlugin.INSTANCE;
 	}
 
+	protected void addStereotypeApplicationPropertyDescriptors(Object object) {
+
+		for (Iterator stereotypeApplications = ((Element) object)
+			.getStereotypeApplications().iterator(); stereotypeApplications
+			.hasNext();) {
+
+			final Object stereotypeApplication = stereotypeApplications.next();
+			IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
+				.adapt(stereotypeApplication, IItemPropertySource.class);
+
+			if (itemPropertySource != null) {
+
+				for (Iterator propertyDescriptors = itemPropertySource
+					.getPropertyDescriptors(stereotypeApplication).iterator(); propertyDescriptors
+					.hasNext();) {
+
+					itemPropertyDescriptors
+						.add(new ItemPropertyDescriptorDecorator(
+							stereotypeApplication,
+							(IItemPropertyDescriptor) propertyDescriptors
+								.next()));
+				}
+			}
+		}
+	}
+
 	protected boolean shouldTranslate() {
 		return UMLEditPlugin.INSTANCE.shouldTranslate();
 	}
@@ -363,7 +400,7 @@ public class ElementItemProvider
 
 	protected StringBuffer appendString(StringBuffer text, String string) {
 
-		if (string.length() > 0) {
+		if (!UML2Util.isEmpty(string)) {
 
 			if (text.length() > 0) {
 				text.append(' ');
@@ -375,6 +412,21 @@ public class ElementItemProvider
 		return text;
 	}
 
+	protected String getTypeText(ResourceLocator resourceLocator, EClass eClass) {
+
+		if (resourceLocator != null) {
+
+			String typeKey = eClass.getName();
+			try {
+				return resourceLocator.getString("_UI_" + typeKey + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
+			} catch (MissingResourceException mre) {
+				return typeKey;
+			}
+		}
+
+		return getString("_UI_Unknown_type"); //$NON-NLS-1$
+	}
+
 	protected ItemPropertyDescriptor createItemPropertyDescriptor(
 			AdapterFactory adapterFactory, ResourceLocator resourceLocator,
 			String displayName, String description, EStructuralFeature feature,
@@ -382,87 +434,9 @@ public class ElementItemProvider
 			String[] filterFlags) {
 		return new UMLItemPropertyDescriptor(adapterFactory, resourceLocator,
 			displayName, description, feature, isSettable, staticImage,
-			category, filterFlags);
-	}
-
-	protected static class UMLItemPropertyDescriptor
-			extends ItemPropertyDescriptor
-			implements IItemQualifiedTextProvider {
-
-		protected class UMLItemDelegator
-				extends ItemDelegator
-				implements IItemQualifiedTextProvider {
-
-			protected UMLItemDelegator(AdapterFactory adapterFactory,
-					ResourceLocator resourceLocator) {
-				super(adapterFactory, resourceLocator);
-			}
-
-			public String getQualifiedText(Object object) {
-
-				if (object instanceof EList) {
-					StringBuffer text = new StringBuffer();
-
-					for (Iterator i = ((List) object).iterator(); i.hasNext();) {
-						Object child = i.next();
-
-						if (text.length() > 0) {
-							text.append(", "); //$NON-NLS-1$
-						}
-
-						text.append(getQualifiedText(child));
-					}
-
-					return text.toString();
-				} else {
-					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
-						.adapt(object, IItemQualifiedTextProvider.class);
-
-					return itemQualifiedTextProvider != null
-						? itemQualifiedTextProvider.getQualifiedText(object)
-						: getText(object);
-				}
-			}
-		}
-
-		protected UMLItemPropertyDescriptor(AdapterFactory adapterFactory,
-				ResourceLocator resourceLocator, String displayName,
-				String description, EStructuralFeature feature,
-				boolean isSettable, Object staticImage, String category,
-				String[] filterFlags) {
-			super(adapterFactory, resourceLocator, displayName, description,
-				feature, isSettable, staticImage, category, filterFlags);
-
-			this.itemDelegator = new UMLItemDelegator(adapterFactory,
-				resourceLocator);
-		}
-
-		public Collection getChoiceOfValues(Object object) {
-			Collection comboBoxObjects = getComboBoxObjects(object);
-
-			if (comboBoxObjects != null) {
-				List choiceOfValues = new ArrayList(comboBoxObjects);
-
-				if (choiceOfValues != null) {
-					Collections.sort(choiceOfValues, new Comparator() {
-
-						public int compare(Object o1, Object o2) {
-							return getQualifiedText(o1).compareTo(
-								getQualifiedText(o2));
-						}
-					});
-				}
-
-				return choiceOfValues;
-			}
-
-			return null;
-		}
-
-		public String getQualifiedText(Object object) {
-			return ((IItemQualifiedTextProvider) itemDelegator)
-				.getQualifiedText(object);
-		}
+			category == null
+				? getTypeText(resourceLocator, feature.getEContainingClass())
+				: category, filterFlags);
 	}
 
 }

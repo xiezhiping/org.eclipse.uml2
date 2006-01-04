@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionItemProvider.java,v 1.1 2005/12/07 14:20:29 khussey Exp $
+ * $Id: ReceptionItemProvider.java,v 1.2 2006/01/04 16:16:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -100,13 +99,12 @@ public class ReceptionItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Reception) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_Reception_type") : //$NON-NLS-1$
-			getString("_UI_Reception_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Reception_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
