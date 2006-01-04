@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.3 2005/11/23 13:23:06 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.4 2006/01/04 21:50:13 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -483,10 +485,41 @@ public class DerivedEObjectEList
 		return notifications;
 	}
 
+	protected boolean isNotificationRequired() {
+		return false;
+	}
+
+	protected NotificationImpl createNotification(int eventType,
+			Object oldObject, Object newObject, int index, boolean wasSet) {
+		return new NotificationImpl(eventType, oldObject, newObject, index,
+			wasSet) {
+
+			public Object getNotifier() {
+				return owner;
+			}
+
+			public Object getFeature() {
+				return getEStructuralFeature();
+			}
+
+			public int getFeatureID(Class expectedClass) {
+				return featureID;
+			}
+		};
+	}
+
+	protected void dispatchNotification(Notification notification) {
+		owner.eNotify(notification);
+	}
+
 	public NotificationChain basicAdd(Object object,
 			NotificationChain notifications) {
 		addUnique(object);
 		return notifications;
+	}
+
+	public void add(int index, Object object) {
+		addUnique(index, object);
 	}
 
 	public void addUnique(Object object) {
@@ -494,11 +527,47 @@ public class DerivedEObjectEList
 	}
 
 	public void addUnique(int index, Object object) {
-		add(index, validate(index, object));
+
+		if (isNotificationRequired()) {
+			boolean oldIsSet = isSet();
+			super.add(index, validate(index, object));
+			NotificationImpl notification = createNotification(
+				Notification.ADD, null, object, index, oldIsSet);
+			dispatchNotification(notification);
+		} else {
+			super.add(index, validate(index, object));
+		}
+	}
+
+	public Object remove(int index) {
+
+		if (isNotificationRequired()) {
+			boolean oldIsSet = isSet();
+			NotificationImpl notification = createNotification(
+				Notification.REMOVE, super.remove(index), null, index, oldIsSet);
+			dispatchNotification(notification);
+			return notification.getOldValue();
+		} else {
+			return super.remove(index);
+		}
+	}
+
+	public Object set(int index, Object object) {
+		return setUnique(index, object);
 	}
 
 	public Object setUnique(int index, Object object) {
-		return set(index, validate(index, object));
+
+		if (isNotificationRequired()) {
+			boolean oldIsSet = isSet();
+			Notification notification = createNotification(Notification.SET,
+				super.set(index, validate(index, object)), object, index,
+				oldIsSet);
+			dispatchNotification(notification);
+			return notification.getOldValue();
+		} else {
+			return super.set(index, validate(index, object));
+		}
 	}
 
 	public void move(int newPosition, Object object) {

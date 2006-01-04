@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.2 2005/11/23 13:23:06 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.3 2006/01/04 21:50:13 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -183,4 +183,9 @@ public class DerivedSubsetEObjectEList
 	protected ListIterator newEmptyListIterator() {
 		return new EmptyDerivedSubsetListIterator();
 	}
+
+	protected boolean isNotificationRequired() {
+		return owner.eNotificationRequired();
+	}
+
 }
