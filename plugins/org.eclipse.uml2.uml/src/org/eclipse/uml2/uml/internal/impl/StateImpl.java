@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.15 2005/12/14 22:34:19 khussey Exp $
+ * $Id: StateImpl.java,v 1.16 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -860,17 +860,6 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createEntry() {
-		Behavior newEntry = UMLFactory.eINSTANCE.createBehavior();
-		setEntry(newEntry);
-		return newEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Behavior getExit() {
 		return (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
 	}
@@ -932,17 +921,6 @@ public class StateImpl
 	public Behavior createExit(EClass eClass) {
 		Behavior newExit = (Behavior) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		setExit(newExit);
-		return newExit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior createExit() {
-		Behavior newExit = UMLFactory.eINSTANCE.createBehavior();
 		setExit(newExit);
 		return newExit;
 	}
@@ -1014,17 +992,6 @@ public class StateImpl
 	public Behavior createDoActivity(EClass eClass) {
 		Behavior newDoActivity = (Behavior) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		setDoActivity(newDoActivity);
-		return newDoActivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior createDoActivity() {
-		Behavior newDoActivity = UMLFactory.eINSTANCE.createBehavior();
 		setDoActivity(newDoActivity);
 		return newDoActivity;
 	}

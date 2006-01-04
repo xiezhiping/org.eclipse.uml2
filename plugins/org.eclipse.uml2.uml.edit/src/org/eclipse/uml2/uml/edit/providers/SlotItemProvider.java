@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
+ * $Id: SlotItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -180,6 +180,10 @@ public class SlotItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Slot.class)) {
+			case UMLPackage.SLOT__DEFINING_FEATURE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.SLOT__VALUE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));

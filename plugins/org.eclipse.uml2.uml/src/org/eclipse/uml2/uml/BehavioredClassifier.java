@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.3 2005/12/22 15:20:22 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.4 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -72,16 +72,6 @@ public interface BehavioredClassifier
 	 * @generated
 	 */
 	Behavior createOwnedBehavior(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and appends it to the '<em><b>Owned Behavior</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
-	 * @see #getOwnedBehaviors()
-	 * @generated
-	 */
-	Behavior createOwnedBehavior();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.

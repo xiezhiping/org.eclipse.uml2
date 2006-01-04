@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.5 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,7 +43,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface BehavioralFeature

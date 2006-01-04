@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.11 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -581,17 +581,6 @@ public class TransitionImpl
 	public Behavior createEffect(EClass eClass) {
 		Behavior newEffect = (Behavior) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		setEffect(newEffect);
-		return newEffect;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior createEffect() {
-		Behavior newEffect = UMLFactory.eINSTANCE.createBehavior();
 		setEffect(newEffect);
 		return newEffect;
 	}

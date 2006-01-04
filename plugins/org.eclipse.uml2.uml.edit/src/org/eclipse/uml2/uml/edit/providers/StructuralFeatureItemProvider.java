@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureItemProvider.java,v 1.2 2005/12/12 18:34:30 khussey Exp $
+ * $Id: StructuralFeatureItemProvider.java,v 1.3 2006/01/04 17:47:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -290,6 +290,7 @@ public class StructuralFeatureItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StructuralFeature.class)) {
+			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
 			case UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED :
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.9 2006/01/03 19:50:25 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.10 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,7 +28,6 @@ import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActionExecutionSpecification;
 import org.eclipse.uml2.uml.ActionInputPin;
 import org.eclipse.uml2.uml.Activity;
-import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityFinalNode;
 import org.eclipse.uml2.uml.ActivityParameterNode;
 import org.eclipse.uml2.uml.ActivityPartition;
@@ -40,9 +39,7 @@ import org.eclipse.uml2.uml.AnyReceiveEvent;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
-import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BroadcastSignalAction;
 import org.eclipse.uml2.uml.CallBehaviorAction;
 import org.eclipse.uml2.uml.CallConcurrencyKind;
@@ -332,10 +329,6 @@ public class UMLFactoryImpl
 				return createManifestation();
 			case UMLPackage.OPERATION :
 				return createOperation();
-			case UMLPackage.BEHAVIORAL_FEATURE :
-				return createBehavioralFeature();
-			case UMLPackage.BEHAVIOR :
-				return createBehavior();
 			case UMLPackage.CLASS :
 				return createClass();
 			case UMLPackage.INTERFACE_REALIZATION :
@@ -448,8 +441,6 @@ public class UMLFactoryImpl
 				return createActivity();
 			case UMLPackage.VARIABLE :
 				return createVariable();
-			case UMLPackage.ACTIVITY_EDGE :
-				return createActivityEdge();
 			case UMLPackage.ACTIVITY_PARTITION :
 				return createActivityPartition();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION :
@@ -1139,26 +1130,6 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BehavioralFeature createBehavioralFeature() {
-		BehavioralFeatureImpl behavioralFeature = new BehavioralFeatureImpl();
-		return behavioralFeature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior createBehavior() {
-		BehaviorImpl behavior = new BehaviorImpl();
-		return behavior;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ParameterSet createParameterSet() {
 		ParameterSetImpl parameterSet = new ParameterSetImpl();
 		return parameterSet;
@@ -1652,16 +1623,6 @@ public class UMLFactoryImpl
 	public Action createAction() {
 		ActionImpl action = new ActionImpl();
 		return action;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityEdge createActivityEdge() {
-		ActivityEdgeImpl activityEdge = new ActivityEdgeImpl();
-		return activityEdge;
 	}
 
 	/**

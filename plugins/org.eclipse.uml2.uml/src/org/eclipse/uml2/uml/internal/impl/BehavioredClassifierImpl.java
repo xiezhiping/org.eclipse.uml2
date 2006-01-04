@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.15 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -173,17 +173,6 @@ public abstract class BehavioredClassifierImpl
 	public Behavior createOwnedBehavior(EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		getOwnedBehaviors().add(newOwnedBehavior);
-		return newOwnedBehavior;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior createOwnedBehavior() {
-		Behavior newOwnedBehavior = UMLFactory.eINSTANCE.createBehavior();
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}

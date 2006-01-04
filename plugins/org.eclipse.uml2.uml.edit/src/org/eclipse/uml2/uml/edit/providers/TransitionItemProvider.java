@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.5 2006/01/04 16:16:57 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.6 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -415,10 +415,6 @@ public class TransitionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
 				.createDurationConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE

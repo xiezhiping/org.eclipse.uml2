@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.15 2006/01/03 19:50:25 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.16 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,7 +74,7 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  *
  * @generated
  */
-public class BehaviorImpl
+public abstract class BehaviorImpl
 		extends ClassImpl
 		implements Behavior {
 

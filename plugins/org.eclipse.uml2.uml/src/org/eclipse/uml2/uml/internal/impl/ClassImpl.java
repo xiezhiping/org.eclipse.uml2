@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.19 2006/01/03 19:50:24 khussey Exp $
+ * $Id: ClassImpl.java,v 1.20 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -215,17 +215,6 @@ public class ClassImpl
 	public Behavior createOwnedBehavior(EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		getOwnedBehaviors().add(newOwnedBehavior);
-		return newOwnedBehavior;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior createOwnedBehavior() {
-		Behavior newOwnedBehavior = UMLFactory.eINSTANCE.createBehavior();
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}

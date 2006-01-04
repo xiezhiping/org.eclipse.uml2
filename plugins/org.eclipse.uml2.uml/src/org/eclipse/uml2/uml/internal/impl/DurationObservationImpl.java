@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationImpl.java,v 1.1 2005/12/21 20:13:08 khussey Exp $
+ * $Id: DurationObservationImpl.java,v 1.2 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -155,6 +156,14 @@ public class DurationObservationImpl
 				return basicGetNamespace();
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
 				return getNameExpression();
+			case UMLPackage.DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
+			case UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
 				return getEvents();
 			case UMLPackage.DURATION_OBSERVATION__FIRST_EVENT :
@@ -190,6 +199,12 @@ public class DurationObservationImpl
 				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
 				getEvents().clear();
@@ -227,6 +242,12 @@ public class DurationObservationImpl
 				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
 				getEvents().clear();
@@ -270,6 +291,10 @@ public class DurationObservationImpl
 				return isSetNamespace();
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION) != null;
+			case UMLPackage.DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
 				EList event = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__EVENT);
 				return event != null && !event.isEmpty();

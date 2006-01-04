@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: GeneralizationSetItemProvider.java,v 1.3 2006/01/04 17:47:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -166,7 +166,7 @@ public class GeneralizationSetItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
 		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
@@ -210,6 +210,7 @@ public class GeneralizationSetItemProvider
 		switch (notification.getFeatureID(GeneralizationSet.class)) {
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
+			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;

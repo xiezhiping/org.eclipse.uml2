@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.13 2006/01/03 19:50:26 khussey Exp $
+ * $Id: UMLPackage.java,v 1.14 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47192,7 +47192,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__EANNOTATIONS = NAMED_ELEMENT__EANNOTATIONS;
+	int OBSERVATION__EANNOTATIONS = PACKAGEABLE_ELEMENT__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -47201,7 +47201,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__OWNED_ELEMENT = NAMED_ELEMENT__OWNED_ELEMENT;
+	int OBSERVATION__OWNED_ELEMENT = PACKAGEABLE_ELEMENT__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -47210,7 +47210,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__OWNER = NAMED_ELEMENT__OWNER;
+	int OBSERVATION__OWNER = PACKAGEABLE_ELEMENT__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -47219,7 +47219,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__OWNED_COMMENT = NAMED_ELEMENT__OWNED_COMMENT;
+	int OBSERVATION__OWNED_COMMENT = PACKAGEABLE_ELEMENT__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -47228,7 +47228,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__NAME = NAMED_ELEMENT__NAME;
+	int OBSERVATION__NAME = PACKAGEABLE_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
@@ -47237,7 +47237,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__VISIBILITY = NAMED_ELEMENT__VISIBILITY;
+	int OBSERVATION__VISIBILITY = PACKAGEABLE_ELEMENT__VISIBILITY;
 
 	/**
 	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
@@ -47246,7 +47246,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__QUALIFIED_NAME = NAMED_ELEMENT__QUALIFIED_NAME;
+	int OBSERVATION__QUALIFIED_NAME = PACKAGEABLE_ELEMENT__QUALIFIED_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
@@ -47255,7 +47255,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__CLIENT_DEPENDENCY = NAMED_ELEMENT__CLIENT_DEPENDENCY;
+	int OBSERVATION__CLIENT_DEPENDENCY = PACKAGEABLE_ELEMENT__CLIENT_DEPENDENCY;
 
 	/**
 	 * The feature id for the '<em><b>Namespace</b></em>' reference.
@@ -47264,7 +47264,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__NAMESPACE = NAMED_ELEMENT__NAMESPACE;
+	int OBSERVATION__NAMESPACE = PACKAGEABLE_ELEMENT__NAMESPACE;
 
 	/**
 	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
@@ -47273,7 +47273,25 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
+	int OBSERVATION__NAME_EXPRESSION = PACKAGEABLE_ELEMENT__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__OWNING_TEMPLATE_PARAMETER = PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBSERVATION__TEMPLATE_PARAMETER = PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER;
 
 	/**
 	 * The number of structural features of the '<em>Observation</em>' class.
@@ -47282,7 +47300,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int OBSERVATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int OBSERVATION_FEATURE_COUNT = PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48401,6 +48419,24 @@ public interface UMLPackage
 	int TIME_OBSERVATION__NAME_EXPRESSION = OBSERVATION__NAME_EXPRESSION;
 
 	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER = OBSERVATION__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_OBSERVATION__TEMPLATE_PARAMETER = OBSERVATION__TEMPLATE_PARAMETER;
+
+	/**
 	 * The feature id for the '<em><b>Event</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48516,6 +48552,24 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int DURATION_OBSERVATION__NAME_EXPRESSION = OBSERVATION__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER = OBSERVATION__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_OBSERVATION__TEMPLATE_PARAMETER = OBSERVATION__TEMPLATE_PARAMETER;
 
 	/**
 	 * The feature id for the '<em><b>Event</b></em>' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.7 2006/01/03 19:50:26 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.8 2006/01/04 17:47:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4487,7 +4487,11 @@ public class UMLSwitch {
 				Observation observation = (Observation) theEObject;
 				Object result = caseObservation(observation);
 				if (result == null)
+					result = casePackageableElement(observation);
+				if (result == null)
 					result = caseNamedElement(observation);
+				if (result == null)
+					result = caseParameterableElement(observation);
 				if (result == null)
 					result = caseElement(observation);
 				if (result == null)
@@ -4651,7 +4655,11 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObservation(timeObservation);
 				if (result == null)
+					result = casePackageableElement(timeObservation);
+				if (result == null)
 					result = caseNamedElement(timeObservation);
+				if (result == null)
+					result = caseParameterableElement(timeObservation);
 				if (result == null)
 					result = caseElement(timeObservation);
 				if (result == null)
@@ -4666,7 +4674,11 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObservation(durationObservation);
 				if (result == null)
+					result = casePackageableElement(durationObservation);
+				if (result == null)
 					result = caseNamedElement(durationObservation);
+				if (result == null)
+					result = caseParameterableElement(durationObservation);
 				if (result == null)
 					result = caseElement(durationObservation);
 				if (result == null)

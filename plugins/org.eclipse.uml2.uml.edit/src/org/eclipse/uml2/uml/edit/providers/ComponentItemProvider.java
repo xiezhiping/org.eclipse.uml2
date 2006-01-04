@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.5 2006/01/03 19:51:58 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.6 2006/01/04 17:47:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -322,10 +322,6 @@ public class ComponentItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
-			UMLFactory.eINSTANCE.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
 			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -547,6 +543,14 @@ public class ComponentItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
 			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
+			UMLFactory.eINSTANCE.createTimeObservation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,
+			UMLFactory.eINSTANCE.createDurationObservation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -303,6 +303,7 @@ public class AssociationClassItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(AssociationClass.class)) {
+			case UMLPackage.ASSOCIATION_CLASS__MEMBER_END :
 			case UMLPackage.ASSOCIATION_CLASS__IS_DERIVED :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));

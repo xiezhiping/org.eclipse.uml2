@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -141,6 +141,7 @@ public class ProfileApplicationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ProfileApplication.class)) {
+			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));

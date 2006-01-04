@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.4 2006/01/04 16:16:56 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.5 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -622,10 +622,6 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
-				.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY, UMLFactory.eINSTANCE
 				.createStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -650,10 +646,6 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
-				.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
 				.createStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -675,10 +667,6 @@ public class StateItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__EXIT, UMLFactory.eINSTANCE
 				.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE
-				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__DO_ACTIVITY, UMLFactory.eINSTANCE

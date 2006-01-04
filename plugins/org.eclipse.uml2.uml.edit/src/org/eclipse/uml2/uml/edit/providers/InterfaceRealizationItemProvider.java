@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: InterfaceRealizationItemProvider.java,v 1.3 2006/01/04 17:47:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
@@ -158,6 +160,13 @@ public class InterfaceRealizationItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(InterfaceRealization.class)) {
+			case UMLPackage.INTERFACE_REALIZATION__CONTRACT :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

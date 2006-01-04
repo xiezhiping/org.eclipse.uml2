@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.5 2006/01/03 19:50:29 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.6 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface ActivityEdge

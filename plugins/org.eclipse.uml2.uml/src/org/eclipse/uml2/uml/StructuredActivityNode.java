@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.6 2006/01/03 19:50:29 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.7 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -192,16 +192,6 @@ public interface StructuredActivityNode
 	 * @generated
 	 */
 	ActivityEdge createEdge(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ActivityEdge} and appends it to the '<em><b>Edge</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.ActivityEdge}.
-	 * @see #getEdges()
-	 * @generated
-	 */
-	ActivityEdge createEdge();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.

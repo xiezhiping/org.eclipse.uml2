@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.6 2006/01/04 16:16:56 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.7 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -248,6 +248,10 @@ public class TemplateParameterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TemplateParameter.class)) {
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				fireNotifyChanged(new ViewerNotification(notification,
@@ -338,10 +342,6 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -575,6 +575,14 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createTimeObservation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createDurationObservation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -662,10 +670,6 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -899,6 +903,14 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createTimeObservation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createDurationObservation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.3 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -188,6 +188,10 @@ public class ParameterSetItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParameterSet.class)) {
+			case UMLPackage.PARAMETER_SET__PARAMETER :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.PARAMETER_SET__CONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));

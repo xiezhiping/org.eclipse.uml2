@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.12 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,7 +75,7 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  *
  * @generated
  */
-public class ActivityEdgeImpl
+public abstract class ActivityEdgeImpl
 		extends RedefinableElementImpl
 		implements ActivityEdge {
 

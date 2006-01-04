@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: PackageImportItemProvider.java,v 1.3 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -31,6 +31,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.UMLPackage;
+//import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 
 /**
@@ -164,6 +166,7 @@ public class PackageImportItemProvider
 
 		switch (notification.getFeatureID(PackageImport.class)) {
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
+			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;

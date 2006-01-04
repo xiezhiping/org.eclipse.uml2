@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.4 2006/01/04 16:16:56 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.5 2006/01/04 17:47:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -106,7 +106,7 @@ public class ElementItemProvider
 
 		return itemPropertyDescriptors;
 	}
-	
+
 	/**
 	 * This adds a property descriptor for the Owned Element feature.
 	 * <!-- begin-user-doc -->

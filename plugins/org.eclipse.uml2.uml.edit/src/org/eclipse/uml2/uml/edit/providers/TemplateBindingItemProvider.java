@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
+ * $Id: TemplateBindingItemProvider.java,v 1.3 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -183,6 +183,10 @@ public class TemplateBindingItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TemplateBinding.class)) {
+			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));

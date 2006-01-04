@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.3 2006/01/04 17:47:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -224,6 +224,10 @@ public class DeploymentItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Deployment.class)) {
+			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));

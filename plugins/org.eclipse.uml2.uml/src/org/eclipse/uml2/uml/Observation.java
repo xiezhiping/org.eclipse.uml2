@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Observation.java,v 1.1 2005/12/21 20:13:06 khussey Exp $
+ * $Id: Observation.java,v 1.2 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,5 +27,5 @@ package org.eclipse.uml2.uml;
  * @generated
  */
 public interface Observation
-		extends NamedElement {
+		extends PackageableElement {
 } // Observation

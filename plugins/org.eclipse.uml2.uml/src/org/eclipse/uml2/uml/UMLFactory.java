@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.3 2005/12/21 20:13:06 khussey Exp $
+ * $Id: UMLFactory.java,v 1.4 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -339,24 +339,6 @@ public interface UMLFactory
 	 * @generated
 	 */
 	Operation createOperation();
-
-	/**
-	 * Returns a new object of class '<em>Behavioral Feature</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavioral Feature</em>'.
-	 * @generated
-	 */
-	BehavioralFeature createBehavioralFeature();
-
-	/**
-	 * Returns a new object of class '<em>Behavior</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior</em>'.
-	 * @generated
-	 */
-	Behavior createBehavior();
 
 	/**
 	 * Returns a new object of class '<em>Parameter Set</em>'.
@@ -807,15 +789,6 @@ public interface UMLFactory
 	 * @generated
 	 */
 	Action createAction();
-
-	/**
-	 * Returns a new object of class '<em>Activity Edge</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Activity Edge</em>'.
-	 * @generated
-	 */
-	ActivityEdge createActivityEdge();
 
 	/**
 	 * Returns a new object of class '<em>Activity</em>'.

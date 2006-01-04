@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.5 2006/01/04 16:16:56 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.6 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -392,10 +392,6 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-			UMLFactory.eINSTANCE.createBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
 			UMLFactory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -441,10 +437,6 @@ public class ClassItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createClass()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE

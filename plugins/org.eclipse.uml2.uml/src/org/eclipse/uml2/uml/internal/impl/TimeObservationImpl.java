@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationImpl.java,v 1.1 2005/12/21 20:13:08 khussey Exp $
+ * $Id: TimeObservationImpl.java,v 1.2 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -189,6 +190,14 @@ public class TimeObservationImpl
 				return basicGetNamespace();
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				return getNameExpression();
+			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				if (resolve)
+					return getOwningTemplateParameter();
+				return basicGetOwningTemplateParameter();
+			case UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER :
+				if (resolve)
+					return getTemplateParameter();
+				return basicGetTemplateParameter();
 			case UMLPackage.TIME_OBSERVATION__EVENT :
 				if (resolve)
 					return getEvent();
@@ -229,6 +238,12 @@ public class TimeObservationImpl
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
+			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) newValue);
+				return;
+			case UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) newValue);
+				return;
 			case UMLPackage.TIME_OBSERVATION__EVENT :
 				setEvent((NamedElement) newValue);
 				return;
@@ -263,6 +278,12 @@ public class TimeObservationImpl
 				return;
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				setOwningTemplateParameter((TemplateParameter) null);
+				return;
+			case UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER :
+				setTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.TIME_OBSERVATION__EVENT :
 				setEvent((NamedElement) null);
@@ -306,6 +327,10 @@ public class TimeObservationImpl
 				return isSetNamespace();
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				return eVirtualGet(UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION) != null;
+			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
+				return basicGetOwningTemplateParameter() != null;
+			case UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER :
+				return eVirtualGet(UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER) != null;
 			case UMLPackage.TIME_OBSERVATION__EVENT :
 				return eVirtualGet(UMLPackage.TIME_OBSERVATION__EVENT) != null;
 			case UMLPackage.TIME_OBSERVATION__FIRST_EVENT :

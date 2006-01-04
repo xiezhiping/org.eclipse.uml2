@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.14 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.15 2006/01/04 17:47:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -459,17 +459,6 @@ public class ActivityImpl
 	public ActivityEdge createEdge(EClass eClass) {
 		ActivityEdge newEdge = (ActivityEdge) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		getEdges().add(newEdge);
-		return newEdge;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityEdge createEdge() {
-		ActivityEdge newEdge = UMLFactory.eINSTANCE.createActivityEdge();
 		getEdges().add(newEdge);
 		return newEdge;
 	}

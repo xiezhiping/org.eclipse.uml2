@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.5 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Transition.java,v 1.6 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -218,16 +218,6 @@ public interface Transition
 	 * @generated
 	 */
 	Behavior createEffect(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and sets the '<em><b>Effect</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
-	 * @see #getEffect()
-	 * @generated
-	 */
-	Behavior createEffect();
 
 	/**
 	 * Returns the value of the '<em><b>Trigger</b></em>' containment reference list.

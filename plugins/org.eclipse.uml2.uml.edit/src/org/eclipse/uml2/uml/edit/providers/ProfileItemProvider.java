@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.3 2006/01/04 16:16:57 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -39,6 +39,7 @@ import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
+//import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;

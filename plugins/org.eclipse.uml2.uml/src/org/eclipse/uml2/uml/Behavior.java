@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.8 2006/01/03 19:50:29 khussey Exp $
+ * $Id: Behavior.java,v 1.9 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getBehavior()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Behavior

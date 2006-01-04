@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraint.java,v 1.2 2005/12/21 20:13:06 khussey Exp $
+ * $Id: DurationConstraint.java,v 1.3 2006/01/04 17:47:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,9 @@ public interface DurationConstraint
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of firstEvent must be 2 if the multiplicity of constrainedElement is 2. Otherwise the multiplicity of firstEvent is 0.
-	 * true
+	 * if (constrainedElement->size() =2)
+	 * 
+	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
