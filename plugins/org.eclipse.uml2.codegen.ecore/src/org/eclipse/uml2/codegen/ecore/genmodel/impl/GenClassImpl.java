@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.22 2006/01/05 13:49:49 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.23 2006/01/05 22:42:18 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,6 +20,7 @@ import java.util.Map;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -508,6 +509,25 @@ public class GenClassImpl
 		}
 
 		return super.getOperationID(genOperation);
+	}
+
+	public String getOperationsClassExtends() {
+
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass classExtendsGenClass = getClassExtendsGenClass(); classExtendsGenClass != null; classExtendsGenClass = classExtendsGenClass
+			.getClassExtendsGenClass()) {
+
+			if (UML2GenModelUtil.isOperationsClasses(classExtendsGenClass
+				.getGenPackage())
+				&& !UML2GenModelUtil.getDuplicateGenOperations(
+					classExtendsGenClass).isEmpty()) {
+
+				return " extends " //$NON-NLS-1$
+					+ UML2GenModelUtil
+						.getImportedOperationsClassName(classExtendsGenClass);
+			}
+		}
+
+		return ""; //$NON-NLS-1$
 	}
 
 	public List getEInverseAddGenFeatures() {

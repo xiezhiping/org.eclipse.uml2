@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.8 2005/12/01 16:16:26 khussey Exp $
+ * $Id: GenClass.java,v 1.9 2006/01/05 22:42:18 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -44,6 +44,8 @@ public interface GenClass
 	String getImportedOperationsClassName();
 
 	String getQualifiedOperationsClassName();
+
+	String getOperationsClassExtends();
 
 	List/* GenFeature */getKeyGenFeatures();
 

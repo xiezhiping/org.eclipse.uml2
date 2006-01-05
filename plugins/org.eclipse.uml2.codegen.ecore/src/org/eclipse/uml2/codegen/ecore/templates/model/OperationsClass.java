@@ -30,13 +30,13 @@ public class OperationsClass
   protected final String TEXT_12 = ") <em>";
   protected final String TEXT_13 = "</em>}</li>";
   protected final String TEXT_14 = NL + " * </ul>" + NL + " * </p>";
-  protected final String TEXT_15 = NL + " *" + NL + " * @generated" + NL + " */" + NL + "public final class ";
+  protected final String TEXT_15 = NL + " *" + NL + " * @generated" + NL + " */" + NL + "public class ";
   protected final String TEXT_16 = NL + "{";
   protected final String TEXT_17 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic static final ";
   protected final String TEXT_18 = " copyright = \"";
   protected final String TEXT_19 = "\";";
   protected final String TEXT_20 = NL;
-  protected final String TEXT_21 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tprivate ";
+  protected final String TEXT_21 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tprotected ";
   protected final String TEXT_22 = "() {" + NL + "\t\tsuper();" + NL + "\t}" + NL;
   protected final String TEXT_23 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->";
   protected final String TEXT_24 = NL + "\t * <!-- begin-model-doc -->" + NL + "\t * ";
@@ -73,7 +73,7 @@ public class OperationsClass
 /**
  * <copyright>
  *
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -119,6 +119,7 @@ public class OperationsClass
     }
     stringBuffer.append(TEXT_15);
     stringBuffer.append(UML2GenModelUtil.getOperationsClassName(genClass));
+    stringBuffer.append(UML2GenModelUtil.getOperationsClassExtends(genClass));
     stringBuffer.append(TEXT_16);
     if (genModel.getCopyrightText() != null) {
     stringBuffer.append(TEXT_17);

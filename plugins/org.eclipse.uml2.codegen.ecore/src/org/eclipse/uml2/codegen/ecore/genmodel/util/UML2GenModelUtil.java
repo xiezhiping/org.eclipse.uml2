@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.10 2005/12/16 03:55:13 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.11 2006/01/05 22:42:18 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -23,11 +23,8 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
-import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
 
 /**
@@ -194,6 +191,13 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImportedOperationsClassName()
 			: null;
+	}
+
+	public static String getOperationsClassExtends(GenClass genClass) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getOperationsClassExtends()
+			: ""; //$NON-NLS-1$
 	}
 
 	public static List getKeyGenFeatures(GenClass genClass) {
