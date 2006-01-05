@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.1 2005/11/14 22:25:55 khussey Exp $
+ * $Id: TransitionOperations.java,v 1.2 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,8 +18,10 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Transition;
 
@@ -46,9 +48,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class TransitionOperations {
+public final class TransitionOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -304,12 +306,19 @@ public final class TransitionOperations {
 	 * sm.context
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Classifier redefinitionContext(Transition transition) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StateMachine sm = transition.containingStateMachine();
+
+		if (sm != null) {
+			BehavioredClassifier context = sm.getContext();
+			return context == null || !sm.getGenerals().isEmpty()
+				? sm
+				: context;
+		}
+
+		return null;
 	}
 
 	/**
@@ -319,12 +328,13 @@ public final class TransitionOperations {
 	 * The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
 	 * result = container.containingStateMachine()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static StateMachine containingStateMachine(Transition transition) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Region container = transition.getContainer();
+		return container == null
+			? null
+			: container.containingStateMachine();
 	}
 
 	/**
@@ -339,13 +349,18 @@ public final class TransitionOperations {
 	 *     (source() = trans.source() and trigger() = tran.trigger())
 	 * redefinee.isRedefinitionContextValid(self)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(Transition transition,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinee.isRedefinitionContextValid(transition)) {
+			Transition trans = (Transition) redefinee;
+			return transition.getSource() == trans.getSource()
+				&& transition.getTriggers().equals(trans.getTriggers());
+		}
+
+		return false;
 	}
 
 } // TransitionOperations

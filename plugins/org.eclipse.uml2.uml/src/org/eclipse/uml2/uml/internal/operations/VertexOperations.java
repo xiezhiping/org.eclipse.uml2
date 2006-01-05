@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.3 2005/12/05 18:00:17 khussey Exp $
+ * $Id: VertexOperations.java,v 1.4 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -28,7 +28,7 @@ import org.eclipse.uml2.uml.Vertex;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStatemachine() <em>Containing Statemachine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStateMachine() <em>Containing State Machine</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,7 +50,7 @@ public final class VertexOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation containingStatemachine() returns the state machine in which this Vertex is defined
+	 * The operation containingStateMachine() returns the state machine in which this Vertex is defined
 	 * result = if not container->isEmpty()
 	 * then
 	 * -- the container is a region
@@ -66,7 +66,7 @@ public final class VertexOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static StateMachine containingStatemachine(Vertex vertex) {
+	public static StateMachine containingStateMachine(Vertex vertex) {
 		Region container = vertex.getContainer();
 
 		if (container != null) {
@@ -84,7 +84,7 @@ public final class VertexOperations
 			State state = ((ConnectionPointReference) vertex).getState();
 
 			if (state != null) {
-				return state.containingStatemachine();
+				return state.containingStateMachine();
 			}
 		}
 

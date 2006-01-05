@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: VertexImpl.java,v 1.10 2006/01/05 21:27:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,8 +181,8 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StateMachine containingStatemachine() {
-		return VertexOperations.containingStatemachine(this);
+	public StateMachine containingStateMachine() {
+		return VertexOperations.containingStateMachine(this);
 	}
 
 	/**

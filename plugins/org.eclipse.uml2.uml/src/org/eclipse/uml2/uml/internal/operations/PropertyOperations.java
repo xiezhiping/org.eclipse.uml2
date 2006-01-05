@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.18 2005/12/23 06:48:22 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.19 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,15 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Enumeration;
-import org.eclipse.uml2.uml.InstanceSpecification;
-import org.eclipse.uml2.uml.InstanceValue;
-import org.eclipse.uml2.uml.LiteralBoolean;
-import org.eclipse.uml2.uml.LiteralInteger;
-import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
@@ -49,7 +42,6 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -601,77 +593,12 @@ public final class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static void setDefault(final Property property,
-			final String newDefault) {
+	public static void setDefault(Property property,
+			 String newDefault) {
 		ValueSpecification defaultValue = property.getDefaultValue();
 
 		if (defaultValue != null) {
-			new UMLSwitch() {
-
-				public Object caseInstanceValue(InstanceValue instanceValue) {
-					Type type = property.getType();
-
-					if (type instanceof Enumeration) {
-						instanceValue.setInstance(((Enumeration) type)
-							.getOwnedLiteral(newDefault));
-					} else {
-						InstanceSpecification instance = instanceValue
-							.getInstance();
-
-						if (instance != null) {
-							ValueSpecification specification = instance
-								.getSpecification();
-
-							if (specification != null) {
-								return doSwitch(specification);
-							}
-						}
-
-						return null;
-					}
-
-					return instanceValue;
-				}
-
-				public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
-					literalBoolean.setValue(Boolean.getBoolean(newDefault));
-					return literalBoolean;
-				}
-
-				public Object caseLiteralInteger(LiteralInteger literalInteger) {
-					literalInteger.setValue(Integer.parseInt(newDefault));
-					return literalInteger;
-				}
-
-				public Object caseLiteralString(LiteralString literalString) {
-					literalString.setValue(newDefault);
-					return literalString;
-				}
-
-				public Object caseLiteralUnlimitedNatural(
-						LiteralUnlimitedNatural literalUnlimitedNatural) {
-					literalUnlimitedNatural.setValue(Integer
-						.parseInt(newDefault));
-					return literalUnlimitedNatural;
-				}
-
-				public Object caseOpaqueExpression(
-						OpaqueExpression opaqueExpression) {
-					EList bodies = opaqueExpression.getBodies();
-
-					if (bodies.isEmpty()) {
-						bodies.add(newDefault);
-					} else {
-						bodies.set(0, newDefault);
-					}
-
-					return opaqueExpression;
-				}
-
-				public Object defaultCase(EObject eObject) {
-					throw new UnsupportedOperationException();
-				}
-			}.doSwitch(defaultValue);
+			ValueSpecificationOperations.setValue(defaultValue, newDefault);
 		} else {
 			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
 			basicEObjectImpl

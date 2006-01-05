@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,18 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.3 2005/12/08 14:56:27 khussey Exp $
+ * $Id: StateOperations.java,v 1.4 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 
@@ -49,9 +53,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public final class StateOperations {
+public final class StateOperations extends UMLOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -233,12 +237,10 @@ public final class StateOperations {
 	 * A simple state is a state without any regions.
 	 * result = region.isEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isSimple(State state) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return state.getRegions().isEmpty();
 	}
 
 	/**
@@ -248,12 +250,10 @@ public final class StateOperations {
 	 * A composite state is a state with at least one region.
 	 * result = region.notEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isComposite(State state) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return !state.getRegions().isEmpty();
 	}
 
 	/**
@@ -263,12 +263,10 @@ public final class StateOperations {
 	 * An orthogonal state is a composite state with at least 2 regions
 	 * result = (region->size () > 1)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isOrthogonal(State state) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return state.getRegions().size() > 1;
 	}
 
 	/**
@@ -278,12 +276,10 @@ public final class StateOperations {
 	 * Only submachine states can have a reference statemachine.
 	 * result = submachine.notEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isSubmachineState(State state) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return state.getSubmachine() != null;
 	}
 
 	/**
@@ -298,12 +294,19 @@ public final class StateOperations {
 	 * sm.context
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Classifier redefinitionContext(State state) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		StateMachine sm = state.containingStateMachine();
+
+		if (sm != null) {
+			BehavioredClassifier context = sm.getContext();
+			return context == null || !sm.getGenerals().isEmpty()
+				? sm
+				: context;
+		}
+
+		return null;
 	}
 
 	/**
@@ -329,28 +332,54 @@ public final class StateOperations {
 	 * The query isConsistentWith() specifies that a redefining state is consistent with a redefined state provided that the redefining state is an extension of the redefined state: A simple state can be redefined (extended) to become a composite state (by adding a region) and a composite state can be redefined (extended) by adding regions and by adding vertices, states, and transitions to inherited regions. All states may add or replace entry, exit, and 'doActivity' actions.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isConsistentWith(State state,
 			RedefinableElement redefinee) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+
+		if (redefinee.isRedefinitionContextValid(state)) {
+			State redefineeState = (State) redefinee;
+
+			if (state.isSimple()) {
+				return redefineeState.isComposite();
+			} else if (state.isComposite()) {
+				EList regions = state.getRegions();
+
+				for (Iterator redefineeRegions = redefineeState.getRegions()
+					.iterator(); redefineeRegions.hasNext();) {
+
+					Region redefineeRegion = (Region) redefineeRegions.next();
+					Region extendedRegion = redefineeRegion.getExtendedRegion();
+
+					if (regions.contains(extendedRegion)
+						&& !extendedRegion.isConsistentWith(redefineeRegion)) {
+
+						return false;
+					}
+				}
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query containingStateMachine() returns the state machine that contains the state either directly or transitively.
-	 * result = container.containingStateMachine()
+	 * The query containingStateMachine() returns the state machine that
+	 * contains the state either directly or transitively. result =
+	 * container.containingStateMachine()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static StateMachine containingStateMachine(State state) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Region container = state.getContainer();
+		return container == null
+			? null
+			: container.containingStateMachine();
 	}
 
 } // StateOperations

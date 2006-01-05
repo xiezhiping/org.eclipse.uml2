@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.5 2005/12/15 20:08:05 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.6 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -256,7 +256,6 @@ public final class StateMachineOperations
 	 */
 	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
 			StateMachine redefined) {
-
 		BehavioredClassifier context = stateMachine.getContext();
 
 		if (context != null && redefined != null) {
@@ -286,12 +285,17 @@ public final class StateMachineOperations
 			for (Iterator redefineeRegions = redefineeStateMachine.getRegions()
 				.iterator(); redefineeRegions.hasNext();) {
 
-				if (regions.contains(((Region) redefineeRegions.next())
-					.getExtendedRegion())) {
+				Region redefineeRegion = (Region) redefineeRegions.next();
+				Region extendedRegion = redefineeRegion.getExtendedRegion();
 
-					return true;
+				if (regions.contains(extendedRegion)
+					&& !extendedRegion.isConsistentWith(redefineeRegion)) {
+
+					return false;
 				}
 			}
+
+			return true;
 		}
 
 		return false;

@@ -2647,7 +2647,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -3336,9 +3336,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions."/>
     </eAnnotations>
-    <eOperations name="containingStatemachine" ordered="false" lowerBound="1" eType="#//StateMachine">
+    <eOperations name="containingStateMachine" ordered="false" lowerBound="1" eType="#//StateMachine">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The operation containingStatemachine() returns the state machine in which this Vertex is defined&#xD;&#xA;result = if not container->isEmpty()&#xA;then&#xA;-- the container is a region&#xA;container.containingStateMachine()&#xA;else if (oclIsKindOf(Pseudostate)) then&#xA;-- entry or exit point?&#xA;if (kind = #entryPoint) or (kind = #exitPoint) then&#xA;stateMachine&#xA;else if (oclIsKindOf(ConnectionPointReference)) then&#xA;state.containingStateMachine() -- no other valid cases possible&#xA;endif&#xA;"/>
+        <details key="documentation" value="The operation containingStateMachine() returns the state machine in which this Vertex is defined&#xD;&#xA;result = if not container->isEmpty()&#xA;then&#xA;-- the container is a region&#xA;container.containingStateMachine()&#xA;else if (oclIsKindOf(Pseudostate)) then&#xA;-- entry or exit point?&#xA;if (kind = #entryPoint) or (kind = #exitPoint) then&#xA;stateMachine&#xA;else if (oclIsKindOf(ConnectionPointReference)) then&#xA;state.containingStateMachine() -- no other valid cases possible&#xA;endif&#xA;"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="spec"/>
@@ -3650,7 +3650,7 @@
         <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
           <details key="constraints" value="spec"/>
         </eAnnotations>
-        <eAnnotations source="redefines" references="#//Vertex/containingStatemachine"/>
+        <eAnnotations source="redefines" references="#//Vertex/containingStateMachine"/>
       </contents>
       <contents xsi:type="ecore:EReference" name="redefinitionContext" ordered="false"
           upperBound="-1" eType="#//Classifier" changeable="false" volatile="true"
@@ -8423,6 +8423,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A TimeExpression defines a value specification that represents a time value."/>
     </eAnnotations>
+    <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="#//String">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
+      </contents>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" ordered="false" eType="#//ValueSpecification">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The value of the time expression."/>
@@ -8443,6 +8449,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Duration" eSuperTypes="#//ValueSpecification">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A duration defines a value specification that specifies the temporal distance between two time instants."/>
+    </eAnnotations>
+    <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
+          eType="#//String">
+        <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
+      </contents>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" ordered="false" eType="#//ValueSpecification">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Vertex.java,v 1.4 2006/01/05 21:27:51 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -126,7 +126,7 @@ public interface Vertex
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation containingStatemachine() returns the state machine in which this Vertex is defined
+	 * The operation containingStateMachine() returns the state machine in which this Vertex is defined
 	 * result = if not container->isEmpty()
 	 * then
 	 * -- the container is a region
@@ -144,6 +144,6 @@ public interface Vertex
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
-	StateMachine containingStatemachine();
+	StateMachine containingStateMachine();
 
 } // Vertex

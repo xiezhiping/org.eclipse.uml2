@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.16 2006/01/04 17:47:24 khussey Exp $
+ * $Id: StateImpl.java,v 1.17 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1875,15 +1875,6 @@ public class StateImpl
 			|| eIsSet(UMLPackage.STATE__ENTRY)
 			|| eIsSet(UMLPackage.STATE__EXIT)
 			|| eIsSet(UMLPackage.STATE__DO_ACTIVITY);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StateMachine containingStatemachine() {
-		return containingStateMachine();
 	}
 
 } //StateImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.5 2005/12/12 18:11:59 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.6 2006/01/05 21:27:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.Duration;
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.InstanceSpecification;
+import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 
 /**
  * <!-- begin-user-doc -->
@@ -151,6 +164,88 @@ public final class ValueSpecificationOperations
 		}
 
 		return false;
+	}
+
+	protected static void setValue(ValueSpecification valueSpecification,
+			final String newValue) {
+		new UMLSwitch() {
+
+			public Object caseDuration(Duration duration) {
+				ValueSpecification expr = duration.getExpr();
+				return expr == null
+					? null
+					: doSwitch(expr);
+			}
+
+			public Object caseInstanceValue(InstanceValue instanceValue) {
+				Type type = instanceValue.getType();
+
+				if (type instanceof Enumeration) {
+					instanceValue.setInstance(((Enumeration) type)
+						.getOwnedLiteral(newValue));
+				} else {
+					InstanceSpecification instance = instanceValue
+						.getInstance();
+
+					if (instance != null) {
+						ValueSpecification specification = instance
+							.getSpecification();
+
+						if (specification != null) {
+							return doSwitch(specification);
+						}
+					}
+
+					return null;
+				}
+
+				return instanceValue;
+			}
+
+			public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
+				literalBoolean.setValue(Boolean.getBoolean(newValue));
+				return literalBoolean;
+			}
+
+			public Object caseLiteralInteger(LiteralInteger literalInteger) {
+				literalInteger.setValue(Integer.parseInt(newValue));
+				return literalInteger;
+			}
+
+			public Object caseLiteralString(LiteralString literalString) {
+				literalString.setValue(newValue);
+				return literalString;
+			}
+
+			public Object caseLiteralUnlimitedNatural(
+					LiteralUnlimitedNatural literalUnlimitedNatural) {
+				literalUnlimitedNatural.setValue(Integer.parseInt(newValue));
+				return literalUnlimitedNatural;
+			}
+
+			public Object caseOpaqueExpression(OpaqueExpression opaqueExpression) {
+				EList bodies = opaqueExpression.getBodies();
+
+				if (bodies.isEmpty()) {
+					bodies.add(newValue);
+				} else {
+					bodies.set(0, newValue);
+				}
+
+				return opaqueExpression;
+			}
+
+			public Object caseTimeExpression(TimeExpression timeExpression) {
+				ValueSpecification expr = timeExpression.getExpr();
+				return expr == null
+					? null
+					: doSwitch(expr);
+			}
+
+			public Object defaultCase(EObject eObject) {
+				throw new UnsupportedOperationException();
+			}
+		}.doSwitch(valueSpecification);
 	}
 
 } // ValueSpecificationOperations
