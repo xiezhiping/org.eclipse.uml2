@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetAddCommand.java,v 1.1 2005/05/17 22:03:59 khussey Exp $
+ * $Id: SubsetAddCommand.java,v 1.2 2006/01/05 13:49:51 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -49,19 +49,22 @@ public class SubsetAddCommand
 	 */
 	public void execute() {
 
-		for (Iterator elements = collection.iterator(); elements.hasNext();) {
-			Object element = elements.next();
+		if (supersetFeatures != null) {
 
-			for (int i = 0; i < supersetFeatures.length; i++) {
+			for (Iterator elements = collection.iterator(); elements.hasNext();) {
+				Object element = elements.next();
 
-				if (supersetFeatures[i].isMany()) {
+				for (int i = 0; i < supersetFeatures.length; i++) {
 
-					if (!((EList) owner.eGet(supersetFeatures[i]))
-						.contains(element)) {
-						appendAndExecute(AddCommand.create(domain, owner,
-							supersetFeatures[i],
-							Collections.singleton(element),
-							CommandParameter.NO_INDEX));
+					if (supersetFeatures[i].isMany()) {
+
+						if (!((EList) owner.eGet(supersetFeatures[i]))
+							.contains(element)) {
+							appendAndExecute(AddCommand.create(domain, owner,
+								supersetFeatures[i], Collections
+									.singleton(element),
+								CommandParameter.NO_INDEX));
+						}
 					}
 				}
 			}

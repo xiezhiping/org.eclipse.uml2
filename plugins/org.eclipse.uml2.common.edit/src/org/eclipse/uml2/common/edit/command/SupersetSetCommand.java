@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetSetCommand.java,v 1.1 2005/05/17 22:03:59 khussey Exp $
+ * $Id: SupersetSetCommand.java,v 1.2 2006/01/05 13:49:51 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
- * 
+ * @deprecated Use SubsetSupersetSetCommand
  */
 public class SupersetSetCommand
 		extends SupersetCommand {
@@ -40,16 +40,20 @@ public class SupersetSetCommand
 	 */
 	public void execute() {
 
-		for (int i = 0; i < subsetFeatures.length; i++) {
-			Object object = owner.eGet(subsetFeatures[i]);
+		if (subsetFeatures != null) {
 
-			if (null != object && value != object) {
-				EReference subsetReference = (EReference) subsetFeatures[i];
+			for (int i = 0; i < subsetFeatures.length; i++) {
+				Object object = owner.eGet(subsetFeatures[i]);
 
-				appendAndExecute(subsetReference.isContainer()
-					&& !subsetReference.getEOpposite().isMany()
-					? new SetCommand(domain, owner, subsetFeatures[i], null)
-					: SetCommand.create(domain, owner, subsetFeatures[i], null));
+				if (null != object && value != object) {
+					EReference subsetReference = (EReference) subsetFeatures[i];
+
+					appendAndExecute(subsetReference.isContainer()
+						&& !subsetReference.getEOpposite().isMany()
+						? new SetCommand(domain, owner, subsetFeatures[i], null)
+						: SetCommand.create(domain, owner, subsetFeatures[i],
+							null));
+				}
 			}
 		}
 

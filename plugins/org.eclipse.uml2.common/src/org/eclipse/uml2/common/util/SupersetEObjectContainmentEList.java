@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetEObjectContainmentEList.java,v 1.2 2005/11/21 19:29:49 khussey Exp $
+ * $Id: SupersetEObjectContainmentEList.java,v 1.3 2006/01/05 13:49:53 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
- * 
+ * @deprecated Use SubsetSupersetEObjectContainmentEList
  */
 public class SupersetEObjectContainmentEList
 		extends SupersetEObjectEList {

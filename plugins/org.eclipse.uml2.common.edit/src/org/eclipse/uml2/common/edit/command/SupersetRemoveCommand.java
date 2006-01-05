@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetRemoveCommand.java,v 1.1 2005/05/17 22:03:59 khussey Exp $
+ * $Id: SupersetRemoveCommand.java,v 1.2 2006/01/05 13:49:51 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -46,29 +46,33 @@ public class SupersetRemoveCommand
 	 */
 	public void execute() {
 
-		for (Iterator elements = collection.iterator(); elements.hasNext();) {
-			Object element = elements.next();
+		if (subsetFeatures != null) {
 
-			for (int i = 0; i < subsetFeatures.length; i++) {
+			for (Iterator elements = collection.iterator(); elements.hasNext();) {
+				Object element = elements.next();
 
-				if (subsetFeatures[i].isMany()) {
+				for (int i = 0; i < subsetFeatures.length; i++) {
 
-					if (((EList) owner.eGet(subsetFeatures[i]))
-						.contains(element)) {
-						appendAndExecute(RemoveCommand.create(domain, owner,
-							subsetFeatures[i], Collections.singleton(element)));
-					}
-				} else {
+					if (subsetFeatures[i].isMany()) {
 
-					if (element == owner.eGet(subsetFeatures[i])) {
-						EReference subsetReference = (EReference) subsetFeatures[i];
+						if (((EList) owner.eGet(subsetFeatures[i]))
+							.contains(element)) {
+							appendAndExecute(RemoveCommand.create(domain,
+								owner, subsetFeatures[i], Collections
+									.singleton(element)));
+						}
+					} else {
 
-						appendAndExecute(subsetReference.isContainer()
-							&& !subsetReference.getEOpposite().isMany()
-							? new SetCommand(domain, owner, subsetFeatures[i],
-								null)
-							: SetCommand.create(domain, owner,
-								subsetFeatures[i], null));
+						if (element == owner.eGet(subsetFeatures[i])) {
+							EReference subsetReference = (EReference) subsetFeatures[i];
+
+							appendAndExecute(subsetReference.isContainer()
+								&& !subsetReference.getEOpposite().isMany()
+								? new SetCommand(domain, owner,
+									subsetFeatures[i], null)
+								: SetCommand.create(domain, owner,
+									subsetFeatures[i], null));
+						}
 					}
 				}
 			}

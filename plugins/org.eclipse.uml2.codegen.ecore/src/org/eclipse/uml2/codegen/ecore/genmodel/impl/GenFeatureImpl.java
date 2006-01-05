@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.13 2005/12/12 21:43:54 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.14 2006/01/05 13:49:49 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -232,7 +232,7 @@ public class GenFeatureImpl
 		if (isListType() && !isFeatureMapType() && !isMapType()
 			&& getGenModel().isArrayAccessors()) {
 
-			result += "List";
+			result += "List"; //$NON-NLS-1$
 		}
 
 		if (!isMapEntryFeature()) {
