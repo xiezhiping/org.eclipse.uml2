@@ -1013,6 +1013,16 @@
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind"/>
+  <ownedMember xmi:type="uml:Class" xmi:id="_-Ixo8H4XEdq7cMP_l1l5Gg" name="Duration">
+    <ownedOperation xmi:id="_I3a88H4YEdq7cMP_l1l5Gg" name="stringValue" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw">
+      <returnResult xmi:id="_I3a88X4YEdq7cMP_l1l5Gg" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_DylKEH4YEdq7cMP_l1l5Gg" name="TimeExpression">
+    <ownedOperation xmi:id="_JdkW8H4YEdq7cMP_l1l5Gg" name="stringValue" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw">
+      <returnResult xmi:id="_JdkW8X4YEdq7cMP_l1l5Gg" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
+  </ownedMember>
   <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
     <mergedPackage xmi:type="uml:Model" href="L3.emx#_EBtHcBmMEdqvcs97umGEYQ?L3"/>
   </packageMerge>
