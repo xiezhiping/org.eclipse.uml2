@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerOperations.java,v 1.5 2005/12/05 20:18:59 khussey Exp $
+ * $Id: LiteralIntegerOperations.java,v 1.6 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,22 +22,23 @@ import org.eclipse.uml2.uml.LiteralInteger;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralInteger#stringValue() <em>String Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralInteger#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralInteger#integerValue() <em>Integer Value</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class LiteralIntegerOperations
-		extends UMLOperations {
+public class LiteralIntegerOperations
+		extends ValueSpecificationOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private LiteralIntegerOperations() {
+	protected LiteralIntegerOperations() {
 		super();
 	}
 

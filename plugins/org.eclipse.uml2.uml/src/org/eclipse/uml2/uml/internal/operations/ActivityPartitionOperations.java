@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionOperations.java,v 1.5 2005/12/08 14:56:27 khussey Exp $
+ * $Id: ActivityPartitionOperations.java,v 1.6 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,24 +31,23 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateDimensionNotContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Dimension Not Contained</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateNodeOrEdge(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Node Or Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsPart(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#validateRepresentsPartAndIsContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Represents Part And Is Contained</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class ActivityPartitionOperations
-		extends UMLOperations {
+public class ActivityPartitionOperations
+		extends NamedElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ActivityPartitionOperations() {
+	protected ActivityPartitionOperations() {
 		super();
 	}
 

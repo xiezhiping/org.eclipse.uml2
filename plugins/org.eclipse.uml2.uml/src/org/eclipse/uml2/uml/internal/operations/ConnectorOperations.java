@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.3 2005/11/30 21:43:11 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -41,17 +41,17 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class ConnectorOperations
-		extends UMLOperations {
+public class ConnectorOperations
+		extends RedefinableElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ConnectorOperations() {
+	protected ConnectorOperations() {
 		super();
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.4 2006/01/05 21:27:52 khussey Exp $
+ * $Id: VertexOperations.java,v 1.5 2006/01/05 22:43:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,17 +32,17 @@ import org.eclipse.uml2.uml.Vertex;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class VertexOperations
-		extends UMLOperations {
+public class VertexOperations
+		extends NamedElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private VertexOperations() {
+	protected VertexOperations() {
 		super();
 	}
 

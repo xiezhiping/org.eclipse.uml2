@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.10 2006/01/03 19:50:29 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.11 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -37,28 +37,28 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateLanguageBodySize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Language Body Size</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateOneBodyDefaultLanguage(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Body Default Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateOnlyReturnResultParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Return Result Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#validateOneReturnResultParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Return Result Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getResult() <em>Get Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#value() <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isIntegral() <em>Is Integral</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isPositive() <em>Is Positive</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#isNonNegative() <em>Is Non Negative</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getResult() <em>Get Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#stringValue() <em>String Value</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class OpaqueExpressionOperations
-		extends UMLOperations {
+public class OpaqueExpressionOperations
+		extends ValueSpecificationOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private OpaqueExpressionOperations() {
+	protected OpaqueExpressionOperations() {
 		super();
 	}
 

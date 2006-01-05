@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.5 2005/12/19 18:51:32 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.6 2006/01/05 22:43:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -44,20 +44,26 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateGeneralize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalize</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#createExtension(org.eclipse.uml2.uml.Class, boolean) <em>Create Extension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Get Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword() <em>Get Keyword</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword(boolean) <em>Get Keyword</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class StereotypeOperations
-		extends UMLOperations {
+public class StereotypeOperations
+		extends ClassOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private StereotypeOperations() {
+	protected StereotypeOperations() {
 		super();
 	}
 
@@ -190,7 +196,7 @@ public final class StereotypeOperations
 	 * @generated NOT
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
-		return (Profile) ElementOperations.getOwningElement(stereotype,
+		return (Profile) getOwningElement(stereotype,
 			UMLPackage.Literals.PROFILE, true);
 	}
 

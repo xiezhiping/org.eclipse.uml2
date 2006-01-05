@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.10 2005/11/23 20:09:17 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.11 2006/01/05 22:42:56 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -50,9 +50,9 @@ import org.eclipse.uml2.util.UML2Validator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class MultiplicityElementOperations extends UML2Operations {
+public class MultiplicityElementOperations extends ElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,7 +66,7 @@ public final class MultiplicityElementOperations extends UML2Operations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MultiplicityElementOperations() {
+	protected MultiplicityElementOperations() {
 		super();
 	}
 

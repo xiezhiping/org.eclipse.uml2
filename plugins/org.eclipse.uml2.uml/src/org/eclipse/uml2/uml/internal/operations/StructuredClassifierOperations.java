@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierOperations.java,v 1.5 2005/12/22 20:21:23 khussey Exp $
+ * $Id: StructuredClassifierOperations.java,v 1.6 2006/01/05 22:43:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,20 +34,21 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#validateMultiplicities(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicities</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class StructuredClassifierOperations
-		extends UMLOperations {
+public class StructuredClassifierOperations
+		extends ClassifierOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private StructuredClassifierOperations() {
+	protected StructuredClassifierOperations() {
 		super();
 	}
 

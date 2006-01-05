@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.9 2005/06/15 17:18:21 khussey Exp $
+ * $Id: OperationOperations.java,v 1.10 2006/01/05 22:42:56 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -41,15 +41,15 @@ import org.eclipse.uml2.util.UML2Validator;
  *   <li>{@link org.eclipse.uml2.Operation#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#type() <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Body For Query</em>}</li>
- *   <li>{@link org.eclipse.uml2.Operation#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#upper() <em>Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.Operation#isConsistentWith(org.eclipse.uml2.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.Operation#lower() <em>Lower</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class OperationOperations extends UML2Operations {
+public class OperationOperations extends BehavioralFeatureOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,7 +63,7 @@ public final class OperationOperations extends UML2Operations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private OperationOperations() {
+	protected OperationOperations() {
 		super();
 	}
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.13 2005/09/27 20:03:02 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.14 2006/01/05 22:42:56 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -60,9 +60,9 @@ import org.eclipse.uml2.util.UML2Validator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class ClassifierOperations extends UML2Operations {
+public class ClassifierOperations extends NamespaceOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,7 +76,7 @@ public final class ClassifierOperations extends UML2Operations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ClassifierOperations() {
+	protected ClassifierOperations() {
 		super();
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationOperations.java,v 1.2 2006/01/04 17:47:26 khussey Exp $
+ * $Id: DurationObservationOperations.java,v 1.3 2006/01/05 22:43:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,14 +36,15 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public final class DurationObservationOperations {
+public class DurationObservationOperations
+		extends NamedElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private DurationObservationOperations() {
+	protected DurationObservationOperations() {
 		super();
 	}
 

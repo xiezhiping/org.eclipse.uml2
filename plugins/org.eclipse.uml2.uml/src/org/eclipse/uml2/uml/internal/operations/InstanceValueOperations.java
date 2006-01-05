@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueOperations.java,v 1.3 2005/12/05 20:47:30 khussey Exp $
+ * $Id: InstanceValueOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -29,17 +29,17 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class InstanceValueOperations
-		extends UMLOperations {
+public class InstanceValueOperations
+		extends ValueSpecificationOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private InstanceValueOperations() {
+	protected InstanceValueOperations() {
 		super();
 	}
 

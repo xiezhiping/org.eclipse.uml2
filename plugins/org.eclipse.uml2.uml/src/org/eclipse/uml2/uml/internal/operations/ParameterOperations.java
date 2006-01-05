@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.12 2006/01/05 21:27:52 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.13 2006/01/05 22:43:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,21 +39,23 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Parameter#validateReentrantBehaviors(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Reentrant Behaviors</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#validateInAndOut(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate In And Out</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefault() <em>Get Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#isSetDefault() <em>Is Set Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#setDefault(java.lang.String) <em>Set Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#unsetDefault() <em>Unset Default</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class ParameterOperations
-		extends UMLOperations {
+public class ParameterOperations
+		extends NamedElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ParameterOperations() {
+	protected ParameterOperations() {
 		super();
 	}
 
@@ -242,8 +244,7 @@ public final class ParameterOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static void setDefault(Parameter parameter,
-			 String newDefault) {
+	public static void setDefault(Parameter parameter, String newDefault) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
 
 		if (defaultValue != null) {

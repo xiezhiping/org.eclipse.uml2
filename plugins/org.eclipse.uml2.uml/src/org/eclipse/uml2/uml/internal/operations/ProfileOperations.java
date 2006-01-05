@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.7 2005/12/22 20:21:23 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -73,14 +73,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetamodels() <em>Get Referenced Metamodels</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#allOwningPackages() <em>All Owning Packages</em>}</li>
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class ProfileOperations
-		extends UMLOperations {
+public class ProfileOperations
+		extends PackageOperations {
 
 	public static final class Profile2EPackageConverter
 			extends UML2EcoreConverter {
@@ -108,7 +107,7 @@ public final class ProfileOperations
 				}
 
 				ePackage.setNsURI("http://" //$NON-NLS-1$
-					+ NamedElementOperations.getQualifiedName(profile, ".") //$NON-NLS-1$
+					+ getQualifiedName(profile, ".") //$NON-NLS-1$
 					+ "/schemas/" + EcoreUtil.generateUUID() + '/' + version); //$NON-NLS-1$
 			}
 
@@ -189,7 +188,7 @@ public final class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ProfileOperations() {
+	protected ProfileOperations() {
 		super();
 	}
 

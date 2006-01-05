@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.7 2006/01/05 21:27:52 khussey Exp $
+ * $Id: RegionOperations.java,v 1.8 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,17 +52,17 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class RegionOperations
-		extends UMLOperations {
+public class RegionOperations
+		extends NamespaceOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private RegionOperations() {
+	protected RegionOperations() {
 		super();
 	}
 

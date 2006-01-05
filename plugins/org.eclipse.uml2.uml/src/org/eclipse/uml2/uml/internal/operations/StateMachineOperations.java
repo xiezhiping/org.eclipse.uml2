@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.6 2006/01/05 21:27:52 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.7 2006/01/05 22:43:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,17 +48,17 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class StateMachineOperations
-		extends UMLOperations {
+public class StateMachineOperations
+		extends BehaviorOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private StateMachineOperations() {
+	protected StateMachineOperations() {
 		super();
 	}
 

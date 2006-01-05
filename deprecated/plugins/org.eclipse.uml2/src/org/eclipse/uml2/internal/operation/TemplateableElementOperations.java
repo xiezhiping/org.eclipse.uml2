@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementOperations.java,v 1.4 2005/05/18 16:38:32 khussey Exp $
+ * $Id: TemplateableElementOperations.java,v 1.5 2006/01/05 22:42:56 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -33,9 +33,9 @@ import org.eclipse.uml2.TemplateableElement;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class TemplateableElementOperations extends UML2Operations {
+public class TemplateableElementOperations extends ElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,7 +49,7 @@ public final class TemplateableElementOperations extends UML2Operations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TemplateableElementOperations() {
+	protected TemplateableElementOperations() {
 		super();
 	}
 

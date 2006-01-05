@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.2 2006/01/05 21:27:52 khussey Exp $
+ * $Id: TransitionOperations.java,v 1.3 2006/01/05 22:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,16 +48,17 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class TransitionOperations extends UMLOperations {
+public class TransitionOperations
+		extends NamespaceOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TransitionOperations() {
+	protected TransitionOperations() {
 		super();
 	}
 

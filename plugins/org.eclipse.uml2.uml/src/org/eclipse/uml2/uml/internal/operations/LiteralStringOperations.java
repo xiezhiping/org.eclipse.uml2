@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringOperations.java,v 1.3 2005/12/01 20:04:38 khussey Exp $
+ * $Id: LiteralStringOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,17 +27,17 @@ import org.eclipse.uml2.uml.LiteralString;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class LiteralStringOperations
-		extends UMLOperations {
+public class LiteralStringOperations
+		extends ValueSpecificationOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private LiteralStringOperations() {
+	protected LiteralStringOperations() {
 		super();
 	}
 

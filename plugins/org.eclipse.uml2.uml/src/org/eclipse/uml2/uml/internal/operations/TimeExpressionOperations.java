@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionOperations.java,v 1.1 2006/01/05 21:27:52 khussey Exp $
+ * $Id: TimeExpressionOperations.java,v 1.2 2006/01/05 22:43:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,16 +27,17 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class TimeExpressionOperations extends UMLOperations {
+public class TimeExpressionOperations
+		extends ValueSpecificationOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TimeExpressionOperations() {
+	protected TimeExpressionOperations() {
 		super();
 	}
 

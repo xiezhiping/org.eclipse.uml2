@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.4 2006/01/05 21:27:52 khussey Exp $
+ * $Id: StateOperations.java,v 1.5 2006/01/05 22:43:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -53,16 +53,17 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * </ul>
  * </p>
  *
- * @generated not
+ * @generated
  */
-public final class StateOperations extends UMLOperations {
+public class StateOperations
+		extends NamespaceOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private StateOperations() {
+	protected StateOperations() {
 		super();
 	}
 
