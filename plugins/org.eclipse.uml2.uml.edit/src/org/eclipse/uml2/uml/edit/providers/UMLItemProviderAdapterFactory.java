@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.11 2006/01/04 17:47:49 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.12 2006/01/05 16:33:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.Disposable;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -73,14 +72,6 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
-
-	/**
-	 * This keeps track of all the item providers created, so that they can be {@link #dispose disposed}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Disposable disposable = new Disposable();
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -160,14 +151,34 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Comment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommentItemProvider commentItemProvider;
+
+	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Comment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Adapter createCommentAdapter() {
-		return new CommentItemProvider(this);
+		if (commentItemProvider == null) {
+			commentItemProvider = new CommentItemProvider(this);
+		}
+
+		return commentItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Package} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PackageItemProvider packageItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Dependency}.
@@ -176,8 +187,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDependencyAdapter() {
-		return new DependencyItemProvider(this);
+		if (dependencyItemProvider == null) {
+			dependencyItemProvider = new DependencyItemProvider(this);
+		}
+
+		return dependencyItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ElementImport} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ElementImportItemProvider elementImportItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TemplateParameter}.
@@ -186,8 +209,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTemplateParameterAdapter() {
-		return new TemplateParameterItemProvider(this);
+		if (templateParameterItemProvider == null) {
+			templateParameterItemProvider = new TemplateParameterItemProvider(
+				this);
+		}
+
+		return templateParameterItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TemplateParameterSubstitution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemplateParameterSubstitutionItemProvider templateParameterSubstitutionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TemplateSignature}.
@@ -196,8 +232,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTemplateSignatureAdapter() {
-		return new TemplateSignatureItemProvider(this);
+		if (templateSignatureItemProvider == null) {
+			templateSignatureItemProvider = new TemplateSignatureItemProvider(
+				this);
+		}
+
+		return templateSignatureItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TemplateParameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemplateParameterItemProvider templateParameterItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TemplateBinding}.
@@ -206,8 +255,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTemplateBindingAdapter() {
-		return new TemplateBindingItemProvider(this);
+		if (templateBindingItemProvider == null) {
+			templateBindingItemProvider = new TemplateBindingItemProvider(this);
+		}
+
+		return templateBindingItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TemplateSignature} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemplateSignatureItemProvider templateSignatureItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TemplateParameterSubstitution}.
@@ -216,8 +277,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTemplateParameterSubstitutionAdapter() {
-		return new TemplateParameterSubstitutionItemProvider(this);
+		if (templateParameterSubstitutionItemProvider == null) {
+			templateParameterSubstitutionItemProvider = new TemplateParameterSubstitutionItemProvider(
+				this);
+		}
+
+		return templateParameterSubstitutionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Generalization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralizationItemProvider generalizationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ElementImport}.
@@ -226,8 +300,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createElementImportAdapter() {
-		return new ElementImportItemProvider(this);
+		if (elementImportItemProvider == null) {
+			elementImportItemProvider = new ElementImportItemProvider(this);
+		}
+
+		return elementImportItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.PackageImport} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PackageImportItemProvider packageImportItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.PackageImport}.
@@ -236,8 +322,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPackageImportAdapter() {
-		return new PackageImportItemProvider(this);
+		if (packageImportItemProvider == null) {
+			packageImportItemProvider = new PackageImportItemProvider(this);
+		}
+
+		return packageImportItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Constraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConstraintItemProvider constraintItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Package}.
@@ -246,8 +344,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPackageAdapter() {
-		return new PackageItemProvider(this);
+		if (packageItemProvider == null) {
+			packageItemProvider = new PackageItemProvider(this);
+		}
+
+		return packageItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Dependency} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DependencyItemProvider dependencyItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.PackageMerge}.
@@ -256,8 +366,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPackageMergeAdapter() {
-		return new PackageMergeItemProvider(this);
+		if (packageMergeItemProvider == null) {
+			packageMergeItemProvider = new PackageMergeItemProvider(this);
+		}
+
+		return packageMergeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ProfileApplication} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProfileApplicationItemProvider profileApplicationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ProfileApplication}.
@@ -266,8 +388,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createProfileApplicationAdapter() {
-		return new ProfileApplicationItemProvider(this);
+		if (profileApplicationItemProvider == null) {
+			profileApplicationItemProvider = new ProfileApplicationItemProvider(
+				this);
+		}
+
+		return profileApplicationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Enumeration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnumerationItemProvider enumerationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Profile}.
@@ -276,8 +411,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createProfileAdapter() {
-		return new ProfileItemProvider(this);
+		if (profileItemProvider == null) {
+			profileItemProvider = new ProfileItemProvider(this);
+		}
+
+		return profileItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Model} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModelItemProvider modelItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Stereotype}.
@@ -286,8 +433,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStereotypeAdapter() {
-		return new StereotypeItemProvider(this);
+		if (stereotypeItemProvider == null) {
+			stereotypeItemProvider = new StereotypeItemProvider(this);
+		}
+
+		return stereotypeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Image} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ImageItemProvider imageItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Image}.
@@ -296,8 +455,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createImageAdapter() {
-		return new ImageItemProvider(this);
+		if (imageItemProvider == null) {
+			imageItemProvider = new ImageItemProvider(this);
+		}
+
+		return imageItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Profile} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProfileItemProvider profileItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Class}.
@@ -306,8 +477,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createClassAdapter() {
-		return new ClassItemProvider(this);
+		if (classItemProvider == null) {
+			classItemProvider = new ClassItemProvider(this);
+		}
+
+		return classItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InterfaceRealization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterfaceRealizationItemProvider interfaceRealizationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Generalization}.
@@ -316,8 +499,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createGeneralizationAdapter() {
-		return new GeneralizationItemProvider(this);
+		if (generalizationItemProvider == null) {
+			generalizationItemProvider = new GeneralizationItemProvider(this);
+		}
+
+		return generalizationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.GeneralizationSet} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralizationSetItemProvider generalizationSetItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.GeneralizationSet}.
@@ -326,8 +521,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createGeneralizationSetAdapter() {
-		return new GeneralizationSetItemProvider(this);
+		if (generalizationSetItemProvider == null) {
+			generalizationSetItemProvider = new GeneralizationSetItemProvider(
+				this);
+		}
+
+		return generalizationSetItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Substitution} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubstitutionItemProvider substitutionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.UseCase}.
@@ -336,8 +544,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createUseCaseAdapter() {
-		return new UseCaseItemProvider(this);
+		if (useCaseItemProvider == null) {
+			useCaseItemProvider = new UseCaseItemProvider(this);
+		}
+
+		return useCaseItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Include} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IncludeItemProvider includeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Include}.
@@ -346,8 +566,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createIncludeAdapter() {
-		return new IncludeItemProvider(this);
+		if (includeItemProvider == null) {
+			includeItemProvider = new IncludeItemProvider(this);
+		}
+
+		return includeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Extend} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExtendItemProvider extendItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Extend}.
@@ -356,8 +588,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExtendAdapter() {
-		return new ExtendItemProvider(this);
+		if (extendItemProvider == null) {
+			extendItemProvider = new ExtendItemProvider(this);
+		}
+
+		return extendItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExtensionPoint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExtensionPointItemProvider extensionPointItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Constraint}.
@@ -366,8 +610,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConstraintAdapter() {
-		return new ConstraintItemProvider(this);
+		if (constraintItemProvider == null) {
+			constraintItemProvider = new ConstraintItemProvider(this);
+		}
+
+		return constraintItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Association} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssociationItemProvider associationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExtensionPoint}.
@@ -376,8 +632,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExtensionPointAdapter() {
-		return new ExtensionPointItemProvider(this);
+		if (extensionPointItemProvider == null) {
+			extensionPointItemProvider = new ExtensionPointItemProvider(this);
+		}
+
+		return extensionPointItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.RedefinableTemplateSignature} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RedefinableTemplateSignatureItemProvider redefinableTemplateSignatureItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Substitution}.
@@ -386,8 +654,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSubstitutionAdapter() {
-		return new SubstitutionItemProvider(this);
+		if (substitutionItemProvider == null) {
+			substitutionItemProvider = new SubstitutionItemProvider(this);
+		}
+
+		return substitutionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Realization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RealizationItemProvider realizationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Realization}.
@@ -396,8 +676,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createRealizationAdapter() {
-		return new RealizationItemProvider(this);
+		if (realizationItemProvider == null) {
+			realizationItemProvider = new RealizationItemProvider(this);
+		}
+
+		return realizationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Abstraction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AbstractionItemProvider abstractionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Abstraction}.
@@ -406,8 +698,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAbstractionAdapter() {
-		return new AbstractionItemProvider(this);
+		if (abstractionItemProvider == null) {
+			abstractionItemProvider = new AbstractionItemProvider(this);
+		}
+
+		return abstractionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.OpaqueExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OpaqueExpressionItemProvider opaqueExpressionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.OpaqueExpression}.
@@ -416,8 +720,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createOpaqueExpressionAdapter() {
-		return new OpaqueExpressionItemProvider(this);
+		if (opaqueExpressionItemProvider == null) {
+			opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(
+				this);
+		}
+
+		return opaqueExpressionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Parameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterItemProvider parameterItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Parameter}.
@@ -426,8 +743,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createParameterAdapter() {
-		return new ParameterItemProvider(this);
+		if (parameterItemProvider == null) {
+			parameterItemProvider = new ParameterItemProvider(this);
+		}
+
+		return parameterItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ConnectorEnd} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnectorEndItemProvider connectorEndItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ConnectorEnd}.
@@ -436,8 +765,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConnectorEndAdapter() {
-		return new ConnectorEndItemProvider(this);
+		if (connectorEndItemProvider == null) {
+			connectorEndItemProvider = new ConnectorEndItemProvider(this);
+		}
+
+		return connectorEndItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Property} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertyItemProvider propertyItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Property}.
@@ -446,8 +787,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPropertyAdapter() {
-		return new PropertyItemProvider(this);
+		if (propertyItemProvider == null) {
+			propertyItemProvider = new PropertyItemProvider(this);
+		}
+
+		return propertyItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Deployment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeploymentItemProvider deploymentItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Deployment}.
@@ -456,8 +809,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDeploymentAdapter() {
-		return new DeploymentItemProvider(this);
+		if (deploymentItemProvider == null) {
+			deploymentItemProvider = new DeploymentItemProvider(this);
+		}
+
+		return deploymentItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DeploymentSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeploymentSpecificationItemProvider deploymentSpecificationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DeploymentSpecification}.
@@ -466,8 +831,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDeploymentSpecificationAdapter() {
-		return new DeploymentSpecificationItemProvider(this);
+		if (deploymentSpecificationItemProvider == null) {
+			deploymentSpecificationItemProvider = new DeploymentSpecificationItemProvider(
+				this);
+		}
+
+		return deploymentSpecificationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Artifact} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArtifactItemProvider artifactItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Artifact}.
@@ -476,8 +854,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createArtifactAdapter() {
-		return new ArtifactItemProvider(this);
+		if (artifactItemProvider == null) {
+			artifactItemProvider = new ArtifactItemProvider(this);
+		}
+
+		return artifactItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Manifestation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ManifestationItemProvider manifestationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Manifestation}.
@@ -486,8 +876,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createManifestationAdapter() {
-		return new ManifestationItemProvider(this);
+		if (manifestationItemProvider == null) {
+			manifestationItemProvider = new ManifestationItemProvider(this);
+		}
+
+		return manifestationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Operation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationItemProvider operationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Operation}.
@@ -496,8 +898,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createOperationAdapter() {
-		return new OperationItemProvider(this);
+		if (operationItemProvider == null) {
+			operationItemProvider = new OperationItemProvider(this);
+		}
+
+		return operationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Class} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClassItemProvider classItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ParameterSet}.
@@ -506,8 +920,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createParameterSetAdapter() {
-		return new ParameterSetItemProvider(this);
+		if (parameterSetItemProvider == null) {
+			parameterSetItemProvider = new ParameterSetItemProvider(this);
+		}
+
+		return parameterSetItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DataType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataTypeItemProvider dataTypeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DataType}.
@@ -516,8 +942,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDataTypeAdapter() {
-		return new DataTypeItemProvider(this);
+		if (dataTypeItemProvider == null) {
+			dataTypeItemProvider = new DataTypeItemProvider(this);
+		}
+
+		return dataTypeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.OperationTemplateParameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationTemplateParameterItemProvider operationTemplateParameterItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Interface}.
@@ -526,8 +964,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInterfaceAdapter() {
-		return new InterfaceItemProvider(this);
+		if (interfaceItemProvider == null) {
+			interfaceItemProvider = new InterfaceItemProvider(this);
+		}
+
+		return interfaceItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Reception} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReceptionItemProvider receptionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Reception}.
@@ -536,8 +986,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReceptionAdapter() {
-		return new ReceptionItemProvider(this);
+		if (receptionItemProvider == null) {
+			receptionItemProvider = new ReceptionItemProvider(this);
+		}
+
+		return receptionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Signal} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SignalItemProvider signalItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Signal}.
@@ -546,8 +1008,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSignalAdapter() {
-		return new SignalItemProvider(this);
+		if (signalItemProvider == null) {
+			signalItemProvider = new SignalItemProvider(this);
+		}
+
+		return signalItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ProtocolStateMachine} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProtocolStateMachineItemProvider protocolStateMachineItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ProtocolStateMachine}.
@@ -556,8 +1030,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createProtocolStateMachineAdapter() {
-		return new ProtocolStateMachineItemProvider(this);
+		if (protocolStateMachineItemProvider == null) {
+			protocolStateMachineItemProvider = new ProtocolStateMachineItemProvider(
+				this);
+		}
+
+		return protocolStateMachineItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StateMachine} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StateMachineItemProvider stateMachineItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.StateMachine}.
@@ -566,8 +1053,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStateMachineAdapter() {
-		return new StateMachineItemProvider(this);
+		if (stateMachineItemProvider == null) {
+			stateMachineItemProvider = new StateMachineItemProvider(this);
+		}
+
+		return stateMachineItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Region} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RegionItemProvider regionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Region}.
@@ -576,8 +1075,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createRegionAdapter() {
-		return new RegionItemProvider(this);
+		if (regionItemProvider == null) {
+			regionItemProvider = new RegionItemProvider(this);
+		}
+
+		return regionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Transition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransitionItemProvider transitionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Transition}.
@@ -586,8 +1097,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTransitionAdapter() {
-		return new TransitionItemProvider(this);
+		if (transitionItemProvider == null) {
+			transitionItemProvider = new TransitionItemProvider(this);
+		}
+
+		return transitionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Trigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TriggerItemProvider triggerItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Trigger}.
@@ -596,8 +1119,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTriggerAdapter() {
-		return new TriggerItemProvider(this);
+		if (triggerItemProvider == null) {
+			triggerItemProvider = new TriggerItemProvider(this);
+		}
+
+		return triggerItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Port} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PortItemProvider portItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Port}.
@@ -606,8 +1141,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPortAdapter() {
-		return new PortItemProvider(this);
+		if (portItemProvider == null) {
+			portItemProvider = new PortItemProvider(this);
+		}
+
+		return portItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.State} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StateItemProvider stateItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.State}.
@@ -616,8 +1163,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStateAdapter() {
-		return new StateItemProvider(this);
+		if (stateItemProvider == null) {
+			stateItemProvider = new StateItemProvider(this);
+		}
+
+		return stateItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ConnectionPointReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnectionPointReferenceItemProvider connectionPointReferenceItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ConnectionPointReference}.
@@ -626,8 +1185,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConnectionPointReferenceAdapter() {
-		return new ConnectionPointReferenceItemProvider(this);
+		if (connectionPointReferenceItemProvider == null) {
+			connectionPointReferenceItemProvider = new ConnectionPointReferenceItemProvider(
+				this);
+		}
+
+		return connectionPointReferenceItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Pseudostate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PseudostateItemProvider pseudostateItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Pseudostate}.
@@ -636,8 +1208,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPseudostateAdapter() {
-		return new PseudostateItemProvider(this);
+		if (pseudostateItemProvider == null) {
+			pseudostateItemProvider = new PseudostateItemProvider(this);
+		}
+
+		return pseudostateItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ProtocolConformance} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProtocolConformanceItemProvider protocolConformanceItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ProtocolConformance}.
@@ -646,8 +1230,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createProtocolConformanceAdapter() {
-		return new ProtocolConformanceItemProvider(this);
+		if (protocolConformanceItemProvider == null) {
+			protocolConformanceItemProvider = new ProtocolConformanceItemProvider(
+				this);
+		}
+
+		return protocolConformanceItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Connector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnectorItemProvider connectorItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.OperationTemplateParameter}.
@@ -656,8 +1253,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createOperationTemplateParameterAdapter() {
-		return new OperationTemplateParameterItemProvider(this);
+		if (operationTemplateParameterItemProvider == null) {
+			operationTemplateParameterItemProvider = new OperationTemplateParameterItemProvider(
+				this);
+		}
+
+		return operationTemplateParameterItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ConnectableElementTemplateParameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnectableElementTemplateParameterItemProvider connectableElementTemplateParameterItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Association}.
@@ -666,8 +1276,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAssociationAdapter() {
-		return new AssociationItemProvider(this);
+		if (associationItemProvider == null) {
+			associationItemProvider = new AssociationItemProvider(this);
+		}
+
+		return associationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TemplateBinding} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TemplateBindingItemProvider templateBindingItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ConnectableElementTemplateParameter}.
@@ -676,8 +1298,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConnectableElementTemplateParameterAdapter() {
-		return new ConnectableElementTemplateParameterItemProvider(this);
+		if (connectableElementTemplateParameterItemProvider == null) {
+			connectableElementTemplateParameterItemProvider = new ConnectableElementTemplateParameterItemProvider(
+				this);
+		}
+
+		return connectableElementTemplateParameterItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CollaborationUse} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CollaborationUseItemProvider collaborationUseItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CollaborationUse}.
@@ -686,8 +1321,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCollaborationUseAdapter() {
-		return new CollaborationUseItemProvider(this);
+		if (collaborationUseItemProvider == null) {
+			collaborationUseItemProvider = new CollaborationUseItemProvider(
+				this);
+		}
+
+		return collaborationUseItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Collaboration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CollaborationItemProvider collaborationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Collaboration}.
@@ -696,8 +1344,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCollaborationAdapter() {
-		return new CollaborationItemProvider(this);
+		if (collaborationItemProvider == null) {
+			collaborationItemProvider = new CollaborationItemProvider(this);
+		}
+
+		return collaborationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.UseCase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UseCaseItemProvider useCaseItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Connector}.
@@ -706,8 +1366,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConnectorAdapter() {
-		return new ConnectorItemProvider(this);
+		if (connectorItemProvider == null) {
+			connectorItemProvider = new ConnectorItemProvider(this);
+		}
+
+		return connectorItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Extension} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExtensionItemProvider extensionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.RedefinableTemplateSignature}.
@@ -716,8 +1388,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createRedefinableTemplateSignatureAdapter() {
-		return new RedefinableTemplateSignatureItemProvider(this);
+		if (redefinableTemplateSignatureItemProvider == null) {
+			redefinableTemplateSignatureItemProvider = new RedefinableTemplateSignatureItemProvider(
+				this);
+		}
+
+		return redefinableTemplateSignatureItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ClassifierTemplateParameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClassifierTemplateParameterItemProvider classifierTemplateParameterItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ClassifierTemplateParameter}.
@@ -726,8 +1411,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createClassifierTemplateParameterAdapter() {
-		return new ClassifierTemplateParameterItemProvider(this);
+		if (classifierTemplateParameterItemProvider == null) {
+			classifierTemplateParameterItemProvider = new ClassifierTemplateParameterItemProvider(
+				this);
+		}
+
+		return classifierTemplateParameterItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StringExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringExpressionItemProvider stringExpressionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InterfaceRealization}.
@@ -736,8 +1434,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInterfaceRealizationAdapter() {
-		return new InterfaceRealizationItemProvider(this);
+		if (interfaceRealizationItemProvider == null) {
+			interfaceRealizationItemProvider = new InterfaceRealizationItemProvider(
+				this);
+		}
+
+		return interfaceRealizationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Interface} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterfaceItemProvider interfaceItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Extension}.
@@ -746,8 +1457,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExtensionAdapter() {
-		return new ExtensionItemProvider(this);
+		if (extensionItemProvider == null) {
+			extensionItemProvider = new ExtensionItemProvider(this);
+		}
+
+		return extensionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExtensionEnd} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExtensionEndItemProvider extensionEndItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExtensionEnd}.
@@ -756,8 +1479,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExtensionEndAdapter() {
-		return new ExtensionEndItemProvider(this);
+		if (extensionEndItemProvider == null) {
+			extensionEndItemProvider = new ExtensionEndItemProvider(this);
+		}
+
+		return extensionEndItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Stereotype} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StereotypeItemProvider stereotypeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.StringExpression}.
@@ -766,8 +1501,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStringExpressionAdapter() {
-		return new StringExpressionItemProvider(this);
+		if (stringExpressionItemProvider == null) {
+			stringExpressionItemProvider = new StringExpressionItemProvider(
+				this);
+		}
+
+		return stringExpressionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Expression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpressionItemProvider expressionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Expression}.
@@ -776,8 +1524,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExpressionAdapter() {
-		return new ExpressionItemProvider(this);
+		if (expressionItemProvider == null) {
+			expressionItemProvider = new ExpressionItemProvider(this);
+		}
+
+		return expressionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.PackageMerge} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PackageMergeItemProvider packageMergeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LiteralInteger}.
@@ -786,8 +1546,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLiteralIntegerAdapter() {
-		return new LiteralIntegerItemProvider(this);
+		if (literalIntegerItemProvider == null) {
+			literalIntegerItemProvider = new LiteralIntegerItemProvider(this);
+		}
+
+		return literalIntegerItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LiteralString} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralStringItemProvider literalStringItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LiteralString}.
@@ -796,8 +1568,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLiteralStringAdapter() {
-		return new LiteralStringItemProvider(this);
+		if (literalStringItemProvider == null) {
+			literalStringItemProvider = new LiteralStringItemProvider(this);
+		}
+
+		return literalStringItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LiteralBoolean} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralBooleanItemProvider literalBooleanItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LiteralBoolean}.
@@ -806,8 +1590,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLiteralBooleanAdapter() {
-		return new LiteralBooleanItemProvider(this);
+		if (literalBooleanItemProvider == null) {
+			literalBooleanItemProvider = new LiteralBooleanItemProvider(this);
+		}
+
+		return literalBooleanItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LiteralNull} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralNullItemProvider literalNullItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LiteralNull}.
@@ -816,8 +1612,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLiteralNullAdapter() {
-		return new LiteralNullItemProvider(this);
+		if (literalNullItemProvider == null) {
+			literalNullItemProvider = new LiteralNullItemProvider(this);
+		}
+
+		return literalNullItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InstanceValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceValueItemProvider instanceValueItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Slot}.
@@ -826,8 +1634,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSlotAdapter() {
-		return new SlotItemProvider(this);
+		if (slotItemProvider == null) {
+			slotItemProvider = new SlotItemProvider(this);
+		}
+
+		return slotItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.PrimitiveType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PrimitiveTypeItemProvider primitiveTypeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InstanceSpecification}.
@@ -836,8 +1656,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInstanceSpecificationAdapter() {
-		return new InstanceSpecificationItemProvider(this);
+		if (instanceSpecificationItemProvider == null) {
+			instanceSpecificationItemProvider = new InstanceSpecificationItemProvider(
+				this);
+		}
+
+		return instanceSpecificationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Slot} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SlotItemProvider slotItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Enumeration}.
@@ -846,8 +1679,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createEnumerationAdapter() {
-		return new EnumerationItemProvider(this);
+		if (enumerationItemProvider == null) {
+			enumerationItemProvider = new EnumerationItemProvider(this);
+		}
+
+		return enumerationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.EnumerationLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnumerationLiteralItemProvider enumerationLiteralItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.EnumerationLiteral}.
@@ -856,8 +1701,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createEnumerationLiteralAdapter() {
-		return new EnumerationLiteralItemProvider(this);
+		if (enumerationLiteralItemProvider == null) {
+			enumerationLiteralItemProvider = new EnumerationLiteralItemProvider(
+				this);
+		}
+
+		return enumerationLiteralItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InstanceSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceSpecificationItemProvider instanceSpecificationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.PrimitiveType}.
@@ -866,8 +1724,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPrimitiveTypeAdapter() {
-		return new PrimitiveTypeItemProvider(this);
+		if (primitiveTypeItemProvider == null) {
+			primitiveTypeItemProvider = new PrimitiveTypeItemProvider(this);
+		}
+
+		return primitiveTypeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LiteralInteger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralIntegerItemProvider literalIntegerItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InstanceValue}.
@@ -876,8 +1746,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInstanceValueAdapter() {
-		return new InstanceValueItemProvider(this);
+		if (instanceValueItemProvider == null) {
+			instanceValueItemProvider = new InstanceValueItemProvider(this);
+		}
+
+		return instanceValueItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LiteralUnlimitedNatural} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralUnlimitedNaturalItemProvider literalUnlimitedNaturalItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LiteralUnlimitedNatural}.
@@ -886,8 +1768,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLiteralUnlimitedNaturalAdapter() {
-		return new LiteralUnlimitedNaturalItemProvider(this);
+		if (literalUnlimitedNaturalItemProvider == null) {
+			literalUnlimitedNaturalItemProvider = new LiteralUnlimitedNaturalItemProvider(
+				this);
+		}
+
+		return literalUnlimitedNaturalItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.OpaqueBehavior} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OpaqueBehaviorItemProvider opaqueBehaviorItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.OpaqueBehavior}.
@@ -896,8 +1791,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createOpaqueBehaviorAdapter() {
-		return new OpaqueBehaviorItemProvider(this);
+		if (opaqueBehaviorItemProvider == null) {
+			opaqueBehaviorItemProvider = new OpaqueBehaviorItemProvider(this);
+		}
+
+		return opaqueBehaviorItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.FunctionBehavior} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionBehaviorItemProvider functionBehaviorItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.FunctionBehavior}.
@@ -906,8 +1813,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createFunctionBehaviorAdapter() {
-		return new FunctionBehaviorItemProvider(this);
+		if (functionBehaviorItemProvider == null) {
+			functionBehaviorItemProvider = new FunctionBehaviorItemProvider(
+				this);
+		}
+
+		return functionBehaviorItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.OpaqueAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OpaqueActionItemProvider opaqueActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Actor}.
@@ -916,8 +1836,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActorAdapter() {
-		return new ActorItemProvider(this);
+		if (actorItemProvider == null) {
+			actorItemProvider = new ActorItemProvider(this);
+		}
+
+		return actorItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CallEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CallEventItemProvider callEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Usage}.
@@ -926,8 +1858,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createUsageAdapter() {
-		return new UsageItemProvider(this);
+		if (usageItemProvider == null) {
+			usageItemProvider = new UsageItemProvider(this);
+		}
+
+		return usageItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ControlFlow} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ControlFlowItemProvider controlFlowItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Message}.
@@ -936,8 +1880,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createMessageAdapter() {
-		return new MessageItemProvider(this);
+		if (messageItemProvider == null) {
+			messageItemProvider = new MessageItemProvider(this);
+		}
+
+		return messageItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Interaction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InteractionItemProvider interactionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Interaction}.
@@ -946,8 +1902,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInteractionAdapter() {
-		return new InteractionItemProvider(this);
+		if (interactionItemProvider == null) {
+			interactionItemProvider = new InteractionItemProvider(this);
+		}
+
+		return interactionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Lifeline} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LifelineItemProvider lifelineItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Lifeline}.
@@ -956,8 +1924,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLifelineAdapter() {
-		return new LifelineItemProvider(this);
+		if (lifelineItemProvider == null) {
+			lifelineItemProvider = new LifelineItemProvider(this);
+		}
+
+		return lifelineItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.PartDecomposition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PartDecompositionItemProvider partDecompositionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.PartDecomposition}.
@@ -966,8 +1946,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPartDecompositionAdapter() {
-		return new PartDecompositionItemProvider(this);
+		if (partDecompositionItemProvider == null) {
+			partDecompositionItemProvider = new PartDecompositionItemProvider(
+				this);
+		}
+
+		return partDecompositionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InteractionUse} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InteractionUseItemProvider interactionUseItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InteractionUse}.
@@ -976,8 +1969,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInteractionUseAdapter() {
-		return new InteractionUseItemProvider(this);
+		if (interactionUseItemProvider == null) {
+			interactionUseItemProvider = new InteractionUseItemProvider(this);
+		}
+
+		return interactionUseItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Gate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GateItemProvider gateItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Gate}.
@@ -986,8 +1991,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createGateAdapter() {
-		return new GateItemProvider(this);
+		if (gateItemProvider == null) {
+			gateItemProvider = new GateItemProvider(this);
+		}
+
+		return gateItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.GeneralOrdering} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralOrderingItemProvider generalOrderingItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Action}.
@@ -996,8 +2013,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActionAdapter() {
-		return new ActionItemProvider(this);
+		if (actionItemProvider == null) {
+			actionItemProvider = new ActionItemProvider(this);
+		}
+
+		return actionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StructuredActivityNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StructuredActivityNodeItemProvider structuredActivityNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Activity}.
@@ -1006,8 +2035,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActivityAdapter() {
-		return new ActivityItemProvider(this);
+		if (activityItemProvider == null) {
+			activityItemProvider = new ActivityItemProvider(this);
+		}
+
+		return activityItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Variable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableItemProvider variableItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ActivityPartition}.
@@ -1016,8 +2057,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActivityPartitionAdapter() {
-		return new ActivityPartitionItemProvider(this);
+		if (activityPartitionItemProvider == null) {
+			activityPartitionItemProvider = new ActivityPartitionItemProvider(
+				this);
+		}
+
+		return activityPartitionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterruptibleActivityRegionItemProvider interruptibleActivityRegionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.StructuredActivityNode}.
@@ -1026,8 +2080,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStructuredActivityNodeAdapter() {
-		return new StructuredActivityNodeItemProvider(this);
+		if (structuredActivityNodeItemProvider == null) {
+			structuredActivityNodeItemProvider = new StructuredActivityNodeItemProvider(
+				this);
+		}
+
+		return structuredActivityNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Activity} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActivityItemProvider activityItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Variable}.
@@ -1036,8 +2103,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createVariableAdapter() {
-		return new VariableItemProvider(this);
+		if (variableItemProvider == null) {
+			variableItemProvider = new VariableItemProvider(this);
+		}
+
+		return variableItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ActivityPartition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActivityPartitionItemProvider activityPartitionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InterruptibleActivityRegion}.
@@ -1046,8 +2125,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInterruptibleActivityRegionAdapter() {
-		return new InterruptibleActivityRegionItemProvider(this);
+		if (interruptibleActivityRegionItemProvider == null) {
+			interruptibleActivityRegionItemProvider = new InterruptibleActivityRegionItemProvider(
+				this);
+		}
+
+		return interruptibleActivityRegionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExceptionHandler} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExceptionHandlerItemProvider exceptionHandlerItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExceptionHandler}.
@@ -1056,8 +2148,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExceptionHandlerAdapter() {
-		return new ExceptionHandlerItemProvider(this);
+		if (exceptionHandlerItemProvider == null) {
+			exceptionHandlerItemProvider = new ExceptionHandlerItemProvider(
+				this);
+		}
+
+		return exceptionHandlerItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.OutputPin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OutputPinItemProvider outputPinItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.OutputPin}.
@@ -1066,8 +2171,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createOutputPinAdapter() {
-		return new OutputPinItemProvider(this);
+		if (outputPinItemProvider == null) {
+			outputPinItemProvider = new OutputPinItemProvider(this);
+		}
+
+		return outputPinItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Pin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PinItemProvider pinItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Pin}.
@@ -1076,8 +2193,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createPinAdapter() {
-		return new PinItemProvider(this);
+		if (pinItemProvider == null) {
+			pinItemProvider = new PinItemProvider(this);
+		}
+
+		return pinItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InputPin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InputPinItemProvider inputPinItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InputPin}.
@@ -1086,8 +2215,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInputPinAdapter() {
-		return new InputPinItemProvider(this);
+		if (inputPinItemProvider == null) {
+			inputPinItemProvider = new InputPinItemProvider(this);
+		}
+
+		return inputPinItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ValuePin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValuePinItemProvider valuePinItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.GeneralOrdering}.
@@ -1096,8 +2237,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createGeneralOrderingAdapter() {
-		return new GeneralOrderingItemProvider(this);
+		if (generalOrderingItemProvider == null) {
+			generalOrderingItemProvider = new GeneralOrderingItemProvider(this);
+		}
+
+		return generalOrderingItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InteractionOperand} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InteractionOperandItemProvider interactionOperandItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InteractionOperand}.
@@ -1106,8 +2259,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInteractionOperandAdapter() {
-		return new InteractionOperandItemProvider(this);
+		if (interactionOperandItemProvider == null) {
+			interactionOperandItemProvider = new InteractionOperandItemProvider(
+				this);
+		}
+
+		return interactionOperandItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InteractionConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InteractionConstraintItemProvider interactionConstraintItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InteractionConstraint}.
@@ -1116,8 +2282,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInteractionConstraintAdapter() {
-		return new InteractionConstraintItemProvider(this);
+		if (interactionConstraintItemProvider == null) {
+			interactionConstraintItemProvider = new InteractionConstraintItemProvider(
+				this);
+		}
+
+		return interactionConstraintItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExecutionOccurrenceSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionOccurrenceSpecificationItemProvider executionOccurrenceSpecificationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExecutionOccurrenceSpecification}.
@@ -1126,8 +2305,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExecutionOccurrenceSpecificationAdapter() {
-		return new ExecutionOccurrenceSpecificationItemProvider(this);
+		if (executionOccurrenceSpecificationItemProvider == null) {
+			executionOccurrenceSpecificationItemProvider = new ExecutionOccurrenceSpecificationItemProvider(
+				this);
+		}
+
+		return executionOccurrenceSpecificationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExecutionEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionEventItemProvider executionEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExecutionEvent}.
@@ -1136,8 +2328,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExecutionEventAdapter() {
-		return new ExecutionEventItemProvider(this);
+		if (executionEventItemProvider == null) {
+			executionEventItemProvider = new ExecutionEventItemProvider(this);
+		}
+
+		return executionEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StateInvariant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StateInvariantItemProvider stateInvariantItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.StateInvariant}.
@@ -1146,8 +2350,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStateInvariantAdapter() {
-		return new StateInvariantItemProvider(this);
+		if (stateInvariantItemProvider == null) {
+			stateInvariantItemProvider = new StateInvariantItemProvider(this);
+		}
+
+		return stateInvariantItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ActionExecutionSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActionExecutionSpecificationItemProvider actionExecutionSpecificationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ActionExecutionSpecification}.
@@ -1156,8 +2372,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActionExecutionSpecificationAdapter() {
-		return new ActionExecutionSpecificationItemProvider(this);
+		if (actionExecutionSpecificationItemProvider == null) {
+			actionExecutionSpecificationItemProvider = new ActionExecutionSpecificationItemProvider(
+				this);
+		}
+
+		return actionExecutionSpecificationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.BehaviorExecutionSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BehaviorExecutionSpecificationItemProvider behaviorExecutionSpecificationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.BehaviorExecutionSpecification}.
@@ -1166,8 +2395,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createBehaviorExecutionSpecificationAdapter() {
-		return new BehaviorExecutionSpecificationItemProvider(this);
+		if (behaviorExecutionSpecificationItemProvider == null) {
+			behaviorExecutionSpecificationItemProvider = new BehaviorExecutionSpecificationItemProvider(
+				this);
+		}
+
+		return behaviorExecutionSpecificationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CreationEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CreationEventItemProvider creationEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CreationEvent}.
@@ -1176,8 +2418,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCreationEventAdapter() {
-		return new CreationEventItemProvider(this);
+		if (creationEventItemProvider == null) {
+			creationEventItemProvider = new CreationEventItemProvider(this);
+		}
+
+		return creationEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DestructionEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DestructionEventItemProvider destructionEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DestructionEvent}.
@@ -1186,8 +2440,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDestructionEventAdapter() {
-		return new DestructionEventItemProvider(this);
+		if (destructionEventItemProvider == null) {
+			destructionEventItemProvider = new DestructionEventItemProvider(
+				this);
+		}
+
+		return destructionEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.SendOperationEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SendOperationEventItemProvider sendOperationEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SendOperationEvent}.
@@ -1196,8 +2463,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSendOperationEventAdapter() {
-		return new SendOperationEventItemProvider(this);
+		if (sendOperationEventItemProvider == null) {
+			sendOperationEventItemProvider = new SendOperationEventItemProvider(
+				this);
+		}
+
+		return sendOperationEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.SendSignalEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SendSignalEventItemProvider sendSignalEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SendSignalEvent}.
@@ -1206,8 +2486,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSendSignalEventAdapter() {
-		return new SendSignalEventItemProvider(this);
+		if (sendSignalEventItemProvider == null) {
+			sendSignalEventItemProvider = new SendSignalEventItemProvider(this);
+		}
+
+		return sendSignalEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.MessageOccurrenceSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MessageOccurrenceSpecificationItemProvider messageOccurrenceSpecificationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.MessageOccurrenceSpecification}.
@@ -1216,8 +2508,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createMessageOccurrenceSpecificationAdapter() {
-		return new MessageOccurrenceSpecificationItemProvider(this);
+		if (messageOccurrenceSpecificationItemProvider == null) {
+			messageOccurrenceSpecificationItemProvider = new MessageOccurrenceSpecificationItemProvider(
+				this);
+		}
+
+		return messageOccurrenceSpecificationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReceiveOperationEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReceiveOperationEventItemProvider receiveOperationEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReceiveOperationEvent}.
@@ -1226,8 +2531,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReceiveOperationEventAdapter() {
-		return new ReceiveOperationEventItemProvider(this);
+		if (receiveOperationEventItemProvider == null) {
+			receiveOperationEventItemProvider = new ReceiveOperationEventItemProvider(
+				this);
+		}
+
+		return receiveOperationEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReceiveSignalEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReceiveSignalEventItemProvider receiveSignalEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReceiveSignalEvent}.
@@ -1236,8 +2554,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReceiveSignalEventAdapter() {
-		return new ReceiveSignalEventItemProvider(this);
+		if (receiveSignalEventItemProvider == null) {
+			receiveSignalEventItemProvider = new ReceiveSignalEventItemProvider(
+				this);
+		}
+
+		return receiveSignalEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Actor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActorItemProvider actorItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CombinedFragment}.
@@ -1246,8 +2577,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCombinedFragmentAdapter() {
-		return new CombinedFragmentItemProvider(this);
+		if (combinedFragmentItemProvider == null) {
+			combinedFragmentItemProvider = new CombinedFragmentItemProvider(
+				this);
+		}
+
+		return combinedFragmentItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Continuation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContinuationItemProvider continuationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Continuation}.
@@ -1256,8 +2600,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createContinuationAdapter() {
-		return new ContinuationItemProvider(this);
+		if (continuationItemProvider == null) {
+			continuationItemProvider = new ContinuationItemProvider(this);
+		}
+
+		return continuationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ConsiderIgnoreFragment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConsiderIgnoreFragmentItemProvider considerIgnoreFragmentItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ConsiderIgnoreFragment}.
@@ -1266,8 +2622,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConsiderIgnoreFragmentAdapter() {
-		return new ConsiderIgnoreFragmentItemProvider(this);
+		if (considerIgnoreFragmentItemProvider == null) {
+			considerIgnoreFragmentItemProvider = new ConsiderIgnoreFragmentItemProvider(
+				this);
+		}
+
+		return considerIgnoreFragmentItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CreateObjectAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CreateObjectActionItemProvider createObjectActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CallEvent}.
@@ -1276,8 +2645,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCallEventAdapter() {
-		return new CallEventItemProvider(this);
+		if (callEventItemProvider == null) {
+			callEventItemProvider = new CallEventItemProvider(this);
+		}
+
+		return callEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ChangeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChangeEventItemProvider changeEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ChangeEvent}.
@@ -1286,8 +2667,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createChangeEventAdapter() {
-		return new ChangeEventItemProvider(this);
+		if (changeEventItemProvider == null) {
+			changeEventItemProvider = new ChangeEventItemProvider(this);
+		}
+
+		return changeEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.SignalEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SignalEventItemProvider signalEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SignalEvent}.
@@ -1296,8 +2689,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSignalEventAdapter() {
-		return new SignalEventItemProvider(this);
+		if (signalEventItemProvider == null) {
+			signalEventItemProvider = new SignalEventItemProvider(this);
+		}
+
+		return signalEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.AnyReceiveEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnyReceiveEventItemProvider anyReceiveEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.AnyReceiveEvent}.
@@ -1306,8 +2711,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAnyReceiveEventAdapter() {
-		return new AnyReceiveEventItemProvider(this);
+		if (anyReceiveEventItemProvider == null) {
+			anyReceiveEventItemProvider = new AnyReceiveEventItemProvider(this);
+		}
+
+		return anyReceiveEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ForkNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForkNodeItemProvider forkNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CreateObjectAction}.
@@ -1316,8 +2733,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCreateObjectActionAdapter() {
-		return new CreateObjectActionItemProvider(this);
+		if (createObjectActionItemProvider == null) {
+			createObjectActionItemProvider = new CreateObjectActionItemProvider(
+				this);
+		}
+
+		return createObjectActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DestroyObjectAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DestroyObjectActionItemProvider destroyObjectActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DestroyObjectAction}.
@@ -1326,8 +2756,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDestroyObjectActionAdapter() {
-		return new DestroyObjectActionItemProvider(this);
+		if (destroyObjectActionItemProvider == null) {
+			destroyObjectActionItemProvider = new DestroyObjectActionItemProvider(
+				this);
+		}
+
+		return destroyObjectActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TestIdentityAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TestIdentityActionItemProvider testIdentityActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TestIdentityAction}.
@@ -1336,8 +2779,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTestIdentityActionAdapter() {
-		return new TestIdentityActionItemProvider(this);
+		if (testIdentityActionItemProvider == null) {
+			testIdentityActionItemProvider = new TestIdentityActionItemProvider(
+				this);
+		}
+
+		return testIdentityActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadSelfAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadSelfActionItemProvider readSelfActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadSelfAction}.
@@ -1346,8 +2802,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadSelfActionAdapter() {
-		return new ReadSelfActionItemProvider(this);
+		if (readSelfActionItemProvider == null) {
+			readSelfActionItemProvider = new ReadSelfActionItemProvider(this);
+		}
+
+		return readSelfActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadStructuralFeatureAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadStructuralFeatureActionItemProvider readStructuralFeatureActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadStructuralFeatureAction}.
@@ -1356,8 +2824,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadStructuralFeatureActionAdapter() {
-		return new ReadStructuralFeatureActionItemProvider(this);
+		if (readStructuralFeatureActionItemProvider == null) {
+			readStructuralFeatureActionItemProvider = new ReadStructuralFeatureActionItemProvider(
+				this);
+		}
+
+		return readStructuralFeatureActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ClearStructuralFeatureAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClearStructuralFeatureActionItemProvider clearStructuralFeatureActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ClearStructuralFeatureAction}.
@@ -1366,8 +2847,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createClearStructuralFeatureActionAdapter() {
-		return new ClearStructuralFeatureActionItemProvider(this);
+		if (clearStructuralFeatureActionItemProvider == null) {
+			clearStructuralFeatureActionItemProvider = new ClearStructuralFeatureActionItemProvider(
+				this);
+		}
+
+		return clearStructuralFeatureActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.RemoveStructuralFeatureValueAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RemoveStructuralFeatureValueActionItemProvider removeStructuralFeatureValueActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.RemoveStructuralFeatureValueAction}.
@@ -1376,8 +2870,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createRemoveStructuralFeatureValueActionAdapter() {
-		return new RemoveStructuralFeatureValueActionItemProvider(this);
+		if (removeStructuralFeatureValueActionItemProvider == null) {
+			removeStructuralFeatureValueActionItemProvider = new RemoveStructuralFeatureValueActionItemProvider(
+				this);
+		}
+
+		return removeStructuralFeatureValueActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.AddStructuralFeatureValueAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddStructuralFeatureValueActionItemProvider addStructuralFeatureValueActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.AddStructuralFeatureValueAction}.
@@ -1386,8 +2893,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAddStructuralFeatureValueActionAdapter() {
-		return new AddStructuralFeatureValueActionItemProvider(this);
+		if (addStructuralFeatureValueActionItemProvider == null) {
+			addStructuralFeatureValueActionItemProvider = new AddStructuralFeatureValueActionItemProvider(
+				this);
+		}
+
+		return addStructuralFeatureValueActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LinkEndData} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkEndDataItemProvider linkEndDataItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LinkEndData}.
@@ -1396,8 +2916,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLinkEndDataAdapter() {
-		return new LinkEndDataItemProvider(this);
+		if (linkEndDataItemProvider == null) {
+			linkEndDataItemProvider = new LinkEndDataItemProvider(this);
+		}
+
+		return linkEndDataItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.QualifierValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected QualifierValueItemProvider qualifierValueItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.QualifierValue}.
@@ -1406,8 +2938,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createQualifierValueAdapter() {
-		return new QualifierValueItemProvider(this);
+		if (qualifierValueItemProvider == null) {
+			qualifierValueItemProvider = new QualifierValueItemProvider(this);
+		}
+
+		return qualifierValueItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadLinkAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadLinkActionItemProvider readLinkActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadLinkAction}.
@@ -1416,8 +2960,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadLinkActionAdapter() {
-		return new ReadLinkActionItemProvider(this);
+		if (readLinkActionItemProvider == null) {
+			readLinkActionItemProvider = new ReadLinkActionItemProvider(this);
+		}
+
+		return readLinkActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LinkEndCreationData} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkEndCreationDataItemProvider linkEndCreationDataItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LinkEndCreationData}.
@@ -1426,8 +2982,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLinkEndCreationDataAdapter() {
-		return new LinkEndCreationDataItemProvider(this);
+		if (linkEndCreationDataItemProvider == null) {
+			linkEndCreationDataItemProvider = new LinkEndCreationDataItemProvider(
+				this);
+		}
+
+		return linkEndCreationDataItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CreateLinkAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CreateLinkActionItemProvider createLinkActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CreateLinkAction}.
@@ -1436,8 +3005,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCreateLinkActionAdapter() {
-		return new CreateLinkActionItemProvider(this);
+		if (createLinkActionItemProvider == null) {
+			createLinkActionItemProvider = new CreateLinkActionItemProvider(
+				this);
+		}
+
+		return createLinkActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DestroyLinkAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DestroyLinkActionItemProvider destroyLinkActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DestroyLinkAction}.
@@ -1446,8 +3028,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDestroyLinkActionAdapter() {
-		return new DestroyLinkActionItemProvider(this);
+		if (destroyLinkActionItemProvider == null) {
+			destroyLinkActionItemProvider = new DestroyLinkActionItemProvider(
+				this);
+		}
+
+		return destroyLinkActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LinkEndDestructionData} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkEndDestructionDataItemProvider linkEndDestructionDataItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LinkEndDestructionData}.
@@ -1456,8 +3051,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLinkEndDestructionDataAdapter() {
-		return new LinkEndDestructionDataItemProvider(this);
+		if (linkEndDestructionDataItemProvider == null) {
+			linkEndDestructionDataItemProvider = new LinkEndDestructionDataItemProvider(
+				this);
+		}
+
+		return linkEndDestructionDataItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ClearAssociationAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClearAssociationActionItemProvider clearAssociationActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ClearAssociationAction}.
@@ -1466,8 +3074,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createClearAssociationActionAdapter() {
-		return new ClearAssociationActionItemProvider(this);
+		if (clearAssociationActionItemProvider == null) {
+			clearAssociationActionItemProvider = new ClearAssociationActionItemProvider(
+				this);
+		}
+
+		return clearAssociationActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.BroadcastSignalAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BroadcastSignalActionItemProvider broadcastSignalActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.BroadcastSignalAction}.
@@ -1476,8 +3097,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createBroadcastSignalActionAdapter() {
-		return new BroadcastSignalActionItemProvider(this);
+		if (broadcastSignalActionItemProvider == null) {
+			broadcastSignalActionItemProvider = new BroadcastSignalActionItemProvider(
+				this);
+		}
+
+		return broadcastSignalActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.SendObjectAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SendObjectActionItemProvider sendObjectActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SendObjectAction}.
@@ -1486,8 +3120,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSendObjectActionAdapter() {
-		return new SendObjectActionItemProvider(this);
+		if (sendObjectActionItemProvider == null) {
+			sendObjectActionItemProvider = new SendObjectActionItemProvider(
+				this);
+		}
+
+		return sendObjectActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ValueSpecificationAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValueSpecificationActionItemProvider valueSpecificationActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ValueSpecificationAction}.
@@ -1496,8 +3143,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createValueSpecificationActionAdapter() {
-		return new ValueSpecificationActionItemProvider(this);
+		if (valueSpecificationActionItemProvider == null) {
+			valueSpecificationActionItemProvider = new ValueSpecificationActionItemProvider(
+				this);
+		}
+
+		return valueSpecificationActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeExpressionItemProvider timeExpressionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeExpression}.
@@ -1506,8 +3166,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTimeExpressionAdapter() {
-		return new TimeExpressionItemProvider(this);
+		if (timeExpressionItemProvider == null) {
+			timeExpressionItemProvider = new TimeExpressionItemProvider(this);
+		}
+
+		return timeExpressionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Duration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DurationItemProvider durationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Duration}.
@@ -1516,8 +3188,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDurationAdapter() {
-		return new DurationItemProvider(this);
+		if (durationItemProvider == null) {
+			durationItemProvider = new DurationItemProvider(this);
+		}
+
+		return durationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DurationInterval} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DurationIntervalItemProvider durationIntervalItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ValuePin}.
@@ -1526,8 +3210,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createValuePinAdapter() {
-		return new ValuePinItemProvider(this);
+		if (valuePinItemProvider == null) {
+			valuePinItemProvider = new ValuePinItemProvider(this);
+		}
+
+		return valuePinItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.SendSignalAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SendSignalActionItemProvider sendSignalActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DurationInterval}.
@@ -1536,8 +3232,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDurationIntervalAdapter() {
-		return new DurationIntervalItemProvider(this);
+		if (durationIntervalItemProvider == null) {
+			durationIntervalItemProvider = new DurationIntervalItemProvider(
+				this);
+		}
+
+		return durationIntervalItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Interval} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntervalItemProvider intervalItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Interval}.
@@ -1546,8 +3255,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createIntervalAdapter() {
-		return new IntervalItemProvider(this);
+		if (intervalItemProvider == null) {
+			intervalItemProvider = new IntervalItemProvider(this);
+		}
+
+		return intervalItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeConstraintItemProvider timeConstraintItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeConstraint}.
@@ -1556,8 +3277,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTimeConstraintAdapter() {
-		return new TimeConstraintItemProvider(this);
+		if (timeConstraintItemProvider == null) {
+			timeConstraintItemProvider = new TimeConstraintItemProvider(this);
+		}
+
+		return timeConstraintItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.IntervalConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntervalConstraintItemProvider intervalConstraintItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.IntervalConstraint}.
@@ -1566,8 +3299,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createIntervalConstraintAdapter() {
-		return new IntervalConstraintItemProvider(this);
+		if (intervalConstraintItemProvider == null) {
+			intervalConstraintItemProvider = new IntervalConstraintItemProvider(
+				this);
+		}
+
+		return intervalConstraintItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeInterval} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeIntervalItemProvider timeIntervalItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeInterval}.
@@ -1576,8 +3322,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTimeIntervalAdapter() {
-		return new TimeIntervalItemProvider(this);
+		if (timeIntervalItemProvider == null) {
+			timeIntervalItemProvider = new TimeIntervalItemProvider(this);
+		}
+
+		return timeIntervalItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DurationConstraint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DurationConstraintItemProvider durationConstraintItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DurationConstraint}.
@@ -1586,8 +3344,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDurationConstraintAdapter() {
-		return new DurationConstraintItemProvider(this);
+		if (durationConstraintItemProvider == null) {
+			durationConstraintItemProvider = new DurationConstraintItemProvider(
+				this);
+		}
+
+		return durationConstraintItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeObservation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeObservationItemProvider timeObservationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeObservation}.
@@ -1596,8 +3367,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTimeObservationAdapter() {
-		return new TimeObservationItemProvider(this);
+		if (timeObservationItemProvider == null) {
+			timeObservationItemProvider = new TimeObservationItemProvider(this);
+		}
+
+		return timeObservationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DurationObservation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DurationObservationItemProvider durationObservationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DurationObservation}.
@@ -1606,8 +3389,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDurationObservationAdapter() {
-		return new DurationObservationItemProvider(this);
+		if (durationObservationItemProvider == null) {
+			durationObservationItemProvider = new DurationObservationItemProvider(
+				this);
+		}
+
+		return durationObservationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.FinalState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FinalStateItemProvider finalStateItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.OpaqueAction}.
@@ -1616,8 +3412,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createOpaqueActionAdapter() {
-		return new OpaqueActionItemProvider(this);
+		if (opaqueActionItemProvider == null) {
+			opaqueActionItemProvider = new OpaqueActionItemProvider(this);
+		}
+
+		return opaqueActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Action} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActionItemProvider actionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SendSignalAction}.
@@ -1626,8 +3434,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSendSignalActionAdapter() {
-		return new SendSignalActionItemProvider(this);
+		if (sendSignalActionItemProvider == null) {
+			sendSignalActionItemProvider = new SendSignalActionItemProvider(
+				this);
+		}
+
+		return sendSignalActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CallOperationAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CallOperationActionItemProvider callOperationActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CallOperationAction}.
@@ -1636,8 +3457,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCallOperationActionAdapter() {
-		return new CallOperationActionItemProvider(this);
+		if (callOperationActionItemProvider == null) {
+			callOperationActionItemProvider = new CallOperationActionItemProvider(
+				this);
+		}
+
+		return callOperationActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CallBehaviorAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CallBehaviorActionItemProvider callBehaviorActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CallBehaviorAction}.
@@ -1646,8 +3480,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCallBehaviorActionAdapter() {
-		return new CallBehaviorActionItemProvider(this);
+		if (callBehaviorActionItemProvider == null) {
+			callBehaviorActionItemProvider = new CallBehaviorActionItemProvider(
+				this);
+		}
+
+		return callBehaviorActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.SequenceNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SequenceNodeItemProvider sequenceNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InformationItem}.
@@ -1656,8 +3503,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInformationItemAdapter() {
-		return new InformationItemItemProvider(this);
+		if (informationItemItemProvider == null) {
+			informationItemItemProvider = new InformationItemItemProvider(this);
+		}
+
+		return informationItemItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InformationFlow} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InformationFlowItemProvider informationFlowItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InformationFlow}.
@@ -1666,8 +3525,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInformationFlowAdapter() {
-		return new InformationFlowItemProvider(this);
+		if (informationFlowItemProvider == null) {
+			informationFlowItemProvider = new InformationFlowItemProvider(this);
+		}
+
+		return informationFlowItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadExtentAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadExtentActionItemProvider readExtentActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Model}.
@@ -1676,8 +3547,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createModelAdapter() {
-		return new ModelItemProvider(this);
+		if (modelItemProvider == null) {
+			modelItemProvider = new ModelItemProvider(this);
+		}
+
+		return modelItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ParameterSet} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParameterSetItemProvider parameterSetItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadVariableAction}.
@@ -1686,8 +3569,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadVariableActionAdapter() {
-		return new ReadVariableActionItemProvider(this);
+		if (readVariableActionItemProvider == null) {
+			readVariableActionItemProvider = new ReadVariableActionItemProvider(
+				this);
+		}
+
+		return readVariableActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ClearVariableAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClearVariableActionItemProvider clearVariableActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ClearVariableAction}.
@@ -1696,8 +3592,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createClearVariableActionAdapter() {
-		return new ClearVariableActionItemProvider(this);
+		if (clearVariableActionItemProvider == null) {
+			clearVariableActionItemProvider = new ClearVariableActionItemProvider(
+				this);
+		}
+
+		return clearVariableActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.AddVariableValueAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddVariableValueActionItemProvider addVariableValueActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.AddVariableValueAction}.
@@ -1706,8 +3615,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAddVariableValueActionAdapter() {
-		return new AddVariableValueActionItemProvider(this);
+		if (addVariableValueActionItemProvider == null) {
+			addVariableValueActionItemProvider = new AddVariableValueActionItemProvider(
+				this);
+		}
+
+		return addVariableValueActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.RemoveVariableValueAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RemoveVariableValueActionItemProvider removeVariableValueActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.RemoveVariableValueAction}.
@@ -1716,8 +3638,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createRemoveVariableValueActionAdapter() {
-		return new RemoveVariableValueActionItemProvider(this);
+		if (removeVariableValueActionItemProvider == null) {
+			removeVariableValueActionItemProvider = new RemoveVariableValueActionItemProvider(
+				this);
+		}
+
+		return removeVariableValueActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.RaiseExceptionAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RaiseExceptionActionItemProvider raiseExceptionActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.RaiseExceptionAction}.
@@ -1726,8 +3661,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createRaiseExceptionActionAdapter() {
-		return new RaiseExceptionActionItemProvider(this);
+		if (raiseExceptionActionItemProvider == null) {
+			raiseExceptionActionItemProvider = new RaiseExceptionActionItemProvider(
+				this);
+		}
+
+		return raiseExceptionActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ActionInputPin} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActionInputPinItemProvider actionInputPinItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ActionInputPin}.
@@ -1736,8 +3684,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActionInputPinAdapter() {
-		return new ActionInputPinItemProvider(this);
+		if (actionInputPinItemProvider == null) {
+			actionInputPinItemProvider = new ActionInputPinItemProvider(this);
+		}
+
+		return actionInputPinItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InformationItem} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InformationItemItemProvider informationItemItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadExtentAction}.
@@ -1746,8 +3706,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadExtentActionAdapter() {
-		return new ReadExtentActionItemProvider(this);
+		if (readExtentActionItemProvider == null) {
+			readExtentActionItemProvider = new ReadExtentActionItemProvider(
+				this);
+		}
+
+		return readExtentActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReclassifyObjectAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReclassifyObjectActionItemProvider reclassifyObjectActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReclassifyObjectAction}.
@@ -1756,8 +3729,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReclassifyObjectActionAdapter() {
-		return new ReclassifyObjectActionItemProvider(this);
+		if (reclassifyObjectActionItemProvider == null) {
+			reclassifyObjectActionItemProvider = new ReclassifyObjectActionItemProvider(
+				this);
+		}
+
+		return reclassifyObjectActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadIsClassifiedObjectAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadIsClassifiedObjectActionItemProvider readIsClassifiedObjectActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadIsClassifiedObjectAction}.
@@ -1766,8 +3752,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadIsClassifiedObjectActionAdapter() {
-		return new ReadIsClassifiedObjectActionItemProvider(this);
+		if (readIsClassifiedObjectActionItemProvider == null) {
+			readIsClassifiedObjectActionItemProvider = new ReadIsClassifiedObjectActionItemProvider(
+				this);
+		}
+
+		return readIsClassifiedObjectActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StartClassifierBehaviorAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StartClassifierBehaviorActionItemProvider startClassifierBehaviorActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.StartClassifierBehaviorAction}.
@@ -1776,8 +3775,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createStartClassifierBehaviorActionAdapter() {
-		return new StartClassifierBehaviorActionItemProvider(this);
+		if (startClassifierBehaviorActionItemProvider == null) {
+			startClassifierBehaviorActionItemProvider = new StartClassifierBehaviorActionItemProvider(
+				this);
+		}
+
+		return startClassifierBehaviorActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadLinkObjectEndAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadLinkObjectEndActionItemProvider readLinkObjectEndActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadLinkObjectEndAction}.
@@ -1786,8 +3798,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadLinkObjectEndActionAdapter() {
-		return new ReadLinkObjectEndActionItemProvider(this);
+		if (readLinkObjectEndActionItemProvider == null) {
+			readLinkObjectEndActionItemProvider = new ReadLinkObjectEndActionItemProvider(
+				this);
+		}
+
+		return readLinkObjectEndActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadLinkObjectEndQualifierActionItemProvider readLinkObjectEndQualifierActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction}.
@@ -1796,8 +3821,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReadLinkObjectEndQualifierActionAdapter() {
-		return new ReadLinkObjectEndQualifierActionItemProvider(this);
+		if (readLinkObjectEndQualifierActionItemProvider == null) {
+			readLinkObjectEndQualifierActionItemProvider = new ReadLinkObjectEndQualifierActionItemProvider(
+				this);
+		}
+
+		return readLinkObjectEndQualifierActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CreateLinkObjectAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CreateLinkObjectActionItemProvider createLinkObjectActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CreateLinkObjectAction}.
@@ -1806,8 +3844,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCreateLinkObjectActionAdapter() {
-		return new CreateLinkObjectActionItemProvider(this);
+		if (createLinkObjectActionItemProvider == null) {
+			createLinkObjectActionItemProvider = new CreateLinkObjectActionItemProvider(
+				this);
+		}
+
+		return createLinkObjectActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.AcceptEventAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AcceptEventActionItemProvider acceptEventActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.AcceptEventAction}.
@@ -1816,8 +3867,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAcceptEventActionAdapter() {
-		return new AcceptEventActionItemProvider(this);
+		if (acceptEventActionItemProvider == null) {
+			acceptEventActionItemProvider = new AcceptEventActionItemProvider(
+				this);
+		}
+
+		return acceptEventActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.AcceptCallAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AcceptCallActionItemProvider acceptCallActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.AcceptCallAction}.
@@ -1826,8 +3890,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAcceptCallActionAdapter() {
-		return new AcceptCallActionItemProvider(this);
+		if (acceptCallActionItemProvider == null) {
+			acceptCallActionItemProvider = new AcceptCallActionItemProvider(
+				this);
+		}
+
+		return acceptCallActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReplyAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReplyActionItemProvider replyActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReplyAction}.
@@ -1836,8 +3913,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReplyActionAdapter() {
-		return new ReplyActionItemProvider(this);
+		if (replyActionItemProvider == null) {
+			replyActionItemProvider = new ReplyActionItemProvider(this);
+		}
+
+		return replyActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.UnmarshallAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UnmarshallActionItemProvider unmarshallActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.UnmarshallAction}.
@@ -1846,8 +3935,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createUnmarshallActionAdapter() {
-		return new UnmarshallActionItemProvider(this);
+		if (unmarshallActionItemProvider == null) {
+			unmarshallActionItemProvider = new UnmarshallActionItemProvider(
+				this);
+		}
+
+		return unmarshallActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReduceAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReduceActionItemProvider reduceActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ReduceAction}.
@@ -1856,8 +3958,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReduceActionAdapter() {
-		return new ReduceActionItemProvider(this);
+		if (reduceActionItemProvider == null) {
+			reduceActionItemProvider = new ReduceActionItemProvider(this);
+		}
+
+		return reduceActionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.JoinNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JoinNodeItemProvider joinNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ControlFlow}.
@@ -1866,8 +3980,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createControlFlowAdapter() {
-		return new ControlFlowItemProvider(this);
+		if (controlFlowItemProvider == null) {
+			controlFlowItemProvider = new ControlFlowItemProvider(this);
+		}
+
+		return controlFlowItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.InitialNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InitialNodeItemProvider initialNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.InitialNode}.
@@ -1876,8 +4002,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createInitialNodeAdapter() {
-		return new InitialNodeItemProvider(this);
+		if (initialNodeItemProvider == null) {
+			initialNodeItemProvider = new InitialNodeItemProvider(this);
+		}
+
+		return initialNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ActivityParameterNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActivityParameterNodeItemProvider activityParameterNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ActivityParameterNode}.
@@ -1886,8 +4024,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActivityParameterNodeAdapter() {
-		return new ActivityParameterNodeItemProvider(this);
+		if (activityParameterNodeItemProvider == null) {
+			activityParameterNodeItemProvider = new ActivityParameterNodeItemProvider(
+				this);
+		}
+
+		return activityParameterNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Message} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MessageItemProvider messageItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ForkNode}.
@@ -1896,8 +4047,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createForkNodeAdapter() {
-		return new ForkNodeItemProvider(this);
+		if (forkNodeItemProvider == null) {
+			forkNodeItemProvider = new ForkNodeItemProvider(this);
+		}
+
+		return forkNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.FlowFinalNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FlowFinalNodeItemProvider flowFinalNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.FlowFinalNode}.
@@ -1906,8 +4069,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createFlowFinalNodeAdapter() {
-		return new FlowFinalNodeItemProvider(this);
+		if (flowFinalNodeItemProvider == null) {
+			flowFinalNodeItemProvider = new FlowFinalNodeItemProvider(this);
+		}
+
+		return flowFinalNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CentralBufferNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CentralBufferNodeItemProvider centralBufferNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CentralBufferNode}.
@@ -1916,8 +4091,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCentralBufferNodeAdapter() {
-		return new CentralBufferNodeItemProvider(this);
+		if (centralBufferNodeItemProvider == null) {
+			centralBufferNodeItemProvider = new CentralBufferNodeItemProvider(
+				this);
+		}
+
+		return centralBufferNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.MergeNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MergeNodeItemProvider mergeNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.MergeNode}.
@@ -1926,8 +4114,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createMergeNodeAdapter() {
-		return new MergeNodeItemProvider(this);
+		if (mergeNodeItemProvider == null) {
+			mergeNodeItemProvider = new MergeNodeItemProvider(this);
+		}
+
+		return mergeNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DecisionNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DecisionNodeItemProvider decisionNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DecisionNode}.
@@ -1936,8 +4136,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDecisionNodeAdapter() {
-		return new DecisionNodeItemProvider(this);
+		if (decisionNodeItemProvider == null) {
+			decisionNodeItemProvider = new DecisionNodeItemProvider(this);
+		}
+
+		return decisionNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ActivityFinalNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ActivityFinalNodeItemProvider activityFinalNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ActivityFinalNode}.
@@ -1946,8 +4158,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createActivityFinalNodeAdapter() {
-		return new ActivityFinalNodeItemProvider(this);
+		if (activityFinalNodeItemProvider == null) {
+			activityFinalNodeItemProvider = new ActivityFinalNodeItemProvider(
+				this);
+		}
+
+		return activityFinalNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ComponentRealization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponentRealizationItemProvider componentRealizationItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.JoinNode}.
@@ -1956,8 +4181,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createJoinNodeAdapter() {
-		return new JoinNodeItemProvider(this);
+		if (joinNodeItemProvider == null) {
+			joinNodeItemProvider = new JoinNodeItemProvider(this);
+		}
+
+		return joinNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.DataStoreNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataStoreNodeItemProvider dataStoreNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.DataStoreNode}.
@@ -1966,8 +4203,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDataStoreNodeAdapter() {
-		return new DataStoreNodeItemProvider(this);
+		if (dataStoreNodeItemProvider == null) {
+			dataStoreNodeItemProvider = new DataStoreNodeItemProvider(this);
+		}
+
+		return dataStoreNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ObjectFlow} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ObjectFlowItemProvider objectFlowItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ObjectFlow}.
@@ -1976,8 +4225,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createObjectFlowAdapter() {
-		return new ObjectFlowItemProvider(this);
+		if (objectFlowItemProvider == null) {
+			objectFlowItemProvider = new ObjectFlowItemProvider(this);
+		}
+
+		return objectFlowItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ConditionalNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConditionalNodeItemProvider conditionalNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SequenceNode}.
@@ -1986,8 +4247,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createSequenceNodeAdapter() {
-		return new SequenceNodeItemProvider(this);
+		if (sequenceNodeItemProvider == null) {
+			sequenceNodeItemProvider = new SequenceNodeItemProvider(this);
+		}
+
+		return sequenceNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Usage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UsageItemProvider usageItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ConditionalNode}.
@@ -1996,8 +4269,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createConditionalNodeAdapter() {
-		return new ConditionalNodeItemProvider(this);
+		if (conditionalNodeItemProvider == null) {
+			conditionalNodeItemProvider = new ConditionalNodeItemProvider(this);
+		}
+
+		return conditionalNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Clause} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClauseItemProvider clauseItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Clause}.
@@ -2006,8 +4291,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createClauseAdapter() {
-		return new ClauseItemProvider(this);
+		if (clauseItemProvider == null) {
+			clauseItemProvider = new ClauseItemProvider(this);
+		}
+
+		return clauseItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.LoopNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LoopNodeItemProvider loopNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.LoopNode}.
@@ -2016,8 +4313,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createLoopNodeAdapter() {
-		return new LoopNodeItemProvider(this);
+		if (loopNodeItemProvider == null) {
+			loopNodeItemProvider = new LoopNodeItemProvider(this);
+		}
+
+		return loopNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExpansionNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpansionNodeItemProvider expansionNodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExpansionNode}.
@@ -2026,8 +4335,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExpansionNodeAdapter() {
-		return new ExpansionNodeItemProvider(this);
+		if (expansionNodeItemProvider == null) {
+			expansionNodeItemProvider = new ExpansionNodeItemProvider(this);
+		}
+
+		return expansionNodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExpansionRegion} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpansionRegionItemProvider expansionRegionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExpansionRegion}.
@@ -2036,8 +4357,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExpansionRegionAdapter() {
-		return new ExpansionRegionItemProvider(this);
+		if (expansionRegionItemProvider == null) {
+			expansionRegionItemProvider = new ExpansionRegionItemProvider(this);
+		}
+
+		return expansionRegionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ProtocolTransition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProtocolTransitionItemProvider protocolTransitionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ComponentRealization}.
@@ -2046,8 +4379,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createComponentRealizationAdapter() {
-		return new ComponentRealizationItemProvider(this);
+		if (componentRealizationItemProvider == null) {
+			componentRealizationItemProvider = new ComponentRealizationItemProvider(
+				this);
+		}
+
+		return componentRealizationItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Component} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponentItemProvider componentItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Component}.
@@ -2056,8 +4402,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createComponentAdapter() {
-		return new ComponentItemProvider(this);
+		if (componentItemProvider == null) {
+			componentItemProvider = new ComponentItemProvider(this);
+		}
+
+		return componentItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Node} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NodeItemProvider nodeItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Node}.
@@ -2066,8 +4424,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createNodeAdapter() {
-		return new NodeItemProvider(this);
+		if (nodeItemProvider == null) {
+			nodeItemProvider = new NodeItemProvider(this);
+		}
+
+		return nodeItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Device} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeviceItemProvider deviceItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Device}.
@@ -2076,8 +4446,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createDeviceAdapter() {
-		return new DeviceItemProvider(this);
+		if (deviceItemProvider == null) {
+			deviceItemProvider = new DeviceItemProvider(this);
+		}
+
+		return deviceItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ExecutionEnvironment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionEnvironmentItemProvider executionEnvironmentItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ExecutionEnvironment}.
@@ -2086,8 +4468,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createExecutionEnvironmentAdapter() {
-		return new ExecutionEnvironmentItemProvider(this);
+		if (executionEnvironmentItemProvider == null) {
+			executionEnvironmentItemProvider = new ExecutionEnvironmentItemProvider(
+				this);
+		}
+
+		return executionEnvironmentItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CommunicationPath} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommunicationPathItemProvider communicationPathItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.CommunicationPath}.
@@ -2096,8 +4491,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createCommunicationPathAdapter() {
-		return new CommunicationPathItemProvider(this);
+		if (communicationPathItemProvider == null) {
+			communicationPathItemProvider = new CommunicationPathItemProvider(
+				this);
+		}
+
+		return communicationPathItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.CombinedFragment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CombinedFragmentItemProvider combinedFragmentItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.FinalState}.
@@ -2106,8 +4514,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createFinalStateAdapter() {
-		return new FinalStateItemProvider(this);
+		if (finalStateItemProvider == null) {
+			finalStateItemProvider = new FinalStateItemProvider(this);
+		}
+
+		return finalStateItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.TimeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeEventItemProvider timeEventItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.TimeEvent}.
@@ -2116,8 +4536,20 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createTimeEventAdapter() {
-		return new TimeEventItemProvider(this);
+		if (timeEventItemProvider == null) {
+			timeEventItemProvider = new TimeEventItemProvider(this);
+		}
+
+		return timeEventItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.ReadVariableAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReadVariableActionItemProvider readVariableActionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.ProtocolTransition}.
@@ -2126,8 +4558,21 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createProtocolTransitionAdapter() {
-		return new ProtocolTransitionItemProvider(this);
+		if (protocolTransitionItemProvider == null) {
+			protocolTransitionItemProvider = new ProtocolTransitionItemProvider(
+				this);
+		}
+
+		return protocolTransitionItemProvider;
 	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.AssociationClass} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssociationClassItemProvider associationClassItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.AssociationClass}.
@@ -2136,7 +4581,12 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public Adapter createAssociationClassAdapter() {
-		return new AssociationClassItemProvider(this);
+		if (associationClassItemProvider == null) {
+			associationClassItemProvider = new AssociationClassItemProvider(
+				this);
+		}
+
+		return associationClassItemProvider;
 	}
 
 	/**
@@ -2206,19 +4656,6 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
-	 * Associates an adapter with a notifier via the base implementation, then records it to ensure it will be disposed.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void associate(Adapter adapter, Notifier target) {
-		super.associate(adapter, target);
-		if (adapter != null) {
-			disposable.add(adapter);
-		}
-	}
-
-	/**
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2259,7 +4696,402 @@ public class UMLItemProviderAdapterFactory
 	 * @generated
 	 */
 	public void dispose() {
-		disposable.dispose();
+		if (commentItemProvider != null)
+			commentItemProvider.dispose();
+		if (packageItemProvider != null)
+			packageItemProvider.dispose();
+		if (dependencyItemProvider != null)
+			dependencyItemProvider.dispose();
+		if (elementImportItemProvider != null)
+			elementImportItemProvider.dispose();
+		if (packageImportItemProvider != null)
+			packageImportItemProvider.dispose();
+		if (constraintItemProvider != null)
+			constraintItemProvider.dispose();
+		if (associationItemProvider != null)
+			associationItemProvider.dispose();
+		if (templateBindingItemProvider != null)
+			templateBindingItemProvider.dispose();
+		if (templateSignatureItemProvider != null)
+			templateSignatureItemProvider.dispose();
+		if (templateParameterItemProvider != null)
+			templateParameterItemProvider.dispose();
+		if (templateParameterSubstitutionItemProvider != null)
+			templateParameterSubstitutionItemProvider.dispose();
+		if (generalizationItemProvider != null)
+			generalizationItemProvider.dispose();
+		if (generalizationSetItemProvider != null)
+			generalizationSetItemProvider.dispose();
+		if (substitutionItemProvider != null)
+			substitutionItemProvider.dispose();
+		if (realizationItemProvider != null)
+			realizationItemProvider.dispose();
+		if (abstractionItemProvider != null)
+			abstractionItemProvider.dispose();
+		if (opaqueExpressionItemProvider != null)
+			opaqueExpressionItemProvider.dispose();
+		if (parameterItemProvider != null)
+			parameterItemProvider.dispose();
+		if (connectorEndItemProvider != null)
+			connectorEndItemProvider.dispose();
+		if (propertyItemProvider != null)
+			propertyItemProvider.dispose();
+		if (deploymentItemProvider != null)
+			deploymentItemProvider.dispose();
+		if (deploymentSpecificationItemProvider != null)
+			deploymentSpecificationItemProvider.dispose();
+		if (artifactItemProvider != null)
+			artifactItemProvider.dispose();
+		if (manifestationItemProvider != null)
+			manifestationItemProvider.dispose();
+		if (operationItemProvider != null)
+			operationItemProvider.dispose();
+		if (classItemProvider != null)
+			classItemProvider.dispose();
+		if (interfaceRealizationItemProvider != null)
+			interfaceRealizationItemProvider.dispose();
+		if (interfaceItemProvider != null)
+			interfaceItemProvider.dispose();
+		if (receptionItemProvider != null)
+			receptionItemProvider.dispose();
+		if (signalItemProvider != null)
+			signalItemProvider.dispose();
+		if (protocolStateMachineItemProvider != null)
+			protocolStateMachineItemProvider.dispose();
+		if (stateMachineItemProvider != null)
+			stateMachineItemProvider.dispose();
+		if (regionItemProvider != null)
+			regionItemProvider.dispose();
+		if (transitionItemProvider != null)
+			transitionItemProvider.dispose();
+		if (triggerItemProvider != null)
+			triggerItemProvider.dispose();
+		if (portItemProvider != null)
+			portItemProvider.dispose();
+		if (stateItemProvider != null)
+			stateItemProvider.dispose();
+		if (connectionPointReferenceItemProvider != null)
+			connectionPointReferenceItemProvider.dispose();
+		if (pseudostateItemProvider != null)
+			pseudostateItemProvider.dispose();
+		if (protocolConformanceItemProvider != null)
+			protocolConformanceItemProvider.dispose();
+		if (connectorItemProvider != null)
+			connectorItemProvider.dispose();
+		if (extensionItemProvider != null)
+			extensionItemProvider.dispose();
+		if (extensionEndItemProvider != null)
+			extensionEndItemProvider.dispose();
+		if (stereotypeItemProvider != null)
+			stereotypeItemProvider.dispose();
+		if (imageItemProvider != null)
+			imageItemProvider.dispose();
+		if (profileItemProvider != null)
+			profileItemProvider.dispose();
+		if (modelItemProvider != null)
+			modelItemProvider.dispose();
+		if (parameterSetItemProvider != null)
+			parameterSetItemProvider.dispose();
+		if (dataTypeItemProvider != null)
+			dataTypeItemProvider.dispose();
+		if (operationTemplateParameterItemProvider != null)
+			operationTemplateParameterItemProvider.dispose();
+		if (connectableElementTemplateParameterItemProvider != null)
+			connectableElementTemplateParameterItemProvider.dispose();
+		if (collaborationUseItemProvider != null)
+			collaborationUseItemProvider.dispose();
+		if (collaborationItemProvider != null)
+			collaborationItemProvider.dispose();
+		if (useCaseItemProvider != null)
+			useCaseItemProvider.dispose();
+		if (includeItemProvider != null)
+			includeItemProvider.dispose();
+		if (extendItemProvider != null)
+			extendItemProvider.dispose();
+		if (extensionPointItemProvider != null)
+			extensionPointItemProvider.dispose();
+		if (redefinableTemplateSignatureItemProvider != null)
+			redefinableTemplateSignatureItemProvider.dispose();
+		if (classifierTemplateParameterItemProvider != null)
+			classifierTemplateParameterItemProvider.dispose();
+		if (stringExpressionItemProvider != null)
+			stringExpressionItemProvider.dispose();
+		if (expressionItemProvider != null)
+			expressionItemProvider.dispose();
+		if (packageMergeItemProvider != null)
+			packageMergeItemProvider.dispose();
+		if (profileApplicationItemProvider != null)
+			profileApplicationItemProvider.dispose();
+		if (enumerationItemProvider != null)
+			enumerationItemProvider.dispose();
+		if (enumerationLiteralItemProvider != null)
+			enumerationLiteralItemProvider.dispose();
+		if (instanceSpecificationItemProvider != null)
+			instanceSpecificationItemProvider.dispose();
+		if (slotItemProvider != null)
+			slotItemProvider.dispose();
+		if (primitiveTypeItemProvider != null)
+			primitiveTypeItemProvider.dispose();
+		if (literalIntegerItemProvider != null)
+			literalIntegerItemProvider.dispose();
+		if (literalStringItemProvider != null)
+			literalStringItemProvider.dispose();
+		if (literalBooleanItemProvider != null)
+			literalBooleanItemProvider.dispose();
+		if (literalNullItemProvider != null)
+			literalNullItemProvider.dispose();
+		if (instanceValueItemProvider != null)
+			instanceValueItemProvider.dispose();
+		if (literalUnlimitedNaturalItemProvider != null)
+			literalUnlimitedNaturalItemProvider.dispose();
+		if (opaqueBehaviorItemProvider != null)
+			opaqueBehaviorItemProvider.dispose();
+		if (functionBehaviorItemProvider != null)
+			functionBehaviorItemProvider.dispose();
+		if (opaqueActionItemProvider != null)
+			opaqueActionItemProvider.dispose();
+		if (actionItemProvider != null)
+			actionItemProvider.dispose();
+		if (structuredActivityNodeItemProvider != null)
+			structuredActivityNodeItemProvider.dispose();
+		if (activityItemProvider != null)
+			activityItemProvider.dispose();
+		if (variableItemProvider != null)
+			variableItemProvider.dispose();
+		if (activityPartitionItemProvider != null)
+			activityPartitionItemProvider.dispose();
+		if (interruptibleActivityRegionItemProvider != null)
+			interruptibleActivityRegionItemProvider.dispose();
+		if (exceptionHandlerItemProvider != null)
+			exceptionHandlerItemProvider.dispose();
+		if (outputPinItemProvider != null)
+			outputPinItemProvider.dispose();
+		if (pinItemProvider != null)
+			pinItemProvider.dispose();
+		if (inputPinItemProvider != null)
+			inputPinItemProvider.dispose();
+		if (valuePinItemProvider != null)
+			valuePinItemProvider.dispose();
+		if (sendSignalActionItemProvider != null)
+			sendSignalActionItemProvider.dispose();
+		if (callOperationActionItemProvider != null)
+			callOperationActionItemProvider.dispose();
+		if (callBehaviorActionItemProvider != null)
+			callBehaviorActionItemProvider.dispose();
+		if (sequenceNodeItemProvider != null)
+			sequenceNodeItemProvider.dispose();
+		if (usageItemProvider != null)
+			usageItemProvider.dispose();
+		if (controlFlowItemProvider != null)
+			controlFlowItemProvider.dispose();
+		if (initialNodeItemProvider != null)
+			initialNodeItemProvider.dispose();
+		if (activityParameterNodeItemProvider != null)
+			activityParameterNodeItemProvider.dispose();
+		if (messageItemProvider != null)
+			messageItemProvider.dispose();
+		if (interactionItemProvider != null)
+			interactionItemProvider.dispose();
+		if (lifelineItemProvider != null)
+			lifelineItemProvider.dispose();
+		if (partDecompositionItemProvider != null)
+			partDecompositionItemProvider.dispose();
+		if (interactionUseItemProvider != null)
+			interactionUseItemProvider.dispose();
+		if (gateItemProvider != null)
+			gateItemProvider.dispose();
+		if (generalOrderingItemProvider != null)
+			generalOrderingItemProvider.dispose();
+		if (interactionOperandItemProvider != null)
+			interactionOperandItemProvider.dispose();
+		if (interactionConstraintItemProvider != null)
+			interactionConstraintItemProvider.dispose();
+		if (executionOccurrenceSpecificationItemProvider != null)
+			executionOccurrenceSpecificationItemProvider.dispose();
+		if (executionEventItemProvider != null)
+			executionEventItemProvider.dispose();
+		if (stateInvariantItemProvider != null)
+			stateInvariantItemProvider.dispose();
+		if (actionExecutionSpecificationItemProvider != null)
+			actionExecutionSpecificationItemProvider.dispose();
+		if (behaviorExecutionSpecificationItemProvider != null)
+			behaviorExecutionSpecificationItemProvider.dispose();
+		if (creationEventItemProvider != null)
+			creationEventItemProvider.dispose();
+		if (destructionEventItemProvider != null)
+			destructionEventItemProvider.dispose();
+		if (sendOperationEventItemProvider != null)
+			sendOperationEventItemProvider.dispose();
+		if (sendSignalEventItemProvider != null)
+			sendSignalEventItemProvider.dispose();
+		if (messageOccurrenceSpecificationItemProvider != null)
+			messageOccurrenceSpecificationItemProvider.dispose();
+		if (receiveOperationEventItemProvider != null)
+			receiveOperationEventItemProvider.dispose();
+		if (receiveSignalEventItemProvider != null)
+			receiveSignalEventItemProvider.dispose();
+		if (actorItemProvider != null)
+			actorItemProvider.dispose();
+		if (callEventItemProvider != null)
+			callEventItemProvider.dispose();
+		if (changeEventItemProvider != null)
+			changeEventItemProvider.dispose();
+		if (signalEventItemProvider != null)
+			signalEventItemProvider.dispose();
+		if (anyReceiveEventItemProvider != null)
+			anyReceiveEventItemProvider.dispose();
+		if (forkNodeItemProvider != null)
+			forkNodeItemProvider.dispose();
+		if (flowFinalNodeItemProvider != null)
+			flowFinalNodeItemProvider.dispose();
+		if (centralBufferNodeItemProvider != null)
+			centralBufferNodeItemProvider.dispose();
+		if (mergeNodeItemProvider != null)
+			mergeNodeItemProvider.dispose();
+		if (decisionNodeItemProvider != null)
+			decisionNodeItemProvider.dispose();
+		if (activityFinalNodeItemProvider != null)
+			activityFinalNodeItemProvider.dispose();
+		if (componentRealizationItemProvider != null)
+			componentRealizationItemProvider.dispose();
+		if (componentItemProvider != null)
+			componentItemProvider.dispose();
+		if (nodeItemProvider != null)
+			nodeItemProvider.dispose();
+		if (deviceItemProvider != null)
+			deviceItemProvider.dispose();
+		if (executionEnvironmentItemProvider != null)
+			executionEnvironmentItemProvider.dispose();
+		if (communicationPathItemProvider != null)
+			communicationPathItemProvider.dispose();
+		if (combinedFragmentItemProvider != null)
+			combinedFragmentItemProvider.dispose();
+		if (continuationItemProvider != null)
+			continuationItemProvider.dispose();
+		if (considerIgnoreFragmentItemProvider != null)
+			considerIgnoreFragmentItemProvider.dispose();
+		if (createObjectActionItemProvider != null)
+			createObjectActionItemProvider.dispose();
+		if (destroyObjectActionItemProvider != null)
+			destroyObjectActionItemProvider.dispose();
+		if (testIdentityActionItemProvider != null)
+			testIdentityActionItemProvider.dispose();
+		if (readSelfActionItemProvider != null)
+			readSelfActionItemProvider.dispose();
+		if (readStructuralFeatureActionItemProvider != null)
+			readStructuralFeatureActionItemProvider.dispose();
+		if (clearStructuralFeatureActionItemProvider != null)
+			clearStructuralFeatureActionItemProvider.dispose();
+		if (removeStructuralFeatureValueActionItemProvider != null)
+			removeStructuralFeatureValueActionItemProvider.dispose();
+		if (addStructuralFeatureValueActionItemProvider != null)
+			addStructuralFeatureValueActionItemProvider.dispose();
+		if (linkEndDataItemProvider != null)
+			linkEndDataItemProvider.dispose();
+		if (qualifierValueItemProvider != null)
+			qualifierValueItemProvider.dispose();
+		if (readLinkActionItemProvider != null)
+			readLinkActionItemProvider.dispose();
+		if (linkEndCreationDataItemProvider != null)
+			linkEndCreationDataItemProvider.dispose();
+		if (createLinkActionItemProvider != null)
+			createLinkActionItemProvider.dispose();
+		if (destroyLinkActionItemProvider != null)
+			destroyLinkActionItemProvider.dispose();
+		if (linkEndDestructionDataItemProvider != null)
+			linkEndDestructionDataItemProvider.dispose();
+		if (clearAssociationActionItemProvider != null)
+			clearAssociationActionItemProvider.dispose();
+		if (broadcastSignalActionItemProvider != null)
+			broadcastSignalActionItemProvider.dispose();
+		if (sendObjectActionItemProvider != null)
+			sendObjectActionItemProvider.dispose();
+		if (valueSpecificationActionItemProvider != null)
+			valueSpecificationActionItemProvider.dispose();
+		if (timeExpressionItemProvider != null)
+			timeExpressionItemProvider.dispose();
+		if (durationItemProvider != null)
+			durationItemProvider.dispose();
+		if (durationIntervalItemProvider != null)
+			durationIntervalItemProvider.dispose();
+		if (intervalItemProvider != null)
+			intervalItemProvider.dispose();
+		if (timeConstraintItemProvider != null)
+			timeConstraintItemProvider.dispose();
+		if (intervalConstraintItemProvider != null)
+			intervalConstraintItemProvider.dispose();
+		if (timeIntervalItemProvider != null)
+			timeIntervalItemProvider.dispose();
+		if (durationConstraintItemProvider != null)
+			durationConstraintItemProvider.dispose();
+		if (timeObservationItemProvider != null)
+			timeObservationItemProvider.dispose();
+		if (durationObservationItemProvider != null)
+			durationObservationItemProvider.dispose();
+		if (finalStateItemProvider != null)
+			finalStateItemProvider.dispose();
+		if (timeEventItemProvider != null)
+			timeEventItemProvider.dispose();
+		if (readVariableActionItemProvider != null)
+			readVariableActionItemProvider.dispose();
+		if (clearVariableActionItemProvider != null)
+			clearVariableActionItemProvider.dispose();
+		if (addVariableValueActionItemProvider != null)
+			addVariableValueActionItemProvider.dispose();
+		if (removeVariableValueActionItemProvider != null)
+			removeVariableValueActionItemProvider.dispose();
+		if (raiseExceptionActionItemProvider != null)
+			raiseExceptionActionItemProvider.dispose();
+		if (actionInputPinItemProvider != null)
+			actionInputPinItemProvider.dispose();
+		if (informationItemItemProvider != null)
+			informationItemItemProvider.dispose();
+		if (informationFlowItemProvider != null)
+			informationFlowItemProvider.dispose();
+		if (readExtentActionItemProvider != null)
+			readExtentActionItemProvider.dispose();
+		if (reclassifyObjectActionItemProvider != null)
+			reclassifyObjectActionItemProvider.dispose();
+		if (readIsClassifiedObjectActionItemProvider != null)
+			readIsClassifiedObjectActionItemProvider.dispose();
+		if (startClassifierBehaviorActionItemProvider != null)
+			startClassifierBehaviorActionItemProvider.dispose();
+		if (readLinkObjectEndActionItemProvider != null)
+			readLinkObjectEndActionItemProvider.dispose();
+		if (readLinkObjectEndQualifierActionItemProvider != null)
+			readLinkObjectEndQualifierActionItemProvider.dispose();
+		if (createLinkObjectActionItemProvider != null)
+			createLinkObjectActionItemProvider.dispose();
+		if (acceptEventActionItemProvider != null)
+			acceptEventActionItemProvider.dispose();
+		if (acceptCallActionItemProvider != null)
+			acceptCallActionItemProvider.dispose();
+		if (replyActionItemProvider != null)
+			replyActionItemProvider.dispose();
+		if (unmarshallActionItemProvider != null)
+			unmarshallActionItemProvider.dispose();
+		if (reduceActionItemProvider != null)
+			reduceActionItemProvider.dispose();
+		if (joinNodeItemProvider != null)
+			joinNodeItemProvider.dispose();
+		if (dataStoreNodeItemProvider != null)
+			dataStoreNodeItemProvider.dispose();
+		if (objectFlowItemProvider != null)
+			objectFlowItemProvider.dispose();
+		if (conditionalNodeItemProvider != null)
+			conditionalNodeItemProvider.dispose();
+		if (clauseItemProvider != null)
+			clauseItemProvider.dispose();
+		if (loopNodeItemProvider != null)
+			loopNodeItemProvider.dispose();
+		if (expansionNodeItemProvider != null)
+			expansionNodeItemProvider.dispose();
+		if (expansionRegionItemProvider != null)
+			expansionRegionItemProvider.dispose();
+		if (protocolTransitionItemProvider != null)
+			protocolTransitionItemProvider.dispose();
+		if (associationClassItemProvider != null)
+			associationClassItemProvider.dispose();
 	}
 
 	public Adapter createAdapter(Notifier target) {

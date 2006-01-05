@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_2="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_1RgZIcezEdmTJL3rR1ioJg" xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML" appliedProfile="_0TBYYGvaEdq4DLWZOhbdEA">
   <eAnnotations xmi:id="_1gWuMGvaEdq4DLWZOhbdEA" source="appliedStereotypes">
-    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_6C-UQH0yEdqvnflkgXnApQ" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_saHDEH38EdqMXf-sLFxsyw" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   </eAnnotations>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
     <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="attributes">
@@ -363,26 +363,6 @@
       </returnResult>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
-    <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_6C-UQX0yEdqvnflkgXnApQ" instanceClassName="boolean"/>
-    </eAnnotations>
-  </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
-    <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_6C-UQn0yEdqvnflkgXnApQ" instanceClassName="int"/>
-    </eAnnotations>
-  </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
-    <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_6C-UQ30yEdqvnflkgXnApQ" instanceClassName="java.lang.String"/>
-    </eAnnotations>
-  </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
-    <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_6C-URH0yEdqvnflkgXnApQ" instanceClassName="int"/>
-    </eAnnotations>
-  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_iY7sMGvsEdqG6fBIPwe-mw" name="BehavioredClassifier" isAbstract="true">
     <ownedOperation xmi:id="_heThgHLzEdqziYxiZo0YtA" name="createInterfaceRealization" type="_l2mXcHLzEdqziYxiZo0YtA">
       <returnResult xmi:id="_pSsD0HLzEdqziYxiZo0YtA" name="ReturnResultParameter1" type="_l2mXcHLzEdqziYxiZo0YtA" direction="return"/>
@@ -390,7 +370,6 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_skHGwGvsEdqG6fBIPwe-mw" name="Extension"/>
-  <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_csVgUGvtEdqG6fBIPwe-mw" name="NamedElement" isAbstract="true">
     <ownedOperation xmi:id="_o2CW4GwKEdq7X4sGURiZYA" name="createDependency" type="_rEDGkGwKEdq7X4sGURiZYA">
       <returnResult xmi:id="_us8f4GwKEdq7X4sGURiZYA" type="_rEDGkGwKEdq7X4sGURiZYA" direction="return"/>
@@ -717,9 +696,7 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true"/>
-  <ownedMember xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_AwvxoGwNEdq7X4sGURiZYA" name="Association"/>
-  <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_OQcbgGwOEdq7X4sGURiZYA" name="EnumerationLiteral"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_C7AF4GwREdq14q0ETb1t3g" name="Generalization"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_FQiVsGwYEdqHKKVoxc0dlA" name="StructuredClassifier" isAbstract="true">
@@ -785,6 +762,29 @@
       <ownedParameter xmi:id="_YIM4VXL0EdqziYxiZo0YtA" name="upper" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
+    <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_saHDEX38EdqMXf-sLFxsyw" instanceClassName="boolean"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
+    <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_saHDEn38EdqMXf-sLFxsyw" instanceClassName="int"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
+    <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_saHDE338EdqMXf-sLFxsyw" instanceClassName="java.lang.String"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
+    <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_saHDFH38EdqMXf-sLFxsyw" instanceClassName="int"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind"/>
   <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
     <mergedPackage xmi:type="uml:Model" href="L3.uml2#_EBtHcBmMEdqvcs97umGEYQ"/>
   </packageMerge>

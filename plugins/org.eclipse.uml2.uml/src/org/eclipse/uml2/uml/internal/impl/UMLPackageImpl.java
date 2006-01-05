@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.12 2006/01/05 16:34:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -7744,7 +7744,7 @@ public class UMLPackageImpl
 	public EClass getCombinedFragment() {
 		if (combinedFragmentEClass == null) {
 			combinedFragmentEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(191);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(190);
 		}
 		return combinedFragmentEClass;
 	}
@@ -10790,7 +10790,7 @@ public class UMLPackageImpl
 	public EEnum getInteractionOperatorKind() {
 		if (interactionOperatorKindEEnum == null) {
 			interactionOperatorKindEEnum = (EEnum) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(190);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(191);
 		}
 		return interactionOperatorKindEEnum;
 	}
