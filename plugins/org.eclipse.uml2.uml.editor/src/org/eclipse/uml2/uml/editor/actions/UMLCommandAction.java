@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLCommandAction.java,v 1.2 2006/01/05 16:17:45 khussey Exp $
+ * $Id: UMLCommandAction.java,v 1.3 2006/01/05 17:26:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -41,7 +41,7 @@ public class UMLCommandAction
 	protected class RefreshingChangeCommand
 			extends ChangeCommand {
 
-		protected RefreshingChangeCommand(EditingDomain editingDomain,
+		public RefreshingChangeCommand(EditingDomain editingDomain,
 				Runnable runnable, String label) {
 			super(editingDomain, runnable, label);
 		}
