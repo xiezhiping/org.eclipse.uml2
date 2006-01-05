@@ -192,7 +192,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_VniuEXMjEdqjLP0o6zXVqQ" name="Package_EPackage" memberEnd="_VniuE3MjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VniuEXMjEdqjLP0o6zXVqQ" name="Package_EPackage" memberEnd="_VniuE3MjEdqjLP0o6zXVqQ _VniuEnMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VniuEnMjEdqjLP0o6zXVqQ" name="extension_EPackage" type="_VdtcoHMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_VnsfFnMjEdqjLP0o6zXVqQ" name="ENamedElement" isAbstract="true">
@@ -226,10 +226,10 @@
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Vn_aBHMjEdqjLP0o6zXVqQ" name="xmlContentKind" type="_Vn1pBHMjEdqjLP0o6zXVqQ" upper="1" lower="0"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn1pC3MjEdqjLP0o6zXVqQ" name="Class_EClass" memberEnd="_Vn1pDXMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn1pC3MjEdqjLP0o6zXVqQ" name="Class_EClass" memberEnd="_Vn1pDXMjEdqjLP0o6zXVqQ _Vn1pDHMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Vn1pDHMjEdqjLP0o6zXVqQ" name="extension_EClass" type="_Vn1pCnMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn1pDnMjEdqjLP0o6zXVqQ" name="Interface_EClass" memberEnd="_Vn_aAXMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn1pDnMjEdqjLP0o6zXVqQ" name="Interface_EClass" memberEnd="_Vn_aAXMjEdqjLP0o6zXVqQ _Vn_aAHMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Vn_aAHMjEdqjLP0o6zXVqQ" name="extension_EClass" type="_Vn1pCnMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_Vn_aBXMjEdqjLP0o6zXVqQ" name="EDataType">
@@ -241,7 +241,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn_aBnMjEdqjLP0o6zXVqQ" name="PrimitiveType_EDataType" memberEnd="_Vn_aCHMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn_aBnMjEdqjLP0o6zXVqQ" name="PrimitiveType_EDataType" memberEnd="_Vn_aCHMjEdqjLP0o6zXVqQ _Vn_aB3MjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Vn_aB3MjEdqjLP0o6zXVqQ" name="extension_EDataType" type="_Vn_aBXMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_Vn_aC3MjEdqjLP0o6zXVqQ" name="EEnum">
@@ -253,7 +253,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn_aDHMjEdqjLP0o6zXVqQ" name="Enumeration_EEnum" memberEnd="_Vn_aDnMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_Vn_aDHMjEdqjLP0o6zXVqQ" name="Enumeration_EEnum" memberEnd="_Vn_aDnMjEdqjLP0o6zXVqQ _Vn_aDXMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Vn_aDXMjEdqjLP0o6zXVqQ" name="extension_EEnum" type="_Vn_aC3MjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_Vn_aEXMjEdqjLP0o6zXVqQ" name="EEnumLiteral">
@@ -265,7 +265,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_VtXCMHMjEdqjLP0o6zXVqQ" name="EnumerationLiteral_EEnumLiteral" memberEnd="_VtXCMnMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VtXCMHMjEdqjLP0o6zXVqQ" name="EnumerationLiteral_EEnumLiteral" memberEnd="_VtXCMnMjEdqjLP0o6zXVqQ _VtXCMXMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VtXCMXMjEdqjLP0o6zXVqQ" name="extension_EEnumLiteral" type="_Vn_aEXMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_VtXCNXMjEdqjLP0o6zXVqQ" name="EOperation">
@@ -276,7 +276,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_VtXCNnMjEdqjLP0o6zXVqQ" name="Operation_EOperation" memberEnd="_VtXCOHMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VtXCNnMjEdqjLP0o6zXVqQ" name="Operation_EOperation" memberEnd="_VtXCOHMjEdqjLP0o6zXVqQ _VtXCN3MjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VtXCN3MjEdqjLP0o6zXVqQ" name="extension_EOperation" type="_VtXCNXMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_VtXCOnMjEdqjLP0o6zXVqQ" name="EParameter">
@@ -287,7 +287,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_VtXCO3MjEdqjLP0o6zXVqQ" name="Parameter_EParameter" memberEnd="_VtgMIXMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VtXCO3MjEdqjLP0o6zXVqQ" name="Parameter_EParameter" memberEnd="_VtgMIXMjEdqjLP0o6zXVqQ _VtgMIHMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VtgMIHMjEdqjLP0o6zXVqQ" name="extension_EParameter" type="_VtXCOnMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Enumeration" xmi:id="_VtgMI3MjEdqjLP0o6zXVqQ" name="FeatureKind">
@@ -336,7 +336,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_VtzHEXMjEdqjLP0o6zXVqQ" name="Property_EAttribute" memberEnd="_VtzHE3MjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VtzHEXMjEdqjLP0o6zXVqQ" name="Property_EAttribute" memberEnd="_VtzHE3MjEdqjLP0o6zXVqQ _VtzHEnMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VtzHEnMjEdqjLP0o6zXVqQ" name="extension_EAttribute" type="_VtzHEHMjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Stereotype" xmi:id="_VtzHF3MjEdqjLP0o6zXVqQ" name="EReference">
@@ -351,7 +351,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_VtzHGHMjEdqjLP0o6zXVqQ" name="Property_EReference" memberEnd="_VtzHGnMjEdqjLP0o6zXVqQ">
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VtzHGHMjEdqjLP0o6zXVqQ" name="Property_EReference" memberEnd="_VtzHGnMjEdqjLP0o6zXVqQ _VtzHGXMjEdqjLP0o6zXVqQ">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VtzHGXMjEdqjLP0o6zXVqQ" name="extension_EReference" type="_VtzHF3MjEdqjLP0o6zXVqQ" lower="0" aggregation="composite"/>
   </packagedElement>
 </uml:Profile>

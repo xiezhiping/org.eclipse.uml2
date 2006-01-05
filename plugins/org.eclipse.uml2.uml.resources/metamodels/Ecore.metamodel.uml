@@ -91,8 +91,8 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-contents" name="contents" visibility="public" type="EObject" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.9"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-references" name="references" visibility="public" type="EObject" isOrdered="true" isUnique="true" upper="*" lower="0" association="_packagedElement.10"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.6" memberEnd="EAnnotation-details">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.6-_ownedEnd.0" type="EAnnotation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.6" memberEnd="EAnnotation-details _packagedElement.6-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.6-_ownedEnd.0" type="EAnnotation" association="_packagedElement.6"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EStringToStringMapEntry" name="EStringToStringMapEntry">
       <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-key" name="key" visibility="public" isOrdered="true" isUnique="true" lower="0">
@@ -103,14 +103,14 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.8" memberEnd="EModelElement-eAnnotations EAnnotation-eModelElement"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.9" memberEnd="EAnnotation-contents">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.9-_ownedEnd.0" type="EAnnotation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.9" memberEnd="EAnnotation-contents _packagedElement.9-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.9-_ownedEnd.0" type="EAnnotation" association="_packagedElement.9"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.10" memberEnd="EAnnotation-references">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.10-_ownedEnd.0" type="EAnnotation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.10" memberEnd="EAnnotation-references _packagedElement.10-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.10-_ownedEnd.0" type="EAnnotation" association="_packagedElement.10"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.11" memberEnd="ETypedElement-eType">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.11-_ownedEnd.0" type="ETypedElement"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.11" memberEnd="ETypedElement-eType _packagedElement.11-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.11-_ownedEnd.0" type="ETypedElement" association="_packagedElement.11"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EClassifier" name="EClassifier" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="EClassifier-_generalization.0" general="ENamedElement"/>
@@ -237,8 +237,8 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.17" memberEnd="EClass-eSuperTypes">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.17-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.17" memberEnd="EClass-eSuperTypes _packagedElement.17-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.17-_ownedEnd.0" type="EClass" association="_packagedElement.17"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.18" memberEnd="EClass-eOperations EOperation-eContainingClass.1"/>
     <packagedElement xmi:type="uml:Class" xmi:id="EOperation" name="EOperation">
@@ -257,14 +257,14 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="EParameter-eOperation.1" name="eOperation" visibility="public" type="EOperation" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.21"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.23" memberEnd="EOperation-eParameters.1 EParameter-eOperation"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.24" memberEnd="EOperation-eExceptions">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.24-_ownedEnd.0" type="EOperation"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.24" memberEnd="EOperation-eExceptions _packagedElement.24-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.24-_ownedEnd.0" type="EOperation" association="_packagedElement.24"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.25" memberEnd="EClass-eAllAttributes">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.25-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.25" memberEnd="EClass-eAllAttributes _packagedElement.25-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.25-_ownedEnd.0" type="EClass" association="_packagedElement.25"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.26" memberEnd="EClass-eAllReferences">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.26-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.26" memberEnd="EClass-eAllReferences _packagedElement.26-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.26-_ownedEnd.0" type="EClass" association="_packagedElement.26"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EReference" name="EReference">
       <generalization xmi:type="uml:Generalization" xmi:id="EReference-_generalization.0" general="EStructuralFeature"/>
@@ -280,32 +280,32 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-eOpposite" name="eOpposite" visibility="public" type="EReference" isOrdered="true" isUnique="true" lower="0" association="_packagedElement.28"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-eReferenceType" name="eReferenceType" visibility="public" type="EClass" isOrdered="true" isUnique="true" isReadOnly="true" isDerived="true" association="_packagedElement.29"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.28" memberEnd="EReference-eOpposite">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.28-_ownedEnd.0" type="EReference"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.28" memberEnd="EReference-eOpposite _packagedElement.28-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.28-_ownedEnd.0" type="EReference" association="_packagedElement.28"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.29" memberEnd="EReference-eReferenceType">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.29-_ownedEnd.0" type="EReference"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.29" memberEnd="EReference-eReferenceType _packagedElement.29-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.29-_ownedEnd.0" type="EReference" association="_packagedElement.29"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.30" memberEnd="EClass-eReferences">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.30-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.30" memberEnd="EClass-eReferences _packagedElement.30-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.30-_ownedEnd.0" type="EClass" association="_packagedElement.30"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.31" memberEnd="EClass-eAttributes">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.31-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.31" memberEnd="EClass-eAttributes _packagedElement.31-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.31-_ownedEnd.0" type="EClass" association="_packagedElement.31"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.32" memberEnd="EClass-eAllContainments">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.32-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.32" memberEnd="EClass-eAllContainments _packagedElement.32-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.32-_ownedEnd.0" type="EClass" association="_packagedElement.32"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.33" memberEnd="EClass-eAllOperations">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.33-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.33" memberEnd="EClass-eAllOperations _packagedElement.33-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.33-_ownedEnd.0" type="EClass" association="_packagedElement.33"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.34" memberEnd="EClass-eAllStructuralFeatures">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.34-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.34" memberEnd="EClass-eAllStructuralFeatures _packagedElement.34-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.34-_ownedEnd.0" type="EClass" association="_packagedElement.34"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.35" memberEnd="EClass-eAllSuperTypes">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.35-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.35" memberEnd="EClass-eAllSuperTypes _packagedElement.35-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.35-_ownedEnd.0" type="EClass" association="_packagedElement.35"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.36" memberEnd="EClass-eIDAttribute">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.36-_ownedEnd.0" type="EClass"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.36" memberEnd="EClass-eIDAttribute _packagedElement.36-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.36-_ownedEnd.0" type="EClass" association="_packagedElement.36"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.37" memberEnd="EClass-eStructuralFeatures EStructuralFeature-eContainingClass"/>
     <packagedElement xmi:type="uml:Class" xmi:id="EDataType" name="EDataType">
@@ -317,8 +317,8 @@
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.39" memberEnd="EFactory-ePackage EPackage-eFactoryInstance.1"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.40" memberEnd="EPackage-eSubpackages EPackage-eSuperPackage"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.41" memberEnd="EPackage-eClassifiers EClassifier-ePackage"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.42" memberEnd="EAttribute-eAttributeType">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.42-_ownedEnd.0" type="EAttribute"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.42" memberEnd="EAttribute-eAttributeType _packagedElement.42-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.42-_ownedEnd.0" type="EAttribute" association="_packagedElement.42"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EEnum" name="EEnum">
       <generalization xmi:type="uml:Generalization" xmi:id="EEnum-_generalization.0" general="EDataType"/>
@@ -470,23 +470,23 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/UML.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
   </uml:Model>
-  <UML:UMLMetamodel xmi:id="_t80jIHNgEdqeBOeLG8PJbA" base_Model="_0"/>
-  <UML:UMLMetaclass xmi:id="_t80jIXNgEdqeBOeLG8PJbA" base_Class="EAttribute"/>
-  <UML:UMLMetaclass xmi:id="_t80jInNgEdqeBOeLG8PJbA" base_Class="EStructuralFeature"/>
-  <UML:UMLMetaclass xmi:id="_t86pwHNgEdqeBOeLG8PJbA" base_Class="ETypedElement"/>
-  <UML:UMLMetaclass xmi:id="_t86pwXNgEdqeBOeLG8PJbA" base_Class="ENamedElement"/>
-  <UML:UMLMetaclass xmi:id="_t86pwnNgEdqeBOeLG8PJbA" base_Class="EModelElement"/>
-  <UML:UMLMetaclass xmi:id="_t9AwYHNgEdqeBOeLG8PJbA" base_Class="EAnnotation"/>
-  <UML:UMLMetaclass xmi:id="_t9AwYXNgEdqeBOeLG8PJbA" base_Class="EStringToStringMapEntry"/>
-  <UML:UMLMetaclass xmi:id="_t9G3AHNgEdqeBOeLG8PJbA" base_Class="EClassifier"/>
-  <UML:UMLMetaclass xmi:id="_t9G3AXNgEdqeBOeLG8PJbA" base_Class="EPackage"/>
-  <UML:UMLMetaclass xmi:id="_t9G3AnNgEdqeBOeLG8PJbA" base_Class="EFactory"/>
-  <UML:UMLMetaclass xmi:id="_t9M9oHNgEdqeBOeLG8PJbA" base_Class="EClass"/>
-  <UML:UMLMetaclass xmi:id="_t9TEQHNgEdqeBOeLG8PJbA" base_Class="EOperation"/>
-  <UML:UMLMetaclass xmi:id="_t9TEQXNgEdqeBOeLG8PJbA" base_Class="EParameter"/>
-  <UML:UMLMetaclass xmi:id="_t9ZK4HNgEdqeBOeLG8PJbA" base_Class="EReference"/>
-  <UML:UMLMetaclass xmi:id="_t9fRgHNgEdqeBOeLG8PJbA" base_Class="EDataType"/>
-  <UML:UMLMetaclass xmi:id="_t9fRgXNgEdqeBOeLG8PJbA" base_Class="EEnum"/>
-  <UML:UMLMetaclass xmi:id="_t9lYIHNgEdqeBOeLG8PJbA" base_Class="EEnumLiteral"/>
-  <UML:UMLMetaclass xmi:id="_t-iaYHNgEdqeBOeLG8PJbA" base_Class="EObject"/>
+  <UML:UMLMetamodel xmi:id="_IL_QwH4MEdqugLDLycnLcA" base_Model="_0"/>
+  <UML:UMLMetaclass xmi:id="_IMIasH4MEdqugLDLycnLcA" base_Class="EAttribute"/>
+  <UML:UMLMetaclass xmi:id="_IMIasX4MEdqugLDLycnLcA" base_Class="EStructuralFeature"/>
+  <UML:UMLMetaclass xmi:id="_IMIasn4MEdqugLDLycnLcA" base_Class="ETypedElement"/>
+  <UML:UMLMetaclass xmi:id="_IMIas34MEdqugLDLycnLcA" base_Class="ENamedElement"/>
+  <UML:UMLMetaclass xmi:id="_IMIatH4MEdqugLDLycnLcA" base_Class="EModelElement"/>
+  <UML:UMLMetaclass xmi:id="_IMSLsH4MEdqugLDLycnLcA" base_Class="EAnnotation"/>
+  <UML:UMLMetaclass xmi:id="_IMSLsX4MEdqugLDLycnLcA" base_Class="EStringToStringMapEntry"/>
+  <UML:UMLMetaclass xmi:id="_IMSLsn4MEdqugLDLycnLcA" base_Class="EClassifier"/>
+  <UML:UMLMetaclass xmi:id="_IMSLs34MEdqugLDLycnLcA" base_Class="EPackage"/>
+  <UML:UMLMetaclass xmi:id="_IMSLtH4MEdqugLDLycnLcA" base_Class="EFactory"/>
+  <UML:UMLMetaclass xmi:id="_IMbVoH4MEdqugLDLycnLcA" base_Class="EClass"/>
+  <UML:UMLMetaclass xmi:id="_IMbVoX4MEdqugLDLycnLcA" base_Class="EOperation"/>
+  <UML:UMLMetaclass xmi:id="_IMbVon4MEdqugLDLycnLcA" base_Class="EParameter"/>
+  <UML:UMLMetaclass xmi:id="_IMbVo34MEdqugLDLycnLcA" base_Class="EReference"/>
+  <UML:UMLMetaclass xmi:id="_IMlGoH4MEdqugLDLycnLcA" base_Class="EDataType"/>
+  <UML:UMLMetaclass xmi:id="_IMu3oH4MEdqugLDLycnLcA" base_Class="EEnum"/>
+  <UML:UMLMetaclass xmi:id="_IMu3oX4MEdqugLDLycnLcA" base_Class="EEnumLiteral"/>
+  <UML:UMLMetaclass xmi:id="_IMu3on4MEdqugLDLycnLcA" base_Class="EObject"/>
 </xmi:XMI>
