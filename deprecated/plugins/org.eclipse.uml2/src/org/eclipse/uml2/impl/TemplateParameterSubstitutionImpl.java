@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.21 2005/12/06 23:18:03 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.22 2006/01/05 13:53:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -35,8 +35,8 @@ import org.eclipse.uml2.TemplateParameterSubstitution;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -188,7 +188,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	public EList getActuals() {
 		EList actual = (EList)eVirtualGet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
 		if (actual == null) {
-			eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, actual = new SupersetEObjectResolvingEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
+			eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, actual = new SubsetSupersetEObjectResolvingEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, null, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
 		}
 		return actual;
 	}
@@ -202,7 +202,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	public EList getOwnedActuals() {
 		EList ownedActual = (EList)eVirtualGet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 		if (ownedActual == null) {
-			eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, ownedActual = new SubsetEObjectContainmentEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL}));
+			eVirtualSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, ownedActual = new SubsetSupersetEObjectContainmentEList(ParameterableElement.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL, new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL}, null));
 		}
 		return ownedActual;
 	}

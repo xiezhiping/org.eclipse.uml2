@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.44 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.45 2006/01/05 13:53:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -70,9 +70,9 @@ import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.ClassifierOperations;
@@ -685,7 +685,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getAttributes() {
 		EList attribute = (EList)eVirtualGet(UML2Package.CLASSIFIER__ATTRIBUTE);
 		if (attribute == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASSIFIER__ATTRIBUTE, new int[] {}));
+			eVirtualSet(UML2Package.CLASSIFIER__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASSIFIER__ATTRIBUTE, null));
 		}
 		return attribute;
 	}
@@ -777,7 +777,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getSubstitutions() {
 		EList substitution = (EList)eVirtualGet(UML2Package.CLASSIFIER__SUBSTITUTION);
 		if (substitution == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__SUBSTITUTION, substitution = new SubsetEObjectContainmentWithInverseEList(Substitution.class, this, UML2Package.CLASSIFIER__SUBSTITUTION, new int[] {UML2Package.CLASSIFIER__CLIENT_DEPENDENCY}, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER));
+			eVirtualSet(UML2Package.CLASSIFIER__SUBSTITUTION, substitution = new SubsetSupersetEObjectContainmentWithInverseEList(Substitution.class, this, UML2Package.CLASSIFIER__SUBSTITUTION, new int[] {UML2Package.CLASSIFIER__CLIENT_DEPENDENCY}, null, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER));
 		}
 		return substitution;
 	}
@@ -978,7 +978,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getOccurrences() {
 		EList occurrence = (EList)eVirtualGet(UML2Package.CLASSIFIER__OCCURRENCE);
 		if (occurrence == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__OCCURRENCE, occurrence = new SupersetEObjectContainmentEList(CollaborationOccurrence.class, this, UML2Package.CLASSIFIER__OCCURRENCE, new int[] {UML2Package.CLASSIFIER__REPRESENTATION}));
+			eVirtualSet(UML2Package.CLASSIFIER__OCCURRENCE, occurrence = new SubsetSupersetEObjectContainmentEList(CollaborationOccurrence.class, this, UML2Package.CLASSIFIER__OCCURRENCE, null, new int[] {UML2Package.CLASSIFIER__REPRESENTATION}));
 		}
 		return occurrence;
 	}
@@ -1493,7 +1493,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public EList getClientDependencies() {
 		EList clientDependency = (EList)eVirtualGet(UML2Package.CLASSIFIER__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			eVirtualSet(UML2Package.CLASSIFIER__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.CLASSIFIER__CLIENT_DEPENDENCY, new int[] {UML2Package.CLASSIFIER__SUBSTITUTION}, UML2Package.DEPENDENCY__CLIENT));
+			eVirtualSet(UML2Package.CLASSIFIER__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.CLASSIFIER__CLIENT_DEPENDENCY, null, new int[] {UML2Package.CLASSIFIER__SUBSTITUTION}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}

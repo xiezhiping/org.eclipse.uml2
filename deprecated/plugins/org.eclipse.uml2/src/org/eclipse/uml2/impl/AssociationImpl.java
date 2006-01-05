@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.35 2005/12/06 23:18:04 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.36 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -45,10 +45,10 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.AssociationOperations;
 
 /**
@@ -146,7 +146,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	public EList getOwnedEnds() {
 		EList ownedEnd = (EList)eVirtualGet(UML2Package.ASSOCIATION__OWNED_END);
 		if (ownedEnd == null) {
-			eVirtualSet(UML2Package.ASSOCIATION__OWNED_END, ownedEnd = new SubsetEObjectContainmentWithInverseEList(Property.class, this, UML2Package.ASSOCIATION__OWNED_END, new int[] {UML2Package.ASSOCIATION__MEMBER_END}, UML2Package.PROPERTY__OWNING_ASSOCIATION));
+			eVirtualSet(UML2Package.ASSOCIATION__OWNED_END, ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(Property.class, this, UML2Package.ASSOCIATION__OWNED_END, new int[] {UML2Package.ASSOCIATION__MEMBER_END}, null, UML2Package.PROPERTY__OWNING_ASSOCIATION));
 		}
 		return ownedEnd;
 	}
@@ -345,7 +345,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	public EList getMemberEnds() {
 		EList memberEnd = (EList)eVirtualGet(UML2Package.ASSOCIATION__MEMBER_END);
 		if (memberEnd == null) {
-			eVirtualSet(UML2Package.ASSOCIATION__MEMBER_END, memberEnd = new SupersetEObjectWithInverseResolvingEList(Property.class, this, UML2Package.ASSOCIATION__MEMBER_END, new int[] {UML2Package.ASSOCIATION__OWNED_END}, UML2Package.PROPERTY__ASSOCIATION));
+			eVirtualSet(UML2Package.ASSOCIATION__MEMBER_END, memberEnd = new SubsetSupersetEObjectWithInverseResolvingEList(Property.class, this, UML2Package.ASSOCIATION__MEMBER_END, null, new int[] {UML2Package.ASSOCIATION__OWNED_END}, UML2Package.PROPERTY__ASSOCIATION));
 		}
 		return memberEnd;
 	}

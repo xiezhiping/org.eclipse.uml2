@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.15 2006/01/04 17:47:24 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.16 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,9 +32,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
@@ -156,10 +156,11 @@ public abstract class BehavioredClassifierImpl
 		if (ownedBehavior == null) {
 			eVirtualSet(
 				UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
-				ownedBehavior = new SupersetEObjectContainmentEList(
+				ownedBehavior = new SubsetSupersetEObjectContainmentEList(
 					Behavior.class,
 					this,
 					UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR,
+					null,
 					new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}));
 		}
 		return ownedBehavior;
@@ -202,10 +203,11 @@ public abstract class BehavioredClassifierImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class,
 					this,
 					UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY,
+					null,
 					new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
 						UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION},
 					UMLPackage.DEPENDENCY__CLIENT));
@@ -255,11 +257,12 @@ public abstract class BehavioredClassifierImpl
 		if (interfaceRealization == null) {
 			eVirtualSet(
 				UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
-				interfaceRealization = new SubsetEObjectContainmentWithInverseEList(
+				interfaceRealization = new SubsetSupersetEObjectContainmentWithInverseEList(
 					InterfaceRealization.class,
 					this,
 					UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
 					new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY},
+					null,
 					UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER));
 		}
 		return interfaceRealization;

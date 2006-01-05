@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.33 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.34 2006/01/05 13:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -41,11 +41,11 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
-
 import org.eclipse.uml2.internal.operation.ProfileOperations;
 
 /**
@@ -153,7 +153,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	public EList getMetaclassReferences() {
 		EList metaclassReference = (EList)eVirtualGet(UML2Package.PROFILE__METACLASS_REFERENCE);
 		if (metaclassReference == null) {
-			eVirtualSet(UML2Package.PROFILE__METACLASS_REFERENCE, metaclassReference = new SubsetEObjectEList(ElementImport.class, this, UML2Package.PROFILE__METACLASS_REFERENCE, new int[] {UML2Package.PROFILE__ELEMENT_IMPORT}));
+			eVirtualSet(UML2Package.PROFILE__METACLASS_REFERENCE, metaclassReference = new SubsetSupersetEObjectEList(ElementImport.class, this, UML2Package.PROFILE__METACLASS_REFERENCE, new int[] {UML2Package.PROFILE__ELEMENT_IMPORT}, null));
 		}
 		return metaclassReference;
 	}
@@ -167,7 +167,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	public EList getMetamodelReferences() {
 		EList metamodelReference = (EList)eVirtualGet(UML2Package.PROFILE__METAMODEL_REFERENCE);
 		if (metamodelReference == null) {
-			eVirtualSet(UML2Package.PROFILE__METAMODEL_REFERENCE, metamodelReference = new SubsetEObjectEList(PackageImport.class, this, UML2Package.PROFILE__METAMODEL_REFERENCE, new int[] {UML2Package.PROFILE__PACKAGE_IMPORT}));
+			eVirtualSet(UML2Package.PROFILE__METAMODEL_REFERENCE, metamodelReference = new SubsetSupersetEObjectEList(PackageImport.class, this, UML2Package.PROFILE__METAMODEL_REFERENCE, new int[] {UML2Package.PROFILE__PACKAGE_IMPORT}, null));
 		}
 		return metamodelReference;
 	}
@@ -259,7 +259,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	public EList getElementImports() {
 		EList elementImport = (EList)eVirtualGet(UML2Package.PROFILE__ELEMENT_IMPORT);
 		if (elementImport == null) {
-			eVirtualSet(UML2Package.PROFILE__ELEMENT_IMPORT, elementImport = new SupersetEObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.PROFILE__ELEMENT_IMPORT, new int[] {UML2Package.PROFILE__METACLASS_REFERENCE}, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
+			eVirtualSet(UML2Package.PROFILE__ELEMENT_IMPORT, elementImport = new SubsetSupersetEObjectContainmentWithInverseEList(ElementImport.class, this, UML2Package.PROFILE__ELEMENT_IMPORT, null, new int[] {UML2Package.PROFILE__METACLASS_REFERENCE}, UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
 		}
 		return elementImport;
 	}
@@ -273,7 +273,7 @@ public class ProfileImpl extends PackageImpl implements Profile {
 	public EList getPackageImports() {
 		EList packageImport = (EList)eVirtualGet(UML2Package.PROFILE__PACKAGE_IMPORT);
 		if (packageImport == null) {
-			eVirtualSet(UML2Package.PROFILE__PACKAGE_IMPORT, packageImport = new SupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PROFILE__PACKAGE_IMPORT, new int[] {UML2Package.PROFILE__APPLIED_PROFILE, UML2Package.PROFILE__METAMODEL_REFERENCE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
+			eVirtualSet(UML2Package.PROFILE__PACKAGE_IMPORT, packageImport = new SubsetSupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PROFILE__PACKAGE_IMPORT, null, new int[] {UML2Package.PROFILE__APPLIED_PROFILE, UML2Package.PROFILE__METAMODEL_REFERENCE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
 		}
 		return packageImport;
 	}

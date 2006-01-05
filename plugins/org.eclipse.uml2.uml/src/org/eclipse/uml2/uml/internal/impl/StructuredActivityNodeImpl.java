@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.15 2006/01/04 17:47:24 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.16 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -384,8 +384,7 @@ public class StructuredActivityNodeImpl
 		if (subgroup == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
-					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP,
-					new int[]{}));
+					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null));
 		}
 		return subgroup;
 	}

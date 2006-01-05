@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: NodeItemProvider.java,v 1.3 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -36,10 +36,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
-
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -332,18 +330,19 @@ public class NodeItemProvider
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
-			return new SupersetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{
 					UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
 					UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,

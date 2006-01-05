@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.24 2005/12/06 23:18:03 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.25 2006/01/05 13:53:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -40,8 +40,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 //import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -309,7 +309,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	public EList getSuppliers() {
 		EList supplier = (EList)eVirtualGet(UML2Package.SUBSTITUTION__SUPPLIER);
 		if (supplier == null) {
-			eVirtualSet(UML2Package.SUBSTITUTION__SUPPLIER, supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.SUBSTITUTION__SUPPLIER, new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT}));
+			eVirtualSet(UML2Package.SUBSTITUTION__SUPPLIER, supplier = new SubsetSupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.SUBSTITUTION__SUPPLIER, null, new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT}));
 		}
 		return supplier;
 	}
@@ -323,7 +323,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	public EList getClients() {
 		EList client = (EList)eVirtualGet(UML2Package.SUBSTITUTION__CLIENT);
 		if (client == null) {
-			eVirtualSet(UML2Package.SUBSTITUTION__CLIENT, client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.SUBSTITUTION__CLIENT, new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+			eVirtualSet(UML2Package.SUBSTITUTION__CLIENT, client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.SUBSTITUTION__CLIENT, null, new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
 		return client;
 	}

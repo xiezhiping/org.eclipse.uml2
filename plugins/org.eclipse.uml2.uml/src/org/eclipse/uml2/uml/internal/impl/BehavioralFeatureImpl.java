@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.11 2006/01/04 17:47:24 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.12 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,8 +181,7 @@ public abstract class BehavioralFeatureImpl
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
-					new int[]{}));
+					UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT, null));
 		}
 		return redefinedElement;
 	}
@@ -213,8 +212,7 @@ public abstract class BehavioralFeatureImpl
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
-					new int[]{}));
+					UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, null));
 		}
 		return redefinitionContext;
 	}
@@ -271,8 +269,7 @@ public abstract class BehavioralFeatureImpl
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
-					new int[]{}));
+					UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, null));
 		}
 		return featuringClassifier;
 	}

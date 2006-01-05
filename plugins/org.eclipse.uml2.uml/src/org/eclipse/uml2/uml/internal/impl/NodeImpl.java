@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: NodeImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CollaborationUse;
@@ -131,9 +131,9 @@ public class NodeImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.NODE__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class, this, UMLPackage.NODE__CLIENT_DEPENDENCY,
-					new int[]{UMLPackage.NODE__SUBSTITUTION,
+					null, new int[]{UMLPackage.NODE__SUBSTITUTION,
 						UMLPackage.NODE__INTERFACE_REALIZATION,
 						UMLPackage.NODE__DEPLOYMENT},
 					UMLPackage.DEPENDENCY__CLIENT));
@@ -149,10 +149,11 @@ public class NodeImpl
 	public EList getDeployments() {
 		EList deployment = (EList) eVirtualGet(UMLPackage.NODE__DEPLOYMENT);
 		if (deployment == null) {
-			eVirtualSet(UMLPackage.NODE__DEPLOYMENT,
-				deployment = new SubsetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.NODE__DEPLOYMENT,
+				deployment = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Deployment.class, this, UMLPackage.NODE__DEPLOYMENT,
-					new int[]{UMLPackage.NODE__CLIENT_DEPENDENCY},
+					new int[]{UMLPackage.NODE__CLIENT_DEPENDENCY}, null,
 					UMLPackage.DEPLOYMENT__LOCATION));
 		}
 		return deployment;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.31 2005/12/06 23:18:03 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.32 2006/01/05 13:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,10 +50,10 @@ import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.DeploymentTargetOperations;
 import org.eclipse.uml2.internal.operation.InstanceSpecificationOperations;
 
@@ -136,7 +136,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public EList getDeployments() {
 		EList deployment = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT);
 		if (deployment == null) {
-			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, deployment = new SubsetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, new int[] {UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY}, UML2Package.DEPLOYMENT__LOCATION));
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, deployment = new SubsetSupersetEObjectContainmentWithInverseEList(Deployment.class, this, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, new int[] {UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY}, null, UML2Package.DEPLOYMENT__LOCATION));
 		}
 		return deployment;
 	}
@@ -463,7 +463,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	public EList getClientDependencies() {
 		EList clientDependency = (EList)eVirtualGet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, new int[] {UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT));
+			eVirtualSet(UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY, null, new int[] {UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}

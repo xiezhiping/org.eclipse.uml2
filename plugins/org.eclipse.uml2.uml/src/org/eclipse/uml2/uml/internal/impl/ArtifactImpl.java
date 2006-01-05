@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.CollaborationUse;
@@ -195,9 +195,9 @@ public class ArtifactImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.ARTIFACT__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class, this,
-					UMLPackage.ARTIFACT__CLIENT_DEPENDENCY, new int[]{
+					UMLPackage.ARTIFACT__CLIENT_DEPENDENCY, null, new int[]{
 						UMLPackage.ARTIFACT__SUBSTITUTION,
 						UMLPackage.ARTIFACT__MANIFESTATION},
 					UMLPackage.DEPENDENCY__CLIENT));
@@ -319,10 +319,10 @@ public class ArtifactImpl
 		EList manifestation = (EList) eVirtualGet(UMLPackage.ARTIFACT__MANIFESTATION);
 		if (manifestation == null) {
 			eVirtualSet(UMLPackage.ARTIFACT__MANIFESTATION,
-				manifestation = new SubsetEObjectContainmentEList(
+				manifestation = new SubsetSupersetEObjectContainmentEList(
 					Manifestation.class, this,
 					UMLPackage.ARTIFACT__MANIFESTATION,
-					new int[]{UMLPackage.ARTIFACT__CLIENT_DEPENDENCY}));
+					new int[]{UMLPackage.ARTIFACT__CLIENT_DEPENDENCY}, null));
 		}
 		return manifestation;
 	}

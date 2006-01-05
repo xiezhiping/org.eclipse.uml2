@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.23 2005/11/23 20:02:54 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.24 2006/01/05 13:53:30 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -42,11 +42,9 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Operation} object.
@@ -783,13 +781,13 @@ public class OperationItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UML2Package.Literals.OPERATION__PRECONDITION) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, null, value, collection);
 		}
 		if (feature == UML2Package.Literals.OPERATION__POSTCONDITION) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, null, value, collection);
 		}
 		if (feature == UML2Package.Literals.NAMESPACE__OWNED_RULE) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.OPERATION__PRECONDITION, UML2Package.Literals.OPERATION__POSTCONDITION, UML2Package.Literals.OPERATION__BODY_CONDITION}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.OPERATION__PRECONDITION, UML2Package.Literals.OPERATION__POSTCONDITION, UML2Package.Literals.OPERATION__BODY_CONDITION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -802,13 +800,13 @@ public class OperationItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
 		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER}, null, value);
 		}
 		if (feature == UML2Package.Literals.OPERATION__BODY_CONDITION) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__OWNED_RULE}, null, value);
 		}
 		if (feature == UML2Package.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.PARAMETERABLE_ELEMENT__OWNING_PARAMETER}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

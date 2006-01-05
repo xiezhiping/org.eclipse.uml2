@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,9 +32,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
@@ -211,9 +211,9 @@ public class AssociationClassImpl
 		EList memberEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__MEMBER_END);
 		if (memberEnd == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION_CLASS__MEMBER_END,
-				memberEnd = new SupersetEObjectWithInverseResolvingEList(
+				memberEnd = new SubsetSupersetEObjectWithInverseResolvingEList(
 					Property.class, this,
-					UMLPackage.ASSOCIATION_CLASS__MEMBER_END,
+					UMLPackage.ASSOCIATION_CLASS__MEMBER_END, null,
 					new int[]{UMLPackage.ASSOCIATION_CLASS__OWNED_END},
 					UMLPackage.PROPERTY__ASSOCIATION));
 		}
@@ -245,10 +245,11 @@ public class AssociationClassImpl
 		if (ownedEnd == null) {
 			eVirtualSet(
 				UMLPackage.ASSOCIATION_CLASS__OWNED_END,
-				ownedEnd = new SupersetEObjectContainmentWithInverseEList(
+				ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Property.class,
 					this,
 					UMLPackage.ASSOCIATION_CLASS__OWNED_END,
+					new int[]{UMLPackage.ASSOCIATION_CLASS__MEMBER_END},
 					new int[]{UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END},
 					UMLPackage.PROPERTY__OWNING_ASSOCIATION));
 		}
@@ -363,9 +364,10 @@ public class AssociationClassImpl
 		EList navigableOwnedEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END);
 		if (navigableOwnedEnd == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
-				navigableOwnedEnd = new SubsetEObjectEList(Property.class,
-					this, UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
-					new int[]{UMLPackage.ASSOCIATION_CLASS__OWNED_END}));
+				navigableOwnedEnd = new SubsetSupersetEObjectEList(
+					Property.class, this,
+					UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
+					new int[]{UMLPackage.ASSOCIATION_CLASS__OWNED_END}, null));
 		}
 		return navigableOwnedEnd;
 	}

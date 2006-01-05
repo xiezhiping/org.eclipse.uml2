@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.9 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
@@ -78,9 +78,9 @@ public class ManifestationImpl
 		EList supplier = (EList) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.MANIFESTATION__SUPPLIER,
-				supplier = new SupersetEObjectResolvingEList(
+				supplier = new SubsetSupersetEObjectResolvingEList(
 					NamedElement.class, this,
-					UMLPackage.MANIFESTATION__SUPPLIER,
+					UMLPackage.MANIFESTATION__SUPPLIER, null,
 					new int[]{UMLPackage.MANIFESTATION__UTILIZED_ELEMENT}));
 		}
 		return supplier;

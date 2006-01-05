@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.19 2005/12/06 23:18:04 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.20 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -36,8 +36,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,7 +115,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	public EList getParameters() {
 		EList parameter = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__PARAMETER);
 		if (parameter == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__PARAMETER, parameter = new SupersetEObjectResolvingEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__PARAMETER, new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
+			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__PARAMETER, parameter = new SubsetSupersetEObjectResolvingEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__PARAMETER, null, new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
 		}
 		return parameter;
 	}
@@ -129,7 +129,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	public EList getOwnedParameters() {
 		EList ownedParameter = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 		if (ownedParameter == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, ownedParameter = new SubsetEObjectContainmentWithInverseEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, new int[] {UML2Package.TEMPLATE_SIGNATURE__PARAMETER}, UML2Package.TEMPLATE_PARAMETER__SIGNATURE));
+			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, ownedParameter = new SubsetSupersetEObjectContainmentWithInverseEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, new int[] {UML2Package.TEMPLATE_SIGNATURE__PARAMETER}, null, UML2Package.TEMPLATE_PARAMETER__SIGNATURE));
 		}
 		return ownedParameter;
 	}

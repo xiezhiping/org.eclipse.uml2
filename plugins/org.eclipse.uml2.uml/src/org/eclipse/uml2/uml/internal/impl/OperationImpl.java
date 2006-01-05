@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: OperationImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
 import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.Classifier;
@@ -549,10 +549,11 @@ public class OperationImpl
 	public EList getOwnedRules() {
 		EList ownedRule = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_RULE);
 		if (ownedRule == null) {
-			eVirtualSet(UMLPackage.OPERATION__OWNED_RULE,
-				ownedRule = new SupersetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.OPERATION__OWNED_RULE,
+				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE,
-					new int[]{UMLPackage.OPERATION__PRECONDITION,
+					null, new int[]{UMLPackage.OPERATION__PRECONDITION,
 						UMLPackage.OPERATION__POSTCONDITION,
 						UMLPackage.OPERATION__BODY_CONDITION},
 					UMLPackage.CONSTRAINT__CONTEXT));
@@ -706,9 +707,9 @@ public class OperationImpl
 		EList precondition = (EList) eVirtualGet(UMLPackage.OPERATION__PRECONDITION);
 		if (precondition == null) {
 			eVirtualSet(UMLPackage.OPERATION__PRECONDITION,
-				precondition = new SubsetEObjectEList(Constraint.class, this,
-					UMLPackage.OPERATION__PRECONDITION,
-					new int[]{UMLPackage.OPERATION__OWNED_RULE}));
+				precondition = new SubsetSupersetEObjectEList(Constraint.class,
+					this, UMLPackage.OPERATION__PRECONDITION,
+					new int[]{UMLPackage.OPERATION__OWNED_RULE}, null));
 		}
 		return precondition;
 	}
@@ -737,9 +738,10 @@ public class OperationImpl
 		EList postcondition = (EList) eVirtualGet(UMLPackage.OPERATION__POSTCONDITION);
 		if (postcondition == null) {
 			eVirtualSet(UMLPackage.OPERATION__POSTCONDITION,
-				postcondition = new SubsetEObjectEList(Constraint.class, this,
+				postcondition = new SubsetSupersetEObjectEList(
+					Constraint.class, this,
 					UMLPackage.OPERATION__POSTCONDITION,
-					new int[]{UMLPackage.OPERATION__OWNED_RULE}));
+					new int[]{UMLPackage.OPERATION__OWNED_RULE}, null));
 		}
 		return postcondition;
 	}

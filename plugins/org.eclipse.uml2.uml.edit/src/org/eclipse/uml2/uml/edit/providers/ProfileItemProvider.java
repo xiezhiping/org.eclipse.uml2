@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.5 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -35,10 +35,8 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
-
 //import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -282,34 +280,36 @@ public class ProfileItemProvider
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
-			return new SupersetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__METACLASS_REFERENCE},
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
-			return new SupersetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
 				value, collection);
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.9 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ParameterableElement;
@@ -113,10 +113,11 @@ public class TemplateParameterSubstitutionImpl
 		if (actual == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
-				actual = new SupersetEObjectResolvingEList(
+				actual = new SubsetSupersetEObjectResolvingEList(
 					ParameterableElement.class,
 					this,
 					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
+					null,
 					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
 		}
 		return actual;
@@ -181,11 +182,12 @@ public class TemplateParameterSubstitutionImpl
 		if (ownedActual == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-				ownedActual = new SubsetEObjectContainmentEList(
+				ownedActual = new SubsetSupersetEObjectContainmentEList(
 					ParameterableElement.class,
 					this,
 					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL}));
+					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL},
+					null));
 		}
 		return ownedActual;
 	}

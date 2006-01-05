@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.40 2005/12/06 23:18:03 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.41 2006/01/05 13:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,10 +47,10 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.ComponentOperations;
 
 /**
@@ -236,7 +236,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	public EList getRealizations() {
 		EList realization = (EList)eVirtualGet(UML2Package.COMPONENT__REALIZATION);
 		if (realization == null) {
-			eVirtualSet(UML2Package.COMPONENT__REALIZATION, realization = new SubsetEObjectContainmentWithInverseEList(Realization.class, this, UML2Package.COMPONENT__REALIZATION, new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY}, UML2Package.REALIZATION__ABSTRACTION));
+			eVirtualSet(UML2Package.COMPONENT__REALIZATION, realization = new SubsetSupersetEObjectContainmentWithInverseEList(Realization.class, this, UML2Package.COMPONENT__REALIZATION, new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY}, null, UML2Package.REALIZATION__ABSTRACTION));
 		}
 		return realization;
 	}
@@ -470,7 +470,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	public EList getClientDependencies() {
 		EList clientDependency = (EList)eVirtualGet(UML2Package.COMPONENT__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			eVirtualSet(UML2Package.COMPONENT__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.COMPONENT__CLIENT_DEPENDENCY, new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION}, UML2Package.DEPENDENCY__CLIENT));
+			eVirtualSet(UML2Package.COMPONENT__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.COMPONENT__CLIENT_DEPENDENCY, null, new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}

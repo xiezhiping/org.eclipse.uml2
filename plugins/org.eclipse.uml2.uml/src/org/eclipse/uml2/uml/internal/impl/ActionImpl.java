@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.12 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ActionImpl.java,v 1.13 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +90,7 @@ public class ActionImpl
 		if (output == null) {
 			eVirtualSet(UMLPackage.ACTION__OUTPUT,
 				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.ACTION__OUTPUT, new int[]{}));
+					UMLPackage.ACTION__OUTPUT, null));
 		}
 		return output;
 	}
@@ -141,7 +141,7 @@ public class ActionImpl
 		if (input == null) {
 			eVirtualSet(UMLPackage.ACTION__INPUT,
 				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.ACTION__INPUT, new int[]{}));
+					UMLPackage.ACTION__INPUT, null));
 		}
 		return input;
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.26 2005/12/06 23:18:03 khussey Exp $
+ * $Id: ActionImpl.java,v 1.27 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -129,7 +129,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public EList getOutputs() {
 		EList output = (EList)eVirtualGet(UML2Package.ACTION__OUTPUT);
 		if (output == null) {
-			eVirtualSet(UML2Package.ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, new int[] {}));
+			eVirtualSet(UML2Package.ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, null));
 		}
 		return output;
 	}
@@ -194,7 +194,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public EList getInputs() {
 		EList input = (EList)eVirtualGet(UML2Package.ACTION__INPUT);
 		if (input == null) {
-			eVirtualSet(UML2Package.ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, new int[] {}));
+			eVirtualSet(UML2Package.ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, null));
 		}
 		return input;
 	}

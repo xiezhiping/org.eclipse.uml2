@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.24 2005/12/06 23:18:04 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.25 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -40,8 +40,8 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 //import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -325,7 +325,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	public EList getClients() {
 		EList client = (EList)eVirtualGet(UML2Package.REALIZATION__CLIENT);
 		if (client == null) {
-			eVirtualSet(UML2Package.REALIZATION__CLIENT, client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.REALIZATION__CLIENT, new int[] {UML2Package.REALIZATION__ABSTRACTION}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+			eVirtualSet(UML2Package.REALIZATION__CLIENT, client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.REALIZATION__CLIENT, null, new int[] {UML2Package.REALIZATION__ABSTRACTION}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
 		return client;
 	}
@@ -339,7 +339,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	public EList getSuppliers() {
 		EList supplier = (EList)eVirtualGet(UML2Package.REALIZATION__SUPPLIER);
 		if (supplier == null) {
-			eVirtualSet(UML2Package.REALIZATION__SUPPLIER, supplier = new SupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.REALIZATION__SUPPLIER, new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER}));
+			eVirtualSet(UML2Package.REALIZATION__SUPPLIER, supplier = new SubsetSupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.REALIZATION__SUPPLIER, null, new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER}));
 		}
 		return supplier;
 	}

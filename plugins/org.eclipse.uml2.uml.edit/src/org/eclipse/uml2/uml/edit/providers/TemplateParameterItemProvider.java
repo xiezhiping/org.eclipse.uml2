@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.7 2006/01/04 17:47:49 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.8 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -35,8 +35,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
-import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -970,34 +969,36 @@ public class TemplateParameterItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT},
-				value);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT},
-				value);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) {
-			return new SupersetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT},
 				value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT) {
-			return new SupersetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT},
 				value);
 		}

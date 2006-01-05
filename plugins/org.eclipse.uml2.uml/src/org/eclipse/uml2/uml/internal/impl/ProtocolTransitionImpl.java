@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.19 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.20 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 
@@ -101,11 +101,12 @@ public class ProtocolTransitionImpl
 	public EList getOwnedRules() {
 		EList ownedRule = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE);
 		if (ownedRule == null) {
-			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE,
-				ownedRule = new SupersetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE,
+				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Constraint.class, this,
-					UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE, new int[]{
-						UMLPackage.PROTOCOL_TRANSITION__GUARD,
+					UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE, null,
+					new int[]{UMLPackage.PROTOCOL_TRANSITION__GUARD,
 						UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION},
 					UMLPackage.CONSTRAINT__CONTEXT));
 		}

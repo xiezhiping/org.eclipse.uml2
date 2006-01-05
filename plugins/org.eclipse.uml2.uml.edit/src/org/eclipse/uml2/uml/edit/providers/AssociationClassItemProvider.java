@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.5 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -38,9 +38,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.AssociationClass;
@@ -441,34 +440,28 @@ public class AssociationClassItemProvider
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__MEMBER_END},
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
-				value, collection);
-		}
-		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
-			return new SupersetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
 				value, collection);
 		}

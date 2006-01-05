@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.32 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.33 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,7 +29,7 @@ import org.eclipse.uml2.Property;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -128,7 +128,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	public EList getOwnedEnds() {
 		EList ownedEnd = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_END);
 		if (ownedEnd == null) {
-			eVirtualSet(UML2Package.EXTENSION__OWNED_END, ownedEnd = new SubsetEObjectContainmentWithInverseEList(ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END, new int[] {UML2Package.EXTENSION__MEMBER_END}, UML2Package.EXTENSION_END__OWNING_ASSOCIATION));
+			eVirtualSet(UML2Package.EXTENSION__OWNED_END, ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END, new int[] {UML2Package.EXTENSION__MEMBER_END}, null, UML2Package.EXTENSION_END__OWNING_ASSOCIATION));
 		}
 		return ownedEnd;
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.15 2005/12/06 23:18:02 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.16 2006/01/05 13:53:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -69,7 +69,7 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	public EList getRelatedElements() {
 		EList relatedElement = (EList)eVirtualGet(UML2Package.RELATIONSHIP__RELATED_ELEMENT);
 		if (relatedElement == null) {
-			eVirtualSet(UML2Package.RELATIONSHIP__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.RELATIONSHIP__RELATED_ELEMENT, new int[] {}));
+			eVirtualSet(UML2Package.RELATIONSHIP__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.RELATIONSHIP__RELATED_ELEMENT, null));
 		}
 		return relatedElement;
 	}

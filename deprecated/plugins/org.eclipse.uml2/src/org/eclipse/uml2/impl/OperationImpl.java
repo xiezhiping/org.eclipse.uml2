@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.39 2005/12/06 23:18:02 khussey Exp $
+ * $Id: OperationImpl.java,v 1.40 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,8 +56,8 @@ import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
 import org.eclipse.uml2.internal.operation.OperationOperations;
@@ -629,7 +629,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public EList getPreconditions() {
 		EList precondition = (EList)eVirtualGet(UML2Package.OPERATION__PRECONDITION);
 		if (precondition == null) {
-			eVirtualSet(UML2Package.OPERATION__PRECONDITION, precondition = new SubsetEObjectEList(Constraint.class, this, UML2Package.OPERATION__PRECONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE}));
+			eVirtualSet(UML2Package.OPERATION__PRECONDITION, precondition = new SubsetSupersetEObjectEList(Constraint.class, this, UML2Package.OPERATION__PRECONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE}, null));
 		}
 		return precondition;
 	}
@@ -658,7 +658,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public EList getPostconditions() {
 		EList postcondition = (EList)eVirtualGet(UML2Package.OPERATION__POSTCONDITION);
 		if (postcondition == null) {
-			eVirtualSet(UML2Package.OPERATION__POSTCONDITION, postcondition = new SubsetEObjectEList(Constraint.class, this, UML2Package.OPERATION__POSTCONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE}));
+			eVirtualSet(UML2Package.OPERATION__POSTCONDITION, postcondition = new SubsetSupersetEObjectEList(Constraint.class, this, UML2Package.OPERATION__POSTCONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE}, null));
 		}
 		return postcondition;
 	}
@@ -1344,7 +1344,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public EList getOwnedRules() {
 		EList ownedRule = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_RULE);
 		if (ownedRule == null) {
-			eVirtualSet(UML2Package.OPERATION__OWNED_RULE, ownedRule = new SupersetEObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.OPERATION__OWNED_RULE, new int[] {UML2Package.OPERATION__PRECONDITION, UML2Package.OPERATION__POSTCONDITION, UML2Package.OPERATION__BODY_CONDITION}, UML2Package.CONSTRAINT__NAMESPACE));
+			eVirtualSet(UML2Package.OPERATION__OWNED_RULE, ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.OPERATION__OWNED_RULE, null, new int[] {UML2Package.OPERATION__PRECONDITION, UML2Package.OPERATION__POSTCONDITION, UML2Package.OPERATION__BODY_CONDITION}, UML2Package.CONSTRAINT__NAMESPACE));
 		}
 		return ownedRule;
 	}

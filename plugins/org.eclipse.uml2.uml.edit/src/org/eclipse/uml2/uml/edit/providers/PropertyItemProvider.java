@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.7 2006/01/04 17:47:49 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.8 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -37,11 +37,9 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Property;
@@ -829,18 +827,19 @@ public class PropertyItemProvider
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
-			return new SupersetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT},
 				value, collection);
 		}
@@ -857,26 +856,27 @@ public class PropertyItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER},
-				value);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.PROPERTY__ASSOCIATION},
-				value);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.PROPERTY__ASSOCIATION) {
-			return new SupersetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
+				null,
 				new EStructuralFeature[]{UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION},
 				value);
 		}

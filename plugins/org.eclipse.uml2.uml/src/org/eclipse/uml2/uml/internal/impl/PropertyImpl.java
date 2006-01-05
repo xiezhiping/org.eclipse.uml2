@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.19 2006/01/03 19:50:25 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.20 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
@@ -416,9 +416,9 @@ public class PropertyImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.PROPERTY__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class, this,
-					UMLPackage.PROPERTY__CLIENT_DEPENDENCY,
+					UMLPackage.PROPERTY__CLIENT_DEPENDENCY, null,
 					new int[]{UMLPackage.PROPERTY__DEPLOYMENT},
 					UMLPackage.DEPENDENCY__CLIENT));
 		}
@@ -433,10 +433,11 @@ public class PropertyImpl
 	public EList getDeployments() {
 		EList deployment = (EList) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
 		if (deployment == null) {
-			eVirtualSet(UMLPackage.PROPERTY__DEPLOYMENT,
-				deployment = new SubsetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PROPERTY__DEPLOYMENT,
+				deployment = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Deployment.class, this, UMLPackage.PROPERTY__DEPLOYMENT,
-					new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY},
+					new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY}, null,
 					UMLPackage.DEPLOYMENT__LOCATION));
 		}
 		return deployment;

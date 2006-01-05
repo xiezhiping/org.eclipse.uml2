@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.14 2005/11/23 20:02:55 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.15 2006/01/05 13:53:30 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -42,10 +42,9 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Deployment} object.
@@ -309,13 +308,13 @@ public class DeploymentItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__SUPPLIER}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__SUPPLIER}, null, value, collection);
 		}
 		if (feature == UML2Package.Literals.DEPENDENCY__SUPPLIER) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT}, value, collection);
 		}
 		if (feature == UML2Package.Literals.DEPENDENCY__CLIENT) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__LOCATION}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.DEPLOYMENT__LOCATION}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}
@@ -328,7 +327,7 @@ public class DeploymentItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
 		if (feature == UML2Package.Literals.DEPLOYMENT__LOCATION) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__CLIENT}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.DEPENDENCY__CLIENT}, null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

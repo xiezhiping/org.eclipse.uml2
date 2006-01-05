@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.20 2006/01/04 17:47:24 khussey Exp $
+ * $Id: ClassImpl.java,v 1.21 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,9 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
@@ -200,9 +200,9 @@ public class ClassImpl
 		EList ownedBehavior = (EList) eVirtualGet(UMLPackage.CLASS__OWNED_BEHAVIOR);
 		if (ownedBehavior == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_BEHAVIOR,
-				ownedBehavior = new SupersetEObjectContainmentEList(
+				ownedBehavior = new SubsetSupersetEObjectContainmentEList(
 					Behavior.class, this, UMLPackage.CLASS__OWNED_BEHAVIOR,
-					new int[]{UMLPackage.CLASS__CLASSIFIER_BEHAVIOR}));
+					null, new int[]{UMLPackage.CLASS__CLASSIFIER_BEHAVIOR}));
 		}
 		return ownedBehavior;
 	}
@@ -244,9 +244,9 @@ public class ClassImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.CLASS__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class, this,
-					UMLPackage.CLASS__CLIENT_DEPENDENCY, new int[]{
+					UMLPackage.CLASS__CLIENT_DEPENDENCY, null, new int[]{
 						UMLPackage.CLASS__SUBSTITUTION,
 						UMLPackage.CLASS__INTERFACE_REALIZATION},
 					UMLPackage.DEPENDENCY__CLIENT));
@@ -295,10 +295,10 @@ public class ClassImpl
 		if (interfaceRealization == null) {
 			eVirtualSet(
 				UMLPackage.CLASS__INTERFACE_REALIZATION,
-				interfaceRealization = new SubsetEObjectContainmentWithInverseEList(
+				interfaceRealization = new SubsetSupersetEObjectContainmentWithInverseEList(
 					InterfaceRealization.class, this,
 					UMLPackage.CLASS__INTERFACE_REALIZATION,
-					new int[]{UMLPackage.CLASS__CLIENT_DEPENDENCY},
+					new int[]{UMLPackage.CLASS__CLIENT_DEPENDENCY}, null,
 					UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER));
 		}
 		return interfaceRealization;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.5 2006/01/04 16:16:57 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.6 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -35,11 +35,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
-
 import org.eclipse.uml2.uml.ProtocolTransition;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -293,8 +291,9 @@ public class ProtocolTransitionItemProvider
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD,
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				null, new EStructuralFeature[]{
+					UMLPackage.Literals.TRANSITION__GUARD,
 					UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION},
 				value, collection);
 		}
@@ -311,36 +310,29 @@ public class ProtocolTransitionItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				new EStructuralFeature[]{UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION},
 				value);
 		}
 		if (feature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
-				value);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
-				value);
-		}
-		if (feature == UMLPackage.Literals.TRANSITION__GUARD) {
-			return new SupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION},
-				value);
+				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.11 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
@@ -106,9 +106,9 @@ public abstract class DeploymentTargetImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class, this,
-					UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY,
+					UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, null,
 					new int[]{UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT},
 					UMLPackage.DEPENDENCY__CLIENT));
 		}
@@ -123,12 +123,13 @@ public abstract class DeploymentTargetImpl
 	public EList getDeployments() {
 		EList deployment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
 		if (deployment == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
-				deployment = new SubsetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
+				deployment = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Deployment.class, this,
 					UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
 					new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY},
-					UMLPackage.DEPLOYMENT__LOCATION));
+					null, UMLPackage.DEPLOYMENT__LOCATION));
 		}
 		return deployment;
 	}

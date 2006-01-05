@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.5 2006/01/04 16:16:56 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.6 2006/01/05 13:54:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -37,11 +37,9 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
-
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -601,24 +599,24 @@ public class OperationItemProvider
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UMLPackage.Literals.OPERATION__PRECONDITION) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.OPERATION__POSTCONDITION) {
-			return new SubsetReplaceCommand(
+			return new SubsetSupersetReplaceCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
-				value, collection);
+				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
-			return new SupersetReplaceCommand(domain, owner, feature,
-				new EStructuralFeature[]{
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				null, new EStructuralFeature[]{
 					UMLPackage.Literals.OPERATION__PRECONDITION,
 					UMLPackage.Literals.OPERATION__POSTCONDITION,
 					UMLPackage.Literals.OPERATION__BODY_CONDITION}, value,
@@ -637,20 +635,20 @@ public class OperationItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER},
-				value);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.OPERATION__BODY_CONDITION) {
-			return new SubsetSetCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
-				value);
+				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.21 2005/11/23 20:02:54 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.22 2006/01/05 13:53:25 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -38,9 +38,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Profile} object.
@@ -272,16 +271,16 @@ public class ProfileItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UML2Package.Literals.PROFILE__METACLASS_REFERENCE) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__ELEMENT_IMPORT}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__ELEMENT_IMPORT}, null, value, collection);
 		}
 		if (feature == UML2Package.Literals.PROFILE__METAMODEL_REFERENCE) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT}, null, value, collection);
 		}
 		if (feature == UML2Package.Literals.NAMESPACE__ELEMENT_IMPORT) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PROFILE__METACLASS_REFERENCE}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.PROFILE__METACLASS_REFERENCE}, value, collection);
 		}
 		if (feature == UML2Package.Literals.NAMESPACE__PACKAGE_IMPORT) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.PACKAGE__APPLIED_PROFILE, UML2Package.Literals.PROFILE__METAMODEL_REFERENCE}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.PACKAGE__APPLIED_PROFILE, UML2Package.Literals.PROFILE__METAMODEL_REFERENCE}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}

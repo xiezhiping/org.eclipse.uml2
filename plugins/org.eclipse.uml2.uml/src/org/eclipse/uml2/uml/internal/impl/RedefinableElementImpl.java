@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.10 2005/12/14 22:34:18 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.11 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -104,8 +104,7 @@ public abstract class RedefinableElementImpl
 			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
 				redefinedElement = new DerivedUnionEObjectEList(
 					RedefinableElement.class, this,
-					UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					new int[]{}));
+					UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, null));
 		}
 		return redefinedElement;
 	}
@@ -136,8 +135,7 @@ public abstract class RedefinableElementImpl
 			eVirtualSet(UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-					new int[]{}));
+					UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, null));
 		}
 		return redefinitionContext;
 	}

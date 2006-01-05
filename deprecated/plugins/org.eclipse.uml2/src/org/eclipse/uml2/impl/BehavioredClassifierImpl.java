@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.32 2005/12/06 23:18:03 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.33 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,11 +47,10 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.BehavioredClassifierOperations;
 
 /**
@@ -105,7 +104,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	public EList getOwnedBehaviors() {
 		EList ownedBehavior = (EList)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
 		if (ownedBehavior == null) {
-			eVirtualSet(UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, ownedBehavior = new SupersetEObjectContainmentWithInverseEList(Behavior.class, this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}, UML2Package.BEHAVIOR__CONTEXT));
+			eVirtualSet(UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, ownedBehavior = new SubsetSupersetEObjectContainmentWithInverseEList(Behavior.class, this, UML2Package.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, null, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR}, UML2Package.BEHAVIOR__CONTEXT));
 		}
 		return ownedBehavior;
 	}
@@ -184,7 +183,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	public EList getImplementations() {
 		EList implementation = (EList)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION);
 		if (implementation == null) {
-			eVirtualSet(UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, implementation = new SubsetEObjectContainmentWithInverseEList(Implementation.class, this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY}, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER));
+			eVirtualSet(UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, implementation = new SubsetSupersetEObjectContainmentWithInverseEList(Implementation.class, this, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY}, null, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER));
 		}
 		return implementation;
 	}
@@ -456,7 +455,7 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 	public EList getClientDependencies() {
 		EList clientDependency = (EList)eVirtualGet(UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			eVirtualSet(UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION}, UML2Package.DEPENDENCY__CLIENT));
+			eVirtualSet(UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY, null, new int[] {UML2Package.BEHAVIORED_CLASSIFIER__SUBSTITUTION, UML2Package.BEHAVIORED_CLASSIFIER__IMPLEMENTATION}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}

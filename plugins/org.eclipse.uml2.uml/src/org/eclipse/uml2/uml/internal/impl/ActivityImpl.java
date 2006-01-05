@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.15 2006/01/04 17:47:24 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.16 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -214,9 +214,9 @@ public class ActivityImpl
 		EList group = (EList) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
 		if (group == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__GROUP,
-				group = new SupersetEObjectContainmentWithInverseEList(
+				group = new SubsetSupersetEObjectContainmentWithInverseEList(
 					ActivityGroup.class, this, UMLPackage.ACTIVITY__GROUP,
-					new int[]{UMLPackage.ACTIVITY__PARTITION},
+					null, new int[]{UMLPackage.ACTIVITY__PARTITION},
 					UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY));
 		}
 		return group;

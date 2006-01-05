@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.7 2005/12/14 22:34:20 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.8 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -68,7 +68,7 @@ public abstract class DirectedRelationshipImpl
 		if (source == null) {
 			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__SOURCE,
 				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, new int[]{}));
+					UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, null));
 		}
 		return source;
 	}
@@ -100,7 +100,7 @@ public abstract class DirectedRelationshipImpl
 		if (target == null) {
 			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__TARGET,
 				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DIRECTED_RELATIONSHIP__TARGET, new int[]{}));
+					UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null));
 		}
 		return target;
 	}

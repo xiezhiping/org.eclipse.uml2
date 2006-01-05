@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.10 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,9 +29,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectResolvingEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.DeployedArtifact;
 import org.eclipse.uml2.uml.Deployment;
@@ -112,9 +111,9 @@ public class DeploymentImpl
 		EList supplier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
 		if (supplier == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__SUPPLIER,
-				supplier = new SupersetEObjectResolvingEList(
+				supplier = new SubsetSupersetEObjectResolvingEList(
 					NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER,
-					new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT}));
+					null, new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT}));
 		}
 		return supplier;
 	}
@@ -129,9 +128,9 @@ public class DeploymentImpl
 		if (client == null) {
 			eVirtualSet(
 				UMLPackage.DEPLOYMENT__CLIENT,
-				client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					NamedElement.class, this, UMLPackage.DEPLOYMENT__CLIENT,
-					new int[]{UMLPackage.DEPLOYMENT__LOCATION},
+					null, new int[]{UMLPackage.DEPLOYMENT__LOCATION},
 					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
 		return client;
@@ -146,10 +145,10 @@ public class DeploymentImpl
 		EList deployedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
 		if (deployedArtifact == null) {
 			eVirtualSet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
-				deployedArtifact = new SubsetEObjectResolvingEList(
+				deployedArtifact = new SubsetSupersetEObjectResolvingEList(
 					DeployedArtifact.class, this,
 					UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
-					new int[]{UMLPackage.DEPLOYMENT__SUPPLIER}));
+					new int[]{UMLPackage.DEPLOYMENT__SUPPLIER}, null));
 		}
 		return deployedArtifact;
 	}

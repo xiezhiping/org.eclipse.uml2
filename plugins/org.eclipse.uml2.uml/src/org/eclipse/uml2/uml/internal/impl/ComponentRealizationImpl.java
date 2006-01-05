@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.10 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
@@ -88,9 +88,9 @@ public class ComponentRealizationImpl
 		if (client == null) {
 			eVirtualSet(
 				UMLPackage.COMPONENT_REALIZATION__CLIENT,
-				client = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					NamedElement.class, this,
-					UMLPackage.COMPONENT_REALIZATION__CLIENT,
+					UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
 					new int[]{UMLPackage.COMPONENT_REALIZATION__ABSTRACTION},
 					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
 		}
@@ -107,10 +107,11 @@ public class ComponentRealizationImpl
 		if (supplier == null) {
 			eVirtualSet(
 				UMLPackage.COMPONENT_REALIZATION__SUPPLIER,
-				supplier = new SupersetEObjectResolvingEList(
+				supplier = new SubsetSupersetEObjectResolvingEList(
 					NamedElement.class,
 					this,
 					UMLPackage.COMPONENT_REALIZATION__SUPPLIER,
+					null,
 					new int[]{UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER}));
 		}
 		return supplier;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.14 2005/11/23 20:02:54 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.15 2006/01/05 13:53:30 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -44,9 +44,8 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-import org.eclipse.uml2.common.edit.command.SupersetReplaceCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Association} object.
@@ -380,10 +379,10 @@ public class AssociationItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, EObject value, Collection collection) {
 		if (feature == UML2Package.Literals.ASSOCIATION__OWNED_END) {
-			return new SubsetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.ASSOCIATION__MEMBER_END}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.ASSOCIATION__MEMBER_END}, null, value, collection);
 		}
 		if (feature == UML2Package.Literals.ASSOCIATION__MEMBER_END) {
-			return new SupersetReplaceCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.ASSOCIATION__OWNED_END}, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.ASSOCIATION__OWNED_END}, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value, collection);
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.45 2005/12/06 23:18:02 khussey Exp $
+ * $Id: PackageImpl.java,v 1.46 2006/01/05 13:53:14 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,10 +57,10 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.DerivedEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.internal.operation.PackageOperations;
 import org.eclipse.uml2.internal.operation.ProfileOperations;
 
@@ -439,7 +439,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public EList getAppliedProfiles() {
 		EList appliedProfile = (EList)eVirtualGet(UML2Package.PACKAGE__APPLIED_PROFILE);
 		if (appliedProfile == null) {
-			eVirtualSet(UML2Package.PACKAGE__APPLIED_PROFILE, appliedProfile = new SubsetEObjectEList(ProfileApplication.class, this, UML2Package.PACKAGE__APPLIED_PROFILE, new int[] {UML2Package.PACKAGE__PACKAGE_IMPORT}));
+			eVirtualSet(UML2Package.PACKAGE__APPLIED_PROFILE, appliedProfile = new SubsetSupersetEObjectEList(ProfileApplication.class, this, UML2Package.PACKAGE__APPLIED_PROFILE, new int[] {UML2Package.PACKAGE__PACKAGE_IMPORT}, null));
 		}
 		return appliedProfile;
 	}
@@ -744,7 +744,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	public EList getPackageImports() {
 		EList packageImport = (EList)eVirtualGet(UML2Package.PACKAGE__PACKAGE_IMPORT);
 		if (packageImport == null) {
-			eVirtualSet(UML2Package.PACKAGE__PACKAGE_IMPORT, packageImport = new SupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PACKAGE__PACKAGE_IMPORT, new int[] {UML2Package.PACKAGE__APPLIED_PROFILE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
+			eVirtualSet(UML2Package.PACKAGE__PACKAGE_IMPORT, packageImport = new SubsetSupersetEObjectContainmentWithInverseEList(PackageImport.class, this, UML2Package.PACKAGE__PACKAGE_IMPORT, null, new int[] {UML2Package.PACKAGE__APPLIED_PROFILE}, UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
 		}
 		return packageImport;
 	}

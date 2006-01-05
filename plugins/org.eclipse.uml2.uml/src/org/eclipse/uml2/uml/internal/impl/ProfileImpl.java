@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,10 +32,10 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Model;
@@ -116,10 +116,11 @@ public class ProfileImpl
 	public EList getElementImports() {
 		EList elementImport = (EList) eVirtualGet(UMLPackage.PROFILE__ELEMENT_IMPORT);
 		if (elementImport == null) {
-			eVirtualSet(UMLPackage.PROFILE__ELEMENT_IMPORT,
-				elementImport = new SupersetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PROFILE__ELEMENT_IMPORT,
+				elementImport = new SubsetSupersetEObjectContainmentWithInverseEList(
 					ElementImport.class, this,
-					UMLPackage.PROFILE__ELEMENT_IMPORT,
+					UMLPackage.PROFILE__ELEMENT_IMPORT, null,
 					new int[]{UMLPackage.PROFILE__METACLASS_REFERENCE},
 					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
 		}
@@ -134,10 +135,11 @@ public class ProfileImpl
 	public EList getPackageImports() {
 		EList packageImport = (EList) eVirtualGet(UMLPackage.PROFILE__PACKAGE_IMPORT);
 		if (packageImport == null) {
-			eVirtualSet(UMLPackage.PROFILE__PACKAGE_IMPORT,
-				packageImport = new SupersetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PROFILE__PACKAGE_IMPORT,
+				packageImport = new SubsetSupersetEObjectContainmentWithInverseEList(
 					PackageImport.class, this,
-					UMLPackage.PROFILE__PACKAGE_IMPORT,
+					UMLPackage.PROFILE__PACKAGE_IMPORT, null,
 					new int[]{UMLPackage.PROFILE__METAMODEL_REFERENCE},
 					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
 		}
@@ -185,10 +187,10 @@ public class ProfileImpl
 		EList metaclassReference = (EList) eVirtualGet(UMLPackage.PROFILE__METACLASS_REFERENCE);
 		if (metaclassReference == null) {
 			eVirtualSet(UMLPackage.PROFILE__METACLASS_REFERENCE,
-				metaclassReference = new SubsetEObjectEList(
+				metaclassReference = new SubsetSupersetEObjectEList(
 					ElementImport.class, this,
 					UMLPackage.PROFILE__METACLASS_REFERENCE,
-					new int[]{UMLPackage.PROFILE__ELEMENT_IMPORT}));
+					new int[]{UMLPackage.PROFILE__ELEMENT_IMPORT}, null));
 		}
 		return metaclassReference;
 	}
@@ -202,10 +204,10 @@ public class ProfileImpl
 		EList metamodelReference = (EList) eVirtualGet(UMLPackage.PROFILE__METAMODEL_REFERENCE);
 		if (metamodelReference == null) {
 			eVirtualSet(UMLPackage.PROFILE__METAMODEL_REFERENCE,
-				metamodelReference = new SubsetEObjectEList(
+				metamodelReference = new SubsetSupersetEObjectEList(
 					PackageImport.class, this,
 					UMLPackage.PROFILE__METAMODEL_REFERENCE,
-					new int[]{UMLPackage.PROFILE__PACKAGE_IMPORT}));
+					new int[]{UMLPackage.PROFILE__PACKAGE_IMPORT}, null));
 		}
 		return metamodelReference;
 	}

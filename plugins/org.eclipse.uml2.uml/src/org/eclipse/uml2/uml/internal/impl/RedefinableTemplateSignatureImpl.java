@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.10 2005/12/14 22:34:19 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.11 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
@@ -126,10 +126,11 @@ public class RedefinableTemplateSignatureImpl
 		if (parameter == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER,
-				parameter = new SupersetEObjectResolvingEList(
+				parameter = new SubsetSupersetEObjectResolvingEList(
 					TemplateParameter.class,
 					this,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER,
+					null,
 					new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
 		}
 		return parameter;
@@ -185,12 +186,12 @@ public class RedefinableTemplateSignatureImpl
 		if (ownedParameter == null) {
 			eVirtualSet(
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-				ownedParameter = new SubsetEObjectContainmentWithInverseEList(
+				ownedParameter = new SubsetSupersetEObjectContainmentWithInverseEList(
 					TemplateParameter.class,
 					this,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER,
 					new int[]{UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER},
-					UMLPackage.TEMPLATE_PARAMETER__SIGNATURE));
+					null, UMLPackage.TEMPLATE_PARAMETER__SIGNATURE));
 		}
 		return ownedParameter;
 	}

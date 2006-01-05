@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.22 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.23 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,9 +39,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
@@ -232,7 +232,7 @@ public abstract class ClassifierImpl
 			eVirtualSet(UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT,
 				redefinitionContext = new DerivedUnionEObjectEList(
 					Classifier.class, this,
-					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, new int[]{}));
+					UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT, null));
 		}
 		return redefinitionContext;
 	}
@@ -755,7 +755,7 @@ public abstract class ClassifierImpl
 		if (attribute == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__ATTRIBUTE,
 				attribute = new DerivedUnionEObjectEList(Property.class, this,
-					UMLPackage.CLASSIFIER__ATTRIBUTE, new int[]{}));
+					UMLPackage.CLASSIFIER__ATTRIBUTE, null));
 		}
 		return attribute;
 	}
@@ -785,9 +785,9 @@ public abstract class ClassifierImpl
 		if (clientDependency == null) {
 			eVirtualSet(
 				UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY,
-				clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(
+				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
 					Dependency.class, this,
-					UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY,
+					UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY, null,
 					new int[]{UMLPackage.CLASSIFIER__SUBSTITUTION},
 					UMLPackage.DEPENDENCY__CLIENT));
 		}
@@ -803,9 +803,9 @@ public abstract class ClassifierImpl
 		EList collaborationUse = (EList) eVirtualGet(UMLPackage.CLASSIFIER__COLLABORATION_USE);
 		if (collaborationUse == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__COLLABORATION_USE,
-				collaborationUse = new SupersetEObjectContainmentEList(
+				collaborationUse = new SubsetSupersetEObjectContainmentEList(
 					CollaborationUse.class, this,
-					UMLPackage.CLASSIFIER__COLLABORATION_USE,
+					UMLPackage.CLASSIFIER__COLLABORATION_USE, null,
 					new int[]{UMLPackage.CLASSIFIER__REPRESENTATION}));
 		}
 		return collaborationUse;
@@ -1107,11 +1107,12 @@ public abstract class ClassifierImpl
 	public EList getSubstitutions() {
 		EList substitution = (EList) eVirtualGet(UMLPackage.CLASSIFIER__SUBSTITUTION);
 		if (substitution == null) {
-			eVirtualSet(UMLPackage.CLASSIFIER__SUBSTITUTION,
-				substitution = new SubsetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.CLASSIFIER__SUBSTITUTION,
+				substitution = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Substitution.class, this,
 					UMLPackage.CLASSIFIER__SUBSTITUTION,
-					new int[]{UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY},
+					new int[]{UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY}, null,
 					UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER));
 		}
 		return substitution;

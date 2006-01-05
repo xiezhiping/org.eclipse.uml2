@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.16 2005/12/06 23:18:03 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.17 2006/01/05 13:53:10 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,7 +71,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public EList getSources() {
 		EList source = (EList)eVirtualGet(UML2Package.DIRECTED_RELATIONSHIP__SOURCE);
 		if (source == null) {
-			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__SOURCE, new int[] {}));
+			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__SOURCE, null));
 		}
 		return source;
 	}
@@ -119,7 +119,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public EList getTargets() {
 		EList target = (EList)eVirtualGet(UML2Package.DIRECTED_RELATIONSHIP__TARGET);
 		if (target == null) {
-			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__TARGET, new int[] {}));
+			eVirtualSet(UML2Package.DIRECTED_RELATIONSHIP__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__TARGET, null));
 		}
 		return target;
 	}

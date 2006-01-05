@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.11 2006/01/04 17:47:24 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.12 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
@@ -197,10 +197,11 @@ public class TransitionImpl
 	public EList getOwnedRules() {
 		EList ownedRule = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
 		if (ownedRule == null) {
-			eVirtualSet(UMLPackage.TRANSITION__OWNED_RULE,
-				ownedRule = new SupersetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.TRANSITION__OWNED_RULE,
+				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(
 					Constraint.class, this, UMLPackage.TRANSITION__OWNED_RULE,
-					new int[]{UMLPackage.TRANSITION__GUARD},
+					null, new int[]{UMLPackage.TRANSITION__GUARD},
 					UMLPackage.CONSTRAINT__CONTEXT));
 		}
 		return ownedRule;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.10 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.11 2006/01/05 13:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,7 +91,7 @@ public abstract class ActivityGroupImpl
 		if (subgroup == null) {
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__SUBGROUP,
 				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
-					this, UMLPackage.ACTIVITY_GROUP__SUBGROUP, new int[]{}));
+					this, UMLPackage.ACTIVITY_GROUP__SUBGROUP, null));
 		}
 		return subgroup;
 	}
@@ -124,7 +124,7 @@ public abstract class ActivityGroupImpl
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE,
 				containedNode = new DerivedUnionEObjectEList(
 					ActivityNode.class, this,
-					UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, new int[]{}));
+					UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
 		}
 		return containedNode;
 	}
@@ -155,7 +155,7 @@ public abstract class ActivityGroupImpl
 			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE,
 				containedEdge = new DerivedUnionEObjectEList(
 					ActivityEdge.class, this,
-					UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, new int[]{}));
+					UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
 		}
 		return containedEdge;
 	}

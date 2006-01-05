@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.33 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.34 2006/01/05 13:53:08 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -46,9 +46,10 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.common.util.SubsetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SupersetEObjectWithInverseResolvingEList;
 import org.eclipse.uml2.internal.operation.ClassifierOperations;
 
 /**
@@ -244,7 +245,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public EList getManifestations() {
 		EList manifestation = (EList)eVirtualGet(UML2Package.ARTIFACT__MANIFESTATION);
 		if (manifestation == null) {
-			eVirtualSet(UML2Package.ARTIFACT__MANIFESTATION, manifestation = new SubsetEObjectContainmentEList(Manifestation.class, this, UML2Package.ARTIFACT__MANIFESTATION, new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY}));
+			eVirtualSet(UML2Package.ARTIFACT__MANIFESTATION, manifestation = new SubsetSupersetEObjectContainmentEList(Manifestation.class, this, UML2Package.ARTIFACT__MANIFESTATION, new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY}, null));
 		}
 		return manifestation;
 	}
@@ -515,7 +516,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public EList getClientDependencies() {
 		EList clientDependency = (EList)eVirtualGet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY);
 		if (clientDependency == null) {
-			eVirtualSet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY, clientDependency = new SupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.ARTIFACT__CLIENT_DEPENDENCY, new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION}, UML2Package.DEPENDENCY__CLIENT));
+			eVirtualSet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.ARTIFACT__CLIENT_DEPENDENCY, null, new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION}, UML2Package.DEPENDENCY__CLIENT));
 		}
 		return clientDependency;
 	}

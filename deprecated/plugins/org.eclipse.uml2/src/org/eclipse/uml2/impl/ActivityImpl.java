@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.39 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.40 2006/01/05 13:53:04 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -44,9 +44,10 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
+
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
-import org.eclipse.uml2.common.util.SubsetEObjectEList;
-import org.eclipse.uml2.common.util.SupersetEObjectContainmentWithInverseEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -483,7 +484,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public EList getNodes() {
 		EList node = (EList)eVirtualGet(UML2Package.ACTIVITY__NODE);
 		if (node == null) {
-			eVirtualSet(UML2Package.ACTIVITY__NODE, node = new SupersetEObjectContainmentWithInverseEList(ActivityNode.class, this, UML2Package.ACTIVITY__NODE, new int[] {UML2Package.ACTIVITY__ACTION}, UML2Package.ACTIVITY_NODE__ACTIVITY));
+			eVirtualSet(UML2Package.ACTIVITY__NODE, node = new SubsetSupersetEObjectContainmentWithInverseEList(ActivityNode.class, this, UML2Package.ACTIVITY__NODE, null, new int[] {UML2Package.ACTIVITY__ACTION}, UML2Package.ACTIVITY_NODE__ACTIVITY));
 		}
 		return node;
 	}
@@ -526,7 +527,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public EList getActions() {
 		EList action = (EList)eVirtualGet(UML2Package.ACTIVITY__ACTION);
 		if (action == null) {
-			eVirtualSet(UML2Package.ACTIVITY__ACTION, action = new SubsetEObjectEList(Action.class, this, UML2Package.ACTIVITY__ACTION, new int[] {UML2Package.ACTIVITY__NODE}));
+			eVirtualSet(UML2Package.ACTIVITY__ACTION, action = new SubsetSupersetEObjectEList(Action.class, this, UML2Package.ACTIVITY__ACTION, new int[] {UML2Package.ACTIVITY__NODE}, null));
 		}
 		return action;
 	}

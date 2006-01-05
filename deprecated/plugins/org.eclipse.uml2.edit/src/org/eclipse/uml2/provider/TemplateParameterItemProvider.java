@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.22 2005/11/23 20:02:54 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.23 2006/01/05 13:53:29 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -39,8 +39,7 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
-import org.eclipse.uml2.common.edit.command.SubsetSetCommand;
-import org.eclipse.uml2.common.edit.command.SupersetSetCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.TemplateParameter} object.
@@ -983,16 +982,16 @@ public class TemplateParameterItemProvider
 	 */
 	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
 		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT}, null, value);
 		}
 		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT) {
-			return new SubsetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__DEFAULT}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__DEFAULT}, null, value);
 		}
 		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT}, value);
 		}
 		if (feature == UML2Package.Literals.TEMPLATE_PARAMETER__DEFAULT) {
-			return new SupersetSetCommand(domain, owner, feature, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT}, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, null, new EStructuralFeature[] {UML2Package.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT}, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}
