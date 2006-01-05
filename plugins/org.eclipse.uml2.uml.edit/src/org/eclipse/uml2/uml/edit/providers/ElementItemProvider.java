@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.5 2006/01/04 17:47:48 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.6 2006/01/05 16:17:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -85,7 +86,7 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptorsGen(Object object) {
+	public List getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -93,17 +94,6 @@ public class ElementItemProvider
 			addOwnerPropertyDescriptor(object);
 			addOwnedCommentPropertyDescriptor(object);
 		}
-		return itemPropertyDescriptors;
-	}
-
-	public List getPropertyDescriptors(Object object) {
-
-		if (itemPropertyDescriptors == null) {
-			getPropertyDescriptorsGen(object);
-
-			addStereotypeApplicationPropertyDescriptors(object);
-		}
-
 		return itemPropertyDescriptors;
 	}
 
@@ -285,30 +275,54 @@ public class ElementItemProvider
 		return UMLEditPlugin.INSTANCE;
 	}
 
-	protected void addStereotypeApplicationPropertyDescriptors(Object object) {
+	public List getStereotypeApplicationPropertyDescriptors(Object object) {
+		List stereotypeApplications = ((Element) object)
+			.getStereotypeApplications();
 
-		for (Iterator stereotypeApplications = ((Element) object)
-			.getStereotypeApplications().iterator(); stereotypeApplications
-			.hasNext();) {
+		if (stereotypeApplications.isEmpty()) {
+			return null;
+		} else {
+			List stereotypeApplicationPropertyDescriptors = new ArrayList();
 
-			final Object stereotypeApplication = stereotypeApplications.next();
-			IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
-				.adapt(stereotypeApplication, IItemPropertySource.class);
+			for (Iterator sa = stereotypeApplications.iterator(); sa.hasNext();) {
+				final Object stereotypeApplication = sa.next();
+				IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
+					.adapt(stereotypeApplication, IItemPropertySource.class);
 
-			if (itemPropertySource != null) {
+				if (itemPropertySource != null) {
 
-				for (Iterator propertyDescriptors = itemPropertySource
-					.getPropertyDescriptors(stereotypeApplication).iterator(); propertyDescriptors
-					.hasNext();) {
+					for (Iterator propertyDescriptors = itemPropertySource
+						.getPropertyDescriptors(stereotypeApplication)
+						.iterator(); propertyDescriptors.hasNext();) {
 
-					itemPropertyDescriptors
-						.add(new ItemPropertyDescriptorDecorator(
-							stereotypeApplication,
-							(IItemPropertyDescriptor) propertyDescriptors
-								.next()));
+						stereotypeApplicationPropertyDescriptors
+							.add(new ItemPropertyDescriptorDecorator(
+								stereotypeApplication,
+								(IItemPropertyDescriptor) propertyDescriptors
+									.next()));
+					}
 				}
 			}
+
+			return stereotypeApplicationPropertyDescriptors;
 		}
+	}
+
+	public IItemPropertyDescriptor getStereotypeApplicationPropertyDescriptor(
+			Object object, Object propertyId) {
+
+		for (Iterator i = getStereotypeApplicationPropertyDescriptors(object)
+			.iterator(); i.hasNext();) {
+
+			IItemPropertyDescriptor itemPropertyDescriptor = (IItemPropertyDescriptor) i
+				.next();
+
+			if (propertyId.equals(itemPropertyDescriptor.getId(object))) {
+				return itemPropertyDescriptor;
+			}
+		}
+
+		return null;
 	}
 
 	protected boolean shouldTranslate() {

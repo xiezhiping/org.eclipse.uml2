@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,18 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLCommandAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: UMLCommandAction.java,v 1.2 2006/01/05 16:17:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.Comparator;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandAction;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.uml.editor.presentation.UMLEditor;
 
@@ -33,6 +36,34 @@ public class UMLCommandAction
 			return getLabelProvider().getText(o1).compareTo(
 				getLabelProvider().getText(o2));
 		}
+	}
+
+	protected class RefreshingChangeCommand
+			extends ChangeCommand {
+
+		protected RefreshingChangeCommand(EditingDomain editingDomain,
+				Runnable runnable, String label) {
+			super(editingDomain, runnable, label);
+		}
+
+		public void execute() {
+			super.execute();
+
+			refreshViewer();
+		}
+
+		public void undo() {
+			super.undo();
+
+			refreshViewer();
+		}
+
+		public void redo() {
+			super.redo();
+
+			refreshViewer();
+		}
+
 	}
 
 	private ILabelProvider labelProvider = null;
@@ -77,4 +108,12 @@ public class UMLCommandAction
 				}
 			};
 	}
+
+	protected void refreshViewer() {
+
+		if (workbenchPart instanceof IViewerProvider) {
+			((IViewerProvider) workbenchPart).getViewer().refresh();
+		}
+	}
+
 }

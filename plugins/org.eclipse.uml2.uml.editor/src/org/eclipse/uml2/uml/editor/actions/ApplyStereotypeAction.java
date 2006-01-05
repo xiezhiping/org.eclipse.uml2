@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyStereotypeAction.java,v 1.2 2006/01/04 16:15:45 khussey Exp $
+ * $Id: ApplyStereotypeAction.java,v 1.3 2006/01/05 16:17:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -21,11 +21,9 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -82,7 +80,7 @@ public class ApplyStereotypeAction
 
 			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {
 				editingDomain.getCommandStack().execute(
-					new ChangeCommand(editingDomain, new Runnable() {
+					new RefreshingChangeCommand(editingDomain, new Runnable() {
 
 						public void run() {
 
@@ -95,10 +93,6 @@ public class ApplyStereotypeAction
 							}
 						}
 					}, label));
-				
-				if (workbenchPart instanceof IViewerProvider) {
-					((IViewerProvider) workbenchPart).getViewer().refresh();
-				}
 			}
 		}
 	}

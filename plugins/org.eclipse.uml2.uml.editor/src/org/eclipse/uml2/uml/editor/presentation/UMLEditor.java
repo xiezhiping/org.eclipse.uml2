@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.4 2005/12/23 06:44:36 khussey Exp $
+ * $Id: UMLEditor.java,v 1.5 2006/01/05 16:17:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -154,6 +154,7 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
+import org.eclipse.uml2.uml.edit.providers.ElementItemProvider;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 
 import java.util.HashMap;
@@ -1606,6 +1607,8 @@ public class UMLEditor
 	protected static class UMLPropertySource
 			extends PropertySource {
 
+		protected List stereotypeApplicationItemPropertyDescriptors = null;
+
 		protected UMLPropertySource(Object object,
 				IItemPropertySource itemPropertySource) {
 			super(object, itemPropertySource);
@@ -1615,6 +1618,75 @@ public class UMLEditor
 				IItemPropertyDescriptor itemPropertyDescriptor) {
 			return new UMLPropertyDescriptor(object, itemPropertyDescriptor);
 		}
+
+		public IPropertyDescriptor[] getPropertyDescriptors() {
+			List propertyDescriptors = new ArrayList();
+
+			List itemPropertyDescriptors = itemPropertySource
+				.getPropertyDescriptors(object);
+
+			if (itemPropertyDescriptors != null) {
+
+				for (Iterator i = itemPropertyDescriptors.iterator(); i
+					.hasNext();) {
+
+					propertyDescriptors
+						.add(createPropertyDescriptor((IItemPropertyDescriptor) i
+							.next()));
+				}
+			}
+
+			if (itemPropertySource instanceof ElementItemProvider) {
+				stereotypeApplicationItemPropertyDescriptors = ((ElementItemProvider) itemPropertySource)
+					.getStereotypeApplicationPropertyDescriptors(object);
+
+				if (stereotypeApplicationItemPropertyDescriptors != null) {
+
+					for (Iterator i = stereotypeApplicationItemPropertyDescriptors
+						.iterator(); i.hasNext();) {
+
+						propertyDescriptors
+							.add(createPropertyDescriptor((IItemPropertyDescriptor) i
+								.next()));
+					}
+				}
+			}
+
+			return (IPropertyDescriptor[]) propertyDescriptors
+				.toArray(new IPropertyDescriptor[propertyDescriptors.size()]);
+		}
+
+		protected IItemPropertyDescriptor getItemPropertyDescriptor(
+				Object propertyId) {
+			IItemPropertyDescriptor itemPropertyDescriptor = itemPropertySource
+				.getPropertyDescriptor(object, propertyId);
+
+			return itemPropertyDescriptor == null
+				&& itemPropertySource instanceof ElementItemProvider
+				? ((ElementItemProvider) itemPropertySource)
+					.getStereotypeApplicationPropertyDescriptor(object,
+						propertyId)
+				: itemPropertyDescriptor;
+		}
+
+		public Object getPropertyValue(Object propertyId) {
+			return getItemPropertyDescriptor(propertyId).getPropertyValue(
+				object);
+		}
+
+		public boolean isPropertySet(Object propertyId) {
+			return getItemPropertyDescriptor(propertyId).isPropertySet(object);
+		}
+
+		public void resetPropertyValue(Object propertyId) {
+			getItemPropertyDescriptor(propertyId).resetPropertyValue(object);
+		}
+
+		public void setPropertyValue(Object propertyId, Object value) {
+			getItemPropertyDescriptor(propertyId).setPropertyValue(object,
+				value);
+		}
+
 	}
 
 	protected static class UMLPropertyDescriptor

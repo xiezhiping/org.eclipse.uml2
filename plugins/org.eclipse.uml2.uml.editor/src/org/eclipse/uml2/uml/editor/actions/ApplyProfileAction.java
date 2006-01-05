@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.2 2006/01/04 16:15:45 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.3 2006/01/05 16:17:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -21,7 +21,6 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -29,7 +28,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -120,7 +118,7 @@ public class ApplyProfileAction
 
 			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {
 				editingDomain.getCommandStack().execute(
-					new ChangeCommand(editingDomain, new Runnable() {
+					new RefreshingChangeCommand(editingDomain, new Runnable() {
 
 						public void run() {
 
@@ -132,10 +130,6 @@ public class ApplyProfileAction
 							}
 						}
 					}, label));
-
-				if (workbenchPart instanceof IViewerProvider) {
-					((IViewerProvider) workbenchPart).getViewer().refresh();
-				}
 			}
 		}
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.1 2006/01/04 16:15:43 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.2 2006/01/05 16:17:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -105,7 +105,10 @@ class UMLItemPropertyDescriptor
 	}
 
 	public String getId(Object object) {
-		return getQualifiedText(feature);
+		String category = getCategory(object);
+		return category == null
+			? getQualifiedText(feature)
+			: category + getQualifiedText(feature);
 	}
 
 }
