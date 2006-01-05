@@ -591,26 +591,6 @@
       </returnResult>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
-    <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWFGYWzMEdq4d7jt9iWoqg" instanceClassName="boolean"/>
-    </eAnnotations>
-  </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
-    <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWFGY2zMEdq4d7jt9iWoqg" instanceClassName="int"/>
-    </eAnnotations>
-  </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
-    <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWO3YWzMEdq4d7jt9iWoqg" instanceClassName="java.lang.String"/>
-    </eAnnotations>
-  </ownedMember>
-  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
-    <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWO3Y2zMEdq4d7jt9iWoqg" instanceClassName="int"/>
-    </eAnnotations>
-  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_iY7sMGvsEdqG6fBIPwe-mw" name="BehavioredClassifier" isAbstract="true">
     <ownedOperation xmi:id="_heThgHLzEdqziYxiZo0YtA" name="createInterfaceRealization" type="_l2mXcHLzEdqziYxiZo0YtA">
       <returnResult xmi:id="_pSsD0HLzEdqziYxiZo0YtA" name="ReturnResultParameter1" type="_l2mXcHLzEdqziYxiZo0YtA" direction="return"/>
@@ -618,7 +598,6 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_skHGwGvsEdqG6fBIPwe-mw" name="Extension"/>
-  <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_csVgUGvtEdqG6fBIPwe-mw" name="NamedElement" isAbstract="true">
     <ownedOperation xmi:id="_o2CW4GwKEdq7X4sGURiZYA" name="createDependency" type="_rEDGkGwKEdq7X4sGURiZYA">
       <returnResult xmi:id="_us8f4GwKEdq7X4sGURiZYA" type="_rEDGkGwKEdq7X4sGURiZYA" direction="return"/>
@@ -945,9 +924,7 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true"/>
-  <ownedMember xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_AwvxoGwNEdq7X4sGURiZYA" name="Association"/>
-  <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_OQcbgGwOEdq7X4sGURiZYA" name="EnumerationLiteral"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_C7AF4GwREdq14q0ETb1t3g" name="Generalization"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_FQiVsGwYEdqHKKVoxc0dlA" name="StructuredClassifier" isAbstract="true">
@@ -1013,6 +990,29 @@
       <ownedParameter xmi:id="_YIM4VXL0EdqziYxiZo0YtA" name="upper" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
+    <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWFGYWzMEdq4d7jt9iWoqg" instanceClassName="boolean"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
+    <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWFGY2zMEdq4d7jt9iWoqg" instanceClassName="int"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
+    <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWO3YWzMEdq4d7jt9iWoqg" instanceClassName="java.lang.String"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
+    <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
+      <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_KWO3Y2zMEdq4d7jt9iWoqg" instanceClassName="int"/>
+    </eAnnotations>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
+  <ownedMember xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind"/>
   <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
     <mergedPackage xmi:type="uml:Model" href="L3.emx#_EBtHcBmMEdqvcs97umGEYQ?L3"/>
   </packageMerge>

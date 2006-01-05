@@ -5049,6 +5049,33 @@
           </contents>
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A47D0128" importedPackage="_3ADC7B74022D3CA002FD0120"/>
+        <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CADB30F028F" name="NamedElement" isAbstract="true">
+          <ownedComment xmi:id="_raS2mxTaEdqZu-3Jy1-uYg" body="NamedElement has a visibility attribute." annotatedElement="_3ADC7B74022D3CADB30F028F">
+            <eAnnotations xmi:id="_raS2nBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
+              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_raS2nRTaEdqZu-3Jy1-uYg"/>
+            </eAnnotations>
+          </ownedComment>
+          <ownedRule xmi:id="_raS2oxTaEdqZu-3Jy1-uYg" name="visibility_needs_ownership" constrainedElement="_3ADC7B74022D3CADB30F028F">
+            <ownedComment xmi:id="_raS2nxTaEdqZu-3Jy1-uYg" body="The query bestVisibility() examines a set of VisibilityKinds, and returns public as the preferred visibility." annotatedElement="_raS2oxTaEdqZu-3Jy1-uYg">
+              <eAnnotations xmi:id="_raS2oBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
+                <contents xmi:type="Default_0:Default__Documentation" xmi:id="_raS2oRTaEdqZu-3Jy1-uYg"/>
+              </eAnnotations>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_raS2pBTaEdqZu-3Jy1-uYg" body="namespace->isEmpty() implies visibility->isEmpty()" language="OCL"/>
+          </ownedRule>
+          <ownedAttribute xmi:id="_3ADC7B74022D3CADC5B702BE" name="visibility" type="_3ADC7B74022D3CAD9E0F01D0">
+            <eAnnotations xmi:id="_lNicgGsVEdqHfvQPK7yS0Q" source="appliedStereotypes">
+              <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_lNicgWsVEdqHfvQPK7yS0Q" isUnsettable="true"/>
+            </eAnnotations>
+            <ownedComment xmi:id="_raS2qBTaEdqZu-3Jy1-uYg" body="Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility." annotatedElement="_3ADC7B74022D3CADC5B702BE">
+              <eAnnotations xmi:id="_racnkBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
+                <contents xmi:type="Default_0:Default__Documentation" xmi:id="_racnkRTaEdqZu-3Jy1-uYg"/>
+              </eAnnotations>
+            </ownedComment>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_racnkxTaEdqZu-3Jy1-uYg" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_racnkhTaEdqZu-3Jy1-uYg"/>
+          </ownedAttribute>
+        </ownedMember>
         <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAD9E0F01D0" name="VisibilityKind">
           <ownedComment xmi:id="_raJsoRTaEdqZu-3Jy1-uYg" body="VisibilityKind is an enumeration of the following literal values:&#xD;&#xA;  - public&#xD;&#xA;  - private&#xD;&#xA;  - protected&#xD;&#xA;  - package" annotatedElement="_3ADC7B74022D3CAD9E0F01D0">
             <eAnnotations xmi:id="_raJsohTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -5098,33 +5125,6 @@
               </eAnnotations>
             </ownedComment>
           </ownedLiteral>
-        </ownedMember>
-        <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CADB30F028F" name="NamedElement" isAbstract="true">
-          <ownedComment xmi:id="_raS2mxTaEdqZu-3Jy1-uYg" body="NamedElement has a visibility attribute." annotatedElement="_3ADC7B74022D3CADB30F028F">
-            <eAnnotations xmi:id="_raS2nBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_raS2nRTaEdqZu-3Jy1-uYg"/>
-            </eAnnotations>
-          </ownedComment>
-          <ownedRule xmi:id="_raS2oxTaEdqZu-3Jy1-uYg" name="visibility_needs_ownership" constrainedElement="_3ADC7B74022D3CADB30F028F">
-            <ownedComment xmi:id="_raS2nxTaEdqZu-3Jy1-uYg" body="The query bestVisibility() examines a set of VisibilityKinds, and returns public as the preferred visibility." annotatedElement="_raS2oxTaEdqZu-3Jy1-uYg">
-              <eAnnotations xmi:id="_raS2oBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-                <contents xmi:type="Default_0:Default__Documentation" xmi:id="_raS2oRTaEdqZu-3Jy1-uYg"/>
-              </eAnnotations>
-            </ownedComment>
-            <specification xmi:type="uml:OpaqueExpression" xmi:id="_raS2pBTaEdqZu-3Jy1-uYg" body="namespace->isEmpty() implies visibility->isEmpty()" language="OCL"/>
-          </ownedRule>
-          <ownedAttribute xmi:id="_3ADC7B74022D3CADC5B702BE" name="visibility" type="_3ADC7B74022D3CAD9E0F01D0">
-            <eAnnotations xmi:id="_lNicgGsVEdqHfvQPK7yS0Q" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_lNicgWsVEdqHfvQPK7yS0Q" isUnsettable="true"/>
-            </eAnnotations>
-            <ownedComment xmi:id="_raS2qBTaEdqZu-3Jy1-uYg" body="Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility." annotatedElement="_3ADC7B74022D3CADC5B702BE">
-              <eAnnotations xmi:id="_racnkBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-                <contents xmi:type="Default_0:Default__Documentation" xmi:id="_racnkRTaEdqZu-3Jy1-uYg"/>
-              </eAnnotations>
-            </ownedComment>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_racnkxTaEdqZu-3Jy1-uYg" value="1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_racnkhTaEdqZu-3Jy1-uYg"/>
-          </ownedAttribute>
         </ownedMember>
       </ownedMember>
       <ownedMember xmi:type="uml:Package" xmi:id="_3ADC7B74022D3DF65990033B" name="Super">
@@ -15161,6 +15161,35 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rsxtvBTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
       </ownedMember>
+      <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D41781AA6038F" name="Comment">
+        <ownedComment xmi:id="_rpfwMxTaEdqZu-3Jy1-uYg" body="A comment is a textual annotation that can be attached to a set of elements." annotatedElement="_3ADC7B74022D41781AA6038F">
+          <eAnnotations xmi:id="_rpfwNBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
+            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwNRTaEdqZu-3Jy1-uYg"/>
+          </eAnnotations>
+        </ownedComment>
+        <generalization xmi:id="_3ADC7B74022D3DFCA9FD02FB" general="_3ADC7B74022D3DE6BAB70076"/>
+        <ownedAttribute xmi:id="_3ADC7B74022D41BDD0260325" name="body" type="_3ADC7B74022D3CA010B103C3">
+          <eAnnotations xmi:id="_vEmwoCkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
+            <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_vEmwoSkcEdqtk_gpPUW4NQ" isUnsettable="true" xmlFeatureKind="Element"/>
+          </eAnnotations>
+          <ownedComment xmi:id="_rpfwOBTaEdqZu-3Jy1-uYg" body="Specifies a string that is the comment." annotatedElement="_3ADC7B74022D41BDD0260325">
+            <eAnnotations xmi:id="_rpfwORTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
+              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwOhTaEdqZu-3Jy1-uYg"/>
+            </eAnnotations>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8CfA8WgVEdqfYrlcy8iLFA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8CfA8GgVEdqfYrlcy8iLFA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_3ADC7B74022D3DFCAADC01BB" name="annotatedElement" type="_3ADC7B74022D3DE6BAB70076" association="_3ADC7B74022D3DFCAADB020A">
+          <ownedComment xmi:id="_rr4V0hTaEdqZu-3Jy1-uYg" body="References the Element(s) being commented." annotatedElement="_3ADC7B74022D3DFCAADC01BB">
+            <eAnnotations xmi:id="_rr4V0xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
+              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rr4V1BTaEdqZu-3Jy1-uYg"/>
+            </eAnnotations>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rr4V1hTaEdqZu-3Jy1-uYg" value="-1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rr4V1RTaEdqZu-3Jy1-uYg"/>
+        </ownedAttribute>
+      </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind">
         <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" body="ParameterDirectionKind is an enumeration of the following literal values:&#xD;&#xA;  - in Indicates that parameter values are passed into the behavioral element by the caller.&#xD;&#xA;  - inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.&#xD;&#xA;  - out Indicates that parameter values are passed from a behavioral element out to the caller.&#xD;&#xA;  - return Indicates that parameter values are passed as return values from a behavioral element back to the caller.&#xD;&#xA;" annotatedElement="_3ADC7B74022D4161A8F100CC">
           <eAnnotations xmi:id="_rpM1XhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -15195,35 +15224,6 @@
             </eAnnotations>
           </ownedComment>
         </ownedLiteral>
-      </ownedMember>
-      <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D41781AA6038F" name="Comment">
-        <ownedComment xmi:id="_rpfwMxTaEdqZu-3Jy1-uYg" body="A comment is a textual annotation that can be attached to a set of elements." annotatedElement="_3ADC7B74022D41781AA6038F">
-          <eAnnotations xmi:id="_rpfwNBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwNRTaEdqZu-3Jy1-uYg"/>
-          </eAnnotations>
-        </ownedComment>
-        <generalization xmi:id="_3ADC7B74022D3DFCA9FD02FB" general="_3ADC7B74022D3DE6BAB70076"/>
-        <ownedAttribute xmi:id="_3ADC7B74022D41BDD0260325" name="body" type="_3ADC7B74022D3CA010B103C3">
-          <eAnnotations xmi:id="_vEmwoCkcEdqtk_gpPUW4NQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_vEmwoSkcEdqtk_gpPUW4NQ" isUnsettable="true" xmlFeatureKind="Element"/>
-          </eAnnotations>
-          <ownedComment xmi:id="_rpfwOBTaEdqZu-3Jy1-uYg" body="Specifies a string that is the comment." annotatedElement="_3ADC7B74022D41BDD0260325">
-            <eAnnotations xmi:id="_rpfwORTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwOhTaEdqZu-3Jy1-uYg"/>
-            </eAnnotations>
-          </ownedComment>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8CfA8WgVEdqfYrlcy8iLFA" value="1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8CfA8GgVEdqfYrlcy8iLFA"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D3DFCAADC01BB" name="annotatedElement" type="_3ADC7B74022D3DE6BAB70076" association="_3ADC7B74022D3DFCAADB020A">
-          <ownedComment xmi:id="_rr4V0hTaEdqZu-3Jy1-uYg" body="References the Element(s) being commented." annotatedElement="_3ADC7B74022D3DFCAADC01BB">
-            <eAnnotations xmi:id="_rr4V0xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rr4V1BTaEdqZu-3Jy1-uYg"/>
-            </eAnnotations>
-          </ownedComment>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rr4V1hTaEdqZu-3Jy1-uYg" value="-1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rr4V1RTaEdqZu-3Jy1-uYg"/>
-        </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D41C2D6020188" name="VisibilityKind">
         <ownedComment xmi:id="_rpfwPBTaEdqZu-3Jy1-uYg" body="VisibilityKind is an enumeration of the following literal values:&#xD;&#xA;  - public&#xD;&#xA;  - private&#xD;&#xA;  - protected&#xD;&#xA;  - package" annotatedElement="_3ADC7B74022D41C2D6020188">
@@ -16694,6 +16694,22 @@
         </eAnnotations>
       </ownedComment>
     </ownedMember>
+    <ownedMember xmi:type="uml:Class" xmi:id="_6OXXoXDLEdqziYxiZo0YtA" name="NamedElement" isAbstract="true">
+      <ownedOperation xmi:id="_qifDQDakEdqq1tCaRkgBQQ" name="allOwningPackages" type="_3ADC7B74022D3CA18745029B" isQuery="true" bodyCondition="_3LBREDakEdqq1tCaRkgBQQ">
+        <ownedComment xmi:id="_5-hO8Dp_Edq16aujGBCOZg" body="The query allOwningPackages() returns all the directly or indirectly owning packages." annotatedElement="_qifDQDakEdqq1tCaRkgBQQ">
+          <eAnnotations xmi:id="_5-hO8Tp_Edq16aujGBCOZg" source="appliedStereotypes">
+            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_5-hO8jp_Edq16aujGBCOZg"/>
+          </eAnnotations>
+        </ownedComment>
+        <ownedRule xmi:id="_3LBREDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_3LBRETakEdqq1tCaRkgBQQ" body="result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())" language="OCL"/>
+        </ownedRule>
+        <returnResult xmi:id="_yH9m4DakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA18745029B" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0rlaMTakEdqq1tCaRkgBQQ" value="-1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0rlaMDakEdqq1tCaRkgBQQ"/>
+        </returnResult>
+      </ownedOperation>
+    </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D3CA187710277" name="A_profileApplication_applyingPackage" memberEnd="_3ADC7B74022D3CA1877301CF _3ADC7B74022D3CA1877301D1">
       <generalization xmi:id="_Dg0jIWgIEdqYUPcXYU0YUA" general="_3ADC7B74022D3DFCA805021A"/>
       <generalization xmi:id="_29OdoXxpEdqXXZNagOgnYw" general="_3ADC7B74022D3DFCAC780308"/>
@@ -16746,22 +16762,6 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rutncxTaEdqZu-3Jy1-uYg" value="-1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rutnchTaEdqZu-3Jy1-uYg"/>
       </ownedEnd>
-    </ownedMember>
-    <ownedMember xmi:type="uml:Class" xmi:id="_6OXXoXDLEdqziYxiZo0YtA" name="NamedElement" isAbstract="true">
-      <ownedOperation xmi:id="_qifDQDakEdqq1tCaRkgBQQ" name="allOwningPackages" type="_3ADC7B74022D3CA18745029B" isQuery="true" bodyCondition="_3LBREDakEdqq1tCaRkgBQQ">
-        <ownedComment xmi:id="_5-hO8Dp_Edq16aujGBCOZg" body="The query allOwningPackages() returns all the directly or indirectly owning packages." annotatedElement="_qifDQDakEdqq1tCaRkgBQQ">
-          <eAnnotations xmi:id="_5-hO8Tp_Edq16aujGBCOZg" source="appliedStereotypes">
-            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_5-hO8jp_Edq16aujGBCOZg"/>
-          </eAnnotations>
-        </ownedComment>
-        <ownedRule xmi:id="_3LBREDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="_3LBRETakEdqq1tCaRkgBQQ" body="result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())" language="OCL"/>
-        </ownedRule>
-        <returnResult xmi:id="_yH9m4DakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA18745029B" direction="return">
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0rlaMTakEdqq1tCaRkgBQQ" value="-1"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0rlaMDakEdqq1tCaRkgBQQ"/>
-        </returnResult>
-      </ownedOperation>
     </ownedMember>
   </ownedMember>
 </uml:Model>

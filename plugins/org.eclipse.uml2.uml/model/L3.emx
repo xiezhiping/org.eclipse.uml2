@@ -1624,7 +1624,7 @@
     <mergedPackage href="Superstructure.emx#_3ADC7B74022D3ADCA176014F?UML/CompositeStructures/Collaborations"/>
   </packageMerge>
   <packageMerge xmi:id="_HW4dWxTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="L2.emx#_CTvJwBmMEdqvcs97umGEYQ?L2"/>
+    <mergedPackage xmi:type="uml:Model" href="L2.emx#_CTvJwBmMEdqvcs97umGEYQ?L2"/>
   </packageMerge>
   <packageMerge xmi:id="_HW4dXhTbEdqZu-3Jy1-uYg">
     <mergedPackage href="Superstructure.emx#_3ADC7B74022D3CF19F41017F?UML/Classes/PowerTypes"/>

@@ -1112,6 +1112,7 @@
       </edges>
     </contents>
   </eAnnotations>
+  <eAnnotations xmi:id="__J3IxX3mEdq7cMP_l1l5Gg" source="http://www.eclipse.org/emf/2002/Ecore"/>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_CTvJxBmMEdqvcs97umGEYQ">
     <eAnnotations xmi:id="_CTvJxRmMEdqvcs97umGEYQ" source="attributes">
       <details xmi:id="_CTvJxhmMEdqvcs97umGEYQ" key="version" value="0"/>
@@ -1248,7 +1249,7 @@
     <supplier xmi:type="uml:Model" href="L1.emx#_BWooUBmMEdqvcs97umGEYQ?L1"/>
   </ownedMember>
   <packageMerge xmi:id="_HW4dQRTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="L1.emx#_BWooUBmMEdqvcs97umGEYQ?L1"/>
+    <mergedPackage xmi:type="uml:Model" href="L1.emx#_BWooUBmMEdqvcs97umGEYQ?L1"/>
   </packageMerge>
   <packageMerge xmi:id="_HW4dRxTbEdqZu-3Jy1-uYg">
     <mergedPackage href="Superstructure.emx#_3ADC7B74022D3DF124FB03B9?UML/Activities/IntermediateActivities"/>

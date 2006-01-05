@@ -588,6 +588,7 @@
       </edges>
     </contents>
   </eAnnotations>
+  <eAnnotations xmi:id="__J3IwX3mEdq7cMP_l1l5Gg" source="http://www.eclipse.org/emf/2002/Ecore"/>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BWooVBmMEdqvcs97umGEYQ">
     <eAnnotations xmi:id="_BWooVRmMEdqvcs97umGEYQ" source="attributes">
       <details xmi:id="_BWooVhmMEdqvcs97umGEYQ" key="version" value="0"/>
