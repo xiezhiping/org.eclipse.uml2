@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.6 2006/01/05 22:43:25 khussey Exp $
+ * $Id: TypeOperations.java,v 1.7 2006/01/05 22:58:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -160,8 +160,8 @@ public class TypeOperations
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public static Association createAssociation(Type type,

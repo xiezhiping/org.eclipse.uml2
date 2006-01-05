@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.15 2006/01/05 13:53:30 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.16 2006/01/05 22:58:12 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -226,8 +226,8 @@ public class DeploymentItemProvider
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void notifyChanged(Notification notification) {
