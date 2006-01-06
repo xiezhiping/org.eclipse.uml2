@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.5 2006/01/05 22:43:24 khussey Exp $
+ * $Id: StateOperations.java,v 1.6 2006/01/06 02:26:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -317,13 +317,17 @@ public class StateOperations
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean isRedefinitionContextValid(State state,
 			State redefined) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		Region container = state.getContainer();
+
+		if (container != null && redefined != null) {
+			return container.getExtendedRegion() == redefined.getContainer();
+		}
+
+		return false;
 	}
 
 	/**

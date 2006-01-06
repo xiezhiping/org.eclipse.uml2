@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.7 2006/01/05 22:43:26 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.8 2006/01/06 02:26:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -197,12 +197,45 @@ public class StateMachineOperations
 	 * The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Namespace LCA(StateMachine stateMachine, State s1, State s2) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		
+		if (s1 == null || stateMachine.ancestor(s2, s1)) {
+			return s1;
+		} else if (s2 == null || stateMachine.ancestor(s1, s2)) {
+			return s2;
+		} else {
+			Region container1 = s1.getContainer();
+
+			while (container1 != null) {
+				State container1State = container1.getState();
+
+				if (container1State == null) {
+					break;
+				} else if (stateMachine.ancestor(s2, container1State)) {
+					return container1;
+				}
+
+				container1 = container1State.getContainer();
+			}
+
+			Region container2 = s2.getContainer();
+
+			while (container2 != null) {
+				State container2State = container2.getState();
+
+				if (container2State == null) {
+					break;
+				} else if (stateMachine.ancestor(s1, container2State)) {
+					return container2;
+				}
+
+				container2 = container2State.getContainer();
+			}
+
+			return null;
+		}
 	}
 
 	/**
@@ -227,20 +260,16 @@ public class StateMachineOperations
 		if (s1 == s2) {
 			return true;
 		} else {
-			Region container1 = s1.getContainer();
+			Region container1 = s1 == null
+				? null
+				: s1.getContainer();
 
 			if (container1 == null) {
-				return true;
+				return false;
 			} else {
-				Region container2 = s2.getContainer();
-
-				if (container2 == null) {
-					return false;
-				} else {
-					State container2State = container2.getState();
-					return container2State != null
-						&& stateMachine.ancestor(s1, container2State);
-				}
+				State container1State = container1.getState();
+				return container1State != null
+					&& stateMachine.ancestor(container1State, s2);
 			}
 		}
 	}
@@ -259,7 +288,8 @@ public class StateMachineOperations
 		BehavioredClassifier context = stateMachine.getContext();
 
 		if (context != null && redefined != null) {
-			return context.conformsTo(redefined.getContext());
+			return context.getRedefinedClassifiers().contains(
+				redefined.getContext());
 		}
 
 		return false;
