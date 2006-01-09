@@ -3405,6 +3405,7 @@
     <ownedAttribute xmi:id="_439EC3AE03B53D5D254701DE" name="container" isReadOnly="true" isDerived="true">
       <eAnnotations xmi:id="_gl1jkGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_gl1jkWvXEdq4DLWZOhbdEA" isTransient="true" isVolatile="true"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_x_qAUYFfEdqwxNGV1QyA9w" isTransient="true"/>
       </eAnnotations>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53D073A660351" name="resolveProxies">
