@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.8 2006/01/06 02:26:06 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.9 2006/01/10 13:10:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -200,7 +200,7 @@ public class StateMachineOperations
 	 * @generated NOT
 	 */
 	public static Namespace LCA(StateMachine stateMachine, State s1, State s2) {
-		
+
 		if (s1 == null || stateMachine.ancestor(s2, s1)) {
 			return s1;
 		} else if (s2 == null || stateMachine.ancestor(s1, s2)) {

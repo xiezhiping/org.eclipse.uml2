@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.17 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ElementOperations.java,v 1.18 2006/01/10 13:10:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -100,7 +100,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated not
  */
-public class ElementOperations extends UMLUtil {
+public class ElementOperations
+		extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->

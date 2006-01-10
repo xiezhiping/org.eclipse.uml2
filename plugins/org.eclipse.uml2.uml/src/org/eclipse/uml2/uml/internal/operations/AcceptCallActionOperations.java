@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: AcceptCallActionOperations.java,v 1.6 2006/01/10 13:10:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -47,6 +47,7 @@ public class AcceptCallActionOperations
 	 * @generated
 	 */
 	protected AcceptCallActionOperations() {
+		super();
 	}
 
 	/**

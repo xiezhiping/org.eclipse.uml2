@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.6 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Message.java,v 1.7 2006/01/10 13:10:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -64,7 +64,7 @@ public interface Message
 	 * @return the value of the '<em>Message Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.MessageKind
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_MessageKind()
-	 * @model default="unknown" required="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="unknown" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	MessageKind getMessageKind();

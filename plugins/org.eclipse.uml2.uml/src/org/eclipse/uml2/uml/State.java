@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.8 2006/01/04 17:47:25 khussey Exp $
+ * $Id: State.java,v 1.9 2006/01/10 13:10:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -120,7 +120,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsComposite()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
@@ -134,7 +134,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Orthogonal</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsOrthogonal()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrthogonal();
@@ -148,7 +148,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Simple</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSimple()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSimple();
@@ -162,7 +162,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Submachine State</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSubmachineState()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSubmachineState();

@@ -2647,7 +2647,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -3748,25 +3748,29 @@
       <eParameters name="redefined" ordered="false" lowerBound="1" eType="#//State"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isComposite" ordered="false"
-        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrthogonal" ordered="false"
-        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSimple" ordered="false"
-        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSubmachineState" ordered="false"
-        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" derived="true">
+        lowerBound="1" eType="#//Boolean" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine)."/>
       </eAnnotations>
@@ -6520,8 +6524,8 @@
     <eOperations name="getMessageKind" ordered="false" lowerBound="1" eType="#//MessageKind"/>
     <eOperations name="getSignature" ordered="false" eType="#//NamedElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageKind" ordered="false"
-        lowerBound="1" eType="#//MessageKind" changeable="false" volatile="true" defaultValueLiteral="unknown"
-        derived="true">
+        lowerBound="1" eType="#//MessageKind" changeable="false" volatile="true" transient="true"
+        defaultValueLiteral="unknown" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived kind of the Message (complete, lost, found or unknown)"/>
       </eAnnotations>
