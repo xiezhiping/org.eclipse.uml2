@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.11 2006/01/10 17:58:27 khussey Exp $
+ * $Id: UML2Util.java,v 1.12 2006/01/10 19:28:39 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -853,12 +853,14 @@ public class UML2Util {
 			.hasNext();) {
 
 			EObject containedEObject = (EObject) allContents.next();
+			List nonNavigableInverseReferences = new ArrayList(
+				CacheAdapter.INSTANCE
+					.getNonNavigableInverseReferences(containedEObject));
 
-			for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-				.getNonNavigableInverseReferences(containedEObject).iterator(); nonNavigableInverseReferences
+			for (Iterator nnir = nonNavigableInverseReferences.iterator(); nnir
 				.hasNext();) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
 					.next();
 
 				if (setting.getEStructuralFeature().isChangeable()
