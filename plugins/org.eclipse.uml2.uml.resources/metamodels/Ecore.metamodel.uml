@@ -470,23 +470,23 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/UML.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
   </uml:Model>
-  <UML:UMLMetamodel xmi:id="_qqIpsH49EdqJWOCUFuTz8w" base_Model="_0"/>
-  <UML:UMLMetaclass xmi:id="_qqIpsX49EdqJWOCUFuTz8w" base_Class="EAttribute"/>
-  <UML:UMLMetaclass xmi:id="_qqIpsn49EdqJWOCUFuTz8w" base_Class="EStructuralFeature"/>
-  <UML:UMLMetaclass xmi:id="_qqIps349EdqJWOCUFuTz8w" base_Class="ETypedElement"/>
-  <UML:UMLMetaclass xmi:id="_qqIptH49EdqJWOCUFuTz8w" base_Class="ENamedElement"/>
-  <UML:UMLMetaclass xmi:id="_qqIptX49EdqJWOCUFuTz8w" base_Class="EModelElement"/>
-  <UML:UMLMetaclass xmi:id="_qqSasH49EdqJWOCUFuTz8w" base_Class="EAnnotation"/>
-  <UML:UMLMetaclass xmi:id="_qqSasX49EdqJWOCUFuTz8w" base_Class="EStringToStringMapEntry"/>
-  <UML:UMLMetaclass xmi:id="_qqSasn49EdqJWOCUFuTz8w" base_Class="EClassifier"/>
-  <UML:UMLMetaclass xmi:id="_qqSas349EdqJWOCUFuTz8w" base_Class="EPackage"/>
-  <UML:UMLMetaclass xmi:id="_qqSatH49EdqJWOCUFuTz8w" base_Class="EFactory"/>
-  <UML:UMLMetaclass xmi:id="_qqSatX49EdqJWOCUFuTz8w" base_Class="EClass"/>
-  <UML:UMLMetaclass xmi:id="_qqcLsH49EdqJWOCUFuTz8w" base_Class="EOperation"/>
-  <UML:UMLMetaclass xmi:id="_qqcLsX49EdqJWOCUFuTz8w" base_Class="EParameter"/>
-  <UML:UMLMetaclass xmi:id="_qqcLsn49EdqJWOCUFuTz8w" base_Class="EReference"/>
-  <UML:UMLMetaclass xmi:id="_qqcLs349EdqJWOCUFuTz8w" base_Class="EDataType"/>
-  <UML:UMLMetaclass xmi:id="_qq43oH49EdqJWOCUFuTz8w" base_Class="EEnum"/>
-  <UML:UMLMetaclass xmi:id="_qq43oX49EdqJWOCUFuTz8w" base_Class="EEnumLiteral"/>
-  <UML:UMLMetaclass xmi:id="_qq43on49EdqJWOCUFuTz8w" base_Class="EObject"/>
+  <UML:Metamodel xmi:id="_qqIpsH49EdqJWOCUFuTz8w" base_Model="_0"/>
+  <UML:Metaclass xmi:id="_qqIpsX49EdqJWOCUFuTz8w" base_Class="EAttribute"/>
+  <UML:Metaclass xmi:id="_qqIpsn49EdqJWOCUFuTz8w" base_Class="EStructuralFeature"/>
+  <UML:Metaclass xmi:id="_qqIps349EdqJWOCUFuTz8w" base_Class="ETypedElement"/>
+  <UML:Metaclass xmi:id="_qqIptH49EdqJWOCUFuTz8w" base_Class="ENamedElement"/>
+  <UML:Metaclass xmi:id="_qqIptX49EdqJWOCUFuTz8w" base_Class="EModelElement"/>
+  <UML:Metaclass xmi:id="_qqSasH49EdqJWOCUFuTz8w" base_Class="EAnnotation"/>
+  <UML:Metaclass xmi:id="_qqSasX49EdqJWOCUFuTz8w" base_Class="EStringToStringMapEntry"/>
+  <UML:Metaclass xmi:id="_qqSasn49EdqJWOCUFuTz8w" base_Class="EClassifier"/>
+  <UML:Metaclass xmi:id="_qqSas349EdqJWOCUFuTz8w" base_Class="EPackage"/>
+  <UML:Metaclass xmi:id="_qqSatH49EdqJWOCUFuTz8w" base_Class="EFactory"/>
+  <UML:Metaclass xmi:id="_qqSatX49EdqJWOCUFuTz8w" base_Class="EClass"/>
+  <UML:Metaclass xmi:id="_qqcLsH49EdqJWOCUFuTz8w" base_Class="EOperation"/>
+  <UML:Metaclass xmi:id="_qqcLsX49EdqJWOCUFuTz8w" base_Class="EParameter"/>
+  <UML:Metaclass xmi:id="_qqcLsn49EdqJWOCUFuTz8w" base_Class="EReference"/>
+  <UML:Metaclass xmi:id="_qqcLs349EdqJWOCUFuTz8w" base_Class="EDataType"/>
+  <UML:Metaclass xmi:id="_qq43oH49EdqJWOCUFuTz8w" base_Class="EEnum"/>
+  <UML:Metaclass xmi:id="_qq43oX49EdqJWOCUFuTz8w" base_Class="EEnumLiteral"/>
+  <UML:Metaclass xmi:id="_qq43on49EdqJWOCUFuTz8w" base_Class="EObject"/>
 </xmi:XMI>

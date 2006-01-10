@@ -12,5 +12,5 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/UML.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
   </uml:Model>
-  <UML:UMLModelLibrary xmi:id="_R_t2UXMkEdq-w6X-VZUD9Q" base_Package="_0"/>
+  <UML:ModelLibrary xmi:id="_R_t2UXMkEdq-w6X-VZUD9Q" base_Package="_0"/>
 </xmi:XMI>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.9 2006/01/10 15:08:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -136,7 +136,10 @@ public class ProfileOperations
 			new UMLSwitch() {
 
 				public Object caseClassifier(Classifier classifier) {
-					setName(eNamedElement, classifier.getQualifiedName(), true);
+					setName(eNamedElement, packages.contains(classifier
+						.getPackage())
+						? classifier.getName()
+						: classifier.getQualifiedName(), true);
 					return classifier;
 				}
 
@@ -404,7 +407,9 @@ public class ProfileOperations
 					? null
 					: profileDefinition
 						.getEClassifier(getValidJavaIdentifier(classifier
-							.getQualifiedName()));
+							.getPackage() == profile
+							? classifier.getName()
+							: classifier.getQualifiedName()));
 			}
 
 			public Object caseEnumerationLiteral(
