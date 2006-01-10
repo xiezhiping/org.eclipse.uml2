@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.8 2006/01/03 19:24:13 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.9 2006/01/10 15:03:31 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -21,25 +21,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class CacheAdapter
 		extends ECrossReferenceAdapter {
-
-	protected class InverseCrossReferencer
-			extends ECrossReferenceAdapter.InverseCrossReferencer {
-
-		protected EContentsEList.FeatureIterator getCrossReferences(
-				EObject eObject) {
-			// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=122009
-			return super.getCrossReferences(eObject);
-		}
-	}
 
 	public static final CacheAdapter INSTANCE = new CacheAdapter();
 
@@ -102,32 +90,6 @@ public class CacheAdapter
 		if (!adapting) {
 			super.setTarget(target);
 		}
-	}
-
-	protected ECrossReferenceAdapter.InverseCrossReferencer createInverseCrossReferencer() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=122009
-		return new InverseCrossReferencer();
-	}
-
-	public void unsetTarget(Notifier target) {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=122009
-		setTarget(null);
-
-		if (target instanceof EObject) {
-			EObject eObject = (EObject) target;
-			inverseCrossReferencer.remove(eObject);
-
-			for (EContentsEList.FeatureIterator i = ((InverseCrossReferencer) inverseCrossReferencer)
-				.getCrossReferences(eObject); i.hasNext();) {
-
-				EObject crossReferencedEObject = (EObject) i.next();
-
-				inverseCrossReferencer.remove(eObject,
-					(EReference) i.feature(), crossReferencedEObject);
-			}
-		}
-
-		super.unsetTarget(target);
 	}
 
 	public void notifyChanged(Notification msg) {
