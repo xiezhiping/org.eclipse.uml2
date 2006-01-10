@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.9 2005/12/23 06:48:15 khussey Exp $
+ * $Id: UML2Util.java,v 1.10 2006/01/10 15:16:21 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -859,8 +859,13 @@ public class UML2Util {
 
 				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
 					.next();
+				EStructuralFeature eStructuralFeature = setting
+					.getEStructuralFeature();
 
-				if (setting.getEStructuralFeature().isChangeable()) {
+				if (eStructuralFeature.isChangeable()
+					&& eStructuralFeature != containedEObject
+						.eContainmentFeature()) {
+
 					EcoreUtil.remove(setting, containedEObject);
 				}
 			}
