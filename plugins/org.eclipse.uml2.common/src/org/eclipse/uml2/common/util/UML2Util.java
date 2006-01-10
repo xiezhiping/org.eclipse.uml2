@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.10 2006/01/10 15:16:21 khussey Exp $
+ * $Id: UML2Util.java,v 1.11 2006/01/10 17:58:27 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EValidator;
@@ -848,25 +849,53 @@ public class UML2Util {
 
 	protected static void destroy(EObject eObject) {
 
-		for (Iterator allContents = getAllContents(eObject, true, true); allContents
+		for (Iterator allContents = getAllContents(eObject, true, false); allContents
 			.hasNext();) {
 
 			EObject containedEObject = (EObject) allContents.next();
 
-			for (Iterator inverseReferences = CacheAdapter.INSTANCE
-				.getInverseReferences(containedEObject).iterator(); inverseReferences
+			for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
+				.getNonNavigableInverseReferences(containedEObject).iterator(); nonNavigableInverseReferences
 				.hasNext();) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 					.next();
-				EStructuralFeature eStructuralFeature = setting
-					.getEStructuralFeature();
 
-				if (eStructuralFeature.isChangeable()
-					&& eStructuralFeature != containedEObject
-						.eContainmentFeature()) {
+				if (setting.getEStructuralFeature().isChangeable()
+					&& !EcoreUtil.isAncestor(eObject, setting.getEObject())) {
 
 					EcoreUtil.remove(setting, containedEObject);
+				}
+			}
+
+			for (Iterator eAllReferences = containedEObject.eClass()
+				.getEAllReferences().iterator(); eAllReferences.hasNext();) {
+
+				EReference eReference = (EReference) eAllReferences.next();
+
+				if (eReference.isChangeable() && !eReference.isContainer()
+					&& !eReference.isContainment()
+					&& containedEObject.eIsSet(eReference)) {
+
+					if (eReference.isMany()) {
+
+						for (Iterator values = ((List) containedEObject
+							.eGet(eReference)).iterator(); values.hasNext();) {
+
+							if (!EcoreUtil.isAncestor(eObject, (EObject) values
+								.next())) {
+
+								values.remove();
+							}
+						}
+					} else {
+
+						if (!EcoreUtil.isAncestor(eObject,
+							(EObject) containedEObject.eGet(eReference))) {
+
+							containedEObject.eUnset(eReference);
+						}
+					}
 				}
 			}
 
