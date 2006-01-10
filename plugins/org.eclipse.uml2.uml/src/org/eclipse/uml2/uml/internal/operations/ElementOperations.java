@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.18 2006/01/10 13:10:25 khussey Exp $
+ * $Id: ElementOperations.java,v 1.19 2006/01/10 15:16:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -972,11 +972,11 @@ public class ElementOperations
 
 		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
 
-		setBaseElement(stereotypeApplication, element);
-
 		if (resource != null) {
 			resource.getContents().add(stereotypeApplication);
 		}
+
+		setBaseElement(stereotypeApplication, element);
 
 		return stereotypeApplication;
 	}
