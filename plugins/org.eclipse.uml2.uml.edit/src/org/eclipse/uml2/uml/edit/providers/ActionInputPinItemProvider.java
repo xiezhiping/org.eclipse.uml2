@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinItemProvider.java,v 1.6 2006/01/04 16:16:56 khussey Exp $
+ * $Id: ActionInputPinItemProvider.java,v 1.7 2006/01/11 18:14:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -158,10 +158,6 @@ public class ActionInputPinItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,

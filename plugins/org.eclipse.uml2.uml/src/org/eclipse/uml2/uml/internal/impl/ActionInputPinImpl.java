@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.12 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,17 +170,6 @@ public class ActionInputPinImpl
 	public Action createFromAction(EClass eClass) {
 		Action newFromAction = (Action) eClass.getEPackage()
 			.getEFactoryInstance().create(eClass);
-		setFromAction(newFromAction);
-		return newFromAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Action createFromAction() {
-		Action newFromAction = UMLFactory.eINSTANCE.createAction();
 		setFromAction(newFromAction);
 		return newFromAction;
 	}

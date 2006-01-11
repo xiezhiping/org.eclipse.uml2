@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.13 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ActionImpl.java,v 1.14 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,7 +58,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *
  * @generated
  */
-public class ActionImpl
+public abstract class ActionImpl
 		extends ExecutableNodeImpl
 		implements Action {
 

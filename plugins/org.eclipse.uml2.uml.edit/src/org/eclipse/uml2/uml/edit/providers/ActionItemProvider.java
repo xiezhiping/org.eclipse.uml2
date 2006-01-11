@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: ActionItemProvider.java,v 1.3 2006/01/11 18:14:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -208,25 +208,16 @@ public class ActionItemProvider
 	}
 
 	/**
-	 * This returns Action.gif.
+	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Action"); //$NON-NLS-1$
-	}
-
-	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Action_type"), object).toString(); //$NON-NLS-1$
+		String label = ((Action) object).getName();
+		return label == null || label.length() == 0
+			? getString("_UI_Action_type") : //$NON-NLS-1$
+			getString("_UI_Action_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

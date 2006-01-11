@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeItemProvider.java,v 1.6 2006/01/04 16:16:58 khussey Exp $
+ * $Id: SequenceNodeItemProvider.java,v 1.7 2006/01/11 18:14:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -158,10 +158,6 @@ public class SequenceNodeItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
-			UMLFactory.eINSTANCE.createAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,

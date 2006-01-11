@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.10 2006/01/04 17:47:24 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.11 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -433,8 +433,6 @@ public class UMLFactoryImpl
 				return createFunctionBehavior();
 			case UMLPackage.OPAQUE_ACTION :
 				return createOpaqueAction();
-			case UMLPackage.ACTION :
-				return createAction();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE :
 				return createStructuredActivityNode();
 			case UMLPackage.ACTIVITY :
@@ -1613,16 +1611,6 @@ public class UMLFactoryImpl
 	public Gate createGate() {
 		GateImpl gate = new GateImpl();
 		return gate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Action createAction() {
-		ActionImpl action = new ActionImpl();
-		return action;
 	}
 
 	/**

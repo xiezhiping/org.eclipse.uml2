@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.4 2006/01/04 17:47:25 khussey Exp $
+ * $Id: UMLFactory.java,v 1.5 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -780,15 +780,6 @@ public interface UMLFactory
 	 * @generated
 	 */
 	Gate createGate();
-
-	/**
-	 * Returns a new object of class '<em>Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Action</em>'.
-	 * @generated
-	 */
-	Action createAction();
 
 	/**
 	 * Returns a new object of class '<em>Activity</em>'.

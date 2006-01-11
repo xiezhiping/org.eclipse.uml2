@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPin.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: ActionInputPin.java,v 1.2 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -76,16 +76,6 @@ public interface ActionInputPin
 	 * @generated
 	 */
 	Action createFromAction(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Action} and sets the '<em><b>From Action</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Action}.
-	 * @see #getFromAction()
-	 * @generated
-	 */
-	Action createFromAction();
 
 	/**
 	 * <!-- begin-user-doc -->

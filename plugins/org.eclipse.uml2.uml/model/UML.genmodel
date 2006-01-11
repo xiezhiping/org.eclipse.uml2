@@ -2244,7 +2244,7 @@
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/outputValue"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Action">
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Action">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
           createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Action/output">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>

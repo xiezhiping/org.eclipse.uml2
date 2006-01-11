@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.13 2006/01/03 19:50:25 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.14 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -430,17 +430,6 @@ public class InteractionImpl
 	public Action createAction(EClass eClass) {
 		Action newAction = (Action) eClass.getEPackage().getEFactoryInstance()
 			.create(eClass);
-		getActions().add(newAction);
-		return newAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Action createAction() {
-		Action newAction = UMLFactory.eINSTANCE.createAction();
 		getActions().add(newAction);
 		return newAction;
 	}

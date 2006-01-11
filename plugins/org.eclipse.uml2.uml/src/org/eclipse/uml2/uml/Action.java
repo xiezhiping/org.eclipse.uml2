@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.4 2006/01/03 19:50:26 khussey Exp $
+ * $Id: Action.java,v 1.5 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getAction()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Action

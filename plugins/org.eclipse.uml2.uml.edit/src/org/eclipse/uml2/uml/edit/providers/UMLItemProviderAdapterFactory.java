@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.12 2006/01/05 16:33:03 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.13 2006/01/11 18:14:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -2007,20 +2007,6 @@ public class UMLItemProviderAdapterFactory
 	protected GeneralOrderingItemProvider generalOrderingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.uml2.uml.Action}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Adapter createActionAdapter() {
-		if (actionItemProvider == null) {
-			actionItemProvider = new ActionItemProvider(this);
-		}
-
-		return actionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StructuredActivityNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3418,14 +3404,6 @@ public class UMLItemProviderAdapterFactory
 
 		return opaqueActionItemProvider;
 	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.Action} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ActionItemProvider actionItemProvider;
 
 	/**
 	 * This creates an adapter for a {@link org.eclipse.uml2.uml.SendSignalAction}.
@@ -4850,8 +4828,6 @@ public class UMLItemProviderAdapterFactory
 			functionBehaviorItemProvider.dispose();
 		if (opaqueActionItemProvider != null)
 			opaqueActionItemProvider.dispose();
-		if (actionItemProvider != null)
-			actionItemProvider.dispose();
 		if (structuredActivityNodeItemProvider != null)
 			structuredActivityNodeItemProvider.dispose();
 		if (activityItemProvider != null)

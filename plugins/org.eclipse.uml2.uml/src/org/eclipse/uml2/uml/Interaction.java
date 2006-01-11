@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Interaction.java,v 1.3 2006/01/11 18:13:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -145,16 +145,6 @@ public interface Interaction
 	 * @generated
 	 */
 	Action createAction(EClass eClass);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Action} and appends it to the '<em><b>Action</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Action}.
-	 * @see #getActions()
-	 * @generated
-	 */
-	Action createAction();
 
 	/**
 	 * Retrieves the {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' containment reference list.
