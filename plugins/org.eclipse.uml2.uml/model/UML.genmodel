@@ -1876,7 +1876,7 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Stereotype">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML.ecore#//Stereotype/icon"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/name_not_clash">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Stereotype/name_not_clash/diagnostics"/>

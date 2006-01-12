@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeItemProvider.java,v 1.3 2006/01/04 17:47:48 khussey Exp $
+ * $Id: StereotypeItemProvider.java,v 1.4 2006/01/12 16:56:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -27,7 +27,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-//import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -87,6 +90,22 @@ public class StereotypeItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(UMLPackage.Literals.STEREOTYPE__ICON);
+		}
+		return childrenFeatures;
+	}
+
+	/**
 	 * This returns Stereotype.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,6 +136,13 @@ public class StereotypeItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Stereotype.class)) {
+			case UMLPackage.STEREOTYPE__ICON :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -130,6 +156,10 @@ public class StereotypeItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STEREOTYPE__ICON, UMLFactory.eINSTANCE
+				.createImage()));
 	}
 
 	/**

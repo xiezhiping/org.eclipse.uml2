@@ -8,19 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.13 2006/01/03 19:50:26 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.14 2006/01/12 16:55:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 
@@ -34,6 +39,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -83,10 +89,21 @@ public class StereotypeImpl
 		EList icon = (EList) eVirtualGet(UMLPackage.STEREOTYPE__ICON);
 		if (icon == null) {
 			eVirtualSet(UMLPackage.STEREOTYPE__ICON,
-				icon = new EObjectResolvingEList(Image.class, this,
+				icon = new EObjectContainmentEList.Resolving(Image.class, this,
 					UMLPackage.STEREOTYPE__ICON));
 		}
 		return icon;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Image createIcon() {
+		Image newIcon = UMLFactory.eINSTANCE.createImage();
+		getIcons().add(newIcon);
+		return newIcon;
 	}
 
 	/**
@@ -185,6 +202,94 @@ public class StereotypeImpl
 			return result;
 		}
 		return StereotypeOperations.getAllExtendedMetaclasses(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.STEREOTYPE__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.STEREOTYPE__ELEMENT_IMPORT :
+				return ((InternalEList) getElementImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__PACKAGE_IMPORT :
+				return ((InternalEList) getPackageImports()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_RULE :
+				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER :
+				return eBasicSetContainer(null,
+					UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER, msgs);
+			case UMLPackage.STEREOTYPE__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
+				return ((InternalEList) getTemplateBindings()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.STEREOTYPE__GENERALIZATION :
+				return ((InternalEList) getGeneralizations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__POWERTYPE_EXTENT :
+				return ((InternalEList) getPowertypeExtents()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__SUBSTITUTION :
+				return ((InternalEList) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
+				return ((InternalEList) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
+				return ((InternalEList) getOwnedUseCases()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__USE_CASE :
+				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
+				return basicSetOwnedSignature(null, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
+				return ((InternalEList) getOwnedAttributes()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_CONNECTOR :
+				return ((InternalEList) getOwnedConnectors()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_BEHAVIOR :
+				return ((InternalEList) getOwnedBehaviors()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__INTERFACE_REALIZATION :
+				return ((InternalEList) getInterfaceRealizations())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_TRIGGER :
+				return ((InternalEList) getOwnedTriggers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
+				return ((InternalEList) getNestedClassifiers()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
+				return ((InternalEList) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
+				return ((InternalEList) getOwnedReceptions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STEREOTYPE__ICON :
+				return ((InternalEList) getIcons()).basicRemove(otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

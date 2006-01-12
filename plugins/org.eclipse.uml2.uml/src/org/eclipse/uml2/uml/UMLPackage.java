@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.15 2006/01/12 15:53:51 khussey Exp $
+ * $Id: UMLPackage.java,v 1.16 2006/01/12 16:55:46 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17644,7 +17644,7 @@ public interface UMLPackage
 	int STEREOTYPE__EXTENSION = CLASS__EXTENSION;
 
 	/**
-	 * The feature id for the '<em><b>Icon</b></em>' reference list.
+	 * The feature id for the '<em><b>Icon</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -59660,10 +59660,10 @@ public interface UMLPackage
 	EClass getStereotype();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Stereotype#getIcons <em>Icon</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Stereotype#getIcons <em>Icon</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Icon</em>'.
+	 * @return the meta object for the containment reference list '<em>Icon</em>'.
 	 * @see org.eclipse.uml2.uml.Stereotype#getIcons()
 	 * @see #getStereotype()
 	 * @generated
@@ -68597,7 +68597,7 @@ public interface UMLPackage
 		EClass STEREOTYPE = eINSTANCE.getStereotype();
 
 		/**
-		 * The meta object literal for the '<em><b>Icon</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Icon</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.2 2005/12/14 22:34:15 khussey Exp $
+ * $Id: Stereotype.java,v 1.3 2006/01/12 16:55:47 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,19 +42,29 @@ public interface Stereotype
 		extends org.eclipse.uml2.uml.Class {
 
 	/**
-	 * Returns the value of the '<em><b>Icon</b></em>' reference list.
+	 * Returns the value of the '<em><b>Icon</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Image}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Icon</em>' reference list.
+	 * @return the value of the '<em>Icon</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Icon()
-	 * @model type="org.eclipse.uml2.uml.Image" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Image" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getIcons();
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Image} and appends it to the '<em><b>Icon</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.uml.Image}.
+	 * @see #getIcons()
+	 * @generated
+	 */
+	Image createIcon();
 
 	/**
 	 * <!-- begin-user-doc -->
