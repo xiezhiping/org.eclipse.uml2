@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.29 2005/12/12 19:26:22 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.30 2006/01/12 02:17:07 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -1226,9 +1226,16 @@ public final class StereotypeOperations
 	 * @return The profile that owns the stereotype.
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
-		return null == stereotype
-			? null
-			: (Profile) stereotype.getPackage();
+
+		if (null != stereotype) {
+			org.eclipse.uml2.Package package_ = stereotype.getPackage();
+
+			if (package_ instanceof Profile) {
+				return (Profile) package_;
+			}
+		}
+
+		return null;
 	}
 
 	/**

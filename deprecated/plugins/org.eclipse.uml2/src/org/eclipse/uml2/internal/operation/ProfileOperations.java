@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.33 2005/12/12 19:26:21 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.34 2006/01/12 02:17:07 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -95,22 +95,21 @@ public final class ProfileOperations
 				: super.caseGeneralization(generalization);
 		}
 
+		public Object casePackage(org.eclipse.uml2.Package package_) {
+			return packages.contains(package_)
+				? super.casePackage(package_)
+				: doSwitch((Profile) packages.iterator().next());
+		}
+
 		public Object caseProfile(Profile profile) {
-			EPackage ePackage = packages.contains(profile)
-				? EcoreFactory.eINSTANCE.createEPackage()
-				: (EPackage) doSwitch((Profile) packages.iterator().next());
-			elementToEModelElementMap.put(profile, ePackage);
+			EPackage ePackage = (EPackage) casePackage(profile);
 
 			if (packages.contains(profile)) {
-				setName(ePackage, profile);
-
 				String name = ePackage.getName();
 				ePackage.setNsPrefix(name);
 				ePackage.setNsURI("http:///" + name + EcoreUtil.generateUUID() //$NON-NLS-1$
 					+ "." + UML2Resource.PROFILE_FILE_EXTENSION); //$NON-NLS-1$				
 			}
-
-			defaultCase(profile);
 
 			return ePackage;
 		}
