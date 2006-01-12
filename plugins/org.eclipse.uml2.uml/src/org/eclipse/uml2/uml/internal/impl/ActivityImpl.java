@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.16 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.17 2006/01/12 15:53:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -689,6 +689,12 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				return ((InternalEList) getPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				return ((InternalEList) getPostconditions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
@@ -849,6 +855,10 @@ public class ActivityImpl
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				return getPostconditions();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
 			case UMLPackage.ACTIVITY__SPECIFICATION :
@@ -1036,6 +1046,14 @@ public class ActivityImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				getPostconditions().clear();
+				getPostconditions().addAll((Collection) newValue);
+				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -1201,6 +1219,12 @@ public class ActivityImpl
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				getPostconditions().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1382,6 +1406,12 @@ public class ActivityImpl
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.ACTIVITY__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				EList precondition = (EList) eVirtualGet(UMLPackage.ACTIVITY__PRECONDITION);
+				return precondition != null && !precondition.isEmpty();
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				EList postcondition = (EList) eVirtualGet(UMLPackage.ACTIVITY__POSTCONDITION);
+				return postcondition != null && !postcondition.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.ACTIVITY__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null

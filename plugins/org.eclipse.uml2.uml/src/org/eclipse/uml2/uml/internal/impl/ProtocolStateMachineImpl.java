@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.13 2006/01/03 19:50:24 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.14 2006/01/12 15:53:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,14 +62,6 @@ import org.eclipse.uml2.uml.internal.operations.ProtocolStateMachineOperations;
 public class ProtocolStateMachineImpl
 		extends StateMachineImpl
 		implements ProtocolStateMachine {
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits2 = 0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -394,6 +386,12 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
+				return ((InternalEList) getPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
+				return ((InternalEList) getPostconditions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
@@ -556,6 +554,10 @@ public class ProtocolStateMachineImpl
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
+				return getPostconditions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
@@ -733,6 +735,14 @@ public class ProtocolStateMachineImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
+				getPostconditions().clear();
+				getPostconditions().addAll((Collection) newValue);
+				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -893,6 +903,12 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
+				getPostconditions().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1068,6 +1084,12 @@ public class ProtocolStateMachineImpl
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
+				EList precondition = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION);
+				return precondition != null && !precondition.isEmpty();
+			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
+				EList postcondition = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION);
+				return postcondition != null && !postcondition.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null
@@ -1092,45 +1114,6 @@ public class ProtocolStateMachineImpl
 				return conformance != null && !conformance.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			case 2 :
-				return eVirtualIndexBits2;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			case 2 :
-				eVirtualIndexBits2 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
+ * $Id: OpaqueBehaviorItemProvider.java,v 1.3 2006/01/12 15:54:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -174,7 +174,10 @@ public class OpaqueBehaviorItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
+			|| childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.14 2006/01/04 17:47:24 khussey Exp $
+ * $Id: UMLPackage.java,v 1.15 2006/01/12 15:53:51 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -11263,13 +11263,31 @@ public interface UMLPackage
 	int BEHAVIOR__CONTEXT = CLASS_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__PRECONDITION = CLASS_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR__POSTCONDITION = CLASS_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR__OWNED_PARAMETER_SET = CLASS_FEATURE_COUNT + 4;
+	int BEHAVIOR__OWNED_PARAMETER_SET = CLASS_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Specification</b></em>' reference.
@@ -11278,7 +11296,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR__SPECIFICATION = CLASS_FEATURE_COUNT + 5;
+	int BEHAVIOR__SPECIFICATION = CLASS_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Behavior</em>' class.
@@ -11287,7 +11305,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_FEATURE_COUNT = CLASS_FEATURE_COUNT + 6;
+	int BEHAVIOR_FEATURE_COUNT = CLASS_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -13405,6 +13423,24 @@ public interface UMLPackage
 	int STATE_MACHINE__CONTEXT = BEHAVIOR__CONTEXT;
 
 	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__PRECONDITION = BEHAVIOR__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__POSTCONDITION = BEHAVIOR__POSTCONDITION;
+
+	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13979,6 +14015,24 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int PROTOCOL_STATE_MACHINE__CONTEXT = STATE_MACHINE__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_STATE_MACHINE__PRECONDITION = STATE_MACHINE__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_STATE_MACHINE__POSTCONDITION = STATE_MACHINE__POSTCONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
@@ -23683,6 +23737,24 @@ public interface UMLPackage
 	int OPAQUE_BEHAVIOR__CONTEXT = BEHAVIOR__CONTEXT;
 
 	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_BEHAVIOR__PRECONDITION = BEHAVIOR__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_BEHAVIOR__POSTCONDITION = BEHAVIOR__POSTCONDITION;
+
+	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24239,6 +24311,24 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int FUNCTION_BEHAVIOR__CONTEXT = OPAQUE_BEHAVIOR__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_BEHAVIOR__PRECONDITION = OPAQUE_BEHAVIOR__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_BEHAVIOR__POSTCONDITION = OPAQUE_BEHAVIOR__POSTCONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
@@ -26249,6 +26339,24 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ACTIVITY__CONTEXT = BEHAVIOR__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__PRECONDITION = BEHAVIOR__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY__POSTCONDITION = BEHAVIOR__POSTCONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
@@ -32494,6 +32602,24 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int INTERACTION__CONTEXT = BEHAVIOR__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION__PRECONDITION = BEHAVIOR__PRECONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION__POSTCONDITION = BEHAVIOR__POSTCONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' containment reference list.
@@ -61253,6 +61379,28 @@ public interface UMLPackage
 	EReference getBehavior_Context();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Behavior#getPreconditions <em>Precondition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Precondition</em>'.
+	 * @see org.eclipse.uml2.uml.Behavior#getPreconditions()
+	 * @see #getBehavior()
+	 * @generated
+	 */
+	EReference getBehavior_Precondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Behavior#getPostconditions <em>Postcondition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Postcondition</em>'.
+	 * @see org.eclipse.uml2.uml.Behavior#getPostconditions()
+	 * @see #getBehavior()
+	 * @generated
+	 */
+	EReference getBehavior_Postcondition();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Behavior#getOwnedParameterSets <em>Owned Parameter Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69861,6 +70009,24 @@ public interface UMLPackage
 		 * @generated
 		 */
 		EReference BEHAVIOR__CONTEXT = eINSTANCE.getBehavior_Context();
+
+		/**
+		 * The meta object literal for the '<em><b>Precondition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__PRECONDITION = eINSTANCE
+			.getBehavior_Precondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Postcondition</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR__POSTCONDITION = eINSTANCE
+			.getBehavior_Postcondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Parameter Set</b></em>' containment reference list feature.

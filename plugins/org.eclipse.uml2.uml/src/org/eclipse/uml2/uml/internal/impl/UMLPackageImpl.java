@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.12 2006/01/05 16:34:36 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.13 2006/01/12 15:53:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -4496,7 +4496,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBehavior_OwnedParameterSet() {
+	public EReference getBehavior_Precondition() {
 		return (EReference) getBehavior().getEStructuralFeatures().get(4);
 	}
 
@@ -4505,8 +4505,26 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBehavior_Specification() {
+	public EReference getBehavior_Postcondition() {
 		return (EReference) getBehavior().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBehavior_OwnedParameterSet() {
+		return (EReference) getBehavior().getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBehavior_Specification() {
+		return (EReference) getBehavior().getEStructuralFeatures().get(7);
 	}
 
 	/**

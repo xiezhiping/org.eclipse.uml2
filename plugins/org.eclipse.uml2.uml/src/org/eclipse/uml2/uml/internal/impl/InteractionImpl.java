@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.14 2006/01/11 18:13:44 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.15 2006/01/12 15:53:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -723,6 +723,12 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.INTERACTION__PRECONDITION :
+				return ((InternalEList) getPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.INTERACTION__POSTCONDITION :
+				return ((InternalEList) getPostconditions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
@@ -923,6 +929,10 @@ public class InteractionImpl
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.INTERACTION__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.INTERACTION__POSTCONDITION :
+				return getPostconditions();
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
 			case UMLPackage.INTERACTION__SPECIFICATION :
@@ -1108,6 +1118,14 @@ public class InteractionImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
+			case UMLPackage.INTERACTION__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.INTERACTION__POSTCONDITION :
+				getPostconditions().clear();
+				getPostconditions().addAll((Collection) newValue);
+				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -1282,6 +1300,12 @@ public class InteractionImpl
 				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.INTERACTION__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.INTERACTION__POSTCONDITION :
+				getPostconditions().clear();
 				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1469,6 +1493,12 @@ public class InteractionImpl
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.INTERACTION__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.INTERACTION__PRECONDITION :
+				EList precondition = (EList) eVirtualGet(UMLPackage.INTERACTION__PRECONDITION);
+				return precondition != null && !precondition.isEmpty();
+			case UMLPackage.INTERACTION__POSTCONDITION :
+				EList postcondition = (EList) eVirtualGet(UMLPackage.INTERACTION__POSTCONDITION);
+				return postcondition != null && !postcondition.isEmpty();
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.INTERACTION__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.9 2006/01/04 17:47:25 khussey Exp $
+ * $Id: Behavior.java,v 1.10 2006/01/12 15:53:52 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,6 +53,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getContext <em>Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#getPreconditions <em>Precondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Behavior#getPostconditions <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Behavior#getSpecification <em>Specification</em>}</li>
  * </ul>
@@ -165,6 +169,102 @@ public interface Behavior
 	 * @generated
 	 */
 	BehavioredClassifier getContext();
+
+	/**
+	 * Returns the value of the '<em><b>Precondition</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Precondition</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Precondition</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Precondition()
+	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @generated
+	 */
+	EList getPreconditions();
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and appends it to the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPreconditions()
+	 * @generated
+	 */
+	Constraint createPrecondition(EClass eClass);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and appends it to the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPreconditions()
+	 * @generated
+	 */
+	Constraint createPrecondition();
+
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPreconditions()
+	 * @generated
+	 */
+	Constraint getPrecondition(String name);
+
+	/**
+	 * Returns the value of the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Postcondition</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Postcondition</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Postcondition()
+	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @generated
+	 */
+	EList getPostconditions();
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPostconditions()
+	 * @generated
+	 */
+	Constraint createPostcondition(EClass eClass);
+
+	/**
+	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPostconditions()
+	 * @generated
+	 */
+	Constraint createPostcondition();
+
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPostconditions()
+	 * @generated
+	 */
+	Constraint getPostcondition(String name);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Parameter Set</b></em>' containment reference list.

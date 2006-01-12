@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.16 2006/01/04 17:47:24 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.17 2006/01/12 15:53:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,6 +39,7 @@ import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
@@ -67,6 +68,8 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getContext <em>Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getPreconditions <em>Precondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getPostconditions <em>Postcondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getSpecification <em>Specification</em>}</li>
  * </ul>
@@ -294,6 +297,112 @@ public abstract class BehaviorImpl
 	 */
 	public BehavioredClassifier basicGetContext() {
 		return BehaviorOperations.getContext(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getPreconditions() {
+		EList precondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PRECONDITION);
+		if (precondition == null) {
+			eVirtualSet(UMLPackage.BEHAVIOR__PRECONDITION,
+				precondition = new EObjectContainmentEList(Constraint.class,
+					this, UMLPackage.BEHAVIOR__PRECONDITION));
+		}
+		return precondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPrecondition(EClass eClass) {
+		Constraint newPrecondition = (Constraint) eClass.getEPackage()
+			.getEFactoryInstance().create(eClass);
+		getPreconditions().add(newPrecondition);
+		return newPrecondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPrecondition() {
+		Constraint newPrecondition = UMLFactory.eINSTANCE.createConstraint();
+		getPreconditions().add(newPrecondition);
+		return newPrecondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPrecondition(String name) {
+		for (Iterator i = getPreconditions().iterator(); i.hasNext();) {
+			Constraint precondition = (Constraint) i.next();
+			if (name.equals(precondition.getName())) {
+				return precondition;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getPostconditions() {
+		EList postcondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POSTCONDITION);
+		if (postcondition == null) {
+			eVirtualSet(UMLPackage.BEHAVIOR__POSTCONDITION,
+				postcondition = new EObjectContainmentEList(Constraint.class,
+					this, UMLPackage.BEHAVIOR__POSTCONDITION));
+		}
+		return postcondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostcondition(EClass eClass) {
+		Constraint newPostcondition = (Constraint) eClass.getEPackage()
+			.getEFactoryInstance().create(eClass);
+		getPostconditions().add(newPostcondition);
+		return newPostcondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostcondition() {
+		Constraint newPostcondition = UMLFactory.eINSTANCE.createConstraint();
+		getPostconditions().add(newPostcondition);
+		return newPostcondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPostcondition(String name) {
+		for (Iterator i = getPostconditions().iterator(); i.hasNext();) {
+			Constraint postcondition = (Constraint) i.next();
+			if (name.equals(postcondition.getName())) {
+				return postcondition;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -633,6 +742,12 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+				return ((InternalEList) getPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+				return ((InternalEList) getPostconditions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
@@ -783,6 +898,10 @@ public abstract class BehaviorImpl
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+				return getPostconditions();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
 			case UMLPackage.BEHAVIOR__SPECIFICATION :
@@ -950,6 +1069,14 @@ public abstract class BehaviorImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+				getPostconditions().clear();
+				getPostconditions().addAll((Collection) newValue);
+				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -1090,6 +1217,12 @@ public abstract class BehaviorImpl
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+				getPostconditions().clear();
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -1250,6 +1383,12 @@ public abstract class BehaviorImpl
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+				EList precondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PRECONDITION);
+				return precondition != null && !precondition.isEmpty();
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+				EList postcondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POSTCONDITION);
+				return postcondition != null && !postcondition.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null

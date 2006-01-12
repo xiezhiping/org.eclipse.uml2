@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.13 2006/01/03 19:50:25 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.14 2006/01/12 15:53:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -277,6 +277,10 @@ public class OpaqueBehaviorImpl
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION :
+				return getPostconditions();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
 			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
@@ -448,6 +452,14 @@ public class OpaqueBehaviorImpl
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll((Collection) newValue);
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll((Collection) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION :
+				getPostconditions().clear();
+				getPostconditions().addAll((Collection) newValue);
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll((Collection) newValue);
@@ -596,6 +608,12 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION :
+				getPostconditions().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
@@ -762,6 +780,12 @@ public class OpaqueBehaviorImpl
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION :
+				EList precondition = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION);
+				return precondition != null && !precondition.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION :
+				EList postcondition = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION);
+				return postcondition != null && !postcondition.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET);
 				return ownedParameterSet != null

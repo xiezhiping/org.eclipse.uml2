@@ -1244,6 +1244,10 @@
           ecoreFeature="ecore:EReference UML.ecore#//Behavior/context">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference UML.ecore#//Behavior/precondition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference UML.ecore#//Behavior/postcondition"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML.ecore#//Behavior/ownedParameterSet">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>

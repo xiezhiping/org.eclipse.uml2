@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.11 2006/01/11 18:13:44 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.12 2006/01/12 15:53:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.uml2.uml.Abstraction;
 import org.eclipse.uml2.uml.AcceptCallAction;
 import org.eclipse.uml2.uml.AcceptEventAction;
-import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActionExecutionSpecification;
 import org.eclipse.uml2.uml.ActionInputPin;
 import org.eclipse.uml2.uml.Activity;

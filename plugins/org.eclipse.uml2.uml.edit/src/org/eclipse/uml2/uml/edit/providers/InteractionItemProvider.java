@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.7 2006/01/11 18:14:01 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.8 2006/01/12 15:54:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -593,7 +593,10 @@ public class InteractionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
+			|| childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER

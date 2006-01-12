@@ -2781,6 +2781,10 @@
       </eAnnotations>
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
+        upperBound="-1" eType="#//Constraint" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
+        upperBound="-1" eType="#//Constraint" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameterSet" ordered="false"
         upperBound="-1" eType="#//ParameterSet" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

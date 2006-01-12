@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.5 2006/01/04 17:47:49 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.6 2006/01/12 15:54:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -207,6 +207,8 @@ public class BehaviorItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER);
+			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__PRECONDITION);
+			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__POSTCONDITION);
 			childrenFeatures
 				.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET);
 		}
@@ -254,6 +256,8 @@ public class BehaviorItemProvider
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -278,6 +282,46 @@ public class BehaviorItemProvider
 				.createParameter()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET,
 			UMLFactory.eINSTANCE.createParameterSet()));
 	}
@@ -293,7 +337,10 @@ public class BehaviorItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
+			|| childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
