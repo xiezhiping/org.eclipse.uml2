@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.9 2006/01/10 15:08:31 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.10 2006/01/12 02:19:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -84,15 +83,16 @@ public class ProfileOperations
 	public static final class Profile2EPackageConverter
 			extends UML2EcoreConverter {
 
+		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+			return packages.contains(package_)
+				? super.casePackage(package_)
+				: doSwitch((Profile) packages.iterator().next());
+		}
+
 		public Object caseProfile(Profile profile) {
-			EPackage ePackage = packages.contains(profile)
-				? EcoreFactory.eINSTANCE.createEPackage()
-				: (EPackage) doSwitch((Profile) packages.iterator().next());
-			elementToEModelElementMap.put(profile, ePackage);
+			EPackage ePackage = (EPackage) casePackage(profile);
 
 			if (packages.contains(profile)) {
-				setName(ePackage, profile);
-
 				String name = ePackage.getName();
 				ePackage.setNsPrefix(name);
 
@@ -110,8 +110,6 @@ public class ProfileOperations
 					+ getQualifiedName(profile, ".") //$NON-NLS-1$
 					+ "/schemas/" + EcoreUtil.generateUUID() + '/' + version); //$NON-NLS-1$
 			}
-
-			defaultCase(profile);
 
 			return ePackage;
 		}
@@ -139,7 +137,7 @@ public class ProfileOperations
 					setName(eNamedElement, packages.contains(classifier
 						.getPackage())
 						? classifier.getName()
-						: classifier.getQualifiedName(), true);
+						: getQualifiedName(classifier, "_"), true); //$NON-NLS-1$
 					return classifier;
 				}
 
@@ -152,11 +150,6 @@ public class ProfileOperations
 				public Object caseNamedElement(NamedElement namedElement) {
 					setName(eNamedElement, namedElement.getName(), true);
 					return namedElement;
-				}
-
-				public Object caseProfile(Profile profile) {
-					setName(eNamedElement, profile.getQualifiedName(), true);
-					return profile;
 				}
 
 			}.doSwitch(namedElement);
@@ -409,7 +402,7 @@ public class ProfileOperations
 						.getEClassifier(getValidJavaIdentifier(classifier
 							.getPackage() == profile
 							? classifier.getName()
-							: classifier.getQualifiedName()));
+							: getQualifiedName(classifier, "_"))); //$NON-NLS-1$
 			}
 
 			public Object caseEnumerationLiteral(

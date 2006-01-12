@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.6 2006/01/05 22:43:26 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.7 2006/01/12 02:19:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -196,8 +196,10 @@ public class StereotypeOperations
 	 * @generated NOT
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
-		return (Profile) getOwningElement(stereotype,
-			UMLPackage.Literals.PROFILE, true);
+		org.eclipse.uml2.uml.Package package_ = stereotype.getPackage();
+		return package_ instanceof Profile
+			? (Profile) package_
+			: null;
 	}
 
 	/**
