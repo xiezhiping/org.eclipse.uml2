@@ -9842,7 +9842,7 @@
             <children xmi:id="_ow35_xjPEdqPB8O80Bm3OQ" type="DiagramName"/>
             <children xmi:id="_ow36ABjPEdqPB8O80Bm3OQ" type="Description"/>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_ow35_RjPEdqPB8O80Bm3OQ" description="{subsets redefinedElement}" fillColor="13434879" lineColor="3342489"/>
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_ow36ARjPEdqPB8O80Bm3OQ" x="11130" y="28938"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ow36ARjPEdqPB8O80Bm3OQ" x="11130" y="29440"/>
           </children>
           <children xmi:id="_ow36AhjPEdqPB8O80Bm3OQ" type="Text">
             <children xmi:id="_ow36BRjPEdqPB8O80Bm3OQ" type="DiagramName"/>
@@ -9865,7 +9865,7 @@
           <children xmi:id="_DNfXkB-zEdqIE6mxof-rZA" type="Text">
             <children xmi:id="_DNfXkx-zEdqIE6mxof-rZA" type="DiagramName"/>
             <children xmi:id="_DNfXlB-zEdqIE6mxof-rZA" type="Description"/>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_DNfXkR-zEdqIE6mxof-rZA" description="{subsets namespace}" fillColor="13434879" lineColor="3342489"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_DNfXkR-zEdqIE6mxof-rZA" description="{subsets context}" fillColor="13434879" lineColor="3342489"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DNfXkh-zEdqIE6mxof-rZA" x="11607" y="24194"/>
           </children>
           <children xmi:id="_QWOIYB-zEdqIE6mxof-rZA" type="Text">
@@ -9877,13 +9877,13 @@
           <children xmi:id="_U8g-EB-zEdqIE6mxof-rZA" type="Text">
             <children xmi:id="_U8g-Ex-zEdqIE6mxof-rZA" type="DiagramName"/>
             <children xmi:id="_U8g-FB-zEdqIE6mxof-rZA" type="Description"/>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_U8g-ER-zEdqIE6mxof-rZA" description="{subsets namespace}" fillColor="13434879" lineColor="3342489"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_U8g-ER-zEdqIE6mxof-rZA" description="{subsets context}" fillColor="13434879" lineColor="3342489"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U8g-Eh-zEdqIE6mxof-rZA" x="11721" y="25876"/>
           </children>
           <children xmi:id="_W1EbIB-zEdqIE6mxof-rZA" type="Text">
             <children xmi:id="_W1EbIx-zEdqIE6mxof-rZA" type="DiagramName"/>
             <children xmi:id="_W1EbJB-zEdqIE6mxof-rZA" type="Description"/>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_W1EbIR-zEdqIE6mxof-rZA" description="{subsets namespace}" fillColor="13434879" lineColor="3342489"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_W1EbIR-zEdqIE6mxof-rZA" description="{subsets context}" fillColor="13434879" lineColor="3342489"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W1EbIh-zEdqIE6mxof-rZA" x="11766" y="27666"/>
           </children>
           <children xmi:id="_bEHOcB-zEdqIE6mxof-rZA" type="Text">
@@ -15472,21 +15472,21 @@
       </ownedMember>
       <ownedMember xmi:type="uml:Association" xmi:id="_nWbKEB-yEdqIE6mxof-rZA" name="A_precondition_preContext" memberEnd="_nWbKER-yEdqIE6mxof-rZA _nWbKEh-yEdqIE6mxof-rZA">
         <generalization xmi:id="_iCDwoh-2EdqAs6slT1q-7A" general="_s_9I8B-zEdqIE6mxof-rZA"/>
-        <ownedEnd xmi:id="_nWbKEh-yEdqIE6mxof-rZA" name="preContext" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_nWbKEB-yEdqIE6mxof-rZA">
+        <ownedEnd xmi:id="_nWbKEh-yEdqIE6mxof-rZA" name="preContext" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_s_9I8h-zEdqIE6mxof-rZA" association="_nWbKEB-yEdqIE6mxof-rZA">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__kScQR-yEdqIE6mxof-rZA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__kScQB-yEdqIE6mxof-rZA"/>
         </ownedEnd>
       </ownedMember>
       <ownedMember xmi:type="uml:Association" xmi:id="_s0ANEB-yEdqIE6mxof-rZA" name="A_postcondition_postContext" memberEnd="_s0ANER-yEdqIE6mxof-rZA _s0ANEh-yEdqIE6mxof-rZA">
         <generalization xmi:id="_iCNhoB-2EdqAs6slT1q-7A" general="_s_9I8B-zEdqIE6mxof-rZA"/>
-        <ownedEnd xmi:id="_s0ANEh-yEdqIE6mxof-rZA" name="postContext" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_s0ANEB-yEdqIE6mxof-rZA">
+        <ownedEnd xmi:id="_s0ANEh-yEdqIE6mxof-rZA" name="postContext" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_s_9I8h-zEdqIE6mxof-rZA" association="_s0ANEB-yEdqIE6mxof-rZA">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6bRUAR-yEdqIE6mxof-rZA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6bRUAB-yEdqIE6mxof-rZA"/>
         </ownedEnd>
       </ownedMember>
       <ownedMember xmi:type="uml:Association" xmi:id="_uPMYsB-yEdqIE6mxof-rZA" name="A_bodyCondition_bodyContext" memberEnd="_uPMYsR-yEdqIE6mxof-rZA _uPMYsh-yEdqIE6mxof-rZA">
         <generalization xmi:id="_iDsvYB-2EdqAs6slT1q-7A" general="_s_9I8B-zEdqIE6mxof-rZA"/>
-        <ownedEnd xmi:id="_uPMYsh-yEdqIE6mxof-rZA" name="bodyContext" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_uPMYsB-yEdqIE6mxof-rZA">
+        <ownedEnd xmi:id="_uPMYsh-yEdqIE6mxof-rZA" name="bodyContext" type="_3ADC7B74022D3DE6D56F031A" subsettedProperty="_s_9I8h-zEdqIE6mxof-rZA" association="_uPMYsB-yEdqIE6mxof-rZA">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w8DAgR-yEdqIE6mxof-rZA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8DAgB-yEdqIE6mxof-rZA"/>
         </ownedEnd>
