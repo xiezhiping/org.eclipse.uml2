@@ -16353,7 +16353,7 @@
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_rt-AlBTaEdqZu-3Jy1-uYg" body="generalization.general->forAll(e |e.oclIsKindOf(Stereotype)) and generalization.specific->forAll(e | e.oclIsKindOf(Stereotype)) " language="OCL"/>
       </ownedRule>
       <generalization xmi:id="_SYvTsEfJEdq0rbStTpEubg" general="_3ADC7B74022D3CA22B8803DA"/>
-      <ownedAttribute xmi:id="_3ADC7B74022D40E7EE3603C0" name="icon" type="_3ADC7B74022D40E7EDE1009F" association="_3ADC7B74022D40E7EE3402D7">
+      <ownedAttribute xmi:id="_3ADC7B74022D40E7EE3603C0" name="icon" type="_3ADC7B74022D40E7EDE1009F" association="_3ADC7B74022D40E7EE3402D7" aggregation="composite">
         <ownedComment xmi:id="_rutnbBTaEdqZu-3Jy1-uYg" body="Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements." annotatedElement="_3ADC7B74022D40E7EE3603C0">
           <eAnnotations xmi:id="_rutnbRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rutnbhTaEdqZu-3Jy1-uYg"/>
