@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.17 2006/01/03 19:50:25 khussey Exp $
+ * $Id: PackageImpl.java,v 1.18 2006/01/16 22:29:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -885,6 +885,15 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isModelLibrary() {
+		return PackageOperations.isModelLibrary(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getAllAppliedProfiles() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -909,10 +918,10 @@ public class PackageImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(16));
+				.getEOperations().get(17));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
-					.get(16), result = PackageOperations.visibleMembers(this));
+					.get(17), result = PackageOperations.visibleMembers(this));
 			}
 			return result;
 		}

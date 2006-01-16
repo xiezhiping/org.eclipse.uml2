@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.8 2006/01/03 19:50:29 khussey Exp $
+ * $Id: Package.java,v 1.9 2006/01/16 22:29:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -355,6 +355,14 @@ public interface Package
 	 * @generated
 	 */
 	Interface createOwnedInterface(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isModelLibrary();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.9 2006/01/05 22:43:26 khussey Exp $
+ * $Id: PackageOperations.java,v 1.10 2006/01/16 22:29:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -73,6 +73,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplication(org.eclipse.uml2.uml.Profile) <em>Get Profile Application</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplication(org.eclipse.uml2.uml.Profile, boolean) <em>Get Profile Application</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#isModelLibrary() <em>Is Model Library</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#visibleMembers() <em>Visible Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#makesVisible(org.eclipse.uml2.uml.NamedElement) <em>Makes Visible</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#mustBeOwned() <em>Must Be Owned</em>}</li>
@@ -610,6 +611,16 @@ public class PackageOperations
 			.createPackagedElement(UMLPackage.Literals.INTERFACE);
 		interface_.setName(name);
 		return interface_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static boolean isModelLibrary(org.eclipse.uml2.uml.Package package_) {
+		return package_.getAppliedStereotype("UML" //$NON-NLS-1$
+			+ NamedElement.SEPARATOR + "ModelLibrary") != null; //$NON-NLS-1$
 	}
 
 	/**

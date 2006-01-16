@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.8 2005/12/22 22:44:54 khussey Exp $
+ * $Id: Element.java,v 1.9 2006/01/16 22:29:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 
@@ -218,6 +219,14 @@ public interface Element
 	 * @generated
 	 */
 	void setValue(Stereotype stereotype, String propertyName, Object newValue);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" sourceDataType="org.eclipse.uml2.uml.String" sourceRequired="true" sourceOrdered="false"
+	 * @generated
+	 */
+	EAnnotation createEAnnotation(String source);
 
 	/**
 	 * <!-- begin-user-doc -->

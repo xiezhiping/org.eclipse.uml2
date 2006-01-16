@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.19 2006/01/10 15:16:59 khussey Exp $
+ * $Id: ElementOperations.java,v 1.20 2006/01/16 22:29:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -771,6 +772,15 @@ public class ElementOperations
 				}
 			}
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EAnnotation createEAnnotation(Element element, String source) {
+		return createEAnnotation((EModelElement) element, source);
 	}
 
 	/**

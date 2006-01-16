@@ -216,6 +216,9 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/setValue/propertyName"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/setValue/newValue"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/createEAnnotation">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/createEAnnotation/source"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/allOwnedElements"
           cacheAdapterScope="Resource"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/mustBeOwned"/>
@@ -292,6 +295,7 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedInterface">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedInterface/name"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/isModelLibrary"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/visibleMembers"
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/makesVisible">

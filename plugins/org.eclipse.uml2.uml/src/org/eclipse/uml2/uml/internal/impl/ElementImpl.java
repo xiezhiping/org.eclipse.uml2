@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.18 2005/12/23 15:39:28 khussey Exp $
+ * $Id: ElementImpl.java,v 1.19 2006/01/16 22:29:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -354,6 +354,15 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAnnotation createEAnnotation(String source) {
+		return ElementOperations.createEAnnotation(this, source);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getKeywords() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -506,10 +515,10 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(27));
+				UMLPackage.Literals.ELEMENT.getEOperations().get(28));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(27), result = ElementOperations
+					.getEOperations().get(28), result = ElementOperations
 					.allOwnedElements(this));
 			}
 			return result;
