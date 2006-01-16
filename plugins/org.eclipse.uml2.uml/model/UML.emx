@@ -748,6 +748,9 @@
       <returnResult xmi:id="_SwrbIXFhEdqziYxiZo0YtA" type="_8Ugn8GvtEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_SwrbInFhEdqziYxiZo0YtA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
+    <ownedOperation xmi:id="_NrOGAIbSEdqhgMOAOWpjfQ" name="isModelLibrary" type="_UdivYGvsEdqG6fBIPwe-mw">
+      <returnResult xmi:id="_NrOGAYbSEdqhgMOAOWpjfQ" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="__pew8GvzEdq7X4sGURiZYA" name="Profile">
     <ownedOperation xmi:id="_2QKPIGwJEdq7X4sGURiZYA" name="create">
