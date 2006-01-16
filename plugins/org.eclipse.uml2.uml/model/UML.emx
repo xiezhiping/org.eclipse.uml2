@@ -401,6 +401,13 @@
         <type xmi:type="uml:PrimitiveType" href="Ecore.emx#_439EC3AE03B53ACDF8200182?Ecore/EJavaObject"/>
       </ownedParameter>
     </ownedOperation>
+    <ownedOperation xmi:id="_Tj6BkYbbEdq0WtDJCT4EaQ" name="createEAnnotation">
+      <returnResult xmi:id="_YE_AEIbbEdq0WtDJCT4EaQ" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53D98A1C701AB?Ecore/EAnnotation"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53D98A1C701AB?Ecore/EAnnotation"/>
+      <ownedParameter xmi:id="_aXUPEIbbEdq0WtDJCT4EaQ" name="source" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_00owUGvdEdq4DLWZOhbdEA" name="Class">
     <ownedOperation xmi:id="_4xcu4FYKEdqrn7iZ0eqieg" name="getExtensions" visibility="protected" type="_skHGwGvsEdqG6fBIPwe-mw">
