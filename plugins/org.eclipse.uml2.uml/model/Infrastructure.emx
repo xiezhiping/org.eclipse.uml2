@@ -14545,7 +14545,7 @@
           <eAnnotations xmi:id="_n14T1DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n14T1TwaEdqNYOqRUhe_HQ" isResolveProxies="false"/>
           </eAnnotations>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uPMYtB-yEdqIE6mxof-rZA" value="-1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uPMYtB-yEdqIE6mxof-rZA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uPMYsx-yEdqIE6mxof-rZA"/>
         </ownedAttribute>
         <ownedOperation xmi:id="_3ADC7B74022D3E142EC50359" name="isOrdered" type="_3ADC7B74022D3CA010AC0090" isQuery="true" bodyCondition="_rnaFihTaEdqZu-3Jy1-uYg">
