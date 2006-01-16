@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateUMLStereotypesAction.java,v 1.1 2005/12/22 20:19:56 khussey Exp $
+ * $Id: GenerateStandardStereotypesAction.java,v 1.1 2006/01/16 22:44:17 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -23,7 +23,7 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
-public class GenerateUMLStereotypesAction
+public class GenerateStandardStereotypesAction
 		extends GenerateProfileAction {
 
 	protected Command createActionCommand(EditingDomain editingDomain,
@@ -221,7 +221,7 @@ public class GenerateUMLStereotypesAction
 							false);
 					}
 				}, ExamplesUIPlugin.INSTANCE.getString(
-					"_UI_GenerateUMLStereotypesActionCommand_label", //$NON-NLS-1$
+					"_UI_GenerateStandardStereotypesActionCommand_label", //$NON-NLS-1$
 					new Object[]{getLabelProvider().getText(profile)}));
 			}
 		}

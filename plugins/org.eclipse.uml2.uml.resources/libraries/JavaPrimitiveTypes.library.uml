@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UML="http://UML/schemas/_mZ6fEHMjEdqjLP0o6zXVqQ/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://UML/schemas/_mZ6fEHMjEdqjLP0o6zXVqQ/0 pathmap://UML_PROFILES/UML.profile.uml#_mag8AHMjEdqjLP0o6zXVqQ">
-  <uml:Model xmi:id="_0" name="Java">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://Standard/schemas/_mZ6fEHMjEdqjLP0o6zXVqQ/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://Standard/schemas/_mZ6fEHMjEdqjLP0o6zXVqQ/0 pathmap://UML_PROFILES/Standard.profile.uml#_mag8AHMjEdqjLP0o6zXVqQ">
+  <uml:Model xmi:id="_0" name="JavaPrimitiveTypes">
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="boolean" name="boolean"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="byte" name="byte"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="char" name="char"/>
@@ -11,10 +11,10 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="short" name="short"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/UML.profile.uml#_mag8AHMjEdqjLP0o6zXVqQ"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_mag8AHMjEdqjLP0o6zXVqQ"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/UML.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
   </uml:Model>
-  <UML:ModelLibrary xmi:id="_Lu3jUHMkEdq-w6X-VZUD9Q" base_Package="_0"/>
+  <Standard:ModelLibrary xmi:id="_Lu3jUHMkEdq-w6X-VZUD9Q" base_Package="_0"/>
 </xmi:XMI>

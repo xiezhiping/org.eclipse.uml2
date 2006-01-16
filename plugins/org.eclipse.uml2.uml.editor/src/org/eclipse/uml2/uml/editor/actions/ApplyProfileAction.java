@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.3 2006/01/05 16:17:45 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.4 2006/01/16 22:44:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -66,7 +66,7 @@ public class ApplyProfileAction
 
 			try {
 				resourceSet.getResource(URI
-					.createURI(UMLResource.UML_PROFILE_URI), true);
+					.createURI(UMLResource.STANDARD_PROFILE_URI), true);
 
 				resourceSet.getResource(URI
 					.createURI(UMLResource.ECORE_PROFILE_URI), true);

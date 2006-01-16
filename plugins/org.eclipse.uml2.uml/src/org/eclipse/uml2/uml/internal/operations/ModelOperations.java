@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelOperations.java,v 1.5 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ModelOperations.java,v 1.6 2006/01/16 22:44:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -47,8 +47,8 @@ public class ModelOperations
 	 * @generated NOT
 	 */
 	public static boolean isMetamodel(Model model) {
-		return null != model.getAppliedStereotype("UML" //$NON-NLS-1$
-			+ NamedElement.SEPARATOR + "Metamodel"); //$NON-NLS-1$
+		return model.getAppliedStereotype("Standard" //$NON-NLS-1$
+			+ NamedElement.SEPARATOR + "Metamodel") != null; //$NON-NLS-1$
 	}
 
 } // ModelOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.10 2006/01/16 22:29:29 khussey Exp $
+ * $Id: PackageOperations.java,v 1.11 2006/01/16 22:44:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -619,7 +619,7 @@ public class PackageOperations
 	 * @generated NOT
 	 */
 	public static boolean isModelLibrary(org.eclipse.uml2.uml.Package package_) {
-		return package_.getAppliedStereotype("UML" //$NON-NLS-1$
+		return package_.getAppliedStereotype("Standard" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "ModelLibrary") != null; //$NON-NLS-1$
 	}
 

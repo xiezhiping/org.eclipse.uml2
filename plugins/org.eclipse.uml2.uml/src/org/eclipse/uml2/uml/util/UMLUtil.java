@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.6 2006/01/03 19:45:50 khussey Exp $
+ * $Id: UMLUtil.java,v 1.7 2006/01/16 22:44:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1892,31 +1892,32 @@ public class UMLUtil
 
 				if (!isEmpty(qualifiedName) && type instanceof PrimitiveType) {
 
-					if ("UML::Boolean".equals(qualifiedName)) { //$NON-NLS-1$
+					if ("UMLPrimitiveTypes::Boolean".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEBoolean();
-					} else if ("UML::Integer".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("UMLPrimitiveTypes::Integer".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEInt();
-					} else if ("UML::String".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("UMLPrimitiveTypes::String".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEString();
-					} else if ("UML::UnlimitedNatural".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("UMLPrimitiveTypes::UnlimitedNatural".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEInt();
-					} else if ("Java::boolean".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::boolean".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEBoolean();
-					} else if ("Java::byte".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::byte".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEByte();
-					} else if ("Java::char".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::char".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEChar();
-					} else if ("Java::double".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::double".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEDouble();
-					} else if ("Java::float".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::float".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEFloat();
-					} else if ("Java::int".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::int".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEInt();
-					} else if ("Java::long".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::long".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getELong();
-					} else if ("Java::short".equals(qualifiedName)) { //$NON-NLS-1$
+					} else if ("JavaPrimitiveTypes::short".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEShort();
-					} else if (qualifiedName.startsWith("Ecore::")) { //$NON-NLS-1$
+					} else if (qualifiedName
+						.startsWith("EcorePrimitiveTypes::")) { //$NON-NLS-1$
 						eType = EcorePackage.eINSTANCE.getEClassifier(type
 							.getName());
 					}

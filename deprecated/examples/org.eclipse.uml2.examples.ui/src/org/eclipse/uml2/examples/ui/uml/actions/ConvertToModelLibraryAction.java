@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToModelLibraryAction.java,v 1.2 2006/01/05 17:26:45 khussey Exp $
+ * $Id: ConvertToModelLibraryAction.java,v 1.3 2006/01/16 22:44:17 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -47,7 +47,7 @@ public class ConvertToModelLibraryAction
 
 						public void run() {
 							Profile umlProfile = applyProfile(model,
-								UMLResource.UML_PROFILE_URI);
+								UMLResource.STANDARD_PROFILE_URI);
 
 							if (umlProfile != null) {
 								applyStereotype(

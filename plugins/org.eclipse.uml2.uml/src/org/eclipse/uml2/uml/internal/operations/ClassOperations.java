@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.9 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ClassOperations.java,v 1.10 2006/01/16 22:44:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -154,7 +154,7 @@ public class ClassOperations
 	 * @generated NOT
 	 */
 	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
-		return class_.getAppliedStereotype("UML" //$NON-NLS-1$
+		return class_.getAppliedStereotype("Standard" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "Metaclass") != null; //$NON-NLS-1$
 	}
 
