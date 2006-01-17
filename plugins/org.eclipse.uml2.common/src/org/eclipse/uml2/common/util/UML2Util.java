@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.12 2006/01/10 19:28:39 khussey Exp $
+ * $Id: UML2Util.java,v 1.13 2006/01/17 15:04:14 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -816,7 +816,7 @@ public class UML2Util {
 		return rootContainers;
 	}
 
-	protected static TreeIterator getAllContents(EObject eObject,
+	public static TreeIterator getAllContents(EObject eObject,
 			boolean includeRoot, final boolean defensiveCopy) {
 		return new AbstractTreeIterator(eObject, includeRoot) {
 

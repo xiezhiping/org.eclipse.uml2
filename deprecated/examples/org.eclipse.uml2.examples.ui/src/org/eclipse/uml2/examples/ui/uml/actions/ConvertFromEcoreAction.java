@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertFromEcoreAction.java,v 1.1 2005/12/22 20:19:56 khussey Exp $
+ * $Id: ConvertFromEcoreAction.java,v 1.2 2006/01/17 15:04:15 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -27,7 +27,9 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
@@ -43,6 +45,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.examples.ui.uml.dialogs.Ecore2UMLConverterOptionsDialog;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.editor.actions.DiagnosticAction;
 import org.eclipse.uml2.uml.editor.dialogs.OptionsDialog;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -139,7 +142,22 @@ public class ConvertFromEcoreAction
 										.appendFileExtension(
 											UMLResource.FILE_EXTENSION)));
 
-								resource.getContents().add(package_);
+								EList contents = resource.getContents();
+
+								contents.add(package_);
+
+								for (Iterator allContents = UMLUtil
+									.getAllContents(package_, true, false); allContents
+									.hasNext();) {
+
+									EObject eObject = (EObject) allContents
+										.next();
+
+									if (eObject instanceof Element) {
+										contents.addAll(((Element) eObject)
+											.getStereotypeApplications());
+									}
+								}
 							}
 
 							for (Iterator i = resources.iterator(); i.hasNext();) {
