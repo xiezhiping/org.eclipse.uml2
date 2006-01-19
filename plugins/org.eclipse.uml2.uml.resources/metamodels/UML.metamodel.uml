@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://Ecore/schemas/_cgKywHMjEdqjLP0o6zXVqQ/0" xmlns:Standard="http://Standard/schemas/_mZ6fEHMjEdqjLP0o6zXVqQ/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://Ecore/schemas/_cgKywHMjEdqjLP0o6zXVqQ/0 pathmap://UML_PROFILES/Ecore.profile.uml#_cgeUwHMjEdqjLP0o6zXVqQ http://Standard/schemas/_mZ6fEHMjEdqjLP0o6zXVqQ/0 pathmap://UML_PROFILES/Standard.profile.uml#_mag8AHMjEdqjLP0o6zXVqQ">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://Ecore/schemas/_vy-HUIinEdqtvbnfB2L_5w/0" xmlns:Standard="http://Standard/schemas/_yzU58IinEdqtvbnfB2L_5w/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://Ecore/schemas/_vy-HUIinEdqtvbnfB2L_5w/0 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w http://Standard/schemas/_yzU58IinEdqtvbnfB2L_5w/0 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
   <uml:Model xmi:id="_0" name="uml">
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Integer" name="Integer"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Boolean" name="Boolean"/>
@@ -7660,13 +7660,13 @@
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_cgeUwHMjEdqjLP0o6zXVqQ"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_uG-G0HMiEdqjLP0o6zXVqQ"/>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_siPt4K87Edi5QpYeY_yIpg"/>
     </profileApplication>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.1">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.1-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_mag8AHMjEdqjLP0o6zXVqQ"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
