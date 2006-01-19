@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.56 2006/01/03 19:45:58 khussey Exp $
+ * $Id: UML2Util.java,v 1.57 2006/01/19 14:13:25 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
@@ -5973,6 +5974,20 @@ public class UML2Util
 		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);
 	}
 
+	public static int getInstanceCount(ResourceSet resourceSet,
+			EClassifier eClassifier) {
+		return getInstanceCount(resourceSet.getAllContents(), eClassifier);
+	}
+
+	public static int getInstanceCount(Resource resource,
+			EClassifier eClassifier) {
+		return getInstanceCount(resource.getAllContents(), eClassifier);
+	}
+
+	public static int getInstanceCount(EObject eObject, EClassifier eClassifier) {
+		return getInstanceCount(eObject.eAllContents(), eClassifier);
+	}
+
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName) {
 		return findNamedElements(resourceSet, qualifiedName, false);
@@ -5980,34 +5995,33 @@ public class UML2Util
 
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName, boolean ignoreCase) {
-		List namedElements = new UniqueEList();
-
-		for (Iterator resources = resourceSet.getResources().iterator(); resources
-			.hasNext();) {
-
-			findNamedElements(((Resource) resources.next()).getContents(),
-				qualifiedName, ignoreCase, UML2Package.Literals.NAMED_ELEMENT,
-				namedElements);
-		}
-
-		return namedElements;
+		return findNamedElements(resourceSet, qualifiedName, ignoreCase,
+			UML2Package.Literals.NAMED_ELEMENT);
 	}
 
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
-		List namedElements = new UniqueEList();
 
-		if (UML2Package.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
+		if (!isEmpty(qualifiedName)
+			&& UML2Package.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
 
-			for (Iterator resources = resourceSet.getResources().iterator(); resources
-				.hasNext();) {
+			EList resources = resourceSet.getResources();
+			int size = resources.size();
 
-				findNamedElements(((Resource) resources.next()).getContents(),
-					qualifiedName, ignoreCase, eClass, namedElements);
+			if (size > 0) {
+				EList namedElements = new UniqueEList();
+
+				for (int i = 0; i < size; i++) {
+					findNamedElements(((Resource) resources.get(i))
+						.getContents(), qualifiedName, ignoreCase, eClass,
+						namedElements);
+				}
+
+				return ECollections.unmodifiableEList(namedElements);
 			}
 		}
 
-		return namedElements;
+		return ECollections.EMPTY_ELIST;
 	}
 
 	public static Collection findNamedElements(Resource resource,
@@ -6017,20 +6031,29 @@ public class UML2Util
 
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase) {
-		return findNamedElements(resource.getContents(), qualifiedName,
-			ignoreCase, UML2Package.Literals.NAMED_ELEMENT, new UniqueEList());
+		return findNamedElements(resource, qualifiedName, ignoreCase,
+			UML2Package.Literals.NAMED_ELEMENT);
 	}
 
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
-		List namedElements = new UniqueEList();
 
-		if (UML2Package.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
-			findNamedElements(resource.getContents(), qualifiedName,
-				ignoreCase, eClass, namedElements);
+		if (!isEmpty(qualifiedName)
+			&& UML2Package.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
+
+			EList contents = resource.getContents();
+
+			if (!contents.isEmpty()) {
+				EList namedElements = new UniqueEList();
+
+				findNamedElements(contents, qualifiedName, ignoreCase, eClass,
+					namedElements);
+
+				return ECollections.unmodifiableEList(namedElements);
+			}
 		}
 
-		return namedElements;
+		return ECollections.EMPTY_ELIST;
 	}
 
 	protected static Collection findNamedElements(Collection eObjects,
@@ -6047,8 +6070,8 @@ public class UML2Util
 				NamedElement member = (NamedElement) members.next();
 
 				if (ignoreCase
-					? member.getName().equalsIgnoreCase(qualifiedName)
-					: member.getName().equals(qualifiedName)) {
+					? qualifiedName.equalsIgnoreCase(member.getName())
+					: qualifiedName.equals(member.getName())) {
 
 					namedElements.add(member);
 				}
@@ -6065,8 +6088,8 @@ public class UML2Util
 				Namespace namespace = (Namespace) namespaces.next();
 
 				if (ignoreCase
-					? namespace.getName().equalsIgnoreCase(name)
-					: namespace.getName().equals(name)) {
+					? name.equalsIgnoreCase(namespace.getName())
+					: name.equals(namespace.getName())) {
 
 					findNamedElements(namespace.getMembers(), qualifiedName,
 						ignoreCase, eClass, namedElements);

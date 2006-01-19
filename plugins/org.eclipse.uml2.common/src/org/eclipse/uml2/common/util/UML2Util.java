@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.13 2006/01/17 15:04:14 khussey Exp $
+ * $Id: UML2Util.java,v 1.14 2006/01/19 14:13:28 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -753,20 +753,6 @@ public class UML2Util {
 		return xmiIdentifier;
 	}
 
-	public static int getInstanceCount(ResourceSet resourceSet,
-			EClassifier eClassifier) {
-		return getInstanceCount(resourceSet.getAllContents(), eClassifier);
-	}
-
-	public static int getInstanceCount(Resource resource,
-			EClassifier eClassifier) {
-		return getInstanceCount(resource.getAllContents(), eClassifier);
-	}
-
-	public static int getInstanceCount(EObject eObject, EClassifier eClassifier) {
-		return getInstanceCount(eObject.eAllContents(), eClassifier);
-	}
-
 	public static int getInstanceCount(Iterator iterator,
 			EClassifier eClassifier) {
 		int count = 0;
@@ -828,7 +814,7 @@ public class UML2Util {
 		};
 	}
 
-	protected static EAnnotation createEAnnotation(EModelElement eModelElement,
+	public static EAnnotation createEAnnotation(EModelElement eModelElement,
 			String source) {
 		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 
@@ -838,7 +824,7 @@ public class UML2Util {
 		return eAnnotation;
 	}
 
-	protected static EAnnotation getEAnnotation(EModelElement eModelElement,
+	public static EAnnotation getEAnnotation(EModelElement eModelElement,
 			String source, boolean createOnDemand) {
 		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 

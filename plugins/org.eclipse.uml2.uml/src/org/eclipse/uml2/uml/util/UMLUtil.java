@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.7 2006/01/16 22:44:13 khussey Exp $
+ * $Id: UMLUtil.java,v 1.8 2006/01/19 14:13:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5630,6 +5630,117 @@ public class UMLUtil
 		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);
 	}
 
+	public static Collection findNamedElements(ResourceSet resourceSet,
+			String qualifiedName) {
+		return findNamedElements(resourceSet, qualifiedName, false);
+	}
+
+	public static Collection findNamedElements(ResourceSet resourceSet,
+			String qualifiedName, boolean ignoreCase) {
+		return findNamedElements(resourceSet, qualifiedName, ignoreCase,
+			UMLPackage.Literals.NAMED_ELEMENT);
+	}
+
+	public static Collection findNamedElements(ResourceSet resourceSet,
+			String qualifiedName, boolean ignoreCase, EClass eClass) {
+
+		if (!isEmpty(qualifiedName)
+			&& UMLPackage.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
+
+			EList resources = resourceSet.getResources();
+			int size = resources.size();
+
+			if (size > 0) {
+				EList namedElements = new UniqueEList();
+
+				for (int i = 0; i < size; i++) {
+					findNamedElements(((Resource) resources.get(i))
+						.getContents(), qualifiedName, ignoreCase, eClass,
+						namedElements);
+				}
+
+				return ECollections.unmodifiableEList(namedElements);
+			}
+		}
+
+		return ECollections.EMPTY_ELIST;
+	}
+
+	public static Collection findNamedElements(Resource resource,
+			String qualifiedName) {
+		return findNamedElements(resource, qualifiedName, false);
+	}
+
+	public static Collection findNamedElements(Resource resource,
+			String qualifiedName, boolean ignoreCase) {
+		return findNamedElements(resource, qualifiedName, ignoreCase,
+			UMLPackage.Literals.NAMED_ELEMENT);
+	}
+
+	public static Collection findNamedElements(Resource resource,
+			String qualifiedName, boolean ignoreCase, EClass eClass) {
+
+		if (!isEmpty(qualifiedName)
+			&& UMLPackage.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
+
+			EList contents = resource.getContents();
+
+			if (!contents.isEmpty()) {
+				EList namedElements = new UniqueEList();
+
+				findNamedElements(contents, qualifiedName, ignoreCase, eClass,
+					namedElements);
+
+				return ECollections.unmodifiableEList(namedElements);
+			}
+		}
+
+		return ECollections.EMPTY_ELIST;
+	}
+
+	protected static Collection findNamedElements(Collection eObjects,
+			String qualifiedName, boolean ignoreCase, EClass eClass,
+			Collection namedElements) {
+		int index = qualifiedName.indexOf(NamedElement.SEPARATOR);
+
+		if (index == -1) {
+
+			for (Iterator members = EcoreUtil
+				.getObjectsByType(eObjects, eClass).iterator(); members
+				.hasNext();) {
+
+				NamedElement member = (NamedElement) members.next();
+
+				if (ignoreCase
+					? qualifiedName.equalsIgnoreCase(member.getName())
+					: qualifiedName.equals(member.getName())) {
+
+					namedElements.add(member);
+				}
+			}
+		} else {
+			String name = qualifiedName.substring(0, index);
+			qualifiedName = qualifiedName.substring(index
+				+ NamedElement.SEPARATOR.length());
+
+			for (Iterator namespaces = EcoreUtil.getObjectsByType(eObjects,
+				UMLPackage.Literals.NAMESPACE).iterator(); namespaces.hasNext();) {
+
+				Namespace namespace = (Namespace) namespaces.next();
+
+				if (ignoreCase
+					? name.equalsIgnoreCase(namespace.getName())
+					: name.equals(namespace.getName())) {
+
+					findNamedElements(namespace.getMembers(), qualifiedName,
+						ignoreCase, eClass, namedElements);
+				}
+			}
+		}
+
+		return namedElements;
+	}
+
 	public static Profile getProfile(EPackage definition) {
 		EObject eContainer = definition.eContainer();
 
@@ -5695,7 +5806,7 @@ public class UMLUtil
 		return null;
 	}
 
-	protected static void setBaseElement(EObject stereotypeApplication,
+	public static void setBaseElement(EObject stereotypeApplication,
 			Element element) {
 
 		if (getStereotype(stereotypeApplication) != null) {
