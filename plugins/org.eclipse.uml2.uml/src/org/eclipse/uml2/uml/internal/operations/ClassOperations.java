@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.10 2006/01/16 22:44:13 khussey Exp $
+ * $Id: ClassOperations.java,v 1.11 2006/01/19 14:14:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -108,24 +108,28 @@ public class ClassOperations
 	 * @generated NOT
 	 */
 	public static EList getExtensions(org.eclipse.uml2.uml.Class class_) {
-		EList extensions = new UniqueEList();
+		EList extensions = ECollections.EMPTY_ELIST;
 
-		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-			.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
-			.hasNext();) {
+		if (class_.isMetaclass()) {
+			extensions = new UniqueEList();
 
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
-				.next();
+			for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
+				.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
+				.hasNext();) {
 
-			if (setting.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
-				EObject eObject = setting.getEObject();
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+					.next();
 
-				if (eObject instanceof Property) {
-					Association association = ((Property) eObject)
-						.getAssociation();
+				if (setting.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+					EObject eObject = setting.getEObject();
 
-					if (association instanceof Extension) {
-						extensions.add(association);
+					if (eObject instanceof Property) {
+						Association association = ((Property) eObject)
+							.getAssociation();
+
+						if (association instanceof Extension) {
+							extensions.add(association);
+						}
 					}
 				}
 			}

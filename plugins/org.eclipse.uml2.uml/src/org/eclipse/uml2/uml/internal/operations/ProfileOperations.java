@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.10 2006/01/12 02:19:31 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.11 2006/01/19 14:14:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -269,8 +269,7 @@ public class ProfileOperations
 		ENamedElement definition = profile.getDefinition(classifier);
 
 		if (definition instanceof EClass) {
-			EClass eClass = (EClass) definition;
-			return eClass.getEPackage().getEFactoryInstance().create(eClass);
+			return EcoreUtil.create((EClass) definition);
 		}
 
 		throw new IllegalArgumentException(String.valueOf(classifier));
@@ -396,13 +395,25 @@ public class ProfileOperations
 
 			public Object caseClassifier(Classifier classifier) {
 				EPackage profileDefinition = profile.getDefinition();
-				return profileDefinition == null
-					? null
-					: profileDefinition
-						.getEClassifier(getValidJavaIdentifier(classifier
-							.getPackage() == profile
-							? classifier.getName()
-							: getQualifiedName(classifier, "_"))); //$NON-NLS-1$
+
+				if (profileDefinition != null) {
+
+					for (Iterator eClassifiers = profileDefinition
+						.getEClassifiers().iterator(); eClassifiers.hasNext();) {
+
+						EClassifier eClassifier = (EClassifier) eClassifiers
+							.next();
+						EAnnotation eAnnotation = eClassifier
+							.getEAnnotation(UMLPackage.eNS_URI);
+
+						if (eAnnotation != null
+							&& eAnnotation.getReferences().contains(classifier)) {
+
+							return eClassifier;
+						}
+					}
+				}
+				return null;
 			}
 
 			public Object caseEnumerationLiteral(

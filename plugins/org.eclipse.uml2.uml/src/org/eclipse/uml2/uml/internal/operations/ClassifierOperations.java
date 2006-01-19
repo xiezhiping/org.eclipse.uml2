@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.9 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.10 2006/01/19 14:14:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,8 +22,10 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Feature;
@@ -32,6 +34,7 @@ import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
 
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -360,7 +363,11 @@ public class ClassifierOperations
 				.inheritableMembers(classifier));
 		}
 
-		return classifier.inherit(inheritedMembers);
+		EList inherit = classifier.inherit(inheritedMembers);
+
+		return new UnionEObjectEList((InternalEObject) classifier,
+			UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, inherit.size(),
+			inherit.toArray());
 	}
 
 	/**
