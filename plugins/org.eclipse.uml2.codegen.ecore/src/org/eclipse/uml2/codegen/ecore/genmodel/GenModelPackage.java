@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.15 2005/12/12 21:43:55 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.16 2006/01/19 16:41:19 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -982,6 +982,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__SUPPRESS_UNSETTABLE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_UNSETTABLE;
+
+	/**
+	 * The feature id for the '<em><b>Facade Helper Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__FACADE_HELPER_CLASS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FACADE_HELPER_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
