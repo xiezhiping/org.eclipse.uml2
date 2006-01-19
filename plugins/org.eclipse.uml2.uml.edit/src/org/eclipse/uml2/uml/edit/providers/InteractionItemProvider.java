@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.8 2006/01/12 15:54:10 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.9 2006/01/19 23:06:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -375,11 +375,11 @@ public class InteractionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FRAGMENT, UMLFactory.eINSTANCE
-				.createInteractionOperand()));
+				.createOccurrenceSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FRAGMENT, UMLFactory.eINSTANCE
-				.createExecutionOccurrenceSpecification()));
+				.createInteractionOperand()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FRAGMENT, UMLFactory.eINSTANCE
@@ -396,6 +396,10 @@ public class InteractionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FRAGMENT, UMLFactory.eINSTANCE
 				.createMessageOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION__FRAGMENT, UMLFactory.eINSTANCE
+				.createExecutionOccurrenceSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION__FRAGMENT, UMLFactory.eINSTANCE

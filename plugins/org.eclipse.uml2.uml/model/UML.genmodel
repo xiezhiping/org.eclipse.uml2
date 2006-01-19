@@ -2893,7 +2893,7 @@
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//GeneralOrdering/after"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//OccurrenceSpecification">
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//OccurrenceSpecification">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//OccurrenceSpecification/toBefore"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -2963,11 +2963,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ExecutionSpecification/same_lifeline/context"/>
       </genOperations>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ExecutionOccurrenceSpecification">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//ExecutionOccurrenceSpecification/execution"/>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ExecutionEvent"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//StateInvariant">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML.ecore#//StateInvariant/invariant">
@@ -2986,6 +2981,7 @@
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//BehaviorExecutionSpecification/behavior"/>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ExecutionEvent"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CreationEvent">
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//CreationEvent/no_occurrence_above">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//CreationEvent/no_occurrence_above/diagnostics"/>
@@ -3008,6 +3004,10 @@
           ecoreFeature="ecore:EReference UML.ecore#//SendSignalEvent/signal"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//MessageOccurrenceSpecification"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ExecutionOccurrenceSpecification">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference UML.ecore#//ExecutionOccurrenceSpecification/execution"/>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ReceiveOperationEvent">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//ReceiveOperationEvent/operation"/>

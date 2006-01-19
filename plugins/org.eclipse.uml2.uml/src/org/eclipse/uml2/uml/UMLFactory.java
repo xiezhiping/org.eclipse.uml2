@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.5 2006/01/11 18:13:44 khussey Exp $
+ * $Id: UMLFactory.java,v 1.6 2006/01/19 23:06:36 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -870,6 +870,15 @@ public interface UMLFactory
 	 * @generated
 	 */
 	GeneralOrdering createGeneralOrdering();
+
+	/**
+	 * Returns a new object of class '<em>Occurrence Specification</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Occurrence Specification</em>'.
+	 * @generated
+	 */
+	OccurrenceSpecification createOccurrenceSpecification();
 
 	/**
 	 * Returns a new object of class '<em>Interaction Operand</em>'.

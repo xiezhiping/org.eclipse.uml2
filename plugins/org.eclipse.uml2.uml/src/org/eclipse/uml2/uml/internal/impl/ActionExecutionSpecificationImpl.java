@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ActionExecutionSpecificationImpl.java,v 1.9 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.ActionExecutionSpecification;
-import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -230,10 +230,10 @@ public class ActionExecutionSpecificationImpl
 				setEnclosingOperand((InteractionOperand) newValue);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__START :
-				setStart((ExecutionOccurrenceSpecification) newValue);
+				setStart((OccurrenceSpecification) newValue);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__FINISH :
-				setFinish((ExecutionOccurrenceSpecification) newValue);
+				setFinish((OccurrenceSpecification) newValue);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION :
 				setAction((Action) newValue);
@@ -280,10 +280,10 @@ public class ActionExecutionSpecificationImpl
 				setEnclosingOperand((InteractionOperand) null);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__START :
-				setStart((ExecutionOccurrenceSpecification) null);
+				setStart((OccurrenceSpecification) null);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__FINISH :
-				setFinish((ExecutionOccurrenceSpecification) null);
+				setFinish((OccurrenceSpecification) null);
 				return;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION :
 				setAction((Action) null);

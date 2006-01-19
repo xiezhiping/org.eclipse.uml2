@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.13 2006/01/12 15:53:51 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.14 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -7514,7 +7514,7 @@ public class UMLPackageImpl
 	public EClass getExecutionOccurrenceSpecification() {
 		if (executionOccurrenceSpecificationEClass == null) {
 			executionOccurrenceSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(159);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(169);
 		}
 		return executionOccurrenceSpecificationEClass;
 	}
@@ -7537,7 +7537,7 @@ public class UMLPackageImpl
 	public EClass getExecutionEvent() {
 		if (executionEventEClass == null) {
 			executionEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(160);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(162);
 		}
 		return executionEventEClass;
 	}
@@ -7550,7 +7550,7 @@ public class UMLPackageImpl
 	public EClass getStateInvariant() {
 		if (stateInvariantEClass == null) {
 			stateInvariantEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(161);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(159);
 		}
 		return stateInvariantEClass;
 	}
@@ -7572,7 +7572,7 @@ public class UMLPackageImpl
 	public EClass getActionExecutionSpecification() {
 		if (actionExecutionSpecificationEClass == null) {
 			actionExecutionSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(162);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(160);
 		}
 		return actionExecutionSpecificationEClass;
 	}
@@ -7595,7 +7595,7 @@ public class UMLPackageImpl
 	public EClass getBehaviorExecutionSpecification() {
 		if (behaviorExecutionSpecificationEClass == null) {
 			behaviorExecutionSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(163);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(161);
 		}
 		return behaviorExecutionSpecificationEClass;
 	}
@@ -7618,7 +7618,7 @@ public class UMLPackageImpl
 	public EClass getCreationEvent() {
 		if (creationEventEClass == null) {
 			creationEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(164);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(163);
 		}
 		return creationEventEClass;
 	}
@@ -7631,7 +7631,7 @@ public class UMLPackageImpl
 	public EClass getDestructionEvent() {
 		if (destructionEventEClass == null) {
 			destructionEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(165);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(164);
 		}
 		return destructionEventEClass;
 	}
@@ -7644,7 +7644,7 @@ public class UMLPackageImpl
 	public EClass getSendOperationEvent() {
 		if (sendOperationEventEClass == null) {
 			sendOperationEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(166);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(165);
 		}
 		return sendOperationEventEClass;
 	}
@@ -7667,7 +7667,7 @@ public class UMLPackageImpl
 	public EClass getMessageEvent() {
 		if (messageEventEClass == null) {
 			messageEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(167);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(166);
 		}
 		return messageEventEClass;
 	}
@@ -7680,7 +7680,7 @@ public class UMLPackageImpl
 	public EClass getSendSignalEvent() {
 		if (sendSignalEventEClass == null) {
 			sendSignalEventEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(168);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(167);
 		}
 		return sendSignalEventEClass;
 	}
@@ -7703,7 +7703,7 @@ public class UMLPackageImpl
 	public EClass getMessageOccurrenceSpecification() {
 		if (messageOccurrenceSpecificationEClass == null) {
 			messageOccurrenceSpecificationEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(169);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(168);
 		}
 		return messageOccurrenceSpecificationEClass;
 	}

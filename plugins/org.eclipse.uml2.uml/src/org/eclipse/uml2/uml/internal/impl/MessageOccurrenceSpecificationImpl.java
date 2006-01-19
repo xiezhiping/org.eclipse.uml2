@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOccurrenceSpecificationImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
+ * $Id: MessageOccurrenceSpecificationImpl.java,v 1.9 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageOccurrenceSpecificationImpl#getMessage <em>Message</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageOccurrenceSpecificationImpl#getEvent <em>Event</em>}</li>
  * </ul>
  * </p>
  *
@@ -116,64 +115,6 @@ public class MessageOccurrenceSpecificationImpl
 					? null
 					: oldMessage, message));
 
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Event getEvent() {
-		Event event = (Event) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT);
-		if (event != null && event.eIsProxy()) {
-			InternalEObject oldEvent = (InternalEObject) event;
-			event = (Event) eResolveProxy(oldEvent);
-			if (event != oldEvent) {
-				eVirtualSet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT,
-					event);
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT,
-						oldEvent, event));
-			}
-		}
-		return event;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Event basicGetEvent() {
-		return (Event) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEvent(Event newEvent) {
-		Event event = newEvent;
-		Object oldEvent = eVirtualSet(
-			UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT, event);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT,
-				oldEvent == EVIRTUAL_NO_VALUE
-					? null
-					: oldEvent, event));
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetEvent() {
-		return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT) != null;
 	}
 
 	/**
@@ -389,7 +330,7 @@ public class MessageOccurrenceSpecificationImpl
 				EList toBefore = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE);
 				return toBefore != null && !toBefore.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT :
-				return isSetEvent();
+				return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT) != null;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				EList toAfter = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER);
 				return toAfter != null && !toAfter.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.13 2006/01/11 18:14:01 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.14 2006/01/19 23:06:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -2228,6 +2228,29 @@ public class UMLItemProviderAdapterFactory
 		}
 
 		return generalOrderingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.OccurrenceSpecification} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OccurrenceSpecificationItemProvider occurrenceSpecificationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.OccurrenceSpecification}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Adapter createOccurrenceSpecificationAdapter() {
+		if (occurrenceSpecificationItemProvider == null) {
+			occurrenceSpecificationItemProvider = new OccurrenceSpecificationItemProvider(
+				this);
+		}
+
+		return occurrenceSpecificationItemProvider;
 	}
 
 	/**
@@ -4878,20 +4901,20 @@ public class UMLItemProviderAdapterFactory
 			gateItemProvider.dispose();
 		if (generalOrderingItemProvider != null)
 			generalOrderingItemProvider.dispose();
+		if (occurrenceSpecificationItemProvider != null)
+			occurrenceSpecificationItemProvider.dispose();
 		if (interactionOperandItemProvider != null)
 			interactionOperandItemProvider.dispose();
 		if (interactionConstraintItemProvider != null)
 			interactionConstraintItemProvider.dispose();
-		if (executionOccurrenceSpecificationItemProvider != null)
-			executionOccurrenceSpecificationItemProvider.dispose();
-		if (executionEventItemProvider != null)
-			executionEventItemProvider.dispose();
 		if (stateInvariantItemProvider != null)
 			stateInvariantItemProvider.dispose();
 		if (actionExecutionSpecificationItemProvider != null)
 			actionExecutionSpecificationItemProvider.dispose();
 		if (behaviorExecutionSpecificationItemProvider != null)
 			behaviorExecutionSpecificationItemProvider.dispose();
+		if (executionEventItemProvider != null)
+			executionEventItemProvider.dispose();
 		if (creationEventItemProvider != null)
 			creationEventItemProvider.dispose();
 		if (destructionEventItemProvider != null)
@@ -4902,6 +4925,8 @@ public class UMLItemProviderAdapterFactory
 			sendSignalEventItemProvider.dispose();
 		if (messageOccurrenceSpecificationItemProvider != null)
 			messageOccurrenceSpecificationItemProvider.dispose();
+		if (executionOccurrenceSpecificationItemProvider != null)
+			executionOccurrenceSpecificationItemProvider.dispose();
 		if (receiveOperationEventItemProvider != null)
 			receiveOperationEventItemProvider.dispose();
 		if (receiveSignalEventItemProvider != null)

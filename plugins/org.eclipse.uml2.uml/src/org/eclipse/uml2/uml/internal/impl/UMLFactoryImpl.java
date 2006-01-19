@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.12 2006/01/12 15:53:43 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.13 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -148,6 +148,7 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
+import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -482,20 +483,20 @@ public class UMLFactoryImpl
 				return createGate();
 			case UMLPackage.GENERAL_ORDERING :
 				return createGeneralOrdering();
+			case UMLPackage.OCCURRENCE_SPECIFICATION :
+				return createOccurrenceSpecification();
 			case UMLPackage.INTERACTION_OPERAND :
 				return createInteractionOperand();
 			case UMLPackage.INTERACTION_CONSTRAINT :
 				return createInteractionConstraint();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION :
-				return createExecutionOccurrenceSpecification();
-			case UMLPackage.EXECUTION_EVENT :
-				return createExecutionEvent();
 			case UMLPackage.STATE_INVARIANT :
 				return createStateInvariant();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION :
 				return createActionExecutionSpecification();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION :
 				return createBehaviorExecutionSpecification();
+			case UMLPackage.EXECUTION_EVENT :
+				return createExecutionEvent();
 			case UMLPackage.CREATION_EVENT :
 				return createCreationEvent();
 			case UMLPackage.DESTRUCTION_EVENT :
@@ -506,6 +507,8 @@ public class UMLFactoryImpl
 				return createSendSignalEvent();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION :
 				return createMessageOccurrenceSpecification();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION :
+				return createExecutionOccurrenceSpecification();
 			case UMLPackage.RECEIVE_OPERATION_EVENT :
 				return createReceiveOperationEvent();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT :
@@ -1710,6 +1713,16 @@ public class UMLFactoryImpl
 	public GeneralOrdering createGeneralOrdering() {
 		GeneralOrderingImpl generalOrdering = new GeneralOrderingImpl();
 		return generalOrdering;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OccurrenceSpecification createOccurrenceSpecification() {
+		OccurrenceSpecificationImpl occurrenceSpecification = new OccurrenceSpecificationImpl();
+		return occurrenceSpecification;
 	}
 
 	/**

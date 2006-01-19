@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.8 2006/01/04 17:47:26 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.9 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3235,42 +3235,6 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION : {
-				ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) theEObject;
-				Object result = caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
-				if (result == null)
-					result = caseOccurrenceSpecification(executionOccurrenceSpecification);
-				if (result == null)
-					result = caseInteractionFragment(executionOccurrenceSpecification);
-				if (result == null)
-					result = caseNamedElement(executionOccurrenceSpecification);
-				if (result == null)
-					result = caseElement(executionOccurrenceSpecification);
-				if (result == null)
-					result = caseEModelElement(executionOccurrenceSpecification);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.EXECUTION_EVENT : {
-				ExecutionEvent executionEvent = (ExecutionEvent) theEObject;
-				Object result = caseExecutionEvent(executionEvent);
-				if (result == null)
-					result = caseEvent(executionEvent);
-				if (result == null)
-					result = casePackageableElement(executionEvent);
-				if (result == null)
-					result = caseNamedElement(executionEvent);
-				if (result == null)
-					result = caseParameterableElement(executionEvent);
-				if (result == null)
-					result = caseElement(executionEvent);
-				if (result == null)
-					result = caseEModelElement(executionEvent);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
 			case UMLPackage.STATE_INVARIANT : {
 				StateInvariant stateInvariant = (StateInvariant) theEObject;
 				Object result = caseStateInvariant(stateInvariant);
@@ -3316,6 +3280,25 @@ public class UMLSwitch {
 					result = caseElement(behaviorExecutionSpecification);
 				if (result == null)
 					result = caseEModelElement(behaviorExecutionSpecification);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.EXECUTION_EVENT : {
+				ExecutionEvent executionEvent = (ExecutionEvent) theEObject;
+				Object result = caseExecutionEvent(executionEvent);
+				if (result == null)
+					result = caseEvent(executionEvent);
+				if (result == null)
+					result = casePackageableElement(executionEvent);
+				if (result == null)
+					result = caseNamedElement(executionEvent);
+				if (result == null)
+					result = caseParameterableElement(executionEvent);
+				if (result == null)
+					result = caseElement(executionEvent);
+				if (result == null)
+					result = caseEModelElement(executionEvent);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3434,6 +3417,23 @@ public class UMLSwitch {
 					result = caseElement(messageOccurrenceSpecification);
 				if (result == null)
 					result = caseEModelElement(messageOccurrenceSpecification);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION : {
+				ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) theEObject;
+				Object result = caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
+				if (result == null)
+					result = caseOccurrenceSpecification(executionOccurrenceSpecification);
+				if (result == null)
+					result = caseInteractionFragment(executionOccurrenceSpecification);
+				if (result == null)
+					result = caseNamedElement(executionOccurrenceSpecification);
+				if (result == null)
+					result = caseElement(executionOccurrenceSpecification);
+				if (result == null)
+					result = caseEModelElement(executionOccurrenceSpecification);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;

@@ -6903,8 +6903,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OccurrenceSpecification" abstract="true"
-      eSuperTypes="#//InteractionFragment">
+  <eClassifiers xsi:type="ecore:EClass" name="OccurrenceSpecification" eSuperTypes="#//InteractionFragment">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An OccurrenceSpecification is the basic semantic unit of Interactions. The sequences of occurrences specified by them are the meanings of Interactions.&#xA;&#xA;OccurrenceSpecifications are ordered along a Lifeline.&#xA;&#xA;The namespace of an OccurrenceSpecification is the Interaction in which it is contained.&#xA;&#xA;"/>
     </eAnnotations>
@@ -7043,42 +7042,17 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="start" ordered="false"
-        lowerBound="1" eType="#//ExecutionOccurrenceSpecification">
+        lowerBound="1" eType="#//OccurrenceSpecification">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the OccurrenceSpecification that designates the start of the Action or Behavior"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finish" ordered="false"
-        lowerBound="1" eType="#//ExecutionOccurrenceSpecification">
+        lowerBound="1" eType="#//OccurrenceSpecification">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the OccurrenceSpecification that designates the finish of the Action or Behavior."/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionOccurrenceSpecification" eSuperTypes="#//OccurrenceSpecification">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An ExecutionOccurrenceSpecification represents moments in time at which actions or behaviors start or finish."/>
-    </eAnnotations>
-    <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EReference" name="event" ordered="false" lowerBound="1"
-          eType="#//Event">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Redefines the event referenced to be restricted to an execution event."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//OccurrenceSpecification/event"/>
-      </contents>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" ordered="false"
-        lowerBound="1" eType="#//ExecutionSpecification">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="References the execution specification describing the execution that is started or finished at this execution event."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEvent" eSuperTypes="#//Event">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An ExecutionEvent models the start or finish of an execution occurrence."/>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateInvariant" eSuperTypes="#//InteractionFragment">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7129,6 +7103,11 @@
         <details key="documentation" value="Behavior whose execution is occurring."/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEvent" eSuperTypes="#//Event">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An ExecutionEvent models the start or finish of an execution occurrence."/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreationEvent" eSuperTypes="#//Event">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7185,15 +7164,26 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Specifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions."/>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionOccurrenceSpecification" eSuperTypes="#//OccurrenceSpecification">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An ExecutionOccurrenceSpecification represents moments in time at which actions or behaviors start or finish."/>
+    </eAnnotations>
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EReference" name="event" ordered="false" lowerBound="1"
           eType="#//Event">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Redefines the event referenced to be restricted to a message event."/>
+          <details key="documentation" value="Redefines the event referenced to be restricted to an execution event."/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//OccurrenceSpecification/event"/>
       </contents>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" ordered="false"
+        lowerBound="1" eType="#//ExecutionSpecification">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="References the execution specification describing the execution that is started or finished at this execution event."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReceiveOperationEvent" eSuperTypes="#//MessageEvent">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.6 2006/01/03 19:50:26 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.7 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -906,15 +906,6 @@ public class UMLAdapterFactory
 			return createExecutionSpecificationAdapter();
 		}
 
-		public Object caseExecutionOccurrenceSpecification(
-				ExecutionOccurrenceSpecification object) {
-			return createExecutionOccurrenceSpecificationAdapter();
-		}
-
-		public Object caseExecutionEvent(ExecutionEvent object) {
-			return createExecutionEventAdapter();
-		}
-
 		public Object caseStateInvariant(StateInvariant object) {
 			return createStateInvariantAdapter();
 		}
@@ -927,6 +918,10 @@ public class UMLAdapterFactory
 		public Object caseBehaviorExecutionSpecification(
 				BehaviorExecutionSpecification object) {
 			return createBehaviorExecutionSpecificationAdapter();
+		}
+
+		public Object caseExecutionEvent(ExecutionEvent object) {
+			return createExecutionEventAdapter();
 		}
 
 		public Object caseCreationEvent(CreationEvent object) {
@@ -952,6 +947,11 @@ public class UMLAdapterFactory
 		public Object caseMessageOccurrenceSpecification(
 				MessageOccurrenceSpecification object) {
 			return createMessageOccurrenceSpecificationAdapter();
+		}
+
+		public Object caseExecutionOccurrenceSpecification(
+				ExecutionOccurrenceSpecification object) {
+			return createExecutionOccurrenceSpecificationAdapter();
 		}
 
 		public Object caseReceiveOperationEvent(ReceiveOperationEvent object) {

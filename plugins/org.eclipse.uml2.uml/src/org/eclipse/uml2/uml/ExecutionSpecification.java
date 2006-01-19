@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecification.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: ExecutionSpecification.java,v 1.2 2006/01/19 23:06:35 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,12 +48,12 @@ public interface ExecutionSpecification
 	 * References the OccurrenceSpecification that designates the start of the Action or Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Start</em>' reference.
-	 * @see #setStart(ExecutionOccurrenceSpecification)
+	 * @see #setStart(OccurrenceSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExecutionSpecification_Start()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	ExecutionOccurrenceSpecification getStart();
+	OccurrenceSpecification getStart();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.ExecutionSpecification#getStart <em>Start</em>}' reference.
@@ -63,7 +63,7 @@ public interface ExecutionSpecification
 	 * @see #getStart()
 	 * @generated
 	 */
-	void setStart(ExecutionOccurrenceSpecification value);
+	void setStart(OccurrenceSpecification value);
 
 	/**
 	 * Returns the value of the '<em><b>Finish</b></em>' reference.
@@ -73,12 +73,12 @@ public interface ExecutionSpecification
 	 * References the OccurrenceSpecification that designates the finish of the Action or Behavior.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Finish</em>' reference.
-	 * @see #setFinish(ExecutionOccurrenceSpecification)
+	 * @see #setFinish(OccurrenceSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExecutionSpecification_Finish()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	ExecutionOccurrenceSpecification getFinish();
+	OccurrenceSpecification getFinish();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.ExecutionSpecification#getFinish <em>Finish</em>}' reference.
@@ -88,7 +88,7 @@ public interface ExecutionSpecification
 	 * @see #getFinish()
 	 * @generated
 	 */
-	void setFinish(ExecutionOccurrenceSpecification value);
+	void setFinish(OccurrenceSpecification value);
 
 	/**
 	 * <!-- begin-user-doc -->

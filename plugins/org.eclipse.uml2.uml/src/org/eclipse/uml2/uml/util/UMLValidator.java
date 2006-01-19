@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: UMLValidator.java,v 1.12 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3957,13 +3957,6 @@ public class UMLValidator
 			case UMLPackage.EXECUTION_SPECIFICATION :
 				return validateExecutionSpecification(
 					(ExecutionSpecification) value, diagnostics, context);
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION :
-				return validateExecutionOccurrenceSpecification(
-					(ExecutionOccurrenceSpecification) value, diagnostics,
-					context);
-			case UMLPackage.EXECUTION_EVENT :
-				return validateExecutionEvent((ExecutionEvent) value,
-					diagnostics, context);
 			case UMLPackage.STATE_INVARIANT :
 				return validateStateInvariant((StateInvariant) value,
 					diagnostics, context);
@@ -3974,6 +3967,9 @@ public class UMLValidator
 				return validateBehaviorExecutionSpecification(
 					(BehaviorExecutionSpecification) value, diagnostics,
 					context);
+			case UMLPackage.EXECUTION_EVENT :
+				return validateExecutionEvent((ExecutionEvent) value,
+					diagnostics, context);
 			case UMLPackage.CREATION_EVENT :
 				return validateCreationEvent((CreationEvent) value,
 					diagnostics, context);
@@ -3992,6 +3988,10 @@ public class UMLValidator
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION :
 				return validateMessageOccurrenceSpecification(
 					(MessageOccurrenceSpecification) value, diagnostics,
+					context);
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION :
+				return validateExecutionOccurrenceSpecification(
+					(ExecutionOccurrenceSpecification) value, diagnostics,
 					context);
 			case UMLPackage.RECEIVE_OPERATION_EVENT :
 				return validateReceiveOperationEvent(

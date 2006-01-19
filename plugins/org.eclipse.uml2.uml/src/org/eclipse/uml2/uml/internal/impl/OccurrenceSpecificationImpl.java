@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.10 2006/01/19 23:06:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -54,7 +54,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *
  * @generated
  */
-public abstract class OccurrenceSpecificationImpl
+public class OccurrenceSpecificationImpl
 		extends InteractionFragmentImpl
 		implements OccurrenceSpecification {
 
