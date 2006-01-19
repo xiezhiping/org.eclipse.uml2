@@ -14515,7 +14515,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rrla6hTaEdqZu-3Jy1-uYg" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrla6RTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
-        <ownedAttribute xmi:id="_3ADC7B74022D4161AA270132" name="ownedParameter" type="_3ADC7B74022D3DE6D57D00A3" redefinedProperty="_3ADC7B74022D3DE7637803DB" association="_3ADC7B74022D4161AA250298" aggregation="composite">
+        <ownedAttribute xmi:id="_3ADC7B74022D4161AA270132" name="ownedParameter" type="_3ADC7B74022D3DE6D57D00A3" isOrdered="true" redefinedProperty="_3ADC7B74022D3DE7637803DB" association="_3ADC7B74022D4161AA250298" aggregation="composite">
           <eAnnotations xmi:id="_n1ui0DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
             <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n1ui0TwaEdqNYOqRUhe_HQ" isResolveProxies="false"/>
           </eAnnotations>
