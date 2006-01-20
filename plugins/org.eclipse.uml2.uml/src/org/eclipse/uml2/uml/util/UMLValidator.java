@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.12 2006/01/19 23:06:34 khussey Exp $
+ * $Id: UMLValidator.java,v 1.13 2006/01/20 20:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -12626,6 +12626,21 @@ public class UMLValidator
 			result &= validateObjectNode_validateInputOutputParameter(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGt0(outputPin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(outputPin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGeLower(
+				outputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				outputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				outputPin, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(outputPin, diagnostics,
 				context);
 		return result;
@@ -12685,6 +12700,21 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateInputOutputParameter(pin,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGt0(pin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(pin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGeLower(pin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				pin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				pin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(pin, diagnostics, context);
 		return result;
@@ -12758,6 +12788,21 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateInputOutputParameter(inputPin,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGt0(inputPin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(inputPin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGeLower(
+				inputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				inputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				inputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(inputPin, diagnostics,
 				context);
@@ -16284,6 +16329,21 @@ public class UMLValidator
 			result &= validateObjectNode_validateInputOutputParameter(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGt0(valuePin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(valuePin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGeLower(
+				valuePin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				valuePin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
+				valuePin, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(valuePin, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -17918,6 +17978,21 @@ public class UMLValidator
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateInputOutputParameter(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGt0(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateLowerGe0(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateUpperGeLower(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationNoSideEffects(
+				actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validatePin_validateControlPins(actionInputPin,

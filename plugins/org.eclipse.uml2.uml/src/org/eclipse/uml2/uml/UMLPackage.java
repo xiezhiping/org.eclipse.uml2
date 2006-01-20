@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.17 2006/01/19 23:06:35 khussey Exp $
+ * $Id: UMLPackage.java,v 1.18 2006/01/20 20:55:52 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27772,13 +27772,67 @@ public interface UMLPackage
 	int PIN__SELECTION = OBJECT_NODE__SELECTION;
 
 	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__IS_ORDERED = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__IS_UNIQUE = OBJECT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__UPPER = OBJECT_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__LOWER = OBJECT_NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__UPPER_VALUE = OBJECT_NODE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__LOWER_VALUE = OBJECT_NODE_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIN__IS_CONTROL = OBJECT_NODE_FEATURE_COUNT + 0;
+	int PIN__IS_CONTROL = OBJECT_NODE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Pin</em>' class.
@@ -27787,7 +27841,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PIN_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 1;
+	int PIN_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -28031,6 +28085,60 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int OUTPUT_PIN__SELECTION = PIN__SELECTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__IS_ORDERED = PIN__IS_ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__IS_UNIQUE = PIN__IS_UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__UPPER = PIN__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__LOWER = PIN__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__UPPER_VALUE = PIN__UPPER_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__LOWER_VALUE = PIN__LOWER_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
@@ -28294,6 +28402,60 @@ public interface UMLPackage
 	int INPUT_PIN__SELECTION = PIN__SELECTION;
 
 	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__IS_ORDERED = PIN__IS_ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__IS_UNIQUE = PIN__IS_UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__UPPER = PIN__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__LOWER = PIN__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__UPPER_VALUE = PIN__UPPER_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__LOWER_VALUE = PIN__LOWER_VALUE;
+
+	/**
 	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28553,6 +28715,60 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int VALUE_PIN__SELECTION = INPUT_PIN__SELECTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_ORDERED = INPUT_PIN__IS_ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_UNIQUE = INPUT_PIN__IS_UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__UPPER = INPUT_PIN__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__LOWER = INPUT_PIN__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__UPPER_VALUE = INPUT_PIN__UPPER_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__LOWER_VALUE = INPUT_PIN__LOWER_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
@@ -51353,6 +51569,60 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ACTION_INPUT_PIN__SELECTION = INPUT_PIN__SELECTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INPUT_PIN__IS_ORDERED = INPUT_PIN__IS_ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INPUT_PIN__IS_UNIQUE = INPUT_PIN__IS_UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INPUT_PIN__UPPER = INPUT_PIN__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INPUT_PIN__LOWER = INPUT_PIN__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INPUT_PIN__UPPER_VALUE = INPUT_PIN__UPPER_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_INPUT_PIN__LOWER_VALUE = INPUT_PIN__LOWER_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Is Control</b></em>' attribute.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinItemProvider.java,v 1.2 2006/01/04 16:16:56 khussey Exp $
+ * $Id: PinItemProvider.java,v 1.3 2006/01/20 20:56:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -30,6 +32,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.Pin;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -65,9 +68,133 @@ public class PinItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIsOrderedPropertyDescriptor(object);
+			addIsUniquePropertyDescriptor(object);
+			addUpperPropertyDescriptor(object);
+			addLowerPropertyDescriptor(object);
+			addUpperValuePropertyDescriptor(object);
+			addLowerValuePropertyDescriptor(object);
 			addIsControlPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Ordered feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsOrderedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_isOrdered_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED, true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Unique feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsUniquePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_isUnique_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE, true,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Upper feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUpperPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upper_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER, true,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lower feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLowerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Upper Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUpperValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_upperValue_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upperValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lower Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLowerValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_lowerValue_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -87,6 +214,37 @@ public class PinItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_Pin_isControl_feature", "_UI_Pin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PIN__IS_CONTROL, true,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures
+				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE);
+			childrenFeatures
+				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -122,9 +280,18 @@ public class PinItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Pin.class)) {
+			case UMLPackage.PIN__IS_ORDERED :
+			case UMLPackage.PIN__IS_UNIQUE :
+			case UMLPackage.PIN__UPPER :
+			case UMLPackage.PIN__LOWER :
 			case UMLPackage.PIN__IS_CONTROL :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
+				return;
+			case UMLPackage.PIN__UPPER_VALUE :
+			case UMLPackage.PIN__LOWER_VALUE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -140,6 +307,118 @@ public class PinItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**
@@ -154,7 +433,9 @@ public class PinItemProvider
 		Object childObject = child;
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
-			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND;
+			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

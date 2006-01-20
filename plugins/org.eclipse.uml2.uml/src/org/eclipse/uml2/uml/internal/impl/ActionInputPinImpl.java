@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.13 2006/01/12 15:53:51 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.14 2006/01/20 20:55:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,6 +96,8 @@ public class ActionInputPinImpl
 					new int[]{UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT,
 						UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION,
 						UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND,
+						UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE,
+						UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE,
 						UMLPackage.ACTION_INPUT_PIN__FROM_ACTION}));
 		}
 		return ownedElement;
@@ -243,6 +245,10 @@ public class ActionInputPinImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
+			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
+			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
+				return basicSetLowerValue(null, msgs);
 			case UMLPackage.ACTION_INPUT_PIN__FROM_ACTION :
 				return basicSetFromAction(null, msgs);
 		}
@@ -322,6 +328,22 @@ public class ActionInputPinImpl
 				if (resolve)
 					return getSelection();
 				return basicGetSelection();
+			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
+				return isOrdered()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
+				return isUnique()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case UMLPackage.ACTION_INPUT_PIN__UPPER :
+				return new Integer(getUpper());
+			case UMLPackage.ACTION_INPUT_PIN__LOWER :
+				return new Integer(getLower());
+			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
+				return getUpperValue();
+			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
+				return getLowerValue();
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
 				return isControl()
 					? Boolean.TRUE
@@ -408,6 +430,24 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__SELECTION :
 				setSelection((Behavior) newValue);
 				return;
+			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
+				setIsOrdered(((Boolean) newValue).booleanValue());
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
+				setIsUnique(((Boolean) newValue).booleanValue());
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__UPPER :
+				setUpper(((Integer) newValue).intValue());
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__LOWER :
+				setLower(((Integer) newValue).intValue());
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
+				setUpperValue((ValueSpecification) newValue);
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
+				setLowerValue((ValueSpecification) newValue);
+				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
 				setIsControl(((Boolean) newValue).booleanValue());
 				return;
@@ -484,6 +524,24 @@ public class ActionInputPinImpl
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__SELECTION :
 				setSelection((Behavior) null);
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
+				setIsOrdered(IS_ORDERED_EDEFAULT);
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
+				setIsUnique(IS_UNIQUE_EDEFAULT);
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__UPPER :
+				unsetUpper();
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__LOWER :
+				unsetLower();
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
+				setUpperValue((ValueSpecification) null);
+				return;
+			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
+				setLowerValue((ValueSpecification) null);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
 				setIsControl(IS_CONTROL_EDEFAULT);
@@ -569,6 +627,18 @@ public class ActionInputPinImpl
 				return inState != null && !inState.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__SELECTION :
 				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__SELECTION) != null;
+			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
+				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
+			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
+				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
+			case UMLPackage.ACTION_INPUT_PIN__UPPER :
+				return isSetUpper();
+			case UMLPackage.ACTION_INPUT_PIN__LOWER :
+				return isSetLower();
+			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
+				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE) != null;
+			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
+				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE) != null;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
 				return ((eFlags & IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__FROM_ACTION :

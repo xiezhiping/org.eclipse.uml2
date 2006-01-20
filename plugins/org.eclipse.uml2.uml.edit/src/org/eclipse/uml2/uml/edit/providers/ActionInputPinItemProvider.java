@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinItemProvider.java,v 1.7 2006/01/11 18:14:01 khussey Exp $
+ * $Id: ActionInputPinItemProvider.java,v 1.8 2006/01/20 20:56:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -336,7 +336,9 @@ public class ActionInputPinItemProvider
 		Object childObject = child;
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
-			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND;
+			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

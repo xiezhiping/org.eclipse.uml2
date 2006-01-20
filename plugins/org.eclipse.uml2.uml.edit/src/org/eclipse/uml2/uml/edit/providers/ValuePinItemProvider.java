@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinItemProvider.java,v 1.2 2006/01/04 16:16:58 khussey Exp $
+ * $Id: ValuePinItemProvider.java,v 1.3 2006/01/20 20:56:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -228,6 +228,8 @@ public class ValuePinItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE
 			|| childFeature == UMLPackage.Literals.VALUE_PIN__VALUE;
 
 		if (qualify) {

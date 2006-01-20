@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.9 2006/01/19 23:06:34 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.10 2006/01/20 20:55:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2693,15 +2693,17 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObjectNode(outputPin);
 				if (result == null)
+					result = caseMultiplicityElement(outputPin);
+				if (result == null)
 					result = caseActivityNode(outputPin);
 				if (result == null)
 					result = caseTypedElement(outputPin);
 				if (result == null)
+					result = caseElement(outputPin);
+				if (result == null)
 					result = caseRedefinableElement(outputPin);
 				if (result == null)
 					result = caseNamedElement(outputPin);
-				if (result == null)
-					result = caseElement(outputPin);
 				if (result == null)
 					result = caseEModelElement(outputPin);
 				if (result == null)
@@ -2714,15 +2716,17 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObjectNode(pin);
 				if (result == null)
+					result = caseMultiplicityElement(pin);
+				if (result == null)
 					result = caseActivityNode(pin);
 				if (result == null)
 					result = caseTypedElement(pin);
 				if (result == null)
+					result = caseElement(pin);
+				if (result == null)
 					result = caseRedefinableElement(pin);
 				if (result == null)
 					result = caseNamedElement(pin);
-				if (result == null)
-					result = caseElement(pin);
 				if (result == null)
 					result = caseEModelElement(pin);
 				if (result == null)
@@ -2737,15 +2741,17 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObjectNode(inputPin);
 				if (result == null)
+					result = caseMultiplicityElement(inputPin);
+				if (result == null)
 					result = caseActivityNode(inputPin);
 				if (result == null)
 					result = caseTypedElement(inputPin);
 				if (result == null)
+					result = caseElement(inputPin);
+				if (result == null)
 					result = caseRedefinableElement(inputPin);
 				if (result == null)
 					result = caseNamedElement(inputPin);
-				if (result == null)
-					result = caseElement(inputPin);
 				if (result == null)
 					result = caseEModelElement(inputPin);
 				if (result == null)
@@ -2762,15 +2768,17 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObjectNode(valuePin);
 				if (result == null)
+					result = caseMultiplicityElement(valuePin);
+				if (result == null)
 					result = caseActivityNode(valuePin);
 				if (result == null)
 					result = caseTypedElement(valuePin);
 				if (result == null)
+					result = caseElement(valuePin);
+				if (result == null)
 					result = caseRedefinableElement(valuePin);
 				if (result == null)
 					result = caseNamedElement(valuePin);
-				if (result == null)
-					result = caseElement(valuePin);
 				if (result == null)
 					result = caseEModelElement(valuePin);
 				if (result == null)
@@ -4898,15 +4906,17 @@ public class UMLSwitch {
 				if (result == null)
 					result = caseObjectNode(actionInputPin);
 				if (result == null)
+					result = caseMultiplicityElement(actionInputPin);
+				if (result == null)
 					result = caseActivityNode(actionInputPin);
 				if (result == null)
 					result = caseTypedElement(actionInputPin);
 				if (result == null)
+					result = caseElement(actionInputPin);
+				if (result == null)
 					result = caseRedefinableElement(actionInputPin);
 				if (result == null)
 					result = caseNamedElement(actionInputPin);
-				if (result == null)
-					result = caseElement(actionInputPin);
 				if (result == null)
 					result = caseEModelElement(actionInputPin);
 				if (result == null)
