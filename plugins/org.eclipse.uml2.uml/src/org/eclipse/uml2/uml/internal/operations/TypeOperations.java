@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.7 2006/01/05 22:58:13 khussey Exp $
+ * $Id: TypeOperations.java,v 1.8 2006/01/24 22:28:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -144,6 +144,7 @@ public class TypeOperations
 			Type endType) {
 		EList ownedAttributes = getOwnedAttributes(type);
 		Property associationEnd = createOwnedProperty(ownedAttributes == null
+			|| !isNavigable
 			? association
 			: type, name, endType, lower, upper);
 
