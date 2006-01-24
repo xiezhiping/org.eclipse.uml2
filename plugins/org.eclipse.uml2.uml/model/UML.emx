@@ -852,6 +852,14 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7T5gs2wHEdq7X4sGURiZYA"/>
       </returnResult>
     </ownedOperation>
+    <ownedOperation xmi:id="_wdNtsI0GEdqipMtlOpTiHA" name="getDefinition">
+      <returnResult xmi:id="_wdNtsY0GEdqipMtlOpTiHA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53903D5BF000A?Ecore/EClass"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wdNtso0GEdqipMtlOpTiHA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wdNts40GEdqipMtlOpTiHA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53903D5BF000A?Ecore/EClass"/>
+    </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_NVhqMGv0Edq7X4sGURiZYA" name="Model">
     <ownedOperation xmi:id="_9nl2EGwREdq14q0ETb1t3g" name="isMetamodel" type="_UdivYGvsEdqG6fBIPwe-mw">
