@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.3 2006/01/04 17:47:32 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.4 2006/01/24 17:22:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
+import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
@@ -168,6 +169,7 @@ public class UMLActionBarContributor
 	public UMLActionBarContributor() {
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
+		controlAction = new ControlAction();
 	}
 
 	/**

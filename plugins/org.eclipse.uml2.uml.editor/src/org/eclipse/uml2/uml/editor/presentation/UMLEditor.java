@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.5 2006/01/05 16:17:45 khussey Exp $
+ * $Id: UMLEditor.java,v 1.6 2006/01/24 17:22:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1272,12 +1272,19 @@ public class UMLEditor
 			//
 			public void execute(IProgressMonitor monitor) {
 				try {
-					// Save the resource to the file system.
+					// Save the resources to the file system.
 					//
-					Resource savedResource = (Resource) editingDomain
-						.getResourceSet().getResources().get(0);
-					savedResources.add(savedResource);
-					savedResource.save(Collections.EMPTY_MAP);
+					boolean first = true;
+					for (Iterator i = editingDomain.getResourceSet()
+						.getResources().iterator(); i.hasNext();) {
+						Resource resource = (Resource) i.next();
+						if ((first || !resource.getContents().isEmpty())
+							&& !editingDomain.isReadOnly(resource)) {
+							savedResources.add(resource);
+							resource.save(Collections.EMPTY_MAP);
+						}
+						first = false;
+					}
 				} catch (Exception exception) {
 					UMLEditorPlugin.INSTANCE.log(exception);
 				}
