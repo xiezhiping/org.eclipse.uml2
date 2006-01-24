@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.8 2006/01/19 14:13:33 khussey Exp $
+ * $Id: UMLUtil.java,v 1.9 2006/01/24 22:05:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5759,23 +5759,80 @@ public class UMLUtil
 		return null;
 	}
 
-	public static Stereotype getStereotype(EObject stereotypeApplication) {
-		EAnnotation eAnnotation = stereotypeApplication.eClass()
-			.getEAnnotation(UMLPackage.eNS_URI);
+	protected static NamedElement getNamedElement(ENamedElement definition) {
 
-		if (eAnnotation != null) {
-			EList references = eAnnotation.getReferences();
+		return (NamedElement) new EcoreSwitch() {
 
-			if (!references.isEmpty()) {
-				Object reference = references.get(0);
+			public Object caseEClassifier(EClassifier eClassifier) {
+				EAnnotation eAnnotation = eClassifier
+					.getEAnnotation(UMLPackage.eNS_URI);
 
-				if (reference instanceof Stereotype) {
-					return (Stereotype) reference;
+				if (eAnnotation != null) {
+					EList references = eAnnotation.getReferences();
+
+					if (!references.isEmpty()) {
+						Object reference = references.get(0);
+
+						if (reference instanceof Classifier) {
+							return reference;
+						}
+					}
 				}
-			}
-		}
 
-		return null;
+				return null;
+			}
+
+			public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
+				Enumeration enumeration = (Enumeration) doSwitch(eEnumLiteral
+					.getEEnum());
+				return enumeration == null
+					? null
+					: enumeration.getOwnedLiteral(eEnumLiteral.getName());
+			}
+
+			public Object caseEStructuralFeature(
+					EStructuralFeature eStructuralFeature) {
+				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) doSwitch(eStructuralFeature
+					.getEContainingClass());
+
+				if (class_ != null) {
+					String name = eStructuralFeature.getName();
+
+					for (Iterator ownedAttributes = class_.getOwnedAttributes()
+						.iterator(); ownedAttributes.hasNext();) {
+
+						Property ownedAttribute = (Property) ownedAttributes
+							.next();
+
+						if (safeEquals(getValidJavaIdentifier(ownedAttribute
+							.getName()), name)) {
+
+							return ownedAttribute;
+						}
+					}
+				}
+
+				return null;
+			}
+
+			public Object caseEPackage(EPackage ePackage) {
+				return getProfile(ePackage);
+			}
+
+			public Object doSwitch(EObject eObject) {
+				return eObject == null
+					? null
+					: super.doSwitch(eObject);
+			}
+		}.doSwitch(definition);
+	}
+
+	protected static Stereotype getStereotype(EClass definition) {
+		return (Stereotype) getNamedElement(definition);
+	}
+
+	public static Stereotype getStereotype(EObject stereotypeApplication) {
+		return getStereotype(stereotypeApplication.eClass());
 	}
 
 	public static Element getBaseElement(EObject stereotypeApplication) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.14 2006/01/19 14:13:28 khussey Exp $
+ * $Id: UML2Util.java,v 1.15 2006/01/24 22:06:06 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -891,6 +891,13 @@ public class UML2Util {
 		}
 
 		EcoreUtil.remove(eObject);
+	}
+
+	protected static void destroyAll(Collection eObjects) {
+
+		for (Iterator o = eObjects.iterator(); o.hasNext();) {
+			destroy((EObject) o.next());
+		}
 	}
 
 	public static Object load(ResourceSet resourceSet, URI uri, EClass eClass) {

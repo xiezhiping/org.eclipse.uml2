@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.11 2006/01/16 22:44:13 khussey Exp $
+ * $Id: PackageOperations.java,v 1.12 2006/01/24 22:05:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -21,18 +21,18 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
-import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
@@ -41,7 +41,6 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
@@ -84,6 +83,65 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  */
 public class PackageOperations
 		extends NamespaceOperations {
+
+	protected static class StereotypeApplicationCopier
+			extends EcoreUtil.Copier {
+
+		protected final Profile profile;
+
+		protected StereotypeApplicationCopier(Profile profile) {
+			super();
+			
+			this.profile = profile;
+		}
+
+		protected EObject createCopy(EObject eObject) {
+			EObject copyEObject = super.createCopy(eObject);
+			CacheAdapter.INSTANCE.adapt(copyEObject);
+			return copyEObject;
+		}
+
+		protected EClass getTarget(EClass eClass) {
+			return (EClass) profile.getDefinition(
+				getNamedElement(eClass));
+		}
+
+		protected EStructuralFeature getTarget(
+				EStructuralFeature eStructuralFeature) {
+			return (EStructuralFeature) profile
+				.getDefinition(getNamedElement(eStructuralFeature));
+		}
+
+		protected void copyAttribute(EAttribute eAttribute, EObject eObject,
+				EObject copyEObject) {
+
+			try {
+				super.copyAttribute(eAttribute, eObject, copyEObject);
+			} catch (Exception e) {
+				// ignore
+			}
+		}
+
+		protected void copyContainment(EReference eReference, EObject eObject,
+				EObject copyEObject) {
+
+			try {
+				super.copyContainment(eReference, eObject, copyEObject);
+			} catch (Exception e) {
+				// ignore
+			}
+		}
+
+		protected void copyReference(EReference eReference, EObject eObject,
+				EObject copyEObject) {
+
+			try {
+				super.copyReference(eReference, eObject, copyEObject);
+			} catch (Exception e) {
+				// ignore
+			}
+		}
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,162 +269,6 @@ public class PackageOperations
 		return getProfileApplication(package_, profile) != null;
 	}
 
-	protected static void copyValues(EObject sourceEObject,
-			EObject targetEObject) {
-
-		for (Iterator targetEStructuralFeatures = targetEObject.eClass()
-			.getEAllStructuralFeatures().iterator(); targetEStructuralFeatures
-			.hasNext();) {
-
-			EStructuralFeature targetEStructuralFeature = (EStructuralFeature) targetEStructuralFeatures
-				.next();
-
-			EStructuralFeature sourceEStructuralFeature = sourceEObject
-				.eClass().getEStructuralFeature(
-					targetEStructuralFeature.getName());
-
-			if (sourceEStructuralFeature != null
-				&& sourceEObject.eIsSet(sourceEStructuralFeature)) {
-
-				try {
-					switch (targetEStructuralFeature.getEType().eClass()
-						.getClassifierID()) {
-
-						case EcorePackage.ECLASS :
-							copyEClassValue(sourceEObject,
-								sourceEStructuralFeature, targetEObject,
-								targetEStructuralFeature);
-
-							break;
-						case EcorePackage.EDATA_TYPE :
-							copyEDataTypeValue(sourceEObject,
-								sourceEStructuralFeature, targetEObject,
-								targetEStructuralFeature);
-
-							break;
-						case EcorePackage.EENUM :
-							copyEEnumValue(sourceEObject,
-								sourceEStructuralFeature, targetEObject,
-								targetEStructuralFeature);
-
-							break;
-					}
-				} catch (Exception e) {
-					UMLPlugin.INSTANCE.log(e);
-				}
-			}
-		}
-	}
-
-	protected static void copyEClassValue(EObject sourceEObject,
-			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
-			EStructuralFeature targetEStructuralFeature) {
-		Object sourceValue = sourceEObject.eGet(sourceEStructuralFeature);
-
-		EClass targetEClass = (EClass) targetEStructuralFeature.getEType();
-
-		if (targetEStructuralFeature.isMany()) {
-			EList targetEList = (EList) targetEObject
-				.eGet(targetEStructuralFeature);
-
-			if (sourceEStructuralFeature.isMany()) {
-				EList sourceEList = (EList) sourceValue;
-
-				for (int i = 0; i < sourceEList.size(); i++) {
-					EObject targetValue = targetEClass.getEPackage()
-						.getEFactoryInstance().create(targetEClass);
-					copyValues((EObject) sourceEList.get(i), targetValue);
-					targetEList.add(i, targetValue);
-				}
-			} else {
-				EObject targetValue = targetEClass.getEPackage()
-					.getEFactoryInstance().create(targetEClass);
-				copyValues((EObject) sourceValue, targetValue);
-				targetEList.add(targetValue);
-			}
-		} else {
-			EObject targetValue = targetEClass.getEPackage()
-				.getEFactoryInstance().create(targetEClass);
-			copyValues((EObject) (sourceEStructuralFeature.isMany()
-				? ((EList) sourceValue).get(0)
-				: sourceValue), targetValue);
-			targetEObject.eSet(targetEStructuralFeature, targetValue);
-		}
-	}
-
-	protected static void copyEDataTypeValue(EObject sourceEObject,
-			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
-			EStructuralFeature targetEStructuralFeature) {
-		Object sourceValue = sourceEObject.eGet(sourceEStructuralFeature);
-
-		EDataType sourceEDataType = (EDataType) sourceEStructuralFeature
-			.getEType();
-		EFactory sourceEFactory = sourceEDataType.getEPackage()
-			.getEFactoryInstance();
-		EDataType targetEDataType = (EDataType) targetEStructuralFeature
-			.getEType();
-		EFactory targetEFactory = targetEDataType.getEPackage()
-			.getEFactoryInstance();
-
-		if (targetEStructuralFeature.isMany()) {
-			EList targetEList = (EList) targetEObject
-				.eGet(targetEStructuralFeature);
-
-			if (sourceEStructuralFeature.isMany()) {
-				EList sourceEList = (EList) sourceValue;
-
-				for (int i = 0; i < sourceEList.size(); i++) {
-					targetEList.add(i, targetEFactory.createFromString(
-						targetEDataType, sourceEFactory.convertToString(
-							sourceEDataType, sourceEList.get(i))));
-				}
-			} else {
-				targetEList.add(targetEFactory.createFromString(
-					targetEDataType, sourceEFactory.convertToString(
-						sourceEDataType, sourceValue)));
-			}
-		} else {
-			targetEObject.eSet(targetEStructuralFeature, targetEFactory
-				.createFromString(targetEDataType, sourceEFactory
-					.convertToString(sourceEDataType, sourceEStructuralFeature
-						.isMany()
-						? ((EList) sourceValue).get(0)
-						: sourceValue)));
-		}
-	}
-
-	protected static void copyEEnumValue(EObject sourceEObject,
-			EStructuralFeature sourceEStructuralFeature, EObject targetEObject,
-			EStructuralFeature targetEStructuralFeature) {
-		Object sourceValue = sourceEObject.eGet(sourceEStructuralFeature);
-
-		EEnum targetEEnum = (EEnum) targetEStructuralFeature.getEType();
-
-		if (targetEStructuralFeature.isMany()) {
-			EList targetEList = (EList) targetEObject
-				.eGet(targetEStructuralFeature);
-
-			if (sourceEStructuralFeature.isMany()) {
-				EList sourceEList = (EList) sourceValue;
-
-				for (int i = 0; i < sourceEList.size(); i++) {
-					targetEList.add(i, targetEEnum.getEEnumLiteral(
-						((EEnumLiteral) sourceEList.get(i)).getName())
-						.getInstance());
-				}
-			} else {
-				targetEList.add(targetEEnum.getEEnumLiteral(
-					((EEnumLiteral) sourceValue).getName()).getInstance());
-			}
-		} else {
-			targetEObject.eSet(targetEStructuralFeature, targetEEnum
-				.getEEnumLiteral(
-					((EEnumLiteral) (sourceEStructuralFeature.isMany()
-						? ((EList) sourceValue).get(0)
-						: sourceValue)).getName()).getInstance());
-		}
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -398,6 +300,9 @@ public class PackageOperations
 			getEAnnotation(profileApplication, UMLPackage.eNS_URI, true)
 				.getReferences().set(0, profileDefinition);
 
+			EList stereotypeApplications = new UniqueEList();
+			StereotypeApplicationCopier copier = new StereotypeApplicationCopier(profile);
+
 			for (Iterator allContents = getAllContents(package_, true, false); allContents
 				.hasNext();) {
 
@@ -406,27 +311,37 @@ public class PackageOperations
 				if (object instanceof Element) {
 					Element element = (Element) object;
 
-					for (Iterator stereotypeApplications = element
-						.getStereotypeApplications().iterator(); stereotypeApplications
-						.hasNext();) {
+					for (Iterator sa = element.getStereotypeApplications()
+						.iterator(); sa.hasNext();) {
 
-						EObject stereotypeApplication = (EObject) stereotypeApplications
-							.next();
-
+						EObject stereotypeApplication = (EObject) sa.next();
 						Stereotype stereotype = getStereotype(stereotypeApplication);
 
 						if (stereotype != null
-							&& element.isStereotypeApplicable(stereotype)) {
+							&& stereotype.getProfile() == profile) {
 
-							copyValues(stereotypeApplication, ElementOperations
-								.applyStereotype(element, stereotype, element
-									.eResource()));
+							if (element.isStereotypeApplicable(stereotype)) {
+								EObject copy = copier
+									.copy(stereotypeApplication);
+								Resource eResource = stereotypeApplication
+									.eResource();
+
+								if (eResource != null) {
+									EList contents = eResource.getContents();
+									contents.set(contents
+										.indexOf(stereotypeApplication), copy);
+								}
+							}
+
+							stereotypeApplications.add(stereotypeApplication);
 						}
-
-						destroy(stereotypeApplication);
 					}
 				}
 			}
+
+			copier.copyReferences();
+
+			destroyAll(stereotypeApplications);
 		}
 
 		return applyAllRequiredStereotypes(package_);

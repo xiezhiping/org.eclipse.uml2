@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.21 2006/01/24 17:40:40 khussey Exp $
+ * $Id: ElementOperations.java,v 1.22 2006/01/24 22:05:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Association;
@@ -638,16 +639,15 @@ public class ElementOperations
 					List list = (List) eObject.eGet(eStructuralFeature);
 
 					for (int j = list.size(); j <= index; j++) {
-						list.add(j, eClass.getEPackage().getEFactoryInstance()
-							.create(eClass));
+						list.add(j, EcoreUtil.create(eClass));
 					}
 
 					eObject = (EObject) list.get(index);
 				} else {
 
 					if (eObject.eGet(eStructuralFeature) == null) {
-						eObject.eSet(eStructuralFeature, eClass.getEPackage()
-							.getEFactoryInstance().create(eClass));
+						eObject.eSet(eStructuralFeature, EcoreUtil
+							.create(eClass));
 					}
 
 					eObject = (EObject) eObject.eGet(eStructuralFeature);
@@ -798,7 +798,7 @@ public class ElementOperations
 				EList keywords = new UniqueEList();
 
 				for (Iterator d = details.iterator(); d.hasNext();) {
-					keywords.add(((Map.Entry) d).getKey());
+					keywords.add(((Map.Entry) d.next()).getKey());
 				}
 
 				return ECollections.unmodifiableEList(keywords);
@@ -976,14 +976,15 @@ public class ElementOperations
 	}
 
 	protected static EObject applyStereotype(Element element,
-			Stereotype stereotype, Resource resource) {
-		EObject stereotypeApplication = stereotype.getProfile().create(
-			stereotype);
+			EClass definition) {
+		EObject stereotypeApplication = EcoreUtil.create(definition);
 
 		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
 
-		if (resource != null) {
-			resource.getContents().add(stereotypeApplication);
+		Resource eResource = element.eResource();
+
+		if (eResource != null) {
+			eResource.getContents().add(stereotypeApplication);
 		}
 
 		setBaseElement(stereotypeApplication, element);
@@ -1009,13 +1010,13 @@ public class ElementOperations
 
 					if (!containedElement.isStereotypeApplied(stereotype)) {
 						stereotypeApplications.add(applyStereotype(
-							containedElement, stereotype, element.eResource()));
+							containedElement, stereotype.getDefinition()));
 					}
 				}
 			}
 		}
 
-        return stereotypeApplications;
+		return stereotypeApplications;
 	}
 
 	/**
@@ -1036,7 +1037,7 @@ public class ElementOperations
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
-		return applyStereotype(element, stereotype, element.eResource());
+		return applyStereotype(element, stereotype.getDefinition());
 	}
 
 	public static EList unapplyAllNonApplicableStereotypes(Element element) {
@@ -1119,9 +1120,9 @@ public class ElementOperations
 						applicableStereotypes.add(stereotype);
 					}
 				}
-
-				return ECollections.unmodifiableEList(applicableStereotypes);
 			}
+
+			return ECollections.unmodifiableEList(applicableStereotypes);
 		}
 
 		return ECollections.EMPTY_ELIST;
