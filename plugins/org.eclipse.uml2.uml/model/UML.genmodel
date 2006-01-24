@@ -1903,6 +1903,7 @@
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getAllExtendedMetaclasses"
           cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getDefinition"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Image" labelFeature="#//uml/Image/format">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Image/content"/>

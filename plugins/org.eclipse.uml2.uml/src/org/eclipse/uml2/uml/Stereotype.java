@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.3 2006/01/12 16:55:47 khussey Exp $
+ * $Id: Stereotype.java,v 1.4 2006/01/24 20:23:47 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -138,5 +140,13 @@ public interface Stereotype
 	 * @generated
 	 */
 	EList getAllExtendedMetaclasses();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	EClass getDefinition();
 
 } // Stereotype

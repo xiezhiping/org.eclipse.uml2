@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.4 2006/01/24 20:23:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -99,7 +99,7 @@ public interface TemplateSignature
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateSignature_OwnedParameter()
 	 * @see org.eclipse.uml2.uml.TemplateParameter#getSignature
-	 * @model type="org.eclipse.uml2.uml.TemplateParameter" opposite="signature" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.TemplateParameter" opposite="signature" containment="true" resolveProxies="false"
 	 * @generated
 	 */
 	EList getOwnedParameters();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.7 2006/01/12 02:19:31 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.8 2006/01/24 20:23:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Extension;
@@ -50,6 +52,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword(boolean) <em>Get Keyword</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getDefinition() <em>Get Definition</em>}</li>
  * </ul>
  * </p>
  *
@@ -284,6 +287,18 @@ public class StereotypeOperations
 		}
 
 		return ECollections.unmodifiableEList(allExtendedMetaclasses);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EClass getDefinition(Stereotype stereotype) {
+		Profile profile = stereotype.getProfile();
+		return profile == null
+			? null
+			: (EClass) profile.getDefinition(stereotype);
 	}
 
 } // StereotypeOperations

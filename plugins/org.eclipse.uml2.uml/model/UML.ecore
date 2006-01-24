@@ -1370,9 +1370,8 @@
         <details key="documentation" value="The ordered set of all formal template parameters for this template signature."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameter" ordered="false"
-        upperBound="-1" eType="#//TemplateParameter" containment="true" resolveProxies="false"
-        eOpposite="#//TemplateParameter/signature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameter" upperBound="-1"
+        eType="#//TemplateParameter" containment="true" resolveProxies="false" eOpposite="#//TemplateParameter/signature">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The formal template parameters that are owned by this template signature."/>
       </eAnnotations>
@@ -4379,6 +4378,7 @@
     <eOperations name="getExtendedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
     <eOperations name="getAllExtendedMetaclasses" ordered="false" upperBound="-1"
         eType="#//Class"/>
+    <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="icon" ordered="false" upperBound="-1"
         eType="#//Image" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

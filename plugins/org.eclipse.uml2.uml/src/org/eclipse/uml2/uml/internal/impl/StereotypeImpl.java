@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.14 2006/01/12 16:55:47 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.15 2006/01/24 20:23:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -202,6 +202,15 @@ public class StereotypeImpl
 			return result;
 		}
 		return StereotypeOperations.getAllExtendedMetaclasses(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDefinition() {
+		return StereotypeOperations.getDefinition(this);
 	}
 
 	/**
