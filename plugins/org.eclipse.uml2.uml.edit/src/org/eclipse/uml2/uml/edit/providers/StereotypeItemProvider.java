@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeItemProvider.java,v 1.4 2006/01/12 16:56:00 khussey Exp $
+ * $Id: StereotypeItemProvider.java,v 1.5 2006/01/24 22:46:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -112,7 +112,8 @@ public class StereotypeItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Stereotype"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Stereotype")); //$NON-NLS-1$
 	}
 
 	/**

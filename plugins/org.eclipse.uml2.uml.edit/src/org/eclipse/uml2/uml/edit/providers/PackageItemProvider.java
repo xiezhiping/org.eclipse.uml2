@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.9 2006/01/05 13:54:11 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.10 2006/01/24 22:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -310,7 +310,8 @@ public class PackageItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Package"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Package")); //$NON-NLS-1$
 	}
 
 	/**

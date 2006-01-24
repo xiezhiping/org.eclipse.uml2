@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueItemProvider.java,v 1.2 2006/01/04 16:16:57 khussey Exp $
+ * $Id: QualifierValueItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -113,7 +113,8 @@ public class QualifierValueItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/QualifierValue"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/QualifierValue")); //$NON-NLS-1$
 	}
 
 	/**

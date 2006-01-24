@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.6 2006/01/05 13:54:11 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.7 2006/01/24 22:46:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -467,7 +467,8 @@ public class OperationItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Operation"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Operation")); //$NON-NLS-1$
 	}
 
 	/**

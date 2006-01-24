@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationItemProvider.java,v 1.3 2006/01/04 17:47:49 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -95,8 +95,8 @@ public class ExecutionOccurrenceSpecificationItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage(
-			"full/obj16/ExecutionOccurrenceSpecification"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/ExecutionOccurrenceSpecification")); //$NON-NLS-1$
 	}
 
 	/**

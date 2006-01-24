@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationItemProvider.java,v 1.4 2006/01/05 13:54:11 khussey Exp $
+ * $Id: ComponentRealizationItemProvider.java,v 1.5 2006/01/24 22:46:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -130,7 +130,8 @@ public class ComponentRealizationItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/ComponentRealization"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/ComponentRealization")); //$NON-NLS-1$
 	}
 
 	/**

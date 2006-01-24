@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.4 2006/01/12 15:54:08 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.5 2006/01/24 22:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -191,7 +191,8 @@ public class StateMachineItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/StateMachine"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/StateMachine")); //$NON-NLS-1$
 	}
 
 	/**

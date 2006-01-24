@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintItemProvider.java,v 1.3 2006/01/04 16:16:58 khussey Exp $
+ * $Id: DurationConstraintItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -97,7 +97,8 @@ public class DurationConstraintItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/DurationConstraint"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/DurationConstraint")); //$NON-NLS-1$
 	}
 
 	/**

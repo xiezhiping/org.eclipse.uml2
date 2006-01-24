@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureItemProvider.java,v 1.6 2006/01/05 13:54:11 khussey Exp $
+ * $Id: TemplateSignatureItemProvider.java,v 1.7 2006/01/24 22:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -166,7 +166,8 @@ public class TemplateSignatureItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/TemplateSignature"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/TemplateSignature")); //$NON-NLS-1$
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.8 2006/01/05 13:54:11 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.9 2006/01/24 22:46:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -582,7 +582,8 @@ public class PropertyItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Property"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Property")); //$NON-NLS-1$
 	}
 
 	/**

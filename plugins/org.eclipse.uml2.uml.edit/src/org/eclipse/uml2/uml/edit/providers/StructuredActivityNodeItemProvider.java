@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.9 2006/01/11 18:14:01 khussey Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.10 2006/01/24 22:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -432,8 +432,8 @@ public class StructuredActivityNodeItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage(
-			"full/obj16/StructuredActivityNode"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/StructuredActivityNode")); //$NON-NLS-1$
 	}
 
 	/**

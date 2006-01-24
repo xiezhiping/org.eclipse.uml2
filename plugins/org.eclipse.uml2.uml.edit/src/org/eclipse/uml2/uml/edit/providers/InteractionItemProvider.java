@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.9 2006/01/19 23:06:52 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.10 2006/01/24 22:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -303,7 +303,8 @@ public class InteractionItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Interaction"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Interaction")); //$NON-NLS-1$
 	}
 
 	/**
