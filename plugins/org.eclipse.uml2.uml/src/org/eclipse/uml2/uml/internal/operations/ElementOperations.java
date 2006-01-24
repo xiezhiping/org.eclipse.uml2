@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.20 2006/01/16 22:29:29 khussey Exp $
+ * $Id: ElementOperations.java,v 1.21 2006/01/24 17:40:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1013,11 +1013,9 @@ public class ElementOperations
 					}
 				}
 			}
-
-			return stereotypeApplications;
 		}
 
-		return ECollections.EMPTY_ELIST;
+        return stereotypeApplications;
 	}
 
 	/**
