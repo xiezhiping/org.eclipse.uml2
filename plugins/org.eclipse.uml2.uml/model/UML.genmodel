@@ -2156,7 +2156,10 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//ProfileApplication/isStrict"/>
       <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//ProfileApplication/applyingPackage"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProfileApplication/getProfileDefinition"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProfileApplication/getAppliedDefinition"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ProfileApplication/getAppliedDefinition.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ProfileApplication/getAppliedDefinition.1/namedElement"/>
+      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Enumeration">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"

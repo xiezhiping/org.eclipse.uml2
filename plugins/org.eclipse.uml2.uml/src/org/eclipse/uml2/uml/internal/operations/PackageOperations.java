@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.12 2006/01/24 22:05:56 khussey Exp $
+ * $Id: PackageOperations.java,v 1.13 2006/01/25 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -91,7 +91,7 @@ public class PackageOperations
 
 		protected StereotypeApplicationCopier(Profile profile) {
 			super();
-			
+
 			this.profile = profile;
 		}
 
@@ -102,8 +102,7 @@ public class PackageOperations
 		}
 
 		protected EClass getTarget(EClass eClass) {
-			return (EClass) profile.getDefinition(
-				getNamedElement(eClass));
+			return (EClass) profile.getDefinition(getNamedElement(eClass));
 		}
 
 		protected EStructuralFeature getTarget(
@@ -301,7 +300,8 @@ public class PackageOperations
 				.getReferences().set(0, profileDefinition);
 
 			EList stereotypeApplications = new UniqueEList();
-			StereotypeApplicationCopier copier = new StereotypeApplicationCopier(profile);
+			StereotypeApplicationCopier copier = new StereotypeApplicationCopier(
+				profile);
 
 			for (Iterator allContents = getAllContents(package_, true, false); allContents
 				.hasNext();) {

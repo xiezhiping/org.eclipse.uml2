@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.6 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.7 2006/01/25 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -123,6 +124,14 @@ public interface ProfileApplication
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EPackage getProfileDefinition();
+	EPackage getAppliedDefinition();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" namedElementRequired="true" namedElementOrdered="false"
+	 * @generated
+	 */
+	ENamedElement getAppliedDefinition(NamedElement namedElement);
 
 } // ProfileApplication

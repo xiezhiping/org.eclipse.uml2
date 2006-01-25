@@ -8,14 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ProfileApplicationOperations.java,v 1.5 2006/01/25 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -27,7 +29,8 @@ import org.eclipse.uml2.uml.UMLPackage;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getProfileDefinition() <em>Get Profile Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getAppliedDefinition() <em>Get Applied Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ProfileApplication#getAppliedDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Applied Definition</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,7 +53,7 @@ public class ProfileApplicationOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EPackage getProfileDefinition(
+	public static EPackage getAppliedDefinition(
 			ProfileApplication profileApplication) {
 		EAnnotation eAnnotation = profileApplication
 			.getEAnnotation(UMLPackage.eNS_URI);
@@ -64,6 +67,18 @@ public class ProfileApplicationOperations
 		}
 
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static ENamedElement getAppliedDefinition(
+			ProfileApplication profileApplication, NamedElement namedElement) {
+		return ProfileOperations.getDefinition(profileApplication
+			.getAppliedProfile(), namedElement, profileApplication
+			.getAppliedDefinition());
 	}
 
 } // ProfileApplicationOperations

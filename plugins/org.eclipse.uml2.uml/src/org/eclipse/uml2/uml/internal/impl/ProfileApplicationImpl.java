@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.12 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.13 2006/01/25 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -251,8 +253,18 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EPackage getProfileDefinition() {
-		return ProfileApplicationOperations.getProfileDefinition(this);
+	public EPackage getAppliedDefinition() {
+		return ProfileApplicationOperations.getAppliedDefinition(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ENamedElement getAppliedDefinition(NamedElement namedElement) {
+		return ProfileApplicationOperations.getAppliedDefinition(this,
+			namedElement);
 	}
 
 	/**

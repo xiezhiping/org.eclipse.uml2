@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.22 2006/01/24 22:05:56 khussey Exp $
+ * $Id: ElementOperations.java,v 1.23 2006/01/25 18:51:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -975,8 +975,7 @@ public class ElementOperations
 		return element.getStereotypeApplication(stereotype) != null;
 	}
 
-	protected static EObject applyStereotype(Element element,
-			EClass definition) {
+	protected static EObject applyStereotype(Element element, EClass definition) {
 		EObject stereotypeApplication = EcoreUtil.create(definition);
 
 		CacheAdapter.INSTANCE.adapt(stereotypeApplication);

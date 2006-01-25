@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.4 2006/01/16 22:44:15 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.5 2006/01/25 18:51:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -92,7 +92,7 @@ public class ApplyProfileAction
 
 								if (profileApplication == null
 									|| profileApplication
-										.getProfileDefinition() != profile
+										.getAppliedDefinition() != profile
 										.getDefinition()) {
 
 									choiceOfValues.add(profile);
