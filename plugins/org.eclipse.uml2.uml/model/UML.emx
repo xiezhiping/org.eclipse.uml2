@@ -867,13 +867,22 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_uY5yQGv5Edq7X4sGURiZYA" name="ProfileApplication">
-    <ownedOperation xmi:id="_GXI1QW10EdqniMBnIUw7ig" name="getProfileDefinition">
+    <ownedOperation xmi:id="_GXI1QW10EdqniMBnIUw7ig" name="getAppliedDefinition">
       <returnResult xmi:id="_LJ9EAG10EdqniMBnIUw7ig" direction="return">
         <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OTQ-UW10EdqniMBnIUw7ig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OTQ-UG10EdqniMBnIUw7ig"/>
       </returnResult>
       <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53905C3F7000A?Ecore/EPackage"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_G3YEAI2_EdqipMtlOpTiHA" name="getAppliedDefinition">
+      <returnResult xmi:id="_G3YEAY2_EdqipMtlOpTiHA" direction="return">
+        <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53B65CCC600FE?Ecore/ENamedElement"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G3YEAo2_EdqipMtlOpTiHA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G3YEA42_EdqipMtlOpTiHA"/>
+      </returnResult>
+      <type xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53B65CCC600FE?Ecore/ENamedElement"/>
+      <ownedParameter xmi:id="_G3YEBI2_EdqipMtlOpTiHA" name="namedElement" type="_csVgUGvtEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_I6N3UGwGEdq7X4sGURiZYA" name="Enumeration">
