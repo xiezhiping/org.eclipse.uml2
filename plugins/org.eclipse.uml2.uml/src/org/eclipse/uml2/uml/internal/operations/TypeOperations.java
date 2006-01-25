@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.8 2006/01/24 22:28:07 khussey Exp $
+ * $Id: TypeOperations.java,v 1.9 2006/01/25 16:47:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -147,6 +147,8 @@ public class TypeOperations
 			|| !isNavigable
 			? association
 			: type, name, endType, lower, upper);
+
+		associationEnd.setAggregation(aggregation);
 
 		if (isNavigable) {
 
