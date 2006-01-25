@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.8 2006/01/24 20:23:47 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.9 2006/01/25 16:50:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -179,8 +179,8 @@ public class StereotypeOperations
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 		extensionEnd.setType(stereotype);
 
-		if (!isRequired) {
-			extensionEnd.setLower(0);
+		if (isRequired) {
+			extensionEnd.setLower(1);
 		}
 
 		Property property = stereotype
