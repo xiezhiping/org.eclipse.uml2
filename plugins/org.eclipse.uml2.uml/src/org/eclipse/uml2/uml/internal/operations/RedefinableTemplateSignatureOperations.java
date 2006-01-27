@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.6 2006/01/05 22:43:24 khussey Exp $
+ * $Id: RedefinableTemplateSignatureOperations.java,v 1.7 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -99,7 +99,7 @@ public class RedefinableTemplateSignatureOperations
 	 */
 	public static EList getInheritedParameters(
 			RedefinableTemplateSignature redefinableTemplateSignature) {
-		EList inheritedParameters = new UniqueEList();
+		EList inheritedParameters = new UniqueEList.FastCompare();
 
 		for (Iterator extendedSignatures = redefinableTemplateSignature
 			.getExtendedSignatures().iterator(); extendedSignatures.hasNext();) {

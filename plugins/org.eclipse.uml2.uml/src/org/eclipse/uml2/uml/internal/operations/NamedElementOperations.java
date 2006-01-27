@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.10 2006/01/05 22:43:26 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.11 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -275,7 +275,7 @@ public class NamedElementOperations
 	 * @generated NOT
 	 */
 	public static EList allNamespaces(NamedElement namedElement) {
-		EList allNamespaces = new UniqueEList();
+		EList allNamespaces = new UniqueEList.FastCompare();
 
 		Namespace namespace = namedElement.getNamespace();
 
@@ -342,7 +342,7 @@ public class NamedElementOperations
 	 * @generated NOT
 	 */
 	public static EList allOwningPackages(NamedElement namedElement) {
-		EList allOwningPackages = new UniqueEList();
+		EList allOwningPackages = new UniqueEList.FastCompare();
 
 		for (Namespace namespace = namedElement.getNamespace(); namespace != null; namespace = namespace
 			.getNamespace()) {

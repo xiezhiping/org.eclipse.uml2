@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.13 2006/01/25 18:51:32 khussey Exp $
+ * $Id: PackageOperations.java,v 1.14 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -299,7 +299,7 @@ public class PackageOperations
 			getEAnnotation(profileApplication, UMLPackage.eNS_URI, true)
 				.getReferences().set(0, profileDefinition);
 
-			EList stereotypeApplications = new UniqueEList();
+			EList stereotypeApplications = new UniqueEList.FastCompare();
 			StereotypeApplicationCopier copier = new StereotypeApplicationCopier(
 				profile);
 
@@ -394,7 +394,7 @@ public class PackageOperations
 	 * @generated NOT
 	 */
 	public static EList getAppliedProfiles(org.eclipse.uml2.uml.Package package_) {
-		return getAppliedProfiles(package_, new UniqueEList());
+		return getAppliedProfiles(package_, new UniqueEList.FastCompare());
 	}
 
 	/**
@@ -451,7 +451,7 @@ public class PackageOperations
 	 */
 	public static EList getAllProfileApplications(
 			org.eclipse.uml2.uml.Package package_) {
-		EList allProfileApplications = new UniqueEList(package_
+		EList allProfileApplications = new UniqueEList.FastCompare(package_
 			.getProfileApplications());
 
 		for (Iterator allOwningPackages = package_.allOwningPackages()
@@ -546,7 +546,7 @@ public class PackageOperations
 	public static EList getAllAppliedProfiles(
 			org.eclipse.uml2.uml.Package package_) {
 		EList allAppliedProfiles = getAppliedProfiles(package_,
-			new UniqueEList());
+			new UniqueEList.FastCompare());
 
 		for (Iterator allOwningPackages = package_.allOwningPackages()
 			.iterator(); allOwningPackages.hasNext();) {
@@ -624,10 +624,12 @@ public class PackageOperations
 	 * @generated NOT
 	 */
 	public static EList visibleMembers(org.eclipse.uml2.uml.Package package_) {
-		EList visibleMembers = visibleMembers(package_, new UniqueEList());
+		EList visibleMembers = visibleMembers(package_,
+			new UniqueEList.FastCompare());
 
 		for (Iterator allImportedPackages = getAllImportedPackages(package_,
-			new UniqueEList()).iterator(); allImportedPackages.hasNext();) {
+			new UniqueEList.FastCompare()).iterator(); allImportedPackages
+			.hasNext();) {
 
 			visibleMembers((org.eclipse.uml2.uml.Package) allImportedPackages
 				.next(), visibleMembers);

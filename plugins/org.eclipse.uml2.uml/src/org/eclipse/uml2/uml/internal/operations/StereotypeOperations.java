@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.9 2006/01/25 16:50:17 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.10 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -263,7 +263,7 @@ public class StereotypeOperations
 	 */
 	public static EList getExtendedMetaclasses(Stereotype stereotype) {
 		return ECollections.unmodifiableEList(getExtendedMetaclasses(
-			stereotype, new UniqueEList()));
+			stereotype, new UniqueEList.FastCompare()));
 	}
 
 	/**
@@ -273,7 +273,7 @@ public class StereotypeOperations
 	 */
 	public static EList getAllExtendedMetaclasses(Stereotype stereotype) {
 		EList allExtendedMetaclasses = getExtendedMetaclasses(stereotype,
-			new UniqueEList());
+			new UniqueEList.FastCompare());
 
 		for (Iterator allParents = stereotype.allParents().iterator(); allParents
 			.hasNext();) {

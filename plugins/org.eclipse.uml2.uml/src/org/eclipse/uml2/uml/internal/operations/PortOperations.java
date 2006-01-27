@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.9 2006/01/05 22:43:26 khussey Exp $
+ * $Id: PortOperations.java,v 1.10 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -197,7 +197,7 @@ public class PortOperations
 	 * @generated NOT
 	 */
 	public static EList getProvideds(Port port) {
-		EList provideds = new UniqueEList();
+		EList provideds = new UniqueEList.FastCompare();
 
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
@@ -220,7 +220,7 @@ public class PortOperations
 	 * @generated NOT
 	 */
 	public static EList getRequireds(Port port) {
-		EList requireds = new UniqueEList();
+		EList requireds = new UniqueEList.FastCompare();
 
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);

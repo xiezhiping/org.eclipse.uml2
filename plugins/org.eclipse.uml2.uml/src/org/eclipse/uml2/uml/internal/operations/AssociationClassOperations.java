@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: AssociationClassOperations.java,v 1.6 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -97,7 +97,8 @@ public class AssociationClassOperations
 	 * @generated NOT
 	 */
 	public static EList allConnections(AssociationClass associationClass) {
-		EList allConnections = new UniqueEList(associationClass.getMemberEnds());
+		EList allConnections = new UniqueEList.FastCompare(associationClass
+			.getMemberEnds());
 
 		for (Iterator allParents = associationClass.allParents().iterator(); allParents
 			.hasNext();) {

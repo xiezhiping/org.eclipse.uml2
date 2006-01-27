@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.23 2006/01/25 18:51:32 khussey Exp $
+ * $Id: ElementOperations.java,v 1.24 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -184,7 +184,7 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static EList getStereotypeApplications(Element element) {
-		EList stereotypeApplications = new UniqueEList();
+		EList stereotypeApplications = new UniqueEList.FastCompare();
 
 		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
 			.getNonNavigableInverseReferences(element).iterator(); nonNavigableInverseReferences
@@ -239,7 +239,7 @@ public class ElementOperations
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
-			EList requiredStereotypes = new UniqueEList();
+			EList requiredStereotypes = new UniqueEList.FastCompare();
 
 			for (Iterator allAppliedProfiles = package_.getAllAppliedProfiles()
 				.iterator(); allAppliedProfiles.hasNext();) {
@@ -293,7 +293,7 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static EList getAppliedStereotypes(Element element) {
-		EList appliedStereotypes = new UniqueEList();
+		EList appliedStereotypes = new UniqueEList.FastCompare();
 
 		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
 			.getNonNavigableInverseReferences(element).iterator(); nonNavigableInverseReferences
@@ -345,7 +345,7 @@ public class ElementOperations
 	 */
 	public static EList getAppliedSubstereotypes(Element element,
 			Stereotype stereotype) {
-		EList appliedSubstereotypes = new UniqueEList();
+		EList appliedSubstereotypes = new UniqueEList.FastCompare();
 
 		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
 			.iterator(); appliedStereotypes.hasNext();) {
@@ -795,7 +795,7 @@ public class ElementOperations
 			EMap details = eAnnotation.getDetails();
 
 			if (!details.isEmpty()) {
-				EList keywords = new UniqueEList();
+				EList keywords = new UniqueEList.FastCompare();
 
 				for (Iterator d = details.iterator(); d.hasNext();) {
 					keywords.add(((Map.Entry) d.next()).getKey());
@@ -992,7 +992,7 @@ public class ElementOperations
 	}
 
 	public static EList applyAllRequiredStereotypes(Element element) {
-		EList stereotypeApplications = new UniqueEList();
+		EList stereotypeApplications = new UniqueEList.FastCompare();
 
 		for (Iterator allContents = getAllContents(element, true, false); allContents
 			.hasNext();) {
@@ -1040,7 +1040,7 @@ public class ElementOperations
 	}
 
 	public static EList unapplyAllNonApplicableStereotypes(Element element) {
-		EList allNonApplicableStereotypes = new UniqueEList();
+		EList allNonApplicableStereotypes = new UniqueEList.FastCompare();
 
 		for (Iterator allContents = getAllContents(element, true, false); allContents
 			.hasNext();) {
@@ -1102,7 +1102,7 @@ public class ElementOperations
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
-			EList applicableStereotypes = new UniqueEList();
+			EList applicableStereotypes = new UniqueEList.FastCompare();
 
 			for (Iterator allAppliedProfiles = package_.getAllAppliedProfiles()
 				.iterator(); allAppliedProfiles.hasNext();) {
@@ -1184,7 +1184,7 @@ public class ElementOperations
 	 */
 	public static EList allOwnedElements(Element element) {
 		EList ownedElements = element.getOwnedElements();
-		EList allOwnedElements = new UniqueEList(ownedElements);
+		EList allOwnedElements = new UniqueEList.FastCompare(ownedElements);
 
 		for (Iterator oe = ownedElements.iterator(); oe.hasNext();) {
 			allOwnedElements.addAll(((Element) oe.next()).allOwnedElements());

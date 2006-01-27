@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.20 2006/01/05 22:43:25 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.21 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -526,7 +526,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static EList subsettingContext(Property property) {
-		EList subsettingContext = new UniqueEList();
+		EList subsettingContext = new UniqueEList.FastCompare();
 
 		Association association = property.getAssociation();
 

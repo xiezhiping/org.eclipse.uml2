@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementOperations.java,v 1.5 2006/01/05 22:43:24 khussey Exp $
+ * $Id: TemplateableElementOperations.java,v 1.6 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,7 +58,7 @@ public class TemplateableElementOperations
 	 */
 	public static EList parameterableElements(
 			TemplateableElement templateableElement) {
-		EList parameterableElements = new UniqueEList();
+		EList parameterableElements = new UniqueEList.FastCompare();
 
 		for (Iterator allOwnedElements = templateableElement.allOwnedElements()
 			.iterator(); allOwnedElements.hasNext();) {

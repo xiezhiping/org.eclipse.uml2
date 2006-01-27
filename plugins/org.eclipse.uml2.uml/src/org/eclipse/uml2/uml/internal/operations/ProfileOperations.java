@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.13 2006/01/25 18:51:32 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.14 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -460,7 +460,7 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static EList getReferencedMetaclasses(Profile profile) {
-		EList referencedMetaclasses = new UniqueEList();
+		EList referencedMetaclasses = new UniqueEList.FastCompare();
 
 		for (Iterator metaclassReferences = profile.getMetaclassReferences()
 			.iterator(); metaclassReferences.hasNext();) {
@@ -482,7 +482,7 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static EList getReferencedMetamodels(Profile profile) {
-		EList referencedMetamodels = new UniqueEList();
+		EList referencedMetamodels = new UniqueEList.FastCompare();
 
 		for (Iterator metamodelReferences = profile.getMetamodelReferences()
 			.iterator(); metamodelReferences.hasNext();) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.8 2006/01/05 22:43:24 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.9 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -73,7 +73,7 @@ public class ComponentOperations
 	public static EList realizedInterfaces(Component component,
 			Classifier classifier) {
 
-		EList realizedInterfaces = new UniqueEList();
+		EList realizedInterfaces = new UniqueEList.FastCompare();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -110,7 +110,7 @@ public class ComponentOperations
 	 */
 	public static EList usedInterfaces(Component component,
 			Classifier classifier) {
-		EList usedInterfaces = new UniqueEList();
+		EList usedInterfaces = new UniqueEList.FastCompare();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -151,7 +151,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList getRequireds(Component component) {
-		EList requireds = new UniqueEList(component.usedInterfaces(component));
+		EList requireds = new UniqueEList.FastCompare(component
+			.usedInterfaces(component));
 
 		for (Iterator realizations = component.getRealizations().iterator(); realizations
 			.hasNext();) {
@@ -195,7 +196,7 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList getProvideds(Component component) {
-		EList provideds = new UniqueEList();
+		EList provideds = new UniqueEList.FastCompare();
 
 		for (Iterator interfaceRealizations = component
 			.getInterfaceRealizations().iterator(); interfaceRealizations

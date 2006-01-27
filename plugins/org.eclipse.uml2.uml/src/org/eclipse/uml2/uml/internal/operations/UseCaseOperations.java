@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.6 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -196,7 +196,7 @@ public class UseCaseOperations
 	 */
 	public static EList allIncludedUseCases(UseCase useCase) {
 		EList includes = useCase.getIncludes();
-		EList allIncludedUseCases = new UniqueEList(includes);
+		EList allIncludedUseCases = new UniqueEList.FastCompare(includes);
 
 		for (Iterator i = includes.iterator(); i.hasNext();) {
 			allIncludedUseCases.addAll(((UseCase) i.next())

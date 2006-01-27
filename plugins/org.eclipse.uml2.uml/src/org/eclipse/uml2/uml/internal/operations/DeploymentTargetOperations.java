@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetOperations.java,v 1.6 2006/01/05 22:43:25 khussey Exp $
+ * $Id: DeploymentTargetOperations.java,v 1.7 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -61,7 +61,7 @@ public class DeploymentTargetOperations
 	 * @generated NOT
 	 */
 	public static EList getDeployedElements(DeploymentTarget deploymentTarget) {
-		EList deployedElements = new UniqueEList();
+		EList deployedElements = new UniqueEList.FastCompare();
 
 		for (Iterator deployments = deploymentTarget.getDeployments()
 			.iterator(); deployments.hasNext();) {

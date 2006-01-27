@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.10 2006/01/19 14:14:53 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.11 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -241,7 +241,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList getAllAttributes(Classifier classifier) {
-		EList allAttributes = new UniqueEList();
+		EList allAttributes = new UniqueEList.FastCompare();
 
 		for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
 			.hasNext();) {
@@ -262,7 +262,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList getOperations(Classifier classifier) {
-		EList operations = new UniqueEList();
+		EList operations = new UniqueEList.FastCompare();
 
 		for (Iterator features = classifier.getFeatures().iterator(); features
 			.hasNext();) {
@@ -283,7 +283,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList getAllOperations(Classifier classifier) {
-		EList allOperations = new UniqueEList();
+		EList allOperations = new UniqueEList.FastCompare();
 
 		for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
 			.hasNext();) {
@@ -354,7 +354,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList getInheritedMembers(Classifier classifier) {
-		EList inheritedMembers = new UniqueEList();
+		EList inheritedMembers = new UniqueEList.FastCompare();
 
 		for (Iterator parents = classifier.parents().iterator(); parents
 			.hasNext();) {
@@ -380,7 +380,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList allFeatures(Classifier classifier) {
-		EList allFeatures = new UniqueEList();
+		EList allFeatures = new UniqueEList.FastCompare();
 
 		for (Iterator members = classifier.getMembers().iterator(); members
 			.hasNext();) {
@@ -405,7 +405,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList parents(Classifier classifier) {
-		EList parents = new UniqueEList();
+		EList parents = new UniqueEList.FastCompare();
 
 		for (Iterator generalizations = classifier.getGeneralizations()
 			.iterator(); generalizations.hasNext();) {
@@ -432,7 +432,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList inheritableMembers(Classifier classifier, Classifier c) {
-		EList inheritableMembers = new UniqueEList();
+		EList inheritableMembers = new UniqueEList.FastCompare();
 
 		if (c == classifier || !c.allParents().contains(classifier)
 			|| classifier.allParents().contains(c)) {
@@ -531,7 +531,7 @@ public class ClassifierOperations
 	 */
 	public static EList allParents(Classifier classifier) {
 		return ECollections.unmodifiableEList(allParents(classifier,
-			new UniqueEList()));
+			new UniqueEList.FastCompare()));
 	}
 
 	/**

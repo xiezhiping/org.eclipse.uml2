@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.11 2006/01/19 14:14:53 khussey Exp $
+ * $Id: ClassOperations.java,v 1.12 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -111,7 +111,7 @@ public class ClassOperations
 		EList extensions = ECollections.EMPTY_ELIST;
 
 		if (class_.isMetaclass()) {
-			extensions = new UniqueEList();
+			extensions = new UniqueEList.FastCompare();
 
 			for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
 				.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
@@ -172,9 +172,9 @@ public class ClassOperations
 	 * @generated NOT
 	 */
 	public static EList inherit(org.eclipse.uml2.uml.Class class_, EList inhs) {
-		EList inherit = new UniqueEList();
+		EList inherit = new UniqueEList.FastCompare();
 
-		EList redefinedElements = new UniqueEList();
+		EList redefinedElements = new UniqueEList.FastCompare();
 
 		for (Iterator ownedMembers = class_.getOwnedMembers().iterator(); ownedMembers
 			.hasNext();) {

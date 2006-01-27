@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.8 2006/01/05 22:43:26 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.9 2006/01/27 04:55:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -199,7 +199,7 @@ public class AssociationOperations
 	 * @generated NOT
 	 */
 	public static EList getEndTypes(Association association) {
-		EList endTypes = new UniqueEList();
+		EList endTypes = new UniqueEList.FastCompare();
 
 		for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
 			.hasNext();) {
