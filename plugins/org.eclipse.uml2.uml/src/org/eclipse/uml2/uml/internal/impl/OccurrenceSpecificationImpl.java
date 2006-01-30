@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.10 2006/01/19 23:06:34 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.11 2006/01/30 23:06:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -197,8 +196,10 @@ public class OccurrenceSpecificationImpl
 		EList covered = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
 		if (covered == null) {
 			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
-				covered = new EObjectResolvingEList(Lifeline.class, this,
-					UMLPackage.OCCURRENCE_SPECIFICATION__COVERED));
+				covered = new EObjectWithInverseResolvingEList.ManyInverse(
+					Lifeline.class, this,
+					UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
+					UMLPackage.LIFELINE__COVERED_BY));
 		}
 		return covered;
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.10 2006/01/30 23:06:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -265,7 +265,7 @@ public class ClassifierTemplateParameterImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public NotificationChain basicSetParameteredElement(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
@@ -285,6 +285,10 @@ public class ClassifierTemplateParameterImpl
 				msgs.add(notification);
 		}
 
+		if (eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null
+			&& eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != newParameteredElement) {
+			setOwnedParameteredElement(null);
+		}
 		return msgs;
 	}
 
@@ -299,12 +303,12 @@ public class ClassifierTemplateParameterImpl
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
 				msgs = ((InternalEObject) parameteredElement).eInverseRemove(
-					this, UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER,
-					Classifier.class, msgs);
+					this, UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+					ParameterableElement.class, msgs);
 			if (newParameteredElement != null)
 				msgs = ((InternalEObject) newParameteredElement).eInverseAdd(
-					this, UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER,
-					Classifier.class, msgs);
+					this, UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+					ParameterableElement.class, msgs);
 			msgs = basicSetParameteredElement(newParameteredElement, msgs);
 			if (msgs != null)
 				msgs.dispatch();

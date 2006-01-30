@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.10 2006/01/30 23:06:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.ConnectableElement;
-import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ParameterableElement;
@@ -145,17 +144,13 @@ public abstract class ConnectableElementImpl
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
-				msgs = ((InternalEObject) templateParameter)
-					.eInverseRemove(
-						this,
-						UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						ConnectableElementTemplateParameter.class, msgs);
+				msgs = ((InternalEObject) templateParameter).eInverseRemove(
+					this, UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			if (newTemplateParameter != null)
-				msgs = ((InternalEObject) newTemplateParameter)
-					.eInverseAdd(
-						this,
-						UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						ConnectableElementTemplateParameter.class, msgs);
+				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(
+					this, UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
 			if (msgs != null)
 				msgs.dispatch();

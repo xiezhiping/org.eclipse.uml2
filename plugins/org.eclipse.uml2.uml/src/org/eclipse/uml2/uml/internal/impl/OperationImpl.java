@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
+ * $Id: OperationImpl.java,v 1.16 2006/01/30 23:06:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,7 +48,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.OperationTemplateParameter;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -257,17 +256,13 @@ public class OperationImpl
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
-				msgs = ((InternalEObject) templateParameter)
-					.eInverseRemove(
-						this,
-						UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						OperationTemplateParameter.class, msgs);
+				msgs = ((InternalEObject) templateParameter).eInverseRemove(
+					this, UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			if (newTemplateParameter != null)
-				msgs = ((InternalEObject) newTemplateParameter)
-					.eInverseAdd(
-						this,
-						UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						OperationTemplateParameter.class, msgs);
+				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(
+					this, UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
 			if (msgs != null)
 				msgs.dispatch();

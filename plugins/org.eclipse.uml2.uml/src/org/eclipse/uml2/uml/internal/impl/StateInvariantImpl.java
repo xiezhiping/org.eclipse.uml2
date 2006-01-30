@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.10 2006/01/30 23:06:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -188,8 +188,9 @@ public class StateInvariantImpl
 		EList covered = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
 		if (covered == null) {
 			eVirtualSet(UMLPackage.STATE_INVARIANT__COVERED,
-				covered = new EObjectResolvingEList(Lifeline.class, this,
-					UMLPackage.STATE_INVARIANT__COVERED));
+				covered = new EObjectWithInverseResolvingEList.ManyInverse(
+					Lifeline.class, this, UMLPackage.STATE_INVARIANT__COVERED,
+					UMLPackage.LIFELINE__COVERED_BY));
 		}
 		return covered;
 	}

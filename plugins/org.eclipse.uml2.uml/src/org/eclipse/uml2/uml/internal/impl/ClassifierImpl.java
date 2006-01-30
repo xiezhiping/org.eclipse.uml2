@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.23 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.24 2006/01/30 23:06:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,7 +46,6 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
@@ -354,17 +353,13 @@ public abstract class ClassifierImpl
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
-				msgs = ((InternalEObject) templateParameter)
-					.eInverseRemove(
-						this,
-						UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						ClassifierTemplateParameter.class, msgs);
+				msgs = ((InternalEObject) templateParameter).eInverseRemove(
+					this, UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			if (newTemplateParameter != null)
-				msgs = ((InternalEObject) newTemplateParameter)
-					.eInverseAdd(
-						this,
-						UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						ClassifierTemplateParameter.class, msgs);
+				msgs = ((InternalEObject) newTemplateParameter).eInverseAdd(
+					this, UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
+					TemplateParameter.class, msgs);
 			msgs = basicSetTemplateParameter(newTemplateParameter, msgs);
 			if (msgs != null)
 				msgs.dispatch();
