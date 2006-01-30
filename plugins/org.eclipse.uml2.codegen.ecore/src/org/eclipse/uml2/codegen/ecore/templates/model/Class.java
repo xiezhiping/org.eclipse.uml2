@@ -1737,7 +1737,7 @@ public class Class
   protected final String TEXT_1719 = " == null)" + NL + "\t\t\t\t{" + NL + "\t\t\t\t\t";
   protected final String TEXT_1720 = " union = ";
   protected final String TEXT_1721 = "Helper(new ";
-  protected final String TEXT_1722 = "());" + NL + "\t\t\t\t\tcache.put(eResource(), this, method, ";
+  protected final String TEXT_1722 = ".FastCompare());" + NL + "\t\t\t\t\tcache.put(eResource(), this, method, ";
   protected final String TEXT_1723 = " = new ";
   protected final String TEXT_1724 = "(this, ";
   protected final String TEXT_1725 = "null";
@@ -1752,7 +1752,7 @@ public class Class
   protected final String TEXT_1734 = " == null)" + NL + "\t\t\t{" + NL + "\t\t\t\t";
   protected final String TEXT_1735 = " union = ";
   protected final String TEXT_1736 = "Helper(new ";
-  protected final String TEXT_1737 = "());" + NL + "\t\t\t\tcache.put(eResource(), this, ";
+  protected final String TEXT_1737 = ".FastCompare());" + NL + "\t\t\t\tcache.put(eResource(), this, ";
   protected final String TEXT_1738 = ", ";
   protected final String TEXT_1739 = " = new ";
   protected final String TEXT_1740 = "(this, ";
@@ -1763,7 +1763,7 @@ public class Class
   protected final String TEXT_1745 = NL + "\t\t";
   protected final String TEXT_1746 = " union = ";
   protected final String TEXT_1747 = "Helper(new ";
-  protected final String TEXT_1748 = "());" + NL + "\t\treturn new ";
+  protected final String TEXT_1748 = ".FastCompare());" + NL + "\t\treturn new ";
   protected final String TEXT_1749 = "(this, ";
   protected final String TEXT_1750 = "null";
   protected final String TEXT_1751 = ", union.size(), union.toArray());" + NL + "\t}" + NL;

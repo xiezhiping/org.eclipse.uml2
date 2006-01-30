@@ -778,7 +778,7 @@ public class ItemProvider
     stringBuffer.append(TEXT_216);
     stringBuffer.append(genModel.getImportedName("java.util.Collection"));
     stringBuffer.append(TEXT_217);
-    { List subsetSupersetGenFeatures = new UniqueEList(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true));
+    { List subsetSupersetGenFeatures = new UniqueEList.FastCompare(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true));
     for (Iterator genFeatures = subsetSupersetGenFeatures.iterator(); genFeatures.hasNext(); ) { GenFeature genFeature = (GenFeature) genFeatures.next();
     stringBuffer.append(TEXT_218);
     stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
@@ -803,7 +803,7 @@ public class ItemProvider
     stringBuffer.append(TEXT_227);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
     stringBuffer.append(TEXT_228);
-    { List subsetSupersetGenFeatures = new UniqueEList(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false));
+    { List subsetSupersetGenFeatures = new UniqueEList.FastCompare(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false));
     for (Iterator genFeatures = subsetSupersetGenFeatures.iterator(); genFeatures.hasNext(); ) { GenFeature genFeature = (GenFeature) genFeatures.next();
     stringBuffer.append(TEXT_229);
     stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
