@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.45 2006/01/05 13:53:04 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.46 2006/01/30 22:51:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1447,7 +1447,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
-					List union = getRedefinedElementsHelper(new UniqueEList());
+					List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
@@ -1456,7 +1456,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 				// ignore
 			}
 		}
-		List union = getRedefinedElementsHelper(new UniqueEList());
+		List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 

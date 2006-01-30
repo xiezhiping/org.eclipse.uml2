@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.28 2005/12/06 23:18:02 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.29 2006/01/30 22:51:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -678,7 +678,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
 				EList redefinedElement = (EList) cache.get(eResource(), this, method);
 				if (redefinedElement == null) {
-					List union = getRedefinedElementsHelper(new UniqueEList());
+					List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
 					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return redefinedElement;
@@ -687,7 +687,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 				// ignore
 			}
 		}
-		List union = getRedefinedElementsHelper(new UniqueEList());
+		List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 

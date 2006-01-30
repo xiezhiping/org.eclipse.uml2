@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.22 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.23 2006/01/30 22:51:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -168,7 +168,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				Method method = getClass().getMethod("getSubgroups", null); //$NON-NLS-1$
 				EList subgroup = (EList) cache.get(eResource(), this, method);
 				if (subgroup == null) {
-					List union = getSubgroupsHelper(new UniqueEList());
+					List union = getSubgroupsHelper(new UniqueEList.FastCompare());
 					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return subgroup;
@@ -177,7 +177,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				// ignore
 			}
 		}
-		List union = getSubgroupsHelper(new UniqueEList());
+		List union = getSubgroupsHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
@@ -216,12 +216,12 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		if (cache != null) {
 			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElement == null) {
-				List union = getOwnedElementsHelper(new UniqueEList());
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
 				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElement = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
 			}
 			return ownedElement;
 		}
-		List union = getOwnedElementsHelper(new UniqueEList());
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 

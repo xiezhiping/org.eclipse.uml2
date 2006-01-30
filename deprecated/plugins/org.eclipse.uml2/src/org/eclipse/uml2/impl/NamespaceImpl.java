@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.33 2005/12/06 23:18:02 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.34 2006/01/30 22:51:26 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -104,12 +104,12 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		if (cache != null) {
 			EList member = (EList) cache.get(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER);
 			if (member == null) {
-				List union = getMembersHelper(new UniqueEList());
+				List union = getMembersHelper(new UniqueEList.FastCompare());
 				cache.put(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER, member = new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray()));
 			}
 			return member;
 		}
-		List union = getMembersHelper(new UniqueEList());
+		List union = getMembersHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray());
 	}
 
@@ -485,7 +485,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
 				EList ownedMember = (EList) cache.get(eResource(), this, method);
 				if (ownedMember == null) {
-					List union = getOwnedMembersHelper(new UniqueEList());
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
 					cache.put(eResource(), this, method, ownedMember = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
 				return ownedMember;
@@ -494,7 +494,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 				// ignore
 			}
 		}
-		List union = getOwnedMembersHelper(new UniqueEList());
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
@@ -556,12 +556,12 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 		if (cache != null) {
 			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElement == null) {
-				List union = getOwnedElementsHelper(new UniqueEList());
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
 				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElement = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
 			}
 			return ownedElement;
 		}
-		List union = getOwnedElementsHelper(new UniqueEList());
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 
