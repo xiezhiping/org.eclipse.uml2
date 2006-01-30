@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.13 2006/01/19 14:14:53 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.14 2006/01/30 13:22:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,10 +91,10 @@ public class ExtensionImpl
 			eVirtualSet(
 				UMLPackage.EXTENSION__OWNED_END,
 				ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(
-					Property.class, this, UMLPackage.EXTENSION__OWNED_END,
+					ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
 					new int[]{UMLPackage.EXTENSION__MEMBER_END},
 					new int[]{UMLPackage.EXTENSION__NAVIGABLE_OWNED_END},
-					UMLPackage.PROPERTY__OWNING_ASSOCIATION));
+					UMLPackage.EXTENSION_END__OWNING_ASSOCIATION));
 		}
 		return ownedEnd;
 	}

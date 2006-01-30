@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.13 2006/01/03 19:50:24 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.14 2006/01/30 13:22:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +33,6 @@ import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -99,7 +98,7 @@ public abstract class EncapsulatedClassifierImpl
 			eVirtualSet(
 				UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 				ownedPort = new DerivedSubsetEObjectEList(
-					Type.class,
+					Port.class,
 					this,
 					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 					new int[]{UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE}));
