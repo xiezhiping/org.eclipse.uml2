@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.14 2006/01/05 13:49:49 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.15 2006/01/30 22:44:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -382,14 +381,42 @@ public class GenFeatureImpl
 		return super.getQualifiedFeatureAccessor();
 	}
 
-	public org.eclipse.emf.codegen.ecore.genmodel.GenFeature getReverse() {
-		EReference reverseEcoreFeature = ((EReference) getEcoreFeature())
-			.getEOpposite();
+	public boolean isBidirectional() {
 
-		return null != reverseEcoreFeature
-			&& Generator.isDuplicate(reverseEcoreFeature)
-			? findGenFeature(reverseEcoreFeature)
-			: super.getReverse();
+		if (isDuplicate()) {
+
+			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
+				.iterator(); redefinedGenFeatures.hasNext();) {
+
+				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
+					.next();
+
+				if (getName().equals(redefinedGenFeature.getName())) {
+					return redefinedGenFeature.isBidirectional();
+				}
+			}
+		}
+
+		return super.isBidirectional();
+	}
+
+	public org.eclipse.emf.codegen.ecore.genmodel.GenFeature getReverse() {
+
+		if (isDuplicate()) {
+
+			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
+				.iterator(); redefinedGenFeatures.hasNext();) {
+
+				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
+					.next();
+
+				if (getName().equals(redefinedGenFeature.getName())) {
+					return redefinedGenFeature.getReverse();
+				}
+			}
+		}
+
+		return super.getReverse();
 	}
 
 	public boolean hasDelegateFeature() {
