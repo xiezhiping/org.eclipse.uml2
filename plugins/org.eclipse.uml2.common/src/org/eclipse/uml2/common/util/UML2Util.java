@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.15 2006/01/24 22:06:06 khussey Exp $
+ * $Id: UML2Util.java,v 1.16 2006/01/30 13:13:30 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -793,7 +793,7 @@ public class UML2Util {
 	}
 
 	protected static Collection getRootContainers(Collection eObjects) {
-		Collection rootContainers = new UniqueEList();
+		Collection rootContainers = new UniqueEList.FastCompare();
 
 		for (Iterator i = eObjects.iterator(); i.hasNext();) {
 			rootContainers.add(EcoreUtil.getRootContainer((EObject) i.next()));
