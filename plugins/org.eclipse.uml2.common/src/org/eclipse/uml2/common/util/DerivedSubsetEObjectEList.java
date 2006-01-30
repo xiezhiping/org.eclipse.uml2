@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.3 2006/01/04 21:50:13 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.4 2006/01/30 13:23:12 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.RandomAccess;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -48,7 +49,11 @@ public class DerivedSubsetEObjectEList
 
 			prepared = 0;
 
-			values.remove();
+			if (valuesIterator == null) {
+				values.remove(valuesIndex);
+			} else {
+				valuesIterator.remove();
+			}
 
 			modCount++;
 			expectedModCount++;
@@ -72,7 +77,11 @@ public class DerivedSubsetEObjectEList
 
 			prepared = 0;
 
-			values.set(element);
+			if (valuesIterator == null) {
+				values.set(valuesIndex, element);
+			} else {
+				valuesIterator.set(element);
+			}
 
 			modCount++;
 			expectedModCount++;
@@ -83,13 +92,18 @@ public class DerivedSubsetEObjectEList
 
 			if (values == null) {
 				// TODO remove casts to BasicEObjectImpl
-				(resolve()
-					? ((List) ((BasicEObjectImpl) owner).eGet(
-						sourceFeatureIDs[featureIndex], resolve(), true))
-						.listIterator()
+				List valuesList = resolve()
+					? (List) ((BasicEObjectImpl) owner).eGet(
+						sourceFeatureIDs[featureIndex], resolve(), true)
 					: ((InternalEList) ((BasicEObjectImpl) owner).eGet(
 						sourceFeatureIDs[featureIndex], resolve(), true))
-						.basicListIterator()).add(element);
+						.basicList();
+
+				if (valuesList instanceof RandomAccess) {
+					valuesList.add(0, element);
+				} else {
+					valuesList.listIterator().add(element);
+				}
 			} else {
 
 				switch (prepared) {
@@ -101,7 +115,11 @@ public class DerivedSubsetEObjectEList
 						break;
 				}
 
-				values.add(element);
+				if (valuesIterator == null) {
+					values.add(valuesIndex, element);
+				} else {
+					valuesIterator.add(element);
+				}
 			}
 
 			prepared = 0;
@@ -148,7 +166,6 @@ public class DerivedSubsetEObjectEList
 
 	public DerivedSubsetEObjectEList(Class dataClass, InternalEObject owner,
 			int featureID, int[] sourceFeatureIDs) {
-
 		super(dataClass, owner, featureID, sourceFeatureIDs);
 
 		for (int i = 0; i < sourceFeatureIDs.length; i++) {
@@ -163,6 +180,7 @@ public class DerivedSubsetEObjectEList
 	}
 
 	public List basicList() {
+
 		return new DerivedSubsetEObjectEList(dataClass, owner, featureID,
 			sourceFeatureIDs) {
 

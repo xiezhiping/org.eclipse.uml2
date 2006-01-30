@@ -8,20 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.4 2006/01/04 21:50:13 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.5 2006/01/30 13:23:16 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.AbstractSequentialList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
+import java.util.RandomAccess;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -41,36 +43,75 @@ public class DerivedEObjectEList
 
 		protected int featureIndex = 0;
 
-		protected ListIterator values = null;
+		protected InternalEList values = null;
+
+		protected ListIterator valuesIterator = null;
+
+		protected int valuesIndex = -1;
+
+		protected int valuesSize = 0;
 
 		protected EStructuralFeature preparedFeature = null;
 
-		protected Object preparedValue = null;
+		protected EList preparedValues = new UniqueEList.FastCompare();
 
 		protected int prepared = 0;
 
-		protected boolean scanNext(EStructuralFeature feature,
-				ListIterator nextValues) {
+		protected boolean scanNext(EStructuralFeature nextFeature,
+				InternalEList nextValues, ListIterator nextValuesIterator) {
+			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(nextFeature);
 
-			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(feature);
-
-			while (nextValues.hasNext()) {
-				Object value = nextValues.next();
+			while (nextValuesIterator.hasNext()) {
+				Object nextValue = nextValuesIterator.next();
 
 				if (isFeatureMap) {
-					FeatureMap.Entry entry = (FeatureMap.Entry) value;
-					feature = entry.getEStructuralFeature();
-					value = entry.getValue();
+					FeatureMap.Entry entry = (FeatureMap.Entry) nextValue;
+					nextFeature = entry.getEStructuralFeature();
+					nextValue = entry.getValue();
 				}
 
-				if (isIncluded(feature)
-					? value != null
-					: isIncluded(value)) {
+				if ((isIncluded(nextFeature)
+					? nextValue != null
+					: isIncluded(nextValue)) && preparedValues.add(nextValue)) {
 
 					values = nextValues;
-					preparedFeature = feature;
-					preparedValue = value;
+					valuesIterator = nextValuesIterator;
+					preparedFeature = nextFeature;
 					return true;
+				}
+			}
+
+			return false;
+		}
+
+		protected boolean scanNext(EStructuralFeature nextFeature,
+				InternalEList nextValues, int nextValuesIndex,
+				int nextValuesSize) {
+			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(nextFeature);
+
+			while (nextValuesIndex < nextValuesSize) {
+				Object nextValue = resolve()
+					? nextValues.get(nextValuesIndex)
+					: nextValues.basicGet(nextValuesIndex);
+
+				if (isFeatureMap) {
+					FeatureMap.Entry entry = (FeatureMap.Entry) nextValue;
+					nextFeature = entry.getEStructuralFeature();
+					nextValue = entry.getValue();
+				}
+
+				if ((isIncluded(nextFeature)
+					? nextValue != null
+					: isIncluded(nextValue)) && preparedValues.add(nextValue)) {
+
+					values = nextValues;
+					valuesIterator = null;
+					valuesIndex = nextValuesIndex;
+					valuesSize = nextValuesSize;
+					preparedFeature = nextFeature;
+					return true;
+				} else {
+					nextValuesIndex++;
 				}
 			}
 
@@ -79,7 +120,9 @@ public class DerivedEObjectEList
 
 		protected boolean prepareNext() {
 
-			if (values == null || !scanNext(preparedFeature, values)) {
+			if (values == null || (valuesIterator == null
+				? !scanNext(preparedFeature, values, valuesIndex, valuesSize)
+				: !scanNext(preparedFeature, values, valuesIterator))) {
 
 				while (featureIndex < sourceFeatureIDs.length) {
 					int sourceFeatureID = sourceFeatureIDs[featureIndex++];
@@ -93,20 +136,25 @@ public class DerivedEObjectEList
 						if (sourceFeature.isMany()
 							|| FeatureMapUtil.isFeatureMap(sourceFeature)) {
 
-							if (scanNext(sourceFeature, resolve()
-								? ((List) value).listIterator()
-								: ((InternalEList) value).basicListIterator())) {
+							InternalEList valuesList = (InternalEList) value;
+
+							if (valuesList instanceof RandomAccess
+								? scanNext(sourceFeature, valuesList, 0,
+									valuesList.size())
+								: scanNext(sourceFeature, valuesList, resolve()
+									? valuesList.listIterator()
+									: valuesList.basicListIterator())) {
 
 								prepared = 3;
 								return true;
 							}
-						} else if (isIncluded(sourceFeature)
+						} else if ((isIncluded(sourceFeature)
 							? value != null
-							: isIncluded(value)) {
+							: isIncluded(value)) && preparedValues.add(value)) {
 
 							values = null;
+							valuesIterator = null;
 							preparedFeature = sourceFeature;
-							preparedValue = value;
 							prepared = 2;
 							return true;
 						}
@@ -130,7 +178,12 @@ public class DerivedEObjectEList
 				case 1 :
 					return false;
 				case -3 :
-					values.next();
+
+					if (valuesIterator == null) {
+						valuesIndex++;
+					} else {
+						valuesIterator.next();
+					}
 				default :
 					return prepareNext();
 			}
@@ -139,35 +192,62 @@ public class DerivedEObjectEList
 		public Object next() {
 
 			if (hasNext()) {
-				index++;
 				prepared = 0;
-				return preparedValue;
+				Object next = preparedValues.get(index++);
+				hasNext();
+				return next;
 			} else {
 				throw new NoSuchElementException();
 			}
 		}
 
-		protected boolean scanPrevious(EStructuralFeature feature,
-				ListIterator previousValues) {
+		protected boolean scanPrevious(EStructuralFeature previousFeature,
+				InternalEList previousValues,
+				ListIterator previousValuesIterator) {
+			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(previousFeature);
 
-			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(feature);
-
-			while (previousValues.hasPrevious()) {
-				Object value = previousValues.previous();
+			while (previousValuesIterator.hasPrevious()) {
+				Object previousValue = previousValuesIterator.previous();
 
 				if (isFeatureMap) {
-					FeatureMap.Entry entry = (FeatureMap.Entry) value;
-					feature = entry.getEStructuralFeature();
-					value = entry.getValue();
+					FeatureMap.Entry entry = (FeatureMap.Entry) previousValue;
+					previousFeature = entry.getEStructuralFeature();
+					previousValue = entry.getValue();
 				}
 
-				if (isIncluded(feature)
-					? value != null
-					: isIncluded(value)) {
-
+				if (index > 0 && previousValue == preparedValues.get(index - 1)) {
 					values = previousValues;
-					preparedFeature = feature;
-					preparedValue = value;
+					valuesIterator = previousValuesIterator;
+					preparedFeature = previousFeature;
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		protected boolean scanPrevious(EStructuralFeature previousFeature,
+				InternalEList previousValues, int previousValuesIndex,
+				int previousValuesSize) {
+			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(previousFeature);
+
+			while (--previousValuesIndex >= 0) {
+				Object previousValue = resolve()
+					? previousValues.get(previousValuesIndex)
+					: previousValues.basicGet(previousValuesIndex);
+
+				if (isFeatureMap) {
+					FeatureMap.Entry entry = (FeatureMap.Entry) previousValue;
+					previousFeature = entry.getEStructuralFeature();
+					previousValue = entry.getValue();
+				}
+
+				if (index > 0 && previousValue == preparedValues.get(index - 1)) {
+					values = previousValues;
+					valuesIterator = null;
+					valuesIndex = previousValuesIndex;
+					valuesSize = previousValuesSize;
+					preparedFeature = previousFeature;
 					return true;
 				}
 			}
@@ -177,7 +257,11 @@ public class DerivedEObjectEList
 
 		protected boolean preparePrevious() {
 
-			if (values == null || !scanPrevious(preparedFeature, values)) {
+			if (values == null
+				|| (valuesIterator == null
+					? !scanPrevious(preparedFeature, values, valuesIndex + 1,
+						valuesSize)
+					: !scanPrevious(preparedFeature, values, valuesIterator))) {
 
 				while (featureIndex > 0) {
 					int sourceFeatureID = sourceFeatureIDs[--featureIndex];
@@ -191,20 +275,28 @@ public class DerivedEObjectEList
 						if (sourceFeature.isMany()
 							|| FeatureMapUtil.isFeatureMap(sourceFeature)) {
 
-							if (scanPrevious(sourceFeature, resolve()
-								? ((List) value).listIterator()
-								: ((InternalEList) value).basicListIterator())) {
+							InternalEList valuesList = (InternalEList) value;
+							int valuesListSize = valuesList.size();
+
+							if (valuesList instanceof RandomAccess
+								? scanPrevious(sourceFeature, valuesList,
+									valuesListSize, valuesListSize)
+								: scanPrevious(sourceFeature, valuesList,
+									resolve()
+										? valuesList
+											.listIterator(valuesListSize)
+										: valuesList
+											.basicListIterator(valuesListSize))) {
 
 								prepared = -3;
 								return true;
 							}
-						} else if (isIncluded(sourceFeature)
-							? value != null
-							: isIncluded(value)) {
+						} else if (index > 0
+							&& value == preparedValues.get(index - 1)) {
 
 							values = null;
+							valuesIterator = null;
 							preparedFeature = sourceFeature;
-							preparedValue = value;
 							prepared = -2;
 							return true;
 						}
@@ -228,7 +320,12 @@ public class DerivedEObjectEList
 				case -1 :
 					return false;
 				case 3 :
-					values.previous();
+
+					if (valuesIterator == null) {
+						--valuesIndex;
+					} else {
+						valuesIterator.previous();
+					}
 				default :
 					return preparePrevious();
 			}
@@ -236,10 +333,11 @@ public class DerivedEObjectEList
 
 		public Object previous() {
 
-			if (hasPrevious()) {
-				index--;
+			if (prepared < -1 || hasPrevious()) {
 				prepared = 0;
-				return preparedValue;
+				Object previous = preparedValues.remove(--index);
+				hasPrevious();
+				return previous;
 			} else {
 				throw new NoSuchElementException();
 			}
@@ -344,9 +442,9 @@ public class DerivedEObjectEList
 	}
 
 	public int size() {
-		int result = 0;
 
 		if (sourceFeatureIDs != null) {
+			EList values = new UniqueEList.FastCompare();
 
 			for (int i = 0; i < sourceFeatureIDs.length; i++) {
 				int sourceFeatureID = sourceFeatureIDs[i];
@@ -361,41 +459,73 @@ public class DerivedEObjectEList
 						FeatureMap featureMap = (FeatureMap) value;
 
 						for (int j = 0, size = featureMap.size(); j < size; j++) {
+							value = featureMap.getValue(j);
 
 							if (isIncluded(featureMap.getEStructuralFeature(j))
-								? featureMap.getValue(j) != null
-								: isIncluded(featureMap.getValue(j))) {
+								? value != null
+								: isIncluded(value)) {
 
-								result++;
+								values.add(value);
 							}
 						}
 					} else if (isIncluded(sourceFeature)) {
 
 						if (sourceFeature.isMany()) {
-							result += ((List) value).size();
+							InternalEList valuesList = (InternalEList) value;
+
+							if (valuesList instanceof RandomAccess) {
+
+								for (int j = 0, size = valuesList.size(); j < size; j++) {
+									values.add(valuesList.basicGet(j));
+								}
+							} else {
+
+								for (Iterator v = valuesList.basicIterator(); v
+									.hasNext();) {
+
+									values.add(v.next());
+								}
+							}
 						} else if (value != null) {
-							result++;
+							values.add(value);
 						}
 					} else {
 
 						if (sourceFeature.isMany()) {
+							InternalEList valuesList = (InternalEList) value;
 
-							for (Iterator j = ((InternalEList) value)
-								.basicIterator(); j.hasNext();) {
+							if (valuesList instanceof RandomAccess) {
 
-								if (isIncluded(j.next())) {
-									result++;
+								for (int j = 0, size = valuesList.size(); j < size; j++) {
+									value = valuesList.basicGet(j);
+
+									if (isIncluded(value)) {
+										values.add(value);
+									}
+								}
+							} else {
+
+								for (Iterator v = valuesList.basicIterator(); v
+									.hasNext();) {
+
+									value = v.next();
+
+									if (isIncluded(value)) {
+										values.add(value);
+									}
 								}
 							}
 						} else if (isIncluded(value)) {
-							result++;
+							values.add(value);
 						}
 					}
 				}
 			}
+
+			return values.size();
 		}
 
-		return result;
+		return 0;
 	}
 
 	public boolean isEmpty() {
@@ -426,7 +556,7 @@ public class DerivedEObjectEList
 					} else if (isIncluded(sourceFeature)) {
 
 						if (sourceFeature.isMany()
-							? ((Collection) value).size() > 0
+							? ((List) value).size() > 0
 							: value != null) {
 
 							return false;
@@ -434,12 +564,24 @@ public class DerivedEObjectEList
 					} else {
 
 						if (sourceFeature.isMany()) {
+							InternalEList valuesList = (InternalEList) value;
 
-							for (Iterator j = ((Collection) value).iterator(); j
-								.hasNext();) {
+							if (valuesList instanceof RandomAccess) {
 
-								if (isIncluded(j.next())) {
-									return false;
+								for (int j = 0, size = valuesList.size(); j < size; j++) {
+
+									if (isIncluded(valuesList.basicGet(j))) {
+										return false;
+									}
+								}
+							} else {
+
+								for (Iterator v = valuesList.basicIterator(); v
+									.hasNext();) {
+
+									if (isIncluded(v.next())) {
+										return false;
+									}
 								}
 							}
 						} else if (isIncluded(value)) {
