@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.24 2005/12/06 23:18:02 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.25 2006/01/30 22:52:51 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -185,7 +185,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getCovereds() {
 		EList covered = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__COVERED);
@@ -194,6 +194,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 		}
 		return covered;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

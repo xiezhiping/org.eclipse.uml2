@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.33 2006/01/05 13:53:10 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.34 2006/01/30 22:52:51 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,9 +19,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+//import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 
-//import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.Extension;
 import org.eclipse.uml2.ExtensionEnd;
@@ -128,7 +128,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	public EList getOwnedEnds() {
 		EList ownedEnd = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_END);
 		if (ownedEnd == null) {
-			eVirtualSet(UML2Package.EXTENSION__OWNED_END, ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END, new int[] {UML2Package.EXTENSION__MEMBER_END}, null, UML2Package.EXTENSION_END__OWNING_ASSOCIATION));
+			eVirtualSet(UML2Package.EXTENSION__OWNED_END, ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END, new int[] {UML2Package.EXTENSION__MEMBER_END}, null, UML2Package.PROPERTY__OWNING_ASSOCIATION));
 		}
 		return ownedEnd;
 	}
