@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.7 2006/01/05 22:43:25 khussey Exp $
+ * $Id: MessageOperations.java,v 1.8 2006/01/31 23:00:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,11 +20,21 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Message;
 
+import org.eclipse.uml2.uml.CallEvent;
+import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.MessageEnd;
+import org.eclipse.uml2.uml.MessageEvent;
 import org.eclipse.uml2.uml.MessageKind;
+import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.ReceiveOperationEvent;
+import org.eclipse.uml2.uml.ReceiveSignalEvent;
+import org.eclipse.uml2.uml.SendOperationEvent;
+import org.eclipse.uml2.uml.SendSignalEvent;
+import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -312,12 +322,75 @@ public class MessageOperations
 	 * @generated NOT
 	 */
 	public static NamedElement getSignature(Message message) {
-		MessageEnd sendEvent = (MessageEnd) message.eGet(
-			UMLPackage.Literals.MESSAGE__SEND_EVENT, false);
-		return sendEvent == null
-			? (MessageEnd) message.eGet(
-				UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false)
-			: sendEvent;
+		MessageEvent messageEvent = null;
+
+		MessageEnd sendEvent = message.getSendEvent();
+
+		if (sendEvent instanceof MessageOccurrenceSpecification) {
+			Event event = ((MessageOccurrenceSpecification) sendEvent)
+				.getEvent();
+
+			if (event instanceof MessageEvent) {
+				messageEvent = (MessageEvent) event;
+			}
+		}
+
+		if (messageEvent == null) {
+			MessageEnd receiveEvent = message.getReceiveEvent();
+
+			if (receiveEvent instanceof MessageOccurrenceSpecification) {
+				Event event = ((MessageOccurrenceSpecification) receiveEvent)
+					.getEvent();
+
+				if (event instanceof MessageEvent) {
+					messageEvent = (MessageEvent) event;
+				}
+			}
+		}
+
+		if (messageEvent == null) {
+			return null;
+		} else {
+			return (NamedElement) new UMLSwitch() {
+
+				public Object caseCallEvent(CallEvent callEvent) {
+					return callEvent.eGet(
+						UMLPackage.Literals.CALL_EVENT__OPERATION, false);
+				}
+
+				public Object caseReceiveOperationEvent(
+						ReceiveOperationEvent receiveOperationEvent) {
+					return receiveOperationEvent.eGet(
+						UMLPackage.Literals.RECEIVE_OPERATION_EVENT__OPERATION,
+						false);
+				}
+
+				public Object caseReceiveSignalEvent(
+						ReceiveSignalEvent receiveSignalEvent) {
+					return receiveSignalEvent
+						.eGet(UMLPackage.Literals.RECEIVE_SIGNAL_EVENT__SIGNAL,
+							false);
+				}
+
+				public Object caseSendOperationEvent(
+						SendOperationEvent sendOperationEvent) {
+					return sendOperationEvent.eGet(
+						UMLPackage.Literals.SEND_OPERATION_EVENT__OPERATION,
+						false);
+				}
+
+				public Object caseSendSignalEvent(
+						SendSignalEvent sendSignalEvent) {
+					return sendSignalEvent.eGet(
+						UMLPackage.Literals.SEND_SIGNAL_EVENT__SIGNAL, false);
+				}
+
+				public Object caseSignalEvent(SignalEvent signalEvent) {
+					return signalEvent.eGet(
+						UMLPackage.Literals.SIGNAL_EVENT__SIGNAL, false);
+				}
+			}.doSwitch(messageEvent);
+		}
 	}
 
 } // MessageOperations
