@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.25 2006/01/31 19:59:18 khussey Exp $
+ * $Id: ElementOperations.java,v 1.26 2006/01/31 20:59:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1170,7 +1170,17 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static void destroy(Element element) {
-		destroyAll(element.getStereotypeApplications());
+
+		for (Iterator allContents = getAllContents(element, true, false); allContents
+			.hasNext();) {
+
+			EObject eObject = (EObject) allContents.next();
+
+			if (eObject instanceof Element) {
+				destroyAll(((Element) eObject).getStereotypeApplications());
+			}
+		}
+
 		destroy((EObject) element);
 	}
 
