@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.17 2006/01/31 18:55:04 khussey Exp $
+ * $Id: OperationImpl.java,v 1.18 2006/01/31 19:24:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -949,7 +949,7 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public EList getOwnedParameters() {
 		EList ownedParameter = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER);

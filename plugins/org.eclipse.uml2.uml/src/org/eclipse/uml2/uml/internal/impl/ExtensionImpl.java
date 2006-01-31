@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.15 2006/01/30 23:06:54 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.16 2006/01/31 19:24:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-//import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.uml.Extension;
@@ -83,8 +83,19 @@ public class ExtensionImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
+	public EList getOwnedEndsGen() {
+		EList ownedEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
+		if (ownedEnd == null) {
+			eVirtualSet(UMLPackage.EXTENSION__OWNED_END,
+				ownedEnd = new EObjectContainmentWithInverseEList(
+					ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
+					UMLPackage.PROPERTY__OWNING_ASSOCIATION));
+		}
+		return ownedEnd;
+	}
+
 	public EList getOwnedEnds() {
 		EList ownedEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
 		if (ownedEnd == null) {
