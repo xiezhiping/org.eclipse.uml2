@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.17 2006/01/05 22:42:56 khussey Exp $
+ * $Id: PackageOperations.java,v 1.18 2006/01/31 20:35:03 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -410,7 +410,7 @@ public class PackageOperations extends NamespaceOperations {
 	 * @deprecated
 	 */
 	public static EList getNestedPackages(org.eclipse.uml2.Package package_) {
-		EList nestedPackages = new UniqueEList();
+		EList nestedPackages = new UniqueEList.FastCompare();
 
 		if (package_ != null) {
 
@@ -432,7 +432,7 @@ public class PackageOperations extends NamespaceOperations {
 	 * @deprecated
 	 */
 	public static EList getOwnedTypes(org.eclipse.uml2.Package package_) {
-		EList ownedTypes = new UniqueEList();
+		EList ownedTypes = new UniqueEList.FastCompare();
 
 		if (package_ != null) {
 
@@ -451,7 +451,7 @@ public class PackageOperations extends NamespaceOperations {
 	}
 
 	public static EList getOwnedMembers(org.eclipse.uml2.Package package_) {
-		EList ownedMembers = new UniqueEList();
+		EList ownedMembers = new UniqueEList.FastCompare();
 
 		if (package_ != null) {
 			ownedMembers.addAll(package_.getOwnedRules());

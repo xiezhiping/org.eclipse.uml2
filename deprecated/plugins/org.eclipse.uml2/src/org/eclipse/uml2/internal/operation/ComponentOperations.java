@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.7 2005/11/23 20:09:17 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.8 2006/01/31 20:35:03 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -164,7 +164,7 @@ public final class ComponentOperations
 	}
 
 	public static EList getProvideds(Component component) {
-		EList provideds = new UniqueEList();
+		EList provideds = new UniqueEList.FastCompare();
 
 		if (component != null) {
 			provideds.addAll(component.getImplementedInterfaces());
@@ -197,7 +197,7 @@ public final class ComponentOperations
 	}
 
 	public static EList getRequireds(Component component) {
-		EList requireds = new UniqueEList();
+		EList requireds = new UniqueEList.FastCompare();
 
 		if (component != null) {
 			requireds.addAll(component.getUsedInterfaces());
@@ -224,7 +224,7 @@ public final class ComponentOperations
 	}
 
 	public static EList getOwnedMembers(Component component) {
-		EList ownedMembers = new UniqueEList();
+		EList ownedMembers = new UniqueEList.FastCompare();
 
 		if (component != null) {
 			ownedMembers.addAll(component.getOwnedRules());

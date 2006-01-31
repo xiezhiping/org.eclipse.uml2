@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.34 2006/01/12 02:17:07 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.35 2006/01/31 20:35:03 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -1486,7 +1486,7 @@ public final class ProfileOperations
 	 * @deprecated
 	 */
 	public static EList getOwnedStereotypes(Profile profile) {
-		EList ownedStereotypes = new UniqueEList();
+		EList ownedStereotypes = new UniqueEList.FastCompare();
 
 		if (profile != null) {
 

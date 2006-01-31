@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.9 2005/06/03 19:53:28 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.10 2006/01/31 20:35:07 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -202,7 +202,7 @@ public class UML2ItemPropertyDescriptor
 		if (EObject.class.isInstance(object)) {
 
 			if (null != parentReferences) {
-				Collection result = new UniqueEList();
+				Collection result = new UniqueEList.FastCompare();
 
 				for (int i = 0; i < parentReferences.length; ++i) {
 					result.addAll(getReferenceableObjectsOfType(

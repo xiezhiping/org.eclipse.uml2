@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.12 2006/01/05 22:42:56 khussey Exp $
+ * $Id: ClassOperations.java,v 1.13 2006/01/31 20:35:03 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -146,7 +146,7 @@ public class ClassOperations extends ClassifierOperations {
 	}
 
 	public static EList getSuperClasses(org.eclipse.uml2.Class class_) {
-		EList superClasses = new UniqueEList();
+		EList superClasses = new UniqueEList.FastCompare();
 
 		if (class_ != null) {
 

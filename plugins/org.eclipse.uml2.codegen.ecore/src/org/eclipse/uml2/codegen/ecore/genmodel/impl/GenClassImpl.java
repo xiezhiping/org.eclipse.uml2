@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.23 2006/01/05 22:42:18 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.24 2006/01/31 20:35:06 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,7 +20,6 @@ import java.util.Map;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -801,7 +800,7 @@ public class GenClassImpl
 	}
 
 	public List getUnionGenFeatures() {
-		List unionGenFeatures = new UniqueEList();
+		List unionGenFeatures = new UniqueEList.FastCompare();
 
 		for (Iterator i = getDuplicateGenFeatures().iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
@@ -850,7 +849,7 @@ public class GenClassImpl
 	}
 
 	public List getSupersetGenFeatures() {
-		List supersetGenFeatures = new UniqueEList();
+		List supersetGenFeatures = new UniqueEList.FastCompare();
 
 		for (Iterator i = getDuplicateGenFeatures().iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
@@ -1125,7 +1124,7 @@ public class GenClassImpl
 	}
 
 	public List getRedefinedGenFeatures() {
-		List redefinedGenFeatures = new UniqueEList();
+		List redefinedGenFeatures = new UniqueEList.FastCompare();
 
 		for (Iterator i = getDuplicateGenFeatures().iterator(); i.hasNext();) {
 			GenFeature genFeature = (GenFeature) i.next();
@@ -1195,7 +1194,7 @@ public class GenClassImpl
 	}
 
 	public List getRedefinedGenOperations() {
-		List redefinedGenOperations = new UniqueEList();
+		List redefinedGenOperations = new UniqueEList.FastCompare();
 
 		for (Iterator i = getDuplicateGenOperations().iterator(); i.hasNext();) {
 			GenOperation genOperation = (GenOperation) i.next();

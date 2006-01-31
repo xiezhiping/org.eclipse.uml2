@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.57 2006/01/19 14:13:25 khussey Exp $
+ * $Id: UML2Util.java,v 1.58 2006/01/31 20:35:03 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -3271,7 +3271,7 @@ public class UML2Util
 
 		protected void processDuplicateOperations(Map options,
 				DiagnosticChain diagnostics, Map context) {
-			List operationsToDuplicate = new UniqueEList();
+			List operationsToDuplicate = new UniqueEList.FastCompare();
 
 			for (Iterator eModelElements = elementToEModelElementMap.values()
 				.iterator(); eModelElements.hasNext();) {
@@ -3524,8 +3524,8 @@ public class UML2Util
 
 		protected void processDuplicateFeatures(Map options,
 				DiagnosticChain diagnostics, Map context) {
-			List featuresToDuplicate = new UniqueEList();
-			List featuresToRemove = new UniqueEList();
+			List featuresToDuplicate = new UniqueEList.FastCompare();
+			List featuresToRemove = new UniqueEList.FastCompare();
 
 			for (Iterator eModelElements = elementToEModelElementMap.values()
 				.iterator(); eModelElements.hasNext();) {
@@ -3910,7 +3910,8 @@ public class UML2Util
 					Collections.sort(unspecifiedSuperClasses, eClassComparator);
 					Collections.sort(mixinSuperClasses, eClassComparator);
 
-					List superClasses = new UniqueEList(extendSuperClasses);
+					List superClasses = new UniqueEList.FastCompare(
+						extendSuperClasses);
 					superClasses.addAll(unspecifiedSuperClasses);
 					superClasses.addAll(mixinSuperClasses);
 
@@ -4919,7 +4920,7 @@ public class UML2Util
 
 				if (null == mergedEObjects) {
 					resultingToMergedEObjectMap.put(copyEObject,
-						mergedEObjects = new UniqueEList(1));
+						mergedEObjects = new UniqueEList.FastCompare(1));
 				}
 
 				mergedEObjects.add(eObject);
@@ -4936,7 +4937,7 @@ public class UML2Util
 		protected Collection getAllMergedPackages(
 				org.eclipse.uml2.Package package_) {
 
-			return getAllMergedPackages(package_, new UniqueEList());
+			return getAllMergedPackages(package_, new UniqueEList.FastCompare());
 		}
 
 		/**
@@ -5583,7 +5584,7 @@ public class UML2Util
 				if (resultingEObject instanceof Association) {
 					Association association = (Association) resultingEObject;
 
-					List generalAssociations = new UniqueEList();
+					List generalAssociations = new UniqueEList.FastCompare();
 
 					for (Iterator memberEnds = association.getMemberEnds()
 						.iterator(); memberEnds.hasNext();) {
@@ -6009,7 +6010,7 @@ public class UML2Util
 			int size = resources.size();
 
 			if (size > 0) {
-				EList namedElements = new UniqueEList();
+				EList namedElements = new UniqueEList.FastCompare();
 
 				for (int i = 0; i < size; i++) {
 					findNamedElements(((Resource) resources.get(i))
@@ -6044,7 +6045,7 @@ public class UML2Util
 			EList contents = resource.getContents();
 
 			if (!contents.isEmpty()) {
-				EList namedElements = new UniqueEList();
+				EList namedElements = new UniqueEList.FastCompare();
 
 				findNamedElements(contents, qualifiedName, ignoreCase, eClass,
 					namedElements);
@@ -6196,7 +6197,7 @@ public class UML2Util
 
 	protected static Collection findValidRedefinitions(
 			Feature redefiningFeature, String name) {
-		Collection redefinedFeatures = new UniqueEList();
+		Collection redefinedFeatures = new UniqueEList.FastCompare();
 
 		for (Iterator redefinitionContexts = redefiningFeature
 			.getRedefinitionContexts().iterator(); redefinitionContexts
@@ -6273,7 +6274,7 @@ public class UML2Util
 	protected static Collection findValidSubsets(Property subsettingProperty,
 			String name) {
 
-		Collection subsettedProperties = new UniqueEList();
+		Collection subsettedProperties = new UniqueEList.FastCompare();
 
 		for (Iterator subsettingContexts = subsettingProperty
 			.subsettingContext().iterator(); subsettingContexts.hasNext();) {

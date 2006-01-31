@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierOperations.java,v 1.1 2005/05/25 15:21:32 khussey Exp $
+ * $Id: StructuredClassifierOperations.java,v 1.2 2006/01/31 20:35:03 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -33,7 +33,7 @@ public final class StructuredClassifierOperations
 	}
 
 	public static EList getParts(StructuredClassifier structuredClassifier) {
-		EList parts = new UniqueEList();
+		EList parts = new UniqueEList.FastCompare();
 
 		if (structuredClassifier != null) {
 
