@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.24 2006/01/30 23:06:55 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.25 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,6 +46,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
@@ -324,7 +325,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTemplateParameter(
+	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
 		Object oldTemplateParameter = eVirtualSet(
 			UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER, newTemplateParameter);
@@ -338,6 +339,26 @@ public abstract class ClassifierImpl
 				msgs = notification;
 			else
 				msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	public NotificationChain basicSetTemplateParameter(
+			TemplateParameter newTemplateParameter, NotificationChain msgs) {
+
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof ClassifierTemplateParameter)) {
+
+			throw new IllegalArgumentException(newTemplateParameter.toString());
+		}
+
+		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
+
+		if (getOwningTemplateParameter() != null
+			&& getOwningTemplateParameter() != newTemplateParameter) {
+
+			setOwningTemplateParameter(null);
 		}
 
 		return msgs;

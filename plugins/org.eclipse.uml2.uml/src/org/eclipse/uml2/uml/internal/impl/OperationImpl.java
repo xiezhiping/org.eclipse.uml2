@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.16 2006/01/30 23:06:54 khussey Exp $
+ * $Id: OperationImpl.java,v 1.17 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.OperationTemplateParameter;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -227,7 +228,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTemplateParameter(
+	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
 		Object oldTemplateParameter = eVirtualSet(
 			UMLPackage.OPERATION__TEMPLATE_PARAMETER, newTemplateParameter);
@@ -241,6 +242,26 @@ public class OperationImpl
 				msgs = notification;
 			else
 				msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	public NotificationChain basicSetTemplateParameter(
+			TemplateParameter newTemplateParameter, NotificationChain msgs) {
+
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof OperationTemplateParameter)) {
+
+			throw new IllegalArgumentException(newTemplateParameter.toString());
+		}
+
+		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
+
+		if (getOwningTemplateParameter() != null
+			&& getOwningTemplateParameter() != newTemplateParameter) {
+
+			setOwningTemplateParameter(null);
 		}
 
 		return msgs;

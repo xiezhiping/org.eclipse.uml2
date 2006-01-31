@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.10 2006/01/30 23:06:54 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.11 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -265,9 +265,9 @@ public class ClassifierTemplateParameterImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public NotificationChain basicSetParameteredElement(
+	public NotificationChain basicSetParameteredElementGen(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
 		Object oldParameteredElement = eVirtualSet(
 			UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
@@ -285,10 +285,26 @@ public class ClassifierTemplateParameterImpl
 				msgs.add(notification);
 		}
 
+		return msgs;
+	}
+
+	public NotificationChain basicSetParameteredElement(
+			ParameterableElement newParameteredElement, NotificationChain msgs) {
+
+		if (newParameteredElement != null
+			&& !(newParameteredElement instanceof Classifier)) {
+
+			throw new IllegalArgumentException(newParameteredElement.toString());
+		}
+
+		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
+
 		if (eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null
 			&& eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != newParameteredElement) {
+
 			setOwnedParameteredElement(null);
 		}
+
 		return msgs;
 	}
 

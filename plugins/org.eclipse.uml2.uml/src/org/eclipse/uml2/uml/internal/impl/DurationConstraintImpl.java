@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.9 2005/12/21 20:13:08 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.10 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import org.eclipse.uml2.uml.DurationConstraint;
+import org.eclipse.uml2.uml.DurationInterval;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -104,7 +105,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSpecification(
+	public NotificationChain basicSetSpecificationGen(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 		Object oldSpecification = eVirtualSet(
 			UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, newSpecification);
@@ -122,6 +123,16 @@ public class DurationConstraintImpl
 		}
 
 		return msgs;
+	}
+
+	public NotificationChain basicSetSpecification(
+			ValueSpecification newSpecification, NotificationChain msgs) {
+
+		if (newSpecification != null && !(newSpecification instanceof DurationInterval)) {
+			throw new IllegalArgumentException(newSpecification.toString());
+		}
+
+		return basicSetSpecificationGen(newSpecification, msgs);
 	}
 
 	/**

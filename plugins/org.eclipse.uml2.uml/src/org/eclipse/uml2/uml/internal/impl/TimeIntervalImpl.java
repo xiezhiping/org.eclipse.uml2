@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeInterval;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -95,7 +96,7 @@ public class TimeIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMax(ValueSpecification newMax) {
+	public void setMaxGen(ValueSpecification newMax) {
 		ValueSpecification max = newMax;
 		Object oldMax = eVirtualSet(UMLPackage.TIME_INTERVAL__MAX, max);
 		if (eNotificationRequired())
@@ -104,6 +105,15 @@ public class TimeIntervalImpl
 					? null
 					: oldMax, max));
 
+	}
+
+	public void setMax(ValueSpecification newMax) {
+
+		if (newMax != null && !(newMax instanceof TimeExpression)) {
+			throw new IllegalArgumentException(newMax.toString());
+		}
+
+		setMaxGen(newMax);
 	}
 
 	/**
@@ -149,7 +159,7 @@ public class TimeIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMin(ValueSpecification newMin) {
+	public void setMinGen(ValueSpecification newMin) {
 		ValueSpecification min = newMin;
 		Object oldMin = eVirtualSet(UMLPackage.TIME_INTERVAL__MIN, min);
 		if (eNotificationRequired())
@@ -158,6 +168,15 @@ public class TimeIntervalImpl
 					? null
 					: oldMin, min));
 
+	}
+
+	public void setMin(ValueSpecification newMin) {
+
+		if (newMin != null && !(newMin instanceof TimeExpression)) {
+			throw new IllegalArgumentException(newMin.toString());
+		}
+
+		setMinGen(newMin);
 	}
 
 	/**

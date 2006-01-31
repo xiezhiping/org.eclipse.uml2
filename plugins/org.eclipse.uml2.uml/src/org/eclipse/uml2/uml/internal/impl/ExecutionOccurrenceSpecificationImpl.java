@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Event;
+import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Interaction;
@@ -155,7 +156,7 @@ public class ExecutionOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEvent(Event newEvent) {
+	public void setEventGen(Event newEvent) {
 		Event event = newEvent;
 		Object oldEvent = eVirtualSet(
 			UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT, event);
@@ -166,6 +167,15 @@ public class ExecutionOccurrenceSpecificationImpl
 					? null
 					: oldEvent, event));
 
+	}
+
+	public void setEvent(Event newEvent) {
+
+		if (newEvent != null && !(newEvent instanceof ExecutionEvent)) {
+			throw new IllegalArgumentException(newEvent.toString());
+		}
+
+		setEventGen(newEvent);
 	}
 
 	/**

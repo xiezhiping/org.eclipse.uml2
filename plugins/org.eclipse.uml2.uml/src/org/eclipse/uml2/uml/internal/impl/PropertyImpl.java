@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.21 2006/01/30 23:06:55 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.22 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,6 +44,7 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
@@ -246,7 +247,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTemplateParameter(
+	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
 		Object oldTemplateParameter = eVirtualSet(
 			UMLPackage.PROPERTY__TEMPLATE_PARAMETER, newTemplateParameter);
@@ -260,6 +261,26 @@ public class PropertyImpl
 				msgs = notification;
 			else
 				msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	public NotificationChain basicSetTemplateParameter(
+			TemplateParameter newTemplateParameter, NotificationChain msgs) {
+
+		if (newTemplateParameter != null
+			&& !(newTemplateParameter instanceof ConnectableElementTemplateParameter)) {
+
+			throw new IllegalArgumentException(newTemplateParameter.toString());
+		}
+
+		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
+
+		if (getOwningTemplateParameter() != null
+			&& getOwningTemplateParameter() != newTemplateParameter) {
+
+			setOwningTemplateParameter(null);
 		}
 
 		return msgs;

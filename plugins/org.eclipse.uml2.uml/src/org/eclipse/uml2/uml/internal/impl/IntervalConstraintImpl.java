@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Interval;
 import org.eclipse.uml2.uml.IntervalConstraint;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -75,7 +76,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSpecification(
+	public NotificationChain basicSetSpecificationGen(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 		Object oldSpecification = eVirtualSet(
 			UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, newSpecification);
@@ -93,6 +94,16 @@ public class IntervalConstraintImpl
 		}
 
 		return msgs;
+	}
+
+	public NotificationChain basicSetSpecification(
+			ValueSpecification newSpecification, NotificationChain msgs) {
+
+		if (newSpecification != null && !(newSpecification instanceof Interval)) {
+			throw new IllegalArgumentException(newSpecification.toString());
+		}
+
+		return basicSetSpecificationGen(newSpecification, msgs);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.8 2006/01/30 23:06:54 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -98,9 +99,9 @@ public class ConnectableElementTemplateParameterImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public NotificationChain basicSetParameteredElement(
+	public NotificationChain basicSetParameteredElementGen(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
 		Object oldParameteredElement = eVirtualSet(
 			UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
@@ -119,10 +120,26 @@ public class ConnectableElementTemplateParameterImpl
 				msgs.add(notification);
 		}
 
+		return msgs;
+	}
+
+	public NotificationChain basicSetParameteredElement(
+			ParameterableElement newParameteredElement, NotificationChain msgs) {
+
+		if (newParameteredElement != null
+			&& !(newParameteredElement instanceof ConnectableElement)) {
+
+			throw new IllegalArgumentException(newParameteredElement.toString());
+		}
+
+		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
+
 		if (eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null
 			&& eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != newParameteredElement) {
+
 			setOwnedParameteredElement(null);
 		}
+
 		return msgs;
 	}
 
