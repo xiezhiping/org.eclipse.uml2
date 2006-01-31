@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.24 2006/01/27 04:55:56 khussey Exp $
+ * $Id: ElementOperations.java,v 1.25 2006/01/31 19:59:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1170,6 +1170,7 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static void destroy(Element element) {
+		destroyAll(element.getStereotypeApplications());
 		destroy((EObject) element);
 	}
 
