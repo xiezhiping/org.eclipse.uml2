@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.14 2006/01/27 04:55:56 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.15 2006/02/01 18:38:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -93,8 +94,15 @@ public class ProfileOperations
 			EPackage ePackage = (EPackage) casePackage(profile);
 
 			if (packages.contains(profile)) {
-				String name = ePackage.getName();
-				ePackage.setNsPrefix(name);
+				String profileName = ePackage.getName();
+
+				ePackage.setNsPrefix(profileName);
+
+				org.eclipse.uml2.uml.Package nestingPackage = profile
+					.getNestingPackage();
+				String profileParentQualifiedName = nestingPackage == null
+					? EMPTY_STRING
+					: getQualifiedName(nestingPackage, "."); //$NON-NLS-1$
 
 				String version = String.valueOf(0);
 
@@ -106,9 +114,14 @@ public class ProfileOperations
 					// ignore
 				}
 
-				ePackage.setNsURI("http://" //$NON-NLS-1$
-					+ getQualifiedName(profile, ".") //$NON-NLS-1$
-					+ "/schemas/" + EcoreUtil.generateUUID() + '/' + version); //$NON-NLS-1$
+				StringBuffer nsURI = new StringBuffer("http://"); //$NON-NLS-1$
+				nsURI.append(profileParentQualifiedName);
+				nsURI.append("/schemas/"); //$NON-NLS-1$
+				nsURI.append(profileName);
+				nsURI.append('/');
+				nsURI.append(version);
+
+				ePackage.setNsURI(nsURI.toString());
 			}
 
 			return ePackage;
@@ -171,8 +184,12 @@ public class ProfileOperations
 		}
 
 		public static EPackage convert(Profile profile) {
+			Map options = new HashMap();
+			options.put(OPTION__ECORE_TAGGED_VALUES, OPTION__PROCESS);
+
 			Collection ePackages = new Profile2EPackageConverter().convert(
-				Collections.singleton(profile), null, null, null);
+				Collections.singleton(profile), options, null, null);
+
 			return ePackages.size() == 1
 				? (EPackage) ePackages.iterator().next()
 				: null;
