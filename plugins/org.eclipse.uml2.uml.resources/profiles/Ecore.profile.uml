@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="_siPt4K87Edi5QpYeY_yIpg" name="Ecore" metaclassReference="_urkx4K87Edi5QpYeY_yIpg _usJZo687Edi5QpYeY_yIpg _usVm4K87Edi5QpYeY_yIpg _usVm4a87Edi5QpYeY_yIpg _ush0IK87Edi5QpYeY_yIpg _usn6wK87Edi5QpYeY_yIpg _usuBYK87Edi5QpYeY_yIpg _us6OoK87Edi5QpYeY_yIpg _utA8Ua87Edi5QpYeY_yIpg _utHC9687Edi5QpYeY_yIpg">
   <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_v9DA0K87Edi5QpYeY_yIpg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_vy-HUYinEdqtvbnfB2L_5w" name="Ecore" nsURI="http://Ecore/schemas/_vy-HUIinEdqtvbnfB2L_5w/0" nsPrefix="Ecore">
+    <contents xmi:type="ecore:EPackage" xmi:id="_vy-HUYinEdqtvbnfB2L_5w" name="Ecore" nsURI="http://www.eclipse.org/uml2/schemas/Ecore/3" nsPrefix="Ecore">
       <eClassifiers xmi:type="ecore:EClass" xmi:id="_vy-HUoinEdqtvbnfB2L_5w" name="EPackage">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vy-HU4inEdqtvbnfB2L_5w" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ui4v8K87Edi5QpYeY_yIpg"/>
         <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vy-HVIinEdqtvbnfB2L_5w" name="base_Package" ordered="false" unique="false" lowerBound="1">
