@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.58 2006/01/31 20:35:03 khussey Exp $
+ * $Id: UML2Util.java,v 1.59 2006/02/01 18:34:01 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -756,7 +756,7 @@ public class UML2Util
 								.getString(
 									"_UI_Ecore2UML2Converter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context, element,
-										getTaggedValueDefinition(stereotype,
+										getTagDefinition(stereotype,
 											propertyName), value)),
 							new Object[]{element}));
 				}
@@ -775,9 +775,8 @@ public class UML2Util
 							.getString(
 								"_UI_Ecore2UML2Converter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, element,
-									getTaggedValueDefinition(stereotype,
-										propertyName), value)),
-						new Object[]{element}));
+									getTagDefinition(stereotype, propertyName),
+									value)), new Object[]{element}));
 			}
 		}
 
@@ -2170,8 +2169,7 @@ public class UML2Util
 									.getString(
 										"_UI_UML22EcoreConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
-											eModelElement,
-											getTaggedValueDefinition(
+											eModelElement, getTagDefinition(
 												stereotype, propertyName),
 											value)),
 								new Object[]{eModelElement}));
@@ -2372,9 +2370,8 @@ public class UML2Util
 								.getString(
 									"_UI_UML22EcoreConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
-										eModelElement,
-										getTaggedValueDefinition(stereotype,
-											propertyName), value)),
+										eModelElement, getTagDefinition(
+											stereotype, propertyName), value)),
 							new Object[]{eModelElement}));
 				}
 			}
@@ -5924,7 +5921,7 @@ public class UML2Util
 
 	protected static final String STEREOTYPE_NAME__E_REFERENCE = "EReference"; //$NON-NLS-1$
 
-	protected static Property getTaggedValueDefinition(Stereotype stereotype,
+	protected static Property getTagDefinition(Stereotype stereotype,
 			final String propertyName) {
 
 		return (Property) findEObject(stereotype.allFeatures(),
