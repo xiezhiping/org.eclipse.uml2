@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.7 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.8 2006/02/01 21:55:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -203,7 +203,8 @@ public class ValueSpecificationOperations
 			}
 
 			public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
-				literalBoolean.setValue(Boolean.getBoolean(newValue));
+				literalBoolean.setValue(Boolean.valueOf(newValue)
+					.booleanValue());
 				return literalBoolean;
 			}
 
