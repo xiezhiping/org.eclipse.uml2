@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.6 2006/01/03 19:50:29 khussey Exp $
+ * $Id: Operation.java,v 1.7 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -63,6 +63,7 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Is Query</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -71,7 +72,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Query</em>' attribute.
 	 * @see #setIsQuery(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsQuery()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isQuery();
@@ -88,6 +89,7 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Is Ordered</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -97,7 +99,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsOrdered()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -114,6 +116,7 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -123,7 +126,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsUnique()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isUnique();
@@ -140,6 +143,7 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -149,7 +153,7 @@ public interface Operation
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Lower()
-	 * @model dataType="org.eclipse.uml2.uml.Integer" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.uml.Integer" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();
@@ -166,6 +170,7 @@ public interface Operation
 
 	/**
 	 * Returns the value of the '<em><b>Upper</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -175,7 +180,7 @@ public interface Operation
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Upper()
-	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.uml.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();

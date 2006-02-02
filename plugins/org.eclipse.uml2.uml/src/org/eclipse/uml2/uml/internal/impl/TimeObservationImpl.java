@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationImpl.java,v 1.2 2006/01/04 17:47:24 khussey Exp $
+ * $Id: TimeObservationImpl.java,v 1.3 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,7 +56,7 @@ public class TimeObservationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean FIRST_EVENT_EDEFAULT = false;
+	protected static final boolean FIRST_EVENT_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isFirstEvent() <em>First Event</em>}' attribute.
@@ -75,6 +75,7 @@ public class TimeObservationImpl
 	 */
 	protected TimeObservationImpl() {
 		super();
+		eFlags |= FIRST_EVENT_EFLAG;
 	}
 
 	/**

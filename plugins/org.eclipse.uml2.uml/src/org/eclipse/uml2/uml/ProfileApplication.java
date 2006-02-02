@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.7 2006/01/25 18:51:32 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.8 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -67,6 +67,7 @@ public interface ProfileApplication
 
 	/**
 	 * Returns the value of the '<em><b>Is Strict</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -75,7 +76,7 @@ public interface ProfileApplication
 	 * @return the value of the '<em>Is Strict</em>' attribute.
 	 * @see #setIsStrict(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_IsStrict()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isStrict();

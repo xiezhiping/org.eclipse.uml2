@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.8 2006/01/03 19:50:26 khussey Exp $
+ * $Id: Parameter.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -215,6 +215,7 @@ public interface Parameter
 
 	/**
 	 * Returns the value of the '<em><b>Is Exception</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -223,7 +224,7 @@ public interface Parameter
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_IsException()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isException();
@@ -240,6 +241,7 @@ public interface Parameter
 
 	/**
 	 * Returns the value of the '<em><b>Is Stream</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -248,7 +250,7 @@ public interface Parameter
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_IsStream()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isStream();

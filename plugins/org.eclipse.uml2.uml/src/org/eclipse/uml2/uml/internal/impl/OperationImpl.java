@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.18 2006/01/31 19:24:34 khussey Exp $
+ * $Id: OperationImpl.java,v 1.19 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -152,7 +152,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = false;
+	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -162,7 +162,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 0;
+	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -172,7 +172,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 0;
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * <!-- begin-user-doc -->

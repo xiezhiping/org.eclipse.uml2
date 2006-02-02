@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.7 2006/01/03 19:50:26 khussey Exp $
+ * $Id: Class.java,v 1.8 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -154,6 +154,7 @@ public interface Class
 
 	/**
 	 * Returns the value of the '<em><b>Is Active</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -162,7 +163,7 @@ public interface Class
 	 * @return the value of the '<em>Is Active</em>' attribute.
 	 * @see #setIsActive(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClass_IsActive()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isActive();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.11 2006/02/02 19:23:40 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.12 2006/02/02 23:30:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,7 +60,7 @@ public class TimeConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean FIRST_EVENT_EDEFAULT = false;
+	protected static final boolean FIRST_EVENT_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isFirstEvent() <em>First Event</em>}' attribute.
@@ -79,6 +79,7 @@ public class TimeConstraintImpl
 	 */
 	protected TimeConstraintImpl() {
 		super();
+		eFlags |= FIRST_EVENT_EFLAG;
 	}
 
 	/**

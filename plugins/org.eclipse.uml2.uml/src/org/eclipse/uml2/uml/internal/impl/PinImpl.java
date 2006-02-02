@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.11 2006/01/20 20:55:53 khussey Exp $
+ * $Id: PinImpl.java,v 1.12 2006/02/02 23:30:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -108,7 +108,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = false;
+	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -128,7 +128,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 0;
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -138,7 +138,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 0;
+	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
 	 * The default value of the '{@link #isControl() <em>Is Control</em>}' attribute.
@@ -167,6 +167,7 @@ public class PinImpl
 	 */
 	protected PinImpl() {
 		super();
+		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**

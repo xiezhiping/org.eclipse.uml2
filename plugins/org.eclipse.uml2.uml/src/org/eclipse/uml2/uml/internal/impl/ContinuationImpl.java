@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,7 +58,7 @@ public class ContinuationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SETTING_EDEFAULT = false;
+	protected static final boolean SETTING_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isSetting() <em>Setting</em>}' attribute.
@@ -77,6 +77,7 @@ public class ContinuationImpl
 	 */
 	protected ContinuationImpl() {
 		super();
+		eFlags |= SETTING_EFLAG;
 	}
 
 	/**

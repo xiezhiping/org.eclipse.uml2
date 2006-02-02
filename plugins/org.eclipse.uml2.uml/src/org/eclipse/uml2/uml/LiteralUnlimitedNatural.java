@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNatural.java,v 1.4 2005/12/14 22:34:15 khussey Exp $
+ * $Id: LiteralUnlimitedNatural.java,v 1.5 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -37,6 +37,7 @@ public interface LiteralUnlimitedNatural
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -45,7 +46,7 @@ public interface LiteralUnlimitedNatural
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLiteralUnlimitedNatural_Value()
-	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
+	 * @model default="0" dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
 	 * @generated
 	 */
 	int getValue();

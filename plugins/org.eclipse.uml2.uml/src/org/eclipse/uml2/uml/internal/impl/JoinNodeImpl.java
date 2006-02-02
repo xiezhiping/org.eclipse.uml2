@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.12 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,7 +69,7 @@ public class JoinNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_COMBINE_DUPLICATE_EDEFAULT = false;
+	protected static final boolean IS_COMBINE_DUPLICATE_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isCombineDuplicate() <em>Is Combine Duplicate</em>}' attribute.
@@ -88,6 +88,7 @@ public class JoinNodeImpl
 	 */
 	protected JoinNodeImpl() {
 		super();
+		eFlags |= IS_COMBINE_DUPLICATE_EFLAG;
 	}
 
 	/**

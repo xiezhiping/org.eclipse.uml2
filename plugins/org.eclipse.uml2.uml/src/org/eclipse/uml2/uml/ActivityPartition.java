@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.8 2006/01/03 19:50:29 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,6 +49,7 @@ public interface ActivityPartition
 
 	/**
 	 * Returns the value of the '<em><b>Is Dimension</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -57,7 +58,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Is Dimension</em>' attribute.
 	 * @see #setIsDimension(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_IsDimension()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDimension();
@@ -74,6 +75,7 @@ public interface ActivityPartition
 
 	/**
 	 * Returns the value of the '<em><b>Is External</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -82,7 +84,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Is External</em>' attribute.
 	 * @see #setIsExternal(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_IsExternal()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isExternal();

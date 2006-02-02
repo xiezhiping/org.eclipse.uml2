@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.10 2006/01/12 15:53:52 khussey Exp $
+ * $Id: Behavior.java,v 1.11 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -69,6 +69,7 @@ public interface Behavior
 
 	/**
 	 * Returns the value of the '<em><b>Is Reentrant</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -77,7 +78,7 @@ public interface Behavior
 	 * @return the value of the '<em>Is Reentrant</em>' attribute.
 	 * @see #setIsReentrant(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_IsReentrant()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReentrant();

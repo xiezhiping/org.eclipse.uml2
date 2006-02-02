@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
+ * $Id: ObjectNode.java,v 1.4 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,6 +83,7 @@ public interface ObjectNode
 
 	/**
 	 * Returns the value of the '<em><b>Is Control Type</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -91,7 +92,7 @@ public interface ObjectNode
 	 * @return the value of the '<em>Is Control Type</em>' attribute.
 	 * @see #setIsControlType(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectNode_IsControlType()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isControlType();

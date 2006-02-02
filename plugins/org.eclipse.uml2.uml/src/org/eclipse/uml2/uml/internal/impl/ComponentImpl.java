@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.15 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.16 2006/02/02 23:30:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,7 +81,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = false;
+	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
@@ -100,6 +100,7 @@ public class ComponentImpl
 	 */
 	protected ComponentImpl() {
 		super();
+		eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
 	}
 
 	/**

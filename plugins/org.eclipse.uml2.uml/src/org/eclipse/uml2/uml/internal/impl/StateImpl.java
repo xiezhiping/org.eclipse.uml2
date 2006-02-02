@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.17 2006/01/05 21:27:52 khussey Exp $
+ * $Id: StateImpl.java,v 1.18 2006/02/02 23:30:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,7 +156,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_SIMPLE_EDEFAULT = false;
+	protected static final boolean IS_SIMPLE_EDEFAULT = true;
 
 	/**
 	 * The default value of the '{@link #isSubmachineState() <em>Is Submachine State</em>}' attribute.

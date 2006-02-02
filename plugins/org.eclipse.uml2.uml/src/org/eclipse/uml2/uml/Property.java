@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.11 2006/01/03 19:50:29 khussey Exp $
+ * $Id: Property.java,v 1.12 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -107,6 +107,7 @@ public interface Property
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -116,7 +117,7 @@ public interface Property
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsDerived()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerived();
@@ -133,6 +134,7 @@ public interface Property
 
 	/**
 	 * Returns the value of the '<em><b>Is Derived Union</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -141,7 +143,7 @@ public interface Property
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsDerivedUnion()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerivedUnion();
@@ -240,6 +242,7 @@ public interface Property
 
 	/**
 	 * Returns the value of the '<em><b>Is Composite</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -249,7 +252,7 @@ public interface Property
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see #setIsComposite(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsComposite()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.11 2005/12/14 22:34:18 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.12 2006/02/02 23:30:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNIQUE_EDEFAULT = false;
+	protected static final boolean IS_UNIQUE_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -109,7 +109,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 0;
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -119,7 +119,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LOWER_EDEFAULT = 0;
+	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,6 +128,7 @@ public abstract class MultiplicityElementImpl
 	 */
 	protected MultiplicityElementImpl() {
 		super();
+		eFlags |= IS_UNIQUE_EFLAG;
 	}
 
 	/**

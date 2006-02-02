@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extension.java,v 1.7 2006/02/02 19:23:40 khussey Exp $
+ * $Id: Extension.java,v 1.8 2006/02/02 23:30:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,6 +42,7 @@ public interface Extension
 
 	/**
 	 * Returns the value of the '<em><b>Is Required</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -49,7 +50,7 @@ public interface Extension
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Required</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtension_IsRequired()
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRequired();
