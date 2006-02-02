@@ -634,7 +634,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5KmxkmwKEdq7X4sGURiZYA" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Kmxk2wKEdq7X4sGURiZYA"/>
       </returnResult>
-      <ownedParameter xmi:id="_6FwyQGwKEdq7X4sGURiZYA" name="shouldLocalize" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
+      <ownedParameter xmi:id="_6FwyQGwKEdq7X4sGURiZYA" name="localize" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_ynRtoGvtEdqG6fBIPwe-mw" name="Type" isAbstract="true">
