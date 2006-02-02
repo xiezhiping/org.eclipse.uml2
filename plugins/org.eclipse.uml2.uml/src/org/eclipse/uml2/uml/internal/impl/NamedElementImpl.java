@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.14 2005/12/19 21:34:46 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.15 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -410,8 +410,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLabel(boolean isLocalized) {
-		return NamedElementOperations.getLabel(this, isLocalized);
+	public String getLabel(boolean localize) {
+		return NamedElementOperations.getLabel(this, localize);
 	}
 
 	/**

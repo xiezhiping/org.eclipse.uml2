@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.14 2006/01/27 04:55:56 khussey Exp $
+ * $Id: PackageOperations.java,v 1.15 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -428,10 +428,10 @@ public class PackageOperations
 	 */
 	public static Profile getAppliedProfile(
 			org.eclipse.uml2.uml.Package package_, String qualifiedName,
-			boolean isRecursive) {
+			boolean recurse) {
 		Profile appliedProfile = package_.getAppliedProfile(qualifiedName);
 
-		if (appliedProfile == null && isRecursive) {
+		if (appliedProfile == null && recurse) {
 
 			for (package_ = package_.getNestingPackage(); package_ != null
 				&& appliedProfile == null; package_ = package_
@@ -493,11 +493,11 @@ public class PackageOperations
 	 */
 	public static ProfileApplication getProfileApplication(
 			org.eclipse.uml2.uml.Package package_, Profile profile,
-			boolean isRecursive) {
+			boolean recurse) {
 		ProfileApplication profileApplication = package_
 			.getProfileApplication(profile);
 
-		if (profileApplication == null && isRecursive) {
+		if (profileApplication == null && recurse) {
 
 			for (package_ = package_.getNestingPackage(); package_ != null
 				&& profileApplication == null; package_ = package_

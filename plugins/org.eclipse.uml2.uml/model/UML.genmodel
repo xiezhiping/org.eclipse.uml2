@@ -281,7 +281,7 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getAppliedProfile.1">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getAppliedProfile.1/qualifiedName"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getAppliedProfile.1/isRecursive"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getAppliedProfile.1/recurse"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getAllProfileApplications"
           cacheAdapterScope="Global"/>
@@ -290,7 +290,7 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getProfileApplication.1">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/profile"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/isRecursive"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/recurse"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedInterface">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedInterface/name"/>
@@ -338,7 +338,7 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/getLabel"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/getLabel.1">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//NamedElement/getLabel.1/isLocalized"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//NamedElement/getLabel.1/localize"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/getQualifiedName"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/allNamespaces"
@@ -1865,6 +1865,8 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Extension/is_binary/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Extension/is_binary/context"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Extension/getStereotypeEnd"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Extension/getStereotype"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Extension/metaclassEnd"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Extension/getMetaclass"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Extension/isRequired"/>
@@ -1897,13 +1899,20 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getProfile"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getKeyword"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getKeyword.1">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Stereotype/getKeyword.1/isLocalized"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Stereotype/getKeyword.1/localize"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getExtendedMetaclasses"
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getAllExtendedMetaclasses"
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/getDefinition"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/createIcon">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Stereotype/createIcon/location"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Stereotype/createIcon.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Stereotype/createIcon.1/format"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Stereotype/createIcon.1/content"/>
+      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Image" labelFeature="#//uml/Image/format">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Image/content"/>
@@ -1948,6 +1957,9 @@
           cacheAdapterScope="Resource"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/getReferencedMetamodels"
           cacheAdapterScope="Resource"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/getOwnedExtensions">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/getOwnedExtensions/requiredOnly"/>
+      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Model">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Model/viewpoint"/>

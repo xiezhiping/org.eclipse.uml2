@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.9 2006/01/05 22:43:24 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.10 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -23,6 +23,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Type;
+
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -37,6 +40,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Extension#validateNonOwnedEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#validateIsBinary(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Binary</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Extension#getStereotypeEnd() <em>Get Stereotype End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Extension#getStereotype() <em>Get Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#metaclassEnd() <em>Metaclass End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#getMetaclass() <em>Get Metaclass</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extension#isRequired() <em>Is Required</em>}</li>
@@ -124,6 +129,41 @@ public class ExtensionOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Property getStereotypeEnd(Extension extension) {
+
+		for (Iterator ownedEnds = extension.getOwnedEnds().iterator(); ownedEnds
+			.hasNext();) {
+
+			return (Property) ownedEnds.next();
+		}
+
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Stereotype getStereotype(Extension extension) {
+		Property stereotypeEnd = extension.getStereotypeEnd();
+
+		if (stereotypeEnd != null) {
+			Type type = stereotypeEnd.getType();
+
+			if (type instanceof Stereotype) {
+				return (Stereotype) type;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
 	 * result = memberEnd->reject(ownedEnd)
@@ -157,10 +197,17 @@ public class ExtensionOperations
 	 */
 	public static org.eclipse.uml2.uml.Class getMetaclass(Extension extension) {
 		Property metaclassEnd = extension.metaclassEnd();
-		return metaclassEnd == null
-			? null
-			: (org.eclipse.uml2.uml.Class) metaclassEnd.eGet(
+
+		if (metaclassEnd != null) {
+			Object type = metaclassEnd.eGet(
 				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false);
+
+			if (type instanceof org.eclipse.uml2.uml.Class) {
+				return (org.eclipse.uml2.uml.Class) type;
+			}
+		}
+
+		return null;
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.7 2005/12/19 21:34:46 khussey Exp $
+ * $Id: NamedElement.java,v 1.8 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -307,10 +307,10 @@ public interface NamedElement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" isLocalizedDataType="org.eclipse.uml2.uml.Boolean" isLocalizedRequired="true" isLocalizedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
 	 */
-	String getLabel(boolean isLocalized);
+	String getLabel(boolean localize);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.15 2006/01/24 20:23:48 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.16 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,8 +160,8 @@ public class StereotypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getKeyword(boolean isLocalized) {
-		return StereotypeOperations.getKeyword(this, isLocalized);
+	public String getKeyword(boolean localize) {
+		return StereotypeOperations.getKeyword(this, localize);
 	}
 
 	/**
@@ -211,6 +211,24 @@ public class StereotypeImpl
 	 */
 	public EClass getDefinition() {
 		return StereotypeOperations.getDefinition(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Image createIcon(String location) {
+		return StereotypeOperations.createIcon(this, location);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Image createIcon(String format, String content) {
+		return StereotypeOperations.createIcon(this, format, content);
 	}
 
 	/**

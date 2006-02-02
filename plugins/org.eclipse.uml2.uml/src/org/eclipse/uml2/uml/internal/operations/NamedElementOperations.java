@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.11 2006/01/27 04:55:56 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.12 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -209,13 +209,13 @@ public class NamedElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static String getLabel(NamedElement namedElement, boolean isLocalized) {
+	public static String getLabel(NamedElement namedElement, boolean localize) {
 		String qualifiedName = namedElement.getQualifiedName();
 		return getString(namedElement, LABEL_KEY_PREFIX
 			+ getValidJavaIdentifier(isEmpty(qualifiedName)
 				? EMPTY_STRING
 				: qualifiedName.replace(':', '_')), namedElement.getName(),
-			isLocalized);
+			localize);
 	}
 
 	protected static String getQualifiedName(NamedElement namedElement,

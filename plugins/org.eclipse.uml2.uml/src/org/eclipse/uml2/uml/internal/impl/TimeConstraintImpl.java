@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.10 2006/01/31 18:55:04 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.11 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -153,7 +153,9 @@ public class TimeConstraintImpl
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 
-		if (newSpecification != null && !(newSpecification instanceof TimeInterval)) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof TimeInterval)) {
+
 			throw new IllegalArgumentException(newSpecification.toString());
 		}
 

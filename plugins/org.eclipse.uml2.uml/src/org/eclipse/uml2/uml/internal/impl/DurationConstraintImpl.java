@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.10 2006/01/31 18:55:04 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.11 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,7 +128,9 @@ public class DurationConstraintImpl
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 
-		if (newSpecification != null && !(newSpecification instanceof DurationInterval)) {
+		if (newSpecification != null
+			&& !(newSpecification instanceof DurationInterval)) {
+
 			throw new IllegalArgumentException(newSpecification.toString());
 		}
 

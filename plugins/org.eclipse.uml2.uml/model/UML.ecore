@@ -220,7 +220,7 @@
     </eOperations>
     <eOperations name="getAppliedProfile" ordered="false" eType="#//Profile">
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="isRecursive" ordered="false" lowerBound="1" eType="#//Boolean"/>
+      <eParameters name="recurse" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="getAllProfileApplications" ordered="false" upperBound="-1"
         eType="#//ProfileApplication"/>
@@ -229,7 +229,7 @@
     </eOperations>
     <eOperations name="getProfileApplication" ordered="false" eType="#//ProfileApplication">
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
-      <eParameters name="isRecursive" ordered="false" lowerBound="1" eType="#//Boolean"/>
+      <eParameters name="recurse" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="createOwnedInterface" ordered="false" lowerBound="1" eType="#//Interface">
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
@@ -344,7 +344,7 @@
     </eOperations>
     <eOperations name="getLabel" ordered="false" eType="#//String"/>
     <eOperations name="getLabel" ordered="false" eType="#//String">
-      <eParameters name="isLocalized" ordered="false" lowerBound="1" eType="#//Boolean"/>
+      <eParameters name="localize" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2650,7 +2650,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint" resolveProxies="false">
@@ -4250,6 +4250,8 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
+    <eOperations name="getStereotypeEnd" ordered="false" eType="#//Property"/>
+    <eOperations name="getStereotype" ordered="false" eType="#//Stereotype"/>
     <eOperations name="metaclassEnd" ordered="false" lowerBound="1" eType="#//Property">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).&#xD;&#xA;result = memberEnd->reject(ownedEnd)"/>
@@ -4373,12 +4375,19 @@
     <eOperations name="getProfile" ordered="false" eType="#//Profile"/>
     <eOperations name="getKeyword" ordered="false" lowerBound="1" eType="#//String"/>
     <eOperations name="getKeyword" ordered="false" lowerBound="1" eType="#//String">
-      <eParameters name="isLocalized" ordered="false" lowerBound="1" eType="#//Boolean"/>
+      <eParameters name="localize" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="getExtendedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
     <eOperations name="getAllExtendedMetaclasses" ordered="false" upperBound="-1"
         eType="#//Class"/>
     <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+    <eOperations name="createIcon" ordered="false" lowerBound="1" eType="#//Image">
+      <eParameters name="location" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="createIcon" ordered="false" lowerBound="1" eType="#//Image">
+      <eParameters name="format" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="content" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="icon" ordered="false" upperBound="-1"
         eType="#//Image" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4448,6 +4457,9 @@
     </eOperations>
     <eOperations name="getReferencedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
     <eOperations name="getReferencedMetamodels" ordered="false" upperBound="-1" eType="#//Model"/>
+    <eOperations name="getOwnedExtensions" ordered="false" upperBound="-1" eType="#//Extension">
+      <eParameters name="requiredOnly" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStereotype" ordered="false"
         upperBound="-1" eType="#//Stereotype" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

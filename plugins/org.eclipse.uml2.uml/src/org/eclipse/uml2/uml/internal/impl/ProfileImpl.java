@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.16 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -345,6 +345,15 @@ public class ProfileImpl
 			return result;
 		}
 		return ProfileOperations.getReferencedMetamodels(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedExtensions(boolean requiredOnly) {
+		return ProfileOperations.getOwnedExtensions(this, requiredOnly);
 	}
 
 	/**

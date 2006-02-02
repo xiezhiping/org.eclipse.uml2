@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.9 2006/01/16 22:29:29 khussey Exp $
+ * $Id: Package.java,v 1.10 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -318,10 +318,10 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" isRecursiveDataType="org.eclipse.uml2.uml.Boolean" isRecursiveRequired="true" isRecursiveOrdered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
 	 */
-	Profile getAppliedProfile(String qualifiedName, boolean isRecursive);
+	Profile getAppliedProfile(String qualifiedName, boolean recurse);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -342,11 +342,10 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model ordered="false" profileRequired="true" profileOrdered="false" isRecursiveDataType="org.eclipse.uml2.uml.Boolean" isRecursiveRequired="true" isRecursiveOrdered="false"
+	 * @model ordered="false" profileRequired="true" profileOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
 	 */
-	ProfileApplication getProfileApplication(Profile profile,
-			boolean isRecursive);
+	ProfileApplication getProfileApplication(Profile profile, boolean recurse);
 
 	/**
 	 * <!-- begin-user-doc -->

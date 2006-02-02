@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.16 2006/01/31 19:24:34 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.17 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseE
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -193,6 +194,24 @@ public class ExtensionImpl
 	 */
 	public boolean validateIsBinary(DiagnosticChain diagnostics, Map context) {
 		return ExtensionOperations.validateIsBinary(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getStereotypeEnd() {
+		return ExtensionOperations.getStereotypeEnd(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stereotype getStereotype() {
+		return ExtensionOperations.getStereotype(this);
 	}
 
 	/**

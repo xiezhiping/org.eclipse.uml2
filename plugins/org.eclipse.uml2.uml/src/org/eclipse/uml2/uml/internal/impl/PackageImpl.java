@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.18 2006/01/16 22:29:29 khussey Exp $
+ * $Id: PackageImpl.java,v 1.19 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -826,9 +826,9 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Profile getAppliedProfile(String qualifiedName, boolean isRecursive) {
-		return PackageOperations.getAppliedProfile(this, qualifiedName,
-			isRecursive);
+	public Profile getAppliedProfile(String qualifiedName, boolean recurse) {
+		return PackageOperations
+			.getAppliedProfile(this, qualifiedName, recurse);
 	}
 
 	/**
@@ -866,9 +866,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public ProfileApplication getProfileApplication(Profile profile,
-			boolean isRecursive) {
-		return PackageOperations.getProfileApplication(this, profile,
-			isRecursive);
+			boolean recurse) {
+		return PackageOperations.getProfileApplication(this, profile, recurse);
 	}
 
 	/**

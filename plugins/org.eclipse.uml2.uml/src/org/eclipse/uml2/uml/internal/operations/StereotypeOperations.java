@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.10 2006/01/27 04:55:56 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.11 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
@@ -53,6 +54,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#getDefinition() <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String) <em>Create Icon</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String, java.lang.String) <em>Create Icon</em>}</li>
  * </ul>
  * </p>
  *
@@ -219,10 +222,10 @@ public class StereotypeOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static String getKeyword(Stereotype stereotype, boolean isLocalized) {
+	public static String getKeyword(Stereotype stereotype, boolean localize) {
 		String keyword = getString(stereotype,
 			getValidJavaIdentifier(stereotype.getQualifiedName().replace(':',
-				'_')), EMPTY_STRING, isLocalized);
+				'_')), EMPTY_STRING, localize);
 
 		if (isEmpty(keyword)) {
 			String identifier = getValidJavaIdentifier(stereotype.getName());
@@ -299,6 +302,30 @@ public class StereotypeOperations
 		return profile == null
 			? null
 			: (EClass) profile.getDefinition(stereotype);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Image createIcon(Stereotype stereotype, String location) {
+		Image icon = stereotype.createIcon();
+		icon.setLocation(location);
+		return icon;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Image createIcon(Stereotype stereotype, String format,
+			String content) {
+		Image icon = stereotype.createIcon();
+		icon.setFormat(format);
+		icon.setContent(content);
+		return icon;
 	}
 
 } // StereotypeOperations

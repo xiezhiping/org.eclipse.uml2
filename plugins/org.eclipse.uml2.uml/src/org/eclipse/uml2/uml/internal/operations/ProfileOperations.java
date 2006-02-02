@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.15 2006/02/01 18:38:41 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.16 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageImport;
@@ -73,6 +74,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetamodels() <em>Get Referenced Metamodels</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getOwnedExtensions(boolean) <em>Get Owned Extensions</em>}</li>
  * </ul>
  * </p>
  *
@@ -513,6 +515,28 @@ public class ProfileOperations
 		}
 
 		return ECollections.unmodifiableEList(referencedMetamodels);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList getOwnedExtensions(Profile profile, boolean requiredOnly) {
+		EList ownedExtensions = new UniqueEList.FastCompare();
+
+		for (Iterator extensions = EcoreUtil.getObjectsByType(
+			profile.getPackagedElements(), UMLPackage.Literals.EXTENSION)
+			.iterator(); extensions.hasNext();) {
+
+			Extension extension = (Extension) extensions.next();
+
+			if (!requiredOnly || extension.isRequired()) {
+				ownedExtensions.add(extension);
+			}
+		}
+
+		return ECollections.unmodifiableEList(ownedExtensions);
 	}
 
 } // ProfileOperations

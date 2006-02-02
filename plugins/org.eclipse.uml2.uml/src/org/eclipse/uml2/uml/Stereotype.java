@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.4 2006/01/24 20:23:47 khussey Exp $
+ * $Id: Stereotype.java,v 1.5 2006/02/02 19:23:40 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -120,10 +120,10 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false" isLocalizedDataType="org.eclipse.uml2.uml.Boolean" isLocalizedRequired="true" isLocalizedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
 	 */
-	String getKeyword(boolean isLocalized);
+	String getKeyword(boolean localize);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,5 +148,21 @@ public interface Stereotype
 	 * @generated
 	 */
 	EClass getDefinition();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" locationDataType="org.eclipse.uml2.uml.String" locationRequired="true" locationOrdered="false"
+	 * @generated
+	 */
+	Image createIcon(String location);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" formatDataType="org.eclipse.uml2.uml.String" formatRequired="true" formatOrdered="false" contentDataType="org.eclipse.uml2.uml.String" contentRequired="true" contentOrdered="false"
+	 * @generated
+	 */
+	Image createIcon(String format, String content);
 
 } // Stereotype
