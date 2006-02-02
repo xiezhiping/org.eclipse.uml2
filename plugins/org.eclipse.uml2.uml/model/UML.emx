@@ -606,10 +606,16 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_skHGwGvsEdqG6fBIPwe-mw" name="Extension">
     <ownedOperation xmi:id="_k1UVkJPtEdqpjIDDFZ2Hgw" name="getStereotypeEnd" type="_Jp_1oGveEdq4DLWZOhbdEA" isQuery="true">
-      <returnResult xmi:id="_BPaXoJPuEdqpjIDDFZ2Hgw" type="_Jp_1oGveEdq4DLWZOhbdEA" direction="return"/>
+      <returnResult xmi:id="_BPaXoJPuEdqpjIDDFZ2Hgw" type="_Jp_1oGveEdq4DLWZOhbdEA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X2BEMZQGEdqpjIDDFZ2Hgw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X2BEMJQGEdqpjIDDFZ2Hgw"/>
+      </returnResult>
     </ownedOperation>
     <ownedOperation xmi:id="_6cTFEJPtEdqpjIDDFZ2Hgw" name="getStereotype" type="_A7vDAGv0Edq7X4sGURiZYA" isQuery="true">
-      <returnResult xmi:id="_C7cboJPuEdqpjIDDFZ2Hgw" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return"/>
+      <returnResult xmi:id="_C7cboJPuEdqpjIDDFZ2Hgw" type="_A7vDAGv0Edq7X4sGURiZYA" direction="return">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aF9tkZQGEdqpjIDDFZ2Hgw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aF9tkJQGEdqpjIDDFZ2Hgw"/>
+      </returnResult>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_csVgUGvtEdqG6fBIPwe-mw" name="NamedElement" isAbstract="true">
