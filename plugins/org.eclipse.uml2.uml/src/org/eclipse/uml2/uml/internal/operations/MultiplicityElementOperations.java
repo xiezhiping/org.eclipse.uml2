@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.10 2006/01/05 22:43:25 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.11 2006/02/03 04:09:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -443,9 +443,11 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean isSetLower(MultiplicityElement multiplicityElement) {
 		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-		return basicEObjectImpl
-			.eVirtualIsSet(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
+		return ((Integer) basicEObjectImpl
+			.eVirtualGet(
+				basicEObjectImpl
+					.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
+				new Integer(1))).intValue() != 1;
 	}
 
 	/**
@@ -467,9 +469,11 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean isSetUpper(MultiplicityElement multiplicityElement) {
 		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-		return basicEObjectImpl
-			.eVirtualIsSet(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
+		return ((Integer) basicEObjectImpl
+			.eVirtualGet(
+				basicEObjectImpl
+					.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
+				new Integer(1))).intValue() != 1;
 	}
 
 	/**
