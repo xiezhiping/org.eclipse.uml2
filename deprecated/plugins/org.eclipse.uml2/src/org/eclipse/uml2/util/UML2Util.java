@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.60 2006/02/03 00:13:45 khussey Exp $
+ * $Id: UML2Util.java,v 1.61 2006/02/03 04:07:29 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -839,6 +839,17 @@ public class UML2Util
 					return eClassStereotype;
 				}
 
+				public Object caseDataType(DataType dataType) {
+					Stereotype eDataTypeStereotype = getEcoreStereotype(
+						eClassifier, STEREOTYPE_NAME__E_DATA_TYPE);
+
+					if (eDataTypeStereotype != null) {
+						safeApplyStereotype(dataType, eDataTypeStereotype);
+					}
+
+					return eDataTypeStereotype;
+				}
+
 				public Object caseInterface(Interface interface_) {
 					Stereotype eClassStereotype = getEcoreStereotype(
 						eClassifier, STEREOTYPE_NAME__E_CLASS);
@@ -970,12 +981,8 @@ public class UML2Util
 					}
 
 					public Object caseEDataType(EDataType eDataType) {
-						Stereotype eDataTypeStereotype = getEcoreStereotype(
-							eDataType, STEREOTYPE_NAME__E_DATA_TYPE);
-
-						if (null != eDataTypeStereotype) {
-							safeApplyStereotype(element, eDataTypeStereotype);
-						}
+						processEcoreTaggedValues(element, eDataType, options,
+							diagnostics, context);
 
 						return eDataType;
 					}

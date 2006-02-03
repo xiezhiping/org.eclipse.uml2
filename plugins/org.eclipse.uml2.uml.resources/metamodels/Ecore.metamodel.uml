@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
   <uml:Model xmi:id="_0" name="ecore">
-    <packagedElement xmi:type="uml:Class" xmi:id="EAttribute" name="EAttribute">
-      <generalization xmi:type="uml:Generalization" xmi:id="EAttribute-_generalization.0" general="EStructuralFeature"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAttribute-iD" name="iD" visibility="public" isOrdered="true" isUnique="true" lower="0">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAttribute-eAttributeType" name="eAttributeType" visibility="public" type="EDataType" isOrdered="true" isUnique="true" isReadOnly="true" isDerived="true" association="_packagedElement.42"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EStructuralFeature" name="EStructuralFeature" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="EStructuralFeature-_generalization.0" general="ETypedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-eContainingClass" name="eContainingClass" visibility="public" type="EClass" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.37"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-changeable" name="changeable" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-eContainingClass" name="eContainingClass" visibility="public" type="EClass" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.38"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-changeable" name="changeable" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-volatile" name="volatile" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-volatile" name="volatile" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-transient" name="transient" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-transient" name="transient" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-defaultValueLiteral" name="defaultValueLiteral" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-defaultValueLiteral" name="defaultValueLiteral" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-defaultValue" name="defaultValue" visibility="public" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-defaultValue" name="defaultValue" visibility="public" isOrdered="true" lower="0" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-unsettable" name="unsettable" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-unsettable" name="unsettable" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-derived" name="derived" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStructuralFeature-derived" name="derived" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EStructuralFeature-getFeatureID" name="getFeatureID" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EStructuralFeature-getFeatureID-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EStructuralFeature-getFeatureID-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EStructuralFeature-getContainerClass" name="getContainerClass" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EStructuralFeature-getContainerClass-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EStructuralFeature-getContainerClass-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaClass"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="ETypedElement" name="ETypedElement" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="ETypedElement-_generalization.0" general="ENamedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-ordered" name="ordered" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-ordered" name="ordered" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-unique" name="unique" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-unique" name="unique" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-lowerBound" name="lowerBound" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-lowerBound" name="lowerBound" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-upperBound" name="upperBound" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-upperBound" name="upperBound" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-many" name="many" visibility="public" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-many" name="many" visibility="public" isOrdered="true" lower="0" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-required" name="required" visibility="public" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-required" name="required" visibility="public" isOrdered="true" lower="0" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-eType" name="eType" visibility="public" type="EClassifier" isOrdered="true" isUnique="true" lower="0" association="_packagedElement.11"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ETypedElement-eType" name="eType" visibility="public" type="EClassifier" isOrdered="true" lower="0" association="_packagedElement.13"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="ENamedElement" name="ENamedElement" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="ENamedElement-_generalization.0" general="EModelElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="ENamedElement-name" name="name" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ENamedElement-name" name="name" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EModelElement" name="EModelElement" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="EModelElement-_generalization.0" general="EObject"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EModelElement-eAnnotations" name="eAnnotations" visibility="public" type="EAnnotation" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.8"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EModelElement-eAnnotations" name="eAnnotations" visibility="public" type="EAnnotation" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.8"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EModelElement-getEAnnotation" name="getEAnnotation" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EModelElement-getEAnnotation-_ownedParameter.0" type="EAnnotation" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EModelElement-getEAnnotation-source" name="source" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EModelElement-getEAnnotation-_ownedParameter.0" type="EAnnotation" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EModelElement-getEAnnotation-source" name="source" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EAnnotation" name="EAnnotation">
       <generalization xmi:type="uml:Generalization" xmi:id="EAnnotation-_generalization.0" general="EModelElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-source" name="source" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-source" name="source" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-details" name="details" visibility="public" type="EStringToStringMapEntry" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.6"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-eModelElement" name="eModelElement" visibility="public" type="EModelElement" isOrdered="true" isUnique="true" lower="0" association="_packagedElement.8"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-contents" name="contents" visibility="public" type="EObject" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.9"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-references" name="references" visibility="public" type="EObject" isOrdered="true" isUnique="true" upper="*" lower="0" association="_packagedElement.10"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-details" name="details" visibility="public" type="EStringToStringMapEntry" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.7"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-eModelElement" name="eModelElement" visibility="public" type="EModelElement" isOrdered="true" lower="0" association="_packagedElement.8"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-contents" name="contents" visibility="public" type="EObject" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.9"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAnnotation-references" name="references" visibility="public" type="EObject" isOrdered="true" upper="*" lower="0" association="_packagedElement.10"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.6" memberEnd="EAnnotation-details _packagedElement.6-_ownedEnd.0">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.6-_ownedEnd.0" type="EAnnotation" association="_packagedElement.6"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="EAttribute" name="EAttribute">
+      <generalization xmi:type="uml:Generalization" xmi:id="EAttribute-_generalization.0" general="EStructuralFeature"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAttribute-iD" name="iD" visibility="public" isOrdered="true" lower="0">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EAttribute-eAttributeType" name="eAttributeType" visibility="public" type="EDataType" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.44"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EStringToStringMapEntry" name="EStringToStringMapEntry">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-key" name="key" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-key" name="key" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-value" name="value" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-value" name="value" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.7" memberEnd="EAnnotation-details _packagedElement.7-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.7-_ownedEnd.0" type="EAnnotation" association="_packagedElement.7"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.8" memberEnd="EModelElement-eAnnotations EAnnotation-eModelElement"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.9" memberEnd="EAnnotation-contents _packagedElement.9-_ownedEnd.0">
@@ -109,153 +109,153 @@
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.10" memberEnd="EAnnotation-references _packagedElement.10-_ownedEnd.0">
       <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.10-_ownedEnd.0" type="EAnnotation" association="_packagedElement.10"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.11" memberEnd="ETypedElement-eType _packagedElement.11-_ownedEnd.0">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.11-_ownedEnd.0" type="ETypedElement" association="_packagedElement.11"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EClassifier" name="EClassifier" isAbstract="true">
       <generalization xmi:type="uml:Generalization" xmi:id="EClassifier-_generalization.0" general="ENamedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-instanceClassName" name="instanceClassName" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-instanceClassName" name="instanceClassName" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-instanceClass" name="instanceClass" visibility="public" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-instanceClass" name="instanceClass" visibility="public" isOrdered="true" lower="0" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaClass"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-defaultValue" name="defaultValue" visibility="public" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-defaultValue" name="defaultValue" visibility="public" isOrdered="true" lower="0" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-ePackage" name="ePackage" visibility="public" type="EPackage" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.41"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClassifier-ePackage" name="ePackage" visibility="public" type="EPackage" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.41"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClassifier-isInstance" name="isInstance" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClassifier-isInstance-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClassifier-isInstance-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClassifier-isInstance-object" name="object" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClassifier-isInstance-object" name="object" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClassifier-getClassifierID" name="getClassifierID" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClassifier-getClassifierID-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClassifier-getClassifierID-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EPackage" name="EPackage">
       <generalization xmi:type="uml:Generalization" xmi:id="EPackage-_generalization.0" general="ENamedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-nsURI" name="nsURI" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-nsURI" name="nsURI" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-nsPrefix" name="nsPrefix" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-nsPrefix" name="nsPrefix" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eFactoryInstance" name="eFactoryInstance" visibility="public" type="EFactory" isOrdered="true" isUnique="true" association="_packagedElement.14"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eFactoryInstance.1" name="eFactoryInstance" visibility="public" type="EFactory" isOrdered="true" isUnique="true" association="_packagedElement.39"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eSubpackages" name="eSubpackages" visibility="public" type="EPackage" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.40"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eSuperPackage" name="eSuperPackage" visibility="public" type="EPackage" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.40"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eClassifiers" name="eClassifiers" visibility="public" type="EClassifier" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.41"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eFactoryInstance" name="eFactoryInstance" visibility="public" type="EFactory" isOrdered="true" association="_packagedElement.16"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eFactoryInstance.1" name="eFactoryInstance" visibility="public" type="EFactory" isOrdered="true" association="_packagedElement.39"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eSubpackages" name="eSubpackages" visibility="public" type="EPackage" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.40"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eSuperPackage" name="eSuperPackage" visibility="public" type="EPackage" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.40"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EPackage-eClassifiers" name="eClassifiers" visibility="public" type="EClassifier" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.41"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EPackage-getEClassifier" name="getEClassifier" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EPackage-getEClassifier-_ownedParameter.0" type="EClassifier" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EPackage-getEClassifier-name" name="name" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EPackage-getEClassifier-_ownedParameter.0" type="EClassifier" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EPackage-getEClassifier-name" name="name" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.14" memberEnd="EPackage-eFactoryInstance EFactory-ePackage.1"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.13" memberEnd="ETypedElement-eType _packagedElement.13-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.13-_ownedEnd.0" type="ETypedElement" association="_packagedElement.13"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EFactory" name="EFactory">
       <generalization xmi:type="uml:Generalization" xmi:id="EFactory-_generalization.0" general="EModelElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EFactory-ePackage" name="ePackage" visibility="public" type="EPackage" isOrdered="true" isUnique="true" association="_packagedElement.39"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EFactory-ePackage.1" name="ePackage" visibility="public" type="EPackage" isOrdered="true" isUnique="true" association="_packagedElement.14"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EFactory-ePackage" name="ePackage" visibility="public" type="EPackage" isOrdered="true" association="_packagedElement.39"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EFactory-ePackage.1" name="ePackage" visibility="public" type="EPackage" isOrdered="true" association="_packagedElement.16"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EFactory-create" name="create" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-create-_ownedParameter.0" type="EObject" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-create-eClass" name="eClass" type="EClass" isOrdered="true" isUnique="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-create-_ownedParameter.0" type="EObject" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-create-eClass" name="eClass" type="EClass" isOrdered="true" lower="0"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EFactory-createFromString" name="createFromString" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-createFromString-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-createFromString-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-createFromString-eDataType" name="eDataType" type="EDataType" isOrdered="true" isUnique="true" lower="0"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-createFromString-literalValue" name="literalValue" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-createFromString-eDataType" name="eDataType" type="EDataType" isOrdered="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-createFromString-literalValue" name="literalValue" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EFactory-convertToString" name="convertToString" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-convertToString-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-convertToString-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-convertToString-eDataType" name="eDataType" type="EDataType" isOrdered="true" isUnique="true" lower="0"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-convertToString-instanceValue" name="instanceValue" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-convertToString-eDataType" name="eDataType" type="EDataType" isOrdered="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EFactory-convertToString-instanceValue" name="instanceValue" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EClass" name="EClass">
       <generalization xmi:type="uml:Generalization" xmi:id="EClass-_generalization.0" general="EClassifier"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-abstract" name="abstract" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-abstract" name="abstract" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-interface" name="interface" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-interface" name="interface" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eSuperTypes" name="eSuperTypes" visibility="public" type="EClass" isOrdered="true" isUnique="true" upper="*" lower="0" association="_packagedElement.17"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eOperations" name="eOperations" visibility="public" type="EOperation" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.18"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eOperations.1" name="eOperations" visibility="public" type="EOperation" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.20"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllAttributes" name="eAllAttributes" visibility="public" type="EAttribute" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.25"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllReferences" name="eAllReferences" visibility="public" type="EReference" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.26"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eReferences" name="eReferences" visibility="public" type="EReference" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.30"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAttributes" name="eAttributes" visibility="public" type="EAttribute" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.31"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllContainments" name="eAllContainments" visibility="public" type="EReference" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.32"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllOperations" name="eAllOperations" visibility="public" type="EOperation" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.33"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllStructuralFeatures" name="eAllStructuralFeatures" visibility="public" type="EStructuralFeature" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.34"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllSuperTypes" name="eAllSuperTypes" visibility="public" type="EClass" isOrdered="true" isUnique="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.35"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eIDAttribute" name="eIDAttribute" visibility="public" type="EAttribute" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.36"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eStructuralFeatures" name="eStructuralFeatures" visibility="public" type="EStructuralFeature" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.37"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eSuperTypes" name="eSuperTypes" visibility="public" type="EClass" isOrdered="true" upper="*" lower="0" association="_packagedElement.17"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eOperations" name="eOperations" visibility="public" type="EOperation" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.19"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eOperations.1" name="eOperations" visibility="public" type="EOperation" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.20"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllAttributes" name="eAllAttributes" visibility="public" type="EAttribute" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.25"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllReferences" name="eAllReferences" visibility="public" type="EReference" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.27"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eReferences" name="eReferences" visibility="public" type="EReference" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.30"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAttributes" name="eAttributes" visibility="public" type="EAttribute" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.31"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllContainments" name="eAllContainments" visibility="public" type="EReference" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.32"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllOperations" name="eAllOperations" visibility="public" type="EOperation" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.33"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllStructuralFeatures" name="eAllStructuralFeatures" visibility="public" type="EStructuralFeature" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.34"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eAllSuperTypes" name="eAllSuperTypes" visibility="public" type="EClass" isOrdered="true" upper="*" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.35"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eIDAttribute" name="eIDAttribute" visibility="public" type="EAttribute" isOrdered="true" lower="0" isReadOnly="true" isDerived="true" association="_packagedElement.36"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EClass-eStructuralFeatures" name="eStructuralFeatures" visibility="public" type="EStructuralFeature" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.38"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClass-isSuperTypeOf" name="isSuperTypeOf" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-isSuperTypeOf-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-isSuperTypeOf-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-isSuperTypeOf-someClass" name="someClass" type="EClass" isOrdered="true" isUnique="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-isSuperTypeOf-someClass" name="someClass" type="EClass" isOrdered="true" lower="0"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClass-getFeatureCount" name="getFeatureCount" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getFeatureCount-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getFeatureCount-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClass-getEStructuralFeature" name="getEStructuralFeature" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature-_ownedParameter.0" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature-featureID" name="featureID" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature-_ownedParameter.0" type="EStructuralFeature" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature-featureID" name="featureID" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClass-getFeatureID" name="getFeatureID" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getFeatureID-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getFeatureID-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getFeatureID-feature" name="feature" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getFeatureID-feature" name="feature" type="EStructuralFeature" isOrdered="true" lower="0"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EClass-getEStructuralFeature.1" name="getEStructuralFeature" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature.1-_ownedParameter.0" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature.1-featureName" name="featureName" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature.1-_ownedParameter.0" type="EStructuralFeature" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EClass-getEStructuralFeature.1-featureName" name="featureName" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.16" memberEnd="EPackage-eFactoryInstance EFactory-ePackage.1"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.17" memberEnd="EClass-eSuperTypes _packagedElement.17-_ownedEnd.0">
       <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.17-_ownedEnd.0" type="EClass" association="_packagedElement.17"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.18" memberEnd="EClass-eOperations EOperation-eContainingClass.1"/>
     <packagedElement xmi:type="uml:Class" xmi:id="EOperation" name="EOperation">
       <generalization xmi:type="uml:Generalization" xmi:id="EOperation-_generalization.0" general="ETypedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eContainingClass" name="eContainingClass" visibility="public" type="EClass" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.20"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eParameters" name="eParameters" visibility="public" type="EParameter" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.21"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eParameters.1" name="eParameters" visibility="public" type="EParameter" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.23"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eExceptions" name="eExceptions" visibility="public" type="EClassifier" isOrdered="true" isUnique="true" upper="*" lower="0" association="_packagedElement.24"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eContainingClass.1" name="eContainingClass" visibility="public" type="EClass" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.18"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eContainingClass" name="eContainingClass" visibility="public" type="EClass" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.20"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eParameters" name="eParameters" visibility="public" type="EParameter" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.22"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eParameters.1" name="eParameters" visibility="public" type="EParameter" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.23"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eExceptions" name="eExceptions" visibility="public" type="EClassifier" isOrdered="true" upper="*" lower="0" association="_packagedElement.24"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EOperation-eContainingClass.1" name="eContainingClass" visibility="public" type="EClass" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.19"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.19" memberEnd="EClass-eOperations EOperation-eContainingClass.1"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.20" memberEnd="EClass-eOperations.1 EOperation-eContainingClass"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.21" memberEnd="EOperation-eParameters EParameter-eOperation.1"/>
     <packagedElement xmi:type="uml:Class" xmi:id="EParameter" name="EParameter">
       <generalization xmi:type="uml:Generalization" xmi:id="EParameter-_generalization.0" general="ETypedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EParameter-eOperation" name="eOperation" visibility="public" type="EOperation" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.23"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EParameter-eOperation.1" name="eOperation" visibility="public" type="EOperation" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.21"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EParameter-eOperation" name="eOperation" visibility="public" type="EOperation" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.23"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EParameter-eOperation.1" name="eOperation" visibility="public" type="EOperation" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.22"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.22" memberEnd="EOperation-eParameters EParameter-eOperation.1"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.23" memberEnd="EOperation-eParameters.1 EParameter-eOperation"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.24" memberEnd="EOperation-eExceptions _packagedElement.24-_ownedEnd.0">
       <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.24-_ownedEnd.0" type="EOperation" association="_packagedElement.24"/>
@@ -263,22 +263,22 @@
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.25" memberEnd="EClass-eAllAttributes _packagedElement.25-_ownedEnd.0">
       <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.25-_ownedEnd.0" type="EClass" association="_packagedElement.25"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.26" memberEnd="EClass-eAllReferences _packagedElement.26-_ownedEnd.0">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.26-_ownedEnd.0" type="EClass" association="_packagedElement.26"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EReference" name="EReference">
       <generalization xmi:type="uml:Generalization" xmi:id="EReference-_generalization.0" general="EStructuralFeature"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-containment" name="containment" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-containment" name="containment" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-container" name="container" visibility="public" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" isDerived="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-container" name="container" visibility="public" isOrdered="true" lower="0" isReadOnly="true" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-resolveProxies" name="resolveProxies" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-resolveProxies" name="resolveProxies" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-eOpposite" name="eOpposite" visibility="public" type="EReference" isOrdered="true" isUnique="true" lower="0" association="_packagedElement.28"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-eReferenceType" name="eReferenceType" visibility="public" type="EClass" isOrdered="true" isUnique="true" isReadOnly="true" isDerived="true" association="_packagedElement.29"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-eOpposite" name="eOpposite" visibility="public" type="EReference" isOrdered="true" lower="0" association="_packagedElement.28"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EReference-eReferenceType" name="eReferenceType" visibility="public" type="EClass" isOrdered="true" isReadOnly="true" isDerived="true" association="_packagedElement.29"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.27" memberEnd="EClass-eAllReferences _packagedElement.27-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.27-_ownedEnd.0" type="EClass" association="_packagedElement.27"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.28" memberEnd="EReference-eOpposite _packagedElement.28-_ownedEnd.0">
       <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.28-_ownedEnd.0" type="EReference" association="_packagedElement.28"/>
@@ -307,55 +307,54 @@
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.36" memberEnd="EClass-eIDAttribute _packagedElement.36-_ownedEnd.0">
       <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.36-_ownedEnd.0" type="EClass" association="_packagedElement.36"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.37" memberEnd="EClass-eStructuralFeatures EStructuralFeature-eContainingClass"/>
     <packagedElement xmi:type="uml:Class" xmi:id="EDataType" name="EDataType">
       <generalization xmi:type="uml:Generalization" xmi:id="EDataType-_generalization.0" general="EClassifier"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EDataType-serializable" name="serializable" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EDataType-serializable" name="serializable" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
       </ownedAttribute>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.38" memberEnd="EClass-eStructuralFeatures EStructuralFeature-eContainingClass"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.39" memberEnd="EFactory-ePackage EPackage-eFactoryInstance.1"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.40" memberEnd="EPackage-eSubpackages EPackage-eSuperPackage"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.41" memberEnd="EPackage-eClassifiers EClassifier-ePackage"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.42" memberEnd="EAttribute-eAttributeType _packagedElement.42-_ownedEnd.0">
-      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.42-_ownedEnd.0" type="EAttribute" association="_packagedElement.42"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EEnum" name="EEnum">
       <generalization xmi:type="uml:Generalization" xmi:id="EEnum-_generalization.0" general="EDataType"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnum-eLiterals" name="eLiterals" visibility="public" type="EEnumLiteral" isOrdered="true" isUnique="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.45"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnum-eLiterals" name="eLiterals" visibility="public" type="EEnumLiteral" isOrdered="true" upper="*" lower="0" aggregation="composite" association="_packagedElement.78"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EEnum-getEEnumLiteral" name="getEEnumLiteral" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral-_ownedParameter.0" type="EEnumLiteral" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral-name" name="name" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral-_ownedParameter.0" type="EEnumLiteral" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral-name" name="name" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EEnum-getEEnumLiteral.1" name="getEEnumLiteral" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral.1-_ownedParameter.0" type="EEnumLiteral" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral.1-value" name="value" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral.1-_ownedParameter.0" type="EEnumLiteral" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteral.1-value" name="value" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EEnum-getEEnumLiteralByLiteral" name="getEEnumLiteralByLiteral" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteralByLiteral-_ownedParameter.0" type="EEnumLiteral" isOrdered="true" isUnique="true" lower="0" direction="return"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteralByLiteral-literal" name="literal" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteralByLiteral-_ownedParameter.0" type="EEnumLiteral" isOrdered="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EEnum-getEEnumLiteralByLiteral-literal" name="literal" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EEnumLiteral" name="EEnumLiteral">
       <generalization xmi:type="uml:Generalization" xmi:id="EEnumLiteral-_generalization.0" general="ENamedElement"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-value" name="value" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-value" name="value" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-instance" name="instance" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-instance" name="instance" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-literal" name="literal" visibility="public" isOrdered="true" isUnique="true" lower="0">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-literal" name="literal" visibility="public" isOrdered="true" lower="0">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-eEnum" name="eEnum" visibility="public" type="EEnum" isOrdered="true" isUnique="true" lower="0" isReadOnly="true" association="_packagedElement.45"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EEnumLiteral-eEnum" name="eEnum" visibility="public" type="EEnum" isOrdered="true" lower="0" isReadOnly="true" association="_packagedElement.78"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.45" memberEnd="EEnum-eLiterals EEnumLiteral-eEnum"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.44" memberEnd="EAttribute-eAttributeType _packagedElement.44-_ownedEnd.0">
+      <ownedEnd xmi:type="uml:Property" xmi:id="_packagedElement.44-_ownedEnd.0" type="EAttribute" association="_packagedElement.44"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigDecimal" name="EBigDecimal"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigInteger" name="EBigInteger"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBoolean" name="EBoolean"/>
@@ -390,73 +389,74 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator"/>
     <packagedElement xmi:type="uml:Class" xmi:id="EObject" name="EObject">
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eClass" name="eClass" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eClass-_ownedParameter.0" type="EClass" isOrdered="true" isUnique="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eClass-_ownedParameter.0" type="EClass" isOrdered="true" lower="0" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eIsProxy" name="eIsProxy" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eIsProxy-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eIsProxy-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eResource" name="eResource" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eResource-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eResource-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EResource"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eContainer" name="eContainer" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContainer-_ownedParameter.0" type="EObject" isOrdered="true" isUnique="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContainer-_ownedParameter.0" type="EObject" isOrdered="true" lower="0" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eContainingFeature" name="eContainingFeature" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContainingFeature-_ownedParameter.0" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContainingFeature-_ownedParameter.0" type="EStructuralFeature" isOrdered="true" lower="0" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eContainmentFeature" name="eContainmentFeature" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContainmentFeature-_ownedParameter.0" type="EReference" isOrdered="true" isUnique="true" lower="0" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContainmentFeature-_ownedParameter.0" type="EReference" isOrdered="true" lower="0" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eContents" name="eContents" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContents-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eContents-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eAllContents" name="eAllContents" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eAllContents-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eAllContents-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#ETreeIterator"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eCrossReferences" name="eCrossReferences" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eCrossReferences-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eCrossReferences-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eGet" name="eGet" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet-feature" name="feature" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet-feature" name="feature" type="EStructuralFeature" isOrdered="true" lower="0"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eGet.1" name="eGet" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet.1-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet.1-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet.1-feature" name="feature" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet.1-resolve" name="resolve" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet.1-feature" name="feature" type="EStructuralFeature" isOrdered="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eGet.1-resolve" name="resolve" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eSet" name="eSet" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eSet-feature" name="feature" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eSet-newValue" name="newValue" isOrdered="true" isUnique="true" lower="0">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eSet-feature" name="feature" type="EStructuralFeature" isOrdered="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eSet-newValue" name="newValue" isOrdered="true" lower="0">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eIsSet" name="eIsSet" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eIsSet-_ownedParameter.0" isOrdered="true" isUnique="true" lower="0" direction="return">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eIsSet-_ownedParameter.0" isOrdered="true" lower="0" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eIsSet-feature" name="feature" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eIsSet-feature" name="feature" type="EStructuralFeature" isOrdered="true" lower="0"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="EObject-eUnset" name="eUnset" visibility="public">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eUnset-feature" name="feature" type="EStructuralFeature" isOrdered="true" isUnique="true" lower="0"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="EObject-eUnset-feature" name="feature" type="EStructuralFeature" isOrdered="true" lower="0"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.78" memberEnd="EEnum-eLiterals EEnumLiteral-eEnum"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
@@ -470,193 +470,193 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_KgcJpo6bEdqG-IEsuUDbFQ" base_Package="_0" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
-  <Ecore:EClass xmi:id="_KgcJp46bEdqG-IEsuUDbFQ" base_Class="EAttribute"/>
-  <Ecore:EAttribute xmi:id="_KgcJqI6bEdqG-IEsuUDbFQ" base_Property="EAttribute-iD"/>
-  <Ecore:EReference xmi:id="_KgcJqY6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EAttribute-eAttributeType"/>
-  <Ecore:EClass xmi:id="_KgcJqo6bEdqG-IEsuUDbFQ" base_Class="EStructuralFeature"/>
-  <Ecore:EReference xmi:id="_KgcJq46bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EStructuralFeature-eContainingClass" isResolveProxies="false"/>
-  <Ecore:EAttribute xmi:id="_KgcJrI6bEdqG-IEsuUDbFQ" base_Property="EStructuralFeature-changeable"/>
-  <Ecore:EAttribute xmi:id="_KgcJrY6bEdqG-IEsuUDbFQ" base_Property="EStructuralFeature-volatile"/>
-  <Ecore:EAttribute xmi:id="_KgcJro6bEdqG-IEsuUDbFQ" base_Property="EStructuralFeature-transient"/>
-  <Ecore:EAttribute xmi:id="_KgcJr46bEdqG-IEsuUDbFQ" base_Property="EStructuralFeature-defaultValueLiteral"/>
-  <Ecore:EAttribute xmi:id="_KgcJsI6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EStructuralFeature-defaultValue"/>
-  <Ecore:EAttribute xmi:id="_KgcJsY6bEdqG-IEsuUDbFQ" base_Property="EStructuralFeature-unsettable"/>
-  <Ecore:EAttribute xmi:id="_KgcJso6bEdqG-IEsuUDbFQ" base_Property="EStructuralFeature-derived"/>
-  <Ecore:EOperation xmi:id="_KgcJs46bEdqG-IEsuUDbFQ" base_Operation="EStructuralFeature-getFeatureID"/>
-  <Ecore:EOperation xmi:id="_KgcJtI6bEdqG-IEsuUDbFQ" base_Operation="EStructuralFeature-getContainerClass"/>
-  <Ecore:EClass xmi:id="_KgcJtY6bEdqG-IEsuUDbFQ" base_Class="ETypedElement"/>
-  <Ecore:EAttribute xmi:id="_KgcJto6bEdqG-IEsuUDbFQ" base_Property="ETypedElement-ordered"/>
-  <Ecore:EAttribute xmi:id="_KgcJt46bEdqG-IEsuUDbFQ" base_Property="ETypedElement-unique"/>
-  <Ecore:EAttribute xmi:id="_KgcJuI6bEdqG-IEsuUDbFQ" base_Property="ETypedElement-lowerBound"/>
-  <Ecore:EAttribute xmi:id="_KgcJuY6bEdqG-IEsuUDbFQ" base_Property="ETypedElement-upperBound"/>
-  <Ecore:EAttribute xmi:id="_KgcJuo6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="ETypedElement-many"/>
-  <Ecore:EAttribute xmi:id="_KgcJu46bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="ETypedElement-required"/>
-  <Ecore:EReference xmi:id="_KgcJvI6bEdqG-IEsuUDbFQ" base_Property="ETypedElement-eType"/>
-  <Ecore:EClass xmi:id="_KgcJvY6bEdqG-IEsuUDbFQ" base_Class="ENamedElement"/>
-  <Ecore:EAttribute xmi:id="_KgcJvo6bEdqG-IEsuUDbFQ" base_Property="ENamedElement-name"/>
-  <Ecore:EClass xmi:id="_KgcJv46bEdqG-IEsuUDbFQ" base_Class="EModelElement"/>
-  <Ecore:EReference xmi:id="_KgcJwI6bEdqG-IEsuUDbFQ" base_Property="EModelElement-eAnnotations" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_KgcJwY6bEdqG-IEsuUDbFQ" base_Operation="EModelElement-getEAnnotation"/>
-  <Ecore:EParameter xmi:id="_KgcJwo6bEdqG-IEsuUDbFQ" base_Parameter="EModelElement-getEAnnotation-source"/>
-  <Ecore:EClass xmi:id="_KgcJw46bEdqG-IEsuUDbFQ" base_Class="EAnnotation"/>
-  <Ecore:EAttribute xmi:id="_KgcJxI6bEdqG-IEsuUDbFQ" base_Property="EAnnotation-source"/>
-  <Ecore:EReference xmi:id="_KgcJxY6bEdqG-IEsuUDbFQ" base_Property="EAnnotation-details" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcJxo6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EAnnotation-eModelElement" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcJx46bEdqG-IEsuUDbFQ" base_Property="EAnnotation-contents" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcJyI6bEdqG-IEsuUDbFQ" base_Property="EAnnotation-references"/>
-  <Ecore:EClass xmi:id="_KgcJyY6bEdqG-IEsuUDbFQ" instanceClassName="java.util.Map$Entry" base_Class="EStringToStringMapEntry"/>
-  <Ecore:EAttribute xmi:id="_KgcJyo6bEdqG-IEsuUDbFQ" base_Property="EStringToStringMapEntry-key"/>
-  <Ecore:EAttribute xmi:id="_KgcJy46bEdqG-IEsuUDbFQ" base_Property="EStringToStringMapEntry-value"/>
-  <Ecore:EClass xmi:id="_KgcJzI6bEdqG-IEsuUDbFQ" base_Class="EClassifier"/>
-  <Ecore:EAttribute xmi:id="_KgcJzY6bEdqG-IEsuUDbFQ" base_Property="EClassifier-instanceClassName"/>
-  <Ecore:EAttribute xmi:id="_KgcJzo6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClassifier-instanceClass"/>
-  <Ecore:EAttribute xmi:id="_KgcJz46bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClassifier-defaultValue"/>
-  <Ecore:EReference xmi:id="_KgcJ0I6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EClassifier-ePackage"/>
-  <Ecore:EOperation xmi:id="_KgcJ0Y6bEdqG-IEsuUDbFQ" base_Operation="EClassifier-isInstance"/>
-  <Ecore:EParameter xmi:id="_KgcJ0o6bEdqG-IEsuUDbFQ" base_Parameter="EClassifier-isInstance-object"/>
-  <Ecore:EOperation xmi:id="_KgcJ046bEdqG-IEsuUDbFQ" base_Operation="EClassifier-getClassifierID"/>
-  <Ecore:EClass xmi:id="_KgcJ1I6bEdqG-IEsuUDbFQ" base_Class="EPackage"/>
-  <Ecore:EAttribute xmi:id="_KgcJ1Y6bEdqG-IEsuUDbFQ" base_Property="EPackage-nsURI"/>
-  <Ecore:EAttribute xmi:id="_KgcJ1o6bEdqG-IEsuUDbFQ" base_Property="EPackage-nsPrefix"/>
-  <Ecore:EReference xmi:id="_KgcJ146bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EPackage-eFactoryInstance.1" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcJ2I6bEdqG-IEsuUDbFQ" base_Property="EPackage-eSubpackages"/>
-  <Ecore:EReference xmi:id="_KgcJ2Y6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EPackage-eSuperPackage"/>
-  <Ecore:EReference xmi:id="_KgcJ2o6bEdqG-IEsuUDbFQ" base_Property="EPackage-eClassifiers"/>
-  <Ecore:EOperation xmi:id="_KgcJ246bEdqG-IEsuUDbFQ" base_Operation="EPackage-getEClassifier"/>
-  <Ecore:EParameter xmi:id="_KgcJ3I6bEdqG-IEsuUDbFQ" base_Parameter="EPackage-getEClassifier-name"/>
-  <Ecore:EClass xmi:id="_KgcJ3Y6bEdqG-IEsuUDbFQ" base_Class="EFactory"/>
-  <Ecore:EReference xmi:id="_KgcJ3o6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EFactory-ePackage.1" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_KgcJ346bEdqG-IEsuUDbFQ" base_Operation="EFactory-create"/>
-  <Ecore:EParameter xmi:id="_KgcJ4I6bEdqG-IEsuUDbFQ" base_Parameter="EFactory-create-eClass"/>
-  <Ecore:EOperation xmi:id="_KgcJ4Y6bEdqG-IEsuUDbFQ" base_Operation="EFactory-createFromString"/>
-  <Ecore:EParameter xmi:id="_KgcJ4o6bEdqG-IEsuUDbFQ" base_Parameter="EFactory-createFromString-eDataType"/>
-  <Ecore:EParameter xmi:id="_KgcJ446bEdqG-IEsuUDbFQ" base_Parameter="EFactory-createFromString-literalValue"/>
-  <Ecore:EOperation xmi:id="_KgcJ5I6bEdqG-IEsuUDbFQ" base_Operation="EFactory-convertToString"/>
-  <Ecore:EParameter xmi:id="_KgcJ5Y6bEdqG-IEsuUDbFQ" base_Parameter="EFactory-convertToString-eDataType"/>
-  <Ecore:EParameter xmi:id="_KgcJ5o6bEdqG-IEsuUDbFQ" base_Parameter="EFactory-convertToString-instanceValue"/>
-  <Ecore:EClass xmi:id="_KgcJ546bEdqG-IEsuUDbFQ" base_Class="EClass"/>
-  <Ecore:EAttribute xmi:id="_KgcJ6I6bEdqG-IEsuUDbFQ" base_Property="EClass-abstract"/>
-  <Ecore:EAttribute xmi:id="_KgcJ6Y6bEdqG-IEsuUDbFQ" base_Property="EClass-interface"/>
-  <Ecore:EReference xmi:id="_KgcJ6o6bEdqG-IEsuUDbFQ" base_Property="EClass-eSuperTypes"/>
-  <Ecore:EReference xmi:id="_KgcJ646bEdqG-IEsuUDbFQ" base_Property="EClass-eOperations.1" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcJ7I6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAllAttributes"/>
-  <Ecore:EReference xmi:id="_KgcJ7Y6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAllReferences"/>
-  <Ecore:EReference xmi:id="_KgcJ7o6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eReferences"/>
-  <Ecore:EReference xmi:id="_KgcJ746bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAttributes"/>
-  <Ecore:EReference xmi:id="_KgcJ8I6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAllContainments"/>
-  <Ecore:EReference xmi:id="_KgcJ8Y6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAllOperations"/>
-  <Ecore:EReference xmi:id="_KgcJ8o6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAllStructuralFeatures"/>
-  <Ecore:EReference xmi:id="_KgcJ846bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eAllSuperTypes"/>
-  <Ecore:EReference xmi:id="_KgcJ9I6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EClass-eIDAttribute" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcJ9Y6bEdqG-IEsuUDbFQ" base_Property="EClass-eStructuralFeatures" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_KgcJ9o6bEdqG-IEsuUDbFQ" base_Operation="EClass-isSuperTypeOf"/>
-  <Ecore:EParameter xmi:id="_KgcJ946bEdqG-IEsuUDbFQ" base_Parameter="EClass-isSuperTypeOf-someClass"/>
-  <Ecore:EOperation xmi:id="_KgcJ-I6bEdqG-IEsuUDbFQ" base_Operation="EClass-getFeatureCount"/>
-  <Ecore:EOperation xmi:id="_KgcJ-Y6bEdqG-IEsuUDbFQ" base_Operation="EClass-getEStructuralFeature"/>
-  <Ecore:EParameter xmi:id="_KgcJ-o6bEdqG-IEsuUDbFQ" base_Parameter="EClass-getEStructuralFeature-featureID"/>
-  <Ecore:EOperation xmi:id="_KgcJ-46bEdqG-IEsuUDbFQ" base_Operation="EClass-getFeatureID"/>
-  <Ecore:EParameter xmi:id="_KgcJ_I6bEdqG-IEsuUDbFQ" base_Parameter="EClass-getFeatureID-feature"/>
-  <Ecore:EOperation xmi:id="_KgcJ_Y6bEdqG-IEsuUDbFQ" base_Operation="EClass-getEStructuralFeature.1"/>
-  <Ecore:EParameter xmi:id="_KgcJ_o6bEdqG-IEsuUDbFQ" base_Parameter="EClass-getEStructuralFeature.1-featureName"/>
-  <Ecore:EClass xmi:id="_KgcJ_46bEdqG-IEsuUDbFQ" base_Class="EOperation"/>
-  <Ecore:EReference xmi:id="_KgcKAI6bEdqG-IEsuUDbFQ" base_Property="EOperation-eParameters.1" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_KgcKAY6bEdqG-IEsuUDbFQ" base_Property="EOperation-eExceptions"/>
-  <Ecore:EReference xmi:id="_KgcKAo6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EOperation-eContainingClass.1" isResolveProxies="false"/>
-  <Ecore:EClass xmi:id="_KgcKA46bEdqG-IEsuUDbFQ" base_Class="EParameter"/>
-  <Ecore:EReference xmi:id="_KgcKBI6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EParameter-eOperation.1" isResolveProxies="false"/>
-  <Ecore:EClass xmi:id="_KgcKBY6bEdqG-IEsuUDbFQ" base_Class="EReference"/>
-  <Ecore:EAttribute xmi:id="_KgcKBo6bEdqG-IEsuUDbFQ" base_Property="EReference-containment"/>
-  <Ecore:EAttribute xmi:id="_KgcKB46bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EReference-container"/>
-  <Ecore:EAttribute xmi:id="_KgcKCI6bEdqG-IEsuUDbFQ" base_Property="EReference-resolveProxies"/>
-  <Ecore:EReference xmi:id="_KgcKCY6bEdqG-IEsuUDbFQ" base_Property="EReference-eOpposite"/>
-  <Ecore:EReference xmi:id="_KgcKCo6bEdqG-IEsuUDbFQ" isTransient="true" isVolatile="true" base_Property="EReference-eReferenceType"/>
-  <Ecore:EClass xmi:id="_KgcKC46bEdqG-IEsuUDbFQ" base_Class="EDataType"/>
-  <Ecore:EAttribute xmi:id="_KgcKDI6bEdqG-IEsuUDbFQ" base_Property="EDataType-serializable"/>
-  <Ecore:EClass xmi:id="_KgcKDY6bEdqG-IEsuUDbFQ" base_Class="EEnum"/>
-  <Ecore:EReference xmi:id="_KgcKDo6bEdqG-IEsuUDbFQ" base_Property="EEnum-eLiterals" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_KgcKD46bEdqG-IEsuUDbFQ" base_Operation="EEnum-getEEnumLiteral"/>
-  <Ecore:EParameter xmi:id="_KgcKEI6bEdqG-IEsuUDbFQ" base_Parameter="EEnum-getEEnumLiteral-name"/>
-  <Ecore:EOperation xmi:id="_KgcKEY6bEdqG-IEsuUDbFQ" base_Operation="EEnum-getEEnumLiteral.1"/>
-  <Ecore:EParameter xmi:id="_KgcKEo6bEdqG-IEsuUDbFQ" base_Parameter="EEnum-getEEnumLiteral.1-value"/>
-  <Ecore:EOperation xmi:id="_KgcKE46bEdqG-IEsuUDbFQ" base_Operation="EEnum-getEEnumLiteralByLiteral"/>
-  <Ecore:EParameter xmi:id="_KgcKFI6bEdqG-IEsuUDbFQ" base_Parameter="EEnum-getEEnumLiteralByLiteral-literal"/>
-  <Ecore:EClass xmi:id="_KgcKFY6bEdqG-IEsuUDbFQ" base_Class="EEnumLiteral"/>
-  <Ecore:EAttribute xmi:id="_KgcKFo6bEdqG-IEsuUDbFQ" base_Property="EEnumLiteral-value"/>
-  <Ecore:EAttribute xmi:id="_KgcKF46bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EEnumLiteral-instance"/>
-  <Ecore:EAttribute xmi:id="_KgcKGI6bEdqG-IEsuUDbFQ" base_Property="EEnumLiteral-literal"/>
-  <Ecore:EReference xmi:id="_KgcKGY6bEdqG-IEsuUDbFQ" isTransient="true" base_Property="EEnumLiteral-eEnum" isResolveProxies="false"/>
-  <Ecore:EDataType xmi:id="_KgcKGo6bEdqG-IEsuUDbFQ" base_PrimitiveType="EBigDecimal"/>
-  <Ecore:EDataType xmi:id="_KgcKG46bEdqG-IEsuUDbFQ" base_PrimitiveType="EBigInteger"/>
-  <Ecore:EDataType xmi:id="_KgcKHI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EBoolean"/>
-  <Ecore:EDataType xmi:id="_KgcKHY6bEdqG-IEsuUDbFQ" base_PrimitiveType="EBooleanObject"/>
-  <Ecore:EDataType xmi:id="_KgcKHo6bEdqG-IEsuUDbFQ" base_PrimitiveType="EByte"/>
-  <Ecore:EDataType xmi:id="_KgcKH46bEdqG-IEsuUDbFQ" base_PrimitiveType="EByteArray"/>
-  <Ecore:EDataType xmi:id="_KgcKII6bEdqG-IEsuUDbFQ" base_PrimitiveType="EByteObject"/>
-  <Ecore:EDataType xmi:id="_KgcKIY6bEdqG-IEsuUDbFQ" base_PrimitiveType="EChar"/>
-  <Ecore:EDataType xmi:id="_KgcKIo6bEdqG-IEsuUDbFQ" base_PrimitiveType="ECharacterObject"/>
-  <Ecore:EDataType xmi:id="_KgcKI46bEdqG-IEsuUDbFQ" base_PrimitiveType="EDate"/>
-  <Ecore:EDataType xmi:id="_KgcKJI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EDiagnosticChain"/>
-  <Ecore:EDataType xmi:id="_KgcKJY6bEdqG-IEsuUDbFQ" base_PrimitiveType="EDouble"/>
-  <Ecore:EDataType xmi:id="_KgcKJo6bEdqG-IEsuUDbFQ" base_PrimitiveType="EDoubleObject"/>
-  <Ecore:EDataType xmi:id="_KgcKJ46bEdqG-IEsuUDbFQ" base_PrimitiveType="EEList"/>
-  <Ecore:EDataType xmi:id="_KgcKKI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EEnumerator"/>
-  <Ecore:EDataType xmi:id="_KgcKKY6bEdqG-IEsuUDbFQ" base_PrimitiveType="EFeatureMap"/>
-  <Ecore:EDataType xmi:id="_KgcKKo6bEdqG-IEsuUDbFQ" base_PrimitiveType="EFeatureMapEntry"/>
-  <Ecore:EDataType xmi:id="_KgcKK46bEdqG-IEsuUDbFQ" base_PrimitiveType="EFloat"/>
-  <Ecore:EDataType xmi:id="_KgcKLI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EFloatObject"/>
-  <Ecore:EDataType xmi:id="_KgcKLY6bEdqG-IEsuUDbFQ" base_PrimitiveType="EInt"/>
-  <Ecore:EDataType xmi:id="_KgcKLo6bEdqG-IEsuUDbFQ" base_PrimitiveType="EIntegerObject"/>
-  <Ecore:EDataType xmi:id="_KgcKL46bEdqG-IEsuUDbFQ" base_PrimitiveType="EJavaClass"/>
-  <Ecore:EDataType xmi:id="_KgcKMI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EJavaObject"/>
-  <Ecore:EDataType xmi:id="_KgcKMY6bEdqG-IEsuUDbFQ" base_PrimitiveType="ELong"/>
-  <Ecore:EDataType xmi:id="_KgcKMo6bEdqG-IEsuUDbFQ" base_PrimitiveType="ELongObject"/>
-  <Ecore:EDataType xmi:id="_KgcKM46bEdqG-IEsuUDbFQ" base_PrimitiveType="EMap"/>
-  <Ecore:EDataType xmi:id="_KgcKNI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EResource"/>
-  <Ecore:EDataType xmi:id="_KgcKNY6bEdqG-IEsuUDbFQ" base_PrimitiveType="EResourceSet"/>
-  <Ecore:EDataType xmi:id="_KgcKNo6bEdqG-IEsuUDbFQ" base_PrimitiveType="EShort"/>
-  <Ecore:EDataType xmi:id="_KgcKN46bEdqG-IEsuUDbFQ" base_PrimitiveType="EShortObject"/>
-  <Ecore:EDataType xmi:id="_KgcKOI6bEdqG-IEsuUDbFQ" base_PrimitiveType="EString"/>
-  <Ecore:EDataType xmi:id="_KgcKOY6bEdqG-IEsuUDbFQ" base_PrimitiveType="ETreeIterator"/>
-  <Ecore:EClass xmi:id="_KgcKOo6bEdqG-IEsuUDbFQ" base_Class="EObject"/>
-  <Ecore:EOperation xmi:id="_KgcKO46bEdqG-IEsuUDbFQ" base_Operation="EObject-eClass"/>
-  <Ecore:EOperation xmi:id="_KgcKPI6bEdqG-IEsuUDbFQ" base_Operation="EObject-eIsProxy"/>
-  <Ecore:EOperation xmi:id="_KgcKPY6bEdqG-IEsuUDbFQ" base_Operation="EObject-eResource"/>
-  <Ecore:EOperation xmi:id="_KgcKPo6bEdqG-IEsuUDbFQ" base_Operation="EObject-eContainer"/>
-  <Ecore:EOperation xmi:id="_KgcKP46bEdqG-IEsuUDbFQ" base_Operation="EObject-eContainingFeature"/>
-  <Ecore:EOperation xmi:id="_KgcKQI6bEdqG-IEsuUDbFQ" base_Operation="EObject-eContainmentFeature"/>
-  <Ecore:EOperation xmi:id="_KgcKQY6bEdqG-IEsuUDbFQ" base_Operation="EObject-eContents"/>
-  <Ecore:EOperation xmi:id="_KgcKQo6bEdqG-IEsuUDbFQ" base_Operation="EObject-eAllContents"/>
-  <Ecore:EOperation xmi:id="_KgcKQ46bEdqG-IEsuUDbFQ" base_Operation="EObject-eCrossReferences"/>
-  <Ecore:EOperation xmi:id="_KgcKRI6bEdqG-IEsuUDbFQ" base_Operation="EObject-eGet"/>
-  <Ecore:EParameter xmi:id="_KgcKRY6bEdqG-IEsuUDbFQ" base_Parameter="EObject-eGet-feature"/>
-  <Ecore:EOperation xmi:id="_KgcKRo6bEdqG-IEsuUDbFQ" base_Operation="EObject-eGet.1"/>
-  <Ecore:EParameter xmi:id="_KgcKR46bEdqG-IEsuUDbFQ" base_Parameter="EObject-eGet.1-feature"/>
-  <Ecore:EParameter xmi:id="_KgcKSI6bEdqG-IEsuUDbFQ" base_Parameter="EObject-eGet.1-resolve"/>
-  <Ecore:EOperation xmi:id="_KgcKSY6bEdqG-IEsuUDbFQ" base_Operation="EObject-eSet"/>
-  <Ecore:EParameter xmi:id="_KgcKSo6bEdqG-IEsuUDbFQ" base_Parameter="EObject-eSet-feature"/>
-  <Ecore:EParameter xmi:id="_KgcKS46bEdqG-IEsuUDbFQ" base_Parameter="EObject-eSet-newValue"/>
-  <Ecore:EOperation xmi:id="_KgcKTI6bEdqG-IEsuUDbFQ" base_Operation="EObject-eIsSet"/>
-  <Ecore:EParameter xmi:id="_KgcKTY6bEdqG-IEsuUDbFQ" base_Parameter="EObject-eIsSet-feature"/>
-  <Ecore:EOperation xmi:id="_KgcKTo6bEdqG-IEsuUDbFQ" base_Operation="EObject-eUnset"/>
-  <Ecore:EParameter xmi:id="_KgcKT46bEdqG-IEsuUDbFQ" base_Parameter="EObject-eUnset-feature"/>
-  <Standard:Metamodel xmi:id="_1Gc2oI6bEdqG-IEsuUDbFQ" base_Model="_0"/>
-  <Standard:Metaclass xmi:id="_1Gc2oY6bEdqG-IEsuUDbFQ" base_Class="EAttribute"/>
-  <Standard:Metaclass xmi:id="_1Gc2oo6bEdqG-IEsuUDbFQ" base_Class="EStructuralFeature"/>
-  <Standard:Metaclass xmi:id="_1Gc2o46bEdqG-IEsuUDbFQ" base_Class="ETypedElement"/>
-  <Standard:Metaclass xmi:id="_1Gc2pI6bEdqG-IEsuUDbFQ" base_Class="ENamedElement"/>
-  <Standard:Metaclass xmi:id="_1Gc2pY6bEdqG-IEsuUDbFQ" base_Class="EModelElement"/>
-  <Standard:Metaclass xmi:id="_1Gc2po6bEdqG-IEsuUDbFQ" base_Class="EAnnotation"/>
-  <Standard:Metaclass xmi:id="_1Gc2p46bEdqG-IEsuUDbFQ" base_Class="EStringToStringMapEntry"/>
-  <Standard:Metaclass xmi:id="_1Gc2qI6bEdqG-IEsuUDbFQ" base_Class="EClassifier"/>
-  <Standard:Metaclass xmi:id="_1Gc2qY6bEdqG-IEsuUDbFQ" base_Class="EPackage"/>
-  <Standard:Metaclass xmi:id="_1Gc2qo6bEdqG-IEsuUDbFQ" base_Class="EFactory"/>
-  <Standard:Metaclass xmi:id="_1GmnoI6bEdqG-IEsuUDbFQ" base_Class="EClass"/>
-  <Standard:Metaclass xmi:id="_1GmnoY6bEdqG-IEsuUDbFQ" base_Class="EOperation"/>
-  <Standard:Metaclass xmi:id="_1Gmnoo6bEdqG-IEsuUDbFQ" base_Class="EParameter"/>
-  <Standard:Metaclass xmi:id="_1Gmno46bEdqG-IEsuUDbFQ" base_Class="EReference"/>
-  <Standard:Metaclass xmi:id="_1GmnpI6bEdqG-IEsuUDbFQ" base_Class="EDataType"/>
-  <Standard:Metaclass xmi:id="_1GmnpY6bEdqG-IEsuUDbFQ" base_Class="EEnum"/>
-  <Standard:Metaclass xmi:id="_1Gmnpo6bEdqG-IEsuUDbFQ" base_Class="EEnumLiteral"/>
-  <Standard:Metaclass xmi:id="_1Gmnp46bEdqG-IEsuUDbFQ" base_Class="EObject"/>
+  <Ecore:EPackage xmi:id="_96lbUJRlEdqUfO_7NMx3Rw" base_Package="_0" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
+  <Ecore:EClass xmi:id="_96lbUZRlEdqUfO_7NMx3Rw" base_Class="EStructuralFeature"/>
+  <Ecore:EReference xmi:id="_96lbUpRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EStructuralFeature-eContainingClass" isResolveProxies="false"/>
+  <Ecore:EAttribute xmi:id="_96lbU5RlEdqUfO_7NMx3Rw" base_Property="EStructuralFeature-changeable"/>
+  <Ecore:EAttribute xmi:id="_96lbVJRlEdqUfO_7NMx3Rw" base_Property="EStructuralFeature-volatile"/>
+  <Ecore:EAttribute xmi:id="_96lbVZRlEdqUfO_7NMx3Rw" base_Property="EStructuralFeature-transient"/>
+  <Ecore:EAttribute xmi:id="_96lbVpRlEdqUfO_7NMx3Rw" base_Property="EStructuralFeature-defaultValueLiteral"/>
+  <Ecore:EAttribute xmi:id="_96lbV5RlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EStructuralFeature-defaultValue"/>
+  <Ecore:EAttribute xmi:id="_96lbWJRlEdqUfO_7NMx3Rw" base_Property="EStructuralFeature-unsettable"/>
+  <Ecore:EAttribute xmi:id="_96lbWZRlEdqUfO_7NMx3Rw" base_Property="EStructuralFeature-derived"/>
+  <Ecore:EOperation xmi:id="_96lbWpRlEdqUfO_7NMx3Rw" base_Operation="EStructuralFeature-getFeatureID"/>
+  <Ecore:EOperation xmi:id="_96lbW5RlEdqUfO_7NMx3Rw" base_Operation="EStructuralFeature-getContainerClass"/>
+  <Ecore:EClass xmi:id="_96lbXJRlEdqUfO_7NMx3Rw" base_Class="ETypedElement"/>
+  <Ecore:EAttribute xmi:id="_96lbXZRlEdqUfO_7NMx3Rw" base_Property="ETypedElement-ordered"/>
+  <Ecore:EAttribute xmi:id="_96lbXpRlEdqUfO_7NMx3Rw" base_Property="ETypedElement-unique"/>
+  <Ecore:EAttribute xmi:id="_96lbX5RlEdqUfO_7NMx3Rw" base_Property="ETypedElement-lowerBound"/>
+  <Ecore:EAttribute xmi:id="_96lbYJRlEdqUfO_7NMx3Rw" base_Property="ETypedElement-upperBound"/>
+  <Ecore:EAttribute xmi:id="_96lbYZRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="ETypedElement-many"/>
+  <Ecore:EAttribute xmi:id="_96lbYpRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="ETypedElement-required"/>
+  <Ecore:EReference xmi:id="_96lbY5RlEdqUfO_7NMx3Rw" base_Property="ETypedElement-eType"/>
+  <Ecore:EClass xmi:id="_96lbZJRlEdqUfO_7NMx3Rw" base_Class="ENamedElement"/>
+  <Ecore:EAttribute xmi:id="_96lbZZRlEdqUfO_7NMx3Rw" base_Property="ENamedElement-name"/>
+  <Ecore:EClass xmi:id="_96lbZpRlEdqUfO_7NMx3Rw" base_Class="EModelElement"/>
+  <Ecore:EReference xmi:id="_96lbZ5RlEdqUfO_7NMx3Rw" base_Property="EModelElement-eAnnotations" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_96lbaJRlEdqUfO_7NMx3Rw" base_Operation="EModelElement-getEAnnotation"/>
+  <Ecore:EParameter xmi:id="_96lbaZRlEdqUfO_7NMx3Rw" base_Parameter="EModelElement-getEAnnotation-source"/>
+  <Ecore:EClass xmi:id="_96lbapRlEdqUfO_7NMx3Rw" base_Class="EAnnotation"/>
+  <Ecore:EAttribute xmi:id="_96lba5RlEdqUfO_7NMx3Rw" base_Property="EAnnotation-source"/>
+  <Ecore:EReference xmi:id="_96lbbJRlEdqUfO_7NMx3Rw" base_Property="EAnnotation-details" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96lbbZRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EAnnotation-eModelElement" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96lbbpRlEdqUfO_7NMx3Rw" base_Property="EAnnotation-contents" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96lbb5RlEdqUfO_7NMx3Rw" base_Property="EAnnotation-references"/>
+  <Ecore:EClass xmi:id="_96lbcJRlEdqUfO_7NMx3Rw" base_Class="EAttribute"/>
+  <Ecore:EAttribute xmi:id="_96lbcZRlEdqUfO_7NMx3Rw" base_Property="EAttribute-iD"/>
+  <Ecore:EReference xmi:id="_96lbcpRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EAttribute-eAttributeType"/>
+  <Ecore:EClass xmi:id="_96lbc5RlEdqUfO_7NMx3Rw" instanceClassName="java.util.Map$Entry" base_Class="EStringToStringMapEntry"/>
+  <Ecore:EAttribute xmi:id="_96lbdJRlEdqUfO_7NMx3Rw" base_Property="EStringToStringMapEntry-key"/>
+  <Ecore:EAttribute xmi:id="_96lbdZRlEdqUfO_7NMx3Rw" base_Property="EStringToStringMapEntry-value"/>
+  <Ecore:EClass xmi:id="_96lbdpRlEdqUfO_7NMx3Rw" base_Class="EClassifier"/>
+  <Ecore:EAttribute xmi:id="_96lbd5RlEdqUfO_7NMx3Rw" base_Property="EClassifier-instanceClassName"/>
+  <Ecore:EAttribute xmi:id="_96lbeJRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClassifier-instanceClass"/>
+  <Ecore:EAttribute xmi:id="_96lbeZRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClassifier-defaultValue"/>
+  <Ecore:EReference xmi:id="_96lbepRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EClassifier-ePackage"/>
+  <Ecore:EOperation xmi:id="_96lbe5RlEdqUfO_7NMx3Rw" base_Operation="EClassifier-isInstance"/>
+  <Ecore:EParameter xmi:id="_96lbfJRlEdqUfO_7NMx3Rw" base_Parameter="EClassifier-isInstance-object"/>
+  <Ecore:EOperation xmi:id="_96lbfZRlEdqUfO_7NMx3Rw" base_Operation="EClassifier-getClassifierID"/>
+  <Ecore:EClass xmi:id="_96lbfpRlEdqUfO_7NMx3Rw" base_Class="EPackage"/>
+  <Ecore:EAttribute xmi:id="_96lbf5RlEdqUfO_7NMx3Rw" base_Property="EPackage-nsURI"/>
+  <Ecore:EAttribute xmi:id="_96lbgJRlEdqUfO_7NMx3Rw" base_Property="EPackage-nsPrefix"/>
+  <Ecore:EReference xmi:id="_96lbgZRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EPackage-eFactoryInstance.1" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96lbgpRlEdqUfO_7NMx3Rw" base_Property="EPackage-eSubpackages"/>
+  <Ecore:EReference xmi:id="_96lbg5RlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EPackage-eSuperPackage"/>
+  <Ecore:EReference xmi:id="_96lbhJRlEdqUfO_7NMx3Rw" base_Property="EPackage-eClassifiers"/>
+  <Ecore:EOperation xmi:id="_96lbhZRlEdqUfO_7NMx3Rw" base_Operation="EPackage-getEClassifier"/>
+  <Ecore:EParameter xmi:id="_96lbhpRlEdqUfO_7NMx3Rw" base_Parameter="EPackage-getEClassifier-name"/>
+  <Ecore:EClass xmi:id="_96lbh5RlEdqUfO_7NMx3Rw" base_Class="EFactory"/>
+  <Ecore:EReference xmi:id="_96lbiJRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EFactory-ePackage.1" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_96lbiZRlEdqUfO_7NMx3Rw" base_Operation="EFactory-create"/>
+  <Ecore:EParameter xmi:id="_96lbipRlEdqUfO_7NMx3Rw" base_Parameter="EFactory-create-eClass"/>
+  <Ecore:EOperation xmi:id="_96lbi5RlEdqUfO_7NMx3Rw" base_Operation="EFactory-createFromString"/>
+  <Ecore:EParameter xmi:id="_96lbjJRlEdqUfO_7NMx3Rw" base_Parameter="EFactory-createFromString-eDataType"/>
+  <Ecore:EParameter xmi:id="_96lbjZRlEdqUfO_7NMx3Rw" base_Parameter="EFactory-createFromString-literalValue"/>
+  <Ecore:EOperation xmi:id="_96lbjpRlEdqUfO_7NMx3Rw" base_Operation="EFactory-convertToString"/>
+  <Ecore:EParameter xmi:id="_96lbj5RlEdqUfO_7NMx3Rw" base_Parameter="EFactory-convertToString-eDataType"/>
+  <Ecore:EParameter xmi:id="_96lbkJRlEdqUfO_7NMx3Rw" base_Parameter="EFactory-convertToString-instanceValue"/>
+  <Ecore:EClass xmi:id="_96lbkZRlEdqUfO_7NMx3Rw" base_Class="EClass"/>
+  <Ecore:EAttribute xmi:id="_96lbkpRlEdqUfO_7NMx3Rw" base_Property="EClass-abstract"/>
+  <Ecore:EAttribute xmi:id="_96lbk5RlEdqUfO_7NMx3Rw" base_Property="EClass-interface"/>
+  <Ecore:EReference xmi:id="_96lblJRlEdqUfO_7NMx3Rw" base_Property="EClass-eSuperTypes"/>
+  <Ecore:EReference xmi:id="_96lblZRlEdqUfO_7NMx3Rw" base_Property="EClass-eOperations.1" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96lblpRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAllAttributes"/>
+  <Ecore:EReference xmi:id="_96lbl5RlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAllReferences"/>
+  <Ecore:EReference xmi:id="_96lbmJRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eReferences"/>
+  <Ecore:EReference xmi:id="_96lbmZRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAttributes"/>
+  <Ecore:EReference xmi:id="_96lbmpRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAllContainments"/>
+  <Ecore:EReference xmi:id="_96lbm5RlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAllOperations"/>
+  <Ecore:EReference xmi:id="_96rh8JRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAllStructuralFeatures"/>
+  <Ecore:EReference xmi:id="_96rh8ZRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eAllSuperTypes"/>
+  <Ecore:EReference xmi:id="_96rh8pRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EClass-eIDAttribute" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96rh85RlEdqUfO_7NMx3Rw" base_Property="EClass-eStructuralFeatures" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_96rh9JRlEdqUfO_7NMx3Rw" base_Operation="EClass-isSuperTypeOf"/>
+  <Ecore:EParameter xmi:id="_96rh9ZRlEdqUfO_7NMx3Rw" base_Parameter="EClass-isSuperTypeOf-someClass"/>
+  <Ecore:EOperation xmi:id="_96rh9pRlEdqUfO_7NMx3Rw" base_Operation="EClass-getFeatureCount"/>
+  <Ecore:EOperation xmi:id="_96rh95RlEdqUfO_7NMx3Rw" base_Operation="EClass-getEStructuralFeature"/>
+  <Ecore:EParameter xmi:id="_96rh-JRlEdqUfO_7NMx3Rw" base_Parameter="EClass-getEStructuralFeature-featureID"/>
+  <Ecore:EOperation xmi:id="_96rh-ZRlEdqUfO_7NMx3Rw" base_Operation="EClass-getFeatureID"/>
+  <Ecore:EParameter xmi:id="_96rh-pRlEdqUfO_7NMx3Rw" base_Parameter="EClass-getFeatureID-feature"/>
+  <Ecore:EOperation xmi:id="_96rh-5RlEdqUfO_7NMx3Rw" base_Operation="EClass-getEStructuralFeature.1"/>
+  <Ecore:EParameter xmi:id="_96rh_JRlEdqUfO_7NMx3Rw" base_Parameter="EClass-getEStructuralFeature.1-featureName"/>
+  <Ecore:EClass xmi:id="_96rh_ZRlEdqUfO_7NMx3Rw" base_Class="EOperation"/>
+  <Ecore:EReference xmi:id="_96rh_pRlEdqUfO_7NMx3Rw" base_Property="EOperation-eParameters.1" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_96rh_5RlEdqUfO_7NMx3Rw" base_Property="EOperation-eExceptions"/>
+  <Ecore:EReference xmi:id="_96riAJRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EOperation-eContainingClass.1" isResolveProxies="false"/>
+  <Ecore:EClass xmi:id="_96riAZRlEdqUfO_7NMx3Rw" base_Class="EParameter"/>
+  <Ecore:EReference xmi:id="_96riApRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EParameter-eOperation.1" isResolveProxies="false"/>
+  <Ecore:EClass xmi:id="_96riA5RlEdqUfO_7NMx3Rw" base_Class="EReference"/>
+  <Ecore:EAttribute xmi:id="_96riBJRlEdqUfO_7NMx3Rw" base_Property="EReference-containment"/>
+  <Ecore:EAttribute xmi:id="_96riBZRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EReference-container"/>
+  <Ecore:EAttribute xmi:id="_96riBpRlEdqUfO_7NMx3Rw" base_Property="EReference-resolveProxies"/>
+  <Ecore:EReference xmi:id="_96riB5RlEdqUfO_7NMx3Rw" base_Property="EReference-eOpposite"/>
+  <Ecore:EReference xmi:id="_96riCJRlEdqUfO_7NMx3Rw" isTransient="true" isVolatile="true" base_Property="EReference-eReferenceType"/>
+  <Ecore:EClass xmi:id="_96riCZRlEdqUfO_7NMx3Rw" base_Class="EDataType"/>
+  <Ecore:EAttribute xmi:id="_96riCpRlEdqUfO_7NMx3Rw" base_Property="EDataType-serializable"/>
+  <Ecore:EClass xmi:id="_96riC5RlEdqUfO_7NMx3Rw" base_Class="EEnum"/>
+  <Ecore:EReference xmi:id="_96riDJRlEdqUfO_7NMx3Rw" base_Property="EEnum-eLiterals" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_96riDZRlEdqUfO_7NMx3Rw" base_Operation="EEnum-getEEnumLiteral"/>
+  <Ecore:EParameter xmi:id="_96riDpRlEdqUfO_7NMx3Rw" base_Parameter="EEnum-getEEnumLiteral-name"/>
+  <Ecore:EOperation xmi:id="_96riD5RlEdqUfO_7NMx3Rw" base_Operation="EEnum-getEEnumLiteral.1"/>
+  <Ecore:EParameter xmi:id="_96riEJRlEdqUfO_7NMx3Rw" base_Parameter="EEnum-getEEnumLiteral.1-value"/>
+  <Ecore:EOperation xmi:id="_96riEZRlEdqUfO_7NMx3Rw" base_Operation="EEnum-getEEnumLiteralByLiteral"/>
+  <Ecore:EParameter xmi:id="_96riEpRlEdqUfO_7NMx3Rw" base_Parameter="EEnum-getEEnumLiteralByLiteral-literal"/>
+  <Ecore:EClass xmi:id="_96riE5RlEdqUfO_7NMx3Rw" base_Class="EEnumLiteral"/>
+  <Ecore:EAttribute xmi:id="_96riFJRlEdqUfO_7NMx3Rw" base_Property="EEnumLiteral-value"/>
+  <Ecore:EAttribute xmi:id="_96riFZRlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EEnumLiteral-instance"/>
+  <Ecore:EAttribute xmi:id="_96riFpRlEdqUfO_7NMx3Rw" base_Property="EEnumLiteral-literal"/>
+  <Ecore:EReference xmi:id="_96riF5RlEdqUfO_7NMx3Rw" isTransient="true" base_Property="EEnumLiteral-eEnum" isResolveProxies="false"/>
+  <Ecore:EDataType xmi:id="_96riGJRlEdqUfO_7NMx3Rw" instanceClassName="java.math.BigDecimal" base_PrimitiveType="EBigDecimal"/>
+  <Ecore:EDataType xmi:id="_96riGZRlEdqUfO_7NMx3Rw" instanceClassName="java.math.BigInteger" base_PrimitiveType="EBigInteger"/>
+  <Ecore:EDataType xmi:id="_96riGpRlEdqUfO_7NMx3Rw" instanceClassName="boolean" base_PrimitiveType="EBoolean"/>
+  <Ecore:EDataType xmi:id="_96riG5RlEdqUfO_7NMx3Rw" xmlName="EBoolean:Object" instanceClassName="java.lang.Boolean" base_PrimitiveType="EBooleanObject"/>
+  <Ecore:EDataType xmi:id="_96riHJRlEdqUfO_7NMx3Rw" instanceClassName="byte" base_PrimitiveType="EByte"/>
+  <Ecore:EDataType xmi:id="_96riHZRlEdqUfO_7NMx3Rw" instanceClassName="byte[]" base_PrimitiveType="EByteArray"/>
+  <Ecore:EDataType xmi:id="_96riHpRlEdqUfO_7NMx3Rw" xmlName="EByte:Object" instanceClassName="java.lang.Byte" base_PrimitiveType="EByteObject"/>
+  <Ecore:EDataType xmi:id="_96riH5RlEdqUfO_7NMx3Rw" instanceClassName="char" base_PrimitiveType="EChar"/>
+  <Ecore:EDataType xmi:id="_96riIJRlEdqUfO_7NMx3Rw" xmlName="EChar:Object" instanceClassName="java.lang.Character" base_PrimitiveType="ECharacterObject"/>
+  <Ecore:EDataType xmi:id="_96riIZRlEdqUfO_7NMx3Rw" instanceClassName="java.util.Date" base_PrimitiveType="EDate"/>
+  <Ecore:EDataType xmi:id="_96riIpRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="EDiagnosticChain"/>
+  <Ecore:EDataType xmi:id="_96riI5RlEdqUfO_7NMx3Rw" instanceClassName="double" base_PrimitiveType="EDouble"/>
+  <Ecore:EDataType xmi:id="_96riJJRlEdqUfO_7NMx3Rw" xmlName="EDouble:Object" instanceClassName="java.lang.Double" base_PrimitiveType="EDoubleObject"/>
+  <Ecore:EDataType xmi:id="_96xokJRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="EEList"/>
+  <Ecore:EDataType xmi:id="_96xokZRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="EEnumerator"/>
+  <Ecore:EDataType xmi:id="_96xokpRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="EFeatureMap"/>
+  <Ecore:EDataType xmi:id="_96xok5RlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="EFeatureMapEntry"/>
+  <Ecore:EDataType xmi:id="_96xolJRlEdqUfO_7NMx3Rw" instanceClassName="float" base_PrimitiveType="EFloat"/>
+  <Ecore:EDataType xmi:id="_96xolZRlEdqUfO_7NMx3Rw" xmlName="EFloat:Object" instanceClassName="java.lang.Float" base_PrimitiveType="EFloatObject"/>
+  <Ecore:EDataType xmi:id="_96xolpRlEdqUfO_7NMx3Rw" instanceClassName="int" base_PrimitiveType="EInt"/>
+  <Ecore:EDataType xmi:id="_96xol5RlEdqUfO_7NMx3Rw" xmlName="EInt:Object" instanceClassName="java.lang.Integer" base_PrimitiveType="EIntegerObject"/>
+  <Ecore:EDataType xmi:id="_96xomJRlEdqUfO_7NMx3Rw" instanceClassName="java.lang.Class" base_PrimitiveType="EJavaClass"/>
+  <Ecore:EDataType xmi:id="_96xomZRlEdqUfO_7NMx3Rw" instanceClassName="java.lang.Object" base_PrimitiveType="EJavaObject"/>
+  <Ecore:EDataType xmi:id="_96xompRlEdqUfO_7NMx3Rw" instanceClassName="long" base_PrimitiveType="ELong"/>
+  <Ecore:EDataType xmi:id="_96xom5RlEdqUfO_7NMx3Rw" xmlName="ELong:Object" instanceClassName="java.lang.Long" base_PrimitiveType="ELongObject"/>
+  <Ecore:EDataType xmi:id="_96xonJRlEdqUfO_7NMx3Rw" instanceClassName="java.util.Map" base_PrimitiveType="EMap"/>
+  <Ecore:EDataType xmi:id="_96xonZRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="EResource"/>
+  <Ecore:EDataType xmi:id="_96xonpRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="EResourceSet"/>
+  <Ecore:EDataType xmi:id="_96xon5RlEdqUfO_7NMx3Rw" instanceClassName="short" base_PrimitiveType="EShort"/>
+  <Ecore:EDataType xmi:id="_96xooJRlEdqUfO_7NMx3Rw" xmlName="EShort:Object" instanceClassName="java.lang.Short" base_PrimitiveType="EShortObject"/>
+  <Ecore:EDataType xmi:id="_96xooZRlEdqUfO_7NMx3Rw" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
+  <Ecore:EDataType xmi:id="_96xoopRlEdqUfO_7NMx3Rw" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
+  <Ecore:EClass xmi:id="_96xoo5RlEdqUfO_7NMx3Rw" base_Class="EObject"/>
+  <Ecore:EOperation xmi:id="_96xopJRlEdqUfO_7NMx3Rw" base_Operation="EObject-eClass"/>
+  <Ecore:EOperation xmi:id="_96xopZRlEdqUfO_7NMx3Rw" base_Operation="EObject-eIsProxy"/>
+  <Ecore:EOperation xmi:id="_96xoppRlEdqUfO_7NMx3Rw" base_Operation="EObject-eResource"/>
+  <Ecore:EOperation xmi:id="_96xop5RlEdqUfO_7NMx3Rw" base_Operation="EObject-eContainer"/>
+  <Ecore:EOperation xmi:id="_96xoqJRlEdqUfO_7NMx3Rw" base_Operation="EObject-eContainingFeature"/>
+  <Ecore:EOperation xmi:id="_96xoqZRlEdqUfO_7NMx3Rw" base_Operation="EObject-eContainmentFeature"/>
+  <Ecore:EOperation xmi:id="_96xoqpRlEdqUfO_7NMx3Rw" base_Operation="EObject-eContents"/>
+  <Ecore:EOperation xmi:id="_96xoq5RlEdqUfO_7NMx3Rw" base_Operation="EObject-eAllContents"/>
+  <Ecore:EOperation xmi:id="_96xorJRlEdqUfO_7NMx3Rw" base_Operation="EObject-eCrossReferences"/>
+  <Ecore:EOperation xmi:id="_96xorZRlEdqUfO_7NMx3Rw" base_Operation="EObject-eGet"/>
+  <Ecore:EParameter xmi:id="_96xorpRlEdqUfO_7NMx3Rw" base_Parameter="EObject-eGet-feature"/>
+  <Ecore:EOperation xmi:id="_96xor5RlEdqUfO_7NMx3Rw" base_Operation="EObject-eGet.1"/>
+  <Ecore:EParameter xmi:id="_963vMJRlEdqUfO_7NMx3Rw" base_Parameter="EObject-eGet.1-feature"/>
+  <Ecore:EParameter xmi:id="_963vMZRlEdqUfO_7NMx3Rw" base_Parameter="EObject-eGet.1-resolve"/>
+  <Ecore:EOperation xmi:id="_963vMpRlEdqUfO_7NMx3Rw" base_Operation="EObject-eSet"/>
+  <Ecore:EParameter xmi:id="_963vM5RlEdqUfO_7NMx3Rw" base_Parameter="EObject-eSet-feature"/>
+  <Ecore:EParameter xmi:id="_963vNJRlEdqUfO_7NMx3Rw" base_Parameter="EObject-eSet-newValue"/>
+  <Ecore:EOperation xmi:id="_963vNZRlEdqUfO_7NMx3Rw" base_Operation="EObject-eIsSet"/>
+  <Ecore:EParameter xmi:id="_963vNpRlEdqUfO_7NMx3Rw" base_Parameter="EObject-eIsSet-feature"/>
+  <Ecore:EOperation xmi:id="_963vN5RlEdqUfO_7NMx3Rw" base_Operation="EObject-eUnset"/>
+  <Ecore:EParameter xmi:id="_963vOJRlEdqUfO_7NMx3Rw" base_Parameter="EObject-eUnset-feature"/>
+  <Standard:Metamodel xmi:id="_V9c-cpRmEdqUfO_7NMx3Rw" base_Model="_0"/>
+  <Standard:Metaclass xmi:id="_V9c-c5RmEdqUfO_7NMx3Rw" base_Class="EStructuralFeature"/>
+  <Standard:Metaclass xmi:id="_V9c-dJRmEdqUfO_7NMx3Rw" base_Class="ETypedElement"/>
+  <Standard:Metaclass xmi:id="_V9c-dZRmEdqUfO_7NMx3Rw" base_Class="ENamedElement"/>
+  <Standard:Metaclass xmi:id="_V9c-dpRmEdqUfO_7NMx3Rw" base_Class="EModelElement"/>
+  <Standard:Metaclass xmi:id="_V9c-d5RmEdqUfO_7NMx3Rw" base_Class="EAnnotation"/>
+  <Standard:Metaclass xmi:id="_V9jFEJRmEdqUfO_7NMx3Rw" base_Class="EAttribute"/>
+  <Standard:Metaclass xmi:id="_V9jFEZRmEdqUfO_7NMx3Rw" base_Class="EStringToStringMapEntry"/>
+  <Standard:Metaclass xmi:id="_V9jFEpRmEdqUfO_7NMx3Rw" base_Class="EClassifier"/>
+  <Standard:Metaclass xmi:id="_V9jFE5RmEdqUfO_7NMx3Rw" base_Class="EPackage"/>
+  <Standard:Metaclass xmi:id="_V9jFFJRmEdqUfO_7NMx3Rw" base_Class="EFactory"/>
+  <Standard:Metaclass xmi:id="_V9jFFZRmEdqUfO_7NMx3Rw" base_Class="EClass"/>
+  <Standard:Metaclass xmi:id="_V9jFFpRmEdqUfO_7NMx3Rw" base_Class="EOperation"/>
+  <Standard:Metaclass xmi:id="_V9pLsJRmEdqUfO_7NMx3Rw" base_Class="EParameter"/>
+  <Standard:Metaclass xmi:id="_V9pLsZRmEdqUfO_7NMx3Rw" base_Class="EReference"/>
+  <Standard:Metaclass xmi:id="_V9pLspRmEdqUfO_7NMx3Rw" base_Class="EDataType"/>
+  <Standard:Metaclass xmi:id="_V9pLs5RmEdqUfO_7NMx3Rw" base_Class="EEnum"/>
+  <Standard:Metaclass xmi:id="_V9pLtJRmEdqUfO_7NMx3Rw" base_Class="EEnumLiteral"/>
+  <Standard:Metaclass xmi:id="_V9pLtZRmEdqUfO_7NMx3Rw" base_Class="EObject"/>
 </xmi:XMI>

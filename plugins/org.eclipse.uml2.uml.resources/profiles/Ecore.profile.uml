@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w">
-  <uml:Profile xmi:id="_siPt4K87Edi5QpYeY_yIpg" name="Ecore" metaclassReference="_urkx4K87Edi5QpYeY_yIpg _usJZo687Edi5QpYeY_yIpg _usVm4K87Edi5QpYeY_yIpg _usVm4a87Edi5QpYeY_yIpg _ush0IK87Edi5QpYeY_yIpg _usn6wK87Edi5QpYeY_yIpg _usuBYK87Edi5QpYeY_yIpg _us6OoK87Edi5QpYeY_yIpg _utA8Ua87Edi5QpYeY_yIpg _utHC9687Edi5QpYeY_yIpg">
+  <uml:Profile xmi:id="_siPt4K87Edi5QpYeY_yIpg" name="Ecore" metamodelReference="_7Qn-MJRfEdqvBIrxQDMrEA">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_v9DA0K87Edi5QpYeY_yIpg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <contents xmi:type="ecore:EPackage" xmi:id="_vy-HUYinEdqtvbnfB2L_5w" name="Ecore" nsURI="http://www.eclipse.org/uml2/schemas/Ecore/3" nsPrefix="Ecore">
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_vy-HUoinEdqtvbnfB2L_5w" name="EPackage">
@@ -655,42 +655,15 @@
         </eClassifiers>
       </contents>
     </eAnnotations>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_urkx4K87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
-    </elementImport>
     <elementImport xmi:type="uml:ElementImport" xmi:id="_ur9MYK87Edi5QpYeY_yIpg">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_usJZo687Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Generalization"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_usVm4K87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_usVm4a87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_ush0IK87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#PrimitiveType"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_usn6wK87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_usuBYK87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#EnumerationLiteral"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_us6OoK87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
-    </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_utA8Ua87Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
     </elementImport>
     <elementImport xmi:type="uml:ElementImport" xmi:id="_utHC8K87Edi5QpYeY_yIpg">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
     </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_utHC9687Edi5QpYeY_yIpg" visibility="private">
-      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
-    </elementImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_7Qn-MJRfEdqvBIrxQDMrEA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_ui4v8K87Edi5QpYeY_yIpg" name="EPackage">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_urq4g687Edi5QpYeY_yIpg" name="base_Package" association="_urq4gK87Edi5QpYeY_yIpg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
