@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.11 2006/02/01 18:34:07 khussey Exp $
+ * $Id: UMLUtil.java,v 1.12 2006/02/03 00:13:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2358,16 +2358,7 @@ public class UMLUtil
 					String default_ = property.getDefault();
 
 					if (default_ != null) {
-
-						try {
-							EDataType eDataType = (EDataType) getEType(property);
-
-							eDataType.getEPackage().getEFactoryInstance()
-								.createFromString(eDataType, default_);
-							eAttribute.setDefaultValueLiteral(default_);
-						} catch (Exception e) {
-							// ignore
-						}
+						eAttribute.setDefaultValueLiteral(default_);
 					}
 				} else {
 					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE

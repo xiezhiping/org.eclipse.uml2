@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.59 2006/02/01 18:34:01 khussey Exp $
+ * $Id: UML2Util.java,v 1.60 2006/02/03 00:13:45 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -2038,14 +2038,8 @@ public class UML2Util
 					if (null != defaultValue && !defaultValue.isNull()) {
 						String default_ = defaultValue.stringValue();
 
-						try {
-							EDataType eDataType = (EDataType) getEType(property);
-
-							eDataType.getEPackage().getEFactoryInstance()
-								.createFromString(eDataType, default_);
+						if (!isEmpty(default_)) {
 							eAttribute.setDefaultValueLiteral(default_);
-						} catch (Exception e) {
-							// ignore
 						}
 					}
 				} else {
