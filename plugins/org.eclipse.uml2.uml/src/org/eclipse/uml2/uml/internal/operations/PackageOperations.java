@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.15 2006/02/02 19:23:40 khussey Exp $
+ * $Id: PackageOperations.java,v 1.16 2006/02/03 04:32:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -344,7 +344,11 @@ public class PackageOperations
 			destroyAll(stereotypeApplications);
 		}
 
-		return applyAllRequiredStereotypes(package_);
+		EList requiredExtensions = profile.getOwnedExtensions(true);
+
+		return requiredExtensions.isEmpty()
+			? ECollections.EMPTY_ELIST
+			: applyAllRequiredStereotypes(package_);
 	}
 
 	/**

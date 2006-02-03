@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.16 2006/02/02 19:23:40 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.17 2006/02/03 04:32:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -135,8 +135,7 @@ public class ProfileOperations
 				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
 
 				if (class_.isMetaclass()) {
-					return UMLPackage.eINSTANCE
-						.getEClassifier(class_.getName());
+					return ClassOperations.getEClassifier(class_);
 				}
 			}
 
@@ -517,13 +516,8 @@ public class ProfileOperations
 		return ECollections.unmodifiableEList(referencedMetamodels);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static EList getOwnedExtensions(Profile profile, boolean requiredOnly) {
-		EList ownedExtensions = new UniqueEList.FastCompare();
+	protected static EList getOwnedExtensions(Profile profile,
+			boolean requiredOnly, EList ownedExtensions) {
 
 		for (Iterator extensions = EcoreUtil.getObjectsByType(
 			profile.getPackagedElements(), UMLPackage.Literals.EXTENSION)
@@ -536,7 +530,17 @@ public class ProfileOperations
 			}
 		}
 
-		return ECollections.unmodifiableEList(ownedExtensions);
+		return ownedExtensions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList getOwnedExtensions(Profile profile, boolean requiredOnly) {
+		return ECollections.unmodifiableEList(getOwnedExtensions(profile,
+			requiredOnly, new UniqueEList.FastCompare()));
 	}
 
 } // ProfileOperations

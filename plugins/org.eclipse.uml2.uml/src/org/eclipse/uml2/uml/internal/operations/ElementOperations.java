@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.26 2006/01/31 20:59:34 khussey Exp $
+ * $Id: ElementOperations.java,v 1.27 2006/02/03 04:32:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -894,8 +894,8 @@ public class ElementOperations
 				Type type = attribute.getType();
 
 				if (type instanceof org.eclipse.uml2.uml.Class) {
-					EClassifier eClassifier = UMLPackage.eINSTANCE
-						.getEClassifier(type.getName());
+					EClassifier eClassifier = ClassOperations
+						.getEClassifier((org.eclipse.uml2.uml.Class) type);
 
 					if (eClassifier != null && eClassifier.isInstance(element)) {
 						return (Extension) association;
@@ -991,7 +991,7 @@ public class ElementOperations
 		return stereotypeApplication;
 	}
 
-	public static EList applyAllRequiredStereotypes(Element element) {
+	protected static EList applyAllStereotypes(Element element, EList extensions) {
 		EList stereotypeApplications = new UniqueEList.FastCompare();
 
 		for (Iterator allContents = getAllContents(element, true, false); allContents
@@ -1002,20 +1002,56 @@ public class ElementOperations
 			if (eObject instanceof Element) {
 				Element containedElement = (Element) eObject;
 
-				for (Iterator rs = containedElement.getRequiredStereotypes()
-					.iterator(); rs.hasNext();) {
+				for (Iterator e = extensions.iterator(); e.hasNext();) {
+					Extension extension = (Extension) e.next();
+					org.eclipse.uml2.uml.Class metaclass = extension
+						.getMetaclass();
 
-					Stereotype stereotype = (Stereotype) rs.next();
+					if (metaclass != null) {
+						EClassifier eClassifier = ClassOperations
+							.getEClassifier(metaclass);
 
-					if (!containedElement.isStereotypeApplied(stereotype)) {
-						stereotypeApplications.add(applyStereotype(
-							containedElement, stereotype.getDefinition()));
+						if (eClassifier != null
+							&& eClassifier.isInstance(containedElement)) {
+
+							Stereotype stereotype = extension.getStereotype();
+
+							if (!containedElement
+								.isStereotypeApplied(stereotype)) {
+
+								stereotypeApplications.add(applyStereotype(
+									containedElement, stereotype
+										.getDefinition()));
+							}
+						}
 					}
 				}
 			}
 		}
 
 		return stereotypeApplications;
+	}
+
+	public static EList applyAllRequiredStereotypes(Element element) {
+		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
+
+		if (package_ != null) {
+			EList allRequiredExtensions = new UniqueEList.FastCompare();
+
+			for (Iterator allAppliedProfiles = package_.getAllAppliedProfiles()
+				.iterator(); allAppliedProfiles.hasNext();) {
+
+				ProfileOperations.getOwnedExtensions(
+					(Profile) allAppliedProfiles.next(), true,
+					allRequiredExtensions);
+			}
+
+			if (!allRequiredExtensions.isEmpty()) {
+				return applyAllStereotypes(element, allRequiredExtensions);
+			}
+		}
+
+		return ECollections.EMPTY_ELIST;
 	}
 
 	/**
