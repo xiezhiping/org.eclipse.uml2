@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.27 2006/02/03 04:32:02 khussey Exp $
+ * $Id: ElementOperations.java,v 1.28 2006/02/07 19:31:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.common.util.UniqueEList;
@@ -637,20 +638,36 @@ public class ElementOperations
 
 				if (eStructuralFeature.isMany()) {
 					List list = (List) eObject.eGet(eStructuralFeature);
+					int size = list.size();
 
-					for (int j = list.size(); j <= index; j++) {
-						list.add(j, EcoreUtil.create(eClass));
+					if (size <= index) {
+
+						if (!((EReference) eStructuralFeature).isContainment()) {
+							throw new IllegalArgumentException(String
+								.valueOf(propertyName));
+						}
+
+						for (int j = size; j <= index; j++) {
+							list.add(j, EcoreUtil.create(eClass));
+						}
 					}
 
 					eObject = (EObject) list.get(index);
 				} else {
+					Object value = eObject.eGet(eStructuralFeature);
 
-					if (eObject.eGet(eStructuralFeature) == null) {
-						eObject.eSet(eStructuralFeature, EcoreUtil
+					if (value == null) {
+
+						if (!((EReference) eStructuralFeature).isContainment()) {
+							throw new IllegalArgumentException(String
+								.valueOf(propertyName));
+						}
+
+						eObject.eSet(eStructuralFeature, value = EcoreUtil
 							.create(eClass));
 					}
 
-					eObject = (EObject) eObject.eGet(eStructuralFeature);
+					eObject = (EObject) value;
 				}
 			} else {
 
