@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.8 2005/09/06 15:20:03 khussey Exp $
+ * $Id: EMOF2EcoreResourceFactoryImpl.java,v 1.9 2006/02/07 16:40:10 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore.internal;
+
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -56,13 +59,21 @@ public class EMOF2EcoreResourceFactoryImpl
 
 		resource.setEncoding(EMOF2EcoreResource.DEFAULT_ENCODING);
 
-		resource.getDefaultLoadOptions().put(
-			XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+		Map defaultLoadOptions = resource.getDefaultLoadOptions();
+
+		defaultLoadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE,
+			Boolean.TRUE);
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
 		ePackageRegistry.put(EMOF2EcoreResource.EMOF_NS_URI,
 			EcorePackage.eINSTANCE);
+		ePackageRegistry.put(
+			"platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore", //$NON-NLS-1$
+			EcorePackage.eINSTANCE);
+
+		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.setPackageRegistry(ePackageRegistry);
 
 		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(
 			Ecore2XMLRegistry.INSTANCE);
@@ -71,7 +82,7 @@ public class EMOF2EcoreResourceFactoryImpl
 				EMOF2EcoreResource.EMOF_NS_URI,
 				EcoreUtil
 					.getObjectByType(
-						new ResourceSetImpl()
+						resourceSet
 							.getResource(
 								URI
 									.createURI("platform:/plugin/org.eclipse.uml2.examples.emof2ecore/model/EMOF_2_Ecore.ecore2xml"), //$NON-NLS-1$

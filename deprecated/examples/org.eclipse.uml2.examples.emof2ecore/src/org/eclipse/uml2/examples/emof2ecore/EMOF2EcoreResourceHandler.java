@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2005 IBM Corporation and others.
+ * Copyright (c) 2004, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,16 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: EMOF2EcoreResourceHandler.java,v 1.4 2005/06/30 03:17:57 khussey Exp $
+ * $Id: EMOF2EcoreResourceHandler.java,v 1.5 2006/02/07 16:40:10 khussey Exp $
  */
 package org.eclipse.uml2.examples.emof2ecore;
 
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -77,22 +79,41 @@ public class EMOF2EcoreResourceHandler
 		return null;
 	}
 
+	protected Collection getValues(FeatureMap featureMap, String name) {
+		Collection values = new UniqueEList.FastCompare();
+
+		for (Iterator entries = featureMap.iterator(); entries.hasNext();) {
+			FeatureMap.Entry entry = (FeatureMap.Entry) entries.next();
+
+			if (name.equals(entry.getEStructuralFeature().getName())) {
+				values.add(entry.getValue());
+			}
+		}
+
+		return values;
+	}
+
 	protected Object getEcoreExtension(XMLResource resource, EObject eObject,
 			String name) {
 
 		AnyType extension = getExtension(resource, eObject);
 
 		if (null != extension) {
-			AnyType ecoreExtension = (AnyType) getValue(extension.getMixed(),
-				"Extension"); //$NON-NLS-1$
 
-			if (null != ecoreExtension) {
-				AnyType instanceClassName = (AnyType) getValue(ecoreExtension
-					.getMixed(), name);
+			for (Iterator values = getValues(extension.getMixed(), "Extension") //$NON-NLS-1$
+				.iterator(); values.hasNext();) {
 
-				if (null != instanceClassName) {
-					return getValue(instanceClassName.getMixed(), "text"); //$NON-NLS-1$
+				AnyType ecoreExtension = (AnyType) values.next();
+
+				if (null != ecoreExtension) {
+					AnyType value = (AnyType) getValue(ecoreExtension
+						.getMixed(), name);
+
+					if (null != value) {
+						return getValue(value.getMixed(), "text"); //$NON-NLS-1$
+					}
 				}
+
 			}
 		}
 

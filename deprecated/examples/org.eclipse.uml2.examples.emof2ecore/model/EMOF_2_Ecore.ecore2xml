@@ -1,191 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore2xml:XMLMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:ecore2xml="http://www.eclipse.org/emf/2005/Ecore2XML">
+<ecore2xml:XMLMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:ecore2xml="http://www.eclipse.org/emf/2005/Ecore2XML">
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    <key xsi:type="ecore:EPackage" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
     <value name="EMOF" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <key xsi:type="ecore:EDataType" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <value name="String" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <key xsi:type="ecore:EDataType" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <value name="Boolean" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <key xsi:type="ecore:EDataType" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
     <value name="Integer" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <key xsi:type="ecore:EDataType" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBigInteger"/>
     <value name="UnlimitedNatural" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EFactory"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory"/>
     <value name="Factory" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EFactory/ePackage"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/ePackage"/>
     <value name="package"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
     <value name="Package" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/nsURI"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
     <value name="uri"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eSubpackages"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eSubpackages"/>
     <value name="nestedPackage"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eSuperPackage"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eSuperPackage"/>
     <value name="nestingPackage"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eClassifiers"/>
     <value name="ownedType"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EParameter"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter"/>
     <value name="Parameter" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EParameter/eOperation"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter/eOperation"/>
     <value name="operation"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EOperation"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
     <value name="Operation" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EOperation/eContainingClass"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eContainingClass"/>
     <value name="class"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EOperation/eParameters"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eParameters"/>
     <value name="ownedParameter"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EOperation/eExceptions"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eExceptions"/>
     <value name="raisedException"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral"/>
     <value name="EnumerationLiteral" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/eEnum"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral/eEnum"/>
     <value name="enumeration"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
     <value name="PrimitiveType" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum"/>
     <value name="Enumeration" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EEnum/eLiterals"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/eLiterals"/>
     <value name="ownedLiteral"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     <value name="Class" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/abstract"/>
     <value name="isAbstract"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eOperations"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eOperations"/>
     <value name="ownedOperation"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eSuperTypes"/>
     <value name="superClass"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eStructuralFeatures"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAttributes"/>
     <value name="ownedAttribute"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
     <value name="Type" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/ePackage"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/ePackage"/>
     <value name="package"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement"/>
     <value name="MultiplicityElement" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eType"/>
     <value name="type"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement"/>
     <value name="NamedElement" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
     <value name="name"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement"/>
     <value name="Element" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/ordered"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/ordered"/>
     <value name="isOrdered"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/unique"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/unique"/>
     <value name="isUnique"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/lowerBound"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/lowerBound"/>
     <value name="lower"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/upperBound"/>
     <value name="upper"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <key xsi:type="ecore:EClass" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute"/>
     <value name="Property" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/containment"/>
     <value name="isComposite"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eOpposite"/>
     <value name="opposite"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
-    <value name="Property" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/defaultValueLiteral"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValueLiteral"/>
     <value name="default"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/derived"/>
+    <key xsi:type="ecore:EAttribute" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/derived"/>
     <value name="isDerived"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xmi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/eContainingClass"/>
+    <key xsi:type="ecore:EReference" href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/eContainingClass"/>
     <value name="class"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
-    <key xmi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
-    <value name="Property" targetNamespace="http://schema.omg.org/spec/mof/2.0/emof.xmi"/>
   </ecoreToXMLInfo>
 </ecore2xml:XMLMap>

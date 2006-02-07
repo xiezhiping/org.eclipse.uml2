@@ -2,192 +2,184 @@
 <ecore2ecore:Ecore2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore2ecore="http://www.eclipse.org/emf/2004/Ecore2Ecore" topToBottom="true">
   <nested>
     <inputs href="EMOF.ecore#//String"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </nested>
   <nested>
     <inputs href="EMOF.ecore#//Boolean"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </nested>
   <nested>
     <inputs href="EMOF.ecore#//Integer"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
   </nested>
   <nested>
     <inputs href="EMOF.ecore#//UnlimitedNatural"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBigInteger"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Factory/package"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EFactory/ePackage"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory/ePackage"/>
     </nested>
     <inputs href="EMOF.ecore#//Factory"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EFactory"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFactory"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Package/uri"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/nsURI"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/nsURI"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Package/nestedPackage"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eSubpackages"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eSubpackages"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Package/nestingPackage"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eSuperPackage"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eSuperPackage"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Package/ownedType"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eClassifiers"/>
     </nested>
     <inputs href="EMOF.ecore#//Package"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Parameter/operation"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EParameter/eOperation"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter/eOperation"/>
     </nested>
     <inputs href="EMOF.ecore#//Parameter"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EParameter"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Operation/class"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EOperation/eContainingClass"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eContainingClass"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Operation/ownedParameter"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EOperation/eParameters"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eParameters"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Operation/raisedException"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EOperation/eExceptions"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation/eExceptions"/>
     </nested>
     <inputs href="EMOF.ecore#//Operation"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EOperation"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//EnumerationLiteral/enumeration"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/eEnum"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral/eEnum"/>
     </nested>
     <inputs href="EMOF.ecore#//EnumerationLiteral"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnumLiteral"/>
   </nested>
   <nested>
     <inputs href="EMOF.ecore#//PrimitiveType"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Enumeration/ownedLiteral"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EEnum/eLiterals"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum/eLiterals"/>
     </nested>
     <inputs href="EMOF.ecore#//Enumeration"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EEnum"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Class/isAbstract"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/abstract"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Class/ownedOperation"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eOperations"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eOperations"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Class/superClass"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eSuperTypes"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//Class/ownedAttribute"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eStructuralFeatures"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass/eAttributes"/>
     </nested>
     <inputs href="EMOF.ecore#//Class"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//Type/package"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/ePackage"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier/ePackage"/>
     </nested>
     <inputs href="EMOF.ecore#//Type"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClassifier"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//TypedElement/type"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/eType"/>
     </nested>
     <inputs href="EMOF.ecore#//TypedElement"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//NamedElement/name"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
     </nested>
     <inputs href="EMOF.ecore#//NamedElement"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement"/>
   </nested>
   <nested>
     <inputs href="EMOF.ecore#//Element"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EModelElement"/>
   </nested>
   <nested>
     <nested>
       <inputs href="EMOF.ecore#//MultiplicityElement/isOrdered"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/ordered"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/ordered"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//MultiplicityElement/isUnique"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/unique"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/unique"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//MultiplicityElement/lower"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/lowerBound"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/lowerBound"/>
     </nested>
     <nested>
       <inputs href="EMOF.ecore#//MultiplicityElement/upper"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
+      <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement/upperBound"/>
     </nested>
     <inputs href="EMOF.ecore#//MultiplicityElement"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement"/>
-  </nested>
-  <nested>
-    <nested>
-      <inputs href="EMOF.ecore#//Property/isComposite"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
-    </nested>
-    <nested>
-      <inputs href="EMOF.ecore#//Property/opposite"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
-    </nested>
-    <inputs href="EMOF.ecore#//Property"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-  </nested>
-  <nested>
-    <nested>
-      <inputs href="EMOF.ecore#//Property/default"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/defaultValueLiteral"/>
-    </nested>
-    <nested>
-      <inputs href="EMOF.ecore#//Property/isDerived"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/derived"/>
-    </nested>
-    <nested>
-      <inputs href="EMOF.ecore#//Property/class"/>
-      <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/eContainingClass"/>
-    </nested>
-    <inputs href="EMOF.ecore#//Property"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement"/>
   </nested>
   <nested>
     <inputs href="EMOF.ecore#//Property"/>
-    <outputs href="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute"/>
+  </nested>
+  <nested>
+    <inputs href="EMOF.ecore#//Property/isComposite"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/containment"/>
+  </nested>
+  <nested>
+    <inputs href="EMOF.ecore#//Property/opposite"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference/eOpposite"/>
+  </nested>
+  <nested>
+    <inputs href="EMOF.ecore#//Property/default"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/defaultValueLiteral"/>
+  </nested>
+  <nested>
+    <inputs href="EMOF.ecore#//Property/isDerived"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/derived"/>
+  </nested>
+  <nested>
+    <inputs href="EMOF.ecore#//Property/class"/>
+    <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature/eContainingClass"/>
   </nested>
   <inputs href="EMOF.ecore#/"/>
-  <outputs href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <outputs href="../../org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>
