@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.17 2006/02/03 04:32:02 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.18 2006/02/07 19:30:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -127,6 +128,19 @@ public class ProfileOperations
 			}
 
 			return ePackage;
+		}
+
+		public Object caseProperty(Property property) {
+			Type type = property.getType();
+
+			if (type == null
+				|| (property.getAggregation() == AggregationKind.COMPOSITE_LITERAL && (type instanceof Stereotype || (type instanceof org.eclipse.uml2.uml.Class && ((org.eclipse.uml2.uml.Class) type)
+					.isMetaclass())))) {
+
+				throw new IllegalStateException();
+			}
+
+			return super.caseProperty(property);
 		}
 
 		protected EClassifier getEType(Type type) {
