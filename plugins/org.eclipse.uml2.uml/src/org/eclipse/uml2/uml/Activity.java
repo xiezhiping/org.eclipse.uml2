@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.8 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Activity.java,v 1.9 2006/02/07 18:23:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#isReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getPartition <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#isSingleExecution <em>Is Single Execution</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
  * </ul>
@@ -91,31 +91,6 @@ public interface Activity
 	 * @generated
 	 */
 	void setIsReadOnly(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Partition</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Top-level partitions in the activity.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Partition</em>' reference.
-	 * @see #setPartition(ActivityPartition)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Partition()
-	 * @model resolveProxies="false" required="true" ordered="false"
-	 * @generated
-	 */
-	ActivityPartition getPartition();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Activity#getPartition <em>Partition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Partition</em>' reference.
-	 * @see #getPartition()
-	 * @generated
-	 */
-	void setPartition(ActivityPartition value);
 
 	/**
 	 * Returns the value of the '<em><b>Group</b></em>' containment reference list.
@@ -312,6 +287,32 @@ public interface Activity
 	 * @generated
 	 */
 	ActivityEdge getEdge(String name);
+
+	/**
+	 * Returns the value of the '<em><b>Partition</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Top-level partitions in the activity.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Partition</em>' reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Partition()
+	 * @model type="org.eclipse.uml2.uml.ActivityPartition" resolveProxies="false" ordered="false"
+	 * @generated
+	 */
+	EList getPartitions();
+
+	/**
+	 * Retrieves the {@link org.eclipse.uml2.uml.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityPartition} to retrieve.
+	 * @return The {@link org.eclipse.uml2.uml.ActivityPartition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPartitions()
+	 * @generated
+	 */
+	ActivityPartition getPartition(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

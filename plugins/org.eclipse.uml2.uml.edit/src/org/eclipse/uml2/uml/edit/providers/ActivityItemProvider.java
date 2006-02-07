@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.11 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.12 2006/02/07 18:20:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
@@ -646,6 +647,23 @@ public class ActivityItemProvider
 	}
 
 	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Command createAddCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection collection, int index) {
+		if (feature == UMLPackage.Literals.ACTIVITY__PARTITION) {
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ACTIVITY__GROUP},
+				collection, index);
+		}
+		return super
+			.createAddCommand(domain, owner, feature, collection, index);
+	}
+
+	/**
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -672,6 +690,11 @@ public class ActivityItemProvider
 	 */
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection collection) {
+		if (feature == UMLPackage.Literals.ACTIVITY__PARTITION) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ACTIVITY__GROUP},
+				null, value, collection);
+		}
 		if (feature == UMLPackage.Literals.ACTIVITY__GROUP) {
 			return new SubsetSupersetReplaceCommand(
 				domain,
@@ -683,22 +706,6 @@ public class ActivityItemProvider
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Command createSetCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value) {
-		if (feature == UMLPackage.Literals.ACTIVITY__PARTITION) {
-			return new SubsetSupersetSetCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ACTIVITY__GROUP},
-				null, value);
-		}
-		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

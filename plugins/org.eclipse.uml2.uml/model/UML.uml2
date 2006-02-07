@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_2="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_1RgZIcezEdmTJL3rR1ioJg" xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML" appliedProfile="_0TBYYGvaEdq4DLWZOhbdEA">
   <eAnnotations xmi:id="_1gWuMGvaEdq4DLWZOhbdEA" source="appliedStereotypes">
-    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_j5ywYJQMEdqYTr6mZIvstA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_77unoJf3Edqb3-ACLkYTGg" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   </eAnnotations>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
     <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="attributes">
@@ -820,22 +820,22 @@
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
     <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_j5ywYZQMEdqYTr6mZIvstA" instanceClassName="boolean"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_77unoZf3Edqb3-ACLkYTGg" instanceClassName="boolean"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
     <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_j5ywYpQMEdqYTr6mZIvstA" instanceClassName="int"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_77unopf3Edqb3-ACLkYTGg" instanceClassName="int"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
     <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_j5ywY5QMEdqYTr6mZIvstA" instanceClassName="java.lang.String"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_77uno5f3Edqb3-ACLkYTGg" instanceClassName="java.lang.String"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
     <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_j5ywZJQMEdqYTr6mZIvstA" instanceClassName="int"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_77unpJf3Edqb3-ACLkYTGg" instanceClassName="int"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>

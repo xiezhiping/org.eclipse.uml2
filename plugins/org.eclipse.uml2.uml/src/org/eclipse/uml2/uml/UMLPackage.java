@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.18 2006/01/20 20:55:52 khussey Exp $
+ * $Id: UMLPackage.java,v 1.19 2006/02/07 18:23:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26422,7 +26422,7 @@ public interface UMLPackage
 	int ACTIVITY__EDGE = BEHAVIOR_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Partition</b></em>' reference.
+	 * The feature id for the '<em><b>Partition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -64128,11 +64128,11 @@ public interface UMLPackage
 	EAttribute getActivity_IsReadOnly();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.Activity#getPartition <em>Partition</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Partition</em>'.
-	 * @see org.eclipse.uml2.uml.Activity#getPartition()
+	 * @return the meta object for the reference list '<em>Partition</em>'.
+	 * @see org.eclipse.uml2.uml.Activity#getPartitions()
 	 * @see #getActivity()
 	 * @generated
 	 */
@@ -72345,7 +72345,7 @@ public interface UMLPackage
 		EAttribute ACTIVITY__IS_READ_ONLY = eINSTANCE.getActivity_IsReadOnly();
 
 		/**
-		 * The meta object literal for the '<em><b>Partition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Partition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

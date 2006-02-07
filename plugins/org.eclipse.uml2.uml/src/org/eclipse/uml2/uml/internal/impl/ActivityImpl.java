@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.17 2006/01/12 15:53:51 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.18 2006/02/07 18:23:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -72,7 +74,7 @@ import org.eclipse.uml2.uml.internal.operations.ActivityOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getVariables <em>Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartition <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartitions <em>Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isSingleExecution <em>Is Single Execution</em>}</li>
  * </ul>
  * </p>
@@ -308,36 +310,6 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityPartition getPartition() {
-		return (ActivityPartition) eVirtualGet(UMLPackage.ACTIVITY__PARTITION);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPartition(ActivityPartition newPartition) {
-		if (newPartition != null && !getGroups().contains(newPartition)) {
-			getGroups().add(newPartition);
-		}
-		ActivityPartition partition = newPartition;
-		Object oldPartition = eVirtualSet(UMLPackage.ACTIVITY__PARTITION,
-			partition);
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ACTIVITY__PARTITION,
-				oldPartition == EVIRTUAL_NO_VALUE
-					? null
-					: oldPartition, partition));
-
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isSingleExecution() {
 		return (eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0;
 	}
@@ -473,6 +445,38 @@ public class ActivityImpl
 			ActivityEdge edge = (ActivityEdge) i.next();
 			if (name.equals(edge.getName())) {
 				return edge;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getPartitions() {
+		EList partition = (EList) eVirtualGet(UMLPackage.ACTIVITY__PARTITION);
+		if (partition == null) {
+			eVirtualSet(UMLPackage.ACTIVITY__PARTITION,
+				partition = new SubsetSupersetEObjectEList(
+					ActivityPartition.class, this,
+					UMLPackage.ACTIVITY__PARTITION,
+					new int[]{UMLPackage.ACTIVITY__GROUP}, null));
+		}
+		return partition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getPartition(String name) {
+		for (Iterator i = getPartitions().iterator(); i.hasNext();) {
+			ActivityPartition partition = (ActivityPartition) i.next();
+			if (name.equals(partition.getName())) {
+				return partition;
 			}
 		}
 		return null;
@@ -878,7 +882,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__EDGE :
 				return getEdges();
 			case UMLPackage.ACTIVITY__PARTITION :
-				return getPartition();
+				return getPartitions();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return isSingleExecution()
 					? Boolean.TRUE
@@ -1077,7 +1081,8 @@ public class ActivityImpl
 				getEdges().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY__PARTITION :
-				setPartition((ActivityPartition) newValue);
+				getPartitions().clear();
+				getPartitions().addAll((Collection) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				setIsSingleExecution(((Boolean) newValue).booleanValue());
@@ -1245,7 +1250,7 @@ public class ActivityImpl
 				getEdges().clear();
 				return;
 			case UMLPackage.ACTIVITY__PARTITION :
-				setPartition((ActivityPartition) null);
+				getPartitions().clear();
 				return;
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
@@ -1432,7 +1437,8 @@ public class ActivityImpl
 				EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
 				return edge != null && !edge.isEmpty();
 			case UMLPackage.ACTIVITY__PARTITION :
-				return eVirtualGet(UMLPackage.ACTIVITY__PARTITION) != null;
+				EList partition = (EList) eVirtualGet(UMLPackage.ACTIVITY__PARTITION);
+				return partition != null && !partition.isEmpty();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return ((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0) != IS_SINGLE_EXECUTION_EDEFAULT;
 			case UMLPackage.ACTIVITY__GROUP :
