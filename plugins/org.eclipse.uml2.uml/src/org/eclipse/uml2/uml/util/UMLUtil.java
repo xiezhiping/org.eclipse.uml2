@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.13 2006/02/03 04:05:45 khussey Exp $
+ * $Id: UMLUtil.java,v 1.14 2006/02/08 17:09:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -476,22 +476,18 @@ public class UMLUtil
 							(LiteralUnlimitedNatural) copyEObject,
 							(LiteralUnlimitedNatural) eObject);
 					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED) {
-
 						mergeMultiplicityElement_IsOrdered(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
 					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE) {
-
 						mergeMultiplicityElement_IsUnique(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
 					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER) {
-
 						mergeMultiplicityElement_Lower(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
 					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER) {
-
 						mergeMultiplicityElement_Upper(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
@@ -505,7 +501,6 @@ public class UMLUtil
 						mergeProperty_IsDerivedUnion((Property) copyEObject,
 							(Property) eObject);
 					} else if (eAttribute == UMLPackage.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY) {
-
 						mergeStructuralFeature_IsReadOnly(
 							(StructuralFeature) copyEObject,
 							(StructuralFeature) eObject);
@@ -878,7 +873,6 @@ public class UMLUtil
 								return matchingEAnnotation;
 							}
 						} else if (theEClass == EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY) {
-
 							BasicEMap.Entry matchingEntry = (BasicEMap.Entry) findEObject(
 								getMatchCandidates(theEObject), new KeyMatcher(
 									(BasicEMap.Entry) theEObject));
@@ -2297,6 +2291,7 @@ public class UMLUtil
 
 			if (operation == null
 				|| parameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+
 				return super.caseParameter(parameter);
 			} else {
 				EParameter eParameter = EcoreFactory.eINSTANCE
@@ -2464,7 +2459,7 @@ public class UMLUtil
 								ECORE_TAGGED_VALUE,
 								UMLPlugin.INSTANCE
 									.getString(
-										"_UI_UML22EcoreConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+										"_UI_UML2EcoreConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											eModelElement, getTagDefinition(
 												stereotype, propertyName),
@@ -2481,78 +2476,78 @@ public class UMLUtil
 									: value);
 					} else {
 
-						if (propertyName == PROPERTY_NAME__XML_CONTENT_KIND) {
+						if (propertyName == TAG_DEFINITION__XML_CONTENT_KIND) {
 							Enumeration contentKindEnumeration = ((EnumerationLiteral) value)
 								.getEnumeration();
 
 							if (value == contentKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__EMPTY)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__EMPTY)) {
 
 								ExtendedMetaData.INSTANCE.setContentKind(
 									(EClass) eModelElement,
 									ExtendedMetaData.EMPTY_CONTENT);
 							} else if (value == contentKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__SIMPLE)) {
 
 								ExtendedMetaData.INSTANCE.setContentKind(
 									(EClass) eModelElement,
 									ExtendedMetaData.SIMPLE_CONTENT);
 							} else if (value == contentKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__MIXED)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__MIXED)) {
 
 								ExtendedMetaData.INSTANCE.setContentKind(
 									(EClass) eModelElement,
 									ExtendedMetaData.MIXED_CONTENT);
 							} else if (value == contentKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_ONLY)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__ELEMENT_ONLY)) {
 
 								ExtendedMetaData.INSTANCE.setContentKind(
 									(EClass) eModelElement,
 									ExtendedMetaData.ELEMENT_ONLY_CONTENT);
 							}
-						} else if (propertyName == PROPERTY_NAME__XML_FEATURE_KIND) {
+						} else if (propertyName == TAG_DEFINITION__XML_FEATURE_KIND) {
 							Enumeration featureKindEnumeration = ((EnumerationLiteral) value)
 								.getEnumeration();
 
 							if (value == featureKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__SIMPLE)) {
 
 								ExtendedMetaData.INSTANCE.setFeatureKind(
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.SIMPLE_FEATURE);
 							} else if (value == featureKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__ATTRIBUTE)) {
 
 								ExtendedMetaData.INSTANCE.setFeatureKind(
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.ATTRIBUTE_FEATURE);
 							} else if (value == featureKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE_WILDCARD)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__ATTRIBUTE_WILDCARD)) {
 
 								ExtendedMetaData.INSTANCE
 									.setFeatureKind(
 										(EStructuralFeature) eModelElement,
 										ExtendedMetaData.ATTRIBUTE_WILDCARD_FEATURE);
 							} else if (value == featureKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__ELEMENT)) {
 
 								ExtendedMetaData.INSTANCE.setFeatureKind(
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.ELEMENT_FEATURE);
 							} else if (value == featureKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_WILDCARD)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__ELEMENT_WILDCARD)) {
 
 								ExtendedMetaData.INSTANCE.setFeatureKind(
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.ELEMENT_WILDCARD_FEATURE);
 							} else if (value == featureKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__GROUP)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__GROUP)) {
 
 								ExtendedMetaData.INSTANCE.setFeatureKind(
 									(EStructuralFeature) eModelElement,
 									ExtendedMetaData.GROUP_FEATURE);
 							}
-						} else if (propertyName == PROPERTY_NAME__XML_NAME) {
+						} else if (propertyName == TAG_DEFINITION__XML_NAME) {
 
 							if (eModelElement instanceof EClassifier) {
 								ExtendedMetaData.INSTANCE
@@ -2563,11 +2558,11 @@ public class UMLUtil
 									(EStructuralFeature) eModelElement,
 									(String) value);
 							}
-						} else if (propertyName == PROPERTY_NAME__XML_NAMESPACE) {
+						} else if (propertyName == TAG_DEFINITION__XML_NAMESPACE) {
 							ExtendedMetaData.INSTANCE.setNamespace(
 								(EStructuralFeature) eModelElement,
 								(String) value);
-						} else if (propertyName == PROPERTY_NAME__VISIBILITY) {
+						} else if (propertyName == TAG_DEFINITION__VISIBILITY) {
 							eStructuralFeature = (EStructuralFeature) eModelElement;
 							boolean isChangeable = eStructuralFeature
 								.isChangeable();
@@ -2579,7 +2574,7 @@ public class UMLUtil
 								.getEnumeration();
 
 							if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__NONE)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__NONE)) {
 
 								EcoreUtil.setSuppressedVisibility(
 									eStructuralFeature, EcoreUtil.GET, true);
@@ -2603,7 +2598,7 @@ public class UMLUtil
 									}
 								}
 							} else if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY)) {
 
 								if (!isMany && isChangeable) {
 									EcoreUtil
@@ -2624,7 +2619,7 @@ public class UMLUtil
 									}
 								}
 							} else if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_WRITE)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__READ_WRITE)) {
 
 								if (isUnsettable) {
 									EcoreUtil.setSuppressedVisibility(
@@ -2638,7 +2633,7 @@ public class UMLUtil
 									}
 								}
 							} else if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE)) {
+								.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE)) {
 
 								if (!isMany && isChangeable) {
 									EcoreUtil
@@ -2666,7 +2661,7 @@ public class UMLUtil
 							ECORE_TAGGED_VALUE,
 							UMLPlugin.INSTANCE
 								.getString(
-									"_UI_UML22EcoreConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+									"_UI_UML2EcoreConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
 									getMessageSubstitutions(context,
 										eModelElement, getTagDefinition(
 											stereotype, propertyName), value)),
@@ -2682,16 +2677,16 @@ public class UMLUtil
 
 				public Object caseEClass(EClass eClass) {
 					Stereotype eClassStereotype = getAppliedEcoreStereotype(
-						element, STEREOTYPE_NAME__E_CLASS);
+						element, STEREOTYPE__E_CLASS);
 
 					if (eClassStereotype != null) {
 						processEcoreTaggedValue(eClass, EcorePackage.eINSTANCE
 							.getENamedElement_Name(), element,
-							eClassStereotype, PROPERTY_NAME__CLASS_NAME,
+							eClassStereotype, TAG_DEFINITION__CLASS_NAME,
 							options, diagnostics, context);
 
 						processEcoreTaggedValue(eClass, null, element,
-							eClassStereotype, PROPERTY_NAME__XML_CONTENT_KIND,
+							eClassStereotype, TAG_DEFINITION__XML_CONTENT_KIND,
 							options, diagnostics, context);
 					}
 
@@ -2700,13 +2695,13 @@ public class UMLUtil
 
 				public Object caseEDataType(EDataType eDataType) {
 					Stereotype eDataTypeStereotype = getAppliedEcoreStereotype(
-						element, STEREOTYPE_NAME__E_DATA_TYPE);
+						element, STEREOTYPE__E_DATA_TYPE);
 
 					if (eDataTypeStereotype != null) {
 						processEcoreTaggedValue(eDataType,
 							EcorePackage.eINSTANCE.getENamedElement_Name(),
 							element, eDataTypeStereotype,
-							PROPERTY_NAME__DATA_TYPE_NAME, options,
+							TAG_DEFINITION__DATA_TYPE_NAME, options,
 							diagnostics, context);
 					}
 
@@ -2716,12 +2711,12 @@ public class UMLUtil
 
 			if (eClassifierStereotype != null) {
 				processEcoreTaggedValue(eClassifier, null, element,
-					eClassifierStereotype, PROPERTY_NAME__XML_NAME, options,
+					eClassifierStereotype, TAG_DEFINITION__XML_NAME, options,
 					diagnostics, context);
 
 				processEcoreTaggedValue(eClassifier, EcorePackage.eINSTANCE
 					.getEClassifier_InstanceClassName(), element,
-					eClassifierStereotype, PROPERTY_NAME__INSTANCE_CLASS_NAME,
+					eClassifierStereotype, TAG_DEFINITION__INSTANCE_CLASS_NAME,
 					options, diagnostics, context);
 			}
 		}
@@ -2729,15 +2724,15 @@ public class UMLUtil
 		protected void processEcoreTaggedValues(EEnum eEnum, Element element,
 				Map options, DiagnosticChain diagnostics, Map context) {
 			Stereotype eEnumStereotype = getAppliedEcoreStereotype(element,
-				STEREOTYPE_NAME__E_ENUM);
+				STEREOTYPE__E_ENUM);
 
 			if (eEnumStereotype != null) {
 				processEcoreTaggedValue(eEnum, EcorePackage.eINSTANCE
 					.getENamedElement_Name(), element, eEnumStereotype,
-					PROPERTY_NAME__ENUM_NAME, options, diagnostics, context);
+					TAG_DEFINITION__ENUM_NAME, options, diagnostics, context);
 
 				processEcoreTaggedValue(eEnum, null, element, eEnumStereotype,
-					PROPERTY_NAME__XML_NAME, options, diagnostics, context);
+					TAG_DEFINITION__XML_NAME, options, diagnostics, context);
 			}
 		}
 
@@ -2745,12 +2740,12 @@ public class UMLUtil
 				Element element, Map options, DiagnosticChain diagnostics,
 				Map context) {
 			Stereotype eEnumLiteralStereotype = getAppliedEcoreStereotype(
-				element, STEREOTYPE_NAME__E_ENUM_LITERAL);
+				element, STEREOTYPE__E_ENUM_LITERAL);
 
 			if (eEnumLiteralStereotype != null) {
 				processEcoreTaggedValue(eEnumLiteral, EcorePackage.eINSTANCE
 					.getENamedElement_Name(), element, eEnumLiteralStereotype,
-					PROPERTY_NAME__ENUM_LITERAL_NAME, options, diagnostics,
+					TAG_DEFINITION__ENUM_LITERAL_NAME, options, diagnostics,
 					context);
 			}
 		}
@@ -2759,12 +2754,12 @@ public class UMLUtil
 				Element element, Map options, DiagnosticChain diagnostics,
 				Map context) {
 			Stereotype eOperationStereotype = getAppliedEcoreStereotype(
-				element, STEREOTYPE_NAME__E_OPERATION);
+				element, STEREOTYPE__E_OPERATION);
 
 			if (eOperationStereotype != null) {
 				processEcoreTaggedValue(eOperation, EcorePackage.eINSTANCE
 					.getENamedElement_Name(), element, eOperationStereotype,
-					PROPERTY_NAME__OPERATION_NAME, options, diagnostics,
+					TAG_DEFINITION__OPERATION_NAME, options, diagnostics,
 					context);
 			}
 		}
@@ -2773,21 +2768,21 @@ public class UMLUtil
 				Element element, Map options, DiagnosticChain diagnostics,
 				Map context) {
 			Stereotype ePackageStereotype = getAppliedEcoreStereotype(element,
-				STEREOTYPE_NAME__E_PACKAGE);
+				STEREOTYPE__E_PACKAGE);
 
 			if (ePackageStereotype != null) {
 				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
 					.getENamedElement_Name(), element, ePackageStereotype,
-					PROPERTY_NAME__PACKAGE_NAME, options, diagnostics, context);
+					TAG_DEFINITION__PACKAGE_NAME, options, diagnostics, context);
 
 				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
 					.getEPackage_NsPrefix(), element, ePackageStereotype,
-					PROPERTY_NAME__NS_PREFIX, options, diagnostics, context);
+					TAG_DEFINITION__NS_PREFIX, options, diagnostics, context);
 
 				if (isEmpty(ePackage.getNsPrefix())) {
 					processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
 						.getEPackage_NsPrefix(), element, ePackageStereotype,
-						PROPERTY_NAME__BASE_PACKAGE, options, diagnostics,
+						TAG_DEFINITION__BASE_PACKAGE, options, diagnostics,
 						context);
 
 					String nsPrefix = ePackage.getNsPrefix();
@@ -2800,7 +2795,7 @@ public class UMLUtil
 
 				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
 					.getEPackage_NsURI(), element, ePackageStereotype,
-					PROPERTY_NAME__NS_URI, options, diagnostics, context);
+					TAG_DEFINITION__NS_URI, options, diagnostics, context);
 			}
 		}
 
@@ -2808,12 +2803,12 @@ public class UMLUtil
 				Element element, Map options, DiagnosticChain diagnostics,
 				Map context) {
 			Stereotype eParameterStereotype = getAppliedEcoreStereotype(
-				element, STEREOTYPE_NAME__E_PARAMETER);
+				element, STEREOTYPE__E_PARAMETER);
 
 			if (eParameterStereotype != null) {
 				processEcoreTaggedValue(eParameter, EcorePackage.eINSTANCE
 					.getENamedElement_Name(), element, eParameterStereotype,
-					PROPERTY_NAME__PARAMETER_NAME, options, diagnostics,
+					TAG_DEFINITION__PARAMETER_NAME, options, diagnostics,
 					context);
 			}
 		}
@@ -2826,18 +2821,18 @@ public class UMLUtil
 
 				public Object caseEAttribute(EAttribute eAttribute) {
 					Stereotype eAttributeStereotype = getAppliedEcoreStereotype(
-						element, STEREOTYPE_NAME__E_ATTRIBUTE);
+						element, STEREOTYPE__E_ATTRIBUTE);
 
 					if (eAttributeStereotype != null) {
 						processEcoreTaggedValue(eAttribute,
 							EcorePackage.eINSTANCE.getENamedElement_Name(),
 							element, eAttributeStereotype,
-							PROPERTY_NAME__ATTRIBUTE_NAME, options,
+							TAG_DEFINITION__ATTRIBUTE_NAME, options,
 							diagnostics, context);
 
 						processEcoreTaggedValue(eAttribute,
 							EcorePackage.eINSTANCE.getEAttribute_ID(), element,
-							eAttributeStereotype, PROPERTY_NAME__IS_ID,
+							eAttributeStereotype, TAG_DEFINITION__IS_ID,
 							options, diagnostics, context);
 					}
 
@@ -2846,20 +2841,20 @@ public class UMLUtil
 
 				public Object caseEReference(EReference eReference) {
 					Stereotype eReferenceStereotype = getAppliedEcoreStereotype(
-						element, STEREOTYPE_NAME__E_REFERENCE);
+						element, STEREOTYPE__E_REFERENCE);
 
 					if (eReferenceStereotype != null) {
 						processEcoreTaggedValue(eReference,
 							EcorePackage.eINSTANCE.getENamedElement_Name(),
 							element, eReferenceStereotype,
-							PROPERTY_NAME__REFERENCE_NAME, options,
+							TAG_DEFINITION__REFERENCE_NAME, options,
 							diagnostics, context);
 
 						processEcoreTaggedValue(eReference,
 							EcorePackage.eINSTANCE
 								.getEReference_ResolveProxies(), element,
 							eReferenceStereotype,
-							PROPERTY_NAME__IS_RESOLVE_PROXIES, options,
+							TAG_DEFINITION__IS_RESOLVE_PROXIES, options,
 							diagnostics, context);
 					}
 
@@ -2871,33 +2866,35 @@ public class UMLUtil
 				processEcoreTaggedValue(eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Transient(),
 					element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__IS_TRANSIENT, options, diagnostics, context);
+					TAG_DEFINITION__IS_TRANSIENT, options, diagnostics, context);
 
 				processEcoreTaggedValue(eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Unsettable(),
 					element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__IS_UNSETTABLE, options, diagnostics, context);
+					TAG_DEFINITION__IS_UNSETTABLE, options, diagnostics,
+					context);
 
 				processEcoreTaggedValue(eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Volatile(),
 					element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__IS_VOLATILE, options, diagnostics, context);
+					TAG_DEFINITION__IS_VOLATILE, options, diagnostics, context);
 
 				processEcoreTaggedValue(eStructuralFeature, null, element,
-					eStructuralFeatureStereotype, PROPERTY_NAME__XML_NAME,
-					options, diagnostics, context);
-
-				processEcoreTaggedValue(eStructuralFeature, null, element,
-					eStructuralFeatureStereotype, PROPERTY_NAME__XML_NAMESPACE,
+					eStructuralFeatureStereotype, TAG_DEFINITION__XML_NAME,
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(eStructuralFeature, null, element,
 					eStructuralFeatureStereotype,
-					PROPERTY_NAME__XML_FEATURE_KIND, options, diagnostics,
+					TAG_DEFINITION__XML_NAMESPACE, options, diagnostics,
 					context);
 
 				processEcoreTaggedValue(eStructuralFeature, null, element,
-					eStructuralFeatureStereotype, PROPERTY_NAME__VISIBILITY,
+					eStructuralFeatureStereotype,
+					TAG_DEFINITION__XML_FEATURE_KIND, options, diagnostics,
+					context);
+
+				processEcoreTaggedValue(eStructuralFeature, null, element,
+					eStructuralFeatureStereotype, TAG_DEFINITION__VISIBILITY,
 					options, diagnostics, context);
 			}
 		}
@@ -3011,7 +3008,7 @@ public class UMLUtil
 										REDEFINING_OPERATION,
 										UMLPlugin.INSTANCE
 											.getString(
-												"_UI_UML22EcoreConverter_ProcessRedefiningOperation_diagnostic", //$NON-NLS-1$
+												"_UI_UML2EcoreConverter_ProcessRedefiningOperation_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, eModelElement,
 													eOperation)), new Object[]{
@@ -3019,8 +3016,8 @@ public class UMLUtil
 							}
 
 							getEAnnotation(eModelElement,
-								ANNOTATION_SOURCE__REDEFINES, true)
-								.getReferences().add(eOperation);
+								ANNOTATION__REDEFINES, true).getReferences()
+								.add(eOperation);
 						} else if (OPTION__REPORT.equals(options
 							.get(OPTION__REDEFINING_OPERATIONS))
 							&& diagnostics != null) {
@@ -3032,7 +3029,7 @@ public class UMLUtil
 									REDEFINING_OPERATION,
 									UMLPlugin.INSTANCE
 										.getString(
-											"_UI_UML22EcoreConverter_ReportRedefiningOperation_diagnostic", //$NON-NLS-1$
+											"_UI_UML2EcoreConverter_ReportRedefiningOperation_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												eModelElement, eOperation)),
 									new Object[]{eModelElement, eOperation}));
@@ -3087,7 +3084,7 @@ public class UMLUtil
 											REDEFINING_PROPERTY,
 											UMLPlugin.INSTANCE
 												.getString(
-													"_UI_UML22EcoreConverter_ProcessRedefiningProperty_diagnostic", //$NON-NLS-1$
+													"_UI_UML2EcoreConverter_ProcessRedefiningProperty_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, eModelElement,
 														eStructuralFeature)),
@@ -3096,7 +3093,7 @@ public class UMLUtil
 								}
 
 								getEAnnotation(eModelElement,
-									ANNOTATION_SOURCE__REDEFINES, true)
+									ANNOTATION__REDEFINES, true)
 									.getReferences().add(eStructuralFeature);
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__REDEFINING_PROPERTIES))
@@ -3109,7 +3106,7 @@ public class UMLUtil
 										REDEFINING_PROPERTY,
 										UMLPlugin.INSTANCE
 											.getString(
-												"_UI_UML22EcoreConverter_ReportRedefiningProperty_diagnostic", //$NON-NLS-1$
+												"_UI_UML2EcoreConverter_ReportRedefiningProperty_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, eModelElement,
 													eStructuralFeature)),
@@ -3185,7 +3182,7 @@ public class UMLUtil
 											SUBSETTING_PROPERTY,
 											UMLPlugin.INSTANCE
 												.getString(
-													"_UI_UML22EcoreConverter_ProcessSubsettingProperty_diagnostic", //$NON-NLS-1$
+													"_UI_UML2EcoreConverter_ProcessSubsettingProperty_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, eModelElement,
 														subsettedEStructuralFeature)),
@@ -3213,8 +3210,8 @@ public class UMLUtil
 								}
 
 								getEAnnotation(eModelElement,
-									ANNOTATION_SOURCE__SUBSETS, true)
-									.getReferences().add(
+									ANNOTATION__SUBSETS, true).getReferences()
+									.add(
 										elementToEModelElementMap
 											.get(subsettedProperty));
 							} else if (OPTION__REPORT.equals(options
@@ -3228,7 +3225,7 @@ public class UMLUtil
 										SUBSETTING_PROPERTY,
 										UMLPlugin.INSTANCE
 											.getString(
-												"_UI_UML22EcoreConverter_ReportSubsettingProperty_diagnostic", //$NON-NLS-1$
+												"_UI_UML2EcoreConverter_ReportSubsettingProperty_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, eModelElement,
 													subsettedEStructuralFeature)),
@@ -3273,14 +3270,14 @@ public class UMLUtil
 									UNION_PROPERTY,
 									UMLPlugin.INSTANCE
 										.getString(
-											"_UI_UML22EcoreConverter_ProcessUnionProperty_diagnostic", //$NON-NLS-1$
+											"_UI_UML2EcoreConverter_ProcessUnionProperty_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												eStructuralFeature)),
 									new Object[]{eStructuralFeature}));
 						}
 
-						getEAnnotation(eStructuralFeature,
-							ANNOTATION_SOURCE__UNION, true);
+						getEAnnotation(eStructuralFeature, ANNOTATION__UNION,
+							true);
 
 						eStructuralFeature.setChangeable(false);
 						eStructuralFeature.setVolatile(false);
@@ -3295,7 +3292,7 @@ public class UMLUtil
 								UNION_PROPERTY,
 								UMLPlugin.INSTANCE
 									.getString(
-										"_UI_UML22EcoreConverter_ReportUnionProperty_diagnostic", //$NON-NLS-1$
+										"_UI_UML2EcoreConverter_ReportUnionProperty_diagnostic", //$NON-NLS-1$
 										getMessageSubstitutions(context,
 											eModelElement)),
 								new Object[]{eModelElement}));
@@ -3333,7 +3330,7 @@ public class UMLUtil
 										DERIVED_FEATURE,
 										UMLPlugin.INSTANCE
 											.getString(
-												"_UI_UML22EcoreConverter_ProcessDerivedFeature_diagnostic", //$NON-NLS-1$
+												"_UI_UML2EcoreConverter_ProcessDerivedFeature_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, eStructuralFeature)),
 										new Object[]{eStructuralFeature}));
@@ -3356,7 +3353,7 @@ public class UMLUtil
 									DERIVED_FEATURE,
 									UMLPlugin.INSTANCE
 										.getString(
-											"_UI_UML22EcoreConverter_ReportDerivedFeature_diagnostic", //$NON-NLS-1$
+											"_UI_UML2EcoreConverter_ReportDerivedFeature_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												eStructuralFeature)),
 									new Object[]{eStructuralFeature}));
@@ -3532,7 +3529,7 @@ public class UMLUtil
 												DUPLICATE_OPERATION,
 												UMLPlugin.INSTANCE
 													.getString(
-														"_UI_UML22EcoreConverter_ProcessDuplicateOperation_diagnostic", //$NON-NLS-1$
+														"_UI_UML2EcoreConverter_ProcessDuplicateOperation_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															eOperation,
@@ -3546,8 +3543,7 @@ public class UMLUtil
 									ensureConformity(eOperation, eAllOperation);
 
 									List redefinedOperations = getEAnnotation(
-										eOperation,
-										ANNOTATION_SOURCE__REDEFINES, true)
+										eOperation, ANNOTATION__REDEFINES, true)
 										.getReferences();
 
 									if (!redefinedOperations
@@ -3566,7 +3562,7 @@ public class UMLUtil
 												DUPLICATE_OPERATION,
 												UMLPlugin.INSTANCE
 													.getString(
-														"_UI_UML22EcoreConverter_DiscardDuplicateOperation_diagnostic", //$NON-NLS-1$
+														"_UI_UML2EcoreConverter_DiscardDuplicateOperation_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															eOperation,
@@ -3588,7 +3584,7 @@ public class UMLUtil
 											DUPLICATE_OPERATION,
 											UMLPlugin.INSTANCE
 												.getString(
-													"_UI_UML22EcoreConverter_ReportDuplicateOperation_diagnostic", //$NON-NLS-1$
+													"_UI_UML2EcoreConverter_ReportDuplicateOperation_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, eOperation,
 														eAllOperation)),
@@ -3598,7 +3594,6 @@ public class UMLUtil
 							}
 						}
 					}
-
 				}
 			}
 
@@ -3608,8 +3603,7 @@ public class UMLUtil
 				EOperation eOperation = (EOperation) eOperations.next();
 
 				getEAnnotation(eOperation.getEContainingClass(),
-					ANNOTATION_SOURCE__DUPLICATES, true).getContents().add(
-					eOperation);
+					ANNOTATION__DUPLICATES, true).getContents().add(eOperation);
 			}
 		}
 
@@ -3664,7 +3658,7 @@ public class UMLUtil
 														DUPLICATE_OPERATION_INHERITANCE,
 														UMLPlugin.INSTANCE
 															.getString(
-																"_UI_UML22EcoreConverter_ProcessDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
+																"_UI_UML2EcoreConverter_ProcessDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
 																getMessageSubstitutions(
 																	context,
 																	eClass,
@@ -3679,8 +3673,8 @@ public class UMLUtil
 
 											List redefinedOperations = getEAnnotation(
 												mixinEOperation,
-												ANNOTATION_SOURCE__REDEFINES,
-												true).getReferences();
+												ANNOTATION__REDEFINES, true)
+												.getReferences();
 
 											if (!redefinedOperations
 												.contains(eOperation)) {
@@ -3700,7 +3694,7 @@ public class UMLUtil
 														DUPLICATE_OPERATION_INHERITANCE,
 														UMLPlugin.INSTANCE
 															.getString(
-																"_UI_UML22EcoreConverter_DiscardDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
+																"_UI_UML2EcoreConverter_DiscardDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
 																getMessageSubstitutions(
 																	context,
 																	eClass,
@@ -3725,7 +3719,7 @@ public class UMLUtil
 													DUPLICATE_OPERATION_INHERITANCE,
 													UMLPlugin.INSTANCE
 														.getString(
-															"_UI_UML22EcoreConverter_ReportDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
+															"_UI_UML2EcoreConverter_ReportDuplicateOperationInheritance_diagnostic", //$NON-NLS-1$
 															getMessageSubstitutions(
 																context,
 																eClass,
@@ -3788,7 +3782,7 @@ public class UMLUtil
 												DUPLICATE_FEATURE,
 												UMLPlugin.INSTANCE
 													.getString(
-														"_UI_UML22EcoreConverter_ProcessDuplicateFeature_diagnostic", //$NON-NLS-1$
+														"_UI_UML2EcoreConverter_ProcessDuplicateFeature_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															eStructuralFeature,
@@ -3826,7 +3820,7 @@ public class UMLUtil
 
 									EList redefinedFeatures = getEAnnotation(
 										eStructuralFeature,
-										ANNOTATION_SOURCE__REDEFINES, true)
+										ANNOTATION__REDEFINES, true)
 										.getReferences();
 
 									if (!redefinedFeatures
@@ -3846,7 +3840,7 @@ public class UMLUtil
 												DUPLICATE_FEATURE,
 												UMLPlugin.INSTANCE
 													.getString(
-														"_UI_UML22EcoreConverter_DiscardDuplicateFeature_diagnostic", //$NON-NLS-1$
+														"_UI_UML2EcoreConverter_DiscardDuplicateFeature_diagnostic", //$NON-NLS-1$
 														getMessageSubstitutions(
 															context,
 															eStructuralFeature,
@@ -3877,7 +3871,7 @@ public class UMLUtil
 											DUPLICATE_FEATURE,
 											UMLPlugin.INSTANCE
 												.getString(
-													"_UI_UML22EcoreConverter_ReportDuplicateFeature_diagnostic", //$NON-NLS-1$
+													"_UI_UML2EcoreConverter_ReportDuplicateFeature_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context,
 														eStructuralFeature,
@@ -3898,7 +3892,7 @@ public class UMLUtil
 					.next();
 
 				getEAnnotation(eStructuralFeature.getEContainingClass(),
-					ANNOTATION_SOURCE__DUPLICATES, true).getContents().add(
+					ANNOTATION__DUPLICATES, true).getContents().add(
 					eStructuralFeature);
 
 				if (eStructuralFeature instanceof EReference) {
@@ -3987,7 +3981,7 @@ public class UMLUtil
 														DUPLICATE_FEATURE_INHERITANCE,
 														UMLPlugin.INSTANCE
 															.getString(
-																"_UI_UML22EcoreConverter_ProcessDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
+																"_UI_UML2EcoreConverter_ProcessDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
 																getMessageSubstitutions(
 																	context,
 																	eClass,
@@ -4002,8 +3996,8 @@ public class UMLUtil
 
 											EList redefinedFeatures = getEAnnotation(
 												mixinEStructuralFeature,
-												ANNOTATION_SOURCE__REDEFINES,
-												true).getReferences();
+												ANNOTATION__REDEFINES, true)
+												.getReferences();
 
 											if (!redefinedFeatures
 												.contains(eStructuralFeature)) {
@@ -4023,7 +4017,7 @@ public class UMLUtil
 														DUPLICATE_FEATURE_INHERITANCE,
 														UMLPlugin.INSTANCE
 															.getString(
-																"_UI_UML22EcoreConverter_DiscardDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
+																"_UI_UML2EcoreConverter_DiscardDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
 																getMessageSubstitutions(
 																	context,
 																	eClass,
@@ -4048,7 +4042,7 @@ public class UMLUtil
 													DUPLICATE_FEATURE_INHERITANCE,
 													UMLPlugin.INSTANCE
 														.getString(
-															"_UI_UML22EcoreConverter_ReportDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
+															"_UI_UML2EcoreConverter_ReportDuplicateFeatureInheritance_diagnostic", //$NON-NLS-1$
 															getMessageSubstitutions(
 																context,
 																eClass,
@@ -4151,7 +4145,7 @@ public class UMLUtil
 										SUPER_CLASS_ORDER,
 										UMLPlugin.INSTANCE
 											.getString(
-												"_UI_UML22EcoreConverter_ProcessSuperClassOrder_diagnostic", //$NON-NLS-1$
+												"_UI_UML2EcoreConverter_ProcessSuperClassOrder_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, eClass)),
 										new Object[]{eClass}));
@@ -4176,7 +4170,7 @@ public class UMLUtil
 									SUPER_CLASS_ORDER,
 									UMLPlugin.INSTANCE
 										.getString(
-											"_UI_UML22EcoreConverter_ReportSuperClassOrder_diagnostic", //$NON-NLS-1$
+											"_UI_UML2EcoreConverter_ReportSuperClassOrder_diagnostic", //$NON-NLS-1$
 											getMessageSubstitutions(context,
 												eClass)), new Object[]{eClass}));
 						}
@@ -4622,58 +4616,61 @@ public class UMLUtil
 		}
 
 		public Object caseEReference(EReference eReference) {
-			EReference end1 = eReference.isContainer()
-				? eReference.getEOpposite()
-				: eReference;
-			EReference end2 = end1.getEOpposite();
+			Property property = UMLFactory.eINSTANCE.createProperty();
+			eModelElementToElementMap.put(eReference, property);
 
-			Property end1Property = UMLFactory.eINSTANCE.createProperty();
-			eModelElementToElementMap.put(end1, end1Property);
+			EClass eContainingClass = eReference.getEContainingClass();
+			Classifier classifier = (Classifier) doSwitch(eContainingClass);
+			getOwnedAttributes(classifier).add(property);
 
-			EClass end1EContainingClass = end1.getEContainingClass();
-			Classifier end1Classifier = (Classifier) doSwitch(end1EContainingClass);
-			getOwnedAttributes(end1Classifier).add(end1Property);
-
-			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(end1EContainingClass
-				.getEPackage());
-			Association association = (Association) package_
-				.createPackagedElement(UMLPackage.Literals.ASSOCIATION);
-
-			end1Property.setName(end1.getName());
-			end1Property.setAggregation(end1.isContainment()
+			property.setName(eReference.getName());
+			property.setAggregation(eReference.isContainment()
 				? AggregationKind.COMPOSITE_LITERAL
 				: AggregationKind.NONE_LITERAL);
-			end1Property.setAssociation(association);
-			end1Property.setIsDerived(end1.isDerived());
-			end1Property.setIsReadOnly(!end1.isChangeable());
+			property.setIsDerived(eReference.isDerived());
+			property.setIsReadOnly(!eReference.isChangeable());
 
-			end1Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+			caseETypedElement(eReference);
 
-			caseETypedElement(end1);
+			EReference eOpposite = eReference.getEOpposite();
 
-			if (end2 == null) {
-				association.createOwnedEnd(UMLPackage.Literals.PROPERTY)
-					.setType(end1Classifier);
+			if (eOpposite == null) {
+				Association association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
+					.getEPackage()))
+					.createPackagedElement(UMLPackage.Literals.ASSOCIATION);
+
+				property.setAssociation(association);
+
+				association.createOwnedEnd().setType(classifier);
 			} else {
-				Property end2Property = UMLFactory.eINSTANCE.createProperty();
-				eModelElementToElementMap.put(end2, end2Property);
+				Property opposite = (Property) doSwitch(eOpposite);
+				Association association = opposite.getAssociation();
 
-				getOwnedAttributes((Classifier) doSwitch(end1.getEType())).add(
-					end2Property);
+				if (association == null) {
 
-				end2Property.setName(end2.getName());
-				end2Property.setAssociation(association);
-				end2Property.setIsDerived(end2.isDerived());
-				end2Property.setIsReadOnly(!end2.isChangeable());
+					if (eReference.isContainer()) {
+						opposite
+							.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eOpposite
+								.getEContainingClass().getEPackage()))
+								.createPackagedElement(UMLPackage.Literals.ASSOCIATION));
 
-				end2Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+						property.setAssociation(association);
+					} else {
+						property
+							.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
+								.getEPackage()))
+								.createPackagedElement(UMLPackage.Literals.ASSOCIATION));
 
-				caseETypedElement(end2);
+						opposite.setAssociation(association);
+					}
+				} else {
+					property.setAssociation(association);
+				}
 			}
 
 			defaultCase(eReference);
 
-			return end1Property;
+			return property;
 		}
 
 		public Object caseETypedElement(ETypedElement eTypedElement) {
@@ -4771,10 +4768,9 @@ public class UMLUtil
 				}
 			} else {
 
-				if (propertyName == PROPERTY_NAME__XML_CONTENT_KIND) {
+				if (propertyName == TAG_DEFINITION__XML_CONTENT_KIND) {
 					Enumeration contentKindEnumeration = (Enumeration) getEcoreProfile(
-						eModelElement).getOwnedType(
-						ENUMERATION_NAME__CONTENT_KIND);
+						eModelElement).getOwnedType(ENUMERATION__CONTENT_KIND);
 
 					if (contentKindEnumeration != null) {
 
@@ -4783,19 +4779,19 @@ public class UMLUtil
 
 							case ExtendedMetaData.EMPTY_CONTENT :
 								value = contentKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__EMPTY);
+									.getOwnedLiteral(ENUMERATION_LITERAL__EMPTY);
 								break;
 							case ExtendedMetaData.SIMPLE_CONTENT :
 								value = contentKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE);
+									.getOwnedLiteral(ENUMERATION_LITERAL__SIMPLE);
 								break;
 							case ExtendedMetaData.MIXED_CONTENT :
 								value = contentKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__MIXED);
+									.getOwnedLiteral(ENUMERATION_LITERAL__MIXED);
 								break;
 							case ExtendedMetaData.ELEMENT_ONLY_CONTENT :
 								value = contentKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_ONLY);
+									.getOwnedLiteral(ENUMERATION_LITERAL__ELEMENT_ONLY);
 								break;
 						}
 					}
@@ -4803,10 +4799,9 @@ public class UMLUtil
 					if (value == null) {
 						return;
 					}
-				} else if (propertyName == PROPERTY_NAME__XML_FEATURE_KIND) {
+				} else if (propertyName == TAG_DEFINITION__XML_FEATURE_KIND) {
 					Enumeration featureKindEnumeration = (Enumeration) getEcoreProfile(
-						eModelElement).getOwnedType(
-						ENUMERATION_NAME__FEATURE_KIND);
+						eModelElement).getOwnedType(ENUMERATION__FEATURE_KIND);
 
 					if (featureKindEnumeration != null) {
 
@@ -4815,27 +4810,27 @@ public class UMLUtil
 
 							case ExtendedMetaData.SIMPLE_FEATURE :
 								value = featureKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__SIMPLE);
+									.getOwnedLiteral(ENUMERATION_LITERAL__SIMPLE);
 								break;
 							case ExtendedMetaData.ATTRIBUTE_FEATURE :
 								value = featureKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE);
+									.getOwnedLiteral(ENUMERATION_LITERAL__ATTRIBUTE);
 								break;
 							case ExtendedMetaData.ATTRIBUTE_WILDCARD_FEATURE :
 								value = featureKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ATTRIBUTE_WILDCARD);
+									.getOwnedLiteral(ENUMERATION_LITERAL__ATTRIBUTE_WILDCARD);
 								break;
 							case ExtendedMetaData.ELEMENT_FEATURE :
 								value = featureKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT);
+									.getOwnedLiteral(ENUMERATION_LITERAL__ELEMENT);
 								break;
 							case ExtendedMetaData.ELEMENT_WILDCARD_FEATURE :
 								value = featureKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__ELEMENT_WILDCARD);
+									.getOwnedLiteral(ENUMERATION_LITERAL__ELEMENT_WILDCARD);
 								break;
 							case ExtendedMetaData.GROUP_FEATURE :
 								value = featureKindEnumeration
-									.getOwnedLiteral(ENUMERATION_LITERAL_NAME__GROUP);
+									.getOwnedLiteral(ENUMERATION_LITERAL__GROUP);
 								break;
 						}
 					}
@@ -4843,7 +4838,7 @@ public class UMLUtil
 					if (value == null) {
 						return;
 					}
-				} else if (propertyName == PROPERTY_NAME__XML_NAME) {
+				} else if (propertyName == TAG_DEFINITION__XML_NAME) {
 
 					if (eModelElement instanceof EClassifier) {
 						value = ExtendedMetaData.INSTANCE
@@ -4857,17 +4852,17 @@ public class UMLUtil
 						.getName())) {
 						return;
 					}
-				} else if (propertyName == PROPERTY_NAME__XML_NAMESPACE) {
+				} else if (propertyName == TAG_DEFINITION__XML_NAMESPACE) {
 					value = ExtendedMetaData.INSTANCE
 						.getNamespace((EStructuralFeature) eModelElement);
 
 					if (value == null) {
 						return;
 					}
-				} else if (propertyName == PROPERTY_NAME__VISIBILITY) {
+				} else if (propertyName == TAG_DEFINITION__VISIBILITY) {
 					Enumeration visibilityKindEnumeration = (Enumeration) getEcoreProfile(
 						eModelElement).getOwnedType(
-						ENUMERATION_NAME__VISIBILITY_KIND);
+						ENUMERATION__VISIBILITY_KIND);
 
 					if (visibilityKindEnumeration != null) {
 						eStructuralFeature = (EStructuralFeature) eModelElement;
@@ -4876,7 +4871,7 @@ public class UMLUtil
 							eStructuralFeature, EcoreUtil.GET)) {
 
 							value = visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL_NAME__NONE);
+								.getOwnedLiteral(ENUMERATION_LITERAL__NONE);
 						} else {
 
 							if (EcoreUtil.isSuppressedVisibility(
@@ -4886,10 +4881,10 @@ public class UMLUtil
 									eStructuralFeature, EcoreUtil.IS_SET)) {
 
 									value = visibilityKindEnumeration
-										.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY);
+										.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY);
 								} else {
 									value = visibilityKindEnumeration
-										.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE);
+										.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE);
 								}
 							} else {
 
@@ -4897,7 +4892,7 @@ public class UMLUtil
 									eStructuralFeature, EcoreUtil.UNSET)) {
 
 									value = visibilityKindEnumeration
-										.getOwnedLiteral(ENUMERATION_LITERAL_NAME__READ_WRITE);
+										.getOwnedLiteral(ENUMERATION_LITERAL__READ_WRITE);
 								}
 							}
 						}
@@ -4950,17 +4945,17 @@ public class UMLUtil
 				EPackage ePackage, Map options, DiagnosticChain diagnostics,
 				Map context) {
 			Stereotype ePackageStereotype = getEcoreStereotype(ePackage,
-				STEREOTYPE_NAME__E_PACKAGE);
+				STEREOTYPE__E_PACKAGE);
 
 			if (ePackageStereotype != null) {
 				safeApplyStereotype(element, ePackageStereotype);
 
 				processEcoreTaggedValue(element, ePackageStereotype,
-					PROPERTY_NAME__NS_PREFIX, ePackage, EcorePackage.eINSTANCE
+					TAG_DEFINITION__NS_PREFIX, ePackage, EcorePackage.eINSTANCE
 						.getEPackage_NsPrefix(), options, diagnostics, context);
 
 				processEcoreTaggedValue(element, ePackageStereotype,
-					PROPERTY_NAME__NS_URI, ePackage, EcorePackage.eINSTANCE
+					TAG_DEFINITION__NS_URI, ePackage, EcorePackage.eINSTANCE
 						.getEPackage_NsURI(), options, diagnostics, context);
 			}
 		}
@@ -4972,14 +4967,14 @@ public class UMLUtil
 
 				public Object caseClass(org.eclipse.uml2.uml.Class class_) {
 					Stereotype eClassStereotype = getEcoreStereotype(
-						eClassifier, STEREOTYPE_NAME__E_CLASS);
+						eClassifier, STEREOTYPE__E_CLASS);
 
 					if (eClassStereotype != null) {
 						safeApplyStereotype(class_, eClassStereotype);
 
 						processEcoreTaggedValue(class_, eClassStereotype,
-							PROPERTY_NAME__XML_CONTENT_KIND, eClassifier, null,
-							options, diagnostics, context);
+							TAG_DEFINITION__XML_CONTENT_KIND, eClassifier,
+							null, options, diagnostics, context);
 					}
 
 					return eClassStereotype;
@@ -4987,7 +4982,7 @@ public class UMLUtil
 
 				public Object caseDataType(DataType dataType) {
 					Stereotype eDataTypeStereotype = getEcoreStereotype(
-						eClassifier, STEREOTYPE_NAME__E_DATA_TYPE);
+						eClassifier, STEREOTYPE__E_DATA_TYPE);
 
 					if (eDataTypeStereotype != null) {
 						safeApplyStereotype(dataType, eDataTypeStereotype);
@@ -4998,14 +4993,14 @@ public class UMLUtil
 
 				public Object caseInterface(Interface interface_) {
 					Stereotype eClassStereotype = getEcoreStereotype(
-						eClassifier, STEREOTYPE_NAME__E_CLASS);
+						eClassifier, STEREOTYPE__E_CLASS);
 
 					if (eClassStereotype != null) {
 						safeApplyStereotype(interface_, eClassStereotype);
 
 						processEcoreTaggedValue(interface_, eClassStereotype,
-							PROPERTY_NAME__XML_CONTENT_KIND, eClassifier, null,
-							options, diagnostics, context);
+							TAG_DEFINITION__XML_CONTENT_KIND, eClassifier,
+							null, options, diagnostics, context);
 					}
 
 					return eClassStereotype;
@@ -5014,11 +5009,11 @@ public class UMLUtil
 
 			if (eClassifierStereotype != null) {
 				processEcoreTaggedValue(element, eClassifierStereotype,
-					PROPERTY_NAME__XML_NAME, eClassifier, null, options,
+					TAG_DEFINITION__XML_NAME, eClassifier, null, options,
 					diagnostics, context);
 
 				processEcoreTaggedValue(element, eClassifierStereotype,
-					PROPERTY_NAME__INSTANCE_CLASS_NAME, eClassifier,
+					TAG_DEFINITION__INSTANCE_CLASS_NAME, eClassifier,
 					EcorePackage.eINSTANCE.getEClassifier_InstanceClassName(),
 					options, diagnostics, context);
 			}
@@ -5031,13 +5026,13 @@ public class UMLUtil
 
 				public Object caseEAttribute(EAttribute eAttribute) {
 					Stereotype eAttributeStereotype = getEcoreStereotype(
-						eAttribute, STEREOTYPE_NAME__E_ATTRIBUTE);
+						eAttribute, STEREOTYPE__E_ATTRIBUTE);
 
 					if (eAttributeStereotype != null) {
 						safeApplyStereotype(element, eAttributeStereotype);
 
 						processEcoreTaggedValue(element, eAttributeStereotype,
-							PROPERTY_NAME__IS_ID, eAttribute,
+							TAG_DEFINITION__IS_ID, eAttribute,
 							EcorePackage.eINSTANCE.getEAttribute_ID(), options,
 							diagnostics, context);
 					}
@@ -5047,13 +5042,13 @@ public class UMLUtil
 
 				public Object caseEReference(EReference eReference) {
 					Stereotype eReferenceStereotype = getEcoreStereotype(
-						eReference, STEREOTYPE_NAME__E_REFERENCE);
+						eReference, STEREOTYPE__E_REFERENCE);
 
 					if (eReferenceStereotype != null) {
 						safeApplyStereotype(element, eReferenceStereotype);
 
 						processEcoreTaggedValue(element, eReferenceStereotype,
-							PROPERTY_NAME__IS_RESOLVE_PROXIES, eReference,
+							TAG_DEFINITION__IS_RESOLVE_PROXIES, eReference,
 							EcorePackage.eINSTANCE
 								.getEReference_ResolveProxies(), options,
 							diagnostics, context);
@@ -5065,34 +5060,34 @@ public class UMLUtil
 
 			if (eStructuralFeatureStereotype != null) {
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__IS_TRANSIENT, eStructuralFeature,
+					TAG_DEFINITION__IS_TRANSIENT, eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Transient(),
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__IS_UNSETTABLE, eStructuralFeature,
+					TAG_DEFINITION__IS_UNSETTABLE, eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Unsettable(),
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__IS_VOLATILE, eStructuralFeature,
+					TAG_DEFINITION__IS_VOLATILE, eStructuralFeature,
 					EcorePackage.eINSTANCE.getEStructuralFeature_Volatile(),
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__XML_FEATURE_KIND, eStructuralFeature, null,
+					TAG_DEFINITION__XML_FEATURE_KIND, eStructuralFeature, null,
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__XML_NAME, eStructuralFeature, null, options,
-					diagnostics, context);
-
-				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__XML_NAMESPACE, eStructuralFeature, null,
+					TAG_DEFINITION__XML_NAME, eStructuralFeature, null,
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
-					PROPERTY_NAME__VISIBILITY, eStructuralFeature, null,
+					TAG_DEFINITION__XML_NAMESPACE, eStructuralFeature, null,
+					options, diagnostics, context);
+
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
+					TAG_DEFINITION__VISIBILITY, eStructuralFeature, null,
 					options, diagnostics, context);
 			}
 		}
@@ -5125,7 +5120,7 @@ public class UMLUtil
 
 					public Object caseEEnum(EEnum eEnum) {
 						Stereotype eEnumStereotype = getEcoreStereotype(eEnum,
-							STEREOTYPE_NAME__E_ENUM);
+							STEREOTYPE__E_ENUM);
 
 						if (eEnumStereotype != null) {
 							safeApplyStereotype(element, eEnumStereotype);
@@ -5136,7 +5131,7 @@ public class UMLUtil
 
 					public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
 						Stereotype eEnumLiteralStereotype = getEcoreStereotype(
-							eEnumLiteral, STEREOTYPE_NAME__E_ENUM_LITERAL);
+							eEnumLiteral, STEREOTYPE__E_ENUM_LITERAL);
 
 						if (eEnumLiteralStereotype != null) {
 							safeApplyStereotype(element, eEnumLiteralStereotype);
@@ -5147,7 +5142,7 @@ public class UMLUtil
 
 					public Object caseEOperation(EOperation eOperation) {
 						Stereotype eOperationStereotype = getEcoreStereotype(
-							eOperation, STEREOTYPE_NAME__E_OPERATION);
+							eOperation, STEREOTYPE__E_OPERATION);
 
 						if (eOperationStereotype != null) {
 							safeApplyStereotype(element, eOperationStereotype);
@@ -5165,7 +5160,7 @@ public class UMLUtil
 
 					public Object caseEParameter(EParameter eParameter) {
 						Stereotype eParameterStereotype = getEcoreStereotype(
-							eParameter, STEREOTYPE_NAME__E_PARAMETER);
+							eParameter, STEREOTYPE__E_PARAMETER);
 
 						if (eParameterStereotype != null) {
 							safeApplyStereotype(element, eParameterStereotype);
@@ -5197,7 +5192,7 @@ public class UMLUtil
 
 				if (eModelElement instanceof ETypedElement) {
 					EAnnotation redefinesEAnnotation = getEAnnotation(
-						eModelElement, ANNOTATION_SOURCE__REDEFINES, false);
+						eModelElement, ANNOTATION__REDEFINES, false);
 
 					if (redefinesEAnnotation != null) {
 						Feature feature = (Feature) entry.getValue();
@@ -5270,7 +5265,7 @@ public class UMLUtil
 
 				if (eModelElement instanceof EStructuralFeature) {
 					EAnnotation subsetsEAnnotation = getEAnnotation(
-						eModelElement, ANNOTATION_SOURCE__SUBSETS, false);
+						eModelElement, ANNOTATION__SUBSETS, false);
 
 					if (subsetsEAnnotation != null) {
 						Property property = (Property) entry.getValue();
@@ -5343,7 +5338,7 @@ public class UMLUtil
 
 				if (eModelElement instanceof EStructuralFeature) {
 					EAnnotation unionEAnnotation = getEAnnotation(
-						eModelElement, ANNOTATION_SOURCE__UNION, false);
+						eModelElement, ANNOTATION__UNION, false);
 
 					if (unionEAnnotation != null) {
 						Property property = (Property) entry.getValue();
@@ -5512,115 +5507,115 @@ public class UMLUtil
 
 	public static final String OPTION__REPORT = "REPORT"; //$NON-NLS-1$
 
-	protected static final String ANNOTATION_SOURCE__DUPLICATES = "duplicates"; //$NON-NLS-1$
+	protected static final String ANNOTATION__DUPLICATES = "duplicates"; //$NON-NLS-1$
 
-	protected static final String ANNOTATION_SOURCE__REDEFINES = "redefines"; //$NON-NLS-1$
+	protected static final String ANNOTATION__REDEFINES = "redefines"; //$NON-NLS-1$
 
-	protected static final String ANNOTATION_SOURCE__SUBSETS = "subsets"; //$NON-NLS-1$
+	protected static final String ANNOTATION__SUBSETS = "subsets"; //$NON-NLS-1$
 
-	protected static final String ANNOTATION_SOURCE__UNION = "union"; //$NON-NLS-1$
+	protected static final String ANNOTATION__UNION = "union"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__ATTRIBUTE_WILDCARD = "AttributeWilcard"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__ATTRIBUTE_WILDCARD = "AttributeWilcard"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT = "Element"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__ELEMENT = "Element"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__ELEMENT_WILDCARD = "ElementWildcard"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__ELEMENT_WILDCARD = "ElementWildcard"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__EMPTY = "Empty"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__EMPTY = "Empty"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__GROUP = "Group"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__GROUP = "Group"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__MIXED = "Mixed"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__MIXED = "Mixed"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__NONE = "None"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__NONE = "None"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__SIMPLE = "Simple"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__SIMPLE = "Simple"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__READ_ONLY = "ReadOnly"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__READ_ONLY = "ReadOnly"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__READ_ONLY_UNSETTABLE = "ReadOnlyUnsettable"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE = "ReadOnlyUnsettable"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__READ_WRITE = "ReadWrite"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__READ_WRITE = "ReadWrite"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__READ_WRITE_UNSETTABLE = "ReadWriteUnsettable"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__READ_WRITE_UNSETTABLE = "ReadWriteUnsettable"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL_NAME__UNSPECIFIED = "Unspecified"; //$NON-NLS-1$
+	protected static final String ENUMERATION_LITERAL__UNSPECIFIED = "Unspecified"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_NAME__CONTENT_KIND = "ContentKind"; //$NON-NLS-1$
+	protected static final String ENUMERATION__CONTENT_KIND = "ContentKind"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_NAME__FEATURE_KIND = "FeatureKind"; //$NON-NLS-1$
+	protected static final String ENUMERATION__FEATURE_KIND = "FeatureKind"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_NAME__VISIBILITY_KIND = "VisibilityKind"; //$NON-NLS-1$
+	protected static final String ENUMERATION__VISIBILITY_KIND = "VisibilityKind"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__ATTRIBUTE_NAME = "attributeName"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_ATTRIBUTE = "EAttribute"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__BASE_PACKAGE = "basePackage"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_CLASS = "EClass"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__CLASS_NAME = "className"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_DATA_TYPE = "EDataType"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__DATA_TYPE_NAME = "dataTypeName"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_ENUM = "EEnum"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__ENUM_NAME = "enumName"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_ENUM_LITERAL = "EEnumLiteral"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__ENUM_LITERAL_NAME = "enumLiteralName"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_OPERATION = "EOperation"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__INSTANCE_CLASS_NAME = "instanceClassName"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_PACKAGE = "EPackage"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__IS_ID = "isID"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_PARAMETER = "EParameter"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__IS_RESOLVE_PROXIES = "isResolveProxies"; //$NON-NLS-1$
+	public static final String STEREOTYPE__E_REFERENCE = "EReference"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__IS_TRANSIENT = "isTransient"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__ATTRIBUTE_NAME = "attributeName"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__IS_UNSETTABLE = "isUnsettable"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__BASE_PACKAGE = "basePackage"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__IS_VOLATILE = "isVolatile"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__CLASS_NAME = "className"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__DATA_TYPE_NAME = "dataTypeName"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__NS_URI = "nsURI"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__ENUM_NAME = "enumName"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__OPERATION_NAME = "operationName"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__ENUM_LITERAL_NAME = "enumLiteralName"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__PACKAGE_NAME = "packageName"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__INSTANCE_CLASS_NAME = "instanceClassName"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__PARAMETER_NAME = "parameterName"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__IS_ID = "isID"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__PREFIX = "prefix"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__IS_RESOLVE_PROXIES = "isResolveProxies"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__REFERENCE_NAME = "referenceName"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__IS_TRANSIENT = "isTransient"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__VISIBILITY = "visibility"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__IS_UNSETTABLE = "isUnsettable"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__XML_CONTENT_KIND = "xmlContentKind"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__IS_VOLATILE = "isVolatile"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__XML_FEATURE_KIND = "xmlFeatureKind"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__XML_NAME = "xmlName"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__NS_URI = "nsURI"; //$NON-NLS-1$
 
-	protected static final String PROPERTY_NAME__XML_NAMESPACE = "xmlNamespace"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__OPERATION_NAME = "operationName"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_ATTRIBUTE = "EAttribute"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__PACKAGE_NAME = "packageName"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_CLASS = "EClass"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__PARAMETER_NAME = "parameterName"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_DATA_TYPE = "EDataType"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__PREFIX = "prefix"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_ENUM = "EEnum"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__REFERENCE_NAME = "referenceName"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_ENUM_LITERAL = "EEnumLiteral"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__VISIBILITY = "visibility"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_OPERATION = "EOperation"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__XML_CONTENT_KIND = "xmlContentKind"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_PACKAGE = "EPackage"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__XML_FEATURE_KIND = "xmlFeatureKind"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_PARAMETER = "EParameter"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__XML_NAME = "xmlName"; //$NON-NLS-1$
 
-	protected static final String STEREOTYPE_NAME__E_REFERENCE = "EReference"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__XML_NAMESPACE = "xmlNamespace"; //$NON-NLS-1$
 
 	public static String getQualifiedText(EObject eObject) {
 		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);

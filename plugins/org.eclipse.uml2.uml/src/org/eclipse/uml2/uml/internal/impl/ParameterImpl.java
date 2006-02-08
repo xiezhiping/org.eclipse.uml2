@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.17 2006/02/02 23:30:18 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.18 2006/02/08 17:09:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -556,9 +556,9 @@ public class ParameterImpl
 	 * @generated NOT
 	 */
 	public Operation getOperation() {
-		if (eContainerFeatureID != UMLPackage.PARAMETER__OPERATION)
-			return null;
-		return (Operation) eContainer();
+		return eInternalContainer() instanceof Operation
+			? (Operation) eContainer()
+			: null;
 	}
 
 	/**

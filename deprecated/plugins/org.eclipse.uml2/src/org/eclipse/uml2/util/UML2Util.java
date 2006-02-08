@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.61 2006/02/03 04:07:29 khussey Exp $
+ * $Id: UML2Util.java,v 1.62 2006/02/08 17:09:20 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -440,58 +440,63 @@ public class UML2Util
 		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEReference(org.eclipse.emf.ecore.EReference)
 		 */
 		public Object caseEReference(EReference eReference) {
-			EReference end1 = eReference.isContainer()
-				? eReference.getEOpposite()
-				: eReference;
-			EReference end2 = end1.getEOpposite();
+			Property property = UML2Factory.eINSTANCE.createProperty();
+			eModelElementToElementMap.put(eReference, property);
 
-			Property end1Property = UML2Factory.eINSTANCE.createProperty();
-			eModelElementToElementMap.put(end1, end1Property);
+			EClass eContainingClass = eReference.getEContainingClass();
+			Classifier classifier = (Classifier) doSwitch(eContainingClass);
+			getOwnedAttributes(classifier).add(property);
 
-			EClass end1EContainingClass = end1.getEContainingClass();
-			Classifier end1Classifier = (Classifier) doSwitch(end1EContainingClass);
-			getOwnedAttributes(end1Classifier).add(end1Property);
-
-			org.eclipse.uml2.Package package_ = (org.eclipse.uml2.Package) doSwitch(end1EContainingClass
-				.getEPackage());
-			Association association = (Association) package_
-				.createOwnedMember(UML2Package.Literals.ASSOCIATION);
-
-			end1Property.setName(end1.getName());
-			end1Property.setAggregation(end1.isContainment()
+			property.setName(eReference.getName());
+			property.setAggregation(eReference.isContainment()
 				? AggregationKind.COMPOSITE_LITERAL
 				: AggregationKind.NONE_LITERAL);
-			end1Property.setAssociation(association);
-			end1Property.setIsDerived(end1.isDerived());
-			end1Property.setIsReadOnly(!end1.isChangeable());
+			property.setIsDerived(eReference.isDerived());
+			property.setIsReadOnly(!eReference.isChangeable());
 
-			end1Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+			property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
-			caseETypedElement(end1);
+			caseETypedElement(eReference);
 
-			if (null == end2) {
-				association.createOwnedEnd(UML2Package.Literals.PROPERTY)
-					.setType(end1Classifier);
+			EReference eOpposite = eReference.getEOpposite();
+
+			if (eOpposite == null) {
+				Association association = (Association) ((org.eclipse.uml2.Package) doSwitch(eContainingClass
+					.getEPackage()))
+					.createOwnedMember(UML2Package.Literals.ASSOCIATION);
+
+				property.setAssociation(association);
+
+				association.createOwnedEnd().setType(classifier);
 			} else {
-				Property end2Property = UML2Factory.eINSTANCE.createProperty();
-				eModelElementToElementMap.put(end2, end2Property);
+				Property opposite = (Property) doSwitch(eOpposite);
+				Association association = opposite.getAssociation();
 
-				getOwnedAttributes((Classifier) doSwitch(end1.getEType())).add(
-					end2Property);
+				if (association == null) {
 
-				end2Property.setName(end2.getName());
-				end2Property.setAssociation(association);
-				end2Property.setIsDerived(end2.isDerived());
-				end2Property.setIsReadOnly(!end2.isChangeable());
+					if (eReference.isContainer()) {
+						opposite
+							.setAssociation(association = (Association) ((org.eclipse.uml2.Package) doSwitch(eOpposite
+								.getEContainingClass().getEPackage()))
+								.createOwnedMember(UML2Package.Literals.ASSOCIATION));
 
-				end2Property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+						property.setAssociation(association);
+					} else {
+						property
+							.setAssociation(association = (Association) ((org.eclipse.uml2.Package) doSwitch(eContainingClass
+								.getEPackage()))
+								.createOwnedMember(UML2Package.Literals.ASSOCIATION));
 
-				caseETypedElement(end2);
+						opposite.setAssociation(association);
+					}
+				} else {
+					property.setAssociation(association);
+				}
 			}
 
 			defaultCase(eReference);
 
-			return end1Property;
+			return property;
 		}
 
 		/*
