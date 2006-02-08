@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.11 2006/01/27 04:55:56 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.12 2006/02/08 17:03:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -341,7 +341,11 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList getGenerals(Classifier classifier) {
-		return classifier.parents();
+		EList parents = classifier.parents();
+
+		return new UnionEObjectEList((InternalEObject) classifier,
+			UMLPackage.Literals.CLASSIFIER__GENERAL, parents.size(), parents
+				.toArray());
 	}
 
 	/**
