@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.5 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.6 2006/02/09 02:45:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -197,7 +197,7 @@ public class ReduceActionImpl
 				NotificationChain msgs = oldResult.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE - UMLPackage.REDUCE_ACTION__RESULT,
 					null, null);
-				if (newResult.eInternalContainer() != null) {
+				if (newResult.eInternalContainer() == null) {
 					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- UMLPackage.REDUCE_ACTION__RESULT, null, msgs);
 				}
@@ -296,7 +296,7 @@ public class ReduceActionImpl
 				NotificationChain msgs = oldCollection.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
 						- UMLPackage.REDUCE_ACTION__COLLECTION, null, null);
-				if (newCollection.eInternalContainer() != null) {
+				if (newCollection.eInternalContainer() == null) {
 					msgs = newCollection.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
 							- UMLPackage.REDUCE_ACTION__COLLECTION, null, msgs);
