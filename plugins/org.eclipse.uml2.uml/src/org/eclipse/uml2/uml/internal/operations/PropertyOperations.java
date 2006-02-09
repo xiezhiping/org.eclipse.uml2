@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.21 2006/01/27 04:55:56 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.22 2006/02/09 15:47:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -634,7 +634,7 @@ public class PropertyOperations
 			throw new IllegalStateException();
 		}
 
-		if (newOpposite.getOwningAssociation() != null) {
+		if (newOpposite != null && newOpposite.getOwningAssociation() != null) {
 			throw new IllegalArgumentException(String.valueOf(newOpposite));
 		}
 
