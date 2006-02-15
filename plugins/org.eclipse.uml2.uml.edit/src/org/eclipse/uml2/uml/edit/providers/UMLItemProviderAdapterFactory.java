@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.14 2006/01/19 23:06:52 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.15 2006/02/15 16:36:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -107,13 +106,12 @@ public class UMLItemProviderAdapterFactory
 					.eClass().getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
 					.hasNext();) {
 
-					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+					EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eAllStructuralFeatures
 						.next();
 					boolean isBaseReference = eStructuralFeature.getName()
 						.startsWith(Extension.METACLASS_ROLE_PREFIX);
 					String[] filterFlags = isBaseReference
-						|| (eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature)
-							.isContainment())
+						|| eStructuralFeature.isContainment()
 						? new String[]{"org.eclipse.ui.views.properties.expert"} //$NON-NLS-1$
 						: null;
 

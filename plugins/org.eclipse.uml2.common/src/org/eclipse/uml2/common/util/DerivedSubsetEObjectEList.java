@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.4 2006/01/30 13:23:12 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.5 2006/02/15 16:36:16 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -19,7 +19,6 @@ import java.util.RandomAccess;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -91,11 +90,10 @@ public class DerivedSubsetEObjectEList
 			checkModCount();
 
 			if (values == null) {
-				// TODO remove casts to BasicEObjectImpl
 				List valuesList = resolve()
-					? (List) ((BasicEObjectImpl) owner).eGet(
-						sourceFeatureIDs[featureIndex], resolve(), true)
-					: ((InternalEList) ((BasicEObjectImpl) owner).eGet(
+					? (List) owner.eGet(sourceFeatureIDs[featureIndex],
+						resolve(), true)
+					: ((InternalEList) owner.eGet(
 						sourceFeatureIDs[featureIndex], resolve(), true))
 						.basicList();
 

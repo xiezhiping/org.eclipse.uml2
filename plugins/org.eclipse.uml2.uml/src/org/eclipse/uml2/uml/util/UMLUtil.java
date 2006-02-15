@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.14 2006/02/08 17:09:15 khussey Exp $
+ * $Id: UMLUtil.java,v 1.15 2006/02/15 16:35:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3311,11 +3311,10 @@ public class UMLUtil
 					.next();
 
 				if (eModelElement instanceof EStructuralFeature) {
-					EStructuralFeature eStructuralFeature = (EStructuralFeature) eModelElement;
+					EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eModelElement;
 
 					if (eStructuralFeature.isDerived()
-						&& ((eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature)
-							.isContainment())
+						&& (eStructuralFeature.isContainment()
 							|| !eStructuralFeature.isTransient() || !eStructuralFeature
 							.isVolatile())) {
 
@@ -3756,7 +3755,7 @@ public class UMLUtil
 						.getEStructuralFeatures().iterator(); eStructuralFeatures
 						.hasNext();) {
 
-						EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+						EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eStructuralFeatures
 							.next();
 
 						for (Iterator eAllStructuralFeatures = eClass
@@ -3849,13 +3848,11 @@ public class UMLUtil
 													eAllStructuralFeature}));
 									}
 
-									if (eStructuralFeature instanceof EReference) {
-										EReference eOpposite = ((EReference) eStructuralFeature)
-											.getEOpposite();
+									EReference eOpposite = eStructuralFeature
+										.getEOpposite();
 
-										if (eOpposite != null) {
-											featuresToRemove.add(eOpposite);
-										}
+									if (eOpposite != null) {
+										featuresToRemove.add(eOpposite);
 									}
 
 									eStructuralFeatures.remove();
@@ -3888,29 +3885,26 @@ public class UMLUtil
 			for (Iterator eStructuralFeatures = featuresToDuplicate.iterator(); eStructuralFeatures
 				.hasNext();) {
 
-				EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
+				EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eStructuralFeatures
 					.next();
 
 				getEAnnotation(eStructuralFeature.getEContainingClass(),
 					ANNOTATION__DUPLICATES, true).getContents().add(
 					eStructuralFeature);
 
-				if (eStructuralFeature instanceof EReference) {
-					EReference eOpposite = ((EReference) eStructuralFeature)
-						.getEOpposite();
+				EReference eOpposite = eStructuralFeature.getEOpposite();
 
-					if (eOpposite != null
-						&& !featuresToDuplicate.contains(eOpposite)) {
+				if (eOpposite != null
+					&& !featuresToDuplicate.contains(eOpposite)) {
 
-						eOpposite.setEOpposite(null);
+					eOpposite.setEOpposite(null);
 
-						if (((EReference) eStructuralFeature).isContainment()) {
-							eOpposite.setChangeable(false);
-							eOpposite.setTransient(true);
-						}
-
-						eOpposite.setVolatile(true);
+					if (eStructuralFeature.isContainment()) {
+						eOpposite.setChangeable(false);
+						eOpposite.setTransient(true);
 					}
+
+					eOpposite.setVolatile(true);
 				}
 			}
 
