@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.20 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.21 2006/02/19 17:50:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,7 +51,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.eclipse.uml2.uml.internal.impl.StructuredClassifierImpl.PartEList;
 import org.eclipse.uml2.uml.internal.operations.ProtocolTransitionOperations;
 
 /**
@@ -244,7 +243,7 @@ public class ProtocolTransitionImpl
 		EList referred = (EList) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__REFERRED);
 		if (referred == null) {
 			eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__REFERRED,
-				referred = new PartEList(Operation.class, this,
+				referred = new ReferredEList(Operation.class, this,
 					UMLPackage.PROTOCOL_TRANSITION__REFERRED,
 					new int[]{UMLPackage.PROTOCOL_TRANSITION__TRIGGER}));
 		}
