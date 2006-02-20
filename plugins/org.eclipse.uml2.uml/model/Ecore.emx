@@ -2979,7 +2979,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53DA70B040327" name="contents" type="_439EC3AE03B53C4F1C860123" association="_439EC3AE03B53DA70B0400EC" aggregation="composite">
       <eAnnotations xmi:id="_gn7OM2vXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7ONGvXEdq4DLWZOhbdEA" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7ONGvXEdq4DLWZOhbdEA"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gn7OMmvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gn7OMWvXEdq4DLWZOhbdEA"/>
@@ -3020,7 +3020,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53904D81303AC" name="eOperations" type="_439EC3AE03B53904DAA200A0" association="_439EC3AE03B53904D80902DA" aggregation="composite">
       <eAnnotations xmi:id="_gnB2UmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnB2U2vXEdq4DLWZOhbdEA" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnB2U2vXEdq4DLWZOhbdEA"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnB2UWvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnB2UGvXEdq4DLWZOhbdEA"/>
@@ -3090,7 +3090,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F72EF6B0213" name="eStructuralFeatures" type="_439EC3AE03B53903D59D0230" association="_439EC3AE03B53F72EF6A0063" aggregation="composite">
       <eAnnotations xmi:id="_goE_LWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_LmvXEdq4DLWZOhbdEA" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_LmvXEdq4DLWZOhbdEA"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_goE_LGvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_goE_K2vXEdq4DLWZOhbdEA"/>
@@ -3169,14 +3169,14 @@
     <generalization xmi:id="_439EC3AE03B53ACE510F029A" general="_439EC3AE03B53ACE4FEE0371"/>
     <ownedAttribute xmi:id="_439EC3AE03B53D090E0602FC" name="serializable">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2#_TBfF4K86EdieaYgxtVWN8Q"/>
-      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_gliokWvXEdq4DLWZOhbdEA" body="true"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_gliokWvXEdq4DLWZOhbdEA" value="true"/>
     </ownedAttribute>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_439EC3AE03B539A473E901D4" name="EEnum">
     <generalization xmi:id="_439EC3AE03B53B180608030C" general="_439EC3AE03B53903D525033E"/>
     <ownedAttribute xmi:id="_439EC3AE03B53ACCDD3C00F4" name="eLiterals" type="_439EC3AE03B53ACCDCE601C2" association="_439EC3AE03B53ACCDD3B0265" aggregation="composite">
       <eAnnotations xmi:id="_gneiPWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiPmvXEdq4DLWZOhbdEA" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiPmvXEdq4DLWZOhbdEA"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gneiPGvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gneiO2vXEdq4DLWZOhbdEA"/>
@@ -3253,7 +3253,7 @@
     <generalization xmi:id="_439EC3AE03B53C4F1CC50336" general="_439EC3AE03B53C4F1C860123"/>
     <ownedAttribute xmi:id="_439EC3AE03B53D98A3F3024B" name="eAnnotations" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53D98A3F1034C" aggregation="composite">
       <eAnnotations xmi:id="_gn7OKmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7OK2vXEdq4DLWZOhbdEA" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7OK2vXEdq4DLWZOhbdEA"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gn7OKWvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gn7OKGvXEdq4DLWZOhbdEA"/>
@@ -3340,7 +3340,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53B4DFCAC02AD" name="eParameters" type="_439EC3AE03B53903E6150104" association="_439EC3AE03B53B4DFCAB02B6" aggregation="composite">
       <eAnnotations xmi:id="_gnoTO2vXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnoTPGvXEdq4DLWZOhbdEA" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnoTPGvXEdq4DLWZOhbdEA"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnoTOmvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnoTOWvXEdq4DLWZOhbdEA"/>
@@ -3409,7 +3409,7 @@
       </eAnnotations>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53D073A660351" name="resolveProxies">
-      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_gl1jk2vXEdq4DLWZOhbdEA" body="true"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_gl1jk2vXEdq4DLWZOhbdEA" value="true"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53990C9D80213" name="eOpposite" type="_439EC3AE03B539238479039D" association="_439EC3AE03B53990C9D502FD">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnB2X2vXEdq4DLWZOhbdEA" value="1"/>
@@ -3445,7 +3445,7 @@
     <generalization xmi:id="_439EC3AE03B53903D98202A8" general="_439EC3AE03B53903D4F60398"/>
     <ownedAttribute xmi:id="_439EC3AE03B539EB78670242" name="changeable">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2#_TBfF4K86EdieaYgxtVWN8Q"/>
-      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_gl_Ud2vXEdq4DLWZOhbdEA" body="true"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_gl_Ud2vXEdq4DLWZOhbdEA" value="true"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B539EB782D01D4" name="volatile">
       <eAnnotations xmi:id="_TD4S8mvaEdqcO4xxubZVBA" source="appliedStereotypes">
@@ -3501,11 +3501,11 @@
     <generalization xmi:id="_439EC3AE03B53D05D88501C2" general="_439EC3AE03B53B65CCC600FE"/>
     <ownedAttribute xmi:id="_439EC3AE03B53F5E13BE031E" name="ordered">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2#_TBfF4K86EdieaYgxtVWN8Q"/>
-      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_gl_Ug2vXEdq4DLWZOhbdEA" body="true"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_gl_Ug2vXEdq4DLWZOhbdEA" value="true"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F5E13D301FC" name="unique">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2#_TBfF4K86EdieaYgxtVWN8Q"/>
-      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_gl_UhWvXEdq4DLWZOhbdEA" body="true"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_gl_UhWvXEdq4DLWZOhbdEA" value="true"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F5E13E90031" name="lowerBound">
       <eAnnotations xmi:id="_TEev4GvaEdqcO4xxubZVBA" source="appliedStereotypes">
@@ -3515,7 +3515,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F5E13F401BD" name="upperBound">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2#_TBlMg686EdieaYgxtVWN8Q"/>
-      <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_gl_UiGvXEdq4DLWZOhbdEA" body="1"/>
+      <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gl_UiGvXEdq4DLWZOhbdEA" value="1"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F5E13FC0150" name="many" isReadOnly="true" isDerived="true">
       <eAnnotations xmi:id="_gl_UimvXEdq4DLWZOhbdEA" source="appliedStereotypes">
