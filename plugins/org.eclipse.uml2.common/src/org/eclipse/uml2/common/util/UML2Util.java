@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.16 2006/01/30 13:13:30 khussey Exp $
+ * $Id: UML2Util.java,v 1.17 2006/02/20 20:50:44 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -224,18 +224,20 @@ public class UML2Util {
 		URI baseURI = uri.trimSegments(1);
 		String baseSegment = uri.trimFileExtension().lastSegment();
 
-		resourceBundleURIs.add(baseURI.appendSegment(baseSegment)
-			.appendFileExtension(PROPERTIES_FILE_EXTENSION));
+		if (baseSegment != null) {
+			resourceBundleURIs.add(baseURI.appendSegment(baseSegment)
+				.appendFileExtension(PROPERTIES_FILE_EXTENSION));
 
-		if (locale != null) {
-			Locale defaultLocale = Locale.getDefault();
+			if (locale != null) {
+				Locale defaultLocale = Locale.getDefault();
 
-			resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
-				defaultLocale, baseSegment));
-
-			if (!locale.equals(defaultLocale)) {
 				resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
-					locale, baseSegment));
+					defaultLocale, baseSegment));
+
+				if (!locale.equals(defaultLocale)) {
+					resourceBundleURIs.addAll(0, getResourceBundleURIs(baseURI,
+						locale, baseSegment));
+				}
 			}
 		}
 
