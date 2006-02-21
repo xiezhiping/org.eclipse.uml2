@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Parameter.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -187,7 +187,7 @@ public interface Parameter
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_DefaultValue()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();

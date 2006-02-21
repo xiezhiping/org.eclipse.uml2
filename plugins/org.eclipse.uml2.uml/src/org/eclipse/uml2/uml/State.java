@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.10 2006/02/02 23:30:18 khussey Exp $
+ * $Id: State.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -210,7 +210,7 @@ public interface State
 	 * @return the value of the '<em>Connection</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Connection()
 	 * @see org.eclipse.uml2.uml.ConnectionPointReference#getState
-	 * @model type="org.eclipse.uml2.uml.ConnectionPointReference" opposite="state" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ConnectionPointReference" opposite="state" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnections();
@@ -248,7 +248,7 @@ public interface State
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_ConnectionPoint()
 	 * @see org.eclipse.uml2.uml.Pseudostate#getState
-	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="state" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="state" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnectionPoints();
@@ -311,7 +311,7 @@ public interface State
 	 * @return the value of the '<em>State Invariant</em>' containment reference.
 	 * @see #setStateInvariant(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_StateInvariant()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getStateInvariant();
@@ -359,7 +359,7 @@ public interface State
 	 * @return the value of the '<em>Entry</em>' containment reference.
 	 * @see #setEntry(Behavior)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Entry()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	Behavior getEntry();
@@ -395,7 +395,7 @@ public interface State
 	 * @return the value of the '<em>Exit</em>' containment reference.
 	 * @see #setExit(Behavior)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Exit()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	Behavior getExit();
@@ -431,7 +431,7 @@ public interface State
 	 * @return the value of the '<em>Do Activity</em>' containment reference.
 	 * @see #setDoActivity(Behavior)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_DoActivity()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	Behavior getDoActivity();
@@ -469,7 +469,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deferrable Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_DeferrableTrigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getDeferrableTriggers();
@@ -507,7 +507,7 @@ public interface State
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Region()
 	 * @see org.eclipse.uml2.uml.Region#getState
-	 * @model type="org.eclipse.uml2.uml.Region" opposite="state" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Region" opposite="state" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();

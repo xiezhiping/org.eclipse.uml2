@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,6 +199,35 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public ValueSpecification getSelector() {
+		ValueSpecification selector = (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
+		if (selector != null && selector.eIsProxy()) {
+			InternalEObject oldSelector = (InternalEObject) selector;
+			selector = (ValueSpecification) eResolveProxy(oldSelector);
+			if (selector != oldSelector) {
+				InternalEObject newSelector = (InternalEObject) selector;
+				NotificationChain msgs = oldSelector.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.LIFELINE__SELECTOR,
+					null, null);
+				if (newSelector.eInternalContainer() == null) {
+					msgs = newSelector.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.LIFELINE__SELECTOR, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.LIFELINE__SELECTOR, oldSelector, selector));
+			}
+		}
+		return selector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetSelector() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
 	}
 
@@ -479,7 +508,9 @@ public class LifelineImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.LIFELINE__REPRESENTS :
 				if (resolve)
 					return getRepresents();
@@ -487,7 +518,9 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__INTERACTION :
 				return getInteraction();
 			case UMLPackage.LIFELINE__SELECTOR :
-				return getSelector();
+				if (resolve)
+					return getSelector();
+				return basicGetSelector();
 			case UMLPackage.LIFELINE__DECOMPOSED_AS :
 				if (resolve)
 					return getDecomposedAs();

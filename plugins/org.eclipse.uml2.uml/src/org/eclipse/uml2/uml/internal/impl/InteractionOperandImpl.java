@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -157,7 +157,7 @@ public class InteractionOperandImpl
 		EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING);
 		if (generalOrdering == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING,
-				generalOrdering = new EObjectContainmentEList(
+				generalOrdering = new EObjectContainmentEList.Resolving(
 					GeneralOrdering.class, this,
 					UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING));
 		}
@@ -295,6 +295,35 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionConstraint getGuard() {
+		InteractionConstraint guard = (InteractionConstraint) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GUARD);
+		if (guard != null && guard.eIsProxy()) {
+			InternalEObject oldGuard = (InternalEObject) guard;
+			guard = (InteractionConstraint) eResolveProxy(oldGuard);
+			if (guard != oldGuard) {
+				InternalEObject newGuard = (InternalEObject) guard;
+				NotificationChain msgs = oldGuard.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INTERACTION_OPERAND__GUARD, null, null);
+				if (newGuard.eInternalContainer() == null) {
+					msgs = newGuard.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INTERACTION_OPERAND__GUARD, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.INTERACTION_OPERAND__GUARD, oldGuard, guard));
+			}
+		}
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionConstraint basicGetGuard() {
 		return (InteractionConstraint) eVirtualGet(UMLPackage.INTERACTION_OPERAND__GUARD);
 	}
 
@@ -369,7 +398,7 @@ public class InteractionOperandImpl
 		EList fragment = (EList) eVirtualGet(UMLPackage.INTERACTION_OPERAND__FRAGMENT);
 		if (fragment == null) {
 			eVirtualSet(UMLPackage.INTERACTION_OPERAND__FRAGMENT,
-				fragment = new EObjectContainmentWithInverseEList(
+				fragment = new EObjectContainmentWithInverseEList.Resolving(
 					InteractionFragment.class, this,
 					UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 					UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND));
@@ -566,7 +595,9 @@ public class InteractionOperandImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
@@ -588,7 +619,9 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 				return getEnclosingOperand();
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
-				return getGuard();
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
 				return getFragments();
 		}

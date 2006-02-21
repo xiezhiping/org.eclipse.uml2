@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.10 2006/01/03 19:50:25 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,7 +67,7 @@ public class DestroyLinkActionImpl
 		EList endData = (EList) eVirtualGet(UMLPackage.DESTROY_LINK_ACTION__END_DATA);
 		if (endData == null) {
 			eVirtualSet(UMLPackage.DESTROY_LINK_ACTION__END_DATA,
-				endData = new EObjectContainmentEList(
+				endData = new EObjectContainmentEList.Resolving(
 					LinkEndDestructionData.class, this,
 					UMLPackage.DESTROY_LINK_ACTION__END_DATA));
 		}
@@ -126,7 +126,9 @@ public class DestroyLinkActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DESTROY_LINK_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DESTROY_LINK_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

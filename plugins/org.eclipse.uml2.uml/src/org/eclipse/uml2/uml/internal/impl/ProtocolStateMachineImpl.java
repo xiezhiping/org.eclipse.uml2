@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.14 2006/01/12 15:53:49 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.15 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,7 +122,7 @@ public class ProtocolStateMachineImpl
 		EList conformance = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 		if (conformance == null) {
 			eVirtualSet(UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE,
-				conformance = new EObjectContainmentWithInverseEList(
+				conformance = new EObjectContainmentWithInverseEList.Resolving(
 					ProtocolConformance.class, this,
 					UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE,
 					UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE));
@@ -443,7 +443,9 @@ public class ProtocolStateMachineImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
@@ -479,7 +481,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -501,7 +505,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
@@ -509,7 +515,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				return getUseCases();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PART :
@@ -523,7 +531,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :

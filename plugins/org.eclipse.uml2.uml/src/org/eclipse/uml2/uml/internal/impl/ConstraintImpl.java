@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,6 +121,37 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
+		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
+		if (specification != null && specification.eIsProxy()) {
+			InternalEObject oldSpecification = (InternalEObject) specification;
+			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			if (specification != oldSpecification) {
+				InternalEObject newSpecification = (InternalEObject) specification;
+				NotificationChain msgs = oldSpecification.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CONSTRAINT__SPECIFICATION, null, null);
+				if (newSpecification.eInternalContainer() == null) {
+					msgs = newSpecification.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CONSTRAINT__SPECIFICATION, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CONSTRAINT__SPECIFICATION, oldSpecification,
+						specification));
+			}
+		}
+		return specification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetSpecification() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
 	}
 
@@ -398,7 +429,9 @@ public class ConstraintImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -410,7 +443,9 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				return getSpecification();
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				return getContext();
 		}

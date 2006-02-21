@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.12 2006/01/20 20:55:53 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,6 +83,35 @@ public class ValuePinImpl
 	 * @generated
 	 */
 	public ValueSpecification getValue() {
+		ValueSpecification value = (ValueSpecification) eVirtualGet(UMLPackage.VALUE_PIN__VALUE);
+		if (value != null && value.eIsProxy()) {
+			InternalEObject oldValue = (InternalEObject) value;
+			value = (ValueSpecification) eResolveProxy(oldValue);
+			if (value != oldValue) {
+				InternalEObject newValue = (InternalEObject) value;
+				NotificationChain msgs = oldValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.VALUE_PIN__VALUE, null,
+					null);
+				if (newValue.eInternalContainer() == null) {
+					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.VALUE_PIN__VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.VALUE_PIN__VALUE, oldValue, value));
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.VALUE_PIN__VALUE);
 	}
 
@@ -237,7 +266,9 @@ public class ValuePinImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.VALUE_PIN__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -273,7 +304,9 @@ public class ValuePinImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.VALUE_PIN__UPPER_BOUND :
-				return getUpperBound();
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.VALUE_PIN__IN_STATE :
 				return getInStates();
 			case UMLPackage.VALUE_PIN__SELECTION :
@@ -293,15 +326,21 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.VALUE_PIN__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.VALUE_PIN__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.VALUE_PIN__IS_CONTROL :
 				return isControl()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.VALUE_PIN__VALUE :
-				return getValue();
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

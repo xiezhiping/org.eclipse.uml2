@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.25 2006/01/31 18:55:04 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.26 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -584,8 +584,9 @@ public abstract class ClassifierImpl
 	public EList getTemplateBindings() {
 		EList templateBinding = (EList) eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_BINDING);
 		if (templateBinding == null) {
-			eVirtualSet(UMLPackage.CLASSIFIER__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.CLASSIFIER__TEMPLATE_BINDING,
+				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
 					TemplateBinding.class, this,
 					UMLPackage.CLASSIFIER__TEMPLATE_BINDING,
 					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
@@ -611,6 +612,38 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
+		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE);
+		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
+				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+				NotificationChain msgs = oldOwnedTemplateSignature
+					.eInverseRemove(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, null);
+				if (newOwnedTemplateSignature.eInternalContainer() == null) {
+					msgs = newOwnedTemplateSignature.eInverseAdd(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
+						oldOwnedTemplateSignature, ownedTemplateSignature));
+			}
+		}
+		return ownedTemplateSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature basicGetOwnedTemplateSignature() {
 		return (TemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE);
 	}
 
@@ -818,8 +851,9 @@ public abstract class ClassifierImpl
 	public EList getCollaborationUses() {
 		EList collaborationUse = (EList) eVirtualGet(UMLPackage.CLASSIFIER__COLLABORATION_USE);
 		if (collaborationUse == null) {
-			eVirtualSet(UMLPackage.CLASSIFIER__COLLABORATION_USE,
-				collaborationUse = new SubsetSupersetEObjectContainmentEList(
+			eVirtualSet(
+				UMLPackage.CLASSIFIER__COLLABORATION_USE,
+				collaborationUse = new SubsetSupersetEObjectContainmentEList.Resolving(
 					CollaborationUse.class, this,
 					UMLPackage.CLASSIFIER__COLLABORATION_USE, null,
 					new int[]{UMLPackage.CLASSIFIER__REPRESENTATION}));
@@ -889,8 +923,9 @@ public abstract class ClassifierImpl
 	public EList getGeneralizations() {
 		EList generalization = (EList) eVirtualGet(UMLPackage.CLASSIFIER__GENERALIZATION);
 		if (generalization == null) {
-			eVirtualSet(UMLPackage.CLASSIFIER__GENERALIZATION,
-				generalization = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.CLASSIFIER__GENERALIZATION,
+				generalization = new EObjectContainmentWithInverseEList.Resolving(
 					Generalization.class, this,
 					UMLPackage.CLASSIFIER__GENERALIZATION,
 					UMLPackage.GENERALIZATION__SPECIFIC));
@@ -1052,8 +1087,8 @@ public abstract class ClassifierImpl
 		EList ownedUseCase = (EList) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_USE_CASE);
 		if (ownedUseCase == null) {
 			eVirtualSet(UMLPackage.CLASSIFIER__OWNED_USE_CASE,
-				ownedUseCase = new EObjectContainmentEList(UseCase.class, this,
-					UMLPackage.CLASSIFIER__OWNED_USE_CASE));
+				ownedUseCase = new EObjectContainmentEList.Resolving(
+					UseCase.class, this, UMLPackage.CLASSIFIER__OWNED_USE_CASE));
 		}
 		return ownedUseCase;
 	}
@@ -1125,7 +1160,7 @@ public abstract class ClassifierImpl
 		if (substitution == null) {
 			eVirtualSet(
 				UMLPackage.CLASSIFIER__SUBSTITUTION,
-				substitution = new SubsetSupersetEObjectContainmentWithInverseEList(
+				substitution = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Substitution.class, this,
 					UMLPackage.CLASSIFIER__SUBSTITUTION,
 					new int[]{UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY}, null,
@@ -1167,6 +1202,28 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse getRepresentation() {
+		CollaborationUse representation = (CollaborationUse) eVirtualGet(UMLPackage.CLASSIFIER__REPRESENTATION);
+		if (representation != null && representation.eIsProxy()) {
+			InternalEObject oldRepresentation = (InternalEObject) representation;
+			representation = (CollaborationUse) eResolveProxy(oldRepresentation);
+			if (representation != oldRepresentation) {
+				eVirtualSet(UMLPackage.CLASSIFIER__REPRESENTATION,
+					representation);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CLASSIFIER__REPRESENTATION,
+						oldRepresentation, representation));
+			}
+		}
+		return representation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollaborationUse basicGetRepresentation() {
 		return (CollaborationUse) eVirtualGet(UMLPackage.CLASSIFIER__REPRESENTATION);
 	}
 
@@ -1198,6 +1255,37 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public RedefinableTemplateSignature getOwnedSignature() {
+		RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE);
+		if (ownedSignature != null && ownedSignature.eIsProxy()) {
+			InternalEObject oldOwnedSignature = (InternalEObject) ownedSignature;
+			ownedSignature = (RedefinableTemplateSignature) eResolveProxy(oldOwnedSignature);
+			if (ownedSignature != oldOwnedSignature) {
+				InternalEObject newOwnedSignature = (InternalEObject) ownedSignature;
+				NotificationChain msgs = oldOwnedSignature.eInverseRemove(this,
+					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
+					RedefinableTemplateSignature.class, null);
+				if (newOwnedSignature.eInternalContainer() == null) {
+					msgs = newOwnedSignature.eInverseAdd(this,
+						UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
+						RedefinableTemplateSignature.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CLASSIFIER__OWNED_SIGNATURE,
+						oldOwnedSignature, ownedSignature));
+			}
+		}
+		return ownedSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableTemplateSignature basicGetOwnedSignature() {
 		return (RedefinableTemplateSignature) eVirtualGet(UMLPackage.CLASSIFIER__OWNED_SIGNATURE);
 	}
 
@@ -1776,7 +1864,9 @@ public abstract class ClassifierImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CLASSIFIER__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CLASSIFIER__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
@@ -1812,7 +1902,9 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -1834,7 +1926,9 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.CLASSIFIER__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
@@ -1842,7 +1936,9 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__USE_CASE :
 				return getUseCases();
 			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

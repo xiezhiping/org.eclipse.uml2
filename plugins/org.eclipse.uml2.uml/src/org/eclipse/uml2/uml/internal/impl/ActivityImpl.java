@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.18 2006/02/07 18:23:05 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.19 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,8 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
-
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -215,8 +214,9 @@ public class ActivityImpl
 	public EList getGroups() {
 		EList group = (EList) eVirtualGet(UMLPackage.ACTIVITY__GROUP);
 		if (group == null) {
-			eVirtualSet(UMLPackage.ACTIVITY__GROUP,
-				group = new SubsetSupersetEObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.ACTIVITY__GROUP,
+				group = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					ActivityGroup.class, this, UMLPackage.ACTIVITY__GROUP,
 					null, new int[]{UMLPackage.ACTIVITY__PARTITION},
 					UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY));
@@ -245,7 +245,7 @@ public class ActivityImpl
 		EList node = (EList) eVirtualGet(UMLPackage.ACTIVITY__NODE);
 		if (node == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__NODE,
-				node = new EObjectContainmentWithInverseEList(
+				node = new EObjectContainmentWithInverseEList.Resolving(
 					ActivityNode.class, this, UMLPackage.ACTIVITY__NODE,
 					UMLPackage.ACTIVITY_NODE__ACTIVITY));
 		}
@@ -374,7 +374,7 @@ public class ActivityImpl
 		EList variable = (EList) eVirtualGet(UMLPackage.ACTIVITY__VARIABLE);
 		if (variable == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__VARIABLE,
-				variable = new EObjectContainmentWithInverseEList(
+				variable = new EObjectContainmentWithInverseEList.Resolving(
 					Variable.class, this, UMLPackage.ACTIVITY__VARIABLE,
 					UMLPackage.VARIABLE__ACTIVITY_SCOPE));
 		}
@@ -416,7 +416,7 @@ public class ActivityImpl
 		EList edge = (EList) eVirtualGet(UMLPackage.ACTIVITY__EDGE);
 		if (edge == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__EDGE,
-				edge = new EObjectContainmentWithInverseEList(
+				edge = new EObjectContainmentWithInverseEList.Resolving(
 					ActivityEdge.class, this, UMLPackage.ACTIVITY__EDGE,
 					UMLPackage.ACTIVITY_EDGE__ACTIVITY));
 		}
@@ -459,7 +459,7 @@ public class ActivityImpl
 		EList partition = (EList) eVirtualGet(UMLPackage.ACTIVITY__PARTITION);
 		if (partition == null) {
 			eVirtualSet(UMLPackage.ACTIVITY__PARTITION,
-				partition = new SubsetSupersetEObjectEList(
+				partition = new SubsetSupersetEObjectResolvingEList(
 					ActivityPartition.class, this,
 					UMLPackage.ACTIVITY__PARTITION,
 					new int[]{UMLPackage.ACTIVITY__GROUP}, null));
@@ -748,7 +748,9 @@ public class ActivityImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACTIVITY__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ACTIVITY__PACKAGE_IMPORT :
@@ -784,7 +786,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ACTIVITY__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -806,7 +810,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.ACTIVITY__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.ACTIVITY__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
@@ -814,7 +820,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return getUseCases();
 			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ACTIVITY__PART :
@@ -828,7 +836,9 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.ACTIVITY__OWNED_TRIGGER :

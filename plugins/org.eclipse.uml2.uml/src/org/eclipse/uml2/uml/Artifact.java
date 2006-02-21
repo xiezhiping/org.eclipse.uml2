@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.5 2005/12/22 15:20:22 khussey Exp $
+ * $Id: Artifact.java,v 1.6 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -110,7 +110,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_NestedArtifact()
-	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getNestedArtifacts();
@@ -157,7 +157,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_Manifestation()
-	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getManifestations();
@@ -193,7 +193,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedOperation()
-	 * @model type="org.eclipse.uml2.uml.Operation" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Operation" containment="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -233,7 +233,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Property" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();

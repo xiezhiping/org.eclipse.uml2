@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -202,13 +202,17 @@ public class OperationTemplateParameterImpl
 					return getParameteredElement();
 				return basicGetParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return getOwnedParameteredElement();
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT :
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return getOwnedDefault();
+				if (resolve)
+					return getOwnedDefault();
+				return basicGetOwnedDefault();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.5 2006/01/03 19:50:26 khussey Exp $
+ * $Id: Interface.java,v 1.6 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -64,7 +64,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Property" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -111,7 +111,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_NestedClassifier()
-	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
@@ -174,7 +174,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedReception()
-	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
@@ -210,7 +210,7 @@ public interface Interface
 	 * @return the value of the '<em>Protocol</em>' containment reference.
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_Protocol()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	ProtocolStateMachine getProtocol();
@@ -247,7 +247,7 @@ public interface Interface
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedOperation()
 	 * @see org.eclipse.uml2.uml.Operation#getInterface
-	 * @model type="org.eclipse.uml2.uml.Operation" opposite="interface" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Operation" opposite="interface" containment="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();

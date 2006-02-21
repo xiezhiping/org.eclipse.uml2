@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.9 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -288,6 +288,44 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getOwnedParameteredElement() {
+		ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+		if (ownedParameteredElement != null
+			&& ownedParameteredElement.eIsProxy()) {
+			InternalEObject oldOwnedParameteredElement = (InternalEObject) ownedParameteredElement;
+			ownedParameteredElement = (ParameterableElement) eResolveProxy(oldOwnedParameteredElement);
+			if (ownedParameteredElement != oldOwnedParameteredElement) {
+				InternalEObject newOwnedParameteredElement = (InternalEObject) ownedParameteredElement;
+				NotificationChain msgs = oldOwnedParameteredElement
+					.eInverseRemove(
+						this,
+						UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+						ParameterableElement.class, null);
+				if (newOwnedParameteredElement.eInternalContainer() == null) {
+					msgs = newOwnedParameteredElement
+						.eInverseAdd(
+							this,
+							UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+							ParameterableElement.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(
+						this,
+						Notification.RESOLVE,
+						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+						oldOwnedParameteredElement, ownedParameteredElement));
+			}
+		}
+		return ownedParameteredElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterableElement basicGetOwnedParameteredElement() {
 		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 	}
 
@@ -373,6 +411,39 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getOwnedDefault() {
+		ParameterableElement ownedDefault = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
+		if (ownedDefault != null && ownedDefault.eIsProxy()) {
+			InternalEObject oldOwnedDefault = (InternalEObject) ownedDefault;
+			ownedDefault = (ParameterableElement) eResolveProxy(oldOwnedDefault);
+			if (ownedDefault != oldOwnedDefault) {
+				InternalEObject newOwnedDefault = (InternalEObject) ownedDefault;
+				NotificationChain msgs = oldOwnedDefault.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT, null,
+					null);
+				if (newOwnedDefault.eInternalContainer() == null) {
+					msgs = newOwnedDefault.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+						oldOwnedDefault, ownedDefault));
+			}
+		}
+		return ownedDefault;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterableElement basicGetOwnedDefault() {
 		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 	}
 
@@ -564,13 +635,17 @@ public class TemplateParameterImpl
 					return getParameteredElement();
 				return basicGetParameteredElement();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return getOwnedParameteredElement();
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return getOwnedDefault();
+				if (resolve)
+					return getOwnedDefault();
+				return basicGetOwnedDefault();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

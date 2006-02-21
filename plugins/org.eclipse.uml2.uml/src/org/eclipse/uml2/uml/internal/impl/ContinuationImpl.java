@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -176,7 +176,9 @@ public class ContinuationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CONTINUATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CONTINUATION__COVERED :
 				return getCovereds();
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :

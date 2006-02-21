@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.11 2006/01/31 18:55:04 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -397,7 +397,9 @@ public abstract class ConnectableElementImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CONNECTABLE_ELEMENT__TYPE :
 				if (resolve)
 					return getType();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.4 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface TemplateableElement
 	 * @return the value of the '<em>Template Binding</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateableElement_TemplateBinding()
 	 * @see org.eclipse.uml2.uml.TemplateBinding#getBoundElement
-	 * @model type="org.eclipse.uml2.uml.TemplateBinding" opposite="boundElement" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.TemplateBinding" opposite="boundElement" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getTemplateBindings();
@@ -79,7 +79,7 @@ public interface TemplateableElement
 	 * @see #setOwnedTemplateSignature(TemplateSignature)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateableElement_OwnedTemplateSignature()
 	 * @see org.eclipse.uml2.uml.TemplateSignature#getTemplate
-	 * @model opposite="template" containment="true" resolveProxies="false" ordered="false"
+	 * @model opposite="template" containment="true" ordered="false"
 	 * @generated
 	 */
 	TemplateSignature getOwnedTemplateSignature();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
+ * $Id: MessageImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -359,7 +359,7 @@ public class MessageImpl
 		EList argument = (EList) eVirtualGet(UMLPackage.MESSAGE__ARGUMENT);
 		if (argument == null) {
 			eVirtualSet(UMLPackage.MESSAGE__ARGUMENT,
-				argument = new EObjectContainmentEList(
+				argument = new EObjectContainmentEList.Resolving(
 					ValueSpecification.class, this,
 					UMLPackage.MESSAGE__ARGUMENT));
 		}
@@ -586,7 +586,9 @@ public class MessageImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind();
 			case UMLPackage.MESSAGE__MESSAGE_SORT :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: CreateLinkObjectActionImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -100,6 +100,38 @@ public class CreateLinkObjectActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT);
+		if (result != null && result.eIsProxy()) {
+			InternalEObject oldResult = (InternalEObject) result;
+			result = (OutputPin) eResolveProxy(oldResult);
+			if (result != oldResult) {
+				InternalEObject newResult = (InternalEObject) result;
+				NotificationChain msgs = oldResult.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT, null,
+					null);
+				if (newResult.eInternalContainer() == null) {
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT,
+						oldResult, result));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin basicGetResult() {
 		return (OutputPin) eVirtualGet(UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT);
 	}
 
@@ -287,7 +319,9 @@ public class CreateLinkObjectActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -329,7 +363,9 @@ public class CreateLinkObjectActionImpl
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__INPUT_VALUE :
 				return getInputValues();
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION__RESULT :
-				return getResult();
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

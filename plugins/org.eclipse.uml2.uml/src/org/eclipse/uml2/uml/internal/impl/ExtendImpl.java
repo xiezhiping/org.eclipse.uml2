@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -210,6 +210,36 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public Constraint getCondition() {
+		Constraint condition = (Constraint) eVirtualGet(UMLPackage.EXTEND__CONDITION);
+		if (condition != null && condition.eIsProxy()) {
+			InternalEObject oldCondition = (InternalEObject) condition;
+			condition = (Constraint) eResolveProxy(oldCondition);
+			if (condition != oldCondition) {
+				InternalEObject newCondition = (InternalEObject) condition;
+				NotificationChain msgs = oldCondition.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.EXTEND__CONDITION,
+					null, null);
+				if (newCondition.eInternalContainer() == null) {
+					msgs = newCondition.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.EXTEND__CONDITION,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.EXTEND__CONDITION, oldCondition, condition));
+			}
+		}
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetCondition() {
 		return (Constraint) eVirtualGet(UMLPackage.EXTEND__CONDITION);
 	}
 
@@ -462,7 +492,9 @@ public class ExtendImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXTEND__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.EXTEND__SOURCE :
@@ -474,7 +506,9 @@ public class ExtendImpl
 					return getExtendedCase();
 				return basicGetExtendedCase();
 			case UMLPackage.EXTEND__CONDITION :
-				return getCondition();
+				if (resolve)
+					return getCondition();
+				return basicGetCondition();
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				return getExtensionLocations();
 			case UMLPackage.EXTEND__EXTENSION :

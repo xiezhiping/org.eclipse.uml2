@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.13 2005/12/14 22:34:17 khussey Exp $
+ * $Id: RegionImpl.java,v 1.14 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -266,7 +266,7 @@ public class RegionImpl
 		EList subvertex = (EList) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
 		if (subvertex == null) {
 			eVirtualSet(UMLPackage.REGION__SUBVERTEX,
-				subvertex = new EObjectContainmentWithInverseEList(
+				subvertex = new EObjectContainmentWithInverseEList.Resolving(
 					Vertex.class, this, UMLPackage.REGION__SUBVERTEX,
 					UMLPackage.VERTEX__CONTAINER));
 		}
@@ -309,7 +309,7 @@ public class RegionImpl
 		EList transition = (EList) eVirtualGet(UMLPackage.REGION__TRANSITION);
 		if (transition == null) {
 			eVirtualSet(UMLPackage.REGION__TRANSITION,
-				transition = new EObjectContainmentWithInverseEList(
+				transition = new EObjectContainmentWithInverseEList.Resolving(
 					Transition.class, this, UMLPackage.REGION__TRANSITION,
 					UMLPackage.TRANSITION__CONTAINER));
 		}
@@ -736,7 +736,9 @@ public class RegionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.REGION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.REGION__PACKAGE_IMPORT :

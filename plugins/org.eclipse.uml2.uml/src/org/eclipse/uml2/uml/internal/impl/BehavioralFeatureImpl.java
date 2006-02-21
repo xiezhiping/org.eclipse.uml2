@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.12 2006/01/05 13:54:02 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -343,8 +343,9 @@ public abstract class BehavioralFeatureImpl
 		EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentEList(Parameter.class,
-					this, UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER));
+				ownedParameter = new EObjectContainmentEList.Resolving(
+					Parameter.class, this,
+					UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER));
 		}
 		return ownedParameter;
 	}
@@ -502,7 +503,7 @@ public abstract class BehavioralFeatureImpl
 		EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
 		if (ownedParameterSet == null) {
 			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET,
-				ownedParameterSet = new EObjectContainmentEList(
+				ownedParameterSet = new EObjectContainmentEList.Resolving(
 					ParameterSet.class, this,
 					UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET));
 		}
@@ -686,7 +687,9 @@ public abstract class BehavioralFeatureImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :

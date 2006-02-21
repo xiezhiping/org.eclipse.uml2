@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.12 2006/02/02 23:30:19 khussey Exp $
+ * $Id: PinImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -329,6 +329,36 @@ public class PinImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
+		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PIN__UPPER_VALUE);
+		if (upperValue != null && upperValue.eIsProxy()) {
+			InternalEObject oldUpperValue = (InternalEObject) upperValue;
+			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
+			if (upperValue != oldUpperValue) {
+				InternalEObject newUpperValue = (InternalEObject) upperValue;
+				NotificationChain msgs = oldUpperValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PIN__UPPER_VALUE, null,
+					null);
+				if (newUpperValue.eInternalContainer() == null) {
+					msgs = newUpperValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.PIN__UPPER_VALUE,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PIN__UPPER_VALUE, oldUpperValue, upperValue));
+			}
+		}
+		return upperValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetUpperValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.PIN__UPPER_VALUE);
 	}
 
@@ -400,6 +430,36 @@ public class PinImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
+		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PIN__LOWER_VALUE);
+		if (lowerValue != null && lowerValue.eIsProxy()) {
+			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
+			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
+			if (lowerValue != oldLowerValue) {
+				InternalEObject newLowerValue = (InternalEObject) lowerValue;
+				NotificationChain msgs = oldLowerValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PIN__LOWER_VALUE, null,
+					null);
+				if (newLowerValue.eInternalContainer() == null) {
+					msgs = newLowerValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.PIN__LOWER_VALUE,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PIN__LOWER_VALUE, oldLowerValue, lowerValue));
+			}
+		}
+		return lowerValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetLowerValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.PIN__LOWER_VALUE);
 	}
 
@@ -673,7 +733,9 @@ public class PinImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PIN__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PIN__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -709,7 +771,9 @@ public class PinImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.PIN__UPPER_BOUND :
-				return getUpperBound();
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.PIN__IN_STATE :
 				return getInStates();
 			case UMLPackage.PIN__SELECTION :
@@ -729,9 +793,13 @@ public class PinImpl
 			case UMLPackage.PIN__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.PIN__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.PIN__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.PIN__IS_CONTROL :
 				return isControl()
 					? Boolean.TRUE

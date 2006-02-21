@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOccurrenceSpecificationImpl.java,v 1.9 2006/01/19 23:06:34 khussey Exp $
+ * $Id: MessageOccurrenceSpecificationImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -147,7 +147,9 @@ public class MessageOccurrenceSpecificationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__COVERED :
 				return getCovereds();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :

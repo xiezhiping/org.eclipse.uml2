@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNode.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
+ * $Id: ExecutableNode.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ public interface ExecutableNode
 	 * @return the value of the '<em>Handler</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExecutableNode_Handler()
 	 * @see org.eclipse.uml2.uml.ExceptionHandler#getProtectedNode
-	 * @model type="org.eclipse.uml2.uml.ExceptionHandler" opposite="protectedNode" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ExceptionHandler" opposite="protectedNode" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getHandlers();

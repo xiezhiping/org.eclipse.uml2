@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,6 +94,39 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public InputPin getException() {
+		InputPin exception = (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
+		if (exception != null && exception.eIsProxy()) {
+			InternalEObject oldException = (InternalEObject) exception;
+			exception = (InputPin) eResolveProxy(oldException);
+			if (exception != oldException) {
+				InternalEObject newException = (InternalEObject) exception;
+				NotificationChain msgs = oldException.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION, null,
+					null);
+				if (newException.eInternalContainer() == null) {
+					msgs = newException.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION,
+						oldException, exception));
+			}
+		}
+		return exception;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetException() {
 		return (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
 	}
 
@@ -255,7 +288,9 @@ public class RaiseExceptionActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -293,7 +328,9 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
-				return getException();
+				if (resolve)
+					return getException();
+				return basicGetException();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.13 2006/01/03 19:50:25 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.14 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,8 +120,8 @@ public class UseCaseImpl
 		EList include = (EList) eVirtualGet(UMLPackage.USE_CASE__INCLUDE);
 		if (include == null) {
 			eVirtualSet(UMLPackage.USE_CASE__INCLUDE,
-				include = new EObjectContainmentWithInverseEList(Include.class,
-					this, UMLPackage.USE_CASE__INCLUDE,
+				include = new EObjectContainmentWithInverseEList.Resolving(
+					Include.class, this, UMLPackage.USE_CASE__INCLUDE,
 					UMLPackage.INCLUDE__INCLUDING_CASE));
 		}
 		return include;
@@ -162,8 +162,8 @@ public class UseCaseImpl
 		EList extend = (EList) eVirtualGet(UMLPackage.USE_CASE__EXTEND);
 		if (extend == null) {
 			eVirtualSet(UMLPackage.USE_CASE__EXTEND,
-				extend = new EObjectContainmentWithInverseEList(Extend.class,
-					this, UMLPackage.USE_CASE__EXTEND,
+				extend = new EObjectContainmentWithInverseEList.Resolving(
+					Extend.class, this, UMLPackage.USE_CASE__EXTEND,
 					UMLPackage.EXTEND__EXTENSION));
 		}
 		return extend;
@@ -203,8 +203,9 @@ public class UseCaseImpl
 	public EList getExtensionPoints() {
 		EList extensionPoint = (EList) eVirtualGet(UMLPackage.USE_CASE__EXTENSION_POINT);
 		if (extensionPoint == null) {
-			eVirtualSet(UMLPackage.USE_CASE__EXTENSION_POINT,
-				extensionPoint = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.USE_CASE__EXTENSION_POINT,
+				extensionPoint = new EObjectContainmentWithInverseEList.Resolving(
 					ExtensionPoint.class, this,
 					UMLPackage.USE_CASE__EXTENSION_POINT,
 					UMLPackage.EXTENSION_POINT__USE_CASE));
@@ -530,7 +531,9 @@ public class UseCaseImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.USE_CASE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.USE_CASE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.USE_CASE__PACKAGE_IMPORT :
@@ -566,7 +569,9 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.USE_CASE__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -588,7 +593,9 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.USE_CASE__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.USE_CASE__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.USE_CASE__OWNED_USE_CASE :
@@ -596,11 +603,15 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__USE_CASE :
 				return getUseCases();
 			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.USE_CASE__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.USE_CASE__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.USE_CASE__OWNED_TRIGGER :

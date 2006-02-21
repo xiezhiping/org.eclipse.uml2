@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -141,7 +141,7 @@ public abstract class InteractionFragmentImpl
 		EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 		if (generalOrdering == null) {
 			eVirtualSet(UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING,
-				generalOrdering = new EObjectContainmentEList(
+				generalOrdering = new EObjectContainmentEList.Resolving(
 					GeneralOrdering.class, this,
 					UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING));
 		}
@@ -372,7 +372,9 @@ public abstract class InteractionFragmentImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 				return getCovereds();
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :

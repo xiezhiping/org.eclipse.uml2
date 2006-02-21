@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.3 2006/02/02 23:30:18 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.4 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -105,7 +105,7 @@ public interface ReadIsClassifiedObjectAction
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReadIsClassifiedObjectAction_Result()
-	 * @model containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getResult();
@@ -140,7 +140,7 @@ public interface ReadIsClassifiedObjectAction
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReadIsClassifiedObjectAction_Object()
-	 * @model containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getObject();

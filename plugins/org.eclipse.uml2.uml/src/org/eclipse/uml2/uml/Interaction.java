@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.3 2006/01/11 18:13:44 khussey Exp $
+ * $Id: Interaction.java,v 1.4 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface Interaction
 	 * @return the value of the '<em>Lifeline</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Lifeline()
 	 * @see org.eclipse.uml2.uml.Lifeline#getInteraction
-	 * @model type="org.eclipse.uml2.uml.Lifeline" opposite="interaction" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Lifeline" opposite="interaction" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getLifelines();
@@ -93,7 +93,7 @@ public interface Interaction
 	 * @return the value of the '<em>Fragment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Fragment()
 	 * @see org.eclipse.uml2.uml.InteractionFragment#getEnclosingInteraction
-	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingInteraction" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingInteraction" containment="true"
 	 * @generated
 	 */
 	EList getFragments();
@@ -130,7 +130,7 @@ public interface Interaction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Action</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Action()
-	 * @model type="org.eclipse.uml2.uml.Action" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Action" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getActions();
@@ -169,7 +169,7 @@ public interface Interaction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_FormalGate()
-	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getFormalGates();
@@ -207,7 +207,7 @@ public interface Interaction
 	 * @return the value of the '<em>Message</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_Message()
 	 * @see org.eclipse.uml2.uml.Message#getInteraction
-	 * @model type="org.eclipse.uml2.uml.Message" opposite="interaction" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Message" opposite="interaction" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getMessages();

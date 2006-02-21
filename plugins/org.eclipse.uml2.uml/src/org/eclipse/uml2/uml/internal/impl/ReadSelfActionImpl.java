@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ReadSelfActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -100,6 +100,35 @@ public class ReadSelfActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.READ_SELF_ACTION__RESULT);
+		if (result != null && result.eIsProxy()) {
+			InternalEObject oldResult = (InternalEObject) result;
+			result = (OutputPin) eResolveProxy(oldResult);
+			if (result != oldResult) {
+				InternalEObject newResult = (InternalEObject) result;
+				NotificationChain msgs = oldResult.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.READ_SELF_ACTION__RESULT, null, null);
+				if (newResult.eInternalContainer() == null) {
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.READ_SELF_ACTION__RESULT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.READ_SELF_ACTION__RESULT, oldResult, result));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin basicGetResult() {
 		return (OutputPin) eVirtualGet(UMLPackage.READ_SELF_ACTION__RESULT);
 	}
 
@@ -286,7 +315,9 @@ public class ReadSelfActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.READ_SELF_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.READ_SELF_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -324,7 +355,9 @@ public class ReadSelfActionImpl
 			case UMLPackage.READ_SELF_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.READ_SELF_ACTION__RESULT :
-				return getResult();
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

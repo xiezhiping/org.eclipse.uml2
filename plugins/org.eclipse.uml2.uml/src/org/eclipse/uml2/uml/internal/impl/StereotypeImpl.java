@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.16 2006/02/02 19:23:40 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.17 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -349,7 +349,9 @@ public class StereotypeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.STEREOTYPE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.STEREOTYPE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.STEREOTYPE__PACKAGE_IMPORT :
@@ -385,7 +387,9 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -407,7 +411,9 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.STEREOTYPE__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
@@ -415,7 +421,9 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				return getUseCases();
 			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.STEREOTYPE__PART :
@@ -429,7 +437,9 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.STEREOTYPE__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.STEREOTYPE__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.STEREOTYPE__OWNED_TRIGGER :

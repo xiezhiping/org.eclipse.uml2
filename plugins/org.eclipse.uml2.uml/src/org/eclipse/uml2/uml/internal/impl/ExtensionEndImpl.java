@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.15 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -216,7 +216,9 @@ public class ExtensionEndImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXTENSION_END__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXTENSION_END__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -248,9 +250,13 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.EXTENSION_END__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.EXTENSION_END__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.EXTENSION_END__IS_READ_ONLY :
 				return isReadOnly()
 					? Boolean.TRUE
@@ -272,7 +278,9 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.EXTENSION_END__CLASS_ :
 				return getClass_();
 			case UMLPackage.EXTENSION_END__DATATYPE :
@@ -300,7 +308,9 @@ public class ExtensionEndImpl
 					return getOwningAssociation();
 				return basicGetOwningAssociation();
 			case UMLPackage.EXTENSION_END__DEFAULT_VALUE :
-				return getDefaultValue();
+				if (resolve)
+					return getDefaultValue();
+				return basicGetDefaultValue();
 			case UMLPackage.EXTENSION_END__OPPOSITE :
 				if (resolve)
 					return getOpposite();

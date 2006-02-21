@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.8 2006/02/02 19:23:40 khussey Exp $
+ * $Id: NamedElement.java,v 1.9 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -223,7 +223,7 @@ public interface NamedElement
 	 * @return the value of the '<em>Name Expression</em>' containment reference.
 	 * @see #setNameExpression(StringExpression)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_NameExpression()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	StringExpression getNameExpression();

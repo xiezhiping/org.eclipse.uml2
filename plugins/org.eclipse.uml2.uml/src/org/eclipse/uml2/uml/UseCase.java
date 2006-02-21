@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
+ * $Id: UseCase.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -72,7 +72,7 @@ public interface UseCase
 	 * @return the value of the '<em>Include</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Include()
 	 * @see org.eclipse.uml2.uml.Include#getIncludingCase
-	 * @model type="org.eclipse.uml2.uml.Include" opposite="includingCase" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Include" opposite="includingCase" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getIncludes();
@@ -110,7 +110,7 @@ public interface UseCase
 	 * @return the value of the '<em>Extend</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Extend()
 	 * @see org.eclipse.uml2.uml.Extend#getExtension
-	 * @model type="org.eclipse.uml2.uml.Extend" opposite="extension" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Extend" opposite="extension" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getExtends();
@@ -148,7 +148,7 @@ public interface UseCase
 	 * @return the value of the '<em>Extension Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_ExtensionPoint()
 	 * @see org.eclipse.uml2.uml.ExtensionPoint#getUseCase
-	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" opposite="useCase" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" opposite="useCase" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getExtensionPoints();

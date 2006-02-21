@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.8 2006/02/02 23:30:18 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.9 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -75,7 +75,7 @@ public interface StructuredActivityNode
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Variable()
 	 * @see org.eclipse.uml2.uml.Variable#getScope
-	 * @model type="org.eclipse.uml2.uml.Variable" opposite="scope" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Variable" opposite="scope" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getVariables();
@@ -113,7 +113,7 @@ public interface StructuredActivityNode
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Node()
 	 * @see org.eclipse.uml2.uml.ActivityNode#getInStructuredNode
-	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inStructuredNode" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inStructuredNode" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getNodes();
@@ -178,7 +178,7 @@ public interface StructuredActivityNode
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredActivityNode_Edge()
 	 * @see org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode
-	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inStructuredNode" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inStructuredNode" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getEdges();

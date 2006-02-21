@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -232,8 +232,8 @@ public class ConditionalNodeImpl
 		EList clause = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
 		if (clause == null) {
 			eVirtualSet(UMLPackage.CONDITIONAL_NODE__CLAUSE,
-				clause = new EObjectContainmentEList(Clause.class, this,
-					UMLPackage.CONDITIONAL_NODE__CLAUSE));
+				clause = new EObjectContainmentEList.Resolving(Clause.class,
+					this, UMLPackage.CONDITIONAL_NODE__CLAUSE));
 		}
 		return clause;
 	}
@@ -258,8 +258,8 @@ public class ConditionalNodeImpl
 		EList result = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__RESULT);
 		if (result == null) {
 			eVirtualSet(UMLPackage.CONDITIONAL_NODE__RESULT,
-				result = new EObjectContainmentEList(OutputPin.class, this,
-					UMLPackage.CONDITIONAL_NODE__RESULT));
+				result = new EObjectContainmentEList.Resolving(OutputPin.class,
+					this, UMLPackage.CONDITIONAL_NODE__RESULT));
 		}
 		return result;
 	}
@@ -406,7 +406,9 @@ public class ConditionalNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CONDITIONAL_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

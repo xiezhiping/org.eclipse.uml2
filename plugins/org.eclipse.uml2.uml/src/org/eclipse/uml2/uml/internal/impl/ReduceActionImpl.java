@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.6 2006/02/09 02:45:30 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.7 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -539,7 +539,9 @@ public class ReduceActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.REDUCE_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.REDUCE_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

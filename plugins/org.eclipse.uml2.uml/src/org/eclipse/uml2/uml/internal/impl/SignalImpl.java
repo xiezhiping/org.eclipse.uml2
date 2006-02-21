@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: SignalImpl.java,v 1.15 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,8 +121,8 @@ public class SignalImpl
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.SIGNAL__OWNED_ATTRIBUTE));
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this, UMLPackage.SIGNAL__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -271,7 +271,9 @@ public class SignalImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.SIGNAL__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.SIGNAL__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.SIGNAL__PACKAGE_IMPORT :
@@ -307,7 +309,9 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.SIGNAL__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -329,7 +333,9 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.SIGNAL__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.SIGNAL__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.SIGNAL__OWNED_USE_CASE :
@@ -337,7 +343,9 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__USE_CASE :
 				return getUseCases();
 			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 		}

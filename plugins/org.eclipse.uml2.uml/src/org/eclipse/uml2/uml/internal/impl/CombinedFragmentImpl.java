@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,8 +156,9 @@ public class CombinedFragmentImpl
 		EList operand = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__OPERAND);
 		if (operand == null) {
 			eVirtualSet(UMLPackage.COMBINED_FRAGMENT__OPERAND,
-				operand = new EObjectContainmentEList(InteractionOperand.class,
-					this, UMLPackage.COMBINED_FRAGMENT__OPERAND));
+				operand = new EObjectContainmentEList.Resolving(
+					InteractionOperand.class, this,
+					UMLPackage.COMBINED_FRAGMENT__OPERAND));
 		}
 		return operand;
 	}
@@ -198,7 +199,8 @@ public class CombinedFragmentImpl
 		EList cfragmentGate = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 		if (cfragmentGate == null) {
 			eVirtualSet(UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE,
-				cfragmentGate = new EObjectContainmentEList(Gate.class, this,
+				cfragmentGate = new EObjectContainmentEList.Resolving(
+					Gate.class, this,
 					UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE));
 		}
 		return cfragmentGate;
@@ -344,7 +346,9 @@ public class CombinedFragmentImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
 				return getCovereds();
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :

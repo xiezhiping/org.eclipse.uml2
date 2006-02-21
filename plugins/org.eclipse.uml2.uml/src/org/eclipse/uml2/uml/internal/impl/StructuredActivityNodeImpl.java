@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.16 2006/01/05 13:54:02 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.17 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -235,8 +235,9 @@ public class StructuredActivityNodeImpl
 	public EList getElementImports() {
 		EList elementImport = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT);
 		if (elementImport == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
-				elementImport = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
+				elementImport = new EObjectContainmentWithInverseEList.Resolving(
 					ElementImport.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
 					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
@@ -264,8 +265,9 @@ public class StructuredActivityNodeImpl
 	public EList getPackageImports() {
 		EList packageImport = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT);
 		if (packageImport == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
-				packageImport = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
+				packageImport = new EObjectContainmentWithInverseEList.Resolving(
 					PackageImport.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
 					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
@@ -294,7 +296,7 @@ public class StructuredActivityNodeImpl
 		EList ownedRule = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE);
 		if (ownedRule == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
-				ownedRule = new EObjectContainmentWithInverseEList(
+				ownedRule = new EObjectContainmentWithInverseEList.Resolving(
 					Constraint.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
 					UMLPackage.CONSTRAINT__CONTEXT));
@@ -462,7 +464,7 @@ public class StructuredActivityNodeImpl
 		EList variable = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE);
 		if (variable == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
-				variable = new EObjectContainmentWithInverseEList(
+				variable = new EObjectContainmentWithInverseEList.Resolving(
 					Variable.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
 					UMLPackage.VARIABLE__SCOPE));
@@ -505,7 +507,7 @@ public class StructuredActivityNodeImpl
 		EList node = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE);
 		if (node == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
-				node = new EObjectContainmentWithInverseEList(
+				node = new EObjectContainmentWithInverseEList.Resolving(
 					ActivityNode.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
 					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE));
@@ -576,7 +578,7 @@ public class StructuredActivityNodeImpl
 		EList edge = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE);
 		if (edge == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
-				edge = new EObjectContainmentWithInverseEList(
+				edge = new EObjectContainmentWithInverseEList.Resolving(
 					ActivityEdge.class, this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
 					UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE));
@@ -955,7 +957,9 @@ public class StructuredActivityNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

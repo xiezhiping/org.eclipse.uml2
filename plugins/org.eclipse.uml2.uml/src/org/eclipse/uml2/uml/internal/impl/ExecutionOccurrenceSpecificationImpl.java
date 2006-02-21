@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -217,7 +217,9 @@ public class ExecutionOccurrenceSpecificationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
 				return getCovereds();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :

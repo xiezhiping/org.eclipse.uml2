@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.5 2006/01/11 18:13:44 khussey Exp $
+ * $Id: Action.java,v 1.6 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Output()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" resolveProxies="false" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getOutputs();
@@ -81,7 +81,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Input()
-	 * @model type="org.eclipse.uml2.uml.InputPin" resolveProxies="false" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.uml.InputPin" transient="true" changeable="false" derived="true"
 	 * @generated
 	 */
 	EList getInputs();
@@ -121,7 +121,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_LocalPrecondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getLocalPreconditions();
@@ -168,7 +168,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_LocalPostcondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getLocalPostconditions();

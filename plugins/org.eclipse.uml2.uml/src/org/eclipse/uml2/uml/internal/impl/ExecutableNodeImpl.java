@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,7 +98,7 @@ public abstract class ExecutableNodeImpl
 		EList handler = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
 		if (handler == null) {
 			eVirtualSet(UMLPackage.EXECUTABLE_NODE__HANDLER,
-				handler = new EObjectContainmentWithInverseEList(
+				handler = new EObjectContainmentWithInverseEList.Resolving(
 					ExceptionHandler.class, this,
 					UMLPackage.EXECUTABLE_NODE__HANDLER,
 					UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE));
@@ -234,7 +234,9 @@ public abstract class ExecutableNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXECUTABLE_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

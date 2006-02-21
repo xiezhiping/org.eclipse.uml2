@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.12 2006/02/02 23:30:19 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -380,13 +380,17 @@ public class ClassifierTemplateParameterImpl
 					return getParameteredElement();
 				return basicGetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return getOwnedParameteredElement();
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return getOwnedDefault();
+				if (resolve)
+					return getOwnedDefault();
+				return basicGetOwnedDefault();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return isAllowSubstitutable()
 					? Boolean.TRUE

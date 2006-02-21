@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUse.java,v 1.3 2006/01/11 18:13:44 khussey Exp $
+ * $Id: InteractionUse.java,v 1.4 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -86,7 +86,7 @@ public interface InteractionUse
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actual Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionUse_ActualGate()
-	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getActualGates();
@@ -122,7 +122,7 @@ public interface InteractionUse
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionUse_Argument()
-	 * @model type="org.eclipse.uml2.uml.Action" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Action" containment="true"
 	 * @generated
 	 */
 	EList getArguments();

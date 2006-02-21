@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.8 2006/02/02 19:23:40 khussey Exp $
+ * $Id: Profile.java,v 1.9 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,7 +91,7 @@ public interface Profile
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetaclassReference()
-	 * @model type="org.eclipse.uml2.uml.ElementImport" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ElementImport" ordered="false"
 	 * @generated
 	 */
 	EList getMetaclassReferences();
@@ -106,7 +106,7 @@ public interface Profile
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetamodelReference()
-	 * @model type="org.eclipse.uml2.uml.PackageImport" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageImport" ordered="false"
 	 * @generated
 	 */
 	EList getMetamodelReferences();

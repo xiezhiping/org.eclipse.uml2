@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,8 +105,8 @@ public abstract class LinkActionImpl
 		EList endData = (EList) eVirtualGet(UMLPackage.LINK_ACTION__END_DATA);
 		if (endData == null) {
 			eVirtualSet(UMLPackage.LINK_ACTION__END_DATA,
-				endData = new EObjectContainmentEList(LinkEndData.class, this,
-					UMLPackage.LINK_ACTION__END_DATA));
+				endData = new EObjectContainmentEList.Resolving(
+					LinkEndData.class, this, UMLPackage.LINK_ACTION__END_DATA));
 		}
 		return endData;
 	}
@@ -143,8 +143,8 @@ public abstract class LinkActionImpl
 		EList inputValue = (EList) eVirtualGet(UMLPackage.LINK_ACTION__INPUT_VALUE);
 		if (inputValue == null) {
 			eVirtualSet(UMLPackage.LINK_ACTION__INPUT_VALUE,
-				inputValue = new EObjectContainmentEList(InputPin.class, this,
-					UMLPackage.LINK_ACTION__INPUT_VALUE));
+				inputValue = new EObjectContainmentEList.Resolving(
+					InputPin.class, this, UMLPackage.LINK_ACTION__INPUT_VALUE));
 		}
 		return inputValue;
 	}
@@ -313,7 +313,9 @@ public abstract class LinkActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.LINK_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.LINK_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -303,7 +303,9 @@ public class IncludeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INCLUDE__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.INCLUDE__SOURCE :

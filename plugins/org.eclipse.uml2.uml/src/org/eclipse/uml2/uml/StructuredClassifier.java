@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.3 2005/12/22 15:20:22 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.4 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Property" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -155,7 +155,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedConnector()
-	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedConnectors();

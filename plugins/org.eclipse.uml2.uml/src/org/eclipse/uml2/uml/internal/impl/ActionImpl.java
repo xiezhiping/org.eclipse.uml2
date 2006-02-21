@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.14 2006/01/11 18:13:44 khussey Exp $
+ * $Id: ActionImpl.java,v 1.15 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,7 +181,7 @@ public abstract class ActionImpl
 		EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
 		if (localPrecondition == null) {
 			eVirtualSet(UMLPackage.ACTION__LOCAL_PRECONDITION,
-				localPrecondition = new EObjectContainmentEList(
+				localPrecondition = new EObjectContainmentEList.Resolving(
 					Constraint.class, this,
 					UMLPackage.ACTION__LOCAL_PRECONDITION));
 		}
@@ -236,7 +236,7 @@ public abstract class ActionImpl
 		EList localPostcondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
 		if (localPostcondition == null) {
 			eVirtualSet(UMLPackage.ACTION__LOCAL_POSTCONDITION,
-				localPostcondition = new EObjectContainmentEList(
+				localPostcondition = new EObjectContainmentEList.Resolving(
 					Constraint.class, this,
 					UMLPackage.ACTION__LOCAL_POSTCONDITION));
 		}
@@ -362,7 +362,9 @@ public abstract class ActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

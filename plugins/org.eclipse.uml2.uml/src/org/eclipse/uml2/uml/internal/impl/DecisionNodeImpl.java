@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.10 2006/01/03 19:50:25 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,7 +181,9 @@ public class DecisionNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DECISION_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DECISION_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

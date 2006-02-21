@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.9 2006/01/16 22:29:29 khussey Exp $
+ * $Id: Element.java,v 1.10 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface Element
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedElement()
 	 * @see org.eclipse.uml2.uml.Element#getOwner
-	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -92,7 +92,7 @@ public interface Element
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedComment()
-	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedComments();

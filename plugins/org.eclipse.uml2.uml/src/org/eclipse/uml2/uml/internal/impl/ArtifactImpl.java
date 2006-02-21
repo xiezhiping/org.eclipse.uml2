@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -266,8 +266,8 @@ public class ArtifactImpl
 		EList nestedArtifact = (EList) eVirtualGet(UMLPackage.ARTIFACT__NESTED_ARTIFACT);
 		if (nestedArtifact == null) {
 			eVirtualSet(UMLPackage.ARTIFACT__NESTED_ARTIFACT,
-				nestedArtifact = new EObjectContainmentEList(Artifact.class,
-					this, UMLPackage.ARTIFACT__NESTED_ARTIFACT));
+				nestedArtifact = new EObjectContainmentEList.Resolving(
+					Artifact.class, this, UMLPackage.ARTIFACT__NESTED_ARTIFACT));
 		}
 		return nestedArtifact;
 	}
@@ -318,8 +318,9 @@ public class ArtifactImpl
 	public EList getManifestations() {
 		EList manifestation = (EList) eVirtualGet(UMLPackage.ARTIFACT__MANIFESTATION);
 		if (manifestation == null) {
-			eVirtualSet(UMLPackage.ARTIFACT__MANIFESTATION,
-				manifestation = new SubsetSupersetEObjectContainmentEList(
+			eVirtualSet(
+				UMLPackage.ARTIFACT__MANIFESTATION,
+				manifestation = new SubsetSupersetEObjectContainmentEList.Resolving(
 					Manifestation.class, this,
 					UMLPackage.ARTIFACT__MANIFESTATION,
 					new int[]{UMLPackage.ARTIFACT__CLIENT_DEPENDENCY}, null));
@@ -362,9 +363,10 @@ public class ArtifactImpl
 	public EList getOwnedOperations() {
 		EList ownedOperation = (EList) eVirtualGet(UMLPackage.ARTIFACT__OWNED_OPERATION);
 		if (ownedOperation == null) {
-			eVirtualSet(UMLPackage.ARTIFACT__OWNED_OPERATION,
-				ownedOperation = new EObjectContainmentEList(Operation.class,
-					this, UMLPackage.ARTIFACT__OWNED_OPERATION));
+			eVirtualSet(
+				UMLPackage.ARTIFACT__OWNED_OPERATION,
+				ownedOperation = new EObjectContainmentEList.Resolving(
+					Operation.class, this, UMLPackage.ARTIFACT__OWNED_OPERATION));
 		}
 		return ownedOperation;
 	}
@@ -404,8 +406,8 @@ public class ArtifactImpl
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ARTIFACT__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.ARTIFACT__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.ARTIFACT__OWNED_ATTRIBUTE));
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this, UMLPackage.ARTIFACT__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -646,7 +648,9 @@ public class ArtifactImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ARTIFACT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
@@ -682,7 +686,9 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ARTIFACT__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -704,7 +710,9 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.ARTIFACT__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.ARTIFACT__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.ARTIFACT__OWNED_USE_CASE :
@@ -712,7 +720,9 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__USE_CASE :
 				return getUseCases();
 			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.ARTIFACT__FILE_NAME :
 				return getFileName();
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :

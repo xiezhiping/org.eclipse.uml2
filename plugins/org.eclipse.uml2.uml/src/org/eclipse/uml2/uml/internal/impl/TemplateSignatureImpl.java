@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.9 2006/01/05 13:54:02 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -165,7 +165,7 @@ public class TemplateSignatureImpl
 		if (ownedParameter == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-				ownedParameter = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ownedParameter = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					TemplateParameter.class, this,
 					UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
 					new int[]{UMLPackage.TEMPLATE_SIGNATURE__PARAMETER}, null,

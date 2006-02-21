@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.10 2005/12/14 22:34:17 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,6 +105,38 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getMinint() {
+		ValueSpecification minint = (ValueSpecification) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__MININT);
+		if (minint != null && minint.eIsProxy()) {
+			InternalEObject oldMinint = (InternalEObject) minint;
+			minint = (ValueSpecification) eResolveProxy(oldMinint);
+			if (minint != oldMinint) {
+				InternalEObject newMinint = (InternalEObject) minint;
+				NotificationChain msgs = oldMinint
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INTERACTION_CONSTRAINT__MININT, null, null);
+				if (newMinint.eInternalContainer() == null) {
+					msgs = newMinint
+						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_CONSTRAINT__MININT, null,
+							msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.INTERACTION_CONSTRAINT__MININT, oldMinint,
+						minint));
+			}
+		}
+		return minint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetMinint() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__MININT);
 	}
 
@@ -176,6 +208,38 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getMaxint() {
+		ValueSpecification maxint = (ValueSpecification) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__MAXINT);
+		if (maxint != null && maxint.eIsProxy()) {
+			InternalEObject oldMaxint = (InternalEObject) maxint;
+			maxint = (ValueSpecification) eResolveProxy(oldMaxint);
+			if (maxint != oldMaxint) {
+				InternalEObject newMaxint = (InternalEObject) maxint;
+				NotificationChain msgs = oldMaxint
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INTERACTION_CONSTRAINT__MAXINT, null, null);
+				if (newMaxint.eInternalContainer() == null) {
+					msgs = newMaxint
+						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERACTION_CONSTRAINT__MAXINT, null,
+							msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.INTERACTION_CONSTRAINT__MAXINT, oldMaxint,
+						maxint));
+			}
+		}
+		return maxint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetMaxint() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__MAXINT);
 	}
 
@@ -374,7 +438,9 @@ public class InteractionConstraintImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -386,13 +452,19 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
-				return getSpecification();
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
 				return getContext();
 			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
-				return getMinint();
+				if (resolve)
+					return getMinint();
+				return basicGetMinint();
 			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :
-				return getMaxint();
+				if (resolve)
+					return getMaxint();
+				return basicGetMaxint();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

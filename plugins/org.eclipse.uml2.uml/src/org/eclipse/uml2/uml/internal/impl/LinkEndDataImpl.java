@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.9 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -175,8 +175,9 @@ public class LinkEndDataImpl
 		EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
 		if (qualifier == null) {
 			eVirtualSet(UMLPackage.LINK_END_DATA__QUALIFIER,
-				qualifier = new EObjectContainmentEList(QualifierValue.class,
-					this, UMLPackage.LINK_END_DATA__QUALIFIER));
+				qualifier = new EObjectContainmentEList.Resolving(
+					QualifierValue.class, this,
+					UMLPackage.LINK_END_DATA__QUALIFIER));
 		}
 		return qualifier;
 	}

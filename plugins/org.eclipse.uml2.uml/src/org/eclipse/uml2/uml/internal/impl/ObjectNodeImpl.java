@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.11 2006/01/03 19:50:24 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -246,6 +246,37 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperBound() {
+		ValueSpecification upperBound = (ValueSpecification) eVirtualGet(UMLPackage.OBJECT_NODE__UPPER_BOUND);
+		if (upperBound != null && upperBound.eIsProxy()) {
+			InternalEObject oldUpperBound = (InternalEObject) upperBound;
+			upperBound = (ValueSpecification) eResolveProxy(oldUpperBound);
+			if (upperBound != oldUpperBound) {
+				InternalEObject newUpperBound = (InternalEObject) upperBound;
+				NotificationChain msgs = oldUpperBound.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.OBJECT_NODE__UPPER_BOUND, null, null);
+				if (newUpperBound.eInternalContainer() == null) {
+					msgs = newUpperBound.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.OBJECT_NODE__UPPER_BOUND, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.OBJECT_NODE__UPPER_BOUND, oldUpperBound,
+						upperBound));
+			}
+		}
+		return upperBound;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetUpperBound() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.OBJECT_NODE__UPPER_BOUND);
 	}
 
@@ -506,7 +537,9 @@ public abstract class ObjectNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -542,7 +575,9 @@ public abstract class ObjectNodeImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
-				return getUpperBound();
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.OBJECT_NODE__IN_STATE :
 				return getInStates();
 			case UMLPackage.OBJECT_NODE__SELECTION :

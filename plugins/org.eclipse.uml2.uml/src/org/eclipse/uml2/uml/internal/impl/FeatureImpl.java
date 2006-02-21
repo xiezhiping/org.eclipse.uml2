@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.9 2006/01/05 13:54:02 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -172,7 +172,9 @@ public abstract class FeatureImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.FEATURE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.FEATURE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

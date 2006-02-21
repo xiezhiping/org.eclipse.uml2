@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.13 2006/01/03 19:50:25 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.14 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -488,7 +488,9 @@ public class DeploymentSpecificationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
@@ -524,7 +526,9 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -546,7 +550,9 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
@@ -554,7 +560,9 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				return getUseCases();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				return getFileName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :

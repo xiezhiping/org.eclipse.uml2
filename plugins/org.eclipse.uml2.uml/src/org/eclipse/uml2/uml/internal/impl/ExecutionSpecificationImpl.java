@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationImpl.java,v 1.9 2006/01/19 23:06:34 khussey Exp $
+ * $Id: ExecutionSpecificationImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -208,7 +208,9 @@ public abstract class ExecutionSpecificationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXECUTION_SPECIFICATION__COVERED :
 				return getCovereds();
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :

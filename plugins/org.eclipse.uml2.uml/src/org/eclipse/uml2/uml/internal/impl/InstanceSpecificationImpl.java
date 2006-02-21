@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -340,6 +340,39 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
+		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
+		if (specification != null && specification.eIsProxy()) {
+			InternalEObject oldSpecification = (InternalEObject) specification;
+			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			if (specification != oldSpecification) {
+				InternalEObject newSpecification = (InternalEObject) specification;
+				NotificationChain msgs = oldSpecification.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
+					null, null);
+				if (newSpecification.eInternalContainer() == null) {
+					msgs = newSpecification.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
+						oldSpecification, specification));
+			}
+		}
+		return specification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetSpecification() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
 	}
 
@@ -418,8 +451,8 @@ public class InstanceSpecificationImpl
 		EList slot = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
 		if (slot == null) {
 			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT,
-				slot = new EObjectContainmentWithInverseEList(Slot.class, this,
-					UMLPackage.INSTANCE_SPECIFICATION__SLOT,
+				slot = new EObjectContainmentWithInverseEList.Resolving(
+					Slot.class, this, UMLPackage.INSTANCE_SPECIFICATION__SLOT,
 					UMLPackage.SLOT__OWNING_INSTANCE));
 		}
 		return slot;
@@ -620,7 +653,9 @@ public class InstanceSpecificationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				return getDeployments();
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT :
@@ -638,7 +673,9 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				return getSlots();
 			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
-				return getSpecification();
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

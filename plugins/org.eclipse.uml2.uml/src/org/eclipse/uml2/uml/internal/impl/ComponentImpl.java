@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.16 2006/02/02 23:30:19 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.17 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -312,7 +312,7 @@ public class ComponentImpl
 		EList realization = (EList) eVirtualGet(UMLPackage.COMPONENT__REALIZATION);
 		if (realization == null) {
 			eVirtualSet(UMLPackage.COMPONENT__REALIZATION,
-				realization = new EObjectContainmentWithInverseEList(
+				realization = new EObjectContainmentWithInverseEList.Resolving(
 					ComponentRealization.class, this,
 					UMLPackage.COMPONENT__REALIZATION,
 					UMLPackage.COMPONENT_REALIZATION__ABSTRACTION));
@@ -590,7 +590,9 @@ public class ComponentImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.COMPONENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
@@ -626,7 +628,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.COMPONENT__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -648,7 +652,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.COMPONENT__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.COMPONENT__OWNED_USE_CASE :
@@ -656,7 +662,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__USE_CASE :
 				return getUseCases();
 			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.COMPONENT__PART :
@@ -670,7 +678,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.COMPONENT__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.COMPONENT__OWNED_TRIGGER :

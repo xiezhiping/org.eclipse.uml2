@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -218,7 +218,9 @@ public class DurationIntervalImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DURATION_INTERVAL__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DURATION_INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();

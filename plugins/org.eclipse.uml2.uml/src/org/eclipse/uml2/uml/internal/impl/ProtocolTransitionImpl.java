@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.21 2006/02/19 17:50:35 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.22 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,7 +102,7 @@ public class ProtocolTransitionImpl
 		if (ownedRule == null) {
 			eVirtualSet(
 				UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE,
-				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Constraint.class, this,
 					UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE, null,
 					new int[]{UMLPackage.PROTOCOL_TRANSITION__GUARD,
@@ -118,6 +118,26 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public Constraint getGuard() {
+		Constraint guard = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD);
+		if (guard != null && guard.eIsProxy()) {
+			InternalEObject oldGuard = (InternalEObject) guard;
+			guard = (Constraint) eResolveProxy(oldGuard);
+			if (guard != oldGuard) {
+				eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__GUARD, guard);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PROTOCOL_TRANSITION__GUARD, oldGuard, guard));
+			}
+		}
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetGuard() {
 		return (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD);
 	}
 
@@ -152,6 +172,28 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public Constraint getPostCondition() {
+		Constraint postCondition = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION);
+		if (postCondition != null && postCondition.eIsProxy()) {
+			InternalEObject oldPostCondition = (InternalEObject) postCondition;
+			postCondition = (Constraint) eResolveProxy(oldPostCondition);
+			if (postCondition != oldPostCondition) {
+				eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION,
+					postCondition);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION,
+						oldPostCondition, postCondition));
+			}
+		}
+		return postCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetPostCondition() {
 		return (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION);
 	}
 
@@ -271,6 +313,28 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public Constraint getPreCondition() {
+		Constraint preCondition = (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION);
+		if (preCondition != null && preCondition.eIsProxy()) {
+			InternalEObject oldPreCondition = (InternalEObject) preCondition;
+			preCondition = (Constraint) eResolveProxy(oldPreCondition);
+			if (preCondition != oldPreCondition) {
+				eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION,
+					preCondition);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION,
+						oldPreCondition, preCondition));
+			}
+		}
+		return preCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetPreCondition() {
 		return (Constraint) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION);
 	}
 
@@ -446,7 +510,9 @@ public class ProtocolTransitionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
@@ -480,9 +546,13 @@ public class ProtocolTransitionImpl
 					return getRedefinedTransition();
 				return basicGetRedefinedTransition();
 			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-				return getGuard();
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
-				return getEffect();
+				if (resolve)
+					return getEffect();
+				return basicGetEffect();
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return getTriggers();
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
@@ -490,11 +560,15 @@ public class ProtocolTransitionImpl
 					return getSource();
 				return basicGetSource();
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
-				return getPostCondition();
+				if (resolve)
+					return getPostCondition();
+				return basicGetPostCondition();
 			case UMLPackage.PROTOCOL_TRANSITION__REFERRED :
 				return getReferreds();
 			case UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION :
-				return getPreCondition();
+				if (resolve)
+					return getPreCondition();
+				return basicGetPreCondition();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

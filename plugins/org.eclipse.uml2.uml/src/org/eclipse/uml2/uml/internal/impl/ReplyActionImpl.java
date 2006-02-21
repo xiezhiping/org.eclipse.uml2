@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -154,6 +154,39 @@ public class ReplyActionImpl
 	 * @generated
 	 */
 	public InputPin getReturnInformation() {
+		InputPin returnInformation = (InputPin) eVirtualGet(UMLPackage.REPLY_ACTION__RETURN_INFORMATION);
+		if (returnInformation != null && returnInformation.eIsProxy()) {
+			InternalEObject oldReturnInformation = (InternalEObject) returnInformation;
+			returnInformation = (InputPin) eResolveProxy(oldReturnInformation);
+			if (returnInformation != oldReturnInformation) {
+				InternalEObject newReturnInformation = (InternalEObject) returnInformation;
+				NotificationChain msgs = oldReturnInformation.eInverseRemove(
+					this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.REPLY_ACTION__RETURN_INFORMATION, null,
+					null);
+				if (newReturnInformation.eInternalContainer() == null) {
+					msgs = newReturnInformation.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.REPLY_ACTION__RETURN_INFORMATION,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.REPLY_ACTION__RETURN_INFORMATION,
+						oldReturnInformation, returnInformation));
+			}
+		}
+		return returnInformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetReturnInformation() {
 		return (InputPin) eVirtualGet(UMLPackage.REPLY_ACTION__RETURN_INFORMATION);
 	}
 
@@ -242,8 +275,8 @@ public class ReplyActionImpl
 		EList replyValue = (EList) eVirtualGet(UMLPackage.REPLY_ACTION__REPLY_VALUE);
 		if (replyValue == null) {
 			eVirtualSet(UMLPackage.REPLY_ACTION__REPLY_VALUE,
-				replyValue = new EObjectContainmentEList(InputPin.class, this,
-					UMLPackage.REPLY_ACTION__REPLY_VALUE));
+				replyValue = new EObjectContainmentEList.Resolving(
+					InputPin.class, this, UMLPackage.REPLY_ACTION__REPLY_VALUE));
 		}
 		return replyValue;
 	}
@@ -393,7 +426,9 @@ public class ReplyActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.REPLY_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.REPLY_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -435,7 +470,9 @@ public class ReplyActionImpl
 					return getReplyToCall();
 				return basicGetReplyToCall();
 			case UMLPackage.REPLY_ACTION__RETURN_INFORMATION :
-				return getReturnInformation();
+				if (resolve)
+					return getReturnInformation();
+				return basicGetReturnInformation();
 			case UMLPackage.REPLY_ACTION__REPLY_VALUE :
 				return getReplyValues();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.11 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Behavior.java,v 1.12 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -131,7 +131,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_OwnedParameter()
-	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true"
 	 * @generated
 	 */
 	EList getOwnedParameters();
@@ -182,7 +182,7 @@ public interface Behavior
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Precondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
@@ -230,7 +230,7 @@ public interface Behavior
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Postcondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();
@@ -277,7 +277,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_OwnedParameterSet()
-	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedParameterSets();

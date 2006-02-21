@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueAction.java,v 1.3 2006/02/02 23:30:18 khussey Exp $
+ * $Id: AddVariableValueAction.java,v 1.4 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,7 +78,7 @@ public interface AddVariableValueAction
 	 * @return the value of the '<em>Insert At</em>' containment reference.
 	 * @see #setInsertAt(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAddVariableValueAction_InsertAt()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getInsertAt();

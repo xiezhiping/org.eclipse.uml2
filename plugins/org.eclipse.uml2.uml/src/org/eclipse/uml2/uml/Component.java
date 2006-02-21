@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.7 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Component.java,v 1.8 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -176,7 +176,7 @@ public interface Component
 	 * @return the value of the '<em>Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_Realization()
 	 * @see org.eclipse.uml2.uml.ComponentRealization#getAbstraction
-	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" resolveProxies="false" transient="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" transient="true" ordered="false"
 	 * @generated
 	 */
 	EList getRealizations();

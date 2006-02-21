@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.22 2006/01/31 18:55:04 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.23 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -451,7 +451,7 @@ public class PropertyImpl
 		if (deployment == null) {
 			eVirtualSet(
 				UMLPackage.PROPERTY__DEPLOYMENT,
-				deployment = new SubsetSupersetEObjectContainmentWithInverseEList(
+				deployment = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Deployment.class, this, UMLPackage.PROPERTY__DEPLOYMENT,
 					new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY}, null,
 					UMLPackage.DEPLOYMENT__LOCATION));
@@ -529,8 +529,9 @@ public class PropertyImpl
 	public EList getTemplateBindings() {
 		EList templateBinding = (EList) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
 		if (templateBinding == null) {
-			eVirtualSet(UMLPackage.PROPERTY__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PROPERTY__TEMPLATE_BINDING,
+				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
 					TemplateBinding.class, this,
 					UMLPackage.PROPERTY__TEMPLATE_BINDING,
 					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
@@ -556,6 +557,38 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
+		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
+		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
+				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+				NotificationChain msgs = oldOwnedTemplateSignature
+					.eInverseRemove(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, null);
+				if (newOwnedTemplateSignature.eInternalContainer() == null) {
+					msgs = newOwnedTemplateSignature.eInverseAdd(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
+						oldOwnedTemplateSignature, ownedTemplateSignature));
+			}
+		}
+		return ownedTemplateSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature basicGetOwnedTemplateSignature() {
 		return (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
 	}
 
@@ -1039,6 +1072,37 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
+		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE);
+		if (defaultValue != null && defaultValue.eIsProxy()) {
+			InternalEObject oldDefaultValue = (InternalEObject) defaultValue;
+			defaultValue = (ValueSpecification) eResolveProxy(oldDefaultValue);
+			if (defaultValue != oldDefaultValue) {
+				InternalEObject newDefaultValue = (InternalEObject) defaultValue;
+				NotificationChain msgs = oldDefaultValue
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.PROPERTY__DEFAULT_VALUE, null, null);
+				if (newDefaultValue.eInternalContainer() == null) {
+					msgs = newDefaultValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.PROPERTY__DEFAULT_VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PROPERTY__DEFAULT_VALUE, oldDefaultValue,
+						defaultValue));
+			}
+		}
+		return defaultValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetDefaultValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE);
 	}
 
@@ -1174,7 +1238,7 @@ public class PropertyImpl
 		EList qualifier = (EList) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
 		if (qualifier == null) {
 			eVirtualSet(UMLPackage.PROPERTY__QUALIFIER,
-				qualifier = new EObjectContainmentWithInverseEList(
+				qualifier = new EObjectContainmentWithInverseEList.Resolving(
 					Property.class, this, UMLPackage.PROPERTY__QUALIFIER,
 					UMLPackage.PROPERTY__ASSOCIATION_END));
 		}
@@ -1688,7 +1752,9 @@ public class PropertyImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PROPERTY__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PROPERTY__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -1720,9 +1786,13 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.PROPERTY__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.PROPERTY__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
 				return isReadOnly()
 					? Boolean.TRUE
@@ -1744,7 +1814,9 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.PROPERTY__CLASS_ :
 				return getClass_();
 			case UMLPackage.PROPERTY__DATATYPE :
@@ -1772,7 +1844,9 @@ public class PropertyImpl
 					return getOwningAssociation();
 				return basicGetOwningAssociation();
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
-				return getDefaultValue();
+				if (resolve)
+					return getDefaultValue();
+				return basicGetDefaultValue();
 			case UMLPackage.PROPERTY__OPPOSITE :
 				if (resolve)
 					return getOpposite();

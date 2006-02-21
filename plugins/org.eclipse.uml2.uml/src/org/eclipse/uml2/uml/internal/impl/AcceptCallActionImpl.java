@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.11 2006/01/03 19:50:24 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -202,7 +202,9 @@ public class AcceptCallActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACCEPT_CALL_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACCEPT_CALL_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

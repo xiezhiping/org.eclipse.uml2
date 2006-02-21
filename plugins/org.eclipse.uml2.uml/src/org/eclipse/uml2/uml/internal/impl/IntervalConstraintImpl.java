@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.9 2006/01/31 18:55:04 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -68,6 +68,39 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
+		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION);
+		if (specification != null && specification.eIsProxy()) {
+			InternalEObject oldSpecification = (InternalEObject) specification;
+			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			if (specification != oldSpecification) {
+				InternalEObject newSpecification = (InternalEObject) specification;
+				NotificationChain msgs = oldSpecification.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, null,
+					null);
+				if (newSpecification.eInternalContainer() == null) {
+					msgs = newSpecification.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
+						oldSpecification, specification));
+			}
+		}
+		return specification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetSpecification() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION);
 	}
 
@@ -186,7 +219,9 @@ public class IntervalConstraintImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -198,7 +233,9 @@ public class IntervalConstraintImpl
 			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
-				return getSpecification();
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
 				return getContext();
 		}

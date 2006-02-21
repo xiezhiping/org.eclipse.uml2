@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.12 2006/02/02 23:30:18 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -151,6 +151,35 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public ValueSpecification getJoinSpec() {
+		ValueSpecification joinSpec = (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
+		if (joinSpec != null && joinSpec.eIsProxy()) {
+			InternalEObject oldJoinSpec = (InternalEObject) joinSpec;
+			joinSpec = (ValueSpecification) eResolveProxy(oldJoinSpec);
+			if (joinSpec != oldJoinSpec) {
+				InternalEObject newJoinSpec = (InternalEObject) joinSpec;
+				NotificationChain msgs = oldJoinSpec.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.JOIN_NODE__JOIN_SPEC,
+					null, null);
+				if (newJoinSpec.eInternalContainer() == null) {
+					msgs = newJoinSpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.JOIN_NODE__JOIN_SPEC, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.JOIN_NODE__JOIN_SPEC, oldJoinSpec, joinSpec));
+			}
+		}
+		return joinSpec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetJoinSpec() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
 	}
 
@@ -311,7 +340,9 @@ public class JoinNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.JOIN_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -341,7 +372,9 @@ public class JoinNodeImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.JOIN_NODE__JOIN_SPEC :
-				return getJoinSpec();
+				if (resolve)
+					return getJoinSpec();
+				return basicGetJoinSpec();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

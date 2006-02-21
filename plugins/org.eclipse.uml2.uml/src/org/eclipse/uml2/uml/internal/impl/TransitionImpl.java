@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.12 2006/01/05 13:54:02 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.13 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,7 +199,7 @@ public class TransitionImpl
 		if (ownedRule == null) {
 			eVirtualSet(
 				UMLPackage.TRANSITION__OWNED_RULE,
-				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Constraint.class, this, UMLPackage.TRANSITION__OWNED_RULE,
 					null, new int[]{UMLPackage.TRANSITION__GUARD},
 					UMLPackage.CONSTRAINT__CONTEXT));
@@ -494,6 +494,26 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Constraint getGuard() {
+		Constraint guard = (Constraint) eVirtualGet(UMLPackage.TRANSITION__GUARD);
+		if (guard != null && guard.eIsProxy()) {
+			InternalEObject oldGuard = (InternalEObject) guard;
+			guard = (Constraint) eResolveProxy(oldGuard);
+			if (guard != oldGuard) {
+				eVirtualSet(UMLPackage.TRANSITION__GUARD, guard);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TRANSITION__GUARD, oldGuard, guard));
+			}
+		}
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetGuard() {
 		return (Constraint) eVirtualGet(UMLPackage.TRANSITION__GUARD);
 	}
 
@@ -522,6 +542,35 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Behavior getEffect() {
+		Behavior effect = (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
+		if (effect != null && effect.eIsProxy()) {
+			InternalEObject oldEffect = (InternalEObject) effect;
+			effect = (Behavior) eResolveProxy(oldEffect);
+			if (effect != oldEffect) {
+				InternalEObject newEffect = (InternalEObject) effect;
+				NotificationChain msgs = oldEffect.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TRANSITION__EFFECT,
+					null, null);
+				if (newEffect.eInternalContainer() == null) {
+					msgs = newEffect.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TRANSITION__EFFECT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TRANSITION__EFFECT, oldEffect, effect));
+			}
+		}
+		return effect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior basicGetEffect() {
 		return (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
 	}
 
@@ -595,8 +644,8 @@ public class TransitionImpl
 		EList trigger = (EList) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
 		if (trigger == null) {
 			eVirtualSet(UMLPackage.TRANSITION__TRIGGER,
-				trigger = new EObjectContainmentEList(Trigger.class, this,
-					UMLPackage.TRANSITION__TRIGGER));
+				trigger = new EObjectContainmentEList.Resolving(Trigger.class,
+					this, UMLPackage.TRANSITION__TRIGGER));
 		}
 		return trigger;
 	}
@@ -972,7 +1021,9 @@ public class TransitionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
@@ -1006,9 +1057,13 @@ public class TransitionImpl
 					return getRedefinedTransition();
 				return basicGetRedefinedTransition();
 			case UMLPackage.TRANSITION__GUARD :
-				return getGuard();
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.TRANSITION__EFFECT :
-				return getEffect();
+				if (resolve)
+					return getEffect();
+				return basicGetEffect();
 			case UMLPackage.TRANSITION__TRIGGER :
 				return getTriggers();
 			case UMLPackage.TRANSITION__SOURCE :

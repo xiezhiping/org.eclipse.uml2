@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.19 2006/02/02 19:23:40 khussey Exp $
+ * $Id: PackageImpl.java,v 1.20 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -326,8 +326,9 @@ public class PackageImpl
 	public EList getTemplateBindings() {
 		EList templateBinding = (EList) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_BINDING);
 		if (templateBinding == null) {
-			eVirtualSet(UMLPackage.PACKAGE__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PACKAGE__TEMPLATE_BINDING,
+				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
 					TemplateBinding.class, this,
 					UMLPackage.PACKAGE__TEMPLATE_BINDING,
 					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
@@ -353,6 +354,38 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
+		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
+		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
+				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+				NotificationChain msgs = oldOwnedTemplateSignature
+					.eInverseRemove(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, null);
+				if (newOwnedTemplateSignature.eInternalContainer() == null) {
+					msgs = newOwnedTemplateSignature.eInverseAdd(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
+						oldOwnedTemplateSignature, ownedTemplateSignature));
+			}
+		}
+		return ownedTemplateSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature basicGetOwnedTemplateSignature() {
 		return (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
 	}
 
@@ -503,8 +536,9 @@ public class PackageImpl
 	public EList getPackageMerges() {
 		EList packageMerge = (EList) eVirtualGet(UMLPackage.PACKAGE__PACKAGE_MERGE);
 		if (packageMerge == null) {
-			eVirtualSet(UMLPackage.PACKAGE__PACKAGE_MERGE,
-				packageMerge = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PACKAGE__PACKAGE_MERGE,
+				packageMerge = new EObjectContainmentWithInverseEList.Resolving(
 					PackageMerge.class, this,
 					UMLPackage.PACKAGE__PACKAGE_MERGE,
 					UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE));
@@ -647,8 +681,9 @@ public class PackageImpl
 	public EList getProfileApplications() {
 		EList profileApplication = (EList) eVirtualGet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
 		if (profileApplication == null) {
-			eVirtualSet(UMLPackage.PACKAGE__PROFILE_APPLICATION,
-				profileApplication = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.PACKAGE__PROFILE_APPLICATION,
+				profileApplication = new EObjectContainmentWithInverseEList.Resolving(
 					ProfileApplication.class, this,
 					UMLPackage.PACKAGE__PROFILE_APPLICATION,
 					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE));
@@ -1101,7 +1136,9 @@ public class PackageImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PACKAGE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
@@ -1125,7 +1162,9 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.PACKAGE__OWNED_TYPE :
 				return getOwnedTypes();
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :

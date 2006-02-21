@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
+ * $Id: SlotImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -189,8 +189,8 @@ public class SlotImpl
 		EList value = (EList) eVirtualGet(UMLPackage.SLOT__VALUE);
 		if (value == null) {
 			eVirtualSet(UMLPackage.SLOT__VALUE,
-				value = new EObjectContainmentEList(ValueSpecification.class,
-					this, UMLPackage.SLOT__VALUE));
+				value = new EObjectContainmentEList.Resolving(
+					ValueSpecification.class, this, UMLPackage.SLOT__VALUE));
 		}
 		return value;
 	}

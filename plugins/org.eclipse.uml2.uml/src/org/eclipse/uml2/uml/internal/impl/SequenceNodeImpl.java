@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,7 +76,7 @@ public class SequenceNodeImpl
 		EList executableNode = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE);
 		if (executableNode == null) {
 			eVirtualSet(UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE,
-				executableNode = new EObjectContainmentEList(
+				executableNode = new EObjectContainmentEList.Resolving(
 					ExecutableNode.class, this,
 					UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE));
 		}
@@ -222,7 +222,9 @@ public class SequenceNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.SEQUENCE_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

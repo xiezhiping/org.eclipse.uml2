@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -242,7 +242,9 @@ public class EnumerationLiteralImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ENUMERATION_LITERAL__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ENUMERATION_LITERAL__DEPLOYMENT :
 				return getDeployments();
 			case UMLPackage.ENUMERATION_LITERAL__DEPLOYED_ELEMENT :
@@ -260,7 +262,9 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL__SLOT :
 				return getSlots();
 			case UMLPackage.ENUMERATION_LITERAL__SPECIFICATION :
-				return getSpecification();
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.ENUMERATION_LITERAL__ENUMERATION :
 				return getEnumeration();
 		}

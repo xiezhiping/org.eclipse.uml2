@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,6 +102,38 @@ public class ValueSpecificationActionImpl
 	 * @generated
 	 */
 	public ValueSpecification getValue() {
+		ValueSpecification value = (ValueSpecification) eVirtualGet(UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE);
+		if (value != null && value.eIsProxy()) {
+			InternalEObject oldValue = (InternalEObject) value;
+			value = (ValueSpecification) eResolveProxy(oldValue);
+			if (value != oldValue) {
+				InternalEObject newValue = (InternalEObject) value;
+				NotificationChain msgs = oldValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE, null,
+					null);
+				if (newValue.eInternalContainer() == null) {
+					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE, oldValue,
+						value));
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE);
 	}
 
@@ -176,6 +208,38 @@ public class ValueSpecificationActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT);
+		if (result != null && result.eIsProxy()) {
+			InternalEObject oldResult = (InternalEObject) result;
+			result = (OutputPin) eResolveProxy(oldResult);
+			if (result != oldResult) {
+				InternalEObject newResult = (InternalEObject) result;
+				NotificationChain msgs = oldResult.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT, null,
+					null);
+				if (newResult.eInternalContainer() == null) {
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT,
+						oldResult, result));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin basicGetResult() {
 		return (OutputPin) eVirtualGet(UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT);
 	}
 
@@ -350,7 +414,9 @@ public class ValueSpecificationActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -388,9 +454,13 @@ public class ValueSpecificationActionImpl
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE :
-				return getValue();
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT :
-				return getResult();
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

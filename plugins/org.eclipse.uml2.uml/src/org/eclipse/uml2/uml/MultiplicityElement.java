@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.6 2006/02/02 23:30:18 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.7 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -217,7 +217,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Upper Value</em>' containment reference.
 	 * @see #setUpperValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_UpperValue()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getUpperValue();
@@ -253,7 +253,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Lower Value</em>' containment reference.
 	 * @see #setLowerValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_LowerValue()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getLowerValue();

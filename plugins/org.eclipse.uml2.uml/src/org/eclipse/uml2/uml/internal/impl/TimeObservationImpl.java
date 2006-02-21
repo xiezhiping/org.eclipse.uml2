@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationImpl.java,v 1.3 2006/02/02 23:30:18 khussey Exp $
+ * $Id: TimeObservationImpl.java,v 1.4 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -190,7 +190,9 @@ public class TimeObservationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();

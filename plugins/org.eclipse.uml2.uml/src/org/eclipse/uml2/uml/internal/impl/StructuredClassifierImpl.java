@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.15 2006/01/03 19:50:26 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,8 +212,9 @@ public abstract class StructuredClassifierImpl
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE));
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this,
+					UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -326,8 +327,9 @@ public abstract class StructuredClassifierImpl
 		EList ownedConnector = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		if (ownedConnector == null) {
 			eVirtualSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
-				ownedConnector = new EObjectContainmentEList(Connector.class,
-					this, UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR));
+				ownedConnector = new EObjectContainmentEList.Resolving(
+					Connector.class, this,
+					UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR));
 		}
 		return ownedConnector;
 	}
@@ -480,7 +482,9 @@ public abstract class StructuredClassifierImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.STRUCTURED_CLASSIFIER__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.STRUCTURED_CLASSIFIER__PACKAGE_IMPORT :
@@ -516,7 +520,9 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -538,7 +544,9 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.STRUCTURED_CLASSIFIER__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
@@ -546,7 +554,9 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
 				return getUseCases();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.STRUCTURED_CLASSIFIER__PART :

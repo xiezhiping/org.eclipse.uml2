@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.13 2006/01/03 19:50:24 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.14 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -104,8 +104,9 @@ public class EnumerationImpl
 	public EList getOwnedLiterals() {
 		EList ownedLiteral = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_LITERAL);
 		if (ownedLiteral == null) {
-			eVirtualSet(UMLPackage.ENUMERATION__OWNED_LITERAL,
-				ownedLiteral = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.ENUMERATION__OWNED_LITERAL,
+				ownedLiteral = new EObjectContainmentWithInverseEList.Resolving(
 					EnumerationLiteral.class, this,
 					UMLPackage.ENUMERATION__OWNED_LITERAL,
 					UMLPackage.ENUMERATION_LITERAL__ENUMERATION));
@@ -332,7 +333,9 @@ public class EnumerationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
@@ -368,7 +371,9 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ENUMERATION__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -390,7 +395,9 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.ENUMERATION__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.ENUMERATION__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
@@ -398,7 +405,9 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return getUseCases();
 			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ENUMERATION__OWNED_OPERATION :

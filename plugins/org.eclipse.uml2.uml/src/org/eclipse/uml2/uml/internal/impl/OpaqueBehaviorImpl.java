@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.14 2006/01/12 15:53:51 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.15 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -166,7 +166,9 @@ public class OpaqueBehaviorImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
@@ -202,7 +204,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -224,7 +228,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.OPAQUE_BEHAVIOR__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
@@ -232,7 +238,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				return getUseCases();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.OPAQUE_BEHAVIOR__PART :
@@ -246,7 +254,9 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.OPAQUE_BEHAVIOR__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.OPAQUE_BEHAVIOR__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER :

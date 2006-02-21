@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface ProtocolTransition
 	 * @return the value of the '<em>Post Condition</em>' reference.
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolTransition_PostCondition()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Constraint getPostCondition();
@@ -112,7 +112,7 @@ public interface ProtocolTransition
 	 * @return the value of the '<em>Pre Condition</em>' reference.
 	 * @see #setPreCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolTransition_PreCondition()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Constraint getPreCondition();

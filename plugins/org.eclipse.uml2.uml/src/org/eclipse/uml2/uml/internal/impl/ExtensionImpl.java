@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.17 2006/02/02 19:23:40 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.18 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +90,7 @@ public class ExtensionImpl
 		EList ownedEnd = (EList) eVirtualGet(UMLPackage.EXTENSION__OWNED_END);
 		if (ownedEnd == null) {
 			eVirtualSet(UMLPackage.EXTENSION__OWNED_END,
-				ownedEnd = new EObjectContainmentWithInverseEList(
+				ownedEnd = new EObjectContainmentWithInverseEList.Resolving(
 					ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
 					UMLPackage.PROPERTY__OWNING_ASSOCIATION));
 		}
@@ -102,7 +102,7 @@ public class ExtensionImpl
 		if (ownedEnd == null) {
 			eVirtualSet(
 				UMLPackage.EXTENSION__OWNED_END,
-				ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
 					new int[]{UMLPackage.EXTENSION__MEMBER_END},
 					new int[]{UMLPackage.EXTENSION__NAVIGABLE_OWNED_END},
@@ -253,7 +253,9 @@ public class ExtensionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXTENSION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXTENSION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.EXTENSION__PACKAGE_IMPORT :
@@ -289,7 +291,9 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.EXTENSION__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -311,7 +315,9 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.EXTENSION__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.EXTENSION__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.EXTENSION__OWNED_USE_CASE :
@@ -319,7 +325,9 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__USE_CASE :
 				return getUseCases();
 			case UMLPackage.EXTENSION__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.EXTENSION__OWNED_END :

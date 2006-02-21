@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
+ * $Id: NodeImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -151,7 +151,7 @@ public class NodeImpl
 		if (deployment == null) {
 			eVirtualSet(
 				UMLPackage.NODE__DEPLOYMENT,
-				deployment = new SubsetSupersetEObjectContainmentWithInverseEList(
+				deployment = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Deployment.class, this, UMLPackage.NODE__DEPLOYMENT,
 					new int[]{UMLPackage.NODE__CLIENT_DEPENDENCY}, null,
 					UMLPackage.DEPLOYMENT__LOCATION));
@@ -255,8 +255,8 @@ public class NodeImpl
 		EList nestedNode = (EList) eVirtualGet(UMLPackage.NODE__NESTED_NODE);
 		if (nestedNode == null) {
 			eVirtualSet(UMLPackage.NODE__NESTED_NODE,
-				nestedNode = new EObjectContainmentEList(Node.class, this,
-					UMLPackage.NODE__NESTED_NODE));
+				nestedNode = new EObjectContainmentEList.Resolving(Node.class,
+					this, UMLPackage.NODE__NESTED_NODE));
 		}
 		return nestedNode;
 	}
@@ -513,7 +513,9 @@ public class NodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.NODE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.NODE__PACKAGE_IMPORT :
@@ -549,7 +551,9 @@ public class NodeImpl
 			case UMLPackage.NODE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.NODE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.NODE__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -571,7 +575,9 @@ public class NodeImpl
 			case UMLPackage.NODE__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.NODE__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.NODE__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.NODE__OWNED_USE_CASE :
@@ -579,7 +585,9 @@ public class NodeImpl
 			case UMLPackage.NODE__USE_CASE :
 				return getUseCases();
 			case UMLPackage.NODE__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.NODE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.NODE__PART :
@@ -593,7 +601,9 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.NODE__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.NODE__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.NODE__OWNED_TRIGGER :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.15 2006/01/03 19:50:25 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -209,8 +209,9 @@ public class CollaborationImpl
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.COLLABORATION__OWNED_ATTRIBUTE));
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this,
+					UMLPackage.COLLABORATION__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -293,8 +294,9 @@ public class CollaborationImpl
 		EList ownedConnector = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_CONNECTOR);
 		if (ownedConnector == null) {
 			eVirtualSet(UMLPackage.COLLABORATION__OWNED_CONNECTOR,
-				ownedConnector = new EObjectContainmentEList(Connector.class,
-					this, UMLPackage.COLLABORATION__OWNED_CONNECTOR));
+				ownedConnector = new EObjectContainmentEList.Resolving(
+					Connector.class, this,
+					UMLPackage.COLLABORATION__OWNED_CONNECTOR));
 		}
 		return ownedConnector;
 	}
@@ -486,7 +488,9 @@ public class CollaborationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.COLLABORATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.COLLABORATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.COLLABORATION__PACKAGE_IMPORT :
@@ -522,7 +526,9 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.COLLABORATION__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.COLLABORATION__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -544,7 +550,9 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.COLLABORATION__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.COLLABORATION__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.COLLABORATION__OWNED_USE_CASE :
@@ -552,11 +560,15 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__USE_CASE :
 				return getUseCases();
 			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.COLLABORATION__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.COLLABORATION__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.COLLABORATION__OWNED_TRIGGER :

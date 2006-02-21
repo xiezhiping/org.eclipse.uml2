@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationImpl.java,v 1.2 2006/01/04 17:47:24 khussey Exp $
+ * $Id: DurationObservationImpl.java,v 1.3 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -155,7 +155,9 @@ public class DurationObservationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();

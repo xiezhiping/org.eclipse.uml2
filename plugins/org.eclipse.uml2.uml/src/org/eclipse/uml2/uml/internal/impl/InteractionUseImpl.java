@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.10 2006/01/11 18:13:44 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,8 +160,8 @@ public class InteractionUseImpl
 		EList actualGate = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
 		if (actualGate == null) {
 			eVirtualSet(UMLPackage.INTERACTION_USE__ACTUAL_GATE,
-				actualGate = new EObjectContainmentEList(Gate.class, this,
-					UMLPackage.INTERACTION_USE__ACTUAL_GATE));
+				actualGate = new EObjectContainmentEList.Resolving(Gate.class,
+					this, UMLPackage.INTERACTION_USE__ACTUAL_GATE));
 		}
 		return actualGate;
 	}
@@ -201,8 +201,8 @@ public class InteractionUseImpl
 		EList argument = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
 		if (argument == null) {
 			eVirtualSet(UMLPackage.INTERACTION_USE__ARGUMENT,
-				argument = new EObjectContainmentEList(Action.class, this,
-					UMLPackage.INTERACTION_USE__ARGUMENT));
+				argument = new EObjectContainmentEList.Resolving(Action.class,
+					this, UMLPackage.INTERACTION_USE__ARGUMENT));
 		}
 		return argument;
 	}
@@ -347,7 +347,9 @@ public class InteractionUseImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERACTION_USE__COVERED :
 				return getCovereds();
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :

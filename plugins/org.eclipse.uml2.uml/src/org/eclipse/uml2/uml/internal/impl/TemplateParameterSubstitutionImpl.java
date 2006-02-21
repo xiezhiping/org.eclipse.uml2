@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.9 2006/01/05 13:54:02 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -182,7 +182,7 @@ public class TemplateParameterSubstitutionImpl
 		if (ownedActual == null) {
 			eVirtualSet(
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-				ownedActual = new SubsetSupersetEObjectContainmentEList(
+				ownedActual = new SubsetSupersetEObjectContainmentEList.Resolving(
 					ParameterableElement.class,
 					this,
 					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.13 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.14 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -398,8 +398,9 @@ public class ActivityPartitionImpl
 	public EList getSubpartitions() {
 		EList subpartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
 		if (subpartition == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
-				subpartition = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
+				subpartition = new EObjectContainmentWithInverseEList.Resolving(
 					ActivityPartition.class, this,
 					UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
 					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION));
@@ -718,7 +719,9 @@ public class ActivityPartitionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACTIVITY_PARTITION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :

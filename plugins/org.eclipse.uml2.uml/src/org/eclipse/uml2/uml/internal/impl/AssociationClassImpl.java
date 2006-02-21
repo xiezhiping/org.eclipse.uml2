@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.15 2006/01/05 13:54:02 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Association;
@@ -245,7 +245,7 @@ public class AssociationClassImpl
 		if (ownedEnd == null) {
 			eVirtualSet(
 				UMLPackage.ASSOCIATION_CLASS__OWNED_END,
-				ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Property.class,
 					this,
 					UMLPackage.ASSOCIATION_CLASS__OWNED_END,
@@ -364,7 +364,7 @@ public class AssociationClassImpl
 		EList navigableOwnedEnd = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END);
 		if (navigableOwnedEnd == null) {
 			eVirtualSet(UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
-				navigableOwnedEnd = new SubsetSupersetEObjectEList(
+				navigableOwnedEnd = new SubsetSupersetEObjectResolvingEList(
 					Property.class, this,
 					UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
 					new int[]{UMLPackage.ASSOCIATION_CLASS__OWNED_END}, null));
@@ -673,7 +673,9 @@ public class AssociationClassImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ASSOCIATION_CLASS__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ASSOCIATION_CLASS__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ASSOCIATION_CLASS__PACKAGE_IMPORT :
@@ -709,7 +711,9 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION_CLASS__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -731,7 +735,9 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.ASSOCIATION_CLASS__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.ASSOCIATION_CLASS__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_USE_CASE :
@@ -739,7 +745,9 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
 				return getUseCases();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ASSOCIATION_CLASS__PART :
@@ -753,7 +761,9 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.ASSOCIATION_CLASS__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.ASSOCIATION_CLASS__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TRIGGER :

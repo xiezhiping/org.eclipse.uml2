@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.14 2006/01/03 19:50:25 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.15 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -182,9 +182,10 @@ public class InterfaceImpl
 	public EList getOwnedAttributes() {
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
-			eVirtualSet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.INTERFACE__OWNED_ATTRIBUTE));
+			eVirtualSet(
+				UMLPackage.INTERFACE__OWNED_ATTRIBUTE,
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this, UMLPackage.INTERFACE__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -236,7 +237,7 @@ public class InterfaceImpl
 		EList nestedClassifier = (EList) eVirtualGet(UMLPackage.INTERFACE__NESTED_CLASSIFIER);
 		if (nestedClassifier == null) {
 			eVirtualSet(UMLPackage.INTERFACE__NESTED_CLASSIFIER,
-				nestedClassifier = new EObjectContainmentEList(
+				nestedClassifier = new EObjectContainmentEList.Resolving(
 					Classifier.class, this,
 					UMLPackage.INTERFACE__NESTED_CLASSIFIER));
 		}
@@ -309,8 +310,9 @@ public class InterfaceImpl
 		EList ownedReception = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_RECEPTION);
 		if (ownedReception == null) {
 			eVirtualSet(UMLPackage.INTERFACE__OWNED_RECEPTION,
-				ownedReception = new EObjectContainmentEList(Reception.class,
-					this, UMLPackage.INTERFACE__OWNED_RECEPTION));
+				ownedReception = new EObjectContainmentEList.Resolving(
+					Reception.class, this,
+					UMLPackage.INTERFACE__OWNED_RECEPTION));
 		}
 		return ownedReception;
 	}
@@ -347,6 +349,35 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
+		ProtocolStateMachine protocol = (ProtocolStateMachine) eVirtualGet(UMLPackage.INTERFACE__PROTOCOL);
+		if (protocol != null && protocol.eIsProxy()) {
+			InternalEObject oldProtocol = (InternalEObject) protocol;
+			protocol = (ProtocolStateMachine) eResolveProxy(oldProtocol);
+			if (protocol != oldProtocol) {
+				InternalEObject newProtocol = (InternalEObject) protocol;
+				NotificationChain msgs = oldProtocol.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.INTERFACE__PROTOCOL,
+					null, null);
+				if (newProtocol.eInternalContainer() == null) {
+					msgs = newProtocol.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.INTERFACE__PROTOCOL, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.INTERFACE__PROTOCOL, oldProtocol, protocol));
+			}
+		}
+		return protocol;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProtocolStateMachine basicGetProtocol() {
 		return (ProtocolStateMachine) eVirtualGet(UMLPackage.INTERFACE__PROTOCOL);
 	}
 
@@ -420,8 +451,9 @@ public class InterfaceImpl
 	public EList getOwnedOperations() {
 		EList ownedOperation = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_OPERATION);
 		if (ownedOperation == null) {
-			eVirtualSet(UMLPackage.INTERFACE__OWNED_OPERATION,
-				ownedOperation = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.INTERFACE__OWNED_OPERATION,
+				ownedOperation = new EObjectContainmentWithInverseEList.Resolving(
 					Operation.class, this,
 					UMLPackage.INTERFACE__OWNED_OPERATION,
 					UMLPackage.OPERATION__INTERFACE));
@@ -668,7 +700,9 @@ public class InterfaceImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERFACE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERFACE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.INTERFACE__PACKAGE_IMPORT :
@@ -704,7 +738,9 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.INTERFACE__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -726,7 +762,9 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.INTERFACE__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.INTERFACE__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.INTERFACE__OWNED_USE_CASE :
@@ -734,7 +772,9 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__USE_CASE :
 				return getUseCases();
 			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.INTERFACE__OWNED_OPERATION :
@@ -746,7 +786,9 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.INTERFACE__PROTOCOL :
-				return getProtocol();
+				if (resolve)
+					return getProtocol();
+				return basicGetProtocol();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.7 2006/02/02 23:30:18 khussey Exp $
+ * $Id: LoopNode.java,v 1.8 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -192,7 +192,7 @@ public interface LoopNode
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_Result()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true"
 	 * @generated
 	 */
 	EList getResults();
@@ -280,7 +280,7 @@ public interface LoopNode
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Loop Variable Input</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_LoopVariableInput()
-	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true"
 	 * @generated
 	 */
 	EList getLoopVariableInputs();

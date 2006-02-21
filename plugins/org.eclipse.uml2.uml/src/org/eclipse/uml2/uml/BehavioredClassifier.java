@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.4 2006/01/04 17:47:25 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.5 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface BehavioredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_OwnedBehavior()
-	 * @model type="org.eclipse.uml2.uml.Behavior" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Behavior" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedBehaviors();
@@ -94,7 +94,7 @@ public interface BehavioredClassifier
 	 * @return the value of the '<em>Classifier Behavior</em>' reference.
 	 * @see #setClassifierBehavior(Behavior)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_ClassifierBehavior()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Behavior getClassifierBehavior();
@@ -122,7 +122,7 @@ public interface BehavioredClassifier
 	 * @return the value of the '<em>Interface Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_InterfaceRealization()
 	 * @see org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier
-	 * @model type="org.eclipse.uml2.uml.InterfaceRealization" opposite="implementingClassifier" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.InterfaceRealization" opposite="implementingClassifier" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getInterfaceRealizations();
@@ -158,7 +158,7 @@ public interface BehavioredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_OwnedTrigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedTriggers();

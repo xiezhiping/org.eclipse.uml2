@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.10 2006/01/05 13:54:02 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -176,8 +176,9 @@ public class DeploymentImpl
 	public EList getConfigurations() {
 		EList configuration = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
 		if (configuration == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT__CONFIGURATION,
-				configuration = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.DEPLOYMENT__CONFIGURATION,
+				configuration = new EObjectContainmentWithInverseEList.Resolving(
 					DeploymentSpecification.class, this,
 					UMLPackage.DEPLOYMENT__CONFIGURATION,
 					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT));
@@ -395,7 +396,9 @@ public class DeploymentImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();

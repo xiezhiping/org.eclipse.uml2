@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.10 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -353,7 +353,9 @@ public class ComponentRealizationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -373,7 +375,9 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				return getClients();
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				return getMapping();
+				if (resolve)
+					return getMapping();
+				return basicGetMapping();
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				if (resolve)
 					return getAbstraction();

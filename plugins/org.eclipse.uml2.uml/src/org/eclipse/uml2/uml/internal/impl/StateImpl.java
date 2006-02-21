@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.18 2006/02/02 23:30:19 khussey Exp $
+ * $Id: StateImpl.java,v 1.19 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -574,7 +574,7 @@ public class StateImpl
 		EList connection = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION);
 		if (connection == null) {
 			eVirtualSet(UMLPackage.STATE__CONNECTION,
-				connection = new EObjectContainmentWithInverseEList(
+				connection = new EObjectContainmentWithInverseEList.Resolving(
 					ConnectionPointReference.class, this,
 					UMLPackage.STATE__CONNECTION,
 					UMLPackage.CONNECTION_POINT_REFERENCE__STATE));
@@ -618,8 +618,9 @@ public class StateImpl
 	public EList getConnectionPoints() {
 		EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
 		if (connectionPoint == null) {
-			eVirtualSet(UMLPackage.STATE__CONNECTION_POINT,
-				connectionPoint = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.STATE__CONNECTION_POINT,
+				connectionPoint = new EObjectContainmentWithInverseEList.Resolving(
 					Pseudostate.class, this,
 					UMLPackage.STATE__CONNECTION_POINT,
 					UMLPackage.PSEUDOSTATE__STATE));
@@ -708,6 +709,37 @@ public class StateImpl
 	 * @generated
 	 */
 	public Constraint getStateInvariant() {
+		Constraint stateInvariant = (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
+		if (stateInvariant != null && stateInvariant.eIsProxy()) {
+			InternalEObject oldStateInvariant = (InternalEObject) stateInvariant;
+			stateInvariant = (Constraint) eResolveProxy(oldStateInvariant);
+			if (stateInvariant != oldStateInvariant) {
+				InternalEObject newStateInvariant = (InternalEObject) stateInvariant;
+				NotificationChain msgs = oldStateInvariant.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__STATE_INVARIANT,
+					null, null);
+				if (newStateInvariant.eInternalContainer() == null) {
+					msgs = newStateInvariant.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STATE__STATE_INVARIANT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.STATE__STATE_INVARIANT, oldStateInvariant,
+						stateInvariant));
+			}
+		}
+		return stateInvariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetStateInvariant() {
 		return (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
 	}
 
@@ -791,6 +823,35 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getEntry() {
+		Behavior entry = (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
+		if (entry != null && entry.eIsProxy()) {
+			InternalEObject oldEntry = (InternalEObject) entry;
+			entry = (Behavior) eResolveProxy(oldEntry);
+			if (entry != oldEntry) {
+				InternalEObject newEntry = (InternalEObject) entry;
+				NotificationChain msgs = oldEntry.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__ENTRY, null,
+					null);
+				if (newEntry.eInternalContainer() == null) {
+					msgs = newEntry.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.STATE__ENTRY, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.STATE__ENTRY, oldEntry, entry));
+			}
+		}
+		return entry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior basicGetEntry() {
 		return (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
 	}
 
@@ -861,6 +922,35 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getExit() {
+		Behavior exit = (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
+		if (exit != null && exit.eIsProxy()) {
+			InternalEObject oldExit = (InternalEObject) exit;
+			exit = (Behavior) eResolveProxy(oldExit);
+			if (exit != oldExit) {
+				InternalEObject newExit = (InternalEObject) exit;
+				NotificationChain msgs = oldExit
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.STATE__EXIT, null, null);
+				if (newExit.eInternalContainer() == null) {
+					msgs = newExit.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.STATE__EXIT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.STATE__EXIT, oldExit, exit));
+			}
+		}
+		return exit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior basicGetExit() {
 		return (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
 	}
 
@@ -931,6 +1021,37 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getDoActivity() {
+		Behavior doActivity = (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
+		if (doActivity != null && doActivity.eIsProxy()) {
+			InternalEObject oldDoActivity = (InternalEObject) doActivity;
+			doActivity = (Behavior) eResolveProxy(oldDoActivity);
+			if (doActivity != oldDoActivity) {
+				InternalEObject newDoActivity = (InternalEObject) doActivity;
+				NotificationChain msgs = oldDoActivity.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__DO_ACTIVITY,
+					null, null);
+				if (newDoActivity.eInternalContainer() == null) {
+					msgs = newDoActivity.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__DO_ACTIVITY,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.STATE__DO_ACTIVITY, oldDoActivity,
+						doActivity));
+			}
+		}
+		return doActivity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior basicGetDoActivity() {
 		return (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
 	}
 
@@ -1005,8 +1126,8 @@ public class StateImpl
 		EList deferrableTrigger = (EList) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
 		if (deferrableTrigger == null) {
 			eVirtualSet(UMLPackage.STATE__DEFERRABLE_TRIGGER,
-				deferrableTrigger = new EObjectContainmentEList(Trigger.class,
-					this, UMLPackage.STATE__DEFERRABLE_TRIGGER));
+				deferrableTrigger = new EObjectContainmentEList.Resolving(
+					Trigger.class, this, UMLPackage.STATE__DEFERRABLE_TRIGGER));
 		}
 		return deferrableTrigger;
 	}
@@ -1046,8 +1167,9 @@ public class StateImpl
 		EList region = (EList) eVirtualGet(UMLPackage.STATE__REGION);
 		if (region == null) {
 			eVirtualSet(UMLPackage.STATE__REGION,
-				region = new EObjectContainmentWithInverseEList(Region.class,
-					this, UMLPackage.STATE__REGION, UMLPackage.REGION__STATE));
+				region = new EObjectContainmentWithInverseEList.Resolving(
+					Region.class, this, UMLPackage.STATE__REGION,
+					UMLPackage.REGION__STATE));
 		}
 		return region;
 	}
@@ -1364,7 +1486,9 @@ public class StateImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.STATE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.STATE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.STATE__PACKAGE_IMPORT :
@@ -1420,13 +1544,21 @@ public class StateImpl
 					return getRedefinedState();
 				return basicGetRedefinedState();
 			case UMLPackage.STATE__STATE_INVARIANT :
-				return getStateInvariant();
+				if (resolve)
+					return getStateInvariant();
+				return basicGetStateInvariant();
 			case UMLPackage.STATE__ENTRY :
-				return getEntry();
+				if (resolve)
+					return getEntry();
+				return basicGetEntry();
 			case UMLPackage.STATE__EXIT :
-				return getExit();
+				if (resolve)
+					return getExit();
+				return basicGetExit();
 			case UMLPackage.STATE__DO_ACTIVITY :
-				return getDoActivity();
+				if (resolve)
+					return getDoActivity();
+				return basicGetDoActivity();
 			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
 				return getDeferrableTriggers();
 			case UMLPackage.STATE__REGION :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.12 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Property.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -376,7 +376,7 @@ public interface Property
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_DefaultValue()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -465,7 +465,7 @@ public interface Property
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Qualifier()
 	 * @see org.eclipse.uml2.uml.Property#getAssociationEnd
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true"
 	 * @generated
 	 */
 	EList getQualifiers();

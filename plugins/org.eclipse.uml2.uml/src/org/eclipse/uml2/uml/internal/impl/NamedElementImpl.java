@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.15 2006/02/02 19:23:40 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -288,6 +288,38 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public StringExpression getNameExpression() {
+		StringExpression nameExpression = (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
+		if (nameExpression != null && nameExpression.eIsProxy()) {
+			InternalEObject oldNameExpression = (InternalEObject) nameExpression;
+			nameExpression = (StringExpression) eResolveProxy(oldNameExpression);
+			if (nameExpression != oldNameExpression) {
+				InternalEObject newNameExpression = (InternalEObject) nameExpression;
+				NotificationChain msgs = oldNameExpression
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, null, null);
+				if (newNameExpression.eInternalContainer() == null) {
+					msgs = newNameExpression.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION,
+						oldNameExpression, nameExpression));
+			}
+		}
+		return nameExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StringExpression basicGetNameExpression() {
 		return (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
 	}
 
@@ -532,7 +564,9 @@ public abstract class NamedElementImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

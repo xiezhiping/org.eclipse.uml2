@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.12 2006/01/03 19:50:25 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -186,8 +186,8 @@ public class AcceptEventActionImpl
 		EList trigger = (EList) eVirtualGet(UMLPackage.ACCEPT_EVENT_ACTION__TRIGGER);
 		if (trigger == null) {
 			eVirtualSet(UMLPackage.ACCEPT_EVENT_ACTION__TRIGGER,
-				trigger = new EObjectContainmentEList(Trigger.class, this,
-					UMLPackage.ACCEPT_EVENT_ACTION__TRIGGER));
+				trigger = new EObjectContainmentEList.Resolving(Trigger.class,
+					this, UMLPackage.ACCEPT_EVENT_ACTION__TRIGGER));
 		}
 		return trigger;
 	}
@@ -343,7 +343,9 @@ public class AcceptEventActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACCEPT_EVENT_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACCEPT_EVENT_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

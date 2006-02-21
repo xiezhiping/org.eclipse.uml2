@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.18 2006/02/08 17:09:15 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.19 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -381,6 +381,37 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
+		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
+		if (upperValue != null && upperValue.eIsProxy()) {
+			InternalEObject oldUpperValue = (InternalEObject) upperValue;
+			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
+			if (upperValue != oldUpperValue) {
+				InternalEObject newUpperValue = (InternalEObject) upperValue;
+				NotificationChain msgs = oldUpperValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PARAMETER__UPPER_VALUE,
+					null, null);
+				if (newUpperValue.eInternalContainer() == null) {
+					msgs = newUpperValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.PARAMETER__UPPER_VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PARAMETER__UPPER_VALUE, oldUpperValue,
+						upperValue));
+			}
+		}
+		return upperValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetUpperValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
 	}
 
@@ -452,6 +483,37 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
+		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
+		if (lowerValue != null && lowerValue.eIsProxy()) {
+			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
+			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
+			if (lowerValue != oldLowerValue) {
+				InternalEObject newLowerValue = (InternalEObject) lowerValue;
+				NotificationChain msgs = oldLowerValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.PARAMETER__LOWER_VALUE,
+					null, null);
+				if (newLowerValue.eInternalContainer() == null) {
+					msgs = newLowerValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.PARAMETER__LOWER_VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PARAMETER__LOWER_VALUE, oldLowerValue,
+						lowerValue));
+			}
+		}
+		return lowerValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetLowerValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
 	}
 
@@ -633,6 +695,37 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
+		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
+		if (defaultValue != null && defaultValue.eIsProxy()) {
+			InternalEObject oldDefaultValue = (InternalEObject) defaultValue;
+			defaultValue = (ValueSpecification) eResolveProxy(oldDefaultValue);
+			if (defaultValue != oldDefaultValue) {
+				InternalEObject newDefaultValue = (InternalEObject) defaultValue;
+				NotificationChain msgs = oldDefaultValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.PARAMETER__DEFAULT_VALUE, null, null);
+				if (newDefaultValue.eInternalContainer() == null) {
+					msgs = newDefaultValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.PARAMETER__DEFAULT_VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.PARAMETER__DEFAULT_VALUE, oldDefaultValue,
+						defaultValue));
+			}
+		}
+		return defaultValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetDefaultValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
 	}
 
@@ -1059,7 +1152,9 @@ public class ParameterImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PARAMETER__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PARAMETER__TYPE :
 				if (resolve)
 					return getType();
@@ -1087,9 +1182,13 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.PARAMETER__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.PARAMETER__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.PARAMETER__PARAMETER_SET :
 				return getParameterSets();
 			case UMLPackage.PARAMETER__OPERATION :
@@ -1099,7 +1198,9 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__DEFAULT :
 				return getDefault();
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
-				return getDefaultValue();
+				if (resolve)
+					return getDefaultValue();
+				return basicGetDefaultValue();
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
 				return isException()
 					? Boolean.TRUE

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.15 2006/02/02 23:30:19 khussey Exp $
+ * $Id: VariableImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -302,6 +302,37 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
+		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
+		if (upperValue != null && upperValue.eIsProxy()) {
+			InternalEObject oldUpperValue = (InternalEObject) upperValue;
+			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
+			if (upperValue != oldUpperValue) {
+				InternalEObject newUpperValue = (InternalEObject) upperValue;
+				NotificationChain msgs = oldUpperValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.VARIABLE__UPPER_VALUE,
+					null, null);
+				if (newUpperValue.eInternalContainer() == null) {
+					msgs = newUpperValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.VARIABLE__UPPER_VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.VARIABLE__UPPER_VALUE, oldUpperValue,
+						upperValue));
+			}
+		}
+		return upperValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetUpperValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
 	}
 
@@ -373,6 +404,37 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
+		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
+		if (lowerValue != null && lowerValue.eIsProxy()) {
+			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
+			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
+			if (lowerValue != oldLowerValue) {
+				InternalEObject newLowerValue = (InternalEObject) lowerValue;
+				NotificationChain msgs = oldLowerValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.VARIABLE__LOWER_VALUE,
+					null, null);
+				if (newLowerValue.eInternalContainer() == null) {
+					msgs = newLowerValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.VARIABLE__LOWER_VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.VARIABLE__LOWER_VALUE, oldLowerValue,
+						lowerValue));
+			}
+		}
+		return lowerValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetLowerValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
 	}
 
@@ -768,7 +830,9 @@ public class VariableImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.VARIABLE__TYPE :
 				if (resolve)
 					return getType();
@@ -796,9 +860,13 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.VARIABLE__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.VARIABLE__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.VARIABLE__SCOPE :
 				return getScope();
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :

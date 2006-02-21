@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: RemoveVariableValueActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,6 +150,38 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public InputPin getRemoveAt() {
+		InputPin removeAt = (InputPin) eVirtualGet(UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT);
+		if (removeAt != null && removeAt.eIsProxy()) {
+			InternalEObject oldRemoveAt = (InternalEObject) removeAt;
+			removeAt = (InputPin) eResolveProxy(oldRemoveAt);
+			if (removeAt != oldRemoveAt) {
+				InternalEObject newRemoveAt = (InternalEObject) removeAt;
+				NotificationChain msgs = oldRemoveAt.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
+					null, null);
+				if (newRemoveAt.eInternalContainer() == null) {
+					msgs = newRemoveAt.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
+						oldRemoveAt, removeAt));
+			}
+		}
+		return removeAt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetRemoveAt() {
 		return (InputPin) eVirtualGet(UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT);
 	}
 
@@ -327,7 +359,9 @@ public class RemoveVariableValueActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -369,13 +403,17 @@ public class RemoveVariableValueActionImpl
 					return getVariable();
 				return basicGetVariable();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__VALUE :
-				return getValue();
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
 				return isRemoveDuplicates()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT :
-				return getRemoveAt();
+				if (resolve)
+					return getRemoveAt();
+				return basicGetRemoveAt();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

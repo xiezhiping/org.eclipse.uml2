@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.12 2006/02/02 23:30:18 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -155,8 +155,8 @@ public abstract class CallActionImpl
 		EList result = (EList) eVirtualGet(UMLPackage.CALL_ACTION__RESULT);
 		if (result == null) {
 			eVirtualSet(UMLPackage.CALL_ACTION__RESULT,
-				result = new EObjectContainmentEList(OutputPin.class, this,
-					UMLPackage.CALL_ACTION__RESULT));
+				result = new EObjectContainmentEList.Resolving(OutputPin.class,
+					this, UMLPackage.CALL_ACTION__RESULT));
 		}
 		return result;
 	}
@@ -306,7 +306,9 @@ public abstract class CallActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CALL_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CALL_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.12 2006/01/03 19:50:25 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +107,8 @@ public abstract class InvocationActionImpl
 		EList argument = (EList) eVirtualGet(UMLPackage.INVOCATION_ACTION__ARGUMENT);
 		if (argument == null) {
 			eVirtualSet(UMLPackage.INVOCATION_ACTION__ARGUMENT,
-				argument = new EObjectContainmentEList(InputPin.class, this,
+				argument = new EObjectContainmentEList.Resolving(
+					InputPin.class, this,
 					UMLPackage.INVOCATION_ACTION__ARGUMENT));
 		}
 		return argument;
@@ -293,7 +294,9 @@ public abstract class InvocationActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INVOCATION_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INVOCATION_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

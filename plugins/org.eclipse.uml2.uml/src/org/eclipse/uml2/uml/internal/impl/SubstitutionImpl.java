@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.10 2006/01/05 13:54:02 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -346,7 +346,9 @@ public class SubstitutionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -366,7 +368,9 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				return getClients();
 			case UMLPackage.SUBSTITUTION__MAPPING :
-				return getMapping();
+				if (resolve)
+					return getMapping();
+				return basicGetMapping();
 			case UMLPackage.SUBSTITUTION__CONTRACT :
 				if (resolve)
 					return getContract();

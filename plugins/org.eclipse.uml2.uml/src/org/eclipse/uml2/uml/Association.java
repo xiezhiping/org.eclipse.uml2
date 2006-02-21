@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.5 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Association.java,v 1.6 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -142,7 +142,7 @@ public interface Association
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Navigable Owned End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_NavigableOwnedEnd()
-	 * @model type="org.eclipse.uml2.uml.Property" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
 	EList getNavigableOwnedEnds();
@@ -171,7 +171,7 @@ public interface Association
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.uml.Property#getOwningAssociation
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true"
 	 * @generated
 	 */
 	EList getOwnedEnds();

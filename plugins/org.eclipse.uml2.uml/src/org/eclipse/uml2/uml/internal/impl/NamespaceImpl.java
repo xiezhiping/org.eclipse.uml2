@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.11 2005/12/14 22:34:19 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -177,8 +177,9 @@ public abstract class NamespaceImpl
 	public EList getElementImports() {
 		EList elementImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
 		if (elementImport == null) {
-			eVirtualSet(UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-				elementImport = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.NAMESPACE__ELEMENT_IMPORT,
+				elementImport = new EObjectContainmentWithInverseEList.Resolving(
 					ElementImport.class, this,
 					UMLPackage.NAMESPACE__ELEMENT_IMPORT,
 					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
@@ -206,8 +207,9 @@ public abstract class NamespaceImpl
 	public EList getPackageImports() {
 		EList packageImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
 		if (packageImport == null) {
-			eVirtualSet(UMLPackage.NAMESPACE__PACKAGE_IMPORT,
-				packageImport = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.NAMESPACE__PACKAGE_IMPORT,
+				packageImport = new EObjectContainmentWithInverseEList.Resolving(
 					PackageImport.class, this,
 					UMLPackage.NAMESPACE__PACKAGE_IMPORT,
 					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
@@ -236,7 +238,7 @@ public abstract class NamespaceImpl
 		EList ownedRule = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
 		if (ownedRule == null) {
 			eVirtualSet(UMLPackage.NAMESPACE__OWNED_RULE,
-				ownedRule = new EObjectContainmentWithInverseEList(
+				ownedRule = new EObjectContainmentWithInverseEList.Resolving(
 					Constraint.class, this, UMLPackage.NAMESPACE__OWNED_RULE,
 					UMLPackage.CONSTRAINT__CONTEXT));
 		}
@@ -513,7 +515,9 @@ public abstract class NamespaceImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :

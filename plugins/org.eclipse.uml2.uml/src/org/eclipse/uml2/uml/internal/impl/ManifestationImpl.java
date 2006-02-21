@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.9 2006/01/05 13:54:02 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -169,7 +169,9 @@ public class ManifestationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -189,7 +191,9 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__CLIENT :
 				return getClients();
 			case UMLPackage.MANIFESTATION__MAPPING :
-				return getMapping();
+				if (resolve)
+					return getMapping();
+				return basicGetMapping();
 			case UMLPackage.MANIFESTATION__UTILIZED_ELEMENT :
 				if (resolve)
 					return getUtilizedElement();

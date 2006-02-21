@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,6 +150,38 @@ public class AddVariableValueActionImpl
 	 * @generated
 	 */
 	public InputPin getInsertAt() {
+		InputPin insertAt = (InputPin) eVirtualGet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT);
+		if (insertAt != null && insertAt.eIsProxy()) {
+			InternalEObject oldInsertAt = (InternalEObject) insertAt;
+			insertAt = (InputPin) eResolveProxy(oldInsertAt);
+			if (insertAt != oldInsertAt) {
+				InternalEObject newInsertAt = (InternalEObject) insertAt;
+				NotificationChain msgs = oldInsertAt.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
+					null, null);
+				if (newInsertAt.eInternalContainer() == null) {
+					msgs = newInsertAt.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
+						oldInsertAt, insertAt));
+			}
+		}
+		return insertAt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetInsertAt() {
 		return (InputPin) eVirtualGet(UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT);
 	}
 
@@ -326,7 +358,9 @@ public class AddVariableValueActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -368,13 +402,17 @@ public class AddVariableValueActionImpl
 					return getVariable();
 				return basicGetVariable();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__VALUE :
-				return getValue();
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__IS_REPLACE_ALL :
 				return isReplaceAll()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT :
-				return getInsertAt();
+				if (resolve)
+					return getInsertAt();
+				return basicGetInsertAt();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

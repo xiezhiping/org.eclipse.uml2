@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.10 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -167,7 +167,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Subpartition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Subpartition()
 	 * @see org.eclipse.uml2.uml.ActivityPartition#getSuperPartition
-	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="superPartition" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="superPartition" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubpartitions();

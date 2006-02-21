@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionImpl.java,v 1.11 2006/01/03 19:50:24 khussey Exp $
+ * $Id: ReadLinkObjectEndActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,6 +121,38 @@ public class ReadLinkObjectEndActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
+		InputPin object = (InputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_ACTION__OBJECT);
+		if (object != null && object.eIsProxy()) {
+			InternalEObject oldObject = (InternalEObject) object;
+			object = (InputPin) eResolveProxy(oldObject);
+			if (object != oldObject) {
+				InternalEObject newObject = (InternalEObject) object;
+				NotificationChain msgs = oldObject.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.READ_LINK_OBJECT_END_ACTION__OBJECT, null,
+					null);
+				if (newObject.eInternalContainer() == null) {
+					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.READ_LINK_OBJECT_END_ACTION__OBJECT, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.READ_LINK_OBJECT_END_ACTION__OBJECT,
+						oldObject, object));
+			}
+		}
+		return object;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetObject() {
 		return (InputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_ACTION__OBJECT);
 	}
 
@@ -255,6 +287,38 @@ public class ReadLinkObjectEndActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_ACTION__RESULT);
+		if (result != null && result.eIsProxy()) {
+			InternalEObject oldResult = (InternalEObject) result;
+			result = (OutputPin) eResolveProxy(oldResult);
+			if (result != oldResult) {
+				InternalEObject newResult = (InternalEObject) result;
+				NotificationChain msgs = oldResult.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.READ_LINK_OBJECT_END_ACTION__RESULT, null,
+					null);
+				if (newResult.eInternalContainer() == null) {
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.READ_LINK_OBJECT_END_ACTION__RESULT, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.READ_LINK_OBJECT_END_ACTION__RESULT,
+						oldResult, result));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin basicGetResult() {
 		return (OutputPin) eVirtualGet(UMLPackage.READ_LINK_OBJECT_END_ACTION__RESULT);
 	}
 
@@ -482,7 +546,9 @@ public class ReadLinkObjectEndActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -520,13 +586,17 @@ public class ReadLinkObjectEndActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__OBJECT :
-				return getObject();
+				if (resolve)
+					return getObject();
+				return basicGetObject();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__END :
 				if (resolve)
 					return getEnd();
 				return basicGetEnd();
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION__RESULT :
-				return getResult();
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

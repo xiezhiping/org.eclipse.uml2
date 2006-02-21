@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.10 2005/12/14 22:34:19 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -149,6 +149,35 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification getWhen() {
+		ValueSpecification when = (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
+		if (when != null && when.eIsProxy()) {
+			InternalEObject oldWhen = (InternalEObject) when;
+			when = (ValueSpecification) eResolveProxy(oldWhen);
+			if (when != oldWhen) {
+				InternalEObject newWhen = (InternalEObject) when;
+				NotificationChain msgs = oldWhen.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TIME_EVENT__WHEN, null,
+					null);
+				if (newWhen.eInternalContainer() == null) {
+					msgs = newWhen.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TIME_EVENT__WHEN, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TIME_EVENT__WHEN, oldWhen, when));
+			}
+		}
+		return when;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetWhen() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
 	}
 
@@ -294,7 +323,9 @@ public class TimeEventImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -308,7 +339,9 @@ public class TimeEventImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.TIME_EVENT__WHEN :
-				return getWhen();
+				if (resolve)
+					return getWhen();
+				return basicGetWhen();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

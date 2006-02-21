@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.14 2006/01/30 13:22:09 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.15 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,8 +81,9 @@ public abstract class EncapsulatedClassifierImpl
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE));
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this,
+					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -221,7 +222,9 @@ public abstract class EncapsulatedClassifierImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
@@ -257,7 +260,9 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -279,7 +284,9 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE :
@@ -287,7 +294,9 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
 				return getUseCases();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PART :

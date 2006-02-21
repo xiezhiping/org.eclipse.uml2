@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.5 2006/01/03 19:50:26 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.6 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface ActivityGroup
 	 * @return the value of the '<em>Subgroup</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_Subgroup()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getSuperGroup
-	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="superGroup" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="superGroup" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubgroups();

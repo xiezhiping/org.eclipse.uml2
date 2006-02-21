@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.11 2006/02/02 19:23:40 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,6 +97,39 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
+		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
+		if (specification != null && specification.eIsProxy()) {
+			InternalEObject oldSpecification = (InternalEObject) specification;
+			specification = (ValueSpecification) eResolveProxy(oldSpecification);
+			if (specification != oldSpecification) {
+				InternalEObject newSpecification = (InternalEObject) specification;
+				NotificationChain msgs = oldSpecification.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, null,
+					null);
+				if (newSpecification.eInternalContainer() == null) {
+					msgs = newSpecification.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
+						oldSpecification, specification));
+			}
+		}
+		return specification;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetSpecification() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
 	}
 
@@ -228,7 +261,9 @@ public class DurationConstraintImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -240,7 +275,9 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
-				return getSpecification();
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
 				return getContext();
 			case UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT :

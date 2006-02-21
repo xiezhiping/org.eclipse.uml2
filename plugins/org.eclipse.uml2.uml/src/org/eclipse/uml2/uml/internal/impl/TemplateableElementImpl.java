@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,8 +105,9 @@ public abstract class TemplateableElementImpl
 	public EList getTemplateBindings() {
 		EList templateBinding = (EList) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
 		if (templateBinding == null) {
-			eVirtualSet(UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
 					TemplateBinding.class, this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
@@ -132,6 +133,40 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
+		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
+				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+				NotificationChain msgs = oldOwnedTemplateSignature
+					.eInverseRemove(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, null);
+				if (newOwnedTemplateSignature.eInternalContainer() == null) {
+					msgs = newOwnedTemplateSignature.eInverseAdd(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(
+						this,
+						Notification.RESOLVE,
+						UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+						oldOwnedTemplateSignature, ownedTemplateSignature));
+			}
+		}
+		return ownedTemplateSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature basicGetOwnedTemplateSignature() {
 		return (TemplateSignature) eVirtualGet(UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 	}
 
@@ -318,7 +353,9 @@ public abstract class TemplateableElementImpl
 			case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

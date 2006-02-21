@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.20 2006/02/21 14:31:34 khussey Exp $
+ * $Id: ElementImpl.java,v 1.21 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,8 +160,8 @@ public abstract class ElementImpl
 		EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
 		if (ownedComment == null) {
 			eVirtualSet(UMLPackage.ELEMENT__OWNED_COMMENT,
-				ownedComment = new EObjectContainmentEList(Comment.class, this,
-					UMLPackage.ELEMENT__OWNED_COMMENT));
+				ownedComment = new EObjectContainmentEList.Resolving(
+					Comment.class, this, UMLPackage.ELEMENT__OWNED_COMMENT));
 		}
 		return ownedComment;
 	}

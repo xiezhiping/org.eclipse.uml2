@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -101,6 +101,36 @@ public abstract class WriteVariableActionImpl
 	 * @generated
 	 */
 	public InputPin getValue() {
+		InputPin value = (InputPin) eVirtualGet(UMLPackage.WRITE_VARIABLE_ACTION__VALUE);
+		if (value != null && value.eIsProxy()) {
+			InternalEObject oldValue = (InternalEObject) value;
+			value = (InputPin) eResolveProxy(oldValue);
+			if (value != oldValue) {
+				InternalEObject newValue = (InternalEObject) value;
+				NotificationChain msgs = oldValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_VARIABLE_ACTION__VALUE, null, null);
+				if (newValue.eInternalContainer() == null) {
+					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_VARIABLE_ACTION__VALUE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.WRITE_VARIABLE_ACTION__VALUE, oldValue,
+						value));
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetValue() {
 		return (InputPin) eVirtualGet(UMLPackage.WRITE_VARIABLE_ACTION__VALUE);
 	}
 
@@ -279,7 +309,9 @@ public abstract class WriteVariableActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.WRITE_VARIABLE_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.WRITE_VARIABLE_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -321,7 +353,9 @@ public abstract class WriteVariableActionImpl
 					return getVariable();
 				return basicGetVariable();
 			case UMLPackage.WRITE_VARIABLE_ACTION__VALUE :
-				return getValue();
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

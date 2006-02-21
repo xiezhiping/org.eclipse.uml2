@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.19 2006/02/02 23:30:18 khussey Exp $
+ * $Id: OperationImpl.java,v 1.20 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.Classifier;
@@ -393,8 +393,9 @@ public class OperationImpl
 	public EList getTemplateBindings() {
 		EList templateBinding = (EList) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_BINDING);
 		if (templateBinding == null) {
-			eVirtualSet(UMLPackage.OPERATION__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.OPERATION__TEMPLATE_BINDING,
+				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
 					TemplateBinding.class, this,
 					UMLPackage.OPERATION__TEMPLATE_BINDING,
 					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
@@ -420,6 +421,38 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
+		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
+		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
+			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
+			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
+				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
+				NotificationChain msgs = oldOwnedTemplateSignature
+					.eInverseRemove(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, null);
+				if (newOwnedTemplateSignature.eInternalContainer() == null) {
+					msgs = newOwnedTemplateSignature.eInverseAdd(this,
+						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
+						TemplateSignature.class, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
+						oldOwnedTemplateSignature, ownedTemplateSignature));
+			}
+		}
+		return ownedTemplateSignature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature basicGetOwnedTemplateSignature() {
 		return (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 	}
 
@@ -567,7 +600,7 @@ public class OperationImpl
 		if (ownedRule == null) {
 			eVirtualSet(
 				UMLPackage.OPERATION__OWNED_RULE,
-				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE,
 					null, new int[]{UMLPackage.OPERATION__PRECONDITION,
 						UMLPackage.OPERATION__POSTCONDITION,
@@ -723,8 +756,8 @@ public class OperationImpl
 		EList precondition = (EList) eVirtualGet(UMLPackage.OPERATION__PRECONDITION);
 		if (precondition == null) {
 			eVirtualSet(UMLPackage.OPERATION__PRECONDITION,
-				precondition = new SubsetSupersetEObjectEList(Constraint.class,
-					this, UMLPackage.OPERATION__PRECONDITION,
+				precondition = new SubsetSupersetEObjectResolvingEList(
+					Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
 					new int[]{UMLPackage.OPERATION__OWNED_RULE}, null));
 		}
 		return precondition;
@@ -754,7 +787,7 @@ public class OperationImpl
 		EList postcondition = (EList) eVirtualGet(UMLPackage.OPERATION__POSTCONDITION);
 		if (postcondition == null) {
 			eVirtualSet(UMLPackage.OPERATION__POSTCONDITION,
-				postcondition = new SubsetSupersetEObjectEList(
+				postcondition = new SubsetSupersetEObjectResolvingEList(
 					Constraint.class, this,
 					UMLPackage.OPERATION__POSTCONDITION,
 					new int[]{UMLPackage.OPERATION__OWNED_RULE}, null));
@@ -852,6 +885,27 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Constraint getBodyCondition() {
+		Constraint bodyCondition = (Constraint) eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION);
+		if (bodyCondition != null && bodyCondition.eIsProxy()) {
+			InternalEObject oldBodyCondition = (InternalEObject) bodyCondition;
+			bodyCondition = (Constraint) eResolveProxy(oldBodyCondition);
+			if (bodyCondition != oldBodyCondition) {
+				eVirtualSet(UMLPackage.OPERATION__BODY_CONDITION, bodyCondition);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.OPERATION__BODY_CONDITION, oldBodyCondition,
+						bodyCondition));
+			}
+		}
+		return bodyCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetBodyCondition() {
 		return (Constraint) eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION);
 	}
 
@@ -955,8 +1009,9 @@ public class OperationImpl
 		EList ownedParameter = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER);
 		if (ownedParameter == null) {
 			eVirtualSet(UMLPackage.OPERATION__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentEList(Parameter.class,
-					this, UMLPackage.OPERATION__OWNED_PARAMETER));
+				ownedParameter = new EObjectContainmentEList.Resolving(
+					Parameter.class, this,
+					UMLPackage.OPERATION__OWNED_PARAMETER));
 		}
 		return ownedParameter;
 	}
@@ -1344,7 +1399,9 @@ public class OperationImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
@@ -1396,7 +1453,9 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.OPERATION__INTERFACE :
 				return getInterface();
 			case UMLPackage.OPERATION__CLASS_ :
@@ -1426,7 +1485,9 @@ public class OperationImpl
 			case UMLPackage.OPERATION__DATATYPE :
 				return getDatatype();
 			case UMLPackage.OPERATION__BODY_CONDITION :
-				return getBodyCondition();
+				if (resolve)
+					return getBodyCondition();
+				return basicGetBodyCondition();
 			case UMLPackage.OPERATION__TYPE :
 				if (resolve)
 					return getType();

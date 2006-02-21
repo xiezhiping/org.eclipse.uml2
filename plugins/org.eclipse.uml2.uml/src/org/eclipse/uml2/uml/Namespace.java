@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Namespace.java,v 1.5 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,7 @@ public interface Namespace
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.uml.ElementImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.uml.ElementImport" opposite="importingNamespace" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ElementImport" opposite="importingNamespace" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getElementImports();
@@ -101,7 +101,7 @@ public interface Namespace
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.uml.PackageImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.uml.PackageImport" opposite="importingNamespace" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageImport" opposite="importingNamespace" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackageImports();
@@ -128,7 +128,7 @@ public interface Namespace
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.uml.Constraint#getContext
-	 * @model type="org.eclipse.uml2.uml.Constraint" opposite="context" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" opposite="context" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedRules();
@@ -231,7 +231,7 @@ public interface Namespace
 	 * @return the value of the '<em>Owned Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedMember()
 	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace
-	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="namespace" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="namespace" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedMembers();

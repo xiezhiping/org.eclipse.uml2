@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,6 +96,35 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public OpaqueExpression getMapping() {
+		OpaqueExpression mapping = (OpaqueExpression) eVirtualGet(UMLPackage.ABSTRACTION__MAPPING);
+		if (mapping != null && mapping.eIsProxy()) {
+			InternalEObject oldMapping = (InternalEObject) mapping;
+			mapping = (OpaqueExpression) eResolveProxy(oldMapping);
+			if (mapping != oldMapping) {
+				InternalEObject newMapping = (InternalEObject) mapping;
+				NotificationChain msgs = oldMapping.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.ABSTRACTION__MAPPING,
+					null, null);
+				if (newMapping.eInternalContainer() == null) {
+					msgs = newMapping.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ABSTRACTION__MAPPING, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.ABSTRACTION__MAPPING, oldMapping, mapping));
+			}
+		}
+		return mapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OpaqueExpression basicGetMapping() {
 		return (OpaqueExpression) eVirtualGet(UMLPackage.ABSTRACTION__MAPPING);
 	}
 
@@ -224,7 +253,9 @@ public class AbstractionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -244,7 +275,9 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__CLIENT :
 				return getClients();
 			case UMLPackage.ABSTRACTION__MAPPING :
-				return getMapping();
+				if (resolve)
+					return getMapping();
+				return basicGetMapping();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

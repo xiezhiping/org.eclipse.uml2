@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,6 +95,39 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification getChangeExpression() {
+		ValueSpecification changeExpression = (ValueSpecification) eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION);
+		if (changeExpression != null && changeExpression.eIsProxy()) {
+			InternalEObject oldChangeExpression = (InternalEObject) changeExpression;
+			changeExpression = (ValueSpecification) eResolveProxy(oldChangeExpression);
+			if (changeExpression != oldChangeExpression) {
+				InternalEObject newChangeExpression = (InternalEObject) changeExpression;
+				NotificationChain msgs = oldChangeExpression.eInverseRemove(
+					this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, null,
+					null);
+				if (newChangeExpression.eInternalContainer() == null) {
+					msgs = newChangeExpression.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
+						oldChangeExpression, changeExpression));
+			}
+		}
+		return changeExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetChangeExpression() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION);
 	}
 
@@ -223,7 +256,9 @@ public class ChangeEventImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -233,7 +268,9 @@ public class ChangeEventImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
-				return getChangeExpression();
+				if (resolve)
+					return getChangeExpression();
+				return basicGetChangeExpression();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

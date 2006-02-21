@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.10 2006/01/03 19:50:25 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -73,7 +73,7 @@ public class CreateLinkActionImpl
 		EList endData = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__END_DATA);
 		if (endData == null) {
 			eVirtualSet(UMLPackage.CREATE_LINK_ACTION__END_DATA,
-				endData = new EObjectContainmentEList(
+				endData = new EObjectContainmentEList.Resolving(
 					LinkEndCreationData.class, this,
 					UMLPackage.CREATE_LINK_ACTION__END_DATA));
 		}
@@ -143,7 +143,9 @@ public class CreateLinkActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CREATE_LINK_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CREATE_LINK_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

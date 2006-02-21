@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.12 2006/01/03 19:50:25 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -162,7 +162,9 @@ public class InformationItemImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INFORMATION_ITEM__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INFORMATION_ITEM__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.INFORMATION_ITEM__PACKAGE_IMPORT :
@@ -198,7 +200,9 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.INFORMATION_ITEM__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -220,7 +224,9 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.INFORMATION_ITEM__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.INFORMATION_ITEM__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
@@ -228,7 +234,9 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__USE_CASE :
 				return getUseCases();
 			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
 				return getRepresenteds();
 		}

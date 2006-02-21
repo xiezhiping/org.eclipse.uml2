@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -136,9 +136,10 @@ public class ParameterSetImpl
 	public EList getConditions() {
 		EList condition = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__CONDITION);
 		if (condition == null) {
-			eVirtualSet(UMLPackage.PARAMETER_SET__CONDITION,
-				condition = new EObjectContainmentEList(Constraint.class, this,
-					UMLPackage.PARAMETER_SET__CONDITION));
+			eVirtualSet(
+				UMLPackage.PARAMETER_SET__CONDITION,
+				condition = new EObjectContainmentEList.Resolving(
+					Constraint.class, this, UMLPackage.PARAMETER_SET__CONDITION));
 		}
 		return condition;
 	}
@@ -292,7 +293,9 @@ public class ParameterSetImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PARAMETER_SET__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PARAMETER_SET__PARAMETER :
 				return getParameters();
 			case UMLPackage.PARAMETER_SET__CONDITION :

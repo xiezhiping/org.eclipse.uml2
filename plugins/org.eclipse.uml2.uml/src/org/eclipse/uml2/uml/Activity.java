@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.9 2006/02/07 18:23:04 khussey Exp $
+ * $Id: Activity.java,v 1.10 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -104,7 +104,7 @@ public interface Activity
 	 * @return the value of the '<em>Group</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Group()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getInActivity
-	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="inActivity" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="inActivity" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getGroups();
@@ -156,7 +156,7 @@ public interface Activity
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Structured Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_StructuredNode()
-	 * @model type="org.eclipse.uml2.uml.StructuredActivityNode" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.StructuredActivityNode" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getStructuredNodes();
@@ -184,7 +184,7 @@ public interface Activity
 	 * @return the value of the '<em>Variable</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Variable()
 	 * @see org.eclipse.uml2.uml.Variable#getActivityScope
-	 * @model type="org.eclipse.uml2.uml.Variable" opposite="activityScope" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Variable" opposite="activityScope" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getVariables();
@@ -222,7 +222,7 @@ public interface Activity
 	 * @return the value of the '<em>Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Node()
 	 * @see org.eclipse.uml2.uml.ActivityNode#getActivity
-	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="activity" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="activity" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getNodes();
@@ -261,7 +261,7 @@ public interface Activity
 	 * @return the value of the '<em>Edge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Edge()
 	 * @see org.eclipse.uml2.uml.ActivityEdge#getActivity
-	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="activity" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="activity" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getEdges();
@@ -298,7 +298,7 @@ public interface Activity
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Partition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_Partition()
-	 * @model type="org.eclipse.uml2.uml.ActivityPartition" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityPartition" ordered="false"
 	 * @generated
 	 */
 	EList getPartitions();

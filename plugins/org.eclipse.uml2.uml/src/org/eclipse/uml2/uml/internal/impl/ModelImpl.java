@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: ModelImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -165,7 +165,9 @@ public class ModelImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.MODEL__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
@@ -189,7 +191,9 @@ public class ModelImpl
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.MODEL__OWNED_TYPE :
 				return getOwnedTypes();
 			case UMLPackage.MODEL__PACKAGE_MERGE :

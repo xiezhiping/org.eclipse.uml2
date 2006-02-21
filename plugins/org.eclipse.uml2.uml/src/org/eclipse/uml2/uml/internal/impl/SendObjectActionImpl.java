@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,6 +99,36 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public InputPin getTarget() {
+		InputPin target = (InputPin) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__TARGET);
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject) target;
+			target = (InputPin) eResolveProxy(oldTarget);
+			if (target != oldTarget) {
+				InternalEObject newTarget = (InternalEObject) target;
+				NotificationChain msgs = oldTarget.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.SEND_OBJECT_ACTION__TARGET, null, null);
+				if (newTarget.eInternalContainer() == null) {
+					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.SEND_OBJECT_ACTION__TARGET, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.SEND_OBJECT_ACTION__TARGET, oldTarget,
+						target));
+			}
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetTarget() {
 		return (InputPin) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__TARGET);
 	}
 
@@ -181,6 +211,36 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public InputPin getRequest() {
+		InputPin request = (InputPin) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__REQUEST);
+		if (request != null && request.eIsProxy()) {
+			InternalEObject oldRequest = (InternalEObject) request;
+			request = (InputPin) eResolveProxy(oldRequest);
+			if (request != oldRequest) {
+				InternalEObject newRequest = (InternalEObject) request;
+				NotificationChain msgs = oldRequest.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.SEND_OBJECT_ACTION__REQUEST, null, null);
+				if (newRequest.eInternalContainer() == null) {
+					msgs = newRequest.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.SEND_OBJECT_ACTION__REQUEST, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.SEND_OBJECT_ACTION__REQUEST, oldRequest,
+						request));
+			}
+		}
+		return request;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetRequest() {
 		return (InputPin) eVirtualGet(UMLPackage.SEND_OBJECT_ACTION__REQUEST);
 	}
 
@@ -353,7 +413,9 @@ public class SendObjectActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.SEND_OBJECT_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.SEND_OBJECT_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -397,9 +459,13 @@ public class SendObjectActionImpl
 					return getOnPort();
 				return basicGetOnPort();
 			case UMLPackage.SEND_OBJECT_ACTION__TARGET :
-				return getTarget();
+				if (resolve)
+					return getTarget();
+				return basicGetTarget();
 			case UMLPackage.SEND_OBJECT_ACTION__REQUEST :
-				return getRequest();
+				if (resolve)
+					return getRequest();
+				return basicGetRequest();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -207,7 +207,9 @@ public class ActivityParameterNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -243,7 +245,9 @@ public class ActivityParameterNodeImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__UPPER_BOUND :
-				return getUpperBound();
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STATE :
 				return getInStates();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__SELECTION :

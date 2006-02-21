@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartClassifierBehaviorActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: StartClassifierBehaviorActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -103,6 +103,38 @@ public class StartClassifierBehaviorActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
+		InputPin object = (InputPin) eVirtualGet(UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT);
+		if (object != null && object.eIsProxy()) {
+			InternalEObject oldObject = (InternalEObject) object;
+			object = (InputPin) eResolveProxy(oldObject);
+			if (object != oldObject) {
+				InternalEObject newObject = (InternalEObject) object;
+				NotificationChain msgs = oldObject.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT,
+					null, null);
+				if (newObject.eInternalContainer() == null) {
+					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT,
+						oldObject, object));
+			}
+		}
+		return object;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetObject() {
 		return (InputPin) eVirtualGet(UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT);
 	}
 
@@ -288,7 +320,9 @@ public class StartClassifierBehaviorActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -326,7 +360,9 @@ public class StartClassifierBehaviorActionImpl
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT :
-				return getObject();
+				if (resolve)
+					return getObject();
+				return basicGetObject();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

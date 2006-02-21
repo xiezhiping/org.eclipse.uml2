@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.10 2006/01/30 23:06:54 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,6 +102,37 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Constraint getInvariant() {
+		Constraint invariant = (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
+		if (invariant != null && invariant.eIsProxy()) {
+			InternalEObject oldInvariant = (InternalEObject) invariant;
+			invariant = (Constraint) eResolveProxy(oldInvariant);
+			if (invariant != oldInvariant) {
+				InternalEObject newInvariant = (InternalEObject) invariant;
+				NotificationChain msgs = oldInvariant.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.STATE_INVARIANT__INVARIANT, null, null);
+				if (newInvariant.eInternalContainer() == null) {
+					msgs = newInvariant
+						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STATE_INVARIANT__INVARIANT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.STATE_INVARIANT__INVARIANT, oldInvariant,
+						invariant));
+			}
+		}
+		return invariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint basicGetInvariant() {
 		return (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
 	}
 
@@ -287,7 +318,9 @@ public class StateInvariantImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return getCovereds();
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
@@ -297,7 +330,9 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				return getEnclosingOperand();
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
-				return getInvariant();
+				if (resolve)
+					return getInvariant();
+				return basicGetInvariant();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

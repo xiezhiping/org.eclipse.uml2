@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.16 2006/02/02 23:30:19 khussey Exp $
+ * $Id: PortImpl.java,v 1.17 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -416,7 +416,9 @@ public class PortImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.PORT__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.PORT__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -448,9 +450,13 @@ public class PortImpl
 			case UMLPackage.PORT__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.PORT__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.PORT__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.PORT__IS_READ_ONLY :
 				return isReadOnly()
 					? Boolean.TRUE
@@ -472,7 +478,9 @@ public class PortImpl
 			case UMLPackage.PORT__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.PORT__CLASS_ :
 				return getClass_();
 			case UMLPackage.PORT__DATATYPE :
@@ -500,7 +508,9 @@ public class PortImpl
 					return getOwningAssociation();
 				return basicGetOwningAssociation();
 			case UMLPackage.PORT__DEFAULT_VALUE :
-				return getDefaultValue();
+				if (resolve)
+					return getDefaultValue();
+				return basicGetDefaultValue();
 			case UMLPackage.PORT__OPPOSITE :
 				if (resolve)
 					return getOpposite();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.10 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -383,7 +383,9 @@ public class ObjectFlowImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.OBJECT_FLOW__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -405,9 +407,13 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.OBJECT_FLOW__GUARD :
-				return getGuard();
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
-				return getWeight();
+				if (resolve)
+					return getWeight();
+				return basicGetWeight();
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				if (resolve)
 					return getInterrupts();

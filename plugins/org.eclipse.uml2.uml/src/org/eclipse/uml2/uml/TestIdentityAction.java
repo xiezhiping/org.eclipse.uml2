@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityAction.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: TestIdentityAction.java,v 1.2 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface TestIdentityAction
 	 * @return the value of the '<em>First</em>' containment reference.
 	 * @see #setFirst(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTestIdentityAction_First()
-	 * @model containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getFirst();
@@ -99,7 +99,7 @@ public interface TestIdentityAction
 	 * @return the value of the '<em>Second</em>' containment reference.
 	 * @see #setSecond(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTestIdentityAction_Second()
-	 * @model containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getSecond();
@@ -145,7 +145,7 @@ public interface TestIdentityAction
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTestIdentityAction_Result()
-	 * @model containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getResult();

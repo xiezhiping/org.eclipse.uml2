@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -264,7 +264,9 @@ public class OpaqueActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.OPAQUE_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.OPAQUE_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

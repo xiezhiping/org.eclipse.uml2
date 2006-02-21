@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.16 2006/01/12 15:53:51 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.17 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,8 +156,8 @@ public class StateMachineImpl
 		EList region = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__REGION);
 		if (region == null) {
 			eVirtualSet(UMLPackage.STATE_MACHINE__REGION,
-				region = new EObjectContainmentWithInverseEList(Region.class,
-					this, UMLPackage.STATE_MACHINE__REGION,
+				region = new EObjectContainmentWithInverseEList.Resolving(
+					Region.class, this, UMLPackage.STATE_MACHINE__REGION,
 					UMLPackage.REGION__STATE_MACHINE));
 		}
 		return region;
@@ -229,8 +229,9 @@ public class StateMachineImpl
 	public EList getConnectionPoints() {
 		EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
 		if (connectionPoint == null) {
-			eVirtualSet(UMLPackage.STATE_MACHINE__CONNECTION_POINT,
-				connectionPoint = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.STATE_MACHINE__CONNECTION_POINT,
+				connectionPoint = new EObjectContainmentWithInverseEList.Resolving(
 					Pseudostate.class, this,
 					UMLPackage.STATE_MACHINE__CONNECTION_POINT,
 					UMLPackage.PSEUDOSTATE__STATE_MACHINE));
@@ -611,7 +612,9 @@ public class StateMachineImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.STATE_MACHINE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.STATE_MACHINE__PACKAGE_IMPORT :
@@ -647,7 +650,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -669,7 +674,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.STATE_MACHINE__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
@@ -677,7 +684,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return getUseCases();
 			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.STATE_MACHINE__PART :
@@ -691,7 +700,9 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :

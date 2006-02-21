@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.9 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Classifier.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -104,7 +104,7 @@ public interface Classifier
 	 * @return the value of the '<em>Generalization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Generalization()
 	 * @see org.eclipse.uml2.uml.Generalization#getSpecific
-	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="specific" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="specific" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getGeneralizations();
@@ -265,7 +265,7 @@ public interface Classifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Use Case</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_OwnedUseCase()
-	 * @model type="org.eclipse.uml2.uml.UseCase" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.UseCase" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedUseCases();
@@ -331,7 +331,7 @@ public interface Classifier
 	 * @return the value of the '<em>Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Substitution()
 	 * @see org.eclipse.uml2.uml.Substitution#getSubstitutingClassifier
-	 * @model type="org.eclipse.uml2.uml.Substitution" opposite="substitutingClassifier" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Substitution" opposite="substitutingClassifier" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubstitutions();
@@ -393,7 +393,7 @@ public interface Classifier
 	 * @return the value of the '<em>Representation</em>' reference.
 	 * @see #setRepresentation(CollaborationUse)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Representation()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	CollaborationUse getRepresentation();
@@ -418,7 +418,7 @@ public interface Classifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Collaboration Use</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_CollaborationUse()
-	 * @model type="org.eclipse.uml2.uml.CollaborationUse" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.CollaborationUse" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getCollaborationUses();
@@ -456,7 +456,7 @@ public interface Classifier
 	 * @see #setOwnedSignature(RedefinableTemplateSignature)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_OwnedSignature()
 	 * @see org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier
-	 * @model opposite="classifier" containment="true" resolveProxies="false" ordered="false"
+	 * @model opposite="classifier" containment="true" ordered="false"
 	 * @generated
 	 */
 	RedefinableTemplateSignature getOwnedSignature();

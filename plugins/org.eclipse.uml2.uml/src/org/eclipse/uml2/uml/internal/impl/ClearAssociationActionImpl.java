@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.11 2006/01/03 19:50:24 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,6 +102,38 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
+		InputPin object = (InputPin) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT);
+		if (object != null && object.eIsProxy()) {
+			InternalEObject oldObject = (InternalEObject) object;
+			object = (InputPin) eResolveProxy(oldObject);
+			if (object != oldObject) {
+				InternalEObject newObject = (InternalEObject) object;
+				NotificationChain msgs = oldObject.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT, null,
+					null);
+				if (newObject.eInternalContainer() == null) {
+					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT, oldObject,
+						object));
+			}
+		}
+		return object;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetObject() {
 		return (InputPin) eVirtualGet(UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT);
 	}
 
@@ -333,7 +365,9 @@ public class ClearAssociationActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -371,7 +405,9 @@ public class ClearAssociationActionImpl
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT :
-				return getObject();
+				if (resolve)
+					return getObject();
+				return basicGetObject();
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION__ASSOCIATION :
 				if (resolve)
 					return getAssociation();

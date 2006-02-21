@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.12 2006/02/02 23:30:19 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -290,6 +290,39 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
+		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
+		if (upperValue != null && upperValue.eIsProxy()) {
+			InternalEObject oldUpperValue = (InternalEObject) upperValue;
+			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
+			if (upperValue != oldUpperValue) {
+				InternalEObject newUpperValue = (InternalEObject) upperValue;
+				NotificationChain msgs = oldUpperValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE, null,
+					null);
+				if (newUpperValue.eInternalContainer() == null) {
+					msgs = newUpperValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+						oldUpperValue, upperValue));
+			}
+		}
+		return upperValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetUpperValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 	}
 
@@ -364,6 +397,39 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
+		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
+		if (lowerValue != null && lowerValue.eIsProxy()) {
+			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
+			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
+			if (lowerValue != oldLowerValue) {
+				InternalEObject newLowerValue = (InternalEObject) lowerValue;
+				NotificationChain msgs = oldLowerValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE, null,
+					null);
+				if (newLowerValue.eInternalContainer() == null) {
+					msgs = newLowerValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+						oldLowerValue, lowerValue));
+			}
+		}
+		return lowerValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetLowerValue() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 	}
 
@@ -581,9 +647,13 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

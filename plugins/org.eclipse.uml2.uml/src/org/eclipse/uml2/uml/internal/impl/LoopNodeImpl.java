@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.13 2006/01/03 19:50:26 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.14 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -315,8 +315,8 @@ public class LoopNodeImpl
 		EList result = (EList) eVirtualGet(UMLPackage.LOOP_NODE__RESULT);
 		if (result == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__RESULT,
-				result = new EObjectContainmentEList(OutputPin.class, this,
-					UMLPackage.LOOP_NODE__RESULT));
+				result = new EObjectContainmentEList.Resolving(OutputPin.class,
+					this, UMLPackage.LOOP_NODE__RESULT));
 		}
 		return result;
 	}
@@ -416,8 +416,9 @@ public class LoopNodeImpl
 		EList loopVariableInput = (EList) eVirtualGet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
 		if (loopVariableInput == null) {
 			eVirtualSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT,
-				loopVariableInput = new EObjectContainmentEList(InputPin.class,
-					this, UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT));
+				loopVariableInput = new EObjectContainmentEList.Resolving(
+					InputPin.class, this,
+					UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT));
 		}
 		return loopVariableInput;
 	}
@@ -597,7 +598,9 @@ public class LoopNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.LOOP_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE

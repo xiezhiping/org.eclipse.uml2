@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.6 2006/01/04 17:47:25 khussey Exp $
+ * $Id: Transition.java,v 1.7 2006/02/21 16:12:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -168,7 +168,7 @@ public interface Transition
 	 * @return the value of the '<em>Guard</em>' reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Guard()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Constraint getGuard();
@@ -193,7 +193,7 @@ public interface Transition
 	 * @return the value of the '<em>Effect</em>' containment reference.
 	 * @see #setEffect(Behavior)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Effect()
-	 * @model containment="true" resolveProxies="false" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	Behavior getEffect();
@@ -229,7 +229,7 @@ public interface Transition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Trigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getTriggers();

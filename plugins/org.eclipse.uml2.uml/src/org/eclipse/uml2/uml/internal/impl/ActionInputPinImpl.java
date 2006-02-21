@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.14 2006/01/20 20:55:53 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.15 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,6 +109,38 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public Action getFromAction() {
+		Action fromAction = (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
+		if (fromAction != null && fromAction.eIsProxy()) {
+			InternalEObject oldFromAction = (InternalEObject) fromAction;
+			fromAction = (Action) eResolveProxy(oldFromAction);
+			if (fromAction != oldFromAction) {
+				InternalEObject newFromAction = (InternalEObject) fromAction;
+				NotificationChain msgs = oldFromAction.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ACTION_INPUT_PIN__FROM_ACTION, null, null);
+				if (newFromAction.eInternalContainer() == null) {
+					msgs = newFromAction.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.ACTION_INPUT_PIN__FROM_ACTION, null,
+						msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.ACTION_INPUT_PIN__FROM_ACTION,
+						oldFromAction, fromAction));
+			}
+		}
+		return fromAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Action basicGetFromAction() {
 		return (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
 	}
 
@@ -285,7 +317,9 @@ public class ActionInputPinImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACTION_INPUT_PIN__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -321,7 +355,9 @@ public class ActionInputPinImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND :
-				return getUpperBound();
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.ACTION_INPUT_PIN__IN_STATE :
 				return getInStates();
 			case UMLPackage.ACTION_INPUT_PIN__SELECTION :
@@ -341,15 +377,21 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__LOWER :
 				return new Integer(getLower());
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
-				return getUpperValue();
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
-				return getLowerValue();
+				if (resolve)
+					return getLowerValue();
+				return basicGetLowerValue();
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
 				return isControl()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.ACTION_INPUT_PIN__FROM_ACTION :
-				return getFromAction();
+				if (resolve)
+					return getFromAction();
+				return basicGetFromAction();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

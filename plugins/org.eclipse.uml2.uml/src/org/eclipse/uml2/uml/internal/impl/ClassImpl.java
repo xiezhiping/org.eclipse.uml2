@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.22 2006/01/30 23:06:54 khussey Exp $
+ * $Id: ClassImpl.java,v 1.23 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,8 +199,9 @@ public class ClassImpl
 	public EList getOwnedBehaviors() {
 		EList ownedBehavior = (EList) eVirtualGet(UMLPackage.CLASS__OWNED_BEHAVIOR);
 		if (ownedBehavior == null) {
-			eVirtualSet(UMLPackage.CLASS__OWNED_BEHAVIOR,
-				ownedBehavior = new SubsetSupersetEObjectContainmentEList(
+			eVirtualSet(
+				UMLPackage.CLASS__OWNED_BEHAVIOR,
+				ownedBehavior = new SubsetSupersetEObjectContainmentEList.Resolving(
 					Behavior.class, this, UMLPackage.CLASS__OWNED_BEHAVIOR,
 					null, new int[]{UMLPackage.CLASS__CLASSIFIER_BEHAVIOR}));
 		}
@@ -260,6 +261,28 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Behavior getClassifierBehavior() {
+		Behavior classifierBehavior = (Behavior) eVirtualGet(UMLPackage.CLASS__CLASSIFIER_BEHAVIOR);
+		if (classifierBehavior != null && classifierBehavior.eIsProxy()) {
+			InternalEObject oldClassifierBehavior = (InternalEObject) classifierBehavior;
+			classifierBehavior = (Behavior) eResolveProxy(oldClassifierBehavior);
+			if (classifierBehavior != oldClassifierBehavior) {
+				eVirtualSet(UMLPackage.CLASS__CLASSIFIER_BEHAVIOR,
+					classifierBehavior);
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CLASS__CLASSIFIER_BEHAVIOR,
+						oldClassifierBehavior, classifierBehavior));
+			}
+		}
+		return classifierBehavior;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior basicGetClassifierBehavior() {
 		return (Behavior) eVirtualGet(UMLPackage.CLASS__CLASSIFIER_BEHAVIOR);
 	}
 
@@ -295,7 +318,7 @@ public class ClassImpl
 		if (interfaceRealization == null) {
 			eVirtualSet(
 				UMLPackage.CLASS__INTERFACE_REALIZATION,
-				interfaceRealization = new SubsetSupersetEObjectContainmentWithInverseEList(
+				interfaceRealization = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					InterfaceRealization.class, this,
 					UMLPackage.CLASS__INTERFACE_REALIZATION,
 					new int[]{UMLPackage.CLASS__CLIENT_DEPENDENCY}, null,
@@ -341,8 +364,8 @@ public class ClassImpl
 		EList ownedTrigger = (EList) eVirtualGet(UMLPackage.CLASS__OWNED_TRIGGER);
 		if (ownedTrigger == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_TRIGGER,
-				ownedTrigger = new EObjectContainmentEList(Trigger.class, this,
-					UMLPackage.CLASS__OWNED_TRIGGER));
+				ownedTrigger = new EObjectContainmentEList.Resolving(
+					Trigger.class, this, UMLPackage.CLASS__OWNED_TRIGGER));
 		}
 		return ownedTrigger;
 	}
@@ -416,8 +439,9 @@ public class ClassImpl
 	public EList getOwnedOperations() {
 		EList ownedOperation = (EList) eVirtualGet(UMLPackage.CLASS__OWNED_OPERATION);
 		if (ownedOperation == null) {
-			eVirtualSet(UMLPackage.CLASS__OWNED_OPERATION,
-				ownedOperation = new EObjectContainmentWithInverseEList(
+			eVirtualSet(
+				UMLPackage.CLASS__OWNED_OPERATION,
+				ownedOperation = new EObjectContainmentWithInverseEList.Resolving(
 					Operation.class, this, UMLPackage.CLASS__OWNED_OPERATION,
 					UMLPackage.OPERATION__CLASS_));
 		}
@@ -460,7 +484,7 @@ public class ClassImpl
 		if (nestedClassifier == null) {
 			eVirtualSet(
 				UMLPackage.CLASS__NESTED_CLASSIFIER,
-				nestedClassifier = new EObjectContainmentEList(
+				nestedClassifier = new EObjectContainmentEList.Resolving(
 					Classifier.class, this, UMLPackage.CLASS__NESTED_CLASSIFIER));
 		}
 		return nestedClassifier;
@@ -636,8 +660,8 @@ public class ClassImpl
 		EList ownedReception = (EList) eVirtualGet(UMLPackage.CLASS__OWNED_RECEPTION);
 		if (ownedReception == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_RECEPTION,
-				ownedReception = new EObjectContainmentEList(Reception.class,
-					this, UMLPackage.CLASS__OWNED_RECEPTION));
+				ownedReception = new EObjectContainmentEList.Resolving(
+					Reception.class, this, UMLPackage.CLASS__OWNED_RECEPTION));
 		}
 		return ownedReception;
 	}
@@ -711,8 +735,8 @@ public class ClassImpl
 		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.CLASS__OWNED_ATTRIBUTE);
 		if (ownedAttribute == null) {
 			eVirtualSet(UMLPackage.CLASS__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList(Property.class,
-					this, UMLPackage.CLASS__OWNED_ATTRIBUTE));
+				ownedAttribute = new EObjectContainmentEList.Resolving(
+					Property.class, this, UMLPackage.CLASS__OWNED_ATTRIBUTE));
 		}
 		return ownedAttribute;
 	}
@@ -1053,7 +1077,9 @@ public class ClassImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CLASS__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CLASS__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.CLASS__PACKAGE_IMPORT :
@@ -1089,7 +1115,9 @@ public class ClassImpl
 			case UMLPackage.CLASS__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.CLASS__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -1111,7 +1139,9 @@ public class ClassImpl
 			case UMLPackage.CLASS__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.CLASS__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.CLASS__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.CLASS__OWNED_USE_CASE :
@@ -1119,7 +1149,9 @@ public class ClassImpl
 			case UMLPackage.CLASS__USE_CASE :
 				return getUseCases();
 			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.CLASS__PART :
@@ -1133,7 +1165,9 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.CLASS__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.CLASS__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.CLASS__OWNED_TRIGGER :

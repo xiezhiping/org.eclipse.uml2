@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.12 2006/01/04 17:47:24 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -375,6 +375,35 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ValueSpecification getGuard() {
+		ValueSpecification guard = (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__GUARD);
+		if (guard != null && guard.eIsProxy()) {
+			InternalEObject oldGuard = (InternalEObject) guard;
+			guard = (ValueSpecification) eResolveProxy(oldGuard);
+			if (guard != oldGuard) {
+				InternalEObject newGuard = (InternalEObject) guard;
+				NotificationChain msgs = oldGuard.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.ACTIVITY_EDGE__GUARD,
+					null, null);
+				if (newGuard.eInternalContainer() == null) {
+					msgs = newGuard.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ACTIVITY_EDGE__GUARD, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.ACTIVITY_EDGE__GUARD, oldGuard, guard));
+			}
+		}
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetGuard() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__GUARD);
 	}
 
@@ -445,6 +474,35 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ValueSpecification getWeight() {
+		ValueSpecification weight = (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__WEIGHT);
+		if (weight != null && weight.eIsProxy()) {
+			InternalEObject oldWeight = (InternalEObject) weight;
+			weight = (ValueSpecification) eResolveProxy(oldWeight);
+			if (weight != oldWeight) {
+				InternalEObject newWeight = (InternalEObject) weight;
+				NotificationChain msgs = oldWeight.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.ACTIVITY_EDGE__WEIGHT,
+					null, null);
+				if (newWeight.eInternalContainer() == null) {
+					msgs = newWeight.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ACTIVITY_EDGE__WEIGHT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.ACTIVITY_EDGE__WEIGHT, oldWeight, weight));
+			}
+		}
+		return weight;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification basicGetWeight() {
 		return (ValueSpecification) eVirtualGet(UMLPackage.ACTIVITY_EDGE__WEIGHT);
 	}
 
@@ -851,7 +909,9 @@ public abstract class ActivityEdgeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -873,9 +933,13 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				return getInPartitions();
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
-				return getGuard();
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
-				return getWeight();
+				if (resolve)
+					return getWeight();
+				return basicGetWeight();
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				if (resolve)
 					return getInterrupts();

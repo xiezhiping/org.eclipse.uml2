@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.11 2006/01/03 19:50:26 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -161,6 +161,36 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public InputPin getTarget() {
+		InputPin target = (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject) target;
+			target = (InputPin) eResolveProxy(oldTarget);
+			if (target != oldTarget) {
+				InternalEObject newTarget = (InternalEObject) target;
+				NotificationChain msgs = oldTarget.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CALL_OPERATION_ACTION__TARGET, null, null);
+				if (newTarget.eInternalContainer() == null) {
+					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.CALL_OPERATION_ACTION__TARGET, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.CALL_OPERATION_ACTION__TARGET, oldTarget,
+						target));
+			}
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetTarget() {
 		return (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
 	}
 
@@ -369,7 +399,9 @@ public class CallOperationActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.CALL_OPERATION_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.CALL_OPERATION_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -423,7 +455,9 @@ public class CallOperationActionImpl
 					return getOperation();
 				return basicGetOperation();
 			case UMLPackage.CALL_OPERATION_ACTION__TARGET :
-				return getTarget();
+				if (resolve)
+					return getTarget();
+				return basicGetTarget();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

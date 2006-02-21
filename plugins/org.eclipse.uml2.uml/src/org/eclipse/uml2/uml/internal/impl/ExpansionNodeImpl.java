@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -368,7 +368,9 @@ public class ExpansionNodeImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.EXPANSION_NODE__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -404,7 +406,9 @@ public class ExpansionNodeImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
-				return getUpperBound();
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.EXPANSION_NODE__IN_STATE :
 				return getInStates();
 			case UMLPackage.EXPANSION_NODE__SELECTION :

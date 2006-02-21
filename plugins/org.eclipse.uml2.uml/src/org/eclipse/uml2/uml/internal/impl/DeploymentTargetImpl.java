@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.11 2006/01/05 13:54:02 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -125,7 +125,7 @@ public abstract class DeploymentTargetImpl
 		if (deployment == null) {
 			eVirtualSet(
 				UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
-				deployment = new SubsetSupersetEObjectContainmentWithInverseEList(
+				deployment = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
 					Deployment.class, this,
 					UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
 					new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY},
@@ -273,7 +273,9 @@ public abstract class DeploymentTargetImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
 				return getDeployments();
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT :

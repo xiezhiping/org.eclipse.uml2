@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.11 2006/01/03 19:50:25 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,6 +121,35 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin getFirst() {
+		InputPin first = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
+		if (first != null && first.eIsProxy()) {
+			InternalEObject oldFirst = (InternalEObject) first;
+			first = (InputPin) eResolveProxy(oldFirst);
+			if (first != oldFirst) {
+				InternalEObject newFirst = (InternalEObject) first;
+				NotificationChain msgs = oldFirst.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEST_IDENTITY_ACTION__FIRST, null, null);
+				if (newFirst.eInternalContainer() == null) {
+					msgs = newFirst.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEST_IDENTITY_ACTION__FIRST, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TEST_IDENTITY_ACTION__FIRST, oldFirst, first));
+			}
+		}
+		return first;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetFirst() {
 		return (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
 	}
 
@@ -203,6 +232,36 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin getSecond() {
+		InputPin second = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
+		if (second != null && second.eIsProxy()) {
+			InternalEObject oldSecond = (InternalEObject) second;
+			second = (InputPin) eResolveProxy(oldSecond);
+			if (second != oldSecond) {
+				InternalEObject newSecond = (InternalEObject) second;
+				NotificationChain msgs = oldSecond.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEST_IDENTITY_ACTION__SECOND, null, null);
+				if (newSecond.eInternalContainer() == null) {
+					msgs = newSecond.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEST_IDENTITY_ACTION__SECOND, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TEST_IDENTITY_ACTION__SECOND, oldSecond,
+						second));
+			}
+		}
+		return second;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin basicGetSecond() {
 		return (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
 	}
 
@@ -285,6 +344,36 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
+		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
+		if (result != null && result.eIsProxy()) {
+			InternalEObject oldResult = (InternalEObject) result;
+			result = (OutputPin) eResolveProxy(oldResult);
+			if (result != oldResult) {
+				InternalEObject newResult = (InternalEObject) result;
+				NotificationChain msgs = oldResult.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEST_IDENTITY_ACTION__RESULT, null, null);
+				if (newResult.eInternalContainer() == null) {
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TEST_IDENTITY_ACTION__RESULT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TEST_IDENTITY_ACTION__RESULT, oldResult,
+						result));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin basicGetResult() {
 		return (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
 	}
 
@@ -466,7 +555,9 @@ public class TestIdentityActionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.TEST_IDENTITY_ACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.TEST_IDENTITY_ACTION__IS_LEAF :
 				return isLeaf()
 					? Boolean.TRUE
@@ -504,11 +595,17 @@ public class TestIdentityActionImpl
 			case UMLPackage.TEST_IDENTITY_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
 			case UMLPackage.TEST_IDENTITY_ACTION__FIRST :
-				return getFirst();
+				if (resolve)
+					return getFirst();
+				return basicGetFirst();
 			case UMLPackage.TEST_IDENTITY_ACTION__SECOND :
-				return getSecond();
+				if (resolve)
+					return getSecond();
+				return basicGetSecond();
 			case UMLPackage.TEST_IDENTITY_ACTION__RESULT :
-				return getResult();
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}

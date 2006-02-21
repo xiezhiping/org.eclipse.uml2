@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.13 2006/01/03 19:50:24 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.14 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -325,7 +325,9 @@ public class OpaqueExpressionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();

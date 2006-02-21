@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.7 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Operation.java,v 1.8 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -233,7 +233,7 @@ public interface Operation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Precondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
 	 * @generated
 	 */
 	EList getPreconditions();
@@ -259,7 +259,7 @@ public interface Operation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Postcondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
 	 * @generated
 	 */
 	EList getPostconditions();
@@ -339,7 +339,7 @@ public interface Operation
 	 * @return the value of the '<em>Body Condition</em>' reference.
 	 * @see #setBodyCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_BodyCondition()
-	 * @model resolveProxies="false" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Constraint getBodyCondition();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.17 2006/01/12 15:53:51 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.18 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -245,9 +245,10 @@ public abstract class BehaviorImpl
 	public EList getOwnedParameters() {
 		EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
 		if (ownedParameter == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentEList(Parameter.class,
-					this, UMLPackage.BEHAVIOR__OWNED_PARAMETER));
+			eVirtualSet(
+				UMLPackage.BEHAVIOR__OWNED_PARAMETER,
+				ownedParameter = new EObjectContainmentEList.Resolving(
+					Parameter.class, this, UMLPackage.BEHAVIOR__OWNED_PARAMETER));
 		}
 		return ownedParameter;
 	}
@@ -308,8 +309,8 @@ public abstract class BehaviorImpl
 		EList precondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PRECONDITION);
 		if (precondition == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__PRECONDITION,
-				precondition = new EObjectContainmentEList(Constraint.class,
-					this, UMLPackage.BEHAVIOR__PRECONDITION));
+				precondition = new EObjectContainmentEList.Resolving(
+					Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION));
 		}
 		return precondition;
 	}
@@ -361,8 +362,8 @@ public abstract class BehaviorImpl
 		EList postcondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POSTCONDITION);
 		if (postcondition == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__POSTCONDITION,
-				postcondition = new EObjectContainmentEList(Constraint.class,
-					this, UMLPackage.BEHAVIOR__POSTCONDITION));
+				postcondition = new EObjectContainmentEList.Resolving(
+					Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION));
 		}
 		return postcondition;
 	}
@@ -414,7 +415,7 @@ public abstract class BehaviorImpl
 		EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 		if (ownedParameterSet == null) {
 			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET,
-				ownedParameterSet = new EObjectContainmentEList(
+				ownedParameterSet = new EObjectContainmentEList.Resolving(
 					ParameterSet.class, this,
 					UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET));
 		}
@@ -787,7 +788,9 @@ public abstract class BehaviorImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
@@ -823,7 +826,9 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -845,7 +850,9 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.BEHAVIOR__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
@@ -853,7 +860,9 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				return getUseCases();
 			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.BEHAVIOR__PART :
@@ -867,7 +876,9 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.BEHAVIOR__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :

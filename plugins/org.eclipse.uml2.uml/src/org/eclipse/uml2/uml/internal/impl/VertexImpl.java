@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.10 2006/01/05 21:27:53 khussey Exp $
+ * $Id: VertexImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -291,7 +291,9 @@ public abstract class VertexImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.VERTEX__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.VERTEX__INCOMING :

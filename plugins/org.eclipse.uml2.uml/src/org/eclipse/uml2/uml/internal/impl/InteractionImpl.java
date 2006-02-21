@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.15 2006/01/12 15:53:50 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -176,7 +176,7 @@ public class InteractionImpl
 		EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION__GENERAL_ORDERING);
 		if (generalOrdering == null) {
 			eVirtualSet(UMLPackage.INTERACTION__GENERAL_ORDERING,
-				generalOrdering = new EObjectContainmentEList(
+				generalOrdering = new EObjectContainmentEList.Resolving(
 					GeneralOrdering.class, this,
 					UMLPackage.INTERACTION__GENERAL_ORDERING));
 		}
@@ -330,7 +330,7 @@ public class InteractionImpl
 		EList lifeline = (EList) eVirtualGet(UMLPackage.INTERACTION__LIFELINE);
 		if (lifeline == null) {
 			eVirtualSet(UMLPackage.INTERACTION__LIFELINE,
-				lifeline = new EObjectContainmentWithInverseEList(
+				lifeline = new EObjectContainmentWithInverseEList.Resolving(
 					Lifeline.class, this, UMLPackage.INTERACTION__LIFELINE,
 					UMLPackage.LIFELINE__INTERACTION));
 		}
@@ -372,7 +372,7 @@ public class InteractionImpl
 		EList fragment = (EList) eVirtualGet(UMLPackage.INTERACTION__FRAGMENT);
 		if (fragment == null) {
 			eVirtualSet(UMLPackage.INTERACTION__FRAGMENT,
-				fragment = new EObjectContainmentWithInverseEList(
+				fragment = new EObjectContainmentWithInverseEList.Resolving(
 					InteractionFragment.class, this,
 					UMLPackage.INTERACTION__FRAGMENT,
 					UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION));
@@ -416,8 +416,8 @@ public class InteractionImpl
 		EList action = (EList) eVirtualGet(UMLPackage.INTERACTION__ACTION);
 		if (action == null) {
 			eVirtualSet(UMLPackage.INTERACTION__ACTION,
-				action = new EObjectContainmentEList(Action.class, this,
-					UMLPackage.INTERACTION__ACTION));
+				action = new EObjectContainmentEList.Resolving(Action.class,
+					this, UMLPackage.INTERACTION__ACTION));
 		}
 		return action;
 	}
@@ -458,8 +458,8 @@ public class InteractionImpl
 		EList formalGate = (EList) eVirtualGet(UMLPackage.INTERACTION__FORMAL_GATE);
 		if (formalGate == null) {
 			eVirtualSet(UMLPackage.INTERACTION__FORMAL_GATE,
-				formalGate = new EObjectContainmentEList(Gate.class, this,
-					UMLPackage.INTERACTION__FORMAL_GATE));
+				formalGate = new EObjectContainmentEList.Resolving(Gate.class,
+					this, UMLPackage.INTERACTION__FORMAL_GATE));
 		}
 		return formalGate;
 	}
@@ -499,8 +499,8 @@ public class InteractionImpl
 		EList message = (EList) eVirtualGet(UMLPackage.INTERACTION__MESSAGE);
 		if (message == null) {
 			eVirtualSet(UMLPackage.INTERACTION__MESSAGE,
-				message = new EObjectContainmentWithInverseEList(Message.class,
-					this, UMLPackage.INTERACTION__MESSAGE,
+				message = new EObjectContainmentWithInverseEList.Resolving(
+					Message.class, this, UMLPackage.INTERACTION__MESSAGE,
 					UMLPackage.MESSAGE__INTERACTION));
 		}
 		return message;
@@ -818,7 +818,9 @@ public class InteractionImpl
 					return getNamespace();
 				return basicGetNamespace();
 			case UMLPackage.INTERACTION__NAME_EXPRESSION :
-				return getNameExpression();
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
 			case UMLPackage.INTERACTION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.INTERACTION__PACKAGE_IMPORT :
@@ -854,7 +856,9 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__TEMPLATE_BINDING :
 				return getTemplateBindings();
 			case UMLPackage.INTERACTION__OWNED_TEMPLATE_SIGNATURE :
-				return getOwnedTemplateSignature();
+				if (resolve)
+					return getOwnedTemplateSignature();
+				return basicGetOwnedTemplateSignature();
 			case UMLPackage.INTERACTION__IS_ABSTRACT :
 				return isAbstract()
 					? Boolean.TRUE
@@ -876,7 +880,9 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__ATTRIBUTE :
 				return getAttributes();
 			case UMLPackage.INTERACTION__REPRESENTATION :
-				return getRepresentation();
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
 			case UMLPackage.INTERACTION__COLLABORATION_USE :
 				return getCollaborationUses();
 			case UMLPackage.INTERACTION__OWNED_USE_CASE :
@@ -884,7 +890,9 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__USE_CASE :
 				return getUseCases();
 			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				return getOwnedSignature();
+				if (resolve)
+					return getOwnedSignature();
+				return basicGetOwnedSignature();
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.INTERACTION__PART :
@@ -898,7 +906,9 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.INTERACTION__CLASSIFIER_BEHAVIOR :
-				return getClassifierBehavior();
+				if (resolve)
+					return getClassifierBehavior();
+				return basicGetClassifierBehavior();
 			case UMLPackage.INTERACTION__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
 			case UMLPackage.INTERACTION__OWNED_TRIGGER :
