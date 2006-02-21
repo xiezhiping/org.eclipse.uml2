@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.13 2006/02/03 04:32:02 khussey Exp $
+ * $Id: ClassOperations.java,v 1.14 2006/02/21 14:31:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Extension;
@@ -114,9 +113,8 @@ public class ClassOperations
 		if (class_.isMetaclass()) {
 			extensions = new UniqueEList.FastCompare();
 
-			for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-				.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
-				.hasNext();) {
+			for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+				class_).iterator(); nonNavigableInverseReferences.hasNext();) {
 
 				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 					.next();

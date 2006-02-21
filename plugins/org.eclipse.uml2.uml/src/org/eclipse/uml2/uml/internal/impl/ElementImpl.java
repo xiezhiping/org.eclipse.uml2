@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.19 2006/01/16 22:29:29 khussey Exp $
+ * $Id: ElementImpl.java,v 1.20 2006/02/21 14:31:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,8 +17,11 @@ import java.util.Iterator;
 import java.util.Map;
 
 //import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -89,12 +92,10 @@ public abstract class ElementImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected ElementImpl() {
 		super();
-
-		CacheAdapter.INSTANCE.adapt(this);
 	}
 
 	/**
@@ -802,4 +803,58 @@ public abstract class ElementImpl
 		}
 	}
 
-} //ElementImpl
+	public EList eAdapters() {
+		EList eAdapters = super.eAdapters();
+
+		if (eAdapters.isEmpty()) {
+			CacheAdapter cacheAdapter = getCacheAdapter();
+
+			if (cacheAdapter != null) {
+				eAdapters.add(cacheAdapter);
+			}
+		}
+
+		return eAdapters;
+	}
+
+	public void eSetDeliver(boolean deliver) {
+
+		if (deliver) {
+			CacheAdapter cacheAdapter = getCacheAdapter();
+
+			if (cacheAdapter != null) {
+				getCacheAdapter().handleCrossReference(this);
+			}
+		}
+
+		super.eSetDeliver(deliver);
+	}
+
+	public boolean eNotificationRequired() {
+		return getCacheAdapter() == null
+			? super.eNotificationRequired()
+			: eDeliver();
+	}
+
+	public void eNotify(Notification notification) {
+
+		if (eDeliver()) {
+			BasicEList eBasicAdapters = eBasicAdapters();
+
+			if (eBasicAdapters == null || eBasicAdapters.isEmpty()) {
+				CacheAdapter cacheAdapter = getCacheAdapter();
+
+				if (cacheAdapter != null) {
+					cacheAdapter.notifyChanged(notification);
+				}
+			} else {
+				Adapter[] adapters = (Adapter[]) eBasicAdapters.data();
+
+				for (int i = 0, size = eBasicAdapters.size(); i < size; i++) {
+					adapters[i].notifyChanged(notification);
+				}
+			}
+		}
+	}
+
+} // ElementImpl

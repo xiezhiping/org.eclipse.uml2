@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.17 2006/02/20 20:50:44 khussey Exp $
+ * $Id: UML2Util.java,v 1.18 2006/02/21 14:31:31 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -52,6 +52,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.framework.Bundle;
@@ -835,6 +836,22 @@ public class UML2Util {
 			: eAnnotation;
 	}
 
+	protected static Collection getNonNavigableInverseReferences(EObject eObject) {
+		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
+			.getCrossReferenceAdapter(eObject);
+		return crossReferenceAdapter == null
+			? Collections.EMPTY_LIST
+			: crossReferenceAdapter.getNonNavigableInverseReferences(eObject);
+	}
+
+	protected static Collection getInverseReferences(EObject eObject) {
+		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
+			.getCrossReferenceAdapter(eObject);
+		return crossReferenceAdapter == null
+			? Collections.EMPTY_LIST
+			: crossReferenceAdapter.getInverseReferences(eObject);
+	}
+
 	protected static void destroy(EObject eObject) {
 
 		for (Iterator allContents = getAllContents(eObject, true, false); allContents
@@ -842,8 +859,7 @@ public class UML2Util {
 
 			EObject containedEObject = (EObject) allContents.next();
 			List nonNavigableInverseReferences = new ArrayList(
-				CacheAdapter.INSTANCE
-					.getNonNavigableInverseReferences(containedEObject));
+				getNonNavigableInverseReferences(containedEObject));
 
 			for (Iterator nnir = nonNavigableInverseReferences.iterator(); nnir
 				.hasNext();) {

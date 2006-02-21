@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.28 2006/02/07 19:31:22 khussey Exp $
+ * $Id: ElementOperations.java,v 1.29 2006/02/21 14:31:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -187,9 +187,8 @@ public class ElementOperations
 	public static EList getStereotypeApplications(Element element) {
 		EList stereotypeApplications = new UniqueEList.FastCompare();
 
-		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-			.getNonNavigableInverseReferences(element).iterator(); nonNavigableInverseReferences
-			.hasNext();) {
+		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+			element).iterator(); nonNavigableInverseReferences.hasNext();) {
 
 			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 				.next();
@@ -296,9 +295,8 @@ public class ElementOperations
 	public static EList getAppliedStereotypes(Element element) {
 		EList appliedStereotypes = new UniqueEList.FastCompare();
 
-		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-			.getNonNavigableInverseReferences(element).iterator(); nonNavigableInverseReferences
-			.hasNext();) {
+		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+			element).iterator(); nonNavigableInverseReferences.hasNext();) {
 
 			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 				.next();

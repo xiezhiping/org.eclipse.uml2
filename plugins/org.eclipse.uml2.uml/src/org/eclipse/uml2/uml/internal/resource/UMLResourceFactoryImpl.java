@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.2 2006/02/21 14:31:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -67,14 +67,15 @@ public class UMLResourceFactoryImpl
 
 		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		defaultLoadOptions.put(XMIResource.OPTION_EXTENDED_META_DATA,
+		defaultLoadOptions.put(XMLResource.OPTION_DISABLE_NOTIFY, Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			Boolean.TRUE);
-		defaultLoadOptions.put(XMIResource.OPTION_LAX_FEATURE_PROCESSING,
+		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING,
 			Boolean.TRUE);
 
 		Map defaultSaveOptions = resource.getDefaultSaveOptions();
 
-		defaultSaveOptions.put(XMIResource.OPTION_EXTENDED_META_DATA,
+		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			Boolean.TRUE);
 		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
 			new XMLSave.XMLTypeInfo() {
@@ -96,7 +97,5 @@ public class UMLResourceFactoryImpl
 
 		return resource;
 	}
-
-
 	
 } //UMLResourceFactoryImpl

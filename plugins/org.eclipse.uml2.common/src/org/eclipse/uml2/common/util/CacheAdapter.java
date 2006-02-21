@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.9 2006/01/10 15:03:31 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.10 2006/02/21 14:31:31 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,6 +35,20 @@ public class CacheAdapter
 	private final Map values = Collections.synchronizedMap(new HashMap());
 
 	protected boolean adapting = false;
+
+	public static CacheAdapter getCacheAdapter(Notifier notifier) {
+		List eAdapters = notifier.eAdapters();
+
+		for (int i = 0, size = eAdapters.size(); i < size; i++) {
+			Object adapter = eAdapters.get(i);
+
+			if (adapter instanceof CacheAdapter) {
+				return (CacheAdapter) adapter;
+			}
+		}
+
+		return null;
+	}
 
 	protected boolean addAdapter(EList adapters) {
 		return adapters.contains(this)
@@ -83,6 +98,10 @@ public class CacheAdapter
 		addAdapter(eObject);
 
 		return super.getInverseReferences(eObject);
+	}
+
+	public void handleCrossReference(EObject eObject) {
+		inverseCrossReferencer.add(eObject);
 	}
 
 	public void setTarget(Notifier target) {
@@ -183,6 +202,10 @@ public class CacheAdapter
 		}
 
 		return eObjectMap.put(key, value);
+	}
+
+	protected boolean resolve() {
+		return false;
 	}
 
 }

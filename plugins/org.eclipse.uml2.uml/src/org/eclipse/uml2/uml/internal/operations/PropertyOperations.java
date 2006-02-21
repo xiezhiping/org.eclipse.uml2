@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.22 2006/02/09 15:47:14 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.23 2006/02/21 14:31:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
@@ -440,9 +439,8 @@ public class PropertyOperations
 	 */
 	public static boolean isAttribute(Property property, Property p) {
 
-		for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-			.getNonNavigableInverseReferences(p).iterator(); nonNavigableInverseReferences
-			.hasNext();) {
+		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+			p).iterator(); nonNavigableInverseReferences.hasNext();) {
 
 			EObject eObject = ((EStructuralFeature.Setting) nonNavigableInverseReferences
 				.next()).getEObject();
