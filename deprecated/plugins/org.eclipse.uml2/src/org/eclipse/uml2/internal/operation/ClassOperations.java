@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.13 2006/01/31 20:35:03 khussey Exp $
+ * $Id: ClassOperations.java,v 1.14 2006/02/21 14:52:24 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -28,7 +28,6 @@ import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.RedefinableElement;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.common.util.CacheAdapter;
 
 /**
  * <!-- begin-user-doc -->
@@ -118,9 +117,8 @@ public class ClassOperations extends ClassifierOperations {
 
 		if (null != class_ && class_.isMetaclass()) {
 
-			for (Iterator nonNavigableInverseReferences = CacheAdapter.INSTANCE
-				.getNonNavigableInverseReferences(class_).iterator(); nonNavigableInverseReferences
-				.hasNext();) {
+			for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+				class_).iterator(); nonNavigableInverseReferences.hasNext();) {
 
 				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
 					.next();

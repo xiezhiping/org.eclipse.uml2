@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.40 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ElementImpl.java,v 1.41 2006/02/21 14:52:24 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -22,8 +22,11 @@ import java.util.Map;
 import java.util.Set;
 
 //import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
@@ -151,12 +154,10 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	/**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated NOT
+     * @generated
      */
 	protected ElementImpl() {
         super();
-        
-        CacheAdapter.INSTANCE.adapt(this);
     }
 
 	/**
@@ -525,6 +526,80 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 		CacheAdapter.INSTANCE.adapt(resource);
 
 		return super.eSetResource(resource, notifications);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eAdapters()
+	 */
+	public EList eAdapters() {
+		EList eAdapters = super.eAdapters();
+
+		if (eAdapters.isEmpty()) {
+			CacheAdapter cacheAdapter = getCacheAdapter();
+
+			if (cacheAdapter != null) {
+				eAdapters.add(cacheAdapter);
+			}
+		}
+
+		return eAdapters;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eSetDeliver(boolean)
+	 */
+	public void eSetDeliver(boolean deliver) {
+
+		if (deliver) {
+			CacheAdapter cacheAdapter = getCacheAdapter();
+
+			if (cacheAdapter != null) {
+				getCacheAdapter().handleCrossReference(this);
+			}
+		}
+
+		super.eSetDeliver(deliver);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotificationRequired()
+	 */
+	public boolean eNotificationRequired() {
+		return getCacheAdapter() == null
+			? super.eNotificationRequired()
+			: eDeliver();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.impl.BasicNotifierImpl#eNotify(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void eNotify(Notification notification) {
+
+		if (eDeliver()) {
+			BasicEList eBasicAdapters = eBasicAdapters();
+
+			if (eBasicAdapters == null || eBasicAdapters.isEmpty()) {
+				CacheAdapter cacheAdapter = getCacheAdapter();
+
+				if (cacheAdapter != null) {
+					cacheAdapter.notifyChanged(notification);
+				}
+			} else {
+				Adapter[] adapters = (Adapter[]) eBasicAdapters.data();
+
+				for (int i = 0, size = eBasicAdapters.size(); i < size; i++) {
+					adapters[i].notifyChanged(notification);
+				}
+			}
+		}
 	}
 
 	/*

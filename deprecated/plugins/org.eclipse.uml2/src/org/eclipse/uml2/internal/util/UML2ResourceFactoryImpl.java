@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.6 2005/05/18 16:38:32 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.7 2006/02/21 14:52:24 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
+
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -60,21 +62,25 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 	public Resource createResource(URI uri) {
 		UML2Resource resource = (UML2Resource) createResourceGen(uri);
 
-		resource.getDefaultLoadOptions().put(
-			XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-		resource.getDefaultLoadOptions().put(
-			XMIResource.OPTION_LAX_FEATURE_PROCESSING, Boolean.TRUE);
+		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		resource.getDefaultSaveOptions().put(
-			XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-		resource.getDefaultSaveOptions().put(XMIResource.OPTION_USE_XMI_TYPE,
+		defaultLoadOptions.put(XMLResource.OPTION_DISABLE_NOTIFY, Boolean.TRUE);
+		defaultLoadOptions.put(XMIResource.OPTION_EXTENDED_META_DATA,
 			Boolean.TRUE);
-		resource.getDefaultSaveOptions().put(
-			XMIResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
-		resource.getDefaultSaveOptions().put(
-			XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		defaultLoadOptions.put(XMIResource.OPTION_LAX_FEATURE_PROCESSING,
+			Boolean.TRUE);
+
+		Map defaultSaveOptions = resource.getDefaultSaveOptions();
+
+		defaultSaveOptions
+			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
+		defaultSaveOptions.put(XMIResource.OPTION_SAVE_TYPE_INFORMATION,
+			Boolean.TRUE);
+		defaultSaveOptions.put(XMIResource.OPTION_EXTENDED_META_DATA,
+			Boolean.TRUE);
 
 		return resource;
 	}
 
-} //UML2ResourceFactoryImpl
+} // UML2ResourceFactoryImpl
