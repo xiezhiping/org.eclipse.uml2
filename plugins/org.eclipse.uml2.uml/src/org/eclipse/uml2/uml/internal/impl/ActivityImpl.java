@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.19 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.20 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -171,7 +170,6 @@ public class ActivityImpl
 						UMLPackage.ACTIVITY__GENERALIZATION,
 						UMLPackage.ACTIVITY__SUBSTITUTION,
 						UMLPackage.ACTIVITY__COLLABORATION_USE,
-						UMLPackage.ACTIVITY__OWNED_SIGNATURE,
 						UMLPackage.ACTIVITY__INTERFACE_REALIZATION,
 						UMLPackage.ACTIVITY__NODE, UMLPackage.ACTIVITY__EDGE,
 						UMLPackage.ACTIVITY__GROUP}));
@@ -574,14 +572,6 @@ public class ActivityImpl
 					msgs);
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ACTIVITY__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ACTIVITY__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -664,8 +654,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -819,10 +807,6 @@ public class ActivityImpl
 				return getOwnedUseCases();
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return getUseCases();
-			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ACTIVITY__PART :
@@ -999,9 +983,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -1187,9 +1168,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1335,7 +1313,7 @@ public class ActivityImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.ACTIVITY__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ACTIVITY__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.ACTIVITY__GENERALIZATION :
@@ -1370,8 +1348,6 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.ACTIVITY__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.ACTIVITY__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.ACTIVITY__OWNED_SIGNATURE) != null;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.ACTIVITY__PART :

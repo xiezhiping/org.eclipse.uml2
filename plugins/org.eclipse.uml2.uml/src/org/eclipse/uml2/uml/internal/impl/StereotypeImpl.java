@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.17 2006/02/21 16:12:18 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,7 +34,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.Profile;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -287,8 +286,6 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -420,10 +417,6 @@ public class StereotypeImpl
 				return getOwnedUseCases();
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				return getUseCases();
-			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.STEREOTYPE__PART :
@@ -561,9 +554,6 @@ public class StereotypeImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -700,9 +690,6 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -809,7 +796,7 @@ public class StereotypeImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.STEREOTYPE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
@@ -844,8 +831,6 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.STEREOTYPE__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.STEREOTYPE__OWNED_SIGNATURE) != null;
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.STEREOTYPE__PART :

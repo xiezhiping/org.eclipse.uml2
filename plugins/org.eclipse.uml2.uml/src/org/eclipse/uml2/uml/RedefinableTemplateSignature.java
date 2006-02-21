@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignature.java,v 1.3 2005/12/14 22:34:15 khussey Exp $
+ * $Id: RedefinableTemplateSignature.java,v 1.4 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -85,31 +85,18 @@ public interface RedefinableTemplateSignature
 	EList getInheritedParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Classifier</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Classifier#getOwnedSignature <em>Owned Signature</em>}'.
+	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The classifier that owns this template signature.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Classifier</em>' container reference.
-	 * @see #setClassifier(Classifier)
+	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_Classifier()
-	 * @see org.eclipse.uml2.uml.Classifier#getOwnedSignature
-	 * @model opposite="ownedSignature" resolveProxies="false" required="true" ordered="false"
+	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	Classifier getClassifier();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier <em>Classifier</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Classifier</em>' container reference.
-	 * @see #getClassifier()
-	 * @generated
-	 */
-	void setClassifier(Classifier value);
 
 	/**
 	 * <!-- begin-user-doc -->

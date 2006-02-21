@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -128,7 +127,6 @@ public class InteractionImpl
 						UMLPackage.INTERACTION__GENERALIZATION,
 						UMLPackage.INTERACTION__SUBSTITUTION,
 						UMLPackage.INTERACTION__COLLABORATION_USE,
-						UMLPackage.INTERACTION__OWNED_SIGNATURE,
 						UMLPackage.INTERACTION__INTERFACE_REALIZATION,
 						UMLPackage.INTERACTION__GENERAL_ORDERING,
 						UMLPackage.INTERACTION__ACTION}));
@@ -592,15 +590,6 @@ public class InteractionImpl
 					msgs);
 			case UMLPackage.INTERACTION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.INTERACTION__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.INTERACTION__OWNED_SIGNATURE, null,
-						msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.INTERACTION__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -694,8 +683,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -889,10 +876,6 @@ public class InteractionImpl
 				return getOwnedUseCases();
 			case UMLPackage.INTERACTION__USE_CASE :
 				return getUseCases();
-			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.INTERACTION__PART :
@@ -1067,9 +1050,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -1263,9 +1243,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1417,7 +1394,7 @@ public class InteractionImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.INTERACTION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.INTERACTION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.INTERACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.INTERACTION__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.INTERACTION__GENERALIZATION :
@@ -1452,8 +1429,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.INTERACTION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.INTERACTION__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.INTERACTION__OWNED_SIGNATURE) != null;
 			case UMLPackage.INTERACTION__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.INTERACTION__PART :

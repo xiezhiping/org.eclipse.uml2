@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.14 2006/02/21 16:12:16 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentSpecification;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -339,17 +338,6 @@ public class DeploymentSpecificationImpl
 					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature)
-						.eInverseRemove(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE,
-							null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -417,8 +405,6 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
 				return ((InternalEList) getNestedArtifacts()).basicRemove(
 					otherEnd, msgs);
@@ -559,10 +545,6 @@ public class DeploymentSpecificationImpl
 				return getOwnedUseCases();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				return getUseCases();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				return getFileName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
@@ -680,9 +662,6 @@ public class DeploymentSpecificationImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				setFileName((String) newValue);
 				return;
@@ -797,9 +776,6 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				unsetFileName();
 				return;
@@ -891,7 +867,7 @@ public class DeploymentSpecificationImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
@@ -926,8 +902,6 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				return isSetFileName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :

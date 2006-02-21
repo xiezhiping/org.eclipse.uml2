@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.18 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.19 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -324,10 +324,6 @@ public class ExtensionImpl
 				return getOwnedUseCases();
 			case UMLPackage.EXTENSION__USE_CASE :
 				return getUseCases();
-			case UMLPackage.EXTENSION__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.EXTENSION__OWNED_END :
@@ -417,7 +413,7 @@ public class ExtensionImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.EXTENSION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.EXTENSION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.EXTENSION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.EXTENSION__GENERALIZATION :
@@ -452,8 +448,6 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.EXTENSION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.EXTENSION__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.EXTENSION__OWNED_SIGNATURE) != null;
 			case UMLPackage.EXTENSION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.EXTENSION__OWNED_END :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -146,7 +145,6 @@ public class ArtifactImpl
 						UMLPackage.ARTIFACT__GENERALIZATION,
 						UMLPackage.ARTIFACT__SUBSTITUTION,
 						UMLPackage.ARTIFACT__COLLABORATION_USE,
-						UMLPackage.ARTIFACT__OWNED_SIGNATURE,
 						UMLPackage.ARTIFACT__MANIFESTATION}));
 		}
 		return ownedElement;
@@ -532,14 +530,6 @@ public class ArtifactImpl
 					msgs);
 			case UMLPackage.ARTIFACT__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ARTIFACT__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ARTIFACT__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -600,8 +590,6 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
 				return ((InternalEList) getNestedArtifacts()).basicRemove(
 					otherEnd, msgs);
@@ -719,10 +707,6 @@ public class ArtifactImpl
 				return getOwnedUseCases();
 			case UMLPackage.ARTIFACT__USE_CASE :
 				return getUseCases();
-			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.ARTIFACT__FILE_NAME :
 				return getFileName();
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
@@ -834,9 +818,6 @@ public class ArtifactImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.ARTIFACT__FILE_NAME :
 				setFileName((String) newValue);
 				return;
@@ -942,9 +923,6 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.ARTIFACT__FILE_NAME :
 				unsetFileName();
 				return;
@@ -1027,7 +1005,7 @@ public class ArtifactImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.ARTIFACT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.ARTIFACT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ARTIFACT__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ARTIFACT__GENERALIZATION :
@@ -1062,8 +1040,6 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.ARTIFACT__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.ARTIFACT__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.ARTIFACT__OWNED_SIGNATURE) != null;
 			case UMLPackage.ARTIFACT__FILE_NAME :
 				return isSetFileName();
 			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :

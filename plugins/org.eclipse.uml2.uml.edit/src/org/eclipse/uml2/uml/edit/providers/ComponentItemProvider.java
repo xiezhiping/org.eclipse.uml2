@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.7 2006/01/24 22:46:30 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.8 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -588,8 +588,6 @@ public class ComponentItemProvider
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
-			|| childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__SUBSTITUTION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER

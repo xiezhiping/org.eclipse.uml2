@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.5 2006/01/05 13:54:11 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.6 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -98,7 +98,6 @@ public class ClassifierItemProvider
 			addCollaborationUsePropertyDescriptor(object);
 			addOwnedUseCasePropertyDescriptor(object);
 			addUseCasePropertyDescriptor(object);
-			addOwnedSignaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -522,26 +521,6 @@ public class ClassifierItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Owned Signature feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOwnedSignaturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Classifier_ownedSignature_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Classifier_ownedSignature_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -563,8 +542,6 @@ public class ClassifierItemProvider
 				.add(UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE);
 			childrenFeatures
 				.add(UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE);
-			childrenFeatures
-				.add(UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE);
 		}
 		return childrenFeatures;
 	}
@@ -616,7 +593,6 @@ public class ClassifierItemProvider
 			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
 			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
-			case UMLPackage.CLASSIFIER__OWNED_SIGNATURE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -662,32 +638,6 @@ public class ClassifierItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE,
 			UMLFactory.eINSTANCE.createUseCase()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE,
-			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-				new Object[]{getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

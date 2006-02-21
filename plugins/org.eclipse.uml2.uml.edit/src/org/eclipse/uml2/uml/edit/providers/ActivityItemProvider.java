@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.12 2006/02/07 18:20:36 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.13 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -38,7 +38,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -620,8 +619,6 @@ public class ActivityItemProvider
 		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
-			|| childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR

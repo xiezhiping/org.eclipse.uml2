@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,7 +44,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -525,15 +524,6 @@ public class AssociationClassImpl
 					msgs);
 			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE,
-						null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -607,8 +597,6 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -744,10 +732,6 @@ public class AssociationClassImpl
 				return getOwnedUseCases();
 			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
 				return getUseCases();
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ASSOCIATION_CLASS__PART :
@@ -897,9 +881,6 @@ public class AssociationClassImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -1047,9 +1028,6 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1165,7 +1143,7 @@ public class AssociationClassImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION_CLASS__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.ASSOCIATION_CLASS__GENERALIZATION :
@@ -1200,8 +1178,6 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION_CLASS__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.ASSOCIATION_CLASS__OWNED_SIGNATURE) != null;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.ASSOCIATION_CLASS__PART :

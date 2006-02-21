@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ExtensionEndItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -103,7 +103,7 @@ public class ExtensionEndItemProvider
 
 				if (!UML2Util.isEmpty(typeName)) {
 					appendString(text, Extension.STEREOTYPE_ROLE_PREFIX
-						+ typeName); //$NON-NLS-1$
+						+ typeName); 
 				}
 			}
 		}

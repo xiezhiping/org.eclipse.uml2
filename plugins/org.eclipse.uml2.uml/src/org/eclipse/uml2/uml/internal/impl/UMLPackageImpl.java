@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.14 2006/01/19 23:06:34 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -3164,15 +3164,6 @@ public class UMLPackageImpl
 	 */
 	public EReference getClassifier_CollaborationUse() {
 		return (EReference) getClassifier().getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassifier_OwnedSignature() {
-		return (EReference) getClassifier().getEStructuralFeatures().get(13);
 	}
 
 	/**

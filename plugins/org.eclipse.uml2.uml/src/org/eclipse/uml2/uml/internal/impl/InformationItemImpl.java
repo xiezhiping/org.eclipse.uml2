@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.14 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.InformationItem;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -233,10 +232,6 @@ public class InformationItemImpl
 				return getOwnedUseCases();
 			case UMLPackage.INFORMATION_ITEM__USE_CASE :
 				return getUseCases();
-			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
 				return getRepresenteds();
 		}
@@ -340,9 +335,6 @@ public class InformationItemImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
 				getRepresenteds().clear();
 				getRepresenteds().addAll((Collection) newValue);
@@ -433,9 +425,6 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
 				getRepresenteds().clear();
 				return;
@@ -506,7 +495,7 @@ public class InformationItemImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.INFORMATION_ITEM__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.INFORMATION_ITEM__GENERALIZATION :
@@ -541,8 +530,6 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.INFORMATION_ITEM__OWNED_SIGNATURE) != null;
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
 				EList represented = (EList) eVirtualGet(UMLPackage.INFORMATION_ITEM__REPRESENTED);
 				return represented != null && !represented.isEmpty();

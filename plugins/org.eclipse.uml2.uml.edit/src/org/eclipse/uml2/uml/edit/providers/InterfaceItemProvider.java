@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceItemProvider.java,v 1.7 2006/01/24 22:46:31 khussey Exp $
+ * $Id: InterfaceItemProvider.java,v 1.8 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -433,9 +433,7 @@ public class InterfaceItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.INTERFACE__PROTOCOL;
 

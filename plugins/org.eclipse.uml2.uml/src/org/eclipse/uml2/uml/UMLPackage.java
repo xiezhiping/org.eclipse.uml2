@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.19 2006/02/07 18:23:04 khussey Exp $
+ * $Id: UMLPackage.java,v 1.20 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -2504,22 +2504,13 @@ public interface UMLPackage
 	int CLASSIFIER__USE_CASE = NAMESPACE_FEATURE_COUNT + 20;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER__OWNED_SIGNATURE = NAMESPACE_FEATURE_COUNT + 21;
-
-	/**
 	 * The number of structural features of the '<em>Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFIER_FEATURE_COUNT = NAMESPACE_FEATURE_COUNT + 22;
+	int CLASSIFIER_FEATURE_COUNT = NAMESPACE_FEATURE_COUNT + 21;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExtensionPointImpl <em>Extension Point</em>}' class.
@@ -3243,15 +3234,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ASSOCIATION__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
@@ -8158,15 +8140,6 @@ public interface UMLPackage
 	int ARTIFACT__USE_CASE = CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>File Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8552,15 +8525,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int DEPLOYMENT_SPECIFICATION__USE_CASE = ARTIFACT__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_SPECIFICATION__OWNED_SIGNATURE = ARTIFACT__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>File Name</b></em>' attribute.
@@ -9814,15 +9778,6 @@ public interface UMLPackage
 	int STRUCTURED_CLASSIFIER__USE_CASE = CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRUCTURED_CLASSIFIER__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10199,15 +10154,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ENCAPSULATED_CLASSIFIER__USE_CASE = STRUCTURED_CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE = STRUCTURED_CLASSIFIER__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -10595,15 +10541,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int CLASS__USE_CASE = ENCAPSULATED_CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__OWNED_SIGNATURE = ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -11081,15 +11018,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int BEHAVIOR__USE_CASE = CLASS__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR__OWNED_SIGNATURE = CLASS__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -11639,15 +11567,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int BEHAVIORED_CLASSIFIER__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -12215,15 +12134,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int INTERFACE__USE_CASE = CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERFACE__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -12883,15 +12793,6 @@ public interface UMLPackage
 	int SIGNAL__USE_CASE = CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13241,15 +13142,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int STATE_MACHINE__USE_CASE = BEHAVIOR__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_MACHINE__OWNED_SIGNATURE = BEHAVIOR__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -13835,15 +13727,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int PROTOCOL_STATE_MACHINE__USE_CASE = STATE_MACHINE__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE = STATE_MACHINE__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -16663,15 +16546,6 @@ public interface UMLPackage
 	int EXTENSION__USE_CASE = ASSOCIATION__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENSION__OWNED_SIGNATURE = ASSOCIATION__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17498,15 +17372,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int STEREOTYPE__USE_CASE = CLASS__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEREOTYPE__OWNED_SIGNATURE = CLASS__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -18706,15 +18571,6 @@ public interface UMLPackage
 	int DATA_TYPE__USE_CASE = CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19372,15 +19228,6 @@ public interface UMLPackage
 	int COLLABORATION__USE_CASE = BEHAVIORED_CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COLLABORATION__OWNED_SIGNATURE = BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19802,15 +19649,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int USE_CASE__USE_CASE = BEHAVIORED_CLASSIFIER__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USE_CASE__OWNED_SIGNATURE = BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -20497,7 +20335,7 @@ public interface UMLPackage
 	int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER = REDEFINABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Classifier</b></em>' container reference.
+	 * The feature id for the '<em><b>Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -21478,15 +21316,6 @@ public interface UMLPackage
 	int ENUMERATION__USE_CASE = DATA_TYPE__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION__OWNED_SIGNATURE = DATA_TYPE__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22259,15 +22088,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int PRIMITIVE_TYPE__USE_CASE = DATA_TYPE__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE__OWNED_SIGNATURE = DATA_TYPE__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -23557,15 +23377,6 @@ public interface UMLPackage
 	int OPAQUE_BEHAVIOR__USE_CASE = BEHAVIOR__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPAQUE_BEHAVIOR__OWNED_SIGNATURE = BEHAVIOR__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24131,15 +23942,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int FUNCTION_BEHAVIOR__USE_CASE = OPAQUE_BEHAVIOR__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_BEHAVIOR__OWNED_SIGNATURE = OPAQUE_BEHAVIOR__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -26159,15 +25961,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ACTIVITY__USE_CASE = BEHAVIOR__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY__OWNED_SIGNATURE = BEHAVIOR__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -32640,15 +32433,6 @@ public interface UMLPackage
 	int INTERACTION__USE_CASE = BEHAVIOR__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION__OWNED_SIGNATURE = BEHAVIOR__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36573,15 +36357,6 @@ public interface UMLPackage
 	int ACTOR__USE_CASE = BEHAVIORED_CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_SIGNATURE = BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39163,15 +38938,6 @@ public interface UMLPackage
 	int COMPONENT__USE_CASE = CLASS__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__OWNED_SIGNATURE = CLASS__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39704,15 +39470,6 @@ public interface UMLPackage
 	int NODE__USE_CASE = CLASS__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__OWNED_SIGNATURE = CLASS__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40225,15 +39982,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int DEVICE__USE_CASE = NODE__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEVICE__OWNED_SIGNATURE = NODE__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -40750,15 +40498,6 @@ public interface UMLPackage
 	int EXECUTION_ENVIRONMENT__USE_CASE = NODE__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENVIRONMENT__OWNED_SIGNATURE = NODE__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41271,15 +41010,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int COMMUNICATION_PATH__USE_CASE = ASSOCIATION__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_SIGNATURE = ASSOCIATION__OWNED_SIGNATURE;
 
 	/**
 	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
@@ -51985,15 +51715,6 @@ public interface UMLPackage
 	int INFORMATION_ITEM__USE_CASE = CLASSIFIER__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFORMATION_ITEM__OWNED_SIGNATURE = CLASSIFIER__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Represented</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58602,15 +58323,6 @@ public interface UMLPackage
 	int ASSOCIATION_CLASS__USE_CASE = CLASS__USE_CASE;
 
 	/**
-	 * The feature id for the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSOCIATION_CLASS__OWNED_SIGNATURE = CLASS__OWNED_SIGNATURE;
-
-	/**
 	 * The feature id for the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60222,17 +59934,6 @@ public interface UMLPackage
 	 * @generated
 	 */
 	EReference getClassifier_CollaborationUse();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.Classifier#getOwnedSignature <em>Owned Signature</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Owned Signature</em>'.
-	 * @see org.eclipse.uml2.uml.Classifier#getOwnedSignature()
-	 * @see #getClassifier()
-	 * @generated
-	 */
-	EReference getClassifier_OwnedSignature();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.RedefinableElement <em>Redefinable Element</em>}'.
@@ -62866,10 +62567,10 @@ public interface UMLPackage
 	EReference getRedefinableTemplateSignature_InheritedParameter();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier <em>Classifier</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Classifier</em>'.
+	 * @return the meta object for the reference '<em>Classifier</em>'.
 	 * @see org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier()
 	 * @see #getRedefinableTemplateSignature()
 	 * @generated
@@ -69103,15 +68804,6 @@ public interface UMLPackage
 			.getClassifier_CollaborationUse();
 
 		/**
-		 * The meta object literal for the '<em><b>Owned Signature</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CLASSIFIER__OWNED_SIGNATURE = eINSTANCE
-			.getClassifier_OwnedSignature();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.RedefinableElementImpl <em>Redefinable Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -71284,7 +70976,7 @@ public interface UMLPackage
 			.getRedefinableTemplateSignature_InheritedParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Classifier</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

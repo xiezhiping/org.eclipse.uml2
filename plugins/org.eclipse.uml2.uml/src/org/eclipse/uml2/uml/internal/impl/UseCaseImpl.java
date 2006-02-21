@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.14 2006/02/21 16:12:18 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.ExtensionPoint;
 import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -394,14 +393,6 @@ public class UseCaseImpl
 					msgs);
 			case UMLPackage.USE_CASE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.USE_CASE__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.USE_CASE__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.USE_CASE__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -474,8 +465,6 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				return ((InternalEList) getOwnedBehaviors()).basicRemove(
 					otherEnd, msgs);
@@ -602,10 +591,6 @@ public class UseCaseImpl
 				return getOwnedUseCases();
 			case UMLPackage.USE_CASE__USE_CASE :
 				return getUseCases();
-			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.USE_CASE__CLASSIFIER_BEHAVIOR :
@@ -725,9 +710,6 @@ public class UseCaseImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
 				getOwnedBehaviors().addAll((Collection) newValue);
@@ -845,9 +827,6 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
 				return;
@@ -939,7 +918,7 @@ public class UseCaseImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.USE_CASE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.USE_CASE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.USE_CASE__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.USE_CASE__GENERALIZATION :
@@ -974,8 +953,6 @@ public class UseCaseImpl
 			case UMLPackage.USE_CASE__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.USE_CASE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.USE_CASE__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.USE_CASE__OWNED_SIGNATURE) != null;
 			case UMLPackage.USE_CASE__OWNED_BEHAVIOR :
 				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.USE_CASE__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();

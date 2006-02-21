@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Classifier.java,v 1.11 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getCollaborationUses <em>Collaboration Use</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getUseCases <em>Use Case</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getOwnedSignature <em>Owned Signature</em>}</li>
  * </ul>
  * </p>
  *
@@ -443,43 +442,6 @@ public interface Classifier
 	 * @generated
 	 */
 	CollaborationUse getCollaborationUse(String name);
-
-	/**
-	 * Returns the value of the '<em><b>Owned Signature</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier <em>Classifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The optional template signature specifying the formal template parameters.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Owned Signature</em>' containment reference.
-	 * @see #setOwnedSignature(RedefinableTemplateSignature)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_OwnedSignature()
-	 * @see org.eclipse.uml2.uml.RedefinableTemplateSignature#getClassifier
-	 * @model opposite="classifier" containment="true" ordered="false"
-	 * @generated
-	 */
-	RedefinableTemplateSignature getOwnedSignature();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Classifier#getOwnedSignature <em>Owned Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Signature</em>' containment reference.
-	 * @see #getOwnedSignature()
-	 * @generated
-	 */
-	void setOwnedSignature(RedefinableTemplateSignature value);
-
-	/**
-	 * Creates a {@link org.eclipse.uml2.uml.RedefinableTemplateSignature} and sets the '<em><b>Owned Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.RedefinableTemplateSignature}.
-	 * @see #getOwnedSignature()
-	 * @generated
-	 */
-	RedefinableTemplateSignature createOwnedSignature();
 
 	/**
 	 * <!-- begin-user-doc -->

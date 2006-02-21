@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.5 2006/01/05 13:54:11 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.6 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -275,28 +275,6 @@ public class BehavioredClassifierItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 			UMLFactory.eINSTANCE.createTrigger()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-				new Object[]{getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

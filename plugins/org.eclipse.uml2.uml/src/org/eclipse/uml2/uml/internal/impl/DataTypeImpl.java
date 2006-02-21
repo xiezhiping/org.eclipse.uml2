@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.15 2006/02/21 16:12:18 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,7 +32,6 @@ import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -325,14 +324,6 @@ public class DataTypeImpl
 					msgs);
 			case UMLPackage.DATA_TYPE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.DATA_TYPE__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.DATA_TYPE__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.DATA_TYPE__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicAdd(
 					otherEnd, msgs);
@@ -399,8 +390,6 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.DATA_TYPE__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -512,10 +501,6 @@ public class DataTypeImpl
 				return getOwnedUseCases();
 			case UMLPackage.DATA_TYPE__USE_CASE :
 				return getUseCases();
-			case UMLPackage.DATA_TYPE__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.DATA_TYPE__OWNED_OPERATION :
@@ -621,9 +606,6 @@ public class DataTypeImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.DATA_TYPE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -718,9 +700,6 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.DATA_TYPE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -794,7 +773,7 @@ public class DataTypeImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.DATA_TYPE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.DATA_TYPE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.DATA_TYPE__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.DATA_TYPE__GENERALIZATION :
@@ -829,8 +808,6 @@ public class DataTypeImpl
 			case UMLPackage.DATA_TYPE__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.DATA_TYPE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.DATA_TYPE__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.DATA_TYPE__OWNED_SIGNATURE) != null;
 			case UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();

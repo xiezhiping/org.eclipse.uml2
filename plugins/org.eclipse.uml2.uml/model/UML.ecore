@@ -974,6 +974,14 @@
         </eAnnotations>
         <eAnnotations source="redefines" references="#//TemplateableElement/isTemplate"/>
       </contents>
+      <contents xsi:type="ecore:EReference" name="ownedTemplateSignature" ordered="false"
+          eType="#//TemplateSignature" containment="true" eOpposite="#//RedefinableTemplateSignature/classifier">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The optional template signature specifying the formal template parameters."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//TemplateableElement/ownedTemplateSignature"/>
+        <eAnnotations source="subsets" references="#//Element/ownedElement"/>
+      </contents>
       <contents xsi:type="ecore:EReference" name="templateParameter" ordered="false"
           eType="#//TemplateParameter" eOpposite="#//ClassifierTemplateParameter/%duplicates%/parameteredElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1196,13 +1204,6 @@
         <details key="documentation" value="The set of use cases for which this Classifier is the subject."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSignature" ordered="false"
-        eType="#//RedefinableTemplateSignature" containment="true" eOpposite="#//RedefinableTemplateSignature/classifier">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The optional template signature specifying the formal template parameters."/>
-      </eAnnotations>
-      <eAnnotations source="subsets" references="#//Element/ownedElement"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RedefinableElement" abstract="true"
       eSuperTypes="#//NamedElement">
@@ -1280,7 +1281,7 @@
     </eOperations>
     <eOperations name="isTemplate" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query isTemplate() returns whether this templateable element is actually a template.&#xD;&#xA;result = ownedSignature->notEmpty()"/>
+        <details key="documentation" value="The query isTemplate() returns whether this templateable element is actually a template.&#xD;&#xA;result = ownedTemplateSignature->notEmpty()"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="spec"/>
@@ -4914,8 +4915,8 @@
       <eAnnotations source="subsets" references="#//TemplateSignature/parameter"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classifier" ordered="false"
-        lowerBound="1" eType="#//Classifier" transient="true" resolveProxies="false"
-        eOpposite="#//Classifier/ownedSignature">
+        lowerBound="1" eType="#//Classifier" changeable="false" volatile="true" transient="true"
+        resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The classifier that owns this template signature."/>
       </eAnnotations>

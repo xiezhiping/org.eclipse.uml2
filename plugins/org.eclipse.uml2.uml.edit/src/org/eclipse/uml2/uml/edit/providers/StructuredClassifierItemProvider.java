@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: StructuredClassifierItemProvider.java,v 1.2 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -247,28 +247,6 @@ public class StructuredClassifierItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
 			UMLFactory.eINSTANCE.createConnector()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-				new Object[]{getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: DataTypeItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -213,28 +213,6 @@ public class DataTypeItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.DATA_TYPE__OWNED_OPERATION,
 			UMLFactory.eINSTANCE.createOperation()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-				new Object[]{getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

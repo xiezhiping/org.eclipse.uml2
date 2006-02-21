@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.17 2006/02/21 16:12:17 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
@@ -439,15 +438,6 @@ public class StateMachineImpl
 					msgs);
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.STATE_MACHINE__OWNED_SIGNATURE, null,
-						msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -529,8 +519,6 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -683,10 +671,6 @@ public class StateMachineImpl
 				return getOwnedUseCases();
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return getUseCases();
-			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.STATE_MACHINE__PART :
@@ -851,9 +835,6 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -1029,9 +1010,6 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1168,7 +1146,7 @@ public class StateMachineImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
@@ -1203,8 +1181,6 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.STATE_MACHINE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.STATE_MACHINE__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.STATE_MACHINE__OWNED_SIGNATURE) != null;
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.STATE_MACHINE__PART :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageableElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -158,7 +157,6 @@ public class ComponentImpl
 						UMLPackage.COMPONENT__GENERALIZATION,
 						UMLPackage.COMPONENT__SUBSTITUTION,
 						UMLPackage.COMPONENT__COLLABORATION_USE,
-						UMLPackage.COMPONENT__OWNED_SIGNATURE,
 						UMLPackage.COMPONENT__INTERFACE_REALIZATION,
 						UMLPackage.COMPONENT__REALIZATION}));
 		}
@@ -447,14 +445,6 @@ public class ComponentImpl
 					msgs);
 			case UMLPackage.COMPONENT__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.COMPONENT__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -524,8 +514,6 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -661,10 +649,6 @@ public class ComponentImpl
 				return getOwnedUseCases();
 			case UMLPackage.COMPONENT__USE_CASE :
 				return getUseCases();
-			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.COMPONENT__PART :
@@ -812,9 +796,6 @@ public class ComponentImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -958,9 +939,6 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1073,7 +1051,7 @@ public class ComponentImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.COMPONENT__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.COMPONENT__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.COMPONENT__GENERALIZATION :
@@ -1108,8 +1086,6 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.COMPONENT__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.COMPONENT__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.COMPONENT__OWNED_SIGNATURE) != null;
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.COMPONENT__PART :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.15 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -579,14 +578,6 @@ public class InterfaceImpl
 					msgs);
 			case UMLPackage.INTERFACE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.INTERFACE__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.INTERFACE__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.INTERFACE__OWNED_OPERATION :
 				return ((InternalEList) getOwnedOperations()).basicAdd(
 					otherEnd, msgs);
@@ -650,8 +641,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -771,10 +760,6 @@ public class InterfaceImpl
 				return getOwnedUseCases();
 			case UMLPackage.INTERFACE__USE_CASE :
 				return getUseCases();
-			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.INTERFACE__OWNED_OPERATION :
@@ -890,9 +875,6 @@ public class InterfaceImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -1002,9 +984,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1090,7 +1069,7 @@ public class InterfaceImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.INTERFACE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.INTERFACE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.INTERFACE__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.INTERFACE__GENERALIZATION :
@@ -1125,8 +1104,6 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.INTERFACE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.INTERFACE__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.INTERFACE__OWNED_SIGNATURE) != null;
 			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.INTERFACE__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();

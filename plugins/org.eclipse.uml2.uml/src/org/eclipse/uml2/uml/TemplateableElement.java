@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.4 2006/02/21 16:12:18 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.5 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -133,7 +133,7 @@ public interface TemplateableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isTemplate() returns whether this templateable element is actually a template.
-	 * result = ownedSignature->notEmpty()
+	 * result = ownedTemplateSignature->notEmpty()
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"

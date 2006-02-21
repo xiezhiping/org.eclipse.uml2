@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.13 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -305,41 +305,12 @@ public class RedefinableTemplateSignatureImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Classifier getClassifier() {
-		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER)
-			return null;
-		return (Classifier) eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setClassifier(Classifier newClassifier) {
-		if (newClassifier != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER && newClassifier != null)) {
-			if (EcoreUtil.isAncestor(this, newClassifier))
-				throw new IllegalArgumentException(
-					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newClassifier != null)
-				msgs = ((InternalEObject) newClassifier).eInverseAdd(this,
-					UMLPackage.CLASSIFIER__OWNED_SIGNATURE, Classifier.class,
-					msgs);
-			msgs = eBasicSetContainer((InternalEObject) newClassifier,
-				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
-				newClassifier, newClassifier));
-
+		return eInternalContainer() instanceof Classifier
+			? (Classifier) eContainer()
+			: null;
 	}
 
 	/**
@@ -395,11 +366,6 @@ public class RedefinableTemplateSignatureImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return eBasicSetContainer(otherEnd,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -429,9 +395,6 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				return eBasicSetContainer(null,
 					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				return eBasicSetContainer(null,
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -448,10 +411,6 @@ public class RedefinableTemplateSignatureImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 					TemplateableElement.class, msgs);
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.CLASSIFIER__OWNED_SIGNATURE, Classifier.class,
-					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -559,9 +518,6 @@ public class RedefinableTemplateSignatureImpl
 				getExtendedSignatures().clear();
 				getExtendedSignatures().addAll((Collection) newValue);
 				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				setClassifier((Classifier) newValue);
-				return;
 		}
 		eDynamicSet(featureID, newValue);
 	}
@@ -605,9 +561,6 @@ public class RedefinableTemplateSignatureImpl
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				getExtendedSignatures().clear();
-				return;
-			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				setClassifier((Classifier) null);
 				return;
 		}
 		eDynamicUnset(featureID);

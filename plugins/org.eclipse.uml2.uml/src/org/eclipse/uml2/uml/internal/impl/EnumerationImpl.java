@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.14 2006/02/21 16:12:17 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,7 +30,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -210,15 +209,6 @@ public class EnumerationImpl
 					msgs);
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ENUMERATION__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ENUMERATION__OWNED_SIGNATURE, null,
-						msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicAdd(
 					otherEnd, msgs);
@@ -288,8 +278,6 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -404,10 +392,6 @@ public class EnumerationImpl
 				return getOwnedUseCases();
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return getUseCases();
-			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ENUMERATION__OWNED_OPERATION :
@@ -515,9 +499,6 @@ public class EnumerationImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -616,9 +597,6 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -695,7 +673,7 @@ public class EnumerationImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.ENUMERATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENUMERATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ENUMERATION__GENERALIZATION :
@@ -730,8 +708,6 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.ENUMERATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.ENUMERATION__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.ENUMERATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENUMERATION__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();

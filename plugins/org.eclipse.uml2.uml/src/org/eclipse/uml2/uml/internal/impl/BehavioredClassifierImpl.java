@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.17 2006/02/21 16:12:16 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,7 +44,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -140,7 +139,6 @@ public abstract class BehavioredClassifierImpl
 						UMLPackage.BEHAVIORED_CLASSIFIER__GENERALIZATION,
 						UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
 						UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE,
-						UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE,
 						UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION}));
 		}
 		return ownedElement;
@@ -446,17 +444,6 @@ public abstract class BehavioredClassifierImpl
 					msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature)
-						.eInverseRemove(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE,
-							null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -522,8 +509,6 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR :
 				return ((InternalEList) getOwnedBehaviors()).basicRemove(
 					otherEnd, msgs);
@@ -638,10 +623,6 @@ public abstract class BehavioredClassifierImpl
 				return getOwnedUseCases();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__USE_CASE :
 				return getUseCases();
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR :
@@ -753,9 +734,6 @@ public abstract class BehavioredClassifierImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
 				getOwnedBehaviors().addAll((Collection) newValue);
@@ -857,9 +835,6 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
 				return;
@@ -939,7 +914,7 @@ public abstract class BehavioredClassifierImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIORED_CLASSIFIER__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__GENERALIZATION :
@@ -974,8 +949,6 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_SIGNATURE) != null;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR :
 				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();

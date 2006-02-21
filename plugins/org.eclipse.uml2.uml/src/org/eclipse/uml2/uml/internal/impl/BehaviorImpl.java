@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.18 2006/02/21 16:12:17 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.19 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,7 +44,6 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -633,14 +632,6 @@ public abstract class BehaviorImpl
 					msgs);
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.BEHAVIOR__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -714,8 +705,6 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -859,10 +848,6 @@ public abstract class BehaviorImpl
 				return getOwnedUseCases();
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				return getUseCases();
-			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.BEHAVIOR__PART :
@@ -1019,9 +1004,6 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -1181,9 +1163,6 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1308,7 +1287,7 @@ public abstract class BehaviorImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
@@ -1343,8 +1322,6 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.BEHAVIOR__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.BEHAVIOR__OWNED_SIGNATURE) != null;
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.BEHAVIOR__PART :

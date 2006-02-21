@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.15 2006/02/21 16:12:17 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -180,8 +179,6 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -293,10 +290,6 @@ public abstract class EncapsulatedClassifierImpl
 				return getOwnedUseCases();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
 				return getUseCases();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PART :
@@ -408,9 +401,6 @@ public abstract class EncapsulatedClassifierImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -509,9 +499,6 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -588,7 +575,7 @@ public abstract class EncapsulatedClassifierImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION :
@@ -623,8 +610,6 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_SIGNATURE) != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();

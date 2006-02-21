@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.15 2006/02/21 16:12:18 khussey Exp $
+ * $Id: SignalImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -232,8 +231,6 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -342,10 +339,6 @@ public class SignalImpl
 				return getOwnedUseCases();
 			case UMLPackage.SIGNAL__USE_CASE :
 				return getUseCases();
-			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 		}
@@ -449,9 +442,6 @@ public class SignalImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -542,9 +532,6 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -615,7 +602,7 @@ public class SignalImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.SIGNAL__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.SIGNAL__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.SIGNAL__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.SIGNAL__GENERALIZATION :
@@ -650,8 +637,6 @@ public class SignalImpl
 			case UMLPackage.SIGNAL__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.SIGNAL__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.SIGNAL__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.SIGNAL__OWNED_SIGNATURE) != null;
 			case UMLPackage.SIGNAL__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.SIGNAL__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();

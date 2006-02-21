@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.23 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ClassImpl.java,v 1.24 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,7 +56,6 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Reception;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -185,7 +184,6 @@ public class ClassImpl
 						UMLPackage.CLASS__GENERALIZATION,
 						UMLPackage.CLASS__SUBSTITUTION,
 						UMLPackage.CLASS__COLLABORATION_USE,
-						UMLPackage.CLASS__OWNED_SIGNATURE,
 						UMLPackage.CLASS__INTERFACE_REALIZATION}));
 		}
 		return ownedElement;
@@ -943,14 +941,6 @@ public class ClassImpl
 					msgs);
 			case UMLPackage.CLASS__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.CLASS__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.CLASS__OWNED_SIGNATURE, null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.CLASS__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -1017,8 +1007,6 @@ public class ClassImpl
 			case UMLPackage.CLASS__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -1148,10 +1136,6 @@ public class ClassImpl
 				return getOwnedUseCases();
 			case UMLPackage.CLASS__USE_CASE :
 				return getUseCases();
-			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.CLASS__PART :
@@ -1287,9 +1271,6 @@ public class ClassImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -1422,9 +1403,6 @@ public class ClassImpl
 			case UMLPackage.CLASS__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1528,7 +1506,7 @@ public class ClassImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.CLASS__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.CLASS__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.CLASS__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.CLASS__GENERALIZATION :
@@ -1563,8 +1541,6 @@ public class ClassImpl
 			case UMLPackage.CLASS__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.CLASS__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.CLASS__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.CLASS__OWNED_SIGNATURE) != null;
 			case UMLPackage.CLASS__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.CLASS__PART :

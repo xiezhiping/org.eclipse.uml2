@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassItemProvider.java,v 1.8 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.9 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -549,9 +549,7 @@ public class ClassItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 

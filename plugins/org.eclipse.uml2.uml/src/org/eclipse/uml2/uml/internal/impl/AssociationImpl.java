@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -473,15 +472,6 @@ public class AssociationImpl
 					msgs);
 			case UMLPackage.ASSOCIATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.ASSOCIATION__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature).eInverseRemove(
-						this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.ASSOCIATION__OWNED_SIGNATURE, null,
-						msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				return ((InternalEList) getOwnedEnds())
 					.basicAdd(otherEnd, msgs);
@@ -548,8 +538,6 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				return ((InternalEList) getOwnedEnds()).basicRemove(otherEnd,
 					msgs);
@@ -661,10 +649,6 @@ public class AssociationImpl
 				return getOwnedUseCases();
 			case UMLPackage.ASSOCIATION__USE_CASE :
 				return getUseCases();
-			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.ASSOCIATION__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.ASSOCIATION__OWNED_END :
@@ -780,9 +764,6 @@ public class AssociationImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				getOwnedEnds().clear();
 				getOwnedEnds().addAll((Collection) newValue);
@@ -884,9 +865,6 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.ASSOCIATION__OWNED_END :
 				getOwnedEnds().clear();
 				return;
@@ -966,7 +944,7 @@ public class AssociationImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.ASSOCIATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ASSOCIATION__GENERALIZATION :
@@ -1001,8 +979,6 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.ASSOCIATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.ASSOCIATION__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.ASSOCIATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.ASSOCIATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.ASSOCIATION__OWNED_END :

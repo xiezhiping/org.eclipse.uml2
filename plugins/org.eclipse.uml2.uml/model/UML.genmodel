@@ -599,10 +599,6 @@
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//Classifier/useCase"/>
-      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          ecoreFeature="ecore:EReference UML.ecore#//Classifier/ownedSignature">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/no_cycles_in_generalization">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/no_cycles_in_generalization/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/no_cycles_in_generalization/context"/>

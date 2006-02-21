@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -437,8 +436,6 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
 				return ((InternalEList) getOwnedBehaviors()).basicRemove(
 					otherEnd, msgs);
@@ -559,10 +556,6 @@ public class CollaborationImpl
 				return getOwnedUseCases();
 			case UMLPackage.COLLABORATION__USE_CASE :
 				return getUseCases();
-			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
 				return getOwnedBehaviors();
 			case UMLPackage.COLLABORATION__CLASSIFIER_BEHAVIOR :
@@ -684,9 +677,6 @@ public class CollaborationImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
 				getOwnedBehaviors().addAll((Collection) newValue);
@@ -800,9 +790,6 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
 				return;
@@ -891,7 +878,7 @@ public class CollaborationImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.COLLABORATION__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.COLLABORATION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.COLLABORATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.COLLABORATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.COLLABORATION__GENERALIZATION :
@@ -926,8 +913,6 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.COLLABORATION__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.COLLABORATION__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.COLLABORATION__OWNED_SIGNATURE) != null;
 			case UMLPackage.COLLABORATION__OWNED_BEHAVIOR :
 				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.COLLABORATION__OWNED_BEHAVIOR);
 				return ownedBehavior != null && !ownedBehavior.isEmpty();

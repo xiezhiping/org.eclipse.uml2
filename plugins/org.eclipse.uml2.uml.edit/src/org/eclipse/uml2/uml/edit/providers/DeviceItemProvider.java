@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeviceItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
+ * $Id: DeviceItemProvider.java,v 1.5 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -124,9 +124,7 @@ public class DeviceItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
 			|| childFeature == UMLPackage.Literals.NODE__NESTED_NODE;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -440,8 +439,6 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -553,10 +550,6 @@ public abstract class StructuredClassifierImpl
 				return getOwnedUseCases();
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
 				return getUseCases();
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.STRUCTURED_CLASSIFIER__PART :
@@ -666,9 +659,6 @@ public abstract class StructuredClassifierImpl
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
 				return;
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
-				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				getOwnedAttributes().addAll((Collection) newValue);
@@ -763,9 +753,6 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -839,7 +826,7 @@ public abstract class StructuredClassifierImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERALIZATION :
@@ -874,8 +861,6 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_SIGNATURE) != null;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 				return ownedAttribute != null && !ownedAttribute.isEmpty();

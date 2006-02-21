@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.6 2006/01/24 22:46:31 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.7 2006/02/21 21:40:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -351,9 +351,7 @@ public class AssociationClassItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_SIGNATURE
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE
 			|| childFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.15 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -35,7 +35,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ProtocolConformance;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -106,7 +105,6 @@ public class ProtocolStateMachineImpl
 						UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION,
 						UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION,
 						UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE,
-						UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE,
 						UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION,
 						UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE}));
 		}
@@ -260,17 +258,6 @@ public class ProtocolStateMachineImpl
 					msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				RedefinableTemplateSignature ownedSignature = (RedefinableTemplateSignature) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE);
-				if (ownedSignature != null)
-					msgs = ((InternalEObject) ownedSignature)
-						.eInverseRemove(
-							this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE,
-							null, msgs);
-				return basicSetOwnedSignature(
-					(RedefinableTemplateSignature) otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION :
 				return ((InternalEList) getInterfaceRealizations()).basicAdd(
 					otherEnd, msgs);
@@ -357,8 +344,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				return basicSetOwnedSignature(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -514,10 +499,6 @@ public class ProtocolStateMachineImpl
 				return getOwnedUseCases();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				return getUseCases();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PART :
@@ -684,9 +665,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -866,9 +844,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -1008,7 +983,7 @@ public class ProtocolStateMachineImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION :
@@ -1043,8 +1018,6 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_SIGNATURE) != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PART :

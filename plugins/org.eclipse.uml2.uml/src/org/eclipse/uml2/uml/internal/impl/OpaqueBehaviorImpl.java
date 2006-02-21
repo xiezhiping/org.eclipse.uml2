@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.15 2006/02/21 16:12:16 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.OpaqueBehavior;
-import org.eclipse.uml2.uml.RedefinableTemplateSignature;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -237,10 +236,6 @@ public class OpaqueBehaviorImpl
 				return getOwnedUseCases();
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				return getUseCases();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
-				if (resolve)
-					return getOwnedSignature();
-				return basicGetOwnedSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.OPAQUE_BEHAVIOR__PART :
@@ -401,9 +396,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection) newValue);
-				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -571,9 +563,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				getUseCases().clear();
 				return;
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
-				setOwnedSignature((RedefinableTemplateSignature) null);
-				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
@@ -704,7 +693,7 @@ public class OpaqueBehaviorImpl
 				EList templateBinding = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING);
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE) != null;
+				return isSetOwnedTemplateSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
@@ -739,8 +728,6 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				EList useCase = (EList) eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__USE_CASE);
 				return useCase != null && !useCase.isEmpty();
-			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE :
-				return eVirtualGet(UMLPackage.OPAQUE_BEHAVIOR__OWNED_SIGNATURE) != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.OPAQUE_BEHAVIOR__PART :
