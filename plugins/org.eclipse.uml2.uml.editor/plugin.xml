@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.3 2006/02/22 20:11:03 khussey Exp $
+ $Id: plugin.xml,v 1.4 2006/02/22 20:12:35 khussey Exp $
 -->
 
 <plugin>
@@ -137,7 +137,7 @@
          id="org.eclipse.uml2.uml.editor.MergePackageActionID">
         <enablement>
           <objectClass
-             name="org.eclipse.uml2.Package">
+             name="org.eclipse.uml2.uml.Package">
           </objectClass>
         </enablement>
       </action>
