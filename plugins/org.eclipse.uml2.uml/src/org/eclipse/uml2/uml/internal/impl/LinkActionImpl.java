@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -157,8 +157,10 @@ public abstract class LinkActionImpl
 	 */
 	public InputPin createInputValue(String name, Type type, EClass eClass) {
 		InputPin newInputValue = (InputPin) EcoreUtil.create(eClass);
-		newInputValue.setName(name);
-		newInputValue.setType(type);
+		if (name != null)
+			newInputValue.setName(name);
+		if (type != null)
+			newInputValue.setType(type);
 		getInputValues().add(newInputValue);
 		return newInputValue;
 	}

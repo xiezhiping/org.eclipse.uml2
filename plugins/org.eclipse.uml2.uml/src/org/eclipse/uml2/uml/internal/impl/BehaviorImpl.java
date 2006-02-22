@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.20 2006/02/22 20:48:17 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.21 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -357,7 +357,8 @@ public abstract class BehaviorImpl
 	 */
 	public Constraint createPrecondition(String name, EClass eClass) {
 		Constraint newPrecondition = (Constraint) EcoreUtil.create(eClass);
-		newPrecondition.setName(name);
+		if (name != null)
+			newPrecondition.setName(name);
 		getPreconditions().add(newPrecondition);
 		return newPrecondition;
 	}
@@ -428,7 +429,8 @@ public abstract class BehaviorImpl
 	 */
 	public Constraint createPostcondition(String name, EClass eClass) {
 		Constraint newPostcondition = (Constraint) EcoreUtil.create(eClass);
-		newPostcondition.setName(name);
+		if (name != null)
+			newPostcondition.setName(name);
 		getPostconditions().add(newPostcondition);
 		return newPostcondition;
 	}

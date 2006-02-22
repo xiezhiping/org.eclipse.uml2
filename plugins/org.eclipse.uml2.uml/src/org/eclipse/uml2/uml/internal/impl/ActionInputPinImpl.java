@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.16 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.17 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -203,7 +203,8 @@ public class ActionInputPinImpl
 	 */
 	public Action createFromAction(String name, EClass eClass) {
 		Action newFromAction = (Action) EcoreUtil.create(eClass);
-		newFromAction.setName(name);
+		if (name != null)
+			newFromAction.setName(name);
 		setFromAction(newFromAction);
 		return newFromAction;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
+ * $Id: SlotImpl.java,v 1.11 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -204,8 +204,10 @@ public class SlotImpl
 	public ValueSpecification createValue(String name, Type type, EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newValue.setName(name);
-		newValue.setType(type);
+		if (name != null)
+			newValue.setName(name);
+		if (type != null)
+			newValue.setType(type);
 		getValues().add(newValue);
 		return newValue;
 	}

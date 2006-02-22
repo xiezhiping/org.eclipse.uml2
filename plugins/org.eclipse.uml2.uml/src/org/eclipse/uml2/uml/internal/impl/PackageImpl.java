@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.21 2006/02/22 20:48:17 khussey Exp $
+ * $Id: PackageImpl.java,v 1.22 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -539,7 +539,8 @@ public class PackageImpl
 	public PackageableElement createPackagedElement(String name, EClass eClass) {
 		PackageableElement newPackagedElement = (PackageableElement) EcoreUtil
 			.create(eClass);
-		newPackagedElement.setName(name);
+		if (name != null)
+			newPackagedElement.setName(name);
 		getPackagedElements().add(newPackagedElement);
 		return newPackagedElement;
 	}
@@ -661,7 +662,8 @@ public class PackageImpl
 	 */
 	public Type createOwnedType(String name, EClass eClass) {
 		Type newOwnedType = (Type) EcoreUtil.create(eClass);
-		newOwnedType.setName(name);
+		if (name != null)
+			newOwnedType.setName(name);
 		getOwnedTypes().add(newOwnedType);
 		return newOwnedType;
 	}
@@ -724,7 +726,8 @@ public class PackageImpl
 			EClass eClass) {
 		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) EcoreUtil
 			.create(eClass);
-		newNestedPackage.setName(name);
+		if (name != null)
+			newNestedPackage.setName(name);
 		getNestedPackages().add(newNestedPackage);
 		return newNestedPackage;
 	}

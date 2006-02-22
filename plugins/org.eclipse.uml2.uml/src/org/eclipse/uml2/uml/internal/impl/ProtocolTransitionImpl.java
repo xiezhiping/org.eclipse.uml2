@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.23 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.24 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -229,7 +229,8 @@ public class ProtocolTransitionImpl
 	 */
 	public Constraint createPostCondition(String name, EClass eClass) {
 		Constraint newPostCondition = (Constraint) EcoreUtil.create(eClass);
-		newPostCondition.setName(name);
+		if (name != null)
+			newPostCondition.setName(name);
 		setPostCondition(newPostCondition);
 		return newPostCondition;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.13 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -240,8 +240,10 @@ public class TimeEventImpl
 	public ValueSpecification createWhen(String name, Type type, EClass eClass) {
 		ValueSpecification newWhen = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newWhen.setName(name);
-		newWhen.setType(type);
+		if (name != null)
+			newWhen.setName(name);
+		if (type != null)
+			newWhen.setType(type);
 		setWhen(newWhen);
 		return newWhen;
 	}

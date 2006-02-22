@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.21 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.22 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -258,7 +258,8 @@ public class ActivityImpl
 	 */
 	public ActivityNode createNode(String name, EClass eClass) {
 		ActivityNode newNode = (ActivityNode) EcoreUtil.create(eClass);
-		newNode.setName(name);
+		if (name != null)
+			newNode.setName(name);
 		getNodes().add(newNode);
 		return newNode;
 	}
@@ -478,7 +479,8 @@ public class ActivityImpl
 	 */
 	public ActivityEdge createEdge(String name, EClass eClass) {
 		ActivityEdge newEdge = (ActivityEdge) EcoreUtil.create(eClass);
-		newEdge.setName(name);
+		if (name != null)
+			newEdge.setName(name);
 		getEdges().add(newEdge);
 		return newEdge;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.15 2006/02/22 20:48:16 khussey Exp $
+ * $Id: RegionImpl.java,v 1.16 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -310,7 +310,8 @@ public class RegionImpl
 	 */
 	public Vertex createSubvertex(String name, EClass eClass) {
 		Vertex newSubvertex = (Vertex) EcoreUtil.create(eClass);
-		newSubvertex.setName(name);
+		if (name != null)
+			newSubvertex.setName(name);
 		getSubvertices().add(newSubvertex);
 		return newSubvertex;
 	}
@@ -370,7 +371,8 @@ public class RegionImpl
 	 */
 	public Transition createTransition(String name, EClass eClass) {
 		Transition newTransition = (Transition) EcoreUtil.create(eClass);
-		newTransition.setName(name);
+		if (name != null)
+			newTransition.setName(name);
 		getTransitions().add(newTransition);
 		return newTransition;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -455,8 +455,10 @@ public class InstanceSpecificationImpl
 			EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newSpecification.setName(name);
-		newSpecification.setType(type);
+		if (name != null)
+			newSpecification.setName(name);
+		if (type != null)
+			newSpecification.setType(type);
 		setSpecification(newSpecification);
 		return newSpecification;
 	}

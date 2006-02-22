@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.8 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.9 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -383,8 +383,10 @@ public class ReduceActionImpl
 	 */
 	public InputPin createCollection(String name, Type type, EClass eClass) {
 		InputPin newCollection = (InputPin) EcoreUtil.create(eClass);
-		newCollection.setName(name);
-		newCollection.setType(type);
+		if (name != null)
+			newCollection.setName(name);
+		if (type != null)
+			newCollection.setType(type);
 		setCollection(newCollection);
 		return newCollection;
 	}

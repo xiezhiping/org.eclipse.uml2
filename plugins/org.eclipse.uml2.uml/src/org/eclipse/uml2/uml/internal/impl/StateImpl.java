@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.20 2006/02/22 20:48:17 khussey Exp $
+ * $Id: StateImpl.java,v 1.21 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -889,7 +889,8 @@ public class StateImpl
 	 */
 	public Constraint createStateInvariant(String name, EClass eClass) {
 		Constraint newStateInvariant = (Constraint) EcoreUtil.create(eClass);
-		newStateInvariant.setName(name);
+		if (name != null)
+			newStateInvariant.setName(name);
 		setStateInvariant(newStateInvariant);
 		return newStateInvariant;
 	}
@@ -1000,7 +1001,8 @@ public class StateImpl
 	 */
 	public Behavior createEntry(String name, EClass eClass) {
 		Behavior newEntry = (Behavior) EcoreUtil.create(eClass);
-		newEntry.setName(name);
+		if (name != null)
+			newEntry.setName(name);
 		setEntry(newEntry);
 		return newEntry;
 	}
@@ -1099,7 +1101,8 @@ public class StateImpl
 	 */
 	public Behavior createExit(String name, EClass eClass) {
 		Behavior newExit = (Behavior) EcoreUtil.create(eClass);
-		newExit.setName(name);
+		if (name != null)
+			newExit.setName(name);
 		setExit(newExit);
 		return newExit;
 	}
@@ -1201,7 +1204,8 @@ public class StateImpl
 	 */
 	public Behavior createDoActivity(String name, EClass eClass) {
 		Behavior newDoActivity = (Behavior) EcoreUtil.create(eClass);
-		newDoActivity.setName(name);
+		if (name != null)
+			newDoActivity.setName(name);
 		setDoActivity(newDoActivity);
 		return newDoActivity;
 	}

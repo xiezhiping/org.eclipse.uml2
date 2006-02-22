@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -343,7 +343,8 @@ public abstract class NamespaceImpl
 	 */
 	public Constraint createOwnedRule(String name, EClass eClass) {
 		Constraint newOwnedRule = (Constraint) EcoreUtil.create(eClass);
-		newOwnedRule.setName(name);
+		if (name != null)
+			newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}

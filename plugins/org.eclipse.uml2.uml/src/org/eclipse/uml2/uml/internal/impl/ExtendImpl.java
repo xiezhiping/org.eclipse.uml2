@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -300,7 +300,8 @@ public class ExtendImpl
 	 */
 	public Constraint createCondition(String name, EClass eClass) {
 		Constraint newCondition = (Constraint) EcoreUtil.create(eClass);
-		newCondition.setName(name);
+		if (name != null)
+			newCondition.setName(name);
 		setCondition(newCondition);
 		return newCondition;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.19 2006/02/22 20:48:16 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.20 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -172,7 +172,8 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public Behavior createOwnedBehavior(String name, EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) EcoreUtil.create(eClass);
-		newOwnedBehavior.setName(name);
+		if (name != null)
+			newOwnedBehavior.setName(name);
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}
@@ -293,7 +294,8 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public Behavior createClassifierBehavior(String name, EClass eClass) {
 		Behavior newClassifierBehavior = (Behavior) EcoreUtil.create(eClass);
-		newClassifierBehavior.setName(name);
+		if (name != null)
+			newClassifierBehavior.setName(name);
 		setClassifierBehavior(newClassifierBehavior);
 		return newClassifierBehavior;
 	}

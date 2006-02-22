@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -248,8 +248,10 @@ public class AddVariableValueActionImpl
 	 */
 	public InputPin createInsertAt(String name, Type type, EClass eClass) {
 		InputPin newInsertAt = (InputPin) EcoreUtil.create(eClass);
-		newInsertAt.setName(name);
-		newInsertAt.setType(type);
+		if (name != null)
+			newInsertAt.setName(name);
+		if (type != null)
+			newInsertAt.setType(type);
 		setInsertAt(newInsertAt);
 		return newInsertAt;
 	}

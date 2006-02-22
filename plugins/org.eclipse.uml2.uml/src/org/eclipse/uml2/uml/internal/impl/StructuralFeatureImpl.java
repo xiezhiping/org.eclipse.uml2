@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.15 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -463,8 +463,10 @@ public abstract class StructuralFeatureImpl
 			EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newUpperValue.setName(name);
-		newUpperValue.setType(type);
+		if (name != null)
+			newUpperValue.setName(name);
+		if (type != null)
+			newUpperValue.setType(type);
 		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
@@ -573,8 +575,10 @@ public abstract class StructuralFeatureImpl
 			EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newLowerValue.setName(name);
-		newLowerValue.setType(type);
+		if (name != null)
+			newLowerValue.setName(name);
+		if (type != null)
+			newLowerValue.setType(type);
 		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}

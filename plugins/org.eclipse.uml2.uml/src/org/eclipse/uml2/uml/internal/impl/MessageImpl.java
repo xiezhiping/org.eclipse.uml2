@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: MessageImpl.java,v 1.14 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -376,8 +376,10 @@ public class MessageImpl
 			EClass eClass) {
 		ValueSpecification newArgument = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newArgument.setName(name);
-		newArgument.setType(type);
+		if (name != null)
+			newArgument.setName(name);
+		if (type != null)
+			newArgument.setType(type);
 		getArguments().add(newArgument);
 		return newArgument;
 	}

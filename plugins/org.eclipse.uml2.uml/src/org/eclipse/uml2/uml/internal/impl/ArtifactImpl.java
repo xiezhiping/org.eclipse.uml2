@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.18 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.19 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -280,7 +280,8 @@ public class ArtifactImpl
 	 */
 	public Artifact createNestedArtifact(String name, EClass eClass) {
 		Artifact newNestedArtifact = (Artifact) EcoreUtil.create(eClass);
-		newNestedArtifact.setName(name);
+		if (name != null)
+			newNestedArtifact.setName(name);
 		getNestedArtifacts().add(newNestedArtifact);
 		return newNestedArtifact;
 	}
@@ -521,8 +522,10 @@ public class ArtifactImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.25 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ClassImpl.java,v 1.26 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -215,7 +215,8 @@ public class ClassImpl
 	 */
 	public Behavior createOwnedBehavior(String name, EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) EcoreUtil.create(eClass);
-		newOwnedBehavior.setName(name);
+		if (name != null)
+			newOwnedBehavior.setName(name);
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}
@@ -332,7 +333,8 @@ public class ClassImpl
 	 */
 	public Behavior createClassifierBehavior(String name, EClass eClass) {
 		Behavior newClassifierBehavior = (Behavior) EcoreUtil.create(eClass);
-		newClassifierBehavior.setName(name);
+		if (name != null)
+			newClassifierBehavior.setName(name);
 		setClassifierBehavior(newClassifierBehavior);
 		return newClassifierBehavior;
 	}
@@ -624,7 +626,8 @@ public class ClassImpl
 	 */
 	public Classifier createNestedClassifier(String name, EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) EcoreUtil.create(eClass);
-		newNestedClassifier.setName(name);
+		if (name != null)
+			newNestedClassifier.setName(name);
 		getNestedClassifiers().add(newNestedClassifier);
 		return newNestedClassifier;
 	}
@@ -979,8 +982,10 @@ public class ClassImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}

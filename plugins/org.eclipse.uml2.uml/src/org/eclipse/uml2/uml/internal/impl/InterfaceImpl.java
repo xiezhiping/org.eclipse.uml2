@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.17 2006/02/22 20:48:16 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.18 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -198,8 +198,10 @@ public class InterfaceImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -274,7 +276,8 @@ public class InterfaceImpl
 	 */
 	public Classifier createNestedClassifier(String name, EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) EcoreUtil.create(eClass);
-		newNestedClassifier.setName(name);
+		if (name != null)
+			newNestedClassifier.setName(name);
 		getNestedClassifiers().add(newNestedClassifier);
 		return newNestedClassifier;
 	}

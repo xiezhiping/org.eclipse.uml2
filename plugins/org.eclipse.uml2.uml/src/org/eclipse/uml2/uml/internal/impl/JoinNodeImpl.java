@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.15 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -244,8 +244,10 @@ public class JoinNodeImpl
 			EClass eClass) {
 		ValueSpecification newJoinSpec = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newJoinSpec.setName(name);
-		newJoinSpec.setType(type);
+		if (name != null)
+			newJoinSpec.setName(name);
+		if (type != null)
+			newJoinSpec.setType(type);
 		setJoinSpec(newJoinSpec);
 		return newJoinSpec;
 	}

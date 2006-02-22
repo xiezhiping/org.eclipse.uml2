@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,8 +212,10 @@ public class TestIdentityActionImpl
 	 */
 	public InputPin createFirst(String name, Type type, EClass eClass) {
 		InputPin newFirst = (InputPin) EcoreUtil.create(eClass);
-		newFirst.setName(name);
-		newFirst.setType(type);
+		if (name != null)
+			newFirst.setName(name);
+		if (type != null)
+			newFirst.setType(type);
 		setFirst(newFirst);
 		return newFirst;
 	}
@@ -327,8 +329,10 @@ public class TestIdentityActionImpl
 	 */
 	public InputPin createSecond(String name, Type type, EClass eClass) {
 		InputPin newSecond = (InputPin) EcoreUtil.create(eClass);
-		newSecond.setName(name);
-		newSecond.setType(type);
+		if (name != null)
+			newSecond.setName(name);
+		if (type != null)
+			newSecond.setType(type);
 		setSecond(newSecond);
 		return newSecond;
 	}

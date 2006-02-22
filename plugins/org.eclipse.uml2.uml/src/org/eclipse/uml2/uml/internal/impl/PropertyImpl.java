@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.24 2006/02/22 20:48:16 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.25 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1244,8 +1244,10 @@ public class PropertyImpl
 			EClass eClass) {
 		ValueSpecification newDefaultValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newDefaultValue.setName(name);
-		newDefaultValue.setType(type);
+		if (name != null)
+			newDefaultValue.setName(name);
+		if (type != null)
+			newDefaultValue.setType(type);
 		setDefaultValue(newDefaultValue);
 		return newDefaultValue;
 	}
@@ -1350,8 +1352,10 @@ public class PropertyImpl
 	 */
 	public Property createQualifier(String name, Type type, EClass eClass) {
 		Property newQualifier = (Property) EcoreUtil.create(eClass);
-		newQualifier.setName(name);
-		newQualifier.setType(type);
+		if (name != null)
+			newQualifier.setName(name);
+		if (type != null)
+			newQualifier.setType(type);
 		getQualifiers().add(newQualifier);
 		return newQualifier;
 	}

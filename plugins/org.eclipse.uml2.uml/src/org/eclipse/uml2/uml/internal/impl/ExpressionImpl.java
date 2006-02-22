@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,8 +180,10 @@ public class ExpressionImpl
 			EClass eClass) {
 		ValueSpecification newOperand = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newOperand.setName(name);
-		newOperand.setType(type);
+		if (name != null)
+			newOperand.setName(name);
+		if (type != null)
+			newOperand.setType(type);
 		getOperands().add(newOperand);
 		return newOperand;
 	}

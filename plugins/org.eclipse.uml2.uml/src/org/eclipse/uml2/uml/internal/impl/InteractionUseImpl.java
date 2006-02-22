@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.12 2006/02/22 20:48:16 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.13 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -231,7 +231,8 @@ public class InteractionUseImpl
 	 */
 	public Action createArgument(String name, EClass eClass) {
 		Action newArgument = (Action) EcoreUtil.create(eClass);
-		newArgument.setName(name);
+		if (name != null)
+			newArgument.setName(name);
 		getArguments().add(newArgument);
 		return newArgument;
 	}

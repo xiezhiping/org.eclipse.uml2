@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -252,8 +252,10 @@ public abstract class StructuralFeatureActionImpl
 	 */
 	public InputPin createObject(String name, Type type, EClass eClass) {
 		InputPin newObject = (InputPin) EcoreUtil.create(eClass);
-		newObject.setName(name);
-		newObject.setType(type);
+		if (name != null)
+			newObject.setName(name);
+		if (type != null)
+			newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}

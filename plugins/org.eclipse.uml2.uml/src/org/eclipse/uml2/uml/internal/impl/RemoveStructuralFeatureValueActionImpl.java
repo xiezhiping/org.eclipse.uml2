@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.14 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -275,8 +275,10 @@ public class RemoveStructuralFeatureValueActionImpl
 	 */
 	public InputPin createRemoveAt(String name, Type type, EClass eClass) {
 		InputPin newRemoveAt = (InputPin) EcoreUtil.create(eClass);
-		newRemoveAt.setName(name);
-		newRemoveAt.setType(type);
+		if (name != null)
+			newRemoveAt.setName(name);
+		if (type != null)
+			newRemoveAt.setType(type);
 		setRemoveAt(newRemoveAt);
 		return newRemoveAt;
 	}

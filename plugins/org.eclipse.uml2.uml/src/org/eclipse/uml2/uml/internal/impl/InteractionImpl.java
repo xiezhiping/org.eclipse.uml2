@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.18 2006/02/22 20:48:16 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.19 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -428,7 +428,8 @@ public class InteractionImpl
 	public InteractionFragment createFragment(String name, EClass eClass) {
 		InteractionFragment newFragment = (InteractionFragment) EcoreUtil
 			.create(eClass);
-		newFragment.setName(name);
+		if (name != null)
+			newFragment.setName(name);
 		getFragments().add(newFragment);
 		return newFragment;
 	}
@@ -486,7 +487,8 @@ public class InteractionImpl
 	 */
 	public Action createAction(String name, EClass eClass) {
 		Action newAction = (Action) EcoreUtil.create(eClass);
-		newAction.setName(name);
+		if (name != null)
+			newAction.setName(name);
 		getActions().add(newAction);
 		return newAction;
 	}

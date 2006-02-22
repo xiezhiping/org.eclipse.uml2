@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.18 2006/02/22 20:48:17 khussey Exp $
+ * $Id: NodeImpl.java,v 1.19 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -298,7 +298,8 @@ public class NodeImpl
 	 */
 	public Node createNestedNode(String name, EClass eClass) {
 		Node newNestedNode = (Node) EcoreUtil.create(eClass);
-		newNestedNode.setName(name);
+		if (name != null)
+			newNestedNode.setName(name);
 		getNestedNodes().add(newNestedNode);
 		return newNestedNode;
 	}

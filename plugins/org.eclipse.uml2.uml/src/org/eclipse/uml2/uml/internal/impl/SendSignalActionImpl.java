@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.14 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -196,8 +196,10 @@ public class SendSignalActionImpl
 	 */
 	public InputPin createTarget(String name, Type type, EClass eClass) {
 		InputPin newTarget = (InputPin) EcoreUtil.create(eClass);
-		newTarget.setName(name);
-		newTarget.setType(type);
+		if (name != null)
+			newTarget.setName(name);
+		if (type != null)
+			newTarget.setType(type);
 		setTarget(newTarget);
 		return newTarget;
 	}

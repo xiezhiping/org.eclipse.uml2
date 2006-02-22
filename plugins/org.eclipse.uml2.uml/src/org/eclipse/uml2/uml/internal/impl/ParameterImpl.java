@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.20 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.21 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -475,8 +475,10 @@ public class ParameterImpl
 			EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newUpperValue.setName(name);
-		newUpperValue.setType(type);
+		if (name != null)
+			newUpperValue.setName(name);
+		if (type != null)
+			newUpperValue.setType(type);
 		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
@@ -580,8 +582,10 @@ public class ParameterImpl
 			EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newLowerValue.setName(name);
-		newLowerValue.setType(type);
+		if (name != null)
+			newLowerValue.setName(name);
+		if (type != null)
+			newLowerValue.setType(type);
 		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}
@@ -808,8 +812,10 @@ public class ParameterImpl
 			EClass eClass) {
 		ValueSpecification newDefaultValue = (ValueSpecification) EcoreUtil
 			.create(eClass);
-		newDefaultValue.setName(name);
-		newDefaultValue.setType(type);
+		if (name != null)
+			newDefaultValue.setName(name);
+		if (type != null)
+			newDefaultValue.setType(type);
 		setDefaultValue(newDefaultValue);
 		return newDefaultValue;
 	}

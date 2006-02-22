@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.14 2006/02/22 20:48:16 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.15 2006/02/22 23:07:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -573,7 +573,8 @@ public class TransitionImpl
 	 */
 	public Constraint createGuard(String name, EClass eClass) {
 		Constraint newGuard = (Constraint) EcoreUtil.create(eClass);
-		newGuard.setName(name);
+		if (name != null)
+			newGuard.setName(name);
 		setGuard(newGuard);
 		return newGuard;
 	}
@@ -684,7 +685,8 @@ public class TransitionImpl
 	 */
 	public Behavior createEffect(String name, EClass eClass) {
 		Behavior newEffect = (Behavior) EcoreUtil.create(eClass);
-		newEffect.setName(name);
+		if (name != null)
+			newEffect.setName(name);
 		setEffect(newEffect);
 		return newEffect;
 	}

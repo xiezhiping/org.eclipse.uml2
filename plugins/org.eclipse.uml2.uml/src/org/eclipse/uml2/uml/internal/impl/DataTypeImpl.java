@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.17 2006/02/22 20:48:17 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.18 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,8 +160,10 @@ public class DataTypeImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}

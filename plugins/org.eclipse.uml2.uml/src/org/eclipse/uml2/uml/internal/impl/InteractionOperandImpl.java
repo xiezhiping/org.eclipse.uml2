@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -442,7 +442,8 @@ public class InteractionOperandImpl
 	public InteractionFragment createFragment(String name, EClass eClass) {
 		InteractionFragment newFragment = (InteractionFragment) EcoreUtil
 			.create(eClass);
-		newFragment.setName(name);
+		if (name != null)
+			newFragment.setName(name);
 		getFragments().add(newFragment);
 		return newFragment;
 	}
