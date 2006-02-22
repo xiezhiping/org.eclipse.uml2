@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.19 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.20 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -470,9 +471,12 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createUpperValue(EClass eClass) {
-		ValueSpecification newUpperValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createUpperValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newUpperValue.setName(name);
+		newUpperValue.setType(type);
 		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
@@ -572,9 +576,12 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createLowerValue(EClass eClass) {
-		ValueSpecification newLowerValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createLowerValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newLowerValue.setName(name);
+		newLowerValue.setType(type);
 		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}
@@ -603,11 +610,23 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterSet getParameterSet(String name) {
-		for (Iterator i = getParameterSets().iterator(); i.hasNext();) {
+		return getParameterSet(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterSet getParameterSet(String name, boolean ignoreCase) {
+		parameterSetLoop : for (Iterator i = getParameterSets().iterator(); i
+			.hasNext();) {
 			ParameterSet parameterSet = (ParameterSet) i.next();
-			if (name.equals(parameterSet.getName())) {
-				return parameterSet;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(parameterSet.getName())
+				: name.equals(parameterSet.getName())))
+				continue parameterSetLoop;
+			return parameterSet;
 		}
 		return null;
 	}
@@ -785,9 +804,12 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createDefaultValue(EClass eClass) {
-		ValueSpecification newDefaultValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createDefaultValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newDefaultValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newDefaultValue.setName(name);
+		newDefaultValue.setType(type);
 		setDefaultValue(newDefaultValue);
 		return newDefaultValue;
 	}

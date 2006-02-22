@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -36,6 +37,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -118,12 +120,26 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Parameter getParameter(String name) {
-		for (Iterator i = getParameters().iterator(); i.hasNext();) {
+	public Parameter getParameter(String name, Type type) {
+		return getParameter(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter getParameter(String name, Type type, boolean ignoreCase) {
+		parameterLoop : for (Iterator i = getParameters().iterator(); i
+			.hasNext();) {
 			Parameter parameter = (Parameter) i.next();
-			if (name.equals(parameter.getName())) {
-				return parameter;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(parameter.getName())
+				: name.equals(parameter.getName())))
+				continue parameterLoop;
+			if (type != null && !type.equals(parameter.getType()))
+				continue parameterLoop;
+			return parameter;
 		}
 		return null;
 	}
@@ -149,9 +165,9 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createCondition(EClass eClass) {
-		Constraint newCondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createCondition(String name, EClass eClass) {
+		Constraint newCondition = (Constraint) EcoreUtil.create(eClass);
+		newCondition.setName(name);
 		getConditions().add(newCondition);
 		return newCondition;
 	}
@@ -161,8 +177,9 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createCondition() {
+	public Constraint createCondition(String name) {
 		Constraint newCondition = UMLFactory.eINSTANCE.createConstraint();
+		newCondition.setName(name);
 		getConditions().add(newCondition);
 		return newCondition;
 	}
@@ -173,13 +190,30 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public Constraint getCondition(String name) {
-		for (Iterator i = getConditions().iterator(); i.hasNext();) {
+		return getCondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getCondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		conditionLoop : for (Iterator i = getConditions().iterator(); i
+			.hasNext();) {
 			Constraint condition = (Constraint) i.next();
-			if (name.equals(condition.getName())) {
-				return condition;
-			}
+			if (eClass != null && !eClass.isInstance(condition))
+				continue conditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(condition.getName())
+				: name.equals(condition.getName())))
+				continue conditionLoop;
+			return condition;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createCondition(name, eClass)
+			: null;
 	}
 
 	/**

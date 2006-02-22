@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.18 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,11 +156,22 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext();) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(covered.getName())
+				: name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}
@@ -186,9 +197,10 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GeneralOrdering createGeneralOrdering() {
+	public GeneralOrdering createGeneralOrdering(String name) {
 		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
 			.createGeneralOrdering();
+		newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
 	}
@@ -199,13 +211,28 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public GeneralOrdering getGeneralOrdering(String name) {
-		for (Iterator i = getGeneralOrderings().iterator(); i.hasNext();) {
+		return getGeneralOrdering(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getGeneralOrdering(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		generalOrderingLoop : for (Iterator i = getGeneralOrderings()
+			.iterator(); i.hasNext();) {
 			GeneralOrdering generalOrdering = (GeneralOrdering) i.next();
-			if (name.equals(generalOrdering.getName())) {
-				return generalOrdering;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(generalOrdering.getName())
+				: name.equals(generalOrdering.getName())))
+				continue generalOrderingLoop;
+			return generalOrdering;
 		}
-		return null;
+		return createOnDemand
+			? createGeneralOrdering(name)
+			: null;
 	}
 
 	/**
@@ -340,8 +367,9 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Lifeline createLifeline() {
+	public Lifeline createLifeline(String name) {
 		Lifeline newLifeline = UMLFactory.eINSTANCE.createLifeline();
+		newLifeline.setName(name);
 		getLifelines().add(newLifeline);
 		return newLifeline;
 	}
@@ -352,13 +380,27 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Lifeline getLifeline(String name) {
-		for (Iterator i = getLifelines().iterator(); i.hasNext();) {
+		return getLifeline(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getLifeline(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		lifelineLoop : for (Iterator i = getLifelines().iterator(); i.hasNext();) {
 			Lifeline lifeline = (Lifeline) i.next();
-			if (name.equals(lifeline.getName())) {
-				return lifeline;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(lifeline.getName())
+				: name.equals(lifeline.getName())))
+				continue lifelineLoop;
+			return lifeline;
 		}
-		return null;
+		return createOnDemand
+			? createLifeline(name)
+			: null;
 	}
 
 	/**
@@ -383,9 +425,10 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InteractionFragment createFragment(EClass eClass) {
-		InteractionFragment newFragment = (InteractionFragment) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public InteractionFragment createFragment(String name, EClass eClass) {
+		InteractionFragment newFragment = (InteractionFragment) EcoreUtil
+			.create(eClass);
+		newFragment.setName(name);
 		getFragments().add(newFragment);
 		return newFragment;
 	}
@@ -396,13 +439,29 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public InteractionFragment getFragment(String name) {
-		for (Iterator i = getFragments().iterator(); i.hasNext();) {
+		return getFragment(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionFragment getFragment(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		fragmentLoop : for (Iterator i = getFragments().iterator(); i.hasNext();) {
 			InteractionFragment fragment = (InteractionFragment) i.next();
-			if (name.equals(fragment.getName())) {
-				return fragment;
-			}
+			if (eClass != null && !eClass.isInstance(fragment))
+				continue fragmentLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(fragment.getName())
+				: name.equals(fragment.getName())))
+				continue fragmentLoop;
+			return fragment;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createFragment(name, eClass)
+			: null;
 	}
 
 	/**
@@ -425,9 +484,9 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Action createAction(EClass eClass) {
-		Action newAction = (Action) eClass.getEPackage().getEFactoryInstance()
-			.create(eClass);
+	public Action createAction(String name, EClass eClass) {
+		Action newAction = (Action) EcoreUtil.create(eClass);
+		newAction.setName(name);
 		getActions().add(newAction);
 		return newAction;
 	}
@@ -438,13 +497,29 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Action getAction(String name) {
-		for (Iterator i = getActions().iterator(); i.hasNext();) {
+		return getAction(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Action getAction(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		actionLoop : for (Iterator i = getActions().iterator(); i.hasNext();) {
 			Action action = (Action) i.next();
-			if (name.equals(action.getName())) {
-				return action;
-			}
+			if (eClass != null && !eClass.isInstance(action))
+				continue actionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(action.getName())
+				: name.equals(action.getName())))
+				continue actionLoop;
+			return action;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createAction(name, eClass)
+			: null;
 	}
 
 	/**
@@ -467,8 +542,9 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Gate createFormalGate() {
+	public Gate createFormalGate(String name) {
 		Gate newFormalGate = UMLFactory.eINSTANCE.createGate();
+		newFormalGate.setName(name);
 		getFormalGates().add(newFormalGate);
 		return newFormalGate;
 	}
@@ -479,13 +555,28 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Gate getFormalGate(String name) {
-		for (Iterator i = getFormalGates().iterator(); i.hasNext();) {
+		return getFormalGate(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate getFormalGate(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		formalGateLoop : for (Iterator i = getFormalGates().iterator(); i
+			.hasNext();) {
 			Gate formalGate = (Gate) i.next();
-			if (name.equals(formalGate.getName())) {
-				return formalGate;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(formalGate.getName())
+				: name.equals(formalGate.getName())))
+				continue formalGateLoop;
+			return formalGate;
 		}
-		return null;
+		return createOnDemand
+			? createFormalGate(name)
+			: null;
 	}
 
 	/**
@@ -509,8 +600,9 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Message createMessage() {
+	public Message createMessage(String name) {
 		Message newMessage = UMLFactory.eINSTANCE.createMessage();
+		newMessage.setName(name);
 		getMessages().add(newMessage);
 		return newMessage;
 	}
@@ -521,13 +613,27 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Message getMessage(String name) {
-		for (Iterator i = getMessages().iterator(); i.hasNext();) {
+		return getMessage(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Message getMessage(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		messageLoop : for (Iterator i = getMessages().iterator(); i.hasNext();) {
 			Message message = (Message) i.next();
-			if (name.equals(message.getName())) {
-				return message;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(message.getName())
+				: name.equals(message.getName())))
+				continue messageLoop;
+			return message;
 		}
-		return null;
+		return createOnDemand
+			? createMessage(name)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.11 2006/02/02 19:23:40 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.12 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -170,27 +170,20 @@ public class StereotypeOperations
 		}
 
 		String metaclassName = metaclass.getName();
-		Extension extension = (Extension) profile
-			.createPackagedElement(UMLPackage.Literals.EXTENSION);
+		Extension extension = (Extension) profile.createOwnedType(metaclassName
+			+ '_' + name, UMLPackage.Literals.EXTENSION);
 
-		extension.setName(metaclassName + '_' + name);
-
-		ExtensionEnd extensionEnd = (ExtensionEnd) extension
-			.createOwnedEnd(UMLPackage.Literals.EXTENSION_END);
-
-		extensionEnd.setName(Extension.STEREOTYPE_ROLE_PREFIX + name);
+		ExtensionEnd extensionEnd = (ExtensionEnd) extension.createOwnedEnd(
+			Extension.STEREOTYPE_ROLE_PREFIX + name, stereotype,
+			UMLPackage.Literals.EXTENSION_END);
 		extensionEnd.setAggregation(AggregationKind.COMPOSITE_LITERAL);
-		extensionEnd.setType(stereotype);
 
 		if (isRequired) {
 			extensionEnd.setLower(1);
 		}
 
-		Property property = stereotype
-			.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
-
-		property.setName(Extension.METACLASS_ROLE_PREFIX + metaclassName);
-		property.setType(metaclass);
+		Property property = stereotype.createOwnedAttribute(
+			Extension.METACLASS_ROLE_PREFIX + metaclassName, metaclass);
 		property.setAssociation(extension);
 
 		return extension;

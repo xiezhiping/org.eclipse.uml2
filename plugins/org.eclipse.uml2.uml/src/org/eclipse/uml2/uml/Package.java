@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Package.java,v 1.12 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,14 +73,38 @@ public interface Package
 	EList getPackageMerges();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.PackageMerge} and appends it to the '<em><b>Package Merge</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.PackageMerge}, with the specified '<em><b>Merged Package</b></em>', and appends it to the '<em><b>Package Merge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param mergedPackage The '<em><b>Merged Package</b></em>' for the new {@link org.eclipse.uml2.uml.PackageMerge}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.PackageMerge}.
 	 * @see #getPackageMerges()
 	 * @generated
 	 */
-	PackageMerge createPackageMerge();
+	PackageMerge createPackageMerge(Package mergedPackage);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageMerge} with the specified '<em><b>Merged Package</b></em>' from the '<em><b>Package Merge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param mergedPackage The '<em><b>Merged Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageMerge} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageMerge} with the specified '<em><b>Merged Package</b></em>', or <code>null</code>.
+	 * @see #getPackageMerges()
+	 * @generated
+	 */
+	PackageMerge getPackageMerge(Package mergedPackage);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageMerge} with the specified '<em><b>Merged Package</b></em>' from the '<em><b>Package Merge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param mergedPackage The '<em><b>Merged Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageMerge} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.PackageMerge} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageMerge} with the specified '<em><b>Merged Package</b></em>', or <code>null</code>.
+	 * @see #getPackageMerges()
+	 * @generated
+	 */
+	PackageMerge getPackageMerge(Package mergedPackage, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Packaged Element</b></em>' containment reference list.
@@ -98,26 +122,42 @@ public interface Package
 	EList getPackagedElements();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.PackageableElement} and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.PackageableElement}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.PackageableElement}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.PackageableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.PackageableElement}.
 	 * @see #getPackagedElements()
 	 * @generated
 	 */
-	PackageableElement createPackagedElement(EClass eClass);
+	PackageableElement createPackagedElement(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Packaged Element</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Packaged Element</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPackagedElements()
 	 * @generated
 	 */
 	PackageableElement getPackagedElement(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Packaged Element</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.PackageableElement} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPackagedElements()
+	 * @generated
+	 */
+	PackageableElement getPackagedElement(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Type</b></em>' reference list.
@@ -137,15 +177,42 @@ public interface Package
 	EList getOwnedTypes();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Type}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Type} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Type}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Type} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Type}.
+	 * @see #getOwnedTypes()
+	 * @generated
+	 */
+	Type createOwnedType(String name, EClass eClass);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedTypes()
 	 * @generated
 	 */
 	Type getOwnedType(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Type} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Type} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Type} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedTypes()
+	 * @generated
+	 */
+	Type getOwnedType(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Nested Package</b></em>' reference list.
@@ -165,15 +232,42 @@ public interface Package
 	EList getNestedPackages();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Package}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Package</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Package} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Package}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Package} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Package}.
+	 * @see #getNestedPackages()
+	 * @generated
+	 */
+	Package createNestedPackage(String name, EClass eClass);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Package} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedPackages()
 	 * @generated
 	 */
 	Package getNestedPackage(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Package} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Package} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Package} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNestedPackages()
+	 * @generated
+	 */
+	Package getNestedPackage(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Nesting Package</b></em>' reference.
@@ -221,7 +315,7 @@ public interface Package
 	EList getProfileApplications();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ProfileApplication} and appends it to the '<em><b>Profile Application</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ProfileApplication} and appends it to the '<em><b>Profile Application</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.uml.ProfileApplication}.
@@ -244,9 +338,12 @@ public interface Package
 			Map context);
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Package}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Package</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Package}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Package}.
+	 * @see #getNestedPackages()
 	 * @generated
 	 */
 	Package createNestedPackage(String name);

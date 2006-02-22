@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
+ * $Id: SignalImpl.java,v 1.17 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -131,9 +132,10 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(EClass eClass) {
-		Property newOwnedAttribute = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -143,8 +145,10 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute() {
+	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -154,14 +158,33 @@ public class SignalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext();) {
+	public Property getOwnedAttribute(String name, Type type) {
+		return getOwnedAttribute(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		ownedAttributeLoop : for (Iterator i = getOwnedAttributes().iterator(); i
+			.hasNext();) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedAttribute.getName())
+				: name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			if (type != null && !type.equals(ownedAttribute.getType()))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedAttribute(name, type, eClass)
+			: null;
 	}
 
 	/**

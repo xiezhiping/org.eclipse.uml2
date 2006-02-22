@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.13 2006/02/21 21:39:47 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -202,8 +202,8 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateParameter createOwnedParameter(EClass eClass) {
-		TemplateParameter newOwnedParameter = (TemplateParameter) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+		TemplateParameter newOwnedParameter = (TemplateParameter) EcoreUtil
+			.create(eClass);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -282,12 +282,25 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public RedefinableTemplateSignature getExtendedSignature(String name) {
-		for (Iterator i = getExtendedSignatures().iterator(); i.hasNext();) {
+		return getExtendedSignature(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableTemplateSignature getExtendedSignature(String name,
+			boolean ignoreCase) {
+		extendedSignatureLoop : for (Iterator i = getExtendedSignatures()
+			.iterator(); i.hasNext();) {
 			RedefinableTemplateSignature extendedSignature = (RedefinableTemplateSignature) i
 				.next();
-			if (name.equals(extendedSignature.getName())) {
-				return extendedSignature;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(extendedSignature.getName())
+				: name.equals(extendedSignature.getName())))
+				continue extendedSignatureLoop;
+			return extendedSignature;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -35,6 +36,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -195,9 +197,11 @@ public class ValueSpecificationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createValue(EClass eClass) {
-		ValueSpecification newValue = (ValueSpecification) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ValueSpecification createValue(String name, Type type, EClass eClass) {
+		ValueSpecification newValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newValue.setName(name);
+		newValue.setType(type);
 		setValue(newValue);
 		return newValue;
 	}
@@ -302,8 +306,10 @@ public class ValueSpecificationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin createResult() {
+	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		newResult.setName(name);
+		newResult.setType(type);
 		setResult(newResult);
 		return newResult;
 	}

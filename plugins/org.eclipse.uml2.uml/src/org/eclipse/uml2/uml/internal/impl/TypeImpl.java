@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
+ * $Id: TypeImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,6 +131,15 @@ public abstract class TypeImpl
 		return TypeOperations.createAssociation(this, end1IsNavigable,
 			end1Aggregation, end1Name, end1Lower, end1Upper, end1Type,
 			end2IsNavigable, end2Aggregation, end2Name, end2Lower, end2Upper);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAssociations() {
+		return TypeOperations.getAssociations(this);
 	}
 
 	/**

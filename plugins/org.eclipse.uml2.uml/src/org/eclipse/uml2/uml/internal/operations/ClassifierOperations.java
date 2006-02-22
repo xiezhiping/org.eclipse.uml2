@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.13 2006/02/21 21:39:49 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.14 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -53,11 +53,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateGeneralizationHierarchies(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalization Hierarchies</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateSpecializeType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Specialize Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#validateMapsToGeneralizationSet(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maps To Generalization Set</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#createGeneralization(org.eclipse.uml2.uml.Classifier) <em>Create Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllAttributes() <em>Get All Attributes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getOperations() <em>Get Operations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllOperations() <em>Get All Operations</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getOperation(java.lang.String) <em>Get Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Get Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, boolean) <em>Get Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals() <em>Get Generals</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getInheritedMembers() <em>Get Inherited Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#allFeatures() <em>All Features</em>}</li>
@@ -219,27 +219,6 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static Generalization createGeneralization(Classifier classifier,
-			Classifier general) {
-
-		if (general == null || general == classifier
-			|| classifier.allParents().contains(general)
-			|| general.allParents().contains(classifier)) {
-
-			throw new IllegalArgumentException(String.valueOf(general));
-		}
-
-		Generalization generalization = classifier.createGeneralization();
-		generalization.setGeneral(general);
-
-		return generalization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public static EList getAllAttributes(Classifier classifier) {
 		EList allAttributes = new UniqueEList.FastCompare();
 
@@ -296,6 +275,30 @@ public class ClassifierOperations
 		}
 
 		return ECollections.unmodifiableEList(allOperations);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation getOperation(Classifier classifier, String name,
+			EList parameterNames, EList parameterTypes) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation getOperation(Classifier classifier, String name,
+			EList parameterNames, EList parameterTypes, boolean ignoreCase) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

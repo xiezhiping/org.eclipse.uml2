@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.5 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ObjectNode.java,v 1.6 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -133,15 +133,17 @@ public interface ObjectNode
 	void setUpperBound(ValueSpecification value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and sets the '<em><b>Upper Bound</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Upper Bound</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getUpperBound()
 	 * @generated
 	 */
-	ValueSpecification createUpperBound(EClass eClass);
+	ValueSpecification createUpperBound(String name, Type type, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>In State</b></em>' reference list.
@@ -159,15 +161,28 @@ public interface ObjectNode
 	EList getInStates();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.State} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.State} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInStates()
 	 * @generated
 	 */
 	State getInState(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.State} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.State} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInStates()
+	 * @generated
+	 */
+	State getInState(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Selection</b></em>' reference.

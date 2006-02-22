@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUse.java,v 1.4 2006/02/21 16:12:19 khussey Exp $
+ * $Id: InteractionUse.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -92,25 +92,39 @@ public interface InteractionUse
 	EList getActualGates();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Gate} and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Gate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Gate}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Gate}.
 	 * @see #getActualGates()
 	 * @generated
 	 */
-	Gate createActualGate();
+	Gate createActualGate(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Gate} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Gate} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getActualGates()
 	 * @generated
 	 */
 	Gate getActualGate(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Gate} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Gate} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getActualGates()
+	 * @generated
+	 */
+	Gate getActualGate(String name, boolean ignoreCase, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
@@ -128,26 +142,42 @@ public interface InteractionUse
 	EList getArguments();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Action} and appends it to the '<em><b>Argument</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Action}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Action}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Action} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Action}.
 	 * @see #getArguments()
 	 * @generated
 	 */
-	Action createArgument(EClass eClass);
+	Action createArgument(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Action} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Action} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
 	 */
 	Action getArgument(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Action} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Action} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Action} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getArguments()
+	 * @generated
+	 */
+	Action getArgument(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,11 +139,22 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext();) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(covered.getName())
+				: name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}
@@ -169,9 +180,10 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GeneralOrdering createGeneralOrdering() {
+	public GeneralOrdering createGeneralOrdering(String name) {
 		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
 			.createGeneralOrdering();
+		newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
 	}
@@ -182,13 +194,28 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public GeneralOrdering getGeneralOrdering(String name) {
-		for (Iterator i = getGeneralOrderings().iterator(); i.hasNext();) {
+		return getGeneralOrdering(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getGeneralOrdering(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		generalOrderingLoop : for (Iterator i = getGeneralOrderings()
+			.iterator(); i.hasNext();) {
 			GeneralOrdering generalOrdering = (GeneralOrdering) i.next();
-			if (name.equals(generalOrdering.getName())) {
-				return generalOrdering;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(generalOrdering.getName())
+				: name.equals(generalOrdering.getName())))
+				continue generalOrderingLoop;
+			return generalOrdering;
 		}
-		return null;
+		return createOnDemand
+			? createGeneralOrdering(name)
+			: null;
 	}
 
 	/**
@@ -382,9 +409,10 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InteractionConstraint createGuard() {
+	public InteractionConstraint createGuard(String name) {
 		InteractionConstraint newGuard = UMLFactory.eINSTANCE
 			.createInteractionConstraint();
+		newGuard.setName(name);
 		setGuard(newGuard);
 		return newGuard;
 	}
@@ -411,9 +439,10 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InteractionFragment createFragment(EClass eClass) {
-		InteractionFragment newFragment = (InteractionFragment) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public InteractionFragment createFragment(String name, EClass eClass) {
+		InteractionFragment newFragment = (InteractionFragment) EcoreUtil
+			.create(eClass);
+		newFragment.setName(name);
 		getFragments().add(newFragment);
 		return newFragment;
 	}
@@ -424,13 +453,29 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionFragment getFragment(String name) {
-		for (Iterator i = getFragments().iterator(); i.hasNext();) {
+		return getFragment(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionFragment getFragment(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		fragmentLoop : for (Iterator i = getFragments().iterator(); i.hasNext();) {
 			InteractionFragment fragment = (InteractionFragment) i.next();
-			if (name.equals(fragment.getName())) {
-				return fragment;
-			}
+			if (eClass != null && !eClass.isInstance(fragment))
+				continue fragmentLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(fragment.getName())
+				: name.equals(fragment.getName())))
+				continue fragmentLoop;
+			return fragment;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createFragment(name, eClass)
+			: null;
 	}
 
 	/**

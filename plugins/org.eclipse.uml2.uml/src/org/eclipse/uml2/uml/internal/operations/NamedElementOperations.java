@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.12 2006/02/02 19:23:40 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.13 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -184,8 +184,8 @@ public class NamedElementOperations
 			throw new IllegalArgumentException(String.valueOf(supplier));
 		}
 
-		Dependency dependency = (Dependency) package_
-			.createPackagedElement(UMLPackage.Literals.DEPENDENCY);
+		Dependency dependency = (Dependency) package_.createPackagedElement(
+			null, UMLPackage.Literals.DEPENDENCY);
 
 		dependency.getClients().add(namedElement);
 		dependency.getSuppliers().add(supplier);

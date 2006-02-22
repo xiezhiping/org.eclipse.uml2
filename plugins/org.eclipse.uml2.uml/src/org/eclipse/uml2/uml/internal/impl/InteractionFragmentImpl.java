@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,11 +123,22 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext();) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(covered.getName())
+				: name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}
@@ -153,9 +164,10 @@ public abstract class InteractionFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GeneralOrdering createGeneralOrdering() {
+	public GeneralOrdering createGeneralOrdering(String name) {
 		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
 			.createGeneralOrdering();
+		newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
 	}
@@ -166,13 +178,28 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public GeneralOrdering getGeneralOrdering(String name) {
-		for (Iterator i = getGeneralOrderings().iterator(); i.hasNext();) {
+		return getGeneralOrdering(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getGeneralOrdering(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		generalOrderingLoop : for (Iterator i = getGeneralOrderings()
+			.iterator(); i.hasNext();) {
 			GeneralOrdering generalOrdering = (GeneralOrdering) i.next();
-			if (name.equals(generalOrdering.getName())) {
-				return generalOrdering;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(generalOrdering.getName())
+				: name.equals(generalOrdering.getName())))
+				continue generalOrderingLoop;
+			return generalOrdering;
 		}
-		return null;
+		return createOnDemand
+			? createGeneralOrdering(name)
+			: null;
 	}
 
 	/**

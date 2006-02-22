@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.4 2006/02/21 16:12:19 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -102,7 +102,7 @@ public interface TemplateParameterSubstitution
 	EList getOwnedActuals();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ParameterableElement} to create.

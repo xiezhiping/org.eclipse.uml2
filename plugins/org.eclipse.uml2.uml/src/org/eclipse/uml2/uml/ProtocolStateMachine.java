@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,14 +59,39 @@ public interface ProtocolStateMachine
 	EList getConformances();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ProtocolConformance} and appends it to the '<em><b>Conformance</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ProtocolConformance}, with the specified '<em><b>General Machine</b></em>', and appends it to the '<em><b>Conformance</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param generalMachine The '<em><b>General Machine</b></em>' for the new {@link org.eclipse.uml2.uml.ProtocolConformance}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.ProtocolConformance}.
 	 * @see #getConformances()
 	 * @generated
 	 */
-	ProtocolConformance createConformance();
+	ProtocolConformance createConformance(ProtocolStateMachine generalMachine);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ProtocolConformance} with the specified '<em><b>General Machine</b></em>' from the '<em><b>Conformance</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param generalMachine The '<em><b>General Machine</b></em>' of the {@link org.eclipse.uml2.uml.ProtocolConformance} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ProtocolConformance} with the specified '<em><b>General Machine</b></em>', or <code>null</code>.
+	 * @see #getConformances()
+	 * @generated
+	 */
+	ProtocolConformance getConformance(ProtocolStateMachine generalMachine);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ProtocolConformance} with the specified '<em><b>General Machine</b></em>' from the '<em><b>Conformance</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param generalMachine The '<em><b>General Machine</b></em>' of the {@link org.eclipse.uml2.uml.ProtocolConformance} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ProtocolConformance} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ProtocolConformance} with the specified '<em><b>General Machine</b></em>', or <code>null</code>.
+	 * @see #getConformances()
+	 * @generated
+	 */
+	ProtocolConformance getConformance(ProtocolStateMachine generalMachine,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

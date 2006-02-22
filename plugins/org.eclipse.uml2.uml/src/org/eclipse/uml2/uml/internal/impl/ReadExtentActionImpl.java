@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,6 +37,7 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.ReadExtentAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -190,8 +191,10 @@ public class ReadExtentActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin createResult() {
+	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		newResult.setName(name);
+		newResult.setType(type);
 		setResult(newResult);
 		return newResult;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.15 2006/02/15 16:35:44 khussey Exp $
+ * $Id: UMLUtil.java,v 1.16 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4450,7 +4450,8 @@ public class UMLUtil
 
 				if (eSuperType.isInterface()) {
 					((BehavioredClassifier) classifier)
-						.createInterfaceRealization((Interface) doSwitch(eSuperType));
+						.createInterfaceRealization(null,
+							(Interface) doSwitch(eSuperType));
 				} else {
 					Classifier generalClassifier = (Classifier) doSwitch(eSuperType);
 
@@ -4531,8 +4532,7 @@ public class UMLUtil
 			EClassifier eType = eOperation.getEType();
 
 			if (eType != null) {
-				operation.createOwnedParameter().setDirection(
-					ParameterDirectionKind.RETURN_LITERAL);
+				operation.createReturnResult(null, getType(eOperation, eType));
 			}
 
 			EList raisedExceptions = operation.getRaisedExceptions();
@@ -4545,8 +4545,6 @@ public class UMLUtil
 			}
 
 			operation.setVisibility(VisibilityKind.PUBLIC_LITERAL);
-
-			operation.setType(getType(eOperation, eType));
 
 			int upperBound = eOperation.getUpperBound();
 
@@ -4630,12 +4628,12 @@ public class UMLUtil
 
 			if (eOpposite == null) {
 				Association association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
-					.getEPackage()))
-					.createPackagedElement(UMLPackage.Literals.ASSOCIATION);
+					.getEPackage())).createOwnedType(null,
+					UMLPackage.Literals.ASSOCIATION);
 
 				property.setAssociation(association);
 
-				association.createOwnedEnd().setType(classifier);
+				association.createOwnedEnd(null, classifier);
 			} else {
 				Property opposite = (Property) doSwitch(eOpposite);
 				Association association = opposite.getAssociation();
@@ -4646,14 +4644,15 @@ public class UMLUtil
 						opposite
 							.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eOpposite
 								.getEContainingClass().getEPackage()))
-								.createPackagedElement(UMLPackage.Literals.ASSOCIATION));
+								.createOwnedType(null,
+									UMLPackage.Literals.ASSOCIATION));
 
 						property.setAssociation(association);
 					} else {
 						property
 							.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
-								.getEPackage()))
-								.createPackagedElement(UMLPackage.Literals.ASSOCIATION));
+								.getEPackage())).createOwnedType(null,
+								UMLPackage.Literals.ASSOCIATION));
 
 						opposite.setAssociation(association);
 					}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.14 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,12 +27,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -384,9 +386,12 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createUpperValue(EClass eClass) {
-		ValueSpecification newUpperValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createUpperValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newUpperValue.setName(name);
+		newUpperValue.setType(type);
 		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
@@ -491,9 +496,12 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createLowerValue(EClass eClass) {
-		ValueSpecification newLowerValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createLowerValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newLowerValue.setName(name);
+		newLowerValue.setType(type);
 		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}

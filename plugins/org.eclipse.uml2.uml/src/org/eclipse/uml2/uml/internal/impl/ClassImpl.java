@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.24 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ClassImpl.java,v 1.25 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -54,6 +55,7 @@ import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.StringExpression;
@@ -211,9 +213,9 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createOwnedBehavior(EClass eClass) {
-		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Behavior createOwnedBehavior(String name, EClass eClass) {
+		Behavior newOwnedBehavior = (Behavior) EcoreUtil.create(eClass);
+		newOwnedBehavior.setName(name);
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}
@@ -224,13 +226,30 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Behavior getOwnedBehavior(String name) {
-		for (Iterator i = getOwnedBehaviors().iterator(); i.hasNext();) {
+		return getOwnedBehavior(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior getOwnedBehavior(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedBehaviorLoop : for (Iterator i = getOwnedBehaviors().iterator(); i
+			.hasNext();) {
 			Behavior ownedBehavior = (Behavior) i.next();
-			if (name.equals(ownedBehavior.getName())) {
-				return ownedBehavior;
-			}
+			if (eClass != null && !eClass.isInstance(ownedBehavior))
+				continue ownedBehaviorLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedBehavior.getName())
+				: name.equals(ownedBehavior.getName())))
+				continue ownedBehaviorLoop;
+			return ownedBehavior;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedBehavior(name, eClass)
+			: null;
 	}
 
 	/**
@@ -311,6 +330,18 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Behavior createClassifierBehavior(String name, EClass eClass) {
+		Behavior newClassifierBehavior = (Behavior) EcoreUtil.create(eClass);
+		newClassifierBehavior.setName(name);
+		setClassifierBehavior(newClassifierBehavior);
+		return newClassifierBehavior;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getInterfaceRealizations() {
 		EList interfaceRealization = (EList) eVirtualGet(UMLPackage.CLASS__INTERFACE_REALIZATION);
 		if (interfaceRealization == null) {
@@ -330,9 +361,12 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceRealization createInterfaceRealization() {
+	public InterfaceRealization createInterfaceRealization(String name,
+			Interface contract) {
 		InterfaceRealization newInterfaceRealization = UMLFactory.eINSTANCE
 			.createInterfaceRealization();
+		newInterfaceRealization.setName(name);
+		newInterfaceRealization.setContract(contract);
 		getInterfaceRealizations().add(newInterfaceRealization);
 		return newInterfaceRealization;
 	}
@@ -342,15 +376,34 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceRealization getInterfaceRealization(String name) {
-		for (Iterator i = getInterfaceRealizations().iterator(); i.hasNext();) {
+	public InterfaceRealization getInterfaceRealization(String name,
+			Interface contract) {
+		return getInterfaceRealization(name, contract, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterfaceRealization getInterfaceRealization(String name,
+			Interface contract, boolean ignoreCase, boolean createOnDemand) {
+		interfaceRealizationLoop : for (Iterator i = getInterfaceRealizations()
+			.iterator(); i.hasNext();) {
 			InterfaceRealization interfaceRealization = (InterfaceRealization) i
 				.next();
-			if (name.equals(interfaceRealization.getName())) {
-				return interfaceRealization;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(interfaceRealization.getName())
+				: name.equals(interfaceRealization.getName())))
+				continue interfaceRealizationLoop;
+			if (contract != null
+				&& !contract.equals(interfaceRealization.getContract()))
+				continue interfaceRealizationLoop;
+			return interfaceRealization;
 		}
-		return null;
+		return createOnDemand
+			? createInterfaceRealization(name, contract)
+			: null;
 	}
 
 	/**
@@ -373,8 +426,9 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trigger createOwnedTrigger() {
+	public Trigger createOwnedTrigger(String name) {
 		Trigger newOwnedTrigger = UMLFactory.eINSTANCE.createTrigger();
+		newOwnedTrigger.setName(name);
 		getOwnedTriggers().add(newOwnedTrigger);
 		return newOwnedTrigger;
 	}
@@ -385,13 +439,28 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Trigger getOwnedTrigger(String name) {
-		for (Iterator i = getOwnedTriggers().iterator(); i.hasNext();) {
+		return getOwnedTrigger(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getOwnedTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedTriggerLoop : for (Iterator i = getOwnedTriggers().iterator(); i
+			.hasNext();) {
 			Trigger ownedTrigger = (Trigger) i.next();
-			if (name.equals(ownedTrigger.getName())) {
-				return ownedTrigger;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedTrigger.getName())
+				: name.equals(ownedTrigger.getName())))
+				continue ownedTriggerLoop;
+			return ownedTrigger;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedTrigger(name)
+			: null;
 	}
 
 	/**
@@ -451,8 +520,28 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOwnedOperation() {
+	public Operation createOwnedOperation(String name,
+			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
+		newOwnedOperation.setName(name);
+		int ownedParameterListSize = 0;
+		int ownedParameterNamesSize = ownedParameterNames == null
+			? 0
+			: ownedParameterNames.size();
+		if (ownedParameterNamesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterNamesSize;
+		int ownedParameterTypesSize = ownedParameterTypes == null
+			? 0
+			: ownedParameterTypes.size();
+		if (ownedParameterTypesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterTypesSize;
+		for (int i = 0; i < ownedParameterListSize; i++) {
+			newOwnedOperation.createOwnedParameter(i < ownedParameterNamesSize
+				? (String) ownedParameterNames.get(i)
+				: null, i < ownedParameterTypesSize
+				? (Type) ownedParameterTypes.get(i)
+				: null);
+		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
 	}
@@ -462,14 +551,54 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getOwnedOperation(String name) {
-		for (Iterator i = getOwnedOperations().iterator(); i.hasNext();) {
+	public Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes) {
+		return getOwnedOperation(name, ownedParameterNames,
+			ownedParameterTypes, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedOperationLoop : for (Iterator i = getOwnedOperations().iterator(); i
+			.hasNext();) {
 			Operation ownedOperation = (Operation) i.next();
-			if (name.equals(ownedOperation.getName())) {
-				return ownedOperation;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedOperation.getName())
+				: name.equals(ownedOperation.getName())))
+				continue ownedOperationLoop;
+			EList ownedParameterList = ownedOperation.getOwnedParameters();
+			int ownedParameterListSize = ownedParameterList.size();
+			if (ownedParameterNames != null
+				&& ownedParameterNames.size() != ownedParameterListSize
+				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				continue ownedOperationLoop;
+			for (int j = 0; j < ownedParameterListSize; j++) {
+				Parameter ownedParameter = (Parameter) ownedParameterList
+					.get(j);
+				if (ownedParameterNames != null
+					&& !(ignoreCase
+						? ((String) ownedParameterNames.get(j))
+							.equalsIgnoreCase(ownedParameter.getName())
+						: ownedParameterNames.get(j).equals(
+							ownedParameter.getName())))
+					continue ownedOperationLoop;
+				if (ownedParameterTypes != null
+					&& !ownedParameterTypes.get(j).equals(
+						ownedParameter.getType()))
+					continue ownedOperationLoop;
 			}
+			return ownedOperation;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedOperation(name, ownedParameterNames,
+				ownedParameterTypes)
+			: null;
 	}
 
 	/**
@@ -493,9 +622,9 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier createNestedClassifier(EClass eClass) {
-		Classifier newNestedClassifier = (Classifier) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Classifier createNestedClassifier(String name, EClass eClass) {
+		Classifier newNestedClassifier = (Classifier) EcoreUtil.create(eClass);
+		newNestedClassifier.setName(name);
 		getNestedClassifiers().add(newNestedClassifier);
 		return newNestedClassifier;
 	}
@@ -506,13 +635,30 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Classifier getNestedClassifier(String name) {
-		for (Iterator i = getNestedClassifiers().iterator(); i.hasNext();) {
+		return getNestedClassifier(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getNestedClassifier(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		nestedClassifierLoop : for (Iterator i = getNestedClassifiers()
+			.iterator(); i.hasNext();) {
 			Classifier nestedClassifier = (Classifier) i.next();
-			if (name.equals(nestedClassifier.getName())) {
-				return nestedClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(nestedClassifier))
+				continue nestedClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(nestedClassifier.getName())
+				: name.equals(nestedClassifier.getName())))
+				continue nestedClassifierLoop;
+			return nestedClassifier;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNestedClassifier(name, eClass)
+			: null;
 	}
 
 	protected static class SuperClassEList
@@ -604,12 +750,27 @@ public class ClassImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class getSuperClass(String name) {
-		for (Iterator i = getSuperClasses().iterator(); i.hasNext();) {
+		return getSuperClass(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.uml2.uml.Class getSuperClass(String name,
+			boolean ignoreCase, EClass eClass) {
+		superClassLoop : for (Iterator i = getSuperClasses().iterator(); i
+			.hasNext();) {
 			org.eclipse.uml2.uml.Class superClass = (org.eclipse.uml2.uml.Class) i
 				.next();
-			if (name.equals(superClass.getName())) {
-				return superClass;
-			}
+			if (eClass != null && !eClass.isInstance(superClass))
+				continue superClassLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(superClass.getName())
+				: name.equals(superClass.getName())))
+				continue superClassLoop;
+			return superClass;
 		}
 		return null;
 	}
@@ -669,8 +830,28 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reception createOwnedReception() {
+	public Reception createOwnedReception(String name,
+			EList ownedParameterNames, EList ownedParameterTypes) {
 		Reception newOwnedReception = UMLFactory.eINSTANCE.createReception();
+		newOwnedReception.setName(name);
+		int ownedParameterListSize = 0;
+		int ownedParameterNamesSize = ownedParameterNames == null
+			? 0
+			: ownedParameterNames.size();
+		if (ownedParameterNamesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterNamesSize;
+		int ownedParameterTypesSize = ownedParameterTypes == null
+			? 0
+			: ownedParameterTypes.size();
+		if (ownedParameterTypesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterTypesSize;
+		for (int i = 0; i < ownedParameterListSize; i++) {
+			newOwnedReception.createOwnedParameter(i < ownedParameterNamesSize
+				? (String) ownedParameterNames.get(i)
+				: null, i < ownedParameterTypesSize
+				? (Type) ownedParameterTypes.get(i)
+				: null);
+		}
 		getOwnedReceptions().add(newOwnedReception);
 		return newOwnedReception;
 	}
@@ -680,14 +861,54 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reception getOwnedReception(String name) {
-		for (Iterator i = getOwnedReceptions().iterator(); i.hasNext();) {
+	public Reception getOwnedReception(String name, EList ownedParameterNames,
+			EList ownedParameterTypes) {
+		return getOwnedReception(name, ownedParameterNames,
+			ownedParameterTypes, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reception getOwnedReception(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedReceptionLoop : for (Iterator i = getOwnedReceptions().iterator(); i
+			.hasNext();) {
 			Reception ownedReception = (Reception) i.next();
-			if (name.equals(ownedReception.getName())) {
-				return ownedReception;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedReception.getName())
+				: name.equals(ownedReception.getName())))
+				continue ownedReceptionLoop;
+			EList ownedParameterList = ownedReception.getOwnedParameters();
+			int ownedParameterListSize = ownedParameterList.size();
+			if (ownedParameterNames != null
+				&& ownedParameterNames.size() != ownedParameterListSize
+				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				continue ownedReceptionLoop;
+			for (int j = 0; j < ownedParameterListSize; j++) {
+				Parameter ownedParameter = (Parameter) ownedParameterList
+					.get(j);
+				if (ownedParameterNames != null
+					&& !(ignoreCase
+						? ((String) ownedParameterNames.get(j))
+							.equalsIgnoreCase(ownedParameter.getName())
+						: ownedParameterNames.get(j).equals(
+							ownedParameter.getName())))
+					continue ownedReceptionLoop;
+				if (ownedParameterTypes != null
+					&& !ownedParameterTypes.get(j).equals(
+						ownedParameter.getType()))
+					continue ownedReceptionLoop;
 			}
+			return ownedReception;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedReception(name, ownedParameterNames,
+				ownedParameterTypes)
+			: null;
 	}
 
 	/**
@@ -715,11 +936,23 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Extension getExtension(String name) {
-		for (Iterator i = getExtensions().iterator(); i.hasNext();) {
+		return getExtension(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Extension getExtension(String name, boolean ignoreCase) {
+		extensionLoop : for (Iterator i = getExtensions().iterator(); i
+			.hasNext();) {
 			Extension extension = (Extension) i.next();
-			if (name.equals(extension.getName())) {
-				return extension;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(extension.getName())
+				: name.equals(extension.getName())))
+				continue extensionLoop;
+			return extension;
 		}
 		return null;
 	}
@@ -744,9 +977,10 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(EClass eClass) {
-		Property newOwnedAttribute = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -756,8 +990,10 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute() {
+	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -767,14 +1003,33 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext();) {
+	public Property getOwnedAttribute(String name, Type type) {
+		return getOwnedAttribute(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		ownedAttributeLoop : for (Iterator i = getOwnedAttributes().iterator(); i
+			.hasNext();) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedAttribute.getName())
+				: name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			if (type != null && !type.equals(ownedAttribute.getType()))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedAttribute(name, type, eClass)
+			: null;
 	}
 
 	/**
@@ -838,16 +1093,6 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceRealization createInterfaceRealization(Interface contract) {
-		return BehavioredClassifierOperations.createInterfaceRealization(this,
-			contract);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validatePassiveClass(DiagnosticChain diagnostics, Map context) {
 		return ClassOperations.validatePassiveClass(this, diagnostics, context);
 	}
@@ -857,10 +1102,10 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOwnedOperation(String name, Type returnType,
-			EList parameterNames, EList parameterTypes) {
-		return ClassOperations.createOwnedOperation(this, name, returnType,
-			parameterNames, parameterTypes);
+	public Operation createOwnedOperation(String name, EList parameterNames,
+			EList parameterTypes, Type returnType) {
+		return ClassOperations.createOwnedOperation(this, name, parameterNames,
+			parameterTypes, returnType);
 	}
 
 	/**

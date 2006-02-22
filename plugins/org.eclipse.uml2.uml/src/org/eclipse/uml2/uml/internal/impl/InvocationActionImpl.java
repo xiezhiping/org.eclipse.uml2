@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.InvocationAction;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -119,9 +121,10 @@ public abstract class InvocationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createArgument(EClass eClass) {
-		InputPin newArgument = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createArgument(String name, Type type, EClass eClass) {
+		InputPin newArgument = (InputPin) EcoreUtil.create(eClass);
+		newArgument.setName(name);
+		newArgument.setType(type);
 		getArguments().add(newArgument);
 		return newArgument;
 	}
@@ -131,8 +134,10 @@ public abstract class InvocationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createArgument() {
+	public InputPin createArgument(String name, Type type) {
 		InputPin newArgument = UMLFactory.eINSTANCE.createInputPin();
+		newArgument.setName(name);
+		newArgument.setType(type);
 		getArguments().add(newArgument);
 		return newArgument;
 	}
@@ -142,14 +147,32 @@ public abstract class InvocationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin getArgument(String name) {
-		for (Iterator i = getArguments().iterator(); i.hasNext();) {
+	public InputPin getArgument(String name, Type type) {
+		return getArgument(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getArgument(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		argumentLoop : for (Iterator i = getArguments().iterator(); i.hasNext();) {
 			InputPin argument = (InputPin) i.next();
-			if (name.equals(argument.getName())) {
-				return argument;
-			}
+			if (eClass != null && !eClass.isInstance(argument))
+				continue argumentLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(argument.getName())
+				: name.equals(argument.getName())))
+				continue argumentLoop;
+			if (type != null && !type.equals(argument.getType()))
+				continue argumentLoop;
+			return argument;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createArgument(name, type, eClass)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.27 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.28 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -211,11 +211,26 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext();) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (Iterator i = getRedefinedElements()
+			.iterator(); i.hasNext();) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -253,11 +268,26 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext();) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
+			.iterator(); i.hasNext();) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinitionContext.getName())
+				: name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -597,11 +627,41 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBinding createTemplateBinding() {
+	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
+		newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature) {
+		return getTemplateBinding(signature, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature,
+			boolean createOnDemand) {
+		templateBindingLoop : for (Iterator i = getTemplateBindings()
+			.iterator(); i.hasNext();) {
+			TemplateBinding templateBinding = (TemplateBinding) i.next();
+			if (signature != null
+				&& !signature.equals(templateBinding.getSignature()))
+				continue templateBindingLoop;
+			return templateBinding;
+		}
+		return createOnDemand
+			? createTemplateBinding(signature)
+			: null;
 	}
 
 	/**
@@ -721,8 +781,8 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
+			.create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -770,11 +830,24 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Feature getFeature(String name) {
-		for (Iterator i = getFeatures().iterator(); i.hasNext();) {
+		return getFeature(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Feature getFeature(String name, boolean ignoreCase, EClass eClass) {
+		featureLoop : for (Iterator i = getFeatures().iterator(); i.hasNext();) {
 			Feature feature = (Feature) i.next();
-			if (name.equals(feature.getName())) {
-				return feature;
-			}
+			if (eClass != null && !eClass.isInstance(feature))
+				continue featureLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(feature.getName())
+				: name.equals(feature.getName())))
+				continue featureLoop;
+			return feature;
 		}
 		return null;
 	}
@@ -835,12 +908,29 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getAttribute(String name) {
-		for (Iterator i = getAttributes().iterator(); i.hasNext();) {
+	public Property getAttribute(String name, Type type) {
+		return getAttribute(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getAttribute(String name, Type type, boolean ignoreCase,
+			EClass eClass) {
+		attributeLoop : for (Iterator i = getAttributes().iterator(); i
+			.hasNext();) {
 			Property attribute = (Property) i.next();
-			if (name.equals(attribute.getName())) {
-				return attribute;
-			}
+			if (eClass != null && !eClass.isInstance(attribute))
+				continue attributeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(attribute.getName())
+				: name.equals(attribute.getName())))
+				continue attributeLoop;
+			if (type != null && !type.equals(attribute.getType()))
+				continue attributeLoop;
+			return attribute;
 		}
 		return null;
 	}
@@ -887,9 +977,10 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CollaborationUse createCollaborationUse() {
+	public CollaborationUse createCollaborationUse(String name) {
 		CollaborationUse newCollaborationUse = UMLFactory.eINSTANCE
 			.createCollaborationUse();
+		newCollaborationUse.setName(name);
 		getCollaborationUses().add(newCollaborationUse);
 		return newCollaborationUse;
 	}
@@ -900,13 +991,28 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse getCollaborationUse(String name) {
-		for (Iterator i = getCollaborationUses().iterator(); i.hasNext();) {
+		return getCollaborationUse(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollaborationUse getCollaborationUse(String name,
+			boolean ignoreCase, boolean createOnDemand) {
+		collaborationUseLoop : for (Iterator i = getCollaborationUses()
+			.iterator(); i.hasNext();) {
 			CollaborationUse collaborationUse = (CollaborationUse) i.next();
-			if (name.equals(collaborationUse.getName())) {
-				return collaborationUse;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(collaborationUse.getName())
+				: name.equals(collaborationUse.getName())))
+				continue collaborationUseLoop;
+			return collaborationUse;
 		}
-		return null;
+		return createOnDemand
+			? createCollaborationUse(name)
+			: null;
 	}
 
 	/**
@@ -959,18 +1065,6 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Generalization createGeneralization() {
-		Generalization newGeneralization = UMLFactory.eINSTANCE
-			.createGeneralization();
-		getGeneralizations().add(newGeneralization);
-		return newGeneralization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList getPowertypeExtents() {
 		EList powertypeExtent = (EList) eVirtualGet(UMLPackage.CLASSIFIER__POWERTYPE_EXTENT);
 		if (powertypeExtent == null) {
@@ -989,11 +1083,23 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public GeneralizationSet getPowertypeExtent(String name) {
-		for (Iterator i = getPowertypeExtents().iterator(); i.hasNext();) {
+		return getPowertypeExtent(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralizationSet getPowertypeExtent(String name, boolean ignoreCase) {
+		powertypeExtentLoop : for (Iterator i = getPowertypeExtents()
+			.iterator(); i.hasNext();) {
 			GeneralizationSet powertypeExtent = (GeneralizationSet) i.next();
-			if (name.equals(powertypeExtent.getName())) {
-				return powertypeExtent;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(powertypeExtent.getName())
+				: name.equals(powertypeExtent.getName())))
+				continue powertypeExtentLoop;
+			return powertypeExtent;
 		}
 		return null;
 	}
@@ -1024,11 +1130,26 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public NamedElement getInheritedMember(String name) {
-		for (Iterator i = getInheritedMembers().iterator(); i.hasNext();) {
+		return getInheritedMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getInheritedMember(String name, boolean ignoreCase,
+			EClass eClass) {
+		inheritedMemberLoop : for (Iterator i = getInheritedMembers()
+			.iterator(); i.hasNext();) {
 			NamedElement inheritedMember = (NamedElement) i.next();
-			if (name.equals(inheritedMember.getName())) {
-				return inheritedMember;
-			}
+			if (eClass != null && !eClass.isInstance(inheritedMember))
+				continue inheritedMemberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inheritedMember.getName())
+				: name.equals(inheritedMember.getName())))
+				continue inheritedMemberLoop;
+			return inheritedMember;
 		}
 		return null;
 	}
@@ -1055,11 +1176,26 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Classifier getRedefinedClassifier(String name) {
-		for (Iterator i = getRedefinedClassifiers().iterator(); i.hasNext();) {
+		return getRedefinedClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinedClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinedClassifierLoop : for (Iterator i = getRedefinedClassifiers()
+			.iterator(); i.hasNext();) {
 			Classifier redefinedClassifier = (Classifier) i.next();
-			if (name.equals(redefinedClassifier.getName())) {
-				return redefinedClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedClassifier))
+				continue redefinedClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedClassifier.getName())
+				: name.equals(redefinedClassifier.getName())))
+				continue redefinedClassifierLoop;
+			return redefinedClassifier;
 		}
 		return null;
 	}
@@ -1090,11 +1226,24 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Classifier getGeneral(String name) {
-		for (Iterator i = getGenerals().iterator(); i.hasNext();) {
+		return getGeneral(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getGeneral(String name, boolean ignoreCase, EClass eClass) {
+		generalLoop : for (Iterator i = getGenerals().iterator(); i.hasNext();) {
 			Classifier general = (Classifier) i.next();
-			if (name.equals(general.getName())) {
-				return general;
-			}
+			if (eClass != null && !eClass.isInstance(general))
+				continue generalLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(general.getName())
+				: name.equals(general.getName())))
+				continue generalLoop;
+			return general;
 		}
 		return null;
 	}
@@ -1119,8 +1268,9 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UseCase createOwnedUseCase() {
+	public UseCase createOwnedUseCase(String name) {
 		UseCase newOwnedUseCase = UMLFactory.eINSTANCE.createUseCase();
+		newOwnedUseCase.setName(name);
 		getOwnedUseCases().add(newOwnedUseCase);
 		return newOwnedUseCase;
 	}
@@ -1131,13 +1281,28 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public UseCase getOwnedUseCase(String name) {
-		for (Iterator i = getOwnedUseCases().iterator(); i.hasNext();) {
+		return getOwnedUseCase(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UseCase getOwnedUseCase(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedUseCaseLoop : for (Iterator i = getOwnedUseCases().iterator(); i
+			.hasNext();) {
 			UseCase ownedUseCase = (UseCase) i.next();
-			if (name.equals(ownedUseCase.getName())) {
-				return ownedUseCase;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedUseCase.getName())
+				: name.equals(ownedUseCase.getName())))
+				continue ownedUseCaseLoop;
+			return ownedUseCase;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedUseCase(name)
+			: null;
 	}
 
 	/**
@@ -1162,11 +1327,22 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public UseCase getUseCase(String name) {
-		for (Iterator i = getUseCases().iterator(); i.hasNext();) {
+		return getUseCase(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UseCase getUseCase(String name, boolean ignoreCase) {
+		useCaseLoop : for (Iterator i = getUseCases().iterator(); i.hasNext();) {
 			UseCase useCase = (UseCase) i.next();
-			if (name.equals(useCase.getName())) {
-				return useCase;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(useCase.getName())
+				: name.equals(useCase.getName())))
+				continue useCaseLoop;
+			return useCase;
 		}
 		return null;
 	}
@@ -1195,9 +1371,11 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Substitution createSubstitution() {
+	public Substitution createSubstitution(String name, Classifier contract) {
 		Substitution newSubstitution = UMLFactory.eINSTANCE
 			.createSubstitution();
+		newSubstitution.setName(name);
+		newSubstitution.setContract(contract);
 		getSubstitutions().add(newSubstitution);
 		return newSubstitution;
 	}
@@ -1207,14 +1385,32 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Substitution getSubstitution(String name) {
-		for (Iterator i = getSubstitutions().iterator(); i.hasNext();) {
+	public Substitution getSubstitution(String name, Classifier contract) {
+		return getSubstitution(name, contract, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Substitution getSubstitution(String name, Classifier contract,
+			boolean ignoreCase, boolean createOnDemand) {
+		substitutionLoop : for (Iterator i = getSubstitutions().iterator(); i
+			.hasNext();) {
 			Substitution substitution = (Substitution) i.next();
-			if (name.equals(substitution.getName())) {
-				return substitution;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(substitution.getName())
+				: name.equals(substitution.getName())))
+				continue substitutionLoop;
+			if (contract != null
+				&& !contract.equals(substitution.getContract()))
+				continue substitutionLoop;
+			return substitution;
 		}
-		return null;
+		return createOnDemand
+			? createSubstitution(name, contract)
+			: null;
 	}
 
 	/**
@@ -1268,6 +1464,19 @@ public abstract class ClassifierImpl
 					? null
 					: oldRepresentation, representation));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollaborationUse createRepresentation(String name) {
+		CollaborationUse newRepresentation = UMLFactory.eINSTANCE
+			.createCollaborationUse();
+		newRepresentation.setName(name);
+		setRepresentation(newRepresentation);
+		return newRepresentation;
 	}
 
 	/**
@@ -1342,6 +1551,15 @@ public abstract class ClassifierImpl
 		return TypeOperations.createAssociation(this, end1IsNavigable,
 			end1Aggregation, end1Name, end1Lower, end1Upper, end1Type,
 			end2IsNavigable, end2Aggregation, end2Name, end2Lower, end2Upper);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAssociations() {
+		return TypeOperations.getAssociations(this);
 	}
 
 	/**
@@ -1425,7 +1643,39 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Generalization createGeneralization(Classifier general) {
-		return ClassifierOperations.createGeneralization(this, general);
+		Generalization newGeneralization = UMLFactory.eINSTANCE
+			.createGeneralization();
+		newGeneralization.setGeneral(general);
+		getGeneralizations().add(newGeneralization);
+		return newGeneralization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Generalization getGeneralization(Classifier general) {
+		return getGeneralization(general, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Generalization getGeneralization(Classifier general,
+			boolean createOnDemand) {
+		generalizationLoop : for (Iterator i = getGeneralizations().iterator(); i
+			.hasNext();) {
+			Generalization generalization = (Generalization) i.next();
+			if (general != null && !general.equals(generalization.getGeneral()))
+				continue generalizationLoop;
+			return generalization;
+		}
+		return createOnDemand
+			? createGeneralization(general)
+			: null;
 	}
 
 	/**
@@ -1437,10 +1687,10 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.CLASSIFIER.getEOperations().get(5));
+				UMLPackage.Literals.CLASSIFIER.getEOperations().get(4));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.CLASSIFIER.getEOperations()
-					.get(5), result = ClassifierOperations
+					.get(4), result = ClassifierOperations
 					.getAllAttributes(this));
 			}
 			return result;
@@ -1457,10 +1707,10 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.CLASSIFIER.getEOperations().get(6));
+				UMLPackage.Literals.CLASSIFIER.getEOperations().get(5));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.CLASSIFIER
-					.getEOperations().get(6), result = ClassifierOperations
+					.getEOperations().get(5), result = ClassifierOperations
 					.getOperations(this));
 			}
 			return result;
@@ -1477,10 +1727,10 @@ public abstract class ClassifierImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.CLASSIFIER.getEOperations().get(7));
+				UMLPackage.Literals.CLASSIFIER.getEOperations().get(6));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.CLASSIFIER.getEOperations()
-					.get(7), result = ClassifierOperations
+					.get(6), result = ClassifierOperations
 					.getAllOperations(this));
 			}
 			return result;
@@ -1493,8 +1743,21 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getOperation(String name) {
-		return ClassifierOperations.getOperation(this, name);
+	public Operation getOperation(String name, EList parameterNames,
+			EList parameterTypes) {
+		return ClassifierOperations.getOperation(this, name, parameterNames,
+			parameterTypes);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getOperation(String name, EList parameterNames,
+			EList parameterTypes, boolean ignoreCase) {
+		return ClassifierOperations.getOperation(this, name, parameterNames,
+			parameterTypes, ignoreCase);
 	}
 
 	/**

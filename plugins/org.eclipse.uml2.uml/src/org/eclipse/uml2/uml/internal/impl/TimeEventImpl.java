@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -35,6 +36,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeEvent;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -235,9 +237,11 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createWhen(EClass eClass) {
-		ValueSpecification newWhen = (ValueSpecification) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ValueSpecification createWhen(String name, Type type, EClass eClass) {
+		ValueSpecification newWhen = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newWhen.setName(name);
+		newWhen.setType(type);
 		setWhen(newWhen);
 		return newWhen;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.8 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Message.java,v 1.9 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -216,26 +216,45 @@ public interface Message
 	EList getArguments();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and appends it to the '<em><b>Argument</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getArguments()
 	 * @generated
 	 */
-	ValueSpecification createArgument(EClass eClass);
+	ValueSpecification createArgument(String name, Type type, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
 	 */
-	ValueSpecification getArgument(String name);
+	ValueSpecification getArgument(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ValueSpecification} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getArguments()
+	 * @generated
+	 */
+	ValueSpecification getArgument(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Signature</b></em>' reference.

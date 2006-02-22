@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.ClearAssociationAction;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -195,9 +197,10 @@ public class ClearAssociationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createObject(EClass eClass) {
-		InputPin newObject = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createObject(String name, Type type, EClass eClass) {
+		InputPin newObject = (InputPin) EcoreUtil.create(eClass);
+		newObject.setName(name);
+		newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}
@@ -207,8 +210,10 @@ public class ClearAssociationActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createObject() {
+	public InputPin createObject(String name, Type type) {
 		InputPin newObject = UMLFactory.eINSTANCE.createInputPin();
+		newObject.setName(name);
+		newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}

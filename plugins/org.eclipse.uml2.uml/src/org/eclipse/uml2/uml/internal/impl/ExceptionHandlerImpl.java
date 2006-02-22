@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.9 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -198,11 +198,26 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public Classifier getExceptionType(String name) {
-		for (Iterator i = getExceptionTypes().iterator(); i.hasNext();) {
+		return getExceptionType(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getExceptionType(String name, boolean ignoreCase,
+			EClass eClass) {
+		exceptionTypeLoop : for (Iterator i = getExceptionTypes().iterator(); i
+			.hasNext();) {
 			Classifier exceptionType = (Classifier) i.next();
-			if (name.equals(exceptionType.getName())) {
-				return exceptionType;
-			}
+			if (eClass != null && !eClass.isInstance(exceptionType))
+				continue exceptionTypeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(exceptionType.getName())
+				: name.equals(exceptionType.getName())))
+				continue exceptionTypeLoop;
+			return exceptionType;
 		}
 		return null;
 	}

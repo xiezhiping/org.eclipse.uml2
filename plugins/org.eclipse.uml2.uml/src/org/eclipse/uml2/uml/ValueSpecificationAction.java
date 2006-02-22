@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationAction.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: ValueSpecificationAction.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -68,15 +68,17 @@ public interface ValueSpecificationAction
 	void setValue(ValueSpecification value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and sets the '<em><b>Value</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getValue()
 	 * @generated
 	 */
-	ValueSpecification createValue(EClass eClass);
+	ValueSpecification createValue(String name, Type type, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
@@ -104,14 +106,16 @@ public interface ValueSpecificationAction
 	void setResult(OutputPin value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
 	 * @see #getResult()
 	 * @generated
 	 */
-	OutputPin createResult();
+	OutputPin createResult(String name, Type type);
 
 	/**
 	 * <!-- begin-user-doc -->

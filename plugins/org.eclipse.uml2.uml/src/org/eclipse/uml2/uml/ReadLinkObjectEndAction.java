@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndAction.java,v 1.2 2006/02/21 16:12:19 khussey Exp $
+ * $Id: ReadLinkObjectEndAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -69,25 +69,29 @@ public interface ReadLinkObjectEndAction
 	void setObject(InputPin value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getObject()
 	 * @generated
 	 */
-	InputPin createObject(EClass eClass);
+	InputPin createObject(String name, Type type, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getObject()
 	 * @generated
 	 */
-	InputPin createObject();
+	InputPin createObject(String name, Type type);
 
 	/**
 	 * Returns the value of the '<em><b>End</b></em>' reference.
@@ -140,14 +144,16 @@ public interface ReadLinkObjectEndAction
 	void setResult(OutputPin value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
 	 * @see #getResult()
 	 * @generated
 	 */
-	OutputPin createResult();
+	OutputPin createResult(String name, Type type);
 
 	/**
 	 * <!-- begin-user-doc -->

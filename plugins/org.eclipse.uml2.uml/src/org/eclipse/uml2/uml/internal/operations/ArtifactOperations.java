@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ArtifactOperations.java,v 1.5 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,7 +27,7 @@ import org.eclipse.uml2.uml.Type;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Artifact#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Create Owned Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Artifact#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Artifact#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
  * </ul>
  * </p>
@@ -44,6 +44,19 @@ public class ArtifactOperations
 	 */
 	protected ArtifactOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation createOwnedOperation(Artifact artifact,
+			String name, EList parameterNames, EList parameterTypes,
+			Type returnType) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

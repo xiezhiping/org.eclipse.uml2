@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,11 +90,25 @@ public class ConsiderIgnoreFragmentImpl
 	 * @generated
 	 */
 	public NamedElement getMessage(String name) {
-		for (Iterator i = getMessages().iterator(); i.hasNext();) {
+		return getMessage(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getMessage(String name, boolean ignoreCase,
+			EClass eClass) {
+		messageLoop : for (Iterator i = getMessages().iterator(); i.hasNext();) {
 			NamedElement message = (NamedElement) i.next();
-			if (name.equals(message.getName())) {
-				return message;
-			}
+			if (eClass != null && !eClass.isInstance(message))
+				continue messageLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(message.getName())
+				: name.equals(message.getName())))
+				continue messageLoop;
+			return message;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.19 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -169,9 +170,9 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createOwnedBehavior(EClass eClass) {
-		Behavior newOwnedBehavior = (Behavior) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Behavior createOwnedBehavior(String name, EClass eClass) {
+		Behavior newOwnedBehavior = (Behavior) EcoreUtil.create(eClass);
+		newOwnedBehavior.setName(name);
 		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}
@@ -182,13 +183,30 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public Behavior getOwnedBehavior(String name) {
-		for (Iterator i = getOwnedBehaviors().iterator(); i.hasNext();) {
+		return getOwnedBehavior(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior getOwnedBehavior(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedBehaviorLoop : for (Iterator i = getOwnedBehaviors().iterator(); i
+			.hasNext();) {
 			Behavior ownedBehavior = (Behavior) i.next();
-			if (name.equals(ownedBehavior.getName())) {
-				return ownedBehavior;
-			}
+			if (eClass != null && !eClass.isInstance(ownedBehavior))
+				continue ownedBehaviorLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedBehavior.getName())
+				: name.equals(ownedBehavior.getName())))
+				continue ownedBehaviorLoop;
+			return ownedBehavior;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedBehavior(name, eClass)
+			: null;
 	}
 
 	/**
@@ -273,6 +291,18 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Behavior createClassifierBehavior(String name, EClass eClass) {
+		Behavior newClassifierBehavior = (Behavior) EcoreUtil.create(eClass);
+		newClassifierBehavior.setName(name);
+		setClassifierBehavior(newClassifierBehavior);
+		return newClassifierBehavior;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getInterfaceRealizations() {
 		EList interfaceRealization = (EList) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION);
 		if (interfaceRealization == null) {
@@ -294,9 +324,12 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceRealization createInterfaceRealization() {
+	public InterfaceRealization createInterfaceRealization(String name,
+			Interface contract) {
 		InterfaceRealization newInterfaceRealization = UMLFactory.eINSTANCE
 			.createInterfaceRealization();
+		newInterfaceRealization.setName(name);
+		newInterfaceRealization.setContract(contract);
 		getInterfaceRealizations().add(newInterfaceRealization);
 		return newInterfaceRealization;
 	}
@@ -306,15 +339,34 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceRealization getInterfaceRealization(String name) {
-		for (Iterator i = getInterfaceRealizations().iterator(); i.hasNext();) {
+	public InterfaceRealization getInterfaceRealization(String name,
+			Interface contract) {
+		return getInterfaceRealization(name, contract, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterfaceRealization getInterfaceRealization(String name,
+			Interface contract, boolean ignoreCase, boolean createOnDemand) {
+		interfaceRealizationLoop : for (Iterator i = getInterfaceRealizations()
+			.iterator(); i.hasNext();) {
 			InterfaceRealization interfaceRealization = (InterfaceRealization) i
 				.next();
-			if (name.equals(interfaceRealization.getName())) {
-				return interfaceRealization;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(interfaceRealization.getName())
+				: name.equals(interfaceRealization.getName())))
+				continue interfaceRealizationLoop;
+			if (contract != null
+				&& !contract.equals(interfaceRealization.getContract()))
+				continue interfaceRealizationLoop;
+			return interfaceRealization;
 		}
-		return null;
+		return createOnDemand
+			? createInterfaceRealization(name, contract)
+			: null;
 	}
 
 	/**
@@ -338,8 +390,9 @@ public abstract class BehavioredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trigger createOwnedTrigger() {
+	public Trigger createOwnedTrigger(String name) {
 		Trigger newOwnedTrigger = UMLFactory.eINSTANCE.createTrigger();
+		newOwnedTrigger.setName(name);
 		getOwnedTriggers().add(newOwnedTrigger);
 		return newOwnedTrigger;
 	}
@@ -350,13 +403,28 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public Trigger getOwnedTrigger(String name) {
-		for (Iterator i = getOwnedTriggers().iterator(); i.hasNext();) {
+		return getOwnedTrigger(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getOwnedTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedTriggerLoop : for (Iterator i = getOwnedTriggers().iterator(); i
+			.hasNext();) {
 			Trigger ownedTrigger = (Trigger) i.next();
-			if (name.equals(ownedTrigger.getName())) {
-				return ownedTrigger;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedTrigger.getName())
+				: name.equals(ownedTrigger.getName())))
+				continue ownedTriggerLoop;
+			return ownedTrigger;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedTrigger(name)
+			: null;
 	}
 
 	/**
@@ -368,16 +436,6 @@ public abstract class BehavioredClassifierImpl
 			Map context) {
 		return BehavioredClassifierOperations.validateClassBehavior(this,
 			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InterfaceRealization createInterfaceRealization(Interface contract) {
-		return BehavioredClassifierOperations.createInterfaceRealization(this,
-			contract);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.5 2006/02/21 16:12:19 khussey Exp $
+ * $Id: Lifeline.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -136,15 +136,17 @@ public interface Lifeline
 	void setSelector(ValueSpecification value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and sets the '<em><b>Selector</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Selector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getSelector()
 	 * @generated
 	 */
-	ValueSpecification createSelector(EClass eClass);
+	ValueSpecification createSelector(String name, Type type, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Decomposed As</b></em>' reference.
@@ -193,15 +195,29 @@ public interface Lifeline
 	EList getCoveredBys();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered By</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered By</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCoveredBys()
 	 * @generated
 	 */
 	InteractionFragment getCoveredBy(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getCoveredBys()
+	 * @generated
+	 */
+	InteractionFragment getCoveredBy(String name, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

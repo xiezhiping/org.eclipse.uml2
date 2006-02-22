@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.4 2005/12/14 22:34:16 khussey Exp $
+ * $Id: Type.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,6 +76,14 @@ public interface Type
 			int end1Upper, Type end1Type, boolean end2IsNavigable,
 			AggregationKind end2Aggregation, String end2Name, int end2Lower,
 			int end2Upper);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Association" ordered="false"
+	 * @generated
+	 */
+	EList getAssociations();
 
 	/**
 	 * <!-- begin-user-doc -->

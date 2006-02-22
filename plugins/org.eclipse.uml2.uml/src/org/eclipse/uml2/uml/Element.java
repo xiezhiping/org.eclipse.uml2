@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.10 2006/02/21 16:12:19 khussey Exp $
+ * $Id: Element.java,v 1.11 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 
@@ -98,7 +99,7 @@ public interface Element
 	EList getOwnedComments();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.uml.Comment}.
@@ -227,6 +228,54 @@ public interface Element
 	 * @generated
 	 */
 	EAnnotation createEAnnotation(String source);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Relationship" ordered="false"
+	 * @generated
+	 */
+	EList getRelationships();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.eclipse.uml2.uml.Relationship" ordered="false" eClassRequired="true" eClassOrdered="false"
+	 * @generated
+	 */
+	EList getRelationships(EClass eClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
+	 * @generated
+	 */
+	EList getSourceDirectedRelationships();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
+	 * @generated
+	 */
+	EList getSourceDirectedRelationships(EClass eClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
+	 * @generated
+	 */
+	EList getTargetDirectedRelationships();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
+	 * @generated
+	 */
+	EList getTargetDirectedRelationships(EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

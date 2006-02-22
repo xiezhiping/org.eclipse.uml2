@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureAction.java,v 1.2 2006/02/21 16:12:19 khussey Exp $
+ * $Id: WriteStructuralFeatureAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -67,25 +67,29 @@ public interface WriteStructuralFeatureAction
 	void setValue(InputPin value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and sets the '<em><b>Value</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getValue()
 	 * @generated
 	 */
-	InputPin createValue(EClass eClass);
+	InputPin createValue(String name, Type type, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and sets the '<em><b>Value</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getValue()
 	 * @generated
 	 */
-	InputPin createValue();
+	InputPin createValue(String name, Type type);
 
 	/**
 	 * <!-- begin-user-doc -->

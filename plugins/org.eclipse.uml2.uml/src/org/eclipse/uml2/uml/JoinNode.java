@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.4 2006/02/21 16:12:18 khussey Exp $
+ * $Id: JoinNode.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -95,15 +95,17 @@ public interface JoinNode
 	void setJoinSpec(ValueSpecification value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and sets the '<em><b>Join Spec</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Join Spec</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getJoinSpec()
 	 * @generated
 	 */
-	ValueSpecification createJoinSpec(EClass eClass);
+	ValueSpecification createJoinSpec(String name, Type type, EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

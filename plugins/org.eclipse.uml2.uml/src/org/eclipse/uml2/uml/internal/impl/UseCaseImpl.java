@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.16 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,8 +131,10 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Include createInclude() {
+	public Include createInclude(String name, UseCase addition) {
 		Include newInclude = UMLFactory.eINSTANCE.createInclude();
+		newInclude.setName(name);
+		newInclude.setAddition(addition);
 		getIncludes().add(newInclude);
 		return newInclude;
 	}
@@ -142,14 +144,30 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Include getInclude(String name) {
-		for (Iterator i = getIncludes().iterator(); i.hasNext();) {
+	public Include getInclude(String name, UseCase addition) {
+		return getInclude(name, addition, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Include getInclude(String name, UseCase addition,
+			boolean ignoreCase, boolean createOnDemand) {
+		includeLoop : for (Iterator i = getIncludes().iterator(); i.hasNext();) {
 			Include include = (Include) i.next();
-			if (name.equals(include.getName())) {
-				return include;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(include.getName())
+				: name.equals(include.getName())))
+				continue includeLoop;
+			if (addition != null && !addition.equals(include.getAddition()))
+				continue includeLoop;
+			return include;
 		}
-		return null;
+		return createOnDemand
+			? createInclude(name, addition)
+			: null;
 	}
 
 	/**
@@ -173,8 +191,10 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Extend createExtend() {
+	public Extend createExtend(String name, UseCase extendedCase) {
 		Extend newExtend = UMLFactory.eINSTANCE.createExtend();
+		newExtend.setName(name);
+		newExtend.setExtendedCase(extendedCase);
 		getExtends().add(newExtend);
 		return newExtend;
 	}
@@ -184,14 +204,31 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Extend getExtend(String name) {
-		for (Iterator i = getExtends().iterator(); i.hasNext();) {
+	public Extend getExtend(String name, UseCase extendedCase) {
+		return getExtend(name, extendedCase, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Extend getExtend(String name, UseCase extendedCase,
+			boolean ignoreCase, boolean createOnDemand) {
+		extendLoop : for (Iterator i = getExtends().iterator(); i.hasNext();) {
 			Extend extend = (Extend) i.next();
-			if (name.equals(extend.getName())) {
-				return extend;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(extend.getName())
+				: name.equals(extend.getName())))
+				continue extendLoop;
+			if (extendedCase != null
+				&& !extendedCase.equals(extend.getExtendedCase()))
+				continue extendLoop;
+			return extend;
 		}
-		return null;
+		return createOnDemand
+			? createExtend(name, extendedCase)
+			: null;
 	}
 
 	/**
@@ -217,9 +254,10 @@ public class UseCaseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExtensionPoint createExtensionPoint() {
+	public ExtensionPoint createExtensionPoint(String name) {
 		ExtensionPoint newExtensionPoint = UMLFactory.eINSTANCE
 			.createExtensionPoint();
+		newExtensionPoint.setName(name);
 		getExtensionPoints().add(newExtensionPoint);
 		return newExtensionPoint;
 	}
@@ -230,13 +268,28 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	public ExtensionPoint getExtensionPoint(String name) {
-		for (Iterator i = getExtensionPoints().iterator(); i.hasNext();) {
+		return getExtensionPoint(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExtensionPoint getExtensionPoint(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		extensionPointLoop : for (Iterator i = getExtensionPoints().iterator(); i
+			.hasNext();) {
 			ExtensionPoint extensionPoint = (ExtensionPoint) i.next();
-			if (name.equals(extensionPoint.getName())) {
-				return extensionPoint;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(extensionPoint.getName())
+				: name.equals(extensionPoint.getName())))
+				continue extensionPointLoop;
+			return extensionPoint;
 		}
-		return null;
+		return createOnDemand
+			? createExtensionPoint(name)
+			: null;
 	}
 
 	/**
@@ -261,11 +314,24 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	public Classifier getSubject(String name) {
-		for (Iterator i = getSubjects().iterator(); i.hasNext();) {
+		return getSubject(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getSubject(String name, boolean ignoreCase, EClass eClass) {
+		subjectLoop : for (Iterator i = getSubjects().iterator(); i.hasNext();) {
 			Classifier subject = (Classifier) i.next();
-			if (name.equals(subject.getName())) {
-				return subject;
-			}
+			if (eClass != null && !eClass.isInstance(subject))
+				continue subjectLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(subject.getName())
+				: name.equals(subject.getName())))
+				continue subjectLoop;
+			return subject;
 		}
 		return null;
 	}

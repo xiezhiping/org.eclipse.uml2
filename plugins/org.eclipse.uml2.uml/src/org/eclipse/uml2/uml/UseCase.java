@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: UseCase.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,25 +80,43 @@ public interface UseCase
 	EList getIncludes();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Include} and appends it to the '<em><b>Include</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Include}, with the specified '<em><b>Name</b></em>', and '<em><b>Addition</b></em>', and appends it to the '<em><b>Include</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Include}, or <code>null</code>.
+	 * @param addition The '<em><b>Addition</b></em>' for the new {@link org.eclipse.uml2.uml.Include}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Include}.
 	 * @see #getIncludes()
 	 * @generated
 	 */
-	Include createInclude();
+	Include createInclude(String name, UseCase addition);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Include} with the specified '<em><b>Name</b></em>' from the '<em><b>Include</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Include} with the specified '<em><b>Name</b></em>', and '<em><b>Addition</b></em>' from the '<em><b>Include</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Include} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Include} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Include} to retrieve, or <code>null</code>.
+	 * @param addition The '<em><b>Addition</b></em>' of the {@link org.eclipse.uml2.uml.Include} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Include} with the specified '<em><b>Name</b></em>', and '<em><b>Addition</b></em>', or <code>null</code>.
 	 * @see #getIncludes()
 	 * @generated
 	 */
-	Include getInclude(String name);
+	Include getInclude(String name, UseCase addition);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Include} with the specified '<em><b>Name</b></em>', and '<em><b>Addition</b></em>' from the '<em><b>Include</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Include} to retrieve, or <code>null</code>.
+	 * @param addition The '<em><b>Addition</b></em>' of the {@link org.eclipse.uml2.uml.Include} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Include} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Include} with the specified '<em><b>Name</b></em>', and '<em><b>Addition</b></em>', or <code>null</code>.
+	 * @see #getIncludes()
+	 * @generated
+	 */
+	Include getInclude(String name, UseCase addition, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Extend</b></em>' containment reference list.
@@ -116,25 +136,43 @@ public interface UseCase
 	EList getExtends();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Extend} and appends it to the '<em><b>Extend</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Extend}, with the specified '<em><b>Name</b></em>', and '<em><b>Extended Case</b></em>', and appends it to the '<em><b>Extend</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Extend}, or <code>null</code>.
+	 * @param extendedCase The '<em><b>Extended Case</b></em>' for the new {@link org.eclipse.uml2.uml.Extend}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Extend}.
 	 * @see #getExtends()
 	 * @generated
 	 */
-	Extend createExtend();
+	Extend createExtend(String name, UseCase extendedCase);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Extend} with the specified '<em><b>Name</b></em>' from the '<em><b>Extend</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Extend} with the specified '<em><b>Name</b></em>', and '<em><b>Extended Case</b></em>' from the '<em><b>Extend</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Extend} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Extend} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Extend} to retrieve, or <code>null</code>.
+	 * @param extendedCase The '<em><b>Extended Case</b></em>' of the {@link org.eclipse.uml2.uml.Extend} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Extend} with the specified '<em><b>Name</b></em>', and '<em><b>Extended Case</b></em>', or <code>null</code>.
 	 * @see #getExtends()
 	 * @generated
 	 */
-	Extend getExtend(String name);
+	Extend getExtend(String name, UseCase extendedCase);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Extend} with the specified '<em><b>Name</b></em>', and '<em><b>Extended Case</b></em>' from the '<em><b>Extend</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Extend} to retrieve, or <code>null</code>.
+	 * @param extendedCase The '<em><b>Extended Case</b></em>' of the {@link org.eclipse.uml2.uml.Extend} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Extend} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Extend} with the specified '<em><b>Name</b></em>', and '<em><b>Extended Case</b></em>', or <code>null</code>.
+	 * @see #getExtends()
+	 * @generated
+	 */
+	Extend getExtend(String name, UseCase extendedCase, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Extension Point</b></em>' containment reference list.
@@ -154,25 +192,40 @@ public interface UseCase
 	EList getExtensionPoints();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ExtensionPoint} and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ExtensionPoint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ExtensionPoint}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.ExtensionPoint}.
 	 * @see #getExtensionPoints()
 	 * @generated
 	 */
-	ExtensionPoint createExtensionPoint();
+	ExtensionPoint createExtensionPoint(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Point</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ExtensionPoint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ExtensionPoint} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensionPoints()
 	 * @generated
 	 */
 	ExtensionPoint getExtensionPoint(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Point</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ExtensionPoint} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ExtensionPoint} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getExtensionPoints()
+	 * @generated
+	 */
+	ExtensionPoint getExtensionPoint(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' reference list.
@@ -192,15 +245,28 @@ public interface UseCase
 	EList getSubjects();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubjects()
 	 * @generated
 	 */
 	Classifier getSubject(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSubjects()
+	 * @generated
+	 */
+	Classifier getSubject(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.5 2006/02/21 16:12:19 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -63,26 +63,42 @@ public interface BehavioredClassifier
 	EList getOwnedBehaviors();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and appends it to the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Behavior}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Behavior}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Behavior} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
 	 * @see #getOwnedBehaviors()
 	 * @generated
 	 */
-	Behavior createOwnedBehavior(EClass eClass);
+	Behavior createOwnedBehavior(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Behavior} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedBehaviors()
 	 * @generated
 	 */
 	Behavior getOwnedBehavior(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Behavior} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Behavior} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Behavior} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedBehaviors()
+	 * @generated
+	 */
+	Behavior getOwnedBehavior(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Classifier Behavior</b></em>' reference.
@@ -110,6 +126,18 @@ public interface BehavioredClassifier
 	void setClassifierBehavior(Behavior value);
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Behavior}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Behavior}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Behavior} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
+	 * @see #getClassifierBehavior()
+	 * @generated
+	 */
+	Behavior createClassifierBehavior(String name, EClass eClass);
+
+	/**
 	 * Returns the value of the '<em><b>Interface Realization</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InterfaceRealization}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier <em>Implementing Classifier</em>}'.
@@ -128,25 +156,44 @@ public interface BehavioredClassifier
 	EList getInterfaceRealizations();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InterfaceRealization} and appends it to the '<em><b>Interface Realization</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.InterfaceRealization}, with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', and appends it to the '<em><b>Interface Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InterfaceRealization}, or <code>null</code>.
+	 * @param contract The '<em><b>Contract</b></em>' for the new {@link org.eclipse.uml2.uml.InterfaceRealization}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.InterfaceRealization}.
 	 * @see #getInterfaceRealizations()
 	 * @generated
 	 */
-	InterfaceRealization createInterfaceRealization();
+	InterfaceRealization createInterfaceRealization(String name,
+			Interface contract);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.InterfaceRealization} with the specified '<em><b>Name</b></em>' from the '<em><b>Interface Realization</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InterfaceRealization} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>' from the '<em><b>Interface Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InterfaceRealization} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.InterfaceRealization} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InterfaceRealization} to retrieve, or <code>null</code>.
+	 * @param contract The '<em><b>Contract</b></em>' of the {@link org.eclipse.uml2.uml.InterfaceRealization} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.InterfaceRealization} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', or <code>null</code>.
 	 * @see #getInterfaceRealizations()
 	 * @generated
 	 */
-	InterfaceRealization getInterfaceRealization(String name);
+	InterfaceRealization getInterfaceRealization(String name, Interface contract);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InterfaceRealization} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>' from the '<em><b>Interface Realization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InterfaceRealization} to retrieve, or <code>null</code>.
+	 * @param contract The '<em><b>Contract</b></em>' of the {@link org.eclipse.uml2.uml.InterfaceRealization} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.InterfaceRealization} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.InterfaceRealization} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', or <code>null</code>.
+	 * @see #getInterfaceRealizations()
+	 * @generated
+	 */
+	InterfaceRealization getInterfaceRealization(String name,
+			Interface contract, boolean ignoreCase, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Trigger</b></em>' containment reference list.
@@ -164,25 +211,40 @@ public interface BehavioredClassifier
 	EList getOwnedTriggers();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Trigger} and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Trigger}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Trigger}.
 	 * @see #getOwnedTriggers()
 	 * @generated
 	 */
-	Trigger createOwnedTrigger();
+	Trigger createOwnedTrigger(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedTriggers()
 	 * @generated
 	 */
 	Trigger getOwnedTrigger(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Trigger} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedTriggers()
+	 * @generated
+	 */
+	Trigger getOwnedTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,13 +257,5 @@ public interface BehavioredClassifier
 	 * @generated
 	 */
 	boolean validateClassBehavior(DiagnosticChain diagnostics, Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" contractRequired="true" contractOrdered="false"
-	 * @generated
-	 */
-	InterfaceRealization createInterfaceRealization(Interface contract);
 
 } // BehavioredClassifier

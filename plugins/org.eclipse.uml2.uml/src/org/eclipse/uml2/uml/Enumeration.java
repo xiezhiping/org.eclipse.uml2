@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Enumeration.java,v 1.3 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Enumeration.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -65,30 +65,37 @@ public interface Enumeration
 	EList getOwnedLiterals();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.EnumerationLiteral} and appends it to the '<em><b>Owned Literal</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Literal</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.EnumerationLiteral}.
-	 * @see #getOwnedLiterals()
-	 * @generated
-	 */
-	EnumerationLiteral createOwnedLiteral();
-
-	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Literal</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.EnumerationLiteral} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.EnumerationLiteral} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedLiterals()
 	 * @generated
 	 */
 	EnumerationLiteral getOwnedLiteral(String name);
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Literal</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.EnumerationLiteral} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.EnumerationLiteral} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedLiterals()
+	 * @generated
+	 */
+	EnumerationLiteral getOwnedLiteral(String name, boolean ignoreCase,
+			boolean createOnDemand);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.EnumerationLiteral}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Literal</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.EnumerationLiteral}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.EnumerationLiteral}.
+	 * @see #getOwnedLiterals()
 	 * @generated
 	 */
 	EnumerationLiteral createOwnedLiteral(String name);

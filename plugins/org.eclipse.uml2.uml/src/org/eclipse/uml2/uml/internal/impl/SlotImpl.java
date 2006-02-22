@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
+ * $Id: SlotImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StructuralFeature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -200,9 +201,11 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createValue(EClass eClass) {
-		ValueSpecification newValue = (ValueSpecification) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ValueSpecification createValue(String name, Type type, EClass eClass) {
+		ValueSpecification newValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newValue.setName(name);
+		newValue.setType(type);
 		getValues().add(newValue);
 		return newValue;
 	}
@@ -212,14 +215,32 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification getValue(String name) {
-		for (Iterator i = getValues().iterator(); i.hasNext();) {
+	public ValueSpecification getValue(String name, Type type) {
+		return getValue(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification getValue(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		valueLoop : for (Iterator i = getValues().iterator(); i.hasNext();) {
 			ValueSpecification value = (ValueSpecification) i.next();
-			if (name.equals(value.getName())) {
-				return value;
-			}
+			if (eClass != null && !eClass.isInstance(value))
+				continue valueLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(value.getName())
+				: name.equals(value.getName())))
+				continue valueLoop;
+			if (type != null && !type.equals(value.getType()))
+				continue valueLoop;
+			return value;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createValue(name, type, eClass)
+			: null;
 	}
 
 	/**

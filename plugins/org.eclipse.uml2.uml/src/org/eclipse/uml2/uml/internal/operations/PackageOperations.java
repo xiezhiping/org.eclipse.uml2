@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.16 2006/02/03 04:32:02 khussey Exp $
+ * $Id: PackageOperations.java,v 1.17 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,10 +57,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Elements Public Or Private</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#createNestedPackage(java.lang.String) <em>Create Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedClass(java.lang.String, boolean) <em>Create Owned Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedEnumeration(java.lang.String) <em>Create Owned Enumeration</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedPrimitiveType(java.lang.String) <em>Create Owned Primitive Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#isProfileApplied(org.eclipse.uml2.uml.Profile) <em>Is Profile Applied</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#applyProfile(org.eclipse.uml2.uml.Profile) <em>Apply Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#unapplyProfile(org.eclipse.uml2.uml.Profile) <em>Unapply Profile</em>}</li>
@@ -71,7 +71,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Package#getAllProfileApplications() <em>Get All Profile Applications</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplication(org.eclipse.uml2.uml.Profile) <em>Get Profile Application</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplication(org.eclipse.uml2.uml.Profile, boolean) <em>Get Profile Application</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#isModelLibrary() <em>Is Model Library</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#visibleMembers() <em>Visible Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#makesVisible(org.eclipse.uml2.uml.NamedElement) <em>Makes Visible</em>}</li>
@@ -189,35 +188,11 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static org.eclipse.uml2.uml.Package createNestedPackage(
-			org.eclipse.uml2.uml.Package package_, String name) {
-
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
-		org.eclipse.uml2.uml.Package nestedPackage = (org.eclipse.uml2.uml.Package) package_
-			.createPackagedElement(UMLPackage.Literals.PACKAGE);
-		nestedPackage.setName(name);
-		return nestedPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public static org.eclipse.uml2.uml.Class createOwnedClass(
 			org.eclipse.uml2.uml.Package package_, String name,
 			boolean isAbstract) {
-
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
 		org.eclipse.uml2.uml.Class ownedClass = (org.eclipse.uml2.uml.Class) package_
-			.createPackagedElement(UMLPackage.Literals.CLASS);
-		ownedClass.setName(name);
+			.createOwnedType(name, UMLPackage.Literals.CLASS);
 		ownedClass.setIsAbstract(isAbstract);
 		return ownedClass;
 	}
@@ -229,15 +204,8 @@ public class PackageOperations
 	 */
 	public static Enumeration createOwnedEnumeration(
 			org.eclipse.uml2.uml.Package package_, String name) {
-
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
-		Enumeration enumeration = (Enumeration) package_
-			.createPackagedElement(UMLPackage.Literals.ENUMERATION);
-		enumeration.setName(name);
-		return enumeration;
+		return (Enumeration) package_.createOwnedType(name,
+			UMLPackage.Literals.ENUMERATION);
 	}
 
 	/**
@@ -247,15 +215,8 @@ public class PackageOperations
 	 */
 	public static PrimitiveType createOwnedPrimitiveType(
 			org.eclipse.uml2.uml.Package package_, String name) {
-
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
-		PrimitiveType primitiveType = (PrimitiveType) package_
-			.createPackagedElement(UMLPackage.Literals.PRIMITIVE_TYPE);
-		primitiveType.setName(name);
-		return primitiveType;
+		return (PrimitiveType) package_.createOwnedType(name,
+			UMLPackage.Literals.PRIMITIVE_TYPE);
 	}
 
 	/**
@@ -521,15 +482,8 @@ public class PackageOperations
 	 */
 	public static Interface createOwnedInterface(
 			org.eclipse.uml2.uml.Package package_, String name) {
-
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
-		Interface interface_ = (Interface) package_
-			.createPackagedElement(UMLPackage.Literals.INTERFACE);
-		interface_.setName(name);
-		return interface_;
+		return (Interface) package_.createOwnedType(name,
+			UMLPackage.Literals.INTERFACE);
 	}
 
 	/**

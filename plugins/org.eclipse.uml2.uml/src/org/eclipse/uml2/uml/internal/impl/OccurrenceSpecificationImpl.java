@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,11 +98,22 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public GeneralOrdering getToBefore(String name) {
-		for (Iterator i = getToBefores().iterator(); i.hasNext();) {
+		return getToBefore(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getToBefore(String name, boolean ignoreCase) {
+		toBeforeLoop : for (Iterator i = getToBefores().iterator(); i.hasNext();) {
 			GeneralOrdering toBefore = (GeneralOrdering) i.next();
-			if (name.equals(toBefore.getName())) {
-				return toBefore;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(toBefore.getName())
+				: name.equals(toBefore.getName())))
+				continue toBeforeLoop;
+			return toBefore;
 		}
 		return null;
 	}
@@ -178,11 +189,22 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public GeneralOrdering getToAfter(String name) {
-		for (Iterator i = getToAfters().iterator(); i.hasNext();) {
+		return getToAfter(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getToAfter(String name, boolean ignoreCase) {
+		toAfterLoop : for (Iterator i = getToAfters().iterator(); i.hasNext();) {
 			GeneralOrdering toAfter = (GeneralOrdering) i.next();
-			if (name.equals(toAfter.getName())) {
-				return toAfter;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(toAfter.getName())
+				: name.equals(toAfter.getName())))
+				continue toAfterLoop;
+			return toAfter;
 		}
 		return null;
 	}
@@ -210,11 +232,22 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext();) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(covered.getName())
+				: name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}

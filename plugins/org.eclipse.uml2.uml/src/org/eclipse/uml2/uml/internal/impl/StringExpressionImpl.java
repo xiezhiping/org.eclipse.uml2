@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -132,11 +132,41 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBinding createTemplateBinding() {
+	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
+		newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature) {
+		return getTemplateBinding(signature, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature,
+			boolean createOnDemand) {
+		templateBindingLoop : for (Iterator i = getTemplateBindings()
+			.iterator(); i.hasNext();) {
+			TemplateBinding templateBinding = (TemplateBinding) i.next();
+			if (signature != null
+				&& !signature.equals(templateBinding.getSignature()))
+				continue templateBindingLoop;
+			return templateBinding;
+		}
+		return createOnDemand
+			? createTemplateBinding(signature)
+			: null;
 	}
 
 	/**
@@ -242,8 +272,8 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
+			.create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -283,9 +313,11 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringExpression createSubExpression() {
+	public StringExpression createSubExpression(String name, Type type) {
 		StringExpression newSubExpression = UMLFactory.eINSTANCE
 			.createStringExpression();
+		newSubExpression.setName(name);
+		newSubExpression.setType(type);
 		getSubExpressions().add(newSubExpression);
 		return newSubExpression;
 	}
@@ -295,14 +327,31 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringExpression getSubExpression(String name) {
-		for (Iterator i = getSubExpressions().iterator(); i.hasNext();) {
+	public StringExpression getSubExpression(String name, Type type) {
+		return getSubExpression(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StringExpression getSubExpression(String name, Type type,
+			boolean ignoreCase, boolean createOnDemand) {
+		subExpressionLoop : for (Iterator i = getSubExpressions().iterator(); i
+			.hasNext();) {
 			StringExpression subExpression = (StringExpression) i.next();
-			if (name.equals(subExpression.getName())) {
-				return subExpression;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(subExpression.getName())
+				: name.equals(subExpression.getName())))
+				continue subExpressionLoop;
+			if (type != null && !type.equals(subExpression.getType()))
+				continue subExpressionLoop;
+			return subExpression;
 		}
-		return null;
+		return createOnDemand
+			? createSubExpression(name, type)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.17 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -31,6 +32,7 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -156,9 +158,10 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(EClass eClass) {
-		Property newOwnedAttribute = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -168,8 +171,10 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute() {
+	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -179,14 +184,33 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext();) {
+	public Property getOwnedAttribute(String name, Type type) {
+		return getOwnedAttribute(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		ownedAttributeLoop : for (Iterator i = getOwnedAttributes().iterator(); i
+			.hasNext();) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedAttribute.getName())
+				: name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			if (type != null && !type.equals(ownedAttribute.getType()))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedAttribute(name, type, eClass)
+			: null;
 	}
 
 	/**
@@ -212,8 +236,28 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOwnedOperation() {
+	public Operation createOwnedOperation(String name,
+			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
+		newOwnedOperation.setName(name);
+		int ownedParameterListSize = 0;
+		int ownedParameterNamesSize = ownedParameterNames == null
+			? 0
+			: ownedParameterNames.size();
+		if (ownedParameterNamesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterNamesSize;
+		int ownedParameterTypesSize = ownedParameterTypes == null
+			? 0
+			: ownedParameterTypes.size();
+		if (ownedParameterTypesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterTypesSize;
+		for (int i = 0; i < ownedParameterListSize; i++) {
+			newOwnedOperation.createOwnedParameter(i < ownedParameterNamesSize
+				? (String) ownedParameterNames.get(i)
+				: null, i < ownedParameterTypesSize
+				? (Type) ownedParameterTypes.get(i)
+				: null);
+		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
 	}
@@ -223,14 +267,10 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getOwnedOperation(String name) {
-		for (Iterator i = getOwnedOperations().iterator(); i.hasNext();) {
-			Operation ownedOperation = (Operation) i.next();
-			if (name.equals(ownedOperation.getName())) {
-				return ownedOperation;
-			}
-		}
-		return null;
+	public Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes) {
+		return getOwnedOperation(name, ownedParameterNames,
+			ownedParameterTypes, false, false);
 	}
 
 	/**
@@ -238,10 +278,54 @@ public class DataTypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOwnedOperation(String name, Type returnType,
-			EList parameterNames, EList parameterTypes) {
-		return DataTypeOperations.createOwnedOperation(this, name, returnType,
-			parameterNames, parameterTypes);
+	public Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedOperationLoop : for (Iterator i = getOwnedOperations().iterator(); i
+			.hasNext();) {
+			Operation ownedOperation = (Operation) i.next();
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedOperation.getName())
+				: name.equals(ownedOperation.getName())))
+				continue ownedOperationLoop;
+			EList ownedParameterList = ownedOperation.getOwnedParameters();
+			int ownedParameterListSize = ownedParameterList.size();
+			if (ownedParameterNames != null
+				&& ownedParameterNames.size() != ownedParameterListSize
+				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				continue ownedOperationLoop;
+			for (int j = 0; j < ownedParameterListSize; j++) {
+				Parameter ownedParameter = (Parameter) ownedParameterList
+					.get(j);
+				if (ownedParameterNames != null
+					&& !(ignoreCase
+						? ((String) ownedParameterNames.get(j))
+							.equalsIgnoreCase(ownedParameter.getName())
+						: ownedParameterNames.get(j).equals(
+							ownedParameter.getName())))
+					continue ownedOperationLoop;
+				if (ownedParameterTypes != null
+					&& !ownedParameterTypes.get(j).equals(
+						ownedParameter.getType()))
+					continue ownedOperationLoop;
+			}
+			return ownedOperation;
+		}
+		return createOnDemand
+			? createOwnedOperation(name, ownedParameterNames,
+				ownedParameterTypes)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOwnedOperation(String name, EList parameterNames,
+			EList parameterTypes, Type returnType) {
+		return DataTypeOperations.createOwnedOperation(this, name,
+			parameterNames, parameterTypes, returnType);
 	}
 
 	/**

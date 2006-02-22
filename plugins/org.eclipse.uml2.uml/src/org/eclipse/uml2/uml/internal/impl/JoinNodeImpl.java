@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -36,6 +37,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.JoinNode;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -238,9 +240,12 @@ public class JoinNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createJoinSpec(EClass eClass) {
-		ValueSpecification newJoinSpec = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createJoinSpec(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newJoinSpec = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newJoinSpec.setName(name);
+		newJoinSpec.setType(type);
 		setJoinSpec(newJoinSpec);
 		return newJoinSpec;
 	}

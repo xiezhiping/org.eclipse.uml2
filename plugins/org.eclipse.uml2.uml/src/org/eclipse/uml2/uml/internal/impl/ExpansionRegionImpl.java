@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,6 +37,7 @@ import org.eclipse.uml2.uml.ExpansionNode;
 import org.eclipse.uml2.uml.ExpansionRegion;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -139,12 +140,27 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExpansionNode getInputElement(String name) {
-		for (Iterator i = getInputElements().iterator(); i.hasNext();) {
+	public ExpansionNode getInputElement(String name, Type type) {
+		return getInputElement(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExpansionNode getInputElement(String name, Type type,
+			boolean ignoreCase) {
+		inputElementLoop : for (Iterator i = getInputElements().iterator(); i
+			.hasNext();) {
 			ExpansionNode inputElement = (ExpansionNode) i.next();
-			if (name.equals(inputElement.getName())) {
-				return inputElement;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inputElement.getName())
+				: name.equals(inputElement.getName())))
+				continue inputElementLoop;
+			if (type != null && !type.equals(inputElement.getType()))
+				continue inputElementLoop;
+			return inputElement;
 		}
 		return null;
 	}
@@ -171,12 +187,27 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExpansionNode getOutputElement(String name) {
-		for (Iterator i = getOutputElements().iterator(); i.hasNext();) {
+	public ExpansionNode getOutputElement(String name, Type type) {
+		return getOutputElement(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExpansionNode getOutputElement(String name, Type type,
+			boolean ignoreCase) {
+		outputElementLoop : for (Iterator i = getOutputElements().iterator(); i
+			.hasNext();) {
 			ExpansionNode outputElement = (ExpansionNode) i.next();
-			if (name.equals(outputElement.getName())) {
-				return outputElement;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(outputElement.getName())
+				: name.equals(outputElement.getName())))
+				continue outputElementLoop;
+			if (type != null && !type.equals(outputElement.getType()))
+				continue outputElementLoop;
+			return outputElement;
 		}
 		return null;
 	}

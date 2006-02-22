@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.21 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ElementImpl.java,v 1.22 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -364,6 +364,60 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getRelationships() {
+		return ElementOperations.getRelationships(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getRelationships(EClass eClass) {
+		return ElementOperations.getRelationships(this, eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSourceDirectedRelationships() {
+		return ElementOperations.getSourceDirectedRelationships(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getSourceDirectedRelationships(EClass eClass) {
+		return ElementOperations.getSourceDirectedRelationships(this, eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargetDirectedRelationships() {
+		return ElementOperations.getTargetDirectedRelationships(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getTargetDirectedRelationships(EClass eClass) {
+		return ElementOperations.getTargetDirectedRelationships(this, eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getKeywords() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -516,10 +570,10 @@ public abstract class ElementImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(28));
+				UMLPackage.Literals.ELEMENT.getEOperations().get(34));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(28), result = ElementOperations
+					.getEOperations().get(34), result = ElementOperations
 					.allOwnedElements(this));
 			}
 			return result;

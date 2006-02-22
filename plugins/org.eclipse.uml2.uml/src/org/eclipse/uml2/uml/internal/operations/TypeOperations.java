@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.9 2006/01/25 16:47:39 khussey Exp $
+ * $Id: TypeOperations.java,v 1.10 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -21,8 +21,6 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Parameter;
-import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StructuredClassifier;
@@ -39,6 +37,7 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Type#createAssociation(boolean, org.eclipse.uml2.uml.AggregationKind, java.lang.String, int, int, org.eclipse.uml2.uml.Type, boolean, org.eclipse.uml2.uml.AggregationKind, java.lang.String, int, int) <em>Create Association</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Type#getAssociations() <em>Get Associations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Type#conformsTo(org.eclipse.uml2.uml.Type) <em>Conforms To</em>}</li>
  * </ul>
  * </p>
@@ -74,50 +73,44 @@ public class TypeOperations
 		}
 	}
 
-	protected static Property createOwnedProperty(Type type, String name,
-			Type propertyType, int lower, int upper) {
+	protected static Property createOwnedProperty(Type type, final String name,
+			final Type propertyType, int lower, int upper) {
 		Property ownedProperty = (Property) new UMLSwitch() {
 
 			public Object caseArtifact(Artifact artifact) {
-				return artifact
-					.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+				return artifact.createOwnedAttribute(name, propertyType);
 			}
 
 			public Object caseAssociation(Association association) {
-				return association.createOwnedEnd(UMLPackage.Literals.PROPERTY);
+				return association.createOwnedEnd(name, propertyType);
 			}
 
 			public Object caseAssociationClass(AssociationClass associationClass) {
 				return associationClass
-					.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+					.createOwnedAttribute(name, propertyType);
 			}
 
 			public Object caseDataType(DataType dataType) {
-				return dataType
-					.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+				return dataType.createOwnedAttribute(name, propertyType);
 			}
 
 			public Object caseInterface(Interface interface_) {
-				return interface_
-					.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+				return interface_.createOwnedAttribute(name, propertyType);
 			}
 
 			public Object caseSignal(Signal signal) {
-				return signal
-					.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+				return signal.createOwnedAttribute(name, propertyType);
 			}
 
 			public Object caseStructuredClassifier(
 					StructuredClassifier structuredClassifier) {
-				return structuredClassifier
-					.createOwnedAttribute(UMLPackage.Literals.PROPERTY);
+				return structuredClassifier.createOwnedAttribute(name,
+					propertyType);
 			}
 		}.doSwitch(type);
 
-		ownedProperty.setName(name);
 		ownedProperty.setLower(lower);
 		ownedProperty.setUpper(upper);
-		ownedProperty.setType(propertyType);
 
 		return ownedProperty;
 	}
@@ -190,8 +183,8 @@ public class TypeOperations
 			throw new IllegalArgumentException(String.valueOf(end2Aggregation));
 		}
 
-		Association association = (Association) package_
-			.createPackagedElement(UMLPackage.Literals.ASSOCIATION);
+		Association association = (Association) package_.createOwnedType(null,
+			UMLPackage.Literals.ASSOCIATION);
 
 		createAssociationEnd(type, association, end1IsNavigable,
 			end1Aggregation, end1Name, end1Lower, end1Upper, end1Type);
@@ -202,60 +195,50 @@ public class TypeOperations
 		return association;
 	}
 
-	public static Operation createOwnedOperation(Type type, String name,
-			Type returnType, EList parameterNames, EList parameterTypes) {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static EList getAssociations(Type type) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	public static Operation createOwnedOperation(Type type, final String name,
+			Type returnType, final EList parameterNames,
+			final EList parameterTypes) {
 
 		if (getOwnedOperations(type) == null) {
 			throw new UnsupportedOperationException();
 		}
 
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
-		if (parameterNames == null
-			? parameterTypes != null
-			: parameterTypes == null
-				|| parameterNames.size() != parameterTypes.size()) {
-
-			throw new IllegalArgumentException(String.valueOf(parameterTypes));
-		}
-
 		Operation ownedOperation = (Operation) new UMLSwitch() {
 
 			public Object caseArtifact(Artifact artifact) {
-				return artifact.createOwnedOperation();
+				return artifact.createOwnedOperation(name, parameterNames,
+					parameterTypes);
 			}
 
 			public Object caseClass(org.eclipse.uml2.uml.Class class_) {
-				return class_.createOwnedOperation();
+				return class_.createOwnedOperation(name, parameterNames,
+					parameterTypes);
 			}
 
 			public Object caseDataType(DataType dataType) {
-				return dataType.createOwnedOperation();
+				return dataType.createOwnedOperation(name, parameterNames,
+					parameterTypes);
 			}
 
 			public Object caseInterface(Interface interface_) {
-				return interface_.createOwnedOperation();
+				return interface_.createOwnedOperation(name, parameterNames,
+					parameterTypes);
 			}
 		}.doSwitch(type);
 
-		ownedOperation.setName(name);
-
 		if (returnType != null) {
-			Parameter returnResult = ownedOperation.createOwnedParameter();
-			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
-			returnResult.setType(returnType);
-		}
-
-		if (parameterNames != null) {
-
-			for (int i = 0; i < parameterNames.size(); i++) {
-				Parameter ownedParameter = ownedOperation
-					.createOwnedParameter();
-				ownedParameter.setName((String) parameterNames.get(i));
-				ownedParameter.setType((Type) parameterTypes.get(i));
-			}
+			ownedOperation.createReturnResult(null, returnType);
 		}
 
 		return ownedOperation;

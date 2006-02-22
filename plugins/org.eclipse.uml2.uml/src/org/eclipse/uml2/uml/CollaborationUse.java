@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUse.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: CollaborationUse.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -93,36 +93,53 @@ public interface CollaborationUse
 	EList getRoleBindings();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Dependency} and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Dependency}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Dependency}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Dependency} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Dependency}.
 	 * @see #getRoleBindings()
 	 * @generated
 	 */
-	Dependency createRoleBinding(EClass eClass);
+	Dependency createRoleBinding(String name, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Dependency} and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Dependency}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Dependency}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Dependency}.
 	 * @see #getRoleBindings()
 	 * @generated
 	 */
-	Dependency createRoleBinding();
+	Dependency createRoleBinding(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Role Binding</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Role Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Dependency} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Dependency} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRoleBindings()
 	 * @generated
 	 */
 	Dependency getRoleBinding(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Role Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Dependency} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Dependency} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Dependency} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRoleBindings()
+	 * @generated
+	 */
+	Dependency getRoleBinding(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

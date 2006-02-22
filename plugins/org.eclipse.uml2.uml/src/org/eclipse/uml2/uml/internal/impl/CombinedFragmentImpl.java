@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -168,9 +168,10 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InteractionOperand createOperand() {
+	public InteractionOperand createOperand(String name) {
 		InteractionOperand newOperand = UMLFactory.eINSTANCE
 			.createInteractionOperand();
+		newOperand.setName(name);
 		getOperands().add(newOperand);
 		return newOperand;
 	}
@@ -181,13 +182,27 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public InteractionOperand getOperand(String name) {
-		for (Iterator i = getOperands().iterator(); i.hasNext();) {
+		return getOperand(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionOperand getOperand(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		operandLoop : for (Iterator i = getOperands().iterator(); i.hasNext();) {
 			InteractionOperand operand = (InteractionOperand) i.next();
-			if (name.equals(operand.getName())) {
-				return operand;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(operand.getName())
+				: name.equals(operand.getName())))
+				continue operandLoop;
+			return operand;
 		}
-		return null;
+		return createOnDemand
+			? createOperand(name)
+			: null;
 	}
 
 	/**
@@ -211,8 +226,9 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Gate createCfragmentGate() {
+	public Gate createCfragmentGate(String name) {
 		Gate newCfragmentGate = UMLFactory.eINSTANCE.createGate();
+		newCfragmentGate.setName(name);
 		getCfragmentGates().add(newCfragmentGate);
 		return newCfragmentGate;
 	}
@@ -223,13 +239,28 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public Gate getCfragmentGate(String name) {
-		for (Iterator i = getCfragmentGates().iterator(); i.hasNext();) {
+		return getCfragmentGate(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate getCfragmentGate(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		cfragmentGateLoop : for (Iterator i = getCfragmentGates().iterator(); i
+			.hasNext();) {
 			Gate cfragmentGate = (Gate) i.next();
-			if (name.equals(cfragmentGate.getName())) {
-				return cfragmentGate;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(cfragmentGate.getName())
+				: name.equals(cfragmentGate.getName())))
+				continue cfragmentGateLoop;
+			return cfragmentGate;
 		}
-		return null;
+		return createOnDemand
+			? createCfragmentGate(name)
+			: null;
 	}
 
 	/**

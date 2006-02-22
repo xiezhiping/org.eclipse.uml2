@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -146,11 +146,25 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public NamedElement getSupplier(String name) {
-		for (Iterator i = getSuppliers().iterator(); i.hasNext();) {
+		return getSupplier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getSupplier(String name, boolean ignoreCase,
+			EClass eClass) {
+		supplierLoop : for (Iterator i = getSuppliers().iterator(); i.hasNext();) {
 			NamedElement supplier = (NamedElement) i.next();
-			if (name.equals(supplier.getName())) {
-				return supplier;
-			}
+			if (eClass != null && !eClass.isInstance(supplier))
+				continue supplierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(supplier.getName())
+				: name.equals(supplier.getName())))
+				continue supplierLoop;
+			return supplier;
 		}
 		return null;
 	}
@@ -177,11 +191,24 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public NamedElement getClient(String name) {
-		for (Iterator i = getClients().iterator(); i.hasNext();) {
+		return getClient(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getClient(String name, boolean ignoreCase, EClass eClass) {
+		clientLoop : for (Iterator i = getClients().iterator(); i.hasNext();) {
 			NamedElement client = (NamedElement) i.next();
-			if (name.equals(client.getName())) {
-				return client;
-			}
+			if (eClass != null && !eClass.isInstance(client))
+				continue clientLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(client.getName())
+				: name.equals(client.getName())))
+				continue clientLoop;
+			return client;
 		}
 		return null;
 	}

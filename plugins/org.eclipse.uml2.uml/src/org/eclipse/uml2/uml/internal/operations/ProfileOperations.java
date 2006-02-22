@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.18 2006/02/07 19:30:46 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.19 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -66,8 +66,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateMetaclassReferenceNotSpecialized(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Metaclass Reference Not Specialized</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateReferencesSameMetamodel(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate References Same Metamodel</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#create(org.eclipse.uml2.uml.Classifier) <em>Create</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#createMetaclassReference(org.eclipse.uml2.uml.Class) <em>Create Metaclass Reference</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#createMetamodelReference(org.eclipse.uml2.uml.Model) <em>Create Metamodel Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
@@ -358,14 +356,8 @@ public class ProfileOperations
 	 */
 	public static Stereotype createOwnedStereotype(Profile profile,
 			String name, boolean isAbstract) {
-
-		if (isEmpty(name)) {
-			throw new IllegalArgumentException(String.valueOf(name));
-		}
-
-		Stereotype ownedStereotype = (Stereotype) profile
-			.createPackagedElement(UMLPackage.Literals.STEREOTYPE);
-		ownedStereotype.setName(name);
+		Stereotype ownedStereotype = (Stereotype) profile.createOwnedType(name,
+			UMLPackage.Literals.STEREOTYPE);
 		ownedStereotype.setIsAbstract(isAbstract);
 		return ownedStereotype;
 	}

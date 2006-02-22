@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.7 2006/02/21 16:12:18 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.8 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -233,15 +233,17 @@ public interface MultiplicityElement
 	void setUpperValue(ValueSpecification value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and sets the '<em><b>Upper Value</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Upper Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getUpperValue()
 	 * @generated
 	 */
-	ValueSpecification createUpperValue(EClass eClass);
+	ValueSpecification createUpperValue(String name, Type type, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Lower Value</b></em>' containment reference.
@@ -269,15 +271,17 @@ public interface MultiplicityElement
 	void setLowerValue(ValueSpecification value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ValueSpecification} and sets the '<em><b>Lower Value</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Lower Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getLowerValue()
 	 * @generated
 	 */
-	ValueSpecification createLowerValue(EClass eClass);
+	ValueSpecification createLowerValue(String name, Type type, EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

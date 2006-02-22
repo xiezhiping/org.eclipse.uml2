@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentAction.java,v 1.2 2006/02/21 16:12:19 khussey Exp $
+ * $Id: ReadExtentAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -66,14 +66,16 @@ public interface ReadExtentAction
 	void setResult(OutputPin value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.OutputPin} and sets the '<em><b>Result</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
 	 * @see #getResult()
 	 * @generated
 	 */
-	OutputPin createResult();
+	OutputPin createResult(String name, Type type);
 
 	/**
 	 * Returns the value of the '<em><b>Classifier</b></em>' reference.

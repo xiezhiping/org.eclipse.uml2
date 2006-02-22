@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -35,6 +36,7 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.SendObjectAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -187,9 +189,10 @@ public class SendObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createTarget(EClass eClass) {
-		InputPin newTarget = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createTarget(String name, Type type, EClass eClass) {
+		InputPin newTarget = (InputPin) EcoreUtil.create(eClass);
+		newTarget.setName(name);
+		newTarget.setType(type);
 		setTarget(newTarget);
 		return newTarget;
 	}
@@ -199,8 +202,10 @@ public class SendObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createTarget() {
+	public InputPin createTarget(String name, Type type) {
 		InputPin newTarget = UMLFactory.eINSTANCE.createInputPin();
+		newTarget.setName(name);
+		newTarget.setType(type);
 		setTarget(newTarget);
 		return newTarget;
 	}
@@ -299,9 +304,10 @@ public class SendObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createRequest(EClass eClass) {
-		InputPin newRequest = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createRequest(String name, Type type, EClass eClass) {
+		InputPin newRequest = (InputPin) EcoreUtil.create(eClass);
+		newRequest.setName(name);
+		newRequest.setType(type);
 		setRequest(newRequest);
 		return newRequest;
 	}
@@ -311,8 +317,10 @@ public class SendObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createRequest() {
+	public InputPin createRequest(String name, Type type) {
 		InputPin newRequest = UMLFactory.eINSTANCE.createInputPin();
+		newRequest.setName(name);
+		newRequest.setType(type);
 		setRequest(newRequest);
 		return newRequest;
 	}

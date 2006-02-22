@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -269,6 +270,22 @@ public class GeneralizationSetImpl
 					UMLPackage.GENERALIZATION__GENERALIZATION_SET));
 		}
 		return generalization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Generalization getGeneralization(Classifier general) {
+		generalizationLoop : for (Iterator i = getGeneralizations().iterator(); i
+			.hasNext();) {
+			Generalization generalization = (Generalization) i.next();
+			if (general != null && !general.equals(generalization.getGeneral()))
+				continue generalizationLoop;
+			return generalization;
+		}
+		return null;
 	}
 
 	/**

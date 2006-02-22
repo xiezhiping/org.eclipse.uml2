@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Trigger;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -167,12 +168,25 @@ public class AcceptEventActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getResult(String name) {
-		for (Iterator i = getResults().iterator(); i.hasNext();) {
+	public OutputPin getResult(String name, Type type) {
+		return getResult(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getResult(String name, Type type, boolean ignoreCase) {
+		resultLoop : for (Iterator i = getResults().iterator(); i.hasNext();) {
 			OutputPin result = (OutputPin) i.next();
-			if (name.equals(result.getName())) {
-				return result;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(result.getName())
+				: name.equals(result.getName())))
+				continue resultLoop;
+			if (type != null && !type.equals(result.getType()))
+				continue resultLoop;
+			return result;
 		}
 		return null;
 	}
@@ -197,8 +211,9 @@ public class AcceptEventActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trigger createTrigger() {
+	public Trigger createTrigger(String name) {
 		Trigger newTrigger = UMLFactory.eINSTANCE.createTrigger();
+		newTrigger.setName(name);
 		getTriggers().add(newTrigger);
 		return newTrigger;
 	}
@@ -209,13 +224,27 @@ public class AcceptEventActionImpl
 	 * @generated
 	 */
 	public Trigger getTrigger(String name) {
-		for (Iterator i = getTriggers().iterator(); i.hasNext();) {
+		return getTrigger(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		triggerLoop : for (Iterator i = getTriggers().iterator(); i.hasNext();) {
 			Trigger trigger = (Trigger) i.next();
-			if (name.equals(trigger.getName())) {
-				return trigger;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(trigger.getName())
+				: name.equals(trigger.getName())))
+				continue triggerLoop;
+			return trigger;
 		}
-		return null;
+		return createOnDemand
+			? createTrigger(name)
+			: null;
 	}
 
 	/**

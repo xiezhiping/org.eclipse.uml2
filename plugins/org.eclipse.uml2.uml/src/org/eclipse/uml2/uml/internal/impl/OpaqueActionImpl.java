@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -194,12 +195,29 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin getInputValue(String name) {
-		for (Iterator i = getInputValues().iterator(); i.hasNext();) {
+	public InputPin getInputValue(String name, Type type) {
+		return getInputValue(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getInputValue(String name, Type type, boolean ignoreCase,
+			EClass eClass) {
+		inputValueLoop : for (Iterator i = getInputValues().iterator(); i
+			.hasNext();) {
 			InputPin inputValue = (InputPin) i.next();
-			if (name.equals(inputValue.getName())) {
-				return inputValue;
-			}
+			if (eClass != null && !eClass.isInstance(inputValue))
+				continue inputValueLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inputValue.getName())
+				: name.equals(inputValue.getName())))
+				continue inputValueLoop;
+			if (type != null && !type.equals(inputValue.getType()))
+				continue inputValueLoop;
+			return inputValue;
 		}
 		return null;
 	}
@@ -224,12 +242,26 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getOutputValue(String name) {
-		for (Iterator i = getOutputValues().iterator(); i.hasNext();) {
+	public OutputPin getOutputValue(String name, Type type) {
+		return getOutputValue(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getOutputValue(String name, Type type, boolean ignoreCase) {
+		outputValueLoop : for (Iterator i = getOutputValues().iterator(); i
+			.hasNext();) {
 			OutputPin outputValue = (OutputPin) i.next();
-			if (name.equals(outputValue.getName())) {
-				return outputValue;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(outputValue.getName())
+				: name.equals(outputValue.getName())))
+				continue outputValueLoop;
+			if (type != null && !type.equals(outputValue.getType()))
+				continue outputValueLoop;
+			return outputValue;
 		}
 		return null;
 	}

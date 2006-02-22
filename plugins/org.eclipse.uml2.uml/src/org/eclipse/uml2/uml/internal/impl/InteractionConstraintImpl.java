@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.12 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -36,6 +37,7 @@ import org.eclipse.uml2.uml.InteractionConstraint;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -195,9 +197,11 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createMinint(EClass eClass) {
-		ValueSpecification newMinint = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createMinint(String name, Type type, EClass eClass) {
+		ValueSpecification newMinint = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newMinint.setName(name);
+		newMinint.setType(type);
 		setMinint(newMinint);
 		return newMinint;
 	}
@@ -298,9 +302,11 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createMaxint(EClass eClass) {
-		ValueSpecification newMaxint = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createMaxint(String name, Type type, EClass eClass) {
+		ValueSpecification newMaxint = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newMaxint.setName(name);
+		newMaxint.setType(type);
 		setMaxint(newMaxint);
 		return newMaxint;
 	}

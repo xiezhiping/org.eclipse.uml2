@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -269,8 +270,10 @@ public class ConditionalNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin createResult() {
+	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		newResult.setName(name);
+		newResult.setType(type);
 		getResults().add(newResult);
 		return newResult;
 	}
@@ -280,14 +283,30 @@ public class ConditionalNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getResult(String name) {
-		for (Iterator i = getResults().iterator(); i.hasNext();) {
+	public OutputPin getResult(String name, Type type) {
+		return getResult(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getResult(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
+		resultLoop : for (Iterator i = getResults().iterator(); i.hasNext();) {
 			OutputPin result = (OutputPin) i.next();
-			if (name.equals(result.getName())) {
-				return result;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(result.getName())
+				: name.equals(result.getName())))
+				continue resultLoop;
+			if (type != null && !type.equals(result.getType()))
+				continue resultLoop;
+			return result;
 		}
-		return null;
+		return createOnDemand
+			? createResult(name, type)
+			: null;
 	}
 
 	/**

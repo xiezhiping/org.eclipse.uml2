@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.19 2006/02/21 16:12:18 khussey Exp $
+ * $Id: StateImpl.java,v 1.20 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -209,11 +209,26 @@ public class StateImpl
 	 * @generated
 	 */
 	public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext();) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (Iterator i = getRedefinedElements()
+			.iterator(); i.hasNext();) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -264,11 +279,26 @@ public class StateImpl
 	 * @generated
 	 */
 	public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext();) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
+			.iterator(); i.hasNext();) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinitionContext.getName())
+				: name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -330,11 +360,24 @@ public class StateImpl
 	 * @generated
 	 */
 	public Transition getOutgoing(String name) {
-		for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
+		return getOutgoing(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
+		outgoingLoop : for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
 			Transition outgoing = (Transition) i.next();
-			if (name.equals(outgoing.getName())) {
-				return outgoing;
-			}
+			if (eClass != null && !eClass.isInstance(outgoing))
+				continue outgoingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(outgoing.getName())
+				: name.equals(outgoing.getName())))
+				continue outgoingLoop;
+			return outgoing;
 		}
 		return null;
 	}
@@ -361,11 +404,24 @@ public class StateImpl
 	 * @generated
 	 */
 	public Transition getIncoming(String name) {
-		for (Iterator i = getIncomings().iterator(); i.hasNext();) {
+		return getIncoming(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
+		incomingLoop : for (Iterator i = getIncomings().iterator(); i.hasNext();) {
 			Transition incoming = (Transition) i.next();
-			if (name.equals(incoming.getName())) {
-				return incoming;
-			}
+			if (eClass != null && !eClass.isInstance(incoming))
+				continue incomingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(incoming.getName())
+				: name.equals(incoming.getName())))
+				continue incomingLoop;
+			return incoming;
 		}
 		return null;
 	}
@@ -587,9 +643,10 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectionPointReference createConnection() {
+	public ConnectionPointReference createConnection(String name) {
 		ConnectionPointReference newConnection = UMLFactory.eINSTANCE
 			.createConnectionPointReference();
+		newConnection.setName(name);
 		getConnections().add(newConnection);
 		return newConnection;
 	}
@@ -600,14 +657,29 @@ public class StateImpl
 	 * @generated
 	 */
 	public ConnectionPointReference getConnection(String name) {
-		for (Iterator i = getConnections().iterator(); i.hasNext();) {
+		return getConnection(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectionPointReference getConnection(String name,
+			boolean ignoreCase, boolean createOnDemand) {
+		connectionLoop : for (Iterator i = getConnections().iterator(); i
+			.hasNext();) {
 			ConnectionPointReference connection = (ConnectionPointReference) i
 				.next();
-			if (name.equals(connection.getName())) {
-				return connection;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(connection.getName())
+				: name.equals(connection.getName())))
+				continue connectionLoop;
+			return connection;
 		}
-		return null;
+		return createOnDemand
+			? createConnection(name)
+			: null;
 	}
 
 	/**
@@ -633,9 +705,10 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pseudostate createConnectionPoint() {
+	public Pseudostate createConnectionPoint(String name) {
 		Pseudostate newConnectionPoint = UMLFactory.eINSTANCE
 			.createPseudostate();
+		newConnectionPoint.setName(name);
 		getConnectionPoints().add(newConnectionPoint);
 		return newConnectionPoint;
 	}
@@ -646,13 +719,28 @@ public class StateImpl
 	 * @generated
 	 */
 	public Pseudostate getConnectionPoint(String name) {
-		for (Iterator i = getConnectionPoints().iterator(); i.hasNext();) {
+		return getConnectionPoint(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pseudostate getConnectionPoint(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		connectionPointLoop : for (Iterator i = getConnectionPoints()
+			.iterator(); i.hasNext();) {
 			Pseudostate connectionPoint = (Pseudostate) i.next();
-			if (name.equals(connectionPoint.getName())) {
-				return connectionPoint;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(connectionPoint.getName())
+				: name.equals(connectionPoint.getName())))
+				continue connectionPointLoop;
+			return connectionPoint;
 		}
-		return null;
+		return createOnDemand
+			? createConnectionPoint(name)
+			: null;
 	}
 
 	/**
@@ -799,9 +887,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createStateInvariant(EClass eClass) {
-		Constraint newStateInvariant = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createStateInvariant(String name, EClass eClass) {
+		Constraint newStateInvariant = (Constraint) EcoreUtil.create(eClass);
+		newStateInvariant.setName(name);
 		setStateInvariant(newStateInvariant);
 		return newStateInvariant;
 	}
@@ -811,8 +899,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createStateInvariant() {
+	public Constraint createStateInvariant(String name) {
 		Constraint newStateInvariant = UMLFactory.eINSTANCE.createConstraint();
+		newStateInvariant.setName(name);
 		setStateInvariant(newStateInvariant);
 		return newStateInvariant;
 	}
@@ -909,9 +998,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createEntry(EClass eClass) {
-		Behavior newEntry = (Behavior) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Behavior createEntry(String name, EClass eClass) {
+		Behavior newEntry = (Behavior) EcoreUtil.create(eClass);
+		newEntry.setName(name);
 		setEntry(newEntry);
 		return newEntry;
 	}
@@ -1008,9 +1097,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createExit(EClass eClass) {
-		Behavior newExit = (Behavior) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Behavior createExit(String name, EClass eClass) {
+		Behavior newExit = (Behavior) EcoreUtil.create(eClass);
+		newExit.setName(name);
 		setExit(newExit);
 		return newExit;
 	}
@@ -1110,9 +1199,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createDoActivity(EClass eClass) {
-		Behavior newDoActivity = (Behavior) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Behavior createDoActivity(String name, EClass eClass) {
+		Behavior newDoActivity = (Behavior) EcoreUtil.create(eClass);
+		newDoActivity.setName(name);
 		setDoActivity(newDoActivity);
 		return newDoActivity;
 	}
@@ -1137,8 +1226,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trigger createDeferrableTrigger() {
+	public Trigger createDeferrableTrigger(String name) {
 		Trigger newDeferrableTrigger = UMLFactory.eINSTANCE.createTrigger();
+		newDeferrableTrigger.setName(name);
 		getDeferrableTriggers().add(newDeferrableTrigger);
 		return newDeferrableTrigger;
 	}
@@ -1149,13 +1239,28 @@ public class StateImpl
 	 * @generated
 	 */
 	public Trigger getDeferrableTrigger(String name) {
-		for (Iterator i = getDeferrableTriggers().iterator(); i.hasNext();) {
+		return getDeferrableTrigger(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getDeferrableTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		deferrableTriggerLoop : for (Iterator i = getDeferrableTriggers()
+			.iterator(); i.hasNext();) {
 			Trigger deferrableTrigger = (Trigger) i.next();
-			if (name.equals(deferrableTrigger.getName())) {
-				return deferrableTrigger;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deferrableTrigger.getName())
+				: name.equals(deferrableTrigger.getName())))
+				continue deferrableTriggerLoop;
+			return deferrableTrigger;
 		}
-		return null;
+		return createOnDemand
+			? createDeferrableTrigger(name)
+			: null;
 	}
 
 	/**
@@ -1179,8 +1284,9 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Region createRegion() {
+	public Region createRegion(String name) {
 		Region newRegion = UMLFactory.eINSTANCE.createRegion();
+		newRegion.setName(name);
 		getRegions().add(newRegion);
 		return newRegion;
 	}
@@ -1191,13 +1297,27 @@ public class StateImpl
 	 * @generated
 	 */
 	public Region getRegion(String name) {
-		for (Iterator i = getRegions().iterator(); i.hasNext();) {
+		return getRegion(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Region getRegion(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		regionLoop : for (Iterator i = getRegions().iterator(); i.hasNext();) {
 			Region region = (Region) i.next();
-			if (name.equals(region.getName())) {
-				return region;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(region.getName())
+				: name.equals(region.getName())))
+				continue regionLoop;
+			return region;
 		}
-		return null;
+		return createOnDemand
+			? createRegion(name)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.17 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,6 +32,8 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -111,14 +113,44 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Port getOwnedPort(String name) {
-		for (Iterator i = getOwnedPorts().iterator(); i.hasNext();) {
+	public Port createOwnedPort(String name, Type type) {
+		Port newOwnedPort = UMLFactory.eINSTANCE.createPort();
+		newOwnedPort.setName(name);
+		newOwnedPort.setType(type);
+		getOwnedPorts().add(newOwnedPort);
+		return newOwnedPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port getOwnedPort(String name, Type type) {
+		return getOwnedPort(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port getOwnedPort(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedPortLoop : for (Iterator i = getOwnedPorts().iterator(); i
+			.hasNext();) {
 			Port ownedPort = (Port) i.next();
-			if (name.equals(ownedPort.getName())) {
-				return ownedPort;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedPort.getName())
+				: name.equals(ownedPort.getName())))
+				continue ownedPortLoop;
+			if (type != null && !type.equals(ownedPort.getType()))
+				continue ownedPortLoop;
+			return ownedPort;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedPort(name, type)
+			: null;
 	}
 
 	/**

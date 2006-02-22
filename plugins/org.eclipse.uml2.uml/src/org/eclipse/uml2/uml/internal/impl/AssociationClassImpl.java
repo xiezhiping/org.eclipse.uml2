@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.18 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -224,12 +225,29 @@ public class AssociationClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getMemberEnd(String name) {
-		for (Iterator i = getMemberEnds().iterator(); i.hasNext();) {
+	public Property getMemberEnd(String name, Type type) {
+		return getMemberEnd(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getMemberEnd(String name, Type type, boolean ignoreCase,
+			EClass eClass) {
+		memberEndLoop : for (Iterator i = getMemberEnds().iterator(); i
+			.hasNext();) {
 			Property memberEnd = (Property) i.next();
-			if (name.equals(memberEnd.getName())) {
-				return memberEnd;
-			}
+			if (eClass != null && !eClass.isInstance(memberEnd))
+				continue memberEndLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(memberEnd.getName())
+				: name.equals(memberEnd.getName())))
+				continue memberEndLoop;
+			if (type != null && !type.equals(memberEnd.getType()))
+				continue memberEndLoop;
+			return memberEnd;
 		}
 		return null;
 	}
@@ -260,9 +278,10 @@ public class AssociationClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedEnd(EClass eClass) {
-		Property newOwnedEnd = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createOwnedEnd(String name, Type type, EClass eClass) {
+		Property newOwnedEnd = (Property) EcoreUtil.create(eClass);
+		newOwnedEnd.setName(name);
+		newOwnedEnd.setType(type);
 		getOwnedEnds().add(newOwnedEnd);
 		return newOwnedEnd;
 	}
@@ -272,8 +291,10 @@ public class AssociationClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedEnd() {
+	public Property createOwnedEnd(String name, Type type) {
 		Property newOwnedEnd = UMLFactory.eINSTANCE.createProperty();
+		newOwnedEnd.setName(name);
+		newOwnedEnd.setType(type);
 		getOwnedEnds().add(newOwnedEnd);
 		return newOwnedEnd;
 	}
@@ -283,14 +304,32 @@ public class AssociationClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedEnd(String name) {
-		for (Iterator i = getOwnedEnds().iterator(); i.hasNext();) {
+	public Property getOwnedEnd(String name, Type type) {
+		return getOwnedEnd(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedEnd(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedEndLoop : for (Iterator i = getOwnedEnds().iterator(); i.hasNext();) {
 			Property ownedEnd = (Property) i.next();
-			if (name.equals(ownedEnd.getName())) {
-				return ownedEnd;
-			}
+			if (eClass != null && !eClass.isInstance(ownedEnd))
+				continue ownedEndLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedEnd.getName())
+				: name.equals(ownedEnd.getName())))
+				continue ownedEndLoop;
+			if (type != null && !type.equals(ownedEnd.getType()))
+				continue ownedEndLoop;
+			return ownedEnd;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedEnd(name, type, eClass)
+			: null;
 	}
 
 	/**
@@ -345,11 +384,24 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public Type getEndType(String name) {
-		for (Iterator i = getEndTypes().iterator(); i.hasNext();) {
+		return getEndType(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getEndType(String name, boolean ignoreCase, EClass eClass) {
+		endTypeLoop : for (Iterator i = getEndTypes().iterator(); i.hasNext();) {
 			Type endType = (Type) i.next();
-			if (name.equals(endType.getName())) {
-				return endType;
-			}
+			if (eClass != null && !eClass.isInstance(endType))
+				continue endTypeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(endType.getName())
+				: name.equals(endType.getName())))
+				continue endTypeLoop;
+			return endType;
 		}
 		return null;
 	}
@@ -376,14 +428,60 @@ public class AssociationClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getNavigableOwnedEnd(String name) {
-		for (Iterator i = getNavigableOwnedEnds().iterator(); i.hasNext();) {
+	public Property createNavigableOwnedEnd(String name, Type type,
+			EClass eClass) {
+		Property newNavigableOwnedEnd = (Property) EcoreUtil.create(eClass);
+		newNavigableOwnedEnd.setName(name);
+		newNavigableOwnedEnd.setType(type);
+		getNavigableOwnedEnds().add(newNavigableOwnedEnd);
+		return newNavigableOwnedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createNavigableOwnedEnd(String name, Type type) {
+		Property newNavigableOwnedEnd = UMLFactory.eINSTANCE.createProperty();
+		newNavigableOwnedEnd.setName(name);
+		newNavigableOwnedEnd.setType(type);
+		getNavigableOwnedEnds().add(newNavigableOwnedEnd);
+		return newNavigableOwnedEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getNavigableOwnedEnd(String name, Type type) {
+		return getNavigableOwnedEnd(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getNavigableOwnedEnd(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		navigableOwnedEndLoop : for (Iterator i = getNavigableOwnedEnds()
+			.iterator(); i.hasNext();) {
 			Property navigableOwnedEnd = (Property) i.next();
-			if (name.equals(navigableOwnedEnd.getName())) {
-				return navigableOwnedEnd;
-			}
+			if (eClass != null && !eClass.isInstance(navigableOwnedEnd))
+				continue navigableOwnedEndLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(navigableOwnedEnd.getName())
+				: name.equals(navigableOwnedEnd.getName())))
+				continue navigableOwnedEndLoop;
+			if (type != null && !type.equals(navigableOwnedEnd.getType()))
+				continue navigableOwnedEndLoop;
+			return navigableOwnedEnd;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNavigableOwnedEnd(name, type, eClass)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -84,14 +84,15 @@ public interface InteractionOperand
 	void setGuard(InteractionConstraint value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InteractionConstraint} and sets the '<em><b>Guard</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InteractionConstraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InteractionConstraint}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.InteractionConstraint}.
 	 * @see #getGuard()
 	 * @generated
 	 */
-	InteractionConstraint createGuard();
+	InteractionConstraint createGuard(String name);
 
 	/**
 	 * Returns the value of the '<em><b>Fragment</b></em>' containment reference list.
@@ -111,26 +112,42 @@ public interface InteractionOperand
 	EList getFragments();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InteractionFragment} and appends it to the '<em><b>Fragment</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.InteractionFragment}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InteractionFragment}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InteractionFragment} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.InteractionFragment}.
 	 * @see #getFragments()
 	 * @generated
 	 */
-	InteractionFragment createFragment(EClass eClass);
+	InteractionFragment createFragment(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFragments()
 	 * @generated
 	 */
 	InteractionFragment getFragment(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Fragment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InteractionFragment} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.InteractionFragment} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getFragments()
+	 * @generated
+	 */
+	InteractionFragment getFragment(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.8 2006/01/27 04:55:56 khussey Exp $
+ * $Id: OperationOperations.java,v 1.9 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Operation#setLower(int) <em>Set Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setType(org.eclipse.uml2.uml.Type) <em>Set Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setUpper(int) <em>Set Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getReturnResult() <em>Get Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered() <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique() <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#lowerBound() <em>Lower Bound</em>}</li>
@@ -320,6 +321,26 @@ public class OperationOperations
 		if (returnResult.size() == 1) {
 			((Parameter) returnResult.get(0)).setUpper(newUpper);
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Parameter getReturnResult(Operation operation) {
+
+		for (Iterator ownedParameters = operation.getOwnedParameters()
+			.iterator(); ownedParameters.hasNext();) {
+
+			Parameter ownedParameter = (Parameter) ownedParameters.next();
+
+			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+				return ownedParameter;
+			}
+		}
+
+		return null;
 	}
 
 	/**

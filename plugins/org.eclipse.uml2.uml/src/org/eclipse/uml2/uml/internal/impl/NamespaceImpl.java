@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -128,11 +129,26 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public NamedElement getOwnedMember(String name) {
-		for (Iterator i = getOwnedMembers().iterator(); i.hasNext();) {
+		return getOwnedMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getOwnedMember(String name, boolean ignoreCase,
+			EClass eClass) {
+		ownedMemberLoop : for (Iterator i = getOwnedMembers().iterator(); i
+			.hasNext();) {
 			NamedElement ownedMember = (NamedElement) i.next();
-			if (name.equals(ownedMember.getName())) {
-				return ownedMember;
-			}
+			if (eClass != null && !eClass.isInstance(ownedMember))
+				continue ownedMemberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedMember.getName())
+				: name.equals(ownedMember.getName())))
+				continue ownedMemberLoop;
+			return ownedMember;
 		}
 		return null;
 	}
@@ -160,11 +176,24 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public NamedElement getMember(String name) {
-		for (Iterator i = getMembers().iterator(); i.hasNext();) {
+		return getMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getMember(String name, boolean ignoreCase, EClass eClass) {
+		memberLoop : for (Iterator i = getMembers().iterator(); i.hasNext();) {
 			NamedElement member = (NamedElement) i.next();
-			if (name.equals(member.getName())) {
-				return member;
-			}
+			if (eClass != null && !eClass.isInstance(member))
+				continue memberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(member.getName())
+				: name.equals(member.getName())))
+				continue memberLoop;
+			return member;
 		}
 		return null;
 	}
@@ -192,11 +221,41 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementImport createElementImport() {
+	public ElementImport createElementImport(PackageableElement importedElement) {
 		ElementImport newElementImport = UMLFactory.eINSTANCE
 			.createElementImport();
+		newElementImport.setImportedElement(importedElement);
 		getElementImports().add(newElementImport);
 		return newElementImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getElementImport(PackageableElement importedElement) {
+		return getElementImport(importedElement, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getElementImport(PackageableElement importedElement,
+			boolean createOnDemand) {
+		elementImportLoop : for (Iterator i = getElementImports().iterator(); i
+			.hasNext();) {
+			ElementImport elementImport = (ElementImport) i.next();
+			if (importedElement != null
+				&& !importedElement.equals(elementImport.getImportedElement()))
+				continue elementImportLoop;
+			return elementImport;
+		}
+		return createOnDemand
+			? createElementImport(importedElement)
+			: null;
 	}
 
 	/**
@@ -222,11 +281,43 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageImport createPackageImport() {
+	public PackageImport createPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
 		PackageImport newPackageImport = UMLFactory.eINSTANCE
 			.createPackageImport();
+		newPackageImport.setImportedPackage(importedPackage);
 		getPackageImports().add(newPackageImport);
 		return newPackageImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		return getPackageImport(importedPackage, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
+		packageImportLoop : for (Iterator i = getPackageImports().iterator(); i
+			.hasNext();) {
+			PackageImport packageImport = (PackageImport) i.next();
+			if (importedPackage != null
+				&& !importedPackage.equals(packageImport.getImportedPackage()))
+				continue packageImportLoop;
+			return packageImport;
+		}
+		return createOnDemand
+			? createPackageImport(importedPackage)
+			: null;
 	}
 
 	/**
@@ -250,9 +341,9 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createOwnedRule(EClass eClass) {
-		Constraint newOwnedRule = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createOwnedRule(String name, EClass eClass) {
+		Constraint newOwnedRule = (Constraint) EcoreUtil.create(eClass);
+		newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}
@@ -262,8 +353,9 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createOwnedRule() {
+	public Constraint createOwnedRule(String name) {
 		Constraint newOwnedRule = UMLFactory.eINSTANCE.createConstraint();
+		newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}
@@ -274,13 +366,30 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public Constraint getOwnedRule(String name) {
-		for (Iterator i = getOwnedRules().iterator(); i.hasNext();) {
+		return getOwnedRule(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getOwnedRule(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedRuleLoop : for (Iterator i = getOwnedRules().iterator(); i
+			.hasNext();) {
 			Constraint ownedRule = (Constraint) i.next();
-			if (name.equals(ownedRule.getName())) {
-				return ownedRule;
-			}
+			if (eClass != null && !eClass.isInstance(ownedRule))
+				continue ownedRuleLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedRule.getName())
+				: name.equals(ownedRule.getName())))
+				continue ownedRuleLoop;
+			return ownedRule;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedRule(name, eClass)
+			: null;
 	}
 
 	/**
@@ -308,11 +417,26 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public PackageableElement getImportedMember(String name) {
-		for (Iterator i = getImportedMembers().iterator(); i.hasNext();) {
+		return getImportedMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getImportedMember(String name,
+			boolean ignoreCase, EClass eClass) {
+		importedMemberLoop : for (Iterator i = getImportedMembers().iterator(); i
+			.hasNext();) {
 			PackageableElement importedMember = (PackageableElement) i.next();
-			if (name.equals(importedMember.getName())) {
-				return importedMember;
-			}
+			if (eClass != null && !eClass.isInstance(importedMember))
+				continue importedMemberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(importedMember.getName())
+				: name.equals(importedMember.getName())))
+				continue importedMemberLoop;
+			return importedMember;
 		}
 		return null;
 	}

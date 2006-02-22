@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.ReclassifyObjectAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -168,11 +170,26 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public Classifier getOldClassifier(String name) {
-		for (Iterator i = getOldClassifiers().iterator(); i.hasNext();) {
+		return getOldClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getOldClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		oldClassifierLoop : for (Iterator i = getOldClassifiers().iterator(); i
+			.hasNext();) {
 			Classifier oldClassifier = (Classifier) i.next();
-			if (name.equals(oldClassifier.getName())) {
-				return oldClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(oldClassifier))
+				continue oldClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(oldClassifier.getName())
+				: name.equals(oldClassifier.getName())))
+				continue oldClassifierLoop;
+			return oldClassifier;
 		}
 		return null;
 	}
@@ -198,11 +215,26 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public Classifier getNewClassifier(String name) {
-		for (Iterator i = getNewClassifiers().iterator(); i.hasNext();) {
+		return getNewClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getNewClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		newClassifierLoop : for (Iterator i = getNewClassifiers().iterator(); i
+			.hasNext();) {
 			Classifier newClassifier = (Classifier) i.next();
-			if (name.equals(newClassifier.getName())) {
-				return newClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(newClassifier))
+				continue newClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(newClassifier.getName())
+				: name.equals(newClassifier.getName())))
+				continue newClassifierLoop;
+			return newClassifier;
 		}
 		return null;
 	}
@@ -306,9 +338,10 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createObject(EClass eClass) {
-		InputPin newObject = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createObject(String name, Type type, EClass eClass) {
+		InputPin newObject = (InputPin) EcoreUtil.create(eClass);
+		newObject.setName(name);
+		newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}
@@ -318,8 +351,10 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createObject() {
+	public InputPin createObject(String name, Type type) {
 		InputPin newObject = UMLFactory.eINSTANCE.createInputPin();
+		newObject.setName(name);
+		newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}

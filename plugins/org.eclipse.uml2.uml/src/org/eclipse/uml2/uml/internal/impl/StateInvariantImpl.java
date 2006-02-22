@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -192,9 +193,9 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createInvariant(EClass eClass) {
-		Constraint newInvariant = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createInvariant(String name, EClass eClass) {
+		Constraint newInvariant = (Constraint) EcoreUtil.create(eClass);
+		newInvariant.setName(name);
 		setInvariant(newInvariant);
 		return newInvariant;
 	}
@@ -204,8 +205,9 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createInvariant() {
+	public Constraint createInvariant(String name) {
 		Constraint newInvariant = UMLFactory.eINSTANCE.createConstraint();
+		newInvariant.setName(name);
 		setInvariant(newInvariant);
 		return newInvariant;
 	}
@@ -232,11 +234,22 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext();) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(covered.getName())
+				: name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}

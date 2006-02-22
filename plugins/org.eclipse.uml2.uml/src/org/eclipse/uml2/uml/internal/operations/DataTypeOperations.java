@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.8 2006/01/27 04:55:56 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.9 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,7 +32,7 @@ import org.eclipse.uml2.uml.RedefinableElement;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DataType#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Create Owned Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DataType#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DataType#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DataType#inherit(org.eclipse.emf.common.util.EList) <em>Inherit</em>}</li>
  * </ul>
@@ -50,6 +50,19 @@ public class DataTypeOperations
 	 */
 	protected DataTypeOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static Operation createOwnedOperation(DataType dataType,
+			String name, EList parameterNames, EList parameterTypes,
+			Type returnType) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

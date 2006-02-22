@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.17 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -273,11 +274,26 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public Dependency getClientDependency(String name) {
-		for (Iterator i = getClientDependencies().iterator(); i.hasNext();) {
+		return getClientDependency(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Dependency getClientDependency(String name, boolean ignoreCase,
+			EClass eClass) {
+		clientDependencyLoop : for (Iterator i = getClientDependencies()
+			.iterator(); i.hasNext();) {
 			Dependency clientDependency = (Dependency) i.next();
-			if (name.equals(clientDependency.getName())) {
-				return clientDependency;
-			}
+			if (eClass != null && !eClass.isInstance(clientDependency))
+				continue clientDependencyLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(clientDependency.getName())
+				: name.equals(clientDependency.getName())))
+				continue clientDependencyLoop;
+			return clientDependency;
 		}
 		return null;
 	}
@@ -379,9 +395,11 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringExpression createNameExpression() {
+	public StringExpression createNameExpression(String name, Type type) {
 		StringExpression newNameExpression = UMLFactory.eINSTANCE
 			.createStringExpression();
+		newNameExpression.setName(name);
+		newNameExpression.setType(type);
 		setNameExpression(newNameExpression);
 		return newNameExpression;
 	}

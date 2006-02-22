@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: ReplyAction.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -96,25 +96,29 @@ public interface ReplyAction
 	void setReturnInformation(InputPin value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and sets the '<em><b>Return Information</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Return Information</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getReturnInformation()
 	 * @generated
 	 */
-	InputPin createReturnInformation(EClass eClass);
+	InputPin createReturnInformation(String name, Type type, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and sets the '<em><b>Return Information</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Return Information</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getReturnInformation()
 	 * @generated
 	 */
-	InputPin createReturnInformation();
+	InputPin createReturnInformation(String name, Type type);
 
 	/**
 	 * Returns the value of the '<em><b>Reply Value</b></em>' containment reference list.
@@ -132,36 +136,57 @@ public interface ReplyAction
 	EList getReplyValues();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and appends it to the '<em><b>Reply Value</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Reply Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getReplyValues()
 	 * @generated
 	 */
-	InputPin createReplyValue(EClass eClass);
+	InputPin createReplyValue(String name, Type type, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.InputPin} and appends it to the '<em><b>Reply Value</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Reply Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
 	 * @see #getReplyValues()
 	 * @generated
 	 */
-	InputPin createReplyValue();
+	InputPin createReplyValue(String name, Type type);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Reply Value</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Reply Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getReplyValues()
 	 * @generated
 	 */
-	InputPin getReplyValue(String name);
+	InputPin getReplyValue(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Reply Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.InputPin} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getReplyValues()
+	 * @generated
+	 */
+	InputPin getReplyValue(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPin.java,v 1.3 2006/02/21 16:12:19 khussey Exp $
+ * $Id: ActionInputPin.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -67,15 +67,16 @@ public interface ActionInputPin
 	void setFromAction(Action value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Action} and sets the '<em><b>From Action</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Action}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>From Action</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Action}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Action} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Action}.
 	 * @see #getFromAction()
 	 * @generated
 	 */
-	Action createFromAction(EClass eClass);
+	Action createFromAction(String name, EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -129,6 +129,22 @@
     <eOperations name="createEAnnotation" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAnnotation">
       <eParameters name="source" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
+    <eOperations name="getRelationships" ordered="false" upperBound="-1" eType="#//Relationship"/>
+    <eOperations name="getRelationships" ordered="false" upperBound="-1" eType="#//Relationship">
+      <eParameters name="eClass" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eOperations name="getSourceDirectedRelationships" ordered="false" upperBound="-1"
+        eType="#//DirectedRelationship"/>
+    <eOperations name="getSourceDirectedRelationships" ordered="false" upperBound="-1"
+        eType="#//DirectedRelationship">
+      <eParameters name="eClass" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eOperations name="getTargetDirectedRelationships" ordered="false" upperBound="-1"
+        eType="#//DirectedRelationship"/>
+    <eOperations name="getTargetDirectedRelationships" ordered="false" upperBound="-1"
+        eType="#//DirectedRelationship">
+      <eParameters name="eClass" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
     <eOperations name="allOwnedElements" ordered="false" upperBound="-1" eType="#//Element">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query allOwnedElements() gives all of the direct and indirect owned elements of an element.&#xD;&#xA;result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))"/>
@@ -191,9 +207,6 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="createNestedPackage" ordered="false" lowerBound="1" eType="#//Package">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-    </eOperations>
     <eOperations name="createOwnedClass" ordered="false" lowerBound="1" eType="#//Class">
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="isAbstract" ordered="false" lowerBound="1" eType="#//Boolean"/>
@@ -202,6 +215,9 @@
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="createOwnedPrimitiveType" ordered="false" lowerBound="1" eType="#//PrimitiveType">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="createOwnedInterface" ordered="false" lowerBound="1" eType="#//Interface">
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="isProfileApplied" ordered="false" lowerBound="1" eType="#//Boolean">
@@ -230,9 +246,6 @@
     <eOperations name="getProfileApplication" ordered="false" eType="#//ProfileApplication">
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
       <eParameters name="recurse" ordered="false" lowerBound="1" eType="#//Boolean"/>
-    </eOperations>
-    <eOperations name="createOwnedInterface" ordered="false" lowerBound="1" eType="#//Interface">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="isModelLibrary" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="visibleMembers" ordered="false" upperBound="-1" eType="#//PackageableElement">
@@ -866,6 +879,7 @@
       <eParameters name="end2Lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="end2Upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
+    <eOperations name="getAssociations" ordered="false" upperBound="-1" eType="#//Association"/>
     <eOperations name="conformsTo" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.&#xD;&#xA;result = false"/>
@@ -1018,14 +1032,19 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="createGeneralization" ordered="false" lowerBound="1" eType="#//Generalization">
-      <eParameters name="general" ordered="false" lowerBound="1" eType="#//Classifier"/>
-    </eOperations>
     <eOperations name="getAllAttributes" ordered="false" upperBound="-1" eType="#//Property"/>
     <eOperations name="getOperations" ordered="false" upperBound="-1" eType="#//Operation"/>
     <eOperations name="getAllOperations" ordered="false" upperBound="-1" eType="#//Operation"/>
     <eOperations name="getOperation" ordered="false" eType="#//Operation">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
+      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+    </eOperations>
+    <eOperations name="getOperation" ordered="false" eType="#//Operation">
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
+      <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="ignoreCase" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="getGenerals" ordered="false" upperBound="-1" eType="#//Classifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2396,14 +2415,14 @@
       <details key="documentation" value="In the metamodel, an Artifact is a Classifier that represents a physical entity. Artifacts may have Properties that represent features of the Artifact, and Operations that can be performed on its instances. Artifacts can be involved in Associations to other Artifacts, e.g. composition associations. Artifacts can be instantiated to represent detailed copy semantics, where different instances of the same Artifact may be deployed to various Node instances (and each may have separate property values, e.g. for a 'time-stamp' property.&#xD;&#xA;As part of the Nodes package, an Artifact is extended to become the source of a deployment to a Node. This is achieved by specializing the abstract superclass."/>
     </eAnnotations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
@@ -2523,6 +2542,7 @@
     <eOperations name="setUpper" ordered="false" lowerBound="1">
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
+    <eOperations name="getReturnResult" ordered="false" eType="#//Parameter"/>
     <eOperations name="isOrdered" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().isOrdered else false endif"/>
@@ -2679,6 +2699,10 @@
         <eParameters name="ns" ordered="false" lowerBound="1" eType="#//Namespace"/>
       </contents>
     </eAnnotations>
+    <eOperations name="createReturnResult" ordered="false" lowerBound="1" eType="#//Parameter">
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="type" ordered="false" eType="#//Type"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameter" upperBound="-1"
         eType="#//Parameter" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2838,10 +2862,10 @@
     </eOperations>
     <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension"/>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="isMetaclass" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedClassifier" upperBound="-1"
@@ -2897,10 +2921,6 @@
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
-    </eOperations>
-    <eOperations name="createInterfaceRealization" ordered="false" lowerBound="1"
-        eType="#//InterfaceRealization">
-      <eParameters name="contract" ordered="false" lowerBound="1" eType="#//Interface"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true">
@@ -2960,14 +2980,14 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
@@ -3037,8 +3057,8 @@
       <details key="documentation" value="A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence."/>
     </eAnnotations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
@@ -4067,8 +4087,8 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
@@ -4424,12 +4444,6 @@
     <eOperations name="create" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
       <eParameters name="classifier" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
-    <eOperations name="createMetaclassReference" ordered="false" lowerBound="1" eType="#//ElementImport">
-      <eParameters name="metaclass" ordered="false" lowerBound="1" eType="#//Class"/>
-    </eOperations>
-    <eOperations name="createMetamodelReference" ordered="false" lowerBound="1" eType="#//PackageImport">
-      <eParameters name="metamodel" ordered="false" lowerBound="1" eType="#//Model"/>
-    </eOperations>
     <eOperations name="createOwnedStereotype" ordered="false" lowerBound="1" eType="#//Stereotype">
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="isAbstract" ordered="false" lowerBound="1" eType="#//Boolean"/>
@@ -4556,14 +4570,14 @@
       </contents>
     </eAnnotations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="returnType" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
+      <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-      <eParameters name="type" ordered="false" lowerBound="1" eType="#//Type"/>
+      <eParameters name="name" ordered="false" eType="#//String"/>
+      <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
@@ -5076,9 +5090,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Enumeration is a kind of data type, whose instances may be any of a number of predefined enumeration literals.&#xA;&#xA;It is possible to extend the set of applicable enumeration literals in other packages or profiles.&#xA;&#xA;&#xD;&#xA;Enumeration is a kind of data type, whose instances may be any of a number of user-defined enumeration literals.&#xA;&#xA;It is possible to extend the set of applicable enumeration literals in other packages or profiles.&#xA;&#xA;"/>
     </eAnnotations>
-    <eOperations name="createOwnedLiteral" ordered="false" lowerBound="1" eType="#//EnumerationLiteral">
-      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLiteral" upperBound="-1"
         eType="#//EnumerationLiteral" containment="true" eOpposite="#//EnumerationLiteral/enumeration">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

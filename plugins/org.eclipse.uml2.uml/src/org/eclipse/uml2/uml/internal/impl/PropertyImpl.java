@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.23 2006/02/21 16:12:16 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.24 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -464,8 +464,9 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deployment createDeployment() {
+	public Deployment createDeployment(String name) {
 		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
+		newDeployment.setName(name);
 		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
@@ -476,13 +477,28 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Deployment getDeployment(String name) {
-		for (Iterator i = getDeployments().iterator(); i.hasNext();) {
+		return getDeployment(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment getDeployment(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		deploymentLoop : for (Iterator i = getDeployments().iterator(); i
+			.hasNext();) {
 			Deployment deployment = (Deployment) i.next();
-			if (name.equals(deployment.getName())) {
-				return deployment;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployment.getName())
+				: name.equals(deployment.getName())))
+				continue deploymentLoop;
+			return deployment;
 		}
-		return null;
+		return createOnDemand
+			? createDeployment(name)
+			: null;
 	}
 
 	/**
@@ -512,11 +528,26 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public PackageableElement getDeployedElement(String name) {
-		for (Iterator i = getDeployedElements().iterator(); i.hasNext();) {
+		return getDeployedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getDeployedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		deployedElementLoop : for (Iterator i = getDeployedElements()
+			.iterator(); i.hasNext();) {
 			PackageableElement deployedElement = (PackageableElement) i.next();
-			if (name.equals(deployedElement.getName())) {
-				return deployedElement;
-			}
+			if (eClass != null && !eClass.isInstance(deployedElement))
+				continue deployedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployedElement.getName())
+				: name.equals(deployedElement.getName())))
+				continue deployedElementLoop;
+			return deployedElement;
 		}
 		return null;
 	}
@@ -544,11 +575,41 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBinding createTemplateBinding() {
+	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
+		newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature) {
+		return getTemplateBinding(signature, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature,
+			boolean createOnDemand) {
+		templateBindingLoop : for (Iterator i = getTemplateBindings()
+			.iterator(); i.hasNext();) {
+			TemplateBinding templateBinding = (TemplateBinding) i.next();
+			if (signature != null
+				&& !signature.equals(templateBinding.getSignature()))
+				continue templateBindingLoop;
+			return templateBinding;
+		}
+		return createOnDemand
+			? createTemplateBinding(signature)
+			: null;
 	}
 
 	/**
@@ -654,8 +715,8 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
+			.create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -1000,12 +1061,29 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getRedefinedProperty(String name) {
-		for (Iterator i = getRedefinedProperties().iterator(); i.hasNext();) {
+	public Property getRedefinedProperty(String name, Type type) {
+		return getRedefinedProperty(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getRedefinedProperty(String name, Type type,
+			boolean ignoreCase, EClass eClass) {
+		redefinedPropertyLoop : for (Iterator i = getRedefinedProperties()
+			.iterator(); i.hasNext();) {
 			Property redefinedProperty = (Property) i.next();
-			if (name.equals(redefinedProperty.getName())) {
-				return redefinedProperty;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedProperty))
+				continue redefinedPropertyLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedProperty.getName())
+				: name.equals(redefinedProperty.getName())))
+				continue redefinedPropertyLoop;
+			if (type != null && !type.equals(redefinedProperty.getType()))
+				continue redefinedPropertyLoop;
+			return redefinedProperty;
 		}
 		return null;
 	}
@@ -1162,9 +1240,12 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createDefaultValue(EClass eClass) {
-		ValueSpecification newDefaultValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createDefaultValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newDefaultValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newDefaultValue.setName(name);
+		newDefaultValue.setType(type);
 		setDefaultValue(newDefaultValue);
 		return newDefaultValue;
 	}
@@ -1219,12 +1300,29 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getSubsettedProperty(String name) {
-		for (Iterator i = getSubsettedProperties().iterator(); i.hasNext();) {
+	public Property getSubsettedProperty(String name, Type type) {
+		return getSubsettedProperty(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getSubsettedProperty(String name, Type type,
+			boolean ignoreCase, EClass eClass) {
+		subsettedPropertyLoop : for (Iterator i = getSubsettedProperties()
+			.iterator(); i.hasNext();) {
 			Property subsettedProperty = (Property) i.next();
-			if (name.equals(subsettedProperty.getName())) {
-				return subsettedProperty;
-			}
+			if (eClass != null && !eClass.isInstance(subsettedProperty))
+				continue subsettedPropertyLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(subsettedProperty.getName())
+				: name.equals(subsettedProperty.getName())))
+				continue subsettedPropertyLoop;
+			if (type != null && !type.equals(subsettedProperty.getType()))
+				continue subsettedPropertyLoop;
+			return subsettedProperty;
 		}
 		return null;
 	}
@@ -1250,9 +1348,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createQualifier(EClass eClass) {
-		Property newQualifier = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createQualifier(String name, Type type, EClass eClass) {
+		Property newQualifier = (Property) EcoreUtil.create(eClass);
+		newQualifier.setName(name);
+		newQualifier.setType(type);
 		getQualifiers().add(newQualifier);
 		return newQualifier;
 	}
@@ -1262,8 +1361,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createQualifier() {
+	public Property createQualifier(String name, Type type) {
 		Property newQualifier = UMLFactory.eINSTANCE.createProperty();
+		newQualifier.setName(name);
+		newQualifier.setType(type);
 		getQualifiers().add(newQualifier);
 		return newQualifier;
 	}
@@ -1273,14 +1374,33 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getQualifier(String name) {
-		for (Iterator i = getQualifiers().iterator(); i.hasNext();) {
+	public Property getQualifier(String name, Type type) {
+		return getQualifier(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getQualifier(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		qualifierLoop : for (Iterator i = getQualifiers().iterator(); i
+			.hasNext();) {
 			Property qualifier = (Property) i.next();
-			if (name.equals(qualifier.getName())) {
-				return qualifier;
-			}
+			if (eClass != null && !eClass.isInstance(qualifier))
+				continue qualifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(qualifier.getName())
+				: name.equals(qualifier.getName())))
+				continue qualifierLoop;
+			if (type != null && !type.equals(qualifier.getType()))
+				continue qualifierLoop;
+			return qualifier;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createQualifier(name, type, eClass)
+			: null;
 	}
 
 	/**

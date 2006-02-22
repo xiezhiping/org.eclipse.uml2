@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.19 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -215,11 +216,22 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public Interface getRequired(String name) {
-		for (Iterator i = getRequireds().iterator(); i.hasNext();) {
+		return getRequired(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getRequired(String name, boolean ignoreCase) {
+		requiredLoop : for (Iterator i = getRequireds().iterator(); i.hasNext();) {
 			Interface required = (Interface) i.next();
-			if (name.equals(required.getName())) {
-				return required;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(required.getName())
+				: name.equals(required.getName())))
+				continue requiredLoop;
+			return required;
 		}
 		return null;
 	}
@@ -249,11 +261,22 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public Interface getProvided(String name) {
-		for (Iterator i = getProvideds().iterator(); i.hasNext();) {
+		return getProvided(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getProvided(String name, boolean ignoreCase) {
+		providedLoop : for (Iterator i = getProvideds().iterator(); i.hasNext();) {
 			Interface provided = (Interface) i.next();
-			if (name.equals(provided.getName())) {
-				return provided;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(provided.getName())
+				: name.equals(provided.getName())))
+				continue providedLoop;
+			return provided;
 		}
 		return null;
 	}
@@ -279,9 +302,10 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageableElement createPackagedElement(EClass eClass) {
-		PackageableElement newPackagedElement = (PackageableElement) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public PackageableElement createPackagedElement(String name, EClass eClass) {
+		PackageableElement newPackagedElement = (PackageableElement) EcoreUtil
+			.create(eClass);
+		newPackagedElement.setName(name);
 		getPackagedElements().add(newPackagedElement);
 		return newPackagedElement;
 	}
@@ -292,13 +316,30 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public PackageableElement getPackagedElement(String name) {
-		for (Iterator i = getPackagedElements().iterator(); i.hasNext();) {
+		return getPackagedElement(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getPackagedElement(String name,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		packagedElementLoop : for (Iterator i = getPackagedElements()
+			.iterator(); i.hasNext();) {
 			PackageableElement packagedElement = (PackageableElement) i.next();
-			if (name.equals(packagedElement.getName())) {
-				return packagedElement;
-			}
+			if (eClass != null && !eClass.isInstance(packagedElement))
+				continue packagedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(packagedElement.getName())
+				: name.equals(packagedElement.getName())))
+				continue packagedElementLoop;
+			return packagedElement;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createPackagedElement(name, eClass)
+			: null;
 	}
 
 	/**
@@ -323,9 +364,10 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentRealization createRealization() {
+	public ComponentRealization createRealization(String name) {
 		ComponentRealization newRealization = UMLFactory.eINSTANCE
 			.createComponentRealization();
+		newRealization.setName(name);
 		getRealizations().add(newRealization);
 		return newRealization;
 	}
@@ -336,13 +378,28 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public ComponentRealization getRealization(String name) {
-		for (Iterator i = getRealizations().iterator(); i.hasNext();) {
+		return getRealization(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComponentRealization getRealization(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		realizationLoop : for (Iterator i = getRealizations().iterator(); i
+			.hasNext();) {
 			ComponentRealization realization = (ComponentRealization) i.next();
-			if (name.equals(realization.getName())) {
-				return realization;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(realization.getName())
+				: name.equals(realization.getName())))
+				continue realizationLoop;
+			return realization;
 		}
-		return null;
+		return createOnDemand
+			? createRealization(name)
+			: null;
 	}
 
 	/**

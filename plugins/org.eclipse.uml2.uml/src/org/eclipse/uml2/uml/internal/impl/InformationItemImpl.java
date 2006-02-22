@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.14 2006/02/21 21:39:47 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.15 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,11 +90,26 @@ public class InformationItemImpl
 	 * @generated
 	 */
 	public Classifier getRepresented(String name) {
-		for (Iterator i = getRepresenteds().iterator(); i.hasNext();) {
+		return getRepresented(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRepresented(String name, boolean ignoreCase,
+			EClass eClass) {
+		representedLoop : for (Iterator i = getRepresenteds().iterator(); i
+			.hasNext();) {
 			Classifier represented = (Classifier) i.next();
-			if (name.equals(represented.getName())) {
-				return represented;
-			}
+			if (eClass != null && !eClass.isInstance(represented))
+				continue representedLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(represented.getName())
+				: name.equals(represented.getName())))
+				continue representedLoop;
+			return represented;
 		}
 		return null;
 	}

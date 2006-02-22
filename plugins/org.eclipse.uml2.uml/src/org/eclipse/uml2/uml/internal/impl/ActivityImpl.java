@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.20 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.21 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
@@ -50,6 +51,7 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Variable;
@@ -228,8 +230,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityGroup createGroup(EClass eClass) {
-		ActivityGroup newGroup = (ActivityGroup) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+		ActivityGroup newGroup = (ActivityGroup) EcoreUtil.create(eClass);
 		getGroups().add(newGroup);
 		return newGroup;
 	}
@@ -255,9 +256,9 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityNode createNode(EClass eClass) {
-		ActivityNode newNode = (ActivityNode) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ActivityNode createNode(String name, EClass eClass) {
+		ActivityNode newNode = (ActivityNode) EcoreUtil.create(eClass);
+		newNode.setName(name);
 		getNodes().add(newNode);
 		return newNode;
 	}
@@ -268,13 +269,29 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityNode getNode(String name) {
-		for (Iterator i = getNodes().iterator(); i.hasNext();) {
+		return getNode(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		nodeLoop : for (Iterator i = getNodes().iterator(); i.hasNext();) {
 			ActivityNode node = (ActivityNode) i.next();
-			if (name.equals(node.getName())) {
-				return node;
-			}
+			if (eClass != null && !eClass.isInstance(node))
+				continue nodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(node.getName())
+				: name.equals(node.getName())))
+				continue nodeLoop;
+			return node;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNode(name, eClass)
+			: null;
 	}
 
 	/**
@@ -353,12 +370,27 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public StructuredActivityNode getStructuredNode(String name) {
-		for (Iterator i = getStructuredNodes().iterator(); i.hasNext();) {
+		return getStructuredNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode getStructuredNode(String name,
+			boolean ignoreCase, EClass eClass) {
+		structuredNodeLoop : for (Iterator i = getStructuredNodes().iterator(); i
+			.hasNext();) {
 			StructuredActivityNode structuredNode = (StructuredActivityNode) i
 				.next();
-			if (name.equals(structuredNode.getName())) {
-				return structuredNode;
-			}
+			if (eClass != null && !eClass.isInstance(structuredNode))
+				continue structuredNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(structuredNode.getName())
+				: name.equals(structuredNode.getName())))
+				continue structuredNodeLoop;
+			return structuredNode;
 		}
 		return null;
 	}
@@ -384,8 +416,10 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variable createVariable() {
+	public Variable createVariable(String name, Type type) {
 		Variable newVariable = UMLFactory.eINSTANCE.createVariable();
+		newVariable.setName(name);
+		newVariable.setType(type);
 		getVariables().add(newVariable);
 		return newVariable;
 	}
@@ -395,14 +429,30 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variable getVariable(String name) {
-		for (Iterator i = getVariables().iterator(); i.hasNext();) {
+	public Variable getVariable(String name, Type type) {
+		return getVariable(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable getVariable(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
+		variableLoop : for (Iterator i = getVariables().iterator(); i.hasNext();) {
 			Variable variable = (Variable) i.next();
-			if (name.equals(variable.getName())) {
-				return variable;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(variable.getName())
+				: name.equals(variable.getName())))
+				continue variableLoop;
+			if (type != null && !type.equals(variable.getType()))
+				continue variableLoop;
+			return variable;
 		}
-		return null;
+		return createOnDemand
+			? createVariable(name, type)
+			: null;
 	}
 
 	/**
@@ -426,9 +476,9 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityEdge createEdge(EClass eClass) {
-		ActivityEdge newEdge = (ActivityEdge) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ActivityEdge createEdge(String name, EClass eClass) {
+		ActivityEdge newEdge = (ActivityEdge) EcoreUtil.create(eClass);
+		newEdge.setName(name);
 		getEdges().add(newEdge);
 		return newEdge;
 	}
@@ -439,13 +489,29 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityEdge getEdge(String name) {
-		for (Iterator i = getEdges().iterator(); i.hasNext();) {
+		return getEdge(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		edgeLoop : for (Iterator i = getEdges().iterator(); i.hasNext();) {
 			ActivityEdge edge = (ActivityEdge) i.next();
-			if (name.equals(edge.getName())) {
-				return edge;
-			}
+			if (eClass != null && !eClass.isInstance(edge))
+				continue edgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(edge.getName())
+				: name.equals(edge.getName())))
+				continue edgeLoop;
+			return edge;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createEdge(name, eClass)
+			: null;
 	}
 
 	/**
@@ -470,14 +536,42 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ActivityPartition createPartition(String name) {
+		ActivityPartition newPartition = UMLFactory.eINSTANCE
+			.createActivityPartition();
+		newPartition.setName(name);
+		getPartitions().add(newPartition);
+		return newPartition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ActivityPartition getPartition(String name) {
-		for (Iterator i = getPartitions().iterator(); i.hasNext();) {
+		return getPartition(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getPartition(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		partitionLoop : for (Iterator i = getPartitions().iterator(); i
+			.hasNext();) {
 			ActivityPartition partition = (ActivityPartition) i.next();
-			if (name.equals(partition.getName())) {
-				return partition;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(partition.getName())
+				: name.equals(partition.getName())))
+				continue partitionLoop;
+			return partition;
 		}
-		return null;
+		return createOnDemand
+			? createPartition(name)
+			: null;
 	}
 
 	/**

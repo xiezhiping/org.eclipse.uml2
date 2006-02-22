@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.18 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
@@ -117,12 +118,28 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectableElement getRole(String name) {
-		for (Iterator i = getRoles().iterator(); i.hasNext();) {
+	public ConnectableElement getRole(String name, Type type) {
+		return getRole(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectableElement getRole(String name, Type type,
+			boolean ignoreCase, EClass eClass) {
+		roleLoop : for (Iterator i = getRoles().iterator(); i.hasNext();) {
 			ConnectableElement role = (ConnectableElement) i.next();
-			if (name.equals(role.getName())) {
-				return role;
-			}
+			if (eClass != null && !eClass.isInstance(role))
+				continue roleLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(role.getName())
+				: name.equals(role.getName())))
+				continue roleLoop;
+			if (type != null && !type.equals(role.getType()))
+				continue roleLoop;
+			return role;
 		}
 		return null;
 	}
@@ -223,9 +240,10 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(EClass eClass) {
-		Property newOwnedAttribute = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -235,8 +253,10 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute() {
+	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -246,14 +266,33 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext();) {
+	public Property getOwnedAttribute(String name, Type type) {
+		return getOwnedAttribute(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		ownedAttributeLoop : for (Iterator i = getOwnedAttributes().iterator(); i
+			.hasNext();) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedAttribute.getName())
+				: name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			if (type != null && !type.equals(ownedAttribute.getType()))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedAttribute(name, type, eClass)
+			: null;
 	}
 
 	protected static class PartEList
@@ -307,12 +346,28 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getPart(String name) {
-		for (Iterator i = getParts().iterator(); i.hasNext();) {
+	public Property getPart(String name, Type type) {
+		return getPart(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getPart(String name, Type type, boolean ignoreCase,
+			EClass eClass) {
+		partLoop : for (Iterator i = getParts().iterator(); i.hasNext();) {
 			Property part = (Property) i.next();
-			if (name.equals(part.getName())) {
-				return part;
-			}
+			if (eClass != null && !eClass.isInstance(part))
+				continue partLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(part.getName())
+				: name.equals(part.getName())))
+				continue partLoop;
+			if (type != null && !type.equals(part.getType()))
+				continue partLoop;
+			return part;
 		}
 		return null;
 	}
@@ -338,8 +393,9 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Connector createOwnedConnector() {
+	public Connector createOwnedConnector(String name) {
 		Connector newOwnedConnector = UMLFactory.eINSTANCE.createConnector();
+		newOwnedConnector.setName(name);
 		getOwnedConnectors().add(newOwnedConnector);
 		return newOwnedConnector;
 	}
@@ -350,13 +406,28 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 */
 	public Connector getOwnedConnector(String name) {
-		for (Iterator i = getOwnedConnectors().iterator(); i.hasNext();) {
+		return getOwnedConnector(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connector getOwnedConnector(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedConnectorLoop : for (Iterator i = getOwnedConnectors().iterator(); i
+			.hasNext();) {
 			Connector ownedConnector = (Connector) i.next();
-			if (name.equals(ownedConnector.getName())) {
-				return ownedConnector;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedConnector.getName())
+				: name.equals(ownedConnector.getName())))
+				continue ownedConnectorLoop;
+			return ownedConnector;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedConnector(name)
+			: null;
 	}
 
 	/**

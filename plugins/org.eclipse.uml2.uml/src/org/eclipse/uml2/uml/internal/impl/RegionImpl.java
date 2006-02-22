@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.14 2006/02/21 16:12:16 khussey Exp $
+ * $Id: RegionImpl.java,v 1.15 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -140,11 +140,26 @@ public class RegionImpl
 	 * @generated
 	 */
 	public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext();) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (Iterator i = getRedefinedElements()
+			.iterator(); i.hasNext();) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -195,11 +210,26 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext();) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
+			.iterator(); i.hasNext();) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinitionContext.getName())
+				: name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -278,9 +308,9 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vertex createSubvertex(EClass eClass) {
-		Vertex newSubvertex = (Vertex) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Vertex createSubvertex(String name, EClass eClass) {
+		Vertex newSubvertex = (Vertex) EcoreUtil.create(eClass);
+		newSubvertex.setName(name);
 		getSubvertices().add(newSubvertex);
 		return newSubvertex;
 	}
@@ -291,13 +321,30 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Vertex getSubvertex(String name) {
-		for (Iterator i = getSubvertices().iterator(); i.hasNext();) {
+		return getSubvertex(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vertex getSubvertex(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		subvertexLoop : for (Iterator i = getSubvertices().iterator(); i
+			.hasNext();) {
 			Vertex subvertex = (Vertex) i.next();
-			if (name.equals(subvertex.getName())) {
-				return subvertex;
-			}
+			if (eClass != null && !eClass.isInstance(subvertex))
+				continue subvertexLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(subvertex.getName())
+				: name.equals(subvertex.getName())))
+				continue subvertexLoop;
+			return subvertex;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createSubvertex(name, eClass)
+			: null;
 	}
 
 	/**
@@ -321,9 +368,9 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition createTransition(EClass eClass) {
-		Transition newTransition = (Transition) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Transition createTransition(String name, EClass eClass) {
+		Transition newTransition = (Transition) EcoreUtil.create(eClass);
+		newTransition.setName(name);
 		getTransitions().add(newTransition);
 		return newTransition;
 	}
@@ -333,8 +380,9 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition createTransition() {
+	public Transition createTransition(String name) {
 		Transition newTransition = UMLFactory.eINSTANCE.createTransition();
+		newTransition.setName(name);
 		getTransitions().add(newTransition);
 		return newTransition;
 	}
@@ -345,13 +393,30 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Transition getTransition(String name) {
-		for (Iterator i = getTransitions().iterator(); i.hasNext();) {
+		return getTransition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getTransition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		transitionLoop : for (Iterator i = getTransitions().iterator(); i
+			.hasNext();) {
 			Transition transition = (Transition) i.next();
-			if (name.equals(transition.getName())) {
-				return transition;
-			}
+			if (eClass != null && !eClass.isInstance(transition))
+				continue transitionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(transition.getName())
+				: name.equals(transition.getName())))
+				continue transitionLoop;
+			return transition;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createTransition(name, eClass)
+			: null;
 	}
 
 	/**

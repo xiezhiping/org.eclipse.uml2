@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationImpl.java,v 1.3 2006/02/21 16:12:17 khussey Exp $
+ * $Id: DurationObservationImpl.java,v 1.4 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,11 +90,24 @@ public class DurationObservationImpl
 	 * @generated
 	 */
 	public NamedElement getEvent(String name) {
-		for (Iterator i = getEvents().iterator(); i.hasNext();) {
+		return getEvent(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getEvent(String name, boolean ignoreCase, EClass eClass) {
+		eventLoop : for (Iterator i = getEvents().iterator(); i.hasNext();) {
 			NamedElement event = (NamedElement) i.next();
-			if (name.equals(event.getName())) {
-				return event;
-			}
+			if (eClass != null && !eClass.isInstance(event))
+				continue eventLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(event.getName())
+				: name.equals(event.getName())))
+				continue eventLoop;
+			return event;
 		}
 		return null;
 	}

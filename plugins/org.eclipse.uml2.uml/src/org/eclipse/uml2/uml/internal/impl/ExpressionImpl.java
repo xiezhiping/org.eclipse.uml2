@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -175,9 +176,12 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createOperand(EClass eClass) {
-		ValueSpecification newOperand = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createOperand(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newOperand = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newOperand.setName(name);
+		newOperand.setType(type);
 		getOperands().add(newOperand);
 		return newOperand;
 	}
@@ -187,14 +191,32 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification getOperand(String name) {
-		for (Iterator i = getOperands().iterator(); i.hasNext();) {
+	public ValueSpecification getOperand(String name, Type type) {
+		return getOperand(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification getOperand(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		operandLoop : for (Iterator i = getOperands().iterator(); i.hasNext();) {
 			ValueSpecification operand = (ValueSpecification) i.next();
-			if (name.equals(operand.getName())) {
-				return operand;
-			}
+			if (eClass != null && !eClass.isInstance(operand))
+				continue operandLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(operand.getName())
+				: name.equals(operand.getName())))
+				continue operandLoop;
+			if (type != null && !type.equals(operand.getType()))
+				continue operandLoop;
+			return operand;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOperand(name, type, eClass)
+			: null;
 	}
 
 	/**

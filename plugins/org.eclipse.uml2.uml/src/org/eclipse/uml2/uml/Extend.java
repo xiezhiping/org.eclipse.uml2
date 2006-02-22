@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.4 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Extend.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -109,25 +109,27 @@ public interface Extend
 	void setCondition(Constraint value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Condition</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
 	 * @see #getCondition()
 	 * @generated
 	 */
-	Constraint createCondition(EClass eClass);
+	Constraint createCondition(String name, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>Condition</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
 	 * @see #getCondition()
 	 * @generated
 	 */
-	Constraint createCondition();
+	Constraint createCondition(String name);
 
 	/**
 	 * Returns the value of the '<em><b>Extension Location</b></em>' reference list.
@@ -147,15 +149,27 @@ public interface Extend
 	EList getExtensionLocations();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Location</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Location</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ExtensionPoint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ExtensionPoint} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensionLocations()
 	 * @generated
 	 */
 	ExtensionPoint getExtensionLocation(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Location</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ExtensionPoint} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getExtensionLocations()
+	 * @generated
+	 */
+	ExtensionPoint getExtensionLocation(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Extension</b></em>' container reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,6 +45,7 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -325,11 +326,26 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public Classifier getClassifier(String name) {
-		for (Iterator i = getClassifiers().iterator(); i.hasNext();) {
+		return getClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		classifierLoop : for (Iterator i = getClassifiers().iterator(); i
+			.hasNext();) {
 			Classifier classifier = (Classifier) i.next();
-			if (name.equals(classifier.getName())) {
-				return classifier;
-			}
+			if (eClass != null && !eClass.isInstance(classifier))
+				continue classifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(classifier.getName())
+				: name.equals(classifier.getName())))
+				continue classifierLoop;
+			return classifier;
 		}
 		return null;
 	}
@@ -435,9 +451,12 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createSpecification(EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createSpecification(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newSpecification = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newSpecification.setName(name);
+		newSpecification.setType(type);
 		setSpecification(newSpecification);
 		return newSpecification;
 	}

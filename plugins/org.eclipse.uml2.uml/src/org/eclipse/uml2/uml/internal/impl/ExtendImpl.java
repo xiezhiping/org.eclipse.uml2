@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -298,9 +298,9 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createCondition(EClass eClass) {
-		Constraint newCondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createCondition(String name, EClass eClass) {
+		Constraint newCondition = (Constraint) EcoreUtil.create(eClass);
+		newCondition.setName(name);
 		setCondition(newCondition);
 		return newCondition;
 	}
@@ -310,8 +310,9 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createCondition() {
+	public Constraint createCondition(String name) {
 		Constraint newCondition = UMLFactory.eINSTANCE.createConstraint();
+		newCondition.setName(name);
 		setCondition(newCondition);
 		return newCondition;
 	}
@@ -338,11 +339,23 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public ExtensionPoint getExtensionLocation(String name) {
-		for (Iterator i = getExtensionLocations().iterator(); i.hasNext();) {
+		return getExtensionLocation(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExtensionPoint getExtensionLocation(String name, boolean ignoreCase) {
+		extensionLocationLoop : for (Iterator i = getExtensionLocations()
+			.iterator(); i.hasNext();) {
 			ExtensionPoint extensionLocation = (ExtensionPoint) i.next();
-			if (name.equals(extensionLocation.getName())) {
-				return extensionLocation;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(extensionLocation.getName())
+				: name.equals(extensionLocation.getName())))
+				continue extensionLocationLoop;
+			return extensionLocation;
 		}
 		return null;
 	}

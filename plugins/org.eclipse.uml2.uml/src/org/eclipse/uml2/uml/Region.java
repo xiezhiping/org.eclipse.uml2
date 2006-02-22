@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.7 2006/02/21 16:12:19 khussey Exp $
+ * $Id: Region.java,v 1.8 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -65,26 +65,42 @@ public interface Region
 	EList getSubvertices();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Vertex} and appends it to the '<em><b>Subvertex</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Vertex}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Subvertex</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Vertex}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Vertex} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Vertex}.
 	 * @see #getSubvertices()
 	 * @generated
 	 */
-	Vertex createSubvertex(EClass eClass);
+	Vertex createSubvertex(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Vertex} with the specified '<em><b>Name</b></em>' from the '<em><b>Subvertex</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Vertex} with the specified '<em><b>Name</b></em>' from the '<em><b>Subvertex</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Vertex} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Vertex} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Vertex} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Vertex} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubvertices()
 	 * @generated
 	 */
 	Vertex getSubvertex(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Vertex} with the specified '<em><b>Name</b></em>' from the '<em><b>Subvertex</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Vertex} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Vertex} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Vertex} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Vertex} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSubvertices()
+	 * @generated
+	 */
+	Vertex getSubvertex(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Transition</b></em>' containment reference list.
@@ -104,36 +120,53 @@ public interface Region
 	EList getTransitions();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Transition}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Transition}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Transition} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Transition}.
 	 * @see #getTransitions()
 	 * @generated
 	 */
-	Transition createTransition(EClass eClass);
+	Transition createTransition(String name, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Transition} and appends it to the '<em><b>Transition</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Transition}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Transition}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Transition}.
 	 * @see #getTransitions()
 	 * @generated
 	 */
-	Transition createTransition();
+	Transition createTransition(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Transition</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Transition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTransitions()
 	 * @generated
 	 */
 	Transition getTransition(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Transition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Transition} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getTransitions()
+	 * @generated
+	 */
+	Transition getTransition(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' container reference.

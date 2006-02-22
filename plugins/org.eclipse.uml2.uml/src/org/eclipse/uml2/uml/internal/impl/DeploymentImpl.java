@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -159,11 +159,26 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public DeployedArtifact getDeployedArtifact(String name) {
-		for (Iterator i = getDeployedArtifacts().iterator(); i.hasNext();) {
+		return getDeployedArtifact(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeployedArtifact getDeployedArtifact(String name,
+			boolean ignoreCase, EClass eClass) {
+		deployedArtifactLoop : for (Iterator i = getDeployedArtifacts()
+			.iterator(); i.hasNext();) {
 			DeployedArtifact deployedArtifact = (DeployedArtifact) i.next();
-			if (name.equals(deployedArtifact.getName())) {
-				return deployedArtifact;
-			}
+			if (eClass != null && !eClass.isInstance(deployedArtifact))
+				continue deployedArtifactLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployedArtifact.getName())
+				: name.equals(deployedArtifact.getName())))
+				continue deployedArtifactLoop;
+			return deployedArtifact;
 		}
 		return null;
 	}
@@ -191,9 +206,10 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DeploymentSpecification createConfiguration() {
+	public DeploymentSpecification createConfiguration(String name) {
 		DeploymentSpecification newConfiguration = UMLFactory.eINSTANCE
 			.createDeploymentSpecification();
+		newConfiguration.setName(name);
 		getConfigurations().add(newConfiguration);
 		return newConfiguration;
 	}
@@ -204,14 +220,29 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public DeploymentSpecification getConfiguration(String name) {
-		for (Iterator i = getConfigurations().iterator(); i.hasNext();) {
+		return getConfiguration(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeploymentSpecification getConfiguration(String name,
+			boolean ignoreCase, boolean createOnDemand) {
+		configurationLoop : for (Iterator i = getConfigurations().iterator(); i
+			.hasNext();) {
 			DeploymentSpecification configuration = (DeploymentSpecification) i
 				.next();
-			if (name.equals(configuration.getName())) {
-				return configuration;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(configuration.getName())
+				: name.equals(configuration.getName())))
+				continue configurationLoop;
+			return configuration;
 		}
-		return null;
+		return createOnDemand
+			? createConfiguration(name)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.15 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ActionImpl.java,v 1.16 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -36,6 +37,7 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -100,12 +102,25 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getOutput(String name) {
-		for (Iterator i = getOutputs().iterator(); i.hasNext();) {
+	public OutputPin getOutput(String name, Type type) {
+		return getOutput(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getOutput(String name, Type type, boolean ignoreCase) {
+		outputLoop : for (Iterator i = getOutputs().iterator(); i.hasNext();) {
 			OutputPin output = (OutputPin) i.next();
-			if (name.equals(output.getName())) {
-				return output;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(output.getName())
+				: name.equals(output.getName())))
+				continue outputLoop;
+			if (type != null && !type.equals(output.getType()))
+				continue outputLoop;
+			return output;
 		}
 		return null;
 	}
@@ -151,12 +166,28 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin getInput(String name) {
-		for (Iterator i = getInputs().iterator(); i.hasNext();) {
+	public InputPin getInput(String name, Type type) {
+		return getInput(name, type, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getInput(String name, Type type, boolean ignoreCase,
+			EClass eClass) {
+		inputLoop : for (Iterator i = getInputs().iterator(); i.hasNext();) {
 			InputPin input = (InputPin) i.next();
-			if (name.equals(input.getName())) {
-				return input;
-			}
+			if (eClass != null && !eClass.isInstance(input))
+				continue inputLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(input.getName())
+				: name.equals(input.getName())))
+				continue inputLoop;
+			if (type != null && !type.equals(input.getType()))
+				continue inputLoop;
+			return input;
 		}
 		return null;
 	}
@@ -193,9 +224,9 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createLocalPrecondition(EClass eClass) {
-		Constraint newLocalPrecondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createLocalPrecondition(String name, EClass eClass) {
+		Constraint newLocalPrecondition = (Constraint) EcoreUtil.create(eClass);
+		newLocalPrecondition.setName(name);
 		getLocalPreconditions().add(newLocalPrecondition);
 		return newLocalPrecondition;
 	}
@@ -205,9 +236,10 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createLocalPrecondition() {
+	public Constraint createLocalPrecondition(String name) {
 		Constraint newLocalPrecondition = UMLFactory.eINSTANCE
 			.createConstraint();
+		newLocalPrecondition.setName(name);
 		getLocalPreconditions().add(newLocalPrecondition);
 		return newLocalPrecondition;
 	}
@@ -218,13 +250,30 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public Constraint getLocalPrecondition(String name) {
-		for (Iterator i = getLocalPreconditions().iterator(); i.hasNext();) {
+		return getLocalPrecondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getLocalPrecondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		localPreconditionLoop : for (Iterator i = getLocalPreconditions()
+			.iterator(); i.hasNext();) {
 			Constraint localPrecondition = (Constraint) i.next();
-			if (name.equals(localPrecondition.getName())) {
-				return localPrecondition;
-			}
+			if (eClass != null && !eClass.isInstance(localPrecondition))
+				continue localPreconditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(localPrecondition.getName())
+				: name.equals(localPrecondition.getName())))
+				continue localPreconditionLoop;
+			return localPrecondition;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createLocalPrecondition(name, eClass)
+			: null;
 	}
 
 	/**
@@ -248,9 +297,10 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createLocalPostcondition(EClass eClass) {
-		Constraint newLocalPostcondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createLocalPostcondition(String name, EClass eClass) {
+		Constraint newLocalPostcondition = (Constraint) EcoreUtil
+			.create(eClass);
+		newLocalPostcondition.setName(name);
 		getLocalPostconditions().add(newLocalPostcondition);
 		return newLocalPostcondition;
 	}
@@ -260,9 +310,10 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createLocalPostcondition() {
+	public Constraint createLocalPostcondition(String name) {
 		Constraint newLocalPostcondition = UMLFactory.eINSTANCE
 			.createConstraint();
+		newLocalPostcondition.setName(name);
 		getLocalPostconditions().add(newLocalPostcondition);
 		return newLocalPostcondition;
 	}
@@ -273,13 +324,30 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public Constraint getLocalPostcondition(String name) {
-		for (Iterator i = getLocalPostconditions().iterator(); i.hasNext();) {
+		return getLocalPostcondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getLocalPostcondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		localPostconditionLoop : for (Iterator i = getLocalPostconditions()
+			.iterator(); i.hasNext();) {
 			Constraint localPostcondition = (Constraint) i.next();
-			if (name.equals(localPostcondition.getName())) {
-				return localPostcondition;
-			}
+			if (eClass != null && !eClass.isInstance(localPostcondition))
+				continue localPostconditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(localPostcondition.getName())
+				: name.equals(localPostcondition.getName())))
+				continue localPostconditionLoop;
+			return localPostcondition;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createLocalPostcondition(name, eClass)
+			: null;
 	}
 
 	/**

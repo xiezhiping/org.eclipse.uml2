@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.3 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Deployment.java,v 1.4 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,15 +58,29 @@ public interface Deployment
 	EList getDeployedArtifacts();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDeployedArtifacts()
 	 * @generated
 	 */
 	DeployedArtifact getDeployedArtifact(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getDeployedArtifacts()
+	 * @generated
+	 */
+	DeployedArtifact getDeployedArtifact(String name, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference list.
@@ -84,25 +100,40 @@ public interface Deployment
 	EList getConfigurations();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.DeploymentSpecification} and appends it to the '<em><b>Configuration</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.DeploymentSpecification}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.DeploymentSpecification}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.DeploymentSpecification}.
 	 * @see #getConfigurations()
 	 * @generated
 	 */
-	DeploymentSpecification createConfiguration();
+	DeploymentSpecification createConfiguration(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConfigurations()
 	 * @generated
 	 */
 	DeploymentSpecification getConfiguration(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.DeploymentSpecification} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConfigurations()
+	 * @generated
+	 */
+	DeploymentSpecification getConfiguration(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' container reference.

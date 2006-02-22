@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.19 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.20 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -116,8 +117,10 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedEnd() {
+	public Property createOwnedEnd(String name, Type type) {
 		ExtensionEnd newOwnedEnd = UMLFactory.eINSTANCE.createExtensionEnd();
+		newOwnedEnd.setName(name);
+		newOwnedEnd.setType(type);
 		getOwnedEnds().add(newOwnedEnd);
 		return newOwnedEnd;
 	}
@@ -127,14 +130,30 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedEnd(String name) {
-		for (Iterator i = getOwnedEnds().iterator(); i.hasNext();) {
+	public Property getOwnedEnd(String name, Type type) {
+		return getOwnedEnd(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedEnd(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedEndLoop : for (Iterator i = getOwnedEnds().iterator(); i.hasNext();) {
 			ExtensionEnd ownedEnd = (ExtensionEnd) i.next();
-			if (name.equals(ownedEnd.getName())) {
-				return ownedEnd;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedEnd.getName())
+				: name.equals(ownedEnd.getName())))
+				continue ownedEndLoop;
+			if (type != null && !type.equals(ownedEnd.getType()))
+				continue ownedEndLoop;
+			return ownedEnd;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedEnd(name, type)
+			: null;
 	}
 
 	/**

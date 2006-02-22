@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.5 2006/02/21 16:12:19 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -105,7 +105,7 @@ public interface TemplateSignature
 	EList getOwnedParameters();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.TemplateParameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.TemplateParameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.TemplateParameter} to create.
@@ -116,7 +116,7 @@ public interface TemplateSignature
 	TemplateParameter createOwnedParameter(EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.TemplateParameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.TemplateParameter} and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.uml.TemplateParameter}.

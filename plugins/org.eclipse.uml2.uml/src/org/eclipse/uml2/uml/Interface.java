@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.6 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Interface.java,v 1.7 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,36 +70,57 @@ public interface Interface
 	EList getOwnedAttributes();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Property}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.Property}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Property}.
 	 * @see #getOwnedAttributes()
 	 * @generated
 	 */
-	Property createOwnedAttribute(EClass eClass);
+	Property createOwnedAttribute(String name, Type type, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Property} and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Property}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.Property}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Property}.
 	 * @see #getOwnedAttributes()
 	 * @generated
 	 */
-	Property createOwnedAttribute();
+	Property createOwnedAttribute(String name, Type type);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
 	 */
-	Property getOwnedAttribute(String name);
+	Property getOwnedAttribute(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Property} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 */
+	Property getOwnedAttribute(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
@@ -117,26 +138,42 @@ public interface Interface
 	EList getNestedClassifiers();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Classifier} and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Classifier}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Classifier}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Classifier}.
 	 * @see #getNestedClassifiers()
 	 * @generated
 	 */
-	Classifier createNestedClassifier(EClass eClass);
+	Classifier createNestedClassifier(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedClassifiers()
 	 * @generated
 	 */
 	Classifier getNestedClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Classifier} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNestedClassifiers()
+	 * @generated
+	 */
+	Classifier getNestedClassifier(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Interface</b></em>' reference list.
@@ -154,15 +191,27 @@ public interface Interface
 	EList getRedefinedInterfaces();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Interface</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Interface</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedInterfaces()
 	 * @generated
 	 */
 	Interface getRedefinedInterface(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Interface</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedInterfaces()
+	 * @generated
+	 */
+	Interface getRedefinedInterface(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Reception</b></em>' containment reference list.
@@ -180,25 +229,49 @@ public interface Interface
 	EList getOwnedReceptions();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Reception} and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Reception}, with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Reception}, or <code>null</code>.
+	 * @param ownedParameterNames The '<em><b>Owned Parameter Names</b></em>' for the new {@link org.eclipse.uml2.uml.Reception}, or <code>null</code>.
+	 * @param ownedParameterTypes The '<em><b>Owned Parameter Types</b></em>' for the new {@link org.eclipse.uml2.uml.Reception}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Reception}.
 	 * @see #getOwnedReceptions()
 	 * @generated
 	 */
-	Reception createOwnedReception();
+	Reception createOwnedReception(String name, EList ownedParameterNames,
+			EList ownedParameterTypes);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve, or <code>null</code>.
+	 * @param ownedParameterNames The '<em><b>Owned Parameter Names</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve, or <code>null</code>.
+	 * @param ownedParameterTypes The '<em><b>Owned Parameter Types</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', or <code>null</code>.
 	 * @see #getOwnedReceptions()
 	 * @generated
 	 */
-	Reception getOwnedReception(String name);
+	Reception getOwnedReception(String name, EList ownedParameterNames,
+			EList ownedParameterTypes);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve, or <code>null</code>.
+	 * @param ownedParameterNames The '<em><b>Owned Parameter Names</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve, or <code>null</code>.
+	 * @param ownedParameterTypes The '<em><b>Owned Parameter Types</b></em>' of the {@link org.eclipse.uml2.uml.Reception} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Reception} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', or <code>null</code>.
+	 * @see #getOwnedReceptions()
+	 * @generated
+	 */
+	Reception getOwnedReception(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' containment reference.
@@ -226,14 +299,15 @@ public interface Interface
 	void setProtocol(ProtocolStateMachine value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ProtocolStateMachine} and sets the '<em><b>Protocol</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.ProtocolStateMachine},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Protocol</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ProtocolStateMachine}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.ProtocolStateMachine}.
 	 * @see #getProtocol()
 	 * @generated
 	 */
-	ProtocolStateMachine createProtocol();
+	ProtocolStateMachine createProtocol(String name);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -253,25 +327,49 @@ public interface Interface
 	EList getOwnedOperations();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Operation}, with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Operation}, or <code>null</code>.
+	 * @param ownedParameterNames The '<em><b>Owned Parameter Names</b></em>' for the new {@link org.eclipse.uml2.uml.Operation}, or <code>null</code>.
+	 * @param ownedParameterTypes The '<em><b>Owned Parameter Types</b></em>' for the new {@link org.eclipse.uml2.uml.Operation}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Operation}.
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation createOwnedOperation();
+	Operation createOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve, or <code>null</code>.
+	 * @param ownedParameterNames The '<em><b>Owned Parameter Names</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve, or <code>null</code>.
+	 * @param ownedParameterTypes The '<em><b>Owned Parameter Types</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation getOwnedOperation(String name);
+	Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve, or <code>null</code>.
+	 * @param ownedParameterNames The '<em><b>Owned Parameter Names</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve, or <code>null</code>.
+	 * @param ownedParameterTypes The '<em><b>Owned Parameter Types</b></em>' of the {@link org.eclipse.uml2.uml.Operation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Operation} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', or <code>null</code>.
+	 * @see #getOwnedOperations()
+	 * @generated
+	 */
+	Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,16 +386,16 @@ public interface Interface
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" returnTypeRequired="true" returnTypeOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
-	Operation createOwnedOperation(String name, Type returnType,
-			EList parameterNames, EList parameterTypes);
+	Operation createOwnedOperation(String name, EList parameterNames,
+			EList parameterTypes, Type returnType);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" typeRequired="true" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated
 	 */
 	Property createOwnedAttribute(String name, Type type, int lower, int upper);

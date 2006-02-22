@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.20 2006/02/21 16:12:18 khussey Exp $
+ * $Id: PackageImpl.java,v 1.21 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -341,11 +341,41 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBinding createTemplateBinding() {
+	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
+		newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature) {
+		return getTemplateBinding(signature, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature,
+			boolean createOnDemand) {
+		templateBindingLoop : for (Iterator i = getTemplateBindings()
+			.iterator(); i.hasNext();) {
+			TemplateBinding templateBinding = (TemplateBinding) i.next();
+			if (signature != null
+				&& !signature.equals(templateBinding.getSignature()))
+				continue templateBindingLoop;
+			return templateBinding;
+		}
+		return createOnDemand
+			? createTemplateBinding(signature)
+			: null;
 	}
 
 	/**
@@ -450,8 +480,8 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
+			.create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -506,9 +536,10 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageableElement createPackagedElement(EClass eClass) {
-		PackageableElement newPackagedElement = (PackageableElement) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public PackageableElement createPackagedElement(String name, EClass eClass) {
+		PackageableElement newPackagedElement = (PackageableElement) EcoreUtil
+			.create(eClass);
+		newPackagedElement.setName(name);
 		getPackagedElements().add(newPackagedElement);
 		return newPackagedElement;
 	}
@@ -519,13 +550,30 @@ public class PackageImpl
 	 * @generated
 	 */
 	public PackageableElement getPackagedElement(String name) {
-		for (Iterator i = getPackagedElements().iterator(); i.hasNext();) {
+		return getPackagedElement(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getPackagedElement(String name,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		packagedElementLoop : for (Iterator i = getPackagedElements()
+			.iterator(); i.hasNext();) {
 			PackageableElement packagedElement = (PackageableElement) i.next();
-			if (name.equals(packagedElement.getName())) {
-				return packagedElement;
-			}
+			if (eClass != null && !eClass.isInstance(packagedElement))
+				continue packagedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(packagedElement.getName())
+				: name.equals(packagedElement.getName())))
+				continue packagedElementLoop;
+			return packagedElement;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createPackagedElement(name, eClass)
+			: null;
 	}
 
 	/**
@@ -551,11 +599,43 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageMerge createPackageMerge() {
+	public PackageMerge createPackageMerge(
+			org.eclipse.uml2.uml.Package mergedPackage) {
 		PackageMerge newPackageMerge = UMLFactory.eINSTANCE
 			.createPackageMerge();
+		newPackageMerge.setMergedPackage(mergedPackage);
 		getPackageMerges().add(newPackageMerge);
 		return newPackageMerge;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageMerge getPackageMerge(
+			org.eclipse.uml2.uml.Package mergedPackage) {
+		return getPackageMerge(mergedPackage, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageMerge getPackageMerge(
+			org.eclipse.uml2.uml.Package mergedPackage, boolean createOnDemand) {
+		packageMergeLoop : for (Iterator i = getPackageMerges().iterator(); i
+			.hasNext();) {
+			PackageMerge packageMerge = (PackageMerge) i.next();
+			if (mergedPackage != null
+				&& !mergedPackage.equals(packageMerge.getMergedPackage()))
+				continue packageMergeLoop;
+			return packageMerge;
+		}
+		return createOnDemand
+			? createPackageMerge(mergedPackage)
+			: null;
 	}
 
 	/**
@@ -579,14 +659,43 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Type createOwnedType(String name, EClass eClass) {
+		Type newOwnedType = (Type) EcoreUtil.create(eClass);
+		newOwnedType.setName(name);
+		getOwnedTypes().add(newOwnedType);
+		return newOwnedType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Type getOwnedType(String name) {
-		for (Iterator i = getOwnedTypes().iterator(); i.hasNext();) {
+		return getOwnedType(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getOwnedType(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		ownedTypeLoop : for (Iterator i = getOwnedTypes().iterator(); i
+			.hasNext();) {
 			Type ownedType = (Type) i.next();
-			if (name.equals(ownedType.getName())) {
-				return ownedType;
-			}
+			if (eClass != null && !eClass.isInstance(ownedType))
+				continue ownedTypeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedType.getName())
+				: name.equals(ownedType.getName())))
+				continue ownedTypeLoop;
+			return ownedType;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedType(name, eClass)
+			: null;
 	}
 
 	/**
@@ -611,15 +720,46 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.uml2.uml.Package createNestedPackage(String name,
+			EClass eClass) {
+		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) EcoreUtil
+			.create(eClass);
+		newNestedPackage.setName(name);
+		getNestedPackages().add(newNestedPackage);
+		return newNestedPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.eclipse.uml2.uml.Package getNestedPackage(String name) {
-		for (Iterator i = getNestedPackages().iterator(); i.hasNext();) {
+		return getNestedPackage(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.uml2.uml.Package getNestedPackage(String name,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		nestedPackageLoop : for (Iterator i = getNestedPackages().iterator(); i
+			.hasNext();) {
 			org.eclipse.uml2.uml.Package nestedPackage = (org.eclipse.uml2.uml.Package) i
 				.next();
-			if (name.equals(nestedPackage.getName())) {
-				return nestedPackage;
-			}
+			if (eClass != null && !eClass.isInstance(nestedPackage))
+				continue nestedPackageLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(nestedPackage.getName())
+				: name.equals(nestedPackage.getName())))
+				continue nestedPackageLoop;
+			return nestedPackage;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNestedPackage(name, eClass)
+			: null;
 	}
 
 	/**
@@ -769,7 +909,11 @@ public class PackageImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package createNestedPackage(String name) {
-		return PackageOperations.createNestedPackage(this, name);
+		org.eclipse.uml2.uml.Package newNestedPackage = UMLFactory.eINSTANCE
+			.createPackage();
+		newNestedPackage.setName(name);
+		getNestedPackages().add(newNestedPackage);
+		return newNestedPackage;
 	}
 
 	/**
@@ -952,10 +1096,10 @@ public class PackageImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(17));
+				.getEOperations().get(16));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
-					.get(17), result = PackageOperations.visibleMembers(this));
+					.get(16), result = PackageOperations.visibleMembers(this));
 			}
 			return result;
 		}

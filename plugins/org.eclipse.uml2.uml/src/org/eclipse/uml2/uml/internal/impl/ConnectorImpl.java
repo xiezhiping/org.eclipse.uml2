@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -200,11 +200,23 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public Connector getRedefinedConnector(String name) {
-		for (Iterator i = getRedefinedConnectors().iterator(); i.hasNext();) {
+		return getRedefinedConnector(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connector getRedefinedConnector(String name, boolean ignoreCase) {
+		redefinedConnectorLoop : for (Iterator i = getRedefinedConnectors()
+			.iterator(); i.hasNext();) {
 			Connector redefinedConnector = (Connector) i.next();
-			if (name.equals(redefinedConnector.getName())) {
-				return redefinedConnector;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedConnector.getName())
+				: name.equals(redefinedConnector.getName())))
+				continue redefinedConnectorLoop;
+			return redefinedConnector;
 		}
 		return null;
 	}
@@ -309,11 +321,24 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public Behavior getContract(String name) {
-		for (Iterator i = getContracts().iterator(); i.hasNext();) {
+		return getContract(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior getContract(String name, boolean ignoreCase, EClass eClass) {
+		contractLoop : for (Iterator i = getContracts().iterator(); i.hasNext();) {
 			Behavior contract = (Behavior) i.next();
-			if (name.equals(contract.getName())) {
-				return contract;
-			}
+			if (eClass != null && !eClass.isInstance(contract))
+				continue contractLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(contract.getName())
+				: name.equals(contract.getName())))
+				continue contractLoop;
+			return contract;
 		}
 		return null;
 	}

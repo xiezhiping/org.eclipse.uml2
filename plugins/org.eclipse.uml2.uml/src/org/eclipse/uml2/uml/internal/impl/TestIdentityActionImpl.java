@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TestIdentityAction;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -208,9 +210,10 @@ public class TestIdentityActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createFirst(EClass eClass) {
-		InputPin newFirst = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createFirst(String name, Type type, EClass eClass) {
+		InputPin newFirst = (InputPin) EcoreUtil.create(eClass);
+		newFirst.setName(name);
+		newFirst.setType(type);
 		setFirst(newFirst);
 		return newFirst;
 	}
@@ -220,8 +223,10 @@ public class TestIdentityActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createFirst() {
+	public InputPin createFirst(String name, Type type) {
 		InputPin newFirst = UMLFactory.eINSTANCE.createInputPin();
+		newFirst.setName(name);
+		newFirst.setType(type);
 		setFirst(newFirst);
 		return newFirst;
 	}
@@ -320,9 +325,10 @@ public class TestIdentityActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createSecond(EClass eClass) {
-		InputPin newSecond = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createSecond(String name, Type type, EClass eClass) {
+		InputPin newSecond = (InputPin) EcoreUtil.create(eClass);
+		newSecond.setName(name);
+		newSecond.setType(type);
 		setSecond(newSecond);
 		return newSecond;
 	}
@@ -332,8 +338,10 @@ public class TestIdentityActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createSecond() {
+	public InputPin createSecond(String name, Type type) {
 		InputPin newSecond = UMLFactory.eINSTANCE.createInputPin();
+		newSecond.setName(name);
+		newSecond.setType(type);
 		setSecond(newSecond);
 		return newSecond;
 	}
@@ -432,8 +440,10 @@ public class TestIdentityActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin createResult() {
+	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		newResult.setName(name);
+		newResult.setType(type);
 		setResult(newResult);
 		return newResult;
 	}

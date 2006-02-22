@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -336,9 +337,12 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createUpperBound(EClass eClass) {
-		ValueSpecification newUpperBound = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createUpperBound(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newUpperBound = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newUpperBound.setName(name);
+		newUpperBound.setType(type);
 		setUpperBound(newUpperBound);
 		return newUpperBound;
 	}
@@ -364,11 +368,24 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public State getInState(String name) {
-		for (Iterator i = getInStates().iterator(); i.hasNext();) {
+		return getInState(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State getInState(String name, boolean ignoreCase, EClass eClass) {
+		inStateLoop : for (Iterator i = getInStates().iterator(); i.hasNext();) {
 			State inState = (State) i.next();
-			if (name.equals(inState.getName())) {
-				return inState;
-			}
+			if (eClass != null && !eClass.isInstance(inState))
+				continue inStateLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inState.getName())
+				: name.equals(inState.getName())))
+				continue inStateLoop;
+			return inState;
 		}
 		return null;
 	}

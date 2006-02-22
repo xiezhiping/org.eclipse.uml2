@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.16 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -36,8 +36,6 @@ import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
-
-import org.eclipse.uml2.uml.internal.operations.EnumerationOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -118,11 +116,8 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EnumerationLiteral createOwnedLiteral() {
-		EnumerationLiteral newOwnedLiteral = UMLFactory.eINSTANCE
-			.createEnumerationLiteral();
-		getOwnedLiterals().add(newOwnedLiteral);
-		return newOwnedLiteral;
+	public EnumerationLiteral getOwnedLiteral(String name) {
+		return getOwnedLiteral(name, false, false);
 	}
 
 	/**
@@ -130,14 +125,20 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EnumerationLiteral getOwnedLiteral(String name) {
-		for (Iterator i = getOwnedLiterals().iterator(); i.hasNext();) {
+	public EnumerationLiteral getOwnedLiteral(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedLiteralLoop : for (Iterator i = getOwnedLiterals().iterator(); i
+			.hasNext();) {
 			EnumerationLiteral ownedLiteral = (EnumerationLiteral) i.next();
-			if (name.equals(ownedLiteral.getName())) {
-				return ownedLiteral;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedLiteral.getName())
+				: name.equals(ownedLiteral.getName())))
+				continue ownedLiteralLoop;
+			return ownedLiteral;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedLiteral(name)
+			: null;
 	}
 
 	/**
@@ -146,7 +147,11 @@ public class EnumerationImpl
 	 * @generated
 	 */
 	public EnumerationLiteral createOwnedLiteral(String name) {
-		return EnumerationOperations.createOwnedLiteral(this, name);
+		EnumerationLiteral newOwnedLiteral = UMLFactory.eINSTANCE
+			.createEnumerationLiteral();
+		newOwnedLiteral.setName(name);
+		getOwnedLiterals().add(newOwnedLiteral);
+		return newOwnedLiteral;
 	}
 
 	/**

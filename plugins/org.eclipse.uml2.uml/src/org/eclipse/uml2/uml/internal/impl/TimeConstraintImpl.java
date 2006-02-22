@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.13 2006/02/21 16:12:16 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.14 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,10 +24,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeConstraint;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TimeInterval;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -227,9 +230,12 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createSpecification(EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createSpecification(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newSpecification = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newSpecification.setName(name);
+		newSpecification.setType(type);
 		setSpecification(newSpecification);
 		return newSpecification;
 	}

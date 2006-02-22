@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.16 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.17 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -133,11 +134,43 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProtocolConformance createConformance() {
+	public ProtocolConformance createConformance(
+			ProtocolStateMachine generalMachine) {
 		ProtocolConformance newConformance = UMLFactory.eINSTANCE
 			.createProtocolConformance();
+		newConformance.setGeneralMachine(generalMachine);
 		getConformances().add(newConformance);
 		return newConformance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProtocolConformance getConformance(
+			ProtocolStateMachine generalMachine) {
+		return getConformance(generalMachine, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProtocolConformance getConformance(
+			ProtocolStateMachine generalMachine, boolean createOnDemand) {
+		conformanceLoop : for (Iterator i = getConformances().iterator(); i
+			.hasNext();) {
+			ProtocolConformance conformance = (ProtocolConformance) i.next();
+			if (generalMachine != null
+				&& !generalMachine.equals(conformance.getGeneralMachine()))
+				continue conformanceLoop;
+			return conformance;
+		}
+		return createOnDemand
+			? createConformance(generalMachine)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.13 2006/02/21 16:12:17 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.14 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -192,11 +192,26 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext();) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (Iterator i = getRedefinedElements()
+			.iterator(); i.hasNext();) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -223,11 +238,26 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext();) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
+			.iterator(); i.hasNext();) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinitionContext.getName())
+				: name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -280,11 +310,26 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public Classifier getFeaturingClassifier(String name) {
-		for (Iterator i = getFeaturingClassifiers().iterator(); i.hasNext();) {
+		return getFeaturingClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getFeaturingClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		featuringClassifierLoop : for (Iterator i = getFeaturingClassifiers()
+			.iterator(); i.hasNext();) {
 			Classifier featuringClassifier = (Classifier) i.next();
-			if (name.equals(featuringClassifier.getName())) {
-				return featuringClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(featuringClassifier))
+				continue featuringClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(featuringClassifier.getName())
+				: name.equals(featuringClassifier.getName())))
+				continue featuringClassifierLoop;
+			return featuringClassifier;
 		}
 		return null;
 	}
@@ -355,8 +400,10 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Parameter createOwnedParameter() {
+	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = UMLFactory.eINSTANCE.createParameter();
+		newOwnedParameter.setName(name);
+		newOwnedParameter.setType(type);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -366,14 +413,31 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Parameter getOwnedParameter(String name) {
-		for (Iterator i = getOwnedParameters().iterator(); i.hasNext();) {
+	public Parameter getOwnedParameter(String name, Type type) {
+		return getOwnedParameter(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter getOwnedParameter(String name, Type type,
+			boolean ignoreCase, boolean createOnDemand) {
+		ownedParameterLoop : for (Iterator i = getOwnedParameters().iterator(); i
+			.hasNext();) {
 			Parameter ownedParameter = (Parameter) i.next();
-			if (name.equals(ownedParameter.getName())) {
-				return ownedParameter;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedParameter.getName())
+				: name.equals(ownedParameter.getName())))
+				continue ownedParameterLoop;
+			if (type != null && !type.equals(ownedParameter.getType()))
+				continue ownedParameterLoop;
+			return ownedParameter;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedParameter(name, type)
+			: null;
 	}
 
 	/**
@@ -425,11 +489,24 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public Behavior getMethod(String name) {
-		for (Iterator i = getMethods().iterator(); i.hasNext();) {
+		return getMethod(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior getMethod(String name, boolean ignoreCase, EClass eClass) {
+		methodLoop : for (Iterator i = getMethods().iterator(); i.hasNext();) {
 			Behavior method = (Behavior) i.next();
-			if (name.equals(method.getName())) {
-				return method;
-			}
+			if (eClass != null && !eClass.isInstance(method))
+				continue methodLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(method.getName())
+				: name.equals(method.getName())))
+				continue methodLoop;
+			return method;
 		}
 		return null;
 	}
@@ -485,11 +562,26 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public Type getRaisedException(String name) {
-		for (Iterator i = getRaisedExceptions().iterator(); i.hasNext();) {
+		return getRaisedException(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getRaisedException(String name, boolean ignoreCase,
+			EClass eClass) {
+		raisedExceptionLoop : for (Iterator i = getRaisedExceptions()
+			.iterator(); i.hasNext();) {
 			Type raisedException = (Type) i.next();
-			if (name.equals(raisedException.getName())) {
-				return raisedException;
-			}
+			if (eClass != null && !eClass.isInstance(raisedException))
+				continue raisedExceptionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(raisedException.getName())
+				: name.equals(raisedException.getName())))
+				continue raisedExceptionLoop;
+			return raisedException;
 		}
 		return null;
 	}
@@ -515,9 +607,10 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterSet createOwnedParameterSet() {
+	public ParameterSet createOwnedParameterSet(String name) {
 		ParameterSet newOwnedParameterSet = UMLFactory.eINSTANCE
 			.createParameterSet();
+		newOwnedParameterSet.setName(name);
 		getOwnedParameterSets().add(newOwnedParameterSet);
 		return newOwnedParameterSet;
 	}
@@ -528,13 +621,28 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public ParameterSet getOwnedParameterSet(String name) {
-		for (Iterator i = getOwnedParameterSets().iterator(); i.hasNext();) {
+		return getOwnedParameterSet(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterSet getOwnedParameterSet(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedParameterSetLoop : for (Iterator i = getOwnedParameterSets()
+			.iterator(); i.hasNext();) {
 			ParameterSet ownedParameterSet = (ParameterSet) i.next();
-			if (name.equals(ownedParameterSet.getName())) {
-				return ownedParameterSet;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedParameterSet.getName())
+				: name.equals(ownedParameterSet.getName())))
+				continue ownedParameterSetLoop;
+			return ownedParameterSet;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedParameterSet(name)
+			: null;
 	}
 
 	/**
@@ -567,6 +675,15 @@ public abstract class BehavioralFeatureImpl
 	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
 			redefined);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter createReturnResult(String name, Type type) {
+		return BehavioralFeatureOperations.createReturnResult(this, name, type);
 	}
 
 	/**

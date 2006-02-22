@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -166,9 +167,9 @@ public class CollaborationUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Dependency createRoleBinding(EClass eClass) {
-		Dependency newRoleBinding = (Dependency) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Dependency createRoleBinding(String name, EClass eClass) {
+		Dependency newRoleBinding = (Dependency) EcoreUtil.create(eClass);
+		newRoleBinding.setName(name);
 		getRoleBindings().add(newRoleBinding);
 		return newRoleBinding;
 	}
@@ -178,8 +179,9 @@ public class CollaborationUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Dependency createRoleBinding() {
+	public Dependency createRoleBinding(String name) {
 		Dependency newRoleBinding = UMLFactory.eINSTANCE.createDependency();
+		newRoleBinding.setName(name);
 		getRoleBindings().add(newRoleBinding);
 		return newRoleBinding;
 	}
@@ -190,13 +192,30 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public Dependency getRoleBinding(String name) {
-		for (Iterator i = getRoleBindings().iterator(); i.hasNext();) {
+		return getRoleBinding(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Dependency getRoleBinding(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		roleBindingLoop : for (Iterator i = getRoleBindings().iterator(); i
+			.hasNext();) {
 			Dependency roleBinding = (Dependency) i.next();
-			if (name.equals(roleBinding.getName())) {
-				return roleBinding;
-			}
+			if (eClass != null && !eClass.isInstance(roleBinding))
+				continue roleBindingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(roleBinding.getName())
+				: name.equals(roleBinding.getName())))
+				continue roleBindingLoop;
+			return roleBinding;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createRoleBinding(name, eClass)
+			: null;
 	}
 
 	/**

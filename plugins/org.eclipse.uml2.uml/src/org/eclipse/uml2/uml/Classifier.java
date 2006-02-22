@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.11 2006/02/21 21:39:47 khussey Exp $
+ * $Id: Classifier.java,v 1.12 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -109,16 +111,6 @@ public interface Classifier
 	EList getGeneralizations();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Generalization} and appends it to the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.Generalization}.
-	 * @see #getGeneralizations()
-	 * @generated
-	 */
-	Generalization createGeneralization();
-
-	/**
 	 * Returns the value of the '<em><b>Powertype Extent</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.GeneralizationSet}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.GeneralizationSet#getPowertype <em>Powertype</em>}'.
@@ -136,15 +128,27 @@ public interface Classifier
 	EList getPowertypeExtents();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.GeneralizationSet} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.GeneralizationSet} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPowertypeExtents()
 	 * @generated
 	 */
 	GeneralizationSet getPowertypeExtent(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.GeneralizationSet} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPowertypeExtents()
+	 * @generated
+	 */
+	GeneralizationSet getPowertypeExtent(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Feature</b></em>' reference list.
@@ -165,15 +169,28 @@ public interface Classifier
 	EList getFeatures();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Feature} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Feature} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFeatures()
 	 * @generated
 	 */
 	Feature getFeature(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Feature} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Feature} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getFeatures()
+	 * @generated
+	 */
+	Feature getFeature(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Inherited Member</b></em>' reference list.
@@ -191,15 +208,29 @@ public interface Classifier
 	EList getInheritedMembers();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInheritedMembers()
 	 * @generated
 	 */
 	NamedElement getInheritedMember(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInheritedMembers()
+	 * @generated
+	 */
+	NamedElement getInheritedMember(String name, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Classifier</b></em>' reference list.
@@ -217,15 +248,29 @@ public interface Classifier
 	EList getRedefinedClassifiers();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedClassifiers()
 	 * @generated
 	 */
 	Classifier getRedefinedClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedClassifiers()
+	 * @generated
+	 */
+	Classifier getRedefinedClassifier(String name, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>General</b></em>' reference list.
@@ -244,15 +289,28 @@ public interface Classifier
 	EList getGenerals();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGenerals()
 	 * @generated
 	 */
 	Classifier getGeneral(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getGenerals()
+	 * @generated
+	 */
+	Classifier getGeneral(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -270,25 +328,40 @@ public interface Classifier
 	EList getOwnedUseCases();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.UseCase} and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.UseCase}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.UseCase}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.UseCase}.
 	 * @see #getOwnedUseCases()
 	 * @generated
 	 */
-	UseCase createOwnedUseCase();
+	UseCase createOwnedUseCase(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.UseCase} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.UseCase} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedUseCases()
 	 * @generated
 	 */
 	UseCase getOwnedUseCase(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.UseCase} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.UseCase} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedUseCases()
+	 * @generated
+	 */
+	UseCase getOwnedUseCase(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Use Case</b></em>' reference list.
@@ -308,15 +381,27 @@ public interface Classifier
 	EList getUseCases();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.UseCase} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.UseCase} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getUseCases()
 	 * @generated
 	 */
 	UseCase getUseCase(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.UseCase} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getUseCases()
+	 * @generated
+	 */
+	UseCase getUseCase(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Substitution</b></em>' containment reference list.
@@ -336,25 +421,43 @@ public interface Classifier
 	EList getSubstitutions();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Substitution} and appends it to the '<em><b>Substitution</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Substitution}, with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', and appends it to the '<em><b>Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Substitution}, or <code>null</code>.
+	 * @param contract The '<em><b>Contract</b></em>' for the new {@link org.eclipse.uml2.uml.Substitution}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Substitution}.
 	 * @see #getSubstitutions()
 	 * @generated
 	 */
-	Substitution createSubstitution();
+	Substitution createSubstitution(String name, Classifier contract);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Substitution} with the specified '<em><b>Name</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Substitution} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Substitution} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Substitution} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Substitution} to retrieve, or <code>null</code>.
+	 * @param contract The '<em><b>Contract</b></em>' of the {@link org.eclipse.uml2.uml.Substitution} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Substitution} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', or <code>null</code>.
 	 * @see #getSubstitutions()
 	 * @generated
 	 */
-	Substitution getSubstitution(String name);
+	Substitution getSubstitution(String name, Classifier contract);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Substitution} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Substitution} to retrieve, or <code>null</code>.
+	 * @param contract The '<em><b>Contract</b></em>' of the {@link org.eclipse.uml2.uml.Substitution} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Substitution} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Substitution} with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', or <code>null</code>.
+	 * @see #getSubstitutions()
+	 * @generated
+	 */
+	Substitution getSubstitution(String name, Classifier contract,
+			boolean ignoreCase, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Attribute</b></em>' reference list.
@@ -372,15 +475,31 @@ public interface Classifier
 	EList getAttributes();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Attribute</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getAttributes()
 	 * @generated
 	 */
-	Property getAttribute(String name);
+	Property getAttribute(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getAttributes()
+	 * @generated
+	 */
+	Property getAttribute(String name, Type type, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Representation</b></em>' reference.
@@ -408,6 +527,17 @@ public interface Classifier
 	void setRepresentation(CollaborationUse value);
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.CollaborationUse},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.CollaborationUse}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.CollaborationUse}.
+	 * @see #getRepresentation()
+	 * @generated
+	 */
+	CollaborationUse createRepresentation(String name);
+
+	/**
 	 * Returns the value of the '<em><b>Collaboration Use</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.CollaborationUse}.
 	 * <!-- begin-user-doc -->
@@ -423,25 +553,40 @@ public interface Classifier
 	EList getCollaborationUses();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.CollaborationUse} and appends it to the '<em><b>Collaboration Use</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.CollaborationUse}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Collaboration Use</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.CollaborationUse}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.CollaborationUse}.
 	 * @see #getCollaborationUses()
 	 * @generated
 	 */
-	CollaborationUse createCollaborationUse();
+	CollaborationUse createCollaborationUse(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.CollaborationUse} with the specified '<em><b>Name</b></em>' from the '<em><b>Collaboration Use</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.CollaborationUse} with the specified '<em><b>Name</b></em>' from the '<em><b>Collaboration Use</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.CollaborationUse} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.CollaborationUse} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.CollaborationUse} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.CollaborationUse} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCollaborationUses()
 	 * @generated
 	 */
 	CollaborationUse getCollaborationUse(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.CollaborationUse} with the specified '<em><b>Name</b></em>' from the '<em><b>Collaboration Use</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.CollaborationUse} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.CollaborationUse} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.CollaborationUse} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getCollaborationUses()
+	 * @generated
+	 */
+	CollaborationUse getCollaborationUse(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -495,12 +640,38 @@ public interface Classifier
 			Map context);
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Generalization}, with the specified '<em><b>General</b></em>', and appends it to the '<em><b>Generalization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" generalRequired="true" generalOrdered="false"
+	 * @param general The '<em><b>General</b></em>' for the new {@link org.eclipse.uml2.uml.Generalization}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Generalization}.
+	 * @see #getGeneralizations()
 	 * @generated
 	 */
 	Generalization createGeneralization(Classifier general);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>' from the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param general The '<em><b>General</b></em>' of the {@link org.eclipse.uml2.uml.Generalization} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>', or <code>null</code>.
+	 * @see #getGeneralizations()
+	 * @generated
+	 */
+	Generalization getGeneralization(Classifier general);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>' from the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param general The '<em><b>General</b></em>' of the {@link org.eclipse.uml2.uml.Generalization} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Generalization} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>', or <code>null</code>.
+	 * @see #getGeneralizations()
+	 * @generated
+	 */
+	Generalization getGeneralization(Classifier general, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -529,10 +700,20 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
 	 * @generated
 	 */
-	Operation getOperation(String name);
+	Operation getOperation(String name, EList parameterNames,
+			EList parameterTypes);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.uml.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
+	 * @generated
+	 */
+	Operation getOperation(String name, EList parameterNames,
+			EList parameterTypes, boolean ignoreCase);
 
 	/**
 	 * <!-- begin-user-doc -->

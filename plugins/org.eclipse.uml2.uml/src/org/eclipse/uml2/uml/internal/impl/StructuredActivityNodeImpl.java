@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.17 2006/02/21 16:12:16 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.18 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -47,6 +48,7 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Variable;
@@ -186,11 +188,26 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public NamedElement getOwnedMember(String name) {
-		for (Iterator i = getOwnedMembers().iterator(); i.hasNext();) {
+		return getOwnedMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getOwnedMember(String name, boolean ignoreCase,
+			EClass eClass) {
+		ownedMemberLoop : for (Iterator i = getOwnedMembers().iterator(); i
+			.hasNext();) {
 			NamedElement ownedMember = (NamedElement) i.next();
-			if (name.equals(ownedMember.getName())) {
-				return ownedMember;
-			}
+			if (eClass != null && !eClass.isInstance(ownedMember))
+				continue ownedMemberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedMember.getName())
+				: name.equals(ownedMember.getName())))
+				continue ownedMemberLoop;
+			return ownedMember;
 		}
 		return null;
 	}
@@ -218,11 +235,24 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public NamedElement getMember(String name) {
-		for (Iterator i = getMembers().iterator(); i.hasNext();) {
+		return getMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getMember(String name, boolean ignoreCase, EClass eClass) {
+		memberLoop : for (Iterator i = getMembers().iterator(); i.hasNext();) {
 			NamedElement member = (NamedElement) i.next();
-			if (name.equals(member.getName())) {
-				return member;
-			}
+			if (eClass != null && !eClass.isInstance(member))
+				continue memberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(member.getName())
+				: name.equals(member.getName())))
+				continue memberLoop;
+			return member;
 		}
 		return null;
 	}
@@ -250,11 +280,41 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementImport createElementImport() {
+	public ElementImport createElementImport(PackageableElement importedElement) {
 		ElementImport newElementImport = UMLFactory.eINSTANCE
 			.createElementImport();
+		newElementImport.setImportedElement(importedElement);
 		getElementImports().add(newElementImport);
 		return newElementImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getElementImport(PackageableElement importedElement) {
+		return getElementImport(importedElement, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getElementImport(PackageableElement importedElement,
+			boolean createOnDemand) {
+		elementImportLoop : for (Iterator i = getElementImports().iterator(); i
+			.hasNext();) {
+			ElementImport elementImport = (ElementImport) i.next();
+			if (importedElement != null
+				&& !importedElement.equals(elementImport.getImportedElement()))
+				continue elementImportLoop;
+			return elementImport;
+		}
+		return createOnDemand
+			? createElementImport(importedElement)
+			: null;
 	}
 
 	/**
@@ -280,11 +340,43 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PackageImport createPackageImport() {
+	public PackageImport createPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
 		PackageImport newPackageImport = UMLFactory.eINSTANCE
 			.createPackageImport();
+		newPackageImport.setImportedPackage(importedPackage);
 		getPackageImports().add(newPackageImport);
 		return newPackageImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		return getPackageImport(importedPackage, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
+		packageImportLoop : for (Iterator i = getPackageImports().iterator(); i
+			.hasNext();) {
+			PackageImport packageImport = (PackageImport) i.next();
+			if (importedPackage != null
+				&& !importedPackage.equals(packageImport.getImportedPackage()))
+				continue packageImportLoop;
+			return packageImport;
+		}
+		return createOnDemand
+			? createPackageImport(importedPackage)
+			: null;
 	}
 
 	/**
@@ -309,9 +401,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createOwnedRule(EClass eClass) {
-		Constraint newOwnedRule = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createOwnedRule(String name, EClass eClass) {
+		Constraint newOwnedRule = (Constraint) EcoreUtil.create(eClass);
+		newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}
@@ -321,8 +413,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createOwnedRule() {
+	public Constraint createOwnedRule(String name) {
 		Constraint newOwnedRule = UMLFactory.eINSTANCE.createConstraint();
+		newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}
@@ -333,13 +426,30 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public Constraint getOwnedRule(String name) {
-		for (Iterator i = getOwnedRules().iterator(); i.hasNext();) {
+		return getOwnedRule(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getOwnedRule(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedRuleLoop : for (Iterator i = getOwnedRules().iterator(); i
+			.hasNext();) {
 			Constraint ownedRule = (Constraint) i.next();
-			if (name.equals(ownedRule.getName())) {
-				return ownedRule;
-			}
+			if (eClass != null && !eClass.isInstance(ownedRule))
+				continue ownedRuleLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedRule.getName())
+				: name.equals(ownedRule.getName())))
+				continue ownedRuleLoop;
+			return ownedRule;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createOwnedRule(name, eClass)
+			: null;
 	}
 
 	/**
@@ -367,11 +477,26 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public PackageableElement getImportedMember(String name) {
-		for (Iterator i = getImportedMembers().iterator(); i.hasNext();) {
+		return getImportedMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getImportedMember(String name,
+			boolean ignoreCase, EClass eClass) {
+		importedMemberLoop : for (Iterator i = getImportedMembers().iterator(); i
+			.hasNext();) {
 			PackageableElement importedMember = (PackageableElement) i.next();
-			if (name.equals(importedMember.getName())) {
-				return importedMember;
-			}
+			if (eClass != null && !eClass.isInstance(importedMember))
+				continue importedMemberLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(importedMember.getName())
+				: name.equals(importedMember.getName())))
+				continue importedMemberLoop;
+			return importedMember;
 		}
 		return null;
 	}
@@ -414,11 +539,26 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityNode getContainedNode(String name) {
-		for (Iterator i = getContainedNodes().iterator(); i.hasNext();) {
+		return getContainedNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getContainedNode(String name, boolean ignoreCase,
+			EClass eClass) {
+		containedNodeLoop : for (Iterator i = getContainedNodes().iterator(); i
+			.hasNext();) {
 			ActivityNode containedNode = (ActivityNode) i.next();
-			if (name.equals(containedNode.getName())) {
-				return containedNode;
-			}
+			if (eClass != null && !eClass.isInstance(containedNode))
+				continue containedNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(containedNode.getName())
+				: name.equals(containedNode.getName())))
+				continue containedNodeLoop;
+			return containedNode;
 		}
 		return null;
 	}
@@ -446,11 +586,26 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityEdge getContainedEdge(String name) {
-		for (Iterator i = getContainedEdges().iterator(); i.hasNext();) {
+		return getContainedEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getContainedEdge(String name, boolean ignoreCase,
+			EClass eClass) {
+		containedEdgeLoop : for (Iterator i = getContainedEdges().iterator(); i
+			.hasNext();) {
 			ActivityEdge containedEdge = (ActivityEdge) i.next();
-			if (name.equals(containedEdge.getName())) {
-				return containedEdge;
-			}
+			if (eClass != null && !eClass.isInstance(containedEdge))
+				continue containedEdgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(containedEdge.getName())
+				: name.equals(containedEdge.getName())))
+				continue containedEdgeLoop;
+			return containedEdge;
 		}
 		return null;
 	}
@@ -477,8 +632,10 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variable createVariable() {
+	public Variable createVariable(String name, Type type) {
 		Variable newVariable = UMLFactory.eINSTANCE.createVariable();
+		newVariable.setName(name);
+		newVariable.setType(type);
 		getVariables().add(newVariable);
 		return newVariable;
 	}
@@ -488,14 +645,30 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variable getVariable(String name) {
-		for (Iterator i = getVariables().iterator(); i.hasNext();) {
+	public Variable getVariable(String name, Type type) {
+		return getVariable(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable getVariable(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
+		variableLoop : for (Iterator i = getVariables().iterator(); i.hasNext();) {
 			Variable variable = (Variable) i.next();
-			if (name.equals(variable.getName())) {
-				return variable;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(variable.getName())
+				: name.equals(variable.getName())))
+				continue variableLoop;
+			if (type != null && !type.equals(variable.getType()))
+				continue variableLoop;
+			return variable;
 		}
-		return null;
+		return createOnDemand
+			? createVariable(name, type)
+			: null;
 	}
 
 	/**
@@ -520,9 +693,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityNode createNode(EClass eClass) {
-		ActivityNode newNode = (ActivityNode) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ActivityNode createNode(String name, EClass eClass) {
+		ActivityNode newNode = (ActivityNode) EcoreUtil.create(eClass);
+		newNode.setName(name);
 		getNodes().add(newNode);
 		return newNode;
 	}
@@ -533,13 +706,29 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityNode getNode(String name) {
-		for (Iterator i = getNodes().iterator(); i.hasNext();) {
+		return getNode(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		nodeLoop : for (Iterator i = getNodes().iterator(); i.hasNext();) {
 			ActivityNode node = (ActivityNode) i.next();
-			if (name.equals(node.getName())) {
-				return node;
-			}
+			if (eClass != null && !eClass.isInstance(node))
+				continue nodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(node.getName())
+				: name.equals(node.getName())))
+				continue nodeLoop;
+			return node;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNode(name, eClass)
+			: null;
 	}
 
 	/**
@@ -591,9 +780,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityEdge createEdge(EClass eClass) {
-		ActivityEdge newEdge = (ActivityEdge) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ActivityEdge createEdge(String name, EClass eClass) {
+		ActivityEdge newEdge = (ActivityEdge) EcoreUtil.create(eClass);
+		newEdge.setName(name);
 		getEdges().add(newEdge);
 		return newEdge;
 	}
@@ -604,13 +793,29 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityEdge getEdge(String name) {
-		for (Iterator i = getEdges().iterator(); i.hasNext();) {
+		return getEdge(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		edgeLoop : for (Iterator i = getEdges().iterator(); i.hasNext();) {
 			ActivityEdge edge = (ActivityEdge) i.next();
-			if (name.equals(edge.getName())) {
-				return edge;
-			}
+			if (eClass != null && !eClass.isInstance(edge))
+				continue edgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(edge.getName())
+				: name.equals(edge.getName())))
+				continue edgeLoop;
+			return edge;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createEdge(name, eClass)
+			: null;
 	}
 
 	/**

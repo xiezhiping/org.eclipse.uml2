@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.5 2006/02/21 16:12:19 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,14 +53,42 @@ public interface EncapsulatedClassifier
 	EList getOwnedPorts();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Port</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Port}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Port</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Port}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.Port}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Port}.
 	 * @see #getOwnedPorts()
 	 * @generated
 	 */
-	Port getOwnedPort(String name);
+	Port createOwnedPort(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Owned Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getOwnedPorts()
+	 * @generated
+	 */
+	Port getOwnedPort(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Owned Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Port} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getOwnedPorts()
+	 * @generated
+	 */
+	Port getOwnedPort(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand);
 
 } // EncapsulatedClassifier

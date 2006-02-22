@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.9 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Clause;
 import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.OutputPin;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.ClauseOperations;
@@ -100,11 +101,24 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public ExecutableNode getTest(String name) {
-		for (Iterator i = getTests().iterator(); i.hasNext();) {
+		return getTest(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutableNode getTest(String name, boolean ignoreCase, EClass eClass) {
+		testLoop : for (Iterator i = getTests().iterator(); i.hasNext();) {
 			ExecutableNode test = (ExecutableNode) i.next();
-			if (name.equals(test.getName())) {
-				return test;
-			}
+			if (eClass != null && !eClass.isInstance(test))
+				continue testLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(test.getName())
+				: name.equals(test.getName())))
+				continue testLoop;
+			return test;
 		}
 		return null;
 	}
@@ -130,11 +144,24 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public ExecutableNode getBody(String name) {
-		for (Iterator i = getBodies().iterator(); i.hasNext();) {
+		return getBody(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutableNode getBody(String name, boolean ignoreCase, EClass eClass) {
+		bodyLoop : for (Iterator i = getBodies().iterator(); i.hasNext();) {
 			ExecutableNode body = (ExecutableNode) i.next();
-			if (name.equals(body.getName())) {
-				return body;
-			}
+			if (eClass != null && !eClass.isInstance(body))
+				continue bodyLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(body.getName())
+				: name.equals(body.getName())))
+				continue bodyLoop;
+			return body;
 		}
 		return null;
 	}
@@ -238,12 +265,26 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getBodyOutput(String name) {
-		for (Iterator i = getBodyOutputs().iterator(); i.hasNext();) {
+	public OutputPin getBodyOutput(String name, Type type) {
+		return getBodyOutput(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getBodyOutput(String name, Type type, boolean ignoreCase) {
+		bodyOutputLoop : for (Iterator i = getBodyOutputs().iterator(); i
+			.hasNext();) {
 			OutputPin bodyOutput = (OutputPin) i.next();
-			if (name.equals(bodyOutput.getName())) {
-				return bodyOutput;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(bodyOutput.getName())
+				: name.equals(bodyOutput.getName())))
+				continue bodyOutputLoop;
+			if (type != null && !type.equals(bodyOutput.getType()))
+				continue bodyOutputLoop;
+			return bodyOutput;
 		}
 		return null;
 	}

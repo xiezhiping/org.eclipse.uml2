@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: DurationImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,11 +138,26 @@ public class DurationImpl
 	 * @generated
 	 */
 	public Observation getObservation(String name) {
-		for (Iterator i = getObservations().iterator(); i.hasNext();) {
+		return getObservation(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Observation getObservation(String name, boolean ignoreCase,
+			EClass eClass) {
+		observationLoop : for (Iterator i = getObservations().iterator(); i
+			.hasNext();) {
 			Observation observation = (Observation) i.next();
-			if (name.equals(observation.getName())) {
-				return observation;
-			}
+			if (eClass != null && !eClass.isInstance(observation))
+				continue observationLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(observation.getName())
+				: name.equals(observation.getName())))
+				continue observationLoop;
+			return observation;
 		}
 		return null;
 	}

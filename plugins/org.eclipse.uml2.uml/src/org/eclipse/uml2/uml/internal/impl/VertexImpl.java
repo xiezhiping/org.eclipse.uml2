@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: VertexImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,11 +98,24 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Transition getOutgoing(String name) {
-		for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
+		return getOutgoing(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
+		outgoingLoop : for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
 			Transition outgoing = (Transition) i.next();
-			if (name.equals(outgoing.getName())) {
-				return outgoing;
-			}
+			if (eClass != null && !eClass.isInstance(outgoing))
+				continue outgoingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(outgoing.getName())
+				: name.equals(outgoing.getName())))
+				continue outgoingLoop;
+			return outgoing;
 		}
 		return null;
 	}
@@ -129,11 +142,24 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Transition getIncoming(String name) {
-		for (Iterator i = getIncomings().iterator(); i.hasNext();) {
+		return getIncoming(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
+		incomingLoop : for (Iterator i = getIncomings().iterator(); i.hasNext();) {
 			Transition incoming = (Transition) i.next();
-			if (name.equals(incoming.getName())) {
-				return incoming;
-			}
+			if (eClass != null && !eClass.isInstance(incoming))
+				continue incomingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(incoming.getName())
+				: name.equals(incoming.getName())))
+				continue incomingLoop;
+			return incoming;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.10 2006/01/03 19:50:25 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,11 +116,24 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public ActivityNode getNode(String name) {
-		for (Iterator i = getNodes().iterator(); i.hasNext();) {
+		return getNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
+		nodeLoop : for (Iterator i = getNodes().iterator(); i.hasNext();) {
 			ActivityNode node = (ActivityNode) i.next();
-			if (name.equals(node.getName())) {
-				return node;
-			}
+			if (eClass != null && !eClass.isInstance(node))
+				continue nodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(node.getName())
+				: name.equals(node.getName())))
+				continue nodeLoop;
+			return node;
 		}
 		return null;
 	}
@@ -150,11 +163,26 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public ActivityEdge getInterruptingEdge(String name) {
-		for (Iterator i = getInterruptingEdges().iterator(); i.hasNext();) {
+		return getInterruptingEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getInterruptingEdge(String name, boolean ignoreCase,
+			EClass eClass) {
+		interruptingEdgeLoop : for (Iterator i = getInterruptingEdges()
+			.iterator(); i.hasNext();) {
 			ActivityEdge interruptingEdge = (ActivityEdge) i.next();
-			if (name.equals(interruptingEdge.getName())) {
-				return interruptingEdge;
-			}
+			if (eClass != null && !eClass.isInstance(interruptingEdge))
+				continue interruptingEdgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(interruptingEdge.getName())
+				: name.equals(interruptingEdge.getName())))
+				continue interruptingEdgeLoop;
+			return interruptingEdge;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.14 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.15 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -192,11 +192,26 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityNode getContainedNode(String name) {
-		for (Iterator i = getContainedNodes().iterator(); i.hasNext();) {
+		return getContainedNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getContainedNode(String name, boolean ignoreCase,
+			EClass eClass) {
+		containedNodeLoop : for (Iterator i = getContainedNodes().iterator(); i
+			.hasNext();) {
 			ActivityNode containedNode = (ActivityNode) i.next();
-			if (name.equals(containedNode.getName())) {
-				return containedNode;
-			}
+			if (eClass != null && !eClass.isInstance(containedNode))
+				continue containedNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(containedNode.getName())
+				: name.equals(containedNode.getName())))
+				continue containedNodeLoop;
+			return containedNode;
 		}
 		return null;
 	}
@@ -224,11 +239,26 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityEdge getContainedEdge(String name) {
-		for (Iterator i = getContainedEdges().iterator(); i.hasNext();) {
+		return getContainedEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getContainedEdge(String name, boolean ignoreCase,
+			EClass eClass) {
+		containedEdgeLoop : for (Iterator i = getContainedEdges().iterator(); i
+			.hasNext();) {
 			ActivityEdge containedEdge = (ActivityEdge) i.next();
-			if (name.equals(containedEdge.getName())) {
-				return containedEdge;
-			}
+			if (eClass != null && !eClass.isInstance(containedEdge))
+				continue containedEdgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(containedEdge.getName())
+				: name.equals(containedEdge.getName())))
+				continue containedEdgeLoop;
+			return containedEdge;
 		}
 		return null;
 	}
@@ -349,11 +379,24 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityEdge getEdge(String name) {
-		for (Iterator i = getEdges().iterator(); i.hasNext();) {
+		return getEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass) {
+		edgeLoop : for (Iterator i = getEdges().iterator(); i.hasNext();) {
 			ActivityEdge edge = (ActivityEdge) i.next();
-			if (name.equals(edge.getName())) {
-				return edge;
-			}
+			if (eClass != null && !eClass.isInstance(edge))
+				continue edgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(edge.getName())
+				: name.equals(edge.getName())))
+				continue edgeLoop;
+			return edge;
 		}
 		return null;
 	}
@@ -381,11 +424,24 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityNode getNode(String name) {
-		for (Iterator i = getNodes().iterator(); i.hasNext();) {
+		return getNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
+		nodeLoop : for (Iterator i = getNodes().iterator(); i.hasNext();) {
 			ActivityNode node = (ActivityNode) i.next();
-			if (name.equals(node.getName())) {
-				return node;
-			}
+			if (eClass != null && !eClass.isInstance(node))
+				continue nodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(node.getName())
+				: name.equals(node.getName())))
+				continue nodeLoop;
+			return node;
 		}
 		return null;
 	}
@@ -413,9 +469,10 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityPartition createSubpartition() {
+	public ActivityPartition createSubpartition(String name) {
 		ActivityPartition newSubpartition = UMLFactory.eINSTANCE
 			.createActivityPartition();
+		newSubpartition.setName(name);
 		getSubpartitions().add(newSubpartition);
 		return newSubpartition;
 	}
@@ -426,13 +483,28 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityPartition getSubpartition(String name) {
-		for (Iterator i = getSubpartitions().iterator(); i.hasNext();) {
+		return getSubpartition(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getSubpartition(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		subpartitionLoop : for (Iterator i = getSubpartitions().iterator(); i
+			.hasNext();) {
 			ActivityPartition subpartition = (ActivityPartition) i.next();
-			if (name.equals(subpartition.getName())) {
-				return subpartition;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(subpartition.getName())
+				: name.equals(subpartition.getName())))
+				continue subpartitionLoop;
+			return subpartition;
 		}
-		return null;
+		return createOnDemand
+			? createSubpartition(name)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.18 2006/02/21 21:39:47 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.19 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,8 +167,9 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Region createRegion() {
+	public Region createRegion(String name) {
 		Region newRegion = UMLFactory.eINSTANCE.createRegion();
+		newRegion.setName(name);
 		getRegions().add(newRegion);
 		return newRegion;
 	}
@@ -179,13 +180,27 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public Region getRegion(String name) {
-		for (Iterator i = getRegions().iterator(); i.hasNext();) {
+		return getRegion(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Region getRegion(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		regionLoop : for (Iterator i = getRegions().iterator(); i.hasNext();) {
 			Region region = (Region) i.next();
-			if (name.equals(region.getName())) {
-				return region;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(region.getName())
+				: name.equals(region.getName())))
+				continue regionLoop;
+			return region;
 		}
-		return null;
+		return createOnDemand
+			? createRegion(name)
+			: null;
 	}
 
 	/**
@@ -211,11 +226,26 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public State getSubmachineState(String name) {
-		for (Iterator i = getSubmachineStates().iterator(); i.hasNext();) {
+		return getSubmachineState(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State getSubmachineState(String name, boolean ignoreCase,
+			EClass eClass) {
+		submachineStateLoop : for (Iterator i = getSubmachineStates()
+			.iterator(); i.hasNext();) {
 			State submachineState = (State) i.next();
-			if (name.equals(submachineState.getName())) {
-				return submachineState;
-			}
+			if (eClass != null && !eClass.isInstance(submachineState))
+				continue submachineStateLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(submachineState.getName())
+				: name.equals(submachineState.getName())))
+				continue submachineStateLoop;
+			return submachineState;
 		}
 		return null;
 	}
@@ -243,9 +273,10 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pseudostate createConnectionPoint() {
+	public Pseudostate createConnectionPoint(String name) {
 		Pseudostate newConnectionPoint = UMLFactory.eINSTANCE
 			.createPseudostate();
+		newConnectionPoint.setName(name);
 		getConnectionPoints().add(newConnectionPoint);
 		return newConnectionPoint;
 	}
@@ -256,13 +287,28 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public Pseudostate getConnectionPoint(String name) {
-		for (Iterator i = getConnectionPoints().iterator(); i.hasNext();) {
+		return getConnectionPoint(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pseudostate getConnectionPoint(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		connectionPointLoop : for (Iterator i = getConnectionPoints()
+			.iterator(); i.hasNext();) {
 			Pseudostate connectionPoint = (Pseudostate) i.next();
-			if (name.equals(connectionPoint.getName())) {
-				return connectionPoint;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(connectionPoint.getName())
+				: name.equals(connectionPoint.getName())))
+				continue connectionPointLoop;
+			return connectionPoint;
 		}
-		return null;
+		return createOnDemand
+			? createConnectionPoint(name)
+			: null;
 	}
 
 	/**
@@ -287,11 +333,26 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public StateMachine getExtendedStateMachine(String name) {
-		for (Iterator i = getExtendedStateMachines().iterator(); i.hasNext();) {
+		return getExtendedStateMachine(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateMachine getExtendedStateMachine(String name,
+			boolean ignoreCase, EClass eClass) {
+		extendedStateMachineLoop : for (Iterator i = getExtendedStateMachines()
+			.iterator(); i.hasNext();) {
 			StateMachine extendedStateMachine = (StateMachine) i.next();
-			if (name.equals(extendedStateMachine.getName())) {
-				return extendedStateMachine;
-			}
+			if (eClass != null && !eClass.isInstance(extendedStateMachine))
+				continue extendedStateMachineLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(extendedStateMachine.getName())
+				: name.equals(extendedStateMachine.getName())))
+				continue extendedStateMachineLoop;
+			return extendedStateMachine;
 		}
 		return null;
 	}

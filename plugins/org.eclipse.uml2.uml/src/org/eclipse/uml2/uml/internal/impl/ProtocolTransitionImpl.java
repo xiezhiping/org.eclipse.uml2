@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.22 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.23 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
@@ -41,11 +42,13 @@ import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ProtocolTransition;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
@@ -219,6 +222,30 @@ public class ProtocolTransitionImpl
 
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostCondition(String name, EClass eClass) {
+		Constraint newPostCondition = (Constraint) EcoreUtil.create(eClass);
+		newPostCondition.setName(name);
+		setPostCondition(newPostCondition);
+		return newPostCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostCondition(String name) {
+		Constraint newPostCondition = UMLFactory.eINSTANCE.createConstraint();
+		newPostCondition.setName(name);
+		setPostCondition(newPostCondition);
+		return newPostCondition;
+	}
+
 	protected static class ReferredEList
 			extends DerivedEObjectEList {
 
@@ -297,12 +324,47 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getReferred(String name) {
-		for (Iterator i = getReferreds().iterator(); i.hasNext();) {
+	public Operation getReferred(String name, EList ownedParameterNames,
+			EList ownedParameterTypes) {
+		return getReferred(name, ownedParameterNames, ownedParameterTypes,
+			false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getReferred(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase) {
+		referredLoop : for (Iterator i = getReferreds().iterator(); i.hasNext();) {
 			Operation referred = (Operation) i.next();
-			if (name.equals(referred.getName())) {
-				return referred;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(referred.getName())
+				: name.equals(referred.getName())))
+				continue referredLoop;
+			EList ownedParameterList = referred.getOwnedParameters();
+			int ownedParameterListSize = ownedParameterList.size();
+			if (ownedParameterNames != null
+				&& ownedParameterNames.size() != ownedParameterListSize
+				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				continue referredLoop;
+			for (int j = 0; j < ownedParameterListSize; j++) {
+				Parameter ownedParameter = (Parameter) ownedParameterList
+					.get(j);
+				if (ownedParameterNames != null
+					&& !(ignoreCase
+						? ((String) ownedParameterNames.get(j))
+							.equalsIgnoreCase(ownedParameter.getName())
+						: ownedParameterNames.get(j).equals(
+							ownedParameter.getName())))
+					continue referredLoop;
+				if (ownedParameterTypes != null
+					&& !ownedParameterTypes.get(j).equals(
+						ownedParameter.getType()))
+					continue referredLoop;
 			}
+			return referred;
 		}
 		return null;
 	}

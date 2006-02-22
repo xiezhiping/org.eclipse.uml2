@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.5 2006/02/02 23:30:18 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -139,6 +139,17 @@ public interface GeneralizationSet
 	 * @generated
 	 */
 	EList getGeneralizations();
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>' from the '<em><b>Generalization</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param general The '<em><b>General</b></em>' of the {@link org.eclipse.uml2.uml.Generalization} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>', or <code>null</code>.
+	 * @see #getGeneralizations()
+	 * @generated
+	 */
+	Generalization getGeneralization(Classifier general);
 
 	/**
 	 * <!-- begin-user-doc -->

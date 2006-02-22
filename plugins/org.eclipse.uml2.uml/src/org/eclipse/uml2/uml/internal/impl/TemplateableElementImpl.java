@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import java.util.Iterator;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -24,6 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -120,11 +123,41 @@ public abstract class TemplateableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemplateBinding createTemplateBinding() {
+	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
+		newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature) {
+		return getTemplateBinding(signature, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateBinding getTemplateBinding(TemplateSignature signature,
+			boolean createOnDemand) {
+		templateBindingLoop : for (Iterator i = getTemplateBindings()
+			.iterator(); i.hasNext();) {
+			TemplateBinding templateBinding = (TemplateBinding) i.next();
+			if (signature != null
+				&& !signature.equals(templateBinding.getSignature()))
+				continue templateBindingLoop;
+			return templateBinding;
+		}
+		return createOnDemand
+			? createTemplateBinding(signature)
+			: null;
 	}
 
 	/**
@@ -232,8 +265,8 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
+			.create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}

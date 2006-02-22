@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.18 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,6 +40,8 @@ import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -275,9 +278,9 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Artifact createNestedArtifact(EClass eClass) {
-		Artifact newNestedArtifact = (Artifact) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Artifact createNestedArtifact(String name, EClass eClass) {
+		Artifact newNestedArtifact = (Artifact) EcoreUtil.create(eClass);
+		newNestedArtifact.setName(name);
 		getNestedArtifacts().add(newNestedArtifact);
 		return newNestedArtifact;
 	}
@@ -287,8 +290,9 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Artifact createNestedArtifact() {
+	public Artifact createNestedArtifact(String name) {
 		Artifact newNestedArtifact = UMLFactory.eINSTANCE.createArtifact();
+		newNestedArtifact.setName(name);
 		getNestedArtifacts().add(newNestedArtifact);
 		return newNestedArtifact;
 	}
@@ -299,13 +303,30 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Artifact getNestedArtifact(String name) {
-		for (Iterator i = getNestedArtifacts().iterator(); i.hasNext();) {
+		return getNestedArtifact(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Artifact getNestedArtifact(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		nestedArtifactLoop : for (Iterator i = getNestedArtifacts().iterator(); i
+			.hasNext();) {
 			Artifact nestedArtifact = (Artifact) i.next();
-			if (name.equals(nestedArtifact.getName())) {
-				return nestedArtifact;
-			}
+			if (eClass != null && !eClass.isInstance(nestedArtifact))
+				continue nestedArtifactLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(nestedArtifact.getName())
+				: name.equals(nestedArtifact.getName())))
+				continue nestedArtifactLoop;
+			return nestedArtifact;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNestedArtifact(name, eClass)
+			: null;
 	}
 
 	/**
@@ -331,9 +352,12 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Manifestation createManifestation() {
+	public Manifestation createManifestation(String name,
+			PackageableElement utilizedElement) {
 		Manifestation newManifestation = UMLFactory.eINSTANCE
 			.createManifestation();
+		newManifestation.setName(name);
+		newManifestation.setUtilizedElement(utilizedElement);
 		getManifestations().add(newManifestation);
 		return newManifestation;
 	}
@@ -343,14 +367,34 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Manifestation getManifestation(String name) {
-		for (Iterator i = getManifestations().iterator(); i.hasNext();) {
+	public Manifestation getManifestation(String name,
+			PackageableElement utilizedElement) {
+		return getManifestation(name, utilizedElement, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Manifestation getManifestation(String name,
+			PackageableElement utilizedElement, boolean ignoreCase,
+			boolean createOnDemand) {
+		manifestationLoop : for (Iterator i = getManifestations().iterator(); i
+			.hasNext();) {
 			Manifestation manifestation = (Manifestation) i.next();
-			if (name.equals(manifestation.getName())) {
-				return manifestation;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(manifestation.getName())
+				: name.equals(manifestation.getName())))
+				continue manifestationLoop;
+			if (utilizedElement != null
+				&& !utilizedElement.equals(manifestation.getUtilizedElement()))
+				continue manifestationLoop;
+			return manifestation;
 		}
-		return null;
+		return createOnDemand
+			? createManifestation(name, utilizedElement)
+			: null;
 	}
 
 	/**
@@ -374,8 +418,28 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOwnedOperation() {
+	public Operation createOwnedOperation(String name,
+			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
+		newOwnedOperation.setName(name);
+		int ownedParameterListSize = 0;
+		int ownedParameterNamesSize = ownedParameterNames == null
+			? 0
+			: ownedParameterNames.size();
+		if (ownedParameterNamesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterNamesSize;
+		int ownedParameterTypesSize = ownedParameterTypes == null
+			? 0
+			: ownedParameterTypes.size();
+		if (ownedParameterTypesSize > ownedParameterListSize)
+			ownedParameterListSize = ownedParameterTypesSize;
+		for (int i = 0; i < ownedParameterListSize; i++) {
+			newOwnedOperation.createOwnedParameter(i < ownedParameterNamesSize
+				? (String) ownedParameterNames.get(i)
+				: null, i < ownedParameterTypesSize
+				? (Type) ownedParameterTypes.get(i)
+				: null);
+		}
 		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
 	}
@@ -385,14 +449,54 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getOwnedOperation(String name) {
-		for (Iterator i = getOwnedOperations().iterator(); i.hasNext();) {
+	public Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes) {
+		return getOwnedOperation(name, ownedParameterNames,
+			ownedParameterTypes, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getOwnedOperation(String name, EList ownedParameterNames,
+			EList ownedParameterTypes, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedOperationLoop : for (Iterator i = getOwnedOperations().iterator(); i
+			.hasNext();) {
 			Operation ownedOperation = (Operation) i.next();
-			if (name.equals(ownedOperation.getName())) {
-				return ownedOperation;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedOperation.getName())
+				: name.equals(ownedOperation.getName())))
+				continue ownedOperationLoop;
+			EList ownedParameterList = ownedOperation.getOwnedParameters();
+			int ownedParameterListSize = ownedParameterList.size();
+			if (ownedParameterNames != null
+				&& ownedParameterNames.size() != ownedParameterListSize
+				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
+				continue ownedOperationLoop;
+			for (int j = 0; j < ownedParameterListSize; j++) {
+				Parameter ownedParameter = (Parameter) ownedParameterList
+					.get(j);
+				if (ownedParameterNames != null
+					&& !(ignoreCase
+						? ((String) ownedParameterNames.get(j))
+							.equalsIgnoreCase(ownedParameter.getName())
+						: ownedParameterNames.get(j).equals(
+							ownedParameter.getName())))
+					continue ownedOperationLoop;
+				if (ownedParameterTypes != null
+					&& !ownedParameterTypes.get(j).equals(
+						ownedParameter.getType()))
+					continue ownedOperationLoop;
 			}
+			return ownedOperation;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedOperation(name, ownedParameterNames,
+				ownedParameterTypes)
+			: null;
 	}
 
 	/**
@@ -415,9 +519,10 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute(EClass eClass) {
-		Property newOwnedAttribute = (Property) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
+		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -427,8 +532,10 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property createOwnedAttribute() {
+	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
+		newOwnedAttribute.setName(name);
+		newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -438,14 +545,8 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext();) {
-			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
-		}
-		return null;
+	public Property getOwnedAttribute(String name, Type type) {
+		return getOwnedAttribute(name, type, false, null, false);
 	}
 
 	/**
@@ -453,10 +554,35 @@ public class ArtifactImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation createOwnedOperation(String name, Type returnType,
-			EList parameterNames, EList parameterTypes) {
-		return ArtifactOperations.createOwnedOperation(this, name, returnType,
-			parameterNames, parameterTypes);
+	public Property getOwnedAttribute(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		ownedAttributeLoop : for (Iterator i = getOwnedAttributes().iterator(); i
+			.hasNext();) {
+			Property ownedAttribute = (Property) i.next();
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedAttribute.getName())
+				: name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			if (type != null && !type.equals(ownedAttribute.getType()))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
+		}
+		return createOnDemand && eClass != null
+			? createOwnedAttribute(name, type, eClass)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOwnedOperation(String name, EList parameterNames,
+			EList parameterTypes, Type returnType) {
+		return ArtifactOperations.createOwnedOperation(this, name,
+			parameterNames, parameterTypes, returnType);
 	}
 
 	/**

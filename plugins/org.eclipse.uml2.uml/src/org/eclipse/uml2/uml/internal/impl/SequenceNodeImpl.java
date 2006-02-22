@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -88,9 +89,10 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutableNode createExecutableNode(EClass eClass) {
-		ExecutableNode newExecutableNode = (ExecutableNode) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ExecutableNode createExecutableNode(String name, EClass eClass) {
+		ExecutableNode newExecutableNode = (ExecutableNode) EcoreUtil
+			.create(eClass);
+		newExecutableNode.setName(name);
 		getExecutableNodes().add(newExecutableNode);
 		return newExecutableNode;
 	}
@@ -101,13 +103,30 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public ExecutableNode getExecutableNode(String name) {
-		for (Iterator i = getExecutableNodes().iterator(); i.hasNext();) {
+		return getExecutableNode(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutableNode getExecutableNode(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		executableNodeLoop : for (Iterator i = getExecutableNodes().iterator(); i
+			.hasNext();) {
 			ExecutableNode executableNode = (ExecutableNode) i.next();
-			if (name.equals(executableNode.getName())) {
-				return executableNode;
-			}
+			if (eClass != null && !eClass.isInstance(executableNode))
+				continue executableNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(executableNode.getName())
+				: name.equals(executableNode.getName())))
+				continue executableNodeLoop;
+			return executableNode;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createExecutableNode(name, eClass)
+			: null;
 	}
 
 	/**

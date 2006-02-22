@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -151,11 +151,25 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityEdge getOutgoing(String name) {
-		for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
+		return getOutgoing(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getOutgoing(String name, boolean ignoreCase,
+			EClass eClass) {
+		outgoingLoop : for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
 			ActivityEdge outgoing = (ActivityEdge) i.next();
-			if (name.equals(outgoing.getName())) {
-				return outgoing;
-			}
+			if (eClass != null && !eClass.isInstance(outgoing))
+				continue outgoingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(outgoing.getName())
+				: name.equals(outgoing.getName())))
+				continue outgoingLoop;
+			return outgoing;
 		}
 		return null;
 	}
@@ -183,11 +197,23 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityPartition getInPartition(String name) {
-		for (Iterator i = getInPartitions().iterator(); i.hasNext();) {
+		return getInPartition(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getInPartition(String name, boolean ignoreCase) {
+		inPartitionLoop : for (Iterator i = getInPartitions().iterator(); i
+			.hasNext();) {
 			ActivityPartition inPartition = (ActivityPartition) i.next();
-			if (name.equals(inPartition.getName())) {
-				return inPartition;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inPartition.getName())
+				: name.equals(inPartition.getName())))
+				continue inPartitionLoop;
+			return inPartition;
 		}
 		return null;
 	}
@@ -293,11 +319,25 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityEdge getIncoming(String name) {
-		for (Iterator i = getIncomings().iterator(); i.hasNext();) {
+		return getIncoming(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getIncoming(String name, boolean ignoreCase,
+			EClass eClass) {
+		incomingLoop : for (Iterator i = getIncomings().iterator(); i.hasNext();) {
 			ActivityEdge incoming = (ActivityEdge) i.next();
-			if (name.equals(incoming.getName())) {
-				return incoming;
-			}
+			if (eClass != null && !eClass.isInstance(incoming))
+				continue incomingLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(incoming.getName())
+				: name.equals(incoming.getName())))
+				continue incomingLoop;
+			return incoming;
 		}
 		return null;
 	}
@@ -341,11 +381,26 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityNode getRedefinedNode(String name) {
-		for (Iterator i = getRedefinedNodes().iterator(); i.hasNext();) {
+		return getRedefinedNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getRedefinedNode(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinedNodeLoop : for (Iterator i = getRedefinedNodes().iterator(); i
+			.hasNext();) {
 			ActivityNode redefinedNode = (ActivityNode) i.next();
-			if (name.equals(redefinedNode.getName())) {
-				return redefinedNode;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedNode))
+				continue redefinedNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedNode.getName())
+				: name.equals(redefinedNode.getName())))
+				continue redefinedNodeLoop;
+			return redefinedNode;
 		}
 		return null;
 	}

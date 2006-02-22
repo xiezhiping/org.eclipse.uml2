@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.11 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -101,11 +101,22 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public Pseudostate getEntry(String name) {
-		for (Iterator i = getEntries().iterator(); i.hasNext();) {
+		return getEntry(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pseudostate getEntry(String name, boolean ignoreCase) {
+		entryLoop : for (Iterator i = getEntries().iterator(); i.hasNext();) {
 			Pseudostate entry = (Pseudostate) i.next();
-			if (name.equals(entry.getName())) {
-				return entry;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(entry.getName())
+				: name.equals(entry.getName())))
+				continue entryLoop;
+			return entry;
 		}
 		return null;
 	}
@@ -131,11 +142,22 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public Pseudostate getExit(String name) {
-		for (Iterator i = getExits().iterator(); i.hasNext();) {
+		return getExit(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pseudostate getExit(String name, boolean ignoreCase) {
+		exitLoop : for (Iterator i = getExits().iterator(); i.hasNext();) {
 			Pseudostate exit = (Pseudostate) i.next();
-			if (name.equals(exit.getName())) {
-				return exit;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(exit.getName())
+				: name.equals(exit.getName())))
+				continue exitLoop;
+			return exit;
 		}
 		return null;
 	}

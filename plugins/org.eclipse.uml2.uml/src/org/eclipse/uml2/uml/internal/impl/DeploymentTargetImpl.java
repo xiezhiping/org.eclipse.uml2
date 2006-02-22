@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.13 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,8 +139,9 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deployment createDeployment() {
+	public Deployment createDeployment(String name) {
 		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
+		newDeployment.setName(name);
 		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
@@ -151,13 +152,28 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public Deployment getDeployment(String name) {
-		for (Iterator i = getDeployments().iterator(); i.hasNext();) {
+		return getDeployment(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment getDeployment(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		deploymentLoop : for (Iterator i = getDeployments().iterator(); i
+			.hasNext();) {
 			Deployment deployment = (Deployment) i.next();
-			if (name.equals(deployment.getName())) {
-				return deployment;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployment.getName())
+				: name.equals(deployment.getName())))
+				continue deploymentLoop;
+			return deployment;
 		}
-		return null;
+		return createOnDemand
+			? createDeployment(name)
+			: null;
 	}
 
 	/**
@@ -187,11 +203,26 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public PackageableElement getDeployedElement(String name) {
-		for (Iterator i = getDeployedElements().iterator(); i.hasNext();) {
+		return getDeployedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getDeployedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		deployedElementLoop : for (Iterator i = getDeployedElements()
+			.iterator(); i.hasNext();) {
 			PackageableElement deployedElement = (PackageableElement) i.next();
-			if (name.equals(deployedElement.getName())) {
-				return deployedElement;
-			}
+			if (eClass != null && !eClass.isInstance(deployedElement))
+				continue deployedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployedElement.getName())
+				: name.equals(deployedElement.getName())))
+				continue deployedElementLoop;
+			return deployedElement;
 		}
 		return null;
 	}

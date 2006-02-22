@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: State.java,v 1.12 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -216,25 +216,40 @@ public interface State
 	EList getConnections();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ConnectionPointReference} and appends it to the '<em><b>Connection</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ConnectionPointReference}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Connection</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ConnectionPointReference}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.ConnectionPointReference}.
 	 * @see #getConnections()
 	 * @generated
 	 */
-	ConnectionPointReference createConnection();
+	ConnectionPointReference createConnection(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectionPointReference} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectionPointReference} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConnections()
 	 * @generated
 	 */
 	ConnectionPointReference getConnection(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectionPointReference} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ConnectionPointReference} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConnections()
+	 * @generated
+	 */
+	ConnectionPointReference getConnection(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Connection Point</b></em>' containment reference list.
@@ -254,25 +269,40 @@ public interface State
 	EList getConnectionPoints();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Pseudostate} and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Pseudostate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Pseudostate}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Pseudostate}.
 	 * @see #getConnectionPoints()
 	 * @generated
 	 */
-	Pseudostate createConnectionPoint();
+	Pseudostate createConnectionPoint(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection Point</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection Point</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Pseudostate} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Pseudostate} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConnectionPoints()
 	 * @generated
 	 */
 	Pseudostate getConnectionPoint(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection Point</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Pseudostate} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Pseudostate} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConnectionPoints()
+	 * @generated
+	 */
+	Pseudostate getConnectionPoint(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Redefined State</b></em>' reference.
@@ -327,25 +357,27 @@ public interface State
 	void setStateInvariant(Constraint value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>State Invariant</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
 	 * @see #getStateInvariant()
 	 * @generated
 	 */
-	Constraint createStateInvariant(EClass eClass);
+	Constraint createStateInvariant(String name, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Constraint} and sets the '<em><b>State Invariant</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
 	 * @see #getStateInvariant()
 	 * @generated
 	 */
-	Constraint createStateInvariant();
+	Constraint createStateInvariant(String name);
 
 	/**
 	 * Returns the value of the '<em><b>Entry</b></em>' containment reference.
@@ -375,15 +407,16 @@ public interface State
 	void setEntry(Behavior value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and sets the '<em><b>Entry</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Behavior}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Entry</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Behavior}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Behavior} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
 	 * @see #getEntry()
 	 * @generated
 	 */
-	Behavior createEntry(EClass eClass);
+	Behavior createEntry(String name, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Exit</b></em>' containment reference.
@@ -411,15 +444,16 @@ public interface State
 	void setExit(Behavior value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and sets the '<em><b>Exit</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Behavior}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Exit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Behavior}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Behavior} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
 	 * @see #getExit()
 	 * @generated
 	 */
-	Behavior createExit(EClass eClass);
+	Behavior createExit(String name, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Do Activity</b></em>' containment reference.
@@ -447,15 +481,16 @@ public interface State
 	void setDoActivity(Behavior value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Behavior} and sets the '<em><b>Do Activity</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Behavior}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Do Activity</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Behavior}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Behavior} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Behavior}.
 	 * @see #getDoActivity()
 	 * @generated
 	 */
-	Behavior createDoActivity(EClass eClass);
+	Behavior createDoActivity(String name, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Deferrable Trigger</b></em>' containment reference list.
@@ -475,25 +510,40 @@ public interface State
 	EList getDeferrableTriggers();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Trigger} and appends it to the '<em><b>Deferrable Trigger</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Deferrable Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Trigger}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Trigger}.
 	 * @see #getDeferrableTriggers()
 	 * @generated
 	 */
-	Trigger createDeferrableTrigger();
+	Trigger createDeferrableTrigger(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDeferrableTriggers()
 	 * @generated
 	 */
 	Trigger getDeferrableTrigger(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Trigger} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getDeferrableTriggers()
+	 * @generated
+	 */
+	Trigger getDeferrableTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
@@ -513,25 +563,39 @@ public interface State
 	EList getRegions();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Region}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Region}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Region}.
 	 * @see #getRegions()
 	 * @generated
 	 */
-	Region createRegion();
+	Region createRegion(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Region} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Region} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRegions()
 	 * @generated
 	 */
 	Region getRegion(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Region} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Region} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRegions()
+	 * @generated
+	 */
+	Region getRegion(String name, boolean ignoreCase, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: MessageImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,6 +44,7 @@ import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -371,9 +372,12 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createArgument(EClass eClass) {
-		ValueSpecification newArgument = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createArgument(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newArgument = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newArgument.setName(name);
+		newArgument.setType(type);
 		getArguments().add(newArgument);
 		return newArgument;
 	}
@@ -383,14 +387,32 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification getArgument(String name) {
-		for (Iterator i = getArguments().iterator(); i.hasNext();) {
+	public ValueSpecification getArgument(String name, Type type) {
+		return getArgument(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification getArgument(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		argumentLoop : for (Iterator i = getArguments().iterator(); i.hasNext();) {
 			ValueSpecification argument = (ValueSpecification) i.next();
-			if (name.equals(argument.getName())) {
-				return argument;
-			}
+			if (eClass != null && !eClass.isInstance(argument))
+				continue argumentLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(argument.getName())
+				: name.equals(argument.getName())))
+				continue argumentLoop;
+			if (type != null && !type.equals(argument.getType()))
+				continue argumentLoop;
+			return argument;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createArgument(name, type, eClass)
+			: null;
 	}
 
 	/**

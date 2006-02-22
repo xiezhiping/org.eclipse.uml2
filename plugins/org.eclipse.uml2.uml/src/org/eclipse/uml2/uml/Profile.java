@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.9 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Profile.java,v 1.10 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -71,15 +71,40 @@ public interface Profile
 	EList getOwnedStereotypes();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Stereotype}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Stereotype</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Stereotype}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Stereotype}.
+	 * @see #getOwnedStereotypes()
+	 * @generated
+	 */
+	Stereotype createOwnedStereotype(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedStereotypes()
 	 * @generated
 	 */
 	Stereotype getOwnedStereotype(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Stereotype} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedStereotypes()
+	 * @generated
+	 */
+	Stereotype getOwnedStereotype(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' reference list.
@@ -97,6 +122,41 @@ public interface Profile
 	EList getMetaclassReferences();
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ElementImport}, with the specified '<em><b>Imported Element</b></em>', and appends it to the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedElement The '<em><b>Imported Element</b></em>' for the new {@link org.eclipse.uml2.uml.ElementImport}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.ElementImport}.
+	 * @see #getMetaclassReferences()
+	 * @generated
+	 */
+	ElementImport createMetaclassReference(PackageableElement importedElement);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>', or <code>null</code>.
+	 * @see #getMetaclassReferences()
+	 * @generated
+	 */
+	ElementImport getMetaclassReference(PackageableElement importedElement);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ElementImport} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>', or <code>null</code>.
+	 * @see #getMetaclassReferences()
+	 * @generated
+	 */
+	ElementImport getMetaclassReference(PackageableElement importedElement,
+			boolean createOnDemand);
+
+	/**
 	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
 	 * <!-- begin-user-doc -->
@@ -110,6 +170,43 @@ public interface Profile
 	 * @generated
 	 */
 	EList getMetamodelReferences();
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.PackageImport}, with the specified '<em><b>Imported Package</b></em>', and appends it to the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedPackage The '<em><b>Imported Package</b></em>' for the new {@link org.eclipse.uml2.uml.PackageImport}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.PackageImport}.
+	 * @see #getMetamodelReferences()
+	 * @generated
+	 */
+	PackageImport createMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>', or <code>null</code>.
+	 * @see #getMetamodelReferences()
+	 * @generated
+	 */
+	PackageImport getMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.PackageImport} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>', or <code>null</code>.
+	 * @see #getMetamodelReferences()
+	 * @generated
+	 */
+	PackageImport getMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,22 +249,6 @@ public interface Profile
 	 * @generated
 	 */
 	EObject create(Classifier classifier);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false"
-	 * @generated
-	 */
-	ElementImport createMetaclassReference(org.eclipse.uml2.uml.Class metaclass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" metamodelRequired="true" metamodelOrdered="false"
-	 * @generated
-	 */
-	PackageImport createMetamodelReference(Model metamodel);
 
 	/**
 	 * <!-- begin-user-doc -->

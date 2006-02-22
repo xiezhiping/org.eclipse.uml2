@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Trigger;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -133,12 +134,25 @@ public class TriggerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Port getPort(String name) {
-		for (Iterator i = getPorts().iterator(); i.hasNext();) {
+	public Port getPort(String name, Type type) {
+		return getPort(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port getPort(String name, Type type, boolean ignoreCase) {
+		portLoop : for (Iterator i = getPorts().iterator(); i.hasNext();) {
 			Port port = (Port) i.next();
-			if (name.equals(port.getName())) {
-				return port;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(port.getName())
+				: name.equals(port.getName())))
+				continue portLoop;
+			if (type != null && !type.equals(port.getType()))
+				continue portLoop;
+			return port;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -31,6 +32,7 @@ import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -189,9 +191,12 @@ public class ChangeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createChangeExpression(EClass eClass) {
-		ValueSpecification newChangeExpression = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createChangeExpression(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newChangeExpression = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newChangeExpression.setName(name);
+		newChangeExpression.setType(type);
 		setChangeExpression(newChangeExpression);
 		return newChangeExpression;
 	}

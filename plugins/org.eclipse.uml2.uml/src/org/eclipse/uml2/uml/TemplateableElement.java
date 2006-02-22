@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.5 2006/02/21 21:39:47 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,14 +58,39 @@ public interface TemplateableElement
 	EList getTemplateBindings();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.TemplateBinding} and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.TemplateBinding}, with the specified '<em><b>Signature</b></em>', and appends it to the '<em><b>Template Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param signature The '<em><b>Signature</b></em>' for the new {@link org.eclipse.uml2.uml.TemplateBinding}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.TemplateBinding}.
 	 * @see #getTemplateBindings()
 	 * @generated
 	 */
-	TemplateBinding createTemplateBinding();
+	TemplateBinding createTemplateBinding(TemplateSignature signature);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.TemplateBinding} with the specified '<em><b>Signature</b></em>' from the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param signature The '<em><b>Signature</b></em>' of the {@link org.eclipse.uml2.uml.TemplateBinding} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.TemplateBinding} with the specified '<em><b>Signature</b></em>', or <code>null</code>.
+	 * @see #getTemplateBindings()
+	 * @generated
+	 */
+	TemplateBinding getTemplateBinding(TemplateSignature signature);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.TemplateBinding} with the specified '<em><b>Signature</b></em>' from the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param signature The '<em><b>Signature</b></em>' of the {@link org.eclipse.uml2.uml.TemplateBinding} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.TemplateBinding} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.TemplateBinding} with the specified '<em><b>Signature</b></em>', or <code>null</code>.
+	 * @see #getTemplateBindings()
+	 * @generated
+	 */
+	TemplateBinding getTemplateBinding(TemplateSignature signature,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Template Signature</b></em>' containment reference.
@@ -95,7 +120,7 @@ public interface TemplateableElement
 	void setOwnedTemplateSignature(TemplateSignature value);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.TemplateSignature} to create.
@@ -106,7 +131,7 @@ public interface TemplateableElement
 	TemplateSignature createOwnedTemplateSignature(EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.uml.TemplateSignature}.

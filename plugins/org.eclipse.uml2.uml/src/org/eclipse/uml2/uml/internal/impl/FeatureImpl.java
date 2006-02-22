@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,11 +107,26 @@ public abstract class FeatureImpl
 	 * @generated
 	 */
 	public Classifier getFeaturingClassifier(String name) {
-		for (Iterator i = getFeaturingClassifiers().iterator(); i.hasNext();) {
+		return getFeaturingClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getFeaturingClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		featuringClassifierLoop : for (Iterator i = getFeaturingClassifiers()
+			.iterator(); i.hasNext();) {
 			Classifier featuringClassifier = (Classifier) i.next();
-			if (name.equals(featuringClassifier.getName())) {
-				return featuringClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(featuringClassifier))
+				continue featuringClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(featuringClassifier.getName())
+				: name.equals(featuringClassifier.getName())))
+				continue featuringClassifierLoop;
+			return featuringClassifier;
 		}
 		return null;
 	}

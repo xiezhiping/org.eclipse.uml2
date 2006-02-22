@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Node.java,v 1.3 2006/02/21 16:12:18 khussey Exp $
+ * $Id: Node.java,v 1.4 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,36 +59,53 @@ public interface Node
 	EList getNestedNodes();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Node} and appends it to the '<em><b>Nested Node</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Node}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Node}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Node} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Node}.
 	 * @see #getNestedNodes()
 	 * @generated
 	 */
-	Node createNestedNode(EClass eClass);
+	Node createNestedNode(String name, EClass eClass);
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.Node} and appends it to the '<em><b>Nested Node</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Node}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Node}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Node}.
 	 * @see #getNestedNodes()
 	 * @generated
 	 */
-	Node createNestedNode();
+	Node createNestedNode(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Node} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Node</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Node} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Node} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Node} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Node} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Node} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedNodes()
 	 * @generated
 	 */
 	Node getNestedNode(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Node} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Node} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Node} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Node} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Node} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNestedNodes()
+	 * @generated
+	 */
+	Node getNestedNode(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

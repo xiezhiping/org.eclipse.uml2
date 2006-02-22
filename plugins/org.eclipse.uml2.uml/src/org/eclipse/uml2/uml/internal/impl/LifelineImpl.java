@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PartDecomposition;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -286,9 +287,12 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createSelector(EClass eClass) {
-		ValueSpecification newSelector = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createSelector(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newSelector = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newSelector.setName(name);
+		newSelector.setType(type);
 		setSelector(newSelector);
 		return newSelector;
 	}
@@ -364,11 +368,26 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public InteractionFragment getCoveredBy(String name) {
-		for (Iterator i = getCoveredBys().iterator(); i.hasNext();) {
+		return getCoveredBy(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionFragment getCoveredBy(String name, boolean ignoreCase,
+			EClass eClass) {
+		coveredByLoop : for (Iterator i = getCoveredBys().iterator(); i
+			.hasNext();) {
 			InteractionFragment coveredBy = (InteractionFragment) i.next();
-			if (name.equals(coveredBy.getName())) {
-				return coveredBy;
-			}
+			if (eClass != null && !eClass.isInstance(coveredBy))
+				continue coveredByLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(coveredBy.getName())
+				: name.equals(coveredBy.getName())))
+				continue coveredByLoop;
+			return coveredBy;
 		}
 		return null;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.19 2006/02/21 21:39:47 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.20 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -47,6 +48,7 @@ import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -227,11 +229,26 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Behavior getRedefinedBehavior(String name) {
-		for (Iterator i = getRedefinedBehaviors().iterator(); i.hasNext();) {
+		return getRedefinedBehavior(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Behavior getRedefinedBehavior(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinedBehaviorLoop : for (Iterator i = getRedefinedBehaviors()
+			.iterator(); i.hasNext();) {
 			Behavior redefinedBehavior = (Behavior) i.next();
-			if (name.equals(redefinedBehavior.getName())) {
-				return redefinedBehavior;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedBehavior))
+				continue redefinedBehaviorLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedBehavior.getName())
+				: name.equals(redefinedBehavior.getName())))
+				continue redefinedBehaviorLoop;
+			return redefinedBehavior;
 		}
 		return null;
 	}
@@ -257,8 +274,10 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Parameter createOwnedParameter() {
+	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = UMLFactory.eINSTANCE.createParameter();
+		newOwnedParameter.setName(name);
+		newOwnedParameter.setType(type);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -268,14 +287,31 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Parameter getOwnedParameter(String name) {
-		for (Iterator i = getOwnedParameters().iterator(); i.hasNext();) {
+	public Parameter getOwnedParameter(String name, Type type) {
+		return getOwnedParameter(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter getOwnedParameter(String name, Type type,
+			boolean ignoreCase, boolean createOnDemand) {
+		ownedParameterLoop : for (Iterator i = getOwnedParameters().iterator(); i
+			.hasNext();) {
 			Parameter ownedParameter = (Parameter) i.next();
-			if (name.equals(ownedParameter.getName())) {
-				return ownedParameter;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedParameter.getName())
+				: name.equals(ownedParameter.getName())))
+				continue ownedParameterLoop;
+			if (type != null && !type.equals(ownedParameter.getType()))
+				continue ownedParameterLoop;
+			return ownedParameter;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedParameter(name, type)
+			: null;
 	}
 
 	/**
@@ -319,9 +355,9 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createPrecondition(EClass eClass) {
-		Constraint newPrecondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createPrecondition(String name, EClass eClass) {
+		Constraint newPrecondition = (Constraint) EcoreUtil.create(eClass);
+		newPrecondition.setName(name);
 		getPreconditions().add(newPrecondition);
 		return newPrecondition;
 	}
@@ -331,8 +367,9 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createPrecondition() {
+	public Constraint createPrecondition(String name) {
 		Constraint newPrecondition = UMLFactory.eINSTANCE.createConstraint();
+		newPrecondition.setName(name);
 		getPreconditions().add(newPrecondition);
 		return newPrecondition;
 	}
@@ -343,13 +380,30 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Constraint getPrecondition(String name) {
-		for (Iterator i = getPreconditions().iterator(); i.hasNext();) {
+		return getPrecondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPrecondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		preconditionLoop : for (Iterator i = getPreconditions().iterator(); i
+			.hasNext();) {
 			Constraint precondition = (Constraint) i.next();
-			if (name.equals(precondition.getName())) {
-				return precondition;
-			}
+			if (eClass != null && !eClass.isInstance(precondition))
+				continue preconditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(precondition.getName())
+				: name.equals(precondition.getName())))
+				continue preconditionLoop;
+			return precondition;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createPrecondition(name, eClass)
+			: null;
 	}
 
 	/**
@@ -372,9 +426,9 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createPostcondition(EClass eClass) {
-		Constraint newPostcondition = (Constraint) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Constraint createPostcondition(String name, EClass eClass) {
+		Constraint newPostcondition = (Constraint) EcoreUtil.create(eClass);
+		newPostcondition.setName(name);
 		getPostconditions().add(newPostcondition);
 		return newPostcondition;
 	}
@@ -384,8 +438,9 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createPostcondition() {
+	public Constraint createPostcondition(String name) {
 		Constraint newPostcondition = UMLFactory.eINSTANCE.createConstraint();
+		newPostcondition.setName(name);
 		getPostconditions().add(newPostcondition);
 		return newPostcondition;
 	}
@@ -396,13 +451,30 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Constraint getPostcondition(String name) {
-		for (Iterator i = getPostconditions().iterator(); i.hasNext();) {
+		return getPostcondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPostcondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		postconditionLoop : for (Iterator i = getPostconditions().iterator(); i
+			.hasNext();) {
 			Constraint postcondition = (Constraint) i.next();
-			if (name.equals(postcondition.getName())) {
-				return postcondition;
-			}
+			if (eClass != null && !eClass.isInstance(postcondition))
+				continue postconditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(postcondition.getName())
+				: name.equals(postcondition.getName())))
+				continue postconditionLoop;
+			return postcondition;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createPostcondition(name, eClass)
+			: null;
 	}
 
 	/**
@@ -426,9 +498,10 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameterSet createOwnedParameterSet() {
+	public ParameterSet createOwnedParameterSet(String name) {
 		ParameterSet newOwnedParameterSet = UMLFactory.eINSTANCE
 			.createParameterSet();
+		newOwnedParameterSet.setName(name);
 		getOwnedParameterSets().add(newOwnedParameterSet);
 		return newOwnedParameterSet;
 	}
@@ -439,13 +512,28 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public ParameterSet getOwnedParameterSet(String name) {
-		for (Iterator i = getOwnedParameterSets().iterator(); i.hasNext();) {
+		return getOwnedParameterSet(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterSet getOwnedParameterSet(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedParameterSetLoop : for (Iterator i = getOwnedParameterSets()
+			.iterator(); i.hasNext();) {
 			ParameterSet ownedParameterSet = (ParameterSet) i.next();
-			if (name.equals(ownedParameterSet.getName())) {
-				return ownedParameterSet;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedParameterSet.getName())
+				: name.equals(ownedParameterSet.getName())))
+				continue ownedParameterSetLoop;
+			return ownedParameterSet;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedParameterSet(name)
+			: null;
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.9 2005/12/14 22:34:19 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.10 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -272,11 +272,24 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public GeneralizationSet getGeneralizationSet(String name) {
-		for (Iterator i = getGeneralizationSets().iterator(); i.hasNext();) {
+		return getGeneralizationSet(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralizationSet getGeneralizationSet(String name,
+			boolean ignoreCase) {
+		generalizationSetLoop : for (Iterator i = getGeneralizationSets()
+			.iterator(); i.hasNext();) {
 			GeneralizationSet generalizationSet = (GeneralizationSet) i.next();
-			if (name.equals(generalizationSet.getName())) {
-				return generalizationSet;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(generalizationSet.getName())
+				: name.equals(generalizationSet.getName())))
+				continue generalizationSetLoop;
+			return generalizationSet;
 		}
 		return null;
 	}

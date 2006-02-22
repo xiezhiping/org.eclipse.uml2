@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.12 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -171,8 +172,9 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Gate createActualGate() {
+	public Gate createActualGate(String name) {
 		Gate newActualGate = UMLFactory.eINSTANCE.createGate();
+		newActualGate.setName(name);
 		getActualGates().add(newActualGate);
 		return newActualGate;
 	}
@@ -183,13 +185,28 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public Gate getActualGate(String name) {
-		for (Iterator i = getActualGates().iterator(); i.hasNext();) {
+		return getActualGate(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate getActualGate(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		actualGateLoop : for (Iterator i = getActualGates().iterator(); i
+			.hasNext();) {
 			Gate actualGate = (Gate) i.next();
-			if (name.equals(actualGate.getName())) {
-				return actualGate;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(actualGate.getName())
+				: name.equals(actualGate.getName())))
+				continue actualGateLoop;
+			return actualGate;
 		}
-		return null;
+		return createOnDemand
+			? createActualGate(name)
+			: null;
 	}
 
 	/**
@@ -212,9 +229,9 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Action createArgument(EClass eClass) {
-		Action newArgument = (Action) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Action createArgument(String name, EClass eClass) {
+		Action newArgument = (Action) EcoreUtil.create(eClass);
+		newArgument.setName(name);
 		getArguments().add(newArgument);
 		return newArgument;
 	}
@@ -225,13 +242,29 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public Action getArgument(String name) {
-		for (Iterator i = getArguments().iterator(); i.hasNext();) {
+		return getArgument(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Action getArgument(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		argumentLoop : for (Iterator i = getArguments().iterator(); i.hasNext();) {
 			Action argument = (Action) i.next();
-			if (name.equals(argument.getName())) {
-				return argument;
-			}
+			if (eClass != null && !eClass.isInstance(argument))
+				continue argumentLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(argument.getName())
+				: name.equals(argument.getName())))
+				continue argumentLoop;
+			return argument;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createArgument(name, eClass)
+			: null;
 	}
 
 	/**

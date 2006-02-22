@@ -219,6 +219,18 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/createEAnnotation">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/createEAnnotation/source"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getRelationships"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getRelationships.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/getRelationships.1/eClass"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getSourceDirectedRelationships"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getSourceDirectedRelationships.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/getSourceDirectedRelationships.1/eClass"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getTargetDirectedRelationships"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/getTargetDirectedRelationships.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Element/getTargetDirectedRelationships.1/eClass"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/allOwnedElements"
           cacheAdapterScope="Resource"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/mustBeOwned"/>
@@ -250,9 +262,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/elements_public_or_private/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/elements_public_or_private/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createNestedPackage">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createNestedPackage/name"/>
-      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedClass">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedClass/name"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedClass/isAbstract"/>
@@ -262,6 +271,9 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedPrimitiveType">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedPrimitiveType/name"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedInterface">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedInterface/name"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/isProfileApplied">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/isProfileApplied/profile"/>
@@ -291,9 +303,6 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/getProfileApplication.1">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/profile"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/getProfileApplication.1/recurse"/>
-      </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/createOwnedInterface">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Package/createOwnedInterface/name"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/isModelLibrary"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Package/visibleMembers"
@@ -429,7 +438,8 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//ElementImport/visibility"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//ElementImport/alias"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//ElementImport/importedElement"/>
+          ecoreFeature="ecore:EReference UML.ecore#//ElementImport/importedElement"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//ElementImport/importingNamespace">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -450,7 +460,8 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//PackageImport">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//PackageImport/visibility"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//PackageImport/importedPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//PackageImport/importedPackage"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//PackageImport/importingNamespace">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -501,7 +512,8 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ValueSpecification/isNull"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//TypedElement">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//TypedElement/type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//TypedElement/type"
+          key="true"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Type">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -521,6 +533,7 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Type/createAssociation/end2Lower"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Type/createAssociation/end2Upper"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Type/getAssociations"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Type/conformsTo">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Type/conformsTo/other"/>
       </genOperations>
@@ -615,9 +628,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/maps_to_generalization_set/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/maps_to_generalization_set/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/createGeneralization">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/createGeneralization/general"/>
-      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getAllAttributes"
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getOperations"
@@ -626,6 +636,14 @@
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getOperation">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation/name"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation/parameterNames"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation/parameterTypes"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getOperation.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation.1/name"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation.1/parameterNames"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation.1/parameterTypes"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Classifier/getOperation.1/ignoreCase"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Classifier/getGenerals"
           cacheAdapterScope="Resource"/>
@@ -692,7 +710,8 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//TemplateableElement/isTemplate"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//TemplateBinding">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//TemplateBinding/signature"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//TemplateBinding/signature"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML.ecore#//TemplateBinding/parameterSubstitution">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -779,7 +798,8 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Generalization">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Generalization/isSubstitutable"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Generalization/general"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Generalization/general"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//Generalization/generalizationSet"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -814,7 +834,8 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Substitution">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Substitution/contract"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Substitution/contract"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//Substitution/substitutingClassifier">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1141,9 +1162,9 @@
       </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Artifact/createOwnedOperation">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Artifact/createOwnedOperation/name"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Artifact/createOwnedOperation/returnType"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Artifact/createOwnedOperation/parameterNames"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Artifact/createOwnedOperation/parameterTypes"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Artifact/createOwnedOperation/returnType"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Artifact/createOwnedAttribute">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Artifact/createOwnedAttribute/name"/>
@@ -1153,7 +1174,8 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Manifestation">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Manifestation/utilizedElement"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Manifestation/utilizedElement"
+          key="true"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Operation">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -1208,6 +1230,7 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/setUpper">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Operation/setUpper/newUpper"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/getReturnResult"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/isOrdered"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/isUnique"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/lowerBound"/>
@@ -1218,7 +1241,8 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//BehavioralFeature">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          ecoreFeature="ecore:EReference UML.ecore#//BehavioralFeature/ownedParameter">
+          ecoreFeature="ecore:EReference UML.ecore#//BehavioralFeature/ownedParameter"
+          key="true">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//BehavioralFeature/isAbstract"/>
@@ -1231,6 +1255,10 @@
           ecoreFeature="ecore:EReference UML.ecore#//BehavioralFeature/ownedParameterSet">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//BehavioralFeature/createReturnResult">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioralFeature/createReturnResult/name"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioralFeature/createReturnResult/type"/>
+      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Behavior">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Behavior/isReentrant"/>
@@ -1302,9 +1330,9 @@
           cacheAdapterScope="Global"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Class/createOwnedOperation">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/createOwnedOperation/name"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/createOwnedOperation/returnType"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/createOwnedOperation/parameterNames"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/createOwnedOperation/parameterTypes"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Class/createOwnedOperation/returnType"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Class/isMetaclass"/>
     </genClasses>
@@ -1327,12 +1355,10 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioredClassifier/class_behavior/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioredClassifier/class_behavior/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//BehavioredClassifier/createInterfaceRealization">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//BehavioredClassifier/createInterfaceRealization/contract"/>
-      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//InterfaceRealization">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//InterfaceRealization/contract"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//InterfaceRealization/contract"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//InterfaceRealization/implementingClassifier">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1367,9 +1393,9 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Interface/createOwnedOperation">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Interface/createOwnedOperation/name"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Interface/createOwnedOperation/returnType"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Interface/createOwnedOperation/parameterNames"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Interface/createOwnedOperation/parameterTypes"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Interface/createOwnedOperation/returnType"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Interface/createOwnedAttribute">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Interface/createOwnedAttribute/name"/>
@@ -1761,7 +1787,8 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ProtocolConformance">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//ProtocolConformance/generalMachine"/>
+          ecoreFeature="ecore:EReference UML.ecore#//ProtocolConformance/generalMachine"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//ProtocolConformance/specificMachine">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1933,12 +1960,6 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/create">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/create/classifier"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/createMetaclassReference">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/createMetaclassReference/metaclass"/>
-      </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/createMetamodelReference">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/createMetamodelReference/metamodel"/>
-      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/createOwnedStereotype">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/createOwnedStereotype/name"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/createOwnedStereotype/isAbstract"/>
@@ -1991,9 +2012,9 @@
       </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DataType/createOwnedOperation">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DataType/createOwnedOperation/name"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DataType/createOwnedOperation/returnType"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DataType/createOwnedOperation/parameterNames"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DataType/createOwnedOperation/parameterTypes"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DataType/createOwnedOperation/returnType"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//DataType/createOwnedAttribute">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//DataType/createOwnedAttribute/name"/>
@@ -2066,14 +2087,16 @@
           cacheAdapterScope="Global"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Include">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Include/addition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Include/addition"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//Include/includingCase">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Extend">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Extend/extendedCase"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Extend/extendedCase"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           ecoreFeature="ecore:EReference UML.ecore#//Extend/condition">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -2153,7 +2176,8 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//PackageMerge">
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/mergedPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/mergedPackage"
+          key="true"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/receivingPackage">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -2174,9 +2198,6 @@
           ecoreFeature="ecore:EReference UML.ecore#//Enumeration/ownedLiteral">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Enumeration/createOwnedLiteral">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Enumeration/createOwnedLiteral/name"/>
-      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//EnumerationLiteral">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"

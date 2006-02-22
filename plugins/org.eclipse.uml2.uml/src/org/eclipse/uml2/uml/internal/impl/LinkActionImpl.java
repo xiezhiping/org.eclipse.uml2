@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.LinkAction;
 import org.eclipse.uml2.uml.LinkEndData;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -117,8 +119,7 @@ public abstract class LinkActionImpl
 	 * @generated
 	 */
 	public LinkEndData createEndData(EClass eClass) {
-		LinkEndData newEndData = (LinkEndData) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+		LinkEndData newEndData = (LinkEndData) EcoreUtil.create(eClass);
 		getEndData().add(newEndData);
 		return newEndData;
 	}
@@ -154,9 +155,10 @@ public abstract class LinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createInputValue(EClass eClass) {
-		InputPin newInputValue = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createInputValue(String name, Type type, EClass eClass) {
+		InputPin newInputValue = (InputPin) EcoreUtil.create(eClass);
+		newInputValue.setName(name);
+		newInputValue.setType(type);
 		getInputValues().add(newInputValue);
 		return newInputValue;
 	}
@@ -166,8 +168,10 @@ public abstract class LinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createInputValue() {
+	public InputPin createInputValue(String name, Type type) {
 		InputPin newInputValue = UMLFactory.eINSTANCE.createInputPin();
+		newInputValue.setName(name);
+		newInputValue.setType(type);
 		getInputValues().add(newInputValue);
 		return newInputValue;
 	}
@@ -177,14 +181,33 @@ public abstract class LinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin getInputValue(String name) {
-		for (Iterator i = getInputValues().iterator(); i.hasNext();) {
+	public InputPin getInputValue(String name, Type type) {
+		return getInputValue(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getInputValue(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		inputValueLoop : for (Iterator i = getInputValues().iterator(); i
+			.hasNext();) {
 			InputPin inputValue = (InputPin) i.next();
-			if (name.equals(inputValue.getName())) {
-				return inputValue;
-			}
+			if (eClass != null && !eClass.isInstance(inputValue))
+				continue inputValueLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inputValue.getName())
+				: name.equals(inputValue.getName())))
+				continue inputValueLoop;
+			if (type != null && !type.equals(inputValue.getType()))
+				continue inputValueLoop;
+			return inputValue;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createInputValue(name, type, eClass)
+			: null;
 	}
 
 	/**

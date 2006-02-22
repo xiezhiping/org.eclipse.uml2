@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UnmarshallAction;
@@ -137,12 +139,25 @@ public class UnmarshallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getResult(String name) {
-		for (Iterator i = getResults().iterator(); i.hasNext();) {
+	public OutputPin getResult(String name, Type type) {
+		return getResult(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getResult(String name, Type type, boolean ignoreCase) {
+		resultLoop : for (Iterator i = getResults().iterator(); i.hasNext();) {
 			OutputPin result = (OutputPin) i.next();
-			if (name.equals(result.getName())) {
-				return result;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(result.getName())
+				: name.equals(result.getName())))
+				continue resultLoop;
+			if (type != null && !type.equals(result.getType()))
+				continue resultLoop;
+			return result;
 		}
 		return null;
 	}
@@ -289,9 +304,10 @@ public class UnmarshallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createObject(EClass eClass) {
-		InputPin newObject = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createObject(String name, Type type, EClass eClass) {
+		InputPin newObject = (InputPin) EcoreUtil.create(eClass);
+		newObject.setName(name);
+		newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}
@@ -301,8 +317,10 @@ public class UnmarshallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createObject() {
+	public InputPin createObject(String name, Type type) {
 		InputPin newObject = UMLFactory.eINSTANCE.createInputPin();
+		newObject.setName(name);
+		newObject.setType(type);
 		setObject(newObject);
 		return newObject;
 	}

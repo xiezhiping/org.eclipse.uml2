@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.9 2006/02/21 16:12:16 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,11 +170,24 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public Classifier getConveyed(String name) {
-		for (Iterator i = getConveyeds().iterator(); i.hasNext();) {
+		return getConveyed(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getConveyed(String name, boolean ignoreCase, EClass eClass) {
+		conveyedLoop : for (Iterator i = getConveyeds().iterator(); i.hasNext();) {
 			Classifier conveyed = (Classifier) i.next();
-			if (name.equals(conveyed.getName())) {
-				return conveyed;
-			}
+			if (eClass != null && !eClass.isInstance(conveyed))
+				continue conveyedLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(conveyed.getName())
+				: name.equals(conveyed.getName())))
+				continue conveyedLoop;
+			return conveyed;
 		}
 		return null;
 	}
@@ -201,11 +214,26 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public NamedElement getInformationSource(String name) {
-		for (Iterator i = getInformationSources().iterator(); i.hasNext();) {
+		return getInformationSource(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getInformationSource(String name, boolean ignoreCase,
+			EClass eClass) {
+		informationSourceLoop : for (Iterator i = getInformationSources()
+			.iterator(); i.hasNext();) {
 			NamedElement informationSource = (NamedElement) i.next();
-			if (name.equals(informationSource.getName())) {
-				return informationSource;
-			}
+			if (eClass != null && !eClass.isInstance(informationSource))
+				continue informationSourceLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(informationSource.getName())
+				: name.equals(informationSource.getName())))
+				continue informationSourceLoop;
+			return informationSource;
 		}
 		return null;
 	}
@@ -232,11 +260,26 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public NamedElement getInformationTarget(String name) {
-		for (Iterator i = getInformationTargets().iterator(); i.hasNext();) {
+		return getInformationTarget(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getInformationTarget(String name, boolean ignoreCase,
+			EClass eClass) {
+		informationTargetLoop : for (Iterator i = getInformationTargets()
+			.iterator(); i.hasNext();) {
 			NamedElement informationTarget = (NamedElement) i.next();
-			if (name.equals(informationTarget.getName())) {
-				return informationTarget;
-			}
+			if (eClass != null && !eClass.isInstance(informationTarget))
+				continue informationTargetLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(informationTarget.getName())
+				: name.equals(informationTarget.getName())))
+				continue informationTargetLoop;
+			return informationTarget;
 		}
 		return null;
 	}
@@ -263,11 +306,26 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public ActivityEdge getRealizingActivityEdge(String name) {
-		for (Iterator i = getRealizingActivityEdges().iterator(); i.hasNext();) {
+		return getRealizingActivityEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getRealizingActivityEdge(String name,
+			boolean ignoreCase, EClass eClass) {
+		realizingActivityEdgeLoop : for (Iterator i = getRealizingActivityEdges()
+			.iterator(); i.hasNext();) {
 			ActivityEdge realizingActivityEdge = (ActivityEdge) i.next();
-			if (name.equals(realizingActivityEdge.getName())) {
-				return realizingActivityEdge;
-			}
+			if (eClass != null && !eClass.isInstance(realizingActivityEdge))
+				continue realizingActivityEdgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(realizingActivityEdge.getName())
+				: name.equals(realizingActivityEdge.getName())))
+				continue realizingActivityEdgeLoop;
+			return realizingActivityEdge;
 		}
 		return null;
 	}
@@ -293,11 +351,23 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public Connector getRealizingConnector(String name) {
-		for (Iterator i = getRealizingConnectors().iterator(); i.hasNext();) {
+		return getRealizingConnector(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connector getRealizingConnector(String name, boolean ignoreCase) {
+		realizingConnectorLoop : for (Iterator i = getRealizingConnectors()
+			.iterator(); i.hasNext();) {
 			Connector realizingConnector = (Connector) i.next();
-			if (name.equals(realizingConnector.getName())) {
-				return realizingConnector;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(realizingConnector.getName())
+				: name.equals(realizingConnector.getName())))
+				continue realizingConnectorLoop;
+			return realizingConnector;
 		}
 		return null;
 	}
@@ -323,11 +393,23 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public Message getRealizingMessage(String name) {
-		for (Iterator i = getRealizingMessages().iterator(); i.hasNext();) {
+		return getRealizingMessage(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Message getRealizingMessage(String name, boolean ignoreCase) {
+		realizingMessageLoop : for (Iterator i = getRealizingMessages()
+			.iterator(); i.hasNext();) {
 			Message realizingMessage = (Message) i.next();
-			if (name.equals(realizingMessage.getName())) {
-				return realizingMessage;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(realizingMessage.getName())
+				: name.equals(realizingMessage.getName())))
+				continue realizingMessageLoop;
+			return realizingMessage;
 		}
 		return null;
 	}

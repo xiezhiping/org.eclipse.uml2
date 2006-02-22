@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.16 2006/02/21 16:12:17 khussey Exp $
+ * $Id: VariableImpl.java,v 1.17 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -391,9 +391,12 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createUpperValue(EClass eClass) {
-		ValueSpecification newUpperValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createUpperValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newUpperValue.setName(name);
+		newUpperValue.setType(type);
 		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
@@ -493,9 +496,12 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createLowerValue(EClass eClass) {
-		ValueSpecification newLowerValue = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createLowerValue(String name, Type type,
+			EClass eClass) {
+		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newLowerValue.setName(name);
+		newLowerValue.setType(type);
 		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}

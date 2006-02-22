@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: BehavioralFeatureOperations.java,v 1.6 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,6 +18,9 @@ import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
+
+import org.eclipse.uml2.uml.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +30,7 @@ import org.eclipse.uml2.uml.Parameter;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#createReturnResult(java.lang.String, org.eclipse.uml2.uml.Type) <em>Create Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
  * </ul>
  * </p>
@@ -43,6 +47,19 @@ public class BehavioralFeatureOperations
 	 */
 	protected BehavioralFeatureOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Parameter createReturnResult(
+			BehavioralFeature behavioralFeature, String name, Type type) {
+		Parameter returnResult = behavioralFeature.createOwnedParameter(name,
+			type);
+		returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
+		return returnResult;
 	}
 
 	/**

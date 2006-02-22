@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.7 2006/01/27 04:55:56 khussey Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.8 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 
@@ -39,7 +38,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#validateClassBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Class Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface) <em>Create Interface Realization</em>}</li>
  * </ul>
  * </p>
  *
@@ -125,28 +123,6 @@ public class BehavioredClassifierOperations
 		}
 
 		return allRealizedInterfaces;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static InterfaceRealization createInterfaceRealization(
-			BehavioredClassifier behavioredClassifier, Interface contract) {
-
-		if (contract == null
-			|| getAllRealizedInterfaces(behavioredClassifier,
-				new UniqueEList.FastCompare()).contains(contract)) {
-
-			throw new IllegalArgumentException(String.valueOf(contract));
-		}
-
-		InterfaceRealization interfaceRealization = behavioredClassifier
-			.createInterfaceRealization();
-		interfaceRealization.setContract(contract);
-
-		return interfaceRealization;
 	}
 
 } // BehavioredClassifierOperations

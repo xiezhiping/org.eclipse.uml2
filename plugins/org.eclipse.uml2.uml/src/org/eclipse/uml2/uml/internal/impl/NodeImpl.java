@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.17 2006/02/21 21:39:47 khussey Exp $
+ * $Id: NodeImpl.java,v 1.18 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -162,8 +163,9 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Deployment createDeployment() {
+	public Deployment createDeployment(String name) {
 		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
+		newDeployment.setName(name);
 		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
@@ -174,13 +176,28 @@ public class NodeImpl
 	 * @generated
 	 */
 	public Deployment getDeployment(String name) {
-		for (Iterator i = getDeployments().iterator(); i.hasNext();) {
+		return getDeployment(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment getDeployment(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		deploymentLoop : for (Iterator i = getDeployments().iterator(); i
+			.hasNext();) {
 			Deployment deployment = (Deployment) i.next();
-			if (name.equals(deployment.getName())) {
-				return deployment;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployment.getName())
+				: name.equals(deployment.getName())))
+				continue deploymentLoop;
+			return deployment;
 		}
-		return null;
+		return createOnDemand
+			? createDeployment(name)
+			: null;
 	}
 
 	/**
@@ -210,11 +227,26 @@ public class NodeImpl
 	 * @generated
 	 */
 	public PackageableElement getDeployedElement(String name) {
-		for (Iterator i = getDeployedElements().iterator(); i.hasNext();) {
+		return getDeployedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageableElement getDeployedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		deployedElementLoop : for (Iterator i = getDeployedElements()
+			.iterator(); i.hasNext();) {
 			PackageableElement deployedElement = (PackageableElement) i.next();
-			if (name.equals(deployedElement.getName())) {
-				return deployedElement;
-			}
+			if (eClass != null && !eClass.isInstance(deployedElement))
+				continue deployedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployedElement.getName())
+				: name.equals(deployedElement.getName())))
+				continue deployedElementLoop;
+			return deployedElement;
 		}
 		return null;
 	}
@@ -264,9 +296,9 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node createNestedNode(EClass eClass) {
-		Node newNestedNode = (Node) eClass.getEPackage().getEFactoryInstance()
-			.create(eClass);
+	public Node createNestedNode(String name, EClass eClass) {
+		Node newNestedNode = (Node) EcoreUtil.create(eClass);
+		newNestedNode.setName(name);
 		getNestedNodes().add(newNestedNode);
 		return newNestedNode;
 	}
@@ -276,8 +308,9 @@ public class NodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node createNestedNode() {
+	public Node createNestedNode(String name) {
 		Node newNestedNode = UMLFactory.eINSTANCE.createNode();
+		newNestedNode.setName(name);
 		getNestedNodes().add(newNestedNode);
 		return newNestedNode;
 	}
@@ -288,13 +321,30 @@ public class NodeImpl
 	 * @generated
 	 */
 	public Node getNestedNode(String name) {
-		for (Iterator i = getNestedNodes().iterator(); i.hasNext();) {
+		return getNestedNode(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Node getNestedNode(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand) {
+		nestedNodeLoop : for (Iterator i = getNestedNodes().iterator(); i
+			.hasNext();) {
 			Node nestedNode = (Node) i.next();
-			if (name.equals(nestedNode.getName())) {
-				return nestedNode;
-			}
+			if (eClass != null && !eClass.isInstance(nestedNode))
+				continue nestedNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(nestedNode.getName())
+				: name.equals(nestedNode.getName())))
+				continue nestedNodeLoop;
+			return nestedNode;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createNestedNode(name, eClass)
+			: null;
 	}
 
 	/**

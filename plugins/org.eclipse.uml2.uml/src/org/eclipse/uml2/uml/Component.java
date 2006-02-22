@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.8 2006/02/21 16:12:19 khussey Exp $
+ * $Id: Component.java,v 1.9 2006/02/22 20:48:15 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,15 +91,27 @@ public interface Component
 	EList getRequireds();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRequireds()
 	 * @generated
 	 */
 	Interface getRequired(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRequireds()
+	 * @generated
+	 */
+	Interface getRequired(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Provided</b></em>' reference list.
@@ -117,15 +129,27 @@ public interface Component
 	EList getProvideds();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getProvideds()
 	 * @generated
 	 */
 	Interface getProvided(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Interface} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getProvideds()
+	 * @generated
+	 */
+	Interface getProvided(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Packaged Element</b></em>' containment reference list.
@@ -143,26 +167,42 @@ public interface Component
 	EList getPackagedElements();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.PackageableElement} and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.PackageableElement}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.PackageableElement}, or <code>null</code>.
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.PackageableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.PackageableElement}.
 	 * @see #getPackagedElements()
 	 * @generated
 	 */
-	PackageableElement createPackagedElement(EClass eClass);
+	PackageableElement createPackagedElement(String name, EClass eClass);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Packaged Element</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Packaged Element</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPackagedElements()
 	 * @generated
 	 */
 	PackageableElement getPackagedElement(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Packaged Element</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.PackageableElement} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.PackageableElement} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPackagedElements()
+	 * @generated
+	 */
+	PackageableElement getPackagedElement(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Realization</b></em>' containment reference list.
@@ -182,25 +222,40 @@ public interface Component
 	EList getRealizations();
 
 	/**
-	 * Creates a {@link org.eclipse.uml2.uml.ComponentRealization} and appends it to the '<em><b>Realization</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ComponentRealization}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ComponentRealization}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.ComponentRealization}.
 	 * @see #getRealizations()
 	 * @generated
 	 */
-	ComponentRealization createRealization();
+	ComponentRealization createRealization(String name);
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.ComponentRealization} with the specified '<em><b>Name</b></em>' from the '<em><b>Realization</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ComponentRealization} with the specified '<em><b>Name</b></em>' from the '<em><b>Realization</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ComponentRealization} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.ComponentRealization} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ComponentRealization} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ComponentRealization} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRealizations()
 	 * @generated
 	 */
 	ComponentRealization getRealization(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ComponentRealization} with the specified '<em><b>Name</b></em>' from the '<em><b>Realization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ComponentRealization} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ComponentRealization} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ComponentRealization} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRealizations()
+	 * @generated
+	 */
+	ComponentRealization getRealization(String name, boolean ignoreCase,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

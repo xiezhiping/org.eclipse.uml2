@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.17 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.18 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,6 +47,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -168,14 +169,41 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Stereotype createOwnedStereotype(String name) {
+		Stereotype newOwnedStereotype = UMLFactory.eINSTANCE.createStereotype();
+		newOwnedStereotype.setName(name);
+		getOwnedStereotypes().add(newOwnedStereotype);
+		return newOwnedStereotype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Stereotype getOwnedStereotype(String name) {
-		for (Iterator i = getOwnedStereotypes().iterator(); i.hasNext();) {
+		return getOwnedStereotype(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Stereotype getOwnedStereotype(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		ownedStereotypeLoop : for (Iterator i = getOwnedStereotypes()
+			.iterator(); i.hasNext();) {
 			Stereotype ownedStereotype = (Stereotype) i.next();
-			if (name.equals(ownedStereotype.getName())) {
-				return ownedStereotype;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedStereotype.getName())
+				: name.equals(ownedStereotype.getName())))
+				continue ownedStereotypeLoop;
+			return ownedStereotype;
 		}
-		return null;
+		return createOnDemand
+			? createOwnedStereotype(name)
+			: null;
 	}
 
 	/**
@@ -200,6 +228,51 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ElementImport createMetaclassReference(
+			PackageableElement importedElement) {
+		ElementImport newMetaclassReference = UMLFactory.eINSTANCE
+			.createElementImport();
+		newMetaclassReference.setImportedElement(importedElement);
+		getMetaclassReferences().add(newMetaclassReference);
+		return newMetaclassReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getMetaclassReference(
+			PackageableElement importedElement) {
+		return getMetaclassReference(importedElement, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getMetaclassReference(
+			PackageableElement importedElement, boolean createOnDemand) {
+		metaclassReferenceLoop : for (Iterator i = getMetaclassReferences()
+			.iterator(); i.hasNext();) {
+			ElementImport metaclassReference = (ElementImport) i.next();
+			if (importedElement != null
+				&& !importedElement.equals(metaclassReference
+					.getImportedElement()))
+				continue metaclassReferenceLoop;
+			return metaclassReference;
+		}
+		return createOnDemand
+			? createMetaclassReference(importedElement)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getMetamodelReferences() {
 		EList metamodelReference = (EList) eVirtualGet(UMLPackage.PROFILE__METAMODEL_REFERENCE);
 		if (metamodelReference == null) {
@@ -210,6 +283,51 @@ public class ProfileImpl
 					new int[]{UMLPackage.PROFILE__PACKAGE_IMPORT}, null));
 		}
 		return metamodelReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport createMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		PackageImport newMetamodelReference = UMLFactory.eINSTANCE
+			.createPackageImport();
+		newMetamodelReference.setImportedPackage(importedPackage);
+		getMetamodelReferences().add(newMetamodelReference);
+		return newMetamodelReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		return getMetamodelReference(importedPackage, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
+		metamodelReferenceLoop : for (Iterator i = getMetamodelReferences()
+			.iterator(); i.hasNext();) {
+			PackageImport metamodelReference = (PackageImport) i.next();
+			if (importedPackage != null
+				&& !importedPackage.equals(metamodelReference
+					.getImportedPackage()))
+				continue metamodelReferenceLoop;
+			return metamodelReference;
+		}
+		return createOnDemand
+			? createMetamodelReference(importedPackage)
+			: null;
 	}
 
 	/**
@@ -241,25 +359,6 @@ public class ProfileImpl
 	 */
 	public EObject create(Classifier classifier) {
 		return ProfileOperations.create(this, classifier);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ElementImport createMetaclassReference(
-			org.eclipse.uml2.uml.Class metaclass) {
-		return ProfileOperations.createMetaclassReference(this, metaclass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PackageImport createMetamodelReference(Model metamodel) {
-		return ProfileOperations.createMetamodelReference(this, metamodel);
 	}
 
 	/**
@@ -316,10 +415,10 @@ public class ProfileImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(10));
+				UMLPackage.Literals.PROFILE.getEOperations().get(8));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(10), result = ProfileOperations
+					.getEOperations().get(8), result = ProfileOperations
 					.getReferencedMetaclasses(this));
 			}
 			return result;
@@ -336,10 +435,10 @@ public class ProfileImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(11));
+				UMLPackage.Literals.PROFILE.getEOperations().get(9));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(11), result = ProfileOperations
+					.getEOperations().get(9), result = ProfileOperations
 					.getReferencedMetamodels(this));
 			}
 			return result;

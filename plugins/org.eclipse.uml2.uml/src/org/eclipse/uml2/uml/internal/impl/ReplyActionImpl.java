@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.ReplyAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Trigger;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -248,9 +250,11 @@ public class ReplyActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createReturnInformation(EClass eClass) {
-		InputPin newReturnInformation = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createReturnInformation(String name, Type type,
+			EClass eClass) {
+		InputPin newReturnInformation = (InputPin) EcoreUtil.create(eClass);
+		newReturnInformation.setName(name);
+		newReturnInformation.setType(type);
 		setReturnInformation(newReturnInformation);
 		return newReturnInformation;
 	}
@@ -260,8 +264,10 @@ public class ReplyActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createReturnInformation() {
+	public InputPin createReturnInformation(String name, Type type) {
 		InputPin newReturnInformation = UMLFactory.eINSTANCE.createInputPin();
+		newReturnInformation.setName(name);
+		newReturnInformation.setType(type);
 		setReturnInformation(newReturnInformation);
 		return newReturnInformation;
 	}
@@ -286,9 +292,10 @@ public class ReplyActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createReplyValue(EClass eClass) {
-		InputPin newReplyValue = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createReplyValue(String name, Type type, EClass eClass) {
+		InputPin newReplyValue = (InputPin) EcoreUtil.create(eClass);
+		newReplyValue.setName(name);
+		newReplyValue.setType(type);
 		getReplyValues().add(newReplyValue);
 		return newReplyValue;
 	}
@@ -298,8 +305,10 @@ public class ReplyActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createReplyValue() {
+	public InputPin createReplyValue(String name, Type type) {
 		InputPin newReplyValue = UMLFactory.eINSTANCE.createInputPin();
+		newReplyValue.setName(name);
+		newReplyValue.setType(type);
 		getReplyValues().add(newReplyValue);
 		return newReplyValue;
 	}
@@ -309,14 +318,33 @@ public class ReplyActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin getReplyValue(String name) {
-		for (Iterator i = getReplyValues().iterator(); i.hasNext();) {
+	public InputPin getReplyValue(String name, Type type) {
+		return getReplyValue(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getReplyValue(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		replyValueLoop : for (Iterator i = getReplyValues().iterator(); i
+			.hasNext();) {
 			InputPin replyValue = (InputPin) i.next();
-			if (name.equals(replyValue.getName())) {
-				return replyValue;
-			}
+			if (eClass != null && !eClass.isInstance(replyValue))
+				continue replyValueLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(replyValue.getName())
+				: name.equals(replyValue.getName())))
+				continue replyValueLoop;
+			if (type != null && !type.equals(replyValue.getType()))
+				continue replyValueLoop;
+			return replyValue;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createReplyValue(name, type, eClass)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.13 2006/02/21 16:12:16 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.14 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -159,11 +159,26 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext();) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (Iterator i = getRedefinedElements()
+			.iterator(); i.hasNext();) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -253,11 +268,26 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext();) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
+			.iterator(); i.hasNext();) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinitionContext.getName())
+				: name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -541,6 +571,30 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Constraint createGuard(String name, EClass eClass) {
+		Constraint newGuard = (Constraint) EcoreUtil.create(eClass);
+		newGuard.setName(name);
+		setGuard(newGuard);
+		return newGuard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createGuard(String name) {
+		Constraint newGuard = UMLFactory.eINSTANCE.createConstraint();
+		newGuard.setName(name);
+		setGuard(newGuard);
+		return newGuard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Behavior getEffect() {
 		Behavior effect = (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
 		if (effect != null && effect.eIsProxy()) {
@@ -628,9 +682,9 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behavior createEffect(EClass eClass) {
-		Behavior newEffect = (Behavior) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public Behavior createEffect(String name, EClass eClass) {
+		Behavior newEffect = (Behavior) EcoreUtil.create(eClass);
+		newEffect.setName(name);
 		setEffect(newEffect);
 		return newEffect;
 	}
@@ -655,8 +709,9 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Trigger createTrigger() {
+	public Trigger createTrigger(String name) {
 		Trigger newTrigger = UMLFactory.eINSTANCE.createTrigger();
+		newTrigger.setName(name);
 		getTriggers().add(newTrigger);
 		return newTrigger;
 	}
@@ -667,13 +722,27 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Trigger getTrigger(String name) {
-		for (Iterator i = getTriggers().iterator(); i.hasNext();) {
+		return getTrigger(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getTrigger(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		triggerLoop : for (Iterator i = getTriggers().iterator(); i.hasNext();) {
 			Trigger trigger = (Trigger) i.next();
-			if (name.equals(trigger.getName())) {
-				return trigger;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(trigger.getName())
+				: name.equals(trigger.getName())))
+				continue triggerLoop;
+			return trigger;
 		}
-		return null;
+		return createOnDemand
+			? createTrigger(name)
+			: null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,6 +45,7 @@ import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -211,11 +212,23 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ActivityPartition getInPartition(String name) {
-		for (Iterator i = getInPartitions().iterator(); i.hasNext();) {
+		return getInPartition(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getInPartition(String name, boolean ignoreCase) {
+		inPartitionLoop : for (Iterator i = getInPartitions().iterator(); i
+			.hasNext();) {
 			ActivityPartition inPartition = (ActivityPartition) i.next();
-			if (name.equals(inPartition.getName())) {
-				return inPartition;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inPartition.getName())
+				: name.equals(inPartition.getName())))
+				continue inPartitionLoop;
+			return inPartition;
 		}
 		return null;
 	}
@@ -360,11 +373,26 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ActivityEdge getRedefinedEdge(String name) {
-		for (Iterator i = getRedefinedEdges().iterator(); i.hasNext();) {
+		return getRedefinedEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getRedefinedEdge(String name, boolean ignoreCase,
+			EClass eClass) {
+		redefinedEdgeLoop : for (Iterator i = getRedefinedEdges().iterator(); i
+			.hasNext();) {
 			ActivityEdge redefinedEdge = (ActivityEdge) i.next();
-			if (name.equals(redefinedEdge.getName())) {
-				return redefinedEdge;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedEdge))
+				continue redefinedEdgeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedEdge.getName())
+				: name.equals(redefinedEdge.getName())))
+				continue redefinedEdgeLoop;
+			return redefinedEdge;
 		}
 		return null;
 	}
@@ -461,9 +489,11 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createGuard(EClass eClass) {
-		ValueSpecification newGuard = (ValueSpecification) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public ValueSpecification createGuard(String name, Type type, EClass eClass) {
+		ValueSpecification newGuard = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newGuard.setName(name);
+		newGuard.setType(type);
 		setGuard(newGuard);
 		return newGuard;
 	}
@@ -561,9 +591,11 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createWeight(EClass eClass) {
-		ValueSpecification newWeight = (ValueSpecification) eClass
-			.getEPackage().getEFactoryInstance().create(eClass);
+	public ValueSpecification createWeight(String name, Type type, EClass eClass) {
+		ValueSpecification newWeight = (ValueSpecification) EcoreUtil
+			.create(eClass);
+		newWeight.setName(name);
+		newWeight.setType(type);
 		setWeight(newWeight);
 		return newWeight;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -269,9 +271,10 @@ public class AddStructuralFeatureValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createInsertAt(EClass eClass) {
-		InputPin newInsertAt = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createInsertAt(String name, Type type, EClass eClass) {
+		InputPin newInsertAt = (InputPin) EcoreUtil.create(eClass);
+		newInsertAt.setName(name);
+		newInsertAt.setType(type);
 		setInsertAt(newInsertAt);
 		return newInsertAt;
 	}
@@ -281,8 +284,10 @@ public class AddStructuralFeatureValueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createInsertAt() {
+	public InputPin createInsertAt(String name, Type type) {
 		InputPin newInsertAt = UMLFactory.eINSTANCE.createInputPin();
+		newInsertAt.setName(name);
+		newInsertAt.setType(type);
 		setInsertAt(newInsertAt);
 		return newInsertAt;
 	}

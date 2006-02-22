@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Duration.java,v 1.4 2005/12/21 20:13:06 khussey Exp $
+ * $Id: Duration.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,14 +81,27 @@ public interface Duration
 	EList getObservations();
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>' from the '<em><b>Observation</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>' from the '<em><b>Observation</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Observation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Observation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getObservations()
 	 * @generated
 	 */
 	Observation getObservation(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>' from the '<em><b>Observation</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Observation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Observation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getObservations()
+	 * @generated
+	 */
+	Observation getObservation(String name, boolean ignoreCase, EClass eClass);
 
 } // Duration

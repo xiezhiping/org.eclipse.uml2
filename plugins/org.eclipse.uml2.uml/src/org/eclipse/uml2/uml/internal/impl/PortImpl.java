@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.17 2006/02/21 16:12:16 khussey Exp $
+ * $Id: PortImpl.java,v 1.18 2006/02/22 20:48:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -227,11 +227,22 @@ public class PortImpl
 	 * @generated
 	 */
 	public Interface getRequired(String name) {
-		for (Iterator i = getRequireds().iterator(); i.hasNext();) {
+		return getRequired(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getRequired(String name, boolean ignoreCase) {
+		requiredLoop : for (Iterator i = getRequireds().iterator(); i.hasNext();) {
 			Interface required = (Interface) i.next();
-			if (name.equals(required.getName())) {
-				return required;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(required.getName())
+				: name.equals(required.getName())))
+				continue requiredLoop;
+			return required;
 		}
 		return null;
 	}
@@ -256,12 +267,26 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Port getRedefinedPort(String name) {
-		for (Iterator i = getRedefinedPorts().iterator(); i.hasNext();) {
+	public Port getRedefinedPort(String name, Type type) {
+		return getRedefinedPort(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port getRedefinedPort(String name, Type type, boolean ignoreCase) {
+		redefinedPortLoop : for (Iterator i = getRedefinedPorts().iterator(); i
+			.hasNext();) {
 			Port redefinedPort = (Port) i.next();
-			if (name.equals(redefinedPort.getName())) {
-				return redefinedPort;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedPort.getName())
+				: name.equals(redefinedPort.getName())))
+				continue redefinedPortLoop;
+			if (type != null && !type.equals(redefinedPort.getType()))
+				continue redefinedPortLoop;
+			return redefinedPort;
 		}
 		return null;
 	}
@@ -291,11 +316,22 @@ public class PortImpl
 	 * @generated
 	 */
 	public Interface getProvided(String name) {
-		for (Iterator i = getProvideds().iterator(); i.hasNext();) {
+		return getProvided(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getProvided(String name, boolean ignoreCase) {
+		providedLoop : for (Iterator i = getProvideds().iterator(); i.hasNext();) {
 			Interface provided = (Interface) i.next();
-			if (name.equals(provided.getName())) {
-				return provided;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(provided.getName())
+				: name.equals(provided.getName())))
+				continue providedLoop;
+			return provided;
 		}
 		return null;
 	}

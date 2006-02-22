@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.14 2006/02/21 16:12:18 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.15 2006/02/22 20:48:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -41,6 +42,7 @@ import org.eclipse.uml2.uml.LoopNode;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -192,11 +194,25 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public ExecutableNode getBodyPart(String name) {
-		for (Iterator i = getBodyParts().iterator(); i.hasNext();) {
+		return getBodyPart(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutableNode getBodyPart(String name, boolean ignoreCase,
+			EClass eClass) {
+		bodyPartLoop : for (Iterator i = getBodyParts().iterator(); i.hasNext();) {
 			ExecutableNode bodyPart = (ExecutableNode) i.next();
-			if (name.equals(bodyPart.getName())) {
-				return bodyPart;
-			}
+			if (eClass != null && !eClass.isInstance(bodyPart))
+				continue bodyPartLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(bodyPart.getName())
+				: name.equals(bodyPart.getName())))
+				continue bodyPartLoop;
+			return bodyPart;
 		}
 		return null;
 	}
@@ -222,11 +238,26 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public ExecutableNode getSetupPart(String name) {
-		for (Iterator i = getSetupParts().iterator(); i.hasNext();) {
+		return getSetupPart(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutableNode getSetupPart(String name, boolean ignoreCase,
+			EClass eClass) {
+		setupPartLoop : for (Iterator i = getSetupParts().iterator(); i
+			.hasNext();) {
 			ExecutableNode setupPart = (ExecutableNode) i.next();
-			if (name.equals(setupPart.getName())) {
-				return setupPart;
-			}
+			if (eClass != null && !eClass.isInstance(setupPart))
+				continue setupPartLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(setupPart.getName())
+				: name.equals(setupPart.getName())))
+				continue setupPartLoop;
+			return setupPart;
 		}
 		return null;
 	}
@@ -297,11 +328,24 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public ExecutableNode getTest(String name) {
-		for (Iterator i = getTests().iterator(); i.hasNext();) {
+		return getTest(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutableNode getTest(String name, boolean ignoreCase, EClass eClass) {
+		testLoop : for (Iterator i = getTests().iterator(); i.hasNext();) {
 			ExecutableNode test = (ExecutableNode) i.next();
-			if (name.equals(test.getName())) {
-				return test;
-			}
+			if (eClass != null && !eClass.isInstance(test))
+				continue testLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(test.getName())
+				: name.equals(test.getName())))
+				continue testLoop;
+			return test;
 		}
 		return null;
 	}
@@ -326,8 +370,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin createResult() {
+	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		newResult.setName(name);
+		newResult.setType(type);
 		getResults().add(newResult);
 		return newResult;
 	}
@@ -337,14 +383,30 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getResult(String name) {
-		for (Iterator i = getResults().iterator(); i.hasNext();) {
+	public OutputPin getResult(String name, Type type) {
+		return getResult(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getResult(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
+		resultLoop : for (Iterator i = getResults().iterator(); i.hasNext();) {
 			OutputPin result = (OutputPin) i.next();
-			if (name.equals(result.getName())) {
-				return result;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(result.getName())
+				: name.equals(result.getName())))
+				continue resultLoop;
+			if (type != null && !type.equals(result.getType()))
+				continue resultLoop;
+			return result;
 		}
-		return null;
+		return createOnDemand
+			? createResult(name, type)
+			: null;
 	}
 
 	/**
@@ -367,12 +429,26 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getLoopVariable(String name) {
-		for (Iterator i = getLoopVariables().iterator(); i.hasNext();) {
+	public OutputPin getLoopVariable(String name, Type type) {
+		return getLoopVariable(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getLoopVariable(String name, Type type, boolean ignoreCase) {
+		loopVariableLoop : for (Iterator i = getLoopVariables().iterator(); i
+			.hasNext();) {
 			OutputPin loopVariable = (OutputPin) i.next();
-			if (name.equals(loopVariable.getName())) {
-				return loopVariable;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(loopVariable.getName())
+				: name.equals(loopVariable.getName())))
+				continue loopVariableLoop;
+			if (type != null && !type.equals(loopVariable.getType()))
+				continue loopVariableLoop;
+			return loopVariable;
 		}
 		return null;
 	}
@@ -397,12 +473,26 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getBodyOutput(String name) {
-		for (Iterator i = getBodyOutputs().iterator(); i.hasNext();) {
+	public OutputPin getBodyOutput(String name, Type type) {
+		return getBodyOutput(name, type, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getBodyOutput(String name, Type type, boolean ignoreCase) {
+		bodyOutputLoop : for (Iterator i = getBodyOutputs().iterator(); i
+			.hasNext();) {
 			OutputPin bodyOutput = (OutputPin) i.next();
-			if (name.equals(bodyOutput.getName())) {
-				return bodyOutput;
-			}
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(bodyOutput.getName())
+				: name.equals(bodyOutput.getName())))
+				continue bodyOutputLoop;
+			if (type != null && !type.equals(bodyOutput.getType()))
+				continue bodyOutputLoop;
+			return bodyOutput;
 		}
 		return null;
 	}
@@ -428,9 +518,11 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createLoopVariableInput(EClass eClass) {
-		InputPin newLoopVariableInput = (InputPin) eClass.getEPackage()
-			.getEFactoryInstance().create(eClass);
+	public InputPin createLoopVariableInput(String name, Type type,
+			EClass eClass) {
+		InputPin newLoopVariableInput = (InputPin) EcoreUtil.create(eClass);
+		newLoopVariableInput.setName(name);
+		newLoopVariableInput.setType(type);
 		getLoopVariableInputs().add(newLoopVariableInput);
 		return newLoopVariableInput;
 	}
@@ -440,8 +532,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin createLoopVariableInput() {
+	public InputPin createLoopVariableInput(String name, Type type) {
 		InputPin newLoopVariableInput = UMLFactory.eINSTANCE.createInputPin();
+		newLoopVariableInput.setName(name);
+		newLoopVariableInput.setType(type);
 		getLoopVariableInputs().add(newLoopVariableInput);
 		return newLoopVariableInput;
 	}
@@ -451,14 +545,33 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputPin getLoopVariableInput(String name) {
-		for (Iterator i = getLoopVariableInputs().iterator(); i.hasNext();) {
+	public InputPin getLoopVariableInput(String name, Type type) {
+		return getLoopVariableInput(name, type, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getLoopVariableInput(String name, Type type,
+			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
+		loopVariableInputLoop : for (Iterator i = getLoopVariableInputs()
+			.iterator(); i.hasNext();) {
 			InputPin loopVariableInput = (InputPin) i.next();
-			if (name.equals(loopVariableInput.getName())) {
-				return loopVariableInput;
-			}
+			if (eClass != null && !eClass.isInstance(loopVariableInput))
+				continue loopVariableInputLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(loopVariableInput.getName())
+				: name.equals(loopVariableInput.getName())))
+				continue loopVariableInputLoop;
+			if (type != null && !type.equals(loopVariableInput.getType()))
+				continue loopVariableInputLoop;
+			return loopVariableInput;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createLoopVariableInput(name, type, eClass)
+			: null;
 	}
 
 	/**

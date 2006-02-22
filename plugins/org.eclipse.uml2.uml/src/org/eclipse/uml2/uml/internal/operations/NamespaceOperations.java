@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.10 2006/01/27 04:55:56 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.11 2006/02/22 20:48:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -121,9 +121,7 @@ public class NamespaceOperations
 			throw new IllegalArgumentException(String.valueOf(visibility));
 		}
 
-		ElementImport elementImport = namespace.createElementImport();
-
-		elementImport.setImportedElement(element);
+		ElementImport elementImport = namespace.createElementImport(element);
 		elementImport.setVisibility(visibility);
 
 		return elementImport;
@@ -147,9 +145,7 @@ public class NamespaceOperations
 			throw new IllegalArgumentException(String.valueOf(visibility));
 		}
 
-		PackageImport packageImport = namespace.createPackageImport();
-
-		packageImport.setImportedPackage(package_);
+		PackageImport packageImport = namespace.createPackageImport(package_);
 		packageImport.setVisibility(visibility);
 
 		return packageImport;
