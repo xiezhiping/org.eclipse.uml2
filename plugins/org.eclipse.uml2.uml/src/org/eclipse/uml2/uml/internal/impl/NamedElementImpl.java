@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.17 2006/02/22 20:48:17 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.18 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -398,8 +398,10 @@ public abstract class NamedElementImpl
 	public StringExpression createNameExpression(String name, Type type) {
 		StringExpression newNameExpression = UMLFactory.eINSTANCE
 			.createStringExpression();
-		newNameExpression.setName(name);
-		newNameExpression.setType(type);
+		if (name != null)
+			newNameExpression.setName(name);
+		if (type != null)
+			newNameExpression.setType(type);
 		setNameExpression(newNameExpression);
 		return newNameExpression;
 	}

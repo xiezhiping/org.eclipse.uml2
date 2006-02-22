@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.16 2006/02/22 23:07:14 khussey Exp $
+ * $Id: RegionImpl.java,v 1.17 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -384,7 +384,8 @@ public class RegionImpl
 	 */
 	public Transition createTransition(String name) {
 		Transition newTransition = UMLFactory.eINSTANCE.createTransition();
-		newTransition.setName(name);
+		if (name != null)
+			newTransition.setName(name);
 		getTransitions().add(newTransition);
 		return newTransition;
 	}

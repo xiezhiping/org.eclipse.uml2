@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.20 2006/02/22 23:07:15 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.21 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -368,7 +368,8 @@ public class ComponentImpl
 	public ComponentRealization createRealization(String name) {
 		ComponentRealization newRealization = UMLFactory.eINSTANCE
 			.createComponentRealization();
-		newRealization.setName(name);
+		if (name != null)
+			newRealization.setName(name);
 		getRealizations().add(newRealization);
 		return newRealization;
 	}

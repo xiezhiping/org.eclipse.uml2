@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.13 2006/02/22 23:07:14 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.14 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -174,7 +174,8 @@ public class InteractionUseImpl
 	 */
 	public Gate createActualGate(String name) {
 		Gate newActualGate = UMLFactory.eINSTANCE.createGate();
-		newActualGate.setName(name);
+		if (name != null)
+			newActualGate.setName(name);
 		getActualGates().add(newActualGate);
 		return newActualGate;
 	}

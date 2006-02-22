@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.21 2006/02/22 23:07:14 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.22 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -276,8 +276,10 @@ public abstract class BehaviorImpl
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = UMLFactory.eINSTANCE.createParameter();
-		newOwnedParameter.setName(name);
-		newOwnedParameter.setType(type);
+		if (name != null)
+			newOwnedParameter.setName(name);
+		if (type != null)
+			newOwnedParameter.setType(type);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -370,7 +372,8 @@ public abstract class BehaviorImpl
 	 */
 	public Constraint createPrecondition(String name) {
 		Constraint newPrecondition = UMLFactory.eINSTANCE.createConstraint();
-		newPrecondition.setName(name);
+		if (name != null)
+			newPrecondition.setName(name);
 		getPreconditions().add(newPrecondition);
 		return newPrecondition;
 	}
@@ -442,7 +445,8 @@ public abstract class BehaviorImpl
 	 */
 	public Constraint createPostcondition(String name) {
 		Constraint newPostcondition = UMLFactory.eINSTANCE.createConstraint();
-		newPostcondition.setName(name);
+		if (name != null)
+			newPostcondition.setName(name);
 		getPostconditions().add(newPostcondition);
 		return newPostcondition;
 	}
@@ -503,7 +507,8 @@ public abstract class BehaviorImpl
 	public ParameterSet createOwnedParameterSet(String name) {
 		ParameterSet newOwnedParameterSet = UMLFactory.eINSTANCE
 			.createParameterSet();
-		newOwnedParameterSet.setName(name);
+		if (name != null)
+			newOwnedParameterSet.setName(name);
 		getOwnedParameterSets().add(newOwnedParameterSet);
 		return newOwnedParameterSet;
 	}

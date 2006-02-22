@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.26 2006/02/22 23:07:14 khussey Exp $
+ * $Id: ClassImpl.java,v 1.27 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -367,8 +367,10 @@ public class ClassImpl
 			Interface contract) {
 		InterfaceRealization newInterfaceRealization = UMLFactory.eINSTANCE
 			.createInterfaceRealization();
-		newInterfaceRealization.setName(name);
-		newInterfaceRealization.setContract(contract);
+		if (name != null)
+			newInterfaceRealization.setName(name);
+		if (contract != null)
+			newInterfaceRealization.setContract(contract);
 		getInterfaceRealizations().add(newInterfaceRealization);
 		return newInterfaceRealization;
 	}
@@ -430,7 +432,8 @@ public class ClassImpl
 	 */
 	public Trigger createOwnedTrigger(String name) {
 		Trigger newOwnedTrigger = UMLFactory.eINSTANCE.createTrigger();
-		newOwnedTrigger.setName(name);
+		if (name != null)
+			newOwnedTrigger.setName(name);
 		getOwnedTriggers().add(newOwnedTrigger);
 		return newOwnedTrigger;
 	}
@@ -525,7 +528,8 @@ public class ClassImpl
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
-		newOwnedOperation.setName(name);
+		if (name != null)
+			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
 		int ownedParameterNamesSize = ownedParameterNames == null
 			? 0
@@ -836,7 +840,8 @@ public class ClassImpl
 	public Reception createOwnedReception(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Reception newOwnedReception = UMLFactory.eINSTANCE.createReception();
-		newOwnedReception.setName(name);
+		if (name != null)
+			newOwnedReception.setName(name);
 		int ownedParameterListSize = 0;
 		int ownedParameterNamesSize = ownedParameterNames == null
 			? 0
@@ -997,8 +1002,10 @@ public class ClassImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}

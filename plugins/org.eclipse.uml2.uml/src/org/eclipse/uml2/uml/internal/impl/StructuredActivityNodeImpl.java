@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.19 2006/02/22 23:07:14 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.20 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -283,7 +283,8 @@ public class StructuredActivityNodeImpl
 	public ElementImport createElementImport(PackageableElement importedElement) {
 		ElementImport newElementImport = UMLFactory.eINSTANCE
 			.createElementImport();
-		newElementImport.setImportedElement(importedElement);
+		if (importedElement != null)
+			newElementImport.setImportedElement(importedElement);
 		getElementImports().add(newElementImport);
 		return newElementImport;
 	}
@@ -344,7 +345,8 @@ public class StructuredActivityNodeImpl
 			org.eclipse.uml2.uml.Package importedPackage) {
 		PackageImport newPackageImport = UMLFactory.eINSTANCE
 			.createPackageImport();
-		newPackageImport.setImportedPackage(importedPackage);
+		if (importedPackage != null)
+			newPackageImport.setImportedPackage(importedPackage);
 		getPackageImports().add(newPackageImport);
 		return newPackageImport;
 	}
@@ -416,7 +418,8 @@ public class StructuredActivityNodeImpl
 	 */
 	public Constraint createOwnedRule(String name) {
 		Constraint newOwnedRule = UMLFactory.eINSTANCE.createConstraint();
-		newOwnedRule.setName(name);
+		if (name != null)
+			newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}
@@ -635,8 +638,10 @@ public class StructuredActivityNodeImpl
 	 */
 	public Variable createVariable(String name, Type type) {
 		Variable newVariable = UMLFactory.eINSTANCE.createVariable();
-		newVariable.setName(name);
-		newVariable.setType(type);
+		if (name != null)
+			newVariable.setName(name);
+		if (type != null)
+			newVariable.setType(type);
 		getVariables().add(newVariable);
 		return newVariable;
 	}

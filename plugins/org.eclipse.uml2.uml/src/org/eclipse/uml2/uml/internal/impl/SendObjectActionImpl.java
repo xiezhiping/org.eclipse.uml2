@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.15 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,8 +206,10 @@ public class SendObjectActionImpl
 	 */
 	public InputPin createTarget(String name, Type type) {
 		InputPin newTarget = UMLFactory.eINSTANCE.createInputPin();
-		newTarget.setName(name);
-		newTarget.setType(type);
+		if (name != null)
+			newTarget.setName(name);
+		if (type != null)
+			newTarget.setType(type);
 		setTarget(newTarget);
 		return newTarget;
 	}
@@ -323,8 +325,10 @@ public class SendObjectActionImpl
 	 */
 	public InputPin createRequest(String name, Type type) {
 		InputPin newRequest = UMLFactory.eINSTANCE.createInputPin();
-		newRequest.setName(name);
-		newRequest.setType(type);
+		if (name != null)
+			newRequest.setName(name);
+		if (type != null)
+			newRequest.setType(type);
 		setRequest(newRequest);
 		return newRequest;
 	}

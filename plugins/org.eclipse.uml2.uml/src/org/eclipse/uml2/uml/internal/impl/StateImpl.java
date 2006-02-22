@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.21 2006/02/22 23:07:14 khussey Exp $
+ * $Id: StateImpl.java,v 1.22 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -646,7 +646,8 @@ public class StateImpl
 	public ConnectionPointReference createConnection(String name) {
 		ConnectionPointReference newConnection = UMLFactory.eINSTANCE
 			.createConnectionPointReference();
-		newConnection.setName(name);
+		if (name != null)
+			newConnection.setName(name);
 		getConnections().add(newConnection);
 		return newConnection;
 	}
@@ -708,7 +709,8 @@ public class StateImpl
 	public Pseudostate createConnectionPoint(String name) {
 		Pseudostate newConnectionPoint = UMLFactory.eINSTANCE
 			.createPseudostate();
-		newConnectionPoint.setName(name);
+		if (name != null)
+			newConnectionPoint.setName(name);
 		getConnectionPoints().add(newConnectionPoint);
 		return newConnectionPoint;
 	}
@@ -902,7 +904,8 @@ public class StateImpl
 	 */
 	public Constraint createStateInvariant(String name) {
 		Constraint newStateInvariant = UMLFactory.eINSTANCE.createConstraint();
-		newStateInvariant.setName(name);
+		if (name != null)
+			newStateInvariant.setName(name);
 		setStateInvariant(newStateInvariant);
 		return newStateInvariant;
 	}
@@ -1232,7 +1235,8 @@ public class StateImpl
 	 */
 	public Trigger createDeferrableTrigger(String name) {
 		Trigger newDeferrableTrigger = UMLFactory.eINSTANCE.createTrigger();
-		newDeferrableTrigger.setName(name);
+		if (name != null)
+			newDeferrableTrigger.setName(name);
 		getDeferrableTriggers().add(newDeferrableTrigger);
 		return newDeferrableTrigger;
 	}
@@ -1290,7 +1294,8 @@ public class StateImpl
 	 */
 	public Region createRegion(String name) {
 		Region newRegion = UMLFactory.eINSTANCE.createRegion();
-		newRegion.setName(name);
+		if (name != null)
+			newRegion.setName(name);
 		getRegions().add(newRegion);
 		return newRegion;
 	}

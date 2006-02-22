@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.16 2006/02/22 20:48:16 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.17 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -149,7 +149,8 @@ public class EnumerationImpl
 	public EnumerationLiteral createOwnedLiteral(String name) {
 		EnumerationLiteral newOwnedLiteral = UMLFactory.eINSTANCE
 			.createEnumerationLiteral();
-		newOwnedLiteral.setName(name);
+		if (name != null)
+			newOwnedLiteral.setName(name);
 		getOwnedLiterals().add(newOwnedLiteral);
 		return newOwnedLiteral;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.15 2006/02/22 23:07:15 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.16 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -586,7 +586,8 @@ public class TransitionImpl
 	 */
 	public Constraint createGuard(String name) {
 		Constraint newGuard = UMLFactory.eINSTANCE.createConstraint();
-		newGuard.setName(name);
+		if (name != null)
+			newGuard.setName(name);
 		setGuard(newGuard);
 		return newGuard;
 	}
@@ -713,7 +714,8 @@ public class TransitionImpl
 	 */
 	public Trigger createTrigger(String name) {
 		Trigger newTrigger = UMLFactory.eINSTANCE.createTrigger();
-		newTrigger.setName(name);
+		if (name != null)
+			newTrigger.setName(name);
 		getTriggers().add(newTrigger);
 		return newTrigger;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.25 2006/02/22 23:07:15 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.26 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -466,7 +466,8 @@ public class PropertyImpl
 	 */
 	public Deployment createDeployment(String name) {
 		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
-		newDeployment.setName(name);
+		if (name != null)
+			newDeployment.setName(name);
 		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
@@ -578,7 +579,8 @@ public class PropertyImpl
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
-		newTemplateBinding.setSignature(signature);
+		if (signature != null)
+			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
@@ -1367,8 +1369,10 @@ public class PropertyImpl
 	 */
 	public Property createQualifier(String name, Type type) {
 		Property newQualifier = UMLFactory.eINSTANCE.createProperty();
-		newQualifier.setName(name);
-		newQualifier.setType(type);
+		if (name != null)
+			newQualifier.setName(name);
+		if (type != null)
+			newQualifier.setType(type);
 		getQualifiers().add(newQualifier);
 		return newQualifier;
 	}

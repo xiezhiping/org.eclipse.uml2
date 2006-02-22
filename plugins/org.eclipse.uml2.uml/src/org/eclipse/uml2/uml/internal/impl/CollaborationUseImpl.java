@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.13 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -182,7 +182,8 @@ public class CollaborationUseImpl
 	 */
 	public Dependency createRoleBinding(String name) {
 		Dependency newRoleBinding = UMLFactory.eINSTANCE.createDependency();
-		newRoleBinding.setName(name);
+		if (name != null)
+			newRoleBinding.setName(name);
 		getRoleBindings().add(newRoleBinding);
 		return newRoleBinding;
 	}

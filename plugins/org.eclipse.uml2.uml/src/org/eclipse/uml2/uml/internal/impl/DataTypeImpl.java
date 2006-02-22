@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.18 2006/02/22 23:07:14 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.19 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -175,8 +175,10 @@ public class DataTypeImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -241,7 +243,8 @@ public class DataTypeImpl
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
-		newOwnedOperation.setName(name);
+		if (name != null)
+			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
 		int ownedParameterNamesSize = ownedParameterNames == null
 			? 0

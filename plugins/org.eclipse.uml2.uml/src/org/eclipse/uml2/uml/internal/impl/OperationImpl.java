@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.22 2006/02/22 23:07:14 khussey Exp $
+ * $Id: OperationImpl.java,v 1.23 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -411,7 +411,8 @@ public class OperationImpl
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
-		newTemplateBinding.setSignature(signature);
+		if (signature != null)
+			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
@@ -813,7 +814,8 @@ public class OperationImpl
 	 */
 	public Constraint createPrecondition(String name) {
 		Constraint newPrecondition = UMLFactory.eINSTANCE.createConstraint();
-		newPrecondition.setName(name);
+		if (name != null)
+			newPrecondition.setName(name);
 		getPreconditions().add(newPrecondition);
 		return newPrecondition;
 	}
@@ -887,7 +889,8 @@ public class OperationImpl
 	 */
 	public Constraint createPostcondition(String name) {
 		Constraint newPostcondition = UMLFactory.eINSTANCE.createConstraint();
-		newPostcondition.setName(name);
+		if (name != null)
+			newPostcondition.setName(name);
 		getPostconditions().add(newPostcondition);
 		return newPostcondition;
 	}
@@ -1102,7 +1105,8 @@ public class OperationImpl
 	 */
 	public Constraint createBodyCondition(String name) {
 		Constraint newBodyCondition = UMLFactory.eINSTANCE.createConstraint();
-		newBodyCondition.setName(name);
+		if (name != null)
+			newBodyCondition.setName(name);
 		setBodyCondition(newBodyCondition);
 		return newBodyCondition;
 	}
@@ -1199,8 +1203,10 @@ public class OperationImpl
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = UMLFactory.eINSTANCE.createParameter();
-		newOwnedParameter.setName(name);
-		newOwnedParameter.setType(type);
+		if (name != null)
+			newOwnedParameter.setName(name);
+		if (type != null)
+			newOwnedParameter.setType(type);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}

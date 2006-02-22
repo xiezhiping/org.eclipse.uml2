@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.22 2006/02/22 23:07:15 khussey Exp $
+ * $Id: PackageImpl.java,v 1.23 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -344,7 +344,8 @@ public class PackageImpl
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
-		newTemplateBinding.setSignature(signature);
+		if (signature != null)
+			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
@@ -604,7 +605,8 @@ public class PackageImpl
 			org.eclipse.uml2.uml.Package mergedPackage) {
 		PackageMerge newPackageMerge = UMLFactory.eINSTANCE
 			.createPackageMerge();
-		newPackageMerge.setMergedPackage(mergedPackage);
+		if (mergedPackage != null)
+			newPackageMerge.setMergedPackage(mergedPackage);
 		getPackageMerges().add(newPackageMerge);
 		return newPackageMerge;
 	}
@@ -914,7 +916,8 @@ public class PackageImpl
 	public org.eclipse.uml2.uml.Package createNestedPackage(String name) {
 		org.eclipse.uml2.uml.Package newNestedPackage = UMLFactory.eINSTANCE
 			.createPackage();
-		newNestedPackage.setName(name);
+		if (name != null)
+			newNestedPackage.setName(name);
 		getNestedPackages().add(newNestedPackage);
 		return newNestedPackage;
 	}

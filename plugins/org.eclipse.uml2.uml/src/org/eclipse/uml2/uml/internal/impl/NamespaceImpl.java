@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.15 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -224,7 +224,8 @@ public abstract class NamespaceImpl
 	public ElementImport createElementImport(PackageableElement importedElement) {
 		ElementImport newElementImport = UMLFactory.eINSTANCE
 			.createElementImport();
-		newElementImport.setImportedElement(importedElement);
+		if (importedElement != null)
+			newElementImport.setImportedElement(importedElement);
 		getElementImports().add(newElementImport);
 		return newElementImport;
 	}
@@ -285,7 +286,8 @@ public abstract class NamespaceImpl
 			org.eclipse.uml2.uml.Package importedPackage) {
 		PackageImport newPackageImport = UMLFactory.eINSTANCE
 			.createPackageImport();
-		newPackageImport.setImportedPackage(importedPackage);
+		if (importedPackage != null)
+			newPackageImport.setImportedPackage(importedPackage);
 		getPackageImports().add(newPackageImport);
 		return newPackageImport;
 	}
@@ -356,7 +358,8 @@ public abstract class NamespaceImpl
 	 */
 	public Constraint createOwnedRule(String name) {
 		Constraint newOwnedRule = UMLFactory.eINSTANCE.createConstraint();
-		newOwnedRule.setName(name);
+		if (name != null)
+			newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}

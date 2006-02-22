@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.19 2006/02/22 23:07:14 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.20 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -293,7 +293,8 @@ public class ArtifactImpl
 	 */
 	public Artifact createNestedArtifact(String name) {
 		Artifact newNestedArtifact = UMLFactory.eINSTANCE.createArtifact();
-		newNestedArtifact.setName(name);
+		if (name != null)
+			newNestedArtifact.setName(name);
 		getNestedArtifacts().add(newNestedArtifact);
 		return newNestedArtifact;
 	}
@@ -357,8 +358,10 @@ public class ArtifactImpl
 			PackageableElement utilizedElement) {
 		Manifestation newManifestation = UMLFactory.eINSTANCE
 			.createManifestation();
-		newManifestation.setName(name);
-		newManifestation.setUtilizedElement(utilizedElement);
+		if (name != null)
+			newManifestation.setName(name);
+		if (utilizedElement != null)
+			newManifestation.setUtilizedElement(utilizedElement);
 		getManifestations().add(newManifestation);
 		return newManifestation;
 	}
@@ -422,7 +425,8 @@ public class ArtifactImpl
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
-		newOwnedOperation.setName(name);
+		if (name != null)
+			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
 		int ownedParameterNamesSize = ownedParameterNames == null
 			? 0
@@ -537,8 +541,10 @@ public class ArtifactImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}

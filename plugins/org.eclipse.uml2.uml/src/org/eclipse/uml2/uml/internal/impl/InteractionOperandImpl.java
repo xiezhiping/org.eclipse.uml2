@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.13 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -183,7 +183,8 @@ public class InteractionOperandImpl
 	public GeneralOrdering createGeneralOrdering(String name) {
 		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
 			.createGeneralOrdering();
-		newGeneralOrdering.setName(name);
+		if (name != null)
+			newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
 	}
@@ -412,7 +413,8 @@ public class InteractionOperandImpl
 	public InteractionConstraint createGuard(String name) {
 		InteractionConstraint newGuard = UMLFactory.eINSTANCE
 			.createInteractionConstraint();
-		newGuard.setName(name);
+		if (name != null)
+			newGuard.setName(name);
 		setGuard(newGuard);
 		return newGuard;
 	}

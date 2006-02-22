@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.22 2006/02/22 23:07:15 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.23 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -419,8 +419,10 @@ public class ActivityImpl
 	 */
 	public Variable createVariable(String name, Type type) {
 		Variable newVariable = UMLFactory.eINSTANCE.createVariable();
-		newVariable.setName(name);
-		newVariable.setType(type);
+		if (name != null)
+			newVariable.setName(name);
+		if (type != null)
+			newVariable.setType(type);
 		getVariables().add(newVariable);
 		return newVariable;
 	}
@@ -541,7 +543,8 @@ public class ActivityImpl
 	public ActivityPartition createPartition(String name) {
 		ActivityPartition newPartition = UMLFactory.eINSTANCE
 			.createActivityPartition();
-		newPartition.setName(name);
+		if (name != null)
+			newPartition.setName(name);
 		getPartitions().add(newPartition);
 		return newPartition;
 	}

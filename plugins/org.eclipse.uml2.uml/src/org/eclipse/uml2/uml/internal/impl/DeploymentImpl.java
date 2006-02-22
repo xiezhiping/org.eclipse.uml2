@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.13 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -209,7 +209,8 @@ public class DeploymentImpl
 	public DeploymentSpecification createConfiguration(String name) {
 		DeploymentSpecification newConfiguration = UMLFactory.eINSTANCE
 			.createDeploymentSpecification();
-		newConfiguration.setName(name);
+		if (name != null)
+			newConfiguration.setName(name);
 		getConfigurations().add(newConfiguration);
 		return newConfiguration;
 	}

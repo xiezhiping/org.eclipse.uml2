@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.14 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -190,8 +190,10 @@ public class ReadLinkActionImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
-		newResult.setName(name);
-		newResult.setType(type);
+		if (name != null)
+			newResult.setName(name);
+		if (type != null)
+			newResult.setType(type);
 		setResult(newResult);
 		return newResult;
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.28 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.29 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -630,7 +630,8 @@ public abstract class ClassifierImpl
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
-		newTemplateBinding.setSignature(signature);
+		if (signature != null)
+			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
@@ -980,7 +981,8 @@ public abstract class ClassifierImpl
 	public CollaborationUse createCollaborationUse(String name) {
 		CollaborationUse newCollaborationUse = UMLFactory.eINSTANCE
 			.createCollaborationUse();
-		newCollaborationUse.setName(name);
+		if (name != null)
+			newCollaborationUse.setName(name);
 		getCollaborationUses().add(newCollaborationUse);
 		return newCollaborationUse;
 	}
@@ -1270,7 +1272,8 @@ public abstract class ClassifierImpl
 	 */
 	public UseCase createOwnedUseCase(String name) {
 		UseCase newOwnedUseCase = UMLFactory.eINSTANCE.createUseCase();
-		newOwnedUseCase.setName(name);
+		if (name != null)
+			newOwnedUseCase.setName(name);
 		getOwnedUseCases().add(newOwnedUseCase);
 		return newOwnedUseCase;
 	}
@@ -1374,8 +1377,10 @@ public abstract class ClassifierImpl
 	public Substitution createSubstitution(String name, Classifier contract) {
 		Substitution newSubstitution = UMLFactory.eINSTANCE
 			.createSubstitution();
-		newSubstitution.setName(name);
-		newSubstitution.setContract(contract);
+		if (name != null)
+			newSubstitution.setName(name);
+		if (contract != null)
+			newSubstitution.setContract(contract);
 		getSubstitutions().add(newSubstitution);
 		return newSubstitution;
 	}
@@ -1474,7 +1479,8 @@ public abstract class ClassifierImpl
 	public CollaborationUse createRepresentation(String name) {
 		CollaborationUse newRepresentation = UMLFactory.eINSTANCE
 			.createCollaborationUse();
-		newRepresentation.setName(name);
+		if (name != null)
+			newRepresentation.setName(name);
 		setRepresentation(newRepresentation);
 		return newRepresentation;
 	}
@@ -1645,7 +1651,8 @@ public abstract class ClassifierImpl
 	public Generalization createGeneralization(Classifier general) {
 		Generalization newGeneralization = UMLFactory.eINSTANCE
 			.createGeneralization();
-		newGeneralization.setGeneral(general);
+		if (general != null)
+			newGeneralization.setGeneral(general);
 		getGeneralizations().add(newGeneralization);
 		return newGeneralization;
 	}

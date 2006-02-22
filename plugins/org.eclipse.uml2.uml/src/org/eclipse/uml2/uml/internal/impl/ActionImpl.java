@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.17 2006/02/22 23:07:14 khussey Exp $
+ * $Id: ActionImpl.java,v 1.18 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -240,7 +240,8 @@ public abstract class ActionImpl
 	public Constraint createLocalPrecondition(String name) {
 		Constraint newLocalPrecondition = UMLFactory.eINSTANCE
 			.createConstraint();
-		newLocalPrecondition.setName(name);
+		if (name != null)
+			newLocalPrecondition.setName(name);
 		getLocalPreconditions().add(newLocalPrecondition);
 		return newLocalPrecondition;
 	}
@@ -315,7 +316,8 @@ public abstract class ActionImpl
 	public Constraint createLocalPostcondition(String name) {
 		Constraint newLocalPostcondition = UMLFactory.eINSTANCE
 			.createConstraint();
-		newLocalPostcondition.setName(name);
+		if (name != null)
+			newLocalPostcondition.setName(name);
 		getLocalPostconditions().add(newLocalPostcondition);
 		return newLocalPostcondition;
 	}

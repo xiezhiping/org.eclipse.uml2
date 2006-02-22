@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.18 2006/02/22 23:07:15 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.19 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -213,8 +213,10 @@ public class InterfaceImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
 		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		newOwnedAttribute.setName(name);
-		newOwnedAttribute.setType(type);
+		if (name != null)
+			newOwnedAttribute.setName(name);
+		if (type != null)
+			newOwnedAttribute.setType(type);
 		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
@@ -380,7 +382,8 @@ public class InterfaceImpl
 	public Reception createOwnedReception(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Reception newOwnedReception = UMLFactory.eINSTANCE.createReception();
-		newOwnedReception.setName(name);
+		if (name != null)
+			newOwnedReception.setName(name);
 		int ownedParameterListSize = 0;
 		int ownedParameterNamesSize = ownedParameterNames == null
 			? 0
@@ -554,7 +557,8 @@ public class InterfaceImpl
 	public ProtocolStateMachine createProtocol(String name) {
 		ProtocolStateMachine newProtocol = UMLFactory.eINSTANCE
 			.createProtocolStateMachine();
-		newProtocol.setName(name);
+		if (name != null)
+			newProtocol.setName(name);
 		setProtocol(newProtocol);
 		return newProtocol;
 	}
@@ -585,7 +589,8 @@ public class InterfaceImpl
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
-		newOwnedOperation.setName(name);
+		if (name != null)
+			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
 		int ownedParameterNamesSize = ownedParameterNames == null
 			? 0

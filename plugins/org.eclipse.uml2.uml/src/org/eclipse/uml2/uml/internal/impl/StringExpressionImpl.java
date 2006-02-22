@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.12 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,7 +135,8 @@ public class StringExpressionImpl
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
 			.createTemplateBinding();
-		newTemplateBinding.setSignature(signature);
+		if (signature != null)
+			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
@@ -316,8 +317,10 @@ public class StringExpressionImpl
 	public StringExpression createSubExpression(String name, Type type) {
 		StringExpression newSubExpression = UMLFactory.eINSTANCE
 			.createStringExpression();
-		newSubExpression.setName(name);
-		newSubExpression.setType(type);
+		if (name != null)
+			newSubExpression.setName(name);
+		if (type != null)
+			newSubExpression.setType(type);
 		getSubExpressions().add(newSubExpression);
 		return newSubExpression;
 	}

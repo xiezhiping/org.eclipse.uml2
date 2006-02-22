@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.19 2006/02/22 23:07:14 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.20 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -200,7 +200,8 @@ public class InteractionImpl
 	public GeneralOrdering createGeneralOrdering(String name) {
 		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
 			.createGeneralOrdering();
-		newGeneralOrdering.setName(name);
+		if (name != null)
+			newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
 	}
@@ -369,7 +370,8 @@ public class InteractionImpl
 	 */
 	public Lifeline createLifeline(String name) {
 		Lifeline newLifeline = UMLFactory.eINSTANCE.createLifeline();
-		newLifeline.setName(name);
+		if (name != null)
+			newLifeline.setName(name);
 		getLifelines().add(newLifeline);
 		return newLifeline;
 	}
@@ -546,7 +548,8 @@ public class InteractionImpl
 	 */
 	public Gate createFormalGate(String name) {
 		Gate newFormalGate = UMLFactory.eINSTANCE.createGate();
-		newFormalGate.setName(name);
+		if (name != null)
+			newFormalGate.setName(name);
 		getFormalGates().add(newFormalGate);
 		return newFormalGate;
 	}
@@ -604,7 +607,8 @@ public class InteractionImpl
 	 */
 	public Message createMessage(String name) {
 		Message newMessage = UMLFactory.eINSTANCE.createMessage();
-		newMessage.setName(name);
+		if (name != null)
+			newMessage.setName(name);
 		getMessages().add(newMessage);
 		return newMessage;
 	}

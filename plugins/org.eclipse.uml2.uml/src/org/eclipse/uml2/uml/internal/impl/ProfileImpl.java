@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.19 2006/02/22 23:07:14 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.20 2006/02/22 23:49:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,7 +170,8 @@ public class ProfileImpl
 	 */
 	public Stereotype createOwnedStereotype(String name) {
 		Stereotype newOwnedStereotype = UMLFactory.eINSTANCE.createStereotype();
-		newOwnedStereotype.setName(name);
+		if (name != null)
+			newOwnedStereotype.setName(name);
 		getOwnedStereotypes().add(newOwnedStereotype);
 		return newOwnedStereotype;
 	}
@@ -231,7 +232,8 @@ public class ProfileImpl
 			PackageableElement importedElement) {
 		ElementImport newMetaclassReference = UMLFactory.eINSTANCE
 			.createElementImport();
-		newMetaclassReference.setImportedElement(importedElement);
+		if (importedElement != null)
+			newMetaclassReference.setImportedElement(importedElement);
 		getMetaclassReferences().add(newMetaclassReference);
 		return newMetaclassReference;
 	}
@@ -293,7 +295,8 @@ public class ProfileImpl
 			org.eclipse.uml2.uml.Package importedPackage) {
 		PackageImport newMetamodelReference = UMLFactory.eINSTANCE
 			.createPackageImport();
-		newMetamodelReference.setImportedPackage(importedPackage);
+		if (importedPackage != null)
+			newMetamodelReference.setImportedPackage(importedPackage);
 		getMetamodelReferences().add(newMetamodelReference);
 		return newMetamodelReference;
 	}

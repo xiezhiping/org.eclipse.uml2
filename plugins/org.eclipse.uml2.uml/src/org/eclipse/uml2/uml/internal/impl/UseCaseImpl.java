@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.16 2006/02/22 20:48:17 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.17 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -133,8 +133,10 @@ public class UseCaseImpl
 	 */
 	public Include createInclude(String name, UseCase addition) {
 		Include newInclude = UMLFactory.eINSTANCE.createInclude();
-		newInclude.setName(name);
-		newInclude.setAddition(addition);
+		if (name != null)
+			newInclude.setName(name);
+		if (addition != null)
+			newInclude.setAddition(addition);
 		getIncludes().add(newInclude);
 		return newInclude;
 	}
@@ -193,8 +195,10 @@ public class UseCaseImpl
 	 */
 	public Extend createExtend(String name, UseCase extendedCase) {
 		Extend newExtend = UMLFactory.eINSTANCE.createExtend();
-		newExtend.setName(name);
-		newExtend.setExtendedCase(extendedCase);
+		if (name != null)
+			newExtend.setName(name);
+		if (extendedCase != null)
+			newExtend.setExtendedCase(extendedCase);
 		getExtends().add(newExtend);
 		return newExtend;
 	}
@@ -257,7 +261,8 @@ public class UseCaseImpl
 	public ExtensionPoint createExtensionPoint(String name) {
 		ExtensionPoint newExtensionPoint = UMLFactory.eINSTANCE
 			.createExtensionPoint();
-		newExtensionPoint.setName(name);
+		if (name != null)
+			newExtensionPoint.setName(name);
 		getExtensionPoints().add(newExtensionPoint);
 		return newExtensionPoint;
 	}

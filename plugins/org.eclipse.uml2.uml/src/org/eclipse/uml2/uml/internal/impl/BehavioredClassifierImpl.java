@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.20 2006/02/22 23:07:14 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.21 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -330,8 +330,10 @@ public abstract class BehavioredClassifierImpl
 			Interface contract) {
 		InterfaceRealization newInterfaceRealization = UMLFactory.eINSTANCE
 			.createInterfaceRealization();
-		newInterfaceRealization.setName(name);
-		newInterfaceRealization.setContract(contract);
+		if (name != null)
+			newInterfaceRealization.setName(name);
+		if (contract != null)
+			newInterfaceRealization.setContract(contract);
 		getInterfaceRealizations().add(newInterfaceRealization);
 		return newInterfaceRealization;
 	}
@@ -394,7 +396,8 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public Trigger createOwnedTrigger(String name) {
 		Trigger newOwnedTrigger = UMLFactory.eINSTANCE.createTrigger();
-		newOwnedTrigger.setName(name);
+		if (name != null)
+			newOwnedTrigger.setName(name);
 		getOwnedTriggers().add(newOwnedTrigger);
 		return newOwnedTrigger;
 	}

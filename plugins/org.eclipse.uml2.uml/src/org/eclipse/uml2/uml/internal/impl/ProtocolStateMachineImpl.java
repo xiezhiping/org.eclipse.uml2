@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.17 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.18 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,7 +138,8 @@ public class ProtocolStateMachineImpl
 			ProtocolStateMachine generalMachine) {
 		ProtocolConformance newConformance = UMLFactory.eINSTANCE
 			.createProtocolConformance();
-		newConformance.setGeneralMachine(generalMachine);
+		if (generalMachine != null)
+			newConformance.setGeneralMachine(generalMachine);
 		getConformances().add(newConformance);
 		return newConformance;
 	}

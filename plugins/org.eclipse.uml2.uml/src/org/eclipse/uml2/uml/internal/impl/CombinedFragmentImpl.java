@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.12 2006/02/22 23:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -171,7 +171,8 @@ public class CombinedFragmentImpl
 	public InteractionOperand createOperand(String name) {
 		InteractionOperand newOperand = UMLFactory.eINSTANCE
 			.createInteractionOperand();
-		newOperand.setName(name);
+		if (name != null)
+			newOperand.setName(name);
 		getOperands().add(newOperand);
 		return newOperand;
 	}
@@ -228,7 +229,8 @@ public class CombinedFragmentImpl
 	 */
 	public Gate createCfragmentGate(String name) {
 		Gate newCfragmentGate = UMLFactory.eINSTANCE.createGate();
-		newCfragmentGate.setName(name);
+		if (name != null)
+			newCfragmentGate.setName(name);
 		getCfragmentGates().add(newCfragmentGate);
 		return newCfragmentGate;
 	}
