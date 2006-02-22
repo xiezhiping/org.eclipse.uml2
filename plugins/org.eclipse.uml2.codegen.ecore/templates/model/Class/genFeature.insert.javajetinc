@@ -1,93 +1,27 @@
-<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genModel) && genFeature.isChangeable() && genFeature.isEffectiveContains()) {%>
-  <%if (genClass.getChildrenClasses(genFeature).size() > 0) {%>
-    <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
-      <%if (isInterface) {%>
-	/**
-        <%if (genFeature.isListType()) {%>
-	 * Creates a {@link <%=genFeature.getQualifiedListItemType()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%} else {%>
-	 * Creates a {@link <%=genFeature.getType()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%}%>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link <%=genFeature.getQualifiedListItemType()%>} to create.
-	 * @return The new {@link <%=genFeature.getQualifiedListItemType()%>}.
-	 * @see #<%=genFeature.getGetAccessor()%>()
-	 * @generated
-	 */
-      <%} else {%>
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-      <%}%>
-      <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
-
-      <%} else {%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
-	{
-		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) eClass.getEPackage().getEFactoryInstance().create(eClass);
-      <%if (genFeature.isListType()) {%>
-		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
-      <%} else {%>
-		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
-      <%}%>
-		return new<%=genFeature.getCapName()%>;
-	}
-
-      <%}%>
-    <%}%>
-    <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
-      <%if (isInterface) {%>
-	/**
-        <%if (genFeature.isListType()) {%>
-	 * Creates a {@link <%=childGenClass.getQualifiedInterfaceName()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%} else {%>
-	 * Creates a {@link <%=childGenClass.getQualifiedInterfaceName()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
-        <%}%>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link <%=childGenClass.getQualifiedInterfaceName()%>}.
-	 * @see #<%=genFeature.getGetAccessor()%>()
-	 * @generated
-	 */
-      <%} else {%>
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-      <%}%>
-      <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>();
-
-      <%} else {%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>()
-	{
-		<%=childGenClass.getImportedInterfaceName()%> new<%=genFeature.getCapName()%> = <%=childGenClass.getGenPackage().getImportedFactoryInterfaceName()%>.eINSTANCE.create<%=childGenClass.getName()%>();
-        <%if (genFeature.isListType()) {%>
-		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
-        <%} else {%>
-		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
-        <%}%>
-		return new<%=genFeature.getCapName()%>;
-	}
-
-      <%}%>
-    <%}%>
-  <%}%>
-<%}%>
-<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) {%>
-  <%for (Iterator j = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); j.hasNext();) {GenFeature keyGenFeature = (GenFeature)j.next();%>
+<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);%>
+  <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
     <%if (isInterface) {%>
 	/**
-	 * Retrieves the {@link <%=genFeature.getQualifiedListItemType()%>} with the specified '<em><b><%=keyGenFeature.getFormattedName()%></b></em>' from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+      <%if (!keyGenFeatures.isEmpty()) {%>
+        <%if (genFeature.isListType()) {%>
+	 * Creates a new {@link <%=genFeature.getQualifiedListItemType()%>}, with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%} else {%>
+	 * Creates a new {@link <%=genFeature.getType()%>}, with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%}%>
+      <%} else {%>
+        <%if (genFeature.isListType()) {%>
+	 * Creates a new {@link <%=genFeature.getQualifiedListItemType()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%} else {%>
+	 * Creates a new {@link <%=genFeature.getType()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%}%>
+      <%}%>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param <%=keyGenFeature.getUncapName()%> The '<em><b><%=keyGenFeature.getFormattedName()%></b></em>' of the {@link <%=genFeature.getQualifiedListItemType()%>} to retrieve.
-	 * @return The {@link <%=genFeature.getQualifiedListItemType()%>} with the specified '<em><b><%=keyGenFeature.getFormattedName()%></b></em>', or <code>null</code>.
+      <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> for the new {@link <%=genFeature.getQualifiedListItemType()%>}, or <code>null</code>.
+      <%}%>
+	 * @param eClass The Ecore class of the {@link <%=genFeature.getQualifiedListItemType()%>} to create.
+	 * @return The new {@link <%=genFeature.getQualifiedListItemType()%>}.
 	 * @see #<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
@@ -99,20 +33,240 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=keyGenFeature.getImportedType()%> <%=keyGenFeature.getUncapName()%>);
+	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
 
-    <%} else {%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=keyGenFeature.getImportedType()%> <%=keyGenFeature.getUncapName()%>)
+    <%} else { int index = 0;%>
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
 	{
-		for (<%=genModel.getImportedName("java.util.Iterator")%> i = <%=genFeature.getGetAccessor()%>().iterator(); i.hasNext(); )
+		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreUtil")%>.create(eClass);
+      <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
+        <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
+          <%if (keyGenFeature.isListType()) {%>
+		int <%=keyGenFeature.getUncapName()%>ListSize = 0;
+            <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
+		int <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size = <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> == null ? 0 : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.size();
+		if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size > <%=keyGenFeature.getUncapName()%>ListSize)
+			<%=keyGenFeature.getUncapName()%>ListSize = <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size;
+            <%}%>
+		for (int i = 0; i < <%=keyGenFeature.getUncapName()%>ListSize; i++) {
+			new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);%><%if (first) { first = false; } else {%>, <%}%>i < <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index - n, false)%>Size ? (<%=nestedKeyGenFeature.getImportedType()%>) <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index - n, false)%>.get(i) : null<%}%>);
+		}
+          <%} else {%>
+		new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%><%if (first) { first = false; } else {%>, <%}%><%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%><%}%>);
+          <%}%>
+        <%} else {%>
+          <%if (keyGenFeature.isListType()) {%>
+		new<%=genFeature.getCapName()%>.<%=keyGenFeature.getGetAccessor()%>().addAll(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+          <%} else {%>
+		new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+          <%}%>
+        <%}%>
+      <%}%>
+      <%if (genFeature.isListType()) {%>
+		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
+      <%} else {%>
+		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
+      <%}%>
+		return new<%=genFeature.getCapName()%>;
+	}
+
+    <%}%>
+  <%}%>
+  <%if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);%>
+    <%if (isInterface) {%>
+	/**
+      <%if (!keyGenFeatures.isEmpty()) {%>
+        <%if (genFeature.isListType()) {%>
+	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>}, with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%} else {%>
+	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>},with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%}%>
+      <%} else {%>
+        <%if (genFeature.isListType()) {%>
+	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>} and appends it to the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%} else {%>
+	 * Creates a new {@link <%=childGenClass.getQualifiedInterfaceName()%>} and sets the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+        <%}%>
+      <%}%>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+      <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> for the new {@link <%=genFeature.getQualifiedListItemType()%>}, or <code>null</code>.
+      <%}%>
+	 * @return The new {@link <%=childGenClass.getQualifiedInterfaceName()%>}.
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 */
+    <%} else {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    <%}%>
+    <%if (!isImplementation) {%>
+	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>);
+
+    <%} else { int index = 0;%>
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
+	{
+		<%=childGenClass.getImportedInterfaceName()%> new<%=genFeature.getCapName()%> = <%=childGenClass.getGenPackage().getImportedFactoryInterfaceName()%>.eINSTANCE.create<%=childGenClass.getName()%>();
+      <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
+        <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
+          <%if (keyGenFeature.isListType()) {%>
+		int <%=keyGenFeature.getUncapName()%>ListSize = 0;
+            <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
+		int <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size = <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> == null ? 0 : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.size();
+		if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size > <%=keyGenFeature.getUncapName()%>ListSize)
+			<%=keyGenFeature.getUncapName()%>ListSize = <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size;
+            <%}%>
+		for (int i = 0; i < <%=keyGenFeature.getUncapName()%>ListSize; i++) {
+			new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);%><%if (first) { first = false; } else {%>, <%}%>i < <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index - n, false)%>Size ? (<%=nestedKeyGenFeature.getImportedType()%>) <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index - n, false)%>.get(i) : null<%}%>);
+		}
+          <%} else {%>
+		new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%><%if (first) { first = false; } else {%>, <%}%><%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%><%}%>);
+          <%}%>
+        <%} else {%>
+          <%if (keyGenFeature.isListType()) {%>
+		new<%=genFeature.getCapName()%>.<%=keyGenFeature.getGetAccessor()%>().addAll(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+          <%} else {%>
+		new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+          <%}%>
+        <%}%>
+      <%}%>
+      <%if (genFeature.isListType()) {%>
+		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
+      <%} else {%>
+		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
+      <%}%>
+		return new<%=genFeature.getCapName()%>;
+	}
+
+    <%}%>
+  <%}%>
+<%}%>
+<%if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);%>
+  <%if (!keyGenFeatures.isEmpty()) {%>
+    <%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature) || UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>
+      <%if (isInterface) {%>
+	/**
+	 * Retrieves the first {@link <%=genFeature.getQualifiedListItemType()%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%> from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+        <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> of the {@link <%=genFeature.getQualifiedListItemType()%>} to retrieve, or <code>null</code>.
+        <%}%>
+	 * @return The first {@link <%=genFeature.getQualifiedListItemType()%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, or <code>null</code>.
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 */
+      <%} else {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+      <%}%>
+      <%if (!isImplementation) {%>
+	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>);
+
+      <%} else {%>
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
+	{
+		return get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature, false)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, false<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, null<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, false<%}%>);
+	}
+
+      <%}%>
+    <%}%>
+    <%if (isInterface) {%>
+	/**
+	 * Retrieves the first {@link <%=genFeature.getQualifiedListItemType()%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%> from the '<em><b><%=genFeature.getFormattedName()%></b></em>' <%=genFeature.getFeatureKind()%>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+      <%for (int index = 0, size = keyGenFeatures.size(); index < size; index++) {%>
+	 * @param <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> The <%=UML2GenModelUtil.getFormattedKeyFeatureName(genFeature, index)%> of the {@link <%=genFeature.getQualifiedListItemType()%>} to retrieve, or <code>null</code>.
+      <%}%>
+      <%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+      <%}%>
+      <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
+	 * @param eClass The Ecore class of the {@link <%=genFeature.getQualifiedListItemType()%>} to retrieve, or <code>null</code>.
+      <%}%>
+      <%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>
+	 * @param createOnDemand Whether to create a {@link <%=genFeature.getQualifiedListItemType()%>} on demand if not found.
+      <%}%>
+	 * @return The first {@link <%=genFeature.getQualifiedListItemType()%>} with the specified <%=UML2GenModelUtil.getFormattedKeyFeatureNames(genFeature)%>, or <code>null</code>.
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 */
+    <%} else {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    <%}%>
+    <%if (!isImplementation) {%>
+	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>);
+
+    <%} else { int index = 0;%>
+	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>)
+	{
+		<%=genFeature.getUncapName()%>Loop: for (<%=genModel.getImportedName("java.util.Iterator")%> i = <%=genFeature.getGetAccessor()%>().iterator(); i.hasNext(); )
 		{
 			<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> <%=genFeature.getUncapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) i.next();
-			if (<%=keyGenFeature.getUncapName()%>.equals(<%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>()))
+      <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
+			if (eClass != null && !eClass.isInstance(<%=genFeature.getUncapName()%>))
+				continue <%=genFeature.getUncapName()%>Loop;
+      <%}%>
+      <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
+        <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
+          <%if (keyGenFeature.isListType()) {%>
+			<%=keyGenFeature.getImportedType()%> <%=keyGenFeature.getUncapName()%>List = <%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>();
+			int <%=keyGenFeature.getUncapName()%>ListSize = <%=keyGenFeature.getUncapName()%>List.size();
+			if (<%for (int n = 0, size = nestedKeyGenFeatures.size(); n < size; n++) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(n);%><%if (!first) {%> || (<%}%><%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index + n, false)%> != null && <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index + n, false)%>.size() != <%=keyGenFeature.getUncapName()%>ListSize<%if (first) {first = false;%><%} else {%>)<%}%><%}%>)
+				continue  <%=genFeature.getUncapName()%>Loop;
+			for (int j = 0; j < <%=keyGenFeature.getUncapName()%>ListSize; j++)
 			{
-				return <%=genFeature.getUncapName()%>;
+				<%=genModel.getImportedName(keyGenFeature.getQualifiedListItemType())%> <%=keyGenFeature.getUncapName()%> = (<%=genModel.getImportedName(keyGenFeature.getQualifiedListItemType())%>) <%=keyGenFeature.getUncapName()%>List.get(j);
+            <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
+              <%if (nestedKeyGenFeature.isStringType()) {%>
+				if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !(ignoreCase ? ((<%=genModel.getImportedName("java.lang.String")%>)<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j)).equalsIgnoreCase(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()) : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j).equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>())))
+              <%} else {%>
+				if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j).equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()))
+              <%}%>
+					continue <%=genFeature.getUncapName()%>Loop;
+            <%}%>
 			}
+          <%} else {%>
+			<%=keyGenFeature.getImportedType()%> <%=keyGenFeature.getUncapName()%> = <%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>();
+			if (<%=keyGenFeature.getUncapName()%> == null)
+				continue <%=genFeature.getUncapName()%>Loop;
+            <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
+              <%if (nestedKeyGenFeature.isStringType()) {%>
+			if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !(ignoreCase ? <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equalsIgnoreCase(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()) : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>())))
+              <%} else {%>
+			if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()))
+              <%}%>
+				continue <%=genFeature.getUncapName()%>Loop;
+            <%}%>
+          <%}%>
+        <%} else {%>
+          <%if (keyGenFeature.isStringType()) {%>
+			if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !(ignoreCase ? <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equalsIgnoreCase(<%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>()) : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equals(<%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>())))
+          <%} else {%>
+			if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equals(<%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>()))
+          <%}%>
+				continue <%=genFeature.getUncapName()%>Loop;
+        <%}%>
+      <%}%>
+			return <%=genFeature.getUncapName()%>;
 		}
+      <%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>
+		return createOnDemand<%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%> && eClass != null<%}%> ? create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature, false)%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, eClass<%}%>) : null;
+      <%} else {%>
 		return null;
+      <%}%>
 	}
 
     <%}%>

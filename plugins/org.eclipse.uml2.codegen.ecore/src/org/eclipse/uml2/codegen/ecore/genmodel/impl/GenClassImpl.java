@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.24 2006/01/31 20:35:06 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.25 2006/02/22 20:48:43 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1258,13 +1258,27 @@ public class GenClassImpl
 	}
 
 	public List getKeyGenFeatures() {
+		return getKeyGenFeatures(true);
+	}
+
+	public List getKeyGenFeatures(final boolean includeContains) {
 		return collectGenFeatures(null, getAllGenFeatures(),
 			new GenFeatureFilter() {
 
 				public boolean accept(GenFeature genFeature) {
-					return UML2GenModelUtil.isKey(genFeature);
+					return UML2GenModelUtil.isKey(genFeature)
+						&& !genFeature.isPrimitiveType()
+						&& (includeContains || !genFeature.isContains());
 				}
 			});
+	}
+
+	public boolean isFactoryMethods(GenFeature genFeature) {
+		return UML2GenModelUtil.isFactoryMethods(getGenModel())
+			&& genFeature.isChangeable()
+			&& (genFeature.isEffectiveContains() || UML2GenModelUtil
+				.isEffectiveContainsSubset(genFeature))
+			&& getChildrenClasses(genFeature).size() > 0;
 	}
 
 	public boolean isESetField(GenFeature genFeature) {

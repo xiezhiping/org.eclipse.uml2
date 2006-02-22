@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenFeature.java,v 1.3 2006/02/22 20:48:43 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -73,6 +73,10 @@ public interface GenFeature
 
 	boolean isSubset();
 
+	boolean isEffectiveContainsSubset();
+
+	boolean isFactoryMethods();
+
 	List/* GenFeature */getSubsettedGenFeatures();
 
 	boolean isRedefinition();
@@ -80,5 +84,16 @@ public interface GenFeature
 	List/* GenFeature */getRedefinedGenFeatures();
 
 	String getRedefinedListItemType();
+
+	List/* GenFeature */getKeyGenFeatures();
+
+	boolean hasStringTypeKeyGenFeature();
+
+	String getKeyFeatureParameter(int index);
+	String getKeyFeatureParameter(int index, boolean formal);
+	String getKeyFeatureParameters();
+	String getKeyFeatureParameters(boolean formal);
+	String getFormattedKeyFeatureName(int index);
+	String getFormattedKeyFeatureNames();
 
 } // GenFeature

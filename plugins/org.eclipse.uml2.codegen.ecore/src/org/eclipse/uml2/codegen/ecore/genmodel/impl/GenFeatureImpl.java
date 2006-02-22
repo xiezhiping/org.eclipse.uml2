@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.15 2006/01/30 22:44:20 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.16 2006/02/22 20:48:43 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -273,6 +273,30 @@ public class GenFeatureImpl
 		return !isDerived() && Generator.isSubset(getEcoreFeature());
 	}
 
+	public boolean isEffectiveContainsSubset() {
+
+		for (Iterator subsettedGenFeatures = getSubsettedGenFeatures()
+			.iterator(); subsettedGenFeatures.hasNext();) {
+
+			GenFeature subsettedGenFeature = (GenFeature) subsettedGenFeatures
+				.next();
+
+			if (subsettedGenFeature.isContains()
+				&& !subsettedGenFeature.isDerived()) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public boolean isFactoryMethods() {
+		return UML2GenModelUtil.isFactoryMethods(getGenModel())
+			&& isChangeable()
+			&& (isEffectiveContains() || isEffectiveContainsSubset());
+	}
+
 	public List getSubsettedGenFeatures() {
 		List subsettedGenFeatures = new ArrayList();
 
@@ -321,6 +345,170 @@ public class GenFeatureImpl
 		}
 
 		return super.getListItemType();
+	}
+
+	public List getKeyGenFeatures() {
+		List keyGenFeatures = new ArrayList();
+
+		for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
+			.iterator(); k.hasNext();) {
+
+			GenFeature keyGenFeature = (GenFeature) k.next();
+
+			if (keyGenFeature.isContains()) {
+				keyGenFeatures.addAll(UML2GenModelUtil.getKeyGenFeatures(
+					keyGenFeature.getTypeGenClass(), false));
+			} else {
+				keyGenFeatures.add(keyGenFeature);
+			}
+		}
+
+		return keyGenFeatures;
+	}
+
+	public boolean hasStringTypeKeyGenFeature() {
+
+		for (Iterator k = getKeyGenFeatures().iterator(); k.hasNext();) {
+
+			if (((GenFeature) k.next()).isStringType()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public String getKeyFeatureParameter(int index) {
+		return getKeyFeatureParameter(index, true);
+	}
+
+	public String getKeyFeatureParameter(int index, boolean formal) {
+		StringBuffer keyFeatureParameter = new StringBuffer();
+		int count = 0;
+
+		for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
+			.iterator(); k.hasNext(); count++) {
+
+			GenFeature keyGenFeature = (GenFeature) k.next();
+
+			if (keyGenFeature.isContains()) {
+
+				for (Iterator n = UML2GenModelUtil.getKeyGenFeatures(
+					keyGenFeature.getTypeGenClass(), false).iterator(); n
+					.hasNext(); count++) {
+
+					GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+
+					if (count == index) {
+
+						if (formal) {
+							keyFeatureParameter.append(keyGenFeature
+								.isListType()
+								? getGenModel().getImportedName(
+									"org.eclipse.emf.common.util.EList") //$NON-NLS-1$
+								: nestedKeyGenFeature.getImportedType());
+							keyFeatureParameter.append(' ');
+						}
+
+						return keyFeatureParameter.append(
+							keyGenFeature.getUncapName()
+								+ (keyGenFeature.isListType()
+									? Generator.pluralize(nestedKeyGenFeature
+										.getCapName())
+									: nestedKeyGenFeature.getCapName()))
+							.toString();
+					}
+				}
+			} else if (count == index) {
+
+				if (formal) {
+					keyFeatureParameter.append(keyGenFeature.getImportedType());
+					keyFeatureParameter.append(' ');
+				}
+
+				return keyFeatureParameter.append(
+					uncapName(keyGenFeature.getAccessorName())).toString();
+			}
+		}
+
+		return keyFeatureParameter.toString();
+	}
+
+	public String getKeyFeatureParameters() {
+		return getKeyFeatureParameters(true);
+	}
+
+	public String getKeyFeatureParameters(boolean formal) {
+		StringBuffer keyFeatureParameters = new StringBuffer();
+
+		for (int i = 0, size = getKeyGenFeatures().size(); i < size; i++) {
+			keyFeatureParameters.append(getKeyFeatureParameter(i, formal));
+
+			if (i + 1 < size) {
+				keyFeatureParameters.append(", "); //$NON-NLS-1$
+			}
+		}
+
+		return keyFeatureParameters.toString();
+	}
+
+	public String getFormattedKeyFeatureName(int index) {
+		StringBuffer formattedKeyFeatureName = new StringBuffer();
+		int count = 0;
+
+		for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
+			.iterator(); k.hasNext(); count++) {
+
+			GenFeature keyGenFeature = (GenFeature) k.next();
+
+			if (keyGenFeature.isContains()) {
+
+				for (Iterator n = UML2GenModelUtil.getKeyGenFeatures(
+					keyGenFeature.getTypeGenClass(), false).iterator(); n
+					.hasNext(); count++) {
+
+					GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+
+					if (count == index) {
+						return formattedKeyFeatureName.append(
+							"'<em><b>" //$NON-NLS-1$
+								+ format(keyGenFeature.getCapName()
+									+ (keyGenFeature.isListType()
+										? Generator
+											.pluralize(nestedKeyGenFeature
+												.getCapName())
+										: nestedKeyGenFeature.getCapName()),
+									' ', null, false, false) + "</b></em>'") //$NON-NLS-1$
+							.toString();
+					}
+				}
+			} else if (count == index) {
+				return formattedKeyFeatureName.append(
+					"'<em><b>" //$NON-NLS-1$
+						+ format(keyGenFeature.getAccessorName(), ' ', null,
+							false, false) + "</b></em>'").toString(); //$NON-NLS-1$
+			}
+		}
+
+		return formattedKeyFeatureName.toString();
+	}
+
+	public String getFormattedKeyFeatureNames() {
+		StringBuffer formattedKeyFeatureNames = new StringBuffer();
+
+		for (int i = 0, size = getKeyGenFeatures().size(); i < size; i++) {
+			formattedKeyFeatureNames.append(getFormattedKeyFeatureName(i));
+
+			if (i + 1 < size) {
+				formattedKeyFeatureNames.append(", "); //$NON-NLS-1$
+
+				if (i + 2 == size) {
+					formattedKeyFeatureNames.append("and "); //$NON-NLS-1$
+				}
+			}
+		}
+
+		return formattedKeyFeatureNames.toString();
 	}
 
 	public String getFeatureAccessorName() {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.11 2006/01/05 22:42:18 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.12 2006/02/22 20:48:43 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -205,6 +205,21 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getKeyGenFeatures()
 			: Collections.EMPTY_LIST;
+	}
+
+	public static List getKeyGenFeatures(GenClass genClass,
+			boolean includeContains) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getKeyGenFeatures(includeContains)
+			: Collections.EMPTY_LIST;
+	}
+
+	public static boolean isFactoryMethods(GenClass genClass,
+			GenFeature genFeature) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.isFactoryMethods(genFeature);
 	}
 
 	public static GenFeature findGenFeature(GenClass genClass,
@@ -464,6 +479,12 @@ public class UML2GenModelUtil {
 				.isSubset();
 	}
 
+	public static boolean isEffectiveContainsSubset(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.isEffectiveContainsSubset();
+	}
+
 	public static List getSubsettedGenFeatures(GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
@@ -489,6 +510,65 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getRedefinedListItemType()
 			: genFeature.getListItemType();
+	}
+
+	public static List getKeyGenFeatures(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getKeyGenFeatures()
+			: Collections.EMPTY_LIST;
+	}
+
+	public static boolean hasStringTypeKeyGenFeature(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.hasStringTypeKeyGenFeature()
+			: false;
+	}
+
+	public static String getKeyFeatureParameter(GenFeature genFeature, int index) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getKeyFeatureParameter(index)
+			: ""; //$NON-NLS-1$
+	}
+
+	public static String getKeyFeatureParameter(GenFeature genFeature,
+			int index, boolean formal) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getKeyFeatureParameter(index, formal)
+			: ""; //$NON-NLS-1$
+	}
+
+	public static String getKeyFeatureParameters(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getKeyFeatureParameters()
+			: ""; //$NON-NLS-1$		
+	}
+
+	public static String getKeyFeatureParameters(GenFeature genFeature,
+			boolean formal) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getKeyFeatureParameters(formal)
+			: ""; //$NON-NLS-1$		
+	}
+
+	public static String getFormattedKeyFeatureName(GenFeature genFeature,
+			int index) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getFormattedKeyFeatureName(index)
+			: ""; //$NON-NLS-1$		
+	}
+
+	public static String getFormattedKeyFeatureNames(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.getFormattedKeyFeatureNames()
+			: ""; //$NON-NLS-1$				
 	}
 
 	// GenOperation utilities
