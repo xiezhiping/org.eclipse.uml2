@@ -128,10 +128,11 @@
 		new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%><%if (first) { first = false; } else {%>, <%}%><%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%><%}%>);
           <%}%>
         <%} else {%>
+		if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null)
           <%if (keyGenFeature.isListType()) {%>
-		new<%=genFeature.getCapName()%>.<%=keyGenFeature.getGetAccessor()%>().addAll(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+			new<%=genFeature.getCapName()%>.<%=keyGenFeature.getGetAccessor()%>().addAll(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
           <%} else {%>
-		new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+			new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
           <%}%>
         <%}%>
       <%}%>
