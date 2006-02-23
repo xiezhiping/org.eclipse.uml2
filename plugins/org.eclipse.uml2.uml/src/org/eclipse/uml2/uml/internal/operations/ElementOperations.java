@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.31 2006/02/22 22:54:40 khussey Exp $
+ * $Id: ElementOperations.java,v 1.32 2006/02/23 00:01:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -45,6 +45,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -813,69 +814,141 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getRelationships(Element element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getRelationships(element, UMLPackage.Literals.RELATIONSHIP);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getRelationships(Element element, EClass eClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList relationships = new UniqueEList.FastCompare();
+
+		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+			element).iterator(); nonNavigableInverseReferences.hasNext();) {
+
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+				.next();
+			EObject eObject = setting.getEObject();
+
+			if (eClass.isInstance(eObject)) {
+				relationships.add(eObject);
+			} else if (eObject instanceof Property) {
+				Association association = ((Property) eObject).getAssociation();
+
+				if (eClass.isInstance(association)) {
+					relationships.add(association);
+				}
+			}
+		}
+
+		for (Iterator eAllReferences = element.eClass().getEAllReferences()
+			.iterator(); eAllReferences.hasNext();) {
+
+			EReference eReference = (EReference) eAllReferences.next();
+
+			if (!eReference.isDerived() && element.eIsSet(eReference)) {
+				EClass eReferenceType = eReference.getEReferenceType();
+
+				if (eClass.isSuperTypeOf(eReferenceType)) {
+
+					if (eReference.isMany()) {
+						relationships.addAll((List) element.eGet(eReference));
+					} else {
+						relationships.add(element.eGet(eReference));
+					}
+				} else if (eReferenceType.isSuperTypeOf(eClass)) {
+					Object value = element.eGet(eReference);
+
+					if (eReference.isMany()) {
+
+						for (Iterator i = ((List) value).iterator(); i
+							.hasNext();) {
+
+							value = i.next();
+
+							if (eClass.isInstance(value)) {
+								relationships.add(value);
+							}
+						}
+					} else if (eClass.isInstance(value)) {
+						relationships.add(value);
+					}
+				}
+			}
+		}
+
+		return ECollections.unmodifiableEList(relationships);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getSourceDirectedRelationships(Element element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getSourceDirectedRelationships(element,
+			UMLPackage.Literals.DIRECTED_RELATIONSHIP);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getSourceDirectedRelationships(Element element,
 			EClass eClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList sourceDirectedRelationships = new UniqueEList.FastCompare();
+
+		for (Iterator directedRelationships = getRelationships(element, eClass)
+			.iterator(); directedRelationships.hasNext();) {
+
+			DirectedRelationship directedRelationship = (DirectedRelationship) directedRelationships
+				.next();
+
+			if (directedRelationship.getSources().contains(element)) {
+				sourceDirectedRelationships.add(directedRelationship);
+			}
+		}
+
+		return ECollections.unmodifiableEList(sourceDirectedRelationships);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getTargetDirectedRelationships(Element element) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getTargetDirectedRelationships(element,
+			UMLPackage.Literals.DIRECTED_RELATIONSHIP);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getTargetDirectedRelationships(Element element,
 			EClass eClass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList targetDirectedRelationships = new UniqueEList.FastCompare();
+
+		for (Iterator directedRelationships = getRelationships(element, eClass)
+			.iterator(); directedRelationships.hasNext();) {
+
+			DirectedRelationship directedRelationship = (DirectedRelationship) directedRelationships
+				.next();
+
+			if (directedRelationship.getTargets().contains(element)) {
+				targetDirectedRelationships.add(directedRelationship);
+			}
+		}
+
+		return ECollections.unmodifiableEList(targetDirectedRelationships);
 	}
 
 	/**

@@ -8,11 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.10 2006/02/22 20:48:22 khussey Exp $
+ * $Id: TypeOperations.java,v 1.11 2006/02/23 00:01:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
+
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -198,12 +204,32 @@ public class TypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static EList getAssociations(Type type) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		EList associations = new UniqueEList.FastCompare();
+
+		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
+			type).iterator(); nonNavigableInverseReferences.hasNext();) {
+
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+				.next();
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+				EObject eObject = setting.getEObject();
+
+				if (eObject instanceof Property) {
+					Association association = ((Property) eObject)
+						.getAssociation();
+
+					if (association != null) {
+						associations.add(association);
+					}
+				}
+			}
+		}
+
+		return ECollections.unmodifiableEList(associations);
 	}
 
 	public static Operation createOwnedOperation(Type type, final String name,
