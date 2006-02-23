@@ -461,193 +461,193 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_inxqMHMjEdqjLP0o6zXVqQ"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_-9CA0KP9EdqsHOjhCjeJJA" base_Package="_0" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
-  <Ecore:EClass xmi:id="_-9CA0aP9EdqsHOjhCjeJJA" base_Class="EStructuralFeature"/>
-  <Ecore:EReference xmi:id="_-9CA0qP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EStructuralFeature-eContainingClass" isResolveProxies="false"/>
-  <Ecore:EAttribute xmi:id="_-9CA06P9EdqsHOjhCjeJJA" base_Property="EStructuralFeature-changeable"/>
-  <Ecore:EAttribute xmi:id="_-9CA1KP9EdqsHOjhCjeJJA" base_Property="EStructuralFeature-volatile"/>
-  <Ecore:EAttribute xmi:id="_-9CA1aP9EdqsHOjhCjeJJA" base_Property="EStructuralFeature-transient"/>
-  <Ecore:EAttribute xmi:id="_-9CA1qP9EdqsHOjhCjeJJA" base_Property="EStructuralFeature-defaultValueLiteral"/>
-  <Ecore:EAttribute xmi:id="_-9CA16P9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EStructuralFeature-defaultValue"/>
-  <Ecore:EAttribute xmi:id="_-9CA2KP9EdqsHOjhCjeJJA" base_Property="EStructuralFeature-unsettable"/>
-  <Ecore:EAttribute xmi:id="_-9CA2aP9EdqsHOjhCjeJJA" base_Property="EStructuralFeature-derived"/>
-  <Ecore:EOperation xmi:id="_-9CA2qP9EdqsHOjhCjeJJA" base_Operation="EStructuralFeature-getFeatureID"/>
-  <Ecore:EOperation xmi:id="_-9CA26P9EdqsHOjhCjeJJA" base_Operation="EStructuralFeature-getContainerClass"/>
-  <Ecore:EClass xmi:id="_-9CA3KP9EdqsHOjhCjeJJA" base_Class="ETypedElement"/>
-  <Ecore:EAttribute xmi:id="_-9CA3aP9EdqsHOjhCjeJJA" base_Property="ETypedElement-ordered"/>
-  <Ecore:EAttribute xmi:id="_-9CA3qP9EdqsHOjhCjeJJA" base_Property="ETypedElement-unique"/>
-  <Ecore:EAttribute xmi:id="_-9CA36P9EdqsHOjhCjeJJA" base_Property="ETypedElement-lowerBound"/>
-  <Ecore:EAttribute xmi:id="_-9CA4KP9EdqsHOjhCjeJJA" base_Property="ETypedElement-upperBound"/>
-  <Ecore:EAttribute xmi:id="_-9CA4aP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="ETypedElement-many"/>
-  <Ecore:EAttribute xmi:id="_-9CA4qP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="ETypedElement-required"/>
-  <Ecore:EReference xmi:id="_-9CA46P9EdqsHOjhCjeJJA" base_Property="ETypedElement-eType"/>
-  <Ecore:EClass xmi:id="_-9CA5KP9EdqsHOjhCjeJJA" base_Class="ENamedElement"/>
-  <Ecore:EAttribute xmi:id="_-9CA5aP9EdqsHOjhCjeJJA" base_Property="ENamedElement-name"/>
-  <Ecore:EClass xmi:id="_-9CA5qP9EdqsHOjhCjeJJA" base_Class="EModelElement"/>
-  <Ecore:EReference xmi:id="_-9CA56P9EdqsHOjhCjeJJA" base_Property="EModelElement-eAnnotations" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_-9CA6KP9EdqsHOjhCjeJJA" base_Operation="EModelElement-getEAnnotation"/>
-  <Ecore:EParameter xmi:id="_-9CA6aP9EdqsHOjhCjeJJA" base_Parameter="EModelElement-getEAnnotation-source"/>
-  <Ecore:EClass xmi:id="_-9CA6qP9EdqsHOjhCjeJJA" base_Class="EAnnotation"/>
-  <Ecore:EAttribute xmi:id="_-9CA66P9EdqsHOjhCjeJJA" base_Property="EAnnotation-source"/>
-  <Ecore:EReference xmi:id="_-9CA7KP9EdqsHOjhCjeJJA" base_Property="EAnnotation-details" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CA7aP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EAnnotation-eModelElement" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CA7qP9EdqsHOjhCjeJJA" base_Property="EAnnotation-contents" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CA76P9EdqsHOjhCjeJJA" base_Property="EAnnotation-references"/>
-  <Ecore:EClass xmi:id="_-9CA8KP9EdqsHOjhCjeJJA" instanceClassName="java.util.Map$Entry" base_Class="EStringToStringMapEntry"/>
-  <Ecore:EAttribute xmi:id="_-9CA8aP9EdqsHOjhCjeJJA" base_Property="EStringToStringMapEntry-key"/>
-  <Ecore:EAttribute xmi:id="_-9CA8qP9EdqsHOjhCjeJJA" base_Property="EStringToStringMapEntry-value"/>
-  <Ecore:EClass xmi:id="_-9CA86P9EdqsHOjhCjeJJA" base_Class="EClassifier"/>
-  <Ecore:EAttribute xmi:id="_-9CA9KP9EdqsHOjhCjeJJA" base_Property="EClassifier-instanceClassName"/>
-  <Ecore:EAttribute xmi:id="_-9CA9aP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClassifier-instanceClass"/>
-  <Ecore:EAttribute xmi:id="_-9CA9qP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClassifier-defaultValue"/>
-  <Ecore:EReference xmi:id="_-9CA96P9EdqsHOjhCjeJJA" isTransient="true" base_Property="EClassifier-ePackage"/>
-  <Ecore:EOperation xmi:id="_-9CA-KP9EdqsHOjhCjeJJA" base_Operation="EClassifier-isInstance"/>
-  <Ecore:EParameter xmi:id="_-9CA-aP9EdqsHOjhCjeJJA" base_Parameter="EClassifier-isInstance-object"/>
-  <Ecore:EOperation xmi:id="_-9CA-qP9EdqsHOjhCjeJJA" base_Operation="EClassifier-getClassifierID"/>
-  <Ecore:EClass xmi:id="_-9CA-6P9EdqsHOjhCjeJJA" base_Class="EPackage"/>
-  <Ecore:EAttribute xmi:id="_-9CA_KP9EdqsHOjhCjeJJA" base_Property="EPackage-nsURI"/>
-  <Ecore:EAttribute xmi:id="_-9CA_aP9EdqsHOjhCjeJJA" base_Property="EPackage-nsPrefix"/>
-  <Ecore:EReference xmi:id="_-9CA_qP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EPackage-eFactoryInstance" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CA_6P9EdqsHOjhCjeJJA" base_Property="EPackage-eClassifiers"/>
-  <Ecore:EReference xmi:id="_-9CBAKP9EdqsHOjhCjeJJA" base_Property="EPackage-eSubpackages"/>
-  <Ecore:EReference xmi:id="_-9CBAaP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EPackage-eSuperPackage"/>
-  <Ecore:EOperation xmi:id="_-9CBAqP9EdqsHOjhCjeJJA" base_Operation="EPackage-getEClassifier"/>
-  <Ecore:EParameter xmi:id="_-9CBA6P9EdqsHOjhCjeJJA" base_Parameter="EPackage-getEClassifier-name"/>
-  <Ecore:EClass xmi:id="_-9CBBKP9EdqsHOjhCjeJJA" base_Class="EFactory"/>
-  <Ecore:EReference xmi:id="_-9CBBaP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EFactory-ePackage" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_-9CBBqP9EdqsHOjhCjeJJA" base_Operation="EFactory-create"/>
-  <Ecore:EParameter xmi:id="_-9CBB6P9EdqsHOjhCjeJJA" base_Parameter="EFactory-create-eClass"/>
-  <Ecore:EOperation xmi:id="_-9CBCKP9EdqsHOjhCjeJJA" base_Operation="EFactory-createFromString"/>
-  <Ecore:EParameter xmi:id="_-9CBCaP9EdqsHOjhCjeJJA" base_Parameter="EFactory-createFromString-eDataType"/>
-  <Ecore:EParameter xmi:id="_-9CBCqP9EdqsHOjhCjeJJA" base_Parameter="EFactory-createFromString-literalValue"/>
-  <Ecore:EOperation xmi:id="_-9CBC6P9EdqsHOjhCjeJJA" base_Operation="EFactory-convertToString"/>
-  <Ecore:EParameter xmi:id="_-9CBDKP9EdqsHOjhCjeJJA" base_Parameter="EFactory-convertToString-eDataType"/>
-  <Ecore:EParameter xmi:id="_-9CBDaP9EdqsHOjhCjeJJA" base_Parameter="EFactory-convertToString-instanceValue"/>
-  <Ecore:EClass xmi:id="_-9CBDqP9EdqsHOjhCjeJJA" base_Class="EClass"/>
-  <Ecore:EAttribute xmi:id="_-9CBD6P9EdqsHOjhCjeJJA" base_Property="EClass-abstract"/>
-  <Ecore:EAttribute xmi:id="_-9CBEKP9EdqsHOjhCjeJJA" base_Property="EClass-interface"/>
-  <Ecore:EReference xmi:id="_-9CBEaP9EdqsHOjhCjeJJA" base_Property="EClass-eSuperTypes"/>
-  <Ecore:EReference xmi:id="_-9CBEqP9EdqsHOjhCjeJJA" base_Property="EClass-eOperations" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CBE6P9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAllAttributes"/>
-  <Ecore:EReference xmi:id="_-9CBFKP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAllReferences"/>
-  <Ecore:EReference xmi:id="_-9CBFaP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eReferences"/>
-  <Ecore:EReference xmi:id="_-9CBFqP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAttributes"/>
-  <Ecore:EReference xmi:id="_-9CBF6P9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAllContainments"/>
-  <Ecore:EReference xmi:id="_-9CBGKP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAllOperations"/>
-  <Ecore:EReference xmi:id="_-9CBGaP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAllStructuralFeatures"/>
-  <Ecore:EReference xmi:id="_-9CBGqP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eAllSuperTypes"/>
-  <Ecore:EReference xmi:id="_-9CBG6P9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EClass-eIDAttribute" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CBHKP9EdqsHOjhCjeJJA" base_Property="EClass-eStructuralFeatures" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_-9CBHaP9EdqsHOjhCjeJJA" base_Operation="EClass-isSuperTypeOf"/>
-  <Ecore:EParameter xmi:id="_-9CBHqP9EdqsHOjhCjeJJA" base_Parameter="EClass-isSuperTypeOf-someClass"/>
-  <Ecore:EOperation xmi:id="_-9CBH6P9EdqsHOjhCjeJJA" base_Operation="EClass-getFeatureCount"/>
-  <Ecore:EOperation xmi:id="_-9CBIKP9EdqsHOjhCjeJJA" base_Operation="EClass-getEStructuralFeature"/>
-  <Ecore:EParameter xmi:id="_-9CBIaP9EdqsHOjhCjeJJA" base_Parameter="EClass-getEStructuralFeature-featureID"/>
-  <Ecore:EOperation xmi:id="_-9CBIqP9EdqsHOjhCjeJJA" base_Operation="EClass-getFeatureID"/>
-  <Ecore:EParameter xmi:id="_-9CBI6P9EdqsHOjhCjeJJA" base_Parameter="EClass-getFeatureID-feature"/>
-  <Ecore:EOperation xmi:id="_-9CBJKP9EdqsHOjhCjeJJA" base_Operation="EClass-getEStructuralFeature.1"/>
-  <Ecore:EParameter xmi:id="_-9CBJaP9EdqsHOjhCjeJJA" base_Parameter="EClass-getEStructuralFeature.1-featureName"/>
-  <Ecore:EClass xmi:id="_-9CBJqP9EdqsHOjhCjeJJA" base_Class="EOperation"/>
-  <Ecore:EReference xmi:id="_-9CBJ6P9EdqsHOjhCjeJJA" isTransient="true" base_Property="EOperation-eContainingClass" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CBKKP9EdqsHOjhCjeJJA" base_Property="EOperation-eParameters" isResolveProxies="false"/>
-  <Ecore:EReference xmi:id="_-9CBKaP9EdqsHOjhCjeJJA" base_Property="EOperation-eExceptions"/>
-  <Ecore:EClass xmi:id="_-9CBKqP9EdqsHOjhCjeJJA" base_Class="EParameter"/>
-  <Ecore:EReference xmi:id="_-9CBK6P9EdqsHOjhCjeJJA" isTransient="true" base_Property="EParameter-eOperation" isResolveProxies="false"/>
-  <Ecore:EClass xmi:id="_-9CBLKP9EdqsHOjhCjeJJA" base_Class="EReference"/>
-  <Ecore:EAttribute xmi:id="_-9CBLaP9EdqsHOjhCjeJJA" base_Property="EReference-containment"/>
-  <Ecore:EAttribute xmi:id="_-9CBLqP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EReference-container"/>
-  <Ecore:EAttribute xmi:id="_-9CBL6P9EdqsHOjhCjeJJA" base_Property="EReference-resolveProxies"/>
-  <Ecore:EReference xmi:id="_-9CBMKP9EdqsHOjhCjeJJA" base_Property="EReference-eOpposite"/>
-  <Ecore:EReference xmi:id="_-9CBMaP9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EReference-eReferenceType"/>
-  <Ecore:EClass xmi:id="_-9CBMqP9EdqsHOjhCjeJJA" base_Class="EDataType"/>
-  <Ecore:EAttribute xmi:id="_-9CBM6P9EdqsHOjhCjeJJA" base_Property="EDataType-serializable"/>
-  <Ecore:EClass xmi:id="_-9CBNKP9EdqsHOjhCjeJJA" base_Class="EEnum"/>
-  <Ecore:EReference xmi:id="_-9CBNaP9EdqsHOjhCjeJJA" base_Property="EEnum-eLiterals" isResolveProxies="false"/>
-  <Ecore:EOperation xmi:id="_-9CBNqP9EdqsHOjhCjeJJA" base_Operation="EEnum-getEEnumLiteral"/>
-  <Ecore:EParameter xmi:id="_-9CBN6P9EdqsHOjhCjeJJA" base_Parameter="EEnum-getEEnumLiteral-name"/>
-  <Ecore:EOperation xmi:id="_-9CBOKP9EdqsHOjhCjeJJA" base_Operation="EEnum-getEEnumLiteral.1"/>
-  <Ecore:EParameter xmi:id="_-9CBOaP9EdqsHOjhCjeJJA" base_Parameter="EEnum-getEEnumLiteral.1-value"/>
-  <Ecore:EOperation xmi:id="_-9CBOqP9EdqsHOjhCjeJJA" base_Operation="EEnum-getEEnumLiteralByLiteral"/>
-  <Ecore:EParameter xmi:id="_-9CBO6P9EdqsHOjhCjeJJA" base_Parameter="EEnum-getEEnumLiteralByLiteral-literal"/>
-  <Ecore:EClass xmi:id="_-9CBPKP9EdqsHOjhCjeJJA" base_Class="EEnumLiteral"/>
-  <Ecore:EAttribute xmi:id="_-9CBPaP9EdqsHOjhCjeJJA" base_Property="EEnumLiteral-value"/>
-  <Ecore:EAttribute xmi:id="_-9Lx0KP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EEnumLiteral-instance"/>
-  <Ecore:EAttribute xmi:id="_-9Lx0aP9EdqsHOjhCjeJJA" base_Property="EEnumLiteral-literal"/>
-  <Ecore:EReference xmi:id="_-9Lx0qP9EdqsHOjhCjeJJA" isTransient="true" base_Property="EEnumLiteral-eEnum" isResolveProxies="false"/>
-  <Ecore:EDataType xmi:id="_-9Lx06P9EdqsHOjhCjeJJA" instanceClassName="java.math.BigDecimal" base_PrimitiveType="EBigDecimal"/>
-  <Ecore:EDataType xmi:id="_-9Lx1KP9EdqsHOjhCjeJJA" instanceClassName="java.math.BigInteger" base_PrimitiveType="EBigInteger"/>
-  <Ecore:EDataType xmi:id="_-9Lx1aP9EdqsHOjhCjeJJA" instanceClassName="boolean" base_PrimitiveType="EBoolean"/>
-  <Ecore:EDataType xmi:id="_-9Lx1qP9EdqsHOjhCjeJJA" xmlName="EBoolean:Object" instanceClassName="java.lang.Boolean" base_PrimitiveType="EBooleanObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx16P9EdqsHOjhCjeJJA" instanceClassName="byte" base_PrimitiveType="EByte"/>
-  <Ecore:EDataType xmi:id="_-9Lx2KP9EdqsHOjhCjeJJA" instanceClassName="byte[]" base_PrimitiveType="EByteArray"/>
-  <Ecore:EDataType xmi:id="_-9Lx2aP9EdqsHOjhCjeJJA" xmlName="EByte:Object" instanceClassName="java.lang.Byte" base_PrimitiveType="EByteObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx2qP9EdqsHOjhCjeJJA" instanceClassName="char" base_PrimitiveType="EChar"/>
-  <Ecore:EDataType xmi:id="_-9Lx26P9EdqsHOjhCjeJJA" xmlName="EChar:Object" instanceClassName="java.lang.Character" base_PrimitiveType="ECharacterObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx3KP9EdqsHOjhCjeJJA" instanceClassName="java.util.Date" base_PrimitiveType="EDate"/>
-  <Ecore:EDataType xmi:id="_-9Lx3aP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="EDiagnosticChain"/>
-  <Ecore:EDataType xmi:id="_-9Lx3qP9EdqsHOjhCjeJJA" instanceClassName="double" base_PrimitiveType="EDouble"/>
-  <Ecore:EDataType xmi:id="_-9Lx36P9EdqsHOjhCjeJJA" xmlName="EDouble:Object" instanceClassName="java.lang.Double" base_PrimitiveType="EDoubleObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx4KP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="EEList"/>
-  <Ecore:EDataType xmi:id="_-9Lx4aP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="EEnumerator"/>
-  <Ecore:EDataType xmi:id="_-9Lx4qP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="EFeatureMap"/>
-  <Ecore:EDataType xmi:id="_-9Lx46P9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="EFeatureMapEntry"/>
-  <Ecore:EDataType xmi:id="_-9Lx5KP9EdqsHOjhCjeJJA" instanceClassName="float" base_PrimitiveType="EFloat"/>
-  <Ecore:EDataType xmi:id="_-9Lx5aP9EdqsHOjhCjeJJA" xmlName="EFloat:Object" instanceClassName="java.lang.Float" base_PrimitiveType="EFloatObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx5qP9EdqsHOjhCjeJJA" instanceClassName="int" base_PrimitiveType="EInt"/>
-  <Ecore:EDataType xmi:id="_-9Lx56P9EdqsHOjhCjeJJA" xmlName="EInt:Object" instanceClassName="java.lang.Integer" base_PrimitiveType="EIntegerObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx6KP9EdqsHOjhCjeJJA" instanceClassName="java.lang.Class" base_PrimitiveType="EJavaClass"/>
-  <Ecore:EDataType xmi:id="_-9Lx6aP9EdqsHOjhCjeJJA" instanceClassName="java.lang.Object" base_PrimitiveType="EJavaObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx6qP9EdqsHOjhCjeJJA" instanceClassName="long" base_PrimitiveType="ELong"/>
-  <Ecore:EDataType xmi:id="_-9Lx66P9EdqsHOjhCjeJJA" xmlName="ELong:Object" instanceClassName="java.lang.Long" base_PrimitiveType="ELongObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx7KP9EdqsHOjhCjeJJA" instanceClassName="java.util.Map" base_PrimitiveType="EMap"/>
-  <Ecore:EDataType xmi:id="_-9Lx7aP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="EResource"/>
-  <Ecore:EDataType xmi:id="_-9Lx7qP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="EResourceSet"/>
-  <Ecore:EDataType xmi:id="_-9Lx76P9EdqsHOjhCjeJJA" instanceClassName="short" base_PrimitiveType="EShort"/>
-  <Ecore:EDataType xmi:id="_-9Lx8KP9EdqsHOjhCjeJJA" xmlName="EShort:Object" instanceClassName="java.lang.Short" base_PrimitiveType="EShortObject"/>
-  <Ecore:EDataType xmi:id="_-9Lx8aP9EdqsHOjhCjeJJA" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
-  <Ecore:EDataType xmi:id="_-9Lx8qP9EdqsHOjhCjeJJA" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
-  <Ecore:EClass xmi:id="_-9Lx86P9EdqsHOjhCjeJJA" base_Class="EObject"/>
-  <Ecore:EOperation xmi:id="_-9Lx9KP9EdqsHOjhCjeJJA" base_Operation="EObject-eClass"/>
-  <Ecore:EOperation xmi:id="_-9Lx9aP9EdqsHOjhCjeJJA" base_Operation="EObject-eIsProxy"/>
-  <Ecore:EOperation xmi:id="_-9Lx9qP9EdqsHOjhCjeJJA" base_Operation="EObject-eResource"/>
-  <Ecore:EOperation xmi:id="_-9Lx96P9EdqsHOjhCjeJJA" base_Operation="EObject-eContainer"/>
-  <Ecore:EOperation xmi:id="_-9Lx-KP9EdqsHOjhCjeJJA" base_Operation="EObject-eContainingFeature"/>
-  <Ecore:EOperation xmi:id="_-9Lx-aP9EdqsHOjhCjeJJA" base_Operation="EObject-eContainmentFeature"/>
-  <Ecore:EOperation xmi:id="_-9Lx-qP9EdqsHOjhCjeJJA" base_Operation="EObject-eContents"/>
-  <Ecore:EOperation xmi:id="_-9Lx-6P9EdqsHOjhCjeJJA" base_Operation="EObject-eAllContents"/>
-  <Ecore:EOperation xmi:id="_-9Lx_KP9EdqsHOjhCjeJJA" base_Operation="EObject-eCrossReferences"/>
-  <Ecore:EOperation xmi:id="_-9Lx_aP9EdqsHOjhCjeJJA" base_Operation="EObject-eGet"/>
-  <Ecore:EParameter xmi:id="_-9Lx_qP9EdqsHOjhCjeJJA" base_Parameter="EObject-eGet-feature"/>
-  <Ecore:EOperation xmi:id="_-9Lx_6P9EdqsHOjhCjeJJA" base_Operation="EObject-eGet.1"/>
-  <Ecore:EParameter xmi:id="_-9LyAKP9EdqsHOjhCjeJJA" base_Parameter="EObject-eGet.1-feature"/>
-  <Ecore:EParameter xmi:id="_-9LyAaP9EdqsHOjhCjeJJA" base_Parameter="EObject-eGet.1-resolve"/>
-  <Ecore:EOperation xmi:id="_-9LyAqP9EdqsHOjhCjeJJA" base_Operation="EObject-eSet"/>
-  <Ecore:EParameter xmi:id="_-9LyA6P9EdqsHOjhCjeJJA" base_Parameter="EObject-eSet-feature"/>
-  <Ecore:EParameter xmi:id="_-9LyBKP9EdqsHOjhCjeJJA" base_Parameter="EObject-eSet-newValue"/>
-  <Ecore:EOperation xmi:id="_-9LyBaP9EdqsHOjhCjeJJA" base_Operation="EObject-eIsSet"/>
-  <Ecore:EParameter xmi:id="_-9LyBqP9EdqsHOjhCjeJJA" base_Parameter="EObject-eIsSet-feature"/>
-  <Ecore:EOperation xmi:id="_-9LyB6P9EdqsHOjhCjeJJA" base_Operation="EObject-eUnset"/>
-  <Ecore:EParameter xmi:id="_-9LyCKP9EdqsHOjhCjeJJA" base_Parameter="EObject-eUnset-feature"/>
-  <Ecore:EClass xmi:id="_-9LyCaP9EdqsHOjhCjeJJA" base_Class="EAttribute"/>
-  <Ecore:EAttribute xmi:id="_-9LyCqP9EdqsHOjhCjeJJA" base_Property="EAttribute-iD"/>
-  <Ecore:EReference xmi:id="_-9LyC6P9EdqsHOjhCjeJJA" isTransient="true" isVolatile="true" base_Property="EAttribute-eAttributeType"/>
-  <Standard:Metamodel xmi:id="_L5-_cqP-EdqsHOjhCjeJJA" base_Model="_0"/>
-  <Standard:Metaclass xmi:id="_L5-_c6P-EdqsHOjhCjeJJA" base_Class="EStructuralFeature"/>
-  <Standard:Metaclass xmi:id="_L5-_dKP-EdqsHOjhCjeJJA" base_Class="ETypedElement"/>
-  <Standard:Metaclass xmi:id="_L5-_daP-EdqsHOjhCjeJJA" base_Class="ENamedElement"/>
-  <Standard:Metaclass xmi:id="_L5-_dqP-EdqsHOjhCjeJJA" base_Class="EModelElement"/>
-  <Standard:Metaclass xmi:id="_L5-_d6P-EdqsHOjhCjeJJA" base_Class="EAnnotation"/>
-  <Standard:Metaclass xmi:id="_L5-_eKP-EdqsHOjhCjeJJA" base_Class="EStringToStringMapEntry"/>
-  <Standard:Metaclass xmi:id="_L5-_eaP-EdqsHOjhCjeJJA" base_Class="EClassifier"/>
-  <Standard:Metaclass xmi:id="_L6IwcKP-EdqsHOjhCjeJJA" base_Class="EPackage"/>
-  <Standard:Metaclass xmi:id="_L6IwcaP-EdqsHOjhCjeJJA" base_Class="EFactory"/>
-  <Standard:Metaclass xmi:id="_L6IwcqP-EdqsHOjhCjeJJA" base_Class="EClass"/>
-  <Standard:Metaclass xmi:id="_L6Iwc6P-EdqsHOjhCjeJJA" base_Class="EOperation"/>
-  <Standard:Metaclass xmi:id="_L6IwdKP-EdqsHOjhCjeJJA" base_Class="EParameter"/>
-  <Standard:Metaclass xmi:id="_L6IwdaP-EdqsHOjhCjeJJA" base_Class="EReference"/>
-  <Standard:Metaclass xmi:id="_L6IwdqP-EdqsHOjhCjeJJA" base_Class="EDataType"/>
-  <Standard:Metaclass xmi:id="_L6Iwd6P-EdqsHOjhCjeJJA" base_Class="EEnum"/>
-  <Standard:Metaclass xmi:id="_L6IweKP-EdqsHOjhCjeJJA" base_Class="EEnumLiteral"/>
-  <Standard:Metaclass xmi:id="_L6IweaP-EdqsHOjhCjeJJA" base_Class="EObject"/>
-  <Standard:Metaclass xmi:id="_L6IweqP-EdqsHOjhCjeJJA" base_Class="EAttribute"/>
+  <Ecore:EPackage xmi:id="_yow1KqSREdqbLsVx7ZZ-aw" base_Package="_0" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
+  <Ecore:EClass xmi:id="_yow1K6SREdqbLsVx7ZZ-aw" base_Class="EStructuralFeature"/>
+  <Ecore:EReference xmi:id="_yow1LKSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EStructuralFeature-eContainingClass" isResolveProxies="false"/>
+  <Ecore:EAttribute xmi:id="_yow1LaSREdqbLsVx7ZZ-aw" base_Property="EStructuralFeature-changeable"/>
+  <Ecore:EAttribute xmi:id="_yow1LqSREdqbLsVx7ZZ-aw" base_Property="EStructuralFeature-volatile"/>
+  <Ecore:EAttribute xmi:id="_yow1L6SREdqbLsVx7ZZ-aw" base_Property="EStructuralFeature-transient"/>
+  <Ecore:EAttribute xmi:id="_yow1MKSREdqbLsVx7ZZ-aw" base_Property="EStructuralFeature-defaultValueLiteral"/>
+  <Ecore:EAttribute xmi:id="_yow1MaSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EStructuralFeature-defaultValue"/>
+  <Ecore:EAttribute xmi:id="_yow1MqSREdqbLsVx7ZZ-aw" base_Property="EStructuralFeature-unsettable"/>
+  <Ecore:EAttribute xmi:id="_yow1M6SREdqbLsVx7ZZ-aw" base_Property="EStructuralFeature-derived"/>
+  <Ecore:EOperation xmi:id="_yow1NKSREdqbLsVx7ZZ-aw" base_Operation="EStructuralFeature-getFeatureID"/>
+  <Ecore:EOperation xmi:id="_yow1NaSREdqbLsVx7ZZ-aw" base_Operation="EStructuralFeature-getContainerClass"/>
+  <Ecore:EClass xmi:id="_yow1NqSREdqbLsVx7ZZ-aw" base_Class="ETypedElement"/>
+  <Ecore:EAttribute xmi:id="_yow1N6SREdqbLsVx7ZZ-aw" base_Property="ETypedElement-ordered"/>
+  <Ecore:EAttribute xmi:id="_yow1OKSREdqbLsVx7ZZ-aw" base_Property="ETypedElement-unique"/>
+  <Ecore:EAttribute xmi:id="_yow1OaSREdqbLsVx7ZZ-aw" base_Property="ETypedElement-lowerBound"/>
+  <Ecore:EAttribute xmi:id="_yow1OqSREdqbLsVx7ZZ-aw" base_Property="ETypedElement-upperBound"/>
+  <Ecore:EAttribute xmi:id="_yow1O6SREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="ETypedElement-many"/>
+  <Ecore:EAttribute xmi:id="_yow1PKSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="ETypedElement-required"/>
+  <Ecore:EReference xmi:id="_yow1PaSREdqbLsVx7ZZ-aw" base_Property="ETypedElement-eType"/>
+  <Ecore:EClass xmi:id="_yow1PqSREdqbLsVx7ZZ-aw" base_Class="ENamedElement"/>
+  <Ecore:EAttribute xmi:id="_yow1P6SREdqbLsVx7ZZ-aw" base_Property="ENamedElement-name"/>
+  <Ecore:EClass xmi:id="_yow1QKSREdqbLsVx7ZZ-aw" base_Class="EModelElement"/>
+  <Ecore:EReference xmi:id="_yow1QaSREdqbLsVx7ZZ-aw" base_Property="EModelElement-eAnnotations" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_yow1QqSREdqbLsVx7ZZ-aw" base_Operation="EModelElement-getEAnnotation"/>
+  <Ecore:EParameter xmi:id="_yow1Q6SREdqbLsVx7ZZ-aw" base_Parameter="EModelElement-getEAnnotation-source"/>
+  <Ecore:EClass xmi:id="_yow1RKSREdqbLsVx7ZZ-aw" base_Class="EAnnotation"/>
+  <Ecore:EAttribute xmi:id="_yow1RaSREdqbLsVx7ZZ-aw" base_Property="EAnnotation-source"/>
+  <Ecore:EReference xmi:id="_yow1RqSREdqbLsVx7ZZ-aw" base_Property="EAnnotation-details" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1R6SREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EAnnotation-eModelElement" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1SKSREdqbLsVx7ZZ-aw" base_Property="EAnnotation-contents" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1SaSREdqbLsVx7ZZ-aw" base_Property="EAnnotation-references"/>
+  <Ecore:EClass xmi:id="_yow1SqSREdqbLsVx7ZZ-aw" instanceClassName="java.util.Map$Entry" base_Class="EStringToStringMapEntry"/>
+  <Ecore:EAttribute xmi:id="_yow1S6SREdqbLsVx7ZZ-aw" base_Property="EStringToStringMapEntry-key"/>
+  <Ecore:EAttribute xmi:id="_yow1TKSREdqbLsVx7ZZ-aw" base_Property="EStringToStringMapEntry-value"/>
+  <Ecore:EClass xmi:id="_yow1TaSREdqbLsVx7ZZ-aw" base_Class="EClassifier"/>
+  <Ecore:EAttribute xmi:id="_yow1TqSREdqbLsVx7ZZ-aw" base_Property="EClassifier-instanceClassName"/>
+  <Ecore:EAttribute xmi:id="_yow1T6SREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClassifier-instanceClass"/>
+  <Ecore:EAttribute xmi:id="_yow1UKSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClassifier-defaultValue"/>
+  <Ecore:EReference xmi:id="_yow1UaSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EClassifier-ePackage"/>
+  <Ecore:EOperation xmi:id="_yow1UqSREdqbLsVx7ZZ-aw" base_Operation="EClassifier-isInstance"/>
+  <Ecore:EParameter xmi:id="_yow1U6SREdqbLsVx7ZZ-aw" base_Parameter="EClassifier-isInstance-object"/>
+  <Ecore:EOperation xmi:id="_yow1VKSREdqbLsVx7ZZ-aw" base_Operation="EClassifier-getClassifierID"/>
+  <Ecore:EClass xmi:id="_yow1VaSREdqbLsVx7ZZ-aw" base_Class="EPackage"/>
+  <Ecore:EAttribute xmi:id="_yow1VqSREdqbLsVx7ZZ-aw" base_Property="EPackage-nsURI"/>
+  <Ecore:EAttribute xmi:id="_yow1V6SREdqbLsVx7ZZ-aw" base_Property="EPackage-nsPrefix"/>
+  <Ecore:EReference xmi:id="_yow1WKSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EPackage-eFactoryInstance" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1WaSREdqbLsVx7ZZ-aw" base_Property="EPackage-eClassifiers"/>
+  <Ecore:EReference xmi:id="_yow1WqSREdqbLsVx7ZZ-aw" base_Property="EPackage-eSubpackages"/>
+  <Ecore:EReference xmi:id="_yow1W6SREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EPackage-eSuperPackage"/>
+  <Ecore:EOperation xmi:id="_yow1XKSREdqbLsVx7ZZ-aw" base_Operation="EPackage-getEClassifier"/>
+  <Ecore:EParameter xmi:id="_yow1XaSREdqbLsVx7ZZ-aw" base_Parameter="EPackage-getEClassifier-name"/>
+  <Ecore:EClass xmi:id="_yow1XqSREdqbLsVx7ZZ-aw" base_Class="EFactory"/>
+  <Ecore:EReference xmi:id="_yow1X6SREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EFactory-ePackage" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_yow1YKSREdqbLsVx7ZZ-aw" base_Operation="EFactory-create"/>
+  <Ecore:EParameter xmi:id="_yow1YaSREdqbLsVx7ZZ-aw" base_Parameter="EFactory-create-eClass"/>
+  <Ecore:EOperation xmi:id="_yow1YqSREdqbLsVx7ZZ-aw" base_Operation="EFactory-createFromString"/>
+  <Ecore:EParameter xmi:id="_yow1Y6SREdqbLsVx7ZZ-aw" base_Parameter="EFactory-createFromString-eDataType"/>
+  <Ecore:EParameter xmi:id="_yow1ZKSREdqbLsVx7ZZ-aw" base_Parameter="EFactory-createFromString-literalValue"/>
+  <Ecore:EOperation xmi:id="_yow1ZaSREdqbLsVx7ZZ-aw" base_Operation="EFactory-convertToString"/>
+  <Ecore:EParameter xmi:id="_yow1ZqSREdqbLsVx7ZZ-aw" base_Parameter="EFactory-convertToString-eDataType"/>
+  <Ecore:EParameter xmi:id="_yow1Z6SREdqbLsVx7ZZ-aw" base_Parameter="EFactory-convertToString-instanceValue"/>
+  <Ecore:EClass xmi:id="_yow1aKSREdqbLsVx7ZZ-aw" base_Class="EClass"/>
+  <Ecore:EAttribute xmi:id="_yow1aaSREdqbLsVx7ZZ-aw" base_Property="EClass-abstract"/>
+  <Ecore:EAttribute xmi:id="_yow1aqSREdqbLsVx7ZZ-aw" base_Property="EClass-interface"/>
+  <Ecore:EReference xmi:id="_yow1a6SREdqbLsVx7ZZ-aw" base_Property="EClass-eSuperTypes"/>
+  <Ecore:EReference xmi:id="_yow1bKSREdqbLsVx7ZZ-aw" base_Property="EClass-eOperations" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1baSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAllAttributes"/>
+  <Ecore:EReference xmi:id="_yow1bqSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAllReferences"/>
+  <Ecore:EReference xmi:id="_yow1b6SREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eReferences"/>
+  <Ecore:EReference xmi:id="_yow1cKSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAttributes"/>
+  <Ecore:EReference xmi:id="_yow1caSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAllContainments"/>
+  <Ecore:EReference xmi:id="_yow1cqSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAllOperations"/>
+  <Ecore:EReference xmi:id="_yow1c6SREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAllStructuralFeatures"/>
+  <Ecore:EReference xmi:id="_yow1dKSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eAllSuperTypes"/>
+  <Ecore:EReference xmi:id="_yow1daSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EClass-eIDAttribute" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1dqSREdqbLsVx7ZZ-aw" base_Property="EClass-eStructuralFeatures" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_yow1d6SREdqbLsVx7ZZ-aw" base_Operation="EClass-isSuperTypeOf"/>
+  <Ecore:EParameter xmi:id="_yow1eKSREdqbLsVx7ZZ-aw" base_Parameter="EClass-isSuperTypeOf-someClass"/>
+  <Ecore:EOperation xmi:id="_yow1eaSREdqbLsVx7ZZ-aw" base_Operation="EClass-getFeatureCount"/>
+  <Ecore:EOperation xmi:id="_yow1eqSREdqbLsVx7ZZ-aw" base_Operation="EClass-getEStructuralFeature"/>
+  <Ecore:EParameter xmi:id="_yow1e6SREdqbLsVx7ZZ-aw" base_Parameter="EClass-getEStructuralFeature-featureID"/>
+  <Ecore:EOperation xmi:id="_yow1fKSREdqbLsVx7ZZ-aw" base_Operation="EClass-getFeatureID"/>
+  <Ecore:EParameter xmi:id="_yow1faSREdqbLsVx7ZZ-aw" base_Parameter="EClass-getFeatureID-feature"/>
+  <Ecore:EOperation xmi:id="_yow1fqSREdqbLsVx7ZZ-aw" base_Operation="EClass-getEStructuralFeature.1"/>
+  <Ecore:EParameter xmi:id="_yow1f6SREdqbLsVx7ZZ-aw" base_Parameter="EClass-getEStructuralFeature.1-featureName"/>
+  <Ecore:EClass xmi:id="_yow1gKSREdqbLsVx7ZZ-aw" base_Class="EOperation"/>
+  <Ecore:EReference xmi:id="_yow1gaSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EOperation-eContainingClass" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1gqSREdqbLsVx7ZZ-aw" base_Property="EOperation-eParameters" isResolveProxies="false"/>
+  <Ecore:EReference xmi:id="_yow1g6SREdqbLsVx7ZZ-aw" base_Property="EOperation-eExceptions"/>
+  <Ecore:EClass xmi:id="_yow1hKSREdqbLsVx7ZZ-aw" base_Class="EParameter"/>
+  <Ecore:EReference xmi:id="_yow1haSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EParameter-eOperation" isResolveProxies="false"/>
+  <Ecore:EClass xmi:id="_yow1hqSREdqbLsVx7ZZ-aw" base_Class="EReference"/>
+  <Ecore:EAttribute xmi:id="_yow1h6SREdqbLsVx7ZZ-aw" base_Property="EReference-containment"/>
+  <Ecore:EAttribute xmi:id="_yow1iKSREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EReference-container"/>
+  <Ecore:EAttribute xmi:id="_yow1iaSREdqbLsVx7ZZ-aw" base_Property="EReference-resolveProxies"/>
+  <Ecore:EReference xmi:id="_yow1iqSREdqbLsVx7ZZ-aw" base_Property="EReference-eOpposite"/>
+  <Ecore:EReference xmi:id="_yow1i6SREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EReference-eReferenceType"/>
+  <Ecore:EClass xmi:id="_yow1jKSREdqbLsVx7ZZ-aw" base_Class="EDataType"/>
+  <Ecore:EAttribute xmi:id="_yow1jaSREdqbLsVx7ZZ-aw" base_Property="EDataType-serializable"/>
+  <Ecore:EClass xmi:id="_yow1jqSREdqbLsVx7ZZ-aw" base_Class="EEnum"/>
+  <Ecore:EReference xmi:id="_yow1j6SREdqbLsVx7ZZ-aw" base_Property="EEnum-eLiterals" isResolveProxies="false"/>
+  <Ecore:EOperation xmi:id="_yow1kKSREdqbLsVx7ZZ-aw" base_Operation="EEnum-getEEnumLiteral"/>
+  <Ecore:EParameter xmi:id="_yow1kaSREdqbLsVx7ZZ-aw" base_Parameter="EEnum-getEEnumLiteral-name"/>
+  <Ecore:EOperation xmi:id="_yow1kqSREdqbLsVx7ZZ-aw" base_Operation="EEnum-getEEnumLiteral.1"/>
+  <Ecore:EParameter xmi:id="_yow1k6SREdqbLsVx7ZZ-aw" base_Parameter="EEnum-getEEnumLiteral.1-value"/>
+  <Ecore:EOperation xmi:id="_yow1lKSREdqbLsVx7ZZ-aw" base_Operation="EEnum-getEEnumLiteralByLiteral"/>
+  <Ecore:EParameter xmi:id="_yow1laSREdqbLsVx7ZZ-aw" base_Parameter="EEnum-getEEnumLiteralByLiteral-literal"/>
+  <Ecore:EClass xmi:id="_yow1lqSREdqbLsVx7ZZ-aw" base_Class="EEnumLiteral"/>
+  <Ecore:EAttribute xmi:id="_yow1l6SREdqbLsVx7ZZ-aw" base_Property="EEnumLiteral-value"/>
+  <Ecore:EAttribute xmi:id="_yow1mKSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EEnumLiteral-instance"/>
+  <Ecore:EAttribute xmi:id="_yow1maSREdqbLsVx7ZZ-aw" base_Property="EEnumLiteral-literal"/>
+  <Ecore:EReference xmi:id="_yow1mqSREdqbLsVx7ZZ-aw" isTransient="true" base_Property="EEnumLiteral-eEnum" isResolveProxies="false"/>
+  <Ecore:EDataType xmi:id="_yow1m6SREdqbLsVx7ZZ-aw" instanceClassName="java.math.BigDecimal" base_PrimitiveType="EBigDecimal"/>
+  <Ecore:EDataType xmi:id="_yow1nKSREdqbLsVx7ZZ-aw" instanceClassName="java.math.BigInteger" base_PrimitiveType="EBigInteger"/>
+  <Ecore:EDataType xmi:id="_yow1naSREdqbLsVx7ZZ-aw" instanceClassName="boolean" base_PrimitiveType="EBoolean"/>
+  <Ecore:EDataType xmi:id="_yow1nqSREdqbLsVx7ZZ-aw" xmlName="EBoolean:Object" instanceClassName="java.lang.Boolean" base_PrimitiveType="EBooleanObject"/>
+  <Ecore:EDataType xmi:id="_yow1n6SREdqbLsVx7ZZ-aw" instanceClassName="byte" base_PrimitiveType="EByte"/>
+  <Ecore:EDataType xmi:id="_yow1oKSREdqbLsVx7ZZ-aw" instanceClassName="byte[]" base_PrimitiveType="EByteArray"/>
+  <Ecore:EDataType xmi:id="_yow1oaSREdqbLsVx7ZZ-aw" xmlName="EByte:Object" instanceClassName="java.lang.Byte" base_PrimitiveType="EByteObject"/>
+  <Ecore:EDataType xmi:id="_yow1oqSREdqbLsVx7ZZ-aw" instanceClassName="char" base_PrimitiveType="EChar"/>
+  <Ecore:EDataType xmi:id="_yow1o6SREdqbLsVx7ZZ-aw" xmlName="EChar:Object" instanceClassName="java.lang.Character" base_PrimitiveType="ECharacterObject"/>
+  <Ecore:EDataType xmi:id="_yow1pKSREdqbLsVx7ZZ-aw" instanceClassName="java.util.Date" base_PrimitiveType="EDate"/>
+  <Ecore:EDataType xmi:id="_yow1paSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="EDiagnosticChain"/>
+  <Ecore:EDataType xmi:id="_yow1pqSREdqbLsVx7ZZ-aw" instanceClassName="double" base_PrimitiveType="EDouble"/>
+  <Ecore:EDataType xmi:id="_yow1p6SREdqbLsVx7ZZ-aw" xmlName="EDouble:Object" instanceClassName="java.lang.Double" base_PrimitiveType="EDoubleObject"/>
+  <Ecore:EDataType xmi:id="_yow1qKSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="EEList"/>
+  <Ecore:EDataType xmi:id="_yow1qaSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="EEnumerator"/>
+  <Ecore:EDataType xmi:id="_yow1qqSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="EFeatureMap"/>
+  <Ecore:EDataType xmi:id="_yow1q6SREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="EFeatureMapEntry"/>
+  <Ecore:EDataType xmi:id="_yo59gKSREdqbLsVx7ZZ-aw" instanceClassName="float" base_PrimitiveType="EFloat"/>
+  <Ecore:EDataType xmi:id="_yo59gaSREdqbLsVx7ZZ-aw" xmlName="EFloat:Object" instanceClassName="java.lang.Float" base_PrimitiveType="EFloatObject"/>
+  <Ecore:EDataType xmi:id="_yo59gqSREdqbLsVx7ZZ-aw" instanceClassName="int" base_PrimitiveType="EInt"/>
+  <Ecore:EDataType xmi:id="_yo59g6SREdqbLsVx7ZZ-aw" xmlName="EInt:Object" instanceClassName="java.lang.Integer" base_PrimitiveType="EIntegerObject"/>
+  <Ecore:EDataType xmi:id="_yo59hKSREdqbLsVx7ZZ-aw" instanceClassName="java.lang.Class" base_PrimitiveType="EJavaClass"/>
+  <Ecore:EDataType xmi:id="_yo59haSREdqbLsVx7ZZ-aw" instanceClassName="java.lang.Object" base_PrimitiveType="EJavaObject"/>
+  <Ecore:EDataType xmi:id="_yo59hqSREdqbLsVx7ZZ-aw" instanceClassName="long" base_PrimitiveType="ELong"/>
+  <Ecore:EDataType xmi:id="_yo59h6SREdqbLsVx7ZZ-aw" xmlName="ELong:Object" instanceClassName="java.lang.Long" base_PrimitiveType="ELongObject"/>
+  <Ecore:EDataType xmi:id="_yo59iKSREdqbLsVx7ZZ-aw" instanceClassName="java.util.Map" base_PrimitiveType="EMap"/>
+  <Ecore:EDataType xmi:id="_yo59iaSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="EResource"/>
+  <Ecore:EDataType xmi:id="_yo59iqSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="EResourceSet"/>
+  <Ecore:EDataType xmi:id="_yo59i6SREdqbLsVx7ZZ-aw" instanceClassName="short" base_PrimitiveType="EShort"/>
+  <Ecore:EDataType xmi:id="_yo59jKSREdqbLsVx7ZZ-aw" xmlName="EShort:Object" instanceClassName="java.lang.Short" base_PrimitiveType="EShortObject"/>
+  <Ecore:EDataType xmi:id="_yo59jaSREdqbLsVx7ZZ-aw" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
+  <Ecore:EDataType xmi:id="_yo59jqSREdqbLsVx7ZZ-aw" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
+  <Ecore:EClass xmi:id="_yo59j6SREdqbLsVx7ZZ-aw" base_Class="EObject"/>
+  <Ecore:EOperation xmi:id="_yo59kKSREdqbLsVx7ZZ-aw" base_Operation="EObject-eClass"/>
+  <Ecore:EOperation xmi:id="_yo59kaSREdqbLsVx7ZZ-aw" base_Operation="EObject-eIsProxy"/>
+  <Ecore:EOperation xmi:id="_yo59kqSREdqbLsVx7ZZ-aw" base_Operation="EObject-eResource"/>
+  <Ecore:EOperation xmi:id="_yo59k6SREdqbLsVx7ZZ-aw" base_Operation="EObject-eContainer"/>
+  <Ecore:EOperation xmi:id="_yo59lKSREdqbLsVx7ZZ-aw" base_Operation="EObject-eContainingFeature"/>
+  <Ecore:EOperation xmi:id="_yo59laSREdqbLsVx7ZZ-aw" base_Operation="EObject-eContainmentFeature"/>
+  <Ecore:EOperation xmi:id="_yo59lqSREdqbLsVx7ZZ-aw" base_Operation="EObject-eContents"/>
+  <Ecore:EOperation xmi:id="_yo59l6SREdqbLsVx7ZZ-aw" base_Operation="EObject-eAllContents"/>
+  <Ecore:EOperation xmi:id="_yo59mKSREdqbLsVx7ZZ-aw" base_Operation="EObject-eCrossReferences"/>
+  <Ecore:EOperation xmi:id="_yo59maSREdqbLsVx7ZZ-aw" base_Operation="EObject-eGet"/>
+  <Ecore:EParameter xmi:id="_yo59mqSREdqbLsVx7ZZ-aw" base_Parameter="EObject-eGet-feature"/>
+  <Ecore:EOperation xmi:id="_yo59m6SREdqbLsVx7ZZ-aw" base_Operation="EObject-eGet.1"/>
+  <Ecore:EParameter xmi:id="_yo59nKSREdqbLsVx7ZZ-aw" base_Parameter="EObject-eGet.1-feature"/>
+  <Ecore:EParameter xmi:id="_yo59naSREdqbLsVx7ZZ-aw" base_Parameter="EObject-eGet.1-resolve"/>
+  <Ecore:EOperation xmi:id="_yo59nqSREdqbLsVx7ZZ-aw" base_Operation="EObject-eSet"/>
+  <Ecore:EParameter xmi:id="_yo59n6SREdqbLsVx7ZZ-aw" base_Parameter="EObject-eSet-feature"/>
+  <Ecore:EParameter xmi:id="_yo59oKSREdqbLsVx7ZZ-aw" base_Parameter="EObject-eSet-newValue"/>
+  <Ecore:EOperation xmi:id="_yo59oaSREdqbLsVx7ZZ-aw" base_Operation="EObject-eIsSet"/>
+  <Ecore:EParameter xmi:id="_yo59oqSREdqbLsVx7ZZ-aw" base_Parameter="EObject-eIsSet-feature"/>
+  <Ecore:EOperation xmi:id="_yo59o6SREdqbLsVx7ZZ-aw" base_Operation="EObject-eUnset"/>
+  <Ecore:EParameter xmi:id="_yo59pKSREdqbLsVx7ZZ-aw" base_Parameter="EObject-eUnset-feature"/>
+  <Ecore:EClass xmi:id="_yo59paSREdqbLsVx7ZZ-aw" base_Class="EAttribute"/>
+  <Ecore:EAttribute xmi:id="_yo59pqSREdqbLsVx7ZZ-aw" base_Property="EAttribute-iD"/>
+  <Ecore:EReference xmi:id="_yo59p6SREdqbLsVx7ZZ-aw" isTransient="true" isVolatile="true" base_Property="EAttribute-eAttributeType"/>
+  <Standard:Metamodel xmi:id="_GHkgMqSTEdqbLsVx7ZZ-aw" base_Model="_0"/>
+  <Standard:Metaclass xmi:id="_GHkgM6STEdqbLsVx7ZZ-aw" base_Class="EStructuralFeature"/>
+  <Standard:Metaclass xmi:id="_GHkgNKSTEdqbLsVx7ZZ-aw" base_Class="ETypedElement"/>
+  <Standard:Metaclass xmi:id="_GHkgNaSTEdqbLsVx7ZZ-aw" base_Class="ENamedElement"/>
+  <Standard:Metaclass xmi:id="_GHkgNqSTEdqbLsVx7ZZ-aw" base_Class="EModelElement"/>
+  <Standard:Metaclass xmi:id="_GHkgN6STEdqbLsVx7ZZ-aw" base_Class="EAnnotation"/>
+  <Standard:Metaclass xmi:id="_GHkgOKSTEdqbLsVx7ZZ-aw" base_Class="EStringToStringMapEntry"/>
+  <Standard:Metaclass xmi:id="_GHkgOaSTEdqbLsVx7ZZ-aw" base_Class="EClassifier"/>
+  <Standard:Metaclass xmi:id="_GHkgOqSTEdqbLsVx7ZZ-aw" base_Class="EPackage"/>
+  <Standard:Metaclass xmi:id="_GHkgO6STEdqbLsVx7ZZ-aw" base_Class="EFactory"/>
+  <Standard:Metaclass xmi:id="_GHkgPKSTEdqbLsVx7ZZ-aw" base_Class="EClass"/>
+  <Standard:Metaclass xmi:id="_GHkgPaSTEdqbLsVx7ZZ-aw" base_Class="EOperation"/>
+  <Standard:Metaclass xmi:id="_GHkgPqSTEdqbLsVx7ZZ-aw" base_Class="EParameter"/>
+  <Standard:Metaclass xmi:id="_GHuRMKSTEdqbLsVx7ZZ-aw" base_Class="EReference"/>
+  <Standard:Metaclass xmi:id="_GHuRMaSTEdqbLsVx7ZZ-aw" base_Class="EDataType"/>
+  <Standard:Metaclass xmi:id="_GHuRMqSTEdqbLsVx7ZZ-aw" base_Class="EEnum"/>
+  <Standard:Metaclass xmi:id="_GHuRM6STEdqbLsVx7ZZ-aw" base_Class="EEnumLiteral"/>
+  <Standard:Metaclass xmi:id="_GHuRNKSTEdqbLsVx7ZZ-aw" base_Class="EObject"/>
+  <Standard:Metaclass xmi:id="_GHuRNaSTEdqbLsVx7ZZ-aw" base_Class="EAttribute"/>
 </xmi:XMI>
