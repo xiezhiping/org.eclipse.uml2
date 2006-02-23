@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndOperations.java,v 1.6 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ConnectorEndOperations.java,v 1.7 2006/02/23 17:36:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -199,12 +199,15 @@ public class ConnectorEndOperations
 			Connector connector = (Connector) owner;
 			Association type = connector.getType();
 
-			List ends = ((InternalEList) connector.getEnds()).basicList();
-			List memberEnds = ((InternalEList) type.getMemberEnds())
-				.basicList();
+			if (type != null) {
+				List ends = ((InternalEList) connector.getEnds()).basicList();
+				List memberEnds = ((InternalEList) type.getMemberEnds())
+					.basicList();
 
-			if (ends.size() == memberEnds.size()) {
-				return (Property) memberEnds.get(ends.indexOf(connectorEnd));
+				if (ends.size() == memberEnds.size()) {
+					return (Property) memberEnds
+						.get(ends.indexOf(connectorEnd));
+				}
 			}
 		}
 
