@@ -3634,9 +3634,9 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_entry_behavior/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_entry_behavior/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//FinalState/no_exitbehavior">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_exitbehavior/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_exitbehavior/context"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//FinalState/no_exit_behavior">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_exit_behavior/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_exit_behavior/context"/>
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//FinalState/no_state_behavior">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//FinalState/no_state_behavior/diagnostics"/>

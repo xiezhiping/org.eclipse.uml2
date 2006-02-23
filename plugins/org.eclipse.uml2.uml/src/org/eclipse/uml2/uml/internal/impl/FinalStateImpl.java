@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.2 2005/11/23 20:01:18 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.3 2006/02/23 17:20:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,9 +102,9 @@ public class FinalStateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoExitbehavior(DiagnosticChain diagnostics,
+	public boolean validateNoExitBehavior(DiagnosticChain diagnostics,
 			Map context) {
-		return FinalStateOperations.validateNoExitbehavior(this, diagnostics,
+		return FinalStateOperations.validateNoExitBehavior(this, diagnostics,
 			context);
 	}
 

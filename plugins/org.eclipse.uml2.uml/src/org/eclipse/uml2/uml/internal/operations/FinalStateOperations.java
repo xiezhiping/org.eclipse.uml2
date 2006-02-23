@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: FinalStateOperations.java,v 1.5 2006/02/23 17:20:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,7 +34,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Regions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateCannotReferenceSubmachine(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Reference Submachine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoEntryBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Entry Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitbehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exitbehavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exit Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoStateBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No State Behavior</em>}</li>
  * </ul>
  * </p>
@@ -190,7 +190,7 @@ public class FinalStateOperations
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNoExitbehavior(FinalState finalState,
+	public static boolean validateNoExitBehavior(FinalState finalState,
 			DiagnosticChain diagnostics, Map context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -202,10 +202,10 @@ public class FinalStateOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.FINAL_STATE__NO_EXITBEHAVIOR,
+						UMLValidator.FINAL_STATE__NO_EXIT_BEHAVIOR,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoExitbehavior", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(finalState, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoExitBehavior", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(finalState, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{finalState}));
 			}
 			return false;

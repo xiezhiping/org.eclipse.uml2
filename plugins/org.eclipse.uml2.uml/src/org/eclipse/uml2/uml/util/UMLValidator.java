@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.13 2006/01/20 20:55:51 khussey Exp $
+ * $Id: UMLValidator.java,v 1.14 2006/02/23 17:20:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3448,12 +3448,12 @@ public class UMLValidator
 	public static final int FINAL_STATE__NO_ENTRY_BEHAVIOR = 311;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Exitbehavior' of 'Final State'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Exit Behavior' of 'Final State'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_EXITBEHAVIOR = 312;
+	public static final int FINAL_STATE__NO_EXIT_BEHAVIOR = 312;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No State Behavior' of 'Final State'.
@@ -21428,7 +21428,7 @@ public class UMLValidator
 			result &= validateFinalState_validateNoEntryBehavior(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateFinalState_validateNoExitbehavior(finalState,
+			result &= validateFinalState_validateNoExitBehavior(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateFinalState_validateNoStateBehavior(finalState,
@@ -21482,14 +21482,14 @@ public class UMLValidator
 	}
 
 	/**
-	 * Validates the validateNoExitbehavior constraint of '<em>Final State</em>'.
+	 * Validates the validateNoExitBehavior constraint of '<em>Final State</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateFinalState_validateNoExitbehavior(
+	public boolean validateFinalState_validateNoExitBehavior(
 			FinalState finalState, DiagnosticChain diagnostics, Map context) {
-		return finalState.validateNoExitbehavior(diagnostics, context);
+		return finalState.validateNoExitBehavior(diagnostics, context);
 	}
 
 	/**
