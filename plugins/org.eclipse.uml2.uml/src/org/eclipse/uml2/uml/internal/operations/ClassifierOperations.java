@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.14 2006/02/22 20:48:22 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.15 2006/02/24 17:25:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
@@ -280,25 +281,12 @@ public class ClassifierOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation getOperation(Classifier classifier, String name,
 			EList parameterNames, EList parameterTypes) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static Operation getOperation(Classifier classifier, String name,
-			EList parameterNames, EList parameterTypes, boolean ignoreCase) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return classifier.getOperation(name, parameterNames, parameterTypes,
+			false);
 	}
 
 	/**
@@ -306,16 +294,48 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static Operation getOperation(Classifier classifier, String name) {
-
-		for (Iterator operations = classifier.getOperations().iterator(); operations
+	public static Operation getOperation(Classifier classifier, String name,
+			EList parameterNames, EList parameterTypes, boolean ignoreCase) {
+		operationLoop : for (Iterator i = classifier.getOperations().iterator(); i
 			.hasNext();) {
 
-			Operation operation = (Operation) operations.next();
+			Operation ownedOperation = (Operation) i.next();
 
-			if (safeEquals(operation.getName(), name)) {
-				return operation;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedOperation.getName())
+				: name.equals(ownedOperation.getName())))
+
+				continue operationLoop;
+
+			EList ownedParameterList = ownedOperation.getOwnedParameters();
+			int ownedParameterListSize = ownedParameterList.size();
+
+			if (parameterNames != null
+				&& parameterNames.size() != ownedParameterListSize
+				|| (parameterTypes != null && parameterTypes.size() != ownedParameterListSize))
+
+				continue operationLoop;
+
+			for (int j = 0; j < ownedParameterListSize; j++) {
+				Parameter ownedParameter = (Parameter) ownedParameterList
+					.get(j);
+
+				if (parameterNames != null
+					&& !(ignoreCase
+						? ((String) parameterNames.get(j))
+							.equalsIgnoreCase(ownedParameter.getName())
+						: parameterNames.get(j)
+							.equals(ownedParameter.getName())))
+
+					continue operationLoop;
+
+				if (parameterTypes != null
+					&& !parameterTypes.get(j).equals(ownedParameter.getType()))
+
+					continue operationLoop;
 			}
+
+			return ownedOperation;
 		}
 
 		return null;
