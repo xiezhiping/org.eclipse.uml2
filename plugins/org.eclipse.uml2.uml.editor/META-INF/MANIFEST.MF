@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.uml.editor; singleton:=true
-Bundle-Version: 2.0.0
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: uml2.uml.editor.jar
 Bundle-Activator: org.eclipse.uml2.uml.editor.UMLEditorPlugin$Implementation
 Bundle-Vendor: %providerName

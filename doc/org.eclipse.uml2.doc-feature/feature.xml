@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.doc"
       label="%feature.label"
-      version="2.0.0"
+      version="2.0.0.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -27,6 +27,6 @@
          id="org.eclipse.uml2.doc"
          download-size="0"
          install-size="0"
-         version="2.0.0"/>
+         version="0.0.0"/>
 
 </feature>

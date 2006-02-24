@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.codegen.ecore; singleton:=true
-Bundle-Version: 1.2.0
+Bundle-Version: 1.2.0.qualifier
 Bundle-ClassPath: uml2.codegen.ecore.jar
 Bundle-Activator: org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin$Implementation
 Bundle-Vendor: %providerName

@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
-
-<!--
- Copyright (c) 2003, 2005 IBM Corporation and others.
- All rights reserved.   This program and the accompanying materials
- are made available under the terms of the Eclipse Public License v1.0
- which accompanies this distribution, and is available at
- http://www.eclipse.org/legal/epl-v10.html
-
- Contributors: 
-   IBM - initial API and implementation
-
- $Id: feature.xml,v 1.17 2005/12/22 21:31:39 khussey Exp $
--->
-
 <feature
       id="org.eclipse.uml2.sdk"
       label="%feature.label"
-      version="2.0.0"
-      provider-name="%feature.provider-name">
+      version="2.0.0.qualifier"
+      provider-name="%feature.provider-name"
+      image="eclipse_update_120.jpg">
 
    <description>
       %description
@@ -35,18 +21,18 @@
 
    <includes
       id="org.eclipse.uml2"
-      version="2.0.0"/> 
+      version="0.0.0"/> 
 
    <includes
       id="org.eclipse.uml2.source"
-      version="2.0.0"/> 
+      version="0.0.0"/> 
 
    <includes
       id="org.eclipse.uml2.examples"
-      version="2.0.0"/> 
+      version="0.0.0"/> 
 
    <includes
       id="org.eclipse.uml2.doc"
-      version="2.0.0"/> 
+      version="0.0.0"/> 
 
 </feature>
