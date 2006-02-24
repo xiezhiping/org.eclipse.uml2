@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImageItemProvider.java,v 1.6 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ImageItemProvider.java,v 1.7 2006/02/24 17:28:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -148,8 +148,9 @@ public class ImageItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendType(appendKeywords(new StringBuffer(), object),
-			"_UI_Image_type").toString(); //$NON-NLS-1$
+		return appendString(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Image_type"), ((Image) object).getLocation()).toString(); //$NON-NLS-1$
 	}
 
 	/**

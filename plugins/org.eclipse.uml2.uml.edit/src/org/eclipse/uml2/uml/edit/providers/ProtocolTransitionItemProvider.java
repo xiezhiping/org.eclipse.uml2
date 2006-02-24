@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.7 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.8 2006/02/24 17:28:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -179,7 +179,7 @@ public class ProtocolTransitionItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Transition_type"), object).toString(); //$NON-NLS-1$
+				"_UI_ProtocolTransition_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

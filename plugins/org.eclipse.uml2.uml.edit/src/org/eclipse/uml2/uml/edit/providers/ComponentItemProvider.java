@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.8 2006/02/21 21:40:13 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.9 2006/02/24 17:28:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -221,13 +221,12 @@ public class ComponentItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		String label = ((Component) object).getName();
-		return label == null || label.length() == 0
-			? getString("_UI_Component_type") : //$NON-NLS-1$
-			getString("_UI_Component_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Component_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
