@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.12 2006/02/22 20:48:43 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.13 2006/03/01 17:57:18 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -304,6 +304,16 @@ public class UML2GenModelUtil {
 			: Collections.EMPTY_LIST;
 	}
 
+	public static List getSupersetGenFeatures(GenClass genClass,
+			GenFeature subsetGenFeature, boolean includeDerived,
+			boolean includeListType) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSupersetGenFeatures(subsetGenFeature, includeDerived,
+					includeListType)
+			: Collections.EMPTY_LIST;
+	}
+
 	public static String getSupersetFeatureAccessorArray(GenClass genClass,
 			GenFeature subsetGenFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
@@ -345,6 +355,16 @@ public class UML2GenModelUtil {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSubsetGenFeatures(supersetGenFeature)
+			: Collections.EMPTY_LIST;
+	}
+
+	public static List getSubsetGenFeatures(GenClass genClass,
+			GenFeature supersetGenFeature, boolean includeDerived,
+			boolean includeListType) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSubsetGenFeatures(supersetGenFeature, includeDerived,
+					includeListType)
 			: Collections.EMPTY_LIST;
 	}
 

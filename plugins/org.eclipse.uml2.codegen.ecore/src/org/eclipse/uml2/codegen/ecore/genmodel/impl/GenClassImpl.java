@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.25 2006/02/22 20:48:43 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.26 2006/03/01 17:57:18 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -877,7 +877,12 @@ public class GenClassImpl
 	}
 
 	public List getSubsetGenFeatures(GenFeature supersetGenFeature,
-			boolean includedDerived) {
+			boolean includeDerived) {
+		return getSubsetGenFeatures(supersetGenFeature, includeDerived, true);
+	}
+
+	public List getSubsetGenFeatures(GenFeature supersetGenFeature,
+			boolean includeDerived, boolean includeListType) {
 		Map subsetGenFeatures = new LinkedHashMap();
 
 		final EStructuralFeature supersetEcoreFeature = supersetGenFeature
@@ -888,7 +893,8 @@ public class GenClassImpl
 
 			if (Generator.getSubsettedEcoreFeatures(
 				genFeature.getEcoreFeature()).contains(supersetEcoreFeature)
-				&& (includedDerived || !genFeature.isDerived())) {
+				&& (includeDerived || !genFeature.isDerived())
+				&& (includeListType || !genFeature.isListType())) {
 
 				subsetGenFeatures.put(genFeature.getName(), genFeature);
 			}
@@ -1019,16 +1025,19 @@ public class GenClassImpl
 
 	public List getSupersetGenFeatures(GenFeature subsetGenFeature,
 			boolean includeDerived) {
-		return includeDerived
-			? UML2GenModelUtil.getSubsettedGenFeatures(subsetGenFeature)
-			: collectGenFeatures(null, UML2GenModelUtil
-				.getSubsettedGenFeatures(subsetGenFeature),
-				new GenFeatureFilter() {
+		return getSupersetGenFeatures(subsetGenFeature, includeDerived, true);
+	}
 
-					public boolean accept(GenFeature genFeature) {
-						return !genFeature.isDerived();
-					}
-				});
+	public List getSupersetGenFeatures(GenFeature subsetGenFeature,
+			final boolean includeDerived, final boolean includeListType) {
+		return collectGenFeatures(null, UML2GenModelUtil
+			.getSubsettedGenFeatures(subsetGenFeature), new GenFeatureFilter() {
+
+			public boolean accept(GenFeature genFeature) {
+				return (includeDerived || !genFeature.isDerived())
+					&& (includeListType || !genFeature.isListType());
+			}
+		});
 	}
 
 	public List getImplementedSupersetGenFeatures() {
