@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetAddCommand.java,v 1.2 2006/01/05 13:49:51 khussey Exp $
+ * $Id: SubsetAddCommand.java,v 1.3 2006/03/01 17:11:12 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -60,6 +60,7 @@ public class SubsetAddCommand
 
 						if (!((EList) owner.eGet(supersetFeatures[i]))
 							.contains(element)) {
+
 							appendAndExecute(AddCommand.create(domain, owner,
 								supersetFeatures[i], Collections
 									.singleton(element),

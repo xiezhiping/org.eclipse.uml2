@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetSetCommand.java,v 1.2 2006/01/05 13:49:51 khussey Exp $
+ * $Id: SupersetSetCommand.java,v 1.3 2006/03/01 17:11:12 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -45,7 +45,7 @@ public class SupersetSetCommand
 			for (int i = 0; i < subsetFeatures.length; i++) {
 				Object object = owner.eGet(subsetFeatures[i]);
 
-				if (null != object && value != object) {
+				if (object != null && object != value) {
 					EReference subsetReference = (EReference) subsetFeatures[i];
 
 					appendAndExecute(subsetReference.isContainer()

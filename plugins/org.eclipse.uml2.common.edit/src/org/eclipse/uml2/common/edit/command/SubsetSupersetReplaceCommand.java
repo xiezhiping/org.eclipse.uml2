@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetReplaceCommand.java,v 1.1 2006/01/05 13:49:51 khussey Exp $
+ * $Id: SubsetSupersetReplaceCommand.java,v 1.2 2006/03/01 17:11:12 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -59,6 +59,7 @@ public class SubsetSupersetReplaceCommand
 
 						if (!((EList) owner.eGet(supersetFeatures[i]))
 							.contains(element)) {
+
 							appendAndExecute(AddCommand.create(domain, owner,
 								supersetFeatures[i], Collections
 									.singleton(element),

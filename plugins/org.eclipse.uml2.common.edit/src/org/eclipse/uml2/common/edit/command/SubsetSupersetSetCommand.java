@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetSetCommand.java,v 1.1 2006/01/05 13:49:51 khussey Exp $
+ * $Id: SubsetSupersetSetCommand.java,v 1.2 2006/03/01 17:11:12 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -41,7 +41,7 @@ public class SubsetSupersetSetCommand
 
 		if (supersetFeatures != null) {
 
-			if (null != value) {
+			if (value != null) {
 
 				for (int i = 0; i < supersetFeatures.length; i++) {
 
@@ -49,6 +49,7 @@ public class SubsetSupersetSetCommand
 
 						if (!((EList) owner.eGet(supersetFeatures[i]))
 							.contains(value)) {
+
 							appendAndExecute(AddCommand.create(domain, owner,
 								supersetFeatures[i], Collections
 									.singleton(value),
@@ -56,8 +57,7 @@ public class SubsetSupersetSetCommand
 						}
 					} else {
 
-						if (null == owner.eGet(feature)
-							&& value != owner.eGet(supersetFeatures[i])) {
+						if (value != owner.eGet(supersetFeatures[i])) {
 							appendAndExecute(SetCommand.create(domain, owner,
 								supersetFeatures[i], value));
 						}
@@ -71,7 +71,7 @@ public class SubsetSupersetSetCommand
 			for (int i = 0; i < subsetFeatures.length; i++) {
 				Object object = owner.eGet(subsetFeatures[i]);
 
-				if (null != object && value != object) {
+				if (object != null && object != value) {
 					EReference subsetReference = (EReference) subsetFeatures[i];
 
 					appendAndExecute(subsetReference.isContainer()

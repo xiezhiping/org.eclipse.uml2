@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSetCommand.java,v 1.2 2006/01/05 13:49:51 khussey Exp $
+ * $Id: SubsetSetCommand.java,v 1.3 2006/03/01 17:11:12 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -46,7 +46,7 @@ public class SubsetSetCommand
 
 		if (supersetFeatures != null) {
 
-			if (null != value) {
+			if (value != null) {
 
 				for (int i = 0; i < supersetFeatures.length; i++) {
 
@@ -54,6 +54,7 @@ public class SubsetSetCommand
 
 						if (!((EList) owner.eGet(supersetFeatures[i]))
 							.contains(value)) {
+
 							appendAndExecute(AddCommand.create(domain, owner,
 								supersetFeatures[i], Collections
 									.singleton(value),
@@ -61,8 +62,7 @@ public class SubsetSetCommand
 						}
 					} else {
 
-						if (null == owner.eGet(feature)
-							&& value != owner.eGet(supersetFeatures[i])) {
+						if (value != owner.eGet(supersetFeatures[i])) {
 							appendAndExecute(SetCommand.create(domain, owner,
 								supersetFeatures[i], value));
 						}
