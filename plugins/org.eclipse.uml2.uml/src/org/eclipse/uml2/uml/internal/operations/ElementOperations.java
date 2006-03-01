@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.32 2006/02/23 00:01:50 khussey Exp $
+ * $Id: ElementOperations.java,v 1.33 2006/03/01 21:08:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -963,7 +963,7 @@ public class ElementOperations
 			EMap details = eAnnotation.getDetails();
 
 			if (!details.isEmpty()) {
-				EList keywords = new UniqueEList.FastCompare();
+				EList keywords = new UniqueEList();
 
 				for (Iterator d = details.iterator(); d.hasNext();) {
 					keywords.add(((Map.Entry) d.next()).getKey());
