@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.4 2006/02/23 17:31:38 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.5 2006/03/01 16:27:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -67,11 +67,8 @@ public class UMLResourceFactoryImpl
 
 		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		defaultLoadOptions.put(XMLResource.OPTION_DEFER_ATTACHMENT,
-			Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION,
 			Boolean.TRUE);
-		defaultLoadOptions.put(XMLResource.OPTION_DISABLE_NOTIFY, Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING,
