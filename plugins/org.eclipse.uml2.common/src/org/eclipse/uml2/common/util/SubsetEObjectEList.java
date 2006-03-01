@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetEObjectEList.java,v 1.3 2006/01/05 13:49:53 khussey Exp $
+ * $Id: SubsetEObjectEList.java,v 1.4 2006/03/01 16:28:17 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -99,14 +99,10 @@ public class SubsetEObjectEList
 	protected void supersetAdd(Object object) {
 
 		if (supersetFeatureIDs != null) {
+			Resource.Internal eInternalResource = owner.eInternalResource();
 
-			if (object instanceof InternalEObject) {
-				Resource.Internal eInternalResource = ((InternalEObject) object)
-					.eInternalResource();
-
-				if (eInternalResource != null && eInternalResource.isLoading()) {
-					return;
-				}
+			if (eInternalResource != null && eInternalResource.isLoading()) {
+				return;
 			}
 
 			for (int i = 0; i < supersetFeatureIDs.length; i++) {
