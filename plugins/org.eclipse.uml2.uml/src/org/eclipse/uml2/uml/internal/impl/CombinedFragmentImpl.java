@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.12 2006/02/22 23:49:05 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -334,11 +334,9 @@ public class CombinedFragmentImpl
 				return ((InternalEList) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
-				return eBasicSetContainer(null,
-					UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				return ((InternalEList) getOperands()).basicRemove(otherEnd,
 					msgs);

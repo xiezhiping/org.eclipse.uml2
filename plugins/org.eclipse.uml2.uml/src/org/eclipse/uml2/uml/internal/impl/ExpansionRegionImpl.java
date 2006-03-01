@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.13 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -240,13 +240,12 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXPANSION_REGION__ACTIVITY, msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
 				return ((InternalEList) getOutgoings())
 					.basicAdd(otherEnd, msgs);
@@ -273,8 +272,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXPANSION_REGION__IN_ACTIVITY, msgs);
+				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				return ((InternalEList) getVariables())
 					.basicAdd(otherEnd, msgs);
@@ -312,11 +310,9 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.EXPANSION_REGION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);
@@ -348,8 +344,7 @@ public class ExpansionRegionImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.EXPANSION_REGION__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);

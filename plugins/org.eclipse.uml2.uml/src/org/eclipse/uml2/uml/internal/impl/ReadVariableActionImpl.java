@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.14 2006/02/22 23:49:05 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -242,11 +242,9 @@ public class ReadVariableActionImpl
 			case UMLPackage.READ_VARIABLE_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.READ_VARIABLE_ACTION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.READ_VARIABLE_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.READ_VARIABLE_ACTION__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.READ_VARIABLE_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.READ_VARIABLE_ACTION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

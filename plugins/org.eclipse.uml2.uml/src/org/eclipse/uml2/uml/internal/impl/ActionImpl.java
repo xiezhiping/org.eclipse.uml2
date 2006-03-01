@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.18 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ActionImpl.java,v 1.19 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -374,11 +374,9 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTION__ACTIVITY :
-				return eBasicSetContainer(null, UMLPackage.ACTION__ACTIVITY,
-					msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

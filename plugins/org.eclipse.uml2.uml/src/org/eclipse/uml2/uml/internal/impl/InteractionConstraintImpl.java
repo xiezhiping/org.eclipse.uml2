@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.13 2006/02/22 23:07:14 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -399,17 +399,13 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_CONSTRAINT__CONTEXT, msgs);
+				return basicSetContext(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
 				return basicSetMinint(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :

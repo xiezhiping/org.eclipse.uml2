@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -150,9 +152,6 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public void setContract(Classifier newContract) {
-		if (newContract != null && !getSuppliers().contains(newContract)) {
-			getSuppliers().add(newContract);
-		}
 		Classifier contract = newContract;
 		Object oldContract = eVirtualSet(UMLPackage.SUBSTITUTION__CONTRACT,
 			contract);
@@ -163,6 +162,15 @@ public class SubstitutionImpl
 					? null
 					: oldContract, contract));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newContract != null) {
+				EList supplier = getSuppliers();
+				if (!supplier.contains(newContract)) {
+					supplier.add(newContract);
+				}
+			}
+		}
 	}
 
 	/**
@@ -192,11 +200,29 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
-		if (newSubstitutingClassifier != null
-			&& !getClients().contains(newSubstitutingClassifier)) {
-			getClients().add(newSubstitutingClassifier);
+	public NotificationChain basicSetSubstitutingClassifier(
+			Classifier newSubstitutingClassifier, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newSubstitutingClassifier,
+			UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newSubstitutingClassifier != null) {
+				EList client = getClients();
+				if (!client.contains(newSubstitutingClassifier)) {
+					client.add(newSubstitutingClassifier);
+				}
+			}
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
 		if (newSubstitutingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))
@@ -209,9 +235,8 @@ public class SubstitutionImpl
 				msgs = ((InternalEObject) newSubstitutingClassifier)
 					.eInverseAdd(this, UMLPackage.CLASSIFIER__SUBSTITUTION,
 						Classifier.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newSubstitutingClassifier,
-				UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+			msgs = basicSetSubstitutingClassifier(newSubstitutingClassifier,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -238,8 +263,8 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -254,8 +279,8 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+				return basicSetSubstitutingClassifier((Classifier) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -280,8 +305,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT :
@@ -290,8 +314,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				return basicSetMapping(null, msgs);
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
-				return eBasicSetContainer(null,
-					UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+				return basicSetSubstitutingClassifier(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,6 +89,19 @@ public class ExtensionPointImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetUseCase(UseCase newUseCase,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newUseCase,
+			UMLPackage.EXTENSION_POINT__USE_CASE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setUseCase(UseCase newUseCase) {
 		if (newUseCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
@@ -101,8 +114,7 @@ public class ExtensionPointImpl
 			if (newUseCase != null)
 				msgs = ((InternalEObject) newUseCase).eInverseAdd(this,
 					UMLPackage.USE_CASE__EXTENSION_POINT, UseCase.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newUseCase,
-				UMLPackage.EXTENSION_POINT__USE_CASE, msgs);
+			msgs = basicSetUseCase(newUseCase, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -138,8 +150,7 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXTENSION_POINT__USE_CASE, msgs);
+				return basicSetUseCase((UseCase) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -164,8 +175,7 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
-				return eBasicSetContainer(null,
-					UMLPackage.EXTENSION_POINT__USE_CASE, msgs);
+				return basicSetUseCase(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

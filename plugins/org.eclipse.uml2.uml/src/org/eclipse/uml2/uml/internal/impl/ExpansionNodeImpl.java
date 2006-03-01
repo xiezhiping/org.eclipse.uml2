@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.12 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -254,13 +254,12 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings())
 					.basicAdd(otherEnd, msgs);
@@ -311,11 +310,9 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.EXPANSION_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

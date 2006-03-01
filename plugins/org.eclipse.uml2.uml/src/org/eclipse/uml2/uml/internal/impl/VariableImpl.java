@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.18 2006/02/22 23:07:15 khussey Exp $
+ * $Id: VariableImpl.java,v 1.19 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -526,6 +526,19 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetActivityScope(Activity newActivityScope,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newActivityScope,
+			UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setActivityScope(Activity newActivityScope) {
 		if (newActivityScope != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE && newActivityScope != null)) {
@@ -538,8 +551,7 @@ public class VariableImpl
 			if (newActivityScope != null)
 				msgs = ((InternalEObject) newActivityScope).eInverseAdd(this,
 					UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newActivityScope,
-				UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+			msgs = basicSetActivityScope(newActivityScope, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -565,6 +577,19 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetScope(StructuredActivityNode newScope,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newScope,
+			UMLPackage.VARIABLE__SCOPE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setScope(StructuredActivityNode newScope) {
 		if (newScope != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE && newScope != null)) {
@@ -578,8 +603,7 @@ public class VariableImpl
 				msgs = ((InternalEObject) newScope).eInverseAdd(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
 					StructuredActivityNode.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newScope,
-				UMLPackage.VARIABLE__SCOPE, msgs);
+			msgs = basicSetScope(newScope, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -720,8 +744,8 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.VARIABLE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -736,13 +760,11 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__SCOPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UMLPackage.VARIABLE__SCOPE,
-					msgs);
+				return basicSetScope((StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+				return basicSetActivityScope((Activity) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -767,8 +789,7 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.VARIABLE__END :
@@ -778,11 +799,9 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
-				return eBasicSetContainer(null, UMLPackage.VARIABLE__SCOPE,
-					msgs);
+				return basicSetScope(null, msgs);
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return eBasicSetContainer(null,
-					UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
+				return basicSetActivityScope(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

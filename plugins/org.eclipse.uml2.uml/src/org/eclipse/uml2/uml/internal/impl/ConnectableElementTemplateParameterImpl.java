@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
@@ -134,10 +135,16 @@ public class ConnectableElementTemplateParameterImpl
 
 		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
 
-		if (eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null
-			&& eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != newParameteredElement) {
+		Resource.Internal eInternalResource = eInternalResource();
 
-			setOwnedParameteredElement(null);
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			Object ownedParameteredElement = eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+
+			if (ownedParameteredElement != null
+				&& ownedParameteredElement != newParameteredElement) {
+
+				setOwnedParameteredElement(null);
+			}
 		}
 
 		return msgs;

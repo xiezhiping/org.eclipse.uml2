@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -230,8 +230,8 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -267,8 +267,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPENDENCY__CLIENT :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.20 2006/02/22 23:49:06 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.21 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -502,8 +502,7 @@ public class CollaborationImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.COLLABORATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.COLLABORATION__TEMPLATE_BINDING :

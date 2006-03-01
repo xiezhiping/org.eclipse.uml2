@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.17 2006/02/22 23:49:05 khussey Exp $
+ * $Id: RegionImpl.java,v 1.18 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -438,6 +438,19 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetState(State newState,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newState,
+			UMLPackage.REGION__STATE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE && newState != null)) {
@@ -450,8 +463,7 @@ public class RegionImpl
 			if (newState != null)
 				msgs = ((InternalEObject) newState).eInverseAdd(this,
 					UMLPackage.STATE__REGION, State.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newState,
-				UMLPackage.REGION__STATE, msgs);
+			msgs = basicSetState(newState, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -524,6 +536,19 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetStateMachine(StateMachine newStateMachine,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newStateMachine,
+			UMLPackage.REGION__STATE_MACHINE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setStateMachine(StateMachine newStateMachine) {
 		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE && newStateMachine != null)) {
@@ -536,8 +561,7 @@ public class RegionImpl
 			if (newStateMachine != null)
 				msgs = ((InternalEObject) newStateMachine).eInverseAdd(this,
 					UMLPackage.STATE_MACHINE__REGION, StateMachine.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newStateMachine,
-				UMLPackage.REGION__STATE_MACHINE, msgs);
+			msgs = basicSetStateMachine(newStateMachine, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -702,13 +726,11 @@ public class RegionImpl
 			case UMLPackage.REGION__STATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UMLPackage.REGION__STATE,
-					msgs);
+				return basicSetState((State) otherEnd, msgs);
 			case UMLPackage.REGION__STATE_MACHINE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.REGION__STATE_MACHINE, msgs);
+				return basicSetStateMachine((StateMachine) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -748,10 +770,9 @@ public class RegionImpl
 				return ((InternalEList) getTransitions()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.REGION__STATE :
-				return eBasicSetContainer(null, UMLPackage.REGION__STATE, msgs);
+				return basicSetState(null, msgs);
 			case UMLPackage.REGION__STATE_MACHINE :
-				return eBasicSetContainer(null,
-					UMLPackage.REGION__STATE_MACHINE, msgs);
+				return basicSetStateMachine(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

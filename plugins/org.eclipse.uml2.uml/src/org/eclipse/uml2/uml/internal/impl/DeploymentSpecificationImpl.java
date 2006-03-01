@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -228,6 +228,19 @@ public class DeploymentSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetDeployment(Deployment newDeployment,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDeployment,
+			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setDeployment(Deployment newDeployment) {
 		if (newDeployment != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
@@ -241,8 +254,7 @@ public class DeploymentSpecificationImpl
 				msgs = ((InternalEObject) newDeployment).eInverseAdd(this,
 					UMLPackage.DEPLOYMENT__CONFIGURATION, Deployment.class,
 					msgs);
-			msgs = eBasicSetContainer((InternalEObject) newDeployment,
-				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
+			msgs = basicSetDeployment(newDeployment, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -300,10 +312,8 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -341,8 +351,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
+				return basicSetDeployment((Deployment) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -376,10 +385,7 @@ public class DeploymentSpecificationImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
@@ -418,8 +424,7 @@ public class DeploymentSpecificationImpl
 				return ((InternalEList) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-				return eBasicSetContainer(null,
-					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
+				return basicSetDeployment(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

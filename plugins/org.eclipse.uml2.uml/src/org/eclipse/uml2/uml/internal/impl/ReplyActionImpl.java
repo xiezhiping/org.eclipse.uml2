@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.15 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.16 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -397,11 +397,9 @@ public class ReplyActionImpl
 			case UMLPackage.REPLY_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.REPLY_ACTION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.REPLY_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.REPLY_ACTION__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.REPLY_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.REPLY_ACTION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

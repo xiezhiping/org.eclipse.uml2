@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -220,6 +220,19 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetTemplateBinding(
+			TemplateBinding newTemplateBinding, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newTemplateBinding,
+			UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
 		if (newTemplateBinding != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
@@ -233,9 +246,7 @@ public class TemplateParameterSubstitutionImpl
 				msgs = ((InternalEObject) newTemplateBinding).eInverseAdd(this,
 					UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,
 					TemplateBinding.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newTemplateBinding,
-				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
-				msgs);
+			msgs = basicSetTemplateBinding(newTemplateBinding, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -270,10 +281,7 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
-					msgs);
+				return basicSetTemplateBinding((TemplateBinding) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -296,10 +304,7 @@ public class TemplateParameterSubstitutionImpl
 				return ((InternalEList) getOwnedActuals()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
-					msgs);
+				return basicSetTemplateBinding(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

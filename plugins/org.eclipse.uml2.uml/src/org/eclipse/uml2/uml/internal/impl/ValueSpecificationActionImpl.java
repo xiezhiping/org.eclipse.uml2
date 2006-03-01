@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.15 2006/02/22 23:49:05 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -359,12 +359,9 @@ public class ValueSpecificationActionImpl
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.VALUE_SPECIFICATION_ACTION__IN_STRUCTURED_NODE,
-					msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.VALUE_SPECIFICATION_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

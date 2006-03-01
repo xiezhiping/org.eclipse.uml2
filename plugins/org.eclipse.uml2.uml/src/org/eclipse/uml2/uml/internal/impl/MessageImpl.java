@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.14 2006/02/22 23:07:14 khussey Exp $
+ * $Id: MessageImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -329,6 +329,19 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInteraction(Interaction newInteraction,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newInteraction,
+			UMLPackage.MESSAGE__INTERACTION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
@@ -341,8 +354,7 @@ public class MessageImpl
 			if (newInteraction != null)
 				msgs = ((InternalEObject) newInteraction).eInverseAdd(this,
 					UMLPackage.INTERACTION__MESSAGE, Interaction.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newInteraction,
-				UMLPackage.MESSAGE__INTERACTION, msgs);
+			msgs = basicSetInteraction(newInteraction, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -530,8 +542,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.MESSAGE__INTERACTION, msgs);
+				return basicSetInteraction((Interaction) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -556,8 +567,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.MESSAGE__INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.MESSAGE__INTERACTION, msgs);
+				return basicSetInteraction(null, msgs);
 			case UMLPackage.MESSAGE__ARGUMENT :
 				return ((InternalEList) getArguments()).basicRemove(otherEnd,
 					msgs);

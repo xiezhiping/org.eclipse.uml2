@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.9 2005/12/14 22:34:18 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.10 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -279,6 +279,19 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetImportingNamespace(
+			Namespace newImportingNamespace, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
+			UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
 		if (newImportingNamespace != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
@@ -292,8 +305,7 @@ public class ElementImportImpl
 				msgs = ((InternalEObject) newImportingNamespace).eInverseAdd(
 					this, UMLPackage.NAMESPACE__ELEMENT_IMPORT,
 					Namespace.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
-				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
+			msgs = basicSetImportingNamespace(newImportingNamespace, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -359,8 +371,7 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
+				return basicSetImportingNamespace((Namespace) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -380,8 +391,7 @@ public class ElementImportImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				return eBasicSetContainer(null,
-					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
+				return basicSetImportingNamespace(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

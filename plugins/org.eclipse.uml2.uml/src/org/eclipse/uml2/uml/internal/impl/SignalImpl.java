@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.19 2006/02/22 23:49:06 khussey Exp $
+ * $Id: SignalImpl.java,v 1.20 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -231,8 +231,7 @@ public class SignalImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.SIGNAL__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.SIGNAL__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SIGNAL__TEMPLATE_BINDING :

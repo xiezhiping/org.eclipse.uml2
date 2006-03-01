@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.9 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.10 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -238,6 +238,19 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetProtectedNode(
+			ExecutableNode newProtectedNode, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newProtectedNode,
+			UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
 		if (newProtectedNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
@@ -251,8 +264,7 @@ public class ExceptionHandlerImpl
 				msgs = ((InternalEObject) newProtectedNode).eInverseAdd(this,
 					UMLPackage.EXECUTABLE_NODE__HANDLER, ExecutableNode.class,
 					msgs);
-			msgs = eBasicSetContainer((InternalEObject) newProtectedNode,
-				UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
+			msgs = basicSetProtectedNode(newProtectedNode, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -318,8 +330,7 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
+				return basicSetProtectedNode((ExecutableNode) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -339,8 +350,7 @@ public class ExceptionHandlerImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
+				return basicSetProtectedNode(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

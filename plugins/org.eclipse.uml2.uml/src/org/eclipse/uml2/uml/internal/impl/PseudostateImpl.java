@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -134,6 +134,19 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetStateMachine(StateMachine newStateMachine,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newStateMachine,
+			UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setStateMachine(StateMachine newStateMachine) {
 		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE_MACHINE && newStateMachine != null)) {
@@ -147,8 +160,7 @@ public class PseudostateImpl
 				msgs = ((InternalEObject) newStateMachine).eInverseAdd(this,
 					UMLPackage.STATE_MACHINE__CONNECTION_POINT,
 					StateMachine.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newStateMachine,
-				UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
+			msgs = basicSetStateMachine(newStateMachine, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -174,6 +186,19 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetState(State newState,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newState,
+			UMLPackage.PSEUDOSTATE__STATE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE && newState != null)) {
@@ -186,8 +211,7 @@ public class PseudostateImpl
 			if (newState != null)
 				msgs = ((InternalEObject) newState).eInverseAdd(this,
 					UMLPackage.STATE__CONNECTION_POINT, State.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newState,
-				UMLPackage.PSEUDOSTATE__STATE, msgs);
+			msgs = basicSetState(newState, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -315,18 +339,15 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
+				return basicSetContainer((Region) otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
+				return basicSetStateMachine((StateMachine) otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PSEUDOSTATE__STATE, msgs);
+				return basicSetState((State) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -357,14 +378,11 @@ public class PseudostateImpl
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
-				return eBasicSetContainer(null,
-					UMLPackage.PSEUDOSTATE__CONTAINER, msgs);
+				return basicSetContainer(null, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-				return eBasicSetContainer(null,
-					UMLPackage.PSEUDOSTATE__STATE_MACHINE, msgs);
+				return basicSetStateMachine(null, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE :
-				return eBasicSetContainer(null, UMLPackage.PSEUDOSTATE__STATE,
-					msgs);
+				return basicSetState(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

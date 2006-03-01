@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.29 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.30 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,10 +24,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -384,10 +385,16 @@ public abstract class ClassifierImpl
 
 		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
 
-		if (getOwningTemplateParameter() != null
-			&& getOwningTemplateParameter() != newTemplateParameter) {
+		Resource.Internal eInternalResource = eInternalResource();
 
-			setOwningTemplateParameter(null);
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
+
+			if (owningTemplateParameter != null
+				&& owningTemplateParameter != newTemplateParameter) {
+
+				setOwningTemplateParameter(null);
+			}
 		}
 
 		return msgs;
@@ -456,9 +463,30 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningTemplateParameter(
+			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
+			UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningTemplateParameter != null) {
+				Object templateParameter = eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER);
+				if (newOwningTemplateParameter != templateParameter) {
+					setTemplateParameter(newOwningTemplateParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -473,9 +501,8 @@ public abstract class ClassifierImpl
 						this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newOwningTemplateParameter,
-				UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
+			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -483,10 +510,6 @@ public abstract class ClassifierImpl
 				UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
 
-		if (newOwningTemplateParameter != null
-			|| oldOwningTemplateParameter == eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningTemplateParameter);
-		}
 	}
 
 	/**
@@ -1455,10 +1478,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setRepresentation(CollaborationUse newRepresentation) {
-		if (newRepresentation != null
-			&& !getCollaborationUses().contains(newRepresentation)) {
-			getCollaborationUses().add(newRepresentation);
-		}
 		CollaborationUse representation = newRepresentation;
 		Object oldRepresentation = eVirtualSet(
 			UMLPackage.CLASSIFIER__REPRESENTATION, representation);
@@ -1469,6 +1488,15 @@ public abstract class ClassifierImpl
 					? null
 					: oldRepresentation, representation));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newRepresentation != null) {
+				EList collaborationUse = getCollaborationUses();
+				if (!collaborationUse.contains(newRepresentation)) {
+					collaborationUse.add(newRepresentation);
+				}
+			}
+		}
 	}
 
 	/**
@@ -1896,8 +1924,8 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -1963,8 +1991,7 @@ public abstract class ClassifierImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :

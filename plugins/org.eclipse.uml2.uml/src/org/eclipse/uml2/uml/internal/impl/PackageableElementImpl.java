@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,10 +19,11 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -128,9 +129,13 @@ public abstract class PackageableElementImpl
 				msgs.add(notification);
 		}
 
-		if (getOwningTemplateParameter() != null
-			&& getOwningTemplateParameter() != newTemplateParameter) {
-			setOwningTemplateParameter(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
+			if (owningTemplateParameter != null
+				&& owningTemplateParameter != newTemplateParameter) {
+				setOwningTemplateParameter(null);
+			}
 		}
 		return msgs;
 	}
@@ -189,9 +194,30 @@ public abstract class PackageableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningTemplateParameter(
+			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
+			UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningTemplateParameter != null) {
+				Object templateParameter = eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER);
+				if (newOwningTemplateParameter != templateParameter) {
+					setTemplateParameter(newOwningTemplateParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -206,9 +232,8 @@ public abstract class PackageableElementImpl
 						this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newOwningTemplateParameter,
-				UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
+			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -216,10 +241,6 @@ public abstract class PackageableElementImpl
 				UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
 
-		if (newOwningTemplateParameter != null
-			|| oldOwningTemplateParameter == eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningTemplateParameter);
-		}
 	}
 
 	/**
@@ -297,9 +318,8 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -333,9 +353,7 @@ public abstract class PackageableElementImpl
 			case UMLPackage.PACKAGEABLE_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 		}

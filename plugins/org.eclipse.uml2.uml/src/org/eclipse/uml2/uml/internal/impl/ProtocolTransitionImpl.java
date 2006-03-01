@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.25 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.26 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -150,9 +152,6 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
-		if (newGuard != null && !getOwnedRules().contains(newGuard)) {
-			getOwnedRules().add(newGuard);
-		}
 		Constraint guard = newGuard;
 		Object oldGuard = eVirtualSet(UMLPackage.PROTOCOL_TRANSITION__GUARD,
 			guard);
@@ -163,9 +162,18 @@ public class ProtocolTransitionImpl
 					? null
 					: oldGuard, guard));
 
-		if (eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION) != null
-			&& eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION) != newGuard) {
-			setPreCondition(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			Object preCondition = eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION);
+			if (preCondition != null && preCondition != newGuard) {
+				setPreCondition(null);
+			}
+			if (newGuard != null) {
+				EList ownedRule = getOwnedRules();
+				if (!ownedRule.contains(newGuard)) {
+					ownedRule.add(newGuard);
+				}
+			}
 		}
 	}
 
@@ -206,10 +214,6 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setPostCondition(Constraint newPostCondition) {
-		if (newPostCondition != null
-			&& !getOwnedRules().contains(newPostCondition)) {
-			getOwnedRules().add(newPostCondition);
-		}
 		Constraint postCondition = newPostCondition;
 		Object oldPostCondition = eVirtualSet(
 			UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION, postCondition);
@@ -220,6 +224,15 @@ public class ProtocolTransitionImpl
 					? null
 					: oldPostCondition, postCondition));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newPostCondition != null) {
+				EList ownedRule = getOwnedRules();
+				if (!ownedRule.contains(newPostCondition)) {
+					ownedRule.add(newPostCondition);
+				}
+			}
+		}
 	}
 
 	/**
@@ -418,9 +431,14 @@ public class ProtocolTransitionImpl
 					? null
 					: oldPreCondition, preCondition));
 
-		if (newPreCondition != null
-			|| oldPreCondition == eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD)) {
-			setGuard(newPreCondition);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newPreCondition != null) {
+				Object guard = eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__GUARD);
+				if (newPreCondition != guard) {
+					setGuard(newPreCondition);
+				}
+			}
 		}
 	}
 
@@ -482,8 +500,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROTOCOL_TRANSITION__CONTAINER, msgs);
+				return basicSetContainer((Region) otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				Vertex target = (Vertex) eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__TARGET);
 				if (target != null)
@@ -529,8 +546,7 @@ public class ProtocolTransitionImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				return eBasicSetContainer(null,
-					UMLPackage.PROTOCOL_TRANSITION__CONTAINER, msgs);
+				return basicSetContainer(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				return basicSetTarget(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :

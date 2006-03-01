@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,8 +212,7 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY, msgs);
+				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
@@ -238,8 +237,7 @@ public class InterruptibleActivityRegionImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :

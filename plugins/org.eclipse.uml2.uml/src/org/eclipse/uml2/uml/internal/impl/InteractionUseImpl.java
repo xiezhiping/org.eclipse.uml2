@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.14 2006/02/22 23:49:06 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -337,11 +337,9 @@ public class InteractionUseImpl
 				return ((InternalEList) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
 				return ((InternalEList) getActualGates()).basicRemove(otherEnd,
 					msgs);

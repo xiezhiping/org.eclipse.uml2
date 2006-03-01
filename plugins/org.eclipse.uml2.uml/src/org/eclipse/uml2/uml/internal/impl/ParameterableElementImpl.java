@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.8 2005/12/14 22:34:17 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.9 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,10 +19,11 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -125,9 +126,13 @@ public abstract class ParameterableElementImpl
 				msgs.add(notification);
 		}
 
-		if (getOwningTemplateParameter() != null
-			&& getOwningTemplateParameter() != newTemplateParameter) {
-			setOwningTemplateParameter(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
+			if (owningTemplateParameter != null
+				&& owningTemplateParameter != newTemplateParameter) {
+				setOwningTemplateParameter(null);
+			}
 		}
 		return msgs;
 	}
@@ -186,9 +191,30 @@ public abstract class ParameterableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningTemplateParameter(
+			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
+			UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningTemplateParameter != null) {
+				Object templateParameter = eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
+				if (newOwningTemplateParameter != templateParameter) {
+					setTemplateParameter(newOwningTemplateParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -203,9 +229,7 @@ public abstract class ParameterableElementImpl
 						this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newOwningTemplateParameter,
-				UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
+			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
 				msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -214,10 +238,6 @@ public abstract class ParameterableElementImpl
 				UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
 
-		if (newOwningTemplateParameter != null
-			|| oldOwningTemplateParameter == eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningTemplateParameter);
-		}
 	}
 
 	/**
@@ -252,10 +272,8 @@ public abstract class ParameterableElementImpl
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -284,10 +302,7 @@ public abstract class ParameterableElementImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 		}

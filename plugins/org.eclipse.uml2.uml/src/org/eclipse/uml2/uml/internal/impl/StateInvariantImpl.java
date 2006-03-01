@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.14 2006/02/22 23:49:05 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -292,11 +292,9 @@ public class StateInvariantImpl
 				return ((InternalEList) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
-				return eBasicSetContainer(null,
-					UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
 				return basicSetInvariant(null, msgs);
 		}

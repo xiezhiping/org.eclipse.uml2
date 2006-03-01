@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.10 2006/02/22 20:48:17 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -156,9 +158,13 @@ public class TemplateParameterImpl
 				msgs.add(notification);
 		}
 
-		if (eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null
-			&& eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != newParameteredElement) {
-			setOwnedParameteredElement(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			Object ownedParameteredElement = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+			if (ownedParameteredElement != null
+				&& ownedParameteredElement != newParameteredElement) {
+				setOwnedParameteredElement(null);
+			}
 		}
 		return msgs;
 	}
@@ -236,9 +242,12 @@ public class TemplateParameterImpl
 					? null
 					: oldDefault, default_));
 
-		if (eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT) != null
-			&& eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT) != newDefault) {
-			setOwnedDefault(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			Object ownedDefault = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
+			if (ownedDefault != null && ownedDefault != newDefault) {
+				setOwnedDefault(null);
+			}
 		}
 	}
 
@@ -251,6 +260,19 @@ public class TemplateParameterImpl
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE)
 			return null;
 		return (TemplateSignature) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSignature(TemplateSignature newSignature,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newSignature,
+			UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+
+		return msgs;
 	}
 
 	/**
@@ -271,8 +293,7 @@ public class TemplateParameterImpl
 				msgs = ((InternalEObject) newSignature).eInverseAdd(this,
 					UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
 					TemplateSignature.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newSignature,
-				UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+			msgs = basicSetSignature(newSignature, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -353,9 +374,14 @@ public class TemplateParameterImpl
 				msgs.add(notification);
 		}
 
-		if (newOwnedParameteredElement != null
-			|| oldOwnedParameteredElement == eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT)) {
-			setParameteredElement(newOwnedParameteredElement);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwnedParameteredElement != null) {
+				Object parameteredElement = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
+				if (newOwnedParameteredElement != parameteredElement) {
+					setParameteredElement(newOwnedParameteredElement);
+				}
+			}
 		}
 		return msgs;
 	}
@@ -468,9 +494,14 @@ public class TemplateParameterImpl
 				msgs.add(notification);
 		}
 
-		if (newOwnedDefault != null
-			|| oldOwnedDefault == eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT)) {
-			setDefault(newOwnedDefault);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwnedDefault != null) {
+				Object default_ = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT);
+				if (newOwnedDefault != default_) {
+					setDefault(newOwnedDefault);
+				}
+			}
 		}
 		return msgs;
 	}
@@ -541,8 +572,7 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+				return basicSetSignature((TemplateSignature) otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 				if (parameteredElement != null)
@@ -583,8 +613,7 @@ public class TemplateParameterImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				return eBasicSetContainer(null,
-					UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
+				return basicSetSignature(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return basicSetParameteredElement(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :

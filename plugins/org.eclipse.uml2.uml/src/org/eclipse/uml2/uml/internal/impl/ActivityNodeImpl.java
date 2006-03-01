@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,6 +234,19 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInStructuredNode(
+			StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
+			UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
@@ -247,8 +260,7 @@ public abstract class ActivityNodeImpl
 				msgs = ((InternalEObject) newInStructuredNode).eInverseAdd(
 					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
 					StructuredActivityNode.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
-				UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+			msgs = basicSetInStructuredNode(newInStructuredNode, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -274,6 +286,19 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetActivity(Activity newActivity,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newActivity,
+			UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
@@ -286,8 +311,7 @@ public abstract class ActivityNodeImpl
 			if (newActivity != null)
 				msgs = ((InternalEObject) newActivity).eInverseAdd(this,
 					UMLPackage.ACTIVITY__NODE, Activity.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newActivity,
-				UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+			msgs = basicSetActivity(newActivity, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -442,13 +466,12 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings())
 					.basicAdd(otherEnd, msgs);
@@ -485,11 +508,9 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

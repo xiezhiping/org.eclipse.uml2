@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -152,9 +154,6 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public void setContract(Interface newContract) {
-		if (newContract != null && !getSuppliers().contains(newContract)) {
-			getSuppliers().add(newContract);
-		}
 		Interface contract = newContract;
 		Object oldContract = eVirtualSet(
 			UMLPackage.INTERFACE_REALIZATION__CONTRACT, contract);
@@ -165,6 +164,15 @@ public class InterfaceRealizationImpl
 					? null
 					: oldContract, contract));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newContract != null) {
+				EList supplier = getSuppliers();
+				if (!supplier.contains(newContract)) {
+					supplier.add(newContract);
+				}
+			}
+		}
 	}
 
 	/**
@@ -194,12 +202,31 @@ public class InterfaceRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetImplementingClassifier(
+			BehavioredClassifier newImplementingClassifier,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newImplementingClassifier,
+			UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newImplementingClassifier != null) {
+				EList client = getClients();
+				if (!client.contains(newImplementingClassifier)) {
+					client.add(newImplementingClassifier);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setImplementingClassifier(
 			BehavioredClassifier newImplementingClassifier) {
-		if (newImplementingClassifier != null
-			&& !getClients().contains(newImplementingClassifier)) {
-			getClients().add(newImplementingClassifier);
-		}
 		if (newImplementingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newImplementingClassifier))
@@ -214,9 +241,8 @@ public class InterfaceRealizationImpl
 						this,
 						UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
 						BehavioredClassifier.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newImplementingClassifier,
-				UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER, msgs);
+			msgs = basicSetImplementingClassifier(newImplementingClassifier,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -243,10 +269,8 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -261,9 +285,8 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER,
-					msgs);
+				return basicSetImplementingClassifier(
+					(BehavioredClassifier) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -288,10 +311,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
@@ -300,9 +320,7 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				return basicSetMapping(null, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER,
-					msgs);
+				return basicSetImplementingClassifier(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

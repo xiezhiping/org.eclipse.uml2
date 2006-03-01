@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,6 +131,19 @@ public class TemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetTemplate(TemplateableElement newTemplate,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newTemplate,
+			UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setTemplate(TemplateableElement newTemplate) {
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
@@ -144,8 +157,7 @@ public class TemplateSignatureImpl
 				msgs = ((InternalEObject) newTemplate).eInverseAdd(this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 					TemplateableElement.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newTemplate,
-				UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -225,8 +237,7 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+				return basicSetTemplate((TemplateableElement) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -249,8 +260,7 @@ public class TemplateSignatureImpl
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				return eBasicSetContainer(null,
-					UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+				return basicSetTemplate(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

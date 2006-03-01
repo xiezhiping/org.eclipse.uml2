@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.27 2006/02/22 23:49:05 khussey Exp $
+ * $Id: ClassImpl.java,v 1.28 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -310,10 +312,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public void setClassifierBehavior(Behavior newClassifierBehavior) {
-		if (newClassifierBehavior != null
-			&& !getOwnedBehaviors().contains(newClassifierBehavior)) {
-			getOwnedBehaviors().add(newClassifierBehavior);
-		}
 		Behavior classifierBehavior = newClassifierBehavior;
 		Object oldClassifierBehavior = eVirtualSet(
 			UMLPackage.CLASS__CLASSIFIER_BEHAVIOR, classifierBehavior);
@@ -324,6 +322,15 @@ public class ClassImpl
 					? null
 					: oldClassifierBehavior, classifierBehavior));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newClassifierBehavior != null) {
+				EList ownedBehavior = getOwnedBehaviors();
+				if (!ownedBehavior.contains(newClassifierBehavior)) {
+					ownedBehavior.add(newClassifierBehavior);
+				}
+			}
+		}
 	}
 
 	/**
@@ -1164,8 +1171,8 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CLASS__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CLASS__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -1237,8 +1244,7 @@ public class ClassImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CLASS__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CLASS__TEMPLATE_BINDING :

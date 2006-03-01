@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionImpl.java,v 1.14 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ReadSelfActionImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -258,11 +258,9 @@ public class ReadSelfActionImpl
 			case UMLPackage.READ_SELF_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.READ_SELF_ACTION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.READ_SELF_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.READ_SELF_ACTION__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.READ_SELF_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.READ_SELF_ACTION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

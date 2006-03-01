@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.14 2006/02/22 23:07:15 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,11 +160,9 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.SEQUENCE_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);
@@ -196,8 +194,7 @@ public class SequenceNodeImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.SEQUENCE_NODE__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);

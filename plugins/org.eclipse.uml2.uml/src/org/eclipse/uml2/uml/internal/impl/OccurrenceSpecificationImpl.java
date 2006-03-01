@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -281,14 +281,12 @@ public class OccurrenceSpecificationImpl
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
 					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
+				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
 					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				return ((InternalEList) getToBefores())
@@ -325,13 +323,9 @@ public class OccurrenceSpecificationImpl
 				return ((InternalEList) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION,
-					msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
-				return eBasicSetContainer(null,
-					UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND,
-					msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				return ((InternalEList) getToBefores()).basicRemove(otherEnd,
 					msgs);

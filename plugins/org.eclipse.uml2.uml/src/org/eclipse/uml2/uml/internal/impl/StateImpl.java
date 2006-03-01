@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.22 2006/02/22 23:49:06 khussey Exp $
+ * $Id: StateImpl.java,v 1.23 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -442,6 +442,19 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainer(Region newContainer,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newContainer,
+			UMLPackage.STATE__CONTAINER, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STATE__CONTAINER && newContainer != null)) {
@@ -454,8 +467,7 @@ public class StateImpl
 			if (newContainer != null)
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
 					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newContainer,
-				UMLPackage.STATE__CONTAINER, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1486,8 +1498,7 @@ public class StateImpl
 			case UMLPackage.STATE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STATE__CONTAINER, msgs);
+				return basicSetContainer((Region) otherEnd, msgs);
 			case UMLPackage.STATE__SUBMACHINE :
 				StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
 				if (submachine != null)
@@ -1542,8 +1553,7 @@ public class StateImpl
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STATE__CONTAINER :
-				return eBasicSetContainer(null, UMLPackage.STATE__CONTAINER,
-					msgs);
+				return basicSetContainer(null, msgs);
 			case UMLPackage.STATE__SUBMACHINE :
 				return basicSetSubmachine(null, msgs);
 			case UMLPackage.STATE__CONNECTION :

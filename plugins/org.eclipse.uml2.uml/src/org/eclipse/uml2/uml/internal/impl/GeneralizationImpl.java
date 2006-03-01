@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.10 2006/02/22 20:48:17 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -310,6 +310,19 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetSpecific(Classifier newSpecific,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newSpecific,
+			UMLPackage.GENERALIZATION__SPECIFIC, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setSpecific(Classifier newSpecific) {
 		if (newSpecific != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
@@ -323,8 +336,7 @@ public class GeneralizationImpl
 				msgs = ((InternalEObject) newSpecific).eInverseAdd(this,
 					UMLPackage.CLASSIFIER__GENERALIZATION, Classifier.class,
 					msgs);
-			msgs = eBasicSetContainer((InternalEObject) newSpecific,
-				UMLPackage.GENERALIZATION__SPECIFIC, msgs);
+			msgs = basicSetSpecific(newSpecific, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -361,8 +373,7 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__SPECIFIC :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.GENERALIZATION__SPECIFIC, msgs);
+				return basicSetSpecific((Classifier) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -385,8 +396,7 @@ public class GeneralizationImpl
 				return ((InternalEList) getGeneralizationSets()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.GENERALIZATION__SPECIFIC :
-				return eBasicSetContainer(null,
-					UMLPackage.GENERALIZATION__SPECIFIC, msgs);
+				return basicSetSpecific(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.12 2006/02/22 23:07:15 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -223,8 +223,7 @@ public class ChangeEventImpl
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :

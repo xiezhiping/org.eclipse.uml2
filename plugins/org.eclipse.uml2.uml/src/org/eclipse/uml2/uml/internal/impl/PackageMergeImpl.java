@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.8 2005/12/14 22:34:18 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.9 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,6 +167,20 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetReceivingPackage(
+			org.eclipse.uml2.uml.Package newReceivingPackage,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newReceivingPackage,
+			UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setReceivingPackage(
 			org.eclipse.uml2.uml.Package newReceivingPackage) {
 		if (newReceivingPackage != eInternalContainer()
@@ -181,8 +195,7 @@ public class PackageMergeImpl
 				msgs = ((InternalEObject) newReceivingPackage).eInverseAdd(
 					this, UMLPackage.PACKAGE__PACKAGE_MERGE,
 					org.eclipse.uml2.uml.Package.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newReceivingPackage,
-				UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE, msgs);
+			msgs = basicSetReceivingPackage(newReceivingPackage, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -206,8 +219,8 @@ public class PackageMergeImpl
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE, msgs);
+				return basicSetReceivingPackage(
+					(org.eclipse.uml2.uml.Package) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -227,8 +240,7 @@ public class PackageMergeImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
-				return eBasicSetContainer(null,
-					UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE, msgs);
+				return basicSetReceivingPackage(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

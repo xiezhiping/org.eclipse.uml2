@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.13 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
@@ -300,10 +301,16 @@ public class ClassifierTemplateParameterImpl
 
 		msgs = basicSetParameteredElementGen(newParameteredElement, msgs);
 
-		if (eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null
-			&& eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != newParameteredElement) {
+		Resource.Internal eInternalResource = eInternalResource();
 
-			setOwnedParameteredElement(null);
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			Object ownedParameteredElement = eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+
+			if (ownedParameteredElement != null
+				&& ownedParameteredElement != newParameteredElement) {
+
+				setOwnedParameteredElement(null);
+			}
 		}
 
 		return msgs;

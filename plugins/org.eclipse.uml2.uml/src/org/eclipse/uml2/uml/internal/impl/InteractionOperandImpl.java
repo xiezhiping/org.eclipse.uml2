@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.13 2006/02/22 23:49:05 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -235,6 +235,19 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnclosingInteraction(
+			Interaction newEnclosingInteraction, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newEnclosingInteraction,
+			UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
@@ -248,9 +261,7 @@ public class InteractionOperandImpl
 				msgs = ((InternalEObject) newEnclosingInteraction).eInverseAdd(
 					this, UMLPackage.INTERACTION__FRAGMENT, Interaction.class,
 					msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newEnclosingInteraction,
-				UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
+			msgs = basicSetEnclosingInteraction(newEnclosingInteraction, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -276,6 +287,19 @@ public class InteractionOperandImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnclosingOperand(
+			InteractionOperand newEnclosingOperand, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newEnclosingOperand,
+			UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
@@ -289,8 +313,7 @@ public class InteractionOperandImpl
 				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
 					this, UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 					InteractionOperand.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newEnclosingOperand,
-				UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
+			msgs = basicSetEnclosingOperand(newEnclosingOperand, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -531,13 +554,13 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
+					msgs);
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
+					msgs);
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
 				return ((InternalEList) getFragments())
 					.basicAdd(otherEnd, msgs);
@@ -580,11 +603,9 @@ public class InteractionOperandImpl
 				return ((InternalEList) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				return basicSetGuard(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :

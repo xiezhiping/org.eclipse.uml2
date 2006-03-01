@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.17 2006/02/22 23:49:06 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.18 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -632,11 +632,9 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.LOOP_NODE__ACTIVITY :
-				return eBasicSetContainer(null, UMLPackage.LOOP_NODE__ACTIVITY,
-					msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.LOOP_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);
@@ -668,8 +666,7 @@ public class LoopNodeImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.LOOP_NODE__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.LOOP_NODE__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.13 2006/01/25 18:51:32 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -223,6 +223,20 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetApplyingPackage(
+			org.eclipse.uml2.uml.Package newApplyingPackage,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newApplyingPackage,
+			UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setApplyingPackage(
 			org.eclipse.uml2.uml.Package newApplyingPackage) {
 		if (newApplyingPackage != eInternalContainer()
@@ -237,8 +251,7 @@ public class ProfileApplicationImpl
 				msgs = ((InternalEObject) newApplyingPackage).eInverseAdd(this,
 					UMLPackage.PACKAGE__PROFILE_APPLICATION,
 					org.eclipse.uml2.uml.Package.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newApplyingPackage,
-				UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+			msgs = basicSetApplyingPackage(newApplyingPackage, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -281,8 +294,8 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+				return basicSetApplyingPackage(
+					(org.eclipse.uml2.uml.Package) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -302,8 +315,7 @@ public class ProfileApplicationImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
-				return eBasicSetContainer(null,
-					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
+				return basicSetApplyingPackage(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

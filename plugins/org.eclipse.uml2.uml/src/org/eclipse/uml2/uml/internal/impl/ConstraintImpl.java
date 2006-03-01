@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -240,6 +240,19 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContext(Namespace newContext,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newContext,
+			UMLPackage.CONSTRAINT__CONTEXT, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setContext(Namespace newContext) {
 		if (newContext != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
@@ -252,8 +265,7 @@ public class ConstraintImpl
 			if (newContext != null)
 				msgs = ((InternalEObject) newContext).eInverseAdd(this,
 					UMLPackage.NAMESPACE__OWNED_RULE, Namespace.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newContext,
-				UMLPackage.CONSTRAINT__CONTEXT, msgs);
+			msgs = basicSetContext(newContext, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -333,8 +345,8 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -347,8 +359,7 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.CONSTRAINT__CONTEXT, msgs);
+				return basicSetContext((Namespace) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -373,15 +384,13 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 			case UMLPackage.CONSTRAINT__CONTEXT :
-				return eBasicSetContainer(null, UMLPackage.CONSTRAINT__CONTEXT,
-					msgs);
+				return basicSetContext(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

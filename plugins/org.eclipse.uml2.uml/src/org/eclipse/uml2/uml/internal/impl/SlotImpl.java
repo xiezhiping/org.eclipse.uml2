@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.11 2006/02/22 23:07:14 khussey Exp $
+ * $Id: SlotImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,6 +109,19 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningInstance(
+			InstanceSpecification newOwningInstance, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningInstance,
+			UMLPackage.SLOT__OWNING_INSTANCE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
 		if (newOwningInstance != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
@@ -122,8 +135,7 @@ public class SlotImpl
 				msgs = ((InternalEObject) newOwningInstance).eInverseAdd(this,
 					UMLPackage.INSTANCE_SPECIFICATION__SLOT,
 					InstanceSpecification.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newOwningInstance,
-				UMLPackage.SLOT__OWNING_INSTANCE, msgs);
+			msgs = basicSetOwningInstance(newOwningInstance, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -259,8 +271,8 @@ public class SlotImpl
 			case UMLPackage.SLOT__OWNING_INSTANCE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.SLOT__OWNING_INSTANCE, msgs);
+				return basicSetOwningInstance((InstanceSpecification) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -283,8 +295,7 @@ public class SlotImpl
 				return ((InternalEList) getValues())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SLOT__OWNING_INSTANCE :
-				return eBasicSetContainer(null,
-					UMLPackage.SLOT__OWNING_INSTANCE, msgs);
+				return basicSetOwningInstance(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

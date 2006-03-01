@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.16 2006/02/22 23:49:05 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.17 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -279,6 +279,19 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInActivity(Activity newInActivity,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newInActivity,
+			UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInActivity(Activity newInActivity) {
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
@@ -291,8 +304,7 @@ public class ActivityPartitionImpl
 			if (newInActivity != null)
 				msgs = ((InternalEObject) newInActivity).eInverseAdd(this,
 					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newInActivity,
-				UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
+			msgs = basicSetInActivity(newInActivity, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -524,6 +536,19 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetSuperPartition(
+			ActivityPartition newSuperPartition, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newSuperPartition,
+			UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
 		if (newSuperPartition != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
@@ -537,8 +562,7 @@ public class ActivityPartitionImpl
 				msgs = ((InternalEObject) newSuperPartition).eInverseAdd(this,
 					UMLPackage.ACTIVITY_PARTITION__SUBPARTITION,
 					ActivityPartition.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newSuperPartition,
-				UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
+			msgs = basicSetSuperPartition(newSuperPartition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -689,8 +713,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
+				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
@@ -699,8 +722,8 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
+				return basicSetSuperPartition((ActivityPartition) otherEnd,
+					msgs);
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
 				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
 		}
@@ -727,16 +750,14 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				return ((InternalEList) getSubpartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
+				return basicSetSuperPartition(null, msgs);
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
 				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
 		}

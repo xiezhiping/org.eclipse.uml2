@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.12 2006/02/22 23:49:05 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -373,6 +373,19 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningExpression(
+			StringExpression newOwningExpression, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningExpression,
+			UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
 		if (newOwningExpression != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
@@ -386,8 +399,7 @@ public class StringExpressionImpl
 				msgs = ((InternalEObject) newOwningExpression).eInverseAdd(
 					this, UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
 					StringExpression.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newOwningExpression,
-				UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+			msgs = basicSetOwningExpression(newOwningExpression, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -475,9 +487,8 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -507,8 +518,8 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+				return basicSetOwningExpression((StringExpression) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -533,9 +544,7 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
@@ -550,8 +559,7 @@ public class StringExpressionImpl
 				return ((InternalEList) getSubExpressions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-				return eBasicSetContainer(null,
-					UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+				return basicSetOwningExpression(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

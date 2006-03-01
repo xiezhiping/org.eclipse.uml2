@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.21 2006/02/22 23:49:05 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.22 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -270,10 +272,6 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public void setClassifierBehavior(Behavior newClassifierBehavior) {
-		if (newClassifierBehavior != null
-			&& !getOwnedBehaviors().contains(newClassifierBehavior)) {
-			getOwnedBehaviors().add(newClassifierBehavior);
-		}
 		Behavior classifierBehavior = newClassifierBehavior;
 		Object oldClassifierBehavior = eVirtualSet(
 			UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
@@ -285,6 +283,15 @@ public abstract class BehavioredClassifierImpl
 					? null
 					: oldClassifierBehavior, classifierBehavior));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newClassifierBehavior != null) {
+				EList ownedBehavior = getOwnedBehaviors();
+				if (!ownedBehavior.contains(newClassifierBehavior)) {
+					ownedBehavior.add(newClassifierBehavior);
+				}
+			}
+		}
 	}
 
 	/**
@@ -469,10 +476,8 @@ public abstract class BehavioredClassifierImpl
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.BEHAVIORED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -543,10 +548,7 @@ public abstract class BehavioredClassifierImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.BEHAVIORED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.BEHAVIORED_CLASSIFIER__TEMPLATE_BINDING :

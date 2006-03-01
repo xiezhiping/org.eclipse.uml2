@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
@@ -123,10 +125,6 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public void setUtilizedElement(PackageableElement newUtilizedElement) {
-		if (newUtilizedElement != null
-			&& !getSuppliers().contains(newUtilizedElement)) {
-			getSuppliers().add(newUtilizedElement);
-		}
 		PackageableElement utilizedElement = newUtilizedElement;
 		Object oldUtilizedElement = eVirtualSet(
 			UMLPackage.MANIFESTATION__UTILIZED_ELEMENT, utilizedElement);
@@ -137,6 +135,15 @@ public class ManifestationImpl
 					? null
 					: oldUtilizedElement, utilizedElement));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newUtilizedElement != null) {
+				EList supplier = getSuppliers();
+				if (!supplier.contains(newUtilizedElement)) {
+					supplier.add(newUtilizedElement);
+				}
+			}
+		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.12 2006/02/22 23:07:14 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,10 +24,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -150,9 +151,13 @@ public class InstanceSpecificationImpl
 				msgs.add(notification);
 		}
 
-		if (getOwningTemplateParameter() != null
-			&& getOwningTemplateParameter() != newTemplateParameter) {
-			setOwningTemplateParameter(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
+			if (owningTemplateParameter != null
+				&& owningTemplateParameter != newTemplateParameter) {
+				setOwningTemplateParameter(null);
+			}
 		}
 		return msgs;
 	}
@@ -211,9 +216,30 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningTemplateParameter(
+			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
+			UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningTemplateParameter != null) {
+				Object templateParameter = eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
+				if (newOwningTemplateParameter != templateParameter) {
+					setTemplateParameter(newOwningTemplateParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -228,9 +254,7 @@ public class InstanceSpecificationImpl
 						this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newOwningTemplateParameter,
-				UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
+			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
 				msgs);
 			if (msgs != null)
 				msgs.dispatch();
@@ -239,10 +263,6 @@ public class InstanceSpecificationImpl
 				UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
 
-		if (newOwningTemplateParameter != null
-			|| oldOwningTemplateParameter == eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningTemplateParameter);
-		}
 	}
 
 	/**
@@ -572,10 +592,8 @@ public class InstanceSpecificationImpl
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -614,10 +632,7 @@ public class InstanceSpecificationImpl
 				return ((InternalEList) getDeployments()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.12 2006/02/22 23:07:15 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -171,6 +171,19 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInteraction(Interaction newInteraction,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newInteraction,
+			UMLPackage.LIFELINE__INTERACTION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION && newInteraction != null)) {
@@ -183,8 +196,7 @@ public class LifelineImpl
 			if (newInteraction != null)
 				msgs = ((InternalEObject) newInteraction).eInverseAdd(this,
 					UMLPackage.INTERACTION__LIFELINE, Interaction.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newInteraction,
-				UMLPackage.LIFELINE__INTERACTION, msgs);
+			msgs = basicSetInteraction(newInteraction, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -444,8 +456,7 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.LIFELINE__INTERACTION, msgs);
+				return basicSetInteraction((Interaction) otherEnd, msgs);
 			case UMLPackage.LIFELINE__COVERED_BY :
 				return ((InternalEList) getCoveredBys()).basicAdd(otherEnd,
 					msgs);
@@ -473,8 +484,7 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.LIFELINE__INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.LIFELINE__INTERACTION, msgs);
+				return basicSetInteraction(null, msgs);
 			case UMLPackage.LIFELINE__SELECTOR :
 				return basicSetSelector(null, msgs);
 			case UMLPackage.LIFELINE__COVERED_BY :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.23 2006/02/22 23:49:06 khussey Exp $
+ * $Id: OperationImpl.java,v 1.24 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,10 +24,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -258,10 +259,16 @@ public class OperationImpl
 
 		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
 
-		if (getOwningTemplateParameter() != null
-			&& getOwningTemplateParameter() != newTemplateParameter) {
+		Resource.Internal eInternalResource = eInternalResource();
 
-			setOwningTemplateParameter(null);
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
+
+			if (owningTemplateParameter != null
+				&& owningTemplateParameter != newTemplateParameter) {
+
+				setOwningTemplateParameter(null);
+			}
 		}
 
 		return msgs;
@@ -330,9 +337,30 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningTemplateParameter(
+			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
+			UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningTemplateParameter != null) {
+				Object templateParameter = eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
+				if (newOwningTemplateParameter != templateParameter) {
+					setTemplateParameter(newOwningTemplateParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -347,9 +375,8 @@ public class OperationImpl
 						this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newOwningTemplateParameter,
-				UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -357,10 +384,6 @@ public class OperationImpl
 				UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
 
-		if (newOwningTemplateParameter != null
-			|| oldOwningTemplateParameter == eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningTemplateParameter);
-		}
 	}
 
 	/**
@@ -755,6 +778,19 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetClass_(
+			org.eclipse.uml2.uml.Class newClass_, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newClass_,
+			UMLPackage.OPERATION__CLASS_, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setClass_(org.eclipse.uml2.uml.Class newClass_) {
 		if (newClass_ != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS_ && newClass_ != null)) {
@@ -768,8 +804,7 @@ public class OperationImpl
 				msgs = ((InternalEObject) newClass_).eInverseAdd(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
 					org.eclipse.uml2.uml.Class.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newClass_,
-				UMLPackage.OPERATION__CLASS_, msgs);
+			msgs = basicSetClass_(newClass_, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1010,6 +1045,19 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetDatatype(DataType newDatatype,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDatatype,
+			UMLPackage.OPERATION__DATATYPE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
@@ -1023,8 +1071,7 @@ public class OperationImpl
 				msgs = ((InternalEObject) newDatatype)
 					.eInverseAdd(this, UMLPackage.DATA_TYPE__OWNED_OPERATION,
 						DataType.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newDatatype,
-				UMLPackage.OPERATION__DATATYPE, msgs);
+			msgs = basicSetDatatype(newDatatype, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1069,10 +1116,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setBodyCondition(Constraint newBodyCondition) {
-		if (newBodyCondition != null
-			&& !getOwnedRules().contains(newBodyCondition)) {
-			getOwnedRules().add(newBodyCondition);
-		}
 		Constraint bodyCondition = newBodyCondition;
 		Object oldBodyCondition = eVirtualSet(
 			UMLPackage.OPERATION__BODY_CONDITION, bodyCondition);
@@ -1083,6 +1126,15 @@ public class OperationImpl
 					? null
 					: oldBodyCondition, bodyCondition));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newBodyCondition != null) {
+				EList ownedRule = getOwnedRules();
+				if (!ownedRule.contains(newBodyCondition)) {
+					ownedRule.add(newBodyCondition);
+				}
+			}
+		}
 	}
 
 	/**
@@ -1157,6 +1209,19 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInterface(Interface newInterface,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newInterface,
+			UMLPackage.OPERATION__INTERFACE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInterface(Interface newInterface) {
 		if (newInterface != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
@@ -1170,8 +1235,7 @@ public class OperationImpl
 				msgs = ((InternalEObject) newInterface).eInverseAdd(this,
 					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
 					msgs);
-			msgs = eBasicSetContainer((InternalEObject) newInterface,
-				UMLPackage.OPERATION__INTERFACE, msgs);
+			msgs = basicSetInterface(newInterface, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1463,8 +1527,8 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -1489,18 +1553,16 @@ public class OperationImpl
 			case UMLPackage.OPERATION__INTERFACE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OPERATION__INTERFACE, msgs);
+				return basicSetInterface((Interface) otherEnd, msgs);
 			case UMLPackage.OPERATION__CLASS_ :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OPERATION__CLASS_, msgs);
+				return basicSetClass_((org.eclipse.uml2.uml.Class) otherEnd,
+					msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.OPERATION__DATATYPE, msgs);
+				return basicSetDatatype((DataType) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1543,8 +1605,7 @@ public class OperationImpl
 				return ((InternalEList) getOwnedParameterSets()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
@@ -1553,14 +1614,11 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.OPERATION__INTERFACE :
-				return eBasicSetContainer(null,
-					UMLPackage.OPERATION__INTERFACE, msgs);
+				return basicSetInterface(null, msgs);
 			case UMLPackage.OPERATION__CLASS_ :
-				return eBasicSetContainer(null, UMLPackage.OPERATION__CLASS_,
-					msgs);
+				return basicSetClass_(null, msgs);
 			case UMLPackage.OPERATION__DATATYPE :
-				return eBasicSetContainer(null, UMLPackage.OPERATION__DATATYPE,
-					msgs);
+				return basicSetDatatype(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
+ * $Id: VertexImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,6 +180,19 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainer(Region newContainer,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newContainer,
+			UMLPackage.VERTEX__CONTAINER, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
@@ -192,8 +205,7 @@ public abstract class VertexImpl
 			if (newContainer != null)
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
 					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newContainer,
-				UMLPackage.VERTEX__CONTAINER, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -234,8 +246,7 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.VERTEX__CONTAINER, msgs);
+				return basicSetContainer((Region) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -266,8 +277,7 @@ public abstract class VertexImpl
 				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.VERTEX__CONTAINER :
-				return eBasicSetContainer(null, UMLPackage.VERTEX__CONTAINER,
-					msgs);
+				return basicSetContainer(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

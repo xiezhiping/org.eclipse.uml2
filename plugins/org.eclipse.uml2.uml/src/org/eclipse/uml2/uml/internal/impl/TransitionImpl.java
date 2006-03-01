@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.16 2006/02/22 23:49:05 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.17 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
@@ -371,6 +373,19 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainer(Region newContainer,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newContainer,
+			UMLPackage.TRANSITION__CONTAINER, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER && newContainer != null)) {
@@ -383,8 +398,7 @@ public class TransitionImpl
 			if (newContainer != null)
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
 					UMLPackage.REGION__TRANSITION, Region.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newContainer,
-				UMLPackage.TRANSITION__CONTAINER, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -553,9 +567,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
-		if (newGuard != null && !getOwnedRules().contains(newGuard)) {
-			getOwnedRules().add(newGuard);
-		}
 		Constraint guard = newGuard;
 		Object oldGuard = eVirtualSet(UMLPackage.TRANSITION__GUARD, guard);
 		if (eNotificationRequired())
@@ -564,6 +575,15 @@ public class TransitionImpl
 					? null
 					: oldGuard, guard));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newGuard != null) {
+				EList ownedRule = getOwnedRules();
+				if (!ownedRule.contains(newGuard)) {
+					ownedRule.add(newGuard);
+				}
+			}
+		}
 	}
 
 	/**
@@ -987,8 +1007,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.TRANSITION__CONTAINER, msgs);
+				return basicSetContainer((Region) otherEnd, msgs);
 			case UMLPackage.TRANSITION__TARGET :
 				Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
 				if (target != null)
@@ -1034,8 +1053,7 @@ public class TransitionImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.TRANSITION__CONTAINER :
-				return eBasicSetContainer(null,
-					UMLPackage.TRANSITION__CONTAINER, msgs);
+				return basicSetContainer(null, msgs);
 			case UMLPackage.TRANSITION__TARGET :
 				return basicSetTarget(null, msgs);
 			case UMLPackage.TRANSITION__EFFECT :

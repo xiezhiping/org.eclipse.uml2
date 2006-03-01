@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -186,6 +186,19 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetIncludingCase(UseCase newIncludingCase,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newIncludingCase,
+			UMLPackage.INCLUDE__INCLUDING_CASE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
 		if (newIncludingCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
@@ -198,8 +211,7 @@ public class IncludeImpl
 			if (newIncludingCase != null)
 				msgs = ((InternalEObject) newIncludingCase).eInverseAdd(this,
 					UMLPackage.USE_CASE__INCLUDE, UseCase.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newIncludingCase,
-				UMLPackage.INCLUDE__INCLUDING_CASE, msgs);
+			msgs = basicSetIncludingCase(newIncludingCase, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -226,8 +238,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INCLUDE__INCLUDING_CASE, msgs);
+				return basicSetIncludingCase((UseCase) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -252,8 +263,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
-				return eBasicSetContainer(null,
-					UMLPackage.INCLUDE__INCLUDING_CASE, msgs);
+				return basicSetIncludingCase(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

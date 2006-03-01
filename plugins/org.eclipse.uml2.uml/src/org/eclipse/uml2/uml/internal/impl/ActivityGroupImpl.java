@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.12 2006/02/22 20:48:16 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -221,6 +221,19 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInActivity(Activity newInActivity,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newInActivity,
+			UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInActivity(Activity newInActivity) {
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
@@ -233,8 +246,7 @@ public abstract class ActivityGroupImpl
 			if (newInActivity != null)
 				msgs = ((InternalEObject) newInActivity).eInverseAdd(this,
 					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newInActivity,
-				UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
+			msgs = basicSetInActivity(newInActivity, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -289,8 +301,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
+				return basicSetInActivity((Activity) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -310,8 +321,7 @@ public abstract class ActivityGroupImpl
 				return ((InternalEList) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

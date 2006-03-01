@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.12 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,13 +135,12 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXECUTABLE_NODE__ACTIVITY, msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings())
 					.basicAdd(otherEnd, msgs);
@@ -180,11 +179,9 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.EXECUTABLE_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

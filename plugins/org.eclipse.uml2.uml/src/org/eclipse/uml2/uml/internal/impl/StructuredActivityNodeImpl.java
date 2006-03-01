@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.20 2006/02/22 23:49:05 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.21 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1023,14 +1023,12 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE,
-					msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings())
 					.basicAdd(otherEnd, msgs);
@@ -1057,8 +1055,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY, msgs);
+				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
 				return ((InternalEList) getVariables())
 					.basicAdd(otherEnd, msgs);
@@ -1090,12 +1087,9 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE,
-					msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);
@@ -1127,8 +1121,7 @@ public class StructuredActivityNodeImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);
@@ -1795,6 +1788,17 @@ public class StructuredActivityNodeImpl
 	 */
 	public Activity getInActivity() {
 		return getActivity();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInActivity(Activity newInActivity,
+			NotificationChain msgs) {
+		setActivity(newInActivity);
+		return msgs;
 	}
 
 	/**

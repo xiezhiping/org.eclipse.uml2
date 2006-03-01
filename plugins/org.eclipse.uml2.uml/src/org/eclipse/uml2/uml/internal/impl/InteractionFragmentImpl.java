@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.12 2006/02/22 23:49:06 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -219,6 +219,19 @@ public abstract class InteractionFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnclosingInteraction(
+			Interaction newEnclosingInteraction, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newEnclosingInteraction,
+			UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
@@ -232,9 +245,7 @@ public abstract class InteractionFragmentImpl
 				msgs = ((InternalEObject) newEnclosingInteraction).eInverseAdd(
 					this, UMLPackage.INTERACTION__FRAGMENT, Interaction.class,
 					msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newEnclosingInteraction,
-				UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION, msgs);
+			msgs = basicSetEnclosingInteraction(newEnclosingInteraction, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -260,6 +271,19 @@ public abstract class InteractionFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnclosingOperand(
+			InteractionOperand newEnclosingOperand, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newEnclosingOperand,
+			UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
@@ -273,8 +297,7 @@ public abstract class InteractionFragmentImpl
 				msgs = ((InternalEObject) newEnclosingOperand).eInverseAdd(
 					this, UMLPackage.INTERACTION_OPERAND__FRAGMENT,
 					InteractionOperand.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newEnclosingOperand,
-				UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, msgs);
+			msgs = basicSetEnclosingOperand(newEnclosingOperand, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -303,14 +326,13 @@ public abstract class InteractionFragmentImpl
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
+				return basicSetEnclosingInteraction((Interaction) otherEnd,
 					msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -341,12 +363,9 @@ public abstract class InteractionFragmentImpl
 				return ((InternalEList) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
-					msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
-				return eBasicSetContainer(null,
-					UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

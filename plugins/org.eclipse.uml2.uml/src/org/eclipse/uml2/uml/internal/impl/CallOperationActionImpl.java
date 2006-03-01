@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.15 2006/02/22 23:49:06 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.16 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -340,11 +340,9 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.CALL_OPERATION_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.CALL_OPERATION_ACTION__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);

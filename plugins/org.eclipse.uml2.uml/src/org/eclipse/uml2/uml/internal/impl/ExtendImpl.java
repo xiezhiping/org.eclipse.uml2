@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.13 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -378,6 +378,19 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetExtension(UseCase newExtension,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newExtension,
+			UMLPackage.EXTEND__EXTENSION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setExtension(UseCase newExtension) {
 		if (newExtension != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTEND__EXTENSION && newExtension != null)) {
@@ -390,8 +403,7 @@ public class ExtendImpl
 			if (newExtension != null)
 				msgs = ((InternalEObject) newExtension).eInverseAdd(this,
 					UMLPackage.USE_CASE__EXTEND, UseCase.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newExtension,
-				UMLPackage.EXTEND__EXTENSION, msgs);
+			msgs = basicSetExtension(newExtension, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -428,8 +440,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__EXTENSION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.EXTEND__EXTENSION, msgs);
+				return basicSetExtension((UseCase) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -456,8 +467,7 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__CONDITION :
 				return basicSetCondition(null, msgs);
 			case UMLPackage.EXTEND__EXTENSION :
-				return eBasicSetContainer(null, UMLPackage.EXTEND__EXTENSION,
-					msgs);
+				return basicSetExtension(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -144,10 +146,29 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAbstraction(Component newAbstraction) {
-		if (newAbstraction != null && !getClients().contains(newAbstraction)) {
-			getClients().add(newAbstraction);
+	public NotificationChain basicSetAbstraction(Component newAbstraction,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newAbstraction,
+			UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newAbstraction != null) {
+				EList client = getClients();
+				if (!client.contains(newAbstraction)) {
+					client.add(newAbstraction);
+				}
+			}
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAbstraction(Component newAbstraction) {
 		if (newAbstraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, newAbstraction))
@@ -159,8 +180,7 @@ public class ComponentRealizationImpl
 			if (newAbstraction != null)
 				msgs = ((InternalEObject) newAbstraction).eInverseAdd(this,
 					UMLPackage.COMPONENT__REALIZATION, Component.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newAbstraction,
-				UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
+			msgs = basicSetAbstraction(newAbstraction, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -208,10 +228,6 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public void setRealizingClassifier(Classifier newRealizingClassifier) {
-		if (newRealizingClassifier != null
-			&& !getSuppliers().contains(newRealizingClassifier)) {
-			getSuppliers().add(newRealizingClassifier);
-		}
 		Classifier realizingClassifier = newRealizingClassifier;
 		Object oldRealizingClassifier = eVirtualSet(
 			UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
@@ -223,6 +239,15 @@ public class ComponentRealizationImpl
 					? null
 					: oldRealizingClassifier, realizingClassifier));
 
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newRealizingClassifier != null) {
+				EList supplier = getSuppliers();
+				if (!supplier.contains(newRealizingClassifier)) {
+					supplier.add(newRealizingClassifier);
+				}
+			}
+		}
 	}
 
 	/**
@@ -242,10 +267,8 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(
-					otherEnd,
-					UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -260,8 +283,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
+				return basicSetAbstraction((Component) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -286,10 +308,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(
-					null,
-					UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER,
-					msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
@@ -298,8 +317,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				return basicSetMapping(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return eBasicSetContainer(null,
-					UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
+				return basicSetAbstraction(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

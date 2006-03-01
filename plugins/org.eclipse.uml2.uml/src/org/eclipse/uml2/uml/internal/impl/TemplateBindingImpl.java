@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.10 2006/02/21 16:12:16 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -227,6 +227,19 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetBoundElement(
+			TemplateableElement newBoundElement, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newBoundElement,
+			UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
 		if (newBoundElement != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
@@ -240,8 +253,7 @@ public class TemplateBindingImpl
 				msgs = ((InternalEObject) newBoundElement).eInverseAdd(this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
 					TemplateableElement.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newBoundElement,
-				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+			msgs = basicSetBoundElement(newBoundElement, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -290,8 +302,8 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+				return basicSetBoundElement((TemplateableElement) otherEnd,
+					msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -314,8 +326,7 @@ public class TemplateBindingImpl
 				return ((InternalEList) getParameterSubstitutions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-				return eBasicSetContainer(null,
-					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+				return basicSetBoundElement(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.14 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -342,11 +342,9 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
-				return eBasicSetContainer(null,
-					UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.CONDITIONAL_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
 				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
 					msgs);
@@ -378,8 +376,7 @@ public class ConditionalNodeImpl
 				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
-				return eBasicSetContainer(null,
-					UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY, msgs);
+				return basicSetInActivity(null, msgs);
 			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
 				return ((InternalEList) getVariables()).basicRemove(otherEnd,
 					msgs);

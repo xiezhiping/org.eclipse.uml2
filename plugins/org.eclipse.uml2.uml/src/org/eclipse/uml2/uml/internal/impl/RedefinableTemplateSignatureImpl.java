@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -152,6 +152,19 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetTemplate(TemplateableElement newTemplate,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newTemplate,
+			UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setTemplate(TemplateableElement newTemplate) {
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
@@ -165,8 +178,7 @@ public class RedefinableTemplateSignatureImpl
 				msgs = ((InternalEObject) newTemplate).eInverseAdd(this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 					TemplateableElement.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newTemplate,
-				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -377,8 +389,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+				return basicSetTemplate((TemplateableElement) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -406,8 +417,7 @@ public class RedefinableTemplateSignatureImpl
 				return ((InternalEList) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				return eBasicSetContainer(null,
-					UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+				return basicSetTemplate(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

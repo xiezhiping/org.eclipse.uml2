@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.26 2006/02/22 23:49:05 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.27 2006/03/01 17:56:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,10 +24,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -277,10 +278,16 @@ public class PropertyImpl
 
 		msgs = basicSetTemplateParameterGen(newTemplateParameter, msgs);
 
-		if (getOwningTemplateParameter() != null
-			&& getOwningTemplateParameter() != newTemplateParameter) {
+		Resource.Internal eInternalResource = eInternalResource();
 
-			setOwningTemplateParameter(null);
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
+
+			if (owningTemplateParameter != null
+				&& owningTemplateParameter != newTemplateParameter) {
+
+				setOwningTemplateParameter(null);
+			}
 		}
 
 		return msgs;
@@ -349,9 +356,30 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningTemplateParameter(
+			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
+			UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningTemplateParameter != null) {
+				Object templateParameter = eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
+				if (newOwningTemplateParameter != templateParameter) {
+					setTemplateParameter(newOwningTemplateParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-		EObject oldOwningTemplateParameter = eContainer();
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -366,9 +394,8 @@ public class PropertyImpl
 						this,
 						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 						TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer(
-				(InternalEObject) newOwningTemplateParameter,
-				UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+			msgs = basicSetOwningTemplateParameter(newOwningTemplateParameter,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -376,10 +403,6 @@ public class PropertyImpl
 				UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
 
-		if (newOwningTemplateParameter != null
-			|| oldOwningTemplateParameter == eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningTemplateParameter);
-		}
 	}
 
 	/**
@@ -822,9 +845,13 @@ public class PropertyImpl
 				msgs.add(notification);
 		}
 
-		if (getOwningAssociation() != null
-			&& getOwningAssociation() != newAssociation) {
-			setOwningAssociation(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			Association owningAssociation = basicGetOwningAssociation();
+			if (owningAssociation != null
+				&& owningAssociation != newAssociation) {
+				setOwningAssociation(null);
+			}
 		}
 		return msgs;
 	}
@@ -872,6 +899,19 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetDatatype(DataType newDatatype,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDatatype,
+			UMLPackage.PROPERTY__DATATYPE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
@@ -885,8 +925,7 @@ public class PropertyImpl
 				msgs = ((InternalEObject) newDatatype)
 					.eInverseAdd(this, UMLPackage.DATA_TYPE__OWNED_ATTRIBUTE,
 						DataType.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newDatatype,
-				UMLPackage.PROPERTY__DATATYPE, msgs);
+			msgs = basicSetDatatype(newDatatype, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1117,8 +1156,29 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningAssociation(
+			Association newOwningAssociation, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newOwningAssociation,
+			UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningAssociation != null) {
+				Object association = eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
+				if (newOwningAssociation != association) {
+					setAssociation(newOwningAssociation);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
-		EObject oldOwningAssociation = eContainer();
 		if (newOwningAssociation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation))
@@ -1131,8 +1191,7 @@ public class PropertyImpl
 				msgs = ((InternalEObject) newOwningAssociation).eInverseAdd(
 					this, UMLPackage.ASSOCIATION__OWNED_END, Association.class,
 					msgs);
-			msgs = eBasicSetContainer((InternalEObject) newOwningAssociation,
-				UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
+			msgs = basicSetOwningAssociation(newOwningAssociation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1140,10 +1199,6 @@ public class PropertyImpl
 				UMLPackage.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation,
 				newOwningAssociation));
 
-		if (newOwningAssociation != null
-			|| oldOwningAssociation == eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION)) {
-			setAssociation(newOwningAssociation);
-		}
 	}
 
 	/**
@@ -1427,6 +1482,19 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetAssociationEnd(Property newAssociationEnd,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newAssociationEnd,
+			UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setAssociationEnd(Property newAssociationEnd) {
 		if (newAssociationEnd != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
@@ -1439,8 +1507,7 @@ public class PropertyImpl
 			if (newAssociationEnd != null)
 				msgs = ((InternalEObject) newAssociationEnd).eInverseAdd(this,
 					UMLPackage.PROPERTY__QUALIFIER, Property.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newAssociationEnd,
-				UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
+			msgs = basicSetAssociationEnd(newAssociationEnd, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -1708,8 +1775,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -1739,13 +1806,11 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DATATYPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROPERTY__DATATYPE, msgs);
+				return basicSetDatatype((DataType) otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
+				return basicSetOwningAssociation((Association) otherEnd, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION :
 				Association association = (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
 				if (association != null)
@@ -1759,8 +1824,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
+				return basicSetAssociationEnd((Property) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1789,8 +1853,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__END :
@@ -1804,11 +1867,9 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROPERTY__DATATYPE :
-				return eBasicSetContainer(null, UMLPackage.PROPERTY__DATATYPE,
-					msgs);
+				return basicSetDatatype(null, msgs);
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
-				return eBasicSetContainer(null,
-					UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
+				return basicSetOwningAssociation(null, msgs);
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				return basicSetDefaultValue(null, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION :
@@ -1817,8 +1878,7 @@ public class PropertyImpl
 				return ((InternalEList) getQualifiers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
-				return eBasicSetContainer(null,
-					UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
+				return basicSetAssociationEnd(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.13 2006/02/22 23:49:06 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -273,10 +275,29 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLocation(DeploymentTarget newLocation) {
-		if (newLocation != null && !getClients().contains(newLocation)) {
-			getClients().add(newLocation);
+	public NotificationChain basicSetLocation(DeploymentTarget newLocation,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newLocation,
+			UMLPackage.DEPLOYMENT__LOCATION, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newLocation != null) {
+				EList client = getClients();
+				if (!client.contains(newLocation)) {
+					client.add(newLocation);
+				}
+			}
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLocation(DeploymentTarget newLocation) {
 		if (newLocation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION && newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, newLocation))
@@ -289,8 +310,7 @@ public class DeploymentImpl
 				msgs = ((InternalEObject) newLocation).eInverseAdd(this,
 					UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
 					DeploymentTarget.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newLocation,
-				UMLPackage.DEPLOYMENT__LOCATION, msgs);
+			msgs = basicSetLocation(newLocation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -316,8 +336,8 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(
+					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
@@ -335,8 +355,7 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-					UMLPackage.DEPLOYMENT__LOCATION, msgs);
+				return basicSetLocation((DeploymentTarget) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -361,8 +380,7 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
-				return eBasicSetContainer(null,
-					UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER, msgs);
+				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT :
@@ -372,8 +390,7 @@ public class DeploymentImpl
 				return ((InternalEList) getConfigurations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__LOCATION :
-				return eBasicSetContainer(null,
-					UMLPackage.DEPLOYMENT__LOCATION, msgs);
+				return basicSetLocation(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
