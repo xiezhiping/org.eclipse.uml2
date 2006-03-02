@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.26 2006/03/01 17:57:18 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.27 2006/03/02 20:51:19 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1283,7 +1283,7 @@ public class GenClassImpl
 	}
 
 	public boolean isFactoryMethods(GenFeature genFeature) {
-		return UML2GenModelUtil.isFactoryMethods(getGenModel())
+		return UML2GenModelUtil.isFactoryMethods(genFeature.getGenModel())
 			&& genFeature.isChangeable()
 			&& (genFeature.isEffectiveContains() || UML2GenModelUtil
 				.isEffectiveContainsSubset(genFeature))
