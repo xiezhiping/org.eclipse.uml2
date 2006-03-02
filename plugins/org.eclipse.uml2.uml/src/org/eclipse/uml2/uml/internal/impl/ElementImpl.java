@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.22 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ElementImpl.java,v 1.23 2006/03/02 20:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -121,18 +120,6 @@ public abstract class ElementImpl
 					EcorePackage.EANNOTATION__EMODEL_ELEMENT));
 		}
 		return eAnnotations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAnnotation createEAnnotations() {
-		EAnnotation newEAnnotations = EcoreFactory.eINSTANCE
-			.createEAnnotation();
-		getEAnnotations().add(newEAnnotations);
-		return newEAnnotations;
 	}
 
 	/**
