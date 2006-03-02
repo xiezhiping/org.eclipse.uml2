@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.23 2006/03/02 20:49:57 khussey Exp $
+ * $Id: ElementImpl.java,v 1.24 2006/03/02 21:04:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 //import org.eclipse.emf.common.notify.Adapter;
@@ -42,7 +41,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
@@ -170,14 +168,34 @@ public abstract class ElementImpl
 	 * @generated NOT
 	 */
 	public EAnnotation getEAnnotation(String source) {
+		BasicEList eAnnotations = (BasicEList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
 
-		for (Iterator eAnnotations = getEAnnotations().iterator(); eAnnotations
-			.hasNext();) {
+		if (eAnnotations != null) {
+			int size = eAnnotations.size();
 
-			EAnnotation eAnnotation = (EAnnotation) eAnnotations.next();
+			if (size > 0) {
+				EAnnotation[] eAnnotationArray = (EAnnotation[]) eAnnotations
+					.data();
 
-			if (UML2Util.safeEquals(eAnnotation.getSource(), source)) {
-				return eAnnotation;
+				if (source == null) {
+
+					for (int i = 0; i < size; i++) {
+						EAnnotation eAnnotation = eAnnotationArray[i];
+
+						if (eAnnotation.getSource() == null) {
+							return eAnnotation;
+						}
+					}
+				} else {
+
+					for (int i = 0; i < size; i++) {
+						EAnnotation eAnnotation = eAnnotationArray[i];
+
+						if (source.equals(eAnnotation.getSource())) {
+							return eAnnotation;
+						}
+					}
+				}
 			}
 		}
 
