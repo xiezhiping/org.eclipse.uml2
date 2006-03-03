@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.17 2006/02/22 20:48:22 khussey Exp $
+ * $Id: PackageOperations.java,v 1.18 2006/03/03 14:10:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
@@ -398,11 +399,13 @@ public class PackageOperations
 
 		if (appliedProfile == null && recurse) {
 
-			for (package_ = package_.getNestingPackage(); package_ != null
-				&& appliedProfile == null; package_ = package_
-				.getNestingPackage()) {
+			for (Namespace namespace = package_.getNamespace(); namespace != null
+				&& appliedProfile == null; namespace = namespace.getNamespace()) {
 
-				appliedProfile = package_.getAppliedProfile(qualifiedName);
+				if (namespace instanceof org.eclipse.uml2.uml.Package) {
+					appliedProfile = ((org.eclipse.uml2.uml.Package) namespace)
+						.getAppliedProfile(qualifiedName);
+				}
 			}
 		}
 
@@ -464,11 +467,14 @@ public class PackageOperations
 
 		if (profileApplication == null && recurse) {
 
-			for (package_ = package_.getNestingPackage(); package_ != null
-				&& profileApplication == null; package_ = package_
-				.getNestingPackage()) {
+			for (Namespace namespace = package_.getNamespace(); namespace != null
+				&& profileApplication == null; namespace = namespace
+				.getNamespace()) {
 
-				profileApplication = package_.getProfileApplication(profile);
+				if (namespace instanceof org.eclipse.uml2.uml.Package) {
+					profileApplication = ((org.eclipse.uml2.uml.Package) namespace)
+						.getProfileApplication(profile);
+				}
 			}
 		}
 
