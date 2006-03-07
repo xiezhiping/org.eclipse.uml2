@@ -38,7 +38,7 @@
     <%} else { int index = 0;%>
 	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
 	{
-		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreUtil")%>.create(eClass);
+		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) create(eClass);
       <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
         <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
           <%if (keyGenFeature.isListType()) {%>
@@ -111,37 +111,41 @@
     <%} else { int index = 0;%>
 	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
 	{
-		<%=childGenClass.getImportedInterfaceName()%> new<%=genFeature.getCapName()%> = <%=childGenClass.getGenPackage().getImportedFactoryInterfaceName()%>.eINSTANCE.create<%=childGenClass.getName()%>();
-      <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
-        <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
-          <%if (keyGenFeature.isListType()) {%>
+      <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
+		return create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature, false)%>, <%}%><%=genFeature.getTypeGenClass().getQualifiedClassifierAccessor()%>);
+      <%} else {%>
+		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) create(<%=genFeature.getTypeGenClass().getQualifiedClassifierAccessor()%>);
+        <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
+          <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
+            <%if (keyGenFeature.isListType()) {%>
 		int <%=keyGenFeature.getUncapName()%>ListSize = 0;
-            <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
+              <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
 		int <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size = <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> == null ? 0 : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.size();
 		if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size > <%=keyGenFeature.getUncapName()%>ListSize)
 			<%=keyGenFeature.getUncapName()%>ListSize = <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>Size;
-            <%}%>
+              <%}%>
 		for (int i = 0; i < <%=keyGenFeature.getUncapName()%>ListSize; i++) {
 			new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);%><%if (first) { first = false; } else {%>, <%}%>i < <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index - n, false)%>Size ? (<%=nestedKeyGenFeature.getImportedType()%>) <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index - n, false)%>.get(i) : null<%}%>);
 		}
-          <%} else {%>
+            <%} else {%>
 		new<%=genFeature.getCapName()%>.create<%=keyGenFeature.getCapName()%>(<%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%><%if (first) { first = false; } else {%>, <%}%><%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%><%}%>);
-          <%}%>
-        <%} else {%>
-		if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null)
-          <%if (keyGenFeature.isListType()) {%>
-			new<%=genFeature.getCapName()%>.<%=keyGenFeature.getGetAccessor()%>().addAll(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+            <%}%>
           <%} else {%>
+		if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null)
+            <%if (keyGenFeature.isListType()) {%>
+			new<%=genFeature.getCapName()%>.<%=keyGenFeature.getGetAccessor()%>().addAll(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+            <%} else {%>
 			new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
+            <%}%>
           <%}%>
         <%}%>
-      <%}%>
-      <%if (genFeature.isListType()) {%>
+        <%if (genFeature.isListType()) {%>
 		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
-      <%} else {%>
+        <%} else {%>
 		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
-      <%}%>
+        <%}%>
 		return new<%=genFeature.getCapName()%>;
+      <%}%>
 	}
 
     <%}%>

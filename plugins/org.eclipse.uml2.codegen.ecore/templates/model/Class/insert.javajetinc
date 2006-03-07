@@ -1,5 +1,21 @@
 <%if (isImplementation) {%>
-  <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && genClass.isModelRoot()) {%>
+  <%if (genClass.isModelRoot()) {%>
+    <%if (UML2GenModelUtil.isFactoryMethods(genModel)) {%>
+	/**
+	 * Creates a new instance of the specified Ecore class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the instance to create.
+	 * @return The new instance.
+	 * @generated
+	 */
+	protected <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> create(<%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
+	{
+		return <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreUtil")%>.create(eClass);
+	}
+
+    <%}%>
+    <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel)) {%>
 	/**
 	 * Retrieves the cache adapter for this '<em><b><%=genClass.getFormattedName()%></b></em>'.
 	 * <!-- begin-user-doc -->
@@ -12,6 +28,7 @@
 		return <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%>.getCacheAdapter(this);
 	}
 
+    <%}%>
   <%}%>
   <%for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
     <%if (genFeature.isBasicGet()) {%>
