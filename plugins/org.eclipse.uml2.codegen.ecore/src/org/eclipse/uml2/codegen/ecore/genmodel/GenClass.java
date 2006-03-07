@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.11 2006/03/01 17:57:18 khussey Exp $
+ * $Id: GenClass.java,v 1.12 2006/03/07 20:10:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -48,6 +48,7 @@ public interface GenClass
 	String getOperationsClassExtends();
 
 	List/* GenFeature */getKeyGenFeatures();
+
 	List/* GenFeature */getKeyGenFeatures(boolean includeContains);
 
 	boolean isFactoryMethods(GenFeature genFeature);

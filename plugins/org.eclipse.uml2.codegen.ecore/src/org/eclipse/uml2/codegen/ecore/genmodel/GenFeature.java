@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.3 2006/02/22 20:48:43 khussey Exp $
+ * $Id: GenFeature.java,v 1.4 2006/03/07 20:10:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -90,10 +90,15 @@ public interface GenFeature
 	boolean hasStringTypeKeyGenFeature();
 
 	String getKeyFeatureParameter(int index);
+
 	String getKeyFeatureParameter(int index, boolean formal);
+
 	String getKeyFeatureParameters();
+
 	String getKeyFeatureParameters(boolean formal);
+
 	String getFormattedKeyFeatureName(int index);
+
 	String getFormattedKeyFeatureNames();
 
 } // GenFeature
