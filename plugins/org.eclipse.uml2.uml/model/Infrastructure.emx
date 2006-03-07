@@ -16549,7 +16549,7 @@
     </ownedMember>
     <ownedMember xmi:type="uml:Association" xmi:id="_3ADC7B74022D40E7EE3402D7" name="A_icon_stereotype" memberEnd="_3ADC7B74022D40E7EE3603C0 _3ADC7B74022D40E7EE3603CA">
       <ownedEnd xmi:id="_3ADC7B74022D40E7EE3603CA" type="_3ADC7B74022D3CA186DB0022" association="_3ADC7B74022D40E7EE3402D7">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rutncxTaEdqZu-3Jy1-uYg" value="-1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rutncxTaEdqZu-3Jy1-uYg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rutnchTaEdqZu-3Jy1-uYg"/>
       </ownedEnd>
     </ownedMember>
