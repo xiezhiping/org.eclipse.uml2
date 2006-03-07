@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.19 2006/03/07 20:25:15 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.20 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -508,6 +508,17 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public EList allOwningPackages() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this,
+				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(10));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
+					.getEOperations().get(10), result = NamedElementOperations
+					.allOwningPackages(this));
+			}
+			return result;
+		}
 		return NamedElementOperations.allOwningPackages(this);
 	}
 

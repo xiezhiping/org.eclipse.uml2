@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.15 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -410,13 +410,13 @@ public class StringExpressionImpl
 	public EList parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this,
-					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-						.get(0), result = TemplateableElementOperations
+				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0),
+					result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;

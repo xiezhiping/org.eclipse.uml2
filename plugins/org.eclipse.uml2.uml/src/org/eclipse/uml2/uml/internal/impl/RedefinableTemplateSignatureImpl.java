@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.17 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
@@ -318,6 +319,22 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getInheritedParameters() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache
+				.get(
+					this,
+					UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER);
+			if (result == null) {
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER,
+						result = RedefinableTemplateSignatureOperations
+							.getInheritedParameters(this));
+			}
+			return result;
+		}
 		return RedefinableTemplateSignatureOperations
 			.getInheritedParameters(this);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.31 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.32 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1230,11 +1230,10 @@ public abstract class ClassifierImpl
 	public EList getGenerals() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.CLASSIFIER__GENERAL);
 			if (result == null) {
-				cache.put(eResource(), this,
-					UMLPackage.Literals.CLASSIFIER__GENERAL,
+				cache.put(this, UMLPackage.Literals.CLASSIFIER__GENERAL,
 					result = ClassifierOperations.getGenerals(this));
 			}
 			return result;
@@ -1588,6 +1587,16 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getAssociations() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.TYPE
+				.getEOperations().get(1));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.TYPE.getEOperations()
+					.get(1), result = TypeOperations.getAssociations(this));
+			}
+			return result;
+		}
 		return TypeOperations.getAssociations(this);
 	}
 
@@ -1599,13 +1608,13 @@ public abstract class ClassifierImpl
 	public EList parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this,
-					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-						.get(0), result = TemplateableElementOperations
+				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0),
+					result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;
@@ -1735,12 +1744,11 @@ public abstract class ClassifierImpl
 	public EList getOperations() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.CLASSIFIER.getEOperations().get(5));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.CLASSIFIER
-					.getEOperations().get(5), result = ClassifierOperations
-					.getOperations(this));
+				cache.put(this, UMLPackage.Literals.CLASSIFIER.getEOperations()
+					.get(5), result = ClassifierOperations.getOperations(this));
 			}
 			return result;
 		}
@@ -1825,12 +1833,11 @@ public abstract class ClassifierImpl
 	public EList parents() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.CLASSIFIER.getEOperations().get(12));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.CLASSIFIER
-					.getEOperations().get(12), result = ClassifierOperations
-					.parents(this));
+				cache.put(this, UMLPackage.Literals.CLASSIFIER.getEOperations()
+					.get(12), result = ClassifierOperations.parents(this));
 			}
 			return result;
 		}

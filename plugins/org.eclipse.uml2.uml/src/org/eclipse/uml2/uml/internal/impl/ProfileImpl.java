@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.23 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -413,11 +413,11 @@ public class ProfileImpl
 	public EList getReferencedMetaclasses() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(8));
+			EList result = (EList) cache.get(this, UMLPackage.Literals.PROFILE
+				.getEOperations().get(8));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(8), result = ProfileOperations
+				cache.put(this, UMLPackage.Literals.PROFILE.getEOperations()
+					.get(8), result = ProfileOperations
 					.getReferencedMetaclasses(this));
 			}
 			return result;
@@ -433,11 +433,11 @@ public class ProfileImpl
 	public EList getReferencedMetamodels() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(9));
+			EList result = (EList) cache.get(this, UMLPackage.Literals.PROFILE
+				.getEOperations().get(9));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.PROFILE
-					.getEOperations().get(9), result = ProfileOperations
+				cache.put(this, UMLPackage.Literals.PROFILE.getEOperations()
+					.get(9), result = ProfileOperations
 					.getReferencedMetamodels(this));
 			}
 			return result;

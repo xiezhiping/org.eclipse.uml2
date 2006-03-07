@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.14 2006/02/22 20:48:17 khussey Exp $
+ * $Id: TypeImpl.java,v 1.15 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.uml2.common.util.CacheAdapter;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -139,6 +141,16 @@ public abstract class TypeImpl
 	 * @generated
 	 */
 	public EList getAssociations() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.TYPE
+				.getEOperations().get(1));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.TYPE.getEOperations()
+					.get(1), result = TypeOperations.getAssociations(this));
+			}
+			return result;
+		}
 		return TypeOperations.getAssociations(this);
 	}
 

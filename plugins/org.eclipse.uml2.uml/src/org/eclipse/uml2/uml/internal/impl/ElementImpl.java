@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.25 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ElementImpl.java,v 1.26 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -370,6 +370,18 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getRelationships() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(28));
+			if (result == null) {
+				cache
+					.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+						.get(28), result = ElementOperations
+						.getRelationships(this));
+			}
+			return result;
+		}
 		return ElementOperations.getRelationships(this);
 	}
 
@@ -388,6 +400,17 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getSourceDirectedRelationships() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(30));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(30), result = ElementOperations
+					.getSourceDirectedRelationships(this));
+			}
+			return result;
+		}
 		return ElementOperations.getSourceDirectedRelationships(this);
 	}
 
@@ -406,6 +429,17 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getTargetDirectedRelationships() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(32));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(32), result = ElementOperations
+					.getTargetDirectedRelationships(this));
+			}
+			return result;
+		}
 		return ElementOperations.getTargetDirectedRelationships(this);
 	}
 
@@ -574,12 +608,13 @@ public abstract class ElementImpl
 	public EList allOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(34));
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(34));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(34), result = ElementOperations
-					.allOwnedElements(this));
+				cache
+					.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+						.get(34), result = ElementOperations
+						.allOwnedElements(this));
 			}
 			return result;
 		}

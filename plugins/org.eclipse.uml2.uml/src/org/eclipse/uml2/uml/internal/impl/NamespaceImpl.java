@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.17 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -478,11 +478,11 @@ public abstract class NamespaceImpl
 	public EList getImportedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.NAMESPACE.getEOperations().get(3));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.NAMESPACE
-					.getEOperations().get(3), result = NamespaceOperations
+				cache.put(this, UMLPackage.Literals.NAMESPACE.getEOperations()
+					.get(3), result = NamespaceOperations
 					.getImportedElements(this));
 			}
 			return result;
@@ -498,11 +498,11 @@ public abstract class NamespaceImpl
 	public EList getImportedPackages() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.NAMESPACE.getEOperations().get(4));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.NAMESPACE
-					.getEOperations().get(4), result = NamespaceOperations
+				cache.put(this, UMLPackage.Literals.NAMESPACE.getEOperations()
+					.get(4), result = NamespaceOperations
 					.getImportedPackages(this));
 			}
 			return result;

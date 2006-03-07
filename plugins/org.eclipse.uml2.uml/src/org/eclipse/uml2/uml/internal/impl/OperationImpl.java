@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.25 2006/03/07 20:25:15 khussey Exp $
+ * $Id: OperationImpl.java,v 1.26 2006/03/07 21:43:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1380,13 +1380,13 @@ public class OperationImpl
 	public EList parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
 					.get(0));
 			if (result == null) {
-				cache.put(eResource(), this,
-					UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-						.get(0), result = TemplateableElementOperations
+				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0),
+					result = TemplateableElementOperations
 						.parameterableElements(this));
 			}
 			return result;
@@ -1460,12 +1460,11 @@ public class OperationImpl
 	public EList returnResult() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			EList result = (EList) cache.get(this,
 				UMLPackage.Literals.OPERATION.getEOperations().get(15));
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.OPERATION
-					.getEOperations().get(15), result = OperationOperations
-					.returnResult(this));
+				cache.put(this, UMLPackage.Literals.OPERATION.getEOperations()
+					.get(15), result = OperationOperations.returnResult(this));
 			}
 			return result;
 		}
