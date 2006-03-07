@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -41,7 +41,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -212,7 +211,7 @@ public class AcceptEventActionImpl
 	 * @generated
 	 */
 	public Trigger createTrigger(String name) {
-		Trigger newTrigger = UMLFactory.eINSTANCE.createTrigger();
+		Trigger newTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
 		if (name != null)
 			newTrigger.setName(name);
 		getTriggers().add(newTrigger);

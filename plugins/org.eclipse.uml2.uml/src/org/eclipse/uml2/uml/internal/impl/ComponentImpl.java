@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.22 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.23 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -44,7 +43,6 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -303,8 +301,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public PackageableElement createPackagedElement(String name, EClass eClass) {
-		PackageableElement newPackagedElement = (PackageableElement) EcoreUtil
-			.create(eClass);
+		PackageableElement newPackagedElement = (PackageableElement) create(eClass);
 		if (name != null)
 			newPackagedElement.setName(name);
 		getPackagedElements().add(newPackagedElement);
@@ -366,8 +363,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public ComponentRealization createRealization(String name) {
-		ComponentRealization newRealization = UMLFactory.eINSTANCE
-			.createComponentRealization();
+		ComponentRealization newRealization = (ComponentRealization) create(UMLPackage.Literals.COMPONENT_REALIZATION);
 		if (name != null)
 			newRealization.setName(name);
 		getRealizations().add(newRealization);

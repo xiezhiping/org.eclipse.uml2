@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.18 2006/03/01 17:56:37 khussey Exp $
+ * $Id: RegionImpl.java,v 1.19 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -309,7 +308,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Vertex createSubvertex(String name, EClass eClass) {
-		Vertex newSubvertex = (Vertex) EcoreUtil.create(eClass);
+		Vertex newSubvertex = (Vertex) create(eClass);
 		if (name != null)
 			newSubvertex.setName(name);
 		getSubvertices().add(newSubvertex);
@@ -370,7 +369,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Transition createTransition(String name, EClass eClass) {
-		Transition newTransition = (Transition) EcoreUtil.create(eClass);
+		Transition newTransition = (Transition) create(eClass);
 		if (name != null)
 			newTransition.setName(name);
 		getTransitions().add(newTransition);
@@ -383,11 +382,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Transition createTransition(String name) {
-		Transition newTransition = UMLFactory.eINSTANCE.createTransition();
-		if (name != null)
-			newTransition.setName(name);
-		getTransitions().add(newTransition);
-		return newTransition;
+		return createTransition(name, UMLPackage.Literals.TRANSITION);
 	}
 
 	/**

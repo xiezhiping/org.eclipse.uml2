@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.23 2006/03/01 17:56:38 khussey Exp $
+ * $Id: StateImpl.java,v 1.24 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -54,7 +54,6 @@ import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -656,8 +655,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public ConnectionPointReference createConnection(String name) {
-		ConnectionPointReference newConnection = UMLFactory.eINSTANCE
-			.createConnectionPointReference();
+		ConnectionPointReference newConnection = (ConnectionPointReference) create(UMLPackage.Literals.CONNECTION_POINT_REFERENCE);
 		if (name != null)
 			newConnection.setName(name);
 		getConnections().add(newConnection);
@@ -719,8 +717,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Pseudostate createConnectionPoint(String name) {
-		Pseudostate newConnectionPoint = UMLFactory.eINSTANCE
-			.createPseudostate();
+		Pseudostate newConnectionPoint = (Pseudostate) create(UMLPackage.Literals.PSEUDOSTATE);
 		if (name != null)
 			newConnectionPoint.setName(name);
 		getConnectionPoints().add(newConnectionPoint);
@@ -902,7 +899,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Constraint createStateInvariant(String name, EClass eClass) {
-		Constraint newStateInvariant = (Constraint) EcoreUtil.create(eClass);
+		Constraint newStateInvariant = (Constraint) create(eClass);
 		if (name != null)
 			newStateInvariant.setName(name);
 		setStateInvariant(newStateInvariant);
@@ -915,11 +912,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Constraint createStateInvariant(String name) {
-		Constraint newStateInvariant = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newStateInvariant.setName(name);
-		setStateInvariant(newStateInvariant);
-		return newStateInvariant;
+		return createStateInvariant(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**
@@ -1015,7 +1008,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior createEntry(String name, EClass eClass) {
-		Behavior newEntry = (Behavior) EcoreUtil.create(eClass);
+		Behavior newEntry = (Behavior) create(eClass);
 		if (name != null)
 			newEntry.setName(name);
 		setEntry(newEntry);
@@ -1115,7 +1108,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior createExit(String name, EClass eClass) {
-		Behavior newExit = (Behavior) EcoreUtil.create(eClass);
+		Behavior newExit = (Behavior) create(eClass);
 		if (name != null)
 			newExit.setName(name);
 		setExit(newExit);
@@ -1218,7 +1211,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior createDoActivity(String name, EClass eClass) {
-		Behavior newDoActivity = (Behavior) EcoreUtil.create(eClass);
+		Behavior newDoActivity = (Behavior) create(eClass);
 		if (name != null)
 			newDoActivity.setName(name);
 		setDoActivity(newDoActivity);
@@ -1246,7 +1239,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Trigger createDeferrableTrigger(String name) {
-		Trigger newDeferrableTrigger = UMLFactory.eINSTANCE.createTrigger();
+		Trigger newDeferrableTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
 		if (name != null)
 			newDeferrableTrigger.setName(name);
 		getDeferrableTriggers().add(newDeferrableTrigger);
@@ -1305,7 +1298,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Region createRegion(String name) {
-		Region newRegion = UMLFactory.eINSTANCE.createRegion();
+		Region newRegion = (Region) create(UMLPackage.Literals.REGION);
 		if (name != null)
 			newRegion.setName(name);
 		getRegions().add(newRegion);

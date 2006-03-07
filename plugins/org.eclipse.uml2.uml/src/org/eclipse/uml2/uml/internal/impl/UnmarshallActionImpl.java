@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.16 2006/03/01 17:56:38 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.17 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -41,7 +40,6 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UnmarshallAction;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -305,7 +303,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public InputPin createObject(String name, Type type, EClass eClass) {
-		InputPin newObject = (InputPin) EcoreUtil.create(eClass);
+		InputPin newObject = (InputPin) create(eClass);
 		if (name != null)
 			newObject.setName(name);
 		if (type != null)
@@ -320,13 +318,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public InputPin createObject(String name, Type type) {
-		InputPin newObject = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newObject.setName(name);
-		if (type != null)
-			newObject.setType(type);
-		setObject(newObject);
-		return newObject;
+		return createObject(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**

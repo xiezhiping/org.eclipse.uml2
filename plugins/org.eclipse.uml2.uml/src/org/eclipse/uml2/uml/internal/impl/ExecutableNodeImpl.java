@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -112,8 +111,7 @@ public abstract class ExecutableNodeImpl
 	 * @generated
 	 */
 	public ExceptionHandler createHandler() {
-		ExceptionHandler newHandler = UMLFactory.eINSTANCE
-			.createExceptionHandler();
+		ExceptionHandler newHandler = (ExceptionHandler) create(UMLPackage.Literals.EXCEPTION_HANDLER);
 		getHandlers().add(newHandler);
 		return newHandler;
 	}

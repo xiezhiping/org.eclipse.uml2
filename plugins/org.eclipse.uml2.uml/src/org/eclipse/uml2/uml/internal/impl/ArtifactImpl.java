@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.21 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -47,7 +46,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -279,7 +277,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Artifact createNestedArtifact(String name, EClass eClass) {
-		Artifact newNestedArtifact = (Artifact) EcoreUtil.create(eClass);
+		Artifact newNestedArtifact = (Artifact) create(eClass);
 		if (name != null)
 			newNestedArtifact.setName(name);
 		getNestedArtifacts().add(newNestedArtifact);
@@ -292,11 +290,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Artifact createNestedArtifact(String name) {
-		Artifact newNestedArtifact = UMLFactory.eINSTANCE.createArtifact();
-		if (name != null)
-			newNestedArtifact.setName(name);
-		getNestedArtifacts().add(newNestedArtifact);
-		return newNestedArtifact;
+		return createNestedArtifact(name, UMLPackage.Literals.ARTIFACT);
 	}
 
 	/**
@@ -356,8 +350,7 @@ public class ArtifactImpl
 	 */
 	public Manifestation createManifestation(String name,
 			PackageableElement utilizedElement) {
-		Manifestation newManifestation = UMLFactory.eINSTANCE
-			.createManifestation();
+		Manifestation newManifestation = (Manifestation) create(UMLPackage.Literals.MANIFESTATION);
 		if (name != null)
 			newManifestation.setName(name);
 		if (utilizedElement != null)
@@ -424,7 +417,7 @@ public class ArtifactImpl
 	 */
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
-		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
+		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
 		if (name != null)
 			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
@@ -525,7 +518,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
-		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		Property newOwnedAttribute = (Property) create(eClass);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
@@ -540,13 +533,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
-		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		if (name != null)
-			newOwnedAttribute.setName(name);
-		if (type != null)
-			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
-		return newOwnedAttribute;
+		return createOwnedAttribute(name, type, UMLPackage.Literals.PROPERTY);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.15 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -181,8 +180,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public GeneralOrdering createGeneralOrdering(String name) {
-		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
-			.createGeneralOrdering();
+		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(UMLPackage.Literals.GENERAL_ORDERING);
 		if (name != null)
 			newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
@@ -434,8 +432,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionConstraint createGuard(String name) {
-		InteractionConstraint newGuard = UMLFactory.eINSTANCE
-			.createInteractionConstraint();
+		InteractionConstraint newGuard = (InteractionConstraint) create(UMLPackage.Literals.INTERACTION_CONSTRAINT);
 		if (name != null)
 			newGuard.setName(name);
 		setGuard(newGuard);
@@ -465,8 +462,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionFragment createFragment(String name, EClass eClass) {
-		InteractionFragment newFragment = (InteractionFragment) EcoreUtil
-			.create(eClass);
+		InteractionFragment newFragment = (InteractionFragment) create(eClass);
 		if (name != null)
 			newFragment.setName(name);
 		getFragments().add(newFragment);

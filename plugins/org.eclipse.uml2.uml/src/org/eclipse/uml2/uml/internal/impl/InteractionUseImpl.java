@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -41,7 +40,6 @@ import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InteractionUse;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -173,7 +171,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public Gate createActualGate(String name) {
-		Gate newActualGate = UMLFactory.eINSTANCE.createGate();
+		Gate newActualGate = (Gate) create(UMLPackage.Literals.GATE);
 		if (name != null)
 			newActualGate.setName(name);
 		getActualGates().add(newActualGate);
@@ -231,7 +229,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public Action createArgument(String name, EClass eClass) {
-		Action newArgument = (Action) EcoreUtil.create(eClass);
+		Action newArgument = (Action) create(eClass);
 		if (name != null)
 			newArgument.setName(name);
 		getArguments().add(newArgument);

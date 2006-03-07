@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.18 2006/03/01 17:56:37 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.19 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -132,7 +131,7 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	public Include createInclude(String name, UseCase addition) {
-		Include newInclude = UMLFactory.eINSTANCE.createInclude();
+		Include newInclude = (Include) create(UMLPackage.Literals.INCLUDE);
 		if (name != null)
 			newInclude.setName(name);
 		if (addition != null)
@@ -194,7 +193,7 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	public Extend createExtend(String name, UseCase extendedCase) {
-		Extend newExtend = UMLFactory.eINSTANCE.createExtend();
+		Extend newExtend = (Extend) create(UMLPackage.Literals.EXTEND);
 		if (name != null)
 			newExtend.setName(name);
 		if (extendedCase != null)
@@ -259,8 +258,7 @@ public class UseCaseImpl
 	 * @generated
 	 */
 	public ExtensionPoint createExtensionPoint(String name) {
-		ExtensionPoint newExtensionPoint = UMLFactory.eINSTANCE
-			.createExtensionPoint();
+		ExtensionPoint newExtensionPoint = (ExtensionPoint) create(UMLPackage.Literals.EXTENSION_POINT);
 		if (name != null)
 			newExtensionPoint.setName(name);
 		getExtensionPoints().add(newExtensionPoint);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -339,8 +338,7 @@ public abstract class ObjectNodeImpl
 	 */
 	public ValueSpecification createUpperBound(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newUpperBound = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newUpperBound = (ValueSpecification) create(eClass);
 		if (name != null)
 			newUpperBound.setName(name);
 		if (type != null)

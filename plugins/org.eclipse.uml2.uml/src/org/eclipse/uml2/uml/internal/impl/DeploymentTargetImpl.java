@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.14 2006/02/22 23:49:05 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.15 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,7 +34,6 @@ import org.eclipse.uml2.uml.DeploymentTarget;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -140,7 +139,7 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public Deployment createDeployment(String name) {
-		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
+		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
 		if (name != null)
 			newDeployment.setName(name);
 		getDeployments().add(newDeployment);

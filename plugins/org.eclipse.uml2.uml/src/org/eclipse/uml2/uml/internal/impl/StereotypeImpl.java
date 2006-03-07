@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.19 2006/03/01 17:56:38 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.20 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -38,7 +38,6 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -100,7 +99,7 @@ public class StereotypeImpl
 	 * @generated
 	 */
 	public Image createIcon() {
-		Image newIcon = UMLFactory.eINSTANCE.createImage();
+		Image newIcon = (Image) create(UMLPackage.Literals.IMAGE);
 		getIcons().add(newIcon);
 		return newIcon;
 	}

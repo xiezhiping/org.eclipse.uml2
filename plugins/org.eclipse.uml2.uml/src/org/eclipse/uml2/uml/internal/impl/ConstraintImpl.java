@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -214,8 +214,7 @@ public class ConstraintImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
 		if (name != null)
 			newSpecification.setName(name);
 		if (type != null)

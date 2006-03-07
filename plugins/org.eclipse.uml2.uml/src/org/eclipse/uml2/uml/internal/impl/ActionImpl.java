@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.19 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ActionImpl.java,v 1.20 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -38,7 +37,6 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -225,7 +223,7 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public Constraint createLocalPrecondition(String name, EClass eClass) {
-		Constraint newLocalPrecondition = (Constraint) EcoreUtil.create(eClass);
+		Constraint newLocalPrecondition = (Constraint) create(eClass);
 		if (name != null)
 			newLocalPrecondition.setName(name);
 		getLocalPreconditions().add(newLocalPrecondition);
@@ -238,12 +236,7 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public Constraint createLocalPrecondition(String name) {
-		Constraint newLocalPrecondition = UMLFactory.eINSTANCE
-			.createConstraint();
-		if (name != null)
-			newLocalPrecondition.setName(name);
-		getLocalPreconditions().add(newLocalPrecondition);
-		return newLocalPrecondition;
+		return createLocalPrecondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**
@@ -300,8 +293,7 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public Constraint createLocalPostcondition(String name, EClass eClass) {
-		Constraint newLocalPostcondition = (Constraint) EcoreUtil
-			.create(eClass);
+		Constraint newLocalPostcondition = (Constraint) create(eClass);
 		if (name != null)
 			newLocalPostcondition.setName(name);
 		getLocalPostconditions().add(newLocalPostcondition);
@@ -314,12 +306,7 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public Constraint createLocalPostcondition(String name) {
-		Constraint newLocalPostcondition = UMLFactory.eINSTANCE
-			.createConstraint();
-		if (name != null)
-			newLocalPostcondition.setName(name);
-		getLocalPostconditions().add(newLocalPostcondition);
-		return newLocalPostcondition;
+		return createLocalPostcondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**

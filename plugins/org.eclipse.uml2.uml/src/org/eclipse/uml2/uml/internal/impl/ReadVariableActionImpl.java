@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.16 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,7 +37,6 @@ import org.eclipse.uml2.uml.ReadVariableAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -191,7 +190,7 @@ public class ReadVariableActionImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)

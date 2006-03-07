@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.13 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -198,8 +198,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public ParameterableElement createOwnedActual(EClass eClass) {
-		ParameterableElement newOwnedActual = (ParameterableElement) EcoreUtil
-			.create(eClass);
+		ParameterableElement newOwnedActual = (ParameterableElement) create(eClass);
 		getOwnedActuals().add(newOwnedActual);
 		return newOwnedActual;
 	}

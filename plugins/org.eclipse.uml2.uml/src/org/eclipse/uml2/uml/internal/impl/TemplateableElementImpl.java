@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.11 2006/02/22 23:49:06 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.12 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -36,7 +35,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
@@ -124,8 +122,7 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
-			.createTemplateBinding();
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
@@ -266,8 +263,7 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
-			.create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -278,10 +274,7 @@ public abstract class TemplateableElementImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		TemplateSignature newOwnedTemplateSignature = UMLFactory.eINSTANCE
-			.createTemplateSignature();
-		setOwnedTemplateSignature(newOwnedTemplateSignature);
-		return newOwnedTemplateSignature;
+		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**

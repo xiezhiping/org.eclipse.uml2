@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.15 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -209,8 +208,7 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public DeploymentSpecification createConfiguration(String name) {
-		DeploymentSpecification newConfiguration = UMLFactory.eINSTANCE
-			.createDeploymentSpecification();
+		DeploymentSpecification newConfiguration = (DeploymentSpecification) create(UMLPackage.Literals.DEPLOYMENT_SPECIFICATION);
 		if (name != null)
 			newConfiguration.setName(name);
 		getConfigurations().add(newConfiguration);

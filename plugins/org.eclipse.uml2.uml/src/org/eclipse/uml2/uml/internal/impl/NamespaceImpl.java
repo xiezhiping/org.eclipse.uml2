@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.15 2006/02/22 23:49:06 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -40,7 +39,6 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -222,8 +220,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public ElementImport createElementImport(PackageableElement importedElement) {
-		ElementImport newElementImport = UMLFactory.eINSTANCE
-			.createElementImport();
+		ElementImport newElementImport = (ElementImport) create(UMLPackage.Literals.ELEMENT_IMPORT);
 		if (importedElement != null)
 			newElementImport.setImportedElement(importedElement);
 		getElementImports().add(newElementImport);
@@ -284,8 +281,7 @@ public abstract class NamespaceImpl
 	 */
 	public PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newPackageImport = UMLFactory.eINSTANCE
-			.createPackageImport();
+		PackageImport newPackageImport = (PackageImport) create(UMLPackage.Literals.PACKAGE_IMPORT);
 		if (importedPackage != null)
 			newPackageImport.setImportedPackage(importedPackage);
 		getPackageImports().add(newPackageImport);
@@ -344,7 +340,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public Constraint createOwnedRule(String name, EClass eClass) {
-		Constraint newOwnedRule = (Constraint) EcoreUtil.create(eClass);
+		Constraint newOwnedRule = (Constraint) create(eClass);
 		if (name != null)
 			newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
@@ -357,11 +353,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public Constraint createOwnedRule(String name) {
-		Constraint newOwnedRule = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newOwnedRule.setName(name);
-		getOwnedRules().add(newOwnedRule);
-		return newOwnedRule;
+		return createOwnedRule(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.22 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.23 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -473,8 +472,7 @@ public class ParameterImpl
 	 */
 	public ValueSpecification createUpperValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newUpperValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newUpperValue.setName(name);
 		if (type != null)
@@ -580,8 +578,7 @@ public class ParameterImpl
 	 */
 	public ValueSpecification createLowerValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newLowerValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newLowerValue.setName(name);
 		if (type != null)
@@ -810,8 +807,7 @@ public class ParameterImpl
 	 */
 	public ValueSpecification createDefaultValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newDefaultValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newDefaultValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newDefaultValue.setName(name);
 		if (type != null)

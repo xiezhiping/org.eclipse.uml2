@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,7 +38,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TestIdentityAction;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -211,7 +209,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin createFirst(String name, Type type, EClass eClass) {
-		InputPin newFirst = (InputPin) EcoreUtil.create(eClass);
+		InputPin newFirst = (InputPin) create(eClass);
 		if (name != null)
 			newFirst.setName(name);
 		if (type != null)
@@ -226,13 +224,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin createFirst(String name, Type type) {
-		InputPin newFirst = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newFirst.setName(name);
-		if (type != null)
-			newFirst.setType(type);
-		setFirst(newFirst);
-		return newFirst;
+		return createFirst(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**
@@ -330,7 +322,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin createSecond(String name, Type type, EClass eClass) {
-		InputPin newSecond = (InputPin) EcoreUtil.create(eClass);
+		InputPin newSecond = (InputPin) create(eClass);
 		if (name != null)
 			newSecond.setName(name);
 		if (type != null)
@@ -345,13 +337,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin createSecond(String name, Type type) {
-		InputPin newSecond = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newSecond.setName(name);
-		if (type != null)
-			newSecond.setType(type);
-		setSecond(newSecond);
-		return newSecond;
+		return createSecond(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**
@@ -449,7 +435,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)

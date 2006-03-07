@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.13 2006/02/22 23:49:06 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -39,7 +38,6 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -168,7 +166,7 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public Dependency createRoleBinding(String name, EClass eClass) {
-		Dependency newRoleBinding = (Dependency) EcoreUtil.create(eClass);
+		Dependency newRoleBinding = (Dependency) create(eClass);
 		if (name != null)
 			newRoleBinding.setName(name);
 		getRoleBindings().add(newRoleBinding);
@@ -181,11 +179,7 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public Dependency createRoleBinding(String name) {
-		Dependency newRoleBinding = UMLFactory.eINSTANCE.createDependency();
-		if (name != null)
-			newRoleBinding.setName(name);
-		getRoleBindings().add(newRoleBinding);
-		return newRoleBinding;
+		return createRoleBinding(name, UMLPackage.Literals.DEPENDENCY);
 	}
 
 	/**

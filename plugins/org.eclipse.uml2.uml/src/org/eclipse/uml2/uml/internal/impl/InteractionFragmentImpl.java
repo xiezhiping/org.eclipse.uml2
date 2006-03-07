@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -165,8 +164,7 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public GeneralOrdering createGeneralOrdering(String name) {
-		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
-			.createGeneralOrdering();
+		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(UMLPackage.Literals.GENERAL_ORDERING);
 		if (name != null)
 			newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);

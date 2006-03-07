@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.9 2006/02/22 20:48:22 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.10 2006/03/07 20:25:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,26 +55,13 @@ public class DataTypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(DataType dataType,
 			String name, EList parameterNames, EList parameterTypes,
 			Type returnType) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static Operation createOwnedOperation(DataType dataType,
-			String name, Type returnType, EList parameterNames,
-			EList parameterTypes) {
-		return TypeOperations.createOwnedOperation(dataType, name, returnType,
-			parameterNames, parameterTypes);
+		return TypeOperations.createOwnedOperation(dataType, name,
+			parameterNames, parameterTypes, returnType);
 	}
 
 	/**

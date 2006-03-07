@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.18 2006/03/01 17:56:38 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.19 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -43,7 +42,6 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -371,7 +369,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
@@ -522,7 +520,7 @@ public class LoopNodeImpl
 	 */
 	public InputPin createLoopVariableInput(String name, Type type,
 			EClass eClass) {
-		InputPin newLoopVariableInput = (InputPin) EcoreUtil.create(eClass);
+		InputPin newLoopVariableInput = (InputPin) create(eClass);
 		if (name != null)
 			newLoopVariableInput.setName(name);
 		if (type != null)
@@ -537,13 +535,8 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public InputPin createLoopVariableInput(String name, Type type) {
-		InputPin newLoopVariableInput = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newLoopVariableInput.setName(name);
-		if (type != null)
-			newLoopVariableInput.setType(type);
-		getLoopVariableInputs().add(newLoopVariableInput);
-		return newLoopVariableInput;
+		return createLoopVariableInput(name, type,
+			UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**

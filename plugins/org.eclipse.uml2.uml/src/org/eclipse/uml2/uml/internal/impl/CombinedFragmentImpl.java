@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InteractionOperatorKind;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -169,8 +168,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public InteractionOperand createOperand(String name) {
-		InteractionOperand newOperand = UMLFactory.eINSTANCE
-			.createInteractionOperand();
+		InteractionOperand newOperand = (InteractionOperand) create(UMLPackage.Literals.INTERACTION_OPERAND);
 		if (name != null)
 			newOperand.setName(name);
 		getOperands().add(newOperand);
@@ -228,7 +226,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public Gate createCfragmentGate(String name) {
-		Gate newCfragmentGate = UMLFactory.eINSTANCE.createGate();
+		Gate newCfragmentGate = (Gate) create(UMLPackage.Literals.GATE);
 		if (name != null)
 			newCfragmentGate.setName(name);
 		getCfragmentGates().add(newCfragmentGate);

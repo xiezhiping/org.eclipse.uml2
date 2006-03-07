@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.16 2006/03/01 17:56:38 khussey Exp $
+ * $Id: RemoveVariableValueActionImpl.java,v 1.17 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -38,7 +37,6 @@ import org.eclipse.uml2.uml.RemoveVariableValueAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -247,7 +245,7 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public InputPin createRemoveAt(String name, Type type, EClass eClass) {
-		InputPin newRemoveAt = (InputPin) EcoreUtil.create(eClass);
+		InputPin newRemoveAt = (InputPin) create(eClass);
 		if (name != null)
 			newRemoveAt.setName(name);
 		if (type != null)
@@ -262,13 +260,7 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public InputPin createRemoveAt(String name, Type type) {
-		InputPin newRemoveAt = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newRemoveAt.setName(name);
-		if (type != null)
-			newRemoveAt.setType(type);
-		setRemoveAt(newRemoveAt);
-		return newRemoveAt;
+		return createRemoveAt(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**

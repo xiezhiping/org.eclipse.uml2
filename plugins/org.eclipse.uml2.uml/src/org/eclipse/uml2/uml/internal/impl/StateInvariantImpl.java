@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -37,7 +36,6 @@ import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.StateInvariant;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -194,7 +192,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Constraint createInvariant(String name, EClass eClass) {
-		Constraint newInvariant = (Constraint) EcoreUtil.create(eClass);
+		Constraint newInvariant = (Constraint) create(eClass);
 		if (name != null)
 			newInvariant.setName(name);
 		setInvariant(newInvariant);
@@ -207,11 +205,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Constraint createInvariant(String name) {
-		Constraint newInvariant = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newInvariant.setName(name);
-		setInvariant(newInvariant);
-		return newInvariant;
+		return createInvariant(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**

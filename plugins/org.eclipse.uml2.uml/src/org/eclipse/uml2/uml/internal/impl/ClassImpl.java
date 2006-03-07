@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.28 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ClassImpl.java,v 1.29 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -216,7 +215,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Behavior createOwnedBehavior(String name, EClass eClass) {
-		Behavior newOwnedBehavior = (Behavior) EcoreUtil.create(eClass);
+		Behavior newOwnedBehavior = (Behavior) create(eClass);
 		if (name != null)
 			newOwnedBehavior.setName(name);
 		getOwnedBehaviors().add(newOwnedBehavior);
@@ -339,7 +338,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Behavior createClassifierBehavior(String name, EClass eClass) {
-		Behavior newClassifierBehavior = (Behavior) EcoreUtil.create(eClass);
+		Behavior newClassifierBehavior = (Behavior) create(eClass);
 		if (name != null)
 			newClassifierBehavior.setName(name);
 		setClassifierBehavior(newClassifierBehavior);
@@ -372,8 +371,7 @@ public class ClassImpl
 	 */
 	public InterfaceRealization createInterfaceRealization(String name,
 			Interface contract) {
-		InterfaceRealization newInterfaceRealization = UMLFactory.eINSTANCE
-			.createInterfaceRealization();
+		InterfaceRealization newInterfaceRealization = (InterfaceRealization) create(UMLPackage.Literals.INTERFACE_REALIZATION);
 		if (name != null)
 			newInterfaceRealization.setName(name);
 		if (contract != null)
@@ -438,7 +436,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Trigger createOwnedTrigger(String name) {
-		Trigger newOwnedTrigger = UMLFactory.eINSTANCE.createTrigger();
+		Trigger newOwnedTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
 		if (name != null)
 			newOwnedTrigger.setName(name);
 		getOwnedTriggers().add(newOwnedTrigger);
@@ -534,7 +532,7 @@ public class ClassImpl
 	 */
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
-		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
+		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
 		if (name != null)
 			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
@@ -636,7 +634,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Classifier createNestedClassifier(String name, EClass eClass) {
-		Classifier newNestedClassifier = (Classifier) EcoreUtil.create(eClass);
+		Classifier newNestedClassifier = (Classifier) create(eClass);
 		if (name != null)
 			newNestedClassifier.setName(name);
 		getNestedClassifiers().add(newNestedClassifier);
@@ -846,7 +844,7 @@ public class ClassImpl
 	 */
 	public Reception createOwnedReception(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
-		Reception newOwnedReception = UMLFactory.eINSTANCE.createReception();
+		Reception newOwnedReception = (Reception) create(UMLPackage.Literals.RECEPTION);
 		if (name != null)
 			newOwnedReception.setName(name);
 		int ownedParameterListSize = 0;
@@ -993,7 +991,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
-		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		Property newOwnedAttribute = (Property) create(eClass);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
@@ -1008,13 +1006,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
-		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		if (name != null)
-			newOwnedAttribute.setName(name);
-		if (type != null)
-			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
-		return newOwnedAttribute;
+		return createOwnedAttribute(name, type, UMLPackage.Literals.PROPERTY);
 	}
 
 	/**

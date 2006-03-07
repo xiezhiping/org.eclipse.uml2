@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.21 2006/03/01 17:56:37 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -168,7 +167,7 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public Region createRegion(String name) {
-		Region newRegion = UMLFactory.eINSTANCE.createRegion();
+		Region newRegion = (Region) create(UMLPackage.Literals.REGION);
 		if (name != null)
 			newRegion.setName(name);
 		getRegions().add(newRegion);
@@ -275,8 +274,7 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public Pseudostate createConnectionPoint(String name) {
-		Pseudostate newConnectionPoint = UMLFactory.eINSTANCE
-			.createPseudostate();
+		Pseudostate newConnectionPoint = (Pseudostate) create(UMLPackage.Literals.PSEUDOSTATE);
 		if (name != null)
 			newConnectionPoint.setName(name);
 		getConnectionPoints().add(newConnectionPoint);

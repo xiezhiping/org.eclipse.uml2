@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.12 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -425,8 +425,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement createOwnedParameteredElement(EClass eClass) {
-		ParameterableElement newOwnedParameteredElement = (ParameterableElement) EcoreUtil
-			.create(eClass);
+		ParameterableElement newOwnedParameteredElement = (ParameterableElement) create(eClass);
 		setOwnedParameteredElement(newOwnedParameteredElement);
 		return newOwnedParameteredElement;
 	}
@@ -541,8 +540,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement createOwnedDefault(EClass eClass) {
-		ParameterableElement newOwnedDefault = (ParameterableElement) EcoreUtil
-			.create(eClass);
+		ParameterableElement newOwnedDefault = (ParameterableElement) create(eClass);
 		setOwnedDefault(newOwnedDefault);
 		return newOwnedDefault;
 	}

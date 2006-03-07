@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -41,7 +41,6 @@ import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -245,7 +244,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public Clause createClause() {
-		Clause newClause = UMLFactory.eINSTANCE.createClause();
+		Clause newClause = (Clause) create(UMLPackage.Literals.CLAUSE);
 		getClauses().add(newClause);
 		return newClause;
 	}
@@ -271,7 +270,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)

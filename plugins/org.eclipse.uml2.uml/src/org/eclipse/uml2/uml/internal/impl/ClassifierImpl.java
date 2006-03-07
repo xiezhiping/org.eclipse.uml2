@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.30 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.31 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -651,8 +651,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
-			.createTemplateBinding();
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
@@ -805,8 +804,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
-			.create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -1002,8 +1000,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse createCollaborationUse(String name) {
-		CollaborationUse newCollaborationUse = UMLFactory.eINSTANCE
-			.createCollaborationUse();
+		CollaborationUse newCollaborationUse = (CollaborationUse) create(UMLPackage.Literals.COLLABORATION_USE);
 		if (name != null)
 			newCollaborationUse.setName(name);
 		getCollaborationUses().add(newCollaborationUse);
@@ -1294,7 +1291,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public UseCase createOwnedUseCase(String name) {
-		UseCase newOwnedUseCase = UMLFactory.eINSTANCE.createUseCase();
+		UseCase newOwnedUseCase = (UseCase) create(UMLPackage.Literals.USE_CASE);
 		if (name != null)
 			newOwnedUseCase.setName(name);
 		getOwnedUseCases().add(newOwnedUseCase);
@@ -1398,8 +1395,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Substitution createSubstitution(String name, Classifier contract) {
-		Substitution newSubstitution = UMLFactory.eINSTANCE
-			.createSubstitution();
+		Substitution newSubstitution = (Substitution) create(UMLPackage.Literals.SUBSTITUTION);
 		if (name != null)
 			newSubstitution.setName(name);
 		if (contract != null)
@@ -1505,8 +1501,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public CollaborationUse createRepresentation(String name) {
-		CollaborationUse newRepresentation = UMLFactory.eINSTANCE
-			.createCollaborationUse();
+		CollaborationUse newRepresentation = (CollaborationUse) create(UMLPackage.Literals.COLLABORATION_USE);
 		if (name != null)
 			newRepresentation.setName(name);
 		setRepresentation(newRepresentation);
@@ -1677,8 +1672,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Generalization createGeneralization(Classifier general) {
-		Generalization newGeneralization = UMLFactory.eINSTANCE
-			.createGeneralization();
+		Generalization newGeneralization = (Generalization) create(UMLPackage.Literals.GENERALIZATION);
 		if (general != null)
 			newGeneralization.setGeneral(general);
 		getGeneralizations().add(newGeneralization);

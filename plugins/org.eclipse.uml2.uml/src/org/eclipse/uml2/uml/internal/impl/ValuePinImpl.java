@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.17 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -171,8 +170,7 @@ public class ValuePinImpl
 	 * @generated
 	 */
 	public ValueSpecification createValue(String name, Type type, EClass eClass) {
-		ValueSpecification newValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newValue.setName(name);
 		if (type != null)

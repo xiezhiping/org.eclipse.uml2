@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.17 2006/03/01 17:56:37 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.18 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,7 +53,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.Trigger;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -592,7 +591,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Constraint createGuard(String name, EClass eClass) {
-		Constraint newGuard = (Constraint) EcoreUtil.create(eClass);
+		Constraint newGuard = (Constraint) create(eClass);
 		if (name != null)
 			newGuard.setName(name);
 		setGuard(newGuard);
@@ -605,11 +604,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Constraint createGuard(String name) {
-		Constraint newGuard = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newGuard.setName(name);
-		setGuard(newGuard);
-		return newGuard;
+		return createGuard(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**
@@ -705,7 +700,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Behavior createEffect(String name, EClass eClass) {
-		Behavior newEffect = (Behavior) EcoreUtil.create(eClass);
+		Behavior newEffect = (Behavior) create(eClass);
 		if (name != null)
 			newEffect.setName(name);
 		setEffect(newEffect);
@@ -733,7 +728,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Trigger createTrigger(String name) {
-		Trigger newTrigger = UMLFactory.eINSTANCE.createTrigger();
+		Trigger newTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
 		if (name != null)
 			newTrigger.setName(name);
 		getTriggers().add(newTrigger);

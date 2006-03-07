@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.22 2006/03/01 17:56:37 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.23 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -51,7 +50,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Trigger;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -173,7 +171,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public Behavior createOwnedBehavior(String name, EClass eClass) {
-		Behavior newOwnedBehavior = (Behavior) EcoreUtil.create(eClass);
+		Behavior newOwnedBehavior = (Behavior) create(eClass);
 		if (name != null)
 			newOwnedBehavior.setName(name);
 		getOwnedBehaviors().add(newOwnedBehavior);
@@ -300,7 +298,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public Behavior createClassifierBehavior(String name, EClass eClass) {
-		Behavior newClassifierBehavior = (Behavior) EcoreUtil.create(eClass);
+		Behavior newClassifierBehavior = (Behavior) create(eClass);
 		if (name != null)
 			newClassifierBehavior.setName(name);
 		setClassifierBehavior(newClassifierBehavior);
@@ -335,8 +333,7 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public InterfaceRealization createInterfaceRealization(String name,
 			Interface contract) {
-		InterfaceRealization newInterfaceRealization = UMLFactory.eINSTANCE
-			.createInterfaceRealization();
+		InterfaceRealization newInterfaceRealization = (InterfaceRealization) create(UMLPackage.Literals.INTERFACE_REALIZATION);
 		if (name != null)
 			newInterfaceRealization.setName(name);
 		if (contract != null)
@@ -402,7 +399,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public Trigger createOwnedTrigger(String name) {
-		Trigger newOwnedTrigger = UMLFactory.eINSTANCE.createTrigger();
+		Trigger newOwnedTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
 		if (name != null)
 			newOwnedTrigger.setName(name);
 		getOwnedTriggers().add(newOwnedTrigger);

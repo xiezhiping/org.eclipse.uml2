@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.13 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -38,7 +38,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
@@ -192,8 +191,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateParameter createOwnedParameter(EClass eClass) {
-		TemplateParameter newOwnedParameter = (TemplateParameter) EcoreUtil
-			.create(eClass);
+		TemplateParameter newOwnedParameter = (TemplateParameter) create(eClass);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -204,10 +202,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateParameter createOwnedParameter() {
-		TemplateParameter newOwnedParameter = UMLFactory.eINSTANCE
-			.createTemplateParameter();
-		getOwnedParameters().add(newOwnedParameter);
-		return newOwnedParameter;
+		return createOwnedParameter(UMLPackage.Literals.TEMPLATE_PARAMETER);
 	}
 
 	/**

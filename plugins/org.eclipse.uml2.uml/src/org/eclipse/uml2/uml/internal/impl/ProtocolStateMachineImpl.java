@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.19 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.20 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -136,8 +135,7 @@ public class ProtocolStateMachineImpl
 	 */
 	public ProtocolConformance createConformance(
 			ProtocolStateMachine generalMachine) {
-		ProtocolConformance newConformance = UMLFactory.eINSTANCE
-			.createProtocolConformance();
+		ProtocolConformance newConformance = (ProtocolConformance) create(UMLPackage.Literals.PROTOCOL_CONFORMANCE);
 		if (generalMachine != null)
 			newConformance.setGeneralMachine(generalMachine);
 		getConformances().add(newConformance);

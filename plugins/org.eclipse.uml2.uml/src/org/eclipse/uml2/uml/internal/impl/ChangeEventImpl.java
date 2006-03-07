@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -193,8 +192,7 @@ public class ChangeEventImpl
 	 */
 	public ValueSpecification createChangeExpression(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newChangeExpression = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newChangeExpression = (ValueSpecification) create(eClass);
 		if (name != null)
 			newChangeExpression.setName(name);
 		if (type != null)

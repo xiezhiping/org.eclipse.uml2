@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.27 2006/03/01 17:56:37 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.28 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,7 +63,6 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -488,7 +487,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Deployment createDeployment(String name) {
-		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
+		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
 		if (name != null)
 			newDeployment.setName(name);
 		getDeployments().add(newDeployment);
@@ -600,8 +599,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
-			.createTemplateBinding();
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
@@ -740,8 +738,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
-			.create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -752,10 +749,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		TemplateSignature newOwnedTemplateSignature = UMLFactory.eINSTANCE
-			.createTemplateSignature();
-		setOwnedTemplateSignature(newOwnedTemplateSignature);
-		return newOwnedTemplateSignature;
+		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -1299,8 +1293,7 @@ public class PropertyImpl
 	 */
 	public ValueSpecification createDefaultValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newDefaultValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newDefaultValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newDefaultValue.setName(name);
 		if (type != null)
@@ -1408,7 +1401,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property createQualifier(String name, Type type, EClass eClass) {
-		Property newQualifier = (Property) EcoreUtil.create(eClass);
+		Property newQualifier = (Property) create(eClass);
 		if (name != null)
 			newQualifier.setName(name);
 		if (type != null)
@@ -1423,13 +1416,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property createQualifier(String name, Type type) {
-		Property newQualifier = UMLFactory.eINSTANCE.createProperty();
-		if (name != null)
-			newQualifier.setName(name);
-		if (type != null)
-			newQualifier.setType(type);
-		getQualifiers().add(newQualifier);
-		return newQualifier;
+		return createQualifier(name, type, UMLPackage.Literals.PROPERTY);
 	}
 
 	/**

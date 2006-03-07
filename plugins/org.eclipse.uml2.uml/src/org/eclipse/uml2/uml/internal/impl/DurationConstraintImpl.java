@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.14 2006/02/22 23:07:14 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.15 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.uml.DurationConstraint;
 import org.eclipse.uml2.uml.DurationInterval;
@@ -209,8 +207,7 @@ public class DurationConstraintImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
 		if (name != null)
 			newSpecification.setName(name);
 		if (type != null)

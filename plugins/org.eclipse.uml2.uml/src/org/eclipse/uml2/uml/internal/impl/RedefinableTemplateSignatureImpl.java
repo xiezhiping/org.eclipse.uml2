@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,7 +44,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -214,8 +213,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateParameter createOwnedParameter(EClass eClass) {
-		TemplateParameter newOwnedParameter = (TemplateParameter) EcoreUtil
-			.create(eClass);
+		TemplateParameter newOwnedParameter = (TemplateParameter) create(eClass);
 		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
@@ -226,10 +224,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateParameter createOwnedParameter() {
-		TemplateParameter newOwnedParameter = UMLFactory.eINSTANCE
-			.createTemplateParameter();
-		getOwnedParameters().add(newOwnedParameter);
-		return newOwnedParameter;
+		return createOwnedParameter(UMLPackage.Literals.TEMPLATE_PARAMETER);
 	}
 
 	/**

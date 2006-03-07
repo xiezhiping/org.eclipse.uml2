@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.13 2006/02/22 23:49:06 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -38,7 +37,6 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -166,7 +164,7 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public Constraint createCondition(String name, EClass eClass) {
-		Constraint newCondition = (Constraint) EcoreUtil.create(eClass);
+		Constraint newCondition = (Constraint) create(eClass);
 		if (name != null)
 			newCondition.setName(name);
 		getConditions().add(newCondition);
@@ -179,11 +177,7 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public Constraint createCondition(String name) {
-		Constraint newCondition = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newCondition.setName(name);
-		getConditions().add(newCondition);
-		return newCondition;
+		return createCondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**

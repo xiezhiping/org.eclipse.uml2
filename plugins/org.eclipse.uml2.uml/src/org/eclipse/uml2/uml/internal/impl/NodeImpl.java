@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.21 2006/03/01 17:56:37 khussey Exp $
+ * $Id: NodeImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -46,7 +45,6 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -164,7 +162,7 @@ public class NodeImpl
 	 * @generated
 	 */
 	public Deployment createDeployment(String name) {
-		Deployment newDeployment = UMLFactory.eINSTANCE.createDeployment();
+		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
 		if (name != null)
 			newDeployment.setName(name);
 		getDeployments().add(newDeployment);
@@ -298,7 +296,7 @@ public class NodeImpl
 	 * @generated
 	 */
 	public Node createNestedNode(String name, EClass eClass) {
-		Node newNestedNode = (Node) EcoreUtil.create(eClass);
+		Node newNestedNode = (Node) create(eClass);
 		if (name != null)
 			newNestedNode.setName(name);
 		getNestedNodes().add(newNestedNode);
@@ -311,11 +309,7 @@ public class NodeImpl
 	 * @generated
 	 */
 	public Node createNestedNode(String name) {
-		Node newNestedNode = UMLFactory.eINSTANCE.createNode();
-		if (name != null)
-			newNestedNode.setName(name);
-		getNestedNodes().add(newNestedNode);
-		return newNestedNode;
+		return createNestedNode(name, UMLPackage.Literals.NODE);
 	}
 
 	/**

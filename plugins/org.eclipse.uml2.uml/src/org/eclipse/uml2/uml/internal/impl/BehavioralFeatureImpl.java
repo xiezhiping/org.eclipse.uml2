@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.15 2006/02/22 23:49:06 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -401,7 +400,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
-		Parameter newOwnedParameter = UMLFactory.eINSTANCE.createParameter();
+		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
 		if (name != null)
 			newOwnedParameter.setName(name);
 		if (type != null)
@@ -610,8 +609,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public ParameterSet createOwnedParameterSet(String name) {
-		ParameterSet newOwnedParameterSet = UMLFactory.eINSTANCE
-			.createParameterSet();
+		ParameterSet newOwnedParameterSet = (ParameterSet) create(UMLPackage.Literals.PARAMETER_SET);
 		if (name != null)
 			newOwnedParameterSet.setName(name);
 		getOwnedParameterSets().add(newOwnedParameterSet);

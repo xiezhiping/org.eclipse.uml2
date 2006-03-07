@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.17 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.18 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -482,8 +481,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityPartition createSubpartition(String name) {
-		ActivityPartition newSubpartition = UMLFactory.eINSTANCE
-			.createActivityPartition();
+		ActivityPartition newSubpartition = (ActivityPartition) create(UMLPackage.Literals.ACTIVITY_PARTITION);
 		if (name != null)
 			newSubpartition.setName(name);
 		getSubpartitions().add(newSubpartition);

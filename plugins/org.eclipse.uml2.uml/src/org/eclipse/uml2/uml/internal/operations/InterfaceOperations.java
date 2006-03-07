@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceOperations.java,v 1.7 2006/02/22 20:48:22 khussey Exp $
+ * $Id: InterfaceOperations.java,v 1.8 2006/03/07 20:25:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -91,26 +91,13 @@ public class InterfaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(Interface interface_,
 			String name, EList parameterNames, EList parameterTypes,
 			Type returnType) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static Operation createOwnedOperation(Interface interface_,
-			String name, Type returnType, EList parameterNames,
-			EList parameterTypes) {
 		return TypeOperations.createOwnedOperation(interface_, name,
-			returnType, parameterNames, parameterTypes);
+			parameterNames, parameterTypes, returnType);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.24 2006/03/02 21:04:08 khussey Exp $
+ * $Id: ElementImpl.java,v 1.25 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -46,7 +47,6 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Stereotype;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.ElementOperations;
@@ -157,7 +157,7 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public Comment createOwnedComment() {
-		Comment newOwnedComment = UMLFactory.eINSTANCE.createComment();
+		Comment newOwnedComment = (Comment) create(UMLPackage.Literals.COMMENT);
 		getOwnedComments().add(newOwnedComment);
 		return newOwnedComment;
 	}
@@ -785,6 +785,18 @@ public abstract class ElementImpl
 			default :
 				throw new IndexOutOfBoundsException();
 		}
+	}
+
+	/**
+	 * Creates a new instance of the specified Ecore class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the instance to create.
+	 * @return The new instance.
+	 * @generated
+	 */
+	protected EObject create(EClass eClass) {
+		return EcoreUtil.create(eClass);
 	}
 
 	/**

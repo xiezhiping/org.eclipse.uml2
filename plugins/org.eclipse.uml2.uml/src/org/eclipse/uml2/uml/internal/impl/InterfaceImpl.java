@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.20 2006/03/01 17:56:37 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.21 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -51,7 +50,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -197,7 +195,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
-		Property newOwnedAttribute = (Property) EcoreUtil.create(eClass);
+		Property newOwnedAttribute = (Property) create(eClass);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
@@ -212,13 +210,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public Property createOwnedAttribute(String name, Type type) {
-		Property newOwnedAttribute = UMLFactory.eINSTANCE.createProperty();
-		if (name != null)
-			newOwnedAttribute.setName(name);
-		if (type != null)
-			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
-		return newOwnedAttribute;
+		return createOwnedAttribute(name, type, UMLPackage.Literals.PROPERTY);
 	}
 
 	/**
@@ -277,7 +269,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public Classifier createNestedClassifier(String name, EClass eClass) {
-		Classifier newNestedClassifier = (Classifier) EcoreUtil.create(eClass);
+		Classifier newNestedClassifier = (Classifier) create(eClass);
 		if (name != null)
 			newNestedClassifier.setName(name);
 		getNestedClassifiers().add(newNestedClassifier);
@@ -381,7 +373,7 @@ public class InterfaceImpl
 	 */
 	public Reception createOwnedReception(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
-		Reception newOwnedReception = UMLFactory.eINSTANCE.createReception();
+		Reception newOwnedReception = (Reception) create(UMLPackage.Literals.RECEPTION);
 		if (name != null)
 			newOwnedReception.setName(name);
 		int ownedParameterListSize = 0;
@@ -555,8 +547,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public ProtocolStateMachine createProtocol(String name) {
-		ProtocolStateMachine newProtocol = UMLFactory.eINSTANCE
-			.createProtocolStateMachine();
+		ProtocolStateMachine newProtocol = (ProtocolStateMachine) create(UMLPackage.Literals.PROTOCOL_STATE_MACHINE);
 		if (name != null)
 			newProtocol.setName(name);
 		setProtocol(newProtocol);
@@ -588,7 +579,7 @@ public class InterfaceImpl
 	 */
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
-		Operation newOwnedOperation = UMLFactory.eINSTANCE.createOperation();
+		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
 		if (name != null)
 			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;

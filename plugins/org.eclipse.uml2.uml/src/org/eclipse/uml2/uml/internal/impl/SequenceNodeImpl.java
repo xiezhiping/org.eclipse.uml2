@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.15 2006/03/01 17:56:37 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -90,8 +89,7 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public ExecutableNode createExecutableNode(String name, EClass eClass) {
-		ExecutableNode newExecutableNode = (ExecutableNode) EcoreUtil
-			.create(eClass);
+		ExecutableNode newExecutableNode = (ExecutableNode) create(eClass);
 		if (name != null)
 			newExecutableNode.setName(name);
 		getExecutableNodes().add(newExecutableNode);

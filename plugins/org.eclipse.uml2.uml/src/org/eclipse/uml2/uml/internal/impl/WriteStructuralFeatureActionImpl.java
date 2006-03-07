@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -38,7 +37,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.WriteStructuralFeatureAction;
@@ -200,7 +198,7 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public InputPin createValue(String name, Type type, EClass eClass) {
-		InputPin newValue = (InputPin) EcoreUtil.create(eClass);
+		InputPin newValue = (InputPin) create(eClass);
 		if (name != null)
 			newValue.setName(name);
 		if (type != null)
@@ -215,13 +213,7 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public InputPin createValue(String name, Type type) {
-		InputPin newValue = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newValue.setName(name);
-		if (type != null)
-			newValue.setType(type);
-		setValue(newValue);
-		return newValue;
+		return createValue(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**

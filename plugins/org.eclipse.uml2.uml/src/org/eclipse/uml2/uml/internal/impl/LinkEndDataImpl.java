@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.9 2006/02/21 16:12:18 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.10 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,7 +34,6 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndData;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.QualifierValue;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.LinkEndDataOperations;
@@ -188,8 +187,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public QualifierValue createQualifier() {
-		QualifierValue newQualifier = UMLFactory.eINSTANCE
-			.createQualifierValue();
+		QualifierValue newQualifier = (QualifierValue) create(UMLPackage.Literals.QUALIFIER_VALUE);
 		getQualifiers().add(newQualifier);
 		return newQualifier;
 	}

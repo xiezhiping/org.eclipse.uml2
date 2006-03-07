@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.15 2006/02/22 20:48:22 khussey Exp $
+ * $Id: ClassOperations.java,v 1.16 2006/03/07 20:25:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -142,26 +142,13 @@ public class ClassOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(
 			org.eclipse.uml2.uml.Class class_, String name,
 			EList parameterNames, EList parameterTypes, Type returnType) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static Operation createOwnedOperation(
-			org.eclipse.uml2.uml.Class class_, String name, Type returnType,
-			EList parameterNames, EList parameterTypes) {
-		return TypeOperations.createOwnedOperation(class_, name, returnType,
-			parameterNames, parameterTypes);
+		return TypeOperations.createOwnedOperation(class_, name,
+			parameterNames, parameterTypes, returnType);
 	}
 
 	/**

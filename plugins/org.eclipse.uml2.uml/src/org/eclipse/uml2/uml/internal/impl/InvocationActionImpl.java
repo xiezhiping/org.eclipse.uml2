@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.17 2006/03/01 17:56:37 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.18 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -41,7 +40,6 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -122,7 +120,7 @@ public abstract class InvocationActionImpl
 	 * @generated
 	 */
 	public InputPin createArgument(String name, Type type, EClass eClass) {
-		InputPin newArgument = (InputPin) EcoreUtil.create(eClass);
+		InputPin newArgument = (InputPin) create(eClass);
 		if (name != null)
 			newArgument.setName(name);
 		if (type != null)
@@ -137,13 +135,7 @@ public abstract class InvocationActionImpl
 	 * @generated
 	 */
 	public InputPin createArgument(String name, Type type) {
-		InputPin newArgument = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newArgument.setName(name);
-		if (type != null)
-			newArgument.setType(type);
-		getArguments().add(newArgument);
-		return newArgument;
+		return createArgument(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**

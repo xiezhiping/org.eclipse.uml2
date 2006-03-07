@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -37,7 +36,6 @@ import org.eclipse.uml2.uml.SendObjectAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -190,7 +188,7 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public InputPin createTarget(String name, Type type, EClass eClass) {
-		InputPin newTarget = (InputPin) EcoreUtil.create(eClass);
+		InputPin newTarget = (InputPin) create(eClass);
 		if (name != null)
 			newTarget.setName(name);
 		if (type != null)
@@ -205,13 +203,7 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public InputPin createTarget(String name, Type type) {
-		InputPin newTarget = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newTarget.setName(name);
-		if (type != null)
-			newTarget.setType(type);
-		setTarget(newTarget);
-		return newTarget;
+		return createTarget(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**
@@ -309,7 +301,7 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public InputPin createRequest(String name, Type type, EClass eClass) {
-		InputPin newRequest = (InputPin) EcoreUtil.create(eClass);
+		InputPin newRequest = (InputPin) create(eClass);
 		if (name != null)
 			newRequest.setName(name);
 		if (type != null)
@@ -324,13 +316,7 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public InputPin createRequest(String name, Type type) {
-		InputPin newRequest = UMLFactory.eINSTANCE.createInputPin();
-		if (name != null)
-			newRequest.setName(name);
-		if (type != null)
-			newRequest.setType(type);
-		setRequest(newRequest);
-		return newRequest;
+		return createRequest(name, type, UMLPackage.Literals.INPUT_PIN);
 	}
 
 	/**

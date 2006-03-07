@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.11 2006/02/23 00:01:50 khussey Exp $
+ * $Id: TypeOperations.java,v 1.12 2006/03/07 20:25:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -233,8 +233,8 @@ public class TypeOperations
 	}
 
 	public static Operation createOwnedOperation(Type type, final String name,
-			Type returnType, final EList parameterNames,
-			final EList parameterTypes) {
+			final EList parameterNames, final EList parameterTypes,
+			Type returnType) {
 
 		if (getOwnedOperations(type) == null) {
 			throw new UnsupportedOperationException();

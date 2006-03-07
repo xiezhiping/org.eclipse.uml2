@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.12 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.uml2.uml.DestroyLinkAction;
 import org.eclipse.uml2.uml.LinkEndData;
 import org.eclipse.uml2.uml.LinkEndDestructionData;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
@@ -80,8 +79,7 @@ public class DestroyLinkActionImpl
 	 * @generated
 	 */
 	public LinkEndData createEndData() {
-		LinkEndDestructionData newEndData = UMLFactory.eINSTANCE
-			.createLinkEndDestructionData();
+		LinkEndDestructionData newEndData = (LinkEndDestructionData) create(UMLPackage.Literals.LINK_END_DESTRUCTION_DATA);
 		getEndData().add(newEndData);
 		return newEndData;
 	}

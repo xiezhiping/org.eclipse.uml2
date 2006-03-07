@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.21 2006/03/01 17:56:37 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -48,7 +47,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -262,7 +260,7 @@ public class AssociationImpl
 	 * @generated
 	 */
 	public Property createOwnedEnd(String name, Type type, EClass eClass) {
-		Property newOwnedEnd = (Property) EcoreUtil.create(eClass);
+		Property newOwnedEnd = (Property) create(eClass);
 		if (name != null)
 			newOwnedEnd.setName(name);
 		if (type != null)
@@ -277,13 +275,7 @@ public class AssociationImpl
 	 * @generated
 	 */
 	public Property createOwnedEnd(String name, Type type) {
-		Property newOwnedEnd = UMLFactory.eINSTANCE.createProperty();
-		if (name != null)
-			newOwnedEnd.setName(name);
-		if (type != null)
-			newOwnedEnd.setType(type);
-		getOwnedEnds().add(newOwnedEnd);
-		return newOwnedEnd;
+		return createOwnedEnd(name, type, UMLPackage.Literals.PROPERTY);
 	}
 
 	/**
@@ -416,7 +408,7 @@ public class AssociationImpl
 	 */
 	public Property createNavigableOwnedEnd(String name, Type type,
 			EClass eClass) {
-		Property newNavigableOwnedEnd = (Property) EcoreUtil.create(eClass);
+		Property newNavigableOwnedEnd = (Property) create(eClass);
 		if (name != null)
 			newNavigableOwnedEnd.setName(name);
 		if (type != null)
@@ -431,13 +423,7 @@ public class AssociationImpl
 	 * @generated
 	 */
 	public Property createNavigableOwnedEnd(String name, Type type) {
-		Property newNavigableOwnedEnd = UMLFactory.eINSTANCE.createProperty();
-		if (name != null)
-			newNavigableOwnedEnd.setName(name);
-		if (type != null)
-			newNavigableOwnedEnd.setType(type);
-		getNavigableOwnedEnds().add(newNavigableOwnedEnd);
-		return newNavigableOwnedEnd;
+		return createNavigableOwnedEnd(name, type, UMLPackage.Literals.PROPERTY);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.15 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -41,7 +41,6 @@ import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.ExtensionPoint;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -299,7 +298,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public Constraint createCondition(String name, EClass eClass) {
-		Constraint newCondition = (Constraint) EcoreUtil.create(eClass);
+		Constraint newCondition = (Constraint) create(eClass);
 		if (name != null)
 			newCondition.setName(name);
 		setCondition(newCondition);
@@ -312,11 +311,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public Constraint createCondition(String name) {
-		Constraint newCondition = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newCondition.setName(name);
-		setCondition(newCondition);
-		return newCondition;
+		return createCondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**

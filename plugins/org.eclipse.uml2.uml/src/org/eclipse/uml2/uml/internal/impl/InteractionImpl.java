@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.21 2006/03/01 17:56:38 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.22 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -49,7 +49,6 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -198,8 +197,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public GeneralOrdering createGeneralOrdering(String name) {
-		GeneralOrdering newGeneralOrdering = UMLFactory.eINSTANCE
-			.createGeneralOrdering();
+		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(UMLPackage.Literals.GENERAL_ORDERING);
 		if (name != null)
 			newGeneralOrdering.setName(name);
 		getGeneralOrderings().add(newGeneralOrdering);
@@ -392,7 +390,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Lifeline createLifeline(String name) {
-		Lifeline newLifeline = UMLFactory.eINSTANCE.createLifeline();
+		Lifeline newLifeline = (Lifeline) create(UMLPackage.Literals.LIFELINE);
 		if (name != null)
 			newLifeline.setName(name);
 		getLifelines().add(newLifeline);
@@ -451,8 +449,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public InteractionFragment createFragment(String name, EClass eClass) {
-		InteractionFragment newFragment = (InteractionFragment) EcoreUtil
-			.create(eClass);
+		InteractionFragment newFragment = (InteractionFragment) create(eClass);
 		if (name != null)
 			newFragment.setName(name);
 		getFragments().add(newFragment);
@@ -511,7 +508,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Action createAction(String name, EClass eClass) {
-		Action newAction = (Action) EcoreUtil.create(eClass);
+		Action newAction = (Action) create(eClass);
 		if (name != null)
 			newAction.setName(name);
 		getActions().add(newAction);
@@ -570,7 +567,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Gate createFormalGate(String name) {
-		Gate newFormalGate = UMLFactory.eINSTANCE.createGate();
+		Gate newFormalGate = (Gate) create(UMLPackage.Literals.GATE);
 		if (name != null)
 			newFormalGate.setName(name);
 		getFormalGates().add(newFormalGate);
@@ -629,7 +626,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Message createMessage(String name) {
-		Message newMessage = UMLFactory.eINSTANCE.createMessage();
+		Message newMessage = (Message) create(UMLPackage.Literals.MESSAGE);
 		if (name != null)
 			newMessage.setName(name);
 		getMessages().add(newMessage);

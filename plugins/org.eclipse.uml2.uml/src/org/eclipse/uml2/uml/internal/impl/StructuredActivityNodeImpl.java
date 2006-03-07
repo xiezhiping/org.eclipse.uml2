@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.21 2006/03/01 17:56:37 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.22 2006/03/07 20:25:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -49,7 +48,6 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -281,8 +279,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ElementImport createElementImport(PackageableElement importedElement) {
-		ElementImport newElementImport = UMLFactory.eINSTANCE
-			.createElementImport();
+		ElementImport newElementImport = (ElementImport) create(UMLPackage.Literals.ELEMENT_IMPORT);
 		if (importedElement != null)
 			newElementImport.setImportedElement(importedElement);
 		getElementImports().add(newElementImport);
@@ -343,8 +340,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newPackageImport = UMLFactory.eINSTANCE
-			.createPackageImport();
+		PackageImport newPackageImport = (PackageImport) create(UMLPackage.Literals.PACKAGE_IMPORT);
 		if (importedPackage != null)
 			newPackageImport.setImportedPackage(importedPackage);
 		getPackageImports().add(newPackageImport);
@@ -404,7 +400,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public Constraint createOwnedRule(String name, EClass eClass) {
-		Constraint newOwnedRule = (Constraint) EcoreUtil.create(eClass);
+		Constraint newOwnedRule = (Constraint) create(eClass);
 		if (name != null)
 			newOwnedRule.setName(name);
 		getOwnedRules().add(newOwnedRule);
@@ -417,11 +413,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public Constraint createOwnedRule(String name) {
-		Constraint newOwnedRule = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newOwnedRule.setName(name);
-		getOwnedRules().add(newOwnedRule);
-		return newOwnedRule;
+		return createOwnedRule(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**
@@ -637,7 +629,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public Variable createVariable(String name, Type type) {
-		Variable newVariable = UMLFactory.eINSTANCE.createVariable();
+		Variable newVariable = (Variable) create(UMLPackage.Literals.VARIABLE);
 		if (name != null)
 			newVariable.setName(name);
 		if (type != null)
@@ -700,7 +692,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityNode createNode(String name, EClass eClass) {
-		ActivityNode newNode = (ActivityNode) EcoreUtil.create(eClass);
+		ActivityNode newNode = (ActivityNode) create(eClass);
 		if (name != null)
 			newNode.setName(name);
 		getNodes().add(newNode);
@@ -788,7 +780,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityEdge createEdge(String name, EClass eClass) {
-		ActivityEdge newEdge = (ActivityEdge) EcoreUtil.create(eClass);
+		ActivityEdge newEdge = (ActivityEdge) create(eClass);
 		if (name != null)
 			newEdge.setName(name);
 		getEdges().add(newEdge);

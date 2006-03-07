@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -133,8 +132,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
-			.createTemplateBinding();
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
@@ -273,8 +271,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
-			.create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -285,10 +282,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		TemplateSignature newOwnedTemplateSignature = UMLFactory.eINSTANCE
-			.createTemplateSignature();
-		setOwnedTemplateSignature(newOwnedTemplateSignature);
-		return newOwnedTemplateSignature;
+		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -315,8 +309,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public StringExpression createSubExpression(String name, Type type) {
-		StringExpression newSubExpression = UMLFactory.eINSTANCE
-			.createStringExpression();
+		StringExpression newSubExpression = (StringExpression) create(UMLPackage.Literals.STRING_EXPRESSION);
 		if (name != null)
 			newSubExpression.setName(name);
 		if (type != null)

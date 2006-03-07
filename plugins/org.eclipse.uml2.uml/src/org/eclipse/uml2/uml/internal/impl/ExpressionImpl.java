@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -178,8 +177,7 @@ public class ExpressionImpl
 	 */
 	public ValueSpecification createOperand(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newOperand = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newOperand = (ValueSpecification) create(eClass);
 		if (name != null)
 			newOperand.setName(name);
 		if (type != null)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.15 2006/03/01 17:56:38 khussey Exp $
+ * $Id: MessageImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -386,8 +386,7 @@ public class MessageImpl
 	 */
 	public ValueSpecification createArgument(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newArgument = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newArgument = (ValueSpecification) create(eClass);
 		if (name != null)
 			newArgument.setName(name);
 		if (type != null)

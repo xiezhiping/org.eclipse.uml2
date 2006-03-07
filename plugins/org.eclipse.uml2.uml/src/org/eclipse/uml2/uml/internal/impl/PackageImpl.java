@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.24 2006/03/01 17:56:37 khussey Exp $
+ * $Id: PackageImpl.java,v 1.25 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,7 +55,6 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -363,8 +362,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = UMLFactory.eINSTANCE
-			.createTemplateBinding();
+		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
 		getTemplateBindings().add(newTemplateBinding);
@@ -502,8 +500,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) EcoreUtil
-			.create(eClass);
+		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
 		setOwnedTemplateSignature(newOwnedTemplateSignature);
 		return newOwnedTemplateSignature;
 	}
@@ -514,10 +511,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
-		TemplateSignature newOwnedTemplateSignature = UMLFactory.eINSTANCE
-			.createTemplateSignature();
-		setOwnedTemplateSignature(newOwnedTemplateSignature);
-		return newOwnedTemplateSignature;
+		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -559,8 +553,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public PackageableElement createPackagedElement(String name, EClass eClass) {
-		PackageableElement newPackagedElement = (PackageableElement) EcoreUtil
-			.create(eClass);
+		PackageableElement newPackagedElement = (PackageableElement) create(eClass);
 		if (name != null)
 			newPackagedElement.setName(name);
 		getPackagedElements().add(newPackagedElement);
@@ -624,8 +617,7 @@ public class PackageImpl
 	 */
 	public PackageMerge createPackageMerge(
 			org.eclipse.uml2.uml.Package mergedPackage) {
-		PackageMerge newPackageMerge = UMLFactory.eINSTANCE
-			.createPackageMerge();
+		PackageMerge newPackageMerge = (PackageMerge) create(UMLPackage.Literals.PACKAGE_MERGE);
 		if (mergedPackage != null)
 			newPackageMerge.setMergedPackage(mergedPackage);
 		getPackageMerges().add(newPackageMerge);
@@ -684,7 +676,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public Type createOwnedType(String name, EClass eClass) {
-		Type newOwnedType = (Type) EcoreUtil.create(eClass);
+		Type newOwnedType = (Type) create(eClass);
 		if (name != null)
 			newOwnedType.setName(name);
 		getOwnedTypes().add(newOwnedType);
@@ -747,8 +739,7 @@ public class PackageImpl
 	 */
 	public org.eclipse.uml2.uml.Package createNestedPackage(String name,
 			EClass eClass) {
-		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) EcoreUtil
-			.create(eClass);
+		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) create(eClass);
 		if (name != null)
 			newNestedPackage.setName(name);
 		getNestedPackages().add(newNestedPackage);
@@ -863,8 +854,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public ProfileApplication createProfileApplication() {
-		ProfileApplication newProfileApplication = UMLFactory.eINSTANCE
-			.createProfileApplication();
+		ProfileApplication newProfileApplication = (ProfileApplication) create(UMLPackage.Literals.PROFILE_APPLICATION);
 		getProfileApplications().add(newProfileApplication);
 		return newProfileApplication;
 	}
@@ -935,12 +925,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package createNestedPackage(String name) {
-		org.eclipse.uml2.uml.Package newNestedPackage = UMLFactory.eINSTANCE
-			.createPackage();
-		if (name != null)
-			newNestedPackage.setName(name);
-		getNestedPackages().add(newNestedPackage);
-		return newNestedPackage;
+		return createNestedPackage(name, UMLPackage.Literals.PACKAGE);
 	}
 
 	/**

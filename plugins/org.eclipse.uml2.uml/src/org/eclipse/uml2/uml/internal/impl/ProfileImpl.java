@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.21 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -169,7 +168,7 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public Stereotype createOwnedStereotype(String name) {
-		Stereotype newOwnedStereotype = UMLFactory.eINSTANCE.createStereotype();
+		Stereotype newOwnedStereotype = (Stereotype) create(UMLPackage.Literals.STEREOTYPE);
 		if (name != null)
 			newOwnedStereotype.setName(name);
 		getOwnedStereotypes().add(newOwnedStereotype);
@@ -230,8 +229,7 @@ public class ProfileImpl
 	 */
 	public ElementImport createMetaclassReference(
 			PackageableElement importedElement) {
-		ElementImport newMetaclassReference = UMLFactory.eINSTANCE
-			.createElementImport();
+		ElementImport newMetaclassReference = (ElementImport) create(UMLPackage.Literals.ELEMENT_IMPORT);
 		if (importedElement != null)
 			newMetaclassReference.setImportedElement(importedElement);
 		getMetaclassReferences().add(newMetaclassReference);
@@ -293,8 +291,7 @@ public class ProfileImpl
 	 */
 	public PackageImport createMetamodelReference(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newMetamodelReference = UMLFactory.eINSTANCE
-			.createPackageImport();
+		PackageImport newMetamodelReference = (PackageImport) create(UMLPackage.Literals.PACKAGE_IMPORT);
 		if (importedPackage != null)
 			newMetamodelReference.setImportedPackage(importedPackage);
 		getMetamodelReferences().add(newMetamodelReference);

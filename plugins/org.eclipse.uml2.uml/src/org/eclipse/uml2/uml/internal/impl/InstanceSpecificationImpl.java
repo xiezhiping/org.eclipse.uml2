@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.13 2006/03/01 17:56:38 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -473,8 +472,7 @@ public class InstanceSpecificationImpl
 	 */
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newSpecification = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
 		if (name != null)
 			newSpecification.setName(name);
 		if (type != null)
@@ -505,7 +503,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public Slot createSlot() {
-		Slot newSlot = UMLFactory.eINSTANCE.createSlot();
+		Slot newSlot = (Slot) create(UMLPackage.Literals.SLOT);
 		getSlots().add(newSlot);
 		return newSlot;
 	}

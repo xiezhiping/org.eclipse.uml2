@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.23 2006/03/01 17:56:37 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.24 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
@@ -49,7 +48,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -275,7 +273,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
-		Parameter newOwnedParameter = UMLFactory.eINSTANCE.createParameter();
+		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
 		if (name != null)
 			newOwnedParameter.setName(name);
 		if (type != null)
@@ -358,7 +356,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Constraint createPrecondition(String name, EClass eClass) {
-		Constraint newPrecondition = (Constraint) EcoreUtil.create(eClass);
+		Constraint newPrecondition = (Constraint) create(eClass);
 		if (name != null)
 			newPrecondition.setName(name);
 		getPreconditions().add(newPrecondition);
@@ -371,11 +369,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Constraint createPrecondition(String name) {
-		Constraint newPrecondition = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newPrecondition.setName(name);
-		getPreconditions().add(newPrecondition);
-		return newPrecondition;
+		return createPrecondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**
@@ -431,7 +425,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Constraint createPostcondition(String name, EClass eClass) {
-		Constraint newPostcondition = (Constraint) EcoreUtil.create(eClass);
+		Constraint newPostcondition = (Constraint) create(eClass);
 		if (name != null)
 			newPostcondition.setName(name);
 		getPostconditions().add(newPostcondition);
@@ -444,11 +438,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public Constraint createPostcondition(String name) {
-		Constraint newPostcondition = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newPostcondition.setName(name);
-		getPostconditions().add(newPostcondition);
-		return newPostcondition;
+		return createPostcondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	/**
@@ -505,8 +495,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public ParameterSet createOwnedParameterSet(String name) {
-		ParameterSet newOwnedParameterSet = UMLFactory.eINSTANCE
-			.createParameterSet();
+		ParameterSet newOwnedParameterSet = (ParameterSet) create(UMLPackage.Literals.PARAMETER_SET);
 		if (name != null)
 			newOwnedParameterSet.setName(name);
 		getOwnedParameterSets().add(newOwnedParameterSet);

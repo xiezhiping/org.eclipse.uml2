@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.19 2006/03/01 17:56:38 khussey Exp $
+ * $Id: VariableImpl.java,v 1.20 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -393,8 +393,7 @@ public class VariableImpl
 	 */
 	public ValueSpecification createUpperValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newUpperValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newUpperValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newUpperValue.setName(name);
 		if (type != null)
@@ -500,8 +499,7 @@ public class VariableImpl
 	 */
 	public ValueSpecification createLowerValue(String name, Type type,
 			EClass eClass) {
-		ValueSpecification newLowerValue = (ValueSpecification) EcoreUtil
-			.create(eClass);
+		ValueSpecification newLowerValue = (ValueSpecification) create(eClass);
 		if (name != null)
 			newLowerValue.setName(name);
 		if (type != null)

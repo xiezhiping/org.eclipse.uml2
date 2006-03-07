@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.26 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.27 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
@@ -50,7 +49,6 @@ import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
@@ -241,7 +239,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public Constraint createPostCondition(String name, EClass eClass) {
-		Constraint newPostCondition = (Constraint) EcoreUtil.create(eClass);
+		Constraint newPostCondition = (Constraint) create(eClass);
 		if (name != null)
 			newPostCondition.setName(name);
 		setPostCondition(newPostCondition);
@@ -254,11 +252,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public Constraint createPostCondition(String name) {
-		Constraint newPostCondition = UMLFactory.eINSTANCE.createConstraint();
-		if (name != null)
-			newPostCondition.setName(name);
-		setPostCondition(newPostCondition);
-		return newPostCondition;
+		return createPostCondition(name, UMLPackage.Literals.CONSTRAINT);
 	}
 
 	protected static class ReferredEList

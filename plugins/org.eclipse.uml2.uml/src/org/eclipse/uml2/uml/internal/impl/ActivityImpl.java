@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.24 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.25 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
@@ -52,7 +51,6 @@ import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -230,7 +228,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityGroup createGroup(EClass eClass) {
-		ActivityGroup newGroup = (ActivityGroup) EcoreUtil.create(eClass);
+		ActivityGroup newGroup = (ActivityGroup) create(eClass);
 		getGroups().add(newGroup);
 		return newGroup;
 	}
@@ -257,7 +255,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityNode createNode(String name, EClass eClass) {
-		ActivityNode newNode = (ActivityNode) EcoreUtil.create(eClass);
+		ActivityNode newNode = (ActivityNode) create(eClass);
 		if (name != null)
 			newNode.setName(name);
 		getNodes().add(newNode);
@@ -418,7 +416,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public Variable createVariable(String name, Type type) {
-		Variable newVariable = UMLFactory.eINSTANCE.createVariable();
+		Variable newVariable = (Variable) create(UMLPackage.Literals.VARIABLE);
 		if (name != null)
 			newVariable.setName(name);
 		if (type != null)
@@ -480,7 +478,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityEdge createEdge(String name, EClass eClass) {
-		ActivityEdge newEdge = (ActivityEdge) EcoreUtil.create(eClass);
+		ActivityEdge newEdge = (ActivityEdge) create(eClass);
 		if (name != null)
 			newEdge.setName(name);
 		getEdges().add(newEdge);
@@ -541,8 +539,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public ActivityPartition createPartition(String name) {
-		ActivityPartition newPartition = UMLFactory.eINSTANCE
-			.createActivityPartition();
+		ActivityPartition newPartition = (ActivityPartition) create(UMLPackage.Literals.ACTIVITY_PARTITION);
 		if (name != null)
 			newPartition.setName(name);
 		getPartitions().add(newPartition);

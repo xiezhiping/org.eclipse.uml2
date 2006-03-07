@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.12 2006/03/07 20:25:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,7 +42,6 @@ import org.eclipse.uml2.uml.ConnectorKind;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -242,7 +241,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public ConnectorEnd createEnd() {
-		ConnectorEnd newEnd = UMLFactory.eINSTANCE.createConnectorEnd();
+		ConnectorEnd newEnd = (ConnectorEnd) create(UMLPackage.Literals.CONNECTOR_END);
 		getEnds().add(newEnd);
 		return newEnd;
 	}

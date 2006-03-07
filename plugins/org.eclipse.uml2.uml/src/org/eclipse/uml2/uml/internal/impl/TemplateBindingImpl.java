@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.12 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -38,7 +38,6 @@ import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.TemplateBindingOperations;
@@ -205,8 +204,7 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public TemplateParameterSubstitution createParameterSubstitution() {
-		TemplateParameterSubstitution newParameterSubstitution = UMLFactory.eINSTANCE
-			.createTemplateParameterSubstitution();
+		TemplateParameterSubstitution newParameterSubstitution = (TemplateParameterSubstitution) create(UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION);
 		getParameterSubstitutions().add(newParameterSubstitution);
 		return newParameterSubstitution;
 	}

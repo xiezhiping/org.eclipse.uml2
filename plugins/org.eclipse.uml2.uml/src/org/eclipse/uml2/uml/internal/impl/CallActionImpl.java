@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.16 2006/03/01 17:56:38 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -168,7 +167,7 @@ public abstract class CallActionImpl
 	 * @generated
 	 */
 	public OutputPin createResult(String name, Type type) {
-		OutputPin newResult = UMLFactory.eINSTANCE.createOutputPin();
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
