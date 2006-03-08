@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.16 2006/02/22 20:48:22 khussey Exp $
+ * $Id: UMLUtil.java,v 1.17 2006/03/08 21:58:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -151,9 +151,9 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || ((NamedElement) eObject)
-						.getName().equals(
-							((NamedElement) otherEObject).getName()));
+					&& ((eObject == null && otherEObject == null) || safeEquals(
+						((NamedElement) eObject).getName(),
+						((NamedElement) otherEObject).getName()));
 			}
 		}
 
@@ -6029,7 +6029,7 @@ public class UMLUtil
 
 					return (feature == null && otherFeature == null)
 						|| (feature != otherFeature
-							&& otherFeature.getName().equals(name) && isRedefinitionValid(
+							&& safeEquals(otherFeature.getName(), name) && isRedefinitionValid(
 							feature, otherFeature));
 				}
 

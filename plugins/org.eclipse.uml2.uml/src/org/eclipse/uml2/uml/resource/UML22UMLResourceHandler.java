@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.1 2006/03/08 19:13:13 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.2 2006/03/08 21:58:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -47,6 +48,7 @@ import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
@@ -214,6 +216,27 @@ public class UML22UMLResourceHandler
 
 				return super.caseMultiplicityElement(multiplicityElement);
 
+			}
+
+			public Object caseParameter(Parameter parameter) {
+				AnyType extension = getExtension(resource, parameter);
+
+				if (extension != null) {
+					ValueSpecification defaultValue = (ValueSpecification) getValue(
+						extension.getMixed(), "defaultValue"); //$NON-NLS-1$
+
+					if (defaultValue != null) {
+						String stringValue = defaultValue.stringValue();
+
+						if (stringValue != null) {
+							parameter.setDefault(stringValue);
+						} else {
+							parameter.setDefaultValue(defaultValue);
+						}
+					}
+				}
+
+				return super.caseParameter(parameter);
 			}
 
 			public Object caseProfileApplication(
@@ -440,6 +463,23 @@ public class UML22UMLResourceHandler
 					}
 				}
 
+				AnyType extension = getExtension(resource, property);
+
+				if (extension != null) {
+					ValueSpecification defaultValue = (ValueSpecification) getValue(
+						extension.getMixed(), "defaultValue"); //$NON-NLS-1$
+
+					if (defaultValue != null) {
+						String stringValue = defaultValue.stringValue();
+
+						if (stringValue != null) {
+							property.setDefault(stringValue);
+						} else {
+							property.setDefaultValue(defaultValue);
+						}
+					}
+				}
+
 				return super.caseProperty(property);
 			}
 
@@ -501,6 +541,8 @@ public class UML22UMLResourceHandler
 		for (Iterator atr = annotationsToRemove.iterator(); atr.hasNext();) {
 			((EAnnotation) atr.next()).setEModelElement(null);
 		}
+
+		EcoreUtil.resolveAll(resource);
 	}
 
 }
