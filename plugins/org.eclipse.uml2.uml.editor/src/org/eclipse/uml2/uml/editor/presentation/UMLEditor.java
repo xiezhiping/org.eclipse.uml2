@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.6 2006/01/24 17:22:47 khussey Exp $
+ * $Id: UMLEditor.java,v 1.7 2006/03/08 19:13:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -67,6 +67,7 @@ import java.util.Collections;
 import java.util.EventObject;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -164,6 +165,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
+import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetadata;
+import org.eclipse.uml2.uml.resource.UML22UMLResource;
+import org.eclipse.uml2.uml.resource.UMLResource;
 
 /**
  * This is an example of a UML model editor.
@@ -766,7 +770,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void createModel() {
+	public void createModelGen() {
 		// I assume that the input is a file object.
 		//
 		IFileEditorInput modelFile = (IFileEditorInput) getEditorInput();
@@ -779,6 +783,18 @@ public class UMLEditor
 		} catch (Exception exception) {
 			UMLEditorPlugin.INSTANCE.log(exception);
 		}
+	}
+
+	public void createModel() {
+		ResourceSet resourceSet = editingDomain.getResourceSet();
+
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+			.put(UML22UMLResource.UML2__FILE_EXTENSION,
+				UML22UMLResource.Factory.INSTANCE);
+		resourceSet.getURIConverter().getURIMap().putAll(
+			UML22UMLExtendedMetadata.getURIMap());
+
+		createModelGen();
 	}
 
 	/**
@@ -1263,7 +1279,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void doSave(IProgressMonitor progressMonitor) {
+	public void doSaveGen(IProgressMonitor progressMonitor) {
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
@@ -1306,6 +1322,51 @@ public class UMLEditor
 			//
 			UMLEditorPlugin.INSTANCE.log(exception);
 		}
+	}
+
+	public void doSave(IProgressMonitor progressMonitor) {
+		Map uriMap = UML22UMLExtendedMetadata.getURIMap();
+		boolean first = true;
+
+		for (Iterator i = editingDomain.getResourceSet().getResources()
+			.iterator(); i.hasNext();) {
+
+			Resource resource = (Resource) i.next();
+			URI oldURI = resource.getURI();
+			URI newURI = (URI) uriMap.get(oldURI);
+
+			if (newURI == null
+				&& UML22UMLResource.UML2__FILE_EXTENSION.equals(oldURI
+					.fileExtension())) {
+
+				newURI = oldURI.trimFileExtension().appendFileExtension(
+					UMLResource.FILE_EXTENSION);
+
+				if (first) {
+					IEditorInput editorInput = getEditorInput();
+
+					if (editorInput instanceof FileEditorInput) {
+						IPath path = ((FileEditorInput) editorInput).getPath();
+						path = path.removeFileExtension().addFileExtension(
+							UMLResource.FILE_EXTENSION);
+						IFile file = ResourcesPlugin.getWorkspace().getRoot()
+							.getFile(path);
+						editorInput = new FileEditorInput(file);
+
+						setInputWithNotify(editorInput);
+						setPartName(editorInput.getName());
+					}
+				}
+			}
+
+			if (newURI != null) {
+				resource.setURI(newURI);
+			}
+
+			first = false;
+		}
+
+		doSaveGen(progressMonitor);
 	}
 
 	/**

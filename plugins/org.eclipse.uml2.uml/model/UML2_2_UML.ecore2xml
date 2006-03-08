@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore2xml:XMLMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:ecore2xml="http://www.eclipse.org/emf/2005/Ecore2XML">
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EPackage" href="UML.ecore#/"/>
+    <value name="uml2" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//MultiplicityElement/upperValue"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//MultiplicityElement/lowerValue"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Namespace/packageImport"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Parameter/defaultValue"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Property/defaultValue"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Package/packagedElement"/>
+    <value name="ownedMember"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Package/profileApplication"/>
+    <value name="appliedProfile"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EClass" href="UML.ecore#//InterfaceRealization"/>
+    <value name="Implementation" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Namespace/ownedMember"/>
+    <value xMLRepresentation="1"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//ProfileApplication/appliedProfile"/>
+    <value name="importedProfile"/>
+  </ecoreToXMLInfo>
+</ecore2xml:XMLMap>

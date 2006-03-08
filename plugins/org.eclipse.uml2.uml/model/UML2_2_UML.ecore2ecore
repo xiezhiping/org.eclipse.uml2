@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore2ecore:Ecore2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore2ecore="http://www.eclipse.org/emf/2004/Ecore2Ecore" topToBottom="true">
+  <nested>
+    <outputs href="UML.ecore#//MultiplicityElement/upperValue"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//MultiplicityElement/lowerValue"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Namespace/packageImport"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Parameter/defaultValue"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Property/defaultValue"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Package/ownedMember"/>
+    <outputs href="UML.ecore#//Package/packagedElement"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Package/appliedProfile"/>
+    <outputs href="UML.ecore#//Package/profileApplication"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Implementation"/>
+    <outputs href="UML.ecore#//InterfaceRealization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Namespace/ownedMember"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ProfileApplication/importedProfile"/>
+    <outputs href="UML.ecore#//ProfileApplication/appliedProfile"/>
+  </nested>
+  <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
+  <outputs href="UML.ecore#/"/>
+</ecore2ecore:Ecore2EcoreMappingRoot>
