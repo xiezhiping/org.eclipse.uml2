@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: InterfaceTest.java,v 1.2 2006/03/08 19:03:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -34,7 +34,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Interface#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Interface#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Create Owned Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Interface#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interface#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
  * </ul>
  * </p>
@@ -155,13 +155,13 @@ public class InterfaceTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Interface#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Create Owned Operation</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.Interface#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Interface#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList)
+	 * @see org.eclipse.uml2.uml.Interface#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type)
 	 * @generated
 	 */
-	public void testCreateOwnedOperation__String_Type_EList_EList() {
+	public void testCreateOwnedOperation__String_EList_EList_Type() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

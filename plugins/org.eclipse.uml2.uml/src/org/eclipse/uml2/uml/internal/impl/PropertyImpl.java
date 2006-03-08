@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.29 2006/03/07 21:43:25 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.30 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1703,6 +1703,69 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void setIsNavigable(boolean isNavigable) {
+		PropertyOperations.setIsNavigable(this, isNavigable);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOtherEnd() {
+		return PropertyOperations.getOtherEnd(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBooleanDefaultValue(boolean value) {
+		PropertyOperations.setBooleanDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerDefaultValue(int value) {
+		PropertyOperations.setIntegerDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringDefaultValue(String value) {
+		PropertyOperations.setStringDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnlimitedNaturalDefaultValue(int value) {
+		PropertyOperations.setUnlimitedNaturalDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNullDefaultValue() {
+		PropertyOperations.setNullDefaultValue(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isAttribute(Property p) {
 		return PropertyOperations.isAttribute(this, p);
 	}
@@ -1716,10 +1779,10 @@ public class PropertyImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this, UMLPackage.Literals.PROPERTY
-				.getEOperations().get(19));
+				.getEOperations().get(26));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROPERTY.getEOperations()
-					.get(19), result = PropertyOperations
+					.get(26), result = PropertyOperations
 					.subsettingContext(this));
 			}
 			return result;

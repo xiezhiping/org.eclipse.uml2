@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.22 2006/03/07 20:25:15 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.23 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -502,6 +502,15 @@ public class AssociationImpl
 			Map context) {
 		return AssociationOperations.validateAssociationEnds(this, diagnostics,
 			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isBinary() {
+		return AssociationOperations.isBinary(this);
 	}
 
 	/**

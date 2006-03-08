@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.7 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -257,5 +257,21 @@ public interface BehavioredClassifier
 	 * @generated
 	 */
 	boolean validateClassBehavior(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @generated
+	 */
+	EList getImplementedInterfaces();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @generated
+	 */
+	EList getAllImplementedInterfaces();
 
 } // BehavioredClassifier

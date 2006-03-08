@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.23 2006/02/21 14:31:34 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.24 2006/03/08 19:03:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,11 +27,14 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralNull;
+import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Property;
@@ -67,6 +70,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Property#setIsComposite(boolean) <em>Set Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#setOpposite(org.eclipse.uml2.uml.Property) <em>Set Opposite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#unsetDefault() <em>Unset Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#setIsNavigable(boolean) <em>Set Is Navigable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getOtherEnd() <em>Get Other End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#setBooleanDefaultValue(boolean) <em>Set Boolean Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#setIntegerDefaultValue(int) <em>Set Integer Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#setStringDefaultValue(java.lang.String) <em>Set String Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#setUnlimitedNaturalDefaultValue(int) <em>Set Unlimited Natural Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#setNullDefaultValue() <em>Set Null Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isAttribute(org.eclipse.uml2.uml.Property) <em>Is Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOpposite() <em>Get Opposite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isComposite() <em>Is Composite</em>}</li>
@@ -455,20 +465,75 @@ public class PropertyOperations
 		return false;
 	}
 
-	protected static Property getOtherEnd(Property property) {
-		Association association = property.getAssociation();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setBooleanDefaultValue(Property property, boolean value) {
+		ValueSpecification defaultValue = property.getDefaultValue();
 
-		if (association != null) {
-			List memberEnds = ((InternalEList) association.getMemberEnds())
-				.basicList();
+		((LiteralBoolean) (defaultValue instanceof LiteralBoolean
+			? defaultValue
+			: property.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_BOOLEAN))).setValue(value);
+	}
 
-			if (memberEnds.size() == 2) {
-				return (Property) memberEnds.get(Math.abs(memberEnds
-					.indexOf(property) - 1));
-			}
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setIntegerDefaultValue(Property property, int value) {
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		((LiteralInteger) (defaultValue instanceof LiteralInteger
+			? defaultValue
+			: property.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_INTEGER))).setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setStringDefaultValue(Property property, String value) {
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		((LiteralString) (defaultValue instanceof LiteralString
+			? defaultValue
+			: property.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_STRING))).setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setUnlimitedNaturalDefaultValue(Property property,
+			int value) {
+		ValueSpecification defaultValue = property.getDefaultValue();
+
+		((LiteralUnlimitedNatural) (defaultValue instanceof LiteralUnlimitedNatural
+			? defaultValue
+			: property.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
+			.setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setNullDefaultValue(Property property) {
+
+		if (!(property.getDefaultValue() instanceof LiteralNull)) {
+			property.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_NULL);
 		}
-
-		return null;
 	}
 
 	/**
@@ -695,6 +760,50 @@ public class PropertyOperations
 		basicEObjectImpl
 			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setIsNavigable(Property property, boolean isNavigable) {
+		Association association = property.getAssociation();
+
+		if (association == null) {
+			throw new IllegalStateException();
+		}
+
+		if (property.isNavigable() != isNavigable) {
+			EList navigableOwnedEnds = association.getNavigableOwnedEnds();
+
+			if (isNavigable) {
+				navigableOwnedEnds.add(property);
+			} else {
+				navigableOwnedEnds.remove(property);
+				association.getOwnedEnds().add(property);
+			}
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Property getOtherEnd(Property property) {
+		Association association = property.getAssociation();
+
+		if (association != null) {
+			List memberEnds = association.getMemberEnds();
+
+			if (memberEnds.size() == 2) {
+				return (Property) memberEnds.get(Math.abs(memberEnds
+					.indexOf(property) - 1));
+			}
+		}
+
+		return null;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.15 2006/02/24 17:25:53 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.16 2006/03/08 19:03:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,10 +20,9 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
@@ -59,6 +58,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllOperations() <em>Get All Operations</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Get Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, boolean) <em>Get Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getUsedInterfaces() <em>Get Used Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getAllUsedInterfaces() <em>Get All Used Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals() <em>Get Generals</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getInheritedMembers() <em>Get Inherited Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#allFeatures() <em>All Features</em>}</li>
@@ -344,6 +345,24 @@ public class ClassifierOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList getUsedInterfaces(Classifier classifier) {
+		return getUsedInterfaces(classifier, new UniqueEList.FastCompare());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList getAllUsedInterfaces(Classifier classifier) {
+		return getAllUsedInterfaces(classifier, new UniqueEList.FastCompare());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
@@ -600,8 +619,8 @@ public class ClassifierOperations
 
 			if (dependency instanceof Usage) {
 
-				for (Iterator suppliers = ((InternalEList) dependency
-					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
+				for (Iterator suppliers = dependency.getSuppliers().iterator(); suppliers
+					.hasNext();) {
 
 					Object supplier = suppliers.next();
 

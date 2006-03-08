@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.13 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.14 2006/03/08 19:03:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,11 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralNull;
+import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -42,6 +47,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isSetDefault() <em>Is Set Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#setDefault(java.lang.String) <em>Set Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#unsetDefault() <em>Unset Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#setBooleanDefaultValue(boolean) <em>Set Boolean Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#setIntegerDefaultValue(int) <em>Set Integer Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#setStringDefaultValue(java.lang.String) <em>Set String Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#setUnlimitedNaturalDefaultValue(int) <em>Set Unlimited Natural Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#setNullDefaultValue() <em>Set Null Default Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -281,6 +291,77 @@ public class ParameterOperations
 		basicEObjectImpl
 			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setBooleanDefaultValue(Parameter parameter, boolean value) {
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralBoolean) (defaultValue instanceof LiteralBoolean
+			? defaultValue
+			: parameter.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_BOOLEAN))).setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setIntegerDefaultValue(Parameter parameter, int value) {
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralInteger) (defaultValue instanceof LiteralInteger
+			? defaultValue
+			: parameter.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_INTEGER))).setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setStringDefaultValue(Parameter parameter, String value) {
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralString) (defaultValue instanceof LiteralString
+			? defaultValue
+			: parameter.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_STRING))).setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setUnlimitedNaturalDefaultValue(Parameter parameter,
+			int value) {
+		ValueSpecification defaultValue = parameter.getDefaultValue();
+
+		((LiteralUnlimitedNatural) (defaultValue instanceof LiteralUnlimitedNatural
+			? defaultValue
+			: parameter.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
+			.setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setNullDefaultValue(Parameter parameter) {
+
+		if (!(parameter.getDefaultValue() instanceof LiteralNull)) {
+			parameter.createDefaultValue(null, null,
+				UMLPackage.Literals.LITERAL_NULL);
+		}
 	}
 
 } // ParameterOperations

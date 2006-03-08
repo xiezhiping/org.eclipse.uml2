@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassTest.java,v 1.1 2006/02/21 16:32:28 khussey Exp $
+ * $Id: ClassTest.java,v 1.2 2006/03/08 19:03:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -35,9 +35,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#validateClassBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Class Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface) <em>Create Interface Realization</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces() <em>Get Implemented Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces() <em>Get All Implemented Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#validatePassiveClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Passive Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Create Owned Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#isMetaclass() <em>Is Metaclass</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#inherit(org.eclipse.emf.common.util.EList) <em>Inherit</em>}</li>
  * </ul>
@@ -183,13 +184,25 @@ public class ClassTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface) <em>Create Interface Realization</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces() <em>Get Implemented Interfaces</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface)
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces()
 	 * @generated
 	 */
-	public void testCreateInterfaceRealization__Interface() {
+	public void testGetImplementedInterfaces() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces() <em>Get All Implemented Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces()
+	 * @generated
+	 */
+	public void testGetAllImplementedInterfaces() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -207,13 +220,13 @@ public class ClassTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList) <em>Create Owned Operation</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.uml2.uml.Type, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList)
+	 * @see org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type)
 	 * @generated
 	 */
-	public void testCreateOwnedOperation__String_Type_EList_EList() {
+	public void testCreateOwnedOperation__String_EList_EList_Type() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

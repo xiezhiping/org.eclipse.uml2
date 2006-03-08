@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.23 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,9 +37,11 @@ import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
@@ -405,14 +407,51 @@ public class ComponentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.uml2.uml.Class createOwnedClass(String name,
+			boolean isAbstract) {
+		return ComponentOperations.createOwnedClass(this, name, isAbstract);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Enumeration createOwnedEnumeration(String name) {
+		return ComponentOperations.createOwnedEnumeration(this, name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PrimitiveType createOwnedPrimitiveType(String name) {
+		return ComponentOperations.createOwnedPrimitiveType(this, name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface createOwnedInterface(String name) {
+		return ComponentOperations.createOwnedInterface(this, name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList realizedInterfaces(Classifier classifier) {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.COMPONENT.getEOperations().get(0));
+				UMLPackage.Literals.COMPONENT.getEOperations().get(4));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
-					.getEOperations().get(0), result = ComponentOperations
+					.getEOperations().get(4), result = ComponentOperations
 					.realizedInterfaces(this, classifier));
 			}
 			return result;
@@ -429,10 +468,10 @@ public class ComponentImpl
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.COMPONENT.getEOperations().get(1));
+				UMLPackage.Literals.COMPONENT.getEOperations().get(5));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
-					.getEOperations().get(1), result = ComponentOperations
+					.getEOperations().get(5), result = ComponentOperations
 					.usedInterfaces(this, classifier));
 			}
 			return result;

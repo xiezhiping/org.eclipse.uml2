@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.23 2006/03/07 20:25:15 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
@@ -445,6 +446,50 @@ public abstract class BehavioredClassifierImpl
 			Map context) {
 		return BehavioredClassifierOperations.validateClassBehavior(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getImplementedInterfaces() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this,
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER.getEOperations().get(
+					1));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.BEHAVIORED_CLASSIFIER
+					.getEOperations().get(1),
+					result = BehavioredClassifierOperations
+						.getImplementedInterfaces(this));
+			}
+			return result;
+		}
+		return BehavioredClassifierOperations.getImplementedInterfaces(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getAllImplementedInterfaces() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this,
+				UMLPackage.Literals.BEHAVIORED_CLASSIFIER.getEOperations().get(
+					2));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.BEHAVIORED_CLASSIFIER
+					.getEOperations().get(2),
+					result = BehavioredClassifierOperations
+						.getAllImplementedInterfaces(this));
+			}
+			return result;
+		}
+		return BehavioredClassifierOperations.getAllImplementedInterfaces(this);
 	}
 
 	/**

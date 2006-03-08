@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: ProfileTest.java,v 1.2 2006/03/08 19:03:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -33,8 +33,6 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateMetaclassReferenceNotSpecialized(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Metaclass Reference Not Specialized</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateReferencesSameMetamodel(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate References Same Metamodel</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#create(org.eclipse.uml2.uml.Classifier) <em>Create</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#createMetaclassReference(org.eclipse.uml2.uml.Class) <em>Create Metaclass Reference</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#createMetamodelReference(org.eclipse.uml2.uml.Model) <em>Create Metamodel Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
@@ -145,30 +143,6 @@ public class ProfileTest
 	 * @generated
 	 */
 	public void testCreate__Classifier() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Profile#createMetaclassReference(org.eclipse.uml2.uml.Class) <em>Create Metaclass Reference</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Profile#createMetaclassReference(org.eclipse.uml2.uml.Class)
-	 * @generated
-	 */
-	public void testCreateMetaclassReference__Class() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Profile#createMetamodelReference(org.eclipse.uml2.uml.Model) <em>Create Metamodel Reference</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Profile#createMetamodelReference(org.eclipse.uml2.uml.Model)
-	 * @generated
-	 */
-	public void testCreateMetamodelReference__Model() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

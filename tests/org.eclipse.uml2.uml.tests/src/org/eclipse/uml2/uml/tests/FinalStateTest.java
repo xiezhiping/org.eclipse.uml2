@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateTest.java,v 1.1 2006/02/21 16:32:27 khussey Exp $
+ * $Id: FinalStateTest.java,v 1.2 2006/03/08 19:03:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -28,7 +28,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoRegions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Regions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateCannotReferenceSubmachine(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Reference Submachine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoEntryBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Entry Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitbehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exitbehavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exit Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.FinalState#validateNoStateBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No State Behavior</em>}</li>
  * </ul>
  * </p>
@@ -137,13 +137,13 @@ public class FinalStateTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.FinalState#validateNoExitbehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exitbehavior</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Exit Behavior</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.FinalState#validateNoExitbehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see org.eclipse.uml2.uml.FinalState#validateNoExitBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public void testValidateNoExitbehavior__DiagnosticChain_Map() {
+	public void testValidateNoExitBehavior__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

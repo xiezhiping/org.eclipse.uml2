@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.14 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Property.java,v 1.15 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -726,6 +726,62 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateBindingToAttribute(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model isNavigableDataType="org.eclipse.uml2.uml.Boolean" isNavigableRequired="true" isNavigableOrdered="false"
+	 * @generated
+	 */
+	void setIsNavigable(boolean isNavigable);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	Property getOtherEnd();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setBooleanDefaultValue(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setIntegerDefaultValue(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setStringDefaultValue(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setUnlimitedNaturalDefaultValue(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void setNullDefaultValue();
 
 	/**
 	 * <!-- begin-user-doc -->

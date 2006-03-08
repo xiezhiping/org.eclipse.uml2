@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.9 2006/01/27 04:55:56 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.10 2006/03/08 19:03:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,9 +22,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.PrimitiveType;
+
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -38,6 +41,10 @@ import org.eclipse.uml2.uml.Usage;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedClass(java.lang.String, boolean) <em>Create Owned Class</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedEnumeration(java.lang.String) <em>Create Owned Enumeration</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedPrimitiveType(java.lang.String) <em>Create Owned Primitive Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#realizedInterfaces(org.eclipse.uml2.uml.Classifier) <em>Realized Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#usedInterfaces(org.eclipse.uml2.uml.Classifier) <em>Used Interfaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#getRequireds() <em>Get Requireds</em>}</li>
@@ -57,6 +64,52 @@ public class ComponentOperations
 	 */
 	protected ComponentOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static org.eclipse.uml2.uml.Class createOwnedClass(
+			Component component, String name, boolean isAbstract) {
+		org.eclipse.uml2.uml.Class ownedClass = (org.eclipse.uml2.uml.Class) component
+			.createPackagedElement(name, UMLPackage.Literals.CLASS);
+		ownedClass.setIsAbstract(isAbstract);
+		return ownedClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Enumeration createOwnedEnumeration(Component component,
+			String name) {
+		return (Enumeration) component.createPackagedElement(name,
+			UMLPackage.Literals.ENUMERATION);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static PrimitiveType createOwnedPrimitiveType(Component component,
+			String name) {
+		return (PrimitiveType) component.createPackagedElement(name,
+			UMLPackage.Literals.PRIMITIVE_TYPE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static Interface createOwnedInterface(Component component,
+			String name) {
+		return (Interface) component.createPackagedElement(name,
+			UMLPackage.Literals.INTERFACE);
 	}
 
 	/**

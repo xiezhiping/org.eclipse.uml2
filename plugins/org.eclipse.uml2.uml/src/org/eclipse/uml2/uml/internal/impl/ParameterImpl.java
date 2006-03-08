@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.23 2006/03/07 20:25:14 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1068,6 +1068,51 @@ public class ParameterImpl
 	 */
 	public boolean validateInAndOut(DiagnosticChain diagnostics, Map context) {
 		return ParameterOperations.validateInAndOut(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBooleanDefaultValue(boolean value) {
+		ParameterOperations.setBooleanDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerDefaultValue(int value) {
+		ParameterOperations.setIntegerDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringDefaultValue(String value) {
+		ParameterOperations.setStringDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnlimitedNaturalDefaultValue(int value) {
+		ParameterOperations.setUnlimitedNaturalDefaultValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNullDefaultValue() {
+		ParameterOperations.setNullDefaultValue(this);
 	}
 
 	/**

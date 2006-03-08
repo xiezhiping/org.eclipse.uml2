@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.11 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Parameter.java,v 1.12 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -393,5 +393,45 @@ public interface Parameter
 	 * @generated
 	 */
 	boolean validateInAndOut(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setBooleanDefaultValue(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setIntegerDefaultValue(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setStringDefaultValue(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setUnlimitedNaturalDefaultValue(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void setNullDefaultValue();
 
 } // Parameter

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: BehavioralFeatureTest.java,v 1.2 2006/03/08 19:03:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -37,6 +37,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Consistent</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#createReturnResult(java.lang.String, org.eclipse.uml2.uml.Type) <em>Create Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
  * </ul>
  * </p>
@@ -145,6 +146,18 @@ public abstract class BehavioralFeatureTest
 	 * @generated
 	 */
 	public void testIsRedefinitionContextValid__RedefinableElement() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioralFeature#createReturnResult(java.lang.String, org.eclipse.uml2.uml.Type) <em>Create Return Result</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.BehavioralFeature#createReturnResult(java.lang.String, org.eclipse.uml2.uml.Type)
+	 * @generated
+	 */
+	public void testCreateReturnResult__String_Type() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationTest.java,v 1.1 2006/02/21 16:32:24 khussey Exp $
+ * $Id: EnumerationTest.java,v 1.2 2006/03/08 19:03:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,12 +25,6 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
- * </ul>
- * </p>
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Enumeration#createOwnedLiteral(java.lang.String) <em>Create Owned Literal</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -97,18 +91,6 @@ public class EnumerationTest
 	 * @generated
 	 */
 	public void testGetOwnedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Enumeration#createOwnedLiteral(java.lang.String) <em>Create Owned Literal</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Enumeration#createOwnedLiteral(java.lang.String)
-	 * @generated
-	 */
-	public void testCreateOwnedLiteral__String() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.9 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Component.java,v 1.10 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -256,6 +256,38 @@ public interface Component
 	 */
 	ComponentRealization getRealization(String name, boolean ignoreCase,
 			boolean createOnDemand);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
+	 * @generated
+	 */
+	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	Enumeration createOwnedEnumeration(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	PrimitiveType createOwnedPrimitiveType(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @generated
+	 */
+	Interface createOwnedInterface(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

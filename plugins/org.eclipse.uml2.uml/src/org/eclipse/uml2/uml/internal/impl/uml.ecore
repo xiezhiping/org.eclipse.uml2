@@ -929,6 +929,7 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
+    <eOperations name="isBinary" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="getEndTypes" upperBound="-1" eType="#//Type">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="endType is derived from the types of the member ends.&#xD;&#xA;result = self.memberEnd->collect(e | e.type)"/>
@@ -1046,6 +1047,8 @@
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="ignoreCase" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
+    <eOperations name="getUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getAllUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
     <eOperations name="getGenerals" ordered="false" upperBound="-1" eType="#//Classifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The general classifiers are the classifiers referenced by the generalization relationships.&#xD;&#xA;result = self.parents()"/>
@@ -1785,6 +1788,19 @@
       <eParameters name="newDefault" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
+    <eOperations name="setBooleanDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    </eOperations>
+    <eOperations name="setIntegerDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Integer"/>
+    </eOperations>
+    <eOperations name="setStringDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="setUnlimitedNaturalDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
+    <eOperations name="setNullDefaultValue" ordered="false" lowerBound="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterSet" ordered="false"
         upperBound="-1" eType="#//ParameterSet" eOpposite="#//ParameterSet/parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2175,6 +2191,23 @@
       <eParameters name="newOpposite" ordered="false" lowerBound="1" eType="#//Property"/>
     </eOperations>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
+    <eOperations name="setIsNavigable" ordered="false" lowerBound="1">
+      <eParameters name="isNavigable" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    </eOperations>
+    <eOperations name="getOtherEnd" ordered="false" eType="#//Property"/>
+    <eOperations name="setBooleanDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    </eOperations>
+    <eOperations name="setIntegerDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Integer"/>
+    </eOperations>
+    <eOperations name="setStringDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="setUnlimitedNaturalDefaultValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
+    <eOperations name="setNullDefaultValue" ordered="false" lowerBound="1"/>
     <eOperations name="isAttribute" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isAttribute() is true if the Property is defined as an attribute of some classifier.&#xD;&#xA;result = Classifier.allInstances->exists(c | c.attribute->includes(p))"/>
@@ -2922,6 +2955,9 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
+    <eOperations name="getImplementedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getAllImplementedInterfaces" ordered="false" upperBound="-1"
+        eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7385,6 +7421,19 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A component is a subtype of Class which provides for a Component having attributes and operations, and being able to participate in Associations and Generalizations. A Component may form the abstraction for a set of realizingClassifiers that realize its behavior. In addition, because a Class itself is a subtype of an EncapsulatedClassifier, a Component may optionally have an internal structure and own a set of Ports that formalize its interaction points.&#xA;&#xA;&#xA;&#xA;A component has a number of provided and required Interfaces, that form the basis for wiring components together, either using Dependencies, or by using Connectors. A provided Interface is one that is either implemented directly by the component or one of its realizingClassifiers, or it is the type of a provided Port of the Component. A required interface is designated by a Usage Dependency from the Component or one of its realizingClassifiers, or it is the type of a required Port.&#xA;&#xA;"/>
     </eAnnotations>
+    <eOperations name="createOwnedClass" ordered="false" lowerBound="1" eType="#//Class">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="isAbstract" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    </eOperations>
+    <eOperations name="createOwnedEnumeration" ordered="false" lowerBound="1" eType="#//Enumeration">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="createOwnedPrimitiveType" ordered="false" lowerBound="1" eType="#//PrimitiveType">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="createOwnedInterface" ordered="false" lowerBound="1" eType="#//Interface">
+      <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
+    </eOperations>
     <eOperations name="realizedInterfaces" ordered="false" upperBound="-1" eType="#//Interface">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Utility returning the set of realized interfaces of a component:&#xD;&#xA;result = (classifier.clientDependency->&#xA;select(dependency|dependency.oclIsKindOf(Realization) and dependency.supplier.oclIsKindOf(Interface)))->&#xA;collect(dependency|dependency.client)"/>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PrimitiveTypeItemProvider.java,v 1.5 2006/02/21 21:40:13 khussey Exp $
+ * $Id: PrimitiveTypeItemProvider.java,v 1.6 2006/03/08 19:01:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+//import org.eclipse.uml2.uml.PrimitiveType;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 

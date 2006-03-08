@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.23 2006/03/07 21:43:25 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1785,12 +1785,11 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public NotificationChain basicSetInActivity(Activity newInActivity,
 			NotificationChain msgs) {
-		setActivity(newInActivity);
-		return msgs;
+		return basicSetActivity(newInActivity, msgs);
 	}
 
 	/**

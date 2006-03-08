@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.7 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Association.java,v 1.8 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -348,5 +348,13 @@ public interface Association
 	 * @generated
 	 */
 	boolean validateAssociationEnds(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isBinary();
 
 } // Association

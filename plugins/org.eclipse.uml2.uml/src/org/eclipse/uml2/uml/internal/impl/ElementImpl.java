@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.26 2006/03/07 21:43:25 khussey Exp $
+ * $Id: ElementImpl.java,v 1.27 2006/03/08 19:02:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -391,6 +391,17 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getRelationships(EClass eClass) {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(29));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(29), result = ElementOperations.getRelationships(this,
+					eClass));
+			}
+			return result;
+		}
 		return ElementOperations.getRelationships(this, eClass);
 	}
 
@@ -420,6 +431,17 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getSourceDirectedRelationships(EClass eClass) {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(31));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(31), result = ElementOperations
+					.getSourceDirectedRelationships(this, eClass));
+			}
+			return result;
+		}
 		return ElementOperations.getSourceDirectedRelationships(this, eClass);
 	}
 
@@ -449,6 +471,17 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getTargetDirectedRelationships(EClass eClass) {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
+				.getEOperations().get(33));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
+					.get(33), result = ElementOperations
+					.getTargetDirectedRelationships(this, eClass));
+			}
+			return result;
+		}
 		return ElementOperations.getTargetDirectedRelationships(this, eClass);
 	}
 

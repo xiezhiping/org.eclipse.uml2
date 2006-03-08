@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: BehavioredClassifierTest.java,v 1.2 2006/03/08 19:03:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -29,7 +29,8 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#validateClassBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Class Behavior</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface) <em>Create Interface Realization</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces() <em>Get Implemented Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces() <em>Get All Implemented Interfaces</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -94,13 +95,25 @@ public abstract class BehavioredClassifierTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface) <em>Create Interface Realization</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces() <em>Get Implemented Interfaces</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.BehavioredClassifier#createInterfaceRealization(org.eclipse.uml2.uml.Interface)
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces()
 	 * @generated
 	 */
-	public void testCreateInterfaceRealization__Interface() {
+	public void testGetImplementedInterfaces() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces() <em>Get All Implemented Interfaces</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces()
+	 * @generated
+	 */
+	public void testGetAllImplementedInterfaces() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
