@@ -15027,7 +15027,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwPhTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedOperation xmi:id="_3ADC7B74022D42EE305C00E3" name="bestVisibility" type="_3ADC7B74022D3CAD9E0F01D0" isQuery="true" bodyCondition="_rpfwRRTaEdqZu-3Jy1-uYg">
+        <ownedOperation xmi:id="_3ADC7B74022D42EE305C00E3" name="bestVisibility" type="_3ADC7B74022D41C2D6020188" isQuery="true" bodyCondition="_rpfwRRTaEdqZu-3Jy1-uYg">
           <ownedComment xmi:id="_rpfwQBTaEdqZu-3Jy1-uYg" body="The query bestVisibility() examines a set of VisibilityKinds, and returns public as the preferred visibility." annotatedElement="_3ADC7B74022D42EE305C00E3">
             <eAnnotations xmi:id="_rpfwQRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwQhTaEdqZu-3Jy1-uYg"/>
@@ -15036,7 +15036,7 @@
           <ownedRule xmi:id="_rpfwRRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00E3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpfwRhTaEdqZu-3Jy1-uYg" body="result = if vis->includes(#public) then #public else #private endif" language="OCL"/>
           </ownedRule>
-          <returnResult xmi:id="_rpfwQxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CAD9E0F01D0" direction="return"/>
+          <returnResult xmi:id="_rpfwQxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D41C2D6020188" direction="return"/>
           <ownedParameter xmi:id="_3ADC7B74022D42EE668803C7" name="vis" type="_3ADC7B74022D41C2D6020188">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ggfn0RTbEdqZu-3Jy1-uYg" value="-1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ggfn0BTbEdqZu-3Jy1-uYg"/>
