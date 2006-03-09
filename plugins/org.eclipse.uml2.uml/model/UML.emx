@@ -484,11 +484,6 @@
       <returnResult xmi:id="_urWVsGwQEdq14q0ETb1t3g" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
   </ownedMember>
-  <ownedMember xmi:type="uml:Class" xmi:id="_2QuT0GvdEdq4DLWZOhbdEA" name="ExtensionEnd">
-    <ownedOperation xmi:id="_3FVzkFYkEdqB6vblk3tuMA" name="isSetLower" visibility="protected" type="_UdivYGvsEdqG6fBIPwe-mw" isQuery="true">
-      <returnResult xmi:id="_FRNFIK-lEdqjppZik4kD8A" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
-    </ownedOperation>
-  </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_9keOQGvdEdq4DLWZOhbdEA" name="RedefinableTemplateSignature">
     <ownedOperation xmi:id="_FvJUYFYLEdqrn7iZ0eqieg" name="getInheritedParameters" type="_KxRzgGvuEdqG6fBIPwe-mw" isQuery="true">
       <returnResult xmi:id="_Jbx-MFYLEdqrn7iZ0eqieg" type="_KxRzgGvuEdqG6fBIPwe-mw" direction="return">
