@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.1 2006/03/08 19:13:13 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.2 2006/03/09 21:03:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -189,7 +189,7 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9bRs686EdiEh75YJ_3n8g", "Expression"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m8qb6q86EdiEh75YJ_3n8g", "ValueSpecification"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m8qb-a86EdiEh75YJ_3n8g", "TypedElement"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_9w7c6a86Edih9-GG5afQ0g", "Type"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m82oi686EdiEh75YJ_3n8g", "Type"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VJSq86EdiEh75YJ_3n8g", "Association"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m88vAa86EdiEh75YJ_3n8g", "Classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m88vXa86EdiEh75YJ_3n8g", "RedefinableElement"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -244,7 +244,7 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9bQ-a86EdiEh75YJ_3n8g", "Collaboration"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9bQtq86EdiEh75YJ_3n8g", "UseCase"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9bQx686EdiEh75YJ_3n8g", "Include"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_usJZoq87Edi5QpYeY_yIpg", "Extend"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9bQ0686EdiEh75YJ_3n8g", "Extend"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9bQ6K86EdiEh75YJ_3n8g", "ExtensionPoint"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put(
 				"_m9neA686EdiEh75YJ_3n8g", "RedefinableTemplateSignature"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -403,6 +403,7 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9ngNq86EdiEh75YJ_3n8g", "ExpansionRegion"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9ng3686EdiEh75YJ_3n8g", "ProtocolTransition"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9ndZq86EdiEh75YJ_3n8g", "AssociationClass"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9bRRq86EdiEh75YJ_3n8g", "InterfaceRealization"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			// Basic.profile.uml2 -> Standard.profile.uml
 
