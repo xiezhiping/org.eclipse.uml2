@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.27 2006/03/08 19:02:44 khussey Exp $
+ * $Id: ElementImpl.java,v 1.28 2006/03/09 20:55:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -962,7 +962,7 @@ public abstract class ElementImpl
 			CacheAdapter cacheAdapter = getCacheAdapter();
 
 			if (cacheAdapter != null) {
-				getCacheAdapter().handleCrossReference(this);
+				cacheAdapter.handleCrossReference(this);
 			}
 		}
 
