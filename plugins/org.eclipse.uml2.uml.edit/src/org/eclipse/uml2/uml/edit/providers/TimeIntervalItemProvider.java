@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: TimeIntervalItemProvider.java,v 1.4 2006/03/09 15:08:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -100,7 +100,7 @@ public class TimeIntervalItemProvider
 				appendString(text, min.stringValue());
 			}
 
-			appendString(text, " .. ");
+			appendString(text, " .. "); //$NON-NLS-1$
 
 			ValueSpecification max = timeInterval.getMax();
 

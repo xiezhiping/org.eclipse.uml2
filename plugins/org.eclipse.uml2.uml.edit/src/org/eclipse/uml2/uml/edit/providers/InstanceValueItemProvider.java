@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueItemProvider.java,v 1.4 2006/01/24 22:46:31 khussey Exp $
+ * $Id: InstanceValueItemProvider.java,v 1.5 2006/03/09 15:08:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -27,7 +27,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-//import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -105,9 +106,17 @@ public class InstanceValueItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_InstanceValue_type"), object).toString(); //$NON-NLS-1$
+		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
+			object), "_UI_InstanceValue_type"); //$NON-NLS-1$
+
+		InstanceValue instanceValue = (InstanceValue) object;
+		String label = instanceValue.getLabel(shouldTranslate());
+
+		appendString(text, !UML2Util.isEmpty(label)
+			? label
+			: instanceValue.stringValue());
+
+		return text.toString();
 	}
 
 	/**

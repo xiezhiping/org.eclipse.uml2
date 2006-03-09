@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalOperations.java,v 1.6 2006/01/05 22:43:25 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalOperations.java,v 1.7 2006/03/09 15:08:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -77,7 +77,10 @@ public class LiteralUnlimitedNaturalOperations
 	 */
 	public static String stringValue(
 			LiteralUnlimitedNatural literalUnlimitedNatural) {
-		return String.valueOf(literalUnlimitedNatural.getValue());
+		int value = literalUnlimitedNatural.getValue();
+		return value == LiteralUnlimitedNatural.UNLIMITED
+			? "*" //$NON-NLS-1$
+			: String.valueOf(literalUnlimitedNatural.getValue());
 	}
 
 } // LiteralUnlimitedNaturalOperations
