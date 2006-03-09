@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.2 2006/03/08 21:58:02 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.3 2006/03/09 04:03:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -45,10 +45,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
-import org.eclipse.uml2.uml.LiteralInteger;
-import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.MultiplicityElement;
-import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
@@ -174,7 +171,7 @@ public class UML22UMLResourceHandler
 				if (extension != null
 					&& getValue(extension.getMixed(), "lowerValue") == null) { //$NON-NLS-1$
 
-					extensionEnd.setLower(1);
+					extensionEnd.setIntegerLowerValue(1);
 				}
 
 				return super.caseExtensionEnd(extensionEnd);
@@ -189,54 +186,12 @@ public class UML22UMLResourceHandler
 						extension.getMixed(), "lowerValue"); //$NON-NLS-1$
 
 					if (lowerValue != null) {
-
-						if (lowerValue instanceof LiteralInteger) {
-							multiplicityElement
-								.setLower(((LiteralInteger) lowerValue)
-									.integerValue());
-						} else {
-							multiplicityElement.setLowerValue(lowerValue);
-						}
-					}
-
-					ValueSpecification upperValue = (ValueSpecification) getValue(
-						extension.getMixed(), "upperValue"); //$NON-NLS-1$
-
-					if (upperValue != null) {
-
-						if (upperValue instanceof LiteralUnlimitedNatural) {
-							multiplicityElement
-								.setUpper(((LiteralUnlimitedNatural) upperValue)
-									.unlimitedValue());
-						} else {
-							multiplicityElement.setUpperValue(upperValue);
-						}
+						multiplicityElement.setLowerValue(lowerValue);
 					}
 				}
 
 				return super.caseMultiplicityElement(multiplicityElement);
 
-			}
-
-			public Object caseParameter(Parameter parameter) {
-				AnyType extension = getExtension(resource, parameter);
-
-				if (extension != null) {
-					ValueSpecification defaultValue = (ValueSpecification) getValue(
-						extension.getMixed(), "defaultValue"); //$NON-NLS-1$
-
-					if (defaultValue != null) {
-						String stringValue = defaultValue.stringValue();
-
-						if (stringValue != null) {
-							parameter.setDefault(stringValue);
-						} else {
-							parameter.setDefaultValue(defaultValue);
-						}
-					}
-				}
-
-				return super.caseParameter(parameter);
 			}
 
 			public Object caseProfileApplication(
@@ -460,23 +415,6 @@ public class UML22UMLResourceHandler
 					if (!UML2Util.isEmpty(name) && name.startsWith("base$")) { //$NON-NLS-1$
 						property.setName(Extension.METACLASS_ROLE_PREFIX
 							+ name.substring(5));
-					}
-				}
-
-				AnyType extension = getExtension(resource, property);
-
-				if (extension != null) {
-					ValueSpecification defaultValue = (ValueSpecification) getValue(
-						extension.getMixed(), "defaultValue"); //$NON-NLS-1$
-
-					if (defaultValue != null) {
-						String stringValue = defaultValue.stringValue();
-
-						if (stringValue != null) {
-							property.setDefault(stringValue);
-						} else {
-							property.setDefaultValue(defaultValue);
-						}
 					}
 				}
 

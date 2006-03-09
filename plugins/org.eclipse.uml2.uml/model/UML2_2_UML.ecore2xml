@@ -5,23 +5,11 @@
     <value name="uml2" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xsi:type="ecore:EReference" href="UML.ecore#//MultiplicityElement/upperValue"/>
-    <value xMLRepresentation="0"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
     <key xsi:type="ecore:EReference" href="UML.ecore#//MultiplicityElement/lowerValue"/>
     <value xMLRepresentation="0"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
     <key xsi:type="ecore:EReference" href="UML.ecore#//Namespace/packageImport"/>
-    <value xMLRepresentation="0"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
-    <key xsi:type="ecore:EReference" href="UML.ecore#//Parameter/defaultValue"/>
-    <value xMLRepresentation="0"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
-    <key xsi:type="ecore:EReference" href="UML.ecore#//Property/defaultValue"/>
     <value xMLRepresentation="0"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
