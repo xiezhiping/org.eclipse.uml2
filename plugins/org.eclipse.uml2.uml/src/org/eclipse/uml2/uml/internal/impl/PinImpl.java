@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.18 2006/03/09 03:40:50 khussey Exp $
+ * $Id: PinImpl.java,v 1.19 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -274,24 +274,6 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetUpper() {
-		MultiplicityElementOperations.unsetUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetUpper() {
-		return MultiplicityElementOperations.isSetUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -303,24 +285,6 @@ public class PinImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetLower() {
-		MultiplicityElementOperations.unsetLower(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetLower() {
-		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -609,25 +573,6 @@ public class PinImpl
 			DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIntegerLowerValue(int value) {
-		MultiplicityElementOperations.setIntegerLowerValue(this, value);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnlimitedNaturalUpperValue(int value) {
-		MultiplicityElementOperations
-			.setUnlimitedNaturalUpperValue(this, value);
 	}
 
 	/**
@@ -1009,10 +954,10 @@ public class PinImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.PIN__UPPER :
-				unsetUpper();
+				setUpper(UPPER_EDEFAULT);
 				return;
 			case UMLPackage.PIN__LOWER :
-				unsetLower();
+				setLower(LOWER_EDEFAULT);
 				return;
 			case UMLPackage.PIN__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -1105,9 +1050,9 @@ public class PinImpl
 			case UMLPackage.PIN__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PIN__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.PIN__LOWER :
-				return isSetLower();
+				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PIN__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.PIN__UPPER_VALUE) != null;
 			case UMLPackage.PIN__LOWER_VALUE :

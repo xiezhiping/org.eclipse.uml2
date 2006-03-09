@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.19 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.20 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -573,10 +573,10 @@ public class ActionInputPinImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER :
-				unsetUpper();
+				setUpper(UPPER_EDEFAULT);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__LOWER :
-				unsetLower();
+				setLower(LOWER_EDEFAULT);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -673,9 +673,9 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__LOWER :
-				return isSetLower();
+				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE) != null;
 			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :

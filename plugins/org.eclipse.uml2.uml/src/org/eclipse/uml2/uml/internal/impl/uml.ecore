@@ -1821,7 +1821,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
-        eType="#//String" volatile="true" unsettable="true" derived="true">
+        eType="#//String" volatile="true" transient="true" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a String that represents a value to be used when no argument is supplied for the Parameter."/>
       </eAnnotations>
@@ -1892,21 +1892,11 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isSetLower" ordered="false" lowerBound="1" eType="#//Boolean"/>
-    <eOperations name="isSetUpper" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="setLower" ordered="false" lowerBound="1">
       <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setUpper" ordered="false" lowerBound="1">
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
-    </eOperations>
-    <eOperations name="unsetLower" ordered="false" lowerBound="1"/>
-    <eOperations name="unsetUpper" ordered="false" lowerBound="1"/>
-    <eOperations name="setIntegerLowerValue" ordered="false" lowerBound="1">
-      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Integer"/>
-    </eOperations>
-    <eOperations name="setUnlimitedNaturalUpperValue" ordered="false" lowerBound="1">
-      <eParameters name="value" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
     <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1979,14 +1969,14 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" ordered="false"
-        eType="#//UnlimitedNatural" volatile="true" defaultValueLiteral="1" unsettable="true"
+        eType="#//UnlimitedNatural" volatile="true" transient="true" defaultValueLiteral="1"
         derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the upper bound of the multiplicity interval.&#xD;&#xA;Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" ordered="false"
-        eType="#//Integer" volatile="true" defaultValueLiteral="1" unsettable="true"
+        eType="#//Integer" volatile="true" transient="true" defaultValueLiteral="1"
         derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the lower bound of the multiplicity interval.&#xD;&#xA;Specifies the lower bound of the multiplicity interval, if it is expressed as an integer."/>
@@ -2282,7 +2272,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" ordered="false"
-        eType="#//String" volatile="true" unsettable="true" derived="true">
+        eType="#//String" volatile="true" transient="true" unsettable="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a String that represents a value to be used when no argument is supplied for the Property.&#xD;&#xA;A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated."/>
       </eAnnotations>
@@ -2704,7 +2694,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">
@@ -4347,16 +4337,9 @@
           eType="#//Integer">
         <eAnnotations source="redefines" references="#//MultiplicityElement/getLower"/>
       </contents>
-      <contents xsi:type="ecore:EOperation" name="isSetLower" ordered="false" lowerBound="1"
-          eType="#//Boolean">
-        <eAnnotations source="redefines" references="#//MultiplicityElement/isSetLower"/>
-      </contents>
       <contents xsi:type="ecore:EOperation" name="setLower" ordered="false" lowerBound="1">
         <eAnnotations source="redefines" references="#//MultiplicityElement/setLower"/>
         <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
-      </contents>
-      <contents xsi:type="ecore:EOperation" name="unsetLower" ordered="false" lowerBound="1">
-        <eAnnotations source="redefines" references="#//MultiplicityElement/unsetLower"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="lowerBound" ordered="false" lowerBound="1"
           eType="#//Integer">
@@ -4375,7 +4358,7 @@
         <eAnnotations source="redefines" references="#//TypedElement/type"/>
       </contents>
       <contents xsi:type="ecore:EAttribute" name="lower" ordered="false" eType="#//Integer"
-          volatile="true" defaultValueLiteral="0" unsettable="true" derived="true">
+          volatile="true" transient="true" defaultValueLiteral="0" derived="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype."/>
         </eAnnotations>

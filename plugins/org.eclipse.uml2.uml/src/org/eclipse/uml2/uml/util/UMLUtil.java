@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.17 2006/03/08 21:58:02 khussey Exp $
+ * $Id: UMLUtil.java,v 1.18 2006/03/09 21:30:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -402,22 +402,6 @@ public class UMLUtil
 					&& mergedMultiplicityElement.isUnique());
 		}
 
-		protected void mergeMultiplicityElement_Lower(
-				MultiplicityElement receivingMultiplicityElement,
-				MultiplicityElement mergedMultiplicityElement) {
-			receivingMultiplicityElement.setLower(getLesserLowerBound(
-				receivingMultiplicityElement.getLower(),
-				mergedMultiplicityElement.getLower()));
-		}
-
-		protected void mergeMultiplicityElement_Upper(
-				MultiplicityElement receivingMultiplicityElement,
-				MultiplicityElement mergedMultiplicityElement) {
-			receivingMultiplicityElement.setUpper(getGreaterUpperBound(
-				receivingMultiplicityElement.getUpper(),
-				mergedMultiplicityElement.getUpper()));
-		}
-
 		protected void mergeNamedElement_Visibility(
 				NamedElement receivingNamedElement,
 				NamedElement mergedNamedElement) {
@@ -481,14 +465,6 @@ public class UMLUtil
 							(MultiplicityElement) eObject);
 					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE) {
 						mergeMultiplicityElement_IsUnique(
-							(MultiplicityElement) copyEObject,
-							(MultiplicityElement) eObject);
-					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER) {
-						mergeMultiplicityElement_Lower(
-							(MultiplicityElement) copyEObject,
-							(MultiplicityElement) eObject);
-					} else if (eAttribute == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER) {
-						mergeMultiplicityElement_Upper(
 							(MultiplicityElement) copyEObject,
 							(MultiplicityElement) eObject);
 					} else if (eAttribute == UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY) {

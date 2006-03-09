@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.12 2006/03/08 19:02:44 khussey Exp $
+ * $Id: Parameter.java,v 1.13 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -149,7 +149,7 @@ public interface Parameter
 	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Default()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();

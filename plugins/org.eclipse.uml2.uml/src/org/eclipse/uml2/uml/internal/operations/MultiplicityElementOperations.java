@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.12 2006/03/09 03:41:00 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.13 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,7 +17,6 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
@@ -40,14 +39,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateValueSpecificationNoSideEffects(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Specification No Side Effects</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateValueSpecificationConstant(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Specification Constant</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isSetLower() <em>Is Set Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isSetUpper() <em>Is Set Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setLower(int) <em>Set Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setUpper(int) <em>Set Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#unsetLower() <em>Unset Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#unsetUpper() <em>Unset Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setIntegerLowerValue(int) <em>Set Integer Lower Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setUnlimitedNaturalUpperValue(int) <em>Set Unlimited Natural Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLower() <em>Get Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper() <em>Get Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isMultivalued() <em>Is Multivalued</em>}</li>
@@ -350,16 +343,9 @@ public class MultiplicityElementOperations
 	public static int lowerBound(MultiplicityElement multiplicityElement) {
 		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
 
-		if (lowerValue instanceof LiteralInteger) {
-			return lowerValue.integerValue();
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-			return ((Integer) basicEObjectImpl
-				.eVirtualGet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
-					new Integer(1))).intValue();
-		}
+		return lowerValue instanceof LiteralInteger
+			? lowerValue.integerValue()
+			: 1;
 	}
 
 	/**
@@ -374,16 +360,9 @@ public class MultiplicityElementOperations
 	public static int upperBound(MultiplicityElement multiplicityElement) {
 		ValueSpecification upperValue = multiplicityElement.getUpperValue();
 
-		if (upperValue instanceof LiteralUnlimitedNatural) {
-			return upperValue.unlimitedValue();
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-			return ((Integer) basicEObjectImpl
-				.eVirtualGet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
-					new Integer(1))).intValue();
-		}
+		return upperValue instanceof LiteralUnlimitedNatural
+			? upperValue.unlimitedValue()
+			: 1;
 	}
 
 	/**
@@ -395,21 +374,10 @@ public class MultiplicityElementOperations
 			int newLower) {
 		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
 
-		if (lowerValue != null) {
-
-			if (lowerValue instanceof LiteralInteger) {
-				((LiteralInteger) lowerValue).setValue(newLower);
-			} else {
-				throw new IllegalArgumentException(String.valueOf(newLower));
-			}
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-			basicEObjectImpl
-				.eVirtualSet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
-					new Integer(newLower));
-		}
+		((LiteralInteger) (lowerValue instanceof LiteralInteger
+			? lowerValue
+			: multiplicityElement.createLowerValue(null, null,
+				UMLPackage.Literals.LITERAL_INTEGER))).setValue(newLower);
 	}
 
 	/**
@@ -421,104 +389,11 @@ public class MultiplicityElementOperations
 			int newUpper) {
 		ValueSpecification upperValue = multiplicityElement.getUpperValue();
 
-		if (upperValue != null) {
-
-			if (upperValue instanceof LiteralUnlimitedNatural) {
-				((LiteralUnlimitedNatural) upperValue).setValue(newUpper);
-			} else {
-				throw new IllegalArgumentException(String.valueOf(newUpper));
-			}
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-			basicEObjectImpl
-				.eVirtualSet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
-					new Integer(newUpper));
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isSetLower(MultiplicityElement multiplicityElement) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-		return ((Integer) basicEObjectImpl
-			.eVirtualGet(
-				basicEObjectImpl
-					.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
-				new Integer(1))).intValue() != 1;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static void unsetLower(MultiplicityElement multiplicityElement) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-		basicEObjectImpl
-			.eVirtualUnset(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isSetUpper(MultiplicityElement multiplicityElement) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-		return ((Integer) basicEObjectImpl
-			.eVirtualGet(
-				basicEObjectImpl
-					.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER),
-				new Integer(1))).intValue() != 1;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static void unsetUpper(MultiplicityElement multiplicityElement) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) multiplicityElement;
-		basicEObjectImpl
-			.eVirtualUnset(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static void setIntegerLowerValue(
-			MultiplicityElement multiplicityElement, int value) {
-		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
-
-		((LiteralInteger) (lowerValue instanceof LiteralInteger
-			? lowerValue
-			: multiplicityElement.createLowerValue(null, null,
-				UMLPackage.Literals.LITERAL_INTEGER))).setValue(value);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static void setUnlimitedNaturalUpperValue(
-			MultiplicityElement multiplicityElement, int value) {
-		ValueSpecification upperValue = multiplicityElement.getUpperValue();
-
 		((LiteralUnlimitedNatural) (upperValue instanceof LiteralUnlimitedNatural
 			? upperValue
 			: multiplicityElement.createUpperValue(null, null,
 				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
-			.setValue(value);
+			.setValue(newUpper);
 	}
 
 } // MultiplicityElementOperations

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.18 2006/02/22 20:48:16 khussey Exp $
+ * $Id: PortImpl.java,v 1.19 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -765,10 +765,10 @@ public class PortImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.PORT__UPPER :
-				unsetUpper();
+				setUpper(UPPER_EDEFAULT);
 				return;
 			case UMLPackage.PORT__LOWER :
-				unsetLower();
+				setLower(LOWER_EDEFAULT);
 				return;
 			case UMLPackage.PORT__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -904,9 +904,9 @@ public class PortImpl
 			case UMLPackage.PORT__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PORT__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.PORT__LOWER :
-				return isSetLower();
+				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PORT__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.PORT__UPPER_VALUE) != null;
 			case UMLPackage.PORT__LOWER_VALUE :

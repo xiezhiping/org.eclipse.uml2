@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_2="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xsi:schemaLocation="http:///Ecore_2_1RgZIMezEdmTJL3rR1ioJg.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_1RgZIcezEdmTJL3rR1ioJg" xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML" appliedProfile="_0TBYYGvaEdq4DLWZOhbdEA">
   <eAnnotations xmi:id="_1gWuMGvaEdq4DLWZOhbdEA" source="appliedStereotypes">
-    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_0USgMK8kEdq9B5_HWrPktA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+    <contents xmi:type="Ecore_2:Ecore__EPackage" xmi:id="_BivVsK-tEdqgneDFAvRaTQ" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   </eAnnotations>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
     <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="attributes">
@@ -260,13 +260,9 @@
     <ownedOperation xmi:id="_WLw30FYLEdqrn7iZ0eqieg" name="getLower" type="_XqvEIGvsEdqG6fBIPwe-mw" isQuery="true">
       <returnResult xmi:id="_ZNVLYFYLEdqrn7iZ0eqieg" type="_XqvEIGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_RBRvIGJwEdqjztwYO37Abg" name="isSetLower" type="_UdivYGvsEdqG6fBIPwe-mw" isQuery="true">
-      <returnResult xmi:id="_UaZAAGJwEdqjztwYO37Abg" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_3FVzkFYkEdqB6vblk3tuMA" name="setLower" visibility="protected">
       <ownedParameter xmi:id="_4dG3wFYkEdqB6vblk3tuMA" name="newLower" visibility="protected" type="_XqvEIGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_OIFfAGJxEdqjztwYO37Abg" name="unsetLower" visibility="protected"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_9keOQGvdEdq4DLWZOhbdEA" name="RedefinableTemplateSignature">
     <ownedOperation xmi:id="_FvJUYFYLEdqrn7iZ0eqieg" name="getInheritedParameters" type="_KxRzgGvuEdqG6fBIPwe-mw" isQuery="true">
@@ -298,25 +294,11 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_Gjgl0GveEdq4DLWZOhbdEA" name="MultiplicityElement" isAbstract="true">
-    <ownedOperation xmi:id="_VclAUGJxEdqjztwYO37Abg" name="isSetLower" type="_UdivYGvsEdqG6fBIPwe-mw" isQuery="true">
-      <returnResult xmi:id="_XvW7QGJxEdqjztwYO37Abg" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
-    </ownedOperation>
-    <ownedOperation xmi:id="_ksT54GJxEdqjztwYO37Abg" name="isSetUpper" type="_UdivYGvsEdqG6fBIPwe-mw" isQuery="true">
-      <returnResult xmi:id="_m1P8UGJxEdqjztwYO37Abg" type="_UdivYGvsEdqG6fBIPwe-mw" direction="return"/>
-    </ownedOperation>
     <ownedOperation xmi:id="_qtCaIFYkEdqB6vblk3tuMA" name="setLower" visibility="protected">
       <ownedParameter xmi:id="_scWboFYkEdqB6vblk3tuMA" name="newLower" visibility="protected" type="_XqvEIGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_vlEgEFYkEdqB6vblk3tuMA" name="setUpper" visibility="protected">
       <ownedParameter xmi:id="_xJp4QFYkEdqB6vblk3tuMA" name="newUpper" visibility="protected" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
-    <ownedOperation xmi:id="_Z-24sGJxEdqjztwYO37Abg" name="unsetLower" visibility="protected"/>
-    <ownedOperation xmi:id="_oykkoGJxEdqjztwYO37Abg" name="unsetUpper" visibility="protected"/>
-    <ownedOperation xmi:id="_2QTM0K8XEdqjppZik4kD8A" name="setIntegerLowerValue">
-      <ownedParameter xmi:id="_5h0A4K8XEdqjppZik4kD8A" name="value" type="_XqvEIGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
-    <ownedOperation xmi:id="_89myUK8XEdqjppZik4kD8A" name="setUnlimitedNaturalUpperValue">
-      <ownedParameter xmi:id="_89myUa8XEdqjppZik4kD8A" name="value" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_Jp_1oGveEdq4DLWZOhbdEA" name="Property">
@@ -1005,22 +987,22 @@
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
     <eAnnotations xmi:id="_KWFGYGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_0UbqIK8kEdq9B5_HWrPktA" instanceClassName="boolean"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_BivVsa-tEdqgneDFAvRaTQ" instanceClassName="boolean"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
     <eAnnotations xmi:id="_KWFGYmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_0UbqIa8kEdq9B5_HWrPktA" instanceClassName="int"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_BivVsq-tEdqgneDFAvRaTQ" instanceClassName="int"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
     <eAnnotations xmi:id="_KWO3YGzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_0UbqIq8kEdq9B5_HWrPktA" instanceClassName="java.lang.String"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_BivVs6-tEdqgneDFAvRaTQ" instanceClassName="java.lang.String"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
     <eAnnotations xmi:id="_KWO3YmzMEdq4d7jt9iWoqg" source="appliedStereotypes">
-      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_0UbqI68kEdq9B5_HWrPktA" instanceClassName="int"/>
+      <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_BivVtK-tEdqgneDFAvRaTQ" instanceClassName="int"/>
     </eAnnotations>
   </ownedMember>
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind"/>

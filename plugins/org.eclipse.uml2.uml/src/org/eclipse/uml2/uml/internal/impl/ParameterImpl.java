@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.25 2006/03/09 03:40:50 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.26 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -326,24 +326,6 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetUpper() {
-		MultiplicityElementOperations.unsetUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetUpper() {
-		return MultiplicityElementOperations.isSetUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -355,24 +337,6 @@ public class ParameterImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetLower() {
-		MultiplicityElementOperations.unsetLower(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetLower() {
-		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -979,25 +943,6 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIntegerLowerValue(int value) {
-		MultiplicityElementOperations.setIntegerLowerValue(this, value);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnlimitedNaturalUpperValue(int value) {
-		MultiplicityElementOperations
-			.setUnlimitedNaturalUpperValue(this, value);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isMultivalued() {
 		return MultiplicityElementOperations.isMultivalued(this);
 	}
@@ -1431,10 +1376,10 @@ public class ParameterImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.PARAMETER__UPPER :
-				unsetUpper();
+				setUpper(UPPER_EDEFAULT);
 				return;
 			case UMLPackage.PARAMETER__LOWER :
-				unsetLower();
+				setLower(LOWER_EDEFAULT);
 				return;
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -1513,9 +1458,9 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.PARAMETER__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.PARAMETER__LOWER :
-				return isSetLower();
+				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE) != null;
 			case UMLPackage.PARAMETER__LOWER_VALUE :

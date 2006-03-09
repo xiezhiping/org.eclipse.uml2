@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.3 2006/03/09 04:03:44 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.4 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -171,7 +171,7 @@ public class UML22UMLResourceHandler
 				if (extension != null
 					&& getValue(extension.getMixed(), "lowerValue") == null) { //$NON-NLS-1$
 
-					extensionEnd.setIntegerLowerValue(1);
+					extensionEnd.setLower(1);
 				}
 
 				return super.caseExtensionEnd(extensionEnd);

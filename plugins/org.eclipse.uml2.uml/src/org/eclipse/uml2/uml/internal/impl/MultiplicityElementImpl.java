@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.17 2006/03/09 03:40:50 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.18 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -236,24 +236,6 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void unsetUpper() {
-		MultiplicityElementOperations.unsetUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetUpper() {
-		return MultiplicityElementOperations.isSetUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getLower() {
 		return MultiplicityElementOperations.getLower(this);
 	}
@@ -265,24 +247,6 @@ public abstract class MultiplicityElementImpl
 	 */
 	public void setLower(int newLower) {
 		MultiplicityElementOperations.setLower(this, newLower);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetLower() {
-		MultiplicityElementOperations.unsetLower(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetLower() {
-		return MultiplicityElementOperations.isSetLower(this);
 	}
 
 	/**
@@ -564,25 +528,6 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIntegerLowerValue(int value) {
-		MultiplicityElementOperations.setIntegerLowerValue(this, value);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnlimitedNaturalUpperValue(int value) {
-		MultiplicityElementOperations
-			.setUnlimitedNaturalUpperValue(this, value);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isMultivalued() {
 		return MultiplicityElementOperations.isMultivalued(this);
 	}
@@ -743,10 +688,10 @@ public abstract class MultiplicityElementImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-				unsetUpper();
+				setUpper(UPPER_EDEFAULT);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
-				unsetLower();
+				setLower(LOWER_EDEFAULT);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -780,9 +725,9 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
-				return isSetLower();
+				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE) != null;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :

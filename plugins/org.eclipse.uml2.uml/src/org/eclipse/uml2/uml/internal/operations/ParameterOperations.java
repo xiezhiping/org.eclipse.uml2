@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.14 2006/03/08 19:03:02 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.15 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,7 +17,6 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
@@ -237,16 +236,9 @@ public class ParameterOperations
 	public static String getDefault(Parameter parameter) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
 
-		if (defaultValue != null) {
-			return defaultValue.stringValue();
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
-			return (String) basicEObjectImpl
-				.eVirtualGet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
-					null);
-		}
+		return defaultValue == null
+			? null
+			: defaultValue.stringValue();
 	}
 
 	/**
@@ -260,12 +252,7 @@ public class ParameterOperations
 		if (defaultValue != null) {
 			ValueSpecificationOperations.setValue(defaultValue, newDefault);
 		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
-			basicEObjectImpl
-				.eVirtualSet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT),
-					newDefault);
+			parameter.setStringDefaultValue(newDefault);
 		}
 	}
 
@@ -275,10 +262,7 @@ public class ParameterOperations
 	 * @generated NOT
 	 */
 	public static boolean isSetDefault(Parameter parameter) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
-		return basicEObjectImpl
-			.eVirtualIsSet(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT));
+		return parameter.getDefault() != null;
 	}
 
 	/**
@@ -287,10 +271,10 @@ public class ParameterOperations
 	 * @generated NOT
 	 */
 	public static void unsetDefault(Parameter parameter) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) parameter;
-		basicEObjectImpl
-			.eVirtualUnset(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.PARAMETER__DEFAULT));
+
+		if (parameter.isSetDefault()) {
+			parameter.eUnset(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
+		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.10 2006/02/03 04:09:29 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.11 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,11 +17,9 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.LiteralInteger;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -37,9 +35,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#validateAggregation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#getLower() <em>Get Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#isSetLower() <em>Is Set Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#setLower(int) <em>Set Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#unsetLower() <em>Unset Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExtensionEnd#lowerBound() <em>Lower Bound</em>}</li>
  * </ul>
  * </p>
@@ -136,16 +132,9 @@ public class ExtensionEndOperations
 	public static int lowerBound(ExtensionEnd extensionEnd) {
 		ValueSpecification lowerValue = extensionEnd.getLowerValue();
 
-		if (lowerValue instanceof LiteralInteger) {
-			return lowerValue.integerValue();
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
-			return ((Integer) basicEObjectImpl
-				.eVirtualGet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
-					new Integer(0))).intValue();
-		}
+		return lowerValue instanceof LiteralInteger
+			? lowerValue.integerValue()
+			: 0;
 	}
 
 	/**
@@ -163,49 +152,7 @@ public class ExtensionEndOperations
 	 * @generated NOT
 	 */
 	public static void setLower(ExtensionEnd extensionEnd, int newLower) {
-		ValueSpecification lowerValue = extensionEnd.getLowerValue();
-
-		if (lowerValue != null) {
-
-			if (lowerValue instanceof LiteralInteger) {
-				((LiteralInteger) lowerValue).setValue(newLower);
-			} else {
-				throw new IllegalArgumentException(String.valueOf(newLower));
-			}
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
-			basicEObjectImpl
-				.eVirtualSet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
-					new Integer(newLower));
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isSetLower(ExtensionEnd extensionEnd) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
-		return ((Integer) basicEObjectImpl
-			.eVirtualGet(
-				basicEObjectImpl
-					.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER),
-				new Integer(0))).intValue() != 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static void unsetLower(ExtensionEnd extensionEnd) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) extensionEnd;
-		basicEObjectImpl
-			.eVirtualUnset(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER));
+		MultiplicityElementOperations.setLower(extensionEnd, newLower);
 	}
 
 } // ExtensionEndOperations

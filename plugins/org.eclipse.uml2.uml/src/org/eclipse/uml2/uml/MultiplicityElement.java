@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.9 2006/03/09 03:41:00 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.10 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -109,11 +109,9 @@ public interface MultiplicityElement
 	 * Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
-	 * @see #isSetUpper()
-	 * @see #unsetUpper()
 	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Upper()
-	 * @model default="1" unsettable="true" dataType="org.eclipse.uml2.uml.UnlimitedNatural" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.uml.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();
@@ -123,35 +121,10 @@ public interface MultiplicityElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Upper</em>' attribute.
-	 * @see #isSetUpper()
-	 * @see #unsetUpper()
 	 * @see #getUpper()
 	 * @generated
 	 */
 	void setUpper(int value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper <em>Upper</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetUpper()
-	 * @see #getUpper()
-	 * @see #setUpper(int)
-	 * @generated
-	 */
-	void unsetUpper();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper <em>Upper</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Upper</em>' attribute is set.
-	 * @see #unsetUpper()
-	 * @see #getUpper()
-	 * @see #setUpper(int)
-	 * @generated
-	 */
-	boolean isSetUpper();
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
@@ -163,11 +136,9 @@ public interface MultiplicityElement
 	 * Specifies the lower bound of the multiplicity interval, if it is expressed as an integer.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
-	 * @see #isSetLower()
-	 * @see #unsetLower()
 	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Lower()
-	 * @model default="1" unsettable="true" dataType="org.eclipse.uml2.uml.Integer" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.uml.Integer" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();
@@ -177,35 +148,10 @@ public interface MultiplicityElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lower</em>' attribute.
-	 * @see #isSetLower()
-	 * @see #unsetLower()
 	 * @see #getLower()
 	 * @generated
 	 */
 	void setLower(int value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.MultiplicityElement#getLower <em>Lower</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetLower()
-	 * @see #getLower()
-	 * @see #setLower(int)
-	 * @generated
-	 */
-	void unsetLower();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.MultiplicityElement#getLower <em>Lower</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Lower</em>' attribute is set.
-	 * @see #unsetLower()
-	 * @see #getLower()
-	 * @see #setLower(int)
-	 * @generated
-	 */
-	boolean isSetLower();
 
 	/**
 	 * Returns the value of the '<em><b>Upper Value</b></em>' containment reference.
@@ -344,22 +290,6 @@ public interface MultiplicityElement
 	 */
 	boolean validateValueSpecificationConstant(DiagnosticChain diagnostics,
 			Map context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
-	 * @generated
-	 */
-	void setIntegerLowerValue(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
-	 * @generated
-	 */
-	void setUnlimitedNaturalUpperValue(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

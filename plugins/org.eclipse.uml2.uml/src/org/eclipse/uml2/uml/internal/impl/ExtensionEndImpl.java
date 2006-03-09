@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.16 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.17 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,19 +142,10 @@ public class ExtensionEndImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetLower() {
-		ExtensionEndOperations.unsetLower(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSetLower() {
-		return ExtensionEndOperations.isSetLower(this);
+		return getLower() != 0;
 	}
 
 	/**
@@ -378,7 +369,7 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.EXTENSION_END__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.EXTENSION_END__LOWER :
 				return isSetLower();
 			case UMLPackage.EXTENSION_END__UPPER_VALUE :

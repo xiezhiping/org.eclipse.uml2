@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.24 2006/03/08 19:03:02 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.25 2006/03/09 21:30:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -26,7 +26,6 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
@@ -643,16 +642,9 @@ public class PropertyOperations
 	public static String getDefault(Property property) {
 		ValueSpecification defaultValue = property.getDefaultValue();
 
-		if (defaultValue != null) {
-			return defaultValue.stringValue();
-		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
-			return (String) basicEObjectImpl
-				.eVirtualGet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT),
-					null);
-		}
+		return defaultValue == null
+			? null
+			: defaultValue.stringValue();
 	}
 
 	/**
@@ -666,12 +658,7 @@ public class PropertyOperations
 		if (defaultValue != null) {
 			ValueSpecificationOperations.setValue(defaultValue, newDefault);
 		} else {
-			BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
-			basicEObjectImpl
-				.eVirtualSet(
-					basicEObjectImpl
-						.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT),
-					newDefault);
+			property.setStringDefaultValue(newDefault);
 		}
 	}
 
@@ -744,10 +731,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean isSetDefault(Property property) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
-		return basicEObjectImpl
-			.eVirtualIsSet(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
+		return property.getDefault() != null;
 	}
 
 	/**
@@ -756,10 +740,10 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static void unsetDefault(Property property) {
-		BasicEObjectImpl basicEObjectImpl = (BasicEObjectImpl) property;
-		basicEObjectImpl
-			.eVirtualUnset(basicEObjectImpl
-				.eDerivedStructuralFeatureID(UMLPackage.Literals.PROPERTY__DEFAULT));
+
+		if (property.isSetDefault()) {
+			property.eUnset(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
+		}
 	}
 
 	/**

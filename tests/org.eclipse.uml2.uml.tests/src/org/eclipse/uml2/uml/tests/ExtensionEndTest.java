@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: ExtensionEndTest.java,v 1.2 2006/03/09 21:28:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -111,30 +111,6 @@ public class ExtensionEndTest
 	 * @generated
 	 */
 	public void testSetLower() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ExtensionEnd#unsetLower() <em>unsetLower()</em>}' method.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ExtensionEnd#unsetLower()
-	 * @generated
-	 */
-	public void testUnsetLower() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ExtensionEnd#isSetLower() <em>isSetLower()</em>}' method.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ExtensionEnd#isSetLower()
-	 * @generated
-	 */
-	public void testIsSetLower() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

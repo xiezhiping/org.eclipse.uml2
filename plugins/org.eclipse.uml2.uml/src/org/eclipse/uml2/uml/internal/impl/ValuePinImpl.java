@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.17 2006/03/07 20:25:14 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.18 2006/03/09 21:30:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -524,10 +524,10 @@ public class ValuePinImpl
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
 			case UMLPackage.VALUE_PIN__UPPER :
-				unsetUpper();
+				setUpper(UPPER_EDEFAULT);
 				return;
 			case UMLPackage.VALUE_PIN__LOWER :
-				unsetLower();
+				setLower(LOWER_EDEFAULT);
 				return;
 			case UMLPackage.VALUE_PIN__UPPER_VALUE :
 				setUpperValue((ValueSpecification) null);
@@ -624,9 +624,9 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.VALUE_PIN__UPPER :
-				return isSetUpper();
+				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.VALUE_PIN__LOWER :
-				return isSetLower();
+				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.VALUE_PIN__UPPER_VALUE :
 				return eVirtualGet(UMLPackage.VALUE_PIN__UPPER_VALUE) != null;
 			case UMLPackage.VALUE_PIN__LOWER_VALUE :
