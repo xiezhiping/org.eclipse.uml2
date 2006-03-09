@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.2 2006/02/22 20:48:27 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.3 2006/03/09 21:51:31 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -112,8 +112,7 @@ public abstract class GenerateProfileAction
 
 	protected EnumerationLiteral generateOwnedLiteral(Enumeration enumeration,
 			String name) {
-		return (EnumerationLiteral) enumeration.getOwnedLiteral(name, false,
-			true);
+		return enumeration.getOwnedLiteral(name, false, true);
 	}
 
 }
