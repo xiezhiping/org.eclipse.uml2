@@ -528,12 +528,6 @@
     <ownedOperation xmi:id="_vlEgEFYkEdqB6vblk3tuMA" name="setUpper" visibility="protected">
       <ownedParameter xmi:id="_xJp4QFYkEdqB6vblk3tuMA" name="newUpper" visibility="protected" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_2QTM0K8XEdqjppZik4kD8A" name="setIntegerLowerValue">
-      <ownedParameter xmi:id="_5h0A4K8XEdqjppZik4kD8A" name="value" type="_XqvEIGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
-    <ownedOperation xmi:id="_89myUK8XEdqjppZik4kD8A" name="setUnlimitedNaturalUpperValue">
-      <ownedParameter xmi:id="_89myUa8XEdqjppZik4kD8A" name="value" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read"/>
-    </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_Jp_1oGveEdq4DLWZOhbdEA" name="Property">
     <ownedOperation xmi:id="_oLamMFYJEdqrn7iZ0eqieg" name="getDefault" type="_aAyVgGvsEdqG6fBIPwe-mw" isQuery="true">
