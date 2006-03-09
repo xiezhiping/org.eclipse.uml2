@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
+ * $Id: PinImpl.java,v 1.18 2006/03/09 03:40:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -609,6 +609,25 @@ public class PinImpl
 			DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerLowerValue(int value) {
+		MultiplicityElementOperations.setIntegerLowerValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnlimitedNaturalUpperValue(int value) {
+		MultiplicityElementOperations
+			.setUnlimitedNaturalUpperValue(this, value);
 	}
 
 	/**

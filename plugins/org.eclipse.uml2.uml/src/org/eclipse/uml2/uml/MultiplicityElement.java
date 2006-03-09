@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.8 2006/02/22 20:48:14 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.9 2006/03/09 03:41:00 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -344,6 +344,22 @@ public interface MultiplicityElement
 	 */
 	boolean validateValueSpecificationConstant(DiagnosticChain diagnostics,
 			Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setIntegerLowerValue(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setUnlimitedNaturalUpperValue(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

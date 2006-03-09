@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.17 2006/03/09 03:40:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -657,6 +657,25 @@ public abstract class StructuralFeatureImpl
 			DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerLowerValue(int value) {
+		MultiplicityElementOperations.setIntegerLowerValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnlimitedNaturalUpperValue(int value) {
+		MultiplicityElementOperations
+			.setUnlimitedNaturalUpperValue(this, value);
 	}
 
 	/**

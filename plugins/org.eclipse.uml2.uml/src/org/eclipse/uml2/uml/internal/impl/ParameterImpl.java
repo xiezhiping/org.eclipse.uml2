@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.25 2006/03/09 03:40:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -972,6 +972,25 @@ public class ParameterImpl
 			DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerLowerValue(int value) {
+		MultiplicityElementOperations.setIntegerLowerValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnlimitedNaturalUpperValue(int value) {
+		MultiplicityElementOperations
+			.setUnlimitedNaturalUpperValue(this, value);
 	}
 
 	/**

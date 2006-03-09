@@ -985,6 +985,12 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/unsetLower"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/unsetUpper"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/setIntegerLowerValue">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//MultiplicityElement/setIntegerLowerValue/value"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/setUnlimitedNaturalUpperValue">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//MultiplicityElement/setUnlimitedNaturalUpperValue/value"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/getLower"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/getUpper"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/isMultivalued"/>

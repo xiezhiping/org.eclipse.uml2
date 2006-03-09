@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.11 2006/02/03 04:09:29 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.12 2006/03/09 03:41:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -46,6 +46,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setUpper(int) <em>Set Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#unsetLower() <em>Unset Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#unsetUpper() <em>Unset Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setIntegerLowerValue(int) <em>Set Integer Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setUnlimitedNaturalUpperValue(int) <em>Set Unlimited Natural Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLower() <em>Get Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper() <em>Get Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isMultivalued() <em>Is Multivalued</em>}</li>
@@ -486,6 +488,37 @@ public class MultiplicityElementOperations
 		basicEObjectImpl
 			.eVirtualUnset(basicEObjectImpl
 				.eDerivedStructuralFeatureID(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setIntegerLowerValue(
+			MultiplicityElement multiplicityElement, int value) {
+		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
+
+		((LiteralInteger) (lowerValue instanceof LiteralInteger
+			? lowerValue
+			: multiplicityElement.createLowerValue(null, null,
+				UMLPackage.Literals.LITERAL_INTEGER))).setValue(value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static void setUnlimitedNaturalUpperValue(
+			MultiplicityElement multiplicityElement, int value) {
+		ValueSpecification upperValue = multiplicityElement.getUpperValue();
+
+		((LiteralUnlimitedNatural) (upperValue instanceof LiteralUnlimitedNatural
+			? upperValue
+			: multiplicityElement.createUpperValue(null, null,
+				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL)))
+			.setValue(value);
 	}
 
 } // MultiplicityElementOperations

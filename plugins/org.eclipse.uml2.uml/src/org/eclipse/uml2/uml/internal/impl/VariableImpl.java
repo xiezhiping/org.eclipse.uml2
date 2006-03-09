@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.20 2006/03/07 20:25:16 khussey Exp $
+ * $Id: VariableImpl.java,v 1.21 2006/03/09 03:40:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -660,6 +660,25 @@ public class VariableImpl
 			DiagnosticChain diagnostics, Map context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerLowerValue(int value) {
+		MultiplicityElementOperations.setIntegerLowerValue(this, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnlimitedNaturalUpperValue(int value) {
+		MultiplicityElementOperations
+			.setUnlimitedNaturalUpperValue(this, value);
 	}
 
 	/**

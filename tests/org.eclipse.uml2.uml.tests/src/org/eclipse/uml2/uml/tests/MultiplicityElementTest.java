@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementTest.java,v 1.1 2006/02/21 16:32:28 khussey Exp $
+ * $Id: MultiplicityElementTest.java,v 1.2 2006/03/09 03:41:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -34,6 +34,8 @@ import org.eclipse.uml2.uml.MultiplicityElement;
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateValueSpecificationNoSideEffects(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Specification No Side Effects</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateValueSpecificationConstant(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Specification Constant</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setIntegerLowerValue(int) <em>Set Integer Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#setUnlimitedNaturalUpperValue(int) <em>Set Unlimited Natural Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isMultivalued() <em>Is Multivalued</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#includesCardinality(int) <em>Includes Cardinality</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.uml.MultiplicityElement) <em>Includes Multiplicity</em>}</li>
@@ -230,6 +232,30 @@ public abstract class MultiplicityElementTest
 	 * @generated
 	 */
 	public void testValidateValueSpecificationConstant__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.MultiplicityElement#setIntegerLowerValue(int) <em>Set Integer Lower Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.MultiplicityElement#setIntegerLowerValue(int)
+	 * @generated
+	 */
+	public void testSetIntegerLowerValue__int() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.MultiplicityElement#setUnlimitedNaturalUpperValue(int) <em>Set Unlimited Natural Upper Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.MultiplicityElement#setUnlimitedNaturalUpperValue(int)
+	 * @generated
+	 */
+	public void testSetUnlimitedNaturalUpperValue__int() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

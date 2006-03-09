@@ -1902,6 +1902,12 @@
     </eOperations>
     <eOperations name="unsetLower" ordered="false" lowerBound="1"/>
     <eOperations name="unsetUpper" ordered="false" lowerBound="1"/>
+    <eOperations name="setIntegerLowerValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//Integer"/>
+    </eOperations>
+    <eOperations name="setUnlimitedNaturalUpperValue" ordered="false" lowerBound="1">
+      <eParameters name="value" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
     <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived lower attribute must equal the lowerBound.&#xD;&#xA;result = lowerBound()"/>
@@ -2698,7 +2704,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">
