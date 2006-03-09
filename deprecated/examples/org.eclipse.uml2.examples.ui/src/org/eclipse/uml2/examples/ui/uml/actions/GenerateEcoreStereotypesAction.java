@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.1 2005/12/22 20:19:56 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.2 2006/03/09 21:50:51 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -225,7 +225,7 @@ public class GenerateEcoreStereotypesAction
 							"referenceName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
 						generateOwnedAttribute(eReferenceStereotype,
 							"isResolveProxies", booleanPrimitiveType, 0, 1) //$NON-NLS-1$
-							.setDefault(Boolean.TRUE.toString());
+							.setBooleanDefaultValue(true);
 					}
 				}, ExamplesUIPlugin.INSTANCE.getString(
 					"_UI_GenerateEcoreStereotypesActionCommand_label", //$NON-NLS-1$
