@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.18 2006/03/09 21:30:35 khussey Exp $
+ * $Id: UMLUtil.java,v 1.19 2006/03/10 02:22:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2304,6 +2304,15 @@ public class UMLUtil
 				setName(eDataType, primitiveType);
 
 				eDataType.setInstanceClassName(eDataType.getName());
+
+				try {
+					eDataType.getInstanceClass();
+				} catch (Exception e) {
+					UMLPlugin.INSTANCE.log(e);
+					eDataType
+						.setInstanceClassName(EcorePackage.Literals.ESTRING
+							.getInstanceClassName());
+				}
 
 				defaultCase(primitiveType);
 
