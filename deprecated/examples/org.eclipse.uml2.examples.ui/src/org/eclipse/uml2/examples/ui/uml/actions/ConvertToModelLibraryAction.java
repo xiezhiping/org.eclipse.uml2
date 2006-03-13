@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToModelLibraryAction.java,v 1.3 2006/01/16 22:44:17 khussey Exp $
+ * $Id: ConvertToModelLibraryAction.java,v 1.4 2006/03/13 18:33:35 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -40,12 +40,12 @@ public class ConvertToModelLibraryAction
 			if (object instanceof Model) {
 				final Model model = (Model) object;
 
-				EcoreUtil.resolveAll(model);
-
 				return new RefreshingChangeCommand(editingDomain,
 					new Runnable() {
 
 						public void run() {
+							EcoreUtil.resolveAll(model);
+
 							Profile umlProfile = applyProfile(model,
 								UMLResource.STANDARD_PROFILE_URI);
 
