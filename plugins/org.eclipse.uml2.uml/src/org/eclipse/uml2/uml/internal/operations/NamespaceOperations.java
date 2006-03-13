@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.11 2006/02/22 20:48:22 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.12 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,19 +20,20 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
-import org.eclipse.uml2.uml.VisibilityKind;
-
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -78,29 +79,27 @@ public class NamespaceOperations
 	 * All the members of a Namespace are distinguishable within it.
 	 * membersAreDistinguishable()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateMembersDistinguishable(Namespace namespace,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (!namespace.membersAreDistinguishable()) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMembersDistinguishable", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namespace, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{namespace}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.NAMESPACE__MEMBERS_DISTINGUISHABLE,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Namespace_MembersDistinguishable_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namespace)),
+					new Object[]{namespace}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

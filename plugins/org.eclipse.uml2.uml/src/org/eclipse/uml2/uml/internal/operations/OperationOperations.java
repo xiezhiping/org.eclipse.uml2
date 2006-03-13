@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.9 2006/02/22 20:48:22 khussey Exp $
+ * $Id: OperationOperations.java,v 1.10 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Operation;
@@ -29,6 +28,7 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -113,29 +113,27 @@ public class OperationOperations
 	 * A bodyCondition can only be specified for a query operation.
 	 * bodyCondition->notEmpty() implies isQuery
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateOnlyBodyForQuery(Operation operation,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (operation.getBodyCondition() != null && !operation.isQuery()) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.OPERATION__ONLY_BODY_FOR_QUERY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOnlyBodyForQuery", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(operation, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{operation}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.OPERATION__ONLY_BODY_FOR_QUERY,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Operation_OnlyBodyForQuery_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, operation)),
+					new Object[]{operation}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

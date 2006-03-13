@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.19 2006/03/08 21:58:02 khussey Exp $
+ * $Id: PackageOperations.java,v 1.20 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,11 +20,8 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.uml2.common.util.CacheAdapter;
-import org.eclipse.uml2.uml.Enumeration;
-import org.eclipse.uml2.uml.Interface;
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -36,10 +33,17 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
+
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PrimitiveType;
@@ -47,7 +51,7 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
-
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -234,30 +238,48 @@ public class PackageOperations
 	 * If an element that is owned by a package has visibility, it is public or private.
 	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateElementsPublicOrPrivate(
 			org.eclipse.uml2.uml.Package package_, DiagnosticChain diagnostics,
 			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateElementsPublicOrPrivate", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(package_, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{package_}));
+		boolean result = true;
+
+		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements
+			.hasNext();) {
+
+			Element ownedElement = (Element) ownedElements.next();
+
+			if (ownedElement instanceof NamedElement) {
+				VisibilityKind visibility = ((NamedElement) ownedElement)
+					.getVisibility();
+
+				if (visibility != null
+					&& visibility != VisibilityKind.PUBLIC_LITERAL
+					&& visibility != VisibilityKind.PRIVATE_LITERAL) {
+
+					result = false;
+
+					if (diagnostics == null) {
+						return result;
+					} else {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.PACKAGE__ELEMENTS_PUBLIC_OR_PRIVATE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Package_ElementsPublicOrPrivate_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											ownedElement, package_)),
+								new Object[]{package_, ownedElement}));
+					}
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

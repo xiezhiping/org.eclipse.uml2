@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.6 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -59,30 +61,35 @@ public class ElementImportOperations
 	 * The visibility of an ElementImport is either public or private.
 	 * self.visibility = #public or self.visibility = #private
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateVisibilityPublicOrPrivate(
 			ElementImport elementImport, DiagnosticChain diagnostics,
 			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		VisibilityKind visibility = elementImport.getVisibility();
+
+		if (visibility != VisibilityKind.PUBLIC_LITERAL
+			&& visibility != VisibilityKind.PRIVATE_LITERAL) {
+
+			result = false;
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.ELEMENT_IMPORT__VISIBILITY_PUBLIC_OR_PRIVATE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateVisibilityPublicOrPrivate", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(elementImport, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_ElementImport_VisibilityPublicOrPrivate_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, elementImport)),
 						new Object[]{elementImport}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -125,30 +132,36 @@ public class ElementImportOperations
 	 * An importedElement has either public visibility or no visibility at all.
 	 * self.importedElement.visibility.notEmpty() implies self.importedElement.visibility = #public
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateImportedElementIsPublic(
 			ElementImport elementImport, DiagnosticChain diagnostics,
 			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		PackageableElement importedElement = elementImport.getImportedElement();
+		VisibilityKind visibility = importedElement == null
+			? null
+			: importedElement.getVisibility();
+
+		if (visibility != null
+			&& visibility != VisibilityKind.PUBLIC_LITERAL) {
+
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateImportedElementIsPublic", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(elementImport, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{elementImport}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ELEMENT_IMPORT__IMPORTED_ELEMENT_IS_PUBLIC,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_ElementImport_ImportedElementIsPublic_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, importedElement)),
+					new Object[]{elementImport, importedElement}));
+
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ConstraintOperations.java,v 1.5 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -59,29 +60,27 @@ public class ConstraintOperations
 	 * A constraint cannot be applied to itself.
 	 * not constrainedElement->includes(self)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateNotApplyToSelf(Constraint constraint,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (constraint.getConstrainedElements().contains(constraint)) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONSTRAINT__NOT_APPLY_TO_SELF,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNotApplyToSelf", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(constraint, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{constraint}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CONSTRAINT__NOT_APPLY_TO_SELF,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Constraint_NotApplyToSelf_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, constraint)),
+					new Object[]{constraint}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

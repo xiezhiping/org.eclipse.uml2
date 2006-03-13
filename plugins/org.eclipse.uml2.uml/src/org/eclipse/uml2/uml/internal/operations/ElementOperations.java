@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.34 2006/03/13 18:30:55 khussey Exp $
+ * $Id: ElementOperations.java,v 1.35 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -37,9 +38,13 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
+
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
@@ -54,6 +59,8 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
+
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -118,29 +125,26 @@ public class ElementOperations
 	 * An element may not directly or indirectly own itself.
 	 * not self.allOwnedElements()->includes(self)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateNotOwnSelf(Element element,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (element.allOwnedElements().contains(element)) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ELEMENT__NOT_OWN_SELF,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNotOwnSelf", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(element, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{element}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ELEMENT__NOT_OWN_SELF, UMLPlugin.INSTANCE
+						.getString("_UI_Element_NotOwnSelf_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, element)),
+					new Object[]{element}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -150,29 +154,26 @@ public class ElementOperations
 	 * Elements that must be owned must have an owner.
 	 * self.mustBeOwned() implies owner->notEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateHasOwner(Element element,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (element.mustBeOwned() && element.getOwner() == null) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.ELEMENT__HAS_OWNER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateHasOwner", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(element, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{element}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.ELEMENT__HAS_OWNER, UMLPlugin.INSTANCE
+						.getString("_UI_Element_HasOwner_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, element)),
+					new Object[]{element}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

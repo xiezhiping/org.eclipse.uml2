@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.13 2006/02/22 20:48:22 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.14 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,12 +22,13 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -141,29 +142,30 @@ public class NamedElementOperations
 	 * If a NamedElement is not owned by a Namespace, it does not have a visibility.
 	 * namespace->isEmpty() implies visibility->isEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateVisibilityNeedsOwnership(
 			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (namedElement.getNamespace() == null
+			&& namedElement
+				.eIsSet(UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY)) {
+
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateVisibilityNeedsOwnership", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(namedElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{namedElement}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.NAMED_ELEMENT__VISIBILITY_NEEDS_OWNERSHIP,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_NamedElement_VisibilityNeedsOwnership_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, namedElement)),
+					new Object[]{namedElement}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

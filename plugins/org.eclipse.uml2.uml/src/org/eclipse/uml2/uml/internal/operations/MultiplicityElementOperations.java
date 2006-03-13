@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.13 2006/03/09 21:30:34 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.14 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,6 +22,7 @@ import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -72,30 +73,32 @@ public class MultiplicityElementOperations
 	 * A multiplicity must define at least one valid cardinality that is greater than zero.
 	 * upperBound()->notEmpty() implies upperBound() > 0
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateUpperGt0(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		int upperBound = multiplicityElement.upperBound();
+
+		if (upperBound != LiteralUnlimitedNatural.UNLIMITED && upperBound < 1) {
+			result = false;
+
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+					.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.MULTIPLICITY_ELEMENT__UPPER_GT0,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUpperGt0", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+						UMLPlugin.INSTANCE.getString(
+							"_UI_MultiplicityElement_UpperGT0_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context,
+								multiplicityElement)), new Object[]{
+							multiplicityElement, new Integer(upperBound)}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -105,30 +108,32 @@ public class MultiplicityElementOperations
 	 * The lower bound must be a non-negative integer literal.
 	 * lowerBound()->notEmpty() implies lowerBound() >= 0
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateLowerGe0(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		int lowerBound = multiplicityElement.lowerBound();
+
+		if (lowerBound < 0) {
+			result = false;
+
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+					.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.MULTIPLICITY_ELEMENT__LOWER_GE0,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateLowerGe0", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+						UMLPlugin.INSTANCE.getString(
+							"_UI_MultiplicityElement_LowerGE0_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context,
+								multiplicityElement)), new Object[]{
+							multiplicityElement, new Integer(lowerBound)}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -138,30 +143,34 @@ public class MultiplicityElementOperations
 	 * The upper bound must be greater than or equal to the lower bound.
 	 * (upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateUpperGeLower(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		int upperBound = multiplicityElement.upperBound();
+
+		if (upperBound != LiteralUnlimitedNatural.UNLIMITED
+			&& upperBound < multiplicityElement.lowerBound()) {
+
+			result = false;
+
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+					.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.MULTIPLICITY_ELEMENT__UPPER_GE_LOWER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateUpperGeLower", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(multiplicityElement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{multiplicityElement}));
+						UMLPlugin.INSTANCE.getString(
+							"_UI_MultiplicityElement_UpperGELower_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context,
+								multiplicityElement)), new Object[]{
+							multiplicityElement, new Integer(upperBound)}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

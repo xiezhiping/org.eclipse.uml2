@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.16 2006/03/08 19:03:02 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.17 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Feature;
@@ -35,8 +36,8 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.Usage;
-
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -95,29 +96,27 @@ public class ClassifierOperations
 	 * Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.
 	 * not self.allParents()->includes(self)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateNoCyclesInGeneralization(
 			Classifier classifier, DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (classifier.allParents().contains(classifier)) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoCyclesInGeneralization", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifier, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASSIFIER__NO_CYCLES_IN_GENERALIZATION,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Classifier_NoCyclesInGeneralization_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, classifier)),
+					new Object[]{classifier}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -127,29 +126,36 @@ public class ClassifierOperations
 	 * A classifier may only specialize classifiers of a valid type.
 	 * self.parents()->forAll(c | self.maySpecializeType(c))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSpecializeType(Classifier classifier,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASSIFIER__SPECIALIZE_TYPE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSpecializeType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(classifier, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{classifier}));
+		boolean result = true;
+
+		for (Iterator parents = classifier.parents().iterator(); parents
+			.hasNext();) {
+
+			Classifier parent = (Classifier) parents.next();
+
+			if (!classifier.maySpecializeType(parent)) {
+				result = false;
+
+				if (diagnostics == null) {
+					return result;
+				} else {
+					diagnostics
+						.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.CLASSIFIER__SPECIALIZE_TYPE,
+							UMLPlugin.INSTANCE.getString(
+								"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, classifier,
+									parent)), new Object[]{classifier, parent}));
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**

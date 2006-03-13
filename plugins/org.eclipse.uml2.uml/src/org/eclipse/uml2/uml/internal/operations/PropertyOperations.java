@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.25 2006/03/09 21:30:34 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.26 2006/03/13 20:50:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -21,9 +21,8 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -36,11 +35,14 @@ import org.eclipse.uml2.uml.LiteralNull;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.Node;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -108,29 +110,41 @@ public class PropertyOperations
 	 * A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.
 	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateMultiplicityOfComposite(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMultiplicityOfComposite", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+		boolean result = true;
+
+		if (property.isComposite()) {
+			Property otherEnd = property.getOtherEnd();
+
+			if (otherEnd != null) {
+				int upperBound = otherEnd.upperBound();
+
+				if (upperBound == LiteralUnlimitedNatural.UNLIMITED
+					|| upperBound < 1) {
+
+					result = false;
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											property)), new Object[]{property,
+									new Integer(upperBound)}));
+					}
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -143,29 +157,49 @@ public class PropertyOperations
 	 *     self.subsettedProperty->forAll(sp |
 	 *       sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSubsettingContextConforms(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__SUBSETTING_CONTEXT_CONFORMS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSubsettingContextConforms", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+
+		boolean result = true;
+
+		spLoop : for (Iterator sp = property.getSubsettedProperties()
+			.iterator(); sp.hasNext();) {
+
+			Property subsettedProperty = (Property) sp.next();
+
+			for (Iterator sc = property.subsettingContext().iterator(); sc
+				.hasNext();) {
+
+				Classifier subsettingContext = (Classifier) sc.next();
+
+				for (Iterator c = subsettedProperty.subsettingContext()
+					.iterator(); c.hasNext();) {
+
+					if (subsettingContext.conformsTo((Classifier) c.next())) {
+						continue spLoop;
+					}
+				}
 			}
-			return false;
+
+			result = false;
+
+			if (diagnostics == null) {
+				return result;
+			} else {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__SUBSETTING_CONTEXT_CONFORMS,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Property_SubsettingContextConforms_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, property,
+							subsettedProperty)), new Object[]{property,
+						subsettedProperty}));
+			}
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -218,29 +252,45 @@ public class PropertyOperations
 	 *     ((self.upperBound()->notEmpty() and sp.upperBound()->notEmpty()) implies
 	 *       self.upperBound()<=sp.upperBound() ))
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSubsettingRules(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+		boolean result = true;
+
+		Type type = property.getType();
+		int upperBound = property.upperBound();
+
+		for (Iterator subsettedProperties = property.getSubsettedProperties()
+			.iterator(); subsettedProperties.hasNext();) {
+
+			Property subsettedProperty = (Property) subsettedProperties.next();
+			Type subsettedType = subsettedProperty.getType();
+			int subsettedUpperBound = subsettedProperty.upperBound();
+
+			if (!(type == null
+				? subsettedType == null
+				: type.conformsTo(subsettedProperty.getType()))
+				|| (subsettedUpperBound != LiteralUnlimitedNatural.UNLIMITED && (upperBound == LiteralUnlimitedNatural.UNLIMITED || upperBound > subsettedUpperBound))) {
+
+				result = false;
+
+				if (diagnostics == null) {
+					return result;
+				} else {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.PROPERTY__SUBSETTING_RULES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSubsettingRules", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Property_SubsettingRules_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, property,
+								subsettedProperty)), new Object[]{property,
+							subsettedProperty}));
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -250,29 +300,29 @@ public class PropertyOperations
 	 * Only a navigable property can be marked as readOnly.
 	 * isReadOnly implies isNavigable()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateNavigableReadonly(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (property.isReadOnly() && property.getAssociation() != null
+			&& !property.isNavigable()) {
+
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__NAVIGABLE_READONLY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNavigableReadonly", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__NAVIGABLE_READONLY,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Property_NavigableReadOnly_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, property)),
+					new Object[]{property}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -282,29 +332,27 @@ public class PropertyOperations
 	 * A derived union is derived.
 	 * isDerivedUnion implies isDerived
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateDerivedUnionIsDerived(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (property.isDerivedUnion() && !property.isDerived()) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__DERIVED_UNION_IS_DERIVED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDerivedUnionIsDerived", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__DERIVED_UNION_IS_DERIVED,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Property_DerivedUnionIsDerived_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, property)),
+					new Object[]{property}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -314,29 +362,27 @@ public class PropertyOperations
 	 * A derived union is read only.
 	 * isDerivedUnion implies isReadOnly
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateDerivedUnionIsReadOnly(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		if (property.isDerivedUnion() && !property.isReadOnly()) {
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROPERTY__DERIVED_UNION_IS_READ_ONLY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDerivedUnionIsReadOnly", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROPERTY__DERIVED_UNION_IS_READ_ONLY,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Property_DerivedUnionIsReadOnly_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, property)),
+					new Object[]{property}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -346,29 +392,38 @@ public class PropertyOperations
 	 * A property may not subset a property with the same name.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSubsettedPropertyNames(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+		boolean result = true;
+
+		String name = property.getName();
+
+		for (Iterator subsettedProperties = property.getSubsettedProperties()
+			.iterator(); subsettedProperties.hasNext();) {
+
+			Property subsettedProperty = (Property) subsettedProperties.next();
+
+			if (safeEquals(name, subsettedProperty.getName())) {
+				result = false;
+
+				if (diagnostics == null) {
+					return result;
+				} else {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.PROPERTY__SUBSETTED_PROPERTY_NAMES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSubsettedPropertyNames", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{property}));
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Property_SubsettingPropertyNames_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, property,
+								subsettedProperty)), new Object[]{property,
+							subsettedProperty}));
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -378,29 +433,33 @@ public class PropertyOperations
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateDeploymentTarget(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+		boolean result = true;
+
+		if (!property.getDeployments().isEmpty()) {
+
+			if (!property.isComposite()
+				|| !(property.getType() instanceof Node)
+				|| !(property.getOwner() instanceof Node)) {
+
+				result = false;
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.PROPERTY__DEPLOYMENT_TARGET,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDeploymentTarget", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(property, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Property_DeploymentTarget_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, property)),
 						new Object[]{property}));
+				}
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
