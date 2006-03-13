@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.33 2006/03/01 21:08:59 khussey Exp $
+ * $Id: ElementOperations.java,v 1.34 2006/03/13 18:30:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -23,11 +23,11 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
@@ -37,12 +37,8 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.common.util.UniqueEList;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DirectedRelationship;
@@ -57,9 +53,7 @@ import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
-
 import org.eclipse.uml2.uml.UMLPackage;
-
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -1168,40 +1162,46 @@ public class ElementOperations
 		return stereotypeApplication;
 	}
 
+	protected static EList applyAllStereotypes(Element element, EList extensions,
+			EList stereotypeApplications) {
+
+		for (Iterator e = extensions.iterator(); e.hasNext();) {
+			Extension extension = (Extension) e.next();
+			org.eclipse.uml2.uml.Class metaclass = extension.getMetaclass();
+
+			if (metaclass != null) {
+				EClassifier eClassifier = ClassOperations
+					.getEClassifier(metaclass);
+
+				if (eClassifier != null && eClassifier.isInstance(element)) {
+					Stereotype stereotype = extension.getStereotype();
+
+					if (!element.isStereotypeApplied(stereotype)) {
+						stereotypeApplications.add(applyStereotype(element,
+							stereotype.getDefinition()));
+					}
+				}
+			}
+		}
+
+		return stereotypeApplications;
+	}
+
 	protected static EList applyAllStereotypes(Element element, EList extensions) {
 		EList stereotypeApplications = new UniqueEList.FastCompare();
 
-		for (Iterator allContents = getAllContents(element, true, false); allContents
-			.hasNext();) {
+		applyAllStereotypes(element, extensions, stereotypeApplications);
 
-			EObject eObject = (EObject) allContents.next();
+		if (!element.eContents().isEmpty()) {
 
-			if (eObject instanceof Element) {
-				Element containedElement = (Element) eObject;
+			for (Iterator eAllContents = element.eAllContents(); eAllContents
+				.hasNext();) {
 
-				for (Iterator e = extensions.iterator(); e.hasNext();) {
-					Extension extension = (Extension) e.next();
-					org.eclipse.uml2.uml.Class metaclass = extension
-						.getMetaclass();
+				EObject eObject = (EObject) eAllContents.next();
 
-					if (metaclass != null) {
-						EClassifier eClassifier = ClassOperations
-							.getEClassifier(metaclass);
-
-						if (eClassifier != null
-							&& eClassifier.isInstance(containedElement)) {
-
-							Stereotype stereotype = extension.getStereotype();
-
-							if (!containedElement
-								.isStereotypeApplied(stereotype)) {
-
-								stereotypeApplications.add(applyStereotype(
-									containedElement, stereotype
-										.getDefinition()));
-							}
-						}
-					}
+				if (eObject instanceof Element) {
+					applyAllStereotypes((Element) eObject, extensions,
+						stereotypeApplications);
 				}
 			}
 		}
@@ -1252,34 +1252,46 @@ public class ElementOperations
 		return applyStereotype(element, stereotype.getDefinition());
 	}
 
-	public static EList unapplyAllNonApplicableStereotypes(Element element) {
-		EList allNonApplicableStereotypes = new UniqueEList.FastCompare();
+	protected static EList unapplyAllNonApplicableStereotypes(Element element,
+			EList nonApplicableStereotypes) {
 
-		for (Iterator allContents = getAllContents(element, true, false); allContents
+		for (Iterator sa = element.getStereotypeApplications().iterator(); sa
 			.hasNext();) {
 
-			EObject eObject = (EObject) allContents.next();
+			EObject stereotypeApplication = (EObject) sa.next();
 
-			if (eObject instanceof Element) {
-				Element containedElement = (Element) eObject;
+			if (!element
+				.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
 
-				for (Iterator sa = containedElement.getStereotypeApplications()
-					.iterator(); sa.hasNext();) {
+				nonApplicableStereotypes.add(stereotypeApplication);
 
-					EObject stereotypeApplication = (EObject) sa.next();
+				destroy(stereotypeApplication);
+			}
+		}
 
-					if (!containedElement
-						.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
+		return nonApplicableStereotypes;
+	}
 
-						allNonApplicableStereotypes.add(stereotypeApplication);
+	public static EList unapplyAllNonApplicableStereotypes(Element element) {
+		EList nonApplicableStereotypes = new UniqueEList.FastCompare();
 
-						destroy(stereotypeApplication);
-					}
+		unapplyAllNonApplicableStereotypes(element, nonApplicableStereotypes);
+
+		if (!element.eContents().isEmpty()) {
+
+			for (Iterator eAllContents = element.eAllContents(); eAllContents
+				.hasNext();) {
+
+				EObject eObject = (EObject) eAllContents.next();
+
+				if (eObject instanceof Element) {
+					unapplyAllNonApplicableStereotypes((Element) eObject,
+						nonApplicableStereotypes);
 				}
 			}
 		}
 
-		return allNonApplicableStereotypes;
+		return nonApplicableStereotypes;
 	}
 
 	/**
