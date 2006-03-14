@@ -7662,9 +7662,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rfqe0xTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ADE30056" name="class" type="_3ADC7B74022D3DE6AB400163" association="_3ADC7B74022D3DE6ADE20180">
-          <eAnnotations xmi:id="_rfzowRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rfzowhTaEdqZu-3Jy1-uYg" referenceName="class_"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rfzovBTaEdqZu-3Jy1-uYg" body="The class that owns the operation." annotatedElement="_3ADC7B74022D3DE6ADE30056">
             <eAnnotations xmi:id="_rfzovRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfzovhTaEdqZu-3Jy1-uYg"/>
@@ -7737,9 +7734,6 @@
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_GdXbURTbEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ACA00029" name="class" type="_3ADC7B74022D3DE6AB400163" association="_3ADC7B74022D3DE6AC9F015E">
-          <eAnnotations xmi:id="_rfqexBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rfqexRTaEdqZu-3Jy1-uYg" referenceName="class_"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rfgt2xTaEdqZu-3Jy1-uYg" body="The class that owns the property, and of which the property is an attribute." annotatedElement="_3ADC7B74022D3DE6ACA00029">
             <eAnnotations xmi:id="_rfqewBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfqewRTaEdqZu-3Jy1-uYg"/>
@@ -13814,9 +13808,6 @@
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_GfJkARTbEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2E20299" name="class" type="_3ADC7B74022D3DE6D5AD039B" subsettedProperty="_3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A _3ADC7B74022D3DE6E42E035E" association="_3ADC7B74022D3DE6E2E1037E">
-          <eAnnotations xmi:id="_rpyrJxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rpyrKBTaEdqZu-3Jy1-uYg" referenceName="class_"/>
-          </eAnnotations>
           <ownedComment xmi:id="_vBHVQGd5EdqCCpdUvbQY5w" body="References the Class that owns the Property." annotatedElement="_3ADC7B74022D3DE6E2E20299">
             <eAnnotations xmi:id="_vBHVQWd5EdqCCpdUvbQY5w" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_vBHVQmd5EdqCCpdUvbQY5w"/>
@@ -14213,9 +14204,6 @@
           <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JYIu0CkdEdqPP7hCKvQ4ww" value="1"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E30F0095" name="class" type="_3ADC7B74022D3DE6D5AD039B" subsettedProperty="_3ADC7B74022D3DFCBDBD028D _3ADC7B74022D3DFCB86501A0 _3ADC7B74022D3DFCBE7F025A" association="_3ADC7B74022D3DE6E30E0260">
-          <eAnnotations xmi:id="_rp8cJhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_rp8cJxTaEdqZu-3Jy1-uYg" referenceName="class_"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rp8cIRTaEdqZu-3Jy1-uYg" body="The class that owns the operation." annotatedElement="_3ADC7B74022D3DE6E30F0095">
             <eAnnotations xmi:id="_rp8cIhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rp8cIxTaEdqZu-3Jy1-uYg"/>
