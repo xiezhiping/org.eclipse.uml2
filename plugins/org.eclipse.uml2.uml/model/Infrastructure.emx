@@ -897,9 +897,6 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rOOwghTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CB1D63A01EB" name="ownedComment" type="_3ADC7B74022D3CAC070A03AB" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CB1D639015E" aggregation="composite">
-            <eAnnotations xmi:id="_nx_5YDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nx_5YTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rXxHCxTaEdqZu-3Jy1-uYg" body="The Comments owned by this element." annotatedElement="_3ADC7B74022D3CB1D63A01EB">
               <eAnnotations xmi:id="_rXxHDBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rXxHDRTaEdqZu-3Jy1-uYg"/>
@@ -1845,9 +1842,6 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4cgRYGgYEdqfYrlcy8iLFA"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3E555CFE0288" name="operand" type="_3ADC7B74022D3CA00F020323" isOrdered="true" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3E555CFC002C" aggregation="composite">
-            <eAnnotations xmi:id="_nyTbYzwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nyTbZDwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rULniRTaEdqZu-3Jy1-uYg" body="Specifies a sequence of operands." annotatedElement="_3ADC7B74022D3E555CFE0288">
               <eAnnotations xmi:id="_rULnihTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rULnixTaEdqZu-3Jy1-uYg"/>
@@ -2091,9 +2085,6 @@
             <defaultValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_J0Y34CkbEdqPP7hCKvQ4ww" value="1"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D5391BE0239" name="upperValue" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D5391BE00B3" aggregation="composite">
-            <eAnnotations xmi:id="_nyclUDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nyclUTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rVE_ZBTaEdqZu-3Jy1-uYg" body="The specification of the upper bound for this multiplicity." annotatedElement="_3ADC7B74022D3D5391BE0239">
               <eAnnotations xmi:id="_rVE_ZRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rVE_ZhTaEdqZu-3Jy1-uYg"/>
@@ -2103,9 +2094,6 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rVE_ZxTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D5391E6031D" name="lowerValue" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D5391E6015B" aggregation="composite">
-            <eAnnotations xmi:id="_nyclUjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nyclUzwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_qAlgIBVzEdqDjccWl3Bw0Q" body="The specification of the lower bound for this multiplicity." annotatedElement="_3ADC7B74022D3D5391E6031D">
               <eAnnotations xmi:id="_qAlgIRVzEdqDjccWl3Bw0Q" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_qAlgIhVzEdqDjccWl3Bw0Q"/>
@@ -2985,9 +2973,6 @@
           </ownedRule>
           <generalization xmi:id="_3ADC7B74022D3CB5A10A02FF" general="_3ADC7B74022D3CA0071C02FD"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0333B03B3" name="slot" type="_3ADC7B74022D3CA032120334" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CA0333B0178" aggregation="composite">
-            <eAnnotations xmi:id="_nymWUDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nymWUTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rV-XTRTaEdqZu-3Jy1-uYg" body="A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description." annotatedElement="_3ADC7B74022D3CA0333B03B3">
               <eAnnotations xmi:id="_rV-XThTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rV-XTxTaEdqZu-3Jy1-uYg"/>
@@ -3006,9 +2991,6 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rWIIQxTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3D11161F0240" name="specification" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3D11161E02D5" aggregation="composite">
-            <eAnnotations xmi:id="_nymWUjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nymWUzwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rWIIUhTaEdqZu-3Jy1-uYg" body="A specification of how to compute, derive, or construct the instance." annotatedElement="_3ADC7B74022D3D11161F0240">
               <eAnnotations xmi:id="_rWIIUxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rWIIVBTaEdqZu-3Jy1-uYg"/>
@@ -3035,9 +3017,6 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rV-XVhTaEdqZu-3Jy1-uYg" value="1"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CDA7CBE0189" name="value" type="_3ADC7B74022D3CA00F020323" isOrdered="true" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CDA7CBD025A" aggregation="composite">
-            <eAnnotations xmi:id="_nymWVDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nymWVTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rWIISBTaEdqZu-3Jy1-uYg" body="The value or values corresponding to the defining feature for the owning instance specification. This is an ordered association." annotatedElement="_3ADC7B74022D3CDA7CBE0189">
               <eAnnotations xmi:id="_rWIISRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rWIIShTaEdqZu-3Jy1-uYg"/>
@@ -3622,9 +3601,6 @@
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3E554FB4033A" general="_3ADC7B74022D3E554AF2005E"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0127D01CF" name="generalization" type="_3ADC7B74022D3CA011B1028A" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CA0127C032D" aggregation="composite">
-            <eAnnotations xmi:id="_nyvgQDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nyvgQTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rXUbGhTaEdqZu-3Jy1-uYg" body="Specifies the Generalization relationships for this Classifier. These Generalizations navigate to more general classifiers in the generalization hierarchy." annotatedElement="_3ADC7B74022D3CA0127D01CF">
               <eAnnotations xmi:id="_rXUbGxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rXUbHBTaEdqZu-3Jy1-uYg"/>
@@ -4767,9 +4743,6 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rZjPshTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0A4F60158" name="specification" type="_3ADC7B74022D3CA00F020323" subsettedProperty="_3ADC7B74022D3CADCD85009B" association="_3ADC7B74022D3CA0A4F5008F" aggregation="composite">
-            <eAnnotations xmi:id="_ny5RQDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_ny5RQTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rZjPthTaEdqZu-3Jy1-uYg" body="A condition that must be true when evaluated in order for the constraint to be satisfied." annotatedElement="_3ADC7B74022D3CA0A4F60158">
               <eAnnotations xmi:id="_rZjPtxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rZjPuBTaEdqZu-3Jy1-uYg"/>
@@ -4796,9 +4769,6 @@
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D41B085CF035A" general="_3ADC7B74022D41B9EDB10307"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0A17602E1" name="ownedRule" type="_3ADC7B74022D3CA099F902D0" subsettedProperty="_3ADC7B74022D41B9C1A000D5" association="_3ADC7B74022D3CA0A17600A6" aggregation="composite">
-            <eAnnotations xmi:id="_nzDCQDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzDCQTwaEdqNYOqRUhe_HQ"/>
-            </eAnnotations>
             <ownedComment xmi:id="_rZQUwhTaEdqZu-3Jy1-uYg" body="Specifies a set of Constraints owned by this Namespace." annotatedElement="_3ADC7B74022D3CA0A17602E1">
               <eAnnotations xmi:id="_rZZesBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rZZesRTaEdqZu-3Jy1-uYg"/>
@@ -7599,9 +7569,6 @@
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_GdNqUBTbEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ACA0001F" name="ownedAttribute" type="_3ADC7B74022D3DE6AB4B0001" isOrdered="true" association="_3ADC7B74022D3DE6AC9F015E" aggregation="composite">
-          <eAnnotations xmi:id="_nzfuMDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzfuMTwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rfgt1RTaEdqZu-3Jy1-uYg" body="The attributes owned by a class. These do not include the inherited attributes. Attributes are represented by instances of Property." annotatedElement="_3ADC7B74022D3DE6ACA0001F">
             <eAnnotations xmi:id="_rfgt1hTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfgt1xTaEdqZu-3Jy1-uYg"/>
@@ -7611,9 +7578,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rfgt2BTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6ADE30041" name="ownedOperation" type="_3ADC7B74022D3DE6AB440191" isOrdered="true" association="_3ADC7B74022D3DE6ADE20180" aggregation="composite">
-          <eAnnotations xmi:id="_nzfuMjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzfuMzwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rfzothTaEdqZu-3Jy1-uYg" body="The operations owned by a class. These do not include the inherited operations." annotatedElement="_3ADC7B74022D3DE6ADE30041">
             <eAnnotations xmi:id="_rfzotxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfzouBTaEdqZu-3Jy1-uYg"/>
@@ -7650,9 +7614,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rfgt0BTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AD8F022B" name="ownedParameter" type="_3ADC7B74022D3DE6AB5E035B" isOrdered="true" association="_3ADC7B74022D3DE6AD8E03A7" aggregation="composite">
-          <eAnnotations xmi:id="_nzo4IDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzo4ITwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rfqe0BTaEdqZu-3Jy1-uYg" body="The parameters to the operation." annotatedElement="_3ADC7B74022D3DE6AD8F022B">
             <eAnnotations xmi:id="_rfqe0RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfqe0hTaEdqZu-3Jy1-uYg"/>
@@ -7814,9 +7775,6 @@
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DE6AEE30176" general="_3ADC7B74022D3DEE7F610363"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AF0702A4" name="ownedLiteral" type="_3ADC7B74022D3DE6AE90034D" isOrdered="true" association="_3ADC7B74022D3DE6AF070037" aggregation="composite">
-          <eAnnotations xmi:id="_nzo4IjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzo4IzwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rf9ZuhTaEdqZu-3Jy1-uYg" body="The ordered set of literals for this Enumeration." annotatedElement="_3ADC7B74022D3DE6AF0702A4">
             <eAnnotations xmi:id="_rf9ZuxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rf9ZvBTaEdqZu-3Jy1-uYg"/>
@@ -7859,9 +7817,6 @@
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DE6AF9101B2" general="_3ADC7B74022D3DE6A6B90257"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6AFB7015D" name="nestedPackage" type="_3ADC7B74022D3DE6AF3E02D5" association="_3ADC7B74022D3DE6AFB5015A" aggregation="composite">
-          <eAnnotations xmi:id="_nzo4JDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzo4JTwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rgGjohTaEdqZu-3Jy1-uYg" body="The set of contained packages." annotatedElement="_3ADC7B74022D3DE6AFB7015D">
             <eAnnotations xmi:id="_rgGjoxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rgGjpBTaEdqZu-3Jy1-uYg"/>
@@ -7880,9 +7835,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rgGjqxTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6B0040384" name="ownedType" type="_3ADC7B74022D3DE6A6CC00B0" association="_3ADC7B74022D3DE6B0040154" aggregation="composite">
-          <eAnnotations xmi:id="_nzo4JjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzo4JzwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rgGjrxTaEdqZu-3Jy1-uYg" body="The set of contained types." annotatedElement="_3ADC7B74022D3DE6B0040384">
             <eAnnotations xmi:id="_rgGjsBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rgGjsRTaEdqZu-3Jy1-uYg"/>
@@ -8041,9 +7993,6 @@
           </eAnnotations>
         </ownedComment>
         <ownedAttribute xmi:id="_3ADC7B74022D41937577010A" name="ownedComment" type="_3ADC7B74022D3DFCA934027A" association="_3ADC7B74022D4193757202CF" aggregation="composite">
-          <eAnnotations xmi:id="_nzypIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_nzypITwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rgQUrhTaEdqZu-3Jy1-uYg" body="The Comments owned by this element." annotatedElement="_3ADC7B74022D41937577010A">
             <eAnnotations xmi:id="_rgQUrxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rgQUsBTaEdqZu-3Jy1-uYg"/>
@@ -13011,9 +12960,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rruk5RTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D41781AB80146" name="ownedComment" type="_3ADC7B74022D41781AA6038F" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D41781AB701BD" aggregation="composite">
-          <eAnnotations xmi:id="_n0PVEDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n0PVETwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rs63rBTaEdqZu-3Jy1-uYg" body="The Comments owned by this element." annotatedElement="_3ADC7B74022D41781AB80146">
             <eAnnotations xmi:id="_rs63rRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rs63rhTaEdqZu-3Jy1-uYg"/>
@@ -13230,9 +13176,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rq-9-BTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E0040315" name="elementImport" type="_3ADC7B74022D3DE6D5E7016E" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DE6E0040076" aggregation="composite">
-          <eAnnotations xmi:id="_n0YfADwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n0YfATwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rrIu9xTaEdqZu-3Jy1-uYg" body="References the ElementImports owned by the Namespace." annotatedElement="_3ADC7B74022D3DE6E0040315">
             <eAnnotations xmi:id="_rrIu-BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrIu-RTaEdqZu-3Jy1-uYg"/>
@@ -13242,9 +13185,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrIu-hTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E00902C3" name="packageImport" type="_3ADC7B74022D3DE6D5E002D7" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DE6E00900B0" aggregation="composite">
-          <eAnnotations xmi:id="_n0YfAjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n0YfAzwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rrIvBBTaEdqZu-3Jy1-uYg" body="References the PackageImports owned by the Namespace." annotatedElement="_3ADC7B74022D3DE6E00902C3">
             <eAnnotations xmi:id="_rrIvBRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrIvBhTaEdqZu-3Jy1-uYg"/>
@@ -13278,9 +13218,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rsxtshTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_s_9I8R-zEdqIE6mxof-rZA" name="ownedRule" type="_3ADC7B74022D3DE766450007" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_s_9I8B-zEdqIE6mxof-rZA" aggregation="composite">
-          <eAnnotations xmi:id="_n0YfBDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n0YfBTwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_s_9I9B-zEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s_9I8x-zEdqIE6mxof-rZA"/>
         </ownedAttribute>
@@ -13591,9 +13528,6 @@
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_Ges4EBTbEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E409010C" name="ownedEnd" type="_3ADC7B74022D3DE6D57500AC" isOrdered="true" subsettedProperty="_3ADC7B74022D3DE6E3EF0097 _3ADC7B74022D3DFCBE7F0246 _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E40802BA" aggregation="composite">
-          <eAnnotations xmi:id="_n0iQADwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n0iQATwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rp8cKhTaEdqZu-3Jy1-uYg" body="The ends that are owned by the association itself. This is an ordered association." annotatedElement="_3ADC7B74022D3DE6E409010C">
             <eAnnotations xmi:id="_rp8cKxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rp8cLBTaEdqZu-3Jy1-uYg"/>
@@ -13649,9 +13583,6 @@
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_Ge2pEBTbEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2E2028F" name="ownedAttribute" type="_3ADC7B74022D3DE6D57500AC" isOrdered="true" subsettedProperty="_3ADC7B74022D3DE6E42E034A _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E2E1037E" aggregation="composite">
-          <eAnnotations xmi:id="_n0sBADwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n0sBATwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rpo6OBTaEdqZu-3Jy1-uYg" body="The attributes (i.e. the properties) owned by the class." annotatedElement="_3ADC7B74022D3DE6E2E2028F">
             <eAnnotations xmi:id="_rpyrIBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpyrIRTaEdqZu-3Jy1-uYg"/>
@@ -13661,9 +13592,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rpyrIhTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E30F008B" name="ownedOperation" type="_3ADC7B74022D3DE6D56F031A" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCBE7F0246 _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E30E0260" aggregation="composite">
-          <eAnnotations xmi:id="_n01K8DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n01K8TwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rpyrKxTaEdqZu-3Jy1-uYg" body="The operations owned by the class." annotatedElement="_3ADC7B74022D3DE6E30F008B">
             <eAnnotations xmi:id="_rpyrLBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpyrLRTaEdqZu-3Jy1-uYg"/>
@@ -13948,9 +13876,6 @@
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DEE7FF2011D" general="_3ADC7B74022D3DE6C8630317"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E2290152" name="ownedAttribute" type="_3ADC7B74022D3DE6D57500AC" isOrdered="true" subsettedProperty="_3ADC7B74022D3DE6E42E034A _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E2280287" aggregation="composite">
-          <eAnnotations xmi:id="_n1R24DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n1R24TwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rqiSDRTaEdqZu-3Jy1-uYg" body="The Attributes owned by the DataType." annotatedElement="_3ADC7B74022D3DE6E2290152">
             <eAnnotations xmi:id="_rqiSDhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rqiSDxTaEdqZu-3Jy1-uYg"/>
@@ -13960,9 +13885,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rqiSEBTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E23E008A" name="ownedOperation" type="_3ADC7B74022D3DE6D56F031A" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCBE7F0246 _3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E23D0179" aggregation="composite">
-          <eAnnotations xmi:id="_n1R24jwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n1R24zwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rqiSGhTaEdqZu-3Jy1-uYg" body="The Operations owned by the DataType." annotatedElement="_3ADC7B74022D3DE6E23E008A">
             <eAnnotations xmi:id="_rqsDABTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rqsDARTaEdqZu-3Jy1-uYg"/>
@@ -13998,9 +13920,6 @@
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DE6D2D7038E" general="_3ADC7B74022D3DE6D25202A6"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6D38600DC" name="ownedLiteral" type="_3ADC7B74022D3DE6D2910397" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6D3850275" aggregation="composite">
-          <eAnnotations xmi:id="_n1bn4DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n1bn4TwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rqiSABTaEdqZu-3Jy1-uYg" body="The ordered collection of literals for the enumeration." annotatedElement="_3ADC7B74022D3DE6D38600DC">
             <eAnnotations xmi:id="_rqiSARTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rqiSAhTaEdqZu-3Jy1-uYg"/>
@@ -14068,9 +13987,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rsVB2RTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCC88D0337" name="specification" type="_3ADC7B74022D3DE6C7F30294" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DFCC88D0157" aggregation="composite">
-          <eAnnotations xmi:id="_n1bn4jwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n1bn4zwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rseLsxTaEdqZu-3Jy1-uYg" body="A condition that must be true when evaluated in order for the constraint to be satisfied.&#xD;&#xA;" annotatedElement="_3ADC7B74022D3DFCC88D0337">
             <eAnnotations xmi:id="_rseLtBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rseLtRTaEdqZu-3Jy1-uYg"/>
@@ -14252,9 +14168,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrla6RTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D4161AA270132" name="ownedParameter" type="_3ADC7B74022D3DE6D57D00A3" isOrdered="true" redefinedProperty="_3ADC7B74022D3DE7637803DB" association="_3ADC7B74022D4161AA250298" aggregation="composite">
-          <eAnnotations xmi:id="_n1ui0DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n1ui0TwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rsxtyxTaEdqZu-3Jy1-uYg" body="Specifies the ordered set of formal parameters of this BehavioralFeature." annotatedElement="_3ADC7B74022D4161AA270132">
             <eAnnotations xmi:id="_rs63oBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rs63oRTaEdqZu-3Jy1-uYg"/>
@@ -14264,23 +14177,14 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rs63ohTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_nWbKER-yEdqIE6mxof-rZA" name="precondition" type="_3ADC7B74022D3DE766450007" subsettedProperty="_s_9I8R-zEdqIE6mxof-rZA" association="_nWbKEB-yEdqIE6mxof-rZA" aggregation="composite">
-          <eAnnotations xmi:id="_n14T0DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n14T0TwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nWbKFB-yEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nWbKEx-yEdqIE6mxof-rZA"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_s0ANER-yEdqIE6mxof-rZA" name="postcondition" type="_3ADC7B74022D3DE766450007" subsettedProperty="_s_9I8R-zEdqIE6mxof-rZA" association="_s0ANEB-yEdqIE6mxof-rZA" aggregation="composite">
-          <eAnnotations xmi:id="_n14T0jwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n14T0zwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_s0ANFB-yEdqIE6mxof-rZA" value="-1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_s0ANEx-yEdqIE6mxof-rZA"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_uPMYsR-yEdqIE6mxof-rZA" name="bodyCondition" type="_3ADC7B74022D3DE766450007" subsettedProperty="_s_9I8R-zEdqIE6mxof-rZA" association="_uPMYsB-yEdqIE6mxof-rZA" aggregation="composite">
-          <eAnnotations xmi:id="_n14T1DwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n14T1TwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uPMYtB-yEdqIE6mxof-rZA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uPMYsx-yEdqIE6mxof-rZA"/>
         </ownedAttribute>
@@ -14420,9 +14324,6 @@
         <generalization xmi:id="_3ADC7B74022D3DEE20740031" general="_3ADC7B74022D3DE6C7BD0034"/>
         <generalization xmi:id="_3ADC7B74022D3DEE21650100" general="_3ADC7B74022D3DE6C03E0388"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE7637803DB" name="ownedParameter" type="_3ADC7B74022D3DE6D57D00A3" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE76378015A" aggregation="composite">
-          <eAnnotations xmi:id="_n2LOwDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n2LOwTwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rq10ERTaEdqZu-3Jy1-uYg" body="Specifies the ordered set of formal parameters of this BehavioralFeature." annotatedElement="_3ADC7B74022D3DE7637803DB">
             <eAnnotations xmi:id="_rq10EhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rq10ExTaEdqZu-3Jy1-uYg"/>
@@ -14544,9 +14445,6 @@
         <generalization xmi:id="_3ADC7B74022D3DE6DDF7023E" general="_3ADC7B74022D3DE6C1F002C3"/>
         <generalization xmi:id="_3ADC7B74022D3DE6DFA30185" general="_3ADC7B74022D3DE6C03E0388"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6E0F500FF" name="packagedElement" type="_3ADC7B74022D3DE6C1F002C3" subsettedProperty="_3ADC7B74022D3DFCB8650177" association="_3ADC7B74022D3DE6E0F402CA" aggregation="composite">
-          <eAnnotations xmi:id="_n2LOwjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n2LOwzwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rrR45hTaEdqZu-3Jy1-uYg" body="Specifies the packageable elements that are owned by this Package." annotatedElement="_3ADC7B74022D3DE6E0F500FF">
             <eAnnotations xmi:id="_rrR45xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrR46BTaEdqZu-3Jy1-uYg"/>
@@ -14580,9 +14478,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrbp8hTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE6FD302F9" name="nestingPackage" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE6FD102CF">
-          <eAnnotations xmi:id="_H9HS8DWtEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_H9HS8TWtEdqst7wr5_7CAQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rrbp9xTaEdqZu-3Jy1-uYg" body="References the owning package of a package." annotatedElement="_3ADC7B74022D3DEE6FD302F9">
             <eAnnotations xmi:id="_rrla4BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrla4RTaEdqZu-3Jy1-uYg"/>
@@ -14592,9 +14487,6 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rrla4hTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DF68066000E" name="packageMerge" type="_3ADC7B74022D3DEE8DFE0290" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DF68066000C" aggregation="composite">
-          <eAnnotations xmi:id="_n2U_wDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n2U_wTwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rrla9hTaEdqZu-3Jy1-uYg" body="References the PackageMerges that are owned by this Package." annotatedElement="_3ADC7B74022D3DF68066000E">
             <eAnnotations xmi:id="_rrla9xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrla-BTaEdqZu-3Jy1-uYg"/>
@@ -14721,9 +14613,6 @@
         <generalization xmi:id="_3ADC7B74022D3E5553B3007E" general="_3ADC7B74022D3DE6BC6B01BD"/>
         <generalization xmi:id="_3ADC7B74022D3E5558D50178" general="_3ADC7B74022D3DE6C1F002C3"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE344701FE" name="package" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE344602C4">
-          <eAnnotations xmi:id="_Nsmv4DWuEdqst7wr5_7CAQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_Nsmv4TWuEdqst7wr5_7CAQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rrR4-BTaEdqZu-3Jy1-uYg" body="References the owning package of a package." annotatedElement="_3ADC7B74022D3DEE344701FE">
             <eAnnotations xmi:id="_rrR4-RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrR4-hTaEdqZu-3Jy1-uYg"/>
@@ -14885,9 +14774,6 @@
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3E555F33038E" general="_3ADC7B74022D3DE6C7F30294"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3E55630701F3" name="operand" type="_3ADC7B74022D3DE6C7F30294" isOrdered="true" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3E5563050088" aggregation="composite">
-          <eAnnotations xmi:id="_n2eJsDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n2eJsTwaEdqNYOqRUhe_HQ"/>
-          </eAnnotations>
           <ownedComment xmi:id="_rsxtuRTaEdqZu-3Jy1-uYg" body="Specifies a sequence of operands." annotatedElement="_3ADC7B74022D3E55630701F3">
             <eAnnotations xmi:id="_rsxtuhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rsxtuxTaEdqZu-3Jy1-uYg"/>
@@ -16129,9 +16015,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruaFYhTaEdqZu-3Jy1-uYg"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3DEE705703B8" name="metaclassReference" type="_3ADC7B74022D3DE6D5E7016E" subsettedProperty="_3ADC7B74022D3DE6E0040315" association="_3ADC7B74022D3DEE705700FB" aggregation="composite">
-        <eAnnotations xmi:id="_n55RIjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RIzwaEdqNYOqRUhe_HQ"/>
-        </eAnnotations>
         <ownedComment xmi:id="_ruj2eBTaEdqZu-3Jy1-uYg" body="References a metaclass that may be extended." annotatedElement="_3ADC7B74022D3DEE705703B8">
           <eAnnotations xmi:id="_ruj2eRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruj2ehTaEdqZu-3Jy1-uYg"/>
@@ -16141,9 +16024,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruj2exTaEdqZu-3Jy1-uYg"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3DEE70D10178" name="metamodelReference" type="_3ADC7B74022D3DE6D5E002D7" subsettedProperty="_3ADC7B74022D3DE6E00902C3" association="_3ADC7B74022D3DEE70D002B7" aggregation="composite">
-        <eAnnotations xmi:id="_n55RJDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n55RJTwaEdqNYOqRUhe_HQ"/>
-        </eAnnotations>
         <ownedComment xmi:id="_rutnYhTaEdqZu-3Jy1-uYg" body="References a package containing (directly or indirectly) metaclasses that may be extended." annotatedElement="_3ADC7B74022D3DEE70D10178">
           <eAnnotations xmi:id="_rutnYxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rutnZBTaEdqZu-3Jy1-uYg"/>
@@ -16161,9 +16041,6 @@
       </ownedComment>
       <generalization xmi:id="_3ADC7B74022D416D69D00339" general="_3ADC7B74022D3DE6C03E0388"/>
       <ownedAttribute xmi:id="_3ADC7B74022D3CA1877301CF" name="profileApplication" type="_3ADC7B74022D3CBDA36602FA" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3CA187710277" aggregation="composite">
-        <eAnnotations xmi:id="_n6DCIDwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n6DCITwaEdqNYOqRUhe_HQ"/>
-        </eAnnotations>
         <ownedComment xmi:id="_ruQ7fxTaEdqZu-3Jy1-uYg" body="References the ProfileApplications that indicate which profiles have been applied to the Package." annotatedElement="_3ADC7B74022D3CA1877301CF">
           <eAnnotations xmi:id="_ruQ7gBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruQ7gRTaEdqZu-3Jy1-uYg"/>
@@ -16217,9 +16094,6 @@
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_l1JQAF0oEdq3-fC14hmVtA"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3CA1877301D1" name="applyingPackage" type="_3ADC7B74022D3CA18745029B" subsettedProperty="_3ADC7B74022D3DFCAC7900D9 _3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3CA187710277">
-        <eAnnotations xmi:id="_aGLNEHxZEdq7cMP_l1l5Gg" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_aGLNEXxZEdq7cMP_l1l5Gg" isTransient="true"/>
-        </eAnnotations>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruQ7hhTaEdqZu-3Jy1-uYg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruQ7hRTaEdqZu-3Jy1-uYg" value="1"/>
       </ownedAttribute>
@@ -16271,9 +16145,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruaFfhTaEdqZu-3Jy1-uYg" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3CBDA88400D7" name="ownedEnd" type="_3ADC7B74022D3CBDA5F701B4" redefinedProperty="_3ADC7B74022D3DE6E409010C" association="_3ADC7B74022D3CBDA88302E8" aggregation="composite">
-        <eAnnotations xmi:id="_n6DCIjwaEdqNYOqRUhe_HQ" source="appliedStereotypes">
-          <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_n6DCIzwaEdqNYOqRUhe_HQ"/>
-        </eAnnotations>
         <ownedComment xmi:id="_ruj2ZBTaEdqZu-3Jy1-uYg" body="References the end of the extension that is typed by a Stereotype." annotatedElement="_3ADC7B74022D3CBDA88400D7">
           <eAnnotations xmi:id="_ruj2ZRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruj2ZhTaEdqZu-3Jy1-uYg"/>

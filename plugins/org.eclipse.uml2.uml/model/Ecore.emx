@@ -2970,9 +2970,6 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53D98A3F30241" name="eModelElement" type="_439EC3AE03B53903D4E40050" association="_439EC3AE03B53D98A3F1034C"/>
     <ownedAttribute xmi:id="_439EC3AE03B53DA70B040327" name="contents" type="_439EC3AE03B53C4F1C860123" association="_439EC3AE03B53DA70B0400EC" aggregation="composite">
-      <eAnnotations xmi:id="_gn7OM2vXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7ONGvXEdq4DLWZOhbdEA"/>
-      </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gn7OMmvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gn7OMWvXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
@@ -3009,9 +3006,6 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnB2S2vXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53904D81303AC" name="eOperations" type="_439EC3AE03B53904DAA200A0" association="_439EC3AE03B53904D80902DA" aggregation="composite">
-      <eAnnotations xmi:id="_gnB2UmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnB2U2vXEdq4DLWZOhbdEA"/>
-      </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnB2UWvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnB2UGvXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
@@ -3079,9 +3073,6 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_goE_ImvXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F72EF6B0213" name="eStructuralFeatures" type="_439EC3AE03B53903D59D0230" association="_439EC3AE03B53F72EF6A0063" aggregation="composite">
-      <eAnnotations xmi:id="_goE_LWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_LmvXEdq4DLWZOhbdEA"/>
-      </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_goE_LGvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_goE_K2vXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
@@ -3144,9 +3135,6 @@
   <ownedMember xmi:type="uml:Class" xmi:id="_439EC3AE03B539A473E901D4" name="EEnum">
     <generalization xmi:id="_439EC3AE03B53B180608030C" general="_439EC3AE03B53903D525033E"/>
     <ownedAttribute xmi:id="_439EC3AE03B53ACCDD3C00F4" name="eLiterals" type="_439EC3AE03B53ACCDCE601C2" association="_439EC3AE03B53ACCDD3B0265" aggregation="composite">
-      <eAnnotations xmi:id="_gneiPWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiPmvXEdq4DLWZOhbdEA"/>
-      </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gneiPGvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gneiO2vXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
@@ -3209,9 +3197,6 @@
   <ownedMember xmi:type="uml:Class" xmi:id="_439EC3AE03B53903D4E40050" name="EModelElement" isAbstract="true">
     <generalization xmi:id="_439EC3AE03B53C4F1CC50336" general="_439EC3AE03B53C4F1C860123"/>
     <ownedAttribute xmi:id="_439EC3AE03B53D98A3F3024B" name="eAnnotations" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53D98A3F1034C" aggregation="composite">
-      <eAnnotations xmi:id="_gn7OKmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7OK2vXEdq4DLWZOhbdEA"/>
-      </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gn7OKWvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gn7OKGvXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
@@ -3285,9 +3270,6 @@
       </eAnnotations>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53B4DFCAC02AD" name="eParameters" type="_439EC3AE03B53903E6150104" association="_439EC3AE03B53B4DFCAB02B6" aggregation="composite">
-      <eAnnotations xmi:id="_gnoTO2vXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnoTPGvXEdq4DLWZOhbdEA"/>
-      </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnoTOmvXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnoTOWvXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
