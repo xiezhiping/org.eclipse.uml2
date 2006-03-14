@@ -2968,11 +2968,7 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_glF8p2vXEdq4DLWZOhbdEA" value="-1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_glF8pmvXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_439EC3AE03B53D98A3F30241" name="eModelElement" type="_439EC3AE03B53903D4E40050" association="_439EC3AE03B53D98A3F1034C">
-      <eAnnotations xmi:id="_gn7OJWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7OJmvXEdq4DLWZOhbdEA" isResolveProxies="false"/>
-      </eAnnotations>
-    </ownedAttribute>
+    <ownedAttribute xmi:id="_439EC3AE03B53D98A3F30241" name="eModelElement" type="_439EC3AE03B53903D4E40050" association="_439EC3AE03B53D98A3F1034C"/>
     <ownedAttribute xmi:id="_439EC3AE03B53DA70B040327" name="contents" type="_439EC3AE03B53C4F1C860123" association="_439EC3AE03B53DA70B0400EC" aggregation="composite">
       <eAnnotations xmi:id="_gn7OM2vXEdq4DLWZOhbdEA" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7ONGvXEdq4DLWZOhbdEA"/>
@@ -3077,7 +3073,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53DDF795201B1" name="eIDAttribute" type="_439EC3AE03B539238472039D" isReadOnly="true" association="_439EC3AE03B53DDF794F03D4">
       <eAnnotations xmi:id="_goE_JGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_JWvXEdq4DLWZOhbdEA" isTransient="true" isVolatile="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_JWvXEdq4DLWZOhbdEA" isTransient="true" isVolatile="true"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_goE_I2vXEdq4DLWZOhbdEA" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_goE_ImvXEdq4DLWZOhbdEA"/>
@@ -3182,7 +3178,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53ACCDD3C00FE" name="eEnum" type="_439EC3AE03B539A473E901D4" isReadOnly="true" association="_439EC3AE03B53ACCDD3B0265">
       <eAnnotations xmi:id="_gneiQGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiQWvXEdq4DLWZOhbdEA" isTransient="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiQWvXEdq4DLWZOhbdEA" isTransient="true"/>
       </eAnnotations>
     </ownedAttribute>
   </ownedMember>
@@ -3190,7 +3186,7 @@
     <generalization xmi:id="_439EC3AE03B53CF674E80143" general="_439EC3AE03B53903D4E40050"/>
     <ownedAttribute xmi:id="_439EC3AE03B53A773F5B00D7" name="ePackage" type="_439EC3AE03B53905C3F7000A" association="_439EC3AE03B53A773F5A0067">
       <eAnnotations xmi:id="_gneiMGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiMWvXEdq4DLWZOhbdEA" isTransient="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gneiMWvXEdq4DLWZOhbdEA" isTransient="true"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnUxRWvXEdq4DLWZOhbdEA" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnUxRGvXEdq4DLWZOhbdEA" value="1"/>
@@ -3285,7 +3281,7 @@
     <generalization xmi:id="_439EC3AE03B53D062FA00253" general="_439EC3AE03B53903D4F60398"/>
     <ownedAttribute xmi:id="_439EC3AE03B53904D81303AD" name="eContainingClass" type="_439EC3AE03B53903D5BF000A" isReadOnly="true" association="_439EC3AE03B53904D80902DA">
       <eAnnotations xmi:id="_gnB2VWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnB2VmvXEdq4DLWZOhbdEA" isTransient="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnB2VmvXEdq4DLWZOhbdEA" isTransient="true"/>
       </eAnnotations>
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53B4DFCAC02AD" name="eParameters" type="_439EC3AE03B53903E6150104" association="_439EC3AE03B53B4DFCAB02B6" aggregation="composite">
@@ -3314,7 +3310,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53A773F5B00CD" name="eFactoryInstance" type="_439EC3AE03B53A773E540057" association="_439EC3AE03B53A773F5A0067">
       <eAnnotations xmi:id="_gnUxQWvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnUxQmvXEdq4DLWZOhbdEA" isTransient="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnUxQmvXEdq4DLWZOhbdEA" isTransient="true"/>
       </eAnnotations>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gnUxQGvXEdq4DLWZOhbdEA" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gnUxP2vXEdq4DLWZOhbdEA" value="1"/>
@@ -3341,7 +3337,7 @@
     <generalization xmi:id="_439EC3AE03B53903E62102DA" general="_439EC3AE03B53903D4F60398"/>
     <ownedAttribute xmi:id="_439EC3AE03B53B4DFCAC02CB" name="eOperation" type="_439EC3AE03B53904DAA200A0" isReadOnly="true" association="_439EC3AE03B53B4DFCAB02B6">
       <eAnnotations xmi:id="_gnoTPmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnoTP2vXEdq4DLWZOhbdEA" isTransient="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gnoTP2vXEdq4DLWZOhbdEA" isTransient="true"/>
       </eAnnotations>
     </ownedAttribute>
   </ownedMember>
@@ -3421,7 +3417,7 @@
     </ownedAttribute>
     <ownedAttribute xmi:id="_439EC3AE03B53F72EF6B0212" name="eContainingClass" type="_439EC3AE03B53903D5BF000A" isReadOnly="true" association="_439EC3AE03B53F72EF6A0063">
       <eAnnotations xmi:id="_goE_KGvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_KWvXEdq4DLWZOhbdEA" isTransient="true" isResolveProxies="false"/>
+        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_goE_KWvXEdq4DLWZOhbdEA" isTransient="true"/>
       </eAnnotations>
     </ownedAttribute>
     <ownedOperation xmi:id="_439EC3AE03B53D089D7103B8" name="getFeatureID" type="_439EC3AE03B53D0674720115">
@@ -3724,11 +3720,7 @@
     <ownedEnd xmi:id="_439EC3AE03B53D5D261200F3" type="_439EC3AE03B539238472039D" association="_439EC3AE03B53D5D260F02E4"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DA70B0400EC" name="A_eAnnotation_contents" memberEnd="_439EC3AE03B53DA70B04031D _439EC3AE03B53DA70B040327">
-    <ownedEnd xmi:id="_439EC3AE03B53DA70B04031D" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53DA70B0400EC">
-      <eAnnotations xmi:id="_gn7OLmvXEdq4DLWZOhbdEA" source="appliedStereotypes">
-        <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_gn7OL2vXEdq4DLWZOhbdEA" isResolveProxies="false"/>
-      </eAnnotations>
-    </ownedEnd>
+    <ownedEnd xmi:id="_439EC3AE03B53DA70B04031D" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53DA70B0400EC"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Association" xmi:id="_439EC3AE03B53DA70CD20386" name="A_eAnnotation_references" memberEnd="_439EC3AE03B53DA70CD4011C _439EC3AE03B53DA70CD40126">
     <ownedEnd xmi:id="_439EC3AE03B53DA70CD4011C" type="_439EC3AE03B53D98A1C701AB" association="_439EC3AE03B53DA70CD20386"/>
