@@ -14613,6 +14613,9 @@
         <generalization xmi:id="_3ADC7B74022D3E5553B3007E" general="_3ADC7B74022D3DE6BC6B01BD"/>
         <generalization xmi:id="_3ADC7B74022D3E5558D50178" general="_3ADC7B74022D3DE6C1F002C3"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DEE344701FE" name="package" type="_3ADC7B74022D3DE6D5DA0183" subsettedProperty="_3ADC7B74022D3DFCB86501A0" association="_3ADC7B74022D3DEE344602C4">
+          <eAnnotations xmi:id="_EOCs8bOgEdqCYYk0I86vnQ" source="appliedStereotypes">
+            <contents xmi:type="Ecore_0:Ecore__EReference" xmi:id="_EOCs8rOgEdqCYYk0I86vnQ" isTransient="true"/>
+          </eAnnotations>
           <ownedComment xmi:id="_rrR4-BTaEdqZu-3Jy1-uYg" body="References the owning package of a package." annotatedElement="_3ADC7B74022D3DEE344701FE">
             <eAnnotations xmi:id="_rrR4-RTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rrR4-hTaEdqZu-3Jy1-uYg"/>
