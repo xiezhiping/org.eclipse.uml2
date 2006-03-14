@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.63 2006/03/10 02:22:15 khussey Exp $
+ * $Id: UML2Util.java,v 1.64 2006/03/14 16:10:39 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -1322,8 +1322,16 @@ public class UML2Util
 			}
 		}
 
-		protected void processOptions(EPackage ePackage, final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		/**
+		 * @deprecated
+		 */
+		protected void processOptions(EPackage ePackage, Map options,
+				DiagnosticChain diagnostics, Map context) {
+			processOptions(options, diagnostics, context);
+		}
+
+		protected void processOptions(Map options,
+				final DiagnosticChain diagnostics, Map context) {
 
 			if (!OPTION__IGNORE
 				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
@@ -1352,25 +1360,17 @@ public class UML2Util
 			}
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.util.UML2Util.Converter#convert(java.util.Collection)
-		 */
 		public Collection convert(Collection eObjects, Map options,
 				DiagnosticChain diagnostics, Map context) {
-
 			ePackages = EcoreUtil.getObjectsByType(eObjects,
 				EcorePackage.eINSTANCE.getEPackage());
 
-			for (Iterator i = ePackages.iterator(); i.hasNext();) {
-				EPackage ePackage = (EPackage) i.next();
+			for (Iterator ep = ePackages.iterator(); ep.hasNext();) {
+				doSwitch((EPackage) ep.next());
+			}
 
-				doSwitch(ePackage);
-
-				if (null != options) {
-					processOptions(ePackage, options, diagnostics, context);
-				}
+			if (null != options) {
+				processOptions(options, diagnostics, context);
 			}
 
 			return getRootContainers(EcoreUtil.getObjectsByType(
@@ -2017,15 +2017,6 @@ public class UML2Util
 				setName(eDataType, primitiveType);
 
 				eDataType.setInstanceClassName(eDataType.getName());
-
-				try {
-					eDataType.getInstanceClass();
-				} catch (Exception e) {
-					UML2Plugin.INSTANCE.log(e);
-					eDataType
-						.setInstanceClassName(EcorePackage.Literals.ESTRING
-							.getInstanceClassName());
-				}
 
 				defaultCase(primitiveType);
 
@@ -4106,19 +4097,13 @@ public class UML2Util
 			}
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.util.UML2Util.Converter#convert(java.util.Collection)
-		 */
 		public Collection convert(Collection eObjects, Map options,
 				DiagnosticChain diagnostics, Map context) {
-
 			packages = EcoreUtil.getObjectsByType(eObjects,
 				UML2Package.Literals.PACKAGE);
 
-			for (Iterator i = packages.iterator(); i.hasNext();) {
-				doSwitch((org.eclipse.uml2.Package) i.next());
+			for (Iterator p = packages.iterator(); p.hasNext();) {
+				doSwitch((org.eclipse.uml2.Package) p.next());
 			}
 
 			if (null != options) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.35 2006/01/31 20:35:03 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.36 2006/03/14 16:10:39 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -188,9 +188,47 @@ public final class ProfileOperations
 		public static EPackage convert(Profile profile) {
 			Collection ePackages = new Profile2EPackageConverter().convert(
 				Collections.singleton(profile), null, null, null);
-			return 1 == ePackages.size()
+
+			EPackage ePackage = ePackages.size() == 1
 				? (EPackage) ePackages.iterator().next()
 				: null;
+
+			if (ePackage != null) {
+
+				for (Iterator eAllContents = ePackage.eAllContents(); eAllContents
+					.hasNext();) {
+
+					new EcoreSwitch() {
+
+						public Object caseEAttribute(EAttribute eAttribute) {
+
+							try {
+								eAttribute.getDefaultValue();
+							} catch (Exception e) {
+								eAttribute.setDefaultValueLiteral(null);
+							}
+
+							return eAttribute;
+						}
+
+						public Object caseEDataType(EDataType eDataType) {
+
+							try {
+								eDataType.getInstanceClass();
+							} catch (Exception e) {
+								eDataType
+									.setInstanceClassName(EcorePackage.Literals.ESTRING
+										.getInstanceClassName());
+							}
+
+							return eDataType;
+						}
+
+					}.doSwitch((EObject) eAllContents.next());
+				}
+			}
+
+			return ePackage;
 		}
 	}
 

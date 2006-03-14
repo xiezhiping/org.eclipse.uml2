@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.19 2006/03/10 02:22:56 khussey Exp $
+ * $Id: UMLUtil.java,v 1.20 2006/03/14 16:10:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2304,15 +2304,6 @@ public class UMLUtil
 				setName(eDataType, primitiveType);
 
 				eDataType.setInstanceClassName(eDataType.getName());
-
-				try {
-					eDataType.getInstanceClass();
-				} catch (Exception e) {
-					UMLPlugin.INSTANCE.log(e);
-					eDataType
-						.setInstanceClassName(EcorePackage.Literals.ESTRING
-							.getInstanceClassName());
-				}
 
 				defaultCase(primitiveType);
 
@@ -5426,8 +5417,8 @@ public class UMLUtil
 			}
 		}
 
-		protected void processOptions(EPackage ePackage, final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processOptions(Map options, DiagnosticChain diagnostics,
+				Map context) {
 
 			if (!OPTION__IGNORE
 				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
@@ -5462,13 +5453,11 @@ public class UMLUtil
 				EcorePackage.eINSTANCE.getEPackage());
 
 			for (Iterator ep = ePackages.iterator(); ep.hasNext();) {
-				EPackage ePackage = (EPackage) ep.next();
+				doSwitch((EPackage) ep.next());
+			}
 
-				doSwitch(ePackage);
-
-				if (options != null) {
-					processOptions(ePackage, options, diagnostics, context);
-				}
+			if (options != null) {
+				processOptions(options, diagnostics, context);
 			}
 
 			return getRootContainers(EcoreUtil

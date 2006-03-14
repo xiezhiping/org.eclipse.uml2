@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.19 2006/02/22 20:48:22 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.20 2006/03/14 16:10:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -25,12 +25,16 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.uml.AggregationKind;
@@ -203,9 +207,46 @@ public class ProfileOperations
 			Collection ePackages = new Profile2EPackageConverter().convert(
 				Collections.singleton(profile), options, null, null);
 
-			return ePackages.size() == 1
+			EPackage ePackage = ePackages.size() == 1
 				? (EPackage) ePackages.iterator().next()
 				: null;
+
+			if (ePackage != null) {
+
+				for (Iterator eAllContents = ePackage.eAllContents(); eAllContents
+					.hasNext();) {
+
+					new EcoreSwitch() {
+
+						public Object caseEAttribute(EAttribute eAttribute) {
+
+							try {
+								eAttribute.getDefaultValue();
+							} catch (Exception e) {
+								eAttribute.setDefaultValueLiteral(null);
+							}
+
+							return eAttribute;
+						}
+
+						public Object caseEDataType(EDataType eDataType) {
+
+							try {
+								eDataType.getInstanceClass();
+							} catch (Exception e) {
+								eDataType
+									.setInstanceClassName(EcorePackage.Literals.ESTRING
+										.getInstanceClassName());
+							}
+
+							return eDataType;
+						}
+
+					}.doSwitch((EObject) eAllContents.next());
+				}
+			}
+
+			return ePackage;
 		}
 	}
 
