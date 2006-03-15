@@ -9013,9 +9013,9 @@ public class Class
     stringBuffer.append(TEXT_2586);
     if (redefinitionGenFeature.isBasicGet()) {
     stringBuffer.append(TEXT_2587);
-    stringBuffer.append(genFeature.getAccessorName());
+    stringBuffer.append(redefinitionGenFeature.getAccessorName());
     } else {
-    stringBuffer.append(genFeature.getGetAccessor());
+    stringBuffer.append(redefinitionGenFeature.getGetAccessor());
     }
     stringBuffer.append(TEXT_2588);
     }
