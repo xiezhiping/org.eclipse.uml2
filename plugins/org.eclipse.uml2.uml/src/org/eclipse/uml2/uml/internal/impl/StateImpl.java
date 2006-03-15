@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.24 2006/03/07 20:25:16 khussey Exp $
+ * $Id: StateImpl.java,v 1.25 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -434,6 +434,17 @@ public class StateImpl
 		if (eContainerFeatureID != UMLPackage.STATE__CONTAINER)
 			return null;
 		return (Region) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Region basicGetContainer() {
+		if (eContainerFeatureID != UMLPackage.STATE__CONTAINER)
+			return null;
+		return (Region) eInternalContainer();
 	}
 
 	/**
@@ -1646,7 +1657,9 @@ public class StateImpl
 			case UMLPackage.STATE__INCOMING :
 				return getIncomings();
 			case UMLPackage.STATE__CONTAINER :
-				return getContainer();
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 			case UMLPackage.STATE__IS_COMPOSITE :
 				return isComposite()
 					? Boolean.TRUE
@@ -1931,7 +1944,7 @@ public class StateImpl
 				EList incoming = (EList) eVirtualGet(UMLPackage.STATE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.STATE__CONTAINER :
-				return getContainer() != null;
+				return basicGetContainer() != null;
 			case UMLPackage.STATE__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.STATE__IS_ORTHOGONAL :
@@ -2100,7 +2113,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Region container = getContainer();
+		Region container = basicGetContainer();
 		if (container != null) {
 			return container;
 		}

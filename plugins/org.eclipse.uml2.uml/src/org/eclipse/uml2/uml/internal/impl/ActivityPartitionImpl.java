@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.18 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.19 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -278,6 +278,17 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Activity basicGetInActivity() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
+			return null;
+		return (Activity) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetInActivity(Activity newInActivity,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInActivity,
@@ -527,6 +538,17 @@ public class ActivityPartitionImpl
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
 			return null;
 		return (ActivityPartition) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition basicGetSuperPartition() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
+			return null;
+		return (ActivityPartition) eInternalContainer();
 	}
 
 	/**
@@ -817,9 +839,13 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
-				return getSuperGroup();
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-				return getInActivity();
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 				return getContainedEdges();
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
@@ -837,7 +863,9 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				return getSubpartitions();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-				return getSuperPartition();
+				if (resolve)
+					return getSuperPartition();
+				return basicGetSuperPartition();
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
 				if (resolve)
 					return getRepresents();
@@ -997,7 +1025,7 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 				return isSetSuperGroup();
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-				return getInActivity() != null;
+				return basicGetInActivity() != null;
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
@@ -1013,7 +1041,7 @@ public class ActivityPartitionImpl
 				EList subpartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
 				return subpartition != null && !subpartition.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
-				return getSuperPartition() != null;
+				return basicGetSuperPartition() != null;
 			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
 				return eVirtualGet(UMLPackage.ACTIVITY_PARTITION__REPRESENTS) != null;
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
@@ -1114,12 +1142,24 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup getSuperGroup() {
-		ActivityPartition superPartition = getSuperPartition();
+	public ActivityGroup basicGetSuperGroup() {
+		ActivityPartition superPartition = basicGetSuperPartition();
 		if (superPartition != null) {
 			return superPartition;
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getSuperGroup() {
+		ActivityGroup superGroup = basicGetSuperGroup();
+		return superGroup == null
+			? null
+			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
 	}
 
 	/**
@@ -1138,9 +1178,9 @@ public class ActivityPartitionImpl
 	 */
 	public Element basicGetOwner() {
 		if (isSetSuperGroup()) {
-			return getSuperGroup();
+			return basicGetSuperGroup();
 		}
-		Activity inActivity = getInActivity();
+		Activity inActivity = basicGetInActivity();
 		if (inActivity != null) {
 			return inActivity;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.9 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Operation.java,v 1.10 2006/03/15 19:33:56 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class </em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique <em>Is Unique</em>}</li>
@@ -198,7 +198,7 @@ public interface Operation
 	void setUpper(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Class </b></em>' container reference.
+	 * Returns the value of the '<em><b>Class</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Class#getOwnedOperations <em>Owned Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,20 +206,20 @@ public interface Operation
 	 * The class that owns the operation.
 	 * The class that owns this operation.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Class </em>' container reference.
+	 * @return the value of the '<em>Class</em>' container reference.
 	 * @see #setClass_(org.eclipse.uml2.uml.Class)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Class_()
+	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Class()
 	 * @see org.eclipse.uml2.uml.Class#getOwnedOperations
-	 * @model opposite="ownedOperation" resolveProxies="false" ordered="false"
+	 * @model opposite="ownedOperation" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class getClass_();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class </em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Class </em>' container reference.
+	 * @param value the new value of the '<em>Class</em>' container reference.
 	 * @see #getClass_()
 	 * @generated
 	 */
@@ -410,7 +410,7 @@ public interface Operation
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Datatype()
 	 * @see org.eclipse.uml2.uml.DataType#getOwnedOperations
-	 * @model opposite="ownedOperation" resolveProxies="false" ordered="false"
+	 * @model opposite="ownedOperation" ordered="false"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -511,7 +511,7 @@ public interface Operation
 	 * @see #setInterface(Interface)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Interface()
 	 * @see org.eclipse.uml2.uml.Interface#getOwnedOperations
-	 * @model opposite="ownedOperation" resolveProxies="false" ordered="false"
+	 * @model opposite="ownedOperation" ordered="false"
 	 * @generated
 	 */
 	Interface getInterface();

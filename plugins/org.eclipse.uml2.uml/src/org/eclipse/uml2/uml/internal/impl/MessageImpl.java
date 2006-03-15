@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: MessageImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -329,6 +329,17 @@ public class MessageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Interaction basicGetInteraction() {
+		if (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION)
+			return null;
+		return (Interaction) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetInteraction(Interaction newInteraction,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInteraction,
@@ -639,7 +650,9 @@ public class MessageImpl
 					return getConnector();
 				return basicGetConnector();
 			case UMLPackage.MESSAGE__INTERACTION :
-				return getInteraction();
+				if (resolve)
+					return getInteraction();
+				return basicGetInteraction();
 			case UMLPackage.MESSAGE__ARGUMENT :
 				return getArguments();
 			case UMLPackage.MESSAGE__SIGNATURE :
@@ -792,7 +805,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__CONNECTOR :
 				return eVirtualGet(UMLPackage.MESSAGE__CONNECTOR) != null;
 			case UMLPackage.MESSAGE__INTERACTION :
-				return getInteraction() != null;
+				return basicGetInteraction() != null;
 			case UMLPackage.MESSAGE__ARGUMENT :
 				EList argument = (EList) eVirtualGet(UMLPackage.MESSAGE__ARGUMENT);
 				return argument != null && !argument.isEmpty();
@@ -825,7 +838,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Interaction interaction = getInteraction();
+		Interaction interaction = basicGetInteraction();
 		if (interaction != null) {
 			return interaction;
 		}

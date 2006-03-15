@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.13 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -219,6 +219,17 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TemplateBinding basicGetTemplateBinding() {
+		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
+			return null;
+		return (TemplateBinding) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetTemplateBinding(
 			TemplateBinding newTemplateBinding, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newTemplateBinding,
@@ -350,7 +361,9 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
 				return getOwnedActuals();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
-				return getTemplateBinding();
+				if (resolve)
+					return getTemplateBinding();
+				return basicGetTemplateBinding();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -443,7 +456,7 @@ public class TemplateParameterSubstitutionImpl
 				EList ownedActual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 				return ownedActual != null && !ownedActual.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
-				return getTemplateBinding() != null;
+				return basicGetTemplateBinding() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -464,7 +477,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		TemplateBinding templateBinding = getTemplateBinding();
+		TemplateBinding templateBinding = basicGetTemplateBinding();
 		if (templateBinding != null) {
 			return templateBinding;
 		}

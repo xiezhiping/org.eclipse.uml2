@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.9 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.10 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -172,6 +172,17 @@ public class ProtocolConformanceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ProtocolStateMachine basicGetSpecificMachine() {
+		if (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE)
+			return null;
+		return (ProtocolStateMachine) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetSpecificMachine(
 			ProtocolStateMachine newSpecificMachine, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSpecificMachine,
@@ -292,7 +303,9 @@ public class ProtocolConformanceImpl
 					return getGeneralMachine();
 				return basicGetGeneralMachine();
 			case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
-				return getSpecificMachine();
+				if (resolve)
+					return getSpecificMachine();
+				return basicGetSpecificMachine();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -371,7 +384,7 @@ public class ProtocolConformanceImpl
 			case UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE :
 				return eVirtualGet(UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE) != null;
 			case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
-				return getSpecificMachine() != null;
+				return basicGetSpecificMachine() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -402,7 +415,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		ProtocolStateMachine specificMachine = getSpecificMachine();
+		ProtocolStateMachine specificMachine = basicGetSpecificMachine();
 		if (specificMachine != null) {
 			return specificMachine;
 		}

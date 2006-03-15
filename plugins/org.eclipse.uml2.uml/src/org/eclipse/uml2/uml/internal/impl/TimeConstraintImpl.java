@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.17 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -296,7 +296,9 @@ public class TimeConstraintImpl
 					return getSpecification();
 				return basicGetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
 				return isFirstEvent()
 					? Boolean.TRUE
@@ -446,7 +448,7 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
 				return ((eFlags & FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
 		}

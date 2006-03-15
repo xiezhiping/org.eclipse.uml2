@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.17 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.18 2006/03/15 19:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,6 +167,17 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Activity basicGetActivity() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY)
+			return null;
+		return (Activity) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetActivity(Activity newActivity,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newActivity,
@@ -254,6 +265,17 @@ public abstract class ActivityEdgeImpl
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
 			return null;
 		return (StructuredActivityNode) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode basicGetInStructuredNode() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
+			return null;
+		return (StructuredActivityNode) eInternalContainer();
 	}
 
 	/**
@@ -1000,11 +1022,15 @@ public abstract class ActivityEdgeImpl
 					return getInterrupts();
 				return basicGetInterrupts();
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
 				return getInGroups();
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1187,11 +1213,11 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				return eVirtualGet(UMLPackage.ACTIVITY_EDGE__INTERRUPTS) != null;
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1202,7 +1228,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		Activity activity = getActivity();
+		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;
 		}

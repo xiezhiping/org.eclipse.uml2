@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.17 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -383,9 +383,13 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.CREATE_OBJECT_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.CREATE_OBJECT_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.CREATE_OBJECT_ACTION__INCOMING :
@@ -405,7 +409,9 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.CREATE_OBJECT_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.CREATE_OBJECT_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.CREATE_OBJECT_ACTION__LOCAL_POSTCONDITION :
@@ -608,9 +614,9 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.CREATE_OBJECT_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.CREATE_OBJECT_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.CREATE_OBJECT_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.CREATE_OBJECT_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -637,7 +643,7 @@ public class CreateObjectActionImpl
 			case UMLPackage.CREATE_OBJECT_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.CREATE_OBJECT_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.CREATE_OBJECT_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CREATE_OBJECT_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

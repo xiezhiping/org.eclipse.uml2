@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.15 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -383,9 +383,13 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
 				return getInteractionOperator();
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
@@ -542,9 +546,9 @@ public class CombinedFragmentImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
 				return eVirtualGet(
 					UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,

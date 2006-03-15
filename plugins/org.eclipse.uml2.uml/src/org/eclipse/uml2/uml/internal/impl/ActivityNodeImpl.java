@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,6 +234,17 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StructuredActivityNode basicGetInStructuredNode() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE)
+			return null;
+		return (StructuredActivityNode) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetInStructuredNode(
 			StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
@@ -279,6 +290,17 @@ public abstract class ActivityNodeImpl
 		if (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY)
 			return null;
 		return (Activity) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Activity basicGetActivity() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY)
+			return null;
+		return (Activity) eInternalContainer();
 	}
 
 	/**
@@ -588,9 +610,13 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
@@ -760,9 +786,9 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -802,7 +828,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		Activity activity = getActivity();
+		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;
 		}

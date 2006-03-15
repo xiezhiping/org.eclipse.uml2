@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.10 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.11 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -238,6 +238,17 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExecutableNode basicGetProtectedNode() {
+		if (eContainerFeatureID != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE)
+			return null;
+		return (ExecutableNode) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetProtectedNode(
 			ExecutableNode newProtectedNode, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newProtectedNode,
@@ -399,7 +410,9 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
 				return getExceptionTypes();
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
-				return getProtectedNode();
+				if (resolve)
+					return getProtectedNode();
+				return basicGetProtectedNode();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -490,7 +503,7 @@ public class ExceptionHandlerImpl
 				EList exceptionType = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
 				return exceptionType != null && !exceptionType.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
-				return getProtectedNode() != null;
+				return basicGetProtectedNode() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -501,7 +514,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		ExecutableNode protectedNode = getProtectedNode();
+		ExecutableNode protectedNode = basicGetProtectedNode();
 		if (protectedNode != null) {
 			return protectedNode;
 		}

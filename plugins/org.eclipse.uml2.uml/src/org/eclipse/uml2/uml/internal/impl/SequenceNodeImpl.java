@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -249,9 +249,13 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
@@ -271,7 +275,9 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__INPUT :
 				return getInputs();
 			case UMLPackage.SEQUENCE_NODE__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
@@ -291,9 +297,13 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.SEQUENCE_NODE__SUPER_GROUP :
-				return getSuperGroup();
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
-				return getInActivity();
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_EDGE :
 				return getContainedEdges();
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_NODE :
@@ -549,7 +559,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
@@ -578,7 +588,7 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__INPUT :
 				return isSetInputs();
 			case UMLPackage.SEQUENCE_NODE__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION);
 				return localPrecondition != null

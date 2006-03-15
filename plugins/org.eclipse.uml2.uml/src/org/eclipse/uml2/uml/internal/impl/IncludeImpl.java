@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.12 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -186,6 +186,17 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public UseCase basicGetIncludingCase() {
+		if (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE)
+			return null;
+		return (UseCase) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetIncludingCase(UseCase newIncludingCase,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newIncludingCase,
@@ -327,7 +338,9 @@ public class IncludeImpl
 					return getAddition();
 				return basicGetAddition();
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
-				return getIncludingCase();
+				if (resolve)
+					return getIncludingCase();
+				return basicGetIncludingCase();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -446,7 +459,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__ADDITION :
 				return eVirtualGet(UMLPackage.INCLUDE__ADDITION) != null;
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
-				return getIncludingCase() != null;
+				return basicGetIncludingCase() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

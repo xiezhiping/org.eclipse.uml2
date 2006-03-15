@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.14 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.15 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -404,9 +404,13 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.EXPANSION_REGION__INCOMING :
@@ -426,7 +430,9 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__INPUT :
 				return getInputs();
 			case UMLPackage.EXPANSION_REGION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION :
@@ -446,9 +452,13 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.EXPANSION_REGION__SUPER_GROUP :
-				return getSuperGroup();
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
-				return getInActivity();
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_EDGE :
 				return getContainedEdges();
 			case UMLPackage.EXPANSION_REGION__CONTAINED_NODE :
@@ -721,7 +731,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
@@ -750,7 +760,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__INPUT :
 				return isSetInputs();
 			case UMLPackage.EXPANSION_REGION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION);
 				return localPrecondition != null

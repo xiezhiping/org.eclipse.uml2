@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.12 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,7 +206,9 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature();
+				if (resolve)
+					return getSignature();
+				return basicGetSignature();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -245,7 +247,7 @@ public class ConnectableElementTemplateParameterImpl
 				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature() != null;
+				return basicGetSignature() != null;
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :

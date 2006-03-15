@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.19 2006/03/09 21:30:31 khussey Exp $
+ * $Id: PinImpl.java,v 1.20 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -716,9 +716,13 @@ public class PinImpl
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.PIN__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.PIN__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.PIN__INCOMING :
@@ -1011,9 +1015,9 @@ public class PinImpl
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.PIN__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.PIN__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.PIN__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();

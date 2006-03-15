@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.11 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -225,9 +225,13 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				return getToBefores();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
@@ -395,9 +399,9 @@ public class ExecutionOccurrenceSpecificationImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				EList toBefore = (EList) eVirtualGet(UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE);
 				return toBefore != null && !toBefore.isEmpty();

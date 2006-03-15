@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ActionExecutionSpecificationImpl.java,v 1.11 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,9 +170,13 @@ public class ActionExecutionSpecificationImpl
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__START :
 				if (resolve)
 					return getStart();
@@ -333,9 +337,9 @@ public class ActionExecutionSpecificationImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__START :
 				return eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__START) != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__FINISH :

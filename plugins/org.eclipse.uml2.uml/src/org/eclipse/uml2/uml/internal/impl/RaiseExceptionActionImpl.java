@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.17 2006/03/07 20:25:16 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.18 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -299,9 +299,13 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
@@ -321,7 +325,9 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
@@ -514,9 +520,9 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -543,7 +549,7 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

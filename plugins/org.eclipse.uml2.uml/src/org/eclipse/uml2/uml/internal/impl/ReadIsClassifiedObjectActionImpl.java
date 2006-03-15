@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -587,9 +587,13 @@ public class ReadIsClassifiedObjectActionImpl
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING :
@@ -609,7 +613,9 @@ public class ReadIsClassifiedObjectActionImpl
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_POSTCONDITION :
@@ -832,9 +838,9 @@ public class ReadIsClassifiedObjectActionImpl
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -861,7 +867,7 @@ public class ReadIsClassifiedObjectActionImpl
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignature.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
+ * $Id: RedefinableTemplateSignature.java,v 1.6 2006/03/15 19:33:42 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,7 @@ public interface RedefinableTemplateSignature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_Classifier()
-	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" ordered="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	Classifier getClassifier();

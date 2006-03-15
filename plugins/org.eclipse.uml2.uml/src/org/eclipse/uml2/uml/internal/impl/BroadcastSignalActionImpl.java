@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.11 2006/02/21 16:12:17 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.12 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -184,9 +184,13 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
@@ -206,7 +210,9 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION :
@@ -418,9 +424,9 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -447,7 +453,7 @@ public class BroadcastSignalActionImpl
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

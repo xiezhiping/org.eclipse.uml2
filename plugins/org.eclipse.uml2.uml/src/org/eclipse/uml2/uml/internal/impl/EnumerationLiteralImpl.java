@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.12 2006/03/15 19:33:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,6 +79,17 @@ public class EnumerationLiteralImpl
 		if (eContainerFeatureID != UMLPackage.ENUMERATION_LITERAL__ENUMERATION)
 			return null;
 		return (Enumeration) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Enumeration basicGetEnumeration() {
+		if (eContainerFeatureID != UMLPackage.ENUMERATION_LITERAL__ENUMERATION)
+			return null;
+		return (Enumeration) eInternalContainer();
 	}
 
 	/**
@@ -273,7 +284,9 @@ public class EnumerationLiteralImpl
 					return getSpecification();
 				return basicGetSpecification();
 			case UMLPackage.ENUMERATION_LITERAL__ENUMERATION :
-				return getEnumeration();
+				if (resolve)
+					return getEnumeration();
+				return basicGetEnumeration();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -434,7 +447,7 @@ public class EnumerationLiteralImpl
 			case UMLPackage.ENUMERATION_LITERAL__SPECIFICATION :
 				return eVirtualGet(UMLPackage.ENUMERATION_LITERAL__SPECIFICATION) != null;
 			case UMLPackage.ENUMERATION_LITERAL__ENUMERATION :
-				return getEnumeration() != null;
+				return basicGetEnumeration() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -445,7 +458,7 @@ public class EnumerationLiteralImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Enumeration enumeration = getEnumeration();
+		Enumeration enumeration = basicGetEnumeration();
 		if (enumeration != null) {
 			return enumeration;
 		}

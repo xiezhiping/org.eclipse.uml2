@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.26 2006/03/07 21:43:25 khussey Exp $
+ * $Id: OperationImpl.java,v 1.27 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,7 +83,7 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class </em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isUnique <em>Is Unique</em>}</li>
@@ -597,7 +597,7 @@ public class OperationImpl
 					Classifier.class, this,
 					UMLPackage.OPERATION__REDEFINITION_CONTEXT, new int[]{
 						UMLPackage.OPERATION__INTERFACE,
-						UMLPackage.OPERATION__CLASS_,
+						UMLPackage.OPERATION__CLASS,
 						UMLPackage.OPERATION__DATATYPE}));
 		}
 		return redefinitionContext;
@@ -615,7 +615,7 @@ public class OperationImpl
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.OPERATION__FEATURING_CLASSIFIER, new int[]{
-						UMLPackage.OPERATION__CLASS_,
+						UMLPackage.OPERATION__CLASS,
 						UMLPackage.OPERATION__DATATYPE}));
 		}
 		return featuringClassifier;
@@ -762,7 +762,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class getClass_() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__CLASS_)
+		if (eContainerFeatureID != UMLPackage.OPERATION__CLASS)
 			return null;
 		return (org.eclipse.uml2.uml.Class) eContainer();
 	}
@@ -772,10 +772,21 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.uml2.uml.Class basicGetClass_() {
+		if (eContainerFeatureID != UMLPackage.OPERATION__CLASS)
+			return null;
+		return (org.eclipse.uml2.uml.Class) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetClass_(
-			org.eclipse.uml2.uml.Class newClass_, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newClass_,
-			UMLPackage.OPERATION__CLASS_, msgs);
+			org.eclipse.uml2.uml.Class newClass, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newClass,
+			UMLPackage.OPERATION__CLASS, msgs);
 
 		return msgs;
 	}
@@ -785,25 +796,25 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setClass_(org.eclipse.uml2.uml.Class newClass_) {
-		if (newClass_ != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS_ && newClass_ != null)) {
-			if (EcoreUtil.isAncestor(this, newClass_))
+	public void setClass_(org.eclipse.uml2.uml.Class newClass) {
+		if (newClass != eInternalContainer()
+			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS && newClass != null)) {
+			if (EcoreUtil.isAncestor(this, newClass))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newClass_ != null)
-				msgs = ((InternalEObject) newClass_).eInverseAdd(this,
+			if (newClass != null)
+				msgs = ((InternalEObject) newClass).eInverseAdd(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
 					org.eclipse.uml2.uml.Class.class, msgs);
-			msgs = basicSetClass_(newClass_, msgs);
+			msgs = basicSetClass_(newClass, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OPERATION__CLASS_, newClass_, newClass_));
+				UMLPackage.OPERATION__CLASS, newClass, newClass));
 
 	}
 
@@ -1031,6 +1042,17 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataType basicGetDatatype() {
+		if (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE)
+			return null;
+		return (DataType) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetDatatype(DataType newDatatype,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newDatatype,
@@ -1184,6 +1206,17 @@ public class OperationImpl
 		if (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE)
 			return null;
 		return (Interface) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface basicGetInterface() {
+		if (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE)
+			return null;
+		return (Interface) eInternalContainer();
 	}
 
 	/**
@@ -1535,7 +1568,7 @@ public class OperationImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInterface((Interface) otherEnd, msgs);
-			case UMLPackage.OPERATION__CLASS_ :
+			case UMLPackage.OPERATION__CLASS :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetClass_((org.eclipse.uml2.uml.Class) otherEnd,
@@ -1596,7 +1629,7 @@ public class OperationImpl
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.OPERATION__INTERFACE :
 				return basicSetInterface(null, msgs);
-			case UMLPackage.OPERATION__CLASS_ :
+			case UMLPackage.OPERATION__CLASS :
 				return basicSetClass_(null, msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicSetDatatype(null, msgs);
@@ -1620,7 +1653,7 @@ public class OperationImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
 					msgs);
-			case UMLPackage.OPERATION__CLASS_ :
+			case UMLPackage.OPERATION__CLASS :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
 					org.eclipse.uml2.uml.Class.class, msgs);
@@ -1721,9 +1754,13 @@ public class OperationImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.OPERATION__INTERFACE :
-				return getInterface();
-			case UMLPackage.OPERATION__CLASS_ :
-				return getClass_();
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
+			case UMLPackage.OPERATION__CLASS :
+				if (resolve)
+					return getClass_();
+				return basicGetClass_();
 			case UMLPackage.OPERATION__IS_QUERY :
 				return isQuery()
 					? Boolean.TRUE
@@ -1747,7 +1784,9 @@ public class OperationImpl
 			case UMLPackage.OPERATION__REDEFINED_OPERATION :
 				return getRedefinedOperations();
 			case UMLPackage.OPERATION__DATATYPE :
-				return getDatatype();
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				if (resolve)
 					return getBodyCondition();
@@ -1844,7 +1883,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__INTERFACE :
 				setInterface((Interface) newValue);
 				return;
-			case UMLPackage.OPERATION__CLASS_ :
+			case UMLPackage.OPERATION__CLASS :
 				setClass_((org.eclipse.uml2.uml.Class) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
@@ -1960,7 +1999,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__INTERFACE :
 				setInterface((Interface) null);
 				return;
-			case UMLPackage.OPERATION__CLASS_ :
+			case UMLPackage.OPERATION__CLASS :
 				setClass_((org.eclipse.uml2.uml.Class) null);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
@@ -2083,9 +2122,9 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE) != null;
 			case UMLPackage.OPERATION__INTERFACE :
-				return getInterface() != null;
-			case UMLPackage.OPERATION__CLASS_ :
-				return getClass_() != null;
+				return basicGetInterface() != null;
+			case UMLPackage.OPERATION__CLASS :
+				return basicGetClass_() != null;
 			case UMLPackage.OPERATION__IS_QUERY :
 				return ((eFlags & IS_QUERY_EFLAG) != 0) != IS_QUERY_EDEFAULT;
 			case UMLPackage.OPERATION__IS_ORDERED :
@@ -2107,7 +2146,7 @@ public class OperationImpl
 				return redefinedOperation != null
 					&& !redefinedOperation.isEmpty();
 			case UMLPackage.OPERATION__DATATYPE :
-				return getDatatype() != null;
+				return basicGetDatatype() != null;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				return eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION) != null;
 			case UMLPackage.OPERATION__TYPE :
@@ -2266,7 +2305,7 @@ public class OperationImpl
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
 			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
-			|| eIsSet(UMLPackage.OPERATION__CLASS_)
+			|| eIsSet(UMLPackage.OPERATION__CLASS)
 			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
@@ -2276,11 +2315,11 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.uml.Class class_ = getClass_();
+		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;
 		}
-		DataType datatype = getDatatype();
+		DataType datatype = basicGetDatatype();
 		if (datatype != null) {
 			return datatype;
 		}
@@ -2293,7 +2332,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS_)
+		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS)
 			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 
@@ -2304,7 +2343,7 @@ public class OperationImpl
 	 */
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.OPERATION__CLASS_)
+			|| eIsSet(UMLPackage.OPERATION__CLASS)
 			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.13 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -267,9 +267,13 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
-				return getSuperGroup();
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
-				return getInActivity();
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_EDGE :
 				return getContainedEdges();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
@@ -360,7 +364,7 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
 				return isSetSuperGroup();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
-				return getInActivity() != null;
+				return basicGetInActivity() != null;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :

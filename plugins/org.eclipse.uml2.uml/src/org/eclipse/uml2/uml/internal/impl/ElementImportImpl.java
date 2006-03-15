@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.10 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.11 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -279,6 +279,17 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Namespace basicGetImportingNamespace() {
+		if (eContainerFeatureID != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE)
+			return null;
+		return (Namespace) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetImportingNamespace(
 			Namespace newImportingNamespace, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
@@ -323,17 +334,6 @@ public class ElementImportImpl
 	public boolean validateVisibilityPublicOrPrivate(
 			DiagnosticChain diagnostics, Map context) {
 		return ElementImportOperations.validateVisibilityPublicOrPrivate(this,
-			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateVisibilityOrPrivate(DiagnosticChain diagnostics,
-			Map context) {
-		return ElementImportOperations.validateVisibilityOrPrivate(this,
 			diagnostics, context);
 	}
 
@@ -444,7 +444,9 @@ public class ElementImportImpl
 					return getImportedElement();
 				return basicGetImportedElement();
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				return getImportingNamespace();
+				if (resolve)
+					return getImportingNamespace();
+				return basicGetImportingNamespace();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -540,7 +542,7 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT :
 				return eVirtualGet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT) != null;
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				return getImportingNamespace() != null;
+				return basicGetImportingNamespace() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -593,7 +595,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		Namespace importingNamespace = getImportingNamespace();
+		Namespace importingNamespace = basicGetImportingNamespace();
 		if (importingNamespace != null) {
 			return importingNamespace;
 		}

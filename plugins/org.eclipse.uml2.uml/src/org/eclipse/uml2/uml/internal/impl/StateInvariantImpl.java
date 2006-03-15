@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.17 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -333,9 +333,13 @@ public class StateInvariantImpl
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
 				if (resolve)
 					return getInvariant();
@@ -475,9 +479,9 @@ public class StateInvariantImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
 				return eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT) != null;
 		}

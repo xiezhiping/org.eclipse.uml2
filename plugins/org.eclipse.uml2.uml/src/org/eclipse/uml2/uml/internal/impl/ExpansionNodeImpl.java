@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -377,9 +377,13 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.EXPANSION_NODE__INCOMING :
@@ -626,9 +630,9 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();

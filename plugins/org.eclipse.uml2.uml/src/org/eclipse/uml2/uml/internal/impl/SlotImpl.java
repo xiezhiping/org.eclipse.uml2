@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.13 2006/03/07 20:25:16 khussey Exp $
+ * $Id: SlotImpl.java,v 1.14 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,6 +102,17 @@ public class SlotImpl
 		if (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE)
 			return null;
 		return (InstanceSpecification) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstanceSpecification basicGetOwningInstance() {
+		if (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE)
+			return null;
+		return (InstanceSpecification) eInternalContainer();
 	}
 
 	/**
@@ -339,7 +350,9 @@ public class SlotImpl
 			case UMLPackage.SLOT__VALUE :
 				return getValues();
 			case UMLPackage.SLOT__OWNING_INSTANCE :
-				return getOwningInstance();
+				if (resolve)
+					return getOwningInstance();
+				return basicGetOwningInstance();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -422,7 +435,7 @@ public class SlotImpl
 				EList value = (EList) eVirtualGet(UMLPackage.SLOT__VALUE);
 				return value != null && !value.isEmpty();
 			case UMLPackage.SLOT__OWNING_INSTANCE :
-				return getOwningInstance() != null;
+				return basicGetOwningInstance() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -433,7 +446,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		InstanceSpecification owningInstance = getOwningInstance();
+		InstanceSpecification owningInstance = basicGetOwningInstance();
 		if (owningInstance != null) {
 			return owningInstance;
 		}

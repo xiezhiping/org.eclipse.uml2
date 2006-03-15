@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.2 2006/03/08 19:03:09 khussey Exp $
+ * $Id: PropertyTest.java,v 1.3 2006/03/15 19:29:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -28,7 +28,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getClass_() <em>Class </em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getClass_() <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefault() <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOpposite() <em>Opposite</em>}</li>
@@ -241,7 +241,7 @@ public class PropertyTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Property#getClass_() <em>Class </em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.uml.Property#getClass_() <em>Class</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#getClass_()

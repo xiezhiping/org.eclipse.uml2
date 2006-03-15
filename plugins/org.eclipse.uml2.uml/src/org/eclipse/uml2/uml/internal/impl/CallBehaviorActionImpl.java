@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.12 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -203,9 +203,13 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
@@ -225,7 +229,9 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
@@ -456,9 +462,9 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -485,7 +491,7 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

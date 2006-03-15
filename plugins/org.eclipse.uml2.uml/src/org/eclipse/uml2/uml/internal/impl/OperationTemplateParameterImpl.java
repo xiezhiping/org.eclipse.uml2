@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.12 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -203,7 +203,9 @@ public class OperationTemplateParameterImpl
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature();
+				if (resolve)
+					return getSignature();
+				return basicGetSignature();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -242,7 +244,7 @@ public class OperationTemplateParameterImpl
 				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature() != null;
+				return basicGetSignature() != null;
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :

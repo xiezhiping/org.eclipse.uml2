@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.12 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -134,6 +134,17 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StateMachine basicGetStateMachine() {
+		if (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE_MACHINE)
+			return null;
+		return (StateMachine) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetStateMachine(StateMachine newStateMachine,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newStateMachine,
@@ -179,6 +190,17 @@ public class PseudostateImpl
 		if (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE)
 			return null;
 		return (State) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State basicGetState() {
+		if (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE)
+			return null;
+		return (State) eInternalContainer();
 	}
 
 	/**
@@ -447,13 +469,19 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__INCOMING :
 				return getIncomings();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
-				return getContainer();
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 			case UMLPackage.PSEUDOSTATE__KIND :
 				return getKind();
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-				return getStateMachine();
+				if (resolve)
+					return getStateMachine();
+				return basicGetStateMachine();
 			case UMLPackage.PSEUDOSTATE__STATE :
-				return getState();
+				if (resolve)
+					return getState();
+				return basicGetState();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -596,13 +624,13 @@ public class PseudostateImpl
 				EList incoming = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
-				return getContainer() != null;
+				return basicGetContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
 				return eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-				return getStateMachine() != null;
+				return basicGetStateMachine() != null;
 			case UMLPackage.PSEUDOSTATE__STATE :
-				return getState() != null;
+				return basicGetState() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -629,7 +657,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		StateMachine stateMachine = getStateMachine();
+		StateMachine stateMachine = basicGetStateMachine();
 		if (stateMachine != null) {
 			return stateMachine;
 		}
@@ -652,7 +680,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		State state = getState();
+		State state = basicGetState();
 		if (state != null) {
 			return state;
 		}

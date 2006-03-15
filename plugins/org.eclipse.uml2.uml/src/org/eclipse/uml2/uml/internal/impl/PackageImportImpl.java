@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.10 2006/03/01 17:56:37 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.11 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -217,6 +217,17 @@ public class PackageImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Namespace basicGetImportingNamespace() {
+		if (eContainerFeatureID != UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE)
+			return null;
+		return (Namespace) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetImportingNamespace(
 			Namespace newImportingNamespace, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
@@ -349,7 +360,9 @@ public class PackageImportImpl
 					return getImportedPackage();
 				return basicGetImportedPackage();
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-				return getImportingNamespace();
+				if (resolve)
+					return getImportingNamespace();
+				return basicGetImportingNamespace();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -437,7 +450,7 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE) != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
-				return getImportingNamespace() != null;
+				return basicGetImportingNamespace() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -485,7 +498,7 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		Namespace importingNamespace = getImportingNamespace();
+		Namespace importingNamespace = basicGetImportingNamespace();
 		if (importingNamespace != null) {
 			return importingNamespace;
 		}

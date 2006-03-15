@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.22 2006/03/09 21:30:31 khussey Exp $
+ * $Id: VariableImpl.java,v 1.23 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -488,6 +488,17 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Activity basicGetActivityScope() {
+		if (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE)
+			return null;
+		return (Activity) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetActivityScope(Activity newActivityScope,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newActivityScope,
@@ -532,6 +543,17 @@ public class VariableImpl
 		if (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE)
 			return null;
 		return (StructuredActivityNode) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode basicGetScope() {
+		if (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE)
+			return null;
+		return (StructuredActivityNode) eInternalContainer();
 	}
 
 	/**
@@ -859,9 +881,13 @@ public class VariableImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.VARIABLE__SCOPE :
-				return getScope();
+				if (resolve)
+					return getScope();
+				return basicGetScope();
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return getActivityScope();
+				if (resolve)
+					return getActivityScope();
+				return basicGetActivityScope();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1054,9 +1080,9 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE) != null;
 			case UMLPackage.VARIABLE__SCOPE :
-				return getScope() != null;
+				return basicGetScope() != null;
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return getActivityScope() != null;
+				return basicGetActivityScope() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1150,11 +1176,11 @@ public class VariableImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		StructuredActivityNode scope = getScope();
+		StructuredActivityNode scope = basicGetScope();
 		if (scope != null) {
 			return scope;
 		}
-		Activity activityScope = getActivityScope();
+		Activity activityScope = basicGetActivityScope();
 		if (activityScope != null) {
 			return activityScope;
 		}

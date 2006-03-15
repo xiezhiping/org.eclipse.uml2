@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.30 2006/03/08 19:02:44 khussey Exp $
+ * $Id: ClassImpl.java,v 1.31 2006/03/15 19:33:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -520,7 +520,7 @@ public class ClassImpl
 				UMLPackage.CLASS__OWNED_OPERATION,
 				ownedOperation = new EObjectContainmentWithInverseEList.Resolving(
 					Operation.class, this, UMLPackage.CLASS__OWNED_OPERATION,
-					UMLPackage.OPERATION__CLASS_));
+					UMLPackage.OPERATION__CLASS));
 		}
 		return ownedOperation;
 	}

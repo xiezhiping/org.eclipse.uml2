@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.16 2006/03/01 17:56:37 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -221,6 +221,17 @@ public class DeploymentSpecificationImpl
 		if (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
 			return null;
 		return (Deployment) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment basicGetDeployment() {
+		if (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
+			return null;
+		return (Deployment) eInternalContainer();
 	}
 
 	/**
@@ -565,7 +576,9 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION :
 				return getExecutionLocation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-				return getDeployment();
+				if (resolve)
+					return getDeployment();
+				return basicGetDeployment();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -926,7 +939,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION :
 				return isSetExecutionLocation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT :
-				return getDeployment() != null;
+				return basicGetDeployment() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.5 2005/12/12 16:58:34 khussey Exp $
+ * $Id: Pseudostate.java,v 1.6 2006/03/15 19:33:56 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -82,7 +82,7 @@ public interface Pseudostate
 	 * @see #setStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPseudostate_StateMachine()
 	 * @see org.eclipse.uml2.uml.StateMachine#getConnectionPoints
-	 * @model opposite="connectionPoint" resolveProxies="false" ordered="false"
+	 * @model opposite="connectionPoint" ordered="false"
 	 * @generated
 	 */
 	StateMachine getStateMachine();
@@ -109,7 +109,7 @@ public interface Pseudostate
 	 * @see #setState(State)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPseudostate_State()
 	 * @see org.eclipse.uml2.uml.State#getConnectionPoints
-	 * @model opposite="connectionPoint" resolveProxies="false" ordered="false"
+	 * @model opposite="connectionPoint" ordered="false"
 	 * @generated
 	 */
 	State getState();

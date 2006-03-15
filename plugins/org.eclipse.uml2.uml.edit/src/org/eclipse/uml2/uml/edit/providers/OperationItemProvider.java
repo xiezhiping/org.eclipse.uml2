@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.7 2006/01/24 22:46:30 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.8 2006/03/15 19:34:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -82,7 +82,7 @@ public class OperationItemProvider
 			addTemplateBindingPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
 			addInterfacePropertyDescriptor(object);
-			addClass_PropertyDescriptor(object);
+			addClassPropertyDescriptor(object);
 			addIsQueryPropertyDescriptor(object);
 			addIsOrderedPropertyDescriptor(object);
 			addIsUniquePropertyDescriptor(object);
@@ -276,26 +276,6 @@ public class OperationItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Class  feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addClass_PropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Operation_class__feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Operation_class__feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__CLASS_, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
 	 * This adds a property descriptor for the Precondition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -425,6 +405,26 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_interface_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPERATION__INTERFACE, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Operation_class_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Operation_class_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.OPERATION__CLASS, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

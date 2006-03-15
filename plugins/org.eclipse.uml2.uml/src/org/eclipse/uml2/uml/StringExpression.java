@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpression.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: StringExpression.java,v 1.6 2006/03/15 19:33:58 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -110,7 +110,7 @@ public interface StringExpression
 	 * @see #setOwningExpression(StringExpression)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStringExpression_OwningExpression()
 	 * @see org.eclipse.uml2.uml.StringExpression#getSubExpressions
-	 * @model opposite="subExpression" resolveProxies="false" ordered="false"
+	 * @model opposite="subExpression" ordered="false"
 	 * @generated
 	 */
 	StringExpression getOwningExpression();

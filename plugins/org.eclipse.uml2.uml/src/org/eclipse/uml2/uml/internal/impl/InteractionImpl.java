@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.22 2006/03/07 20:25:16 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.23 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -250,6 +250,17 @@ public class InteractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Interaction basicGetEnclosingInteraction() {
+		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION)
+			return null;
+		return (Interaction) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetEnclosingInteraction(
 			Interaction newEnclosingInteraction, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newEnclosingInteraction,
@@ -295,6 +306,17 @@ public class InteractionImpl
 		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
 			return null;
 		return (InteractionOperand) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionOperand basicGetEnclosingOperand() {
+		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
+			return null;
+		return (InteractionOperand) eInternalContainer();
 	}
 
 	/**
@@ -1066,9 +1088,13 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.INTERACTION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.INTERACTION__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.INTERACTION__LIFELINE :
 				return getLifelines();
 			case UMLPackage.INTERACTION__FRAGMENT :
@@ -1626,9 +1652,9 @@ public class InteractionImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.INTERACTION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.INTERACTION__LIFELINE :
 				EList lifeline = (EList) eVirtualGet(UMLPackage.INTERACTION__LIFELINE);
 				return lifeline != null && !lifeline.isEmpty();
@@ -1750,7 +1776,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		InteractionOperand enclosingOperand = getEnclosingOperand();
+		InteractionOperand enclosingOperand = basicGetEnclosingOperand();
 		if (enclosingOperand != null) {
 			return enclosingOperand;
 		}

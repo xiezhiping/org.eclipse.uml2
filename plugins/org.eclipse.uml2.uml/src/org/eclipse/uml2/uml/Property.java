@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.16 2006/03/09 21:30:34 khussey Exp $
+ * $Id: Property.java,v 1.17 2006/03/15 19:33:55 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class </em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerivedUnion <em>Is Derived Union</em>}</li>
@@ -90,7 +90,7 @@ public interface Property
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Datatype()
 	 * @see org.eclipse.uml2.uml.DataType#getOwnedAttributes
-	 * @model opposite="ownedAttribute" resolveProxies="false" ordered="false"
+	 * @model opposite="ownedAttribute" ordered="false"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -268,7 +268,7 @@ public interface Property
 	void setIsComposite(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Class </b></em>' reference.
+	 * Returns the value of the '<em><b>Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Class </em>' reference isn't clear,
@@ -278,9 +278,9 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * References the Class that owns the Property.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Class </em>' reference.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class_()
-	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" ordered="false"
+	 * @return the value of the '<em>Class</em>' reference.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class()
+	 * @model transient="true" changeable="false" volatile="true" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class getClass_();
@@ -569,7 +569,7 @@ public interface Property
 	 * @see #setAssociationEnd(Property)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_AssociationEnd()
 	 * @see org.eclipse.uml2.uml.Property#getQualifiers
-	 * @model opposite="qualifier" resolveProxies="false" ordered="false"
+	 * @model opposite="qualifier" ordered="false"
 	 * @generated
 	 */
 	Property getAssociationEnd();

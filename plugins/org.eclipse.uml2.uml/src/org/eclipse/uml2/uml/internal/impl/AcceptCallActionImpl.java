@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.13 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -214,9 +214,13 @@ public class AcceptCallActionImpl
 			case UMLPackage.ACCEPT_CALL_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.ACCEPT_CALL_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.ACCEPT_CALL_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.ACCEPT_CALL_ACTION__INCOMING :
@@ -236,7 +240,9 @@ public class AcceptCallActionImpl
 			case UMLPackage.ACCEPT_CALL_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.ACCEPT_CALL_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION :
@@ -457,9 +463,9 @@ public class AcceptCallActionImpl
 			case UMLPackage.ACCEPT_CALL_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACCEPT_CALL_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.ACCEPT_CALL_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -486,7 +492,7 @@ public class AcceptCallActionImpl
 			case UMLPackage.ACCEPT_CALL_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.ACCEPT_CALL_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

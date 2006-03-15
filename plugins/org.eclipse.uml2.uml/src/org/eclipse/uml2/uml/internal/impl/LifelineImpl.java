@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.15 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -164,6 +164,17 @@ public class LifelineImpl
 		if (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION)
 			return null;
 		return (Interaction) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interaction basicGetInteraction() {
+		if (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION)
+			return null;
+		return (Interaction) eInternalContainer();
 	}
 
 	/**
@@ -546,7 +557,9 @@ public class LifelineImpl
 					return getRepresents();
 				return basicGetRepresents();
 			case UMLPackage.LIFELINE__INTERACTION :
-				return getInteraction();
+				if (resolve)
+					return getInteraction();
+				return basicGetInteraction();
 			case UMLPackage.LIFELINE__SELECTOR :
 				if (resolve)
 					return getSelector();
@@ -688,7 +701,7 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__REPRESENTS :
 				return eVirtualGet(UMLPackage.LIFELINE__REPRESENTS) != null;
 			case UMLPackage.LIFELINE__INTERACTION :
-				return getInteraction() != null;
+				return basicGetInteraction() != null;
 			case UMLPackage.LIFELINE__SELECTOR :
 				return eVirtualGet(UMLPackage.LIFELINE__SELECTOR) != null;
 			case UMLPackage.LIFELINE__DECOMPOSED_AS :
@@ -706,7 +719,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Interaction interaction = getInteraction();
+		Interaction interaction = basicGetInteraction();
 		if (interaction != null) {
 			return interaction;
 		}

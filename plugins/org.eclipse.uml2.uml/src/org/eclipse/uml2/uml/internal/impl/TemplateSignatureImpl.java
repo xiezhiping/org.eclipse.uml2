@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.13 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,6 +123,17 @@ public class TemplateSignatureImpl
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE)
 			return null;
 		return (TemplateableElement) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateableElement basicGetTemplate() {
+		if (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE)
+			return null;
+		return (TemplateableElement) eInternalContainer();
 	}
 
 	/**
@@ -298,7 +309,9 @@ public class TemplateSignatureImpl
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return getOwnedParameters();
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				return getTemplate();
+				if (resolve)
+					return getTemplate();
+				return basicGetTemplate();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -383,7 +396,7 @@ public class TemplateSignatureImpl
 				EList ownedParameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
-				return getTemplate() != null;
+				return basicGetTemplate() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -394,7 +407,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		TemplateableElement template = getTemplate();
+		TemplateableElement template = basicGetTemplate();
 		if (template != null) {
 			return template;
 		}

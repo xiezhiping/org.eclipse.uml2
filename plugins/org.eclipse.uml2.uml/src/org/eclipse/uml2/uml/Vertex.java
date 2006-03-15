@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Vertex.java,v 1.6 2006/03/15 19:33:42 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -135,7 +135,7 @@ public interface Vertex
 	 * @see #setContainer(Region)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Container()
 	 * @see org.eclipse.uml2.uml.Region#getSubvertices
-	 * @model opposite="subvertex" resolveProxies="false" ordered="false"
+	 * @model opposite="subvertex" ordered="false"
 	 * @generated
 	 */
 	Region getContainer();

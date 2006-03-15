@@ -455,10 +455,6 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ElementImport/visibility_public_or_private/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ElementImport/visibility_public_or_private/context"/>
       </genOperations>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ElementImport/visibility_or_private">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ElementImport/visibility_or_private/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ElementImport/visibility_or_private/context"/>
-      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ElementImport/imported_element_is_public">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ElementImport/imported_element_is_public/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ElementImport/imported_element_is_public/context"/>
@@ -1026,7 +1022,7 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Property">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
-          createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Property/class_"/>
+          createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Property/class"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           ecoreFeature="ecore:EReference UML.ecore#//Property/datatype">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1222,7 +1218,7 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          ecoreFeature="ecore:EReference UML.ecore#//Operation/class_">
+          ecoreFeature="ecore:EReference UML.ecore#//Operation/class">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isQuery"/>

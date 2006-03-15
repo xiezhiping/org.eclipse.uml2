@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.12 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.13 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -219,9 +219,13 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
@@ -458,9 +462,9 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();

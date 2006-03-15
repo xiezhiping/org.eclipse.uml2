@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.11 2006/02/22 20:48:17 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -172,9 +172,13 @@ public class ConsiderIgnoreFragmentImpl
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
 				return getInteractionOperator();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
@@ -340,9 +344,9 @@ public class ConsiderIgnoreFragmentImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
 				return eVirtualGet(
 					UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR,

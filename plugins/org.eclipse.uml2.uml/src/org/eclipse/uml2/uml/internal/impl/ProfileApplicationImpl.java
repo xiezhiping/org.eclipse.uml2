@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -223,6 +223,17 @@ public class ProfileApplicationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.uml2.uml.Package basicGetApplyingPackage() {
+		if (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE)
+			return null;
+		return (org.eclipse.uml2.uml.Package) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetApplyingPackage(
 			org.eclipse.uml2.uml.Package newApplyingPackage,
 			NotificationChain msgs) {
@@ -368,7 +379,9 @@ public class ProfileApplicationImpl
 					? Boolean.TRUE
 					: Boolean.FALSE;
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
-				return getApplyingPackage();
+				if (resolve)
+					return getApplyingPackage();
+				return basicGetApplyingPackage();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -455,7 +468,7 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				return ((eFlags & IS_STRICT_EFLAG) != 0) != IS_STRICT_EDEFAULT;
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
-				return getApplyingPackage() != null;
+				return basicGetApplyingPackage() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -502,7 +515,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		org.eclipse.uml2.uml.Package applyingPackage = getApplyingPackage();
+		org.eclipse.uml2.uml.Package applyingPackage = basicGetApplyingPackage();
 		if (applyingPackage != null) {
 			return applyingPackage;
 		}

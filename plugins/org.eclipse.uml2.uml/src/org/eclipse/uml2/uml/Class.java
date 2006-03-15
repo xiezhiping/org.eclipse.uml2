@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.10 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Class.java,v 1.11 2006/03/15 19:33:43 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -54,7 +54,7 @@ public interface Class
 	/**
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Operation}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class </em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -63,7 +63,7 @@ public interface Class
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClass_OwnedOperation()
 	 * @see org.eclipse.uml2.uml.Operation#getClass_
-	 * @model type="org.eclipse.uml2.uml.Operation" opposite="class_" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Operation" opposite="class" containment="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();

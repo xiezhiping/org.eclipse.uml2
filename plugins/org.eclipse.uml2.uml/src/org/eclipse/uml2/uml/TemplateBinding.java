@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.6 2006/02/22 20:48:14 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.7 2006/03/15 19:33:53 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -107,7 +107,7 @@ public interface TemplateBinding
 	 * @see #setBoundElement(TemplateableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateBinding_BoundElement()
 	 * @see org.eclipse.uml2.uml.TemplateableElement#getTemplateBindings
-	 * @model opposite="templateBinding" resolveProxies="false" required="true" ordered="false"
+	 * @model opposite="templateBinding" required="true" ordered="false"
 	 * @generated
 	 */
 	TemplateableElement getBoundElement();

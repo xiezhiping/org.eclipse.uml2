@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.11 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -184,9 +184,13 @@ public class ContinuationImpl
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.CONTINUATION__SETTING :
 				return isSetting()
 					? Boolean.TRUE
@@ -327,9 +331,9 @@ public class ContinuationImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.CONTINUATION__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.CONTINUATION__SETTING :
 				return ((eFlags & SETTING_EFLAG) != 0) != SETTING_EDEFAULT;
 		}

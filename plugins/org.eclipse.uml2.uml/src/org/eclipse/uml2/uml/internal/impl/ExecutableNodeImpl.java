@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -241,9 +241,13 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
@@ -422,9 +426,9 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();

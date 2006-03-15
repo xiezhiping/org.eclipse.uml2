@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.26 2006/03/09 21:30:31 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.27 2006/03/15 19:33:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -599,11 +599,24 @@ public class ParameterImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Operation getOperation() {
-		return eInternalContainer() instanceof Operation
-			? (Operation) eContainer()
+		Operation operation = basicGetOperation();
+		return operation != null && operation.eIsProxy()
+			? (Operation) eResolveProxy((InternalEObject) operation)
+			: operation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Operation basicGetOperation() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Operation
+			? (Operation) eInternalContainer
 			: null;
 	}
 
@@ -1224,7 +1237,9 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__PARAMETER_SET :
 				return getParameterSets();
 			case UMLPackage.PARAMETER__OPERATION :
-				return getOperation();
+				if (resolve)
+					return getOperation();
+				return basicGetOperation();
 			case UMLPackage.PARAMETER__DIRECTION :
 				return getDirection();
 			case UMLPackage.PARAMETER__DEFAULT :
@@ -1469,7 +1484,7 @@ public class ParameterImpl
 				EList parameterSet = (EList) eVirtualGet(UMLPackage.PARAMETER__PARAMETER_SET);
 				return parameterSet != null && !parameterSet.isEmpty();
 			case UMLPackage.PARAMETER__OPERATION :
-				return getOperation() != null;
+				return basicGetOperation() != null;
 			case UMLPackage.PARAMETER__DIRECTION :
 				return eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
 					DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
@@ -1589,7 +1604,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Operation operation = getOperation();
+		Operation operation = basicGetOperation();
 		if (operation != null) {
 			return operation;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.31 2006/03/09 21:30:31 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.32 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,7 +91,7 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClass_ <em>Class </em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#isDerivedUnion <em>Is Derived Union</em>}</li>
@@ -764,7 +764,7 @@ public class PropertyImpl
 				featuringClassifier = new DerivedUnionEObjectEList(
 					Classifier.class, this,
 					UMLPackage.PROPERTY__FEATURING_CLASSIFIER, new int[]{
-						UMLPackage.PROPERTY__CLASS_,
+						UMLPackage.PROPERTY__CLASS,
 						UMLPackage.PROPERTY__DATATYPE,
 						UMLPackage.PROPERTY__OWNING_ASSOCIATION}));
 		}
@@ -886,6 +886,17 @@ public class PropertyImpl
 		if (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE)
 			return null;
 		return (DataType) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataType basicGetDatatype() {
+		if (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE)
+			return null;
+		return (DataType) eInternalContainer();
 	}
 
 	/**
@@ -1068,11 +1079,24 @@ public class PropertyImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class getClass_() {
-		return eInternalContainer() instanceof org.eclipse.uml2.uml.Class
-			? (org.eclipse.uml2.uml.Class) eContainer()
+		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
+		return class_ != null && class_.eIsProxy()
+			? (org.eclipse.uml2.uml.Class) eResolveProxy((InternalEObject) class_)
+			: class_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public org.eclipse.uml2.uml.Class basicGetClass_() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof org.eclipse.uml2.uml.Class
+			? (org.eclipse.uml2.uml.Class) eInternalContainer
 			: null;
 	}
 
@@ -1462,6 +1486,17 @@ public class PropertyImpl
 		if (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END)
 			return null;
 		return (Property) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property basicGetAssociationEnd() {
+		if (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END)
+			return null;
+		return (Property) eInternalContainer();
 	}
 
 	/**
@@ -2055,10 +2090,14 @@ public class PropertyImpl
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.PROPERTY__CLASS_ :
-				return getClass_();
+			case UMLPackage.PROPERTY__CLASS :
+				if (resolve)
+					return getClass_();
+				return basicGetClass_();
 			case UMLPackage.PROPERTY__DATATYPE :
-				return getDatatype();
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
 			case UMLPackage.PROPERTY__IS_DERIVED :
 				return isDerived()
 					? Boolean.TRUE
@@ -2098,7 +2137,9 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
-				return getAssociationEnd();
+				if (resolve)
+					return getAssociationEnd();
+				return basicGetAssociationEnd();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -2425,10 +2466,10 @@ public class PropertyImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE) != null;
-			case UMLPackage.PROPERTY__CLASS_ :
-				return getClass_() != null;
+			case UMLPackage.PROPERTY__CLASS :
+				return basicGetClass_() != null;
 			case UMLPackage.PROPERTY__DATATYPE :
-				return getDatatype() != null;
+				return basicGetDatatype() != null;
 			case UMLPackage.PROPERTY__IS_DERIVED :
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
@@ -2460,7 +2501,7 @@ public class PropertyImpl
 				EList qualifier = (EList) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
-				return getAssociationEnd() != null;
+				return basicGetAssociationEnd() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -2626,7 +2667,7 @@ public class PropertyImpl
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
 		}
-		Property associationEnd = getAssociationEnd();
+		Property associationEnd = basicGetAssociationEnd();
 		if (associationEnd != null) {
 			return associationEnd;
 		}
@@ -2664,11 +2705,11 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.uml.Class class_ = getClass_();
+		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;
 		}
-		DataType datatype = getDatatype();
+		DataType datatype = basicGetDatatype();
 		if (datatype != null) {
 			return datatype;
 		}
@@ -2685,7 +2726,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetNamespace() {
-		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__CLASS_)
+		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__CLASS)
 			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
@@ -2697,7 +2738,7 @@ public class PropertyImpl
 	 */
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
-			|| eIsSet(UMLPackage.PROPERTY__CLASS_)
+			|| eIsSet(UMLPackage.PROPERTY__CLASS)
 			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}

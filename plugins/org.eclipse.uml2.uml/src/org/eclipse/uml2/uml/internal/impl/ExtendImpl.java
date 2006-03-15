@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.15 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.16 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -373,6 +373,17 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public UseCase basicGetExtension() {
+		if (eContainerFeatureID != UMLPackage.EXTEND__EXTENSION)
+			return null;
+		return (UseCase) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetExtension(UseCase newExtension,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newExtension,
@@ -532,7 +543,9 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				return getExtensionLocations();
 			case UMLPackage.EXTEND__EXTENSION :
-				return getExtension();
+				if (resolve)
+					return getExtension();
+				return basicGetExtension();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -670,7 +683,7 @@ public class ExtendImpl
 				return extensionLocation != null
 					&& !extensionLocation.isEmpty();
 			case UMLPackage.EXTEND__EXTENSION :
-				return getExtension() != null;
+				return basicGetExtension() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

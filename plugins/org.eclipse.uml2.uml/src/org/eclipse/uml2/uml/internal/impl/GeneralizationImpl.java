@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -310,6 +310,17 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Classifier basicGetSpecific() {
+		if (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC)
+			return null;
+		return (Classifier) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetSpecific(Classifier newSpecific,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSpecific,
@@ -451,7 +462,9 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
 				return getGeneralizationSets();
 			case UMLPackage.GENERALIZATION__SPECIFIC :
-				return getSpecific();
+				if (resolve)
+					return getSpecific();
+				return basicGetSpecific();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -549,7 +562,7 @@ public class GeneralizationImpl
 				return generalizationSet != null
 					&& !generalizationSet.isEmpty();
 			case UMLPackage.GENERALIZATION__SPECIFIC :
-				return getSpecific() != null;
+				return basicGetSpecific() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -599,7 +612,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		Classifier specific = getSpecific();
+		Classifier specific = basicGetSpecific();
 		if (specific != null) {
 			return specific;
 		}

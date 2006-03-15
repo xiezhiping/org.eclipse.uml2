@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.6 2006/03/15 19:33:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -124,7 +124,7 @@ public interface TemplateParameterSubstitution
 	 * @see #setTemplateBinding(TemplateBinding)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateParameterSubstitution_TemplateBinding()
 	 * @see org.eclipse.uml2.uml.TemplateBinding#getParameterSubstitutions
-	 * @model opposite="parameterSubstitution" resolveProxies="false" required="true" ordered="false"
+	 * @model opposite="parameterSubstitution" required="true" ordered="false"
 	 * @generated
 	 */
 	TemplateBinding getTemplateBinding();

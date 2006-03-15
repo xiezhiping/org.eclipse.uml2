@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Constraint.java,v 1.6 2006/03/15 19:33:56 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -118,7 +118,7 @@ public interface Constraint
 	 * @see #setContext(Namespace)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConstraint_Context()
 	 * @see org.eclipse.uml2.uml.Namespace#getOwnedRules
-	 * @model opposite="ownedRule" resolveProxies="false" ordered="false"
+	 * @model opposite="ownedRule" ordered="false"
 	 * @generated
 	 */
 	Namespace getContext();

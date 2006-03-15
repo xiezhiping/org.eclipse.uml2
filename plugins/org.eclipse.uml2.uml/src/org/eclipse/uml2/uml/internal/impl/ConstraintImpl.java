@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -239,6 +239,17 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Namespace basicGetContext() {
+		if (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT)
+			return null;
+		return (Namespace) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetContext(Namespace newContext,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newContext,
@@ -461,7 +472,9 @@ public class ConstraintImpl
 					return getSpecification();
 				return basicGetSpecification();
 			case UMLPackage.CONSTRAINT__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -601,7 +614,7 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
 				return eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION) != null;
 			case UMLPackage.CONSTRAINT__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -622,7 +635,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Namespace context = getContext();
+		Namespace context = basicGetContext();
 		if (context != null) {
 			return context;
 		}

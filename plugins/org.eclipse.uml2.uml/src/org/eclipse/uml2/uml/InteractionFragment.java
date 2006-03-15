@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.6 2006/03/15 19:33:56 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -143,7 +143,7 @@ public interface InteractionFragment
 	 * @see #setEnclosingInteraction(Interaction)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionFragment_EnclosingInteraction()
 	 * @see org.eclipse.uml2.uml.Interaction#getFragments
-	 * @model opposite="fragment" resolveProxies="false" ordered="false"
+	 * @model opposite="fragment" ordered="false"
 	 * @generated
 	 */
 	Interaction getEnclosingInteraction();
@@ -170,7 +170,7 @@ public interface InteractionFragment
 	 * @see #setEnclosingOperand(InteractionOperand)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionFragment_EnclosingOperand()
 	 * @see org.eclipse.uml2.uml.InteractionOperand#getFragments
-	 * @model opposite="fragment" resolveProxies="false" ordered="false"
+	 * @model opposite="fragment" ordered="false"
 	 * @generated
 	 */
 	InteractionOperand getEnclosingOperand();

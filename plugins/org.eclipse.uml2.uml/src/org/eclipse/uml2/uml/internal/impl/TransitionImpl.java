@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.18 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.19 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -365,6 +365,17 @@ public class TransitionImpl
 		if (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER)
 			return null;
 		return (Region) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Region basicGetContainer() {
+		if (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER)
+			return null;
+		return (Region) eInternalContainer();
 	}
 
 	/**
@@ -1133,7 +1144,9 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__KIND :
 				return getKind();
 			case UMLPackage.TRANSITION__CONTAINER :
-				return getContainer();
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 			case UMLPackage.TRANSITION__TARGET :
 				if (resolve)
 					return getTarget();
@@ -1353,7 +1366,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__KIND :
 				return eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.TRANSITION__CONTAINER :
-				return getContainer() != null;
+				return basicGetContainer() != null;
 			case UMLPackage.TRANSITION__TARGET :
 				return eVirtualGet(UMLPackage.TRANSITION__TARGET) != null;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
@@ -1437,7 +1450,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Region container = getContainer();
+		Region container = basicGetContainer();
 		if (container != null) {
 			return container;
 		}

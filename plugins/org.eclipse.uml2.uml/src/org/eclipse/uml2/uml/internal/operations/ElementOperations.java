@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.35 2006/03/13 20:50:41 khussey Exp $
+ * $Id: ElementOperations.java,v 1.36 2006/03/15 19:34:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1163,8 +1163,8 @@ public class ElementOperations
 		return stereotypeApplication;
 	}
 
-	protected static EList applyAllStereotypes(Element element, EList extensions,
-			EList stereotypeApplications) {
+	protected static EList applyAllStereotypes(Element element,
+			EList extensions, EList stereotypeApplications) {
 
 		for (Iterator e = extensions.iterator(); e.hasNext();) {
 			Extension extension = (Extension) e.next();

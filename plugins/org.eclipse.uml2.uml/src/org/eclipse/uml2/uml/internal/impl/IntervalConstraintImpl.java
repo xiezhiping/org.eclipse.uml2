@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.13 2006/03/07 20:25:14 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.14 2006/03/15 19:33:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -242,7 +242,9 @@ public class IntervalConstraintImpl
 					return getSpecification();
 				return basicGetSpecification();
 			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -290,7 +292,7 @@ public class IntervalConstraintImpl
 			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

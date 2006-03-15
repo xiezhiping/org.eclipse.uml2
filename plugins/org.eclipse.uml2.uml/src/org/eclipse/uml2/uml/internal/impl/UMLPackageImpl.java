@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.15 2006/02/21 21:39:47 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.16 2006/03/15 19:34:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -3891,6 +3891,15 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProperty_Class() {
+		return (EReference) getProperty().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getProperty_Datatype() {
 		return (EReference) getProperty().getEStructuralFeatures().get(1);
 	}
@@ -3938,15 +3947,6 @@ public class UMLPackageImpl
 	 */
 	public EAttribute getProperty_IsComposite() {
 		return (EAttribute) getProperty().getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProperty_Class_() {
-		return (EReference) getProperty().getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -4293,15 +4293,6 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Class_() {
-		return (EReference) getOperation().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOperation_Precondition() {
 		return (EReference) getOperation().getEStructuralFeatures().get(7);
 	}
@@ -4358,6 +4349,15 @@ public class UMLPackageImpl
 	 */
 	public EReference getOperation_Interface() {
 		return (EReference) getOperation().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperation_Class() {
+		return (EReference) getOperation().getEStructuralFeatures().get(1);
 	}
 
 	/**

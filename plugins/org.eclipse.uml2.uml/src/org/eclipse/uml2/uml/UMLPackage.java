@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.20 2006/02/21 21:39:47 khussey Exp $
+ * $Id: UMLPackage.java,v 1.21 2006/03/15 19:33:42 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -7258,13 +7258,13 @@ public interface UMLPackage
 	int PROPERTY__OWNED_TEMPLATE_SIGNATURE = STRUCTURAL_FEATURE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Class </b></em>' reference.
+	 * The feature id for the '<em><b>Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__CLASS_ = STRUCTURAL_FEATURE_FEATURE_COUNT + 7;
+	int PROPERTY__CLASS = STRUCTURAL_FEATURE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Datatype</b></em>' container reference.
@@ -9328,13 +9328,13 @@ public interface UMLPackage
 	int OPERATION__INTERFACE = BEHAVIORAL_FEATURE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Class </b></em>' container reference.
+	 * The feature id for the '<em><b>Class</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__CLASS_ = BEHAVIORAL_FEATURE_FEATURE_COUNT + 5;
+	int OPERATION__CLASS = BEHAVIORAL_FEATURE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Is Query</b></em>' attribute.
@@ -15097,13 +15097,13 @@ public interface UMLPackage
 	int PORT__OWNED_TEMPLATE_SIGNATURE = PROPERTY__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
-	 * The feature id for the '<em><b>Class </b></em>' reference.
+	 * The feature id for the '<em><b>Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORT__CLASS_ = PROPERTY__CLASS_;
+	int PORT__CLASS = PROPERTY__CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Datatype</b></em>' container reference.
@@ -16897,13 +16897,13 @@ public interface UMLPackage
 	int EXTENSION_END__OWNED_TEMPLATE_SIGNATURE = PROPERTY__OWNED_TEMPLATE_SIGNATURE;
 
 	/**
-	 * The feature id for the '<em><b>Class </b></em>' reference.
+	 * The feature id for the '<em><b>Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENSION_END__CLASS_ = PROPERTY__CLASS_;
+	int EXTENSION_END__CLASS = PROPERTY__CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Datatype</b></em>' container reference.
@@ -60688,6 +60688,17 @@ public interface UMLPackage
 	EClass getProperty();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Class</em>'.
+	 * @see org.eclipse.uml2.uml.Property#getClass_()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EReference getProperty_Class();
+
+	/**
 	 * Returns the meta object for the container reference '{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60752,17 +60763,6 @@ public interface UMLPackage
 	 * @generated
 	 */
 	EAttribute getProperty_IsComposite();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class </em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Class </em>'.
-	 * @see org.eclipse.uml2.uml.Property#getClass_()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EReference getProperty_Class_();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Property#getRedefinedProperties <em>Redefined Property</em>}'.
@@ -61132,17 +61132,6 @@ public interface UMLPackage
 	EAttribute getOperation_Upper();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class </em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Class </em>'.
-	 * @see org.eclipse.uml2.uml.Operation#getClass_()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EReference getOperation_Class_();
-
-	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Operation#getPreconditions <em>Precondition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61218,6 +61207,17 @@ public interface UMLPackage
 	 * @generated
 	 */
 	EReference getOperation_Interface();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Class</em>'.
+	 * @see org.eclipse.uml2.uml.Operation#getClass_()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Class();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.uml.BehavioralFeature <em>Behavioral Feature</em>}'.
@@ -69436,6 +69436,14 @@ public interface UMLPackage
 		EClass PROPERTY = eINSTANCE.getProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Class</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__CLASS = eINSTANCE.getProperty_Class();
+
+		/**
 		 * The meta object literal for the '<em><b>Datatype</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -69483,14 +69491,6 @@ public interface UMLPackage
 		 * @generated
 		 */
 		EAttribute PROPERTY__IS_COMPOSITE = eINSTANCE.getProperty_IsComposite();
-
-		/**
-		 * The meta object literal for the '<em><b>Class </b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROPERTY__CLASS_ = eINSTANCE.getProperty_Class_();
 
 		/**
 		 * The meta object literal for the '<em><b>Redefined Property</b></em>' reference list feature.
@@ -69797,14 +69797,6 @@ public interface UMLPackage
 		EAttribute OPERATION__UPPER = eINSTANCE.getOperation_Upper();
 
 		/**
-		 * The meta object literal for the '<em><b>Class </b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATION__CLASS_ = eINSTANCE.getOperation_Class_();
-
-		/**
 		 * The meta object literal for the '<em><b>Precondition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -69863,6 +69855,14 @@ public interface UMLPackage
 		 * @generated
 		 */
 		EReference OPERATION__INTERFACE = eINSTANCE.getOperation_Interface();
+
+		/**
+		 * The meta object literal for the '<em><b>Class</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__CLASS = eINSTANCE.getOperation_Class();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl <em>Behavioral Feature</em>}' class.

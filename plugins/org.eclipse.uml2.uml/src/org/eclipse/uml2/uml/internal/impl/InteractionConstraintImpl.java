@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.15 2006/03/07 20:25:16 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.16 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -459,7 +459,9 @@ public class InteractionConstraintImpl
 					return getSpecification();
 				return basicGetSpecification();
 			case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
 				if (resolve)
 					return getMinint();
@@ -619,7 +621,7 @@ public class InteractionConstraintImpl
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
 				return eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION) != null;
 			case UMLPackage.INTERACTION_CONSTRAINT__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
 				return eVirtualGet(UMLPackage.INTERACTION_CONSTRAINT__MININT) != null;
 			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :

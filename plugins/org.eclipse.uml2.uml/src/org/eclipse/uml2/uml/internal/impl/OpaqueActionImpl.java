@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.13 2006/02/22 20:48:16 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -308,9 +308,13 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.OPAQUE_ACTION__INCOMING :
@@ -330,7 +334,9 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.OPAQUE_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION :
@@ -549,9 +555,9 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.OPAQUE_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -578,7 +584,7 @@ public class OpaqueActionImpl
 			case UMLPackage.OPAQUE_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.OPAQUE_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

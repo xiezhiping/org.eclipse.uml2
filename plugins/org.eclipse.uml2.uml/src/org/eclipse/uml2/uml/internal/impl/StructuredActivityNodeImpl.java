@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.25 2006/03/15 19:33:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -821,13 +821,24 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Activity getActivity() {
-		if (eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY
-			&& eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY)
+		Activity activity = basicGetActivity();
+		return activity != null && activity.eIsProxy()
+			? (Activity) eResolveProxy((InternalEObject) activity)
+			: activity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Activity basicGetActivity() {
+		if (eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY)
 			return null;
-		return (Activity) eContainer();
+		return (Activity) eInternalContainer();
 	}
 
 	/**
@@ -845,7 +856,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetActivity() {
-		return getActivity() != null;
+		return basicGetActivity() != null;
 	}
 
 	/**
@@ -1167,9 +1178,13 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING :
@@ -1189,7 +1204,9 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INPUT :
 				return getInputs();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION :
@@ -1209,9 +1226,13 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__SUPER_GROUP :
-				return getSuperGroup();
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
-				return getInActivity();
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE :
 				return getContainedEdges();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE :
@@ -1458,7 +1479,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
@@ -1487,7 +1508,7 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INPUT :
 				return isSetInputs();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION);
 				return localPrecondition != null
@@ -1718,8 +1739,20 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup getSuperGroup() {
+	public ActivityGroup basicGetSuperGroup() {
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getSuperGroup() {
+		ActivityGroup superGroup = basicGetSuperGroup();
+		return superGroup == null
+			? null
+			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
 	}
 
 	/**
@@ -1738,10 +1771,10 @@ public class StructuredActivityNodeImpl
 	 */
 	public Element basicGetOwner() {
 		if (isSetSuperGroup()) {
-			return getSuperGroup();
+			return basicGetSuperGroup();
 		}
 		if (isSetInActivity()) {
-			return getInActivity();
+			return basicGetInActivity();
 		}
 		return super.basicGetOwner();
 	}
@@ -1780,6 +1813,15 @@ public class StructuredActivityNodeImpl
 	 */
 	public Activity getInActivity() {
 		return getActivity();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Activity basicGetInActivity() {
+		return basicGetActivity();
 	}
 
 	/**

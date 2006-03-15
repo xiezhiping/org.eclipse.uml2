@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.12 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.13 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -260,6 +260,17 @@ public class TemplateParameterImpl
 		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE)
 			return null;
 		return (TemplateSignature) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateSignature basicGetSignature() {
+		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE)
+			return null;
+		return (TemplateSignature) eInternalContainer();
 	}
 
 	/**
@@ -656,7 +667,9 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature();
+				if (resolve)
+					return getSignature();
+				return basicGetSignature();
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -761,7 +774,7 @@ public class TemplateParameterImpl
 				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature() != null;
+				return basicGetSignature() != null;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
@@ -780,7 +793,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		TemplateSignature signature = getSignature();
+		TemplateSignature signature = basicGetSignature();
 		if (signature != null) {
 			return signature;
 		}

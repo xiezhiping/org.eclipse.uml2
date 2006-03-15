@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.12 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.13 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -554,9 +554,13 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.REDUCE_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.REDUCE_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.REDUCE_ACTION__INCOMING :
@@ -576,7 +580,9 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.REDUCE_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.REDUCE_ACTION__LOCAL_POSTCONDITION :
@@ -799,9 +805,9 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.REDUCE_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.REDUCE_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.REDUCE_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -828,7 +834,7 @@ public class ReduceActionImpl
 			case UMLPackage.REDUCE_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.REDUCE_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.REDUCE_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

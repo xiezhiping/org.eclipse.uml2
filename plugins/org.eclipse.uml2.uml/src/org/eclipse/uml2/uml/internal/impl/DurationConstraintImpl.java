@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.15 2006/03/07 20:25:16 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.16 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -284,7 +284,9 @@ public class DurationConstraintImpl
 					return getSpecification();
 				return basicGetSpecification();
 			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT :
 				return getFirstEvents();
 		}
@@ -433,7 +435,7 @@ public class DurationConstraintImpl
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT :
 				EList firstEvent = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
 				return firstEvent != null && !firstEvent.isEmpty();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.19 2006/03/09 21:30:31 khussey Exp $
+ * $Id: PortImpl.java,v 1.20 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -517,10 +517,14 @@ public class PortImpl
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.PORT__CLASS_ :
-				return getClass_();
+			case UMLPackage.PORT__CLASS :
+				if (resolve)
+					return getClass_();
+				return basicGetClass_();
 			case UMLPackage.PORT__DATATYPE :
-				return getDatatype();
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
 			case UMLPackage.PORT__IS_DERIVED :
 				return isDerived()
 					? Boolean.TRUE
@@ -560,7 +564,9 @@ public class PortImpl
 			case UMLPackage.PORT__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.PORT__ASSOCIATION_END :
-				return getAssociationEnd();
+				if (resolve)
+					return getAssociationEnd();
+				return basicGetAssociationEnd();
 			case UMLPackage.PORT__IS_BEHAVIOR :
 				return isBehavior()
 					? Boolean.TRUE
@@ -930,10 +936,10 @@ public class PortImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE) != null;
-			case UMLPackage.PORT__CLASS_ :
-				return getClass_() != null;
+			case UMLPackage.PORT__CLASS :
+				return basicGetClass_() != null;
 			case UMLPackage.PORT__DATATYPE :
-				return getDatatype() != null;
+				return basicGetDatatype() != null;
 			case UMLPackage.PORT__IS_DERIVED :
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.PORT__IS_DERIVED_UNION :
@@ -965,7 +971,7 @@ public class PortImpl
 				EList qualifier = (EList) eVirtualGet(UMLPackage.PORT__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.PORT__ASSOCIATION_END :
-				return getAssociationEnd() != null;
+				return basicGetAssociationEnd() != null;
 			case UMLPackage.PORT__IS_BEHAVIOR :
 				return ((eFlags & IS_BEHAVIOR_EFLAG) != 0) != IS_BEHAVIOR_EDEFAULT;
 			case UMLPackage.PORT__IS_SERVICE :

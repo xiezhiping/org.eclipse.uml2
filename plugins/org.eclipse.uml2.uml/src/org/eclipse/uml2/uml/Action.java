@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.7 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Action.java,v 1.8 2006/03/15 19:33:42 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -135,7 +135,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Context()
-	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Classifier getContext();

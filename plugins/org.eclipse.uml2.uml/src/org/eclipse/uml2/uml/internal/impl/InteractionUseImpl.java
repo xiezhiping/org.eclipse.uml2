@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.16 2006/03/07 20:25:15 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -386,9 +386,13 @@ public class InteractionUseImpl
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				return getGeneralOrderings();
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction();
+				if (resolve)
+					return getEnclosingInteraction();
+				return basicGetEnclosingInteraction();
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
-				return getEnclosingOperand();
+				if (resolve)
+					return getEnclosingOperand();
+				return basicGetEnclosingOperand();
 			case UMLPackage.INTERACTION_USE__REFERS_TO :
 				if (resolve)
 					return getRefersTo();
@@ -547,9 +551,9 @@ public class InteractionUseImpl
 				EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__GENERAL_ORDERING);
 				return generalOrdering != null && !generalOrdering.isEmpty();
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
-				return getEnclosingInteraction() != null;
+				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
-				return getEnclosingOperand() != null;
+				return basicGetEnclosingOperand() != null;
 			case UMLPackage.INTERACTION_USE__REFERS_TO :
 				return eVirtualGet(UMLPackage.INTERACTION_USE__REFERS_TO) != null;
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.15 2006/03/07 21:43:25 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.16 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -366,6 +366,17 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StringExpression basicGetOwningExpression() {
+		if (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION)
+			return null;
+		return (StringExpression) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetOwningExpression(
 			StringExpression newOwningExpression, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningExpression,
@@ -635,7 +646,9 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
 				return getSubExpressions();
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-				return getOwningExpression();
+				if (resolve)
+					return getOwningExpression();
+				return basicGetOwningExpression();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -810,7 +823,7 @@ public class StringExpressionImpl
 				EList subExpression = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
 				return subExpression != null && !subExpression.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-				return getOwningExpression() != null;
+				return basicGetOwningExpression() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -871,7 +884,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		StringExpression owningExpression = getOwningExpression();
+		StringExpression owningExpression = basicGetOwningExpression();
 		if (owningExpression != null) {
 			return owningExpression;
 		}

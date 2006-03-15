@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.11 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,6 +82,17 @@ public class ExtensionPointImpl
 		if (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE)
 			return null;
 		return (UseCase) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UseCase basicGetUseCase() {
+		if (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE)
+			return null;
+		return (UseCase) eInternalContainer();
 	}
 
 	/**
@@ -237,7 +248,9 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
-				return getUseCase();
+				if (resolve)
+					return getUseCase();
+				return basicGetUseCase();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -354,7 +367,7 @@ public class ExtensionPointImpl
 			case UMLPackage.EXTENSION_POINT__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
-				return getUseCase() != null;
+				return basicGetUseCase() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

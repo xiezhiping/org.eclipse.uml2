@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.14 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.15 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -381,7 +381,9 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature();
+				if (resolve)
+					return getSignature();
+				return basicGetSignature();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				if (resolve)
 					return getParameteredElement();
@@ -516,7 +518,7 @@ public class ClassifierTemplateParameterImpl
 				EList ownedComment = (EList) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT);
 				return ownedComment != null && !ownedComment.isEmpty();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
-				return getSignature() != null;
+				return basicGetSignature() != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :

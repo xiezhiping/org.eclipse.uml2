@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.12 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.13 2006/03/15 19:34:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -225,6 +225,17 @@ public class TemplateBindingImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TemplateableElement basicGetBoundElement() {
+		if (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT)
+			return null;
+		return (TemplateableElement) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetBoundElement(
 			TemplateableElement newBoundElement, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newBoundElement,
@@ -375,7 +386,9 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				return getParameterSubstitutions();
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-				return getBoundElement();
+				if (resolve)
+					return getBoundElement();
+				return basicGetBoundElement();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -465,7 +478,7 @@ public class TemplateBindingImpl
 				return parameterSubstitution != null
 					&& !parameterSubstitution.isEmpty();
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
-				return getBoundElement() != null;
+				return basicGetBoundElement() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -496,7 +509,7 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		TemplateableElement boundElement = getBoundElement();
+		TemplateableElement boundElement = basicGetBoundElement();
 		if (boundElement != null) {
 			return boundElement;
 		}

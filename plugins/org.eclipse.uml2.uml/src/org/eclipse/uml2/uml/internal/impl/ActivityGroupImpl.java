@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -221,6 +221,17 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Activity basicGetInActivity() {
+		if (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
+			return null;
+		return (Activity) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetInActivity(Activity newInActivity,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInActivity,
@@ -361,9 +372,13 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
-				return getSuperGroup();
+				if (resolve)
+					return getSuperGroup();
+				return basicGetSuperGroup();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				return getInActivity();
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return getContainedEdges();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
@@ -436,7 +451,7 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 				return isSetSuperGroup();
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				return getInActivity() != null;
+				return basicGetInActivity() != null;
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return isSetContainedEdges();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
@@ -468,8 +483,20 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityGroup getSuperGroup() {
+	public ActivityGroup basicGetSuperGroup() {
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getSuperGroup() {
+		ActivityGroup superGroup = basicGetSuperGroup();
+		return superGroup == null
+			? null
+			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
 	}
 
 	/**
@@ -488,9 +515,9 @@ public abstract class ActivityGroupImpl
 	 */
 	public Element basicGetOwner() {
 		if (isSetSuperGroup()) {
-			return getSuperGroup();
+			return basicGetSuperGroup();
 		}
-		Activity inActivity = getInActivity();
+		Activity inActivity = basicGetInActivity();
 		if (inActivity != null) {
 			return inActivity;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.13 2006/03/15 19:33:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -171,6 +171,17 @@ public class ConnectionPointReferenceImpl
 		if (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
 			return null;
 		return (State) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State basicGetState() {
+		if (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
+			return null;
+		return (State) eInternalContainer();
 	}
 
 	/**
@@ -356,13 +367,17 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
 				return getIncomings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-				return getContainer();
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
 				return getEntries();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
 				return getExits();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-				return getState();
+				if (resolve)
+					return getState();
+				return basicGetState();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -507,7 +522,7 @@ public class ConnectionPointReferenceImpl
 				EList incoming = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
-				return getContainer() != null;
+				return basicGetContainer() != null;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
 				EList entry = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
 				return entry != null && !entry.isEmpty();
@@ -515,7 +530,7 @@ public class ConnectionPointReferenceImpl
 				EList exit = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
 				return exit != null && !exit.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
-				return getState() != null;
+				return basicGetState() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -526,7 +541,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		State state = getState();
+		State state = basicGetState();
 		if (state != null) {
 			return state;
 		}

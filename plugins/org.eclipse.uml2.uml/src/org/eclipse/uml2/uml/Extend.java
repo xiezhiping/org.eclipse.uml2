@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Extend.java,v 1.6 2006/03/15 19:33:55 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -183,7 +183,7 @@ public interface Extend
 	 * @see #setExtension(UseCase)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtend_Extension()
 	 * @see org.eclipse.uml2.uml.UseCase#getExtends
-	 * @model opposite="extend" resolveProxies="false" required="true" ordered="false"
+	 * @model opposite="extend" required="true" ordered="false"
 	 * @generated
 	 */
 	UseCase getExtension();

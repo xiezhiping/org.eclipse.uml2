@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.19 2006/03/07 20:25:15 khussey Exp $
+ * $Id: RegionImpl.java,v 1.20 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -433,6 +433,17 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public State basicGetState() {
+		if (eContainerFeatureID != UMLPackage.REGION__STATE)
+			return null;
+		return (State) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetState(State newState,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newState,
@@ -524,6 +535,17 @@ public class RegionImpl
 		if (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE)
 			return null;
 		return (StateMachine) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StateMachine basicGetStateMachine() {
+		if (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE)
+			return null;
+		return (StateMachine) eInternalContainer();
 	}
 
 	/**
@@ -848,13 +870,17 @@ public class RegionImpl
 			case UMLPackage.REGION__TRANSITION :
 				return getTransitions();
 			case UMLPackage.REGION__STATE :
-				return getState();
+				if (resolve)
+					return getState();
+				return basicGetState();
 			case UMLPackage.REGION__EXTENDED_REGION :
 				if (resolve)
 					return getExtendedRegion();
 				return basicGetExtendedRegion();
 			case UMLPackage.REGION__STATE_MACHINE :
-				return getStateMachine();
+				if (resolve)
+					return getStateMachine();
+				return basicGetStateMachine();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1039,11 +1065,11 @@ public class RegionImpl
 				EList transition = (EList) eVirtualGet(UMLPackage.REGION__TRANSITION);
 				return transition != null && !transition.isEmpty();
 			case UMLPackage.REGION__STATE :
-				return getState() != null;
+				return basicGetState() != null;
 			case UMLPackage.REGION__EXTENDED_REGION :
 				return eVirtualGet(UMLPackage.REGION__EXTENDED_REGION) != null;
 			case UMLPackage.REGION__STATE_MACHINE :
-				return getStateMachine() != null;
+				return basicGetStateMachine() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1132,11 +1158,11 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		State state = getState();
+		State state = basicGetState();
 		if (state != null) {
 			return state;
 		}
-		StateMachine stateMachine = getStateMachine();
+		StateMachine stateMachine = basicGetStateMachine();
 		if (stateMachine != null) {
 			return stateMachine;
 		}

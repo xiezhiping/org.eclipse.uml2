@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.8 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Region.java,v 1.9 2006/03/15 19:33:48 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -180,7 +180,7 @@ public interface Region
 	 * @see #setState(State)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_State()
 	 * @see org.eclipse.uml2.uml.State#getRegions
-	 * @model opposite="region" resolveProxies="false" ordered="false"
+	 * @model opposite="region" ordered="false"
 	 * @generated
 	 */
 	State getState();
@@ -232,7 +232,7 @@ public interface Region
 	 * @see #setStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_StateMachine()
 	 * @see org.eclipse.uml2.uml.StateMachine#getRegions
-	 * @model opposite="region" resolveProxies="false" ordered="false"
+	 * @model opposite="region" ordered="false"
 	 * @generated
 	 */
 	StateMachine getStateMachine();

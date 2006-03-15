@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.18 2006/03/09 21:30:31 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.19 2006/03/15 19:33:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -279,9 +279,13 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.VALUE_PIN__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.VALUE_PIN__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.VALUE_PIN__INCOMING :
@@ -584,9 +588,9 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.VALUE_PIN__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.VALUE_PIN__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.VALUE_PIN__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();

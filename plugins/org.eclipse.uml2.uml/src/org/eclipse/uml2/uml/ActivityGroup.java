@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.7 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.8 2006/03/15 19:33:48 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -79,7 +79,7 @@ public interface ActivityGroup
 	 * @return the value of the '<em>Super Group</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_SuperGroup()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getSubgroups
-	 * @model opposite="subgroup" resolveProxies="false" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model opposite="subgroup" transient="true" changeable="false" derived="true" ordered="false"
 	 * @generated
 	 */
 	ActivityGroup getSuperGroup();
@@ -137,7 +137,7 @@ public interface ActivityGroup
 	 * @see #setInActivity(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_InActivity()
 	 * @see org.eclipse.uml2.uml.Activity#getGroups
-	 * @model opposite="group" resolveProxies="false" ordered="false"
+	 * @model opposite="group" ordered="false"
 	 * @generated
 	 */
 	Activity getInActivity();

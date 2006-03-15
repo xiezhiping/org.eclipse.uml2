@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.9 2006/03/01 17:56:37 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.10 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,6 +167,17 @@ public class PackageMergeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public org.eclipse.uml2.uml.Package basicGetReceivingPackage() {
+		if (eContainerFeatureID != UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE)
+			return null;
+		return (org.eclipse.uml2.uml.Package) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetReceivingPackage(
 			org.eclipse.uml2.uml.Package newReceivingPackage,
 			NotificationChain msgs) {
@@ -289,7 +300,9 @@ public class PackageMergeImpl
 					return getMergedPackage();
 				return basicGetMergedPackage();
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
-				return getReceivingPackage();
+				if (resolve)
+					return getReceivingPackage();
+				return basicGetReceivingPackage();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -368,7 +381,7 @@ public class PackageMergeImpl
 			case UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE :
 				return eVirtualGet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE) != null;
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
-				return getReceivingPackage() != null;
+				return basicGetReceivingPackage() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -399,7 +412,7 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		org.eclipse.uml2.uml.Package receivingPackage = getReceivingPackage();
+		org.eclipse.uml2.uml.Package receivingPackage = basicGetReceivingPackage();
 		if (receivingPackage != null) {
 			return receivingPackage;
 		}

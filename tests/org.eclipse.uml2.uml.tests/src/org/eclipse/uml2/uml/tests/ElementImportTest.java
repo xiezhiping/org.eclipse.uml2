@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: ElementImportTest.java,v 1.2 2006/03/15 19:29:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -32,7 +32,6 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Public Or Private</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ElementImport#validateVisibilityOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Or Private</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ElementImport#validateImportedElementIsPublic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Imported Element Is Public</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ElementImport#getName() <em>Get Name</em>}</li>
  * </ul>
@@ -125,18 +124,6 @@ public class ElementImportTest
 	 * @generated
 	 */
 	public void testValidateVisibilityPublicOrPrivate__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ElementImport#validateVisibilityOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Or Private</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ElementImport#validateVisibilityOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateVisibilityOrPrivate__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

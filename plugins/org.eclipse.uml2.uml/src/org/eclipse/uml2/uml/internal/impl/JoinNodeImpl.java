@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.17 2006/03/07 20:25:16 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -355,9 +355,13 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.JOIN_NODE__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.JOIN_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.JOIN_NODE__INCOMING :
@@ -547,9 +551,9 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.JOIN_NODE__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.JOIN_NODE__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.JOIN_NODE__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.JOIN_NODE__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();

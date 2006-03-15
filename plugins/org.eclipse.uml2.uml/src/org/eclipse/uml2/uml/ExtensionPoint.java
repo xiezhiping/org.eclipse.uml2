@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPoint.java,v 1.2 2005/11/22 15:32:38 khussey Exp $
+ * $Id: ExtensionPoint.java,v 1.3 2006/03/15 19:33:52 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface ExtensionPoint
 	 * @see #setUseCase(UseCase)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtensionPoint_UseCase()
 	 * @see org.eclipse.uml2.uml.UseCase#getExtensionPoints
-	 * @model opposite="extensionPoint" resolveProxies="false" required="true" ordered="false"
+	 * @model opposite="extensionPoint" required="true" ordered="false"
 	 * @generated
 	 */
 	UseCase getUseCase();

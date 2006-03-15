@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.17 2006/03/09 21:30:31 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -272,10 +272,14 @@ public class ExtensionEndImpl
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.EXTENSION_END__CLASS_ :
-				return getClass_();
+			case UMLPackage.EXTENSION_END__CLASS :
+				if (resolve)
+					return getClass_();
+				return basicGetClass_();
 			case UMLPackage.EXTENSION_END__DATATYPE :
-				return getDatatype();
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
 			case UMLPackage.EXTENSION_END__IS_DERIVED :
 				return isDerived()
 					? Boolean.TRUE
@@ -315,7 +319,9 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
-				return getAssociationEnd();
+				if (resolve)
+					return getAssociationEnd();
+				return basicGetAssociationEnd();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -395,10 +401,10 @@ public class ExtensionEndImpl
 				return templateBinding != null && !templateBinding.isEmpty();
 			case UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE :
 				return eVirtualGet(UMLPackage.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE) != null;
-			case UMLPackage.EXTENSION_END__CLASS_ :
-				return getClass_() != null;
+			case UMLPackage.EXTENSION_END__CLASS :
+				return basicGetClass_() != null;
 			case UMLPackage.EXTENSION_END__DATATYPE :
-				return getDatatype() != null;
+				return basicGetDatatype() != null;
 			case UMLPackage.EXTENSION_END__IS_DERIVED :
 				return ((eFlags & IS_DERIVED_EFLAG) != 0) != IS_DERIVED_EDEFAULT;
 			case UMLPackage.EXTENSION_END__IS_DERIVED_UNION :
@@ -430,7 +436,7 @@ public class ExtensionEndImpl
 				EList qualifier = (EList) eVirtualGet(UMLPackage.EXTENSION_END__QUALIFIER);
 				return qualifier != null && !qualifier.isEmpty();
 			case UMLPackage.EXTENSION_END__ASSOCIATION_END :
-				return getAssociationEnd() != null;
+				return basicGetAssociationEnd() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

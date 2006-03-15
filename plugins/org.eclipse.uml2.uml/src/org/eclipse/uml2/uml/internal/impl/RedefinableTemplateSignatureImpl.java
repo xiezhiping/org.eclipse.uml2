@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.17 2006/03/07 21:43:25 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -145,6 +145,17 @@ public class RedefinableTemplateSignatureImpl
 		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
 			return null;
 		return (TemplateableElement) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TemplateableElement basicGetTemplate() {
+		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
+			return null;
+		return (TemplateableElement) eInternalContainer();
 	}
 
 	/**
@@ -342,11 +353,24 @@ public class RedefinableTemplateSignatureImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Classifier getClassifier() {
-		return eInternalContainer() instanceof Classifier
-			? (Classifier) eContainer()
+		Classifier classifier = basicGetClassifier();
+		return classifier != null && classifier.eIsProxy()
+			? (Classifier) eResolveProxy((InternalEObject) classifier)
+			: classifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Classifier basicGetClassifier() {
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Classifier
+			? (Classifier) eInternalContainer
 			: null;
 	}
 
@@ -496,13 +520,17 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER :
 				return getOwnedParameters();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				return getTemplate();
+				if (resolve)
+					return getTemplate();
+				return basicGetTemplate();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				return getExtendedSignatures();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER :
 				return getInheritedParameters();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				return getClassifier();
+				if (resolve)
+					return getClassifier();
+				return basicGetClassifier();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -646,7 +674,7 @@ public class RedefinableTemplateSignatureImpl
 				EList ownedParameter = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 				return ownedParameter != null && !ownedParameter.isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
-				return getTemplate() != null;
+				return basicGetTemplate() != null;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE :
 				EList extendedSignature = (EList) eVirtualGet(UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__EXTENDED_SIGNATURE);
 				return extendedSignature != null
@@ -654,7 +682,7 @@ public class RedefinableTemplateSignatureImpl
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER :
 				return !getInheritedParameters().isEmpty();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER :
-				return getClassifier() != null;
+				return basicGetClassifier() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -707,7 +735,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		TemplateableElement template = getTemplate();
+		TemplateableElement template = basicGetTemplate();
 		if (template != null) {
 			return template;
 		}

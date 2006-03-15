@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.17 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.18 2006/03/15 19:34:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -430,9 +430,13 @@ public class ValueSpecificationActionImpl
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__INCOMING :
@@ -452,7 +456,9 @@ public class ValueSpecificationActionImpl
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__LOCAL_POSTCONDITION :
@@ -655,9 +661,9 @@ public class ValueSpecificationActionImpl
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION_ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -684,7 +690,7 @@ public class ValueSpecificationActionImpl
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION_ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

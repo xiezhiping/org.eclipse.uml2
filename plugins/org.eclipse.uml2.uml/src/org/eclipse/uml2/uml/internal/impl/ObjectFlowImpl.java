@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.11 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -419,11 +419,15 @@ public class ObjectFlowImpl
 					return getInterrupts();
 				return basicGetInterrupts();
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.OBJECT_FLOW__IN_GROUP :
 				return getInGroups();
 			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				return isMulticast()
 					? Boolean.TRUE
@@ -646,11 +650,11 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
 				return eVirtualGet(UMLPackage.OBJECT_FLOW__INTERRUPTS) != null;
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.OBJECT_FLOW__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.OBJECT_FLOW__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
 				return ((eFlags & IS_MULTICAST_EFLAG) != 0) != IS_MULTICAST_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :

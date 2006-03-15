@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.8 2006/02/02 23:30:18 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.9 2006/03/15 19:33:42 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -104,7 +104,7 @@ public interface ProfileApplication
 	 * @see #setApplyingPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_ApplyingPackage()
 	 * @see org.eclipse.uml2.uml.Package#getProfileApplications
-	 * @model opposite="profileApplication" resolveProxies="false" required="true" ordered="false"
+	 * @model opposite="profileApplication" required="true" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getApplyingPackage();

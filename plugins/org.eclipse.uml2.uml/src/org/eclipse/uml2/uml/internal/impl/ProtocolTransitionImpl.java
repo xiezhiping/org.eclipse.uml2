@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.27 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.28 2006/03/15 19:34:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -610,7 +610,9 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
 				return getKind();
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				return getContainer();
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				if (resolve)
 					return getTarget();
@@ -853,7 +855,7 @@ public class ProtocolTransitionImpl
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__KIND,
 					KIND_EDEFAULT) != KIND_EDEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				return getContainer() != null;
+				return basicGetContainer() != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				return eVirtualGet(UMLPackage.PROTOCOL_TRANSITION__TARGET) != null;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :

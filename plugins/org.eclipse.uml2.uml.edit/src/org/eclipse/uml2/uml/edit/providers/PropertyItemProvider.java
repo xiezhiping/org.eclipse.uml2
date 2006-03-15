@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.9 2006/01/24 22:46:32 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.10 2006/03/15 19:34:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,7 +87,7 @@ public class PropertyItemProvider
 			addDeployedElementPropertyDescriptor(object);
 			addTemplateBindingPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
-			addClass_PropertyDescriptor(object);
+			addClassPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
 			addIsDerivedPropertyDescriptor(object);
 			addIsDerivedUnionPropertyDescriptor(object);
@@ -249,6 +249,24 @@ public class PropertyItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_class_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_class_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__CLASS, false, null, null, null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Datatype feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -363,24 +381,6 @@ public class PropertyItemProvider
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
-	}
-
-	/**
-	 * This adds a property descriptor for the Class  feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addClass_PropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Property_class__feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Property_class__feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__CLASS_, false, null, null, null));
 	}
 
 	/**

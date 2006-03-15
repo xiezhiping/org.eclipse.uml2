@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.20 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ActionImpl.java,v 1.21 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -193,11 +194,24 @@ public abstract class ActionImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Classifier getContext() {
+		Classifier context = basicGetContext();
+		return context != null && context.eIsProxy()
+			? (Classifier) eResolveProxy((InternalEObject) context)
+			: context;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Classifier basicGetContext() {
 		return eInternalContainer() instanceof Behavior
-			? ((Behavior) eContainer()).getContext()
+			? (Classifier) ((Behavior) eContainer()).eGet(
+				UMLPackage.Literals.BEHAVIOR__CONTEXT, false)
 			: null;
 	}
 
@@ -431,9 +445,13 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode();
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
 			case UMLPackage.ACTION__ACTIVITY :
-				return getActivity();
+				if (resolve)
+					return getActivity();
+				return basicGetActivity();
 			case UMLPackage.ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.ACTION__INCOMING :
@@ -453,7 +471,9 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__INPUT :
 				return getInputs();
 			case UMLPackage.ACTION__CONTEXT :
-				return getContext();
+				if (resolve)
+					return getContext();
+				return basicGetContext();
 			case UMLPackage.ACTION__LOCAL_PRECONDITION :
 				return getLocalPreconditions();
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
@@ -636,9 +656,9 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
-				return getInStructuredNode() != null;
+				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTION__ACTIVITY :
-				return getActivity() != null;
+				return basicGetActivity() != null;
 			case UMLPackage.ACTION__OUTGOING :
 				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTION__OUTGOING);
 				return outgoing != null && !outgoing.isEmpty();
@@ -665,7 +685,7 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__INPUT :
 				return isSetInputs();
 			case UMLPackage.ACTION__CONTEXT :
-				return getContext() != null;
+				return basicGetContext() != null;
 			case UMLPackage.ACTION__LOCAL_PRECONDITION :
 				EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
 				return localPrecondition != null

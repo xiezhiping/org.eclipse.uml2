@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.13 2006/03/01 17:56:37 khussey Exp $
+ * $Id: VertexImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,6 +180,17 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Region basicGetContainer() {
+		if (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER)
+			return null;
+		return (Region) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NotificationChain basicSetContainer(Region newContainer,
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newContainer,
@@ -335,7 +346,9 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__INCOMING :
 				return getIncomings();
 			case UMLPackage.VERTEX__CONTAINER :
-				return getContainer();
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -460,7 +473,7 @@ public abstract class VertexImpl
 				EList incoming = (EList) eVirtualGet(UMLPackage.VERTEX__INCOMING);
 				return incoming != null && !incoming.isEmpty();
 			case UMLPackage.VERTEX__CONTAINER :
-				return getContainer() != null;
+				return basicGetContainer() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -471,7 +484,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		Region container = getContainer();
+		Region container = basicGetContainer();
 		if (container != null) {
 			return container;
 		}
