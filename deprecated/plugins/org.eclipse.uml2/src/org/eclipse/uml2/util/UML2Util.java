@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.64 2006/03/14 16:10:39 khussey Exp $
+ * $Id: UML2Util.java,v 1.65 2006/03/15 19:32:07 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -2075,15 +2075,6 @@ public class UML2Util
 
 				if (null != opposite) {
 					EReference eOpposite = (EReference) doSwitch(opposite);
-
-					if (property.isComposite() && !eOpposite.isTransient()) {
-						eOpposite.setTransient(true);
-
-						if (DEBUG) {
-							System.out.println("Made container " //$NON-NLS-1$
-								+ getQualifiedText(eOpposite) + " transient"); //$NON-NLS-1$
-						}
-					}
 
 					if (property.isDerived() && !eOpposite.isDerived()) {
 						eOpposite.setDerived(true);
