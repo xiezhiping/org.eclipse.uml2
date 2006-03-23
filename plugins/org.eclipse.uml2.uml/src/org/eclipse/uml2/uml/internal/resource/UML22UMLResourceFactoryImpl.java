@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceFactoryImpl.java,v 1.1 2006/03/08 19:13:13 khussey Exp $
+ * $Id: UML22UMLResourceFactoryImpl.java,v 1.2 2006/03/23 18:44:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -86,8 +86,7 @@ public class UML22UMLResourceFactoryImpl
 							.getResource(
 								URI
 									.createURI("platform:/plugin/org.eclipse.uml2.uml/model/UML2_2_UML.ecore2xml"), //$NON-NLS-1$
-								true).getContents(), Ecore2XMLPackage.eINSTANCE
-							.getXMLMap()));
+								true).getContents(), Ecore2XMLPackage.Literals.XML_MAP));
 
 		ExtendedMetaData extendedMetaData = new UML22UMLExtendedMetadata(
 			ePackageRegistry, ecore2xmlRegistry);
