@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.2 2006/03/09 21:50:51 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.3 2006/03/23 18:42:37 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
@@ -43,6 +43,8 @@ public class GenerateEcoreStereotypesAction
 					public void run() {
 						Stereotype ePackageStereotype = generateOwnedStereotype(
 							profile, "EPackage", false); //$NON-NLS-1$
+						generateIcon(ePackageStereotype,
+							"../icons/full/ovr16/EPackage.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class packageMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.PACKAGE);
 						generateExtension(ePackageStereotype, packageMetaclass,
@@ -87,6 +89,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eClassStereotype = generateOwnedStereotype(
 							profile, "EClass", false); //$NON-NLS-1$
+						generateIcon(eClassStereotype,
+							"../icons/full/ovr16/EClass.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class classMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.CLASS);
 						org.eclipse.uml2.uml.Class interfaceMetaclass = getReferencedUMLMetaclass(
@@ -105,6 +109,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eDataTypeStereotype = generateOwnedStereotype(
 							profile, "EDataType", false); //$NON-NLS-1$
+						generateIcon(eDataTypeStereotype,
+							"../icons/full/ovr16/EDataType.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class primitiveTypeMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.PRIMITIVE_TYPE);
 						generateExtension(eDataTypeStereotype,
@@ -117,6 +123,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eEnumStereotype = generateOwnedStereotype(
 							profile, "EEnum", false); //$NON-NLS-1$
+						generateIcon(eEnumStereotype,
+							"../icons/full/ovr16/EEnum.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class enumerationMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.ENUMERATION);
 						generateExtension(eEnumStereotype,
@@ -128,6 +136,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eEnumLiteralStereotype = generateOwnedStereotype(
 							profile, "EEnumLiteral", false); //$NON-NLS-1$
+						generateIcon(eEnumLiteralStereotype,
+							"../icons/full/ovr16/EEnumLiteral.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class enumerationLiteralMetaclass = getReferencedUMLMetaclass(
 							profile, UML2Package.Literals.ENUMERATION_LITERAL);
 						generateExtension(eEnumLiteralStereotype,
@@ -139,6 +149,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eOperationStereotype = generateOwnedStereotype(
 							profile, "EOperation", false); //$NON-NLS-1$
+						generateIcon(eOperationStereotype,
+							"../icons/full/ovr16/EOperation.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class operationMetaclass = getReferencedUMLMetaclass(
 							profile, UML2Package.Literals.OPERATION);
 						generateExtension(eOperationStereotype,
@@ -148,6 +160,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eParameterStereotype = generateOwnedStereotype(
 							profile, "EParameter", false); //$NON-NLS-1$
+						generateIcon(eParameterStereotype,
+							"../icons/full/ovr16/EParameter.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class parameterMetaclass = getReferencedUMLMetaclass(
 							profile, UML2Package.Literals.PARAMETER);
 						generateExtension(eParameterStereotype,
@@ -204,6 +218,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eAttributeStereotype = generateOwnedStereotype(
 							profile, "EAttribute", false); //$NON-NLS-1$
+						generateIcon(eAttributeStereotype,
+							"../icons/full/ovr16/EAttribute.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class propertyMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.PROPERTY);
 						generateExtension(eAttributeStereotype,
@@ -217,6 +233,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eReferenceStereotype = generateOwnedStereotype(
 							profile, "EReference", false); //$NON-NLS-1$
+						generateIcon(eReferenceStereotype,
+							"../icons/full/ovr16/EReference.gif"); //$NON-NLS-1$
 						generateExtension(eReferenceStereotype,
 							propertyMetaclass, false);
 						generateGeneralization(eReferenceStereotype,

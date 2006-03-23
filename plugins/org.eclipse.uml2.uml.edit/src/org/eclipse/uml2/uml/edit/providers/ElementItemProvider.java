@@ -8,20 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.6 2006/01/05 16:17:47 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.7 2006/03/23 18:42:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.MissingResourceException;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -31,11 +34,20 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.provider.EObjectItemProvider;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
+import org.eclipse.emf.edit.EMFEditPlugin;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.CreateChildCommand;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -49,6 +61,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -275,6 +288,67 @@ public class ElementItemProvider
 		return UMLEditPlugin.INSTANCE;
 	}
 
+	public Object getParent(Object object) {
+		EObject eContainer = ((EObject) object).eContainer();
+		Element baseElement = eContainer == null
+			? null
+			: UMLUtil.getBaseElement(eContainer);
+
+		return baseElement == null
+			? super.getParent(object)
+			: baseElement;
+	}
+
+	public Collection getChildren(Object object) {
+		List children = new ArrayList(super.getChildren(object));
+
+		for (Iterator stereotypeApplications = ((Element) object)
+			.getStereotypeApplications().iterator(); stereotypeApplications
+			.hasNext();) {
+
+			Object stereotypeApplication = stereotypeApplications.next();
+			ITreeItemContentProvider treeItemContentProvider = (ITreeItemContentProvider) adapterFactory
+				.adapt(stereotypeApplication, ITreeItemContentProvider.class);
+
+			if (treeItemContentProvider != null) {
+				children.addAll(treeItemContentProvider
+					.getChildren(stereotypeApplication));
+			}
+		}
+
+		return children;
+	}
+
+	public Collection getNewChildDescriptors(Object object,
+			EditingDomain editingDomain, Object sibling) {
+		List newChildDescriptors = new ArrayList(super.getNewChildDescriptors(
+			object, editingDomain, sibling));
+
+		for (Iterator stereotypeApplications = ((Element) object)
+			.getStereotypeApplications().iterator(); stereotypeApplications
+			.hasNext();) {
+
+			Object stereotypeApplication = stereotypeApplications.next();
+			IEditingDomainItemProvider editingDomainItemProvider = (IEditingDomainItemProvider) adapterFactory
+				.adapt(stereotypeApplication, IEditingDomainItemProvider.class);
+
+			if (editingDomainItemProvider != null) {
+
+				for (Iterator ncd = editingDomainItemProvider
+					.getNewChildDescriptors(stereotypeApplication,
+						editingDomain, null).iterator(); ncd.hasNext();) {
+
+					CommandParameter newChildDescriptor = (CommandParameter) ncd
+						.next();
+					newChildDescriptor.setOwner(stereotypeApplication);
+					newChildDescriptors.add(newChildDescriptor);
+				}
+			}
+		}
+
+		return newChildDescriptors;
+	}
+
 	public List getStereotypeApplicationPropertyDescriptors(Object object) {
 		List stereotypeApplications = ((Element) object)
 			.getStereotypeApplications();
@@ -285,7 +359,7 @@ public class ElementItemProvider
 			List stereotypeApplicationPropertyDescriptors = new ArrayList();
 
 			for (Iterator sa = stereotypeApplications.iterator(); sa.hasNext();) {
-				final Object stereotypeApplication = sa.next();
+				Object stereotypeApplication = sa.next();
 				IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
 					.adapt(stereotypeApplication, IItemPropertySource.class);
 
@@ -323,6 +397,29 @@ public class ElementItemProvider
 		}
 
 		return null;
+	}
+
+	public Command createCommand(Object object, EditingDomain domain,
+			Class commandClass, CommandParameter commandParameter) {
+
+		if (commandClass == CreateChildCommand.class) {
+			EObject eOwner = ((CommandParameter) unwrapCommandValues(
+				commandParameter, commandClass).getValue()).getEOwner();
+
+			if (eOwner != null && eOwner != object) {
+				IEditingDomainItemProvider editingDomainItemProvider = (IEditingDomainItemProvider) adapterFactory
+					.adapt(eOwner, IEditingDomainItemProvider.class);
+
+				if (editingDomainItemProvider != null) {
+					commandParameter.setOwner(eOwner);
+					return editingDomainItemProvider.createCommand(eOwner,
+						domain, commandClass, commandParameter);
+				}
+			}
+		}
+
+		return super.createCommand(object, domain, commandClass,
+			commandParameter);
 	}
 
 	protected boolean shouldTranslate() {
@@ -451,6 +548,76 @@ public class ElementItemProvider
 			category == null
 				? getTypeText(resourceLocator, feature.getEContainingClass())
 				: category, filterFlags);
+	}
+
+	protected Object overlayImage(Object object, Object image) {
+		List images = null;
+
+		if (object instanceof Element) {
+			Element element = (Element) object;
+
+			for (Iterator appliedStereotypes = element.getAppliedStereotypes()
+				.iterator(); appliedStereotypes.hasNext();) {
+
+				Stereotype appliedStereotype = (Stereotype) appliedStereotypes
+					.next();
+				Resource eResource = appliedStereotype.eResource();
+
+				if (eResource != null) {
+					ResourceSet resourceSet = eResource.getResourceSet();
+
+					if (resourceSet != null) {
+						URIConverter uriConverter = resourceSet
+							.getURIConverter();
+						URI normalizedURI = uriConverter.normalize(eResource
+							.getURI());
+
+						for (Iterator icons = appliedStereotype.getIcons()
+							.iterator(); icons.hasNext();) {
+
+							String location = ((Image) icons.next())
+								.getLocation();
+
+							if (!UML2Util.isEmpty(location)
+								&& location.indexOf("ovr16") != -1) { //$NON-NLS-1$
+
+								if (images == null) {
+									images = new ArrayList();
+									images.add(image);
+								}
+
+								URI uri = URI.createURI(location).resolve(
+									normalizedURI);
+
+								try {
+									URL url = new URL(uriConverter.normalize(
+										uri).toString());
+									url.openStream().close();
+									images.add(url);
+								} catch (Exception e) {
+									// ignore
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if (AdapterFactoryEditingDomain.isControlled(object)) {
+
+			if (images == null) {
+				images = new ArrayList();
+				images.add(image);
+			}
+
+			images.add(EMFEditPlugin.INSTANCE
+				.getImage("full/ovr16/ControlledObject")); //$NON-NLS-1$
+		}
+
+		return images == null
+			? image
+			: new ComposedImage(images);
 	}
 
 }

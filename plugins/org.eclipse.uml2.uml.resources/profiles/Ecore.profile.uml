@@ -693,6 +693,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0MEbE8ezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFE2vMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fRthgLqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EPackage.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_urq4gK87Edi5QpYeY_yIpg" name="Package_EPackage" memberEnd="_urq4ga87Edi5QpYeY_yIpg _urq4g687Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_urq4ga87Edi5QpYeY_yIpg" name="extension_EPackage" type="_ui4v8K87Edi5QpYeY_yIpg" aggregation="composite" association="_urq4gK87Edi5QpYeY_yIpg">
@@ -748,6 +749,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0M9L4cezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFF2vMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fSYP4LqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EClass.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_usbtgK87Edi5QpYeY_yIpg" name="Class_EClass" memberEnd="_usbtga87Edi5QpYeY_yIpg _usbtg687Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_usbtga87Edi5QpYeY_yIpg" name="extension_EClass" type="_usPgSq87Edi5QpYeY_yIpg" aggregation="composite" association="_usbtgK87Edi5QpYeY_yIpg">
@@ -769,6 +771,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0NQt4MezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFGGvMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fSYP4bqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EDataType.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_ush0Ia87Edi5QpYeY_yIpg" name="PrimitiveType_EDataType" memberEnd="_ush0Iq87Edi5QpYeY_yIpg _ush0JK87Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_ush0Iq87Edi5QpYeY_yIpg" name="extension_EDataType" type="_usbti687Edi5QpYeY_yIpg" aggregation="composite" association="_ush0Ia87Edi5QpYeY_yIpg">
@@ -785,6 +788,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0Njo0MezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFGWvMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fSeWgLqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EEnum.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_usn6wa87Edi5QpYeY_yIpg" name="Enumeration_EEnum" memberEnd="_usn6wq87Edi5QpYeY_yIpg _usn6xK87Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_usn6wq87Edi5QpYeY_yIpg" name="extension_EEnum" type="_ush0J687Edi5QpYeY_yIpg" aggregation="composite" association="_usn6wa87Edi5QpYeY_yIpg">
@@ -801,6 +805,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0N2jwMezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFGmvMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fSkdILqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EEnumLiteral.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_us0IAK87Edi5QpYeY_yIpg" name="EnumerationLiteral_EEnumLiteral" memberEnd="_us0IAa87Edi5QpYeY_yIpg _us0IA687Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_us0IAa87Edi5QpYeY_yIpg" name="extension_EEnumLiteral" type="_usn6x687Edi5QpYeY_yIpg" aggregation="composite" association="_us0IAK87Edi5QpYeY_yIpg">
@@ -816,6 +821,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0OJesMezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFG2vMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fdvLULqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EOperation.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_us6Ooa87Edi5QpYeY_yIpg" name="Operation_EOperation" memberEnd="_us6Ooq87Edi5QpYeY_yIpg _us6OpK87Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_us6Ooq87Edi5QpYeY_yIpg" name="extension_EOperation" type="_us0IBq87Edi5QpYeY_yIpg" aggregation="composite" association="_us6Ooa87Edi5QpYeY_yIpg">
@@ -831,6 +837,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0OdAsMezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6xuFHGvMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fdvLUbqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EParameter.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_utA8Uq87Edi5QpYeY_yIpg" name="Parameter_EParameter" memberEnd="_utA8U687Edi5QpYeY_yIpg _utA8Va87Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_utA8U687Edi5QpYeY_yIpg" name="extension_EParameter" type="_utA8UK87Edi5QpYeY_yIpg" aggregation="composite" association="_utA8Uq87Edi5QpYeY_yIpg">
@@ -892,6 +899,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0PC2kcezEdmTJL3rR1ioJg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6x0LtWvMEdmWeMv67GhlqA"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fdvLUrqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EAttribute.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_utHC-K87Edi5QpYeY_yIpg" name="Property_EAttribute" memberEnd="_utHC-a87Edi5QpYeY_yIpg _utHC-687Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_utHC-a87Edi5QpYeY_yIpg" name="extension_EAttribute" type="_utHC9q87Edi5QpYeY_yIpg" aggregation="composite" association="_utHC-K87Edi5QpYeY_yIpg">
@@ -914,6 +922,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6x0Lt2vMEdmWeMv67GhlqA"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_utTQMK87Edi5QpYeY_yIpg" value="true"/>
       </ownedAttribute>
+      <icon xmi:type="uml:Image" xmi:id="_fd1R8LqZEdqQ64pO7QIG8w" location="../icons/full/ovr16/EReference.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_utNJka87Edi5QpYeY_yIpg" name="Property_EReference" memberEnd="_utNJkq87Edi5QpYeY_yIpg _utNJlK87Edi5QpYeY_yIpg">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_utNJkq87Edi5QpYeY_yIpg" name="extension_EReference" type="_utNJkK87Edi5QpYeY_yIpg" aggregation="composite" association="_utNJka87Edi5QpYeY_yIpg">

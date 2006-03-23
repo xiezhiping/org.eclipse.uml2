@@ -8,18 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.3 2006/03/09 21:51:31 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.4 2006/03/23 18:42:37 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.uml.actions;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
@@ -73,10 +76,19 @@ public abstract class GenerateProfileAction
 		return stereotype;
 	}
 
-	protected Extension generateExtension(Stereotype stereotype,
-			org.eclipse.uml2.uml.Class metaclass, boolean required) {
-		Extension extension = metaclass.getExtension(metaclass.getName() + '_'
-			+ stereotype.getName());
+	protected Extension generateExtension(final Stereotype stereotype,
+			final org.eclipse.uml2.uml.Class metaclass, boolean required) {
+		Extension extension = (Extension) UML2Util.findEObject(EcoreUtil
+			.getObjectsByType(stereotype.getProfile().getOwnedTypes(),
+				UMLPackage.Literals.EXTENSION), new UML2Util.EClassMatcher(
+			UMLPackage.Literals.EXTENSION) {
+
+			public boolean matches(EObject eObject) {
+				Extension extension = (Extension) eObject;
+				return extension.getMetaclass() == metaclass
+					&& extension.metaclassEnd().getClass_() == stereotype;
+			}
+		});
 
 		if (extension == null) {
 			extension = stereotype.createExtension(metaclass, required);
@@ -113,6 +125,23 @@ public abstract class GenerateProfileAction
 	protected EnumerationLiteral generateOwnedLiteral(Enumeration enumeration,
 			String name) {
 		return enumeration.getOwnedLiteral(name, false, true);
+	}
+
+	protected Image generateIcon(Stereotype stereotype, final String location) {
+		Image icon = (Image) UML2Util.findEObject(stereotype.getIcons(),
+			new UML2Util.EObjectMatcher() {
+
+				public boolean matches(EObject eObject) {
+					return eObject instanceof Image
+						&& ((Image) eObject).getLocation().equals(location);
+				}
+			});
+
+		if (icon == null) {
+			icon = stereotype.createIcon(location);
+		}
+
+		return icon;
 	}
 
 }

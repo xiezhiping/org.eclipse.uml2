@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.21 2006/03/15 19:31:59 khussey Exp $
+ * $Id: UMLUtil.java,v 1.22 2006/03/23 18:43:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5777,7 +5777,10 @@ public class UMLUtil
 	}
 
 	protected static Stereotype getStereotype(EClass definition) {
-		return (Stereotype) getNamedElement(definition);
+		NamedElement namedElement = getNamedElement(definition);
+		return namedElement instanceof Stereotype
+			? (Stereotype) namedElement
+			: null;
 	}
 
 	public static Stereotype getStereotype(EObject stereotypeApplication) {

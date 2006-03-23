@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.15 2006/02/15 16:36:29 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.16 2006/03/23 18:42:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -23,7 +21,6 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -35,11 +32,9 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
-import org.eclipse.uml2.uml.Extension;
+
 import org.eclipse.uml2.uml.util.UMLAdapterFactory;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
@@ -80,8 +75,6 @@ public class UMLItemProviderAdapterFactory
 	 */
 	protected Collection supportedTypes = new ArrayList();
 
-	protected final ReflectiveItemProvider stereotypeApplicationItemProvider;
-
 	/**
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
@@ -96,56 +89,6 @@ public class UMLItemProviderAdapterFactory
 		supportedTypes.add(IItemPropertySource.class);
 
 		supportedTypes.add(IItemQualifiedTextProvider.class);
-
-		stereotypeApplicationItemProvider = new ReflectiveItemProvider(this) {
-
-			public List getPropertyDescriptors(Object object) {
-				itemPropertyDescriptors = new ArrayList();
-
-				for (Iterator eAllStructuralFeatures = ((EObject) object)
-					.eClass().getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-					.hasNext();) {
-
-					EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eAllStructuralFeatures
-						.next();
-					boolean isBaseReference = eStructuralFeature.getName()
-						.startsWith(Extension.METACLASS_ROLE_PREFIX);
-					String[] filterFlags = isBaseReference
-						|| eStructuralFeature.isContainment()
-						? new String[]{"org.eclipse.ui.views.properties.expert"} //$NON-NLS-1$
-						: null;
-
-					itemPropertyDescriptors.add(new UMLItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-							.getRootAdapterFactory(), null,
-						getFeatureText(eStructuralFeature),
-						getResourceLocator().getString(
-							"_UI_Property_description", //$NON-NLS-1$
-							new Object[]{getFeatureText(eStructuralFeature),
-								eStructuralFeature.getEType().getName()}),
-						eStructuralFeature, !isBaseReference
-							&& eStructuralFeature.isChangeable(),
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getTypeText(object), filterFlags));
-				}
-
-				return itemPropertyDescriptors;
-			}
-
-			public String getText(Object object) {
-
-				if (object instanceof EObject
-					&& UMLUtil.getStereotype((EObject) object) != null) {
-
-					return super.getText(object)
-						+ " -> " //$NON-NLS-1$
-						+ UMLUtil.getQualifiedText(UMLUtil
-							.getBaseElement((EObject) object));
-				}
-
-				return super.getText(object);
-			}
-		};
 	}
 
 	/**
@@ -4588,6 +4531,18 @@ public class UMLItemProviderAdapterFactory
 		return associationClassItemProvider;
 	}
 
+	protected StereotypeApplicationItemProvider stereotypeApplicationItemProvider;
+
+	public Adapter createStereotypeApplicationAdapter() {
+
+		if (stereotypeApplicationItemProvider == null) {
+			stereotypeApplicationItemProvider = new StereotypeApplicationItemProvider(
+				this);
+		}
+
+		return stereotypeApplicationItemProvider;
+	}	
+
 	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
@@ -4694,7 +4649,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void dispose() {
+	public void disposeGen() {
 		if (commentItemProvider != null)
 			commentItemProvider.dispose();
 		if (packageItemProvider != null)
@@ -5093,10 +5048,18 @@ public class UMLItemProviderAdapterFactory
 			associationClassItemProvider.dispose();
 	}
 
+	public void dispose() {
+		disposeGen();
+
+		if (stereotypeApplicationItemProvider != null) {
+			stereotypeApplicationItemProvider.dispose();
+		}
+	}
+
 	public Adapter createAdapter(Notifier target) {
 		Adapter adapter = super.createAdapter(target);
 		return adapter == null
-			? stereotypeApplicationItemProvider
+			? createStereotypeApplicationAdapter()
 			: adapter;
 	}
 

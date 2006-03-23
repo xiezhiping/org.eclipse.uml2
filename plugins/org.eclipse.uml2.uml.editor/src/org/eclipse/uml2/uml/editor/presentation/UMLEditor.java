@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.8 2006/03/08 21:58:08 khussey Exp $
+ * $Id: UMLEditor.java,v 1.9 2006/03/23 18:42:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -33,9 +33,9 @@ import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+//import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+//import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 
@@ -157,6 +157,8 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.uml.edit.providers.ElementItemProvider;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
+import org.eclipse.uml2.uml.edit.providers.UMLReflectiveItemProviderAdapterFactory;
+import org.eclipse.uml2.uml.edit.providers.UMLResourceItemProviderAdapterFactory;
 
 import java.util.HashMap;
 
@@ -165,6 +167,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
+
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetadata;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -533,10 +536,10 @@ public class UMLEditor
 		// Create an adapter factory that yields item providers.
 		//
 		List factories = new ArrayList();
-		factories.add(new ResourceItemProviderAdapterFactory());
+		factories.add(new UMLResourceItemProviderAdapterFactory());
 		factories.add(new UMLItemProviderAdapterFactory());
 		factories.add(new EcoreItemProviderAdapterFactory());
-		factories.add(new ReflectiveItemProviderAdapterFactory());
+		factories.add(new UMLReflectiveItemProviderAdapterFactory());
 
 		adapterFactory = new ComposedAdapterFactory(factories);
 
