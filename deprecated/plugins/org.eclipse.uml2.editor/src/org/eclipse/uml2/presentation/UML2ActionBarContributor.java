@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ActionBarContributor.java,v 1.13 2005/08/29 19:23:15 khussey Exp $
+ * $Id: UML2ActionBarContributor.java,v 1.14 2006/03/23 20:58:49 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
@@ -165,6 +166,7 @@ public class UML2ActionBarContributor
 	public UML2ActionBarContributor() {
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
+		controlAction = new ControlAction();
 	}
 
 	/**
