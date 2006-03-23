@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Editor.java,v 1.23 2005/08/29 19:23:15 khussey Exp $
+ * $Id: UML2Editor.java,v 1.24 2006/03/23 18:53:38 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -154,6 +154,7 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import org.eclipse.uml2.common.edit.domain.UML2AdapterFactoryEditingDomain;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 
 import org.eclipse.uml2.provider.UML2ItemProviderAdapterFactory;
@@ -524,7 +525,7 @@ public class UML2Editor
 	 * This creates a model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UML2Editor() {
 		super();
@@ -569,7 +570,7 @@ public class UML2Editor
 
 		// Create the editing domain with a special command stack.
 		//
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
+		editingDomain = new UML2AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
 	}
 
 	/**

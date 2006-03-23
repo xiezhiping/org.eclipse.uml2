@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.9 2006/03/23 18:42:35 khussey Exp $
+ * $Id: UMLEditor.java,v 1.10 2006/03/23 18:53:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -154,6 +154,7 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import org.eclipse.uml2.common.edit.domain.UML2AdapterFactoryEditingDomain;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 import org.eclipse.uml2.uml.edit.providers.ElementItemProvider;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
@@ -575,7 +576,7 @@ public class UMLEditor
 
 		// Create the editing domain with a special command stack.
 		//
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory,
+		editingDomain = new UML2AdapterFactoryEditingDomain(adapterFactory,
 			commandStack, new HashMap());
 	}
 

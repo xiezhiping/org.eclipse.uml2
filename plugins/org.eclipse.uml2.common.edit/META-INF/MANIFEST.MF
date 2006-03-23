@@ -7,6 +7,7 @@ Bundle-ClassPath: uml2.common.edit.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.uml2.common.edit.command,
+ org.eclipse.uml2.common.edit.domain,
  org.eclipse.uml2.common.edit.provider
 Require-Bundle: org.eclipse.uml2.common;bundle-version="[1.2.0,2.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore.edit;bundle-version="[2.2.0,3.0.0)";visibility:=reexport,
