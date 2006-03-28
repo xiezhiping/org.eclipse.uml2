@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2006 IBM Corporation and others.
+ All rights reserved.   This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors: 
+   IBM - initial API and implementation
+
+ $Id: plugin.xml,v 1.1 2006/03/28 21:07:32 khussey Exp $
+-->
+
+<plugin>
+
+  <extension
+     point="org.eclipse.ui.editorActions">
+    <editorContribution
+       targetID="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+       id="org.eclipse.uml2.examples.uml.ui.EcoreEditorContribution">
+      <action
+         label="%_UI_ConvertToUMLAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.ConvertToUMLAction"
+         menubarPath="org.eclipse.emf.ecoreMenuID/additions-end"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.ConvertToUMLActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.emf.ecore.EPackage">
+          </objectClass>
+        </enablement>
+      </action>
+    </editorContribution>
+    <editorContribution
+       targetID="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+       id="org.eclipse.uml2.examples.uml.ui.UMLEditorContributionID">
+      <menu
+         label="%_UI_GenerateMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions-end"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateMenuID">
+        <separator name="additions"/>
+      </menu>
+      <menu
+         label="%_UI_StereotypesMenu_label"
+         path="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/additions"
+         id="org.eclipse.uml2.examples.uml.ui.StereotypesMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_StandardAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateStandardStereotypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.StereotypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateStandardStereotypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_EcoreAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateEcoreStereotypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.StereotypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateEcoreStereotypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
+      <menu
+         label="%_UI_PrimitiveTypesMenu_label"
+         path="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/additions"
+         id="org.eclipse.uml2.examples.uml.ui.PrimitiveTypesMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_UMLAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateUMLPrimitiveTypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.PrimitiveTypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateUMLPrimitiveTypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Model">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_JavaAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateJavaPrimitiveTypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.PrimitiveTypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateJavaPrimitiveTypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Model">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_EcoreAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateEcorePrimitiveTypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.PrimitiveTypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateEcorePrimitiveTypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Model">
+          </objectClass>
+        </enablement>
+      </action>
+      <menu
+         label="%_UI_ExternalizeMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions-end"
+         id="org.eclipse.uml2.examples.uml.ui.ExternalizeMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_LabelsAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.ExternalizeLabelsAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.ExternalizeMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.ExternalizeLabelsActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Package">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_KeywordsAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.ExternalizeKeywordsAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.ExternalizeMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.ExternalizeKeywordsActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
+      <menu
+         label="%_UI_ConvertToMenu_label"
+         path="org.eclipse.uml2.umlMenuID/additions-end"
+         id="org.eclipse.uml2.examples.uml.ui.ConvertToMenuID">
+        <separator name="additions"/>
+      </menu>
+      <action
+         label="%_UI_ModelLibraryAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.ConvertToModelLibraryAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.ConvertToMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.ConvertToModelLibraryActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Model">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_MetamodelAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.ConvertToMetamodelAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.ConvertToMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.ConvertToMetamodelActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Model">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
+         label="%_UI_EcoreModelAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.ConvertToEcoreAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.ConvertToMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.ConvertToEcoreActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Package">
+          </objectClass>
+        </enablement>
+      </action>
+    </editorContribution>
+  </extension>
+
+</plugin>
