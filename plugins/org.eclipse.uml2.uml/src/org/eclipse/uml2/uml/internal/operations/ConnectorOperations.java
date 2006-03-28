@@ -8,17 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.5 2006/03/28 18:26:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.BehavioredClassifier;
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.ConnectorKind;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -62,28 +75,50 @@ public class ConnectorOperations
 	 * The types of the connectable elements that the ends of a connector are attached to must conform to the types of the association ends of the association that types the connector, if any.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateTypes(Connector connector,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR__TYPES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateTypes", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connector, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connector}));
+		Association connectorType = connector.getType();
+
+		if (connectorType != null) {
+			EList ends = connector.getEnds();
+
+			if (ends.size() == 2) {
+				ConnectorEnd fromEnd = (ConnectorEnd) ends.get(0);
+				ConnectableElement fromRole = fromEnd.getRole();
+				Type fromType = fromRole == null
+					? null
+					: fromRole.getType();
+
+				ConnectorEnd toEnd = (ConnectorEnd) ends.get(1);
+				ConnectableElement toRole = toEnd.getRole();
+				Type toType = toRole == null
+					? null
+					: toRole.getType();
+
+				EList endTypes = connectorType.getEndTypes();
+
+				if ((fromType != null && !TypeOperations.conformsToAny(
+					fromType, endTypes))
+					|| (toType != null && !TypeOperations.conformsToAny(toType,
+						endTypes))) {
+
+					if (diagnostics != null) {
+						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.CONNECTOR__TYPES,
+							UMLPlugin.INSTANCE.getString(
+								"_UI_Connector_Types_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, connector)),
+							new Object[]{connector}));
+					}
+
+					return false;
+				}
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -126,28 +161,54 @@ public class ConnectorOperations
 	 * The ConnectableElements attached as roles to each ConnectorEnd owned by a Connector must be roles of the Classifier that owned the Connector, or they must be ports of such roles.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateRoles(Connector connector,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR__ROLES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRoles", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connector, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connector}));
+		EList ends = connector.getEnds();
+
+		if (ends.size() == 2) {
+			ConnectorEnd fromEnd = (ConnectorEnd) ends.get(0);
+			ConnectableElement fromRole = fromEnd.getRole();
+			Element fromOwner = null;
+
+			if (fromRole instanceof Port) {
+				fromOwner = fromEnd.getPartWithPort().getOwner();
+			} else {
+				fromOwner = fromRole == null
+					? null
+					: fromRole.getOwner();
 			}
-			return false;
+
+			ConnectorEnd toEnd = (ConnectorEnd) ends.get(1);
+			ConnectableElement toRole = toEnd.getRole();
+			Element toOwner = null;
+
+			if (toRole instanceof Port) {
+				toOwner = toEnd.getPartWithPort().getOwner();
+			} else {
+				toOwner = toRole == null
+					? null
+					: toRole.getOwner();
+			}
+
+			Element connectorOwner = connector.getOwner();
+
+			if (connectorOwner != fromOwner || connectorOwner != toOwner) {
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.CONNECTOR__ROLES, UMLPlugin.INSTANCE
+							.getString("_UI_Connector_Roles_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, connector)),
+						new Object[]{connector}));
+				}
+
+				return false;
+			}
 		}
+
 		return true;
 	}
 
@@ -158,28 +219,45 @@ public class ConnectorOperations
 	 * A delegation connector must only be defined between used Interfaces or Ports of the same kind, e.g. between two provided Ports or between two required Ports.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateBetweenInterfacesPorts(Connector connector,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+		EList ends = connector.getEnds();
+
+		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
+			&& ends.size() == 2) {
+
+			ConnectableElement fromRole = ((ConnectorEnd) ends.get(0))
+				.getRole();
+			Collection fromRequired = ConnectableElementOperations
+				.getRequiredInterfaces(fromRole);
+			Collection fromProvided = ConnectableElementOperations
+				.getProvidedInterfaces(fromRole);
+
+			ConnectableElement toRole = ((ConnectorEnd) ends.get(1)).getRole();
+			Collection toRequired = ConnectableElementOperations
+				.getRequiredInterfaces(toRole);
+			Collection toProvided = ConnectableElementOperations
+				.getProvidedInterfaces(toRole);
+
+			if (Collections.disjoint(toProvided, fromRequired)
+				&& Collections.disjoint(fromProvided, toRequired)) {
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.CONNECTOR__BETWEEN_INTERFACES_PORTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBetweenInterfacesPorts", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connector, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Connector_BetweenInterfacesPorts_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, connector)),
 						new Object[]{connector}));
+				}
+
+				return false;
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -190,28 +268,53 @@ public class ConnectorOperations
 	 * If a delegation connector is defined between a used Interface or Port and an internal Part Classifier, then that Classifier must have an 'implements' relationship to the Interface type of that Port.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateBetweenInterfacePortImplements(
 			Connector connector, DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CONNECTOR__BETWEEN_INTERFACE_PORT_IMPLEMENTS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBetweenInterfacePortImplements", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connector, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{connector}));
+		EList ends = connector.getEnds();
+
+		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
+			&& ends.size() == 2) {
+
+			ConnectorEnd fromEnd = (ConnectorEnd) ends.get(0);
+			ConnectableElement fromRole = fromEnd.getRole();
+
+			ConnectorEnd toEnd = (ConnectorEnd) ends.get(1);
+			ConnectableElement toRole = toEnd.getRole();
+
+			Collection fromProvided = ConnectableElementOperations
+				.getProvidedInterfaces(fromRole);
+
+			if (!fromProvided.isEmpty() && !(toRole instanceof Port)
+				&& toRole instanceof Property) {
+
+				Type toType = ((Property) toRole).getType();
+
+				if (toType instanceof BehavioredClassifier
+					&& (!((BehavioredClassifier) toType)
+						.getAllImplementedInterfaces()
+						.containsAll(fromProvided))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.CONNECTOR__BETWEEN_INTERFACE_PORT_IMPLEMENTS,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Connector_BetweenInterfacePortImplements_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											connector)),
+								new Object[]{connector}));
+					}
+
+					return false;
+				}
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -222,29 +325,53 @@ public class ConnectorOperations
 	 * If a delegation connector is defined between a source Interface or Port and a target Interface or Port, then the target Interface must support a signature compatible subset of Operations of the source Interface or Port.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+	
 	public static boolean validateBetweenInterfacePortSignature(
 			Connector connector, DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
+		boolean result = true;
+		EList ends = connector.getEnds();
+
+		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
+			&& ends.size() == 2) {
+
+			ConnectableElement fromRole = ((ConnectorEnd) ends.get(0))
+				.getRole();
+			Collection fromRequired = ConnectableElementOperations
+				.getRequiredInterfaces(fromRole);
+			Collection fromProvided = ConnectableElementOperations
+				.getProvidedInterfaces(fromRole);
+
+			ConnectableElement toRole = ((ConnectorEnd) ends.get(1)).getRole();
+			Collection toRequired = ConnectableElementOperations
+				.getRequiredInterfaces(toRole);
+			Collection toProvided = ConnectableElementOperations
+				.getProvidedInterfaces(toRole);
+
+			if (!fromProvided.isEmpty() && !toProvided.isEmpty()) {
+				result = result && !Collections.disjoint(fromProvided, toProvided);
+			}
+
+			if (!fromRequired.isEmpty() && !toRequired.isEmpty()) {
+				result = result && !Collections.disjoint(fromRequired, toRequired);
+			}
+
+			if (!result && diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.CONNECTOR__BETWEEN_INTERFACE_PORT_SIGNATURE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						UMLPlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBetweenInterfacePortSignature", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connector, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+								"_UI_Connector_BetweenInterfacePortSignature_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, connector)),
 						new Object[]{connector}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 	/**
@@ -286,29 +413,46 @@ public class ConnectorOperations
 	 * An assembly connector must only be defined from a required Interface or Ports to a provided Interface or Port.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateAssemblyConnector(Connector connector,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+		EList ends = connector.getEnds();
+
+		if (connector.getKind() == ConnectorKind.ASSEMBLY_LITERAL
+			&& ends.size() == 2) {
+
+			ConnectableElement fromRole = ((ConnectorEnd) ends.get(0))
+				.getRole();
+			Collection fromRequired = ConnectableElementOperations
+				.getRequiredInterfaces(fromRole);
+			Collection fromProvided = ConnectableElementOperations
+				.getProvidedInterfaces(fromRole);
+
+			ConnectableElement toRole = ((ConnectorEnd) ends.get(1)).getRole();
+			Collection toRequired = ConnectableElementOperations
+				.getRequiredInterfaces(toRole);
+			Collection toProvided = ConnectableElementOperations
+				.getProvidedInterfaces(toRole);
+
+			if (Collections.disjoint(fromProvided, toRequired)
+				&& Collections.disjoint(toProvided, fromRequired)) {
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.CONNECTOR__ASSEMBLY_CONNECTOR,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAssemblyConnector", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connector, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Connector_AssemblyConnector_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, connector)),
 						new Object[]{connector}));
+				}
+
+				return false;
 			}
-			return false;
 		}
+
 		return true;
 	}
-
+	
 } // ConnectorOperations

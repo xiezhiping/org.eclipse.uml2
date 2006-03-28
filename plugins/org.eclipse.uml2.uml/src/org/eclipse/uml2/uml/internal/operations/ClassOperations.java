@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.16 2006/03/07 20:25:18 khussey Exp $
+ * $Id: ClassOperations.java,v 1.17 2006/03/28 18:26:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -76,29 +77,26 @@ public class ClassOperations
 	 * A passive class may not own receptions.
 	 * not self.isActive implies self.ownedReception.isEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validatePassiveClass(
 			org.eclipse.uml2.uml.Class class_, DiagnosticChain diagnostics,
 			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (!class_.isActive() && !(class_.getOwnedReceptions().isEmpty())) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.CLASS__PASSIVE_CLASS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validatePassiveClass", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(class_, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{class_}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.CLASS__PASSIVE_CLASS, UMLPlugin.INSTANCE
+						.getString("_UI_Class_PassiveClass_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, class_)),
+					new Object[]{class_}));
 			}
+			
 			return false;
 		}
+
 		return true;
 	}
 

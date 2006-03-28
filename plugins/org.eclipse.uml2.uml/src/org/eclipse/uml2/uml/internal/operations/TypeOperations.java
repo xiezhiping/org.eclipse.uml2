@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.12 2006/03/07 20:25:17 khussey Exp $
+ * $Id: TypeOperations.java,v 1.13 2006/03/28 18:26:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,8 +17,10 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -32,6 +34,7 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 /**
@@ -280,6 +283,18 @@ public class TypeOperations
 	 * @generated NOT
 	 */
 	public static boolean conformsTo(Type type, Type other) {
+		return false;
+	}
+
+	protected static boolean conformsToAny(Type type, EList types) {
+
+		for (Iterator t = types.iterator(); t.hasNext();) {
+
+			if (type.conformsTo((Type) t.next())) {
+				return true;
+			}
+		}
+
 		return false;
 	}
 

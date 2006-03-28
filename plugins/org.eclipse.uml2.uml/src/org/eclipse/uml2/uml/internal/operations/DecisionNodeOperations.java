@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: DecisionNodeOperations.java,v 1.5 2006/03/28 18:26:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.DecisionNode;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -57,28 +58,26 @@ public class DecisionNodeOperations
 	 * A decision node has one incoming edge.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateOneIncomingEdge(DecisionNode decisionNode,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (decisionNode.getIncomings().size() != 1) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DECISION_NODE__ONE_INCOMING_EDGE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOneIncomingEdge", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(decisionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{decisionNode}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.DECISION_NODE__ONE_INCOMING_EDGE,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_DecisionNode_OneIncomingEdge_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, decisionNode)),
+					new Object[]{decisionNode}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 

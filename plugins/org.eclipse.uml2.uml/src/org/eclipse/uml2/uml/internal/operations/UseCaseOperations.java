@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.6 2006/01/27 04:55:56 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.7 2006/03/28 18:26:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,11 +20,11 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.UniqueEList;
-
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.UseCase;
-
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -64,28 +64,25 @@ public class UseCaseOperations
 	 * A UseCase must have a name.
 	 * self.name -> notEmpty ()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateMustHaveName(UseCase useCase,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (isEmpty(useCase.getName())) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.USE_CASE__MUST_HAVE_NAME,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMustHaveName", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(useCase, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{useCase}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.USE_CASE__MUST_HAVE_NAME, UMLPlugin.INSTANCE
+						.getString("_UI_UseCase_MustHaveName_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, useCase)),
+					new Object[]{useCase}));
 			}
+			
 			return false;
 		}
+
 		return true;
 	}
 
@@ -96,28 +93,29 @@ public class UseCaseOperations
 	 * UseCases can only be involved in binary Associations.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateBinaryAssociations(UseCase useCase,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+
+		for (Iterator a = useCase.getAssociations().iterator(); a.hasNext();) {
+
+			if (!((Association) a.next()).isBinary()) {
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
 						UMLValidator.USE_CASE__BINARY_ASSOCIATIONS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBinaryAssociations", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(useCase, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						UMLPlugin.INSTANCE.getString(
+							"_UI_UseCase_BinaryAssociations_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, useCase)),
 						new Object[]{useCase}));
+				}
+
+				return false;
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -128,28 +126,47 @@ public class UseCaseOperations
 	 * UseCases can not have Associations to UseCases specifying the same subject.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateNoAssociationToUseCase(UseCase useCase,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.USE_CASE__NO_ASSOCIATION_TO_USE_CASE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoAssociationToUseCase", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(useCase, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{useCase}));
+
+		for (Iterator a = useCase.getAssociations().iterator(); a.hasNext();) {
+			EList endTypes = ((Association) a.next()).getEndTypes();
+
+			if (endTypes.size() == 2) {
+				Type end1 = (Type) endTypes.get(0);
+				Type end2 = (Type) endTypes.get(1);
+
+				if (end1 instanceof UseCase && end2 instanceof UseCase) {
+					UseCase useCase1 = (UseCase) end1;
+					UseCase useCase2 = (UseCase) end2;
+
+					EList subjects = new UniqueEList.FastCompare(useCase1.getSubjects());
+					subjects.retainAll(useCase2.getSubjects());
+
+					if (!subjects.isEmpty()) {
+
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									UMLValidator.USE_CASE__NO_ASSOCIATION_TO_USE_CASE,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_UseCase_NoAssociationToUseCase_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												useCase1, useCase2)),
+									new Object[]{useCase1, useCase2}));
+						}
+
+						return false;
+					}
+				}
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -160,28 +177,26 @@ public class UseCaseOperations
 	 * A use case cannot include use cases that directly or indirectly include it.
 	 * not self.allIncludedUseCases()->includes(self)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateCannotIncludeSelf(UseCase useCase,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (useCase.allIncludedUseCases().contains(useCase)) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.USE_CASE__CANNOT_INCLUDE_SELF,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotIncludeSelf", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(useCase, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{useCase}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.USE_CASE__CANNOT_INCLUDE_SELF,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_UseCase_CannotIncludeSelf_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, useCase)),
+					new Object[]{useCase}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
