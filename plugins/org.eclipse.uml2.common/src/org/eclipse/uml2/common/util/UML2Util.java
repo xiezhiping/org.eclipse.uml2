@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.18 2006/02/21 14:31:31 khussey Exp $
+ * $Id: UML2Util.java,v 1.19 2006/03/28 22:24:24 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -928,4 +928,19 @@ public class UML2Util {
 		}
 	}
 
+	protected static boolean intersect(Collection collection,
+			Collection otherCollection) {
+
+		if (!collection.isEmpty() && !collection.isEmpty()) {
+
+			for (Iterator c = collection.iterator(); c.hasNext();) {
+
+				if (otherCollection.contains(c.next())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }

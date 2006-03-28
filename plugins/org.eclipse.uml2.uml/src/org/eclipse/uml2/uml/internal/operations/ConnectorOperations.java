@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.5 2006/03/28 18:26:14 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.6 2006/03/28 22:24:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -241,8 +240,8 @@ public class ConnectorOperations
 			Collection toProvided = ConnectableElementOperations
 				.getProvidedInterfaces(toRole);
 
-			if (Collections.disjoint(toProvided, fromRequired)
-				&& Collections.disjoint(fromProvided, toRequired)) {
+			if (intersect(toProvided, fromRequired)
+				|| intersect(fromProvided, toRequired)) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
@@ -350,11 +349,11 @@ public class ConnectorOperations
 				.getProvidedInterfaces(toRole);
 
 			if (!fromProvided.isEmpty() && !toProvided.isEmpty()) {
-				result = result && !Collections.disjoint(fromProvided, toProvided);
+				result = result && intersect(fromProvided, toProvided);
 			}
 
 			if (!fromRequired.isEmpty() && !toRequired.isEmpty()) {
-				result = result && !Collections.disjoint(fromRequired, toRequired);
+				result = result && intersect(fromRequired, toRequired);
 			}
 
 			if (!result && diagnostics != null) {
@@ -435,8 +434,8 @@ public class ConnectorOperations
 			Collection toProvided = ConnectableElementOperations
 				.getProvidedInterfaces(toRole);
 
-			if (Collections.disjoint(fromProvided, toRequired)
-				&& Collections.disjoint(toProvided, fromRequired)) {
+			if (!intersect(fromProvided, toRequired)
+				&& !intersect(toProvided, fromRequired)) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
