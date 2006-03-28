@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.22 2006/03/23 18:43:03 khussey Exp $
+ * $Id: UMLUtil.java,v 1.23 2006/03/28 16:23:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3281,8 +3281,7 @@ public class UMLUtil
 					EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eModelElement;
 
 					if (eStructuralFeature.isDerived()
-						&& (eStructuralFeature.isContainment()
-							|| !eStructuralFeature.isTransient() || !eStructuralFeature
+						&& (eStructuralFeature.isContainment() || !eStructuralFeature
 							.isVolatile())) {
 
 						if (OPTION__PROCESS.equals(options

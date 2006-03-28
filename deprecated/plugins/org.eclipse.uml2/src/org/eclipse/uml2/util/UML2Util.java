@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.65 2006/03/15 19:32:07 khussey Exp $
+ * $Id: UML2Util.java,v 1.66 2006/03/28 16:22:52 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -3086,12 +3086,10 @@ public class UML2Util
 					.next();
 
 				if (eModelElement instanceof EStructuralFeature) {
-					EStructuralFeature eStructuralFeature = (EStructuralFeature) eModelElement;
+					EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eModelElement;
 
 					if (eStructuralFeature.isDerived()
-						&& ((eStructuralFeature instanceof EReference && ((EReference) eStructuralFeature)
-							.isContainment())
-							|| !eStructuralFeature.isTransient() || !eStructuralFeature
+						&& (eStructuralFeature.isContainment() || !eStructuralFeature
 							.isVolatile())) {
 
 						if (OPTION__PROCESS.equals(options
