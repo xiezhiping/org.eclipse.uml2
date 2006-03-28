@@ -21,8 +21,7 @@
 
    <requires>
       <import plugin="org.junit" version="3.8.1" match="compatible"/>
-      <import plugin="org.eclipse.uml2" version="1.2.0" match="compatible"/>
-      <import plugin="org.eclipse.uml2.edit" version="1.2.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml" version="2.0.0" match="compatible"/>
    </requires>
 
    <plugin
@@ -32,7 +31,7 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.uml2.edit.tests"
+         id="org.eclipse.uml2.uml.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
