@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.2 2006/03/29 18:51:16 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.3 2006/03/29 19:54:02 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -51,11 +51,11 @@ public class ExternalizeLabelsAction
 			new UMLSwitch() {
 
 				public Object caseAssociation(Association association) {
-					return defaultCase(association);
+					return association;
 				}
 
 				public Object caseConstraint(Constraint constraint) {
-					return defaultCase(constraint);
+					return constraint;
 				}
 
 				public Object caseNamedElement(NamedElement namedElement) {
