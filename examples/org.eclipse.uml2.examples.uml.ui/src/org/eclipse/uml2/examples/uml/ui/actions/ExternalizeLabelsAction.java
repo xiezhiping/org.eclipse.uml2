@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.2 2006/03/29 18:51:16 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
@@ -48,14 +50,20 @@ public class ExternalizeLabelsAction
 
 			new UMLSwitch() {
 
+				public Object caseAssociation(Association association) {
+					return defaultCase(association);
+				}
+
+				public Object caseConstraint(Constraint constraint) {
+					return defaultCase(constraint);
+				}
+
 				public Object caseNamedElement(NamedElement namedElement) {
 					String qualifiedName = namedElement.getQualifiedName();
 
 					if (!UML2Util.isEmpty(qualifiedName)) {
-						propertiesWriter.println(getPropertiesKey("_label_", //$NON-NLS-1$
-							qualifiedName) + PROPERTIES_SEPARATOR
-							+ format(capName(namedElement.getLabel()), " ", //$NON-NLS-1$
-								null, false));
+						externalize(propertiesWriter, namedElement,
+							qualifiedName);
 					}
 
 					return super.caseNamedElement(namedElement);
@@ -69,7 +77,7 @@ public class ExternalizeLabelsAction
 						doSwitch((EObject) eContents.next());
 					}
 
-					return super.defaultCase(eObject);
+					return eObject;
 				}
 
 			}.doSwitch(package_);
@@ -77,4 +85,13 @@ public class ExternalizeLabelsAction
 			propertiesWriter.close();
 		}
 	}
+
+	protected void externalize(PrintWriter propertiesWriter,
+			NamedElement namedElement, String qualifiedName) {
+		propertiesWriter.println(getPropertiesKey("_label_", //$NON-NLS-1$
+			qualifiedName) + PROPERTIES_SEPARATOR
+			+ format(capName(namedElement.getLabel()), " ", //$NON-NLS-1$
+				null, false));
+	}
+
 }
