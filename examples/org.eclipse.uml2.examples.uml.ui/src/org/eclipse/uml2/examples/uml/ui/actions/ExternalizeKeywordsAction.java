@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeKeywordsAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: ExternalizeKeywordsAction.java,v 1.2 2006/03/29 18:52:02 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -51,7 +51,7 @@ public class ExternalizeKeywordsAction
 				public Object caseStereotype(Stereotype stereotype) {
 					String qualifiedName = stereotype.getQualifiedName();
 
-					if (UML2Util.isEmpty(qualifiedName)) {
+					if (!UML2Util.isEmpty(qualifiedName)) {
 						propertiesWriter.println(getPropertiesKey(
 							UML2Util.EMPTY_STRING, qualifiedName)
 							+ PROPERTIES_SEPARATOR + stereotype.getKeyword());
