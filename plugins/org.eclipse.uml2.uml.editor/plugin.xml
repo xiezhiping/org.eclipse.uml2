@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.5 2006/03/08 19:13:16 khussey Exp $
+ $Id: plugin.xml,v 1.6 2006/03/29 18:53:22 khussey Exp $
 -->
 
 <plugin>
@@ -28,7 +28,7 @@
        name = "%_UI_UMLModelWizard_label"
        class = "org.eclipse.uml2.uml.editor.presentation.UMLModelWizard"
        category = "org.eclipse.emf.ecore.Wizard.category.ID"
-       icon = "icons/full/obj16/UMLModelFile.gif">
+       icon = "icons/full/etool16/NewUML.gif">
       <description>%_UI_UMLModelWizard_description</description>
       <selection class = "org.eclipse.core.resources.IResource"/>
     </wizard>
