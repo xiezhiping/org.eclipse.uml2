@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.31 2006/03/15 19:33:59 khussey Exp $
+ * $Id: ClassImpl.java,v 1.32 2006/03/30 02:52:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -735,7 +735,9 @@ public class ClassImpl
 		}
 
 		protected boolean isIncluded(Object object) {
-			return super.isIncluded(((Generalization) object).getGeneral());
+			return super.isIncluded(object instanceof Generalization
+				? ((Generalization) object).getGeneral()
+				: object);
 		}
 	}
 
