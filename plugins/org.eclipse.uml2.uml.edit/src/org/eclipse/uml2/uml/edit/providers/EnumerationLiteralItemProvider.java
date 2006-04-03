@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
+ * $Id: EnumerationLiteralItemProvider.java,v 1.5 2006/04/03 20:59:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -109,7 +109,7 @@ public class EnumerationLiteralItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Enumeration_type"), object).toString(); //$NON-NLS-1$
+				"_UI_EnumerationLiteral_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

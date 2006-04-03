@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.7 2006/03/23 18:42:45 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.8 2006/04/03 20:59:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -545,9 +545,7 @@ public class ElementItemProvider
 			String[] filterFlags) {
 		return new UMLItemPropertyDescriptor(adapterFactory, resourceLocator,
 			displayName, description, feature, isSettable, staticImage,
-			category == null
-				? getTypeText(resourceLocator, feature.getEContainingClass())
-				: category, filterFlags);
+			category, filterFlags);
 	}
 
 	protected Object overlayImage(Object object, Object image) {
