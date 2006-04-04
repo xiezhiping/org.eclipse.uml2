@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.11 2006/03/23 20:58:52 khussey Exp $
+ * $Id: UMLEditor.java,v 1.12 2006/04/04 16:22:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -58,6 +58,7 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import java.io.IOException;
 
@@ -836,6 +837,7 @@ public class UMLEditor
 			}
 
 			if (newURI != null) {
+				((XMLResource) resource).getEObjectToExtensionMap().clear();
 				resource.setURI(newURI);
 			}
 
