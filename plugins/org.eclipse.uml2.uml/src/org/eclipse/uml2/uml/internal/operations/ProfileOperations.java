@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.20 2006/03/14 16:10:50 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.21 2006/04/04 16:24:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -112,9 +112,18 @@ public class ProfileOperations
 				String version = String.valueOf(0);
 
 				try {
-					String nsURI = profile.getDefinition().getNsURI();
-					version = String.valueOf(Integer.parseInt(nsURI
-						.substring(nsURI.lastIndexOf('/') + 1)) + 1);
+					EPackage definition = profile.getDefinition();
+					String nsURI = definition.getNsURI();
+					int lastIndex = nsURI.lastIndexOf('/');
+
+					if (lastIndex > 7) { // 2.0 format
+						version = String.valueOf(Integer.parseInt(nsURI
+							.substring(lastIndex + 1)) + 1);
+					} else { // 1.x format
+						String nsPrefix = definition.getNsPrefix();
+						version = String.valueOf(Integer.parseInt(nsPrefix
+							.substring(nsPrefix.lastIndexOf('_') + 1)) + 1);
+					}
 				} catch (Exception e) {
 					// ignore
 				}
