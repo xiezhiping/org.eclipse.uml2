@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.2 2006/04/04 16:20:55 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -243,6 +243,8 @@ public class GenerateEcoreStereotypesAction
 						generateOwnedAttribute(eReferenceStereotype,
 							"isResolveProxies", booleanPrimitiveType, 0, 1) //$NON-NLS-1$
 							.setBooleanDefaultValue(true);
+
+						setIDs(profile);
 					}
 				}, UMLExamplesUIPlugin.INSTANCE.getString(
 					"_UI_GenerateEcoreStereotypesActionCommand_label", //$NON-NLS-1$

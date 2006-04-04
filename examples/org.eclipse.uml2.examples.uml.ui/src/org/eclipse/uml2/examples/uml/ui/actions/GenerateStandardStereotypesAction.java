@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateStandardStereotypesAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: GenerateStandardStereotypesAction.java,v 1.2 2006/04/04 16:20:55 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -219,6 +219,8 @@ public class GenerateStandardStereotypesAction
 							profile, "Utility", false); //$NON-NLS-1$
 						generateExtension(utilityStereotype, classMetaclass,
 							false);
+
+						setIDs(profile);
 					}
 				}, UMLExamplesUIPlugin.INSTANCE.getString(
 					"_UI_GenerateStandardStereotypesActionCommand_label", //$NON-NLS-1$

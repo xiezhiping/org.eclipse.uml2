@@ -8,14 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.2 2006/04/04 16:20:55 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
@@ -142,6 +147,36 @@ public abstract class GenerateProfileAction
 		}
 
 		return icon;
+	}
+
+	protected void setIDs(Profile profile) {
+		Resource eResource = profile.eResource();
+
+		if (eResource instanceof XMIResource) {
+			XMIResource xmiResource = (XMIResource) eResource;
+
+			xmiResource.setID(profile, UML2Util
+				.getXMIIdentifier((InternalEObject) profile));
+
+			for (TreeIterator eAllContents = profile.eAllContents(); eAllContents
+				.hasNext();) {
+
+				InternalEObject internalEObject = (InternalEObject) eAllContents
+					.next();
+
+				if (internalEObject instanceof EAnnotation) {
+					eAllContents.prune();
+				} else {
+					System.out.println("fragmentMap.put(\""
+						+ xmiResource.getID(internalEObject) + "\", \""
+						+ UML2Util.getXMIIdentifier(internalEObject)
+						+ "\"); //$NON-NLS-1$ //$NON-NLS-2$");
+
+					xmiResource.setID(internalEObject, UML2Util
+						.getXMIIdentifier(internalEObject));
+				}
+			}
+		}
 	}
 
 }
