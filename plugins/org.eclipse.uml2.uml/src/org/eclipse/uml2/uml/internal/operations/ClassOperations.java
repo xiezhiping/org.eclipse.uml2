@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.17 2006/03/28 18:26:14 khussey Exp $
+ * $Id: ClassOperations.java,v 1.18 2006/04/04 18:06:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -93,7 +93,7 @@ public class ClassOperations
 							getMessageSubstitutions(context, class_)),
 					new Object[]{class_}));
 			}
-			
+
 			return false;
 		}
 

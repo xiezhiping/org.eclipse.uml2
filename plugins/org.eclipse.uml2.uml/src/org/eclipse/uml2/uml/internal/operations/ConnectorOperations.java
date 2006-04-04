@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.6 2006/03/28 22:24:22 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.7 2006/04/04 18:06:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -326,7 +326,7 @@ public class ConnectorOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	
+
 	public static boolean validateBetweenInterfacePortSignature(
 			Connector connector, DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
@@ -453,5 +453,5 @@ public class ConnectorOperations
 
 		return true;
 	}
-	
+
 } // ConnectorOperations

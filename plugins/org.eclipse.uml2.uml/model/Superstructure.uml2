@@ -10392,9 +10392,6 @@ A component has a number of provided and required Interfaces, that form the basi
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sbHacxTaEdqZu-3Jy1-uYg"/>
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3E0257FB01C4" name="realization" type="_3ADC7B74022D3E02572A001E" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3E0257FB00D3" aggregation="composite">
-          <eAnnotations xmi:id="_sbRLZxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-            <contents xmi:type="Ecore_2:Ecore__EReference" xmi:id="_MrXLqLOtEdqN1dumGdoOLQ" isTransient="true"/>
-          </eAnnotations>
           <ownedComment xmi:id="_sbRLYhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0257FB01C4">
             <body>The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.</body>
           </ownedComment>

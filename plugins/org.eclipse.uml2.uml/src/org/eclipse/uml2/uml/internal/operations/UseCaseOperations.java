@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.7 2006/03/28 18:26:14 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.8 2006/04/04 18:06:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -79,7 +79,7 @@ public class UseCaseOperations
 							getMessageSubstitutions(context, useCase)),
 					new Object[]{useCase}));
 			}
-			
+
 			return false;
 		}
 
@@ -142,7 +142,8 @@ public class UseCaseOperations
 					UseCase useCase1 = (UseCase) end1;
 					UseCase useCase2 = (UseCase) end2;
 
-					EList subjects = new UniqueEList.FastCompare(useCase1.getSubjects());
+					EList subjects = new UniqueEList.FastCompare(useCase1
+						.getSubjects());
 					subjects.retainAll(useCase2.getSubjects());
 
 					if (!subjects.isEmpty()) {
