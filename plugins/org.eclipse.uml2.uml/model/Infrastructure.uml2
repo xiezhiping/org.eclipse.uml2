@@ -105,7 +105,7 @@
               <body>If there is no name, or one of the containing namespaces has no name, there is no qualified name.</body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRgG9BTaEdqZu-3Jy1-uYg" language="OCL">
-              <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
+              <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
   implies self.qualifiedName->isEmpty()</body>
             </specification>
           </ownedRule>
@@ -637,10 +637,10 @@ endif</body>
         <packageImport xmi:id="_3ADC7B74022D3DE6A40C0270" importedPackage="_3ADC7B74022D3CAB68D00279"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0320C02DB" name="InstanceSpecification">
           <ownedComment xmi:id="_rVrcXhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0320C02DB">
-            <body>An instance specification specifies existence of an entity in a modeled system and completely or partially describes the entity. The description includes:
-  - Classification of the entity by one or more classifiers of which the entity is an instance. If the only classifier specified is abstract, then the instance specification only partially describes the entity.
-  - The kind of instance, based on its classifier or classifiers: for example, an instance specification whose classifier is a class describes an object of that class, while an instance specification whose classifier is an association describes a link of that association.
-  - Specification of values of structural features of the entity. Not all structural features of all classifiers of the instance specification need be represented by slots, in which case the instance specification is a partial description.
+            <body>An instance specification specifies existence of an entity in a modeled system and completely or partially describes the entity. The description includes:
+  - Classification of the entity by one or more classifiers of which the entity is an instance. If the only classifier specified is abstract, then the instance specification only partially describes the entity.
+  - The kind of instance, based on its classifier or classifiers: for example, an instance specification whose classifier is a class describes an object of that class, while an instance specification whose classifier is an association describes a link of that association.
+  - Specification of values of structural features of the entity. Not all structural features of all classifiers of the instance specification need be represented by slots, in which case the instance specification is a partial description.
   - Specification of how to compute, derive or construct the instance (optional). InstanceSpecification is a concrete class.</body>
           </ownedComment>
           <ownedRule xmi:id="_rV0mQxTaEdqZu-3Jy1-uYg" name="slots_are_defined" constrainedElement="_3ADC7B74022D3CA0320C02DB">
@@ -1050,7 +1050,7 @@ classifier->exists(c | c.allFeatures()->includes(s.definingFeature))
         <packageImport xmi:id="_m_pwAD9HEdqjIv4r4xIGZw" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA099F902D0" name="Constraint">
           <ownedComment xmi:id="_rY8yxhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA099F902D0">
-            <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
+            <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
 Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to the element. Constraint contains an optional name, although they are commonly unnamed.</body>
           </ownedComment>
           <ownedRule xmi:id="_rY8yzxTaEdqZu-3Jy1-uYg" name="not_apply_to_self" constrainedElement="_3ADC7B74022D3CA099F902D0">
@@ -1189,10 +1189,10 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedMember>
         <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAD9E0F01D0" name="VisibilityKind">
           <ownedComment xmi:id="_raJsoRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAD9E0F01D0">
-            <body>VisibilityKind is an enumeration of the following literal values:
-  - public
-  - private
-  - protected
+            <body>VisibilityKind is an enumeration of the following literal values:
+  - public
+  - private
+  - protected
   - package</body>
           </ownedComment>
           <ownedOperation xmi:id="_3ADC7B74022D3E107BB80139" name="bestVisibility" type="_3ADC7B74022D3CAD9E0F01D0" isQuery="true" bodyCondition="_raJsqhTaEdqZu-3Jy1-uYg">
@@ -1770,10 +1770,10 @@ includesCardinality = (lowerBound() &lt;= C) and (upperBound() >= C)
           <contents xmi:type="Ecore_2:Ecore__EDataType" xmi:id="_GzjqyLOtEdqN1dumGdoOLQ" instanceClassName="boolean"/>
         </eAnnotations>
         <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010AC0090">
-          <body>Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:
-  - true: The Boolean condition is satisfied.
-  - false: The Boolean condition is not satisfied.
-
+          <body>Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:
+  - true: The Boolean condition is satisfied.
+  - false: The Boolean condition is not satisfied.
+
 It is used for Boolean attribute and Boolean expressions in the metamodel, such as OCL expression.</body>
         </ownedComment>
       </ownedMember>
@@ -3016,8 +3016,8 @@ endif</body>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6E15D033A" name="Association">
         <ownedComment xmi:id="_rmXjwRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E15D033A">
-          <body>An association specifies a semantic relationship that can occur between typed instances. It has at least two ends represented by properties, each of which is connected to the type of the end. More than one end of an association may have the same type.
-
+          <body>An association specifies a semantic relationship that can occur between typed instances. It has at least two ends represented by properties, each of which is connected to the type of the end. More than one end of an association may have the same type.
+
 An end property of an association that is owned by an end class or that is a navigable owned end of the association indicates that the association is navigable from the opposite ends, otherwise the association is not navigable from the opposite ends.</body>
         </ownedComment>
         <ownedRule xmi:id="_rmXjyxTaEdqZu-3Jy1-uYg" name="association_ends" constrainedElement="_3ADC7B74022D3DE6E15D033A">
@@ -3121,8 +3121,8 @@ An end property of an association that is owned by an end class or that is a nav
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D57500AC" name="Property">
         <ownedComment xmi:id="_rmgtsxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D57500AC">
-          <body>Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association.
-
+          <body>Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association.
+
 Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property's type.</body>
         </ownedComment>
         <ownedRule xmi:id="_rmqepxTaEdqZu-3Jy1-uYg" name="multiplicity_of_composite" constrainedElement="_3ADC7B74022D3DE6D57500AC">
@@ -3364,8 +3364,8 @@ association.owningAssociation.navigableOwnedEnd->includes(self)</body>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D25202A6" name="DataType">
         <ownedComment xmi:id="_rnHKkxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D25202A6">
-          <body>A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.
-
+          <body>A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.
+
 A typical use of data types would be to represent programming language primitive types or CORBA basic types. For example, integer and string types are often treated as data types.</body>
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DEE7FF2011D" general="_3ADC7B74022D3DE6C8630317"/>
@@ -3404,8 +3404,8 @@ A typical use of data types would be to represent programming language primitive
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D2750152" name="Enumeration">
         <ownedComment xmi:id="_rnHKohTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D2750152">
-          <body>Enumeration is a kind of data type, whose instances may be any of a number of predefined enumeration literals.
-It is possible to extend the set of applicable enumeration literals in other packages or profiles.
+          <body>Enumeration is a kind of data type, whose instances may be any of a number of predefined enumeration literals.
+It is possible to extend the set of applicable enumeration literals in other packages or profiles.
 </body>
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DE6D2D7038E" general="_3ADC7B74022D3DE6D25202A6"/>
@@ -3438,7 +3438,7 @@ It is possible to extend the set of applicable enumeration literals in other pac
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE766450007" name="Constraint">
         <ownedComment xmi:id="_rnQUhBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE766450007">
-          <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
+          <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
 Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to the element. Constraint contains an optional name, although they are commonly unnamed.</body>
         </ownedComment>
         <ownedRule xmi:id="_rnQUjRTaEdqZu-3Jy1-uYg" name="not_apply_to_self" constrainedElement="_3ADC7B74022D3DE766450007">
@@ -3467,7 +3467,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         </ownedAttribute>
         <ownedAttribute xmi:id="_3ADC7B74022D3DFCC88D0337" name="specification" type="_3ADC7B74022D3DE6C7F30294" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DFCC88D0157" aggregation="composite">
           <ownedComment xmi:id="_rseLsxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCC88D0337">
-            <body>A condition that must be true when evaluated in order for the constraint to be satisfied.
+            <body>A condition that must be true when evaluated in order for the constraint to be satisfied.
 </body>
           </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rseLtxTaEdqZu-3Jy1-uYg" value="1"/>
@@ -4017,10 +4017,10 @@ endif</body>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DEE8DFE0290" name="PackageMerge">
         <ownedComment xmi:id="_rowJbRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE8DFE0290">
-          <body>A package merge is a directed relationship between two packages, that indicates that the contents of the two packages are to be combined. It is very similar to Generalization in the sense that the source element conceptually adds the characteristics of the target element to its own characteristics resulting in an element that combines the characteristics of both.
-
-This mechanism should be used when elements defined in different packages have the same name and are intended to represent the same concept. Most often it is used to provide different definitions of a given concept for different purposes, starting from a common base definition. A given base concept is extended in increments, with each increment defined in a separate merged package. By selecting which increments to merge, it is possible to obtain a custom definition of a concept for a specific end. Package merge is particularly useful in meta-modeling and is extensively used in the definition of the UML metamodel.
-
+          <body>A package merge is a directed relationship between two packages, that indicates that the contents of the two packages are to be combined. It is very similar to Generalization in the sense that the source element conceptually adds the characteristics of the target element to its own characteristics resulting in an element that combines the characteristics of both.
+
+This mechanism should be used when elements defined in different packages have the same name and are intended to represent the same concept. Most often it is used to provide different definitions of a given concept for different purposes, starting from a common base definition. A given base concept is extended in increments, with each increment defined in a separate merged package. By selecting which increments to merge, it is possible to obtain a custom definition of a concept for a specific end. Package merge is particularly useful in meta-modeling and is extensively used in the definition of the UML metamodel.
+
 Conceptually, a package merge can be viewed as an operation that takes the contents of two packages and produces a new package that combines the contents of the packages involved in the merge. In terms of model semantics, there is no difference between a model with explicit package merges, and a model in which all the merges have been performed.</body>
         </ownedComment>
         <generalization xmi:id="_3ADC7B74022D3DEE8EAA032E" general="_3ADC7B74022D3DE6C82E03E4"/>
@@ -4077,7 +4077,7 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
             <body>If there is no name, or one of the containing namespaces has no name, there is no qualified name.</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_ro5TWxTaEdqZu-3Jy1-uYg" language="OCL">
-            <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
+            <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
   implies self.qualifiedName->isEmpty()</body>
           </specification>
         </ownedRule>
@@ -4241,11 +4241,11 @@ endif</body>
       </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind">
         <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4161A8F100CC">
-          <body>ParameterDirectionKind is an enumeration of the following literal values:
-  - in Indicates that parameter values are passed into the behavioral element by the caller.
-  - inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
-  - out Indicates that parameter values are passed from a behavioral element out to the caller.
-  - return Indicates that parameter values are passed as return values from a behavioral element back to the caller.
+          <body>ParameterDirectionKind is an enumeration of the following literal values:
+  - in Indicates that parameter values are passed into the behavioral element by the caller.
+  - inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
+  - out Indicates that parameter values are passed from a behavioral element out to the caller.
+  - return Indicates that parameter values are passed as return values from a behavioral element back to the caller.
 </body>
         </ownedComment>
         <ownedLiteral xmi:id="_3ADC7B74022D4161A93C01BC" name="in">
@@ -4271,10 +4271,10 @@ endif</body>
       </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D41C2D6020188" name="VisibilityKind">
         <ownedComment xmi:id="_rpfwPBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41C2D6020188">
-          <body>VisibilityKind is an enumeration of the following literal values:
-  - public
-  - private
-  - protected
+          <body>VisibilityKind is an enumeration of the following literal values:
+  - public
+  - private
+  - protected
   - package</body>
         </ownedComment>
         <ownedOperation xmi:id="_3ADC7B74022D42EE305C00E3" name="bestVisibility" type="_3ADC7B74022D41C2D6020188" isQuery="true" bodyCondition="_rpfwRRTaEdqZu-3Jy1-uYg">
@@ -4562,10 +4562,10 @@ endif</body>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA186E10085" name="Profile">
       <ownedComment xmi:id="_rt-AmBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA186E10085">
-        <body>A Profile is a kind of Package that extends a reference metamodel. The primary extension construct is the Stereotype, which are defined as part of Profiles.
-
-A profile introduces several constraints, or restrictions, on ordinary metamodeling through the use of the metaclasses defined in this package.
-
+        <body>A Profile is a kind of Package that extends a reference metamodel. The primary extension construct is the Stereotype, which are defined as part of Profiles.
+
+A profile introduces several constraints, or restrictions, on ordinary metamodeling through the use of the metaclasses defined in this package.
+
 A profile is a restricted form of a metamodel that must always be related to a reference metamodel, such as UML, as described below. A profile cannot be used without its reference metamodel, and defines a limited capability to extendmetaclasses of the reference metamodel. The extensions are defined as stereotypes that apply to existing metaclasses.</body>
       </ownedComment>
       <ownedRule xmi:id="_dCELMDakEdqq1tCaRkgBQQ" name="metaclass_reference_not_specialized" constrainedElement="_3ADC7B74022D3CA186E10085">
@@ -4573,9 +4573,9 @@ A profile is a restricted form of a metamodel that must always be related to a r
           <body>An element imported as a metaclassReference is not specialized or generalized in a Profile.</body>
         </ownedComment>
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_dCELMTakEdqq1tCaRkgBQQ" language="OCL">
-          <body>self.metaclassReference.importedElement->
-  select(c | c.oclIsKindOf(Classifier) and
-    (c.generalization.namespace = self or
+          <body>self.metaclassReference.importedElement->
+  select(c | c.oclIsKindOf(Classifier) and
+    (c.generalization.namespace = self or
       (c.specialization.namespace = self) )->isEmpty()</body>
         </specification>
       </ownedRule>
@@ -4584,7 +4584,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
           <body>All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.</body>
         </ownedComment>
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_ichowTakEdqq1tCaRkgBQQ" language="OCL">
-          <body>self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
+          <body>self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()</body>
         </specification>
       </ownedRule>
@@ -4787,7 +4787,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
       </ownedAttribute>
       <ownedOperation xmi:id="_InW3ADajEdqq1tCaRkgBQQ" name="lowerBound" type="_3ADC7B74022D3CA010A4007B" isQuery="true" redefinedOperation="_3ADC7B74022D42EE305C00C6" bodyCondition="_ZWJvkDajEdqq1tCaRkgBQQ">
         <ownedComment xmi:id="_YkFZcDajEdqq1tCaRkgBQQ" annotatedElement="_InW3ADajEdqq1tCaRkgBQQ">
-          <body>The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default
+          <body>The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default
 lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.</body>
         </ownedComment>
         <ownedRule xmi:id="_ZWJvkDajEdqq1tCaRkgBQQ" name="spec" constrainedElement="_InW3ADajEdqq1tCaRkgBQQ">
@@ -4828,8 +4828,8 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
           <contents xmi:type="Ecore_2:Ecore__EAttribute" xmi:id="_G0dCpbOtEdqN1dumGdoOLQ" isUnsettable="true"/>
         </eAnnotations>
         <ownedComment xmi:id="_EbshsHGlEdqziYxiZo0YtA" annotatedElement="_P1lH4HGhEdqziYxiZo0YtA">
-          <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP.
-
+          <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP.
+
 In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example &quot;SVG&quot; could instead be expressed as &quot;MIME: image/svg+xml&quot;.</body>
         </ownedComment>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ssj8EXGhEdqziYxiZo0YtA" value="1"/>
