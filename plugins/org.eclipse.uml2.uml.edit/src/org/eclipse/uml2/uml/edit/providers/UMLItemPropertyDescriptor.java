@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.3 2006/04/03 20:59:02 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.4 2006/04/04 18:10:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -73,7 +73,7 @@ class UMLItemPropertyDescriptor
 		super(adapterFactory, resourceLocator, displayName, description,
 			feature, isSettable, staticImage, category == null
 				&& resourceLocator != null
-				? resourceLocator.getString("_UI_UMLPropertyCategory") //$NON-NLS-1$
+				? resourceLocator.getString("_UI_UML_category") //$NON-NLS-1$
 				: category, filterFlags);
 
 		this.itemDelegator = new UMLItemDelegator(adapterFactory,
