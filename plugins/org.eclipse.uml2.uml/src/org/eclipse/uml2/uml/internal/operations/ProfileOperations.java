@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.22 2006/04/05 13:50:02 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.23 2006/04/05 19:55:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -49,8 +50,8 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Profile;
 
@@ -278,28 +279,35 @@ public class ProfileOperations
 	 *     (c.generalization.namespace = self or
 	 *       (c.specialization.namespace = self) )->isEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateMetaclassReferenceNotSpecialized(
 			Profile profile, DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMetaclassReferenceNotSpecialized", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(profile, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{profile}));
+
+		for (Iterator referencedMetaclasses = profile
+			.getReferencedMetaclasses().iterator(); referencedMetaclasses
+			.hasNext();) {
+
+			if (PackageOperations.containsSpecializations(profile,
+				(Classifier) referencedMetaclasses.next())) {
+
+				if (diagnostics != null) {
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_Profile_MetaclassReferenceNotSpecialized_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, profile)),
+							new Object[]{profile}));
+				}
+
+				return false;
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -311,28 +319,36 @@ public class ProfileOperations
 	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
 	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateReferencesSameMetamodel(Profile profile,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		EList metamodels = new UniqueEList.FastCompare(profile
+			.getReferencedMetamodels());
+
+		for (Iterator referencedMetaclasses = profile
+			.getReferencedMetaclasses().iterator(); referencedMetaclasses
+			.hasNext();) {
+
+			metamodels.add(((org.eclipse.uml2.uml.Class) referencedMetaclasses
+				.next()).getModel());
+		}
+
+		if (metamodels.size() != 1) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PROFILE__REFERENCES_SAME_METAMODEL,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateReferencesSameMetamodel", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(profile, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{profile}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PROFILE__REFERENCES_SAME_METAMODEL,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_Profile_ReferencesSameMetamodel_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, profile)),
+					new Object[]{profile}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.21 2006/04/05 13:50:03 khussey Exp $
+ * $Id: PackageOperations.java,v 1.22 2006/04/05 19:55:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
@@ -753,6 +754,24 @@ public class PackageOperations
 	 * @generated NOT
 	 */
 	public static boolean mustBeOwned(org.eclipse.uml2.uml.Package package_) {
+		return false;
+	}
+	
+	protected static boolean containsSpecializations(
+			org.eclipse.uml2.uml.Package package_, Classifier classifier) {
+
+		for (Iterator ownedTypes = package_.getOwnedTypes().iterator(); ownedTypes
+			.hasNext();) {
+
+			Object ownedType = ownedTypes.next();
+
+			if (ownedType instanceof Classifier
+				&& ((Classifier) ownedType).allParents().contains(classifier)) {
+
+				return true;
+			}
+		}
+
 		return false;
 	}
 
