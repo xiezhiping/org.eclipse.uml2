@@ -8,31 +8,42 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.8 2006/01/31 23:00:04 khussey Exp $
+ * $Id: MessageOperations.java,v 1.9 2006/04/05 20:58:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.uml2.uml.Message;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Event;
+import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageEvent;
 import org.eclipse.uml2.uml.MessageKind;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
+import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReceiveOperationEvent;
 import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.SendOperationEvent;
 import org.eclipse.uml2.uml.SendSignalEvent;
+import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -142,29 +153,64 @@ public class MessageOperations
 	 * In the case when the Message signature is an Operation, the arguments of the Message must correspond to the parameters of the Operation. A Parameter corresponds to an Argument if the Argument is of the same Class or a specialization of that of the Parameter.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSignatureIsOperation(Message message,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__SIGNATURE_IS_OPERATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSignatureIsOperation", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+		boolean result = true;
+		NamedElement signature = message.getSignature();
+
+		if (signature instanceof Operation) {
+			EList arguments = message.getArguments();
+
+			if (!arguments.isEmpty()) {
+				EList parameters = new UniqueEList.FastCompare(
+					((Operation) signature).getOwnedParameters());
+
+				if (message.getMessageSort() == MessageSort.REPLY_LITERAL) {
+
+					for (Iterator p = parameters.iterator(); p.hasNext();) {
+
+						if (((Parameter) p.next()).getDirection() == ParameterDirectionKind.IN_LITERAL) {
+							p.remove();
+						}
+					}
+				}
+
+				if (arguments.size() != parameters.size()) {
+					result = false;
+				} else {
+					Iterator a = arguments.iterator();
+					Iterator p = parameters.iterator();
+
+					while (a.hasNext() && p.hasNext()) {
+						Type argumentType = ((ValueSpecification) a.next())
+							.getType();
+						Type parameterType = ((Parameter) p.next()).getType();
+
+						if (argumentType == null
+							? parameterType != null
+							: !argumentType.conformsTo(parameterType)) {
+
+							result = false;
+							break;
+						}
+					}
+				}
 			}
-			return false;
 		}
-		return true;
+
+		if (!result && diagnostics != null) {
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.MESSAGE__SIGNATURE_IS_OPERATION,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_Message_SignatureIsOperation_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, message)),
+				new Object[]{message}));
+		}
+
+		return result;
 	}
 
 	/**
@@ -174,29 +220,52 @@ public class MessageOperations
 	 * In the case when the Message signature is a Signal, the arguments of the Message must correspond to the attributes of the Signal. A Message Argument corresponds to a Signal Attribute if the Arguement is of the same Class or a specialization of that of the Attribute.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSignatureIsSignal(Message message,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MESSAGE__SIGNATURE_IS_SIGNAL,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSignatureIsSignal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(message, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{message}));
+		boolean result = true;
+		NamedElement signature = message.getSignature();
+
+		if (signature instanceof Signal) {
+			EList arguments = message.getArguments();
+
+			if (!arguments.isEmpty()) {
+				EList attributes = ((Signal) signature).getAttributes();
+
+				if (arguments.size() != attributes.size()) {
+					result = false;
+				} else {
+					Iterator ma = arguments.iterator();
+					Iterator sa = attributes.iterator();
+
+					while (ma.hasNext() && sa.hasNext()) {
+						Type argumentType = ((ValueSpecification) ma.next())
+							.getType();
+						Type attributeType = ((Property) sa.next()).getType();
+
+						if (argumentType == null
+							? attributeType != null
+							: !argumentType.conformsTo(attributeType)) {
+
+							result = false;
+							break;
+						}
+					}
+				}
 			}
-			return false;
 		}
-		return true;
+
+		if (!result && diagnostics != null) {
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.MESSAGE__SIGNATURE_IS_SIGNAL, UMLPlugin.INSTANCE
+					.getString("_UI_Message_SignatureIsSignal_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, message)),
+				new Object[]{message}));
+		}
+
+		return result;
 	}
 
 	/**
