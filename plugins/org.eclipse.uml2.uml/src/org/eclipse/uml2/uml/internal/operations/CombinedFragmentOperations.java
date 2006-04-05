@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: CombinedFragmentOperations.java,v 1.5 2006/04/05 20:23:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -19,6 +20,10 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.CombinedFragment;
+import org.eclipse.uml2.uml.InteractionConstraint;
+import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.InteractionOperatorKind;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -58,29 +63,37 @@ public class CombinedFragmentOperations
 	 * If the interactionOperator is opt, loop, break, or neg there must be exactly one operand
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateOptLoopBreakNeg(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
 			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateOptLoopBreakNeg", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(combinedFragment, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{combinedFragment}));
-			}
-			return false;
+
+		switch (combinedFragment.getInteractionOperator().getValue()) {
+			case InteractionOperatorKind.OPT :
+			case InteractionOperatorKind.LOOP :
+			case InteractionOperatorKind.NEG :
+			case InteractionOperatorKind.BREAK :
+				if (combinedFragment.getOperands().size() != 1) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_CombinedFragment_OptLoopBreakNeg_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											combinedFragment)),
+								new Object[]{combinedFragment}));
+					}
+
+					return false;
+				}
 		}
+
 		return true;
 	}
 
@@ -91,29 +104,43 @@ public class CombinedFragmentOperations
 	 * The InteractionConstraint with minint and maxint only apply when attached to an InteractionOperand where the interactionOperator is loop.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * 
+	 * @generated NOT
 	 */
 	public static boolean validateMinintAndMaxint(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
 			Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.COMBINED_FRAGMENT__MININT_AND_MAXINT,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateMinintAndMaxint", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(combinedFragment, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{combinedFragment}));
+
+		if (combinedFragment.getInteractionOperator() != InteractionOperatorKind.LOOP_LITERAL) {
+
+			for (Iterator operands = combinedFragment.getOperands().iterator(); operands
+				.hasNext();) {
+
+				InteractionConstraint guard = ((InteractionOperand) operands
+					.next()).getGuard();
+
+				if (guard != null
+					&& (guard.getMinint() != null || guard.getMaxint() != null)) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.COMBINED_FRAGMENT__MININT_AND_MAXINT,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_CombinedFragment_MinintAndMaxint_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											combinedFragment)),
+								new Object[]{combinedFragment}));
+					}
+
+					return false;
+				}
 			}
-			return false;
 		}
+
 		return true;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ExecutionSpecificationOperations.java,v 1.5 2006/04/05 20:23:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,9 +17,10 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.ExecutionSpecification;
-
+import org.eclipse.uml2.uml.OccurrenceSpecification;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -55,29 +56,43 @@ public class ExecutionSpecificationOperations
 	 * The startEvent and the finishEvent must be on the same Lifeline
 	 * start.lifeline = finish.lifeline
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateSameLifeline(
 			ExecutionSpecification executionSpecification,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.EXECUTION_SPECIFICATION__SAME_LIFELINE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSameLifeline", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(executionSpecification, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{executionSpecification}));
+		OccurrenceSpecification start = executionSpecification.getStart();
+
+		if (start != null) {
+			OccurrenceSpecification finish = executionSpecification.getFinish();
+
+			if (finish != null) {
+				EList startCovereds = start.getCovereds();
+				EList finishCovereds = finish.getCovereds();
+
+				if (!startCovereds.containsAll(finishCovereds)
+					|| !finishCovereds.containsAll(startCovereds)) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								UMLValidator.EXECUTION_SPECIFICATION__SAME_LIFELINE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_ExecutionSpecification_SameLifeline_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											executionSpecification)),
+								new Object[]{executionSpecification}));
+					}
+
+					return false;
+				}
+
 			}
-			return false;
 		}
+
 		return true;
 	}
 
