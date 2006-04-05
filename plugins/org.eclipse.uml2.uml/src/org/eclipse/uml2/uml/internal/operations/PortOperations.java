@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.10 2006/01/27 04:55:56 khussey Exp $
+ * $Id: PortOperations.java,v 1.11 2006/04/05 19:26:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,17 +18,20 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.UniqueEList;
+
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.uml2.common.util.UnionEObjectEList;
+
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -102,28 +105,25 @@ public class PortOperations
 	 * Port.aggregation must be composite.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validatePortAggregation(Port port,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (port.getAggregation() != AggregationKind.COMPOSITE_LITERAL) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PORT__PORT_AGGREGATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validatePortAggregation", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(port, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{port}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PORT__PORT_AGGREGATION, UMLPlugin.INSTANCE
+						.getString("_UI_Port_PortAggregation_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, port)),
+					new Object[]{port}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -166,28 +166,26 @@ public class PortOperations
 	 * A defaultValue for port cannot be specified when the type of the Port is an Interface
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateDefaultValue(Port port,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+
+		if (port.getType() instanceof Interface
+			&& port.getDefaultValue() != null) {
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PORT__DEFAULT_VALUE,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateDefaultValue", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(port, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{port}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.PORT__DEFAULT_VALUE, UMLPlugin.INSTANCE
+						.getString("_UI_Port_DefaultValue_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, port)),
+					new Object[]{port}));
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 

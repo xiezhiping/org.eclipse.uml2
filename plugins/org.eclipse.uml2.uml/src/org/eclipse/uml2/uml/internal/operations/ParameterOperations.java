@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.15 2006/03/09 21:30:34 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.16 2006/04/05 19:26:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -24,6 +24,7 @@ import org.eclipse.uml2.uml.LiteralNull;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -346,6 +347,19 @@ public class ParameterOperations
 			parameter.createDefaultValue(null, null,
 				UMLPackage.Literals.LITERAL_NULL);
 		}
+	}
+	
+	protected static boolean matches(Parameter parameter,
+			Parameter otherParameter) {
+		Type type = parameter.getType();
+		Type otherType = otherParameter.getType();
+
+		return (type == null
+			? otherType == null
+			: type.conformsTo(otherType))
+			&& parameter.lowerBound() == otherParameter.lowerBound()
+			&& parameter.upperBound() == otherParameter.upperBound()
+			&& parameter.isOrdered() == otherParameter.isOrdered();
 	}
 
 } // ParameterOperations

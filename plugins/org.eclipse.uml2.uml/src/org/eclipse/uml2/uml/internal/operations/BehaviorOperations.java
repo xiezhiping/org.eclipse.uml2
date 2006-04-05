@@ -8,20 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.9 2006/01/05 22:43:25 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.10 2006/04/05 19:26:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Behavior;
-import org.eclipse.uml2.uml.UMLPackage;
-
+import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -62,30 +67,50 @@ public class BehaviorOperations
 	 * The parameters of the behavior must match the parameters of the implemented behavioral feature.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateParametersMatch(Behavior behavior,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BEHAVIOR__PARAMETERS_MATCH,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateParametersMatch", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{behavior}));
+		boolean result = true;
+		BehavioralFeature specification = behavior.getSpecification();
+
+		if (specification != null) {
+			EList behaviorOwnedParameters = behavior.getOwnedParameters();
+			EList specificationOwnedParameters = specification
+				.getOwnedParameters();
+
+			if (behaviorOwnedParameters.size() != specificationOwnedParameters
+				.size()) {
+
+				result = false;
+			} else {
+				Iterator bop = behaviorOwnedParameters.iterator();
+				Iterator sop = specificationOwnedParameters.iterator();
+
+				while (bop.hasNext() && sop.hasNext()) {
+
+					if (!ParameterOperations.matches((Parameter) bop.next(),
+						(Parameter) sop.next())) {
+
+						result = false;
+						break;
+					}
+				}
 			}
-			return false;
+
+			if (!result && diagnostics != null) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.BEHAVIOR__PARAMETERS_MATCH, UMLPlugin.INSTANCE
+						.getString("_UI_Behavior_ParametersMatch_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, behavior)),
+					new Object[]{behavior}));
+			}
 		}
-		return true;
+
+		return result;
 	}
+			
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,28 +119,35 @@ public class BehaviorOperations
 	 * The implemented behavioral feature must be a feature (possibly inherited) of the context classifier of the behavior.
 	 * true
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateFeatureOfContextClassifier(Behavior behavior,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateFeatureOfContextClassifier", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(behavior, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{behavior}));
+		BehavioralFeature specification = behavior.getSpecification();
+
+		if (specification != null) {
+			Classifier contextClassifier = behavior.getContext();
+
+			if (contextClassifier == null
+				|| !contextClassifier.allFeatures().contains(specification)) {
+
+				if (diagnostics != null) {
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							UMLValidator.BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_Behavior_FeatureOfContextClassifier_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, behavior)),
+							new Object[]{behavior}));
+				}
+
+				return false;
 			}
-			return false;
 		}
+
 		return true;
 	}
 
@@ -182,7 +214,7 @@ public class BehaviorOperations
 		}
 		return true;
 	}
-
+	 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -192,5 +224,6 @@ public class BehaviorOperations
 		return (BehavioredClassifier) getOwningElement(behavior,
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER, false);
 	}
+		
 
 } // BehaviorOperations

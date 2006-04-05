@@ -8,23 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceOperations.java,v 1.8 2006/03/07 20:25:18 khussey Exp $
+ * $Id: InterfaceOperations.java,v 1.9 2006/04/05 19:26:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
-
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -63,28 +65,29 @@ public class InterfaceOperations
 	 * The visibility of all features owned by an interface must be public.
 	 * self.feature->forAll(f | f.visibility = #public)
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateVisibility(Interface interface_,
 			DiagnosticChain diagnostics, Map context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+
+		for (Iterator features = interface_.getFeatures().iterator(); features
+			.hasNext();) {
+
+			if (((Feature) features.next()).getVisibility() != VisibilityKind.PUBLIC_LITERAL) {
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERFACE__VISIBILITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateVisibility", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interface_, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						UMLValidator.INTERFACE__VISIBILITY, UMLPlugin.INSTANCE
+							.getString("_UI_Interface_Visibility_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, interface_)),
 						new Object[]{interface_}));
+				}
+
+				return false;
 			}
-			return false;
 		}
+
 		return true;
 	}
 
