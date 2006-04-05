@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.23 2006/03/28 16:23:02 khussey Exp $
+ * $Id: UMLUtil.java,v 1.24 2006/04/05 13:56:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -57,6 +57,7 @@ import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
@@ -293,8 +294,6 @@ public class UMLUtil
 
 		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 9;
 
-		protected static final String ANNOTATION_SOURCE__STEREOTYPE = "stereotype"; //$NON-NLS-1$
-
 		protected static final String ANNOTATION_SOURCE__CAPABILITIES = "capabilities"; //$NON-NLS-1$
 
 		protected org.eclipse.uml2.uml.Package receivingPackage = null;
@@ -304,15 +303,20 @@ public class UMLUtil
 		protected final Map resultingToMergedEObjectMap = new HashMap();
 
 		protected List getMatchCandidates(EObject eObject) {
-			EStructuralFeature eContainingFeature = eObject
-				.eContainingFeature();
+			Element baseElement = getBaseElement(eObject);
 
-			return eContainingFeature.isMany()
-				? (List) ((EObject) get(eObject.eContainer()))
-					.eGet(eContainingFeature)
-				: Collections
-					.singletonList(((EObject) get(eObject.eContainer()))
-						.eGet(eContainingFeature));
+			if (baseElement == null) {
+				EStructuralFeature eContainingFeature = eObject
+					.eContainingFeature();
+
+				return eContainingFeature.isMany()
+					? (List) ((EObject) get(eObject.eContainer()))
+						.eGet(eContainingFeature)
+					: Collections.singletonList(((EObject) get(eObject
+						.eContainer())).eGet(eContainingFeature));
+			} else {
+				return ((Element) get(baseElement)).getStereotypeApplications();
+			}
 		}
 
 		protected List getMergedEObjects(EObject resultingEObject) {
@@ -833,7 +837,12 @@ public class UMLUtil
 				}
 
 				public Object defaultCase(EObject eObject) {
-					return PackageMerger.super.createCopy(eObject);
+					Element baseElement = getBaseElement(eObject);
+
+					return baseElement == null
+						? PackageMerger.super.createCopy(eObject)
+						: applyStereotype((Element) get(baseElement),
+							getTarget(eObject.eClass()));
 				}
 
 				protected Object doSwitch(EClass theEClass, EObject theEObject) {
@@ -856,9 +865,7 @@ public class UMLUtil
 							if (matchingEntry != null) {
 								return matchingEntry;
 							}
-						} else if (theEClass
-							.getEAnnotation(ANNOTATION_SOURCE__STEREOTYPE) != null) {
-
+						} else if (getStereotype(theEClass) != null) {
 							EObject matchingEObject = findEObject(
 								getMatchCandidates(theEObject),
 								new EClassMatcher(theEObject));
@@ -895,6 +902,28 @@ public class UMLUtil
 			}
 
 			return copyEObject;
+		}
+
+		public Collection copyAll(Collection eObjects) {
+			Collection result = new ArrayList(eObjects.size());
+
+			for (Iterator o = eObjects.iterator(); o.hasNext();) {
+				EObject eObject = (EObject) o.next();
+				result.add(copy(eObject));
+
+				for (Iterator eAllContents = eObject.eAllContents(); eAllContents
+					.hasNext();) {
+
+					EObject childEObject = (EObject) eAllContents.next();
+
+					if (childEObject instanceof Element) {
+						result.addAll(super.copyAll(((Element) childEObject)
+							.getStereotypeApplications()));
+					}
+				}
+			}
+
+			return result;
 		}
 
 		protected Collection getAllMergedPackages(
@@ -5835,6 +5864,22 @@ public class UMLUtil
 				}
 			}
 		}
+	}
+
+	protected static EObject applyStereotype(Element element, EClass definition) {
+		EObject stereotypeApplication = EcoreUtil.create(definition);
+
+		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
+
+		Resource eResource = element.eResource();
+
+		if (eResource != null) {
+			eResource.getContents().add(stereotypeApplication);
+		}
+
+		setBaseElement(stereotypeApplication, element);
+
+		return stereotypeApplication;
 	}
 
 	protected static void safeApplyStereotype(Element element,
