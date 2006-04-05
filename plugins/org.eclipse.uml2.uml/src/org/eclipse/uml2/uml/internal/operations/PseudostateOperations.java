@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: PseudostateOperations.java,v 1.5 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -332,7 +332,6 @@ public class PseudostateOperations
 	 * <!-- begin-model-doc -->
 	 * The outgoing transition from and initial vertex may have a behavior, but not a trigger or a guard.
 	 * (self.kind = #initial) implies (self.outgoing.guard->isEmpty()
-	 * 
 	 *   and self.outgoing.trigger->isEmpty())
 	 * <!-- end-model-doc -->
 	 * @generated

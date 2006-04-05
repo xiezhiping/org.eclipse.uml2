@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallAction.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: UnmarshallAction.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -214,7 +214,6 @@ public interface UnmarshallAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of each result output pin must be compatible with the multiplicity of the corresponding structural features of the unmarshall classifier.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

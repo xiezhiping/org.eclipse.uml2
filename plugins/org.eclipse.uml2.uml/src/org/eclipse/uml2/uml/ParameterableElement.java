@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElement.java,v 1.3 2005/12/14 22:34:16 khussey Exp $
+ * $Id: ParameterableElement.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,9 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A ParameterableElement can be referenced by a TemplateParameter when defining a formal template parameter for a template. A ParameterableElement can be referenced by a TemplateParameterSubstitution when used as an actual parameter in a binding of a template.
- * 
  * ParameterableElement is an abstract metaclass.
- * 
  * 
  * <!-- end-model-doc -->
  *

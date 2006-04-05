@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.10 2006/03/15 19:33:56 khussey Exp $
+ * $Id: Operation.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,9 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An operation is owned by a class and may be invoked in the context of objects that are instances of that class. It is a typed element and a multiplicity element.
  * An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
- * 
  * One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.
- * 
  * 
  * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
@@ -565,7 +563,6 @@ public interface Operation
 	 * If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
 	 * If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
 	 * 
-	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
@@ -580,7 +577,6 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
 	 * If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
-	 * 
 	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
 	 * <!-- end-model-doc -->

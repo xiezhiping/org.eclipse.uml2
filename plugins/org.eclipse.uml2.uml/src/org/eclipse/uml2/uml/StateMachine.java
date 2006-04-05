@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.7 2006/02/22 20:48:15 khussey Exp $
+ * $Id: StateMachine.java,v 1.8 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,17 +27,11 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A state machine owns one or more regions, which in turn own vertices and transitions.
- * 
  * The behaviored classifier context owning a state machine defines which signal and call triggers are defined for the state machine, and which attributes and operations are available in activities of the state machine. Signal triggers and call triggers for the state machine are defined according to the receptions and operations of this classifier.
- * 
- * 
  * 
  * As a kind of behavior, a state machine may have an associated behavioral feature (specification) and be the method of this behavioral feature. In this case the state machine specifies the behavior of this behavioral feature. The parameters of the state machine in this case match the parameters of the behavioral feature and provide the means for accessing (within the state machine) the behavioral feature parameters.
  * 
- * 
- * 
  * A state machine without a context classifier may use triggers that are independent of receptions or operations of a classifier, i.e. either just signal triggers or call triggers based upon operation template parameters of the (parameterized) statemachine.
- * 
  * 
  * <!-- end-model-doc -->
  *
@@ -310,7 +304,6 @@ public interface StateMachine
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query ancestor(s1, s2) checks whether s2 is an ancestor state of state s1. context StateMachine::ancestor (s1 : State, s2 : State) : Boolean
-	 * 
 	 * 
 	 * result = if (s2 = s1) then
 	 * true

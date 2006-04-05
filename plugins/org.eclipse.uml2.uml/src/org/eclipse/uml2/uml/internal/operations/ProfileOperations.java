@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.21 2006/04/04 16:24:43 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.22 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -274,11 +274,8 @@ public class ProfileOperations
 	 * <!-- begin-model-doc -->
 	 * An element imported as a metaclassReference is not specialized or generalized in a Profile.
 	 * self.metaclassReference.importedElement->
-	 * 
 	 *   select(c | c.oclIsKindOf(Classifier) and
-	 * 
 	 *     (c.generalization.namespace = self or
-	 * 
 	 *       (c.specialization.namespace = self) )->isEmpty()
 	 * <!-- end-model-doc -->
 	 * @generated
@@ -312,7 +309,6 @@ public class ProfileOperations
 	 * <!-- begin-model-doc -->
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
 	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
-	 * 
 	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
 	 * <!-- end-model-doc -->
 	 * @generated

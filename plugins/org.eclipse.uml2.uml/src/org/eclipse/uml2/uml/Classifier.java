@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.13 2006/03/08 19:02:44 khussey Exp $
+ * $Id: Classifier.java,v 1.14 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -30,11 +30,8 @@ import org.eclipse.emf.ecore.EClass;
  * Classifier is extended with the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
  * Extends a classifier with the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a UseCase.
  * A classifier is a namespace whose members can include features. Classifier is an abstract metaclass.
- * 
  * A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers. A classifier can specify a generalization hierarchy by referencing its general classifiers.
- * 
  * A classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.
- * 
  * 
  * A classifier can be parameterized, exposed as a formal template parameter, and specified as an actual parameter in a binding of a template.
  * <!-- end-model-doc -->
@@ -72,7 +69,6 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.

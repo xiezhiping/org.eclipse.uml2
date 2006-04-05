@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.17 2006/03/15 19:33:55 khussey Exp $
+ * $Id: Property.java,v 1.18 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,20 +28,14 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association.
  * 
- * 
- * 
  * Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property's type.
  * A property is a structural feature.
- * 
  * A property related to a classifier by ownedAttribute represents an attribute, and it may also represent an association end. It relates an instance of the class to a value or collection of values of the type of the attribute.
- * 
  * A property related to an Association by memberEnd or its specializations represents an end of the association. The type of property is the type of the end of the association.
- * 
  * 
  * A property represents a set of instances that are owned by a containing classifier instance.
  * In the metamodel, Property is a specialization of DeploymentTarget.
  * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property's type.
- * 
  * 
  * Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  * <!-- end-model-doc -->
@@ -83,7 +77,6 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * The DataType that owns this Operation.
 	 * The DataType that owns this Property.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
@@ -620,13 +613,9 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A redefined property must be inherited from a more general classifier containing the redefining property.
 	 * if (redefinedProperty->notEmpty()) then
-	 * 
 	 *   (redefinitionContext->notEmpty() and
-	 * 
 	 *       redefinedProperty->forAll(rp|
-	 * 
 	 *         ((redefinitionContext->collect(fc|
-	 * 
 	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
 	 * <!-- end-model-doc -->
 	 * @model
@@ -719,7 +708,6 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A binding of a property template parameter representing an attribute must be to an attribute.
 	 * (isAttribute(self) and (templateParameterSubstitution->notEmpty())
-	 * 
 	 *   implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))
 	 * <!-- end-model-doc -->
 	 * @model

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueAction.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: AddStructuralFeatureValueAction.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,10 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * Structural Features are potentially multi-valued and ordered, so the action supports specification of insertion points for new values. It also supports the removal of existing values of the structural feature before the new value is added.
  * 
- * 
- * 
  * The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the value's multiplicity is 1..1.
- * 
  * 
  * <!-- end-model-doc -->
  *

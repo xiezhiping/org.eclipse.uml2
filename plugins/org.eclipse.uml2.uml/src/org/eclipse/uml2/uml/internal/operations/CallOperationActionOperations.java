@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: CallOperationActionOperations.java,v 1.5 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -155,7 +155,6 @@ public class CallOperationActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding owned parameter of the operation.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

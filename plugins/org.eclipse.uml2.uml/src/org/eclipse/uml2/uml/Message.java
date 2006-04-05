@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.10 2006/03/15 19:33:42 khussey Exp $
+ * $Id: Message.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A Message is a NamedElement that defines a particular communication between Lifelines of an Interaction. A communication can be e.g. raising a signal, invoking an Operation, creating or destroying an Instance. The Message specifies not only the kind of communication given by the dispatching ExecutionSpecification, but also the sender and the receiver. A Message associates normally two OccurrenceSpecifications - one sending OccurrenceSpecification and one receiving OccurrenceSpecification.
- * 
  * 
  * <!-- end-model-doc -->
  *

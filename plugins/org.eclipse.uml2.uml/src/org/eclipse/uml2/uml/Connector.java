@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.6 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Connector.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -80,7 +80,6 @@ public interface Connector
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector.
-	 * 
 	 * The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.

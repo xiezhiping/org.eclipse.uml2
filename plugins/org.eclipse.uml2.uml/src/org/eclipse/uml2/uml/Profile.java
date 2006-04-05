@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.10 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Profile.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -30,11 +30,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- begin-model-doc -->
  * A Profile is a kind of Package that extends a reference metamodel. The primary extension construct is the Stereotype, which are defined as part of Profiles.
  * 
- * 
- * 
  * A profile introduces several constraints, or restrictions, on ordinary metamodeling through the use of the metaclasses defined in this package.
- * 
- * 
  * 
  * A profile is a restricted form of a metamodel that must always be related to a reference metamodel, such as UML, as described below. A profile cannot be used without its reference metamodel, and defines a limited capability to extendmetaclasses of the reference metamodel. The extensions are defined as stereotypes that apply to existing metaclasses.
  * <!-- end-model-doc -->
@@ -214,11 +210,8 @@ public interface Profile
 	 * <!-- begin-model-doc -->
 	 * An element imported as a metaclassReference is not specialized or generalized in a Profile.
 	 * self.metaclassReference.importedElement->
-	 * 
 	 *   select(c | c.oclIsKindOf(Classifier) and
-	 * 
 	 *     (c.generalization.namespace = self or
-	 * 
 	 *       (c.specialization.namespace = self) )->isEmpty()
 	 * <!-- end-model-doc -->
 	 * @model
@@ -233,7 +226,6 @@ public interface Profile
 	 * <!-- begin-model-doc -->
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
 	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
-	 * 
 	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
 	 * <!-- end-model-doc -->
 	 * @model

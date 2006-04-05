@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.8 2006/02/22 20:48:15 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.9 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,9 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances. BehavioralFeature is an abstract metaclass specializing Feature and Namespace. Kinds of behavioral aspects are modeled by subclasses of BehavioralFeature.
  * A behavioral feature specifies that an instance of a classifier will respond to a designated request by invoking a behavior.
- * 
  * BehavioralFeature is an abstract metaclass specializing Feature and Namespace. Kinds of behavioral aspects are modeled by subclasses of BehavioralFeature.
- * 
  * 
  * A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.
  * The concept of BehavioralFeature is extended to own ParameterSets.

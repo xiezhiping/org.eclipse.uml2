@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageKind.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: MessageKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,13 +25,9 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * MessageKind is an enumeration of the following values:
- * 
  * - complete = sendEvent and receiveEvent are present
- * 
  * - lost = sendEvent present and receiveEvent absent
- * 
  * - found = sendEvent absent and receiveEvent present
- * 
  * - unknown = sendEvent and receiveEvent absent (should not appear)
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getMessageKind()

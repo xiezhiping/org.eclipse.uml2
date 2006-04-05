@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.7 2006/03/15 19:33:48 khussey Exp $
+ * $Id: Generalization.java,v 1.8 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,13 +25,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
- * 
  * A generalization can be designated as being a member of a particular generalization set.
  * 
- * 
  * A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
- * 
- * 
  * 
  * 
  * <!-- end-model-doc -->

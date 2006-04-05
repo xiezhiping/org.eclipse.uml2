@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.7 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Artifact.java,v 1.8 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,9 +103,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Artifacts that are defined (nested) within the Artifact.
-	 * 
 	 * The association is a specialization of the ownedMember association from Namespace to NamedElement.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
@@ -288,9 +286,7 @@ public interface Artifact
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The attributes or association ends defined for the Artifact.
-	 * 
 	 * The association is a specialization of the ownedMember association.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.

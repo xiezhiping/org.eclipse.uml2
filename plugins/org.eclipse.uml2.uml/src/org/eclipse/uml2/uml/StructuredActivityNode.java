@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.10 2006/02/22 20:48:15 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,21 +28,13 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A structured activity node represents a structured portion of the activity that is not shared with any other structured node, except for nesting. It may have control edges connected to it, and pins when merged with CompleteStructuredActivities. The execution of any embedded actions may not begin until the structured activity node has received its object and control tokens. The availability of output tokens from the structured activity node does not occur until all embedded actions have completed execution.
  * 
- * 
- * 
  * Note - Any required isolation may be achieved using a locking mechanisms, or it may simply sequentialize execution to avoid concurrency conflicts. Isolation is different from the property of "atomicity", which is the guarantee that a group of actions either all complete successfully or have no effect at all. Atomicity generally requires a rollback mechanism to prevent committing partial results.
- * 
  * 
  * A structured activity node represents a structured portion of the activity that is not shared with any other structured node, except for nesting. It may have control edges connected to it, and pins in CompleteStructuredActivities. The execution of any embedded actions may not begin until the structured activity node has received its object and control tokens. The availability of output tokens from the structured activity node does not occur until all embedded actions have completed execution.
  * 
- * 
- * 
  * Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
  * 
- * 
- * 
  * Note - Any required isolation may be achieved using a locking mechanisms, or it may simply sequentialize execution to avoid concurrency conflicts. Isolation is different from the property of "atomicity", which is the guarantee that a group of actions either all complete successfully or have no effect at all. Atomicity generally requires a rollback mechanism to prevent committing partial results.
- * 
  * 
  * <!-- end-model-doc -->
  *

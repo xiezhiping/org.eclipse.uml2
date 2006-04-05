@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VisibilityKind.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: VisibilityKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,13 +25,9 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * VisibilityKind is an enumeration of the following literal values:
- * 
  *   - public
- * 
  *   - private
- * 
  *   - protected
- * 
  *   - package
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getVisibilityKind()

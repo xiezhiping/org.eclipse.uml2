@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: JoinNode.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -125,11 +125,8 @@ public interface JoinNode
 	 * <!-- begin-model-doc -->
 	 * If a join node has an incoming object flow, it must have an outgoing object flow, otherwise, it must have an outgoing control flow.
 	 * (self.incoming.select(e | e.isTypeOf(ObjectFlow)->notEmpty() implies
-	 * 
 	 *   self.outgoing.isTypeOf(ObjectFlow)) and
-	 * 
 	 *     (self.incoming.select(e | e.isTypeOf(ObjectFlow)->empty() implies
-	 * 
 	 *       self.outgoing.isTypeOf(ControlFlow))
 	 * <!-- end-model-doc -->
 	 * @model

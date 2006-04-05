@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.26 2006/03/13 20:50:41 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.27 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -208,13 +208,9 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * A redefined property must be inherited from a more general classifier containing the redefining property.
 	 * if (redefinedProperty->notEmpty()) then
-	 * 
 	 *   (redefinitionContext->notEmpty() and
-	 * 
 	 *       redefinedProperty->forAll(rp|
-	 * 
 	 *         ((redefinitionContext->collect(fc|
-	 * 
 	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
 	 * <!-- end-model-doc -->
 	 * @generated
@@ -468,7 +464,6 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * A binding of a property template parameter representing an attribute must be to an attribute.
 	 * (isAttribute(self) and (templateParameterSubstitution->notEmpty())
-	 * 
 	 *   implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))
 	 * <!-- end-model-doc -->
 	 * @generated

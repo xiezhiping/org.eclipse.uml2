@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateKind.java,v 1.1 2005/11/14 22:26:01 khussey Exp $
+ * $Id: PseudostateKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,6 @@ public final class PseudostateKind
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Fork vertices serve to split an incoming transition into two or more transitions terminating on orthogonal target vertices
-	 * 
 	 * (i.e. vertices in different regions of a composite state). The segments outgoing from a fork vertex must not have guards or triggers.
 	 * <!-- end-model-doc -->
 	 * @see #FORK_LITERAL

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallConcurrencyKind.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: CallConcurrencyKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,14 +25,9 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * CallConcurrencyKind is an enumeration with the following literals:
- * 
  * ? sequential No concurrency management mechanism is associated with the operation and, therefore, concurrency conflicts may occur. Instances that invoke a behavioral feature need to coordinate so that only one invocation to a target on any behavioral feature occurs at once.
- * 
  * ? guarded Multiple invocations of a behavioral feature may occur simultaneously to one instance, but only one is allowed to commence. The others are blocked until the performance of the first behavioral feature is complete. It is the responsibility of the system designer to ensure that deadlocks do not occur due to simultaneous blocks.
- * 
  * ? concurrent Multiple invocations of a behavioral feature may occur simultaneously to one instance and all of them may proceed concurrently.
- * 
- * 
  * 
  * 
  * <!-- end-model-doc -->

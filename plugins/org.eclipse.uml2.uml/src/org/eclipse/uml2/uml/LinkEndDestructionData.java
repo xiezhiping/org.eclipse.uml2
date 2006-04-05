@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionData.java,v 1.3 2006/02/02 23:30:18 khussey Exp $
+ * $Id: LinkEndDestructionData.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -23,8 +23,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <!-- begin-model-doc -->
  * This class is required when using DestroyLinkAction, to specify links to destroy for nonunique ordered ends. A link cannot be passed as a runtime value to or from an action.
- * 
- * 
  * 
  * Qualifier values are used in CompleteActions to identify links to destroy.
  * <!-- end-model-doc -->

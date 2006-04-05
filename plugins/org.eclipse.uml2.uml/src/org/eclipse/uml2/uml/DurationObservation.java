@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservation.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: DurationObservation.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,7 +103,6 @@ public interface DurationObservation
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of firstEvent must be 2 if the multiplicity of event is 2. Otherwise the multiplicity of firstEvent is 0.
 	 * if (event->size() = 2)
-	 * 
 	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
 	 * <!-- end-model-doc -->
 	 * @model

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PartDecompositionOperations.java,v 1.4 2006/01/05 22:43:24 khussey Exp $
+ * $Id: PartDecompositionOperations.java,v 1.5 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -89,14 +89,9 @@ public class PartDecompositionOperations
 	 * <!-- begin-model-doc -->
 	 * Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Within X there is a sequence of constructs along L (such constructs are CombinedFragments, InteractionUse and (plain) OccurrenceSpecifications). Then a corresponding sequence of constructs must appear within D, matched one-to-one in the same order.
 	 * 
-	 * 
-	 * 
 	 * i) CombinedFragment covering L are matched with an extra-global CombinedFragment in D
-	 * 
 	 * ii) An InteractionUse covering L are matched with a global (i.e. covering all Lifelines) InteractionUse in D.
-	 * 
 	 * iii) A plain OccurrenceSpecification on L is considered an actualGate that must be matched by a formalGate of D
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->
@@ -130,9 +125,7 @@ public class PartDecompositionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Assume also that there is within X an
-	 * 
 	 * InteractionUse (say) U that covers L. According to the constraint above U will have a counterpart CU within D. Within the Interaction referenced by U, L should also be decomposed, and the decomposition should reference CU. (This rule is called commutativity of decomposition)
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

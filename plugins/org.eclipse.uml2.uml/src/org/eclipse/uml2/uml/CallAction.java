@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallAction.java,v 1.6 2006/02/22 20:48:14 khussey Exp $
+ * $Id: CallAction.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,9 +49,7 @@ public interface CallAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the call is synchronous and the caller waits for completion of the invoked behavior.
-	 * 
 	 * If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Synchronous</em>' attribute.

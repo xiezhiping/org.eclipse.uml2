@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: StructuralFeatureAction.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,7 +73,6 @@ public interface StructuralFeatureAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Gives the input pin from which the object whose structural feature is to be read or written is obtained.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.

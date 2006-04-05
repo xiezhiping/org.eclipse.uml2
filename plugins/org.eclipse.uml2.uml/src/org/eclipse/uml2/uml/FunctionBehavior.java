@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FunctionBehavior.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
+ * $Id: FunctionBehavior.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -39,7 +39,6 @@ public interface FunctionBehavior
 	 * <!-- begin-model-doc -->
 	 * A function behavior has at least one output parameter.
 	 * self.ownedParameters->
-	 * 
 	 *   select(p | p.direction=#out or p.direction=#inout or p.direction=#return)->size() >= 1
 	 * <!-- end-model-doc -->
 	 * @model
@@ -53,15 +52,10 @@ public interface FunctionBehavior
 	 * <!-- begin-model-doc -->
 	 * The types of parameters are all data types, which may not nest anything but other datatypes.
 	 * def: hasAllDataTypeAttributes(d : DataType) : Boolean =
-	 * 
 	 *   d.ownedAttribute->forAll(a |
-	 * 
 	 *     a.type.oclIsTypeOf(DataType) and
-	 * 
 	 *       hasAllDataTypeAttributes(a.type))
-	 * 
 	 * self.ownedParameters->forAll(p | p.type.notEmpty() and
-	 * 
 	 *   p.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p))
 	 * <!-- end-model-doc -->
 	 * @model

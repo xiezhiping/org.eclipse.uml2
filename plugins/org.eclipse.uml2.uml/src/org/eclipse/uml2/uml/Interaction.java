@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Interaction.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -210,7 +210,6 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.

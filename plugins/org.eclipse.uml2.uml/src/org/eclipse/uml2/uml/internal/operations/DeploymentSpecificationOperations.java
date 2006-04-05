@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: DeploymentSpecificationOperations.java,v 1.5 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,7 +55,6 @@ public class DeploymentSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The deployedElements of a DeploymentTarget that are involved in a Deployment that has an associated Deployment-Specification is a kind of Component (i.e. the configured components).
 	 * self.deployment->forAll (d | d.location.deployedElements->forAll (de |
-	 * 
 	 *   de.oclIsKindOf(Component)))
 	 * <!-- end-model-doc -->
 	 * @generated

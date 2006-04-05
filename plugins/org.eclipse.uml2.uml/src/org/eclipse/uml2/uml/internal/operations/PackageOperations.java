@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.20 2006/03/13 20:50:41 khussey Exp $
+ * $Id: PackageOperations.java,v 1.21 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -37,8 +37,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.uml2.common.util.CacheAdapter;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
@@ -105,9 +103,8 @@ public class PackageOperations
 		}
 
 		protected EObject createCopy(EObject eObject) {
-			EObject copyEObject = super.createCopy(eObject);
-			CacheAdapter.INSTANCE.adapt(copyEObject);
-			return copyEObject;
+			return applyStereotype(getBaseElement(eObject), getTarget(eObject
+				.eClass()));
 		}
 
 		protected EClass getTarget(EClass eClass) {
@@ -386,7 +383,7 @@ public class PackageOperations
 								Resource eResource = stereotypeApplication
 									.eResource();
 
-								if (eResource != null) {
+								if (eResource != null && eResource != copy.eResource()) {
 									EList contents = eResource.getContents();
 									contents.set(contents
 										.indexOf(stereotypeApplication), copy);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlow.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InformationFlow.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -305,23 +305,14 @@ public interface InformationFlow
 	 * <!-- begin-model-doc -->
 	 * The sources and targets of the information flow can only be one of the following kind: Actor, Node, UseCase, Artifact, Class, Component, Port, Property, Interface, Package, ActivityNode, ActivityPartition and InstanceSpecification except when its classifier is a relationship (i.e. it represents a link).
 	 * (self.source->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
-	 * 
 	 *   oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
-	 * 
 	 *   oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
-	 * 
 	 *   oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
-	 * 
 	 *   oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and
-	 * 
 	 *     (self.target->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
-	 * 
 	 *       oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
-	 * 
 	 *       oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
-	 * 
 	 *       oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
-	 * 
 	 *       oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification)))
 	 * <!-- end-model-doc -->
 	 * @model
@@ -348,9 +339,7 @@ public interface InformationFlow
 	 * <!-- begin-model-doc -->
 	 * An information flow can only convey classifiers that are allowed to represent an information item.
 	 * 
-	 * 
 	 * self.conveyed.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface)
-	 * 
 	 *   or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))
 	 * <!-- end-model-doc -->
 	 * @model

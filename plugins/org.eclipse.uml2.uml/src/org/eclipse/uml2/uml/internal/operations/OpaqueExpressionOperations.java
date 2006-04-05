@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.11 2006/01/05 22:43:25 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.12 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -101,7 +101,6 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * The behavior may only have return result parameters.
 	 * self.behavior.notEmpty() implies
-	 * 
 	 *   self.behavior.ownedParameters->select(p | p.direction<>#return)->isEmpty()
 	 * <!-- end-model-doc -->
 	 * @generated
@@ -136,7 +135,6 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * The behavior must have exactly one return result parameter.
 	 * self.behavior.notEmpty() implies
-	 * 
 	 *   self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1
 	 * <!-- end-model-doc -->
 	 * @generated

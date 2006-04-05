@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.6 2006/01/06 02:26:06 khussey Exp $
+ * $Id: StateOperations.java,v 1.7 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -105,9 +105,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * The connection point references used as destinations/sources of transitions associated with a submachine state must be defined as entry/exit points in the submachine state machine.
 	 * self.isSubmachineState implies (self.connection->forAll (cp |
-	 * 
 	 * cp.entry->forAll (p | p.statemachine = self.submachine) and
-	 * 
 	 * cp.exit->forAll (p | p.statemachine = self.submachine)))
 	 * <!-- end-model-doc -->
 	 * @generated

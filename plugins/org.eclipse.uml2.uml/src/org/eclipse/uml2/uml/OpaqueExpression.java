@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.6 2006/01/03 19:50:29 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,9 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-model-doc -->
  * An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
  * An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
- * 
  * One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.
- * 
  * 
  * Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  * <!-- end-model-doc -->
@@ -97,7 +95,6 @@ public interface OpaqueExpression
 	 * <!-- begin-model-doc -->
 	 * Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the language. If languages are unspecified, it might be implicit from the expression body or the context. Languages are matched to body strings by order.
 	 * Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
@@ -187,7 +184,6 @@ public interface OpaqueExpression
 	 * <!-- begin-model-doc -->
 	 * The behavior may only have return result parameters.
 	 * self.behavior.notEmpty() implies
-	 * 
 	 *   self.behavior.ownedParameters->select(p | p.direction<>#return)->isEmpty()
 	 * <!-- end-model-doc -->
 	 * @model
@@ -202,7 +198,6 @@ public interface OpaqueExpression
 	 * <!-- begin-model-doc -->
 	 * The behavior must have exactly one return result parameter.
 	 * self.behavior.notEmpty() implies
-	 * 
 	 *   self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1
 	 * <!-- end-model-doc -->
 	 * @model

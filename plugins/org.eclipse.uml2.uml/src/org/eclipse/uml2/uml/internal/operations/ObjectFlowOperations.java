@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ObjectFlowOperations.java,v 1.5 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -92,7 +92,6 @@ public class ObjectFlowOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Object nodes connected by an object flow, with optionally intervening control nodes, must have compatible types. In particular, the downstream object node type must be the same or a supertype of the upstream object node type.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

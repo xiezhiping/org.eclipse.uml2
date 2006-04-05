@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionOperations.java,v 1.5 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -53,7 +53,6 @@ public class RemoveStructuralFeatureValueActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Actions removing a value from ordered nonunique structural features must have a single removeAt input pin if isRemoveDuplicates is false. It must be of type Unlimited Natural with multiplicity 1..1. Otherwise, the action has no removeAt input pin.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

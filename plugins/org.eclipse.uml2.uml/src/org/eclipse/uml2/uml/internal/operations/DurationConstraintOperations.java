@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintOperations.java,v 1.3 2006/01/05 22:43:25 khussey Exp $
+ * $Id: DurationConstraintOperations.java,v 1.4 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -54,7 +54,6 @@ public class DurationConstraintOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of firstEvent must be 2 if the multiplicity of constrainedElement is 2. Otherwise the multiplicity of firstEvent is 0.
 	 * if (constrainedElement->size() =2)
-	 * 
 	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
 	 * <!-- end-model-doc -->
 	 * @generated

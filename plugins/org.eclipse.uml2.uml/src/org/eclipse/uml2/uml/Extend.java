@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.6 2006/03/15 19:33:55 khussey Exp $
+ * $Id: Extend.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,14 +28,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * This relationship specifies that the behavior of a use case may be extended by the behavior of another (usually supplementary) use case. The extension takes place at one or more specific extension points defined in the extended use case. Note, however, that the extended use case is defined independently of the extending use case and is meaningful independently of the extending use case. On the other hand, the extending use case typically defines behavior that may not necessarily be meaningful by itself. Instead, the extending use case defines a set of modular behavior increments that augment an execution of the extended use case under specific conditions.
  * 
- * 
- * 
  * Note that the same extending use case can extend more than one use case. Furthermore, an extending use case may itself be extended.
  * 
- * 
- * 
  * It is a kind of DirectedRelationship, such that the source is the extending use case and the destination is the extended use case. It is also a kind of NamedElement so that it can have a name in the context of its owning use case. The extend relationship itself is owned by the extending use case.
- * 
  * 
  * <!-- end-model-doc -->
  *
@@ -88,7 +83,6 @@ public interface Extend
 	 * <!-- begin-model-doc -->
 	 * References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
 	 * 
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(Constraint)
@@ -138,7 +132,6 @@ public interface Extend
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extension Location</em>' reference list.
@@ -203,8 +196,6 @@ public interface Extend
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The extension points referenced by the extend relationship must belong to the use case that is being extended.
-	 * 
-	 * 
 	 * 
 	 * 
 	 * extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))

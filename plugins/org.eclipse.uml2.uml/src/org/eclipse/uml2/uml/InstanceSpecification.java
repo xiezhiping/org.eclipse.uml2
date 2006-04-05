@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,23 +27,14 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An instance specification specifies existence of an entity in a modeled system and completely or partially describes the entity.
- * 
  * The description may include:
  * 
- * 
- * 
  * - Classification of the entity by one or more classifiers of which the entity is an instance. If the only classifier specified is abstract, then the instance specification only partially describes the entity.
- * 
  * - The kind of instance, based on its classifier or classifiers -- for example, an instance specification whose classifier is a class describes an object of that class, while an instance specification whose classifier is an association describes a link of that association.
- * 
  * - Specification of values of structural features of the entity. Not all structural features of all classifiers of the instance specification need be represented by slots, in which case the instance specification is a partial description.
- * 
  * - Specification of how to compute, derive or construct the instance (optional).
  * 
- * 
- * 
  * InstanceSpecification is a concrete class.
- * 
  * 
  * In the metamodel, InstanceSpecification is a specialization of DeploymentTarget and DeployedArtifact.
  * <!-- end-model-doc -->

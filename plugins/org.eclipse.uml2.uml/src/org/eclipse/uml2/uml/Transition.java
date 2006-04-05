@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.9 2006/03/15 19:33:53 khussey Exp $
+ * $Id: Transition.java,v 1.10 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -405,7 +405,6 @@ public interface Transition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

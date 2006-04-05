@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ExtendOperations.java,v 1.5 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -53,8 +53,6 @@ public class ExtendOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The extension points referenced by the extend relationship must belong to the use case that is being extended.
-	 * 
-	 * 
 	 * 
 	 * 
 	 * extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))

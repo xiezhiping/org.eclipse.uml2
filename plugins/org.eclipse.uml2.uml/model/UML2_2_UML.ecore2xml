@@ -32,4 +32,12 @@
     <key xsi:type="ecore:EReference" href="UML.ecore#//ProfileApplication/appliedProfile"/>
     <value name="importedProfile"/>
   </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//BehavioralFeature/ownedParameter"/>
+    <value name="returnResult"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Behavior/ownedParameter"/>
+    <value name="formalParameter"/>
+  </ecoreToXMLInfo>
 </ecore2xml:XMLMap>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformance.java,v 1.3 2006/03/15 19:33:43 khussey Exp $
+ * $Id: ProtocolConformance.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,14 +20,9 @@ package org.eclipse.uml2.uml;
  * <!-- begin-model-doc -->
  * Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines.
  * 
- * 
- * 
  * Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  * 
- * 
- * 
  * A protocol state machine is owned by a classifier. The classifiers owning a general state machine and an associated specific state machine are generally also connected by a generalization or a realization link.
- * 
  * 
  * <!-- end-model-doc -->
  *

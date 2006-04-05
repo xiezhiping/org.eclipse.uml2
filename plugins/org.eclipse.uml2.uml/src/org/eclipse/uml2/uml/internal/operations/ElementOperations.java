@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.36 2006/03/15 19:34:24 khussey Exp $
+ * $Id: ElementOperations.java,v 1.37 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,11 +39,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.uml2.common.util.CacheAdapter;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DirectedRelationship;
@@ -1145,22 +1141,6 @@ public class ElementOperations
 	public static boolean isStereotypeApplied(Element element,
 			Stereotype stereotype) {
 		return element.getStereotypeApplication(stereotype) != null;
-	}
-
-	protected static EObject applyStereotype(Element element, EClass definition) {
-		EObject stereotypeApplication = EcoreUtil.create(definition);
-
-		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
-
-		Resource eResource = element.eResource();
-
-		if (eResource != null) {
-			eResource.getContents().add(stereotypeApplication);
-		}
-
-		setBaseElement(stereotypeApplication, element);
-
-		return stereotypeApplication;
 	}
 
 	protected static EList applyAllStereotypes(Element element,

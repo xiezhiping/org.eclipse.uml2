@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: CallBehaviorActionOperations.java,v 1.5 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -121,7 +121,6 @@ public class CallBehaviorActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding parameter of the behavior.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

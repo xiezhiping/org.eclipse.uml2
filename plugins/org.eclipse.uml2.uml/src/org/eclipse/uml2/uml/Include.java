@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.3 2006/03/15 19:33:56 khussey Exp $
+ * $Id: Include.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,8 +19,6 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * Note that the included use case is not optional, and is always required for the  including use case to execute correctly.
- * 
- * 
  * 
  * 
  * <!-- end-model-doc -->
@@ -46,7 +44,6 @@ public interface Include
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the use case that is to be included.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Addition</em>' reference.

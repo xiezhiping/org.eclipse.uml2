@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Variable.java,v 1.6 2006/03/15 19:33:43 khussey Exp $
+ * $Id: Variable.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,10 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- begin-model-doc -->
  * A variable specifies data storage shared by the actions within a group. There are actions to write and read variables. These actions are treated as side effecting actions, similar to the actions to write and read object attributes and associations. There are no sequencing constraints among actions that access the same variable. Such actions must be explicitly coordinated by control flows or other constraints.
  * 
- * 
- * 
  * Any values contained by a variable must conform to the type of the variable and have cardinalities allowed by the multiplicity of the variable.
- * 
  * 
  * A variable is considered a connectable element.
  * <!-- end-model-doc -->
@@ -118,7 +115,6 @@ public interface Variable
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.
-	 * 
 	 * 
 	 * result = true
 	 * <!-- end-model-doc -->

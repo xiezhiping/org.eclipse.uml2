@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ActivityParameterNodeOperations.java,v 1.6 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -157,7 +157,6 @@ public class ActivityParameterNodeOperations
 	 * <!-- begin-model-doc -->
 	 * Activity parameter object nodes with no incoming edges and one or more outgoing edges must have a parameter with in or inout direction.
 	 * 
-	 * 
 	 * true
 	 * <!-- end-model-doc -->
 	 * @generated
@@ -191,7 +190,6 @@ public class ActivityParameterNodeOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Activity parameter object nodes with no outgoing edges and one or more incoming edges must have a parameter with out, inout, or return direction.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

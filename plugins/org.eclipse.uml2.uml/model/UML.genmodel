@@ -6,10 +6,11 @@
     runtimeJar="true" dynamicTemplates="true" modelName="UML" modelPluginClass="org.eclipse.uml2.uml.UMLPlugin"
     editPluginClass="org.eclipse.uml2.uml.edit.UMLEditPlugin" editorPluginClass="org.eclipse.uml2.uml.editor.UMLEditorPlugin"
     nonNLSMarkers="true" rootExtendsInterface="" codeFormatting="true" booleanFlagsField="eFlags"
-    booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.ecore.importer" featureDelegation="Virtual"
-    containmentProxies="true" minimalReflectiveMethods="false" usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.uml.ecore.importer"
+    featureDelegation="Virtual" containmentProxies="true" minimalReflectiveMethods="false"
+    usedGenPackages="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" invariantPrefix="validate">
-  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.ecore.importer">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
     <details key="DUPLICATE_FEATURES" value="PROCESS"/>
     <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>
     <details key="REDEFINING_PROPERTIES" value="PROCESS"/>
@@ -23,7 +24,7 @@
     <details key="UNION_PROPERTIES" value="PROCESS"/>
     <details key="DUPLICATE_OPERATION_INHERITANCE" value="PROCESS"/>
   </genAnnotations>
-  <foreignModel>UML.merged.uml2</foreignModel>
+  <foreignModel>UML.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
       disposableProviderFactory="true" loadInitialization="true" classPackageSuffix="internal.impl"
       providerPackageSuffix="edit.providers" presentationPackageSuffix="editor.presentation"

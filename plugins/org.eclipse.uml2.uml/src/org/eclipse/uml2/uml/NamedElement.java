@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.10 2006/02/22 20:48:15 khussey Exp $
+ * $Id: NamedElement.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -272,7 +272,6 @@ public interface NamedElement
 	 * <!-- begin-model-doc -->
 	 * If there is no name, or one of the containing namespaces has no name, there is no qualified name.
 	 * (self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
-	 * 
 	 *   implies self.qualifiedName->isEmpty()
 	 * <!-- end-model-doc -->
 	 * @model

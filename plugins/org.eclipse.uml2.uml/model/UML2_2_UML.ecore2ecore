@@ -25,6 +25,14 @@
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ProfileApplication/importedProfile"/>
     <outputs href="UML.ecore#//ProfileApplication/appliedProfile"/>
   </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//BehavioralFeature/returnResult"/>
+    <outputs href="UML.ecore#//BehavioralFeature/ownedParameter"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Behavior/formalParameter"/>
+    <outputs href="UML.ecore#//Behavior/ownedParameter"/>
+  </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>

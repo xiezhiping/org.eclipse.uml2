@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.14 2006/03/13 20:50:41 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.15 2006/04/05 13:50:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -74,7 +74,6 @@ public class NamedElementOperations
 	 * <!-- begin-model-doc -->
 	 * If there is no name, or one of the containing namespaces has no name, there is no qualified name.
 	 * (self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
-	 * 
 	 *   implies self.qualifiedName->isEmpty()
 	 * <!-- end-model-doc -->
 	 * @generated

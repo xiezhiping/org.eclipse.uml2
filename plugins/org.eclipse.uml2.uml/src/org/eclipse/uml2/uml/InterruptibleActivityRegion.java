@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegion.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InterruptibleActivityRegion.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -132,7 +132,6 @@ public interface InterruptibleActivityRegion
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Interrupting edges of a region must have their source node in the region and their target node outside the region in the same activity containing the region.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

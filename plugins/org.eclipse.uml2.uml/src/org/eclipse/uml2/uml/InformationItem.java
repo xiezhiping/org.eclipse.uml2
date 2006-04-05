@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItem.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InformationItem.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated. One purpose of InformationItems is to be able to define preliminary models, before having made detailed modeling decisions on types or structures. One other purpose of information items and information flows is to abstract complex models by a less precise but more general representation of the information exchanged betwen entities of a system.
- * 
  * 
  * <!-- end-model-doc -->
  *
@@ -90,13 +89,9 @@ public interface InformationItem
 	 * <!-- begin-model-doc -->
 	 * The sources and targets of an information item (its related information flows) must designate subsets of the sources and targets of the representation information item, if any.The Classifiers that can realize an information item can only be of the following kind: Class, Interface, InformationItem, Signal, Component.
 	 * (self.represented->select(p | p->oclIsKindOf(InformationItem))->forAll(p |
-	 * 
 	 *   p.informationFlow.source->forAll(q | self.informationFlow.source->include(q)) and
-	 * 
 	 *     p.informationFlow.target->forAll(q | self.informationFlow.target->include(q)))) and
-	 * 
 	 *       (self.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface) or
-	 * 
 	 *         oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component)))
 	 * <!-- end-model-doc -->
 	 * @model

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.3 2006/01/05 22:43:25 khussey Exp $
+ * $Id: TransitionOperations.java,v 1.4 2006/04/05 13:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -266,7 +266,6 @@ public class TransitionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNode.java,v 1.2 2005/11/17 21:23:33 khussey Exp $
+ * $Id: ActivityParameterNode.java,v 1.3 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,6 @@ public interface ActivityParameterNode
 	 * <!-- begin-model-doc -->
 	 * Activity parameter object nodes with no incoming edges and one or more outgoing edges must have a parameter with in or inout direction.
 	 * 
-	 * 
 	 * true
 	 * <!-- end-model-doc -->
 	 * @model
@@ -119,7 +118,6 @@ public interface ActivityParameterNode
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Activity parameter object nodes with no outgoing edges and one or more incoming edges must have a parameter with out, inout, or return direction.
-	 * 
 	 * 
 	 * true
 	 * <!-- end-model-doc -->

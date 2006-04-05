@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,17 +28,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * An InteractionOperand is contained in a CombinedFragment. An InteractionOperand represents one operand of the expression given by the enclosing CombinedFragment. 
  * 
- * 
- * 
  * An InteractionOperand is an InteractionFragment with an optional guard expression. An InteractionOperand may be
- * 
  * guarded by a InteractionConstraint. Only InteractionOperands with a guard that evaluates to true at this point in the interaction will be considered for the production of the traces for the enclosing CombinedFragment.
  * 
- * 
- * 
  * InteractionOperand contains an ordered set of InteractionFragments.
- * 
- * 
  * 
  * In Sequence Diagrams these InteractionFragments are ordered according to their geometrical position vertically. The geometrical position of the InteractionFragment is given by the topmost vertical coordinate of its contained OccurrenceSpecifications or symbols.
  * <!-- end-model-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,6 @@ public interface ConnectorEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Defining End</em>' reference.
@@ -89,7 +88,6 @@ public interface ConnectorEnd
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference.

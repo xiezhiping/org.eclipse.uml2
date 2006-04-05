@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkAction.java,v 1.3 2006/02/22 20:48:14 khussey Exp $
+ * $Id: ReadLinkAction.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,7 +45,6 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The pin on which are put the objects participating in the association at the end not specified by the inputs.
-	 * 
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
