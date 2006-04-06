@@ -67,6 +67,7 @@
 				<group title="UML Edit Support"         packages="@org.eclipse.uml2.uml.edit@"/>
 				<group title="UML Editor"               packages="@org.eclipse.uml2.uml.editor@"/>
 				<group title="UML Importer for EMF"     packages="@org.eclipse.uml2.uml.ecore.importer@"/>
+				<group title="UML Exporter for EMF"     packages="@org.eclipse.uml2.uml.ecore.exporter@"/>
 
 
 @packagesets@
