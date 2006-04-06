@@ -11,29 +11,13 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ $Id: plugin.xml,v 1.2 2006/04/06 04:21:50 khussey Exp $
 -->
 
 <plugin>
 
   <extension
      point="org.eclipse.ui.editorActions">
-    <editorContribution
-       targetID="org.eclipse.emf.ecore.presentation.EcoreEditorID"
-       id="org.eclipse.uml2.examples.uml.ui.EcoreEditorContribution">
-      <action
-         label="%_UI_ConvertToUMLAction_label"
-         class="org.eclipse.uml2.examples.uml.ui.actions.ConvertToUMLAction"
-         menubarPath="org.eclipse.emf.ecoreMenuID/additions-end"
-         enablesFor="1"
-         id="org.eclipse.uml2.examples.uml.ui.ConvertToUMLActionID">
-        <enablement>
-          <objectClass
-             name="org.eclipse.emf.ecore.EPackage">
-          </objectClass>
-        </enablement>
-      </action>
-    </editorContribution>
     <editorContribution
        targetID="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
        id="org.eclipse.uml2.examples.uml.ui.UMLEditorContributionID">
@@ -172,18 +156,6 @@
         <enablement>
           <objectClass
              name="org.eclipse.uml2.uml.Model">
-          </objectClass>
-        </enablement>
-      </action>
-      <action
-         label="%_UI_EcoreModelAction_label"
-         class="org.eclipse.uml2.examples.uml.ui.actions.ConvertToEcoreAction"
-         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.ConvertToMenuID/additions"
-         enablesFor="1"
-         id="org.eclipse.uml2.examples.uml.ui.ConvertToEcoreActionID">
-        <enablement>
-          <objectClass
-             name="org.eclipse.uml2.uml.Package">
           </objectClass>
         </enablement>
       </action>
