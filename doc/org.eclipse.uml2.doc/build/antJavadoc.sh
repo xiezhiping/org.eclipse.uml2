@@ -37,6 +37,7 @@ groupPackage org.eclipse.uml2.common.edit
 
 groupPackage org.eclipse.uml2.uml
 
+groupPackage org.eclipse.uml2.uml.ecore.exporter
 groupPackage org.eclipse.uml2.uml.ecore.importer
 
 groupPackage org.eclipse.uml2.uml.edit
