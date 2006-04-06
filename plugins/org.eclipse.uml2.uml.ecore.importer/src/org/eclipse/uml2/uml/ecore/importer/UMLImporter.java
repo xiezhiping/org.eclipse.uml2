@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.1 2006/02/09 01:25:22 khussey Exp $
+ * $Id: UMLImporter.java,v 1.2 2006/04/06 12:56:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -111,7 +112,7 @@ public class UMLImporter
 				UMLImporterPlugin.INSTANCE
 					.getString("_UI_SpecifyAValidUMLModel_message"), null); //$NON-NLS-1$
 		} else {
-			monitor.beginTask("", 2); //$NON-NLS-1$
+			monitor.beginTask(UML2Util.EMPTY_STRING, 2);
 			monitor.subTask(UMLImporterPlugin.INSTANCE.getString(
 				"_UI_Loading_message", new Object[]{locationURIs})); //$NON-NLS-1$
 

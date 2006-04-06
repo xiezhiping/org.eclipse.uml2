@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.1 2006/04/06 04:21:53 khussey Exp $
+ * $Id: UMLExporter.java,v 1.2 2006/04/06 12:56:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.exporter.ModelExporter;
 import org.eclipse.emf.exporter.util.ExporterUtil;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
@@ -70,13 +71,19 @@ public class UMLExporter
 		ResourceSet resourceSet = new ResourceSetImpl();
 		UMLUtil.Ecore2UMLConverter ecore2umlConverter = new UMLUtil.Ecore2UMLConverter();
 
+		monitor.beginTask(UML2Util.EMPTY_STRING,
+			exportData.genPackageToArtifactURI.size());
+
 		for (Iterator i = exportData.genPackageToArtifactURI.entrySet()
 			.iterator(); i.hasNext();) {
 
 			Map.Entry entry = (Map.Entry) i.next();
-			Resource resource = resourceSet.createResource((URI) entry
-				.getValue());
+			URI artifactURI = (URI) entry.getValue();
+			Resource resource = resourceSet.createResource(artifactURI);
 			EPackage ePackage = ((GenPackage) entry.getKey()).getEcorePackage();
+
+			monitor.subTask(UMLExporterPlugin.INSTANCE.getString(
+				"_UI_Exporting_message", new Object[]{artifactURI.toString()})); //$NON-NLS-1$
 
 			ecore2umlConverter.convert(Collections.singleton(ePackage),
 				getOptions(), null, null);
@@ -98,11 +105,15 @@ public class UMLExporter
 						.getStereotypeApplications());
 				}
 			}
+
+			monitor.worked(1);
 		}
 
 		for (Iterator r = resourceSet.getResources().iterator(); r.hasNext();) {
 			((Resource) r.next()).save(null);
 		}
+
+		monitor.done();
 	}
 
 	public void setGenModel(GenModel genModel)
