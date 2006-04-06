@@ -8,14 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceFactoryImpl.java,v 1.2 2006/03/23 18:44:05 khussey Exp $
+ * $Id: UML22UMLResourceFactoryImpl.java,v 1.3 2006/04/06 04:30:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -25,6 +28,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLPackage;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
@@ -34,33 +38,27 @@ import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLResourceHandler;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
-/**
- * The <b>Resource Factory </b> associated with the package.
- */
 public class UML22UMLResourceFactoryImpl
 		extends ResourceFactoryImpl
 		implements UML22UMLResource.Factory {
 
 	protected static final String UML2Package__eNS_URI = "http://www.eclipse.org/uml2/1.0.0/UML"; //$NON-NLS-1$
 
-	/**
-	 * Creates an instance of the resource factory.
-	 */
 	public UML22UMLResourceFactoryImpl() {
 		super();
 	}
 
-	/**
-	 * Creates an instance of the resource.
-	 */
 	public Resource createResource(URI uri) {
-		UMLResource resource = (UMLResource) UMLResource.Factory.INSTANCE
-			.createResource(uri);
+		UMLResource resource = new UML22UMLResourceImpl(uri);
+
+		resource.setEncoding(UMLResource.DEFAULT_ENCODING);
+
+		resource.setXMIVersion("2.1"); //$NON-NLS-1$
 
 		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		defaultLoadOptions.put(XMIResource.OPTION_LAX_FEATURE_PROCESSING,
-			Boolean.FALSE);
+		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION,
+			Boolean.TRUE);
 
 		defaultLoadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE,
 			Boolean.TRUE);
@@ -86,7 +84,8 @@ public class UML22UMLResourceFactoryImpl
 							.getResource(
 								URI
 									.createURI("platform:/plugin/org.eclipse.uml2.uml/model/UML2_2_UML.ecore2xml"), //$NON-NLS-1$
-								true).getContents(), Ecore2XMLPackage.Literals.XML_MAP));
+								true).getContents(),
+						Ecore2XMLPackage.Literals.XML_MAP));
 
 		ExtendedMetaData extendedMetaData = new UML22UMLExtendedMetadata(
 			ePackageRegistry, ecore2xmlRegistry);
@@ -97,7 +96,29 @@ public class UML22UMLResourceFactoryImpl
 		defaultLoadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER,
 			new UML22UMLResourceHandler());
 
+		Map defaultSaveOptions = resource.getDefaultSaveOptions();
+
+		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
+			Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
+			new XMLSave.XMLTypeInfo() {
+
+				public boolean shouldSaveType(EClass objectType,
+						EClassifier featureType, EStructuralFeature feature) {
+					return true;
+				}
+
+				public boolean shouldSaveType(EClass objectType,
+						EClass featureType, EStructuralFeature feature) {
+					return true;
+				}
+
+			});
+		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
+		defaultSaveOptions
+			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+
 		return resource;
 	}
 
-} // UML22UMLResourceFactoryImpl
+}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.4 2006/03/09 21:30:34 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.5 2006/04/06 04:30:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -41,25 +41,37 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.BehavioralFeature;
+import org.eclipse.uml2.uml.BehavioredClassifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.OpaqueExpression;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class UML22UMLResourceHandler
 		extends BasicResourceHandler {
 
-	protected static final boolean DEBUG = false;
+	protected static final boolean DEBUG = true;
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
@@ -76,11 +88,20 @@ public class UML22UMLResourceHandler
 	}
 
 	protected Object getValue(FeatureMap featureMap, String name) {
+		return getValue(featureMap, name, false);
+	}
+
+	protected Object getValue(FeatureMap featureMap, String name, boolean remove) {
 
 		for (Iterator entries = featureMap.iterator(); entries.hasNext();) {
 			FeatureMap.Entry entry = (FeatureMap.Entry) entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
+
+				if (remove) {
+					entries.remove();
+				}
+
 				return entry.getValue();
 			}
 		}
@@ -89,12 +110,22 @@ public class UML22UMLResourceHandler
 	}
 
 	protected Collection getValues(FeatureMap featureMap, String name) {
+		return getValues(featureMap, name, false);
+	}
+
+	protected Collection getValues(FeatureMap featureMap, String name,
+			boolean remove) {
 		Collection values = new UniqueEList.FastCompare();
 
 		for (Iterator entries = featureMap.iterator(); entries.hasNext();) {
 			FeatureMap.Entry entry = (FeatureMap.Entry) entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
+
+				if (remove) {
+					entries.remove();
+				}
+
 				values.add(entry.getValue());
 			}
 		}
@@ -128,6 +159,90 @@ public class UML22UMLResourceHandler
 		final List annotationsToRemove = new ArrayList();
 
 		UMLSwitch umlSwitch = new UMLSwitch() {
+
+			public Object caseBehavioralFeature(
+					BehavioralFeature behavioralFeature) {
+				AnyType extension = getExtension(resource, behavioralFeature);
+
+				if (extension != null) {
+					EList ownedParameters = behavioralFeature
+						.getOwnedParameters();
+
+					for (Iterator returnResults = getValues(
+						extension.getMixed(), "returnResult", true).iterator(); returnResults
+						.hasNext();) {
+
+						Parameter returnResult = (Parameter) returnResults
+							.next();
+
+						doSwitch(returnResult);
+						ownedParameters.add(0, returnResult);
+					}
+
+					for (Iterator formalParameters = getValues(
+						extension.getMixed(), "formalParameter", true)
+						.iterator(); formalParameters.hasNext();) {
+
+						Parameter formalParameter = (Parameter) formalParameters
+							.next();
+
+						doSwitch(formalParameter);
+						ownedParameters.add(formalParameter);
+					}
+				}
+
+				return super.caseBehavioralFeature(behavioralFeature);
+			}
+
+			public Object caseBehavioredClassifier(
+					BehavioredClassifier behavioredClassifier) {
+				AnyType extension = getExtension(resource, behavioredClassifier);
+
+				if (extension != null) {
+					EList ownedBehaviors = behavioredClassifier
+						.getOwnedBehaviors();
+
+					for (Iterator ownedStateMachines = getValues(
+						extension.getMixed(), "ownedStateMachine", true)
+						.iterator(); ownedStateMachines.hasNext();) {
+
+						StateMachine ownedStateMachine = (StateMachine) ownedStateMachines
+							.next();
+
+						doSwitch(ownedStateMachine);
+						ownedBehaviors.add(ownedStateMachine);
+					}
+
+					EList ownedTriggers = behavioredClassifier
+						.getOwnedTriggers();
+
+					for (Iterator ot = getValues(extension.getMixed(),
+						"ownedTrigger", true).iterator(); ot.hasNext();) {
+
+						EObject ownedTrigger = (EObject) ot.next();
+
+						// TODO convert triggers to events
+					}
+
+				}
+
+				return super.caseBehavioredClassifier(behavioredClassifier);
+			}
+
+			public Object caseComment(Comment comment) {
+				AnyType extension = getExtension(resource, comment);
+
+				if (extension != null) {
+					String body = (String) getValue(
+						extension.getAnyAttribute(), "body", true); //$NON-NLS-1$
+
+					if (body != null) {
+						comment.setBody(body);
+					}
+				}
+
+				return super.caseComment(comment);
+			}
 
 			public Object caseElement(Element element) {
 				EAnnotation keywordsAnnotation = element
@@ -183,7 +298,7 @@ public class UML22UMLResourceHandler
 
 				if (extension != null) {
 					ValueSpecification lowerValue = (ValueSpecification) getValue(
-						extension.getMixed(), "lowerValue"); //$NON-NLS-1$
+						extension.getMixed(), "lowerValue", true); //$NON-NLS-1$
 
 					if (lowerValue != null) {
 						multiplicityElement.setLowerValue(lowerValue);
@@ -191,11 +306,86 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseMultiplicityElement(multiplicityElement);
+			}
 
+			public Object caseNamedElement(NamedElement namedElement) {
+				AnyType extension = getExtension(resource, namedElement);
+
+				if (extension != null) {
+					EList clientDependencies = namedElement
+						.getClientDependencies();
+
+					for (Iterator cd = getValues(extension.getMixed(),
+						"clientDependency", true).iterator(); cd.hasNext();) {
+
+						EObject clientDependency = (EObject) cd.next();
+
+						if (clientDependency instanceof Dependency) {
+							doSwitch(clientDependency);
+							clientDependencies.add(clientDependency);
+						}
+					}
+				}
+
+				return super.caseNamedElement(namedElement);
+			}
+
+			public Object caseNamespace(Namespace namespace) {
+				AnyType extension = getExtension(resource, namespace);
+
+				if (extension != null) {
+					EList packageImports = namespace.getPackageImports();
+
+					for (Iterator pi = getValues(extension.getMixed(),
+						"packageImport", true).iterator(); pi.hasNext();) {
+
+						PackageImport packageImport = (PackageImport) pi.next();
+
+						doSwitch(packageImport);
+						packageImports.add(packageImport);
+					}
+				}
+
+				return super.caseNamespace(namespace);
+			}
+
+			public Object caseOpaqueExpression(OpaqueExpression opaqueExpression) {
+				AnyType extension = getExtension(resource, opaqueExpression);
+
+				if (extension != null) {
+					String body = (String) getValue(
+						extension.getAnyAttribute(), "body", true); //$NON-NLS-1$
+
+					if (body != null) {
+						opaqueExpression.getBodies().add(body);
+					}
+				}
+
+				return super.caseOpaqueExpression(opaqueExpression);
+			}
+
+			public Object casePackageableElement(
+					PackageableElement packageableElement) {
+				AnyType extension = getExtension(resource, packageableElement);
+
+				if (extension != null) {
+					VisibilityKind packageableElement_visibility = (VisibilityKind) getValue(
+						extension.getAnyAttribute(),
+						"packageableElement_visibility", true); //$NON-NLS-1$
+
+					if (packageableElement_visibility != null) {
+						packageableElement
+							.setVisibility(packageableElement_visibility);
+					}
+				}
+
+				return super.casePackageableElement(packageableElement);
 			}
 
 			public Object caseProfileApplication(
 					ProfileApplication profileApplication) {
+				removeExtension(resource, profileApplication);
+
 				String profileName = null;
 				InternalEObject internalEObject = (InternalEObject) profileApplication
 					.eGet(
@@ -400,6 +590,9 @@ public class UML22UMLResourceHandler
 					}.doSwitch(ePackagesAnnotation);
 				}
 
+				caseNamespace(profile);
+				casePackageableElement(profile);
+				caseNamedElement(profile);
 				caseElement(profile);
 
 				return profile;
@@ -422,20 +615,25 @@ public class UML22UMLResourceHandler
 			}
 
 			public Object defaultCase(EObject eObject) {
-				AnyType extension = removeExtension(resource, eObject);
+				AnyType extension = getExtension(resource, eObject);
 
-				if (extension != null && DEBUG) {
-					System.out.println(eObject);
-					System.out.println("->"); //$NON-NLS-1$
-					System.out.println(extension);
+				if (extension != null) {
 
-					EAnnotation eAnnotation = UML2Util.createEAnnotation(null,
-						ExtendedMetaData.ANNOTATION_URI);
+					if (extension.eContents().isEmpty()) {
+						removeExtension(resource, eObject);
+					} else if (DEBUG) {
+						System.out.println(eObject);
+						System.out.println("->"); //$NON-NLS-1$
+						System.out.println(extension);
 
-					eAnnotation.getContents().add(extension);
-					eAnnotation.getReferences().add(eObject);
+						EAnnotation eAnnotation = UML2Util.createEAnnotation(
+							null, ExtendedMetaData.ANNOTATION_URI);
 
-					resourceContents.add(eAnnotation);
+						eAnnotation.getContents().add(extension);
+						eAnnotation.getReferences().add(eObject);
+
+						resourceContents.add(eAnnotation);
+					}
 				}
 
 				for (Iterator eAllReferences = eObject.eClass()
@@ -482,5 +680,4 @@ public class UML22UMLResourceHandler
 
 		EcoreUtil.resolveAll(resource);
 	}
-
 }

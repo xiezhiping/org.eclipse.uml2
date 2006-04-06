@@ -26,12 +26,95 @@
     <outputs href="UML.ecore#//ProfileApplication/appliedProfile"/>
   </nested>
   <nested>
-    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//BehavioralFeature/returnResult"/>
-    <outputs href="UML.ecore#//BehavioralFeature/ownedParameter"/>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Behavior/parameter"/>
+    <outputs href="UML.ecore#//Behavior/ownedParameter"/>
   </nested>
   <nested>
-    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Behavior/formalParameter"/>
-    <outputs href="UML.ecore#//Behavior/ownedParameter"/>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Operation/class_"/>
+    <outputs href="UML.ecore#//Operation/class"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Property/class_"/>
+    <outputs href="UML.ecore#//Property/class"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Classifier/occurrence"/>
+    <outputs href="UML.ecore#//Classifier/collaborationUse"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//PackageMerge/mergingPackage"/>
+    <outputs href="UML.ecore#//PackageMerge/receivingPackage"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//BehavioredClassifier/implementation"/>
+    <outputs href="UML.ecore#//BehavioredClassifier/interfaceRealization"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Activity/body"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Activity/language"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Activity/action"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Permission"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/clientDependency"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Component/ownedMember"/>
+    <outputs href="UML.ecore#//Component/packagedElement"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ActivityEdge/redefinedElement"/>
+    <outputs href="UML.ecore#//ActivityEdge/redefinedEdge"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ActivityGroup/activityGroup_activity"/>
+    <outputs href="UML.ecore#//ActivityGroup/inActivity"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ActivityNode/redefinedElement"/>
+    <outputs href="UML.ecore#//ActivityNode/redefinedNode"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Action/effect"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//CollaborationOccurrence"/>
+    <outputs href="UML.ecore#//CollaborationUse"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/ownedTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//CallTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//MessageTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ChangeTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//SignalTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//TimeTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//AnyTrigger"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//StructuredActivityNode/containedNode"/>
+    <outputs href="UML.ecore#//StructuredActivityNode/node"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//StructuredActivityNode/containedEdge"/>
+    <outputs href="UML.ecore#//StructuredActivityNode/edge"/>
   </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>
