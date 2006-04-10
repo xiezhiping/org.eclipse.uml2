@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePin.java,v 1.9 2005/11/29 20:09:38 khussey Exp $
+ * $Id: ValuePin.java,v 1.10 2006/04/10 20:40:21 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface ValuePin extends InputPin{
+public interface ValuePin extends InputPin {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +73,7 @@ public interface ValuePin extends InputPin{
 	void setValue(ValueSpecification value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -80,7 +81,7 @@ public interface ValuePin extends InputPin{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getValue()
-	 * @generated
+	 * @generated NOT
 	 */
     ValueSpecification createValue(EClass eClass);
 

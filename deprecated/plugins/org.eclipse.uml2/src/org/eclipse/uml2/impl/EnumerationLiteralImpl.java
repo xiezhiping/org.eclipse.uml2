@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.19 2005/12/06 23:18:02 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.20 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,8 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -91,6 +89,17 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnumeration(Enumeration newEnumeration, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newEnumeration, UML2Package.ENUMERATION_LITERAL__ENUMERATION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnumeration(Enumeration newEnumeration) {
 		if (newEnumeration != eInternalContainer() || (eContainerFeatureID != UML2Package.ENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, newEnumeration))
@@ -100,7 +109,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnumeration != null)
 				msgs = ((InternalEObject)newEnumeration).eInverseAdd(this, UML2Package.ENUMERATION__OWNED_LITERAL, Enumeration.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newEnumeration, UML2Package.ENUMERATION_LITERAL__ENUMERATION, msgs);
+			msgs = basicSetEnumeration(newEnumeration, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -121,21 +130,19 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
 				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
 				return ((InternalEList)getDeployments()).basicAdd(otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__SLOT:
@@ -143,7 +150,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__ENUMERATION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ENUMERATION_LITERAL__ENUMERATION, msgs);
+				return basicSetEnumeration((Enumeration)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -170,7 +177,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
 				return ((InternalEList)getDeployments()).basicRemove(otherEnd, msgs);
 			case UML2Package.ENUMERATION_LITERAL__SLOT:
@@ -178,7 +185,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 			case UML2Package.ENUMERATION_LITERAL__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 			case UML2Package.ENUMERATION_LITERAL__ENUMERATION:
-				return eBasicSetContainer(null, UML2Package.ENUMERATION_LITERAL__ENUMERATION, msgs);
+				return basicSetEnumeration(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -408,51 +415,43 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ENUMERATION_LITERAL__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ENUMERATION_LITERAL__OWNER:
 				return isSetOwner();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.ENUMERATION_LITERAL__NAME:
-				String name = (String)eVirtualGet(UML2Package.ENUMERATION_LITERAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ENUMERATION_LITERAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION_LITERAL__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.ENUMERATION_LITERAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENUMERATION_LITERAL__PACKAGEABLE_ELEMENT_VISIBILITY:
 				return isSetPackageableElement_visibility();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYMENT:
-				EList deployment = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__SLOT:
-				EList slot = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__SLOT);
-				return slot != null && !slot.isEmpty();
+				return slots != null && !slots.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__CLASSIFIER:
-				EList classifier = (EList)eVirtualGet(UML2Package.ENUMERATION_LITERAL__CLASSIFIER);
-				return classifier != null && !classifier.isEmpty();
+				return classifiers != null && !classifiers.isEmpty();
 			case UML2Package.ENUMERATION_LITERAL__SPECIFICATION:
-				return eVirtualGet(UML2Package.ENUMERATION_LITERAL__SPECIFICATION) != null;
+				return specification != null;
 			case UML2Package.ENUMERATION_LITERAL__ENUMERATION:
 				return getEnumeration() != null;
 		}

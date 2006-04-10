@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.17 2005/12/06 23:18:03 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.18 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -51,6 +49,16 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariable()
+	 * @generated
+	 * @ordered
+	 */
+	protected Variable variable = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -74,12 +82,10 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	 * @generated
 	 */
 	public Variable getVariable() {
-		Variable variable = (Variable)eVirtualGet(UML2Package.VARIABLE_ACTION__VARIABLE);
 		if (variable != null && variable.eIsProxy()) {
 			InternalEObject oldVariable = (InternalEObject)variable;
 			variable = (Variable)eResolveProxy(oldVariable);
 			if (variable != oldVariable) {
-				eVirtualSet(UML2Package.VARIABLE_ACTION__VARIABLE, variable);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.VARIABLE_ACTION__VARIABLE, oldVariable, variable));
 			}
@@ -93,7 +99,7 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	 * @generated
 	 */
 	public Variable basicGetVariable() {
-		return (Variable)eVirtualGet(UML2Package.VARIABLE_ACTION__VARIABLE);
+		return variable;
 	}
 
 	/**
@@ -102,10 +108,11 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	 * @generated
 	 */
 	public void setVariable(Variable newVariable) {
-		Variable variable = newVariable;
-		Object oldVariable = eVirtualSet(UML2Package.VARIABLE_ACTION__VARIABLE, variable);
+		Variable oldVariable = variable;
+		variable = newVariable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE_ACTION__VARIABLE, oldVariable == EVIRTUAL_NO_VALUE ? null : oldVariable, variable));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE_ACTION__VARIABLE, oldVariable, variable));
+
 
 	}
 
@@ -349,42 +356,35 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.VARIABLE_ACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VARIABLE_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.VARIABLE_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.VARIABLE_ACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.VARIABLE_ACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.VARIABLE_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.VARIABLE_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.VARIABLE_ACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.VARIABLE_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VARIABLE_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VARIABLE_ACTION__VISIBILITY:
-				return eVirtualGet(UML2Package.VARIABLE_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.VARIABLE_ACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.VARIABLE_ACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.VARIABLE_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.VARIABLE_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.VARIABLE_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.VARIABLE_ACTION__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.VARIABLE_ACTION__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.VARIABLE_ACTION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.VARIABLE_ACTION__ACTIVITY:
@@ -394,16 +394,12 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 			case UML2Package.VARIABLE_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.VARIABLE_ACTION__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.VARIABLE_ACTION__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UML2Package.VARIABLE_ACTION__EFFECT:
-				String effect = (String)eVirtualGet(UML2Package.VARIABLE_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.VARIABLE_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -412,13 +408,11 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 			case UML2Package.VARIABLE_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.VARIABLE_ACTION__LOCAL_PRECONDITION:
-				EList localPrecondition = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null && !localPrecondition.isEmpty();
+				return localPreconditions != null && !localPreconditions.isEmpty();
 			case UML2Package.VARIABLE_ACTION__LOCAL_POSTCONDITION:
-				EList localPostcondition = (EList)eVirtualGet(UML2Package.VARIABLE_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null && !localPostcondition.isEmpty();
+				return localPostconditions != null && !localPostconditions.isEmpty();
 			case UML2Package.VARIABLE_ACTION__VARIABLE:
-				return eVirtualGet(UML2Package.VARIABLE_ACTION__VARIABLE) != null;
+				return variable != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.14 2005/12/06 23:18:04 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.15 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.Pseudostate;
@@ -59,6 +57,16 @@ public class PseudostateImpl extends VertexImpl implements Pseudostate {
 	protected static final PseudostateKind KIND_EDEFAULT = PseudostateKind.INITIAL_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected PseudostateKind kind = KIND_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,7 +90,7 @@ public class PseudostateImpl extends VertexImpl implements Pseudostate {
 	 * @generated
 	 */
 	public PseudostateKind getKind() {
-		return (PseudostateKind)eVirtualGet(UML2Package.PSEUDOSTATE__KIND, KIND_EDEFAULT);
+		return kind;
 	}
 
 	/**
@@ -91,10 +99,11 @@ public class PseudostateImpl extends VertexImpl implements Pseudostate {
 	 * @generated
 	 */
 	public void setKind(PseudostateKind newKind) {
-		PseudostateKind kind = newKind == null ? KIND_EDEFAULT : newKind;
-		Object oldKind = eVirtualSet(UML2Package.PSEUDOSTATE__KIND, kind);
+		PseudostateKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PSEUDOSTATE__KIND, oldKind == EVIRTUAL_NO_VALUE ? KIND_EDEFAULT : oldKind, kind));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PSEUDOSTATE__KIND, oldKind, kind));
+
 
 	}
 
@@ -249,42 +258,35 @@ public class PseudostateImpl extends VertexImpl implements Pseudostate {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PSEUDOSTATE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.PSEUDOSTATE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PSEUDOSTATE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.PSEUDOSTATE__OWNER:
 				return isSetOwner();
 			case UML2Package.PSEUDOSTATE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.PSEUDOSTATE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.PSEUDOSTATE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.PSEUDOSTATE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.PSEUDOSTATE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.PSEUDOSTATE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.PSEUDOSTATE__NAME:
-				String name = (String)eVirtualGet(UML2Package.PSEUDOSTATE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PSEUDOSTATE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PSEUDOSTATE__VISIBILITY:
-				return eVirtualGet(UML2Package.PSEUDOSTATE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PSEUDOSTATE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.PSEUDOSTATE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.PSEUDOSTATE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.PSEUDOSTATE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.PSEUDOSTATE__CONTAINER:
 				return isSetContainer();
 			case UML2Package.PSEUDOSTATE__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.PSEUDOSTATE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.PSEUDOSTATE__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.PSEUDOSTATE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.PSEUDOSTATE__KIND:
-				return eVirtualGet(UML2Package.PSEUDOSTATE__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -299,7 +301,7 @@ public class PseudostateImpl extends VertexImpl implements Pseudostate {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.PSEUDOSTATE__KIND, KIND_EDEFAULT));
+		result.append(kind);
 		result.append(')');
 		return result.toString();
 	}

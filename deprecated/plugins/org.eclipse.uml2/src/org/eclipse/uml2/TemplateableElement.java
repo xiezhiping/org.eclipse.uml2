@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.12 2005/11/29 20:09:38 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.13 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model abstract="true"
  * @generated
  */
-public interface TemplateableElement extends Element{
+public interface TemplateableElement extends Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,7 +87,7 @@ public interface TemplateableElement extends Element{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.TemplateBinding}.
 	 * @see #getTemplateBindings()
-	 * @generated
+	 * @generated NOT
 	 */
     TemplateBinding createTemplateBinding();
 
@@ -120,6 +120,7 @@ public interface TemplateableElement extends Element{
 	void setOwnedTemplateSignature(TemplateSignature value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.TemplateSignature} and sets the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -127,7 +128,7 @@ public interface TemplateableElement extends Element{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.TemplateSignature} to create.
 	 * @return The new {@link org.eclipse.uml2.TemplateSignature}.
 	 * @see #getOwnedTemplateSignature()
-	 * @generated
+	 * @generated NOT
 	 */
     TemplateSignature createOwnedTemplateSignature(EClass eClass);
 
@@ -137,7 +138,7 @@ public interface TemplateableElement extends Element{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.TemplateSignature}.
 	 * @see #getOwnedTemplateSignature()
-	 * @generated
+	 * @generated NOT
 	 */
     TemplateSignature createOwnedTemplateSignature();
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.34 2005/12/06 23:18:02 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.35 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -61,8 +63,6 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getAttributes <em>Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
@@ -81,6 +81,66 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedAttributes = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedOperations = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedInterfaces() <em>Redefined Interface</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedInterfaces()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedInterfaces = null;
+
+	/**
+	 * The cached value of the '{@link #getNestedClassifiers() <em>Nested Classifier</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestedClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList nestedClassifiers = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedReceptions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedReceptions = null;
+
+	/**
+	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected ProtocolStateMachine protocol = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,13 +166,17 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getAttributes() {
-		EList attribute = (EList)eVirtualGet(UML2Package.INTERFACE__ATTRIBUTE);
-		if (attribute == null) {
-			eVirtualSet(UML2Package.INTERFACE__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.INTERFACE__ATTRIBUTE, new int[] {UML2Package.INTERFACE__OWNED_ATTRIBUTE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList attributes = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE);
+			if (attributes == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE, attributes = new DerivedUnionEObjectEList(Property.class, this, UML2Package.INTERFACE__ATTRIBUTE, ATTRIBUTE_ESUBSETS));
+			}
+			return attributes;
 		}
-		return attribute;
+		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.INTERFACE__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,19 +188,34 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.INTERFACE__OWNED_ATTRIBUTE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.INTERFACE__OWNED_ATTRIBUTE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getFeatures() {
-		EList feature = (EList)eVirtualGet(UML2Package.INTERFACE__FEATURE);
-		if (feature == null) {
-			eVirtualSet(UML2Package.INTERFACE__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.INTERFACE__FEATURE, new int[] {UML2Package.INTERFACE__ATTRIBUTE, UML2Package.INTERFACE__OWNED_OPERATION, UML2Package.INTERFACE__OWNED_RECEPTION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList features = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__FEATURE);
+			if (features == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__FEATURE, features = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.INTERFACE__FEATURE, FEATURE_ESUBSETS));
+			}
+			return features;
 		}
-		return feature;
+		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.INTERFACE__FEATURE, FEATURE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -149,17 +228,17 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.INTERFACE__OWNED_RECEPTION);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
-		EList ownedAttribute = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_ATTRIBUTE);
-		if (ownedAttribute == null) {
-			eVirtualSet(UML2Package.INTERFACE__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.INTERFACE__OWNED_ATTRIBUTE));
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentEList(Property.class, this, UML2Package.INTERFACE__OWNED_ATTRIBUTE);
 		}
-		return ownedAttribute;
+		return ownedAttributes;
 	}
 
 
@@ -169,11 +248,22 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
     public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+		return getOwnedAttribute(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, boolean ignoreCase, EClass eClass) {
+		ownedAttributeLoop: for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedAttribute.getName()) : name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
 		return null;
 	}
@@ -212,11 +302,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
-		EList ownedOperation = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_OPERATION);
-		if (ownedOperation == null) {
-			eVirtualSet(UML2Package.INTERFACE__OWNED_OPERATION, ownedOperation = new EObjectContainmentEList(Operation.class, this, UML2Package.INTERFACE__OWNED_OPERATION));
+		if (ownedOperations == null) {
+			ownedOperations = new EObjectContainmentEList(Operation.class, this, UML2Package.INTERFACE__OWNED_OPERATION);
 		}
-		return ownedOperation;
+		return ownedOperations;
 	}
 
 
@@ -226,11 +315,20 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
     public Operation getOwnedOperation(String name) {
-		for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
+		return getOwnedOperation(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getOwnedOperation(String name, boolean ignoreCase) {
+		ownedOperationLoop: for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
 			Operation ownedOperation = (Operation) i.next();
-			if (name.equals(ownedOperation.getName())) {
-				return ownedOperation;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedOperation.getName()) : name.equals(ownedOperation.getName())))
+				continue ownedOperationLoop;
+			return ownedOperation;
 		}
 		return null;
 	}
@@ -270,11 +368,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getRedefinedInterfaces() {
-		EList redefinedInterface = (EList)eVirtualGet(UML2Package.INTERFACE__REDEFINED_INTERFACE);
-		if (redefinedInterface == null) {
-			eVirtualSet(UML2Package.INTERFACE__REDEFINED_INTERFACE, redefinedInterface = new EObjectResolvingEList(Interface.class, this, UML2Package.INTERFACE__REDEFINED_INTERFACE));
+		if (redefinedInterfaces == null) {
+			redefinedInterfaces = new EObjectResolvingEList(Interface.class, this, UML2Package.INTERFACE__REDEFINED_INTERFACE);
 		}
-		return redefinedInterface;
+		return redefinedInterfaces;
 	}
 
 
@@ -284,11 +381,20 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
     public Interface getRedefinedInterface(String name) {
-		for (Iterator i = getRedefinedInterfaces().iterator(); i.hasNext(); ) {
+		return getRedefinedInterface(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getRedefinedInterface(String name, boolean ignoreCase) {
+		redefinedInterfaceLoop: for (Iterator i = getRedefinedInterfaces().iterator(); i.hasNext(); ) {
 			Interface redefinedInterface = (Interface) i.next();
-			if (name.equals(redefinedInterface.getName())) {
-				return redefinedInterface;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinedInterface.getName()) : name.equals(redefinedInterface.getName())))
+				continue redefinedInterfaceLoop;
+			return redefinedInterface;
 		}
 		return null;
 	}
@@ -299,11 +405,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getNestedClassifiers() {
-		EList nestedClassifier = (EList)eVirtualGet(UML2Package.INTERFACE__NESTED_CLASSIFIER);
-		if (nestedClassifier == null) {
-			eVirtualSet(UML2Package.INTERFACE__NESTED_CLASSIFIER, nestedClassifier = new EObjectContainmentEList(Classifier.class, this, UML2Package.INTERFACE__NESTED_CLASSIFIER));
+		if (nestedClassifiers == null) {
+			nestedClassifiers = new EObjectContainmentEList(Classifier.class, this, UML2Package.INTERFACE__NESTED_CLASSIFIER);
 		}
-		return nestedClassifier;
+		return nestedClassifiers;
 	}
 
 
@@ -313,11 +418,22 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
     public Classifier getNestedClassifier(String name) {
-		for (Iterator i = getNestedClassifiers().iterator(); i.hasNext(); ) {
+		return getNestedClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getNestedClassifier(String name, boolean ignoreCase, EClass eClass) {
+		nestedClassifierLoop: for (Iterator i = getNestedClassifiers().iterator(); i.hasNext(); ) {
 			Classifier nestedClassifier = (Classifier) i.next();
-			if (name.equals(nestedClassifier.getName())) {
-				return nestedClassifier;
-			}
+			if (eClass != null && !eClass.isInstance(nestedClassifier))
+				continue nestedClassifierLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(nestedClassifier.getName()) : name.equals(nestedClassifier.getName())))
+				continue nestedClassifierLoop;
+			return nestedClassifier;
 		}
 		return null;
 	}
@@ -342,11 +458,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public EList getOwnedReceptions() {
-		EList ownedReception = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_RECEPTION);
-		if (ownedReception == null) {
-			eVirtualSet(UML2Package.INTERFACE__OWNED_RECEPTION, ownedReception = new EObjectContainmentEList(Reception.class, this, UML2Package.INTERFACE__OWNED_RECEPTION));
+		if (ownedReceptions == null) {
+			ownedReceptions = new EObjectContainmentEList(Reception.class, this, UML2Package.INTERFACE__OWNED_RECEPTION);
 		}
-		return ownedReception;
+		return ownedReceptions;
 	}
 
 
@@ -356,11 +471,20 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
     public Reception getOwnedReception(String name) {
-		for (Iterator i = getOwnedReceptions().iterator(); i.hasNext(); ) {
+		return getOwnedReception(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reception getOwnedReception(String name, boolean ignoreCase) {
+		ownedReceptionLoop: for (Iterator i = getOwnedReceptions().iterator(); i.hasNext(); ) {
 			Reception ownedReception = (Reception) i.next();
-			if (name.equals(ownedReception.getName())) {
-				return ownedReception;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedReception.getName()) : name.equals(ownedReception.getName())))
+				continue ownedReceptionLoop;
+			return ownedReception;
 		}
 		return null;
 	}
@@ -400,7 +524,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
-		return (ProtocolStateMachine)eVirtualGet(UML2Package.INTERFACE__PROTOCOL);
+		return protocol;
 	}
 
 	/**
@@ -409,9 +533,10 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public NotificationChain basicSetProtocol(ProtocolStateMachine newProtocol, NotificationChain msgs) {
-		Object oldProtocol = eVirtualSet(UML2Package.INTERFACE__PROTOCOL, newProtocol);
+		ProtocolStateMachine oldProtocol = protocol;
+		protocol = newProtocol;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERFACE__PROTOCOL, oldProtocol == EVIRTUAL_NO_VALUE ? null : oldProtocol, newProtocol);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERFACE__PROTOCOL, oldProtocol, newProtocol);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -424,7 +549,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
-		ProtocolStateMachine protocol = (ProtocolStateMachine)eVirtualGet(UML2Package.INTERFACE__PROTOCOL);
 		if (newProtocol != protocol) {
 			NotificationChain msgs = null;
 			if (protocol != null)
@@ -497,7 +621,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.INTERFACE__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.INTERFACE__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.INTERFACE__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERFACE__SUBSTITUTION:
@@ -848,47 +972,39 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERFACE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERFACE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERFACE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INTERFACE__OWNER:
 				return isSetOwner();
 			case UML2Package.INTERFACE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INTERFACE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INTERFACE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INTERFACE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INTERFACE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INTERFACE__NAME:
-				String name = (String)eVirtualGet(UML2Package.INTERFACE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERFACE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERFACE__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.INTERFACE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERFACE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INTERFACE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INTERFACE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INTERFACE__MEMBER:
 				return isSetMembers();
 			case UML2Package.INTERFACE__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.INTERFACE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.INTERFACE__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.INTERFACE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.INTERFACE__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.INTERFACE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.INTERFACE__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.INTERFACE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.INTERFACE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERFACE__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -908,47 +1024,35 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			case UML2Package.INTERFACE__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.INTERFACE__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.INTERFACE__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.INTERFACE__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.INTERFACE__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.INTERFACE__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.INTERFACE__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.INTERFACE__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.INTERFACE__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.INTERFACE__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.INTERFACE__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.INTERFACE__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.INTERFACE__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.INTERFACE__REPRESENTATION:
-				return eVirtualGet(UML2Package.INTERFACE__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.INTERFACE__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.INTERFACE__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.INTERFACE__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case UML2Package.INTERFACE__OWNED_OPERATION:
-				EList ownedOperation = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UML2Package.INTERFACE__REDEFINED_INTERFACE:
-				EList redefinedInterface = (EList)eVirtualGet(UML2Package.INTERFACE__REDEFINED_INTERFACE);
-				return redefinedInterface != null && !redefinedInterface.isEmpty();
+				return redefinedInterfaces != null && !redefinedInterfaces.isEmpty();
 			case UML2Package.INTERFACE__NESTED_CLASSIFIER:
-				EList nestedClassifier = (EList)eVirtualGet(UML2Package.INTERFACE__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null && !nestedClassifiers.isEmpty();
 			case UML2Package.INTERFACE__OWNED_RECEPTION:
-				EList ownedReception = (EList)eVirtualGet(UML2Package.INTERFACE__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UML2Package.INTERFACE__PROTOCOL:
-				return eVirtualGet(UML2Package.INTERFACE__PROTOCOL) != null;
+				return protocol != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -959,29 +1063,25 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList ownedAttribute = getOwnedAttributes();
-		if (!ownedAttribute.isEmpty()) {
-			ownedMember.addAll(ownedAttribute);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.INTERFACE__OWNED_ATTRIBUTE)) {
+			ownedMembers.addAll(getOwnedAttributes());
 		}
-		EList ownedOperation = getOwnedOperations();
-		if (!ownedOperation.isEmpty()) {
-			ownedMember.addAll(ownedOperation);
+		if (eIsSet(UML2Package.INTERFACE__OWNED_OPERATION)) {
+			ownedMembers.addAll(getOwnedOperations());
 		}
-		EList nestedClassifier = getNestedClassifiers();
-		if (!nestedClassifier.isEmpty()) {
-			ownedMember.addAll(nestedClassifier);
+		if (eIsSet(UML2Package.INTERFACE__NESTED_CLASSIFIER)) {
+			ownedMembers.addAll(getNestedClassifiers());
 		}
-		EList ownedReception = getOwnedReceptions();
-		if (!ownedReception.isEmpty()) {
-			ownedMember.addAll(ownedReception);
+		if (eIsSet(UML2Package.INTERFACE__OWNED_RECEPTION)) {
+			ownedMembers.addAll(getOwnedReceptions());
 		}
 		ProtocolStateMachine protocol = getProtocol();
 		if (protocol != null) {
-			ownedMember.add(protocol);
+			ownedMembers.add(protocol);
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -1000,19 +1100,38 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.INTERFACE__OWNED_RULE, UML2Package.INTERFACE__OWNED_USE_CASE, UML2Package.INTERFACE__OWNED_ATTRIBUTE, UML2Package.INTERFACE__OWNED_OPERATION, UML2Package.INTERFACE__NESTED_CLASSIFIER, UML2Package.INTERFACE__OWNED_RECEPTION, UML2Package.INTERFACE__PROTOCOL};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getFeatures() <em>Feature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] FEATURE_ESUBSETS = new int[] {UML2Package.INTERFACE__ATTRIBUTE, UML2Package.INTERFACE__OWNED_OPERATION, UML2Package.INTERFACE__OWNED_RECEPTION};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getRedefinedElementsHelper(EList redefinedElement) {
-		super.getRedefinedElementsHelper(redefinedElement);
-		EList redefinedInterface = getRedefinedInterfaces();
-		if (!redefinedInterface.isEmpty()) {
-			for (Iterator i = ((InternalEList) redefinedInterface).basicIterator(); i.hasNext(); ) {
-				redefinedElement.add(i.next());
+	protected EList getRedefinedElementsHelper(EList redefinedElements) {
+		super.getRedefinedElementsHelper(redefinedElements);
+		if (eIsSet(UML2Package.INTERFACE__REDEFINED_INTERFACE)) {
+			for (Iterator i = ((InternalEList) getRedefinedInterfaces()).basicIterator(); i.hasNext(); ) {
+				redefinedElements.add(i.next());
 			}
 		}
-		return redefinedElement;
+		return redefinedElements;
 	}
 
 	/**
@@ -1025,6 +1144,16 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.INTERFACE__REDEFINED_INTERFACE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[] {UML2Package.INTERFACE__REDEFINED_CLASSIFIER, UML2Package.INTERFACE__REDEFINED_INTERFACE};
 
 	// <!-- begin-custom-operations -->
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.12 2005/11/29 20:09:38 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.13 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface TemplateParameterSubstitution extends Element{
+public interface TemplateParameterSubstitution extends Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,6 +146,7 @@ public interface TemplateParameterSubstitution extends Element{
 	EList getOwnedActuals();
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -153,7 +154,7 @@ public interface TemplateParameterSubstitution extends Element{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ParameterableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.ParameterableElement}.
 	 * @see #getOwnedActuals()
-	 * @generated
+	 * @generated NOT
 	 */
     ParameterableElement createOwnedActual(EClass eClass);
 

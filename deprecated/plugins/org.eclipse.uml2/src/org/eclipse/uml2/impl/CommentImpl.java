@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.20 2005/12/06 23:18:02 khussey Exp $
+ * $Id: CommentImpl.java,v 1.21 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,6 +36,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -43,7 +46,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.CommentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CommentImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CommentImpl#getAnnotatedElements <em>Annotated Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CommentImpl#getBodyExpression <em>Body Expression</em>}</li>
@@ -71,6 +73,36 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	protected static final String BODY_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected String body = BODY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAnnotatedElements() <em>Annotated Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList annotatedElements = null;
+
+	/**
+	 * The cached value of the '{@link #getBodyExpression() <em>Body Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBodyExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected StringExpression bodyExpression = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -94,13 +126,17 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.COMMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.COMMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COMMENT__OWNED_ELEMENT, new int[] {UML2Package.COMMENT__OWNED_COMMENT, UML2Package.COMMENT__TEMPLATE_BINDING, UML2Package.COMMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.COMMENT__BODY_EXPRESSION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COMMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.COMMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,13 +148,24 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 			|| eIsSet(UML2Package.COMMENT__BODY_EXPRESSION);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.COMMENT__OWNED_COMMENT, UML2Package.COMMENT__TEMPLATE_BINDING, UML2Package.COMMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.COMMENT__BODY_EXPRESSION};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getBody() {
-		return (String)eVirtualGet(UML2Package.COMMENT__BODY, BODY_EDEFAULT);
+		return body;
 	}
 
 	/**
@@ -128,10 +175,11 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 */
 	public void setBody(String newBody) {
 		newBody = newBody == null ? BODY_EDEFAULT : newBody;
-		String body = newBody;
-		Object oldBody = eVirtualSet(UML2Package.COMMENT__BODY, body);
+		String oldBody = body;
+		body = newBody;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY, oldBody == EVIRTUAL_NO_VALUE ? BODY_EDEFAULT : oldBody, body));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY, oldBody, body));
+
 
 	}
 
@@ -142,11 +190,10 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public EList getAnnotatedElements() {
-		EList annotatedElement = (EList)eVirtualGet(UML2Package.COMMENT__ANNOTATED_ELEMENT);
-		if (annotatedElement == null) {
-			eVirtualSet(UML2Package.COMMENT__ANNOTATED_ELEMENT, annotatedElement = new EObjectResolvingEList(Element.class, this, UML2Package.COMMENT__ANNOTATED_ELEMENT));
+		if (annotatedElements == null) {
+			annotatedElements = new EObjectResolvingEList(Element.class, this, UML2Package.COMMENT__ANNOTATED_ELEMENT);
 		}
-		return annotatedElement;
+		return annotatedElements;
 	}
 
 
@@ -156,7 +203,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public StringExpression getBodyExpression() {
-		return (StringExpression)eVirtualGet(UML2Package.COMMENT__BODY_EXPRESSION);
+		return bodyExpression;
 	}
 
 	/**
@@ -165,9 +212,10 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public NotificationChain basicSetBodyExpression(StringExpression newBodyExpression, NotificationChain msgs) {
-		Object oldBodyExpression = eVirtualSet(UML2Package.COMMENT__BODY_EXPRESSION, newBodyExpression);
+		StringExpression oldBodyExpression = bodyExpression;
+		bodyExpression = newBodyExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY_EXPRESSION, oldBodyExpression == EVIRTUAL_NO_VALUE ? null : oldBodyExpression, newBodyExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.COMMENT__BODY_EXPRESSION, oldBodyExpression, newBodyExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -180,7 +228,6 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	 * @generated
 	 */
 	public void setBodyExpression(StringExpression newBodyExpression) {
-		StringExpression bodyExpression = (StringExpression)eVirtualGet(UML2Package.COMMENT__BODY_EXPRESSION);
 		if (newBodyExpression != bodyExpression) {
 			NotificationChain msgs = null;
 			if (bodyExpression != null)
@@ -352,28 +399,23 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.COMMENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.COMMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COMMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.COMMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.COMMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.COMMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.COMMENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.COMMENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.COMMENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.COMMENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.COMMENT__BODY:
-				String body = (String)eVirtualGet(UML2Package.COMMENT__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.COMMENT__ANNOTATED_ELEMENT:
-				EList annotatedElement = (EList)eVirtualGet(UML2Package.COMMENT__ANNOTATED_ELEMENT);
-				return annotatedElement != null && !annotatedElement.isEmpty();
+				return annotatedElements != null && !annotatedElements.isEmpty();
 			case UML2Package.COMMENT__BODY_EXPRESSION:
-				return eVirtualGet(UML2Package.COMMENT__BODY_EXPRESSION) != null;
+				return bodyExpression != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -388,7 +430,7 @@ public class CommentImpl extends TemplateableElementImpl implements Comment {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.COMMENT__BODY, BODY_EDEFAULT));
+		result.append(body);
 		result.append(')');
 		return result.toString();
 	}

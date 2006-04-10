@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Abstraction.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Abstraction.java,v 1.11 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Abstraction extends Dependency{
+public interface Abstraction extends Dependency {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,6 +72,7 @@ public interface Abstraction extends Dependency{
 	void setMapping(OpaqueExpression value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.OpaqueExpression} and sets the '<em><b>Mapping</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -79,7 +80,7 @@ public interface Abstraction extends Dependency{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.OpaqueExpression} to create.
 	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
 	 * @see #getMapping()
-	 * @generated
+	 * @generated NOT
 	 */
     OpaqueExpression createMapping(EClass eClass);
 
@@ -89,7 +90,7 @@ public interface Abstraction extends Dependency{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OpaqueExpression}.
 	 * @see #getMapping()
-	 * @generated
+	 * @generated NOT
 	 */
     OpaqueExpression createMapping();
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EventOccurrenceImpl.java,v 1.21 2006/01/30 22:52:51 khussey Exp $
+ * $Id: EventOccurrenceImpl.java,v 1.22 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -71,6 +71,66 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getReceiveMessage() <em>Receive Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReceiveMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message receiveMessage = null;
+
+	/**
+	 * The cached value of the '{@link #getSendMessage() <em>Send Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSendMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message sendMessage = null;
+
+	/**
+	 * The cached value of the '{@link #getStartExecs() <em>Start Exec</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartExecs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList startExecs = null;
+
+	/**
+	 * The cached value of the '{@link #getFinishExecs() <em>Finish Exec</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFinishExecs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList finishExecs = null;
+
+	/**
+	 * The cached value of the '{@link #getToAfters() <em>To After</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToAfters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList toAfters = null;
+
+	/**
+	 * The cached value of the '{@link #getToBefores() <em>To Before</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToBefores()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList toBefores = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -94,12 +154,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public Message getReceiveMessage() {
-		Message receiveMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
 		if (receiveMessage != null && receiveMessage.eIsProxy()) {
 			InternalEObject oldReceiveMessage = (InternalEObject)receiveMessage;
 			receiveMessage = (Message)eResolveProxy(oldReceiveMessage);
 			if (receiveMessage != oldReceiveMessage) {
-				eVirtualSet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, receiveMessage);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, oldReceiveMessage, receiveMessage));
 			}
@@ -113,7 +171,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public Message basicGetReceiveMessage() {
-		return (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
+		return receiveMessage;
 	}
 
 	/**
@@ -122,9 +180,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public NotificationChain basicSetReceiveMessage(Message newReceiveMessage, NotificationChain msgs) {
-		Object oldReceiveMessage = eVirtualSet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, newReceiveMessage);
+		Message oldReceiveMessage = receiveMessage;
+		receiveMessage = newReceiveMessage;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, oldReceiveMessage == EVIRTUAL_NO_VALUE ? null : oldReceiveMessage, newReceiveMessage);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE, oldReceiveMessage, newReceiveMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -137,7 +196,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public void setReceiveMessage(Message newReceiveMessage) {
-		Message receiveMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
 		if (newReceiveMessage != receiveMessage) {
 			NotificationChain msgs = null;
 			if (receiveMessage != null)
@@ -159,12 +217,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public Message getSendMessage() {
-		Message sendMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
 		if (sendMessage != null && sendMessage.eIsProxy()) {
 			InternalEObject oldSendMessage = (InternalEObject)sendMessage;
 			sendMessage = (Message)eResolveProxy(oldSendMessage);
 			if (sendMessage != oldSendMessage) {
-				eVirtualSet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, sendMessage);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, oldSendMessage, sendMessage));
 			}
@@ -178,7 +234,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public Message basicGetSendMessage() {
-		return (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
+		return sendMessage;
 	}
 
 	/**
@@ -187,9 +243,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public NotificationChain basicSetSendMessage(Message newSendMessage, NotificationChain msgs) {
-		Object oldSendMessage = eVirtualSet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, newSendMessage);
+		Message oldSendMessage = sendMessage;
+		sendMessage = newSendMessage;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, oldSendMessage == EVIRTUAL_NO_VALUE ? null : oldSendMessage, newSendMessage);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE, oldSendMessage, newSendMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -202,7 +259,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public void setSendMessage(Message newSendMessage) {
-		Message sendMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
 		if (newSendMessage != sendMessage) {
 			NotificationChain msgs = null;
 			if (sendMessage != null)
@@ -224,11 +280,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public EList getStartExecs() {
-		EList startExec = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__START_EXEC);
-		if (startExec == null) {
-			eVirtualSet(UML2Package.EVENT_OCCURRENCE__START_EXEC, startExec = new EObjectWithInverseResolvingEList(ExecutionOccurrence.class, this, UML2Package.EVENT_OCCURRENCE__START_EXEC, UML2Package.EXECUTION_OCCURRENCE__START));
+		if (startExecs == null) {
+			startExecs = new EObjectWithInverseResolvingEList(ExecutionOccurrence.class, this, UML2Package.EVENT_OCCURRENCE__START_EXEC, UML2Package.EXECUTION_OCCURRENCE__START);
 		}
-		return startExec;
+		return startExecs;
 	}
 
 
@@ -238,11 +293,20 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
     public ExecutionOccurrence getStartExec(String name) {
-		for (Iterator i = getStartExecs().iterator(); i.hasNext(); ) {
+		return getStartExec(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionOccurrence getStartExec(String name, boolean ignoreCase) {
+		startExecLoop: for (Iterator i = getStartExecs().iterator(); i.hasNext(); ) {
 			ExecutionOccurrence startExec = (ExecutionOccurrence) i.next();
-			if (name.equals(startExec.getName())) {
-				return startExec;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(startExec.getName()) : name.equals(startExec.getName())))
+				continue startExecLoop;
+			return startExec;
 		}
 		return null;
 	}
@@ -253,11 +317,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public EList getFinishExecs() {
-		EList finishExec = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__FINISH_EXEC);
-		if (finishExec == null) {
-			eVirtualSet(UML2Package.EVENT_OCCURRENCE__FINISH_EXEC, finishExec = new EObjectWithInverseResolvingEList(ExecutionOccurrence.class, this, UML2Package.EVENT_OCCURRENCE__FINISH_EXEC, UML2Package.EXECUTION_OCCURRENCE__FINISH));
+		if (finishExecs == null) {
+			finishExecs = new EObjectWithInverseResolvingEList(ExecutionOccurrence.class, this, UML2Package.EVENT_OCCURRENCE__FINISH_EXEC, UML2Package.EXECUTION_OCCURRENCE__FINISH);
 		}
-		return finishExec;
+		return finishExecs;
 	}
 
 
@@ -267,11 +330,20 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
     public ExecutionOccurrence getFinishExec(String name) {
-		for (Iterator i = getFinishExecs().iterator(); i.hasNext(); ) {
+		return getFinishExec(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionOccurrence getFinishExec(String name, boolean ignoreCase) {
+		finishExecLoop: for (Iterator i = getFinishExecs().iterator(); i.hasNext(); ) {
 			ExecutionOccurrence finishExec = (ExecutionOccurrence) i.next();
-			if (name.equals(finishExec.getName())) {
-				return finishExec;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(finishExec.getName()) : name.equals(finishExec.getName())))
+				continue finishExecLoop;
+			return finishExec;
 		}
 		return null;
 	}
@@ -282,11 +354,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public EList getToAfters() {
-		EList toAfter = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__TO_AFTER);
-		if (toAfter == null) {
-			eVirtualSet(UML2Package.EVENT_OCCURRENCE__TO_AFTER, toAfter = new EObjectWithInverseResolvingEList(GeneralOrdering.class, this, UML2Package.EVENT_OCCURRENCE__TO_AFTER, UML2Package.GENERAL_ORDERING__BEFORE));
+		if (toAfters == null) {
+			toAfters = new EObjectWithInverseResolvingEList(GeneralOrdering.class, this, UML2Package.EVENT_OCCURRENCE__TO_AFTER, UML2Package.GENERAL_ORDERING__BEFORE);
 		}
-		return toAfter;
+		return toAfters;
 	}
 
 
@@ -296,11 +367,20 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
     public GeneralOrdering getToAfter(String name) {
-		for (Iterator i = getToAfters().iterator(); i.hasNext(); ) {
+		return getToAfter(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getToAfter(String name, boolean ignoreCase) {
+		toAfterLoop: for (Iterator i = getToAfters().iterator(); i.hasNext(); ) {
 			GeneralOrdering toAfter = (GeneralOrdering) i.next();
-			if (name.equals(toAfter.getName())) {
-				return toAfter;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(toAfter.getName()) : name.equals(toAfter.getName())))
+				continue toAfterLoop;
+			return toAfter;
 		}
 		return null;
 	}
@@ -311,11 +391,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public EList getToBefores() {
-		EList toBefore = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__TO_BEFORE);
-		if (toBefore == null) {
-			eVirtualSet(UML2Package.EVENT_OCCURRENCE__TO_BEFORE, toBefore = new EObjectWithInverseResolvingEList(GeneralOrdering.class, this, UML2Package.EVENT_OCCURRENCE__TO_BEFORE, UML2Package.GENERAL_ORDERING__AFTER));
+		if (toBefores == null) {
+			toBefores = new EObjectWithInverseResolvingEList(GeneralOrdering.class, this, UML2Package.EVENT_OCCURRENCE__TO_BEFORE, UML2Package.GENERAL_ORDERING__AFTER);
 		}
-		return toBefore;
+		return toBefores;
 	}
 
 
@@ -325,11 +404,20 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
     public GeneralOrdering getToBefore(String name) {
-		for (Iterator i = getToBefores().iterator(); i.hasNext(); ) {
+		return getToBefore(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getToBefore(String name, boolean ignoreCase) {
+		toBeforeLoop: for (Iterator i = getToBefores().iterator(); i.hasNext(); ) {
 			GeneralOrdering toBefore = (GeneralOrdering) i.next();
-			if (name.equals(toBefore.getName())) {
-				return toBefore;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(toBefore.getName()) : name.equals(toBefore.getName())))
+				continue toBeforeLoop;
+			return toBefore;
 		}
 		return null;
 	}
@@ -340,11 +428,10 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public EList getCovereds() {
-		EList covered = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__COVERED);
-		if (covered == null) {
-			eVirtualSet(UML2Package.EVENT_OCCURRENCE__COVERED, covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.EVENT_OCCURRENCE__COVERED, UML2Package.LIFELINE__COVERED_BY));
+		if (covereds == null) {
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.EVENT_OCCURRENCE__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
-		return covered;
+		return covereds;
 	}
 
 
@@ -354,8 +441,7 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		EList covered = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__COVERED);
-		return covered != null && !covered.isEmpty();
+		return covereds != null && !covereds.isEmpty();
 	}
 
 	/**
@@ -370,7 +456,6 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -381,18 +466,16 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction((Interaction)otherEnd, msgs);
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand((InteractionOperand)otherEnd, msgs);
 			case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
-				Message receiveMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE);
 				if (receiveMessage != null)
 					msgs = ((InternalEObject)receiveMessage).eInverseRemove(this, UML2Package.MESSAGE__RECEIVE_EVENT, Message.class, msgs);
 				return basicSetReceiveMessage((Message)otherEnd, msgs);
 			case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
-				Message sendMessage = (Message)eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE);
 				if (sendMessage != null)
 					msgs = ((InternalEObject)sendMessage).eInverseRemove(this, UML2Package.MESSAGE__SEND_EVENT, Message.class, msgs);
 				return basicSetSendMessage((Message)otherEnd, msgs);
@@ -432,9 +515,9 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 			case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
 				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
-				return eBasicSetContainer(null, UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
-				return eBasicSetContainer(null, UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
 				return basicSetReceiveMessage(null, msgs);
 			case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
@@ -457,11 +540,20 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	 * @generated
 	 */
     public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop: for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(covered.getName()) : name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}
@@ -670,57 +762,47 @@ public class EventOccurrenceImpl extends InteractionFragmentImpl implements Even
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EVENT_OCCURRENCE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.EVENT_OCCURRENCE__OWNER:
 				return isSetOwner();
 			case UML2Package.EVENT_OCCURRENCE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.EVENT_OCCURRENCE__NAME:
-				String name = (String)eVirtualGet(UML2Package.EVENT_OCCURRENCE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EVENT_OCCURRENCE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EVENT_OCCURRENCE__VISIBILITY:
-				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.EVENT_OCCURRENCE__COVERED:
 				return isSetCovereds();
 			case UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING:
-				EList generalOrdering = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.EVENT_OCCURRENCE__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE:
-				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__RECEIVE_MESSAGE) != null;
+				return receiveMessage != null;
 			case UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE:
-				return eVirtualGet(UML2Package.EVENT_OCCURRENCE__SEND_MESSAGE) != null;
+				return sendMessage != null;
 			case UML2Package.EVENT_OCCURRENCE__START_EXEC:
-				EList startExec = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__START_EXEC);
-				return startExec != null && !startExec.isEmpty();
+				return startExecs != null && !startExecs.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__FINISH_EXEC:
-				EList finishExec = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__FINISH_EXEC);
-				return finishExec != null && !finishExec.isEmpty();
+				return finishExecs != null && !finishExecs.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__TO_AFTER:
-				EList toAfter = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__TO_AFTER);
-				return toAfter != null && !toAfter.isEmpty();
+				return toAfters != null && !toAfters.isEmpty();
 			case UML2Package.EVENT_OCCURRENCE__TO_BEFORE:
-				EList toBefore = (EList)eVirtualGet(UML2Package.EVENT_OCCURRENCE__TO_BEFORE);
-				return toBefore != null && !toBefore.isEmpty();
+				return toBefores != null && !toBefores.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

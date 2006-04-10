@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.23 2005/12/06 23:18:03 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.24 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -43,6 +45,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -52,7 +55,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getCoveredBys <em>Covered By</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
@@ -70,6 +72,46 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getCoveredBys() <em>Covered By</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoveredBys()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList coveredBys = null;
+
+	/**
+	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepresents()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConnectableElement represents = null;
+
+	/**
+	 * The cached value of the '{@link #getSelector() <em>Selector</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelector()
+	 * @generated
+	 * @ordered
+	 */
+	protected OpaqueExpression selector = null;
+
+	/**
+	 * The cached value of the '{@link #getDecomposedAs() <em>Decomposed As</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDecomposedAs()
+	 * @generated
+	 * @ordered
+	 */
+	protected PartDecomposition decomposedAs = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,13 +137,17 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.LIFELINE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.LIFELINE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.LIFELINE__OWNED_ELEMENT, new int[] {UML2Package.LIFELINE__OWNED_COMMENT, UML2Package.LIFELINE__TEMPLATE_BINDING, UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE, UML2Package.LIFELINE__NAME_EXPRESSION, UML2Package.LIFELINE__SELECTOR}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.LIFELINE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.LIFELINE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,17 +159,27 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			|| eIsSet(UML2Package.LIFELINE__SELECTOR);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.LIFELINE__OWNED_COMMENT, UML2Package.LIFELINE__TEMPLATE_BINDING, UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE, UML2Package.LIFELINE__NAME_EXPRESSION, UML2Package.LIFELINE__SELECTOR};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getCoveredBys() {
-		EList coveredBy = (EList)eVirtualGet(UML2Package.LIFELINE__COVERED_BY);
-		if (coveredBy == null) {
-			eVirtualSet(UML2Package.LIFELINE__COVERED_BY, coveredBy = new EObjectWithInverseResolvingEList.ManyInverse(InteractionFragment.class, this, UML2Package.LIFELINE__COVERED_BY, UML2Package.INTERACTION_FRAGMENT__COVERED));
+		if (coveredBys == null) {
+			coveredBys = new EObjectWithInverseResolvingEList.ManyInverse(InteractionFragment.class, this, UML2Package.LIFELINE__COVERED_BY, UML2Package.INTERACTION_FRAGMENT__COVERED);
 		}
-		return coveredBy;
+		return coveredBys;
 	}
 
 
@@ -133,11 +189,22 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
     public InteractionFragment getCoveredBy(String name) {
-		for (Iterator i = getCoveredBys().iterator(); i.hasNext(); ) {
+		return getCoveredBy(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionFragment getCoveredBy(String name, boolean ignoreCase, EClass eClass) {
+		coveredByLoop: for (Iterator i = getCoveredBys().iterator(); i.hasNext(); ) {
 			InteractionFragment coveredBy = (InteractionFragment) i.next();
-			if (name.equals(coveredBy.getName())) {
-				return coveredBy;
-			}
+			if (eClass != null && !eClass.isInstance(coveredBy))
+				continue coveredByLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(coveredBy.getName()) : name.equals(coveredBy.getName())))
+				continue coveredByLoop;
+			return coveredBy;
 		}
 		return null;
 	}
@@ -148,12 +215,10 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public ConnectableElement getRepresents() {
-		ConnectableElement represents = (ConnectableElement)eVirtualGet(UML2Package.LIFELINE__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
 			InternalEObject oldRepresents = (InternalEObject)represents;
 			represents = (ConnectableElement)eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
-				eVirtualSet(UML2Package.LIFELINE__REPRESENTS, represents);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.LIFELINE__REPRESENTS, oldRepresents, represents));
 			}
@@ -167,7 +232,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public ConnectableElement basicGetRepresents() {
-		return (ConnectableElement)eVirtualGet(UML2Package.LIFELINE__REPRESENTS);
+		return represents;
 	}
 
 	/**
@@ -176,10 +241,11 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public void setRepresents(ConnectableElement newRepresents) {
-		ConnectableElement represents = newRepresents;
-		Object oldRepresents = eVirtualSet(UML2Package.LIFELINE__REPRESENTS, represents);
+		ConnectableElement oldRepresents = represents;
+		represents = newRepresents;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__REPRESENTS, oldRepresents == EVIRTUAL_NO_VALUE ? null : oldRepresents, represents));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__REPRESENTS, oldRepresents, represents));
+
 
 	}
 
@@ -199,6 +265,17 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInteraction(Interaction newInteraction, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newInteraction, UML2Package.LIFELINE__INTERACTION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer() || (eContainerFeatureID != UML2Package.LIFELINE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
@@ -208,7 +285,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInteraction != null)
 				msgs = ((InternalEObject)newInteraction).eInverseAdd(this, UML2Package.INTERACTION__LIFELINE, Interaction.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newInteraction, UML2Package.LIFELINE__INTERACTION, msgs);
+			msgs = basicSetInteraction(newInteraction, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -223,7 +300,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public OpaqueExpression getSelector() {
-		return (OpaqueExpression)eVirtualGet(UML2Package.LIFELINE__SELECTOR);
+		return selector;
 	}
 
 	/**
@@ -232,9 +309,10 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public NotificationChain basicSetSelector(OpaqueExpression newSelector, NotificationChain msgs) {
-		Object oldSelector = eVirtualSet(UML2Package.LIFELINE__SELECTOR, newSelector);
+		OpaqueExpression oldSelector = selector;
+		selector = newSelector;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__SELECTOR, oldSelector == EVIRTUAL_NO_VALUE ? null : oldSelector, newSelector);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__SELECTOR, oldSelector, newSelector);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -247,7 +325,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public void setSelector(OpaqueExpression newSelector) {
-		OpaqueExpression selector = (OpaqueExpression)eVirtualGet(UML2Package.LIFELINE__SELECTOR);
 		if (newSelector != selector) {
 			NotificationChain msgs = null;
 			if (selector != null)
@@ -297,12 +374,10 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public PartDecomposition getDecomposedAs() {
-		PartDecomposition decomposedAs = (PartDecomposition)eVirtualGet(UML2Package.LIFELINE__DECOMPOSED_AS);
 		if (decomposedAs != null && decomposedAs.eIsProxy()) {
 			InternalEObject oldDecomposedAs = (InternalEObject)decomposedAs;
 			decomposedAs = (PartDecomposition)eResolveProxy(oldDecomposedAs);
 			if (decomposedAs != oldDecomposedAs) {
-				eVirtualSet(UML2Package.LIFELINE__DECOMPOSED_AS, decomposedAs);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.LIFELINE__DECOMPOSED_AS, oldDecomposedAs, decomposedAs));
 			}
@@ -316,7 +391,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public PartDecomposition basicGetDecomposedAs() {
-		return (PartDecomposition)eVirtualGet(UML2Package.LIFELINE__DECOMPOSED_AS);
+		return decomposedAs;
 	}
 
 	/**
@@ -325,10 +400,11 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	 * @generated
 	 */
 	public void setDecomposedAs(PartDecomposition newDecomposedAs) {
-		PartDecomposition decomposedAs = newDecomposedAs;
-		Object oldDecomposedAs = eVirtualSet(UML2Package.LIFELINE__DECOMPOSED_AS, decomposedAs);
+		PartDecomposition oldDecomposedAs = decomposedAs;
+		decomposedAs = newDecomposedAs;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__DECOMPOSED_AS, oldDecomposedAs == EVIRTUAL_NO_VALUE ? null : oldDecomposedAs, decomposedAs));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.LIFELINE__DECOMPOSED_AS, oldDecomposedAs, decomposedAs));
+
 
 	}
 
@@ -345,7 +421,6 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			case UML2Package.LIFELINE__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -356,7 +431,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			case UML2Package.LIFELINE__INTERACTION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.LIFELINE__INTERACTION, msgs);
+				return basicSetInteraction((Interaction)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -383,7 +458,7 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 			case UML2Package.LIFELINE__COVERED_BY:
 				return ((InternalEList)getCoveredBys()).basicRemove(otherEnd, msgs);
 			case UML2Package.LIFELINE__INTERACTION:
-				return eBasicSetContainer(null, UML2Package.LIFELINE__INTERACTION, msgs);
+				return basicSetInteraction(null, msgs);
 			case UML2Package.LIFELINE__SELECTOR:
 				return basicSetSelector(null, msgs);
 		}
@@ -586,43 +661,37 @@ public class LifelineImpl extends NamedElementImpl implements Lifeline {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.LIFELINE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.LIFELINE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.LIFELINE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.LIFELINE__OWNER:
 				return isSetOwner();
 			case UML2Package.LIFELINE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.LIFELINE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.LIFELINE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.LIFELINE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.LIFELINE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.LIFELINE__NAME:
-				String name = (String)eVirtualGet(UML2Package.LIFELINE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.LIFELINE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.LIFELINE__VISIBILITY:
-				return eVirtualGet(UML2Package.LIFELINE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.LIFELINE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.LIFELINE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.LIFELINE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.LIFELINE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.LIFELINE__COVERED_BY:
-				EList coveredBy = (EList)eVirtualGet(UML2Package.LIFELINE__COVERED_BY);
-				return coveredBy != null && !coveredBy.isEmpty();
+				return coveredBys != null && !coveredBys.isEmpty();
 			case UML2Package.LIFELINE__REPRESENTS:
-				return eVirtualGet(UML2Package.LIFELINE__REPRESENTS) != null;
+				return represents != null;
 			case UML2Package.LIFELINE__INTERACTION:
 				return getInteraction() != null;
 			case UML2Package.LIFELINE__SELECTOR:
-				return eVirtualGet(UML2Package.LIFELINE__SELECTOR) != null;
+				return selector != null;
 			case UML2Package.LIFELINE__DECOMPOSED_AS:
-				return eVirtualGet(UML2Package.LIFELINE__DECOMPOSED_AS) != null;
+				return decomposedAs != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.40 2006/01/05 13:53:04 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.41 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -44,10 +46,10 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
-
-import org.eclipse.uml2.common.util.DerivedEObjectEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,12 +81,24 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getGroups()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits2 = 0;
+	protected EList groups = null;
+
+	/**
+	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList nodes = null;
 
 	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
@@ -97,6 +111,16 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	protected static final String BODY_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected String body = BODY_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,6 +129,36 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @ordered
 	 */
 	protected static final String LANGUAGE_EDEFAULT = ""; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String language = LANGUAGE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList edges = null;
+
+	/**
+	 * The cached value of the '{@link #getActions() <em>Action</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList actions = null;
 
 	/**
 	 * The default value of the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.
@@ -170,7 +224,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public String getBody() {
-		return (String)eVirtualGet(UML2Package.ACTIVITY__BODY, BODY_EDEFAULT);
+		return body;
 	}
 
 	/**
@@ -180,10 +234,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 */
 	public void setBody(String newBody) {
 		newBody = newBody == null ? BODY_EDEFAULT : newBody;
-		String body = newBody;
-		Object oldBody = eVirtualSet(UML2Package.ACTIVITY__BODY, body);
+		String oldBody = body;
+		body = newBody;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__BODY, oldBody == EVIRTUAL_NO_VALUE ? BODY_EDEFAULT : oldBody, body));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__BODY, oldBody, body));
+
 
 	}
 
@@ -194,7 +249,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public String getLanguage() {
-		return (String)eVirtualGet(UML2Package.ACTIVITY__LANGUAGE, LANGUAGE_EDEFAULT);
+		return language;
 	}
 
 	/**
@@ -204,10 +259,11 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 */
 	public void setLanguage(String newLanguage) {
 		newLanguage = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
-		String language = newLanguage;
-		Object oldLanguage = eVirtualSet(UML2Package.ACTIVITY__LANGUAGE, language);
+		String oldLanguage = language;
+		language = newLanguage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__LANGUAGE, oldLanguage == EVIRTUAL_NO_VALUE ? LANGUAGE_EDEFAULT : oldLanguage, language));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__LANGUAGE, oldLanguage, language));
+
 
 	}
 
@@ -232,6 +288,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_READ_ONLY, oldIsReadOnly, newIsReadOnly));
 
+
 	}
 
 
@@ -247,7 +304,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -260,14 +316,13 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__PACKAGE_IMPORT:
 				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 			case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ACTIVITY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ACTIVITY__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ACTIVITY__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
 			case UML2Package.ACTIVITY__SUBSTITUTION:
@@ -287,9 +342,8 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__CONTEXT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY__CONTEXT, msgs);
+				return basicSetContext((BehavioredClassifier)otherEnd, msgs);
 			case UML2Package.ACTIVITY__SPECIFICATION:
-				BehavioralFeature specification = (BehavioralFeature)eVirtualGet(UML2Package.ACTIVITY__SPECIFICATION);
 				if (specification != null)
 					msgs = ((InternalEObject)specification).eInverseRemove(this, UML2Package.BEHAVIORAL_FEATURE__METHOD, BehavioralFeature.class, msgs);
 				return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
@@ -331,7 +385,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.ACTIVITY__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.ACTIVITY__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.ACTIVITY__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.ACTIVITY__SUBSTITUTION:
@@ -365,7 +419,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__OWNED_RECEPTION:
 				return ((InternalEList)getOwnedReceptions()).basicRemove(otherEnd, msgs);
 			case UML2Package.ACTIVITY__CONTEXT:
-				return eBasicSetContainer(null, UML2Package.ACTIVITY__CONTEXT, msgs);
+				return basicSetContext(null, msgs);
 			case UML2Package.ACTIVITY__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 			case UML2Package.ACTIVITY__PARAMETER:
@@ -402,6 +456,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution, newIsSingleExecution));
 
+
 	}
 
 
@@ -411,11 +466,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public EList getEdges() {
-		EList edge = (EList)eVirtualGet(UML2Package.ACTIVITY__EDGE);
-		if (edge == null) {
-			eVirtualSet(UML2Package.ACTIVITY__EDGE, edge = new EObjectContainmentWithInverseEList(ActivityEdge.class, this, UML2Package.ACTIVITY__EDGE, UML2Package.ACTIVITY_EDGE__ACTIVITY));
+		if (edges == null) {
+			edges = new EObjectContainmentWithInverseEList(ActivityEdge.class, this, UML2Package.ACTIVITY__EDGE, UML2Package.ACTIVITY_EDGE__ACTIVITY);
 		}
-		return edge;
+		return edges;
 	}
 
 
@@ -425,11 +479,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
     public ActivityEdge getEdge(String name) {
-		for (Iterator i = getEdges().iterator(); i.hasNext(); ) {
+		return getEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass) {
+		edgeLoop: for (Iterator i = getEdges().iterator(); i.hasNext(); ) {
 			ActivityEdge edge = (ActivityEdge) i.next();
-			if (name.equals(edge.getName())) {
-				return edge;
-			}
+			if (eClass != null && !eClass.isInstance(edge))
+				continue edgeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(edge.getName()) : name.equals(edge.getName())))
+				continue edgeLoop;
+			return edge;
 		}
 		return null;
 	}
@@ -454,11 +519,10 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public EList getGroups() {
-		EList group = (EList)eVirtualGet(UML2Package.ACTIVITY__GROUP);
-		if (group == null) {
-			eVirtualSet(UML2Package.ACTIVITY__GROUP, group = new EObjectContainmentWithInverseEList(ActivityGroup.class, this, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY));
+		if (groups == null) {
+			groups = new EObjectContainmentWithInverseEList(ActivityGroup.class, this, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY);
 		}
-		return group;
+		return groups;
 	}
 
 
@@ -482,13 +546,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public EList getNodes() {
-		EList node = (EList)eVirtualGet(UML2Package.ACTIVITY__NODE);
-		if (node == null) {
-			eVirtualSet(UML2Package.ACTIVITY__NODE, node = new SubsetSupersetEObjectContainmentWithInverseEList(ActivityNode.class, this, UML2Package.ACTIVITY__NODE, null, new int[] {UML2Package.ACTIVITY__ACTION}, UML2Package.ACTIVITY_NODE__ACTIVITY));
+		if (nodes == null) {
+			nodes = new SubsetSupersetEObjectContainmentWithInverseEList(ActivityNode.class, this, UML2Package.ACTIVITY__NODE, null, NODE_ESUBSETS, UML2Package.ACTIVITY_NODE__ACTIVITY);
 		}
-		return node;
+		return nodes;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getNodes() <em>Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] NODE_ESUBSETS = new int[] {UML2Package.ACTIVITY__ACTION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -496,11 +569,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
     public ActivityNode getNode(String name) {
-		for (Iterator i = getNodes().iterator(); i.hasNext(); ) {
+		return getNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
+		nodeLoop: for (Iterator i = getNodes().iterator(); i.hasNext(); ) {
 			ActivityNode node = (ActivityNode) i.next();
-			if (name.equals(node.getName())) {
-				return node;
-			}
+			if (eClass != null && !eClass.isInstance(node))
+				continue nodeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(node.getName()) : name.equals(node.getName())))
+				continue nodeLoop;
+			return node;
 		}
 		return null;
 	}
@@ -525,13 +609,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
 	public EList getActions() {
-		EList action = (EList)eVirtualGet(UML2Package.ACTIVITY__ACTION);
-		if (action == null) {
-			eVirtualSet(UML2Package.ACTIVITY__ACTION, action = new SubsetSupersetEObjectEList(Action.class, this, UML2Package.ACTIVITY__ACTION, new int[] {UML2Package.ACTIVITY__NODE}, null));
+		if (actions == null) {
+			actions = new SubsetSupersetEObjectEList(Action.class, this, UML2Package.ACTIVITY__ACTION, ACTION_ESUPERSETS, null);
 		}
-		return action;
+		return actions;
 	}
 
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getActions() <em>Action</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ACTION_ESUPERSETS = new int[] {UML2Package.ACTIVITY__NODE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -539,11 +632,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
     public Action getAction(String name) {
-		for (Iterator i = getActions().iterator(); i.hasNext(); ) {
+		return getAction(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Action getAction(String name, boolean ignoreCase, EClass eClass) {
+		actionLoop: for (Iterator i = getActions().iterator(); i.hasNext(); ) {
 			Action action = (Action) i.next();
-			if (name.equals(action.getName())) {
-				return action;
-			}
+			if (eClass != null && !eClass.isInstance(action))
+				continue actionLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(action.getName()) : name.equals(action.getName())))
+				continue actionLoop;
+			return action;
 		}
 		return null;
 	}
@@ -554,12 +658,34 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated NOT
 	 */
 	public EList getStructuredNodes() {
-		EList structuredNode = (EList)eVirtualGet(UML2Package.ACTIVITY__STRUCTURED_NODE);
-		if (structuredNode == null) {
-			eVirtualSet(UML2Package.ACTIVITY__STRUCTURED_NODE, structuredNode = new DerivedEObjectEList(StructuredActivityNode.class, this, UML2Package.ACTIVITY__STRUCTURED_NODE, new int[] {UML2Package.ACTIVITY__NODE, UML2Package.ACTIVITY__GROUP}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList structuredNodes = (EList) cache.get(eResource, this,
+				UML2Package.Literals.ACTIVITY__STRUCTURED_NODE);
+			if (structuredNodes == null) {
+				cache.put(eResource, this,
+					UML2Package.Literals.ACTIVITY__STRUCTURED_NODE,
+					structuredNodes = new DerivedEObjectEList(
+						StructuredActivityNode.class, this,
+						UML2Package.ACTIVITY__STRUCTURED_NODE,
+						STRUCTURED_NODE_ESUPERSETS));
+			}
+			return structuredNodes;
 		}
-		return structuredNode;
+		return new DerivedEObjectEList(StructuredActivityNode.class, this,
+			UML2Package.ACTIVITY__STRUCTURED_NODE, STRUCTURED_NODE_ESUPERSETS);
 	}
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getStructuredNodes() <em>Structured Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStructuredNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[] {UML2Package.ACTIVITY__NODE, UML2Package.ACTIVITY__GROUP};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -567,11 +693,22 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 */
     public StructuredActivityNode getStructuredNode(String name) {
-		for (Iterator i = getStructuredNodes().iterator(); i.hasNext(); ) {
+		return getStructuredNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode getStructuredNode(String name, boolean ignoreCase, EClass eClass) {
+		structuredNodeLoop: for (Iterator i = getStructuredNodes().iterator(); i.hasNext(); ) {
 			StructuredActivityNode structuredNode = (StructuredActivityNode) i.next();
-			if (name.equals(structuredNode.getName())) {
-				return structuredNode;
-			}
+			if (eClass != null && !eClass.isInstance(structuredNode))
+				continue structuredNodeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(structuredNode.getName()) : name.equals(structuredNode.getName())))
+				continue structuredNodeLoop;
+			return structuredNode;
 		}
 		return null;
 	}
@@ -1105,47 +1242,39 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTIVITY__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ACTIVITY__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTIVITY__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ACTIVITY__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.ACTIVITY__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.ACTIVITY__NAME:
-				String name = (String)eVirtualGet(UML2Package.ACTIVITY__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTIVITY__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.ACTIVITY__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTIVITY__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.ACTIVITY__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.ACTIVITY__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.ACTIVITY__MEMBER:
 				return isSetMembers();
 			case UML2Package.ACTIVITY__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.ACTIVITY__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.ACTIVITY__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.ACTIVITY__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.ACTIVITY__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.ACTIVITY__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.ACTIVITY__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.ACTIVITY__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.ACTIVITY__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ACTIVITY__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -1165,40 +1294,31 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__GENERAL:
 				return isSetGenerals();
 			case UML2Package.ACTIVITY__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.ACTIVITY__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.ACTIVITY__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.ACTIVITY__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.ACTIVITY__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.ACTIVITY__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.ACTIVITY__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.ACTIVITY__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.ACTIVITY__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.ACTIVITY__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.ACTIVITY__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.ACTIVITY__REPRESENTATION:
-				return eVirtualGet(UML2Package.ACTIVITY__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.ACTIVITY__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.ACTIVITY__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_BEHAVIOR:
 				return isSetOwnedBehaviors();
 			case UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR:
-				return eVirtualGet(UML2Package.ACTIVITY__CLASSIFIER_BEHAVIOR) != null;
+				return classifierBehavior != null;
 			case UML2Package.ACTIVITY__IMPLEMENTATION:
-				EList implementation = (EList)eVirtualGet(UML2Package.ACTIVITY__IMPLEMENTATION);
-				return implementation != null && !implementation.isEmpty();
+				return implementations != null && !implementations.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_TRIGGER:
-				EList ownedTrigger = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_TRIGGER);
-				return ownedTrigger != null && !ownedTrigger.isEmpty();
+				return ownedTriggers != null && !ownedTriggers.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.ACTIVITY__OWNED_ATTRIBUTE:
@@ -1208,69 +1328,53 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			case UML2Package.ACTIVITY__ROLE:
 				return isSetRoles();
 			case UML2Package.ACTIVITY__OWNED_CONNECTOR:
-				EList ownedConnector = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_PORT:
-				EList ownedPort = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return ownedPorts != null && !ownedPorts.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_OPERATION:
-				EList ownedOperation = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UML2Package.ACTIVITY__SUPER_CLASS:
 				return isSetSuperClasses();
 			case UML2Package.ACTIVITY__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.ACTIVITY__NESTED_CLASSIFIER:
-				EList nestedClassifier = (EList)eVirtualGet(UML2Package.ACTIVITY__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null && !nestedClassifiers.isEmpty();
 			case UML2Package.ACTIVITY__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.ACTIVITY__OWNED_RECEPTION:
-				EList ownedReception = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UML2Package.ACTIVITY__IS_REENTRANT:
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UML2Package.ACTIVITY__CONTEXT:
 				return getContext() != null;
 			case UML2Package.ACTIVITY__REDEFINED_BEHAVIOR:
-				EList redefinedBehavior = (EList)eVirtualGet(UML2Package.ACTIVITY__REDEFINED_BEHAVIOR);
-				return redefinedBehavior != null && !redefinedBehavior.isEmpty();
+				return redefinedBehaviors != null && !redefinedBehaviors.isEmpty();
 			case UML2Package.ACTIVITY__SPECIFICATION:
-				return eVirtualGet(UML2Package.ACTIVITY__SPECIFICATION) != null;
+				return specification != null;
 			case UML2Package.ACTIVITY__PARAMETER:
-				EList parameter = (EList)eVirtualGet(UML2Package.ACTIVITY__PARAMETER);
-				return parameter != null && !parameter.isEmpty();
+				return parameters != null && !parameters.isEmpty();
 			case UML2Package.ACTIVITY__FORMAL_PARAMETER:
 				return !getFormalParameters().isEmpty();
 			case UML2Package.ACTIVITY__RETURN_RESULT:
 				return !getReturnResults().isEmpty();
 			case UML2Package.ACTIVITY__PRECONDITION:
-				EList precondition = (EList)eVirtualGet(UML2Package.ACTIVITY__PRECONDITION);
-				return precondition != null && !precondition.isEmpty();
+				return preconditions != null && !preconditions.isEmpty();
 			case UML2Package.ACTIVITY__POSTCONDITION:
-				EList postcondition = (EList)eVirtualGet(UML2Package.ACTIVITY__POSTCONDITION);
-				return postcondition != null && !postcondition.isEmpty();
+				return postconditions != null && !postconditions.isEmpty();
 			case UML2Package.ACTIVITY__OWNED_PARAMETER_SET:
-				EList ownedParameterSet = (EList)eVirtualGet(UML2Package.ACTIVITY__OWNED_PARAMETER_SET);
-				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
+				return ownedParameterSets != null && !ownedParameterSets.isEmpty();
 			case UML2Package.ACTIVITY__BODY:
-				String body = (String)eVirtualGet(UML2Package.ACTIVITY__BODY, BODY_EDEFAULT);
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 			case UML2Package.ACTIVITY__LANGUAGE:
-				String language = (String)eVirtualGet(UML2Package.ACTIVITY__LANGUAGE, LANGUAGE_EDEFAULT);
 				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 			case UML2Package.ACTIVITY__EDGE:
-				EList edge = (EList)eVirtualGet(UML2Package.ACTIVITY__EDGE);
-				return edge != null && !edge.isEmpty();
+				return edges != null && !edges.isEmpty();
 			case UML2Package.ACTIVITY__GROUP:
-				EList group = (EList)eVirtualGet(UML2Package.ACTIVITY__GROUP);
-				return group != null && !group.isEmpty();
+				return groups != null && !groups.isEmpty();
 			case UML2Package.ACTIVITY__NODE:
-				EList node = (EList)eVirtualGet(UML2Package.ACTIVITY__NODE);
-				return node != null && !node.isEmpty();
+				return nodes != null && !nodes.isEmpty();
 			case UML2Package.ACTIVITY__ACTION:
-				EList action = (EList)eVirtualGet(UML2Package.ACTIVITY__ACTION);
-				return action != null && !action.isEmpty();
+				return actions != null && !actions.isEmpty();
 			case UML2Package.ACTIVITY__STRUCTURED_NODE:
 				return !getStructuredNodes().isEmpty();
 			case UML2Package.ACTIVITY__IS_SINGLE_EXECUTION:
@@ -1286,53 +1390,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			case 2 :
-				return eVirtualIndexBits2;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			case 2 :
-				eVirtualIndexBits2 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.ACTIVITY__BODY, BODY_EDEFAULT));
+		result.append(body);
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.ACTIVITY__LANGUAGE, LANGUAGE_EDEFAULT));
+		result.append(language);
 		result.append(", isSingleExecution: "); //$NON-NLS-1$
 		result.append((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0);
 		result.append(", isReadOnly: "); //$NON-NLS-1$
@@ -1347,21 +1412,18 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		EList edge = getEdges();
-		if (!edge.isEmpty()) {
-			ownedElement.addAll(edge);
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		super.getOwnedElementsHelper(ownedElements);
+		if (eIsSet(UML2Package.ACTIVITY__EDGE)) {
+			ownedElements.addAll(getEdges());
 		}
-		EList group = getGroups();
-		if (!group.isEmpty()) {
-			ownedElement.addAll(group);
+		if (eIsSet(UML2Package.ACTIVITY__GROUP)) {
+			ownedElements.addAll(getGroups());
 		}
-		EList node = getNodes();
-		if (!node.isEmpty()) {
-			ownedElement.addAll(node);
+		if (eIsSet(UML2Package.ACTIVITY__NODE)) {
+			ownedElements.addAll(getNodes());
 		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -1376,5 +1438,15 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			|| eIsSet(UML2Package.ACTIVITY__NODE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ACTIVITY__OWNED_COMMENT, UML2Package.ACTIVITY__TEMPLATE_BINDING, UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTIVITY__NAME_EXPRESSION, UML2Package.ACTIVITY__ELEMENT_IMPORT, UML2Package.ACTIVITY__PACKAGE_IMPORT, UML2Package.ACTIVITY__GENERALIZATION, UML2Package.ACTIVITY__SUBSTITUTION, UML2Package.ACTIVITY__OCCURRENCE, UML2Package.ACTIVITY__IMPLEMENTATION, UML2Package.ACTIVITY__EDGE, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY__NODE};
 
 } //ActivityImpl

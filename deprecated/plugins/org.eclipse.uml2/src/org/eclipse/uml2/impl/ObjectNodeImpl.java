@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.24 2005/12/06 23:18:03 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.25 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -43,6 +45,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -53,7 +56,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ObjectNodeImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ObjectNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ObjectNodeImpl#getOrdering <em>Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ObjectNodeImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ObjectNodeImpl#getInStates <em>In State</em>}</li>
@@ -72,6 +74,16 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type = null;
+
+	/**
 	 * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,6 +92,46 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @ordered
 	 */
 	protected static final ObjectNodeOrderingKind ORDERING_EDEFAULT = ObjectNodeOrderingKind.FIFO_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrdering()
+	 * @generated
+	 * @ordered
+	 */
+	protected ObjectNodeOrderingKind ordering = ORDERING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperBound()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperBound = null;
+
+	/**
+	 * The cached value of the '{@link #getInStates() <em>In State</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList inStates = null;
+
+	/**
+	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior selection = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,12 +157,10 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = (Type)eVirtualGet(UML2Package.OBJECT_NODE__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
 			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UML2Package.OBJECT_NODE__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.OBJECT_NODE__TYPE, oldType, type));
 			}
@@ -124,7 +174,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type)eVirtualGet(UML2Package.OBJECT_NODE__TYPE);
+		return type;
 	}
 
 	/**
@@ -133,10 +183,11 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		Type type = newType;
-		Object oldType = eVirtualSet(UML2Package.OBJECT_NODE__TYPE, type);
+		Type oldType = type;
+		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__TYPE, oldType, type));
+
 
 	}
 
@@ -147,13 +198,17 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.OBJECT_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.OBJECT_NODE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.OBJECT_NODE__OWNED_ELEMENT, new int[] {UML2Package.OBJECT_NODE__OWNED_COMMENT, UML2Package.OBJECT_NODE__TEMPLATE_BINDING, UML2Package.OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE, UML2Package.OBJECT_NODE__NAME_EXPRESSION, UML2Package.OBJECT_NODE__UPPER_BOUND}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.OBJECT_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.OBJECT_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,13 +220,24 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 			|| eIsSet(UML2Package.OBJECT_NODE__UPPER_BOUND);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.OBJECT_NODE__OWNED_COMMENT, UML2Package.OBJECT_NODE__TEMPLATE_BINDING, UML2Package.OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE, UML2Package.OBJECT_NODE__NAME_EXPRESSION, UML2Package.OBJECT_NODE__UPPER_BOUND};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ObjectNodeOrderingKind getOrdering() {
-		return (ObjectNodeOrderingKind)eVirtualGet(UML2Package.OBJECT_NODE__ORDERING, ORDERING_EDEFAULT);
+		return ordering;
 	}
 
 	/**
@@ -180,10 +246,11 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
-		ObjectNodeOrderingKind ordering = newOrdering == null ? ORDERING_EDEFAULT : newOrdering;
-		Object oldOrdering = eVirtualSet(UML2Package.OBJECT_NODE__ORDERING, ordering);
+		ObjectNodeOrderingKind oldOrdering = ordering;
+		ordering = newOrdering == null ? ORDERING_EDEFAULT : newOrdering;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__ORDERING, oldOrdering == EVIRTUAL_NO_VALUE ? ORDERING_EDEFAULT : oldOrdering, ordering));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__ORDERING, oldOrdering, ordering));
+
 
 	}
 
@@ -194,7 +261,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public ValueSpecification getUpperBound() {
-		return (ValueSpecification)eVirtualGet(UML2Package.OBJECT_NODE__UPPER_BOUND);
+		return upperBound;
 	}
 
 	/**
@@ -203,9 +270,10 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public NotificationChain basicSetUpperBound(ValueSpecification newUpperBound, NotificationChain msgs) {
-		Object oldUpperBound = eVirtualSet(UML2Package.OBJECT_NODE__UPPER_BOUND, newUpperBound);
+		ValueSpecification oldUpperBound = upperBound;
+		upperBound = newUpperBound;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__UPPER_BOUND, oldUpperBound == EVIRTUAL_NO_VALUE ? null : oldUpperBound, newUpperBound);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__UPPER_BOUND, oldUpperBound, newUpperBound);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -218,7 +286,6 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public void setUpperBound(ValueSpecification newUpperBound) {
-		ValueSpecification upperBound = (ValueSpecification)eVirtualGet(UML2Package.OBJECT_NODE__UPPER_BOUND);
 		if (newUpperBound != upperBound) {
 			NotificationChain msgs = null;
 			if (upperBound != null)
@@ -254,11 +321,10 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public EList getInStates() {
-		EList inState = (EList)eVirtualGet(UML2Package.OBJECT_NODE__IN_STATE);
-		if (inState == null) {
-			eVirtualSet(UML2Package.OBJECT_NODE__IN_STATE, inState = new EObjectResolvingEList(State.class, this, UML2Package.OBJECT_NODE__IN_STATE));
+		if (inStates == null) {
+			inStates = new EObjectResolvingEList(State.class, this, UML2Package.OBJECT_NODE__IN_STATE);
 		}
-		return inState;
+		return inStates;
 	}
 
 
@@ -268,11 +334,22 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
     public State getInState(String name) {
-		for (Iterator i = getInStates().iterator(); i.hasNext(); ) {
+		return getInState(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State getInState(String name, boolean ignoreCase, EClass eClass) {
+		inStateLoop: for (Iterator i = getInStates().iterator(); i.hasNext(); ) {
 			State inState = (State) i.next();
-			if (name.equals(inState.getName())) {
-				return inState;
-			}
+			if (eClass != null && !eClass.isInstance(inState))
+				continue inStateLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(inState.getName()) : name.equals(inState.getName())))
+				continue inStateLoop;
+			return inState;
 		}
 		return null;
 	}
@@ -283,12 +360,10 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public Behavior getSelection() {
-		Behavior selection = (Behavior)eVirtualGet(UML2Package.OBJECT_NODE__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
 			InternalEObject oldSelection = (InternalEObject)selection;
 			selection = (Behavior)eResolveProxy(oldSelection);
 			if (selection != oldSelection) {
-				eVirtualSet(UML2Package.OBJECT_NODE__SELECTION, selection);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.OBJECT_NODE__SELECTION, oldSelection, selection));
 			}
@@ -302,7 +377,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public Behavior basicGetSelection() {
-		return (Behavior)eVirtualGet(UML2Package.OBJECT_NODE__SELECTION);
+		return selection;
 	}
 
 	/**
@@ -311,10 +386,11 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	 * @generated
 	 */
 	public void setSelection(Behavior newSelection) {
-		Behavior selection = newSelection;
-		Object oldSelection = eVirtualSet(UML2Package.OBJECT_NODE__SELECTION, selection);
+		Behavior oldSelection = selection;
+		selection = newSelection;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__SELECTION, oldSelection == EVIRTUAL_NO_VALUE ? null : oldSelection, selection));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OBJECT_NODE__SELECTION, oldSelection, selection));
+
 
 	}
 
@@ -343,9 +419,9 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 			case UML2Package.OBJECT_NODE__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.OBJECT_NODE__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.OBJECT_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.OBJECT_NODE__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.OBJECT_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.OBJECT_NODE__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.OBJECT_NODE__IN_INTERRUPTIBLE_REGION:
@@ -588,42 +664,35 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.OBJECT_NODE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.OBJECT_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.OBJECT_NODE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.OBJECT_NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.OBJECT_NODE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.OBJECT_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.OBJECT_NODE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.OBJECT_NODE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.OBJECT_NODE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.OBJECT_NODE__NAME:
-				String name = (String)eVirtualGet(UML2Package.OBJECT_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OBJECT_NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OBJECT_NODE__VISIBILITY:
-				return eVirtualGet(UML2Package.OBJECT_NODE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.OBJECT_NODE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.OBJECT_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.OBJECT_NODE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.OBJECT_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.OBJECT_NODE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.OBJECT_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.OBJECT_NODE__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.OBJECT_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.OBJECT_NODE__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.OBJECT_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.OBJECT_NODE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.OBJECT_NODE__ACTIVITY:
@@ -633,22 +702,19 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 			case UML2Package.OBJECT_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.OBJECT_NODE__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.OBJECT_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.OBJECT_NODE__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.OBJECT_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.OBJECT_NODE__TYPE:
-				return eVirtualGet(UML2Package.OBJECT_NODE__TYPE) != null;
+				return type != null;
 			case UML2Package.OBJECT_NODE__ORDERING:
-				return eVirtualGet(UML2Package.OBJECT_NODE__ORDERING, ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UML2Package.OBJECT_NODE__UPPER_BOUND:
-				return eVirtualGet(UML2Package.OBJECT_NODE__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UML2Package.OBJECT_NODE__IN_STATE:
-				EList inState = (EList)eVirtualGet(UML2Package.OBJECT_NODE__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UML2Package.OBJECT_NODE__SELECTION:
-				return eVirtualGet(UML2Package.OBJECT_NODE__SELECTION) != null;
+				return selection != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -693,7 +759,7 @@ public abstract class ObjectNodeImpl extends ActivityNodeImpl implements ObjectN
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ordering: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.OBJECT_NODE__ORDERING, ORDERING_EDEFAULT));
+		result.append(ordering);
 		result.append(')');
 		return result.toString();
 	}

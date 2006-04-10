@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.23 2005/12/06 23:18:04 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.24 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Abstraction;
@@ -36,6 +38,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -45,7 +48,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.AbstractionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AbstractionImpl#getMapping <em>Mapping</em>}</li>
  * </ul>
  * </p>
@@ -60,6 +62,16 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getMapping() <em>Mapping</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapping()
+	 * @generated
+	 * @ordered
+	 */
+	protected OpaqueExpression mapping = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,13 +97,17 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.ABSTRACTION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.ABSTRACTION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ABSTRACTION__OWNED_ELEMENT, new int[] {UML2Package.ABSTRACTION__OWNED_COMMENT, UML2Package.ABSTRACTION__TEMPLATE_BINDING, UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE, UML2Package.ABSTRACTION__NAME_EXPRESSION, UML2Package.ABSTRACTION__MAPPING}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ABSTRACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ABSTRACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,13 +119,24 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			|| eIsSet(UML2Package.ABSTRACTION__MAPPING);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ABSTRACTION__OWNED_COMMENT, UML2Package.ABSTRACTION__TEMPLATE_BINDING, UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE, UML2Package.ABSTRACTION__NAME_EXPRESSION, UML2Package.ABSTRACTION__MAPPING};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OpaqueExpression getMapping() {
-		return (OpaqueExpression)eVirtualGet(UML2Package.ABSTRACTION__MAPPING);
+		return mapping;
 	}
 
 	/**
@@ -118,9 +145,10 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * @generated
 	 */
 	public NotificationChain basicSetMapping(OpaqueExpression newMapping, NotificationChain msgs) {
-		Object oldMapping = eVirtualSet(UML2Package.ABSTRACTION__MAPPING, newMapping);
+		OpaqueExpression oldMapping = mapping;
+		mapping = newMapping;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ABSTRACTION__MAPPING, oldMapping == EVIRTUAL_NO_VALUE ? null : oldMapping, newMapping);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ABSTRACTION__MAPPING, oldMapping, newMapping);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -133,7 +161,6 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	 * @generated
 	 */
 	public void setMapping(OpaqueExpression newMapping) {
-		OpaqueExpression mapping = (OpaqueExpression)eVirtualGet(UML2Package.ABSTRACTION__MAPPING);
 		if (newMapping != mapping) {
 			NotificationChain msgs = null;
 			if (mapping != null)
@@ -199,7 +226,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.ABSTRACTION__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.ABSTRACTION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.ABSTRACTION__CLIENT:
 				return ((InternalEList)getClients()).basicRemove(otherEnd, msgs);
 			case UML2Package.ABSTRACTION__MAPPING:
@@ -381,34 +408,29 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ABSTRACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ABSTRACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ABSTRACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ABSTRACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.ABSTRACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ABSTRACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ABSTRACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.ABSTRACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.ABSTRACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.ABSTRACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.ABSTRACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ABSTRACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ABSTRACTION__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.ABSTRACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.ABSTRACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.ABSTRACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.ABSTRACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.ABSTRACTION__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.ABSTRACTION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.ABSTRACTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ABSTRACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -420,13 +442,11 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 			case UML2Package.ABSTRACTION__TARGET:
 				return isSetTargets();
 			case UML2Package.ABSTRACTION__CLIENT:
-				EList client = (EList)eVirtualGet(UML2Package.ABSTRACTION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UML2Package.ABSTRACTION__SUPPLIER:
-				EList supplier = (EList)eVirtualGet(UML2Package.ABSTRACTION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UML2Package.ABSTRACTION__MAPPING:
-				return eVirtualGet(UML2Package.ABSTRACTION__MAPPING) != null;
+				return mapping != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

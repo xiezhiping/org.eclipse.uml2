@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.16 2005/11/29 20:09:38 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.17 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -16,6 +16,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +40,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface RedefinableElement extends NamedElement{
+public interface RedefinableElement extends NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -98,15 +100,28 @@ public interface RedefinableElement extends NamedElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefinition Context</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefinition Context</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinitionContexts()
 	 * @generated
 	 */
     Classifier getRedefinitionContext(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinitionContexts()
+	 * @generated
+	 */
+	Classifier getRedefinitionContext(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,15 +170,28 @@ public interface RedefinableElement extends NamedElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
 	 */
     RedefinableElement getRedefinedElement(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.RedefinableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
+	 * @generated
+	 */
+	RedefinableElement getRedefinedElement(String name, boolean ignoreCase, EClass eClass);
 
 
 	/**

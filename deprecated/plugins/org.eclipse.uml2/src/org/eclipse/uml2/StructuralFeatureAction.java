@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureAction.java,v 1.9 2005/11/29 20:09:39 khussey Exp $
+ * $Id: StructuralFeatureAction.java,v 1.10 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model abstract="true"
  * @generated
  */
-public interface StructuralFeatureAction extends Action{
+public interface StructuralFeatureAction extends Action {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,6 +103,7 @@ public interface StructuralFeatureAction extends Action{
 	void setObject(InputPin value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.InputPin} and sets the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -110,7 +111,7 @@ public interface StructuralFeatureAction extends Action{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getObject()
-	 * @generated
+	 * @generated NOT
 	 */
     InputPin createObject(EClass eClass);
 
@@ -120,7 +121,7 @@ public interface StructuralFeatureAction extends Action{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getObject()
-	 * @generated
+	 * @generated NOT
 	 */
     InputPin createObject();
 

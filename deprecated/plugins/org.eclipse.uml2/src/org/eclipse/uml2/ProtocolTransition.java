@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.12 2006/04/10 20:40:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface ProtocolTransition extends Transition{
+public interface ProtocolTransition extends Transition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,7 +83,7 @@ public interface ProtocolTransition extends Transition{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getPostCondition()
-	 * @generated
+	 * @generated NOT
 	 */
     Constraint createPostCondition(EClass eClass);
 
@@ -93,7 +93,7 @@ public interface ProtocolTransition extends Transition{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getPostCondition()
-	 * @generated
+	 * @generated NOT
 	 */
     Constraint createPostCondition();
 
@@ -115,15 +115,27 @@ public interface ProtocolTransition extends Transition{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Referred</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Referred</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReferreds()
 	 * @generated
 	 */
     Operation getReferred(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Referred</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getReferreds()
+	 * @generated
+	 */
+	Operation getReferred(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.

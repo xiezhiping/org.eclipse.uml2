@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTriggerImpl.java,v 1.22 2005/12/06 23:18:02 khussey Exp $
+ * $Id: TimeTriggerImpl.java,v 1.23 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Element;
@@ -35,6 +37,7 @@ import org.eclipse.uml2.ValueSpecification;
 
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -44,7 +47,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.TimeTriggerImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TimeTriggerImpl#isRelative <em>Is Relative</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TimeTriggerImpl#getWhen <em>When</em>}</li>
  * </ul>
@@ -81,6 +83,16 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	protected static final int IS_RELATIVE_EFLAG = 1 << 8;
 
 	/**
+	 * The cached value of the '{@link #getWhen() <em>When</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWhen()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification when = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -104,13 +116,17 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.TIME_TRIGGER__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TIME_TRIGGER__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TIME_TRIGGER__OWNED_ELEMENT, new int[] {UML2Package.TIME_TRIGGER__OWNED_COMMENT, UML2Package.TIME_TRIGGER__TEMPLATE_BINDING, UML2Package.TIME_TRIGGER__OWNED_TEMPLATE_SIGNATURE, UML2Package.TIME_TRIGGER__NAME_EXPRESSION, UML2Package.TIME_TRIGGER__WHEN}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TIME_TRIGGER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TIME_TRIGGER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,6 +137,17 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.TIME_TRIGGER__WHEN);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TIME_TRIGGER__OWNED_COMMENT, UML2Package.TIME_TRIGGER__TEMPLATE_BINDING, UML2Package.TIME_TRIGGER__OWNED_TEMPLATE_SIGNATURE, UML2Package.TIME_TRIGGER__NAME_EXPRESSION, UML2Package.TIME_TRIGGER__WHEN};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,6 +169,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__IS_RELATIVE, oldIsRelative, newIsRelative));
 
+
 	}
 
 
@@ -151,7 +179,7 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	public ValueSpecification getWhen() {
-		return (ValueSpecification)eVirtualGet(UML2Package.TIME_TRIGGER__WHEN);
+		return when;
 	}
 
 	/**
@@ -160,9 +188,10 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	public NotificationChain basicSetWhen(ValueSpecification newWhen, NotificationChain msgs) {
-		Object oldWhen = eVirtualSet(UML2Package.TIME_TRIGGER__WHEN, newWhen);
+		ValueSpecification oldWhen = when;
+		when = newWhen;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__WHEN, oldWhen == EVIRTUAL_NO_VALUE ? null : oldWhen, newWhen);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TIME_TRIGGER__WHEN, oldWhen, newWhen);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -175,7 +204,6 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	 * @generated
 	 */
 	public void setWhen(ValueSpecification newWhen) {
-		ValueSpecification when = (ValueSpecification)eVirtualGet(UML2Package.TIME_TRIGGER__WHEN);
 		if (newWhen != when) {
 			NotificationChain msgs = null;
 			if (when != null)
@@ -371,39 +399,33 @@ public class TimeTriggerImpl extends TriggerImpl implements TimeTrigger {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TIME_TRIGGER__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.TIME_TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TIME_TRIGGER__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.TIME_TRIGGER__OWNER:
 				return isSetOwner();
 			case UML2Package.TIME_TRIGGER__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.TIME_TRIGGER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.TIME_TRIGGER__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.TIME_TRIGGER__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.TIME_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.TIME_TRIGGER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.TIME_TRIGGER__NAME:
-				String name = (String)eVirtualGet(UML2Package.TIME_TRIGGER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TIME_TRIGGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TIME_TRIGGER__VISIBILITY:
-				return eVirtualGet(UML2Package.TIME_TRIGGER__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.TIME_TRIGGER__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.TIME_TRIGGER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.TIME_TRIGGER__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.TIME_TRIGGER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.TIME_TRIGGER__PORT:
-				EList port = (EList)eVirtualGet(UML2Package.TIME_TRIGGER__PORT);
-				return port != null && !port.isEmpty();
+				return ports != null && !ports.isEmpty();
 			case UML2Package.TIME_TRIGGER__IS_RELATIVE:
 				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
 			case UML2Package.TIME_TRIGGER__WHEN:
-				return eVirtualGet(UML2Package.TIME_TRIGGER__WHEN) != null;
+				return when != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.25 2006/01/30 22:52:51 khussey Exp $
+ * $Id: Class.java,v 1.26 2006/04/10 20:40:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -104,15 +104,27 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
     Operation getOwnedOperation(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedOperations()
+	 * @generated
+	 */
+	Operation getOwnedOperation(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -132,7 +144,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
-	 * @generated
+	 * @generated NOT
 	 */
     Operation createOwnedOperation();
 
@@ -157,15 +169,28 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Class} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Class} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSuperClasses()
 	 * @generated
 	 */
     Class getSuperClass(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Class} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Class} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Class} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSuperClasses()
+	 * @generated
+	 */
+	Class getSuperClass(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Extension</b></em>' reference list.
@@ -187,15 +212,27 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extension} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extension} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getExtensions()
 	 * @generated
 	 */
     Extension getExtension(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Extension} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Extension} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getExtensions()
+	 * @generated
+	 */
+	Extension getExtension(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
@@ -218,15 +255,28 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedClassifiers()
 	 * @generated
 	 */
     Classifier getNestedClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Classifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNestedClassifiers()
+	 * @generated
+	 */
+	Classifier getNestedClassifier(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Classifier} and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
@@ -235,7 +285,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to create.
 	 * @return The new {@link org.eclipse.uml2.Classifier}.
 	 * @see #getNestedClassifiers()
-	 * @generated
+	 * @generated NOT
 	 */
     Classifier createNestedClassifier(EClass eClass);
 
@@ -260,15 +310,27 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Reception} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Reception} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedReceptions()
 	 * @generated
 	 */
     Reception getOwnedReception(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Reception} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Reception} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedReceptions()
+	 * @generated
+	 */
+	Reception getOwnedReception(String name, boolean ignoreCase);
 
 
     /**
@@ -289,7 +351,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Reception}.
 	 * @see #getOwnedReceptions()
-	 * @generated
+	 * @generated NOT
 	 */
     Reception createOwnedReception();
 

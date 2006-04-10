@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.14 2005/12/06 23:18:03 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.15 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,16 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getPorts() <em>Port</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ports = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,11 +82,10 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * @generated
 	 */
 	public EList getPorts() {
-		EList port = (EList)eVirtualGet(UML2Package.TRIGGER__PORT);
-		if (port == null) {
-			eVirtualSet(UML2Package.TRIGGER__PORT, port = new EObjectResolvingEList(Port.class, this, UML2Package.TRIGGER__PORT));
+		if (ports == null) {
+			ports = new EObjectResolvingEList(Port.class, this, UML2Package.TRIGGER__PORT);
 		}
-		return port;
+		return ports;
 	}
 
 
@@ -86,11 +95,20 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	 * @generated
 	 */
     public Port getPort(String name) {
-		for (Iterator i = getPorts().iterator(); i.hasNext(); ) {
+		return getPort(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port getPort(String name, boolean ignoreCase) {
+		portLoop: for (Iterator i = getPorts().iterator(); i.hasNext(); ) {
 			Port port = (Port) i.next();
-			if (name.equals(port.getName())) {
-				return port;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(port.getName()) : name.equals(port.getName())))
+				continue portLoop;
+			return port;
 		}
 		return null;
 	}
@@ -220,35 +238,29 @@ public abstract class TriggerImpl extends NamedElementImpl implements Trigger {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TRIGGER__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TRIGGER__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.TRIGGER__OWNER:
 				return isSetOwner();
 			case UML2Package.TRIGGER__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.TRIGGER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.TRIGGER__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.TRIGGER__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.TRIGGER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.TRIGGER__NAME:
-				String name = (String)eVirtualGet(UML2Package.TRIGGER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.TRIGGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.TRIGGER__VISIBILITY:
-				return eVirtualGet(UML2Package.TRIGGER__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.TRIGGER__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.TRIGGER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.TRIGGER__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.TRIGGER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.TRIGGER__PORT:
-				EList port = (EList)eVirtualGet(UML2Package.TRIGGER__PORT);
-				return port != null && !port.isEmpty();
+				return ports != null && !ports.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

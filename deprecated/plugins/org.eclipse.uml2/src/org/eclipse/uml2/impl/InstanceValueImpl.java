@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.16 2005/12/06 23:18:04 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.17 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -53,6 +51,16 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getInstance() <em>Instance</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstance()
+	 * @generated
+	 * @ordered
+	 */
+	protected InstanceSpecification instance = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -76,12 +84,10 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	 * @generated
 	 */
 	public InstanceSpecification getInstance() {
-		InstanceSpecification instance = (InstanceSpecification)eVirtualGet(UML2Package.INSTANCE_VALUE__INSTANCE);
 		if (instance != null && instance.eIsProxy()) {
 			InternalEObject oldInstance = (InternalEObject)instance;
 			instance = (InstanceSpecification)eResolveProxy(oldInstance);
 			if (instance != oldInstance) {
-				eVirtualSet(UML2Package.INSTANCE_VALUE__INSTANCE, instance);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.INSTANCE_VALUE__INSTANCE, oldInstance, instance));
 			}
@@ -95,7 +101,7 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	 * @generated
 	 */
 	public InstanceSpecification basicGetInstance() {
-		return (InstanceSpecification)eVirtualGet(UML2Package.INSTANCE_VALUE__INSTANCE);
+		return instance;
 	}
 
 	/**
@@ -104,10 +110,11 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	 * @generated
 	 */
 	public void setInstance(InstanceSpecification newInstance) {
-		InstanceSpecification instance = newInstance;
-		Object oldInstance = eVirtualSet(UML2Package.INSTANCE_VALUE__INSTANCE, instance);
+		InstanceSpecification oldInstance = instance;
+		instance = newInstance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INSTANCE_VALUE__INSTANCE, oldInstance == EVIRTUAL_NO_VALUE ? null : oldInstance, instance));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INSTANCE_VALUE__INSTANCE, oldInstance, instance));
+
 
 	}
 
@@ -263,40 +270,35 @@ public class InstanceValueImpl extends ValueSpecificationImpl implements Instanc
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INSTANCE_VALUE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INSTANCE_VALUE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INSTANCE_VALUE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INSTANCE_VALUE__OWNER:
 				return isSetOwner();
 			case UML2Package.INSTANCE_VALUE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INSTANCE_VALUE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INSTANCE_VALUE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INSTANCE_VALUE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INSTANCE_VALUE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INSTANCE_VALUE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INSTANCE_VALUE__NAME:
-				String name = (String)eVirtualGet(UML2Package.INSTANCE_VALUE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INSTANCE_VALUE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INSTANCE_VALUE__VISIBILITY:
-				return eVirtualGet(UML2Package.INSTANCE_VALUE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.INSTANCE_VALUE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INSTANCE_VALUE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INSTANCE_VALUE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INSTANCE_VALUE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INSTANCE_VALUE__TYPE:
-				return eVirtualGet(UML2Package.INSTANCE_VALUE__TYPE) != null;
+				return type != null;
 			case UML2Package.INSTANCE_VALUE__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.INSTANCE_VALUE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.INSTANCE_VALUE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INSTANCE_VALUE__INSTANCE:
-				return eVirtualGet(UML2Package.INSTANCE_VALUE__INSTANCE) != null;
+				return instance != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

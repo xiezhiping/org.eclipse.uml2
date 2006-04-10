@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.12 2005/11/29 20:09:39 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.13 2006/04/10 20:40:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface StructuredActivityNode extends Action, Namespace, ActivityGroup{
+public interface StructuredActivityNode extends Action, Namespace, ActivityGroup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,15 +91,27 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>' from the '<em><b>Variable</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>' from the '<em><b>Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Variable} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Variable} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getVariables()
 	 * @generated
 	 */
     Variable getVariable(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>' from the '<em><b>Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Variable} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Variable} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getVariables()
+	 * @generated
+	 */
+	Variable getVariable(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Variable} and appends it to the '<em><b>Variable</b></em>' containment reference list.
@@ -119,7 +131,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Variable}.
 	 * @see #getVariables()
-	 * @generated
+	 * @generated NOT
 	 */
     Variable createVariable();
 
@@ -143,15 +155,28 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedNodes()
 	 * @generated
 	 */
     ActivityNode getContainedNode(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getContainedNodes()
+	 * @generated
+	 */
+	ActivityNode getContainedNode(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.ActivityNode} and appends it to the '<em><b>Contained Node</b></em>' containment reference list.
@@ -160,7 +185,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityNode}.
 	 * @see #getContainedNodes()
-	 * @generated
+	 * @generated NOT
 	 */
     ActivityNode createContainedNode(EClass eClass);
 
@@ -184,15 +209,28 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getContainedEdges()
 	 * @generated
 	 */
     ActivityEdge getContainedEdge(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityEdge} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getContainedEdges()
+	 * @generated
+	 */
+	ActivityEdge getContainedEdge(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.ActivityEdge} and appends it to the '<em><b>Contained Edge</b></em>' containment reference list.
@@ -201,7 +239,7 @@ public interface StructuredActivityNode extends Action, Namespace, ActivityGroup
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityEdge} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityEdge}.
 	 * @see #getContainedEdges()
-	 * @generated
+	 * @generated NOT
 	 */
     ActivityEdge createContainedEdge(EClass eClass);
 

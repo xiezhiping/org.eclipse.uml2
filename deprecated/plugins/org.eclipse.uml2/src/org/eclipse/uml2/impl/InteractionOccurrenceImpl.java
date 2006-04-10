@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.21 2005/12/06 23:18:03 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.22 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -39,6 +41,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -48,7 +51,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getRefersTo <em>Refers To</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getActualGates <em>Actual Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getArguments <em>Argument</em>}</li>
@@ -64,6 +66,36 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRefersTo() <em>Refers To</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRefersTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected Interaction refersTo = null;
+
+	/**
+	 * The cached value of the '{@link #getActualGates() <em>Actual Gate</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActualGates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList actualGates = null;
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList arguments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,13 +121,17 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT, new int[] {UML2Package.INTERACTION_OCCURRENCE__OWNED_COMMENT, UML2Package.INTERACTION_OCCURRENCE__TEMPLATE_BINDING, UML2Package.INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION_OCCURRENCE__NAME_EXPRESSION, UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,18 +143,27 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 			|| eIsSet(UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.INTERACTION_OCCURRENCE__OWNED_COMMENT, UML2Package.INTERACTION_OCCURRENCE__TEMPLATE_BINDING, UML2Package.INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION_OCCURRENCE__NAME_EXPRESSION, UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Interaction getRefersTo() {
-		Interaction refersTo = (Interaction)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO);
 		if (refersTo != null && refersTo.eIsProxy()) {
 			InternalEObject oldRefersTo = (InternalEObject)refersTo;
 			refersTo = (Interaction)eResolveProxy(oldRefersTo);
 			if (refersTo != oldRefersTo) {
-				eVirtualSet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, refersTo);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, oldRefersTo, refersTo));
 			}
@@ -132,7 +177,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	public Interaction basicGetRefersTo() {
-		return (Interaction)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO);
+		return refersTo;
 	}
 
 	/**
@@ -141,10 +186,11 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	public void setRefersTo(Interaction newRefersTo) {
-		Interaction refersTo = newRefersTo;
-		Object oldRefersTo = eVirtualSet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, refersTo);
+		Interaction oldRefersTo = refersTo;
+		refersTo = newRefersTo;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, oldRefersTo == EVIRTUAL_NO_VALUE ? null : oldRefersTo, refersTo));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_OCCURRENCE__REFERS_TO, oldRefersTo, refersTo));
+
 
 	}
 
@@ -155,11 +201,10 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	public EList getActualGates() {
-		EList actualGate = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE);
-		if (actualGate == null) {
-			eVirtualSet(UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE, actualGate = new EObjectContainmentEList(Gate.class, this, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE));
+		if (actualGates == null) {
+			actualGates = new EObjectContainmentEList(Gate.class, this, UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE);
 		}
-		return actualGate;
+		return actualGates;
 	}
 
 
@@ -169,11 +214,20 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
     public Gate getActualGate(String name) {
-		for (Iterator i = getActualGates().iterator(); i.hasNext(); ) {
+		return getActualGate(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate getActualGate(String name, boolean ignoreCase) {
+		actualGateLoop: for (Iterator i = getActualGates().iterator(); i.hasNext(); ) {
 			Gate actualGate = (Gate) i.next();
-			if (name.equals(actualGate.getName())) {
-				return actualGate;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(actualGate.getName()) : name.equals(actualGate.getName())))
+				continue actualGateLoop;
+			return actualGate;
 		}
 		return null;
 	}
@@ -213,11 +267,10 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
 	public EList getArguments() {
-		EList argument = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__ARGUMENT);
-		if (argument == null) {
-			eVirtualSet(UML2Package.INTERACTION_OCCURRENCE__ARGUMENT, argument = new EObjectContainmentEList(InputPin.class, this, UML2Package.INTERACTION_OCCURRENCE__ARGUMENT));
+		if (arguments == null) {
+			arguments = new EObjectContainmentEList(InputPin.class, this, UML2Package.INTERACTION_OCCURRENCE__ARGUMENT);
 		}
-		return argument;
+		return arguments;
 	}
 
 
@@ -227,11 +280,22 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	 * @generated
 	 */
     public InputPin getArgument(String name) {
-		for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
+		return getArgument(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getArgument(String name, boolean ignoreCase, EClass eClass) {
+		argumentLoop: for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
 			InputPin argument = (InputPin) i.next();
-			if (name.equals(argument.getName())) {
-				return argument;
-			}
+			if (eClass != null && !eClass.isInstance(argument))
+				continue argumentLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(argument.getName()) : name.equals(argument.getName())))
+				continue argumentLoop;
+			return argument;
 		}
 		return null;
 	}
@@ -260,9 +324,9 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 			case UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING:
 				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION:
-				return eBasicSetContainer(null, UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND:
-				return eBasicSetContainer(null, UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE:
 				return ((InternalEList)getActualGates()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERACTION_OCCURRENCE__ARGUMENT:
@@ -476,50 +540,41 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERACTION_OCCURRENCE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INTERACTION_OCCURRENCE__OWNER:
 				return isSetOwner();
 			case UML2Package.INTERACTION_OCCURRENCE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INTERACTION_OCCURRENCE__NAME:
-				String name = (String)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERACTION_OCCURRENCE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION_OCCURRENCE__VISIBILITY:
-				return eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INTERACTION_OCCURRENCE__COVERED:
-				EList covered = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING:
-				EList generalOrdering = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.INTERACTION_OCCURRENCE__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.INTERACTION_OCCURRENCE__REFERS_TO:
-				return eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__REFERS_TO) != null;
+				return refersTo != null;
 			case UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE:
-				EList actualGate = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE);
-				return actualGate != null && !actualGate.isEmpty();
+				return actualGates != null && !actualGates.isEmpty();
 			case UML2Package.INTERACTION_OCCURRENCE__ARGUMENT:
-				EList argument = (EList)eVirtualGet(UML2Package.INTERACTION_OCCURRENCE__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

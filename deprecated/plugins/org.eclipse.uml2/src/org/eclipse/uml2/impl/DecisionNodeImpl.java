@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.16 2005/12/06 23:18:02 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.17 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -51,6 +49,16 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getDecisionInput() <em>Decision Input</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDecisionInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior decisionInput = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -74,12 +82,10 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	 * @generated
 	 */
 	public Behavior getDecisionInput() {
-		Behavior decisionInput = (Behavior)eVirtualGet(UML2Package.DECISION_NODE__DECISION_INPUT);
 		if (decisionInput != null && decisionInput.eIsProxy()) {
 			InternalEObject oldDecisionInput = (InternalEObject)decisionInput;
 			decisionInput = (Behavior)eResolveProxy(oldDecisionInput);
 			if (decisionInput != oldDecisionInput) {
-				eVirtualSet(UML2Package.DECISION_NODE__DECISION_INPUT, decisionInput);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.DECISION_NODE__DECISION_INPUT, oldDecisionInput, decisionInput));
 			}
@@ -93,7 +99,7 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	 * @generated
 	 */
 	public Behavior basicGetDecisionInput() {
-		return (Behavior)eVirtualGet(UML2Package.DECISION_NODE__DECISION_INPUT);
+		return decisionInput;
 	}
 
 	/**
@@ -102,10 +108,11 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	 * @generated
 	 */
 	public void setDecisionInput(Behavior newDecisionInput) {
-		Behavior decisionInput = newDecisionInput;
-		Object oldDecisionInput = eVirtualSet(UML2Package.DECISION_NODE__DECISION_INPUT, decisionInput);
+		Behavior oldDecisionInput = decisionInput;
+		decisionInput = newDecisionInput;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DECISION_NODE__DECISION_INPUT, oldDecisionInput == EVIRTUAL_NO_VALUE ? null : oldDecisionInput, decisionInput));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.DECISION_NODE__DECISION_INPUT, oldDecisionInput, decisionInput));
+
 
 	}
 
@@ -308,42 +315,35 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.DECISION_NODE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.DECISION_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DECISION_NODE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.DECISION_NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.DECISION_NODE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.DECISION_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.DECISION_NODE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.DECISION_NODE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.DECISION_NODE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.DECISION_NODE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.DECISION_NODE__NAME:
-				String name = (String)eVirtualGet(UML2Package.DECISION_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DECISION_NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DECISION_NODE__VISIBILITY:
-				return eVirtualGet(UML2Package.DECISION_NODE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.DECISION_NODE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.DECISION_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.DECISION_NODE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.DECISION_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.DECISION_NODE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.DECISION_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.DECISION_NODE__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.DECISION_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.DECISION_NODE__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.DECISION_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.DECISION_NODE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.DECISION_NODE__ACTIVITY:
@@ -353,13 +353,11 @@ public class DecisionNodeImpl extends ControlNodeImpl implements DecisionNode {
 			case UML2Package.DECISION_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.DECISION_NODE__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.DECISION_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.DECISION_NODE__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.DECISION_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.DECISION_NODE__DECISION_INPUT:
-				return eVirtualGet(UML2Package.DECISION_NODE__DECISION_INPUT) != null;
+				return decisionInput != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

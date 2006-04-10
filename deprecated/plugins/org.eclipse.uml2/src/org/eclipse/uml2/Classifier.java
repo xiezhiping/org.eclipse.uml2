@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.24 2005/11/29 20:09:38 khussey Exp $
+ * $Id: Classifier.java,v 1.25 2006/04/10 20:40:21 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -52,7 +52,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model abstract="true"
  * @generated
  */
-public interface Classifier extends Namespace, Type, RedefinableElement{
+public interface Classifier extends Namespace, Type, RedefinableElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,15 +111,28 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Feature} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Feature} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFeatures()
 	 * @generated
 	 */
     Feature getFeature(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Feature} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Feature} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Feature} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getFeatures()
+	 * @generated
+	 */
+	Feature getFeature(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Inherited Member</b></em>' reference list.
@@ -139,15 +152,28 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInheritedMembers()
 	 * @generated
 	 */
     NamedElement getInheritedMember(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.NamedElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.NamedElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInheritedMembers()
+	 * @generated
+	 */
+	NamedElement getInheritedMember(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>General</b></em>' reference list.
@@ -167,15 +193,28 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getGenerals()
 	 * @generated
 	 */
     Classifier getGeneral(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getGenerals()
+	 * @generated
+	 */
+	Classifier getGeneral(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
@@ -214,7 +253,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Generalization}.
 	 * @see #getGeneralizations()
-	 * @generated
+	 * @generated NOT
 	 */
     Generalization createGeneralization();
 
@@ -236,15 +275,28 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getAttributes()
 	 * @generated
 	 */
     Property getAttribute(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getAttributes()
+	 * @generated
+	 */
+	Property getAttribute(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Classifier</b></em>' reference list.
@@ -264,15 +316,28 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedClassifiers()
 	 * @generated
 	 */
     Classifier getRedefinedClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedClassifiers()
+	 * @generated
+	 */
+	Classifier getRedefinedClassifier(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Substitution</b></em>' containment reference list.
@@ -294,15 +359,27 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Substitution} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Substitution} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubstitutions()
 	 * @generated
 	 */
     Substitution getSubstitution(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>' from the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Substitution} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Substitution} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSubstitutions()
+	 * @generated
+	 */
+	Substitution getSubstitution(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Substitution} and appends it to the '<em><b>Substitution</b></em>' containment reference list.
@@ -322,7 +399,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Substitution}.
 	 * @see #getSubstitutions()
-	 * @generated
+	 * @generated NOT
 	 */
     Substitution createSubstitution();
 
@@ -346,15 +423,27 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralizationSet} to retrieve.
-	 * @return The {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralizationSet} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getPowertypeExtents()
 	 * @generated
 	 */
     GeneralizationSet getPowertypeExtent(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.GeneralizationSet} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.GeneralizationSet} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getPowertypeExtents()
+	 * @generated
+	 */
+	GeneralizationSet getPowertypeExtent(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -374,15 +463,27 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve.
-	 * @return The {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedUseCases()
 	 * @generated
 	 */
     UseCase getOwnedUseCase(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedUseCases()
+	 * @generated
+	 */
+	UseCase getOwnedUseCase(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.UseCase} and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -402,7 +503,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.UseCase}.
 	 * @see #getOwnedUseCases()
-	 * @generated
+	 * @generated NOT
 	 */
     UseCase createOwnedUseCase();
 
@@ -426,15 +527,27 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve.
-	 * @return The {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getUseCases()
 	 * @generated
 	 */
     UseCase getUseCase(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.UseCase} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.UseCase} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getUseCases()
+	 * @generated
+	 */
+	UseCase getUseCase(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Representation</b></em>' reference.
@@ -487,15 +600,27 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Occurrence</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Occurrence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.CollaborationOccurrence} to retrieve.
-	 * @return The {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.CollaborationOccurrence} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOccurrences()
 	 * @generated
 	 */
     CollaborationOccurrence getOccurrence(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>' from the '<em><b>Occurrence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.CollaborationOccurrence} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.CollaborationOccurrence} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOccurrences()
+	 * @generated
+	 */
+	CollaborationOccurrence getOccurrence(String name, boolean ignoreCase);
 
 
     /**
@@ -516,7 +641,7 @@ public interface Classifier extends Namespace, Type, RedefinableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.CollaborationOccurrence}.
 	 * @see #getOccurrences()
-	 * @generated
+	 * @generated NOT
 	 */
     CollaborationOccurrence createOccurrence();
 

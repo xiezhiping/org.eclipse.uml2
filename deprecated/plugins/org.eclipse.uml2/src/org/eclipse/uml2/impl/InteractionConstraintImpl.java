@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.23 2005/12/06 23:18:04 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.24 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Element;
@@ -36,6 +38,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -45,7 +48,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.InteractionConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionConstraintImpl#getMinint <em>Minint</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionConstraintImpl#getMaxint <em>Maxint</em>}</li>
  * </ul>
@@ -60,6 +62,26 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getMinint() <em>Minint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification minint = null;
+
+	/**
+	 * The cached value of the '{@link #getMaxint() <em>Maxint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxint()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification maxint = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,13 +107,17 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.INTERACTION_CONSTRAINT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_CONSTRAINT__OWNED_ELEMENT, new int[] {UML2Package.INTERACTION_CONSTRAINT__OWNED_COMMENT, UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_BINDING, UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION, UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION, UML2Package.INTERACTION_CONSTRAINT__MININT, UML2Package.INTERACTION_CONSTRAINT__MAXINT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,13 +130,24 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			|| eIsSet(UML2Package.INTERACTION_CONSTRAINT__MAXINT);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.INTERACTION_CONSTRAINT__OWNED_COMMENT, UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_BINDING, UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION, UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION, UML2Package.INTERACTION_CONSTRAINT__MININT, UML2Package.INTERACTION_CONSTRAINT__MAXINT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ValueSpecification getMinint() {
-		return (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MININT);
+		return minint;
 	}
 
 	/**
@@ -119,9 +156,10 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public NotificationChain basicSetMinint(ValueSpecification newMinint, NotificationChain msgs) {
-		Object oldMinint = eVirtualSet(UML2Package.INTERACTION_CONSTRAINT__MININT, newMinint);
+		ValueSpecification oldMinint = minint;
+		minint = newMinint;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MININT, oldMinint == EVIRTUAL_NO_VALUE ? null : oldMinint, newMinint);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MININT, oldMinint, newMinint);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -134,7 +172,6 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public void setMinint(ValueSpecification newMinint) {
-		ValueSpecification minint = (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MININT);
 		if (newMinint != minint) {
 			NotificationChain msgs = null;
 			if (minint != null)
@@ -170,7 +207,7 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public ValueSpecification getMaxint() {
-		return (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MAXINT);
+		return maxint;
 	}
 
 	/**
@@ -179,9 +216,10 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public NotificationChain basicSetMaxint(ValueSpecification newMaxint, NotificationChain msgs) {
-		Object oldMaxint = eVirtualSet(UML2Package.INTERACTION_CONSTRAINT__MAXINT, newMaxint);
+		ValueSpecification oldMaxint = maxint;
+		maxint = newMaxint;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MAXINT, oldMaxint == EVIRTUAL_NO_VALUE ? null : oldMaxint, newMaxint);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.INTERACTION_CONSTRAINT__MAXINT, oldMaxint, newMaxint);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -194,7 +232,6 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	 * @generated
 	 */
 	public void setMaxint(ValueSpecification newMaxint) {
-		ValueSpecification maxint = (ValueSpecification)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MAXINT);
 		if (newMaxint != maxint) {
 			NotificationChain msgs = null;
 			if (maxint != null)
@@ -246,9 +283,9 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.INTERACTION_CONSTRAINT__NAMESPACE:
-				return eBasicSetContainer(null, UML2Package.INTERACTION_CONSTRAINT__NAMESPACE, msgs);
+				return basicSetNamespace(null, msgs);
 			case UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 			case UML2Package.INTERACTION_CONSTRAINT__MININT:
@@ -444,34 +481,29 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERACTION_CONSTRAINT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INTERACTION_CONSTRAINT__OWNER:
 				return isSetOwner();
 			case UML2Package.INTERACTION_CONSTRAINT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INTERACTION_CONSTRAINT__NAME:
-				String name = (String)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERACTION_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION_CONSTRAINT__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.INTERACTION_CONSTRAINT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERACTION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -481,14 +513,13 @@ public class InteractionConstraintImpl extends ConstraintImpl implements Interac
 			case UML2Package.INTERACTION_CONSTRAINT__NAMESPACE:
 				return isSetNamespace();
 			case UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION:
-				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__SPECIFICATION) != null;
+				return specification != null;
 			case UML2Package.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT:
-				EList constrainedElement = (EList)eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null && !constrainedElement.isEmpty();
+				return constrainedElements != null && !constrainedElements.isEmpty();
 			case UML2Package.INTERACTION_CONSTRAINT__MININT:
-				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MININT) != null;
+				return minint != null;
 			case UML2Package.INTERACTION_CONSTRAINT__MAXINT:
-				return eVirtualGet(UML2Package.INTERACTION_CONSTRAINT__MAXINT) != null;
+				return maxint != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

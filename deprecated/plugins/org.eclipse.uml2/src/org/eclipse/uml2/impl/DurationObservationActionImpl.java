@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.22 2005/12/06 23:18:03 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.23 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -38,6 +39,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -62,12 +64,14 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getDurations() <em>Duration</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getDurations()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits1 = 0;
+	protected EList durations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,11 +97,10 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	 * @generated
 	 */
 	public EList getDurations() {
-		EList duration = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__DURATION);
-		if (duration == null) {
-			eVirtualSet(UML2Package.DURATION_OBSERVATION_ACTION__DURATION, duration = new EObjectContainmentEList(Duration.class, this, UML2Package.DURATION_OBSERVATION_ACTION__DURATION));
+		if (durations == null) {
+			durations = new EObjectContainmentEList(Duration.class, this, UML2Package.DURATION_OBSERVATION_ACTION__DURATION);
 		}
-		return duration;
+		return durations;
 	}
 
 
@@ -107,8 +110,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	 * @generated
 	 */
 	public boolean isSetDurations() {
-		EList duration = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__DURATION);
-		return duration != null && !duration.isEmpty();
+		return durations != null && !durations.isEmpty();
 	}
 
 	/**
@@ -135,9 +137,9 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.DURATION_OBSERVATION_ACTION__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.DURATION_OBSERVATION_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.DURATION_OBSERVATION_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION:
@@ -164,11 +166,20 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	 * @generated
 	 */
     public Duration getDuration(String name) {
-		for (Iterator i = getDurations().iterator(); i.hasNext(); ) {
+		return getDuration(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Duration getDuration(String name, boolean ignoreCase) {
+		durationLoop: for (Iterator i = getDurations().iterator(); i.hasNext(); ) {
 			Duration duration = (Duration) i.next();
-			if (name.equals(duration.getName())) {
-				return duration;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(duration.getName()) : name.equals(duration.getName())))
+				continue durationLoop;
+			return duration;
 		}
 		return null;
 	}
@@ -503,42 +514,35 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.DURATION_OBSERVATION_ACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.DURATION_OBSERVATION_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.DURATION_OBSERVATION_ACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DURATION_OBSERVATION_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DURATION_OBSERVATION_ACTION__VISIBILITY:
-				return eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.DURATION_OBSERVATION_ACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.DURATION_OBSERVATION_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.DURATION_OBSERVATION_ACTION__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.DURATION_OBSERVATION_ACTION__ACTIVITY:
@@ -548,16 +552,12 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__EFFECT:
-				String effect = (String)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.DURATION_OBSERVATION_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -566,15 +566,13 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_PRECONDITION:
-				EList localPrecondition = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null && !localPrecondition.isEmpty();
+				return localPreconditions != null && !localPreconditions.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_POSTCONDITION:
-				EList localPostcondition = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null && !localPostcondition.isEmpty();
+				return localPostconditions != null && !localPostconditions.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__STRUCTURAL_FEATURE:
-				return eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__STRUCTURAL_FEATURE) != null;
+				return structuralFeature != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__OBJECT:
-				return eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__OBJECT) != null;
+				return object != null;
 			case UML2Package.DURATION_OBSERVATION_ACTION__VALUE:
 				return isSetValue();
 			case UML2Package.DURATION_OBSERVATION_ACTION__DURATION:
@@ -583,47 +581,24 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 		return eDynamicIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * @see #getInputs()
 	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
+	protected static final int[] INPUT_ESUBSETS = new int[] {UML2Package.DURATION_OBSERVATION_ACTION__OBJECT, UML2Package.DURATION_OBSERVATION_ACTION__DURATION};
 
 	public EList getInputs() {
-		EList input = (EList)eVirtualGet(UML2Package.DURATION_OBSERVATION_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UML2Package.DURATION_OBSERVATION_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.DURATION_OBSERVATION_ACTION__INPUT, new int[] {UML2Package.DURATION_OBSERVATION_ACTION__OBJECT, UML2Package.DURATION_OBSERVATION_ACTION__DURATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList input = (EList) cache.get(eResource, this, UML2Package.Literals.ACTION__INPUT);
+			if (input == null) {
+				cache.put(eResource, this, UML2Package.Literals.ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.DURATION_OBSERVATION_ACTION__INPUT, INPUT_ESUBSETS));
+			}
+			return input;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.DURATION_OBSERVATION_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 } //DurationObservationActionImpl

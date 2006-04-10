@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.12 2006/04/10 20:40:25 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface ConditionalNode extends StructuredActivityNode{
+public interface ConditionalNode extends StructuredActivityNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,7 +132,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Clause}.
 	 * @see #getClauses()
-	 * @generated
+	 * @generated NOT
 	 */
     Clause createClause();
 
@@ -157,15 +157,27 @@ public interface ConditionalNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getResults()
 	 * @generated
 	 */
     OutputPin getResult(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getResults()
+	 * @generated
+	 */
+	OutputPin getResult(String name, boolean ignoreCase);
 
 
     /**
@@ -186,7 +198,7 @@ public interface ConditionalNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResults()
-	 * @generated
+	 * @generated NOT
 	 */
     OutputPin createResult();
 

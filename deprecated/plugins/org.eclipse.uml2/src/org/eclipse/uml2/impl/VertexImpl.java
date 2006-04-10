@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.18 2005/12/06 23:18:04 khussey Exp $
+ * $Id: VertexImpl.java,v 1.19 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -58,6 +58,26 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList outgoings = null;
+
+	/**
+	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList incomings = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -90,6 +110,17 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainer(Region newContainer, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newContainer, UML2Package.VERTEX__CONTAINER, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer() || (eContainerFeatureID != UML2Package.VERTEX__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -99,7 +130,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject)newContainer).eInverseAdd(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newContainer, UML2Package.VERTEX__CONTAINER, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -123,11 +154,10 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public EList getOutgoings() {
-		EList outgoing = (EList)eVirtualGet(UML2Package.VERTEX__OUTGOING);
-		if (outgoing == null) {
-			eVirtualSet(UML2Package.VERTEX__OUTGOING, outgoing = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__OUTGOING, UML2Package.TRANSITION__SOURCE));
+		if (outgoings == null) {
+			outgoings = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__OUTGOING, UML2Package.TRANSITION__SOURCE);
 		}
-		return outgoing;
+		return outgoings;
 	}
 
 
@@ -137,11 +167,22 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
     public Transition getOutgoing(String name) {
-		for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
+		return getOutgoing(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
+		outgoingLoop: for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
 			Transition outgoing = (Transition) i.next();
-			if (name.equals(outgoing.getName())) {
-				return outgoing;
-			}
+			if (eClass != null && !eClass.isInstance(outgoing))
+				continue outgoingLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(outgoing.getName()) : name.equals(outgoing.getName())))
+				continue outgoingLoop;
+			return outgoing;
 		}
 		return null;
 	}
@@ -152,11 +193,10 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public EList getIncomings() {
-		EList incoming = (EList)eVirtualGet(UML2Package.VERTEX__INCOMING);
-		if (incoming == null) {
-			eVirtualSet(UML2Package.VERTEX__INCOMING, incoming = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__INCOMING, UML2Package.TRANSITION__TARGET));
+		if (incomings == null) {
+			incomings = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.VERTEX__INCOMING, UML2Package.TRANSITION__TARGET);
 		}
-		return incoming;
+		return incomings;
 	}
 
 
@@ -166,11 +206,22 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
     public Transition getIncoming(String name) {
-		for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
+		return getIncoming(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
+		incomingLoop: for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
 			Transition incoming = (Transition) i.next();
-			if (name.equals(incoming.getName())) {
-				return incoming;
-			}
+			if (eClass != null && !eClass.isInstance(incoming))
+				continue incomingLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(incoming.getName()) : name.equals(incoming.getName())))
+				continue incomingLoop;
+			return incoming;
 		}
 		return null;
 	}
@@ -187,7 +238,6 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -196,7 +246,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__CONTAINER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.VERTEX__CONTAINER, msgs);
+				return basicSetContainer((Region)otherEnd, msgs);
 			case UML2Package.VERTEX__OUTGOING:
 				return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
 			case UML2Package.VERTEX__INCOMING:
@@ -225,7 +275,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 			case UML2Package.VERTEX__NAME_EXPRESSION:
 				return basicSetNameExpression(null, msgs);
 			case UML2Package.VERTEX__CONTAINER:
-				return eBasicSetContainer(null, UML2Package.VERTEX__CONTAINER, msgs);
+				return basicSetContainer(null, msgs);
 			case UML2Package.VERTEX__OUTGOING:
 				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
 			case UML2Package.VERTEX__INCOMING:
@@ -253,20 +303,7 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		return getOwner();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOwner(Element newOwner, NotificationChain msgs) {
-		if (newOwner != null && !(newOwner instanceof Region)) {
-			throw new IllegalArgumentException(String.valueOf(newOwner));
-		}
-		setContainer((Region) newOwner);
-		return msgs;
+		return getContainer();
 	}
 
 
@@ -421,40 +458,33 @@ public abstract class VertexImpl extends NamedElementImpl implements Vertex {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.VERTEX__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.VERTEX__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VERTEX__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.VERTEX__OWNER:
 				return isSetOwner();
 			case UML2Package.VERTEX__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.VERTEX__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.VERTEX__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.VERTEX__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.VERTEX__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.VERTEX__NAME:
-				String name = (String)eVirtualGet(UML2Package.VERTEX__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VERTEX__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VERTEX__VISIBILITY:
-				return eVirtualGet(UML2Package.VERTEX__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.VERTEX__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.VERTEX__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.VERTEX__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.VERTEX__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.VERTEX__CONTAINER:
 				return isSetContainer();
 			case UML2Package.VERTEX__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.VERTEX__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.VERTEX__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.VERTEX__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

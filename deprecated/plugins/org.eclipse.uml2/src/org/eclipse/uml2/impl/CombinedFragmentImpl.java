@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.20 2005/12/06 23:18:03 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.21 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -40,6 +42,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -49,7 +52,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.CombinedFragmentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CombinedFragmentImpl#getInteractionOperator <em>Interaction Operator</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CombinedFragmentImpl#getOperands <em>Operand</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CombinedFragmentImpl#getCfragmentGates <em>Cfragment Gate</em>}</li>
@@ -77,6 +79,36 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	protected static final InteractionOperator INTERACTION_OPERATOR_EDEFAULT = InteractionOperator.SEQ_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getInteractionOperator() <em>Interaction Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInteractionOperator()
+	 * @generated
+	 * @ordered
+	 */
+	protected InteractionOperator interactionOperator = INTERACTION_OPERATOR_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOperands() <em>Operand</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperands()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList operands = null;
+
+	/**
+	 * The cached value of the '{@link #getCfragmentGates() <em>Cfragment Gate</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCfragmentGates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList cfragmentGates = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -100,13 +132,17 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.COMBINED_FRAGMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COMBINED_FRAGMENT__OWNED_ELEMENT, new int[] {UML2Package.COMBINED_FRAGMENT__OWNED_COMMENT, UML2Package.COMBINED_FRAGMENT__TEMPLATE_BINDING, UML2Package.COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.COMBINED_FRAGMENT__NAME_EXPRESSION, UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING, UML2Package.COMBINED_FRAGMENT__OPERAND, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.COMBINED_FRAGMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.COMBINED_FRAGMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,13 +155,24 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 			|| eIsSet(UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.COMBINED_FRAGMENT__OWNED_COMMENT, UML2Package.COMBINED_FRAGMENT__TEMPLATE_BINDING, UML2Package.COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.COMBINED_FRAGMENT__NAME_EXPRESSION, UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING, UML2Package.COMBINED_FRAGMENT__OPERAND, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public InteractionOperator getInteractionOperator() {
-		return (InteractionOperator)eVirtualGet(UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, INTERACTION_OPERATOR_EDEFAULT);
+		return interactionOperator;
 	}
 
 	/**
@@ -134,10 +181,11 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
 	public void setInteractionOperator(InteractionOperator newInteractionOperator) {
-		InteractionOperator interactionOperator = newInteractionOperator == null ? INTERACTION_OPERATOR_EDEFAULT : newInteractionOperator;
-		Object oldInteractionOperator = eVirtualSet(UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, interactionOperator);
+		InteractionOperator oldInteractionOperator = interactionOperator;
+		interactionOperator = newInteractionOperator == null ? INTERACTION_OPERATOR_EDEFAULT : newInteractionOperator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, oldInteractionOperator == EVIRTUAL_NO_VALUE ? INTERACTION_OPERATOR_EDEFAULT : oldInteractionOperator, interactionOperator));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, oldInteractionOperator, interactionOperator));
+
 
 	}
 
@@ -148,11 +196,10 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
 	public EList getOperands() {
-		EList operand = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__OPERAND);
-		if (operand == null) {
-			eVirtualSet(UML2Package.COMBINED_FRAGMENT__OPERAND, operand = new EObjectContainmentEList(InteractionOperand.class, this, UML2Package.COMBINED_FRAGMENT__OPERAND));
+		if (operands == null) {
+			operands = new EObjectContainmentEList(InteractionOperand.class, this, UML2Package.COMBINED_FRAGMENT__OPERAND);
 		}
-		return operand;
+		return operands;
 	}
 
 
@@ -162,11 +209,20 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
     public InteractionOperand getOperand(String name) {
-		for (Iterator i = getOperands().iterator(); i.hasNext(); ) {
+		return getOperand(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionOperand getOperand(String name, boolean ignoreCase) {
+		operandLoop: for (Iterator i = getOperands().iterator(); i.hasNext(); ) {
 			InteractionOperand operand = (InteractionOperand) i.next();
-			if (name.equals(operand.getName())) {
-				return operand;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(operand.getName()) : name.equals(operand.getName())))
+				continue operandLoop;
+			return operand;
 		}
 		return null;
 	}
@@ -206,11 +262,10 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
 	public EList getCfragmentGates() {
-		EList cfragmentGate = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE);
-		if (cfragmentGate == null) {
-			eVirtualSet(UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE, cfragmentGate = new EObjectContainmentEList(Gate.class, this, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE));
+		if (cfragmentGates == null) {
+			cfragmentGates = new EObjectContainmentEList(Gate.class, this, UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 		}
-		return cfragmentGate;
+		return cfragmentGates;
 	}
 
 
@@ -220,11 +275,20 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	 * @generated
 	 */
     public Gate getCfragmentGate(String name) {
-		for (Iterator i = getCfragmentGates().iterator(); i.hasNext(); ) {
+		return getCfragmentGate(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate getCfragmentGate(String name, boolean ignoreCase) {
+		cfragmentGateLoop: for (Iterator i = getCfragmentGates().iterator(); i.hasNext(); ) {
 			Gate cfragmentGate = (Gate) i.next();
-			if (name.equals(cfragmentGate.getName())) {
-				return cfragmentGate;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(cfragmentGate.getName()) : name.equals(cfragmentGate.getName())))
+				continue cfragmentGateLoop;
+			return cfragmentGate;
 		}
 		return null;
 	}
@@ -253,9 +317,9 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 			case UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING:
 				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
 			case UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION:
-				return eBasicSetContainer(null, UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND:
-				return eBasicSetContainer(null, UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UML2Package.COMBINED_FRAGMENT__OPERAND:
 				return ((InternalEList)getOperands()).basicRemove(otherEnd, msgs);
 			case UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE:
@@ -469,50 +533,41 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.COMBINED_FRAGMENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.COMBINED_FRAGMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.COMBINED_FRAGMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.COMBINED_FRAGMENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.COMBINED_FRAGMENT__NAME:
-				String name = (String)eVirtualGet(UML2Package.COMBINED_FRAGMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COMBINED_FRAGMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMBINED_FRAGMENT__VISIBILITY:
-				return eVirtualGet(UML2Package.COMBINED_FRAGMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.COMBINED_FRAGMENT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.COMBINED_FRAGMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.COMBINED_FRAGMENT__COVERED:
-				EList covered = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING:
-				EList generalOrdering = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.COMBINED_FRAGMENT__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR:
-				return eVirtualGet(UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
+				return interactionOperator != INTERACTION_OPERATOR_EDEFAULT;
 			case UML2Package.COMBINED_FRAGMENT__OPERAND:
-				EList operand = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__OPERAND);
-				return operand != null && !operand.isEmpty();
+				return operands != null && !operands.isEmpty();
 			case UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE:
-				EList cfragmentGate = (EList)eVirtualGet(UML2Package.COMBINED_FRAGMENT__CFRAGMENT_GATE);
-				return cfragmentGate != null && !cfragmentGate.isEmpty();
+				return cfragmentGates != null && !cfragmentGates.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -527,7 +582,7 @@ public class CombinedFragmentImpl extends InteractionFragmentImpl implements Com
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (interactionOperator: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.COMBINED_FRAGMENT__INTERACTION_OPERATOR, INTERACTION_OPERATOR_EDEFAULT));
+		result.append(interactionOperator);
 		result.append(')');
 		return result.toString();
 	}

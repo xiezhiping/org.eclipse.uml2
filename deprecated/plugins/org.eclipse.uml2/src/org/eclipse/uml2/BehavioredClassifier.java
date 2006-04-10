@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.16 2005/11/29 20:09:39 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.17 2006/04/10 20:40:25 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model abstract="true"
  * @generated
  */
-public interface BehavioredClassifier extends Classifier{
+public interface BehavioredClassifier extends Classifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,15 +73,28 @@ public interface BehavioredClassifier extends Classifier{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedBehaviors()
 	 * @generated
 	 */
     Behavior getOwnedBehavior(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Behavior</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Behavior} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedBehaviors()
+	 * @generated
+	 */
+	Behavior getOwnedBehavior(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Behavior} and appends it to the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -90,7 +103,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Behavior} to create.
 	 * @return The new {@link org.eclipse.uml2.Behavior}.
 	 * @see #getOwnedBehaviors()
-	 * @generated
+	 * @generated NOT
 	 */
     Behavior createOwnedBehavior(EClass eClass);
 
@@ -147,15 +160,27 @@ public interface BehavioredClassifier extends Classifier{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>' from the '<em><b>Implementation</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>' from the '<em><b>Implementation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Implementation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Implementation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getImplementations()
 	 * @generated
 	 */
     Implementation getImplementation(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>' from the '<em><b>Implementation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Implementation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Implementation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getImplementations()
+	 * @generated
+	 */
+	Implementation getImplementation(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Implementation} and appends it to the '<em><b>Implementation</b></em>' containment reference list.
@@ -175,7 +200,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Implementation}.
 	 * @see #getImplementations()
-	 * @generated
+	 * @generated NOT
 	 */
     Implementation createImplementation();
 
@@ -197,15 +222,28 @@ public interface BehavioredClassifier extends Classifier{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedTriggers()
 	 * @generated
 	 */
     Trigger getOwnedTrigger(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Trigger} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedTriggers()
+	 * @generated
+	 */
+	Trigger getOwnedTrigger(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Trigger} and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
@@ -214,7 +252,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Trigger} to create.
 	 * @return The new {@link org.eclipse.uml2.Trigger}.
 	 * @see #getOwnedTriggers()
-	 * @generated
+	 * @generated NOT
 	 */
     Trigger createOwnedTrigger(EClass eClass);
 
@@ -238,15 +276,28 @@ public interface BehavioredClassifier extends Classifier{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned State Machine</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StateMachine} to retrieve.
-	 * @return The {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StateMachine} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedStateMachines()
 	 * @generated
 	 */
     StateMachine getOwnedStateMachine(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned State Machine</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StateMachine} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.StateMachine} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.StateMachine} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedStateMachines()
+	 * @generated
+	 */
+	StateMachine getOwnedStateMachine(String name, boolean ignoreCase, EClass eClass);
 
 
 	/**
@@ -256,7 +307,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.StateMachine} to create.
 	 * @return The new {@link org.eclipse.uml2.StateMachine}.
 	 * @see #getOwnedStateMachines()
-	 * @generated
+	 * @generated NOT
 	 */
     StateMachine createOwnedStateMachine(EClass eClass);
 
@@ -266,7 +317,7 @@ public interface BehavioredClassifier extends Classifier{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.StateMachine}.
 	 * @see #getOwnedStateMachines()
-	 * @generated
+	 * @generated NOT
 	 */
     StateMachine createOwnedStateMachine();
 

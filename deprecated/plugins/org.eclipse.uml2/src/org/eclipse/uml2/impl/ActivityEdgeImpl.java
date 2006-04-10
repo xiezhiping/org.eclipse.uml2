@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.24 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.25 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
@@ -45,6 +47,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -54,8 +57,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
@@ -77,6 +78,76 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected ActivityNode source = null;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected ActivityNode target = null;
+
+	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification guard = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedElements = null;
+
+	/**
+	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInPartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList inPartitions = null;
+
+	/**
+	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWeight()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification weight = null;
+
+	/**
+	 * The cached value of the '{@link #getInterrupts() <em>Interrupts</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterrupts()
+	 * @generated
+	 * @ordered
+	 */
+	protected InterruptibleActivityRegion interrupts = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,6 +182,17 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetActivity(Activity newActivity, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newActivity, UML2Package.ACTIVITY_EDGE__ACTIVITY, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
@@ -120,7 +202,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivity != null)
 				msgs = ((InternalEObject)newActivity).eInverseAdd(this, UML2Package.ACTIVITY__EDGE, Activity.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newActivity, UML2Package.ACTIVITY_EDGE__ACTIVITY, msgs);
+			msgs = basicSetActivity(newActivity, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -135,12 +217,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ActivityNode getSource() {
-		ActivityNode source = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__SOURCE);
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject)source;
 			source = (ActivityNode)eResolveProxy(oldSource);
 			if (source != oldSource) {
-				eVirtualSet(UML2Package.ACTIVITY_EDGE__SOURCE, source);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.ACTIVITY_EDGE__SOURCE, oldSource, source));
 			}
@@ -154,7 +234,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ActivityNode basicGetSource() {
-		return (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__SOURCE);
+		return source;
 	}
 
 	/**
@@ -163,9 +243,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetSource(ActivityNode newSource, NotificationChain msgs) {
-		Object oldSource = eVirtualSet(UML2Package.ACTIVITY_EDGE__SOURCE, newSource);
+		ActivityNode oldSource = source;
+		source = newSource;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__SOURCE, oldSource == EVIRTUAL_NO_VALUE ? null : oldSource, newSource);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__SOURCE, oldSource, newSource);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -178,7 +259,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setSource(ActivityNode newSource) {
-		ActivityNode source = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__SOURCE);
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
@@ -200,12 +280,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ActivityNode getTarget() {
-		ActivityNode target = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__TARGET);
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
 			target = (ActivityNode)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
-				eVirtualSet(UML2Package.ACTIVITY_EDGE__TARGET, target);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.ACTIVITY_EDGE__TARGET, oldTarget, target));
 			}
@@ -219,7 +297,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ActivityNode basicGetTarget() {
-		return (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__TARGET);
+		return target;
 	}
 
 	/**
@@ -228,9 +306,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetTarget(ActivityNode newTarget, NotificationChain msgs) {
-		Object oldTarget = eVirtualSet(UML2Package.ACTIVITY_EDGE__TARGET, newTarget);
+		ActivityNode oldTarget = target;
+		target = newTarget;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__TARGET, oldTarget == EVIRTUAL_NO_VALUE ? null : oldTarget, newTarget);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__TARGET, oldTarget, newTarget);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -243,7 +322,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setTarget(ActivityNode newTarget) {
-		ActivityNode target = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__TARGET);
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -265,13 +343,17 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInGroups() {
-		EList inGroup = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__IN_GROUP);
-		if (inGroup == null) {
-			eVirtualSet(UML2Package.ACTIVITY_EDGE__IN_GROUP, inGroup = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, new int[] {UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, UML2Package.ACTIVITY_EDGE__IN_PARTITION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inGroups = (EList) cache.get(eResource, this, UML2Package.Literals.ACTIVITY_EDGE__IN_GROUP);
+			if (inGroups == null) {
+				cache.put(eResource, this, UML2Package.Literals.ACTIVITY_EDGE__IN_GROUP, inGroups = new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, IN_GROUP_ESUBSETS));
+			}
+			return inGroups;
 		}
-		return inGroup;
+		return new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, IN_GROUP_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -283,19 +365,34 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			|| eIsSet(UML2Package.ACTIVITY_EDGE__IN_PARTITION);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInGroups() <em>In Group</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] IN_GROUP_ESUBSETS = new int[] {UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, UML2Package.ACTIVITY_EDGE__IN_PARTITION};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, new int[] {UML2Package.ACTIVITY_EDGE__OWNED_COMMENT, UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING, UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION, UML2Package.ACTIVITY_EDGE__GUARD, UML2Package.ACTIVITY_EDGE__WEIGHT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -308,13 +405,24 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			|| eIsSet(UML2Package.ACTIVITY_EDGE__WEIGHT);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ACTIVITY_EDGE__OWNED_COMMENT, UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING, UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION, UML2Package.ACTIVITY_EDGE__GUARD, UML2Package.ACTIVITY_EDGE__WEIGHT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ValueSpecification getGuard() {
-		return (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__GUARD);
+		return guard;
 	}
 
 	/**
@@ -323,9 +431,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetGuard(ValueSpecification newGuard, NotificationChain msgs) {
-		Object oldGuard = eVirtualSet(UML2Package.ACTIVITY_EDGE__GUARD, newGuard);
+		ValueSpecification oldGuard = guard;
+		guard = newGuard;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__GUARD, oldGuard == EVIRTUAL_NO_VALUE ? null : oldGuard, newGuard);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__GUARD, oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -338,7 +447,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setGuard(ValueSpecification newGuard) {
-		ValueSpecification guard = (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__GUARD);
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
@@ -374,11 +482,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT, redefinedElement = new EObjectResolvingEList(ActivityEdge.class, this, UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT));
+		if (redefinedElements == null) {
+			redefinedElements = new EObjectResolvingEList(ActivityEdge.class, this, UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT);
 		}
-		return redefinedElement;
+		return redefinedElements;
 	}
 
 
@@ -388,8 +495,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public boolean isSetRedefinedElements() {
-		EList redefinedElement = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT);
-		return redefinedElement != null && !redefinedElement.isEmpty();
+		return redefinedElements != null && !redefinedElements.isEmpty();
 	}
 
 	/**
@@ -398,11 +504,22 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
     public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name, boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop: for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
 			ActivityEdge redefinedElement = (ActivityEdge) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinedElement.getName()) : name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -422,6 +539,17 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetInStructuredNode(StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newInStructuredNode, UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
@@ -431,7 +559,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newInStructuredNode != null)
 				msgs = ((InternalEObject)newInStructuredNode).eInverseAdd(this, UML2Package.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE, StructuredActivityNode.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newInStructuredNode, UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+			msgs = basicSetInStructuredNode(newInStructuredNode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -446,11 +574,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public EList getInPartitions() {
-		EList inPartition = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__IN_PARTITION);
-		if (inPartition == null) {
-			eVirtualSet(UML2Package.ACTIVITY_EDGE__IN_PARTITION, inPartition = new EObjectWithInverseResolvingEList.ManyInverse(ActivityPartition.class, this, UML2Package.ACTIVITY_EDGE__IN_PARTITION, UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE));
+		if (inPartitions == null) {
+			inPartitions = new EObjectWithInverseResolvingEList.ManyInverse(ActivityPartition.class, this, UML2Package.ACTIVITY_EDGE__IN_PARTITION, UML2Package.ACTIVITY_PARTITION__CONTAINED_EDGE);
 		}
-		return inPartition;
+		return inPartitions;
 	}
 
 
@@ -460,11 +587,20 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
     public ActivityPartition getInPartition(String name) {
-		for (Iterator i = getInPartitions().iterator(); i.hasNext(); ) {
+		return getInPartition(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getInPartition(String name, boolean ignoreCase) {
+		inPartitionLoop: for (Iterator i = getInPartitions().iterator(); i.hasNext(); ) {
 			ActivityPartition inPartition = (ActivityPartition) i.next();
-			if (name.equals(inPartition.getName())) {
-				return inPartition;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(inPartition.getName()) : name.equals(inPartition.getName())))
+				continue inPartitionLoop;
+			return inPartition;
 		}
 		return null;
 	}
@@ -475,7 +611,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public ValueSpecification getWeight() {
-		return (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__WEIGHT);
+		return weight;
 	}
 
 	/**
@@ -484,9 +620,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetWeight(ValueSpecification newWeight, NotificationChain msgs) {
-		Object oldWeight = eVirtualSet(UML2Package.ACTIVITY_EDGE__WEIGHT, newWeight);
+		ValueSpecification oldWeight = weight;
+		weight = newWeight;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__WEIGHT, oldWeight == EVIRTUAL_NO_VALUE ? null : oldWeight, newWeight);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__WEIGHT, oldWeight, newWeight);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -499,7 +636,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setWeight(ValueSpecification newWeight) {
-		ValueSpecification weight = (ValueSpecification)eVirtualGet(UML2Package.ACTIVITY_EDGE__WEIGHT);
 		if (newWeight != weight) {
 			NotificationChain msgs = null;
 			if (weight != null)
@@ -535,12 +671,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public InterruptibleActivityRegion getInterrupts() {
-		InterruptibleActivityRegion interrupts = (InterruptibleActivityRegion)eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS);
 		if (interrupts != null && interrupts.eIsProxy()) {
 			InternalEObject oldInterrupts = (InternalEObject)interrupts;
 			interrupts = (InterruptibleActivityRegion)eResolveProxy(oldInterrupts);
 			if (interrupts != oldInterrupts) {
-				eVirtualSet(UML2Package.ACTIVITY_EDGE__INTERRUPTS, interrupts);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.ACTIVITY_EDGE__INTERRUPTS, oldInterrupts, interrupts));
 			}
@@ -554,7 +688,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public InterruptibleActivityRegion basicGetInterrupts() {
-		return (InterruptibleActivityRegion)eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS);
+		return interrupts;
 	}
 
 	/**
@@ -563,9 +697,10 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public NotificationChain basicSetInterrupts(InterruptibleActivityRegion newInterrupts, NotificationChain msgs) {
-		Object oldInterrupts = eVirtualSet(UML2Package.ACTIVITY_EDGE__INTERRUPTS, newInterrupts);
+		InterruptibleActivityRegion oldInterrupts = interrupts;
+		interrupts = newInterrupts;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__INTERRUPTS, oldInterrupts == EVIRTUAL_NO_VALUE ? null : oldInterrupts, newInterrupts);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.ACTIVITY_EDGE__INTERRUPTS, oldInterrupts, newInterrupts);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -578,7 +713,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 * @generated
 	 */
 	public void setInterrupts(InterruptibleActivityRegion newInterrupts) {
-		InterruptibleActivityRegion interrupts = (InterruptibleActivityRegion)eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS);
 		if (newInterrupts != interrupts) {
 			NotificationChain msgs = null;
 			if (interrupts != null)
@@ -606,7 +740,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -615,25 +748,22 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__ACTIVITY:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_EDGE__ACTIVITY, msgs);
+				return basicSetActivity((Activity)otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__SOURCE:
-				ActivityNode source = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__SOURCE);
 				if (source != null)
 					msgs = ((InternalEObject)source).eInverseRemove(this, UML2Package.ACTIVITY_NODE__OUTGOING, ActivityNode.class, msgs);
 				return basicSetSource((ActivityNode)otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__TARGET:
-				ActivityNode target = (ActivityNode)eVirtualGet(UML2Package.ACTIVITY_EDGE__TARGET);
 				if (target != null)
 					msgs = ((InternalEObject)target).eInverseRemove(this, UML2Package.ACTIVITY_NODE__INCOMING, ActivityNode.class, msgs);
 				return basicSetTarget((ActivityNode)otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode((StructuredActivityNode)otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__INTERRUPTS:
-				InterruptibleActivityRegion interrupts = (InterruptibleActivityRegion)eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS);
 				if (interrupts != null)
 					msgs = ((InternalEObject)interrupts).eInverseRemove(this, UML2Package.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE, InterruptibleActivityRegion.class, msgs);
 				return basicSetInterrupts((InterruptibleActivityRegion)otherEnd, msgs);
@@ -661,7 +791,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION:
 				return basicSetNameExpression(null, msgs);
 			case UML2Package.ACTIVITY_EDGE__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.ACTIVITY_EDGE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.ACTIVITY_EDGE__SOURCE:
 				return basicSetSource(null, msgs);
 			case UML2Package.ACTIVITY_EDGE__TARGET:
@@ -669,7 +799,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__GUARD:
 				return basicSetGuard(null, msgs);
 			case UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.ACTIVITY_EDGE__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.ACTIVITY_EDGE__WEIGHT:
@@ -924,32 +1054,27 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTIVITY_EDGE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ACTIVITY_EDGE__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTIVITY_EDGE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.ACTIVITY_EDGE__NAME:
-				String name = (String)eVirtualGet(UML2Package.ACTIVITY_EDGE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ACTIVITY_EDGE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ACTIVITY_EDGE__VISIBILITY:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.ACTIVITY_EDGE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.ACTIVITY_EDGE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.ACTIVITY_EDGE__IS_LEAF:
@@ -957,24 +1082,23 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			case UML2Package.ACTIVITY_EDGE__ACTIVITY:
 				return getActivity() != null;
 			case UML2Package.ACTIVITY_EDGE__SOURCE:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__SOURCE) != null;
+				return source != null;
 			case UML2Package.ACTIVITY_EDGE__TARGET:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__TARGET) != null;
+				return target != null;
 			case UML2Package.ACTIVITY_EDGE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.ACTIVITY_EDGE__GUARD:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__GUARD) != null;
+				return guard != null;
 			case UML2Package.ACTIVITY_EDGE__REDEFINED_ELEMENT:
 				return isSetRedefinedElements();
 			case UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.ACTIVITY_EDGE__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.ACTIVITY_EDGE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.ACTIVITY_EDGE__WEIGHT:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__WEIGHT) != null;
+				return weight != null;
 			case UML2Package.ACTIVITY_EDGE__INTERRUPTS:
-				return eVirtualGet(UML2Package.ACTIVITY_EDGE__INTERRUPTS) != null;
+				return interrupts != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

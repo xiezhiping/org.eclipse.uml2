@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.10 2005/11/29 20:09:40 khussey Exp $
+ * $Id: Artifact.java,v 1.11 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Artifact extends Classifier, DeployedArtifact{
+public interface Artifact extends Classifier, DeployedArtifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,15 +92,28 @@ public interface Artifact extends Classifier, DeployedArtifact{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Artifact</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Artifact</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Artifact} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Artifact} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedArtifacts()
 	 * @generated
 	 */
     Artifact getNestedArtifact(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Artifact</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Artifact} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Artifact} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Artifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNestedArtifacts()
+	 * @generated
+	 */
+	Artifact getNestedArtifact(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Artifact} and appends it to the '<em><b>Nested Artifact</b></em>' containment reference list.
@@ -109,7 +122,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Artifact} to create.
 	 * @return The new {@link org.eclipse.uml2.Artifact}.
 	 * @see #getNestedArtifacts()
-	 * @generated
+	 * @generated NOT
 	 */
     Artifact createNestedArtifact(EClass eClass);
 
@@ -119,7 +132,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Artifact}.
 	 * @see #getNestedArtifacts()
-	 * @generated
+	 * @generated NOT
 	 */
     Artifact createNestedArtifact();
 
@@ -141,15 +154,27 @@ public interface Artifact extends Classifier, DeployedArtifact{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>' from the '<em><b>Manifestation</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>' from the '<em><b>Manifestation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Manifestation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Manifestation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getManifestations()
 	 * @generated
 	 */
     Manifestation getManifestation(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>' from the '<em><b>Manifestation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Manifestation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Manifestation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getManifestations()
+	 * @generated
+	 */
+	Manifestation getManifestation(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Manifestation} and appends it to the '<em><b>Manifestation</b></em>' containment reference list.
@@ -169,7 +194,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Manifestation}.
 	 * @see #getManifestations()
-	 * @generated
+	 * @generated NOT
 	 */
     Manifestation createManifestation();
 
@@ -187,15 +212,27 @@ public interface Artifact extends Classifier, DeployedArtifact{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
     Operation getOwnedOperation(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Operation} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Operation} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedOperations()
+	 * @generated
+	 */
+	Operation getOwnedOperation(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Operation} and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -215,7 +252,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Operation}.
 	 * @see #getOwnedOperations()
-	 * @generated
+	 * @generated NOT
 	 */
     Operation createOwnedOperation();
 
@@ -233,15 +270,28 @@ public interface Artifact extends Classifier, DeployedArtifact{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedAttributes()
 	 * @generated
 	 */
     Property getOwnedAttribute(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Attribute</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 */
+	Property getOwnedAttribute(String name, boolean ignoreCase, EClass eClass);
 
 
 	/**
@@ -251,7 +301,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedAttributes()
-	 * @generated
+	 * @generated NOT
 	 */
     Property createOwnedAttribute(EClass eClass);
 
@@ -261,7 +311,7 @@ public interface Artifact extends Classifier, DeployedArtifact{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedAttributes()
-	 * @generated
+	 * @generated NOT
 	 */
     Property createOwnedAttribute();
 

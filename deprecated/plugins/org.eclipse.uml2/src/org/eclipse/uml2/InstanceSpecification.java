@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.14 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface InstanceSpecification extends PackageableElement, DeploymentTarget, DeployedArtifact{
+public interface InstanceSpecification extends PackageableElement, DeploymentTarget, DeployedArtifact {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,7 +89,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Slot}.
 	 * @see #getSlots()
-	 * @generated
+	 * @generated NOT
 	 */
     Slot createSlot();
 
@@ -114,15 +114,28 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getClassifiers()
 	 * @generated
 	 */
     Classifier getClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getClassifiers()
+	 * @generated
+	 */
+	Classifier getClassifier(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Specification</b></em>' containment reference.
@@ -154,6 +167,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	void setSpecification(ValueSpecification value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Specification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -161,7 +175,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getSpecification()
-	 * @generated
+	 * @generated NOT
 	 */
     ValueSpecification createSpecification(EClass eClass);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.19 2005/12/06 23:18:02 khussey Exp $
+ * $Id: SlotImpl.java,v 1.20 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -36,6 +38,7 @@ import org.eclipse.uml2.StructuralFeature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -45,7 +48,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getOwningInstance <em>Owning Instance</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getValues <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SlotImpl#getDefiningFeature <em>Defining Feature</em>}</li>
@@ -61,6 +63,26 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getValues() <em>Value</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValues()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList values = null;
+
+	/**
+	 * The cached value of the '{@link #getDefiningFeature() <em>Defining Feature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefiningFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected StructuralFeature definingFeature = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,13 +108,17 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.SLOT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.SLOT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.SLOT__OWNED_ELEMENT, new int[] {UML2Package.SLOT__OWNED_COMMENT, UML2Package.SLOT__VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.SLOT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.SLOT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,6 +129,17 @@ public class SlotImpl extends ElementImpl implements Slot {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.SLOT__VALUE);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.SLOT__OWNED_COMMENT, UML2Package.SLOT__VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,6 +156,17 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningInstance(InstanceSpecification newOwningInstance, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwningInstance, UML2Package.SLOT__OWNING_INSTANCE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
 		if (newOwningInstance != eInternalContainer() || (eContainerFeatureID != UML2Package.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningInstance))
@@ -128,7 +176,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningInstance != null)
 				msgs = ((InternalEObject)newOwningInstance).eInverseAdd(this, UML2Package.INSTANCE_SPECIFICATION__SLOT, InstanceSpecification.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newOwningInstance, UML2Package.SLOT__OWNING_INSTANCE, msgs);
+			msgs = basicSetOwningInstance(newOwningInstance, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -143,11 +191,10 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public EList getValues() {
-		EList value = (EList)eVirtualGet(UML2Package.SLOT__VALUE);
-		if (value == null) {
-			eVirtualSet(UML2Package.SLOT__VALUE, value = new EObjectContainmentEList(ValueSpecification.class, this, UML2Package.SLOT__VALUE));
+		if (values == null) {
+			values = new EObjectContainmentEList(ValueSpecification.class, this, UML2Package.SLOT__VALUE);
 		}
-		return value;
+		return values;
 	}
 
 
@@ -157,11 +204,22 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
     public ValueSpecification getValue(String name) {
-		for (Iterator i = getValues().iterator(); i.hasNext(); ) {
+		return getValue(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification getValue(String name, boolean ignoreCase, EClass eClass) {
+		valueLoop: for (Iterator i = getValues().iterator(); i.hasNext(); ) {
 			ValueSpecification value = (ValueSpecification) i.next();
-			if (name.equals(value.getName())) {
-				return value;
-			}
+			if (eClass != null && !eClass.isInstance(value))
+				continue valueLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(value.getName()) : name.equals(value.getName())))
+				continue valueLoop;
+			return value;
 		}
 		return null;
 	}
@@ -186,12 +244,10 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public StructuralFeature getDefiningFeature() {
-		StructuralFeature definingFeature = (StructuralFeature)eVirtualGet(UML2Package.SLOT__DEFINING_FEATURE);
 		if (definingFeature != null && definingFeature.eIsProxy()) {
 			InternalEObject oldDefiningFeature = (InternalEObject)definingFeature;
 			definingFeature = (StructuralFeature)eResolveProxy(oldDefiningFeature);
 			if (definingFeature != oldDefiningFeature) {
-				eVirtualSet(UML2Package.SLOT__DEFINING_FEATURE, definingFeature);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.SLOT__DEFINING_FEATURE, oldDefiningFeature, definingFeature));
 			}
@@ -205,7 +261,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public StructuralFeature basicGetDefiningFeature() {
-		return (StructuralFeature)eVirtualGet(UML2Package.SLOT__DEFINING_FEATURE);
+		return definingFeature;
 	}
 
 	/**
@@ -214,10 +270,11 @@ public class SlotImpl extends ElementImpl implements Slot {
 	 * @generated
 	 */
 	public void setDefiningFeature(StructuralFeature newDefiningFeature) {
-		StructuralFeature definingFeature = newDefiningFeature;
-		Object oldDefiningFeature = eVirtualSet(UML2Package.SLOT__DEFINING_FEATURE, definingFeature);
+		StructuralFeature oldDefiningFeature = definingFeature;
+		definingFeature = newDefiningFeature;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SLOT__DEFINING_FEATURE, oldDefiningFeature == EVIRTUAL_NO_VALUE ? null : oldDefiningFeature, definingFeature));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SLOT__DEFINING_FEATURE, oldDefiningFeature, definingFeature));
+
 
 	}
 
@@ -234,7 +291,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 			case UML2Package.SLOT__OWNING_INSTANCE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.SLOT__OWNING_INSTANCE, msgs);
+				return basicSetOwningInstance((InstanceSpecification)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -251,7 +308,7 @@ public class SlotImpl extends ElementImpl implements Slot {
 			case UML2Package.SLOT__OWNED_COMMENT:
 				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
 			case UML2Package.SLOT__OWNING_INSTANCE:
-				return eBasicSetContainer(null, UML2Package.SLOT__OWNING_INSTANCE, msgs);
+				return basicSetOwningInstance(null, msgs);
 			case UML2Package.SLOT__VALUE:
 				return ((InternalEList)getValues()).basicRemove(otherEnd, msgs);
 		}
@@ -385,22 +442,19 @@ public class SlotImpl extends ElementImpl implements Slot {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SLOT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.SLOT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SLOT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.SLOT__OWNER:
 				return isSetOwner();
 			case UML2Package.SLOT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.SLOT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.SLOT__OWNING_INSTANCE:
 				return getOwningInstance() != null;
 			case UML2Package.SLOT__VALUE:
-				EList value = (EList)eVirtualGet(UML2Package.SLOT__VALUE);
-				return value != null && !value.isEmpty();
+				return values != null && !values.isEmpty();
 			case UML2Package.SLOT__DEFINING_FEATURE:
-				return eVirtualGet(UML2Package.SLOT__DEFINING_FEATURE) != null;
+				return definingFeature != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

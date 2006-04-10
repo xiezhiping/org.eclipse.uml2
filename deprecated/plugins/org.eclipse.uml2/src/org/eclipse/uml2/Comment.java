@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Comment.java,v 1.12 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Comment.java,v 1.13 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Comment extends TemplateableElement{
+public interface Comment extends TemplateableElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,6 +125,7 @@ public interface Comment extends TemplateableElement{
 	void setBodyExpression(StringExpression value);
 
 
+
     /**
      * Creates a {@link org.eclipse.uml2.StringExpression} and sets the '<em><b>Body Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -143,7 +144,7 @@ public interface Comment extends TemplateableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.StringExpression}.
 	 * @see #getBodyExpression()
-	 * @generated
+	 * @generated NOT
 	 */
     StringExpression createBodyExpression();
 

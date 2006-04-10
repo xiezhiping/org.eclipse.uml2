@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.21 2005/12/06 23:18:02 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.22 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -36,6 +38,7 @@ import org.eclipse.uml2.TemplateableElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -45,9 +48,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getBoundElement <em>Bound Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getParameterSubstitutions <em>Parameter Substitution</em>}</li>
@@ -63,6 +63,26 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature signature = null;
+
+	/**
+	 * The cached value of the '{@link #getParameterSubstitutions() <em>Parameter Substitution</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterSubstitutions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parameterSubstitutions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,13 +108,17 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__SOURCE);
-		if (source == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, new int[] {UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE, sources = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, SOURCE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,19 +130,34 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__TARGET);
-		if (target == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, new int[] {UML2Package.TEMPLATE_BINDING__SIGNATURE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET, targets = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, TARGET_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,19 +169,34 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__SIGNATURE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[] {UML2Package.TEMPLATE_BINDING__SIGNATURE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, new int[] {UML2Package.TEMPLATE_BINDING__OWNED_COMMENT, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +207,17 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TEMPLATE_BINDING__OWNED_COMMENT, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,6 +234,17 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetBoundElement(TemplateableElement newBoundElement, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newBoundElement, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
 		if (newBoundElement != eInternalContainer() || (eContainerFeatureID != UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
 			if (EcoreUtil.isAncestor(this, newBoundElement))
@@ -178,7 +254,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newBoundElement != null)
 				msgs = ((InternalEObject)newBoundElement).eInverseAdd(this, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, TemplateableElement.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newBoundElement, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+			msgs = basicSetBoundElement(newBoundElement, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -193,12 +269,10 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public TemplateSignature getSignature() {
-		TemplateSignature signature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_BINDING__SIGNATURE);
 		if (signature != null && signature.eIsProxy()) {
 			InternalEObject oldSignature = (InternalEObject)signature;
 			signature = (TemplateSignature)eResolveProxy(oldSignature);
 			if (signature != oldSignature) {
-				eVirtualSet(UML2Package.TEMPLATE_BINDING__SIGNATURE, signature);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TEMPLATE_BINDING__SIGNATURE, oldSignature, signature));
 			}
@@ -212,7 +286,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public TemplateSignature basicGetSignature() {
-		return (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_BINDING__SIGNATURE);
+		return signature;
 	}
 
 	/**
@@ -221,10 +295,11 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
-		TemplateSignature signature = newSignature;
-		Object oldSignature = eVirtualSet(UML2Package.TEMPLATE_BINDING__SIGNATURE, signature);
+		TemplateSignature oldSignature = signature;
+		signature = newSignature;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_BINDING__SIGNATURE, oldSignature == EVIRTUAL_NO_VALUE ? null : oldSignature, signature));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_BINDING__SIGNATURE, oldSignature, signature));
+
 
 	}
 
@@ -235,11 +310,10 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * @generated
 	 */
 	public EList getParameterSubstitutions() {
-		EList parameterSubstitution = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
-		if (parameterSubstitution == null) {
-			eVirtualSet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, parameterSubstitution = new EObjectContainmentWithInverseEList(TemplateParameterSubstitution.class, this, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING));
+		if (parameterSubstitutions == null) {
+			parameterSubstitutions = new EObjectContainmentWithInverseEList(TemplateParameterSubstitution.class, this, UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
 		}
-		return parameterSubstitution;
+		return parameterSubstitutions;
 	}
 
 
@@ -284,7 +358,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+				return basicSetBoundElement((TemplateableElement)otherEnd, msgs);
 			case UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION:
 				return ((InternalEList)getParameterSubstitutions()).basicAdd(otherEnd, msgs);
 		}
@@ -303,7 +377,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			case UML2Package.TEMPLATE_BINDING__OWNED_COMMENT:
 				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
 			case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
-				return eBasicSetContainer(null, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
+				return basicSetBoundElement(null, msgs);
 			case UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION:
 				return ((InternalEList)getParameterSubstitutions()).basicRemove(otherEnd, msgs);
 		}
@@ -443,15 +517,13 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TEMPLATE_BINDING__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.TEMPLATE_BINDING__OWNER:
 				return isSetOwner();
 			case UML2Package.TEMPLATE_BINDING__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.TEMPLATE_BINDING__RELATED_ELEMENT:
 				return isSetRelatedElements();
 			case UML2Package.TEMPLATE_BINDING__SOURCE:
@@ -461,10 +533,9 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 			case UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT:
 				return getBoundElement() != null;
 			case UML2Package.TEMPLATE_BINDING__SIGNATURE:
-				return eVirtualGet(UML2Package.TEMPLATE_BINDING__SIGNATURE) != null;
+				return signature != null;
 			case UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION:
-				EList parameterSubstitution = (EList)eVirtualGet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
-				return parameterSubstitution != null && !parameterSubstitution.isEmpty();
+				return parameterSubstitutions != null && !parameterSubstitutions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

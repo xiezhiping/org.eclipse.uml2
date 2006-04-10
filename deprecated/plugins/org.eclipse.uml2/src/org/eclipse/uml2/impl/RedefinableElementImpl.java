@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.25 2006/01/30 22:51:26 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.26 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.RedefinableElement;
@@ -49,7 +51,6 @@ import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#isLeaf <em>Is Leaf</em>}</li>
  * </ul>
  * </p>
@@ -122,6 +123,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REDEFINABLE_ELEMENT__IS_LEAF, oldIsLeaf, newIsLeaf));
 
+
 	}
 
 
@@ -147,16 +149,39 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * @see #getRedefinitionContexts()
+	 */
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UML2Package.REDEFINABLE_ELEMENT__OWNER};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
-		if (redefinitionContext == null) {
-			eVirtualSet(UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, redefinitionContext = new DerivedEObjectEList(Classifier.class, this, UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, new int[] {UML2Package.REDEFINABLE_ELEMENT__OWNER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinitionContexts = (EList) cache.get(eResource, this,
+				UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			if (redefinitionContexts == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						redefinitionContexts = new DerivedEObjectEList(
+							Classifier.class,
+							this,
+							UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+							REDEFINITION_CONTEXT_ESUBSETS));
+			}
+			return redefinitionContexts;
 		}
-		return redefinitionContext;
+		return new DerivedEObjectEList(Classifier.class, this,
+			UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+			REDEFINITION_CONTEXT_ESUBSETS);
 	}
 
 
@@ -175,11 +200,22 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
     public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase, EClass eClass) {
+		redefinitionContextLoop: for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinitionContext.getName()) : name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -189,8 +225,8 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getRedefinedElementsHelper(EList redefinedElement) {
-		return redefinedElement;
+	protected EList getRedefinedElementsHelper(EList redefinedElements) {
+		return redefinedElements;
 	}
 
 	/**
@@ -338,32 +374,27 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.REDEFINABLE_ELEMENT__NAME:
-				String name = (String)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REDEFINABLE_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REDEFINABLE_ELEMENT__VISIBILITY:
-				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.REDEFINABLE_ELEMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.REDEFINABLE_ELEMENT__IS_LEAF:
@@ -382,12 +413,12 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		if (cache != null) {
 			try {
 				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
-				EList redefinedElement = (EList) cache.get(eResource(), this, method);
-				if (redefinedElement == null) {
+				EList redefinedElements = (EList) cache.get(eResource(), this, method);
+				if (redefinedElements == null) {
 					List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
-					cache.put(eResource(), this, method, redefinedElement = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, redefinedElements = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
-				return redefinedElement;
+				return redefinedElements;
 			}
 			catch (NoSuchMethodException nsme) {
 				// ignore
@@ -413,11 +444,22 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 */
     public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name, boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop: for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinedElement.getName()) : name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}

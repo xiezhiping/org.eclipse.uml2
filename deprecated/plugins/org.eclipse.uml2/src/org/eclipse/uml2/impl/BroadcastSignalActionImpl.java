@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.17 2005/12/06 23:18:03 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.18 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -52,6 +50,16 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSignal()
+	 * @generated
+	 * @ordered
+	 */
+	protected Signal signal = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,12 +83,10 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * @generated
 	 */
 	public Signal getSignal() {
-		Signal signal = (Signal)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
 			InternalEObject oldSignal = (InternalEObject)signal;
 			signal = (Signal)eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
-				eVirtualSet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, signal);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
 			}
@@ -94,7 +100,7 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * @generated
 	 */
 	public Signal basicGetSignal() {
-		return (Signal)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL);
+		return signal;
 	}
 
 	/**
@@ -103,10 +109,11 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-		Signal signal = newSignal;
-		Object oldSignal = eVirtualSet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, signal);
+		Signal oldSignal = signal;
+		signal = newSignal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, oldSignal == EVIRTUAL_NO_VALUE ? null : oldSignal, signal));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
+
 
 	}
 
@@ -368,42 +375,35 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.BROADCAST_SIGNAL_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.BROADCAST_SIGNAL_ACTION__VISIBILITY:
-				return eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__ACTIVITY:
@@ -413,16 +413,12 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 			case UML2Package.BROADCAST_SIGNAL_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__EFFECT:
-				String effect = (String)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.BROADCAST_SIGNAL_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -431,18 +427,15 @@ public class BroadcastSignalActionImpl extends InvocationActionImpl implements B
 			case UML2Package.BROADCAST_SIGNAL_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION:
-				EList localPrecondition = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null && !localPrecondition.isEmpty();
+				return localPreconditions != null && !localPreconditions.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION:
-				EList localPostcondition = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null && !localPostcondition.isEmpty();
+				return localPostconditions != null && !localPostconditions.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__ARGUMENT:
-				EList argument = (EList)eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UML2Package.BROADCAST_SIGNAL_ACTION__ON_PORT:
-				return eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__ON_PORT) != null;
+				return onPort != null;
 			case UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL:
-				return eVirtualGet(UML2Package.BROADCAST_SIGNAL_ACTION__SIGNAL) != null;
+				return signal != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

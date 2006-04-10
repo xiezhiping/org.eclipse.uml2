@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeItemProvider.java,v 1.21 2005/11/23 20:02:53 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.22 2006/04/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -310,7 +310,7 @@ public class LoopNodeItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/LoopNode"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LoopNode")); //$NON-NLS-1$
 	}
 
 	/**

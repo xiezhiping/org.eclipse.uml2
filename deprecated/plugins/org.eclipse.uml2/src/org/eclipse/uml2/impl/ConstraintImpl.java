@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.27 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.28 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -40,6 +42,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.ConstraintOperations;
@@ -51,7 +54,6 @@ import org.eclipse.uml2.internal.operation.ConstraintOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getConstrainedElements <em>Constrained Element</em>}</li>
@@ -67,6 +69,26 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecification()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification specification = null;
+
+	/**
+	 * The cached value of the '{@link #getConstrainedElements() <em>Constrained Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstrainedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList constrainedElements = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,13 +114,17 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.CONSTRAINT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.CONSTRAINT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONSTRAINT__OWNED_ELEMENT, new int[] {UML2Package.CONSTRAINT__OWNED_COMMENT, UML2Package.CONSTRAINT__TEMPLATE_BINDING, UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE, UML2Package.CONSTRAINT__NAME_EXPRESSION, UML2Package.CONSTRAINT__SPECIFICATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +135,17 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.CONSTRAINT__SPECIFICATION);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.CONSTRAINT__OWNED_COMMENT, UML2Package.CONSTRAINT__TEMPLATE_BINDING, UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE, UML2Package.CONSTRAINT__NAME_EXPRESSION, UML2Package.CONSTRAINT__SPECIFICATION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,6 +194,17 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetNamespace(Namespace newNamespace, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newNamespace, UML2Package.CONSTRAINT__NAMESPACE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setNamespace(Namespace newNamespace) {
 		if (newNamespace != eInternalContainer() || (eContainerFeatureID != UML2Package.CONSTRAINT__NAMESPACE && newNamespace != null)) {
 			if (EcoreUtil.isAncestor(this, newNamespace))
@@ -166,7 +214,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newNamespace != null)
 				msgs = ((InternalEObject)newNamespace).eInverseAdd(this, UML2Package.NAMESPACE__OWNED_RULE, Namespace.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newNamespace, UML2Package.CONSTRAINT__NAMESPACE, msgs);
+			msgs = basicSetNamespace(newNamespace, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -190,7 +238,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		return (ValueSpecification)eVirtualGet(UML2Package.CONSTRAINT__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -199,9 +247,10 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public NotificationChain basicSetSpecification(ValueSpecification newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(UML2Package.CONSTRAINT__SPECIFICATION, newSpecification);
+		ValueSpecification oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CONSTRAINT__SPECIFICATION, oldSpecification == EVIRTUAL_NO_VALUE ? null : oldSpecification, newSpecification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.CONSTRAINT__SPECIFICATION, oldSpecification, newSpecification);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -214,7 +263,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -250,11 +298,10 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 * @generated
 	 */
 	public EList getConstrainedElements() {
-		EList constrainedElement = (EList)eVirtualGet(UML2Package.CONSTRAINT__CONSTRAINED_ELEMENT);
-		if (constrainedElement == null) {
-			eVirtualSet(UML2Package.CONSTRAINT__CONSTRAINED_ELEMENT, constrainedElement = new EObjectResolvingEList(Element.class, this, UML2Package.CONSTRAINT__CONSTRAINED_ELEMENT));
+		if (constrainedElements == null) {
+			constrainedElements = new EObjectResolvingEList(Element.class, this, UML2Package.CONSTRAINT__CONSTRAINED_ELEMENT);
 		}
-		return constrainedElement;
+		return constrainedElements;
 	}
 
 
@@ -280,25 +327,23 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 			case UML2Package.CONSTRAINT__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.CONSTRAINT__CLIENT_DEPENDENCY:
 				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 			case UML2Package.CONSTRAINT__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.CONSTRAINT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.CONSTRAINT__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.CONSTRAINT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.CONSTRAINT__NAMESPACE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.CONSTRAINT__NAMESPACE, msgs);
+				return basicSetNamespace((Namespace)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -325,9 +370,9 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 			case UML2Package.CONSTRAINT__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.CONSTRAINT__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.CONSTRAINT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.CONSTRAINT__NAMESPACE:
-				return eBasicSetContainer(null, UML2Package.CONSTRAINT__NAMESPACE, msgs);
+				return basicSetNamespace(null, msgs);
 			case UML2Package.CONSTRAINT__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 		}
@@ -518,34 +563,29 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CONSTRAINT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONSTRAINT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.CONSTRAINT__OWNER:
 				return isSetOwner();
 			case UML2Package.CONSTRAINT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.CONSTRAINT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.CONSTRAINT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.CONSTRAINT__NAME:
-				String name = (String)eVirtualGet(UML2Package.CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONSTRAINT__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.CONSTRAINT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.CONSTRAINT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.CONSTRAINT__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.CONSTRAINT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -555,10 +595,9 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 			case UML2Package.CONSTRAINT__NAMESPACE:
 				return isSetNamespace();
 			case UML2Package.CONSTRAINT__SPECIFICATION:
-				return eVirtualGet(UML2Package.CONSTRAINT__SPECIFICATION) != null;
+				return specification != null;
 			case UML2Package.CONSTRAINT__CONSTRAINED_ELEMENT:
-				EList constrainedElement = (EList)eVirtualGet(UML2Package.CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null && !constrainedElement.isEmpty();
+				return constrainedElements != null && !constrainedElements.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

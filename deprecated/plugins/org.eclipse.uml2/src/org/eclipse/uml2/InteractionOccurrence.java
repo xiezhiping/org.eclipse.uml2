@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrence.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
+ * $Id: InteractionOccurrence.java,v 1.12 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface InteractionOccurrence extends InteractionFragment{
+public interface InteractionOccurrence extends InteractionFragment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -97,15 +97,27 @@ public interface InteractionOccurrence extends InteractionFragment{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getActualGates()
 	 * @generated
 	 */
     Gate getActualGate(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Actual Gate</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getActualGates()
+	 * @generated
+	 */
+	Gate getActualGate(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Gate} and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
@@ -125,7 +137,7 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Gate}.
 	 * @see #getActualGates()
-	 * @generated
+	 * @generated NOT
 	 */
     Gate createActualGate();
 
@@ -150,15 +162,28 @@ public interface InteractionOccurrence extends InteractionFragment{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
 	 */
     InputPin getArgument(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getArguments()
+	 * @generated
+	 */
+	InputPin getArgument(String name, boolean ignoreCase, EClass eClass);
 
 
 	/**
@@ -168,7 +193,7 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getArguments()
-	 * @generated
+	 * @generated NOT
 	 */
     InputPin createArgument(EClass eClass);
 
@@ -178,7 +203,7 @@ public interface InteractionOccurrence extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getArguments()
-	 * @generated
+	 * @generated NOT
 	 */
     InputPin createArgument();
 

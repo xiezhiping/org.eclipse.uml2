@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.11 2005/11/29 20:09:38 khussey Exp $
+ * $Id: Port.java,v 1.12 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Port extends Property{
+public interface Port extends Property {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,15 +130,27 @@ public interface Port extends Property{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRequireds()
 	 * @generated
 	 */
     Interface getRequired(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRequireds()
+	 * @generated
+	 */
+	Interface getRequired(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Port</b></em>' reference list.
@@ -161,15 +173,27 @@ public interface Port extends Property{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Port</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Port</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedPorts()
 	 * @generated
 	 */
     Port getRedefinedPort(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Port</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Port} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Port} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedPorts()
+	 * @generated
+	 */
+	Port getRedefinedPort(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Provided</b></em>' reference list.
@@ -192,15 +216,27 @@ public interface Port extends Property{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getProvideds()
 	 * @generated
 	 */
     Interface getProvided(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Interface} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Interface} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getProvideds()
+	 * @generated
+	 */
+	Interface getProvided(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' reference.

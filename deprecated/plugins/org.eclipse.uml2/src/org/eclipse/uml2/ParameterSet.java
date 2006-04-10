@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
+ * $Id: ParameterSet.java,v 1.11 2006/04/10 20:40:21 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface ParameterSet extends NamedElement{
+public interface ParameterSet extends NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,15 +65,27 @@ public interface ParameterSet extends NamedElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
 	 */
     Parameter getParameter(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getParameters()
+	 * @generated
+	 */
+	Parameter getParameter(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.
@@ -93,15 +105,28 @@ public interface ParameterSet extends NamedElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Condition</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Condition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConditions()
 	 * @generated
 	 */
     Constraint getCondition(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Condition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Constraint} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConditions()
+	 * @generated
+	 */
+	Constraint getCondition(String name, boolean ignoreCase, EClass eClass);
 
 
 	/**
@@ -111,7 +136,7 @@ public interface ParameterSet extends NamedElement{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getConditions()
-	 * @generated
+	 * @generated NOT
 	 */
     Constraint createCondition(EClass eClass);
 
@@ -121,7 +146,7 @@ public interface ParameterSet extends NamedElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getConditions()
-	 * @generated
+	 * @generated NOT
 	 */
     Constraint createCondition();
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.24 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ModelImpl.java,v 1.25 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.Model;
@@ -59,6 +57,16 @@ public class ModelImpl extends PackageImpl implements Model {
 	protected static final String VIEWPOINT_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getViewpoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected String viewpoint = VIEWPOINT_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,7 +90,7 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @generated
 	 */
 	public String getViewpoint() {
-		return (String)eVirtualGet(UML2Package.MODEL__VIEWPOINT, VIEWPOINT_EDEFAULT);
+		return viewpoint;
 	}
 
 	/**
@@ -92,10 +100,11 @@ public class ModelImpl extends PackageImpl implements Model {
 	 */
 	public void setViewpoint(String newViewpoint) {
 		newViewpoint = newViewpoint == null ? VIEWPOINT_EDEFAULT : newViewpoint;
-		String viewpoint = newViewpoint;
-		Object oldViewpoint = eVirtualSet(UML2Package.MODEL__VIEWPOINT, viewpoint);
+		String oldViewpoint = viewpoint;
+		viewpoint = newViewpoint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MODEL__VIEWPOINT, oldViewpoint == EVIRTUAL_NO_VALUE ? VIEWPOINT_EDEFAULT : oldViewpoint, viewpoint));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.MODEL__VIEWPOINT, oldViewpoint, viewpoint));
+
 
 	}
 
@@ -323,47 +332,39 @@ public class ModelImpl extends PackageImpl implements Model {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.MODEL__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.MODEL__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MODEL__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.MODEL__OWNER:
 				return isSetOwner();
 			case UML2Package.MODEL__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.MODEL__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.MODEL__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.MODEL__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.MODEL__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.MODEL__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.MODEL__NAME:
-				String name = (String)eVirtualGet(UML2Package.MODEL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.MODEL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MODEL__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.MODEL__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.MODEL__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.MODEL__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.MODEL__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.MODEL__MEMBER:
 				return isSetMembers();
 			case UML2Package.MODEL__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.MODEL__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.MODEL__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.MODEL__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.MODEL__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.MODEL__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.MODEL__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.MODEL__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.MODEL__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.MODEL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.MODEL__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -377,16 +378,12 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__OWNED_MEMBER:
 				return isSetOwnedMembers();
 			case UML2Package.MODEL__PACKAGE_MERGE:
-				EList packageMerge = (EList)eVirtualGet(UML2Package.MODEL__PACKAGE_MERGE);
-				return packageMerge != null && !packageMerge.isEmpty();
+				return packageMerges != null && !packageMerges.isEmpty();
 			case UML2Package.MODEL__APPLIED_PROFILE:
-				EList appliedProfile = (EList)eVirtualGet(UML2Package.MODEL__APPLIED_PROFILE);
-				return appliedProfile != null && !appliedProfile.isEmpty();
+				return appliedProfiles != null && !appliedProfiles.isEmpty();
 			case UML2Package.MODEL__PACKAGE_EXTENSION:
-				EList packageExtension = (EList)eVirtualGet(UML2Package.MODEL__PACKAGE_EXTENSION);
-				return packageExtension != null && !packageExtension.isEmpty();
+				return packageExtensions != null && !packageExtensions.isEmpty();
 			case UML2Package.MODEL__VIEWPOINT:
-				String viewpoint = (String)eVirtualGet(UML2Package.MODEL__VIEWPOINT, VIEWPOINT_EDEFAULT);
 				return VIEWPOINT_EDEFAULT == null ? viewpoint != null : !VIEWPOINT_EDEFAULT.equals(viewpoint);
 		}
 		return eDynamicIsSet(featureID);
@@ -402,7 +399,7 @@ public class ModelImpl extends PackageImpl implements Model {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (viewpoint: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.MODEL__VIEWPOINT, VIEWPOINT_EDEFAULT));
+		result.append(viewpoint);
 		result.append(')');
 		return result.toString();
 	}

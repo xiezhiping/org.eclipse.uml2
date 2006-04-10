@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.28 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.29 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -48,6 +50,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
@@ -61,7 +64,6 @@ import org.eclipse.uml2.internal.operation.ParameterOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getLower <em>Lower</em>}</li>
@@ -88,6 +90,16 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type = null;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -150,6 +162,26 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,6 +200,26 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected static final ParameterDirectionKind DIRECTION_EDEFAULT = ParameterDirectionKind.IN_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDirection()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterDirectionKind direction = DIRECTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification defaultValue = null;
 
 	/**
 	 * The default value of the '{@link #isException() <em>Is Exception</em>}' attribute.
@@ -220,6 +272,26 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	protected static final ParameterEffectKind EFFECT_EDEFAULT = ParameterEffectKind.CREATE_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEffect()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterEffectKind effect = EFFECT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getParameterSets() <em>Parameter Set</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterSets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parameterSets = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -244,12 +316,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = (Type)eVirtualGet(UML2Package.PARAMETER__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
 			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UML2Package.PARAMETER__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PARAMETER__TYPE, oldType, type));
 			}
@@ -263,7 +333,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type)eVirtualGet(UML2Package.PARAMETER__TYPE);
+		return type;
 	}
 
 	/**
@@ -272,10 +342,11 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		Type type = newType;
-		Object oldType = eVirtualSet(UML2Package.PARAMETER__TYPE, type);
+		Type oldType = type;
+		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__TYPE, oldType, type));
+
 
 	}
 
@@ -286,13 +357,17 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.PARAMETER__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.PARAMETER__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER__OWNED_ELEMENT, new int[] {UML2Package.PARAMETER__OWNED_COMMENT, UML2Package.PARAMETER__TEMPLATE_BINDING, UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE, UML2Package.PARAMETER__NAME_EXPRESSION, UML2Package.PARAMETER__UPPER_VALUE, UML2Package.PARAMETER__LOWER_VALUE, UML2Package.PARAMETER__DEFAULT_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,6 +380,17 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			|| eIsSet(UML2Package.PARAMETER__LOWER_VALUE)
 			|| eIsSet(UML2Package.PARAMETER__DEFAULT_VALUE);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.PARAMETER__OWNED_COMMENT, UML2Package.PARAMETER__TEMPLATE_BINDING, UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE, UML2Package.PARAMETER__NAME_EXPRESSION, UML2Package.PARAMETER__UPPER_VALUE, UML2Package.PARAMETER__LOWER_VALUE, UML2Package.PARAMETER__DEFAULT_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -325,6 +411,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_ORDERED, oldIsOrdered, newIsOrdered));
+
 
 	}
 
@@ -348,6 +435,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_UNIQUE, oldIsUnique, newIsUnique));
+
 
 	}
 
@@ -376,7 +464,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -385,9 +473,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public NotificationChain basicSetUpperValue(ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UML2Package.PARAMETER__UPPER_VALUE, newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__UPPER_VALUE, oldUpperValue == EVIRTUAL_NO_VALUE ? null : oldUpperValue, newUpperValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__UPPER_VALUE, oldUpperValue, newUpperValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -400,7 +489,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -436,7 +524,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -445,9 +533,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public NotificationChain basicSetLowerValue(ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UML2Package.PARAMETER__LOWER_VALUE, newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__LOWER_VALUE, oldLowerValue == EVIRTUAL_NO_VALUE ? null : oldLowerValue, newLowerValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__LOWER_VALUE, oldLowerValue, newLowerValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -460,7 +549,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -505,7 +593,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
-		return (ParameterDirectionKind)eVirtualGet(UML2Package.PARAMETER__DIRECTION, DIRECTION_EDEFAULT);
+		return direction;
 	}
 
 	/**
@@ -514,10 +602,11 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setDirection(ParameterDirectionKind newDirection) {
-		ParameterDirectionKind direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
-		Object oldDirection = eVirtualSet(UML2Package.PARAMETER__DIRECTION, direction);
+		ParameterDirectionKind oldDirection = direction;
+		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__DIRECTION, oldDirection == EVIRTUAL_NO_VALUE ? DIRECTION_EDEFAULT : oldDirection, direction));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__DIRECTION, oldDirection, direction));
+
 
 	}
 
@@ -542,6 +631,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_EXCEPTION, oldIsException, newIsException));
 
+
 	}
 
 
@@ -565,6 +655,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__IS_STREAM, oldIsStream, newIsStream));
 
+
 	}
 
 
@@ -574,7 +665,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
-		return (ParameterEffectKind)eVirtualGet(UML2Package.PARAMETER__EFFECT, EFFECT_EDEFAULT);
+		return effect;
 	}
 
 	/**
@@ -583,10 +674,11 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setEffect(ParameterEffectKind newEffect) {
-		ParameterEffectKind effect = newEffect == null ? EFFECT_EDEFAULT : newEffect;
-		Object oldEffect = eVirtualSet(UML2Package.PARAMETER__EFFECT, effect);
+		ParameterEffectKind oldEffect = effect;
+		effect = newEffect == null ? EFFECT_EDEFAULT : newEffect;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__EFFECT, oldEffect == EVIRTUAL_NO_VALUE ? EFFECT_EDEFAULT : oldEffect, effect));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__EFFECT, oldEffect, effect));
+
 
 	}
 
@@ -606,6 +698,17 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOperation(Operation newOperation, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOperation, UML2Package.PARAMETER__OPERATION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOperation(Operation newOperation) {
 		if (newOperation != eInternalContainer() || (eContainerFeatureID != UML2Package.PARAMETER__OPERATION && newOperation != null)) {
 			if (EcoreUtil.isAncestor(this, newOperation))
@@ -615,7 +718,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOperation != null)
 				msgs = ((InternalEObject)newOperation).eInverseAdd(this, UML2Package.OPERATION__OWNED_PARAMETER, Operation.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newOperation, UML2Package.PARAMETER__OPERATION, msgs);
+			msgs = basicSetOperation(newOperation, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -630,7 +733,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__DEFAULT_VALUE);
+		return defaultValue;
 	}
 
 	/**
@@ -639,9 +742,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public NotificationChain basicSetDefaultValue(ValueSpecification newDefaultValue, NotificationChain msgs) {
-		Object oldDefaultValue = eVirtualSet(UML2Package.PARAMETER__DEFAULT_VALUE, newDefaultValue);
+		ValueSpecification oldDefaultValue = defaultValue;
+		defaultValue = newDefaultValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__DEFAULT_VALUE, oldDefaultValue == EVIRTUAL_NO_VALUE ? null : oldDefaultValue, newDefaultValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PARAMETER__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -654,7 +758,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
-		ValueSpecification defaultValue = (ValueSpecification)eVirtualGet(UML2Package.PARAMETER__DEFAULT_VALUE);
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -690,11 +793,10 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
 	public EList getParameterSets() {
-		EList parameterSet = (EList)eVirtualGet(UML2Package.PARAMETER__PARAMETER_SET);
-		if (parameterSet == null) {
-			eVirtualSet(UML2Package.PARAMETER__PARAMETER_SET, parameterSet = new EObjectWithInverseResolvingEList.ManyInverse(ParameterSet.class, this, UML2Package.PARAMETER__PARAMETER_SET, UML2Package.PARAMETER_SET__PARAMETER));
+		if (parameterSets == null) {
+			parameterSets = new EObjectWithInverseResolvingEList.ManyInverse(ParameterSet.class, this, UML2Package.PARAMETER__PARAMETER_SET, UML2Package.PARAMETER_SET__PARAMETER);
 		}
-		return parameterSet;
+		return parameterSets;
 	}
 
 
@@ -704,11 +806,20 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	 * @generated
 	 */
     public ParameterSet getParameterSet(String name) {
-		for (Iterator i = getParameterSets().iterator(); i.hasNext(); ) {
+		return getParameterSet(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterSet getParameterSet(String name, boolean ignoreCase) {
+		parameterSetLoop: for (Iterator i = getParameterSets().iterator(); i.hasNext(); ) {
 			ParameterSet parameterSet = (ParameterSet) i.next();
-			if (name.equals(parameterSet.getName())) {
-				return parameterSet;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(parameterSet.getName()) : name.equals(parameterSet.getName())))
+				continue parameterSetLoop;
+			return parameterSet;
 		}
 		return null;
 	}
@@ -845,27 +956,25 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.PARAMETER__CLIENT_DEPENDENCY:
 				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 			case UML2Package.PARAMETER__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.PARAMETER__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.PARAMETER__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.PARAMETER__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.PARAMETER__END:
 				return ((InternalEList)getEnds()).basicAdd(otherEnd, msgs);
 			case UML2Package.PARAMETER__OPERATION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.PARAMETER__OPERATION, msgs);
+				return basicSetOperation((Operation)otherEnd, msgs);
 			case UML2Package.PARAMETER__PARAMETER_SET:
 				return ((InternalEList)getParameterSets()).basicAdd(otherEnd, msgs);
 		}
@@ -894,7 +1003,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.PARAMETER__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.PARAMETER__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.PARAMETER__END:
 				return ((InternalEList)getEnds()).basicRemove(otherEnd, msgs);
 			case UML2Package.PARAMETER__UPPER_VALUE:
@@ -902,7 +1011,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__LOWER_VALUE:
 				return basicSetLowerValue(null, msgs);
 			case UML2Package.PARAMETER__OPERATION:
-				return eBasicSetContainer(null, UML2Package.PARAMETER__OPERATION, msgs);
+				return basicSetOperation(null, msgs);
 			case UML2Package.PARAMETER__DEFAULT_VALUE:
 				return basicSetDefaultValue(null, msgs);
 			case UML2Package.PARAMETER__PARAMETER_SET:
@@ -1196,41 +1305,35 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PARAMETER__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PARAMETER__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.PARAMETER__OWNER:
 				return isSetOwner();
 			case UML2Package.PARAMETER__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.PARAMETER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.PARAMETER__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.PARAMETER__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.PARAMETER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.PARAMETER__NAME:
-				String name = (String)eVirtualGet(UML2Package.PARAMETER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PARAMETER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PARAMETER__VISIBILITY:
-				return eVirtualGet(UML2Package.PARAMETER__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PARAMETER__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.PARAMETER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.PARAMETER__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.PARAMETER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.PARAMETER__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.PARAMETER__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.PARAMETER__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PARAMETER__END:
-				EList end = (EList)eVirtualGet(UML2Package.PARAMETER__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UML2Package.PARAMETER__TYPE:
-				return eVirtualGet(UML2Package.PARAMETER__TYPE) != null;
+				return type != null;
 			case UML2Package.PARAMETER__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.PARAMETER__IS_UNIQUE:
@@ -1240,26 +1343,25 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			case UML2Package.PARAMETER__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PARAMETER__UPPER_VALUE:
-				return eVirtualGet(UML2Package.PARAMETER__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.PARAMETER__LOWER_VALUE:
-				return eVirtualGet(UML2Package.PARAMETER__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UML2Package.PARAMETER__OPERATION:
 				return getOperation() != null;
 			case UML2Package.PARAMETER__DEFAULT:
 				return DEFAULT_EDEFAULT == null ? getDefault() != null : !DEFAULT_EDEFAULT.equals(getDefault());
 			case UML2Package.PARAMETER__DIRECTION:
-				return eVirtualGet(UML2Package.PARAMETER__DIRECTION, DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
+				return direction != DIRECTION_EDEFAULT;
 			case UML2Package.PARAMETER__DEFAULT_VALUE:
-				return eVirtualGet(UML2Package.PARAMETER__DEFAULT_VALUE) != null;
+				return defaultValue != null;
 			case UML2Package.PARAMETER__IS_EXCEPTION:
 				return ((eFlags & IS_EXCEPTION_EFLAG) != 0) != IS_EXCEPTION_EDEFAULT;
 			case UML2Package.PARAMETER__IS_STREAM:
 				return ((eFlags & IS_STREAM_EFLAG) != 0) != IS_STREAM_EDEFAULT;
 			case UML2Package.PARAMETER__EFFECT:
-				return eVirtualGet(UML2Package.PARAMETER__EFFECT, EFFECT_EDEFAULT) != EFFECT_EDEFAULT;
+				return effect != EFFECT_EDEFAULT;
 			case UML2Package.PARAMETER__PARAMETER_SET:
-				EList parameterSet = (EList)eVirtualGet(UML2Package.PARAMETER__PARAMETER_SET);
-				return parameterSet != null && !parameterSet.isEmpty();
+				return parameterSets != null && !parameterSets.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1330,13 +1432,13 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		result.append(", isUnique: "); //$NON-NLS-1$
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(", direction: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.PARAMETER__DIRECTION, DIRECTION_EDEFAULT));
+		result.append(direction);
 		result.append(", isException: "); //$NON-NLS-1$
 		result.append((eFlags & IS_EXCEPTION_EFLAG) != 0);
 		result.append(", isStream: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.PARAMETER__EFFECT, EFFECT_EDEFAULT));
+		result.append(effect);
 		result.append(')');
 		return result.toString();
 	}

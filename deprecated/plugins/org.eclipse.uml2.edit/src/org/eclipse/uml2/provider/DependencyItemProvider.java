@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyItemProvider.java,v 1.15 2006/01/05 22:58:12 khussey Exp $
+ * $Id: DependencyItemProvider.java,v 1.16 2006/04/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -194,7 +194,7 @@ public class DependencyItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Dependency"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Dependency")); //$NON-NLS-1$
 	}
 
 	/**

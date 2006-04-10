@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
+ * $Id: LoopNode.java,v 1.12 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface LoopNode extends StructuredActivityNode{
+public interface LoopNode extends StructuredActivityNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,15 +93,28 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Part</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Part</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodyParts()
 	 * @generated
 	 */
     ActivityNode getBodyPart(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getBodyParts()
+	 * @generated
+	 */
+	ActivityNode getBodyPart(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Setup Part</b></em>' reference list.
@@ -121,15 +134,28 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Setup Part</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Setup Part</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSetupParts()
 	 * @generated
 	 */
     ActivityNode getSetupPart(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Setup Part</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSetupParts()
+	 * @generated
+	 */
+	ActivityNode getSetupPart(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Decider</b></em>' reference.
@@ -176,15 +202,28 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getTests()
 	 * @generated
 	 */
     ActivityNode getTest(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getTests()
+	 * @generated
+	 */
+	ActivityNode getTest(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
@@ -207,15 +246,27 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getResults()
 	 * @generated
 	 */
     OutputPin getResult(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getResults()
+	 * @generated
+	 */
+	OutputPin getResult(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Result</b></em>' containment reference list.
@@ -235,7 +286,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getResults()
-	 * @generated
+	 * @generated NOT
 	 */
     OutputPin createResult();
 
@@ -260,15 +311,27 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLoopVariables()
 	 * @generated
 	 */
     OutputPin getLoopVariable(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getLoopVariables()
+	 * @generated
+	 */
+	OutputPin getLoopVariable(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.OutputPin} and appends it to the '<em><b>Loop Variable</b></em>' containment reference list.
@@ -288,7 +351,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.OutputPin}.
 	 * @see #getLoopVariables()
-	 * @generated
+	 * @generated NOT
 	 */
     OutputPin createLoopVariable();
 
@@ -313,15 +376,27 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getBodyOutputs()
 	 * @generated
 	 */
     OutputPin getBodyOutput(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Output</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.OutputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getBodyOutputs()
+	 * @generated
+	 */
+	OutputPin getBodyOutput(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Loop Variable Input</b></em>' containment reference list.
@@ -344,15 +419,28 @@ public interface LoopNode extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable Input</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable Input</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getLoopVariableInputs()
 	 * @generated
 	 */
     InputPin getLoopVariableInput(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>' from the '<em><b>Loop Variable Input</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.InputPin} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getLoopVariableInputs()
+	 * @generated
+	 */
+	InputPin getLoopVariableInput(String name, boolean ignoreCase, EClass eClass);
 
 
 	/**
@@ -362,7 +450,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.InputPin} to create.
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getLoopVariableInputs()
-	 * @generated
+	 * @generated NOT
 	 */
     InputPin createLoopVariableInput(EClass eClass);
 
@@ -372,7 +460,7 @@ public interface LoopNode extends StructuredActivityNode{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InputPin}.
 	 * @see #getLoopVariableInputs()
-	 * @generated
+	 * @generated NOT
 	 */
     InputPin createLoopVariableInput();
 

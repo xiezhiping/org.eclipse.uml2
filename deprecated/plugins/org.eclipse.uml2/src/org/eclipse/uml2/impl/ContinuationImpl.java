@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.15 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.16 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.Continuation;
@@ -106,6 +104,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 		if (newSetting) eFlags |= SETTING_EFLAG; else eFlags &= ~SETTING_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CONTINUATION__SETTING, oldSetting, newSetting));
+
 
 	}
 
@@ -268,38 +267,31 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CONTINUATION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.CONTINUATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONTINUATION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.CONTINUATION__OWNER:
 				return isSetOwner();
 			case UML2Package.CONTINUATION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.CONTINUATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.CONTINUATION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.CONTINUATION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.CONTINUATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.CONTINUATION__NAME:
-				String name = (String)eVirtualGet(UML2Package.CONTINUATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONTINUATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONTINUATION__VISIBILITY:
-				return eVirtualGet(UML2Package.CONTINUATION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.CONTINUATION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.CONTINUATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.CONTINUATION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.CONTINUATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.CONTINUATION__COVERED:
-				EList covered = (EList)eVirtualGet(UML2Package.CONTINUATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UML2Package.CONTINUATION__GENERAL_ORDERING:
-				EList generalOrdering = (EList)eVirtualGet(UML2Package.CONTINUATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UML2Package.CONTINUATION__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.CONTINUATION__ENCLOSING_OPERAND:

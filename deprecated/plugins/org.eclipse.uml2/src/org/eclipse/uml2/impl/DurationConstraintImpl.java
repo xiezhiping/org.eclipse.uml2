@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.17 2005/12/06 23:18:02 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.18 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
@@ -82,7 +80,7 @@ public class DurationConstraintImpl extends IntervalConstraintImpl implements Du
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return (ValueSpecification)eVirtualGet(UML2Package.DURATION_CONSTRAINT__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -94,7 +92,6 @@ public class DurationConstraintImpl extends IntervalConstraintImpl implements Du
 		if (newSpecification != null && !(newSpecification instanceof DurationInterval)) {
 			throw new IllegalArgumentException(String.valueOf(newSpecification));
 		}
-		ValueSpecification specification = (ValueSpecification)eVirtualGet(UML2Package.DURATION_CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -115,7 +112,7 @@ public class DurationConstraintImpl extends IntervalConstraintImpl implements Du
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
-		return eVirtualGet(UML2Package.DURATION_CONSTRAINT__SPECIFICATION) != null;
+		return specification != null;
 	}
 
 	/**
@@ -176,34 +173,29 @@ public class DurationConstraintImpl extends IntervalConstraintImpl implements Du
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.DURATION_CONSTRAINT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.DURATION_CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.DURATION_CONSTRAINT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.DURATION_CONSTRAINT__OWNER:
 				return isSetOwner();
 			case UML2Package.DURATION_CONSTRAINT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.DURATION_CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.DURATION_CONSTRAINT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.DURATION_CONSTRAINT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.DURATION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.DURATION_CONSTRAINT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.DURATION_CONSTRAINT__NAME:
-				String name = (String)eVirtualGet(UML2Package.DURATION_CONSTRAINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.DURATION_CONSTRAINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.DURATION_CONSTRAINT__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.DURATION_CONSTRAINT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.DURATION_CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.DURATION_CONSTRAINT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.DURATION_CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.DURATION_CONSTRAINT__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.DURATION_CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.DURATION_CONSTRAINT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.DURATION_CONSTRAINT__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -215,8 +207,7 @@ public class DurationConstraintImpl extends IntervalConstraintImpl implements Du
 			case UML2Package.DURATION_CONSTRAINT__SPECIFICATION:
 				return isSetSpecification();
 			case UML2Package.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT:
-				EList constrainedElement = (EList)eVirtualGet(UML2Package.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null && !constrainedElement.isEmpty();
+				return constrainedElements != null && !constrainedElements.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

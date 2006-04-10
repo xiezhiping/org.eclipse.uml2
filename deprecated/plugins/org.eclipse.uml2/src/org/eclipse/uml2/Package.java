@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.22 2005/11/29 20:09:40 khussey Exp $
+ * $Id: Package.java,v 1.23 2006/04/10 20:40:29 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Package extends Namespace, PackageableElement{
+public interface Package extends Namespace, PackageableElement {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,15 +78,28 @@ public interface Package extends Namespace, PackageableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Package} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Package} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNestedPackages()
 	 * @generated
 	 */
     Package getNestedPackage(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Package} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Package} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Package} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNestedPackages()
+	 * @generated
+	 */
+	Package getNestedPackage(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Nesting Package</b></em>' reference.
@@ -129,15 +142,28 @@ public interface Package extends Namespace, PackageableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedTypes()
 	 * @generated
 	 */
     Type getOwnedType(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedTypes()
+	 * @generated
+	 */
+	Type getOwnedType(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Member</b></em>' containment reference list.
@@ -160,15 +186,28 @@ public interface Package extends Namespace, PackageableElement{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.PackageableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.PackageableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedMembers()
 	 * @generated
 	 */
     NamedElement getOwnedMember(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Member</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.PackageableElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.PackageableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.PackageableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedMembers()
+	 * @generated
+	 */
+	NamedElement getOwnedMember(String name, boolean ignoreCase, EClass eClass);
 
     /**
      * Creates a {@link org.eclipse.uml2.PackageableElement} and appends it to the '<em><b>Owned Member</b></em>' containment reference list.
@@ -218,7 +257,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.PackageMerge}.
 	 * @see #getPackageMerges()
-	 * @generated
+	 * @generated NOT
 	 */
     PackageMerge createPackageMerge();
 
@@ -256,6 +295,7 @@ public interface Package extends Namespace, PackageableElement{
 	EList getPackageExtensions();
 
 
+
     /**
      * Creates a {@link org.eclipse.uml2.PackageMerge} and appends it to the '<em><b>Package Extension</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -274,7 +314,7 @@ public interface Package extends Namespace, PackageableElement{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.PackageMerge}.
 	 * @see #getPackageExtensions()
-	 * @generated
+	 * @generated NOT
 	 */
     PackageMerge createPackageExtension();
 

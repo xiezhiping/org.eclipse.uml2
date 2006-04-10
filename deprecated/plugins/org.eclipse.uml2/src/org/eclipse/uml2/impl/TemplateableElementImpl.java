@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.22 2005/12/06 23:18:02 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.23 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -48,7 +50,6 @@ import org.eclipse.uml2.internal.operation.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  * </ul>
@@ -63,6 +64,26 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList templateBindings = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,13 +109,17 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT, new int[] {UML2Package.TEMPLATEABLE_ELEMENT__OWNED_COMMENT, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,17 +132,27 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 			|| eIsSet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TEMPLATEABLE_ELEMENT__OWNED_COMMENT, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getTemplateBindings() {
-		EList templateBinding = (EList)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
-		if (templateBinding == null) {
-			eVirtualSet(UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, templateBinding = new EObjectContainmentWithInverseEList(TemplateBinding.class, this, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT));
+		if (templateBindings == null) {
+			templateBindings = new EObjectContainmentWithInverseEList(TemplateBinding.class, this, UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT);
 		}
-		return templateBinding;
+		return templateBindings;
 	}
 
 
@@ -156,7 +191,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		return (TemplateSignature)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+		return ownedTemplateSignature;
 	}
 
 	/**
@@ -165,9 +200,10 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * @generated
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-		Object oldOwnedTemplateSignature = eVirtualSet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, newOwnedTemplateSignature);
+		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
+		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, oldOwnedTemplateSignature == EVIRTUAL_NO_VALUE ? null : oldOwnedTemplateSignature, newOwnedTemplateSignature);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, oldOwnedTemplateSignature, newOwnedTemplateSignature);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -180,7 +216,6 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	 * @generated
 	 */
 	public void setOwnedTemplateSignature(TemplateSignature newOwnedTemplateSignature) {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -194,6 +229,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, newOwnedTemplateSignature, newOwnedTemplateSignature));
 
 	}
+
 
 
 	/**
@@ -253,7 +289,6 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 			case UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -361,20 +396,17 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TEMPLATEABLE_ELEMENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

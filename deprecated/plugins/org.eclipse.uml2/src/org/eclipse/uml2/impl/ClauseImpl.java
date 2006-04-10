@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.14 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.15 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,6 +57,66 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getTests() <em>Test</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTests()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList tests = null;
+
+	/**
+	 * The cached value of the '{@link #getBodies() <em>Body</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBodies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList bodies = null;
+
+	/**
+	 * The cached value of the '{@link #getPredecessorClauses() <em>Predecessor Clause</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPredecessorClauses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList predecessorClauses = null;
+
+	/**
+	 * The cached value of the '{@link #getSuccessorClauses() <em>Successor Clause</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuccessorClauses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList successorClauses = null;
+
+	/**
+	 * The cached value of the '{@link #getDecider() <em>Decider</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDecider()
+	 * @generated
+	 * @ordered
+	 */
+	protected OutputPin decider = null;
+
+	/**
+	 * The cached value of the '{@link #getBodyOutputs() <em>Body Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBodyOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList bodyOutputs = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,11 +140,10 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public EList getTests() {
-		EList test = (EList)eVirtualGet(UML2Package.CLAUSE__TEST);
-		if (test == null) {
-			eVirtualSet(UML2Package.CLAUSE__TEST, test = new EObjectResolvingEList(ActivityNode.class, this, UML2Package.CLAUSE__TEST));
+		if (tests == null) {
+			tests = new EObjectResolvingEList(ActivityNode.class, this, UML2Package.CLAUSE__TEST);
 		}
-		return test;
+		return tests;
 	}
 
 
@@ -94,11 +153,22 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
     public ActivityNode getTest(String name) {
-		for (Iterator i = getTests().iterator(); i.hasNext(); ) {
+		return getTest(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getTest(String name, boolean ignoreCase, EClass eClass) {
+		testLoop: for (Iterator i = getTests().iterator(); i.hasNext(); ) {
 			ActivityNode test = (ActivityNode) i.next();
-			if (name.equals(test.getName())) {
-				return test;
-			}
+			if (eClass != null && !eClass.isInstance(test))
+				continue testLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(test.getName()) : name.equals(test.getName())))
+				continue testLoop;
+			return test;
 		}
 		return null;
 	}
@@ -109,11 +179,10 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public EList getBodies() {
-		EList body = (EList)eVirtualGet(UML2Package.CLAUSE__BODY);
-		if (body == null) {
-			eVirtualSet(UML2Package.CLAUSE__BODY, body = new EObjectResolvingEList(ActivityNode.class, this, UML2Package.CLAUSE__BODY));
+		if (bodies == null) {
+			bodies = new EObjectResolvingEList(ActivityNode.class, this, UML2Package.CLAUSE__BODY);
 		}
-		return body;
+		return bodies;
 	}
 
 
@@ -123,11 +192,22 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
     public ActivityNode getBody(String name) {
-		for (Iterator i = getBodies().iterator(); i.hasNext(); ) {
+		return getBody(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getBody(String name, boolean ignoreCase, EClass eClass) {
+		bodyLoop: for (Iterator i = getBodies().iterator(); i.hasNext(); ) {
 			ActivityNode body = (ActivityNode) i.next();
-			if (name.equals(body.getName())) {
-				return body;
-			}
+			if (eClass != null && !eClass.isInstance(body))
+				continue bodyLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(body.getName()) : name.equals(body.getName())))
+				continue bodyLoop;
+			return body;
 		}
 		return null;
 	}
@@ -138,11 +218,10 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public EList getPredecessorClauses() {
-		EList predecessorClause = (EList)eVirtualGet(UML2Package.CLAUSE__PREDECESSOR_CLAUSE);
-		if (predecessorClause == null) {
-			eVirtualSet(UML2Package.CLAUSE__PREDECESSOR_CLAUSE, predecessorClause = new EObjectWithInverseResolvingEList.ManyInverse(Clause.class, this, UML2Package.CLAUSE__PREDECESSOR_CLAUSE, UML2Package.CLAUSE__SUCCESSOR_CLAUSE));
+		if (predecessorClauses == null) {
+			predecessorClauses = new EObjectWithInverseResolvingEList.ManyInverse(Clause.class, this, UML2Package.CLAUSE__PREDECESSOR_CLAUSE, UML2Package.CLAUSE__SUCCESSOR_CLAUSE);
 		}
-		return predecessorClause;
+		return predecessorClauses;
 	}
 
 
@@ -152,11 +231,10 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public EList getSuccessorClauses() {
-		EList successorClause = (EList)eVirtualGet(UML2Package.CLAUSE__SUCCESSOR_CLAUSE);
-		if (successorClause == null) {
-			eVirtualSet(UML2Package.CLAUSE__SUCCESSOR_CLAUSE, successorClause = new EObjectWithInverseResolvingEList.ManyInverse(Clause.class, this, UML2Package.CLAUSE__SUCCESSOR_CLAUSE, UML2Package.CLAUSE__PREDECESSOR_CLAUSE));
+		if (successorClauses == null) {
+			successorClauses = new EObjectWithInverseResolvingEList.ManyInverse(Clause.class, this, UML2Package.CLAUSE__SUCCESSOR_CLAUSE, UML2Package.CLAUSE__PREDECESSOR_CLAUSE);
 		}
-		return successorClause;
+		return successorClauses;
 	}
 
 
@@ -166,12 +244,10 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public OutputPin getDecider() {
-		OutputPin decider = (OutputPin)eVirtualGet(UML2Package.CLAUSE__DECIDER);
 		if (decider != null && decider.eIsProxy()) {
 			InternalEObject oldDecider = (InternalEObject)decider;
 			decider = (OutputPin)eResolveProxy(oldDecider);
 			if (decider != oldDecider) {
-				eVirtualSet(UML2Package.CLAUSE__DECIDER, decider);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.CLAUSE__DECIDER, oldDecider, decider));
 			}
@@ -185,7 +261,7 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public OutputPin basicGetDecider() {
-		return (OutputPin)eVirtualGet(UML2Package.CLAUSE__DECIDER);
+		return decider;
 	}
 
 	/**
@@ -194,10 +270,11 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public void setDecider(OutputPin newDecider) {
-		OutputPin decider = newDecider;
-		Object oldDecider = eVirtualSet(UML2Package.CLAUSE__DECIDER, decider);
+		OutputPin oldDecider = decider;
+		decider = newDecider;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLAUSE__DECIDER, oldDecider == EVIRTUAL_NO_VALUE ? null : oldDecider, decider));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLAUSE__DECIDER, oldDecider, decider));
+
 
 	}
 
@@ -208,11 +285,10 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
 	public EList getBodyOutputs() {
-		EList bodyOutput = (EList)eVirtualGet(UML2Package.CLAUSE__BODY_OUTPUT);
-		if (bodyOutput == null) {
-			eVirtualSet(UML2Package.CLAUSE__BODY_OUTPUT, bodyOutput = new EObjectResolvingEList(OutputPin.class, this, UML2Package.CLAUSE__BODY_OUTPUT));
+		if (bodyOutputs == null) {
+			bodyOutputs = new EObjectResolvingEList(OutputPin.class, this, UML2Package.CLAUSE__BODY_OUTPUT);
 		}
-		return bodyOutput;
+		return bodyOutputs;
 	}
 
 
@@ -222,11 +298,20 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	 * @generated
 	 */
     public OutputPin getBodyOutput(String name) {
-		for (Iterator i = getBodyOutputs().iterator(); i.hasNext(); ) {
+		return getBodyOutput(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getBodyOutput(String name, boolean ignoreCase) {
+		bodyOutputLoop: for (Iterator i = getBodyOutputs().iterator(); i.hasNext(); ) {
 			OutputPin bodyOutput = (OutputPin) i.next();
-			if (name.equals(bodyOutput.getName())) {
-				return bodyOutput;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(bodyOutput.getName()) : name.equals(bodyOutput.getName())))
+				continue bodyOutputLoop;
+			return bodyOutput;
 		}
 		return null;
 	}
@@ -385,32 +470,25 @@ public class ClauseImpl extends ElementImpl implements Clause {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CLAUSE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.CLAUSE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLAUSE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.CLAUSE__OWNER:
 				return isSetOwner();
 			case UML2Package.CLAUSE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.CLAUSE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.CLAUSE__TEST:
-				EList test = (EList)eVirtualGet(UML2Package.CLAUSE__TEST);
-				return test != null && !test.isEmpty();
+				return tests != null && !tests.isEmpty();
 			case UML2Package.CLAUSE__BODY:
-				EList body = (EList)eVirtualGet(UML2Package.CLAUSE__BODY);
-				return body != null && !body.isEmpty();
+				return bodies != null && !bodies.isEmpty();
 			case UML2Package.CLAUSE__PREDECESSOR_CLAUSE:
-				EList predecessorClause = (EList)eVirtualGet(UML2Package.CLAUSE__PREDECESSOR_CLAUSE);
-				return predecessorClause != null && !predecessorClause.isEmpty();
+				return predecessorClauses != null && !predecessorClauses.isEmpty();
 			case UML2Package.CLAUSE__SUCCESSOR_CLAUSE:
-				EList successorClause = (EList)eVirtualGet(UML2Package.CLAUSE__SUCCESSOR_CLAUSE);
-				return successorClause != null && !successorClause.isEmpty();
+				return successorClauses != null && !successorClauses.isEmpty();
 			case UML2Package.CLAUSE__DECIDER:
-				return eVirtualGet(UML2Package.CLAUSE__DECIDER) != null;
+				return decider != null;
 			case UML2Package.CLAUSE__BODY_OUTPUT:
-				EList bodyOutput = (EList)eVirtualGet(UML2Package.CLAUSE__BODY_OUTPUT);
-				return bodyOutput != null && !bodyOutput.isEmpty();
+				return bodyOutputs != null && !bodyOutputs.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

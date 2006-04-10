@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.25 2006/01/05 13:53:14 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.26 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -39,7 +41,6 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
-//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
@@ -50,8 +51,6 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getContract <em>Contract</em>}</li>
@@ -68,6 +67,16 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getContract() <em>Contract</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContract()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier contract = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,6 +116,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			|| eIsSet(UML2Package.SUBSTITUTION__CONTRACT);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,18 +137,17 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			|| eIsSet(UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Classifier getContract() {
-		Classifier contract = (Classifier)eVirtualGet(UML2Package.SUBSTITUTION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
 			InternalEObject oldContract = (InternalEObject)contract;
 			contract = (Classifier)eResolveProxy(oldContract);
 			if (contract != oldContract) {
-				eVirtualSet(UML2Package.SUBSTITUTION__CONTRACT, contract);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.SUBSTITUTION__CONTRACT, oldContract, contract));
 			}
@@ -152,7 +161,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public Classifier basicGetContract() {
-		return (Classifier)eVirtualGet(UML2Package.SUBSTITUTION__CONTRACT);
+		return contract;
 	}
 
 	/**
@@ -161,14 +170,21 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public void setContract(Classifier newContract) {
-		if (newContract != null && !getSuppliers().contains(newContract)) {
-			getSuppliers().add(newContract);
-		}
-		Classifier contract = newContract;
-		Object oldContract = eVirtualSet(UML2Package.SUBSTITUTION__CONTRACT, contract);
+		Classifier oldContract = contract;
+		contract = newContract;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SUBSTITUTION__CONTRACT, oldContract == EVIRTUAL_NO_VALUE ? null : oldContract, contract));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.SUBSTITUTION__CONTRACT, oldContract, contract));
 
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newContract != null) {
+				EList suppliers = getSuppliers();
+				if (!suppliers.contains(newContract)) {
+					suppliers.add(newContract);
+				}
+			}
+		}
 	}
 
 
@@ -187,10 +203,27 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
-		if (newSubstitutingClassifier != null && !getClients().contains(newSubstitutingClassifier)) {
-			getClients().add(newSubstitutingClassifier);
+	public NotificationChain basicSetSubstitutingClassifier(Classifier newSubstitutingClassifier, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newSubstitutingClassifier, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newSubstitutingClassifier != null) {
+				EList clients = getClients();
+				if (!clients.contains(newSubstitutingClassifier)) {
+					clients.add(newSubstitutingClassifier);
+				}
+			}
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
 		if (newSubstitutingClassifier != eInternalContainer() || (eContainerFeatureID != UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -199,7 +232,7 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSubstitutingClassifier != null)
 				msgs = ((InternalEObject)newSubstitutingClassifier).eInverseAdd(this, UML2Package.CLASSIFIER__SUBSTITUTION, Classifier.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newSubstitutingClassifier, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+			msgs = basicSetSubstitutingClassifier(newSubstitutingClassifier, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -220,31 +253,29 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.SUBSTITUTION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.SUBSTITUTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__CLIENT_DEPENDENCY:
 				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.SUBSTITUTION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.SUBSTITUTION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__CLIENT:
 				return ((InternalEList)getClients()).basicAdd(otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__ABSTRACTION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.SUBSTITUTION__ABSTRACTION, msgs);
+				return basicSetAbstraction((Component)otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+				return basicSetSubstitutingClassifier((Classifier)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -271,15 +302,15 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.SUBSTITUTION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.SUBSTITUTION__CLIENT:
 				return ((InternalEList)getClients()).basicRemove(otherEnd, msgs);
 			case UML2Package.SUBSTITUTION__MAPPING:
 				return basicSetMapping(null, msgs);
 			case UML2Package.SUBSTITUTION__ABSTRACTION:
-				return eBasicSetContainer(null, UML2Package.SUBSTITUTION__ABSTRACTION, msgs);
+				return basicSetAbstraction(null, msgs);
 			case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
-				return eBasicSetContainer(null, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
+				return basicSetSubstitutingClassifier(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -307,13 +338,22 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList)eVirtualGet(UML2Package.SUBSTITUTION__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(UML2Package.SUBSTITUTION__SUPPLIER, supplier = new SubsetSupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.SUBSTITUTION__SUPPLIER, null, new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT}));
+		if (suppliers == null) {
+			suppliers = new SubsetSupersetEObjectResolvingEList(NamedElement.class, this, UML2Package.SUBSTITUTION__SUPPLIER, null, SUPPLIER_ESUBSETS);
 		}
-		return supplier;
+		return suppliers;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -321,13 +361,42 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @generated
 	 */
 	public EList getClients() {
-		EList client = (EList)eVirtualGet(UML2Package.SUBSTITUTION__CLIENT);
-		if (client == null) {
-			eVirtualSet(UML2Package.SUBSTITUTION__CLIENT, client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.SUBSTITUTION__CLIENT, null, new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER}, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		if (clients == null) {
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(NamedElement.class, this, UML2Package.SUBSTITUTION__CLIENT, null, CLIENT_ESUBSETS, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
-		return client;
+		return clients;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -536,34 +605,29 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SUBSTITUTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.SUBSTITUTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SUBSTITUTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.SUBSTITUTION__OWNER:
 				return isSetOwner();
 			case UML2Package.SUBSTITUTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.SUBSTITUTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.SUBSTITUTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.SUBSTITUTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.SUBSTITUTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.SUBSTITUTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.SUBSTITUTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.SUBSTITUTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.SUBSTITUTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SUBSTITUTION__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.SUBSTITUTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.SUBSTITUTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.SUBSTITUTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.SUBSTITUTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.SUBSTITUTION__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.SUBSTITUTION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.SUBSTITUTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.SUBSTITUTION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -575,19 +639,17 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			case UML2Package.SUBSTITUTION__TARGET:
 				return isSetTargets();
 			case UML2Package.SUBSTITUTION__CLIENT:
-				EList client = (EList)eVirtualGet(UML2Package.SUBSTITUTION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UML2Package.SUBSTITUTION__SUPPLIER:
-				EList supplier = (EList)eVirtualGet(UML2Package.SUBSTITUTION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UML2Package.SUBSTITUTION__MAPPING:
-				return eVirtualGet(UML2Package.SUBSTITUTION__MAPPING) != null;
+				return mapping != null;
 			case UML2Package.SUBSTITUTION__ABSTRACTION:
 				return getAbstraction() != null;
 			case UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER:
-				return eVirtualGet(UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER) != null;
+				return realizingClassifier != null;
 			case UML2Package.SUBSTITUTION__CONTRACT:
-				return eVirtualGet(UML2Package.SUBSTITUTION__CONTRACT) != null;
+				return contract != null;
 			case UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER:
 				return getSubstitutingClassifier() != null;
 		}

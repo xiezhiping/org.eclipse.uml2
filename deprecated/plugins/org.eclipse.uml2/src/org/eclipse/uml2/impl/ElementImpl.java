@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.41 2006/02/21 14:52:24 khussey Exp $
+ * $Id: ElementImpl.java,v 1.42 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,7 +17,6 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 //import java.util.Iterator;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,20 +31,17 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.EModelElementImpl;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Comment;
@@ -55,7 +51,6 @@ import org.eclipse.uml2.UML2Package;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.Stereotype;
@@ -70,15 +65,13 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getEAnnotations <em>EAnnotations</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class ElementImpl extends EObjectImpl implements Element {
+public abstract class ElementImpl extends EModelElementImpl implements Element {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,77 +81,23 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * An array of objects representing the values of non-primitive features.
+	 * The cached value of the '{@link #getOwnedComments() <em>Owned Comment</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getOwnedComments()
 	 * @generated
+	 * @ordered
 	 */
-	protected Object[] eVirtualValues = null;
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits0 = 0;
+	protected EList ownedComments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Object[] eVirtualValues() {
-		return eVirtualValues;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualValues(Object[] newValues) {
-		eVirtualValues = newValues;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
 	protected ElementImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,39 +113,18 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEAnnotations() {
-		EList eAnnotations = (EList)eVirtualGet(UML2Package.ELEMENT__EANNOTATIONS);
-		if (eAnnotations == null) {
-			eVirtualSet(UML2Package.ELEMENT__EANNOTATIONS, eAnnotations = new EObjectContainmentWithInverseEList(EAnnotation.class, this, UML2Package.ELEMENT__EANNOTATIONS, EcorePackage.EANNOTATION__EMODEL_ELEMENT));
-		}
-		return eAnnotations;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAnnotation createEAnnotations() {
-		EAnnotation newEAnnotations = EcoreFactory.eINSTANCE.createEAnnotation();
-		getEAnnotations().add(newEAnnotations);
-		return newEAnnotations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.ELEMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.ELEMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT__OWNED_ELEMENT, new int[] {UML2Package.ELEMENT__OWNED_COMMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -216,6 +134,17 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	public boolean isSetOwnedElements() {
 		return eIsSet(UML2Package.ELEMENT__OWNED_COMMENT);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ELEMENT__OWNED_COMMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,12 +181,12 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	 * @generated
 	 */
 	public EList getOwnedComments() {
-		EList ownedComment = (EList)eVirtualGet(UML2Package.ELEMENT__OWNED_COMMENT);
-		if (ownedComment == null) {
-			eVirtualSet(UML2Package.ELEMENT__OWNED_COMMENT, ownedComment = new EObjectContainmentEList(Comment.class, this, UML2Package.ELEMENT__OWNED_COMMENT));
+		if (ownedComments == null) {
+			ownedComments = new EObjectContainmentEList(Comment.class, this, UML2Package.ELEMENT__OWNED_COMMENT);
 		}
-		return ownedComment;
+		return ownedComments;
 	}
+
 
 
 	/**
@@ -288,27 +217,6 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 		getOwnedComments().add(newOwnedComment);
 		return newOwnedComment;
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EAnnotation getEAnnotation(String source) {
-
-		for (Iterator eAnnotations = getEAnnotations().iterator(); eAnnotations
-			.hasNext();) {
-
-			EAnnotation eAnnotation = (EAnnotation) eAnnotations.next();
-
-			if (UML2Util.safeEquals(eAnnotation.getSource(), source)) {
-				return eAnnotation;
-			}
-		}
-
-		return null;
-	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -355,19 +263,6 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	 */
 	public boolean mustBeOwned() {
 		return ElementOperations.mustBeOwned(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UML2Package.ELEMENT__EANNOTATIONS:
-				return ((InternalEList)getEAnnotations()).basicAdd(otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -449,58 +344,17 @@ public abstract class ElementImpl extends EObjectImpl implements Element {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ELEMENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ELEMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.ELEMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
-		if (baseClass == EObject.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == EModelElement.class) {
-			switch (derivedFeatureID) {
-				case UML2Package.ELEMENT__EANNOTATIONS: return EcorePackage.EMODEL_ELEMENT__EANNOTATIONS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
-		if (baseClass == EObject.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == EModelElement.class) {
-			switch (baseFeatureID) {
-				case EcorePackage.EMODEL_ELEMENT__EANNOTATIONS: return UML2Package.ELEMENT__EANNOTATIONS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
 
 	/**
 	 * Retrieves the cache adapter for this '<em><b>Element</b></em>'.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.20 2006/01/05 13:53:10 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.21 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -35,6 +37,7 @@ import org.eclipse.uml2.TemplateableElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
@@ -46,7 +49,6 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getNestedSignatures <em>Nested Signature</em>}</li>
@@ -64,6 +66,46 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parameters = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameters = null;
+
+	/**
+	 * The cached value of the '{@link #getNestedSignatures() <em>Nested Signature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestedSignatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList nestedSignatures = null;
+
+	/**
+	 * The cached value of the '{@link #getNestingSignature() <em>Nesting Signature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestingSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature nestingSignature = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,13 +131,17 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,19 +153,29 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			|| eIsSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getParameters() {
-		EList parameter = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__PARAMETER);
-		if (parameter == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__PARAMETER, parameter = new SubsetSupersetEObjectResolvingEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__PARAMETER, null, new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
+		if (parameters == null) {
+			parameters = new SubsetSupersetEObjectResolvingEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__PARAMETER, null, PARAMETER_ESUBSETS);
 		}
-		return parameter;
+		return parameters;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PARAMETER_ESUBSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,13 +183,32 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
-		EList ownedParameter = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-		if (ownedParameter == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, ownedParameter = new SubsetSupersetEObjectContainmentWithInverseEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, new int[] {UML2Package.TEMPLATE_SIGNATURE__PARAMETER}, null, UML2Package.TEMPLATE_PARAMETER__SIGNATURE));
+		if (ownedParameters == null) {
+			ownedParameters = new SubsetSupersetEObjectContainmentWithInverseEList(TemplateParameter.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER, OWNED_PARAMETER_ESUPERSETS, null, UML2Package.TEMPLATE_PARAMETER__SIGNATURE);
 		}
-		return ownedParameter;
+		return ownedParameters;
 	}
 
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__PARAMETER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,11 +244,10 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public EList getNestedSignatures() {
-		EList nestedSignature = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE);
-		if (nestedSignature == null) {
-			eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, nestedSignature = new EObjectWithInverseResolvingEList(TemplateSignature.class, this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE));
+		if (nestedSignatures == null) {
+			nestedSignatures = new EObjectWithInverseResolvingEList(TemplateSignature.class, this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
 		}
-		return nestedSignature;
+		return nestedSignatures;
 	}
 
 
@@ -183,12 +257,10 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public TemplateSignature getNestingSignature() {
-		TemplateSignature nestingSignature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
 		if (nestingSignature != null && nestingSignature.eIsProxy()) {
 			InternalEObject oldNestingSignature = (InternalEObject)nestingSignature;
 			nestingSignature = (TemplateSignature)eResolveProxy(oldNestingSignature);
 			if (nestingSignature != oldNestingSignature) {
-				eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, nestingSignature);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, oldNestingSignature, nestingSignature));
 			}
@@ -202,7 +274,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public TemplateSignature basicGetNestingSignature() {
-		return (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
+		return nestingSignature;
 	}
 
 	/**
@@ -211,9 +283,10 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public NotificationChain basicSetNestingSignature(TemplateSignature newNestingSignature, NotificationChain msgs) {
-		Object oldNestingSignature = eVirtualSet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, newNestingSignature);
+		TemplateSignature oldNestingSignature = nestingSignature;
+		nestingSignature = newNestingSignature;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, oldNestingSignature == EVIRTUAL_NO_VALUE ? null : oldNestingSignature, newNestingSignature);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE, oldNestingSignature, newNestingSignature);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -226,7 +299,6 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * @generated
 	 */
 	public void setNestingSignature(TemplateSignature newNestingSignature) {
-		TemplateSignature nestingSignature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
 		if (newNestingSignature != nestingSignature) {
 			NotificationChain msgs = null;
 			if (nestingSignature != null)
@@ -257,6 +329,17 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetTemplate(TemplateableElement newTemplate, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newTemplate, UML2Package.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setTemplate(TemplateableElement newTemplate) {
 		if (newTemplate != eInternalContainer() || (eContainerFeatureID != UML2Package.TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
@@ -266,7 +349,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newTemplate != null)
 				msgs = ((InternalEObject)newTemplate).eInverseAdd(this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE, TemplateableElement.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newTemplate, UML2Package.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+			msgs = basicSetTemplate(newTemplate, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -289,14 +372,13 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			case UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE:
 				return ((InternalEList)getNestedSignatures()).basicAdd(otherEnd, msgs);
 			case UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
-				TemplateSignature nestingSignature = (TemplateSignature)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE);
 				if (nestingSignature != null)
 					msgs = ((InternalEObject)nestingSignature).eInverseRemove(this, UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE, TemplateSignature.class, msgs);
 				return basicSetNestingSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.TEMPLATE_SIGNATURE__TEMPLATE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+				return basicSetTemplate((TemplateableElement)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -319,7 +401,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 			case UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
 				return basicSetNestingSignature(null, msgs);
 			case UML2Package.TEMPLATE_SIGNATURE__TEMPLATE:
-				return eBasicSetContainer(null, UML2Package.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
+				return basicSetTemplate(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -469,26 +551,21 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.TEMPLATE_SIGNATURE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.TEMPLATE_SIGNATURE__OWNER:
 				return isSetOwner();
 			case UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.TEMPLATE_SIGNATURE__PARAMETER:
-				EList parameter = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__PARAMETER);
-				return parameter != null && !parameter.isEmpty();
+				return parameters != null && !parameters.isEmpty();
 			case UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER:
-				EList ownedParameter = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE:
-				EList nestedSignature = (EList)eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTED_SIGNATURE);
-				return nestedSignature != null && !nestedSignature.isEmpty();
+				return nestedSignatures != null && !nestedSignatures.isEmpty();
 			case UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE:
-				return eVirtualGet(UML2Package.TEMPLATE_SIGNATURE__NESTING_SIGNATURE) != null;
+				return nestingSignature != null;
 			case UML2Package.TEMPLATE_SIGNATURE__TEMPLATE:
 				return getTemplate() != null;
 		}

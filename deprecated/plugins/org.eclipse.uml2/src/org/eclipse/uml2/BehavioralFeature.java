@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.14 2005/11/29 20:09:38 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.15 2006/04/10 20:40:21 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model abstract="true"
  * @generated
  */
-public interface BehavioralFeature extends Namespace, Feature{
+public interface BehavioralFeature extends Namespace, Feature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,15 +132,27 @@ public interface BehavioralFeature extends Namespace, Feature{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getParameters()
 	 * @generated
 	 */
     Parameter getParameter(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getParameters()
+	 * @generated
+	 */
+	Parameter getParameter(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Formal Parameter</b></em>' containment reference list.
@@ -163,15 +175,27 @@ public interface BehavioralFeature extends Namespace, Feature{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getFormalParameters()
 	 * @generated
 	 */
     Parameter getFormalParameter(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Formal Parameter</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getFormalParameters()
+	 * @generated
+	 */
+	Parameter getFormalParameter(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Formal Parameter</b></em>' containment reference list.
@@ -191,7 +215,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getFormalParameters()
-	 * @generated
+	 * @generated NOT
 	 */
     Parameter createFormalParameter();
 
@@ -216,15 +240,27 @@ public interface BehavioralFeature extends Namespace, Feature{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getReturnResults()
 	 * @generated
 	 */
     Parameter getReturnResult(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>' from the '<em><b>Return Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Parameter} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Parameter} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getReturnResults()
+	 * @generated
+	 */
+	Parameter getReturnResult(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Parameter} and appends it to the '<em><b>Return Result</b></em>' containment reference list.
@@ -244,7 +280,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Parameter}.
 	 * @see #getReturnResults()
-	 * @generated
+	 * @generated NOT
 	 */
     Parameter createReturnResult();
 
@@ -269,15 +305,28 @@ public interface BehavioralFeature extends Namespace, Feature{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRaisedExceptions()
 	 * @generated
 	 */
     Type getRaisedException(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRaisedExceptions()
+	 * @generated
+	 */
+	Type getRaisedException(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Method</b></em>' reference list.
@@ -302,14 +351,27 @@ public interface BehavioralFeature extends Namespace, Feature{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMethods()
 	 * @generated
 	 */
     Behavior getMethod(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Behavior} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Behavior} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Behavior} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getMethods()
+	 * @generated
+	 */
+	Behavior getMethod(String name, boolean ignoreCase, EClass eClass);
 
 } // BehavioralFeature

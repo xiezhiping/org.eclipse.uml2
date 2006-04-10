@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.11 2006/04/10 20:40:27 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface CombinedFragment extends InteractionFragment{
+public interface CombinedFragment extends InteractionFragment {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,15 +100,27 @@ public interface CombinedFragment extends InteractionFragment{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>' from the '<em><b>Operand</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>' from the '<em><b>Operand</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionOperand} to retrieve.
-	 * @return The {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionOperand} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOperands()
 	 * @generated
 	 */
     InteractionOperand getOperand(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>' from the '<em><b>Operand</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.InteractionOperand} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.InteractionOperand} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOperands()
+	 * @generated
+	 */
+	InteractionOperand getOperand(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.InteractionOperand} and appends it to the '<em><b>Operand</b></em>' containment reference list.
@@ -128,7 +140,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.InteractionOperand}.
 	 * @see #getOperands()
-	 * @generated
+	 * @generated NOT
 	 */
     InteractionOperand createOperand();
 
@@ -153,15 +165,27 @@ public interface CombinedFragment extends InteractionFragment{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Cfragment Gate</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Cfragment Gate</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getCfragmentGates()
 	 * @generated
 	 */
     Gate getCfragmentGate(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>' from the '<em><b>Cfragment Gate</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Gate} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Gate} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getCfragmentGates()
+	 * @generated
+	 */
+	Gate getCfragmentGate(String name, boolean ignoreCase);
 
 
     /**
@@ -182,7 +206,7 @@ public interface CombinedFragment extends InteractionFragment{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Gate}.
 	 * @see #getCfragmentGates()
-	 * @generated
+	 * @generated NOT
 	 */
     Gate createCfragmentGate();
 

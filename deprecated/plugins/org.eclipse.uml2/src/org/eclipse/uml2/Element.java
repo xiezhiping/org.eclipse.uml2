@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.21 2005/12/06 23:18:07 khussey Exp $
+ * $Id: Element.java,v 1.22 2006/04/10 20:40:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,8 +20,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -45,7 +43,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Element extends EObject, EModelElement {
+public interface Element extends EModelElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,6 +114,7 @@ public interface Element extends EObject, EModelElement {
 	EList getOwnedComments();
 
 
+
     /**
      * Creates a {@link org.eclipse.uml2.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -134,7 +133,7 @@ public interface Element extends EObject, EModelElement {
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Comment}.
 	 * @see #getOwnedComments()
-	 * @generated
+	 * @generated NOT
 	 */
     Comment createOwnedComment();
 

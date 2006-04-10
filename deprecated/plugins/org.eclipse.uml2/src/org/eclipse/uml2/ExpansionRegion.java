@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegion.java,v 1.9 2005/11/29 20:09:39 khussey Exp $
+ * $Id: ExpansionRegion.java,v 1.10 2006/04/10 20:40:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ExpansionRegion extends StructuredActivityNode{
+public interface ExpansionRegion extends StructuredActivityNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,15 +100,27 @@ public interface ExpansionRegion extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Output Element</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Output Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOutputElements()
 	 * @generated
 	 */
     ExpansionNode getOutputElement(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Output Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOutputElements()
+	 * @generated
+	 */
+	ExpansionNode getOutputElement(String name, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Input Element</b></em>' reference list.
@@ -133,15 +145,27 @@ public interface ExpansionRegion extends StructuredActivityNode{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Input Element</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Input Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getInputElements()
 	 * @generated
 	 */
     ExpansionNode getInputElement(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Input Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ExpansionNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.ExpansionNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInputElements()
+	 * @generated
+	 */
+	ExpansionNode getInputElement(String name, boolean ignoreCase);
 
 
 } // ExpansionRegion

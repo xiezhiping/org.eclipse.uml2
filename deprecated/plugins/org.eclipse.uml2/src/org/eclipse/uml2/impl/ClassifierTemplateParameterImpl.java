@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.14 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.15 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.uml2.ClassifierTemplateParameter;
@@ -103,6 +101,7 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 		if (newAllowSubstitutable) eFlags |= ALLOW_SUBSTITUTABLE_EFLAG; else eFlags &= ~ALLOW_SUBSTITUTABLE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE, oldAllowSubstitutable, newAllowSubstitutable));
+
 
 	}
 
@@ -221,25 +220,23 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNER:
 				return isSetOwner();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE:
 				return getSignature() != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT:
-				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
+				return parameteredElement != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT:
-				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
+				return ownedParameteredElement != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT:
-				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT) != null;
+				return default_ != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT:
-				return eVirtualGet(UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
+				return ownedDefault != null;
 			case UML2Package.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE:
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 		}

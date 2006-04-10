@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.33 2005/12/12 19:26:21 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.34 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -57,7 +59,6 @@ import org.eclipse.uml2.internal.operation.NamedElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.NamedElementImpl#getVisibility <em>Visibility</em>}</li>
@@ -87,6 +88,16 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,6 +116,36 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @ordered
 	 */
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList clientDependencies = null;
+
+	/**
+	 * The cached value of the '{@link #getNameExpression() <em>Name Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNameExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected StringExpression nameExpression = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,13 +171,17 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.NAMED_ELEMENT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.NAMED_ELEMENT__OWNED_ELEMENT, new int[] {UML2Package.NAMED_ELEMENT__OWNED_COMMENT, UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING, UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.NAMED_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.NAMED_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,13 +193,24 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 			|| eIsSet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.NAMED_ELEMENT__OWNED_COMMENT, UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING, UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME, NAME_EDEFAULT);
+		return name;
 	}
 
 	/**
@@ -164,10 +220,11 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 */
 	public void setName(String newName) {
 		newName = newName == null ? NAME_EDEFAULT : newName;
-		String name = newName;
-		Object oldName = eVirtualSet(UML2Package.NAMED_ELEMENT__NAME, name);
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME, oldName == EVIRTUAL_NO_VALUE ? NAME_EDEFAULT : oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME, oldName, name));
+
 
 	}
 
@@ -202,7 +259,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return (VisibilityKind)eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT);
+		return visibility;
 	}
 
 	/**
@@ -211,10 +268,11 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
-		Object oldVisibility = eVirtualSet(UML2Package.NAMED_ELEMENT__VISIBILITY, visibility);
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__VISIBILITY, oldVisibility == EVIRTUAL_NO_VALUE ? VISIBILITY_EDEFAULT : oldVisibility, visibility));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__VISIBILITY, oldVisibility, visibility));
+
 
 	}
 
@@ -225,11 +283,10 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		EList clientDependency = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
-		if (clientDependency == null) {
-			eVirtualSet(UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY, clientDependency = new EObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY, UML2Package.DEPENDENCY__CLIENT));
+		if (clientDependencies == null) {
+			clientDependencies = new EObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY, UML2Package.DEPENDENCY__CLIENT);
 		}
-		return clientDependency;
+		return clientDependencies;
 	}
 
 
@@ -239,11 +296,22 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
     public Dependency getClientDependency(String name) {
-		for (Iterator i = getClientDependencies().iterator(); i.hasNext(); ) {
+		return getClientDependency(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Dependency getClientDependency(String name, boolean ignoreCase, EClass eClass) {
+		clientDependencyLoop: for (Iterator i = getClientDependencies().iterator(); i.hasNext(); ) {
 			Dependency clientDependency = (Dependency) i.next();
-			if (name.equals(clientDependency.getName())) {
-				return clientDependency;
-			}
+			if (eClass != null && !eClass.isInstance(clientDependency))
+				continue clientDependencyLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(clientDependency.getName()) : name.equals(clientDependency.getName())))
+				continue clientDependencyLoop;
+			return clientDependency;
 		}
 		return null;
 	}
@@ -254,7 +322,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public StringExpression getNameExpression() {
-		return (StringExpression)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION);
+		return nameExpression;
 	}
 
 	/**
@@ -263,9 +331,10 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public NotificationChain basicSetNameExpression(StringExpression newNameExpression, NotificationChain msgs) {
-		Object oldNameExpression = eVirtualSet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, newNameExpression);
+		StringExpression oldNameExpression = nameExpression;
+		nameExpression = newNameExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, oldNameExpression == EVIRTUAL_NO_VALUE ? null : oldNameExpression, newNameExpression);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, oldNameExpression, newNameExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -278,7 +347,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	 * @generated
 	 */
 	public void setNameExpression(StringExpression newNameExpression) {
-		StringExpression nameExpression = (StringExpression)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION);
 		if (newNameExpression != nameExpression) {
 			NotificationChain msgs = null;
 			if (nameExpression != null)
@@ -292,6 +360,7 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.NAMED_ELEMENT__NAME_EXPRESSION, newNameExpression, newNameExpression));
 
 	}
+
 
 
 	/**
@@ -412,7 +481,6 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 			case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -613,32 +681,27 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.NAMED_ELEMENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.NAMED_ELEMENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.NAMED_ELEMENT__OWNER:
 				return isSetOwner();
 			case UML2Package.NAMED_ELEMENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.NAMED_ELEMENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.NAMED_ELEMENT__NAME:
-				String name = (String)eVirtualGet(UML2Package.NAMED_ELEMENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.NAMED_ELEMENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.NAMED_ELEMENT__VISIBILITY:
-				return eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.NAMED_ELEMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.NAMED_ELEMENT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.NAMED_ELEMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -653,9 +716,9 @@ public abstract class NamedElementImpl extends TemplateableElementImpl implement
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.NAMED_ELEMENT__NAME, NAME_EDEFAULT));
+		result.append(name);
 		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT));
+		result.append(visibility);
 		result.append(')');
 		return result.toString();
 	}

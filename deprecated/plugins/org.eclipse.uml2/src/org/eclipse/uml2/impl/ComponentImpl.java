@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.41 2006/01/05 13:53:08 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.42 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -100,6 +100,26 @@ public class ComponentImpl extends ClassImpl implements Component {
 	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 11;
 
 	/**
+	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizations = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedMembers() <em>Owned Member</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedMembers = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -136,6 +156,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (newIsIndirectlyInstantiated) eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG; else eFlags &= ~IS_INDIRECTLY_INSTANTIATED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED, oldIsIndirectlyInstantiated, newIsIndirectlyInstantiated));
+
 
 	}
 
@@ -175,11 +196,20 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public Interface getRequired(String name) {
-		for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
+		return getRequired(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getRequired(String name, boolean ignoreCase) {
+		requiredLoop: for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
 			Interface required = (Interface) i.next();
-			if (name.equals(required.getName())) {
-				return required;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(required.getName()) : name.equals(required.getName())))
+				continue requiredLoop;
+			return required;
 		}
 		return null;
 	}
@@ -219,11 +249,20 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public Interface getProvided(String name) {
-		for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
+		return getProvided(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getProvided(String name, boolean ignoreCase) {
+		providedLoop: for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
 			Interface provided = (Interface) i.next();
-			if (name.equals(provided.getName())) {
-				return provided;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(provided.getName()) : name.equals(provided.getName())))
+				continue providedLoop;
+			return provided;
 		}
 		return null;
 	}
@@ -234,11 +273,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public EList getRealizations() {
-		EList realization = (EList)eVirtualGet(UML2Package.COMPONENT__REALIZATION);
-		if (realization == null) {
-			eVirtualSet(UML2Package.COMPONENT__REALIZATION, realization = new SubsetSupersetEObjectContainmentWithInverseEList(Realization.class, this, UML2Package.COMPONENT__REALIZATION, new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY}, null, UML2Package.REALIZATION__ABSTRACTION));
+		if (realizations == null) {
+			realizations = new SubsetSupersetEObjectContainmentWithInverseEList(Realization.class, this, UML2Package.COMPONENT__REALIZATION, REALIZATION_ESUPERSETS, null, UML2Package.REALIZATION__ABSTRACTION);
 		}
-		return realization;
+		return realizations;
 	}
 
 
@@ -248,11 +286,22 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public Realization getRealization(String name) {
-		for (Iterator i = getRealizations().iterator(); i.hasNext(); ) {
+		return getRealization(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Realization getRealization(String name, boolean ignoreCase, EClass eClass) {
+		realizationLoop: for (Iterator i = getRealizations().iterator(); i.hasNext(); ) {
 			Realization realization = (Realization) i.next();
-			if (name.equals(realization.getName())) {
-				return realization;
-			}
+			if (eClass != null && !eClass.isInstance(realization))
+				continue realizationLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(realization.getName()) : name.equals(realization.getName())))
+				continue realizationLoop;
+			return realization;
 		}
 		return null;
 	}
@@ -291,11 +340,10 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UML2Package.COMPONENT__OWNED_MEMBER, ownedMember = new EObjectContainmentEList.Resolving(PackageableElement.class, this, UML2Package.COMPONENT__OWNED_MEMBER));
+		if (ownedMembers == null) {
+			ownedMembers = new EObjectContainmentEList(PackageableElement.class, this, UML2Package.COMPONENT__OWNED_MEMBER);
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 
@@ -305,8 +353,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public boolean isSetOwnedMembers() {
-		EList ownedMember = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_MEMBER);
-		return ownedMember != null && !ownedMember.isEmpty();
+		return ownedMembers != null && !ownedMembers.isEmpty();
 	}
 
 	/**
@@ -321,7 +368,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -334,14 +380,13 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__PACKAGE_IMPORT:
 				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 			case UML2Package.COMPONENT__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.COMPONENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.COMPONENT__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.COMPONENT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.COMPONENT__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
 			case UML2Package.COMPONENT__SUBSTITUTION:
@@ -392,7 +437,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.COMPONENT__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.COMPONENT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.COMPONENT__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.COMPONENT__SUBSTITUTION:
@@ -439,11 +484,22 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public NamedElement getOwnedMember(String name) {
-		for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
+		return getOwnedMember(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedElement getOwnedMember(String name, boolean ignoreCase, EClass eClass) {
+		ownedMemberLoop: for (Iterator i = getOwnedMembers().iterator(); i.hasNext(); ) {
 			PackageableElement ownedMember = (PackageableElement) i.next();
-			if (name.equals(ownedMember.getName())) {
-				return ownedMember;
-			}
+			if (eClass != null && !eClass.isInstance(ownedMember))
+				continue ownedMemberLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedMember.getName()) : name.equals(ownedMember.getName())))
+				continue ownedMemberLoop;
+			return ownedMember;
 		}
 		return null;
 	}
@@ -468,13 +524,32 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		EList clientDependency = (EList)eVirtualGet(UML2Package.COMPONENT__CLIENT_DEPENDENCY);
-		if (clientDependency == null) {
-			eVirtualSet(UML2Package.COMPONENT__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.COMPONENT__CLIENT_DEPENDENCY, null, new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION}, UML2Package.DEPENDENCY__CLIENT));
+		if (clientDependencies == null) {
+			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.COMPONENT__CLIENT_DEPENDENCY, null, CLIENT_DEPENDENCY_ESUBSETS, UML2Package.DEPENDENCY__CLIENT);
 		}
-		return clientDependency;
+		return clientDependencies;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REALIZATION_ESUPERSETS = new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -891,47 +966,39 @@ public class ComponentImpl extends ClassImpl implements Component {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.COMPONENT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.COMPONENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.COMPONENT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.COMPONENT__OWNER:
 				return isSetOwner();
 			case UML2Package.COMPONENT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.COMPONENT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.COMPONENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.COMPONENT__NAME:
-				String name = (String)eVirtualGet(UML2Package.COMPONENT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.COMPONENT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.COMPONENT__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.COMPONENT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.COMPONENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.COMPONENT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.COMPONENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.COMPONENT__MEMBER:
 				return isSetMembers();
 			case UML2Package.COMPONENT__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.COMPONENT__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.COMPONENT__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.COMPONENT__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.COMPONENT__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.COMPONENT__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.COMPONENT__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.COMPONENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.COMPONENT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.COMPONENT__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -951,40 +1018,31 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__GENERAL:
 				return isSetGenerals();
 			case UML2Package.COMPONENT__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.COMPONENT__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.COMPONENT__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.COMPONENT__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.COMPONENT__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.COMPONENT__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.COMPONENT__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.COMPONENT__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.COMPONENT__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.COMPONENT__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.COMPONENT__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.COMPONENT__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.COMPONENT__REPRESENTATION:
-				return eVirtualGet(UML2Package.COMPONENT__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.COMPONENT__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.COMPONENT__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.COMPONENT__OWNED_BEHAVIOR:
 				return isSetOwnedBehaviors();
 			case UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR:
-				return eVirtualGet(UML2Package.COMPONENT__CLASSIFIER_BEHAVIOR) != null;
+				return classifierBehavior != null;
 			case UML2Package.COMPONENT__IMPLEMENTATION:
-				EList implementation = (EList)eVirtualGet(UML2Package.COMPONENT__IMPLEMENTATION);
-				return implementation != null && !implementation.isEmpty();
+				return implementations != null && !implementations.isEmpty();
 			case UML2Package.COMPONENT__OWNED_TRIGGER:
-				EList ownedTrigger = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_TRIGGER);
-				return ownedTrigger != null && !ownedTrigger.isEmpty();
+				return ownedTriggers != null && !ownedTriggers.isEmpty();
 			case UML2Package.COMPONENT__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.COMPONENT__OWNED_ATTRIBUTE:
@@ -994,26 +1052,21 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__ROLE:
 				return isSetRoles();
 			case UML2Package.COMPONENT__OWNED_CONNECTOR:
-				EList ownedConnector = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UML2Package.COMPONENT__OWNED_PORT:
-				EList ownedPort = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return ownedPorts != null && !ownedPorts.isEmpty();
 			case UML2Package.COMPONENT__OWNED_OPERATION:
-				EList ownedOperation = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UML2Package.COMPONENT__SUPER_CLASS:
 				return isSetSuperClasses();
 			case UML2Package.COMPONENT__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
-				EList nestedClassifier = (EList)eVirtualGet(UML2Package.COMPONENT__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null && !nestedClassifiers.isEmpty();
 			case UML2Package.COMPONENT__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.COMPONENT__OWNED_RECEPTION:
-				EList ownedReception = (EList)eVirtualGet(UML2Package.COMPONENT__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED:
 				return ((eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG) != 0) != IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
 			case UML2Package.COMPONENT__REQUIRED:
@@ -1021,8 +1074,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__PROVIDED:
 				return !getProvideds().isEmpty();
 			case UML2Package.COMPONENT__REALIZATION:
-				EList realization = (EList)eVirtualGet(UML2Package.COMPONENT__REALIZATION);
-				return realization != null && !realization.isEmpty();
+				return realizations != null && !realizations.isEmpty();
 			case UML2Package.COMPONENT__OWNED_MEMBER:
 				return isSetOwnedMembers();
 		}
@@ -1050,18 +1102,18 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		super.getOwnedElementsHelper(ownedElements);
 		if (eIsSet(UML2Package.Literals.COMPONENT__REALIZATION)) {
-			ownedElement.addAll(getRealizations());
+			ownedElements.addAll(getRealizations());
 		}
-		EList ownedMember = super.getOwnedMembers();
-		if (!ownedMember.isEmpty()) {
-			for (Iterator i = ((InternalEList) ownedMember).basicIterator(); i.hasNext(); ) {
-				ownedElement.add(i.next());
+		EList ownedMembers = super.getOwnedMembers();
+		if (!ownedMembers.isEmpty()) {
+			for (Iterator i = ((InternalEList) ownedMembers).basicIterator(); i.hasNext(); ) {
+				ownedElements.add(i.next());
 			}
 		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -1074,6 +1126,16 @@ public class ComponentImpl extends ClassImpl implements Component {
 			|| eIsSet(UML2Package.Literals.COMPONENT__REALIZATION)
 			|| super.isSetOwnedMembers();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.COMPONENT__OWNED_COMMENT, UML2Package.COMPONENT__TEMPLATE_BINDING, UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.COMPONENT__NAME_EXPRESSION, UML2Package.COMPONENT__ELEMENT_IMPORT, UML2Package.COMPONENT__PACKAGE_IMPORT, UML2Package.COMPONENT__GENERALIZATION, UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__OCCURRENCE, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION};
 
 	// <!-- begin-custom-operations -->
 

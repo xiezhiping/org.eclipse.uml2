@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.12 2005/11/29 20:09:39 khussey Exp $
+ * $Id: State.java,v 1.13 2006/04/10 20:40:26 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface State extends Namespace, RedefinableElement, Vertex{
+public interface State extends Namespace, RedefinableElement, Vertex {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -161,15 +161,27 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectionPointReference} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectionPointReference} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getConnections()
 	 * @generated
 	 */
     ConnectionPointReference getConnection(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>' from the '<em><b>Connection</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ConnectionPointReference} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.ConnectionPointReference} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConnections()
+	 * @generated
+	 */
+	ConnectionPointReference getConnection(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.ConnectionPointReference} and appends it to the '<em><b>Connection</b></em>' containment reference list.
@@ -189,7 +201,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.ConnectionPointReference}.
 	 * @see #getConnections()
-	 * @generated
+	 * @generated NOT
 	 */
     ConnectionPointReference createConnection();
 
@@ -238,15 +250,28 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getDeferrableTriggers()
 	 * @generated
 	 */
     Trigger getDeferrableTrigger(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Deferrable Trigger</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Trigger} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Trigger} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getDeferrableTriggers()
+	 * @generated
+	 */
+	Trigger getDeferrableTrigger(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
@@ -268,15 +293,27 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Region} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Region} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRegions()
 	 * @generated
 	 */
     Region getRegion(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>' from the '<em><b>Region</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Region} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.Region} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRegions()
+	 * @generated
+	 */
+	Region getRegion(String name, boolean ignoreCase);
 
     /**
      * Creates a {@link org.eclipse.uml2.Region} and appends it to the '<em><b>Region</b></em>' containment reference list.
@@ -296,7 +333,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Region}.
 	 * @see #getRegions()
-	 * @generated
+	 * @generated NOT
 	 */
     Region createRegion();
 
@@ -345,7 +382,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getEntry()
-	 * @generated
+	 * @generated NOT
 	 */
     Activity createEntry();
 
@@ -394,7 +431,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getExit()
-	 * @generated
+	 * @generated NOT
 	 */
     Activity createExit();
 
@@ -443,7 +480,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Activity}.
 	 * @see #getDoActivity()
-	 * @generated
+	 * @generated NOT
 	 */
     Activity createDoActivity();
 
@@ -474,6 +511,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	void setStateInvariant(Constraint value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.Constraint} and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -481,7 +519,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getStateInvariant()
-	 * @generated
+	 * @generated NOT
 	 */
     Constraint createStateInvariant(EClass eClass);
 
@@ -491,7 +529,7 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Constraint}.
 	 * @see #getStateInvariant()
-	 * @generated
+	 * @generated NOT
 	 */
     Constraint createStateInvariant();
 
@@ -513,14 +551,27 @@ public interface State extends Namespace, RedefinableElement, Vertex{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve.
-	 * @return The {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedElements()
 	 * @generated
 	 */
     RedefinableElement getRedefinedElement(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.RedefinableElement} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.RedefinableElement} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.RedefinableElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedElements()
+	 * @generated
+	 */
+	RedefinableElement getRedefinedElement(String name, boolean ignoreCase, EClass eClass);
 
 } // State

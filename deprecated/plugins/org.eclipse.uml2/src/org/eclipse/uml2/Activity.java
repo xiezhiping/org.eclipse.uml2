@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Activity.java,v 1.14 2006/04/10 20:40:21 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Activity extends Behavior{
+public interface Activity extends Behavior {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -190,15 +190,28 @@ public interface Activity extends Behavior{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEdges()
 	 * @generated
 	 */
     ActivityEdge getEdge(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityEdge} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityEdge} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityEdge} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getEdges()
+	 * @generated
+	 */
+	ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.ActivityEdge} and appends it to the '<em><b>Edge</b></em>' containment reference list.
@@ -207,7 +220,7 @@ public interface Activity extends Behavior{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityEdge} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityEdge}.
 	 * @see #getEdges()
-	 * @generated
+	 * @generated NOT
 	 */
     ActivityEdge createEdge(EClass eClass);
 
@@ -237,7 +250,7 @@ public interface Activity extends Behavior{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityGroup} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityGroup}.
 	 * @see #getGroups()
-	 * @generated
+	 * @generated NOT
 	 */
     ActivityGroup createGroup(EClass eClass);
 
@@ -261,15 +274,28 @@ public interface Activity extends Behavior{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getNodes()
 	 * @generated
 	 */
     ActivityNode getNode(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.ActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getNodes()
+	 * @generated
+	 */
+	ActivityNode getNode(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.ActivityNode} and appends it to the '<em><b>Node</b></em>' containment reference list.
@@ -278,7 +304,7 @@ public interface Activity extends Behavior{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ActivityNode} to create.
 	 * @return The new {@link org.eclipse.uml2.ActivityNode}.
 	 * @see #getNodes()
-	 * @generated
+	 * @generated NOT
 	 */
     ActivityNode createNode(EClass eClass);
 
@@ -300,15 +326,28 @@ public interface Activity extends Behavior{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Action} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Action} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getActions()
 	 * @generated
 	 */
     Action getAction(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Action</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Action} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Action} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getActions()
+	 * @generated
+	 */
+	Action getAction(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Structured Node</b></em>' reference list.
@@ -328,14 +367,27 @@ public interface Activity extends Behavior{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve.
-	 * @return The {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getStructuredNodes()
 	 * @generated
 	 */
     StructuredActivityNode getStructuredNode(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.StructuredActivityNode} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.StructuredActivityNode} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getStructuredNodes()
+	 * @generated
+	 */
+	StructuredActivityNode getStructuredNode(String name, boolean ignoreCase, EClass eClass);
 
 } // Activity

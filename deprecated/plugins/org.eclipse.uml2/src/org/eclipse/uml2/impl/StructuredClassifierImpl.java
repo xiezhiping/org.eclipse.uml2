@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.32 2005/12/06 23:18:04 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.33 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -54,9 +56,6 @@ import org.eclipse.uml2.internal.operation.StructuredClassifierOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.StructuredClassifierImpl#getRoles <em>Role</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.StructuredClassifierImpl#getAttributes <em>Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.StructuredClassifierImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredClassifierImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredClassifierImpl#getParts <em>Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredClassifierImpl#getOwnedConnectors <em>Owned Connector</em>}</li>
@@ -72,6 +71,26 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedAttributes = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedConnectors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedConnectors = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,11 +116,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
-		EList ownedAttribute = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
-		if (ownedAttribute == null) {
-			eVirtualSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE));
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentEList(Property.class, this, UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 		}
-		return ownedAttribute;
+		return ownedAttributes;
 	}
 
 
@@ -111,11 +129,22 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
     public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+		return getOwnedAttribute(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, boolean ignoreCase, EClass eClass) {
+		ownedAttributeLoop: for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedAttribute.getName()) : name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
 		return null;
 	}
@@ -184,11 +213,22 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
     public Property getPart(String name) {
-		for (Iterator i = getParts().iterator(); i.hasNext(); ) {
+		return getPart(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getPart(String name, boolean ignoreCase, EClass eClass) {
+		partLoop: for (Iterator i = getParts().iterator(); i.hasNext(); ) {
 			Property part = (Property) i.next();
-			if (name.equals(part.getName())) {
-				return part;
-			}
+			if (eClass != null && !eClass.isInstance(part))
+				continue partLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(part.getName()) : name.equals(part.getName())))
+				continue partLoop;
+			return part;
 		}
 		return null;
 	}
@@ -199,13 +239,17 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getRoles() {
-		EList role = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__ROLE);
-		if (role == null) {
-			eVirtualSet(UML2Package.STRUCTURED_CLASSIFIER__ROLE, role = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.STRUCTURED_CLASSIFIER__ROLE, new int[] {UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList roles = (EList) cache.get(eResource, this, UML2Package.Literals.STRUCTURED_CLASSIFIER__ROLE);
+			if (roles == null) {
+				cache.put(eResource, this, UML2Package.Literals.STRUCTURED_CLASSIFIER__ROLE, roles = new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.STRUCTURED_CLASSIFIER__ROLE, ROLE_ESUBSETS));
+			}
+			return roles;
 		}
-		return role;
+		return new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.STRUCTURED_CLASSIFIER__ROLE, ROLE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -216,17 +260,39 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 		return eIsSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRoles() <em>Role</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoles()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ROLE_ESUBSETS = new int[] {UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
     public ConnectableElement getRole(String name) {
-		for (Iterator i = getRoles().iterator(); i.hasNext(); ) {
+		return getRole(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectableElement getRole(String name, boolean ignoreCase, EClass eClass) {
+		roleLoop: for (Iterator i = getRoles().iterator(); i.hasNext(); ) {
 			ConnectableElement role = (ConnectableElement) i.next();
-			if (name.equals(role.getName())) {
-				return role;
-			}
+			if (eClass != null && !eClass.isInstance(role))
+				continue roleLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(role.getName()) : name.equals(role.getName())))
+				continue roleLoop;
+			return role;
 		}
 		return null;
 	}
@@ -237,13 +303,17 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getAttributes() {
-		EList attribute = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE);
-		if (attribute == null) {
-			eVirtualSet(UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE, new int[] {UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList attributes = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE);
+			if (attributes == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE, attributes = new DerivedUnionEObjectEList(Property.class, this, UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE, ATTRIBUTE_ESUBSETS));
+			}
+			return attributes;
 		}
-		return attribute;
+		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -255,19 +325,34 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			|| eIsSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getFeatures() {
-		EList feature = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__FEATURE);
-		if (feature == null) {
-			eVirtualSet(UML2Package.STRUCTURED_CLASSIFIER__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.STRUCTURED_CLASSIFIER__FEATURE, new int[] {UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE, UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList features = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__FEATURE);
+			if (features == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__FEATURE, features = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.STRUCTURED_CLASSIFIER__FEATURE, FEATURE_ESUBSETS));
+			}
+			return features;
 		}
-		return feature;
+		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.STRUCTURED_CLASSIFIER__FEATURE, FEATURE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -279,22 +364,21 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			|| eIsSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList ownedAttribute = getOwnedAttributes();
-		if (!ownedAttribute.isEmpty()) {
-			ownedMember.addAll(ownedAttribute);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE)) {
+			ownedMembers.addAll(getOwnedAttributes());
 		}
-		EList ownedConnector = getOwnedConnectors();
-		if (!ownedConnector.isEmpty()) {
-			ownedMember.addAll(ownedConnector);
+		if (eIsSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR)) {
+			ownedMembers.addAll(getOwnedConnectors());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -310,18 +394,38 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.STRUCTURED_CLASSIFIER__OWNED_RULE, UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE, UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE, UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getFeatures() <em>Feature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] FEATURE_ESUBSETS = new int[] {UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE, UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getMembersHelper(EList member) {
-		super.getMembersHelper(member);
+	protected EList getMembersHelper(EList members) {
+		super.getMembersHelper(members);
 		if (isSetRoles()) {
 			for (Iterator i = ((InternalEList) getRoles()).basicIterator(); i.hasNext(); ) {
-				member.add(i.next());
+				members.add(i.next());
 			}
 		}
-		return member;
+		return members;
 	}
 
 	/**
@@ -341,11 +445,10 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
 	public EList getOwnedConnectors() {
-		EList ownedConnector = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
-		if (ownedConnector == null) {
-			eVirtualSet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR, ownedConnector = new EObjectContainmentEList(Connector.class, this, UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR));
+		if (ownedConnectors == null) {
+			ownedConnectors = new EObjectContainmentEList(Connector.class, this, UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		}
-		return ownedConnector;
+		return ownedConnectors;
 	}
 
 
@@ -355,11 +458,20 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	 * @generated
 	 */
     public Connector getOwnedConnector(String name) {
-		for (Iterator i = getOwnedConnectors().iterator(); i.hasNext(); ) {
+		return getOwnedConnector(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Connector getOwnedConnector(String name, boolean ignoreCase) {
+		ownedConnectorLoop: for (Iterator i = getOwnedConnectors().iterator(); i.hasNext(); ) {
 			Connector ownedConnector = (Connector) i.next();
-			if (name.equals(ownedConnector.getName())) {
-				return ownedConnector;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedConnector.getName()) : name.equals(ownedConnector.getName())))
+				continue ownedConnectorLoop;
+			return ownedConnector;
 		}
 		return null;
 	}
@@ -392,7 +504,7 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.STRUCTURED_CLASSIFIER__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.STRUCTURED_CLASSIFIER__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
@@ -735,47 +847,39 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.STRUCTURED_CLASSIFIER__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNER:
 				return isSetOwner();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__NAME:
-				String name = (String)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STRUCTURED_CLASSIFIER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STRUCTURED_CLASSIFIER__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.STRUCTURED_CLASSIFIER__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__MEMBER:
 				return isSetMembers();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -795,40 +899,31 @@ public abstract class StructuredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.STRUCTURED_CLASSIFIER__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__REPRESENTATION:
-				return eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.STRUCTURED_CLASSIFIER__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__PART:
 				return !getParts().isEmpty();
 			case UML2Package.STRUCTURED_CLASSIFIER__ROLE:
 				return isSetRoles();
 			case UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR:
-				EList ownedConnector = (EList)eVirtualGet(UML2Package.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

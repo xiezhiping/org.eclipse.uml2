@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.10 2005/11/29 20:09:39 khussey Exp $
+ * $Id: JoinNode.java,v 1.11 2006/04/10 20:40:21 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface JoinNode extends ControlNode{
+public interface JoinNode extends ControlNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,6 +100,7 @@ public interface JoinNode extends ControlNode{
 	void setJoinSpec(ValueSpecification value);
 
 
+
 	/**
 	 * Creates a {@link org.eclipse.uml2.ValueSpecification} and sets the '<em><b>Join Spec</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -107,7 +108,7 @@ public interface JoinNode extends ControlNode{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getJoinSpec()
-	 * @generated
+	 * @generated NOT
 	 */
     ValueSpecification createJoinSpec(EClass eClass);
 

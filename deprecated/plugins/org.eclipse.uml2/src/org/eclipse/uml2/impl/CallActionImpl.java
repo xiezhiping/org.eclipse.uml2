@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.22 2005/12/06 23:18:04 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.23 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -39,6 +41,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -48,7 +51,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.CallActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CallActionImpl#isSynchronous <em>Is Synchronous</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CallActionImpl#getResults <em>Result</em>}</li>
  * </ul>
@@ -63,14 +65,6 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits1 = 0;
 
 	/**
 	 * The default value of the '{@link #isSynchronous() <em>Is Synchronous</em>}' attribute.
@@ -91,6 +85,16 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @ordered
 	 */
 	protected static final int IS_SYNCHRONOUS_EFLAG = 1 << 9;
+
+	/**
+	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList results = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,13 +121,17 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList)eVirtualGet(UML2Package.CALL_ACTION__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UML2Package.CALL_ACTION__OUTPUT, output = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CALL_ACTION__OUTPUT, new int[] {UML2Package.CALL_ACTION__RESULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this, UML2Package.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UML2Package.Literals.ACTION__OUTPUT, outputs = new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CALL_ACTION__OUTPUT, OUTPUT_ESUBSETS));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CALL_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,6 +142,17 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.CALL_ACTION__RESULT);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[] {UML2Package.CALL_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +174,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CALL_ACTION__IS_SYNCHRONOUS, oldIsSynchronous, newIsSynchronous));
 
+
 	}
 
 
@@ -164,11 +184,10 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
 	public EList getResults() {
-		EList result = (EList)eVirtualGet(UML2Package.CALL_ACTION__RESULT);
-		if (result == null) {
-			eVirtualSet(UML2Package.CALL_ACTION__RESULT, result = new EObjectContainmentEList(OutputPin.class, this, UML2Package.CALL_ACTION__RESULT));
+		if (results == null) {
+			results = new EObjectContainmentEList(OutputPin.class, this, UML2Package.CALL_ACTION__RESULT);
 		}
-		return result;
+		return results;
 	}
 
 
@@ -178,11 +197,20 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	 * @generated
 	 */
     public OutputPin getResult(String name) {
-		for (Iterator i = getResults().iterator(); i.hasNext(); ) {
+		return getResult(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getResult(String name, boolean ignoreCase) {
+		resultLoop: for (Iterator i = getResults().iterator(); i.hasNext(); ) {
 			OutputPin result = (OutputPin) i.next();
-			if (name.equals(result.getName())) {
-				return result;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(result.getName()) : name.equals(result.getName())))
+				continue resultLoop;
+			return result;
 		}
 		return null;
 	}
@@ -211,9 +239,9 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.CALL_ACTION__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.CALL_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.CALL_ACTION__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.CALL_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.CALL_ACTION__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.CALL_ACTION__IN_INTERRUPTIBLE_REGION:
@@ -526,42 +554,35 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CALL_ACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.CALL_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CALL_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.CALL_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.CALL_ACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.CALL_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.CALL_ACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.CALL_ACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.CALL_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.CALL_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.CALL_ACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.CALL_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CALL_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CALL_ACTION__VISIBILITY:
-				return eVirtualGet(UML2Package.CALL_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.CALL_ACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.CALL_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.CALL_ACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.CALL_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.CALL_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.CALL_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.CALL_ACTION__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.CALL_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.CALL_ACTION__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.CALL_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.CALL_ACTION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.CALL_ACTION__ACTIVITY:
@@ -571,16 +592,12 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.CALL_ACTION__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.CALL_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.CALL_ACTION__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.CALL_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.CALL_ACTION__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.CALL_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UML2Package.CALL_ACTION__EFFECT:
-				String effect = (String)eVirtualGet(UML2Package.CALL_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.CALL_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -589,57 +606,19 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 			case UML2Package.CALL_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.CALL_ACTION__LOCAL_PRECONDITION:
-				EList localPrecondition = (EList)eVirtualGet(UML2Package.CALL_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null && !localPrecondition.isEmpty();
+				return localPreconditions != null && !localPreconditions.isEmpty();
 			case UML2Package.CALL_ACTION__LOCAL_POSTCONDITION:
-				EList localPostcondition = (EList)eVirtualGet(UML2Package.CALL_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null && !localPostcondition.isEmpty();
+				return localPostconditions != null && !localPostconditions.isEmpty();
 			case UML2Package.CALL_ACTION__ARGUMENT:
-				EList argument = (EList)eVirtualGet(UML2Package.CALL_ACTION__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UML2Package.CALL_ACTION__ON_PORT:
-				return eVirtualGet(UML2Package.CALL_ACTION__ON_PORT) != null;
+				return onPort != null;
 			case UML2Package.CALL_ACTION__IS_SYNCHRONOUS:
 				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UML2Package.CALL_ACTION__RESULT:
-				EList result = (EList)eVirtualGet(UML2Package.CALL_ACTION__RESULT);
-				return result != null && !result.isEmpty();
+				return results != null && !results.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
 	}
 
 	/**

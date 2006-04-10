@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.31 2005/12/06 23:18:02 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.32 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -61,6 +61,16 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getOwnedLiterals() <em>Owned Literal</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedLiterals()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedLiterals = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,11 +94,10 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 	public EList getOwnedLiterals() {
-		EList ownedLiteral = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_LITERAL);
-		if (ownedLiteral == null) {
-			eVirtualSet(UML2Package.ENUMERATION__OWNED_LITERAL, ownedLiteral = new EObjectContainmentWithInverseEList(EnumerationLiteral.class, this, UML2Package.ENUMERATION__OWNED_LITERAL, UML2Package.ENUMERATION_LITERAL__ENUMERATION));
+		if (ownedLiterals == null) {
+			ownedLiterals = new EObjectContainmentWithInverseEList(EnumerationLiteral.class, this, UML2Package.ENUMERATION__OWNED_LITERAL, UML2Package.ENUMERATION_LITERAL__ENUMERATION);
 		}
-		return ownedLiteral;
+		return ownedLiterals;
 	}
 
 
@@ -98,11 +107,20 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
     public EnumerationLiteral getOwnedLiteral(String name) {
-		for (Iterator i = getOwnedLiterals().iterator(); i.hasNext(); ) {
+		return getOwnedLiteral(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnumerationLiteral getOwnedLiteral(String name, boolean ignoreCase) {
+		ownedLiteralLoop: for (Iterator i = getOwnedLiterals().iterator(); i.hasNext(); ) {
 			EnumerationLiteral ownedLiteral = (EnumerationLiteral) i.next();
-			if (name.equals(ownedLiteral.getName())) {
-				return ownedLiteral;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedLiteral.getName()) : name.equals(ownedLiteral.getName())))
+				continue ownedLiteralLoop;
+			return ownedLiteral;
 		}
 		return null;
 	}
@@ -119,7 +137,6 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.ENUMERATION__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ENUMERATION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ENUMERATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -132,14 +149,13 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__PACKAGE_IMPORT:
 				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 			case UML2Package.ENUMERATION__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ENUMERATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ENUMERATION__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ENUMERATION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ENUMERATION__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
 			case UML2Package.ENUMERATION__SUBSTITUTION:
@@ -186,7 +202,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.ENUMERATION__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.ENUMERATION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.ENUMERATION__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.ENUMERATION__SUBSTITUTION:
@@ -536,47 +552,39 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ENUMERATION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ENUMERATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ENUMERATION__OWNER:
 				return isSetOwner();
 			case UML2Package.ENUMERATION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ENUMERATION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.ENUMERATION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.ENUMERATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.ENUMERATION__NAME:
-				String name = (String)eVirtualGet(UML2Package.ENUMERATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ENUMERATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ENUMERATION__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.ENUMERATION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.ENUMERATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.ENUMERATION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.ENUMERATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.ENUMERATION__MEMBER:
 				return isSetMembers();
 			case UML2Package.ENUMERATION__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.ENUMERATION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.ENUMERATION__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.ENUMERATION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.ENUMERATION__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.ENUMERATION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.ENUMERATION__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.ENUMERATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.ENUMERATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ENUMERATION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -596,39 +604,29 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			case UML2Package.ENUMERATION__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.ENUMERATION__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.ENUMERATION__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.ENUMERATION__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.ENUMERATION__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.ENUMERATION__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.ENUMERATION__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.ENUMERATION__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.ENUMERATION__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.ENUMERATION__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.ENUMERATION__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.ENUMERATION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.ENUMERATION__REPRESENTATION:
-				return eVirtualGet(UML2Package.ENUMERATION__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.ENUMERATION__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.ENUMERATION__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_OPERATION:
-				EList ownedOperation = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UML2Package.ENUMERATION__OWNED_LITERAL:
-				EList ownedLiteral = (EList)eVirtualGet(UML2Package.ENUMERATION__OWNED_LITERAL);
-				return ownedLiteral != null && !ownedLiteral.isEmpty();
+				return ownedLiterals != null && !ownedLiterals.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -639,13 +637,12 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList ownedLiteral = getOwnedLiterals();
-		if (!ownedLiteral.isEmpty()) {
-			ownedMember.addAll(ownedLiteral);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.ENUMERATION__OWNED_LITERAL)) {
+			ownedMembers.addAll(getOwnedLiterals());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -658,6 +655,16 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 			|| eIsSet(UML2Package.ENUMERATION__OWNED_LITERAL);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.ENUMERATION__OWNED_RULE, UML2Package.ENUMERATION__OWNED_USE_CASE, UML2Package.ENUMERATION__OWNED_ATTRIBUTE, UML2Package.ENUMERATION__OWNED_OPERATION, UML2Package.ENUMERATION__OWNED_LITERAL};
 
 	// <!-- begin-custom-operations -->
 

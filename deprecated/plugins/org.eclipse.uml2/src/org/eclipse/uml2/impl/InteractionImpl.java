@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.35 2005/12/06 23:18:03 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.36 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,12 +79,64 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getCovereds() <em>Covered</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getCovereds()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits2 = 0;
+	protected EList covereds = null;
+
+	/**
+	 * The cached value of the '{@link #getGeneralOrderings() <em>General Ordering</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeneralOrderings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList generalOrderings = null;
+
+	/**
+	 * The cached value of the '{@link #getLifelines() <em>Lifeline</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLifelines()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList lifelines = null;
+
+	/**
+	 * The cached value of the '{@link #getMessages() <em>Message</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList messages = null;
+
+	/**
+	 * The cached value of the '{@link #getFragments() <em>Fragment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFragments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList fragments = null;
+
+	/**
+	 * The cached value of the '{@link #getFormalGates() <em>Formal Gate</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormalGates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList formalGates = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,11 +162,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public EList getCovereds() {
-		EList covered = (EList)eVirtualGet(UML2Package.INTERACTION__COVERED);
-		if (covered == null) {
-			eVirtualSet(UML2Package.INTERACTION__COVERED, covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.INTERACTION__COVERED, UML2Package.LIFELINE__COVERED_BY));
+		if (covereds == null) {
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.INTERACTION__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
-		return covered;
+		return covereds;
 	}
 
 
@@ -124,11 +175,20 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
     public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop: for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(covered.getName()) : name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}
@@ -139,11 +199,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public EList getGeneralOrderings() {
-		EList generalOrdering = (EList)eVirtualGet(UML2Package.INTERACTION__GENERAL_ORDERING);
-		if (generalOrdering == null) {
-			eVirtualSet(UML2Package.INTERACTION__GENERAL_ORDERING, generalOrdering = new EObjectContainmentEList(GeneralOrdering.class, this, UML2Package.INTERACTION__GENERAL_ORDERING));
+		if (generalOrderings == null) {
+			generalOrderings = new EObjectContainmentEList(GeneralOrdering.class, this, UML2Package.INTERACTION__GENERAL_ORDERING);
 		}
-		return generalOrdering;
+		return generalOrderings;
 	}
 
 
@@ -153,11 +212,20 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
     public GeneralOrdering getGeneralOrdering(String name) {
-		for (Iterator i = getGeneralOrderings().iterator(); i.hasNext(); ) {
+		return getGeneralOrdering(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralOrdering getGeneralOrdering(String name, boolean ignoreCase) {
+		generalOrderingLoop: for (Iterator i = getGeneralOrderings().iterator(); i.hasNext(); ) {
 			GeneralOrdering generalOrdering = (GeneralOrdering) i.next();
-			if (name.equals(generalOrdering.getName())) {
-				return generalOrdering;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(generalOrdering.getName()) : name.equals(generalOrdering.getName())))
+				continue generalOrderingLoop;
+			return generalOrdering;
 		}
 		return null;
 	}
@@ -206,6 +274,17 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnclosingInteraction(Interaction newEnclosingInteraction, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newEnclosingInteraction, UML2Package.INTERACTION__ENCLOSING_INTERACTION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer() || (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
@@ -215,7 +294,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingInteraction != null)
 				msgs = ((InternalEObject)newEnclosingInteraction).eInverseAdd(this, UML2Package.INTERACTION__FRAGMENT, Interaction.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newEnclosingInteraction, UML2Package.INTERACTION__ENCLOSING_INTERACTION, msgs);
+			msgs = basicSetEnclosingInteraction(newEnclosingInteraction, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -239,6 +318,17 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetEnclosingOperand(InteractionOperand newEnclosingOperand, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newEnclosingOperand, UML2Package.INTERACTION__ENCLOSING_OPERAND, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer() || (eContainerFeatureID != UML2Package.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
@@ -248,7 +338,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnclosingOperand != null)
 				msgs = ((InternalEObject)newEnclosingOperand).eInverseAdd(this, UML2Package.INTERACTION_OPERAND__FRAGMENT, InteractionOperand.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newEnclosingOperand, UML2Package.INTERACTION__ENCLOSING_OPERAND, msgs);
+			msgs = basicSetEnclosingOperand(newEnclosingOperand, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -263,11 +353,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public EList getLifelines() {
-		EList lifeline = (EList)eVirtualGet(UML2Package.INTERACTION__LIFELINE);
-		if (lifeline == null) {
-			eVirtualSet(UML2Package.INTERACTION__LIFELINE, lifeline = new EObjectContainmentWithInverseEList(Lifeline.class, this, UML2Package.INTERACTION__LIFELINE, UML2Package.LIFELINE__INTERACTION));
+		if (lifelines == null) {
+			lifelines = new EObjectContainmentWithInverseEList(Lifeline.class, this, UML2Package.INTERACTION__LIFELINE, UML2Package.LIFELINE__INTERACTION);
 		}
-		return lifeline;
+		return lifelines;
 	}
 
 
@@ -277,11 +366,20 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
     public Lifeline getLifeline(String name) {
-		for (Iterator i = getLifelines().iterator(); i.hasNext(); ) {
+		return getLifeline(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getLifeline(String name, boolean ignoreCase) {
+		lifelineLoop: for (Iterator i = getLifelines().iterator(); i.hasNext(); ) {
 			Lifeline lifeline = (Lifeline) i.next();
-			if (name.equals(lifeline.getName())) {
-				return lifeline;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(lifeline.getName()) : name.equals(lifeline.getName())))
+				continue lifelineLoop;
+			return lifeline;
 		}
 		return null;
 	}
@@ -321,11 +419,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public EList getMessages() {
-		EList message = (EList)eVirtualGet(UML2Package.INTERACTION__MESSAGE);
-		if (message == null) {
-			eVirtualSet(UML2Package.INTERACTION__MESSAGE, message = new EObjectContainmentWithInverseEList(Message.class, this, UML2Package.INTERACTION__MESSAGE, UML2Package.MESSAGE__INTERACTION));
+		if (messages == null) {
+			messages = new EObjectContainmentWithInverseEList(Message.class, this, UML2Package.INTERACTION__MESSAGE, UML2Package.MESSAGE__INTERACTION);
 		}
-		return message;
+		return messages;
 	}
 
 
@@ -335,11 +432,20 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
     public Message getMessage(String name) {
-		for (Iterator i = getMessages().iterator(); i.hasNext(); ) {
+		return getMessage(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Message getMessage(String name, boolean ignoreCase) {
+		messageLoop: for (Iterator i = getMessages().iterator(); i.hasNext(); ) {
 			Message message = (Message) i.next();
-			if (name.equals(message.getName())) {
-				return message;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(message.getName()) : name.equals(message.getName())))
+				continue messageLoop;
+			return message;
 		}
 		return null;
 	}
@@ -379,11 +485,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public EList getFragments() {
-		EList fragment = (EList)eVirtualGet(UML2Package.INTERACTION__FRAGMENT);
-		if (fragment == null) {
-			eVirtualSet(UML2Package.INTERACTION__FRAGMENT, fragment = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION));
+		if (fragments == null) {
+			fragments = new EObjectContainmentWithInverseEList(InteractionFragment.class, this, UML2Package.INTERACTION__FRAGMENT, UML2Package.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION);
 		}
-		return fragment;
+		return fragments;
 	}
 
 
@@ -393,11 +498,22 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
     public InteractionFragment getFragment(String name) {
-		for (Iterator i = getFragments().iterator(); i.hasNext(); ) {
+		return getFragment(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionFragment getFragment(String name, boolean ignoreCase, EClass eClass) {
+		fragmentLoop: for (Iterator i = getFragments().iterator(); i.hasNext(); ) {
 			InteractionFragment fragment = (InteractionFragment) i.next();
-			if (name.equals(fragment.getName())) {
-				return fragment;
-			}
+			if (eClass != null && !eClass.isInstance(fragment))
+				continue fragmentLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(fragment.getName()) : name.equals(fragment.getName())))
+				continue fragmentLoop;
+			return fragment;
 		}
 		return null;
 	}
@@ -422,11 +538,10 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
 	public EList getFormalGates() {
-		EList formalGate = (EList)eVirtualGet(UML2Package.INTERACTION__FORMAL_GATE);
-		if (formalGate == null) {
-			eVirtualSet(UML2Package.INTERACTION__FORMAL_GATE, formalGate = new EObjectContainmentEList(Gate.class, this, UML2Package.INTERACTION__FORMAL_GATE));
+		if (formalGates == null) {
+			formalGates = new EObjectContainmentEList(Gate.class, this, UML2Package.INTERACTION__FORMAL_GATE);
 		}
-		return formalGate;
+		return formalGates;
 	}
 
 
@@ -436,11 +551,20 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * @generated
 	 */
     public Gate getFormalGate(String name) {
-		for (Iterator i = getFormalGates().iterator(); i.hasNext(); ) {
+		return getFormalGate(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gate getFormalGate(String name, boolean ignoreCase) {
+		formalGateLoop: for (Iterator i = getFormalGates().iterator(); i.hasNext(); ) {
 			Gate formalGate = (Gate) i.next();
-			if (name.equals(formalGate.getName())) {
-				return formalGate;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(formalGate.getName()) : name.equals(formalGate.getName())))
+				continue formalGateLoop;
+			return formalGate;
 		}
 		return null;
 	}
@@ -457,7 +581,6 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.INTERACTION__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.INTERACTION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.INTERACTION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -470,14 +593,13 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__PACKAGE_IMPORT:
 				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 			case UML2Package.INTERACTION__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.INTERACTION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.INTERACTION__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.INTERACTION__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
 			case UML2Package.INTERACTION__SUBSTITUTION:
@@ -497,9 +619,8 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__CONTEXT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__CONTEXT, msgs);
+				return basicSetContext((BehavioredClassifier)otherEnd, msgs);
 			case UML2Package.INTERACTION__SPECIFICATION:
-				BehavioralFeature specification = (BehavioralFeature)eVirtualGet(UML2Package.INTERACTION__SPECIFICATION);
 				if (specification != null)
 					msgs = ((InternalEObject)specification).eInverseRemove(this, UML2Package.BEHAVIORAL_FEATURE__METHOD, BehavioralFeature.class, msgs);
 				return basicSetSpecification((BehavioralFeature)otherEnd, msgs);
@@ -508,11 +629,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__ENCLOSING_INTERACTION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction((Interaction)otherEnd, msgs);
 			case UML2Package.INTERACTION__ENCLOSING_OPERAND:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.INTERACTION__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand((InteractionOperand)otherEnd, msgs);
 			case UML2Package.INTERACTION__LIFELINE:
 				return ((InternalEList)getLifelines()).basicAdd(otherEnd, msgs);
 			case UML2Package.INTERACTION__MESSAGE:
@@ -551,7 +672,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.INTERACTION__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.INTERACTION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.INTERACTION__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERACTION__SUBSTITUTION:
@@ -585,7 +706,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__OWNED_RECEPTION:
 				return ((InternalEList)getOwnedReceptions()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERACTION__CONTEXT:
-				return eBasicSetContainer(null, UML2Package.INTERACTION__CONTEXT, msgs);
+				return basicSetContext(null, msgs);
 			case UML2Package.INTERACTION__SPECIFICATION:
 				return basicSetSpecification(null, msgs);
 			case UML2Package.INTERACTION__PARAMETER:
@@ -597,9 +718,9 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__GENERAL_ORDERING:
 				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERACTION__ENCLOSING_INTERACTION:
-				return eBasicSetContainer(null, UML2Package.INTERACTION__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UML2Package.INTERACTION__ENCLOSING_OPERAND:
-				return eBasicSetContainer(null, UML2Package.INTERACTION__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UML2Package.INTERACTION__LIFELINE:
 				return ((InternalEList)getLifelines()).basicRemove(otherEnd, msgs);
 			case UML2Package.INTERACTION__MESSAGE:
@@ -689,21 +810,18 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList lifeline = getLifelines();
-		if (!lifeline.isEmpty()) {
-			ownedMember.addAll(lifeline);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.INTERACTION__LIFELINE)) {
+			ownedMembers.addAll(getLifelines());
 		}
-		EList message = getMessages();
-		if (!message.isEmpty()) {
-			ownedMember.addAll(message);
+		if (eIsSet(UML2Package.INTERACTION__MESSAGE)) {
+			ownedMembers.addAll(getMessages());
 		}
-		EList formalGate = getFormalGates();
-		if (!formalGate.isEmpty()) {
-			ownedMember.addAll(formalGate);
+		if (eIsSet(UML2Package.INTERACTION__FORMAL_GATE)) {
+			ownedMembers.addAll(getFormalGates());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -1248,47 +1366,39 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INTERACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INTERACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INTERACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.INTERACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INTERACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INTERACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INTERACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INTERACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INTERACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.INTERACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INTERACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INTERACTION__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.INTERACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INTERACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INTERACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INTERACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INTERACTION__MEMBER:
 				return isSetMembers();
 			case UML2Package.INTERACTION__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.INTERACTION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.INTERACTION__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.INTERACTION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.INTERACTION__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.INTERACTION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.INTERACTION__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.INTERACTION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.INTERACTION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INTERACTION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -1308,40 +1418,31 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__GENERAL:
 				return isSetGenerals();
 			case UML2Package.INTERACTION__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.INTERACTION__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.INTERACTION__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.INTERACTION__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.INTERACTION__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.INTERACTION__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.INTERACTION__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.INTERACTION__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.INTERACTION__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.INTERACTION__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.INTERACTION__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.INTERACTION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.INTERACTION__REPRESENTATION:
-				return eVirtualGet(UML2Package.INTERACTION__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.INTERACTION__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.INTERACTION__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.INTERACTION__OWNED_BEHAVIOR:
 				return isSetOwnedBehaviors();
 			case UML2Package.INTERACTION__CLASSIFIER_BEHAVIOR:
-				return eVirtualGet(UML2Package.INTERACTION__CLASSIFIER_BEHAVIOR) != null;
+				return classifierBehavior != null;
 			case UML2Package.INTERACTION__IMPLEMENTATION:
-				EList implementation = (EList)eVirtualGet(UML2Package.INTERACTION__IMPLEMENTATION);
-				return implementation != null && !implementation.isEmpty();
+				return implementations != null && !implementations.isEmpty();
 			case UML2Package.INTERACTION__OWNED_TRIGGER:
-				EList ownedTrigger = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_TRIGGER);
-				return ownedTrigger != null && !ownedTrigger.isEmpty();
+				return ownedTriggers != null && !ownedTriggers.isEmpty();
 			case UML2Package.INTERACTION__OWNED_STATE_MACHINE:
 				return isSetOwnedStateMachines();
 			case UML2Package.INTERACTION__OWNED_ATTRIBUTE:
@@ -1351,73 +1452,57 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__ROLE:
 				return isSetRoles();
 			case UML2Package.INTERACTION__OWNED_CONNECTOR:
-				EList ownedConnector = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UML2Package.INTERACTION__OWNED_PORT:
-				EList ownedPort = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_PORT);
-				return ownedPort != null && !ownedPort.isEmpty();
+				return ownedPorts != null && !ownedPorts.isEmpty();
 			case UML2Package.INTERACTION__OWNED_OPERATION:
-				EList ownedOperation = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UML2Package.INTERACTION__SUPER_CLASS:
 				return isSetSuperClasses();
 			case UML2Package.INTERACTION__EXTENSION:
 				return !getExtensions().isEmpty();
 			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
-				EList nestedClassifier = (EList)eVirtualGet(UML2Package.INTERACTION__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null && !nestedClassifiers.isEmpty();
 			case UML2Package.INTERACTION__IS_ACTIVE:
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UML2Package.INTERACTION__OWNED_RECEPTION:
-				EList ownedReception = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UML2Package.INTERACTION__IS_REENTRANT:
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UML2Package.INTERACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.INTERACTION__REDEFINED_BEHAVIOR:
-				EList redefinedBehavior = (EList)eVirtualGet(UML2Package.INTERACTION__REDEFINED_BEHAVIOR);
-				return redefinedBehavior != null && !redefinedBehavior.isEmpty();
+				return redefinedBehaviors != null && !redefinedBehaviors.isEmpty();
 			case UML2Package.INTERACTION__SPECIFICATION:
-				return eVirtualGet(UML2Package.INTERACTION__SPECIFICATION) != null;
+				return specification != null;
 			case UML2Package.INTERACTION__PARAMETER:
-				EList parameter = (EList)eVirtualGet(UML2Package.INTERACTION__PARAMETER);
-				return parameter != null && !parameter.isEmpty();
+				return parameters != null && !parameters.isEmpty();
 			case UML2Package.INTERACTION__FORMAL_PARAMETER:
 				return !getFormalParameters().isEmpty();
 			case UML2Package.INTERACTION__RETURN_RESULT:
 				return !getReturnResults().isEmpty();
 			case UML2Package.INTERACTION__PRECONDITION:
-				EList precondition = (EList)eVirtualGet(UML2Package.INTERACTION__PRECONDITION);
-				return precondition != null && !precondition.isEmpty();
+				return preconditions != null && !preconditions.isEmpty();
 			case UML2Package.INTERACTION__POSTCONDITION:
-				EList postcondition = (EList)eVirtualGet(UML2Package.INTERACTION__POSTCONDITION);
-				return postcondition != null && !postcondition.isEmpty();
+				return postconditions != null && !postconditions.isEmpty();
 			case UML2Package.INTERACTION__OWNED_PARAMETER_SET:
-				EList ownedParameterSet = (EList)eVirtualGet(UML2Package.INTERACTION__OWNED_PARAMETER_SET);
-				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
+				return ownedParameterSets != null && !ownedParameterSets.isEmpty();
 			case UML2Package.INTERACTION__COVERED:
-				EList covered = (EList)eVirtualGet(UML2Package.INTERACTION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UML2Package.INTERACTION__GENERAL_ORDERING:
-				EList generalOrdering = (EList)eVirtualGet(UML2Package.INTERACTION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UML2Package.INTERACTION__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.INTERACTION__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.INTERACTION__LIFELINE:
-				EList lifeline = (EList)eVirtualGet(UML2Package.INTERACTION__LIFELINE);
-				return lifeline != null && !lifeline.isEmpty();
+				return lifelines != null && !lifelines.isEmpty();
 			case UML2Package.INTERACTION__MESSAGE:
-				EList message = (EList)eVirtualGet(UML2Package.INTERACTION__MESSAGE);
-				return message != null && !message.isEmpty();
+				return messages != null && !messages.isEmpty();
 			case UML2Package.INTERACTION__FRAGMENT:
-				EList fragment = (EList)eVirtualGet(UML2Package.INTERACTION__FRAGMENT);
-				return fragment != null && !fragment.isEmpty();
+				return fragments != null && !fragments.isEmpty();
 			case UML2Package.INTERACTION__FORMAL_GATE:
-				EList formalGate = (EList)eVirtualGet(UML2Package.INTERACTION__FORMAL_GATE);
-				return formalGate != null && !formalGate.isEmpty();
+				return formalGates != null && !formalGates.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1458,58 +1543,18 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			case 2 :
-				return eVirtualIndexBits2;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			case 2 :
-				eVirtualIndexBits2 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		super.getOwnedElementsHelper(ownedElements);
+		if (eIsSet(UML2Package.INTERACTION__GENERAL_ORDERING)) {
+			ownedElements.addAll(getGeneralOrderings());
 		}
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		EList generalOrdering = getGeneralOrderings();
-		if (!generalOrdering.isEmpty()) {
-			ownedElement.addAll(generalOrdering);
-		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -1522,5 +1567,25 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			|| eIsSet(UML2Package.INTERACTION__GENERAL_ORDERING);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.INTERACTION__OWNED_COMMENT, UML2Package.INTERACTION__TEMPLATE_BINDING, UML2Package.INTERACTION__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION__NAME_EXPRESSION, UML2Package.INTERACTION__ELEMENT_IMPORT, UML2Package.INTERACTION__PACKAGE_IMPORT, UML2Package.INTERACTION__GENERALIZATION, UML2Package.INTERACTION__SUBSTITUTION, UML2Package.INTERACTION__OCCURRENCE, UML2Package.INTERACTION__IMPLEMENTATION, UML2Package.INTERACTION__GENERAL_ORDERING};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.INTERACTION__OWNED_RULE, UML2Package.INTERACTION__OWNED_USE_CASE, UML2Package.INTERACTION__OWNED_BEHAVIOR, UML2Package.INTERACTION__OWNED_TRIGGER, UML2Package.INTERACTION__OWNED_ATTRIBUTE, UML2Package.INTERACTION__OWNED_CONNECTOR, UML2Package.INTERACTION__OWNED_PORT, UML2Package.INTERACTION__OWNED_OPERATION, UML2Package.INTERACTION__NESTED_CLASSIFIER, UML2Package.INTERACTION__OWNED_RECEPTION, UML2Package.INTERACTION__PARAMETER, UML2Package.INTERACTION__LIFELINE, UML2Package.INTERACTION__MESSAGE, UML2Package.INTERACTION__FORMAL_GATE};
 
 } //InteractionImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.18 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.19 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,8 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -56,6 +54,16 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification value = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -79,7 +87,7 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	 * @generated
 	 */
 	public ValueSpecification getValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.VALUE_PIN__VALUE);
+		return value;
 	}
 
 	/**
@@ -88,9 +96,10 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	 * @generated
 	 */
 	public NotificationChain basicSetValue(ValueSpecification newValue, NotificationChain msgs) {
-		Object oldValue = eVirtualSet(UML2Package.VALUE_PIN__VALUE, newValue);
+		ValueSpecification oldValue = value;
+		value = newValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VALUE_PIN__VALUE, oldValue == EVIRTUAL_NO_VALUE ? null : oldValue, newValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VALUE_PIN__VALUE, oldValue, newValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -103,7 +112,6 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	 * @generated
 	 */
 	public void setValue(ValueSpecification newValue) {
-		ValueSpecification value = (ValueSpecification)eVirtualGet(UML2Package.VALUE_PIN__VALUE);
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -157,9 +165,9 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.VALUE_PIN__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.VALUE_PIN__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.VALUE_PIN__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.VALUE_PIN__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.VALUE_PIN__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.VALUE_PIN__IN_INTERRUPTIBLE_REGION:
@@ -452,42 +460,35 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.VALUE_PIN__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.VALUE_PIN__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VALUE_PIN__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.VALUE_PIN__OWNER:
 				return isSetOwner();
 			case UML2Package.VALUE_PIN__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.VALUE_PIN__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.VALUE_PIN__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.VALUE_PIN__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.VALUE_PIN__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.VALUE_PIN__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.VALUE_PIN__NAME:
-				String name = (String)eVirtualGet(UML2Package.VALUE_PIN__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VALUE_PIN__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VALUE_PIN__VISIBILITY:
-				return eVirtualGet(UML2Package.VALUE_PIN__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.VALUE_PIN__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.VALUE_PIN__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.VALUE_PIN__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.VALUE_PIN__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.VALUE_PIN__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.VALUE_PIN__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.VALUE_PIN__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.VALUE_PIN__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.VALUE_PIN__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.VALUE_PIN__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.VALUE_PIN__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.VALUE_PIN__ACTIVITY:
@@ -497,22 +498,19 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.VALUE_PIN__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.VALUE_PIN__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.VALUE_PIN__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.VALUE_PIN__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.VALUE_PIN__TYPE:
-				return eVirtualGet(UML2Package.VALUE_PIN__TYPE) != null;
+				return type != null;
 			case UML2Package.VALUE_PIN__ORDERING:
-				return eVirtualGet(UML2Package.VALUE_PIN__ORDERING, ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UML2Package.VALUE_PIN__UPPER_BOUND:
-				return eVirtualGet(UML2Package.VALUE_PIN__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UML2Package.VALUE_PIN__IN_STATE:
-				EList inState = (EList)eVirtualGet(UML2Package.VALUE_PIN__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UML2Package.VALUE_PIN__SELECTION:
-				return eVirtualGet(UML2Package.VALUE_PIN__SELECTION) != null;
+				return selection != null;
 			case UML2Package.VALUE_PIN__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.VALUE_PIN__IS_UNIQUE:
@@ -522,11 +520,11 @@ public class ValuePinImpl extends InputPinImpl implements ValuePin {
 			case UML2Package.VALUE_PIN__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.VALUE_PIN__UPPER_VALUE:
-				return eVirtualGet(UML2Package.VALUE_PIN__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.VALUE_PIN__LOWER_VALUE:
-				return eVirtualGet(UML2Package.VALUE_PIN__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UML2Package.VALUE_PIN__VALUE:
-				return eVirtualGet(UML2Package.VALUE_PIN__VALUE) != null;
+				return value != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

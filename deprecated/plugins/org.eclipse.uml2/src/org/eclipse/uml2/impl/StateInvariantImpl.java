@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.25 2006/01/30 22:52:51 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.26 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 //import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -41,6 +43,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -50,7 +53,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.StateInvariantImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateInvariantImpl#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateInvariantImpl#getCovereds <em>Covered</em>}</li>
  * </ul>
@@ -65,6 +67,16 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getInvariant() <em>Invariant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInvariant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint invariant = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,13 +102,17 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.STATE_INVARIANT__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STATE_INVARIANT__OWNED_ELEMENT, new int[] {UML2Package.STATE_INVARIANT__OWNED_COMMENT, UML2Package.STATE_INVARIANT__TEMPLATE_BINDING, UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE, UML2Package.STATE_INVARIANT__NAME_EXPRESSION, UML2Package.STATE_INVARIANT__GENERAL_ORDERING, UML2Package.STATE_INVARIANT__INVARIANT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STATE_INVARIANT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.STATE_INVARIANT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,13 +124,24 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			|| eIsSet(UML2Package.STATE_INVARIANT__INVARIANT);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.STATE_INVARIANT__OWNED_COMMENT, UML2Package.STATE_INVARIANT__TEMPLATE_BINDING, UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE, UML2Package.STATE_INVARIANT__NAME_EXPRESSION, UML2Package.STATE_INVARIANT__GENERAL_ORDERING, UML2Package.STATE_INVARIANT__INVARIANT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Constraint getInvariant() {
-		return (Constraint)eVirtualGet(UML2Package.STATE_INVARIANT__INVARIANT);
+		return invariant;
 	}
 
 	/**
@@ -123,9 +150,10 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public NotificationChain basicSetInvariant(Constraint newInvariant, NotificationChain msgs) {
-		Object oldInvariant = eVirtualSet(UML2Package.STATE_INVARIANT__INVARIANT, newInvariant);
+		Constraint oldInvariant = invariant;
+		invariant = newInvariant;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE_INVARIANT__INVARIANT, oldInvariant == EVIRTUAL_NO_VALUE ? null : oldInvariant, newInvariant);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE_INVARIANT__INVARIANT, oldInvariant, newInvariant);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -138,7 +166,6 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public void setInvariant(Constraint newInvariant) {
-		Constraint invariant = (Constraint)eVirtualGet(UML2Package.STATE_INVARIANT__INVARIANT);
 		if (newInvariant != invariant) {
 			NotificationChain msgs = null;
 			if (invariant != null)
@@ -188,11 +215,10 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public EList getCovereds() {
-		EList covered = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__COVERED);
-		if (covered == null) {
-			eVirtualSet(UML2Package.STATE_INVARIANT__COVERED, covered = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.STATE_INVARIANT__COVERED, UML2Package.LIFELINE__COVERED_BY));
+		if (covereds == null) {
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse(Lifeline.class, this, UML2Package.STATE_INVARIANT__COVERED, UML2Package.LIFELINE__COVERED_BY);
 		}
-		return covered;
+		return covereds;
 	}
 
 
@@ -202,8 +228,7 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		EList covered = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__COVERED);
-		return covered != null && !covered.isEmpty();
+		return covereds != null && !covereds.isEmpty();
 	}
 
 	/**
@@ -230,9 +255,9 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 			case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
 				return ((InternalEList)getGeneralOrderings()).basicRemove(otherEnd, msgs);
 			case UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION:
-				return eBasicSetContainer(null, UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION, msgs);
+				return basicSetEnclosingInteraction(null, msgs);
 			case UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND:
-				return eBasicSetContainer(null, UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND, msgs);
+				return basicSetEnclosingOperand(null, msgs);
 			case UML2Package.STATE_INVARIANT__INVARIANT:
 				return basicSetInvariant(null, msgs);
 		}
@@ -245,11 +270,20 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	 * @generated
 	 */
     public Lifeline getCovered(String name) {
-		for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
+		return getCovered(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifeline getCovered(String name, boolean ignoreCase) {
+		coveredLoop: for (Iterator i = getCovereds().iterator(); i.hasNext(); ) {
 			Lifeline covered = (Lifeline) i.next();
-			if (name.equals(covered.getName())) {
-				return covered;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(covered.getName()) : name.equals(covered.getName())))
+				continue coveredLoop;
+			return covered;
 		}
 		return null;
 	}
@@ -412,43 +446,37 @@ public class StateInvariantImpl extends InteractionFragmentImpl implements State
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.STATE_INVARIANT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE_INVARIANT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.STATE_INVARIANT__OWNER:
 				return isSetOwner();
 			case UML2Package.STATE_INVARIANT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.STATE_INVARIANT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.STATE_INVARIANT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.STATE_INVARIANT__NAME:
-				String name = (String)eVirtualGet(UML2Package.STATE_INVARIANT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STATE_INVARIANT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE_INVARIANT__VISIBILITY:
-				return eVirtualGet(UML2Package.STATE_INVARIANT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.STATE_INVARIANT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.STATE_INVARIANT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.STATE_INVARIANT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.STATE_INVARIANT__COVERED:
 				return isSetCovereds();
 			case UML2Package.STATE_INVARIANT__GENERAL_ORDERING:
-				EList generalOrdering = (EList)eVirtualGet(UML2Package.STATE_INVARIANT__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UML2Package.STATE_INVARIANT__ENCLOSING_INTERACTION:
 				return getEnclosingInteraction() != null;
 			case UML2Package.STATE_INVARIANT__ENCLOSING_OPERAND:
 				return getEnclosingOperand() != null;
 			case UML2Package.STATE_INVARIANT__INVARIANT:
-				return eVirtualGet(UML2Package.STATE_INVARIANT__INVARIANT) != null;
+				return invariant != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

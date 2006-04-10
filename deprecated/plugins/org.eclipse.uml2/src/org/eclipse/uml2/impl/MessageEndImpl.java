@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.16 2005/12/06 23:18:04 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.17 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,8 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -52,6 +50,26 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getReceiveMessage() <em>Receive Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReceiveMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message receiveMessage = null;
+
+	/**
+	 * The cached value of the '{@link #getSendMessage() <em>Send Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSendMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message sendMessage = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,12 +93,10 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public Message getReceiveMessage() {
-		Message receiveMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE);
 		if (receiveMessage != null && receiveMessage.eIsProxy()) {
 			InternalEObject oldReceiveMessage = (InternalEObject)receiveMessage;
 			receiveMessage = (Message)eResolveProxy(oldReceiveMessage);
 			if (receiveMessage != oldReceiveMessage) {
-				eVirtualSet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE, receiveMessage);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.MESSAGE_END__RECEIVE_MESSAGE, oldReceiveMessage, receiveMessage));
 			}
@@ -94,7 +110,7 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public Message basicGetReceiveMessage() {
-		return (Message)eVirtualGet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE);
+		return receiveMessage;
 	}
 
 	/**
@@ -103,9 +119,10 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public NotificationChain basicSetReceiveMessage(Message newReceiveMessage, NotificationChain msgs) {
-		Object oldReceiveMessage = eVirtualSet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE, newReceiveMessage);
+		Message oldReceiveMessage = receiveMessage;
+		receiveMessage = newReceiveMessage;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__RECEIVE_MESSAGE, oldReceiveMessage == EVIRTUAL_NO_VALUE ? null : oldReceiveMessage, newReceiveMessage);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__RECEIVE_MESSAGE, oldReceiveMessage, newReceiveMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -118,7 +135,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public void setReceiveMessage(Message newReceiveMessage) {
-		Message receiveMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE);
 		if (newReceiveMessage != receiveMessage) {
 			NotificationChain msgs = null;
 			if (receiveMessage != null)
@@ -140,12 +156,10 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public Message getSendMessage() {
-		Message sendMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__SEND_MESSAGE);
 		if (sendMessage != null && sendMessage.eIsProxy()) {
 			InternalEObject oldSendMessage = (InternalEObject)sendMessage;
 			sendMessage = (Message)eResolveProxy(oldSendMessage);
 			if (sendMessage != oldSendMessage) {
-				eVirtualSet(UML2Package.MESSAGE_END__SEND_MESSAGE, sendMessage);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.MESSAGE_END__SEND_MESSAGE, oldSendMessage, sendMessage));
 			}
@@ -159,7 +173,7 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public Message basicGetSendMessage() {
-		return (Message)eVirtualGet(UML2Package.MESSAGE_END__SEND_MESSAGE);
+		return sendMessage;
 	}
 
 	/**
@@ -168,9 +182,10 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public NotificationChain basicSetSendMessage(Message newSendMessage, NotificationChain msgs) {
-		Object oldSendMessage = eVirtualSet(UML2Package.MESSAGE_END__SEND_MESSAGE, newSendMessage);
+		Message oldSendMessage = sendMessage;
+		sendMessage = newSendMessage;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__SEND_MESSAGE, oldSendMessage == EVIRTUAL_NO_VALUE ? null : oldSendMessage, newSendMessage);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.MESSAGE_END__SEND_MESSAGE, oldSendMessage, newSendMessage);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -183,7 +198,6 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	 * @generated
 	 */
 	public void setSendMessage(Message newSendMessage) {
-		Message sendMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__SEND_MESSAGE);
 		if (newSendMessage != sendMessage) {
 			NotificationChain msgs = null;
 			if (sendMessage != null)
@@ -211,19 +225,16 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 			case UML2Package.MESSAGE_END__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.MESSAGE_END__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.MESSAGE_END__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.MESSAGE_END__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.MESSAGE_END__CLIENT_DEPENDENCY:
 				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 			case UML2Package.MESSAGE_END__RECEIVE_MESSAGE:
-				Message receiveMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE);
 				if (receiveMessage != null)
 					msgs = ((InternalEObject)receiveMessage).eInverseRemove(this, UML2Package.MESSAGE__RECEIVE_EVENT, Message.class, msgs);
 				return basicSetReceiveMessage((Message)otherEnd, msgs);
 			case UML2Package.MESSAGE_END__SEND_MESSAGE:
-				Message sendMessage = (Message)eVirtualGet(UML2Package.MESSAGE_END__SEND_MESSAGE);
 				if (sendMessage != null)
 					msgs = ((InternalEObject)sendMessage).eInverseRemove(this, UML2Package.MESSAGE__SEND_EVENT, Message.class, msgs);
 				return basicSetSendMessage((Message)otherEnd, msgs);
@@ -392,36 +403,31 @@ public abstract class MessageEndImpl extends NamedElementImpl implements Message
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.MESSAGE_END__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.MESSAGE_END__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.MESSAGE_END__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.MESSAGE_END__OWNER:
 				return isSetOwner();
 			case UML2Package.MESSAGE_END__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.MESSAGE_END__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.MESSAGE_END__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.MESSAGE_END__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.MESSAGE_END__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.MESSAGE_END__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.MESSAGE_END__NAME:
-				String name = (String)eVirtualGet(UML2Package.MESSAGE_END__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.MESSAGE_END__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.MESSAGE_END__VISIBILITY:
-				return eVirtualGet(UML2Package.MESSAGE_END__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.MESSAGE_END__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.MESSAGE_END__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.MESSAGE_END__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.MESSAGE_END__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.MESSAGE_END__RECEIVE_MESSAGE:
-				return eVirtualGet(UML2Package.MESSAGE_END__RECEIVE_MESSAGE) != null;
+				return receiveMessage != null;
 			case UML2Package.MESSAGE_END__SEND_MESSAGE:
-				return eVirtualGet(UML2Package.MESSAGE_END__SEND_MESSAGE) != null;
+				return sendMessage != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

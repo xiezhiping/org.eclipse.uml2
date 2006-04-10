@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.16 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Property.java,v 1.17 2006/04/10 20:40:25 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -54,7 +54,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Property extends StructuralFeature, ConnectableElement, DeploymentTarget{
+public interface Property extends StructuralFeature, ConnectableElement, DeploymentTarget {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -274,15 +274,28 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getRedefinedProperties()
 	 * @generated
 	 */
     Property getRedefinedProperty(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRedefinedProperties()
+	 * @generated
+	 */
+	Property getRedefinedProperty(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Subsetted Property</b></em>' reference list.
@@ -302,15 +315,28 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getSubsettedProperties()
 	 * @generated
 	 */
     Property getSubsettedProperty(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getSubsettedProperties()
+	 * @generated
+	 */
+	Property getSubsettedProperty(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Datatype</b></em>' container reference.
@@ -413,7 +439,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.ValueSpecification} to create.
 	 * @return The new {@link org.eclipse.uml2.ValueSpecification}.
 	 * @see #getDefaultValue()
-	 * @generated
+	 * @generated NOT
 	 */
     ValueSpecification createDefaultValue(EClass eClass);
 
@@ -437,15 +463,28 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Qualifier</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Qualifier</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getQualifiers()
 	 * @generated
 	 */
     Property getQualifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Qualifier</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getQualifiers()
+	 * @generated
+	 */
+	Property getQualifier(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
@@ -454,7 +493,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getQualifiers()
-	 * @generated
+	 * @generated NOT
 	 */
     Property createQualifier(EClass eClass);
 
@@ -464,7 +503,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getQualifiers()
-	 * @generated
+	 * @generated NOT
 	 */
     Property createQualifier();
 

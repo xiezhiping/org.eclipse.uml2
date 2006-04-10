@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.22 2006/01/05 13:53:04 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.23 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,6 +19,8 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.Classifier;
@@ -32,6 +34,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -41,9 +44,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getConveyeds <em>Conveyed</em>}</li>
  * </ul>
@@ -58,6 +58,26 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizations = null;
+
+	/**
+	 * The cached value of the '{@link #getConveyeds() <em>Conveyed</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConveyeds()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList conveyeds = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,13 +103,17 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__RELATED_ELEMENT);
-		if (relatedElement == null) {
-			eVirtualSet(UML2Package.INFORMATION_FLOW__RELATED_ELEMENT, relatedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__RELATED_ELEMENT, new int[] {UML2Package.INFORMATION_FLOW__SOURCE, UML2Package.INFORMATION_FLOW__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList relatedElements = (EList) cache.get(eResource, this, UML2Package.Literals.RELATIONSHIP__RELATED_ELEMENT);
+			if (relatedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.RELATIONSHIP__RELATED_ELEMENT, relatedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS));
+			}
+			return relatedElements;
 		}
-		return relatedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,19 +125,34 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			|| isSetTargets();
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] RELATED_ELEMENT_ESUBSETS = new int[] {UML2Package.INFORMATION_FLOW__SOURCE, UML2Package.INFORMATION_FLOW__TARGET};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__SOURCE);
-		if (source == null) {
-			eVirtualSet(UML2Package.INFORMATION_FLOW__SOURCE, source = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__SOURCE, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__SOURCE, sources = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__SOURCE, null));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__SOURCE, null);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,19 +163,24 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return false;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__TARGET);
-		if (target == null) {
-			eVirtualSet(UML2Package.INFORMATION_FLOW__TARGET, target = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__TARGET, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this, UML2Package.Literals.DIRECTED_RELATIONSHIP__TARGET, targets = new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__TARGET, null));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__TARGET, null);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,17 +191,17 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return false;
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getRealizations() {
-		EList realization = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__REALIZATION);
-		if (realization == null) {
-			eVirtualSet(UML2Package.INFORMATION_FLOW__REALIZATION, realization = new EObjectResolvingEList(Relationship.class, this, UML2Package.INFORMATION_FLOW__REALIZATION));
+		if (realizations == null) {
+			realizations = new EObjectResolvingEList(Relationship.class, this, UML2Package.INFORMATION_FLOW__REALIZATION);
 		}
-		return realization;
+		return realizations;
 	}
 
 
@@ -167,11 +211,10 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * @generated
 	 */
 	public EList getConveyeds() {
-		EList conveyed = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__CONVEYED);
-		if (conveyed == null) {
-			eVirtualSet(UML2Package.INFORMATION_FLOW__CONVEYED, conveyed = new EObjectResolvingEList(Classifier.class, this, UML2Package.INFORMATION_FLOW__CONVEYED));
+		if (conveyeds == null) {
+			conveyeds = new EObjectResolvingEList(Classifier.class, this, UML2Package.INFORMATION_FLOW__CONVEYED);
 		}
-		return conveyed;
+		return conveyeds;
 	}
 
 
@@ -181,11 +224,22 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	 * @generated
 	 */
     public Classifier getConveyed(String name) {
-		for (Iterator i = getConveyeds().iterator(); i.hasNext(); ) {
+		return getConveyed(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getConveyed(String name, boolean ignoreCase, EClass eClass) {
+		conveyedLoop: for (Iterator i = getConveyeds().iterator(); i.hasNext(); ) {
 			Classifier conveyed = (Classifier) i.next();
-			if (name.equals(conveyed.getName())) {
-				return conveyed;
-			}
+			if (eClass != null && !eClass.isInstance(conveyed))
+				continue conveyedLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(conveyed.getName()) : name.equals(conveyed.getName())))
+				continue conveyedLoop;
+			return conveyed;
 		}
 		return null;
 	}
@@ -355,34 +409,29 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INFORMATION_FLOW__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INFORMATION_FLOW__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INFORMATION_FLOW__OWNER:
 				return isSetOwner();
 			case UML2Package.INFORMATION_FLOW__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INFORMATION_FLOW__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INFORMATION_FLOW__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INFORMATION_FLOW__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INFORMATION_FLOW__NAME:
-				String name = (String)eVirtualGet(UML2Package.INFORMATION_FLOW__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INFORMATION_FLOW__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INFORMATION_FLOW__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.INFORMATION_FLOW__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INFORMATION_FLOW__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INFORMATION_FLOW__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INFORMATION_FLOW__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.INFORMATION_FLOW__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.INFORMATION_FLOW__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.INFORMATION_FLOW__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -394,11 +443,9 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 			case UML2Package.INFORMATION_FLOW__TARGET:
 				return isSetTargets();
 			case UML2Package.INFORMATION_FLOW__REALIZATION:
-				EList realization = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__REALIZATION);
-				return realization != null && !realization.isEmpty();
+				return realizations != null && !realizations.isEmpty();
 			case UML2Package.INFORMATION_FLOW__CONVEYED:
-				EList conveyed = (EList)eVirtualGet(UML2Package.INFORMATION_FLOW__CONVEYED);
-				return conveyed != null && !conveyed.isEmpty();
+				return conveyeds != null && !conveyeds.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

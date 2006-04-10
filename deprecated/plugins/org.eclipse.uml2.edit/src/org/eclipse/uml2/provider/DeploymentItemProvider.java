@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.16 2006/01/05 22:58:12 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.17 2006/04/10 20:41:30 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -181,7 +181,7 @@ public class DeploymentItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Deployment"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Deployment")); //$NON-NLS-1$
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTriggerImpl.java,v 1.14 2005/12/06 23:18:03 khussey Exp $
+ * $Id: SignalTriggerImpl.java,v 1.15 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,16 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getSignals() <em>Signal</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSignals()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList signals = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,11 +82,10 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * @generated
 	 */
 	public EList getSignals() {
-		EList signal = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__SIGNAL);
-		if (signal == null) {
-			eVirtualSet(UML2Package.SIGNAL_TRIGGER__SIGNAL, signal = new EObjectResolvingEList(Signal.class, this, UML2Package.SIGNAL_TRIGGER__SIGNAL));
+		if (signals == null) {
+			signals = new EObjectResolvingEList(Signal.class, this, UML2Package.SIGNAL_TRIGGER__SIGNAL);
 		}
-		return signal;
+		return signals;
 	}
 
 
@@ -86,11 +95,20 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	 * @generated
 	 */
     public Signal getSignal(String name) {
-		for (Iterator i = getSignals().iterator(); i.hasNext(); ) {
+		return getSignal(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Signal getSignal(String name, boolean ignoreCase) {
+		signalLoop: for (Iterator i = getSignals().iterator(); i.hasNext(); ) {
 			Signal signal = (Signal) i.next();
-			if (name.equals(signal.getName())) {
-				return signal;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(signal.getName()) : name.equals(signal.getName())))
+				continue signalLoop;
+			return signal;
 		}
 		return null;
 	}
@@ -229,38 +247,31 @@ public class SignalTriggerImpl extends MessageTriggerImpl implements SignalTrigg
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SIGNAL_TRIGGER__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.SIGNAL_TRIGGER__OWNER:
 				return isSetOwner();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.SIGNAL_TRIGGER__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.SIGNAL_TRIGGER__NAME:
-				String name = (String)eVirtualGet(UML2Package.SIGNAL_TRIGGER__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.SIGNAL_TRIGGER__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SIGNAL_TRIGGER__VISIBILITY:
-				return eVirtualGet(UML2Package.SIGNAL_TRIGGER__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.SIGNAL_TRIGGER__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.SIGNAL_TRIGGER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.SIGNAL_TRIGGER__PORT:
-				EList port = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__PORT);
-				return port != null && !port.isEmpty();
+				return ports != null && !ports.isEmpty();
 			case UML2Package.SIGNAL_TRIGGER__SIGNAL:
-				EList signal = (EList)eVirtualGet(UML2Package.SIGNAL_TRIGGER__SIGNAL);
-				return signal != null && !signal.isEmpty();
+				return signals != null && !signals.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

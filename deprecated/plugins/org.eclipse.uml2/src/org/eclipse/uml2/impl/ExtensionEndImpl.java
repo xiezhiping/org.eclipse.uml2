@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.19 2005/12/06 23:18:03 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.20 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -70,12 +68,10 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = (Type)eVirtualGet(UML2Package.EXTENSION_END__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
 			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UML2Package.EXTENSION_END__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.EXTENSION_END__TYPE, oldType, type));
 			}
@@ -89,7 +85,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type)eVirtualGet(UML2Package.EXTENSION_END__TYPE);
+		return type;
 	}
 
 	/**
@@ -101,10 +97,10 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 		if (newType != null && !(newType instanceof Stereotype)) {
 			throw new IllegalArgumentException(String.valueOf(newType));
 		}
-		Type type = newType;
-		Object oldType = eVirtualSet(UML2Package.EXTENSION_END__TYPE, type);
+		Type oldType = type;
+		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXTENSION_END__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.EXTENSION_END__TYPE, oldType, type));
 	}
 
 
@@ -114,7 +110,7 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	 * @generated
 	 */
 	public boolean isSetType() {
-		return eVirtualGet(UML2Package.EXTENSION_END__TYPE) != null;
+		return type != null;
 	}
 
 	/**
@@ -227,32 +223,27 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EXTENSION_END__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.EXTENSION_END__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTENSION_END__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.EXTENSION_END__OWNER:
 				return isSetOwner();
 			case UML2Package.EXTENSION_END__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.EXTENSION_END__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.EXTENSION_END__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.EXTENSION_END__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.EXTENSION_END__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.EXTENSION_END__NAME:
-				String name = (String)eVirtualGet(UML2Package.EXTENSION_END__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXTENSION_END__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION_END__VISIBILITY:
-				return eVirtualGet(UML2Package.EXTENSION_END__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION_END__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.EXTENSION_END__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.EXTENSION_END__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.EXTENSION_END__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.EXTENSION_END__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.EXTENSION_END__IS_LEAF:
@@ -272,21 +263,19 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.EXTENSION_END__UPPER_VALUE:
-				return eVirtualGet(UML2Package.EXTENSION_END__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.EXTENSION_END__LOWER_VALUE:
-				return eVirtualGet(UML2Package.EXTENSION_END__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UML2Package.EXTENSION_END__IS_READ_ONLY:
 				return isSetIsReadOnly();
 			case UML2Package.EXTENSION_END__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.EXTENSION_END__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.EXTENSION_END__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.EXTENSION_END__END:
-				EList end = (EList)eVirtualGet(UML2Package.EXTENSION_END__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UML2Package.EXTENSION_END__DEPLOYMENT:
-				EList deployment = (EList)eVirtualGet(UML2Package.EXTENSION_END__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UML2Package.EXTENSION_END__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.EXTENSION_END__DEFAULT:
@@ -304,22 +293,19 @@ public class ExtensionEndImpl extends PropertyImpl implements ExtensionEnd {
 			case UML2Package.EXTENSION_END__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.EXTENSION_END__REDEFINED_PROPERTY:
-				EList redefinedProperty = (EList)eVirtualGet(UML2Package.EXTENSION_END__REDEFINED_PROPERTY);
-				return redefinedProperty != null && !redefinedProperty.isEmpty();
+				return redefinedProperties != null && !redefinedProperties.isEmpty();
 			case UML2Package.EXTENSION_END__SUBSETTED_PROPERTY:
-				EList subsettedProperty = (EList)eVirtualGet(UML2Package.EXTENSION_END__SUBSETTED_PROPERTY);
-				return subsettedProperty != null && !subsettedProperty.isEmpty();
+				return subsettedProperties != null && !subsettedProperties.isEmpty();
 			case UML2Package.EXTENSION_END__DATATYPE:
 				return getDatatype() != null;
 			case UML2Package.EXTENSION_END__ASSOCIATION:
-				return eVirtualGet(UML2Package.EXTENSION_END__ASSOCIATION) != null;
+				return association != null;
 			case UML2Package.EXTENSION_END__AGGREGATION:
-				return eVirtualGet(UML2Package.EXTENSION_END__AGGREGATION, AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
+				return aggregation != AGGREGATION_EDEFAULT;
 			case UML2Package.EXTENSION_END__DEFAULT_VALUE:
-				return eVirtualGet(UML2Package.EXTENSION_END__DEFAULT_VALUE) != null;
+				return defaultValue != null;
 			case UML2Package.EXTENSION_END__QUALIFIER:
-				EList qualifier = (EList)eVirtualGet(UML2Package.EXTENSION_END__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 			case UML2Package.EXTENSION_END__ASSOCIATION_END:
 				return getAssociationEnd() != null;
 		}

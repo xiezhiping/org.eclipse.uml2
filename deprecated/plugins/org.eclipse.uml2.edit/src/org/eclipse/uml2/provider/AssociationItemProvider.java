@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.15 2006/01/05 13:53:30 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.16 2006/04/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -226,7 +226,7 @@ public class AssociationItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/Association"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Association")); //$NON-NLS-1$
 	}
 
 	/**

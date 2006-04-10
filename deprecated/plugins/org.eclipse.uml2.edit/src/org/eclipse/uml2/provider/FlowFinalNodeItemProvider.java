@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FlowFinalNodeItemProvider.java,v 1.10 2005/09/23 20:14:52 khussey Exp $
+ * $Id: FlowFinalNodeItemProvider.java,v 1.11 2006/04/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -78,7 +78,7 @@ public class FlowFinalNodeItemProvider
 	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/FlowFinalNode"); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FlowFinalNode")); //$NON-NLS-1$
 	}
 
 	/**

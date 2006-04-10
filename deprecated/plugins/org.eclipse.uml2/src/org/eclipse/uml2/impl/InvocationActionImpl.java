@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.23 2005/12/06 23:18:04 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.24 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -39,6 +41,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -48,7 +51,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.InvocationActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InvocationActionImpl#getArguments <em>Argument</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InvocationActionImpl#getOnPort <em>On Port</em>}</li>
  * </ul>
@@ -63,6 +65,26 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList arguments = null;
+
+	/**
+	 * The cached value of the '{@link #getOnPort() <em>On Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOnPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected Port onPort = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,13 +110,17 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UML2Package.INVOCATION_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.INVOCATION_ACTION__INPUT, new int[] {UML2Package.INVOCATION_ACTION__ARGUMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this, UML2Package.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UML2Package.Literals.ACTION__INPUT, inputs = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.INVOCATION_ACTION__INPUT, INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.INVOCATION_ACTION__INPUT, INPUT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,17 +132,27 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 			|| eIsSet(UML2Package.INVOCATION_ACTION__ARGUMENT);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[] {UML2Package.INVOCATION_ACTION__ARGUMENT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getArguments() {
-		EList argument = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__ARGUMENT);
-		if (argument == null) {
-			eVirtualSet(UML2Package.INVOCATION_ACTION__ARGUMENT, argument = new EObjectContainmentEList(InputPin.class, this, UML2Package.INVOCATION_ACTION__ARGUMENT));
+		if (arguments == null) {
+			arguments = new EObjectContainmentEList(InputPin.class, this, UML2Package.INVOCATION_ACTION__ARGUMENT);
 		}
-		return argument;
+		return arguments;
 	}
 
 
@@ -126,11 +162,22 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * @generated
 	 */
     public InputPin getArgument(String name) {
-		for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
+		return getArgument(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getArgument(String name, boolean ignoreCase, EClass eClass) {
+		argumentLoop: for (Iterator i = getArguments().iterator(); i.hasNext(); ) {
 			InputPin argument = (InputPin) i.next();
-			if (name.equals(argument.getName())) {
-				return argument;
-			}
+			if (eClass != null && !eClass.isInstance(argument))
+				continue argumentLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(argument.getName()) : name.equals(argument.getName())))
+				continue argumentLoop;
+			return argument;
 		}
 		return null;
 	}
@@ -169,12 +216,10 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * @generated
 	 */
 	public Port getOnPort() {
-		Port onPort = (Port)eVirtualGet(UML2Package.INVOCATION_ACTION__ON_PORT);
 		if (onPort != null && onPort.eIsProxy()) {
 			InternalEObject oldOnPort = (InternalEObject)onPort;
 			onPort = (Port)eResolveProxy(oldOnPort);
 			if (onPort != oldOnPort) {
-				eVirtualSet(UML2Package.INVOCATION_ACTION__ON_PORT, onPort);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.INVOCATION_ACTION__ON_PORT, oldOnPort, onPort));
 			}
@@ -188,7 +233,7 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * @generated
 	 */
 	public Port basicGetOnPort() {
-		return (Port)eVirtualGet(UML2Package.INVOCATION_ACTION__ON_PORT);
+		return onPort;
 	}
 
 	/**
@@ -197,10 +242,11 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	 * @generated
 	 */
 	public void setOnPort(Port newOnPort) {
-		Port onPort = newOnPort;
-		Object oldOnPort = eVirtualSet(UML2Package.INVOCATION_ACTION__ON_PORT, onPort);
+		Port oldOnPort = onPort;
+		onPort = newOnPort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INVOCATION_ACTION__ON_PORT, oldOnPort == EVIRTUAL_NO_VALUE ? null : oldOnPort, onPort));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.INVOCATION_ACTION__ON_PORT, oldOnPort, onPort));
+
 
 	}
 
@@ -229,9 +275,9 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 			case UML2Package.INVOCATION_ACTION__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.INVOCATION_ACTION__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.INVOCATION_ACTION__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.INVOCATION_ACTION__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.INVOCATION_ACTION__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.INVOCATION_ACTION__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.INVOCATION_ACTION__IN_INTERRUPTIBLE_REGION:
@@ -496,42 +542,35 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.INVOCATION_ACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.INVOCATION_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.INVOCATION_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.INVOCATION_ACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.INVOCATION_ACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.INVOCATION_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.INVOCATION_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.INVOCATION_ACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.INVOCATION_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.INVOCATION_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.INVOCATION_ACTION__VISIBILITY:
-				return eVirtualGet(UML2Package.INVOCATION_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.INVOCATION_ACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.INVOCATION_ACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.INVOCATION_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.INVOCATION_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.INVOCATION_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.INVOCATION_ACTION__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.INVOCATION_ACTION__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.INVOCATION_ACTION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.INVOCATION_ACTION__ACTIVITY:
@@ -541,16 +580,12 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 			case UML2Package.INVOCATION_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.INVOCATION_ACTION__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.INVOCATION_ACTION__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.INVOCATION_ACTION__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UML2Package.INVOCATION_ACTION__EFFECT:
-				String effect = (String)eVirtualGet(UML2Package.INVOCATION_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.INVOCATION_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -559,16 +594,13 @@ public abstract class InvocationActionImpl extends ActionImpl implements Invocat
 			case UML2Package.INVOCATION_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.INVOCATION_ACTION__LOCAL_PRECONDITION:
-				EList localPrecondition = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null && !localPrecondition.isEmpty();
+				return localPreconditions != null && !localPreconditions.isEmpty();
 			case UML2Package.INVOCATION_ACTION__LOCAL_POSTCONDITION:
-				EList localPostcondition = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null && !localPostcondition.isEmpty();
+				return localPostconditions != null && !localPostconditions.isEmpty();
 			case UML2Package.INVOCATION_ACTION__ARGUMENT:
-				EList argument = (EList)eVirtualGet(UML2Package.INVOCATION_ACTION__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UML2Package.INVOCATION_ACTION__ON_PORT:
-				return eVirtualGet(UML2Package.INVOCATION_ACTION__ON_PORT) != null;
+				return onPort != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

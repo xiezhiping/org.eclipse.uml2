@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.34 2006/01/30 22:52:51 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.35 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -108,11 +108,12 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated NOT
 	 */
 	public org.eclipse.uml2.Class basicGetMetaclass() {
+		EList ownedEnds = getOwnedEnds();
 
 		for (Iterator memberEnds = getMemberEnds().iterator(); memberEnds.hasNext();) {
 			Property memberEnd = (Property) memberEnds.next();
 
-			if (!getOwnedEnds().contains(memberEnd)) {
+			if (!ownedEnds.contains(memberEnd)) {
 				return (org.eclipse.uml2.Class) memberEnd.getType();
 			}
 		}
@@ -126,11 +127,13 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated NOT
 	 */
 	public EList getOwnedEnds() {
-		EList ownedEnd = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_END);
-		if (ownedEnd == null) {
-			eVirtualSet(UML2Package.EXTENSION__OWNED_END, ownedEnd = new SubsetSupersetEObjectContainmentWithInverseEList(ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END, new int[] {UML2Package.EXTENSION__MEMBER_END}, null, UML2Package.PROPERTY__OWNING_ASSOCIATION));
+		if (ownedEnds == null) {
+			ownedEnds = new SubsetSupersetEObjectContainmentWithInverseEList(
+				ExtensionEnd.class, this, UML2Package.EXTENSION__OWNED_END,
+				OWNED_END_ESUPERSETS, null,
+				UML2Package.PROPERTY__OWNING_ASSOCIATION);
 		}
-		return ownedEnd;
+		return ownedEnds;
 	}
 
 
@@ -140,8 +143,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated
 	 */
 	public boolean isSetOwnedEnds() {
-		EList ownedEnd = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_END);
-		return ownedEnd != null && !ownedEnd.isEmpty();
+		return ownedEnds != null && !ownedEnds.isEmpty();
 	}
 
 	/**
@@ -250,47 +252,39 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EXTENSION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.EXTENSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTENSION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.EXTENSION__OWNER:
 				return isSetOwner();
 			case UML2Package.EXTENSION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.EXTENSION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.EXTENSION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.EXTENSION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.EXTENSION__NAME:
-				String name = (String)eVirtualGet(UML2Package.EXTENSION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXTENSION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.EXTENSION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.EXTENSION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.EXTENSION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.EXTENSION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.EXTENSION__MEMBER:
 				return isSetMembers();
 			case UML2Package.EXTENSION__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.EXTENSION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.EXTENSION__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.EXTENSION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.EXTENSION__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.EXTENSION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.EXTENSION__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.EXTENSION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.EXTENSION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.EXTENSION__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -310,30 +304,23 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.EXTENSION__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.EXTENSION__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.EXTENSION__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.EXTENSION__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.EXTENSION__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.EXTENSION__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.EXTENSION__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.EXTENSION__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.EXTENSION__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.EXTENSION__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.EXTENSION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.EXTENSION__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.EXTENSION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.EXTENSION__REPRESENTATION:
-				return eVirtualGet(UML2Package.EXTENSION__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.EXTENSION__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.EXTENSION__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.EXTENSION__RELATED_ELEMENT:
 				return isSetRelatedElements();
 			case UML2Package.EXTENSION__IS_DERIVED:
@@ -343,8 +330,7 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 			case UML2Package.EXTENSION__END_TYPE:
 				return !getEndTypes().isEmpty();
 			case UML2Package.EXTENSION__MEMBER_END:
-				EList memberEnd = (EList)eVirtualGet(UML2Package.EXTENSION__MEMBER_END);
-				return memberEnd != null && !memberEnd.isEmpty();
+				return memberEnds != null && !memberEnds.isEmpty();
 			case UML2Package.EXTENSION__IS_REQUIRED:
 				return isRequired() != IS_REQUIRED_EDEFAULT;
 			case UML2Package.EXTENSION__METACLASS:
@@ -389,11 +375,20 @@ public class ExtensionImpl extends AssociationImpl implements Extension {
 	 * @generated
 	 */
     public Property getOwnedEnd(String name) {
-		for (Iterator i = getOwnedEnds().iterator(); i.hasNext(); ) {
+		return getOwnedEnd(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedEnd(String name, boolean ignoreCase) {
+		ownedEndLoop: for (Iterator i = getOwnedEnds().iterator(); i.hasNext(); ) {
 			ExtensionEnd ownedEnd = (ExtensionEnd) i.next();
-			if (name.equals(ownedEnd.getName())) {
-				return ownedEnd;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedEnd.getName()) : name.equals(ownedEnd.getName())))
+				continue ownedEndLoop;
+			return ownedEnd;
 		}
 		return null;
 	}

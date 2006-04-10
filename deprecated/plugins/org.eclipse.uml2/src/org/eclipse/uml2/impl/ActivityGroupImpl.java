@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.23 2006/01/30 22:51:26 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.24 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -129,6 +129,17 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetActivityGroup_activity(Activity newActivityGroup_activity, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newActivityGroup_activity, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setActivityGroup_activity(Activity newActivityGroup_activity) {
 		if (newActivityGroup_activity != eInternalContainer() || (eContainerFeatureID != UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY && newActivityGroup_activity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivityGroup_activity))
@@ -138,7 +149,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newActivityGroup_activity != null)
 				msgs = ((InternalEObject)newActivityGroup_activity).eInverseAdd(this, UML2Package.ACTIVITY__GROUP, Activity.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newActivityGroup_activity, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+			msgs = basicSetActivityGroup_activity(newActivityGroup_activity, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -166,12 +177,12 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		if (cache != null) {
 			try {
 				Method method = getClass().getMethod("getSubgroups", null); //$NON-NLS-1$
-				EList subgroup = (EList) cache.get(eResource(), this, method);
-				if (subgroup == null) {
+				EList subgroups = (EList) cache.get(eResource(), this, method);
+				if (subgroups == null) {
 					List union = getSubgroupsHelper(new UniqueEList.FastCompare());
-					cache.put(eResource(), this, method, subgroup = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+					cache.put(eResource(), this, method, subgroups = new UnionEObjectEList(this, null, union.size(), union.toArray()));
 				}
-				return subgroup;
+				return subgroups;
 			}
 			catch (NoSuchMethodException nsme) {
 				// ignore
@@ -196,14 +207,14 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		ownedElement.addAll(super.getOwnedElements());
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		ownedElements.addAll(super.getOwnedElements());
 		if (isSetSubgroups()) {
 			for (Iterator i = ((InternalEList) getSubgroups()).basicIterator(); i.hasNext(); ) {
-				ownedElement.add(i.next());
+				ownedElements.add(i.next());
 			}
 		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -214,12 +225,12 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	public EList getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList ownedElement = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
-			if (ownedElement == null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
 				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
-				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElement = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
 			}
-			return ownedElement;
+			return ownedElements;
 		}
 		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
 		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
@@ -237,6 +248,16 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ACTIVITY_GROUP__OWNED_COMMENT};
+
+	/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated NOT
@@ -251,11 +272,22 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
     public ActivityEdge getContainedEdge(String name) {
-		for (Iterator i = getContainedEdges().iterator(); i.hasNext(); ) {
+		return getContainedEdge(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge getContainedEdge(String name, boolean ignoreCase, EClass eClass) {
+		containedEdgeLoop: for (Iterator i = getContainedEdges().iterator(); i.hasNext(); ) {
 			ActivityEdge containedEdge = (ActivityEdge) i.next();
-			if (name.equals(containedEdge.getName())) {
-				return containedEdge;
-			}
+			if (eClass != null && !eClass.isInstance(containedEdge))
+				continue containedEdgeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(containedEdge.getName()) : name.equals(containedEdge.getName())))
+				continue containedEdgeLoop;
+			return containedEdge;
 		}
 		return null;
 	}
@@ -272,7 +304,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+				return basicSetActivityGroup_activity((Activity)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -289,7 +321,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
 				return ((InternalEList)getOwnedComments()).basicRemove(otherEnd, msgs);
 			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY, msgs);
+				return basicSetActivityGroup_activity(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -322,11 +354,22 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * @generated
 	 */
     public ActivityNode getContainedNode(String name) {
-		for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
+		return getContainedNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityNode getContainedNode(String name, boolean ignoreCase, EClass eClass) {
+		containedNodeLoop: for (Iterator i = getContainedNodes().iterator(); i.hasNext(); ) {
 			ActivityNode containedNode = (ActivityNode) i.next();
-			if (name.equals(containedNode.getName())) {
-				return containedNode;
-			}
+			if (eClass != null && !eClass.isInstance(containedNode))
+				continue containedNodeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(containedNode.getName()) : name.equals(containedNode.getName())))
+				continue containedNodeLoop;
+			return containedNode;
 		}
 		return null;
 	}
@@ -338,6 +381,15 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	public Activity getActivity() {
 		return getActivityGroup_activity();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetActivity(Activity newActivity, NotificationChain msgs) {
+		return basicSetActivityGroup_activity(newActivity, msgs);
 	}
 
 	/**
@@ -391,8 +443,8 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getSubgroupsHelper(EList subgroup) {
-		return subgroup;
+	protected EList getSubgroupsHelper(EList subgroups) {
+		return subgroups;
 	}
 
 	/**
@@ -470,15 +522,13 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ACTIVITY_GROUP__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ACTIVITY_GROUP__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ACTIVITY_GROUP__OWNER:
 				return isSetOwner();
 			case UML2Package.ACTIVITY_GROUP__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ACTIVITY_GROUP__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ACTIVITY_GROUP__SUPER_GROUP:
 				return isSetSuperGroup();
 			case UML2Package.ACTIVITY_GROUP__ACTIVITY_GROUP_ACTIVITY:

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.29 2005/12/06 23:18:02 khussey Exp $
+ * $Id: StateImpl.java,v 1.30 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -98,14 +98,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits1 = 0;
-
-	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,6 +116,26 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @ordered
 	 */
 	protected static final int IS_LEAF_EFLAG = 1 << 8;
+
+	/**
+	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList outgoings = null;
+
+	/**
+	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList incomings = null;
 
 	/**
 	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
@@ -166,6 +178,96 @@ public class StateImpl extends NamespaceImpl implements State {
 	protected static final boolean IS_SUBMACHINE_STATE_EDEFAULT = false;
 
 	/**
+	 * The cached value of the '{@link #getSubmachine() <em>Submachine</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubmachine()
+	 * @generated
+	 * @ordered
+	 */
+	protected StateMachine submachine = null;
+
+	/**
+	 * The cached value of the '{@link #getConnections() <em>Connection</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnections()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList connections = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedState() <em>Redefined State</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedState()
+	 * @generated
+	 * @ordered
+	 */
+	protected State redefinedState = null;
+
+	/**
+	 * The cached value of the '{@link #getDeferrableTriggers() <em>Deferrable Trigger</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeferrableTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList deferrableTriggers = null;
+
+	/**
+	 * The cached value of the '{@link #getRegions() <em>Region</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList regions = null;
+
+	/**
+	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntry()
+	 * @generated
+	 * @ordered
+	 */
+	protected Activity entry = null;
+
+	/**
+	 * The cached value of the '{@link #getExit() <em>Exit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExit()
+	 * @generated
+	 * @ordered
+	 */
+	protected Activity exit = null;
+
+	/**
+	 * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoActivity()
+	 * @generated
+	 * @ordered
+	 */
+	protected Activity doActivity = null;
+
+	/**
+	 * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStateInvariant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint stateInvariant = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -189,11 +291,22 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public Classifier getRedefinitionContext(String name) {
-		for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
+		return getRedefinitionContext(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRedefinitionContext(String name, boolean ignoreCase, EClass eClass) {
+		redefinitionContextLoop: for (Iterator i = getRedefinitionContexts().iterator(); i.hasNext(); ) {
 			Classifier redefinitionContext = (Classifier) i.next();
-			if (name.equals(redefinitionContext.getName())) {
-				return redefinitionContext;
-			}
+			if (eClass != null && !eClass.isInstance(redefinitionContext))
+				continue redefinitionContextLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinitionContext.getName()) : name.equals(redefinitionContext.getName())))
+				continue redefinitionContextLoop;
+			return redefinitionContext;
 		}
 		return null;
 	}
@@ -218,6 +331,7 @@ public class StateImpl extends NamespaceImpl implements State {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__IS_LEAF, oldIsLeaf, newIsLeaf));
 
+
 	}
 
 
@@ -236,6 +350,17 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetContainer(Region newContainer, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newContainer, UML2Package.STATE__CONTAINER, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer() || (eContainerFeatureID != UML2Package.STATE__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -245,7 +370,7 @@ public class StateImpl extends NamespaceImpl implements State {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContainer != null)
 				msgs = ((InternalEObject)newContainer).eInverseAdd(this, UML2Package.REGION__SUBVERTEX, Region.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newContainer, UML2Package.STATE__CONTAINER, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -269,11 +394,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getOutgoings() {
-		EList outgoing = (EList)eVirtualGet(UML2Package.STATE__OUTGOING);
-		if (outgoing == null) {
-			eVirtualSet(UML2Package.STATE__OUTGOING, outgoing = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.STATE__OUTGOING, UML2Package.TRANSITION__SOURCE));
+		if (outgoings == null) {
+			outgoings = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.STATE__OUTGOING, UML2Package.TRANSITION__SOURCE);
 		}
-		return outgoing;
+		return outgoings;
 	}
 
 
@@ -283,11 +407,22 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public Transition getOutgoing(String name) {
-		for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
+		return getOutgoing(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
+		outgoingLoop: for (Iterator i = getOutgoings().iterator(); i.hasNext(); ) {
 			Transition outgoing = (Transition) i.next();
-			if (name.equals(outgoing.getName())) {
-				return outgoing;
-			}
+			if (eClass != null && !eClass.isInstance(outgoing))
+				continue outgoingLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(outgoing.getName()) : name.equals(outgoing.getName())))
+				continue outgoingLoop;
+			return outgoing;
 		}
 		return null;
 	}
@@ -298,11 +433,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getIncomings() {
-		EList incoming = (EList)eVirtualGet(UML2Package.STATE__INCOMING);
-		if (incoming == null) {
-			eVirtualSet(UML2Package.STATE__INCOMING, incoming = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.STATE__INCOMING, UML2Package.TRANSITION__TARGET));
+		if (incomings == null) {
+			incomings = new EObjectWithInverseResolvingEList(Transition.class, this, UML2Package.STATE__INCOMING, UML2Package.TRANSITION__TARGET);
 		}
-		return incoming;
+		return incomings;
 	}
 
 
@@ -312,11 +446,22 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public Transition getIncoming(String name) {
-		for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
+		return getIncoming(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
+		incomingLoop: for (Iterator i = getIncomings().iterator(); i.hasNext(); ) {
 			Transition incoming = (Transition) i.next();
-			if (name.equals(incoming.getName())) {
-				return incoming;
-			}
+			if (eClass != null && !eClass.isInstance(incoming))
+				continue incomingLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(incoming.getName()) : name.equals(incoming.getName())))
+				continue incomingLoop;
+			return incoming;
 		}
 		return null;
 	}
@@ -363,12 +508,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public StateMachine getSubmachine() {
-		StateMachine submachine = (StateMachine)eVirtualGet(UML2Package.STATE__SUBMACHINE);
 		if (submachine != null && submachine.eIsProxy()) {
 			InternalEObject oldSubmachine = (InternalEObject)submachine;
 			submachine = (StateMachine)eResolveProxy(oldSubmachine);
 			if (submachine != oldSubmachine) {
-				eVirtualSet(UML2Package.STATE__SUBMACHINE, submachine);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.STATE__SUBMACHINE, oldSubmachine, submachine));
 			}
@@ -382,7 +525,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public StateMachine basicGetSubmachine() {
-		return (StateMachine)eVirtualGet(UML2Package.STATE__SUBMACHINE);
+		return submachine;
 	}
 
 	/**
@@ -391,10 +534,11 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setSubmachine(StateMachine newSubmachine) {
-		StateMachine submachine = newSubmachine;
-		Object oldSubmachine = eVirtualSet(UML2Package.STATE__SUBMACHINE, submachine);
+		StateMachine oldSubmachine = submachine;
+		submachine = newSubmachine;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__SUBMACHINE, oldSubmachine == EVIRTUAL_NO_VALUE ? null : oldSubmachine, submachine));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__SUBMACHINE, oldSubmachine, submachine));
+
 
 	}
 
@@ -405,11 +549,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getConnections() {
-		EList connection = (EList)eVirtualGet(UML2Package.STATE__CONNECTION);
-		if (connection == null) {
-			eVirtualSet(UML2Package.STATE__CONNECTION, connection = new EObjectContainmentEList(ConnectionPointReference.class, this, UML2Package.STATE__CONNECTION));
+		if (connections == null) {
+			connections = new EObjectContainmentEList(ConnectionPointReference.class, this, UML2Package.STATE__CONNECTION);
 		}
-		return connection;
+		return connections;
 	}
 
 
@@ -419,11 +562,20 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public ConnectionPointReference getConnection(String name) {
-		for (Iterator i = getConnections().iterator(); i.hasNext(); ) {
+		return getConnection(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectionPointReference getConnection(String name, boolean ignoreCase) {
+		connectionLoop: for (Iterator i = getConnections().iterator(); i.hasNext(); ) {
 			ConnectionPointReference connection = (ConnectionPointReference) i.next();
-			if (name.equals(connection.getName())) {
-				return connection;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(connection.getName()) : name.equals(connection.getName())))
+				continue connectionLoop;
+			return connection;
 		}
 		return null;
 	}
@@ -463,12 +615,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public State getRedefinedState() {
-		State redefinedState = (State)eVirtualGet(UML2Package.STATE__REDEFINED_STATE);
 		if (redefinedState != null && redefinedState.eIsProxy()) {
 			InternalEObject oldRedefinedState = (InternalEObject)redefinedState;
 			redefinedState = (State)eResolveProxy(oldRedefinedState);
 			if (redefinedState != oldRedefinedState) {
-				eVirtualSet(UML2Package.STATE__REDEFINED_STATE, redefinedState);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.STATE__REDEFINED_STATE, oldRedefinedState, redefinedState));
 			}
@@ -482,7 +632,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public State basicGetRedefinedState() {
-		return (State)eVirtualGet(UML2Package.STATE__REDEFINED_STATE);
+		return redefinedState;
 	}
 
 	/**
@@ -491,10 +641,11 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setRedefinedState(State newRedefinedState) {
-		State redefinedState = newRedefinedState;
-		Object oldRedefinedState = eVirtualSet(UML2Package.STATE__REDEFINED_STATE, redefinedState);
+		State oldRedefinedState = redefinedState;
+		redefinedState = newRedefinedState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__REDEFINED_STATE, oldRedefinedState == EVIRTUAL_NO_VALUE ? null : oldRedefinedState, redefinedState));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__REDEFINED_STATE, oldRedefinedState, redefinedState));
+
 
 	}
 
@@ -505,7 +656,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public boolean isSetRedefinedState() {
-		return eVirtualGet(UML2Package.STATE__REDEFINED_STATE) != null;
+		return redefinedState != null;
 	}
 
 	/**
@@ -514,11 +665,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getDeferrableTriggers() {
-		EList deferrableTrigger = (EList)eVirtualGet(UML2Package.STATE__DEFERRABLE_TRIGGER);
-		if (deferrableTrigger == null) {
-			eVirtualSet(UML2Package.STATE__DEFERRABLE_TRIGGER, deferrableTrigger = new EObjectResolvingEList(Trigger.class, this, UML2Package.STATE__DEFERRABLE_TRIGGER));
+		if (deferrableTriggers == null) {
+			deferrableTriggers = new EObjectResolvingEList(Trigger.class, this, UML2Package.STATE__DEFERRABLE_TRIGGER);
 		}
-		return deferrableTrigger;
+		return deferrableTriggers;
 	}
 
 
@@ -528,11 +678,22 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public Trigger getDeferrableTrigger(String name) {
-		for (Iterator i = getDeferrableTriggers().iterator(); i.hasNext(); ) {
+		return getDeferrableTrigger(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Trigger getDeferrableTrigger(String name, boolean ignoreCase, EClass eClass) {
+		deferrableTriggerLoop: for (Iterator i = getDeferrableTriggers().iterator(); i.hasNext(); ) {
 			Trigger deferrableTrigger = (Trigger) i.next();
-			if (name.equals(deferrableTrigger.getName())) {
-				return deferrableTrigger;
-			}
+			if (eClass != null && !eClass.isInstance(deferrableTrigger))
+				continue deferrableTriggerLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(deferrableTrigger.getName()) : name.equals(deferrableTrigger.getName())))
+				continue deferrableTriggerLoop;
+			return deferrableTrigger;
 		}
 		return null;
 	}
@@ -543,11 +704,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public EList getRegions() {
-		EList region = (EList)eVirtualGet(UML2Package.STATE__REGION);
-		if (region == null) {
-			eVirtualSet(UML2Package.STATE__REGION, region = new EObjectContainmentWithInverseEList(Region.class, this, UML2Package.STATE__REGION, UML2Package.REGION__STATE));
+		if (regions == null) {
+			regions = new EObjectContainmentWithInverseEList(Region.class, this, UML2Package.STATE__REGION, UML2Package.REGION__STATE);
 		}
-		return region;
+		return regions;
 	}
 
 
@@ -557,11 +717,20 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public Region getRegion(String name) {
-		for (Iterator i = getRegions().iterator(); i.hasNext(); ) {
+		return getRegion(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Region getRegion(String name, boolean ignoreCase) {
+		regionLoop: for (Iterator i = getRegions().iterator(); i.hasNext(); ) {
 			Region region = (Region) i.next();
-			if (name.equals(region.getName())) {
-				return region;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(region.getName()) : name.equals(region.getName())))
+				continue regionLoop;
+			return region;
 		}
 		return null;
 	}
@@ -601,7 +770,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Activity getEntry() {
-		return (Activity)eVirtualGet(UML2Package.STATE__ENTRY);
+		return entry;
 	}
 
 	/**
@@ -610,9 +779,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public NotificationChain basicSetEntry(Activity newEntry, NotificationChain msgs) {
-		Object oldEntry = eVirtualSet(UML2Package.STATE__ENTRY, newEntry);
+		Activity oldEntry = entry;
+		entry = newEntry;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__ENTRY, oldEntry == EVIRTUAL_NO_VALUE ? null : oldEntry, newEntry);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__ENTRY, oldEntry, newEntry);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -625,7 +795,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setEntry(Activity newEntry) {
-		Activity entry = (Activity)eVirtualGet(UML2Package.STATE__ENTRY);
 		if (newEntry != entry) {
 			NotificationChain msgs = null;
 			if (entry != null)
@@ -676,7 +845,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Activity getExit() {
-		return (Activity)eVirtualGet(UML2Package.STATE__EXIT);
+		return exit;
 	}
 
 	/**
@@ -685,9 +854,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public NotificationChain basicSetExit(Activity newExit, NotificationChain msgs) {
-		Object oldExit = eVirtualSet(UML2Package.STATE__EXIT, newExit);
+		Activity oldExit = exit;
+		exit = newExit;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__EXIT, oldExit == EVIRTUAL_NO_VALUE ? null : oldExit, newExit);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__EXIT, oldExit, newExit);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -700,7 +870,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setExit(Activity newExit) {
-		Activity exit = (Activity)eVirtualGet(UML2Package.STATE__EXIT);
 		if (newExit != exit) {
 			NotificationChain msgs = null;
 			if (exit != null)
@@ -751,7 +920,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Activity getDoActivity() {
-		return (Activity)eVirtualGet(UML2Package.STATE__DO_ACTIVITY);
+		return doActivity;
 	}
 
 	/**
@@ -760,9 +929,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public NotificationChain basicSetDoActivity(Activity newDoActivity, NotificationChain msgs) {
-		Object oldDoActivity = eVirtualSet(UML2Package.STATE__DO_ACTIVITY, newDoActivity);
+		Activity oldDoActivity = doActivity;
+		doActivity = newDoActivity;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__DO_ACTIVITY, oldDoActivity == EVIRTUAL_NO_VALUE ? null : oldDoActivity, newDoActivity);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__DO_ACTIVITY, oldDoActivity, newDoActivity);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -775,7 +945,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setDoActivity(Activity newDoActivity) {
-		Activity doActivity = (Activity)eVirtualGet(UML2Package.STATE__DO_ACTIVITY);
 		if (newDoActivity != doActivity) {
 			NotificationChain msgs = null;
 			if (doActivity != null)
@@ -826,7 +995,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Constraint getStateInvariant() {
-		return (Constraint)eVirtualGet(UML2Package.STATE__STATE_INVARIANT);
+		return stateInvariant;
 	}
 
 	/**
@@ -835,9 +1004,10 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public NotificationChain basicSetStateInvariant(Constraint newStateInvariant, NotificationChain msgs) {
-		Object oldStateInvariant = eVirtualSet(UML2Package.STATE__STATE_INVARIANT, newStateInvariant);
+		Constraint oldStateInvariant = stateInvariant;
+		stateInvariant = newStateInvariant;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__STATE_INVARIANT, oldStateInvariant == EVIRTUAL_NO_VALUE ? null : oldStateInvariant, newStateInvariant);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.STATE__STATE_INVARIANT, oldStateInvariant, newStateInvariant);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -850,7 +1020,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public void setStateInvariant(Constraint newStateInvariant) {
-		Constraint stateInvariant = (Constraint)eVirtualGet(UML2Package.STATE__STATE_INVARIANT);
 		if (newStateInvariant != stateInvariant) {
 			NotificationChain msgs = null;
 			if (stateInvariant != null)
@@ -864,6 +1033,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.STATE__STATE_INVARIANT, newStateInvariant, newStateInvariant));
 
 	}
+
 
 
 	/**
@@ -945,7 +1115,6 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -960,7 +1129,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__CONTAINER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.STATE__CONTAINER, msgs);
+				return basicSetContainer((Region)otherEnd, msgs);
 			case UML2Package.STATE__OUTGOING:
 				return ((InternalEList)getOutgoings()).basicAdd(otherEnd, msgs);
 			case UML2Package.STATE__INCOMING:
@@ -997,7 +1166,7 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__PACKAGE_IMPORT:
 				return ((InternalEList)getPackageImports()).basicRemove(otherEnd, msgs);
 			case UML2Package.STATE__CONTAINER:
-				return eBasicSetContainer(null, UML2Package.STATE__CONTAINER, msgs);
+				return basicSetContainer(null, msgs);
 			case UML2Package.STATE__OUTGOING:
 				return ((InternalEList)getOutgoings()).basicRemove(otherEnd, msgs);
 			case UML2Package.STATE__INCOMING:
@@ -1037,20 +1206,7 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
 	public Element basicGetOwner() {
-		return getOwner();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOwner(Element newOwner, NotificationChain msgs) {
-		if (newOwner != null && !(newOwner instanceof Region)) {
-			throw new IllegalArgumentException(String.valueOf(newOwner));
-		}
-		setContainer((Region) newOwner);
-		return msgs;
+		return getContainer();
 	}
 
 
@@ -1124,11 +1280,22 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @generated
 	 */
     public RedefinableElement getRedefinedElement(String name) {
-		for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name, boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop: for (Iterator i = getRedefinedElements().iterator(); i.hasNext(); ) {
 			RedefinableElement redefinedElement = (RedefinableElement) i.next();
-			if (name.equals(redefinedElement.getName())) {
-				return redefinedElement;
-			}
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinedElement.getName()) : name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
 		}
 		return null;
 	}
@@ -1419,45 +1586,37 @@ public class StateImpl extends NamespaceImpl implements State {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.STATE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.STATE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STATE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.STATE__OWNER:
 				return isSetOwner();
 			case UML2Package.STATE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.STATE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.STATE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.STATE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.STATE__NAME:
-				String name = (String)eVirtualGet(UML2Package.STATE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.STATE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.STATE__VISIBILITY:
-				return eVirtualGet(UML2Package.STATE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.STATE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.STATE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.STATE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.STATE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.STATE__MEMBER:
 				return isSetMembers();
 			case UML2Package.STATE__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.STATE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.STATE__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.STATE__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.STATE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.STATE__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.STATE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.STATE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.STATE__IS_LEAF:
@@ -1465,11 +1624,9 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__CONTAINER:
 				return isSetContainer();
 			case UML2Package.STATE__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.STATE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.STATE__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.STATE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.STATE__IS_COMPOSITE:
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.STATE__IS_ORTHOGONAL:
@@ -1479,26 +1636,23 @@ public class StateImpl extends NamespaceImpl implements State {
 			case UML2Package.STATE__IS_SUBMACHINE_STATE:
 				return isSubmachineState() != IS_SUBMACHINE_STATE_EDEFAULT;
 			case UML2Package.STATE__SUBMACHINE:
-				return eVirtualGet(UML2Package.STATE__SUBMACHINE) != null;
+				return submachine != null;
 			case UML2Package.STATE__CONNECTION:
-				EList connection = (EList)eVirtualGet(UML2Package.STATE__CONNECTION);
-				return connection != null && !connection.isEmpty();
+				return connections != null && !connections.isEmpty();
 			case UML2Package.STATE__REDEFINED_STATE:
 				return isSetRedefinedState();
 			case UML2Package.STATE__DEFERRABLE_TRIGGER:
-				EList deferrableTrigger = (EList)eVirtualGet(UML2Package.STATE__DEFERRABLE_TRIGGER);
-				return deferrableTrigger != null && !deferrableTrigger.isEmpty();
+				return deferrableTriggers != null && !deferrableTriggers.isEmpty();
 			case UML2Package.STATE__REGION:
-				EList region = (EList)eVirtualGet(UML2Package.STATE__REGION);
-				return region != null && !region.isEmpty();
+				return regions != null && !regions.isEmpty();
 			case UML2Package.STATE__ENTRY:
-				return eVirtualGet(UML2Package.STATE__ENTRY) != null;
+				return entry != null;
 			case UML2Package.STATE__EXIT:
-				return eVirtualGet(UML2Package.STATE__EXIT) != null;
+				return exit != null;
 			case UML2Package.STATE__DO_ACTIVITY:
-				return eVirtualGet(UML2Package.STATE__DO_ACTIVITY) != null;
+				return doActivity != null;
 			case UML2Package.STATE__STATE_INVARIANT:
-				return eVirtualGet(UML2Package.STATE__STATE_INVARIANT) != null;
+				return stateInvariant != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1556,40 +1710,6 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -1606,29 +1726,28 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		EList connection = getConnections();
-		if (!connection.isEmpty()) {
-			ownedElement.addAll(connection);
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		super.getOwnedElementsHelper(ownedElements);
+		if (eIsSet(UML2Package.STATE__CONNECTION)) {
+			ownedElements.addAll(getConnections());
 		}
 		Activity entry = getEntry();
 		if (entry != null) {
-			ownedElement.add(entry);
+			ownedElements.add(entry);
 		}
 		Activity exit = getExit();
 		if (exit != null) {
-			ownedElement.add(exit);
+			ownedElements.add(exit);
 		}
 		Activity doActivity = getDoActivity();
 		if (doActivity != null) {
-			ownedElement.add(doActivity);
+			ownedElements.add(doActivity);
 		}
 		Constraint stateInvariant = getStateInvariant();
 		if (stateInvariant != null) {
-			ownedElement.add(stateInvariant);
+			ownedElements.add(stateInvariant);
 		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -1647,17 +1766,26 @@ public class StateImpl extends NamespaceImpl implements State {
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.STATE__OWNED_COMMENT, UML2Package.STATE__TEMPLATE_BINDING, UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE, UML2Package.STATE__NAME_EXPRESSION, UML2Package.STATE__ELEMENT_IMPORT, UML2Package.STATE__PACKAGE_IMPORT, UML2Package.STATE__CONNECTION, UML2Package.STATE__ENTRY, UML2Package.STATE__EXIT, UML2Package.STATE__DO_ACTIVITY, UML2Package.STATE__STATE_INVARIANT};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList region = getRegions();
-		if (!region.isEmpty()) {
-			ownedMember.addAll(region);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.STATE__REGION)) {
+			ownedMembers.addAll(getRegions());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -1670,5 +1798,15 @@ public class StateImpl extends NamespaceImpl implements State {
 			|| eIsSet(UML2Package.STATE__REGION);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.STATE__OWNED_RULE, UML2Package.STATE__REGION};
 
 } //StateImpl

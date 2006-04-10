@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.19 2005/12/06 23:18:04 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.20 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -34,6 +36,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -43,7 +46,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwningExpression <em>Owning Expression</em>}</li>
  * </ul>
@@ -58,6 +60,16 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getSubExpressions() <em>Sub Expression</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubExpressions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList subExpressions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,13 +95,17 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.STRING_EXPRESSION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.STRING_EXPRESSION__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STRING_EXPRESSION__OWNED_ELEMENT, new int[] {UML2Package.STRING_EXPRESSION__OWNED_COMMENT, UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING, UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.STRING_EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.STRING_EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,17 +117,27 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 			|| eIsSet(UML2Package.STRING_EXPRESSION__SUB_EXPRESSION);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.STRING_EXPRESSION__OWNED_COMMENT, UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING, UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getSubExpressions() {
-		EList subExpression = (EList)eVirtualGet(UML2Package.STRING_EXPRESSION__SUB_EXPRESSION);
-		if (subExpression == null) {
-			eVirtualSet(UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, subExpression = new EObjectContainmentWithInverseEList(StringExpression.class, this, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION));
+		if (subExpressions == null) {
+			subExpressions = new EObjectContainmentWithInverseEList(StringExpression.class, this, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION);
 		}
-		return subExpression;
+		return subExpressions;
 	}
 
 
@@ -159,6 +185,17 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningExpression(StringExpression newOwningExpression, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwningExpression, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
 		if (newOwningExpression != eInternalContainer() || (eContainerFeatureID != UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningExpression))
@@ -168,7 +205,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningExpression != null)
 				msgs = ((InternalEObject)newOwningExpression).eInverseAdd(this, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION, StringExpression.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newOwningExpression, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+			msgs = basicSetOwningExpression(newOwningExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -189,7 +226,6 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 			case UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -198,7 +234,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 			case UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+				return basicSetOwningExpression((StringExpression)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -221,7 +257,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 			case UML2Package.STRING_EXPRESSION__SUB_EXPRESSION:
 				return ((InternalEList)getSubExpressions()).basicRemove(otherEnd, msgs);
 			case UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION:
-				return eBasicSetContainer(null, UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
+				return basicSetOwningExpression(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -361,23 +397,19 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.STRING_EXPRESSION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.STRING_EXPRESSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.STRING_EXPRESSION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.STRING_EXPRESSION__OWNER:
 				return isSetOwner();
 			case UML2Package.STRING_EXPRESSION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.STRING_EXPRESSION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.STRING_EXPRESSION__SUB_EXPRESSION:
-				EList subExpression = (EList)eVirtualGet(UML2Package.STRING_EXPRESSION__SUB_EXPRESSION);
-				return subExpression != null && !subExpression.isEmpty();
+				return subExpressions != null && !subExpressions.isEmpty();
 			case UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION:
 				return getOwningExpression() != null;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.29 2005/12/06 23:18:03 khussey Exp $
+ * $Id: SignalImpl.java,v 1.30 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -21,6 +21,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -37,6 +39,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -46,7 +49,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.SignalImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SignalImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  * </ul>
  * </p>
@@ -60,6 +62,16 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedAttributes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,13 +97,17 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * @generated
 	 */
 	public EList getAttributes() {
-		EList attribute = (EList)eVirtualGet(UML2Package.SIGNAL__ATTRIBUTE);
-		if (attribute == null) {
-			eVirtualSet(UML2Package.SIGNAL__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.SIGNAL__ATTRIBUTE, new int[] {UML2Package.SIGNAL__OWNED_ATTRIBUTE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList attributes = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE);
+			if (attributes == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE, attributes = new DerivedUnionEObjectEList(Property.class, this, UML2Package.SIGNAL__ATTRIBUTE, ATTRIBUTE_ESUBSETS));
+			}
+			return attributes;
 		}
-		return attribute;
+		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.SIGNAL__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,17 +119,27 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			|| eIsSet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.SIGNAL__OWNED_ATTRIBUTE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
-		EList ownedAttribute = (EList)eVirtualGet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
-		if (ownedAttribute == null) {
-			eVirtualSet(UML2Package.SIGNAL__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.SIGNAL__OWNED_ATTRIBUTE));
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentEList(Property.class, this, UML2Package.SIGNAL__OWNED_ATTRIBUTE);
 		}
-		return ownedAttribute;
+		return ownedAttributes;
 	}
 
 
@@ -123,11 +149,22 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * @generated
 	 */
     public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+		return getOwnedAttribute(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, boolean ignoreCase, EClass eClass) {
+		ownedAttributeLoop: for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedAttribute.getName()) : name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
 		return null;
 	}
@@ -160,7 +197,7 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.SIGNAL__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.SIGNAL__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.SIGNAL__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.SIGNAL__SUBSTITUTION:
@@ -487,47 +524,39 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.SIGNAL__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.SIGNAL__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.SIGNAL__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.SIGNAL__OWNER:
 				return isSetOwner();
 			case UML2Package.SIGNAL__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.SIGNAL__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.SIGNAL__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.SIGNAL__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.SIGNAL__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.SIGNAL__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.SIGNAL__NAME:
-				String name = (String)eVirtualGet(UML2Package.SIGNAL__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.SIGNAL__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.SIGNAL__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.SIGNAL__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.SIGNAL__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.SIGNAL__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.SIGNAL__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.SIGNAL__MEMBER:
 				return isSetMembers();
 			case UML2Package.SIGNAL__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.SIGNAL__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.SIGNAL__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.SIGNAL__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.SIGNAL__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.SIGNAL__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.SIGNAL__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.SIGNAL__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.SIGNAL__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.SIGNAL__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.SIGNAL__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -547,33 +576,25 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			case UML2Package.SIGNAL__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.SIGNAL__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.SIGNAL__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.SIGNAL__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.SIGNAL__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.SIGNAL__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.SIGNAL__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.SIGNAL__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.SIGNAL__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.SIGNAL__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.SIGNAL__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.SIGNAL__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.SIGNAL__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.SIGNAL__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.SIGNAL__REPRESENTATION:
-				return eVirtualGet(UML2Package.SIGNAL__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.SIGNAL__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.SIGNAL__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.SIGNAL__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -584,13 +605,12 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList ownedAttribute = getOwnedAttributes();
-		if (!ownedAttribute.isEmpty()) {
-			ownedMember.addAll(ownedAttribute);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.SIGNAL__OWNED_ATTRIBUTE)) {
+			ownedMembers.addAll(getOwnedAttributes());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -603,5 +623,15 @@ public class SignalImpl extends ClassifierImpl implements Signal {
 			|| eIsSet(UML2Package.SIGNAL__OWNED_ATTRIBUTE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.SIGNAL__OWNED_RULE, UML2Package.SIGNAL__OWNED_USE_CASE, UML2Package.SIGNAL__OWNED_ATTRIBUTE};
 
 } //SignalImpl

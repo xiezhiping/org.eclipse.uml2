@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.13 2005/12/06 23:18:03 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.14 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -48,6 +46,26 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property qualifier = null;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin value = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -71,12 +89,10 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	public Property getQualifier() {
-		Property qualifier = (Property)eVirtualGet(UML2Package.QUALIFIER_VALUE__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
 			InternalEObject oldQualifier = (InternalEObject)qualifier;
 			qualifier = (Property)eResolveProxy(oldQualifier);
 			if (qualifier != oldQualifier) {
-				eVirtualSet(UML2Package.QUALIFIER_VALUE__QUALIFIER, qualifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.QUALIFIER_VALUE__QUALIFIER, oldQualifier, qualifier));
 			}
@@ -90,7 +106,7 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	public Property basicGetQualifier() {
-		return (Property)eVirtualGet(UML2Package.QUALIFIER_VALUE__QUALIFIER);
+		return qualifier;
 	}
 
 	/**
@@ -99,10 +115,11 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
-		Property qualifier = newQualifier;
-		Object oldQualifier = eVirtualSet(UML2Package.QUALIFIER_VALUE__QUALIFIER, qualifier);
+		Property oldQualifier = qualifier;
+		qualifier = newQualifier;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.QUALIFIER_VALUE__QUALIFIER, oldQualifier == EVIRTUAL_NO_VALUE ? null : oldQualifier, qualifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.QUALIFIER_VALUE__QUALIFIER, oldQualifier, qualifier));
+
 
 	}
 
@@ -113,12 +130,10 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	public InputPin getValue() {
-		InputPin value = (InputPin)eVirtualGet(UML2Package.QUALIFIER_VALUE__VALUE);
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject)value;
 			value = (InputPin)eResolveProxy(oldValue);
 			if (value != oldValue) {
-				eVirtualSet(UML2Package.QUALIFIER_VALUE__VALUE, value);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.QUALIFIER_VALUE__VALUE, oldValue, value));
 			}
@@ -132,7 +147,7 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	public InputPin basicGetValue() {
-		return (InputPin)eVirtualGet(UML2Package.QUALIFIER_VALUE__VALUE);
+		return value;
 	}
 
 	/**
@@ -141,10 +156,11 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-		InputPin value = newValue;
-		Object oldValue = eVirtualSet(UML2Package.QUALIFIER_VALUE__VALUE, value);
+		InputPin oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.QUALIFIER_VALUE__VALUE, oldValue == EVIRTUAL_NO_VALUE ? null : oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.QUALIFIER_VALUE__VALUE, oldValue, value));
+
 
 	}
 
@@ -231,19 +247,17 @@ public class QualifierValueImpl extends ElementImpl implements QualifierValue {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.QUALIFIER_VALUE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.QUALIFIER_VALUE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.QUALIFIER_VALUE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.QUALIFIER_VALUE__OWNER:
 				return isSetOwner();
 			case UML2Package.QUALIFIER_VALUE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.QUALIFIER_VALUE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.QUALIFIER_VALUE__QUALIFIER:
-				return eVirtualGet(UML2Package.QUALIFIER_VALUE__QUALIFIER) != null;
+				return qualifier != null;
 			case UML2Package.QUALIFIER_VALUE__VALUE:
-				return eVirtualGet(UML2Package.QUALIFIER_VALUE__VALUE) != null;
+				return value != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

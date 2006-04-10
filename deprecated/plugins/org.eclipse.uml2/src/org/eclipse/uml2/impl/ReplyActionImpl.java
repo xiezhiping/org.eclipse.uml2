@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.21 2005/12/06 23:18:03 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.22 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.Activity;
@@ -36,6 +38,7 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -45,7 +48,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getReplyToCall <em>Reply To Call</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getReplyValues <em>Reply Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getReturnInformation <em>Return Information</em>}</li>
@@ -61,6 +63,36 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getReplyToCall() <em>Reply To Call</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReplyToCall()
+	 * @generated
+	 * @ordered
+	 */
+	protected CallTrigger replyToCall = null;
+
+	/**
+	 * The cached value of the '{@link #getReplyValues() <em>Reply Value</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReplyValues()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList replyValues = null;
+
+	/**
+	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReturnInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin returnInformation = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,13 +118,17 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList)eVirtualGet(UML2Package.REPLY_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UML2Package.REPLY_ACTION__INPUT, input = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.REPLY_ACTION__INPUT, new int[] {UML2Package.REPLY_ACTION__REPLY_VALUE, UML2Package.REPLY_ACTION__RETURN_INFORMATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this, UML2Package.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UML2Package.Literals.ACTION__INPUT, inputs = new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.REPLY_ACTION__INPUT, INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.REPLY_ACTION__INPUT, INPUT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,18 +141,27 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 			|| eIsSet(UML2Package.REPLY_ACTION__RETURN_INFORMATION);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[] {UML2Package.REPLY_ACTION__REPLY_VALUE, UML2Package.REPLY_ACTION__RETURN_INFORMATION};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public CallTrigger getReplyToCall() {
-		CallTrigger replyToCall = (CallTrigger)eVirtualGet(UML2Package.REPLY_ACTION__REPLY_TO_CALL);
 		if (replyToCall != null && replyToCall.eIsProxy()) {
 			InternalEObject oldReplyToCall = (InternalEObject)replyToCall;
 			replyToCall = (CallTrigger)eResolveProxy(oldReplyToCall);
 			if (replyToCall != oldReplyToCall) {
-				eVirtualSet(UML2Package.REPLY_ACTION__REPLY_TO_CALL, replyToCall);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.REPLY_ACTION__REPLY_TO_CALL, oldReplyToCall, replyToCall));
 			}
@@ -130,7 +175,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public CallTrigger basicGetReplyToCall() {
-		return (CallTrigger)eVirtualGet(UML2Package.REPLY_ACTION__REPLY_TO_CALL);
+		return replyToCall;
 	}
 
 	/**
@@ -139,10 +184,11 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public void setReplyToCall(CallTrigger newReplyToCall) {
-		CallTrigger replyToCall = newReplyToCall;
-		Object oldReplyToCall = eVirtualSet(UML2Package.REPLY_ACTION__REPLY_TO_CALL, replyToCall);
+		CallTrigger oldReplyToCall = replyToCall;
+		replyToCall = newReplyToCall;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REPLY_ACTION__REPLY_TO_CALL, oldReplyToCall == EVIRTUAL_NO_VALUE ? null : oldReplyToCall, replyToCall));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REPLY_ACTION__REPLY_TO_CALL, oldReplyToCall, replyToCall));
+
 
 	}
 
@@ -153,11 +199,10 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public EList getReplyValues() {
-		EList replyValue = (EList)eVirtualGet(UML2Package.REPLY_ACTION__REPLY_VALUE);
-		if (replyValue == null) {
-			eVirtualSet(UML2Package.REPLY_ACTION__REPLY_VALUE, replyValue = new EObjectResolvingEList(InputPin.class, this, UML2Package.REPLY_ACTION__REPLY_VALUE));
+		if (replyValues == null) {
+			replyValues = new EObjectResolvingEList(InputPin.class, this, UML2Package.REPLY_ACTION__REPLY_VALUE);
 		}
-		return replyValue;
+		return replyValues;
 	}
 
 
@@ -167,11 +212,22 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
     public InputPin getReplyValue(String name) {
-		for (Iterator i = getReplyValues().iterator(); i.hasNext(); ) {
+		return getReplyValue(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin getReplyValue(String name, boolean ignoreCase, EClass eClass) {
+		replyValueLoop: for (Iterator i = getReplyValues().iterator(); i.hasNext(); ) {
 			InputPin replyValue = (InputPin) i.next();
-			if (name.equals(replyValue.getName())) {
-				return replyValue;
-			}
+			if (eClass != null && !eClass.isInstance(replyValue))
+				continue replyValueLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(replyValue.getName()) : name.equals(replyValue.getName())))
+				continue replyValueLoop;
+			return replyValue;
 		}
 		return null;
 	}
@@ -182,12 +238,10 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public InputPin getReturnInformation() {
-		InputPin returnInformation = (InputPin)eVirtualGet(UML2Package.REPLY_ACTION__RETURN_INFORMATION);
 		if (returnInformation != null && returnInformation.eIsProxy()) {
 			InternalEObject oldReturnInformation = (InternalEObject)returnInformation;
 			returnInformation = (InputPin)eResolveProxy(oldReturnInformation);
 			if (returnInformation != oldReturnInformation) {
-				eVirtualSet(UML2Package.REPLY_ACTION__RETURN_INFORMATION, returnInformation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.REPLY_ACTION__RETURN_INFORMATION, oldReturnInformation, returnInformation));
 			}
@@ -201,7 +255,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public InputPin basicGetReturnInformation() {
-		return (InputPin)eVirtualGet(UML2Package.REPLY_ACTION__RETURN_INFORMATION);
+		return returnInformation;
 	}
 
 	/**
@@ -210,10 +264,11 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	 * @generated
 	 */
 	public void setReturnInformation(InputPin newReturnInformation) {
-		InputPin returnInformation = newReturnInformation;
-		Object oldReturnInformation = eVirtualSet(UML2Package.REPLY_ACTION__RETURN_INFORMATION, returnInformation);
+		InputPin oldReturnInformation = returnInformation;
+		returnInformation = newReturnInformation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REPLY_ACTION__RETURN_INFORMATION, oldReturnInformation == EVIRTUAL_NO_VALUE ? null : oldReturnInformation, returnInformation));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REPLY_ACTION__RETURN_INFORMATION, oldReturnInformation, returnInformation));
+
 
 	}
 
@@ -475,42 +530,35 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.REPLY_ACTION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.REPLY_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.REPLY_ACTION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.REPLY_ACTION__OWNER:
 				return isSetOwner();
 			case UML2Package.REPLY_ACTION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.REPLY_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.REPLY_ACTION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.REPLY_ACTION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.REPLY_ACTION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.REPLY_ACTION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.REPLY_ACTION__NAME:
-				String name = (String)eVirtualGet(UML2Package.REPLY_ACTION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.REPLY_ACTION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.REPLY_ACTION__VISIBILITY:
-				return eVirtualGet(UML2Package.REPLY_ACTION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.REPLY_ACTION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.REPLY_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.REPLY_ACTION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.REPLY_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.REPLY_ACTION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.REPLY_ACTION__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.REPLY_ACTION__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.REPLY_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.REPLY_ACTION__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.REPLY_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.REPLY_ACTION__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.REPLY_ACTION__ACTIVITY:
@@ -520,16 +568,12 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 			case UML2Package.REPLY_ACTION__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.REPLY_ACTION__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.REPLY_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.REPLY_ACTION__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.REPLY_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.REPLY_ACTION__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.REPLY_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UML2Package.REPLY_ACTION__EFFECT:
-				String effect = (String)eVirtualGet(UML2Package.REPLY_ACTION__EFFECT, EFFECT_EDEFAULT);
 				return EFFECT_EDEFAULT == null ? effect != null : !EFFECT_EDEFAULT.equals(effect);
 			case UML2Package.REPLY_ACTION__OUTPUT:
 				return isSetOutputs();
@@ -538,18 +582,15 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 			case UML2Package.REPLY_ACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.REPLY_ACTION__LOCAL_PRECONDITION:
-				EList localPrecondition = (EList)eVirtualGet(UML2Package.REPLY_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null && !localPrecondition.isEmpty();
+				return localPreconditions != null && !localPreconditions.isEmpty();
 			case UML2Package.REPLY_ACTION__LOCAL_POSTCONDITION:
-				EList localPostcondition = (EList)eVirtualGet(UML2Package.REPLY_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null && !localPostcondition.isEmpty();
+				return localPostconditions != null && !localPostconditions.isEmpty();
 			case UML2Package.REPLY_ACTION__REPLY_TO_CALL:
-				return eVirtualGet(UML2Package.REPLY_ACTION__REPLY_TO_CALL) != null;
+				return replyToCall != null;
 			case UML2Package.REPLY_ACTION__REPLY_VALUE:
-				EList replyValue = (EList)eVirtualGet(UML2Package.REPLY_ACTION__REPLY_VALUE);
-				return replyValue != null && !replyValue.isEmpty();
+				return replyValues != null && !replyValues.isEmpty();
 			case UML2Package.REPLY_ACTION__RETURN_INFORMATION:
-				return eVirtualGet(UML2Package.REPLY_ACTION__RETURN_INFORMATION) != null;
+				return returnInformation != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

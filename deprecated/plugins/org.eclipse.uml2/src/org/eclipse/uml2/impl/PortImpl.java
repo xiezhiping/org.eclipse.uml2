@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.23 2005/12/06 23:18:02 khussey Exp $
+ * $Id: PortImpl.java,v 1.24 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -114,6 +114,26 @@ public class PortImpl extends PropertyImpl implements Port {
 	protected static final int IS_SERVICE_EFLAG = 1 << 16;
 
 	/**
+	 * The cached value of the '{@link #getRedefinedPorts() <em>Redefined Port</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedPorts = null;
+
+	/**
+	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected ProtocolStateMachine protocol = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,6 +172,7 @@ public class PortImpl extends PropertyImpl implements Port {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_BEHAVIOR, oldIsBehavior, newIsBehavior));
 
+
 	}
 
 
@@ -174,6 +195,7 @@ public class PortImpl extends PropertyImpl implements Port {
 		if (newIsService) eFlags |= IS_SERVICE_EFLAG; else eFlags &= ~IS_SERVICE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_SERVICE, oldIsService, newIsService));
+
 
 	}
 
@@ -213,11 +235,20 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public Interface getRequired(String name) {
-		for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
+		return getRequired(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getRequired(String name, boolean ignoreCase) {
+		requiredLoop: for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
 			Interface required = (Interface) i.next();
-			if (name.equals(required.getName())) {
-				return required;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(required.getName()) : name.equals(required.getName())))
+				continue requiredLoop;
+			return required;
 		}
 		return null;
 	}
@@ -228,11 +259,10 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public EList getRedefinedPorts() {
-		EList redefinedPort = (EList)eVirtualGet(UML2Package.PORT__REDEFINED_PORT);
-		if (redefinedPort == null) {
-			eVirtualSet(UML2Package.PORT__REDEFINED_PORT, redefinedPort = new EObjectResolvingEList(Port.class, this, UML2Package.PORT__REDEFINED_PORT));
+		if (redefinedPorts == null) {
+			redefinedPorts = new EObjectResolvingEList(Port.class, this, UML2Package.PORT__REDEFINED_PORT);
 		}
-		return redefinedPort;
+		return redefinedPorts;
 	}
 
 
@@ -242,11 +272,20 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public Port getRedefinedPort(String name) {
-		for (Iterator i = getRedefinedPorts().iterator(); i.hasNext(); ) {
+		return getRedefinedPort(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Port getRedefinedPort(String name, boolean ignoreCase) {
+		redefinedPortLoop: for (Iterator i = getRedefinedPorts().iterator(); i.hasNext(); ) {
 			Port redefinedPort = (Port) i.next();
-			if (name.equals(redefinedPort.getName())) {
-				return redefinedPort;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinedPort.getName()) : name.equals(redefinedPort.getName())))
+				continue redefinedPortLoop;
+			return redefinedPort;
 		}
 		return null;
 	}
@@ -286,11 +325,20 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public Interface getProvided(String name) {
-		for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
+		return getProvided(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Interface getProvided(String name, boolean ignoreCase) {
+		providedLoop: for (Iterator i = getProvideds().iterator(); i.hasNext(); ) {
 			Interface provided = (Interface) i.next();
-			if (name.equals(provided.getName())) {
-				return provided;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(provided.getName()) : name.equals(provided.getName())))
+				continue providedLoop;
+			return provided;
 		}
 		return null;
 	}
@@ -301,12 +349,10 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
-		ProtocolStateMachine protocol = (ProtocolStateMachine)eVirtualGet(UML2Package.PORT__PROTOCOL);
 		if (protocol != null && protocol.eIsProxy()) {
 			InternalEObject oldProtocol = (InternalEObject)protocol;
 			protocol = (ProtocolStateMachine)eResolveProxy(oldProtocol);
 			if (protocol != oldProtocol) {
-				eVirtualSet(UML2Package.PORT__PROTOCOL, protocol);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.PORT__PROTOCOL, oldProtocol, protocol));
 			}
@@ -320,7 +366,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public ProtocolStateMachine basicGetProtocol() {
-		return (ProtocolStateMachine)eVirtualGet(UML2Package.PORT__PROTOCOL);
+		return protocol;
 	}
 
 	/**
@@ -329,10 +375,11 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
-		ProtocolStateMachine protocol = newProtocol;
-		Object oldProtocol = eVirtualSet(UML2Package.PORT__PROTOCOL, protocol);
+		ProtocolStateMachine oldProtocol = protocol;
+		protocol = newProtocol;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__PROTOCOL, oldProtocol == EVIRTUAL_NO_VALUE ? null : oldProtocol, protocol));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__PROTOCOL, oldProtocol, protocol));
+
 
 	}
 
@@ -702,32 +749,27 @@ public class PortImpl extends PropertyImpl implements Port {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PORT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.PORT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PORT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.PORT__OWNER:
 				return isSetOwner();
 			case UML2Package.PORT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.PORT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.PORT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.PORT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.PORT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.PORT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.PORT__NAME:
-				String name = (String)eVirtualGet(UML2Package.PORT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PORT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PORT__VISIBILITY:
-				return eVirtualGet(UML2Package.PORT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PORT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.PORT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.PORT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.PORT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.PORT__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.PORT__IS_LEAF:
@@ -737,7 +779,7 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__IS_STATIC:
 				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UML2Package.PORT__TYPE:
-				return eVirtualGet(UML2Package.PORT__TYPE) != null;
+				return type != null;
 			case UML2Package.PORT__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.PORT__IS_UNIQUE:
@@ -747,21 +789,19 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PORT__UPPER_VALUE:
-				return eVirtualGet(UML2Package.PORT__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.PORT__LOWER_VALUE:
-				return eVirtualGet(UML2Package.PORT__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UML2Package.PORT__IS_READ_ONLY:
 				return isSetIsReadOnly();
 			case UML2Package.PORT__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.PORT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.PORT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.PORT__END:
-				EList end = (EList)eVirtualGet(UML2Package.PORT__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UML2Package.PORT__DEPLOYMENT:
-				EList deployment = (EList)eVirtualGet(UML2Package.PORT__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UML2Package.PORT__DEPLOYED_ELEMENT:
 				return !getDeployedElements().isEmpty();
 			case UML2Package.PORT__DEFAULT:
@@ -779,22 +819,19 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.PORT__REDEFINED_PROPERTY:
-				EList redefinedProperty = (EList)eVirtualGet(UML2Package.PORT__REDEFINED_PROPERTY);
-				return redefinedProperty != null && !redefinedProperty.isEmpty();
+				return redefinedProperties != null && !redefinedProperties.isEmpty();
 			case UML2Package.PORT__SUBSETTED_PROPERTY:
-				EList subsettedProperty = (EList)eVirtualGet(UML2Package.PORT__SUBSETTED_PROPERTY);
-				return subsettedProperty != null && !subsettedProperty.isEmpty();
+				return subsettedProperties != null && !subsettedProperties.isEmpty();
 			case UML2Package.PORT__DATATYPE:
 				return getDatatype() != null;
 			case UML2Package.PORT__ASSOCIATION:
-				return eVirtualGet(UML2Package.PORT__ASSOCIATION) != null;
+				return association != null;
 			case UML2Package.PORT__AGGREGATION:
-				return eVirtualGet(UML2Package.PORT__AGGREGATION, AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
+				return aggregation != AGGREGATION_EDEFAULT;
 			case UML2Package.PORT__DEFAULT_VALUE:
-				return eVirtualGet(UML2Package.PORT__DEFAULT_VALUE) != null;
+				return defaultValue != null;
 			case UML2Package.PORT__QUALIFIER:
-				EList qualifier = (EList)eVirtualGet(UML2Package.PORT__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 			case UML2Package.PORT__ASSOCIATION_END:
 				return getAssociationEnd() != null;
 			case UML2Package.PORT__IS_BEHAVIOR:
@@ -804,12 +841,11 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__REQUIRED:
 				return !getRequireds().isEmpty();
 			case UML2Package.PORT__REDEFINED_PORT:
-				EList redefinedPort = (EList)eVirtualGet(UML2Package.PORT__REDEFINED_PORT);
-				return redefinedPort != null && !redefinedPort.isEmpty();
+				return redefinedPorts != null && !redefinedPorts.isEmpty();
 			case UML2Package.PORT__PROVIDED:
 				return !getProvideds().isEmpty();
 			case UML2Package.PORT__PROTOCOL:
-				return eVirtualGet(UML2Package.PORT__PROTOCOL) != null;
+				return protocol != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -837,15 +873,14 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getRedefinedElementsHelper(EList redefinedElement) {
-		super.getRedefinedElementsHelper(redefinedElement);
-		EList redefinedPort = getRedefinedPorts();
-		if (!redefinedPort.isEmpty()) {
-			for (Iterator i = ((InternalEList) redefinedPort).basicIterator(); i.hasNext(); ) {
-				redefinedElement.add(i.next());
+	protected EList getRedefinedElementsHelper(EList redefinedElements) {
+		super.getRedefinedElementsHelper(redefinedElements);
+		if (eIsSet(UML2Package.PORT__REDEFINED_PORT)) {
+			for (Iterator i = ((InternalEList) getRedefinedPorts()).basicIterator(); i.hasNext(); ) {
+				redefinedElements.add(i.next());
 			}
 		}
-		return redefinedElement;
+		return redefinedElements;
 	}
 
 	/**
@@ -858,5 +893,15 @@ public class PortImpl extends PropertyImpl implements Port {
 			|| eIsSet(UML2Package.PORT__REDEFINED_PORT);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[] {UML2Package.PORT__REDEFINED_PROPERTY, UML2Package.PORT__REDEFINED_PORT};
 
 } //PortImpl

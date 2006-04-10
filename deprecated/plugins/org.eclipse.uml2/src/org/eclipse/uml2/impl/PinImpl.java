@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.22 2005/12/06 23:18:03 khussey Exp $
+ * $Id: PinImpl.java,v 1.23 2006/04/10 20:40:18 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.Activity;
@@ -42,6 +44,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
@@ -53,7 +56,6 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.PinImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#getLower <em>Lower</em>}</li>
@@ -72,14 +74,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits1 = 0;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -142,6 +136,26 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -166,13 +180,17 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.PIN__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.PIN__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PIN__OWNED_ELEMENT, new int[] {UML2Package.PIN__OWNED_COMMENT, UML2Package.PIN__TEMPLATE_BINDING, UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE, UML2Package.PIN__NAME_EXPRESSION, UML2Package.PIN__UPPER_BOUND, UML2Package.PIN__UPPER_VALUE, UML2Package.PIN__LOWER_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.PIN__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PIN__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,6 +202,17 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			|| eIsSet(UML2Package.PIN__UPPER_VALUE)
 			|| eIsSet(UML2Package.PIN__LOWER_VALUE);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.PIN__OWNED_COMMENT, UML2Package.PIN__TEMPLATE_BINDING, UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE, UML2Package.PIN__NAME_EXPRESSION, UML2Package.PIN__UPPER_BOUND, UML2Package.PIN__UPPER_VALUE, UML2Package.PIN__LOWER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,6 +233,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_ORDERED, oldIsOrdered, newIsOrdered));
+
 
 	}
 
@@ -227,6 +257,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__IS_UNIQUE, oldIsUnique, newIsUnique));
+
 
 	}
 
@@ -255,7 +286,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.PIN__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -264,9 +295,10 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public NotificationChain basicSetUpperValue(ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UML2Package.PIN__UPPER_VALUE, newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PIN__UPPER_VALUE, oldUpperValue == EVIRTUAL_NO_VALUE ? null : oldUpperValue, newUpperValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PIN__UPPER_VALUE, oldUpperValue, newUpperValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -279,7 +311,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.PIN__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -315,7 +346,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.PIN__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -324,9 +355,10 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public NotificationChain basicSetLowerValue(ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UML2Package.PIN__LOWER_VALUE, newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PIN__LOWER_VALUE, oldLowerValue == EVIRTUAL_NO_VALUE ? null : oldLowerValue, newLowerValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PIN__LOWER_VALUE, oldLowerValue, newLowerValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -339,7 +371,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.PIN__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -353,6 +384,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PIN__LOWER_VALUE, newLowerValue, newLowerValue));
 
 	}
+
 
 
 	/**
@@ -512,9 +544,9 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.PIN__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.PIN__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.PIN__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.PIN__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.PIN__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.PIN__IN_INTERRUPTIBLE_REGION:
@@ -797,42 +829,35 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.PIN__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.PIN__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.PIN__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.PIN__OWNER:
 				return isSetOwner();
 			case UML2Package.PIN__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.PIN__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.PIN__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.PIN__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.PIN__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.PIN__NAME:
-				String name = (String)eVirtualGet(UML2Package.PIN__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.PIN__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.PIN__VISIBILITY:
-				return eVirtualGet(UML2Package.PIN__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.PIN__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.PIN__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.PIN__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.PIN__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.PIN__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.PIN__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.PIN__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.PIN__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.PIN__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.PIN__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.PIN__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.PIN__ACTIVITY:
@@ -842,22 +867,19 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.PIN__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.PIN__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.PIN__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.PIN__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.PIN__TYPE:
-				return eVirtualGet(UML2Package.PIN__TYPE) != null;
+				return type != null;
 			case UML2Package.PIN__ORDERING:
-				return eVirtualGet(UML2Package.PIN__ORDERING, ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UML2Package.PIN__UPPER_BOUND:
-				return eVirtualGet(UML2Package.PIN__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UML2Package.PIN__IN_STATE:
-				EList inState = (EList)eVirtualGet(UML2Package.PIN__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UML2Package.PIN__SELECTION:
-				return eVirtualGet(UML2Package.PIN__SELECTION) != null;
+				return selection != null;
 			case UML2Package.PIN__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.PIN__IS_UNIQUE:
@@ -867,9 +889,9 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			case UML2Package.PIN__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.PIN__UPPER_VALUE:
-				return eVirtualGet(UML2Package.PIN__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.PIN__LOWER_VALUE:
-				return eVirtualGet(UML2Package.PIN__LOWER_VALUE) != null;
+				return lowerValue != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -912,40 +934,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
 	}
 
 	/**

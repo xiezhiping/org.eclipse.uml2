@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.16 2005/11/29 20:09:38 khussey Exp $
+ * $Id: Association.java,v 1.17 2006/04/10 20:40:20 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Association extends Classifier, Relationship{
+public interface Association extends Classifier, Relationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,15 +101,28 @@ public interface Association extends Classifier, Relationship{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned End</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned End</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getOwnedEnds()
 	 * @generated
 	 */
     Property getOwnedEnd(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned End</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedEnds()
+	 * @generated
+	 */
+	Property getOwnedEnd(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Creates a {@link org.eclipse.uml2.Property} and appends it to the '<em><b>Owned End</b></em>' containment reference list.
@@ -118,7 +131,7 @@ public interface Association extends Classifier, Relationship{
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to create.
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedEnds()
-	 * @generated
+	 * @generated NOT
 	 */
     Property createOwnedEnd(EClass eClass);
 
@@ -128,7 +141,7 @@ public interface Association extends Classifier, Relationship{
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.eclipse.uml2.Property}.
 	 * @see #getOwnedEnds()
-	 * @generated
+	 * @generated NOT
 	 */
     Property createOwnedEnd();
 
@@ -153,15 +166,28 @@ public interface Association extends Classifier, Relationship{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getEndTypes()
 	 * @generated
 	 */
     Type getEndType(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Type} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Type} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getEndTypes()
+	 * @generated
+	 */
+	Type getEndType(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Member End</b></em>' reference list.
@@ -186,15 +212,28 @@ public interface Association extends Classifier, Relationship{
 
 
 	/**
-	 * Retrieves the {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve.
-	 * @return The {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
 	 * @see #getMemberEnds()
 	 * @generated
 	 */
     Property getMemberEnd(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>' from the '<em><b>Member End</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.Property} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.Property} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getMemberEnds()
+	 * @generated
+	 */
+	Property getMemberEnd(String name, boolean ignoreCase, EClass eClass);
 
 
 	// <!-- begin-custom-operations -->

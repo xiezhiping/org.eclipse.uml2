@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.34 2006/01/05 13:53:08 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.35 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -59,8 +61,6 @@ import org.eclipse.uml2.internal.operation.ClassifierOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getFeatures <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getNestedArtifacts <em>Nested Artifact</em>}</li>
@@ -91,6 +91,56 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	protected static final String FILE_NAME_EDEFAULT = ""; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getFileName() <em>File Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFileName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fileName = FILE_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getNestedArtifacts() <em>Nested Artifact</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList nestedArtifacts = null;
+
+	/**
+	 * The cached value of the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManifestations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList manifestations = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedOperations = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedAttributes = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -114,13 +164,17 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public EList getFeatures() {
-		EList feature = (EList)eVirtualGet(UML2Package.ARTIFACT__FEATURE);
-		if (feature == null) {
-			eVirtualSet(UML2Package.ARTIFACT__FEATURE, feature = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ARTIFACT__FEATURE, new int[] {UML2Package.ARTIFACT__ATTRIBUTE, UML2Package.ARTIFACT__OWNED_OPERATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList features = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__FEATURE);
+			if (features == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__FEATURE, features = new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ARTIFACT__FEATURE, FEATURE_ESUBSETS));
+			}
+			return features;
 		}
-		return feature;
+		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ARTIFACT__FEATURE, FEATURE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,19 +186,24 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			|| eIsSet(UML2Package.ARTIFACT__OWNED_OPERATION);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getAttributes() {
-		EList attribute = (EList)eVirtualGet(UML2Package.ARTIFACT__ATTRIBUTE);
-		if (attribute == null) {
-			eVirtualSet(UML2Package.ARTIFACT__ATTRIBUTE, attribute = new DerivedUnionEObjectEList(Property.class, this, UML2Package.ARTIFACT__ATTRIBUTE, new int[] {UML2Package.ARTIFACT__OWNED_ATTRIBUTE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList attributes = (EList) cache.get(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE);
+			if (attributes == null) {
+				cache.put(eResource, this, UML2Package.Literals.CLASSIFIER__ATTRIBUTE, attributes = new DerivedUnionEObjectEList(Property.class, this, UML2Package.ARTIFACT__ATTRIBUTE, ATTRIBUTE_ESUBSETS));
+			}
+			return attributes;
 		}
-		return attribute;
+		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.ARTIFACT__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,13 +215,14 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			|| eIsSet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getFileName() {
-		return (String)eVirtualGet(UML2Package.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT);
+		return fileName;
 	}
 
 	/**
@@ -172,10 +232,11 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 */
 	public void setFileName(String newFileName) {
 		newFileName = newFileName == null ? FILE_NAME_EDEFAULT : newFileName;
-		String fileName = newFileName;
-		Object oldFileName = eVirtualSet(UML2Package.ARTIFACT__FILE_NAME, fileName);
+		String oldFileName = fileName;
+		fileName = newFileName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ARTIFACT__FILE_NAME, oldFileName == EVIRTUAL_NO_VALUE ? FILE_NAME_EDEFAULT : oldFileName, fileName));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ARTIFACT__FILE_NAME, oldFileName, fileName));
+
 
 	}
 
@@ -186,11 +247,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public EList getNestedArtifacts() {
-		EList nestedArtifact = (EList)eVirtualGet(UML2Package.ARTIFACT__NESTED_ARTIFACT);
-		if (nestedArtifact == null) {
-			eVirtualSet(UML2Package.ARTIFACT__NESTED_ARTIFACT, nestedArtifact = new EObjectContainmentEList(Artifact.class, this, UML2Package.ARTIFACT__NESTED_ARTIFACT));
+		if (nestedArtifacts == null) {
+			nestedArtifacts = new EObjectContainmentEList(Artifact.class, this, UML2Package.ARTIFACT__NESTED_ARTIFACT);
 		}
-		return nestedArtifact;
+		return nestedArtifacts;
 	}
 
 
@@ -200,11 +260,22 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
     public Artifact getNestedArtifact(String name) {
-		for (Iterator i = getNestedArtifacts().iterator(); i.hasNext(); ) {
+		return getNestedArtifact(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Artifact getNestedArtifact(String name, boolean ignoreCase, EClass eClass) {
+		nestedArtifactLoop: for (Iterator i = getNestedArtifacts().iterator(); i.hasNext(); ) {
 			Artifact nestedArtifact = (Artifact) i.next();
-			if (name.equals(nestedArtifact.getName())) {
-				return nestedArtifact;
-			}
+			if (eClass != null && !eClass.isInstance(nestedArtifact))
+				continue nestedArtifactLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(nestedArtifact.getName()) : name.equals(nestedArtifact.getName())))
+				continue nestedArtifactLoop;
+			return nestedArtifact;
 		}
 		return null;
 	}
@@ -243,11 +314,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public EList getManifestations() {
-		EList manifestation = (EList)eVirtualGet(UML2Package.ARTIFACT__MANIFESTATION);
-		if (manifestation == null) {
-			eVirtualSet(UML2Package.ARTIFACT__MANIFESTATION, manifestation = new SubsetSupersetEObjectContainmentEList(Manifestation.class, this, UML2Package.ARTIFACT__MANIFESTATION, new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY}, null));
+		if (manifestations == null) {
+			manifestations = new SubsetSupersetEObjectContainmentEList(Manifestation.class, this, UML2Package.ARTIFACT__MANIFESTATION, MANIFESTATION_ESUPERSETS, null);
 		}
-		return manifestation;
+		return manifestations;
 	}
 
 
@@ -257,11 +327,20 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
     public Manifestation getManifestation(String name) {
-		for (Iterator i = getManifestations().iterator(); i.hasNext(); ) {
+		return getManifestation(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Manifestation getManifestation(String name, boolean ignoreCase) {
+		manifestationLoop: for (Iterator i = getManifestations().iterator(); i.hasNext(); ) {
 			Manifestation manifestation = (Manifestation) i.next();
-			if (name.equals(manifestation.getName())) {
-				return manifestation;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(manifestation.getName()) : name.equals(manifestation.getName())))
+				continue manifestationLoop;
+			return manifestation;
 		}
 		return null;
 	}
@@ -301,11 +380,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public EList getOwnedOperations() {
-		EList ownedOperation = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_OPERATION);
-		if (ownedOperation == null) {
-			eVirtualSet(UML2Package.ARTIFACT__OWNED_OPERATION, ownedOperation = new EObjectContainmentEList(Operation.class, this, UML2Package.ARTIFACT__OWNED_OPERATION));
+		if (ownedOperations == null) {
+			ownedOperations = new EObjectContainmentEList(Operation.class, this, UML2Package.ARTIFACT__OWNED_OPERATION);
 		}
-		return ownedOperation;
+		return ownedOperations;
 	}
 
 
@@ -315,11 +393,20 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
     public Operation getOwnedOperation(String name) {
-		for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
+		return getOwnedOperation(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getOwnedOperation(String name, boolean ignoreCase) {
+		ownedOperationLoop: for (Iterator i = getOwnedOperations().iterator(); i.hasNext(); ) {
 			Operation ownedOperation = (Operation) i.next();
-			if (name.equals(ownedOperation.getName())) {
-				return ownedOperation;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedOperation.getName()) : name.equals(ownedOperation.getName())))
+				continue ownedOperationLoop;
+			return ownedOperation;
 		}
 		return null;
 	}
@@ -359,11 +446,10 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
-		EList ownedAttribute = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
-		if (ownedAttribute == null) {
-			eVirtualSet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE, ownedAttribute = new EObjectContainmentEList(Property.class, this, UML2Package.ARTIFACT__OWNED_ATTRIBUTE));
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentEList(Property.class, this, UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
 		}
-		return ownedAttribute;
+		return ownedAttributes;
 	}
 
 
@@ -373,11 +459,22 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
     public Property getOwnedAttribute(String name) {
-		for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
+		return getOwnedAttribute(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property getOwnedAttribute(String name, boolean ignoreCase, EClass eClass) {
+		ownedAttributeLoop: for (Iterator i = getOwnedAttributes().iterator(); i.hasNext(); ) {
 			Property ownedAttribute = (Property) i.next();
-			if (name.equals(ownedAttribute.getName())) {
-				return ownedAttribute;
-			}
+			if (eClass != null && !eClass.isInstance(ownedAttribute))
+				continue ownedAttributeLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedAttribute.getName()) : name.equals(ownedAttribute.getName())))
+				continue ownedAttributeLoop;
+			return ownedAttribute;
 		}
 		return null;
 	}
@@ -394,7 +491,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -407,14 +503,13 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__PACKAGE_IMPORT:
 				return ((InternalEList)getPackageImports()).basicAdd(otherEnd, msgs);
 			case UML2Package.ARTIFACT__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.ARTIFACT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ARTIFACT__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.ARTIFACT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.ARTIFACT__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicAdd(otherEnd, msgs);
 			case UML2Package.ARTIFACT__SUBSTITUTION:
@@ -455,7 +550,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.ARTIFACT__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.ARTIFACT__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.ARTIFACT__GENERALIZATION:
 				return ((InternalEList)getGeneralizations()).basicRemove(otherEnd, msgs);
 			case UML2Package.ARTIFACT__SUBSTITUTION:
@@ -514,13 +609,32 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		EList clientDependency = (EList)eVirtualGet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY);
-		if (clientDependency == null) {
-			eVirtualSet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY, clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.ARTIFACT__CLIENT_DEPENDENCY, null, new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION}, UML2Package.DEPENDENCY__CLIENT));
+		if (clientDependencies == null) {
+			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(Dependency.class, this, UML2Package.ARTIFACT__CLIENT_DEPENDENCY, null, CLIENT_DEPENDENCY_ESUBSETS, UML2Package.DEPENDENCY__CLIENT);
 		}
-		return clientDependency;
+		return clientDependencies;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManifestations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] MANIFESTATION_ESUPERSETS = new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -837,47 +951,39 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.ARTIFACT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.ARTIFACT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.ARTIFACT__OWNER:
 				return isSetOwner();
 			case UML2Package.ARTIFACT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.ARTIFACT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.ARTIFACT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.ARTIFACT__NAME:
-				String name = (String)eVirtualGet(UML2Package.ARTIFACT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.ARTIFACT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.ARTIFACT__VISIBILITY:
 				return isSetVisibility();
 			case UML2Package.ARTIFACT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.ARTIFACT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.ARTIFACT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.ARTIFACT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.ARTIFACT__MEMBER:
 				return isSetMembers();
 			case UML2Package.ARTIFACT__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.ARTIFACT__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.ARTIFACT__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.ARTIFACT__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.ARTIFACT__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.ARTIFACT__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.ARTIFACT__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.ARTIFACT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.ARTIFACT__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.ARTIFACT__PACKAGEABLE_ELEMENT_VISIBILITY:
@@ -897,45 +1003,33 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			case UML2Package.ARTIFACT__GENERAL:
 				return !getGenerals().isEmpty();
 			case UML2Package.ARTIFACT__GENERALIZATION:
-				EList generalization = (EList)eVirtualGet(UML2Package.ARTIFACT__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UML2Package.ARTIFACT__ATTRIBUTE:
 				return isSetAttributes();
 			case UML2Package.ARTIFACT__REDEFINED_CLASSIFIER:
-				EList redefinedClassifier = (EList)eVirtualGet(UML2Package.ARTIFACT__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null && !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null && !redefinedClassifiers.isEmpty();
 			case UML2Package.ARTIFACT__SUBSTITUTION:
-				EList substitution = (EList)eVirtualGet(UML2Package.ARTIFACT__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UML2Package.ARTIFACT__POWERTYPE_EXTENT:
-				EList powertypeExtent = (EList)eVirtualGet(UML2Package.ARTIFACT__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_USE_CASE:
-				EList ownedUseCase = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UML2Package.ARTIFACT__USE_CASE:
-				EList useCase = (EList)eVirtualGet(UML2Package.ARTIFACT__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UML2Package.ARTIFACT__REPRESENTATION:
-				return eVirtualGet(UML2Package.ARTIFACT__REPRESENTATION) != null;
+				return representation != null;
 			case UML2Package.ARTIFACT__OCCURRENCE:
-				EList occurrence = (EList)eVirtualGet(UML2Package.ARTIFACT__OCCURRENCE);
-				return occurrence != null && !occurrence.isEmpty();
+				return occurrences != null && !occurrences.isEmpty();
 			case UML2Package.ARTIFACT__FILE_NAME:
-				String fileName = (String)eVirtualGet(UML2Package.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT);
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
 			case UML2Package.ARTIFACT__NESTED_ARTIFACT:
-				EList nestedArtifact = (EList)eVirtualGet(UML2Package.ARTIFACT__NESTED_ARTIFACT);
-				return nestedArtifact != null && !nestedArtifact.isEmpty();
+				return nestedArtifacts != null && !nestedArtifacts.isEmpty();
 			case UML2Package.ARTIFACT__MANIFESTATION:
-				EList manifestation = (EList)eVirtualGet(UML2Package.ARTIFACT__MANIFESTATION);
-				return manifestation != null && !manifestation.isEmpty();
+				return manifestations != null && !manifestations.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_OPERATION:
-				EList ownedOperation = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UML2Package.ARTIFACT__OWNED_ATTRIBUTE:
-				EList ownedAttribute = (EList)eVirtualGet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -950,7 +1044,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileName: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UML2Package.ARTIFACT__FILE_NAME, FILE_NAME_EDEFAULT));
+		result.append(fileName);
 		result.append(')');
 		return result.toString();
 	}
@@ -961,13 +1055,12 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
-		EList manifestation = getManifestations();
-		if (!manifestation.isEmpty()) {
-			ownedElement.addAll(manifestation);
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		super.getOwnedElementsHelper(ownedElements);
+		if (eIsSet(UML2Package.ARTIFACT__MANIFESTATION)) {
+			ownedElements.addAll(getManifestations());
 		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -982,21 +1075,39 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ARTIFACT__OWNED_COMMENT, UML2Package.ARTIFACT__TEMPLATE_BINDING, UML2Package.ARTIFACT__OWNED_TEMPLATE_SIGNATURE, UML2Package.ARTIFACT__NAME_EXPRESSION, UML2Package.ARTIFACT__ELEMENT_IMPORT, UML2Package.ARTIFACT__PACKAGE_IMPORT, UML2Package.ARTIFACT__GENERALIZATION, UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__OCCURRENCE, UML2Package.ARTIFACT__MANIFESTATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getFeatures() <em>Feature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] FEATURE_ESUBSETS = new int[] {UML2Package.ARTIFACT__ATTRIBUTE, UML2Package.ARTIFACT__OWNED_OPERATION};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
-		EList ownedOperation = getOwnedOperations();
-		if (!ownedOperation.isEmpty()) {
-			ownedMember.addAll(ownedOperation);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
+		if (eIsSet(UML2Package.ARTIFACT__OWNED_OPERATION)) {
+			ownedMembers.addAll(getOwnedOperations());
 		}
-		EList ownedAttribute = getOwnedAttributes();
-		if (!ownedAttribute.isEmpty()) {
-			ownedMember.addAll(ownedAttribute);
+		if (eIsSet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE)) {
+			ownedMembers.addAll(getOwnedAttributes());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 	/**
@@ -1010,6 +1121,26 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			|| eIsSet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.ARTIFACT__OWNED_RULE, UML2Package.ARTIFACT__OWNED_USE_CASE, UML2Package.ARTIFACT__OWNED_OPERATION, UML2Package.ARTIFACT__OWNED_ATTRIBUTE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttributes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.ARTIFACT__OWNED_ATTRIBUTE};
 
 	// <!-- begin-custom-operations -->
 	

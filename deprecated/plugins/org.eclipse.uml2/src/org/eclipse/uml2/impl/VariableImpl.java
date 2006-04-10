@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.24 2005/12/06 23:18:02 khussey Exp $
+ * $Id: VariableImpl.java,v 1.25 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -42,6 +44,7 @@ import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.Variable;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
@@ -54,7 +57,6 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getLower <em>Lower</em>}</li>
@@ -74,6 +76,16 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type = null;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -136,6 +148,26 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -160,12 +192,10 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = (Type)eVirtualGet(UML2Package.VARIABLE__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
 			type = (Type)eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UML2Package.VARIABLE__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.VARIABLE__TYPE, oldType, type));
 			}
@@ -179,7 +209,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type)eVirtualGet(UML2Package.VARIABLE__TYPE);
+		return type;
 	}
 
 	/**
@@ -188,10 +218,11 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		Type type = newType;
-		Object oldType = eVirtualSet(UML2Package.VARIABLE__TYPE, type);
+		Type oldType = type;
+		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__TYPE, oldType == EVIRTUAL_NO_VALUE ? null : oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__TYPE, oldType, type));
+
 
 	}
 
@@ -202,13 +233,17 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.VARIABLE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.VARIABLE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, new int[] {UML2Package.VARIABLE__OWNED_COMMENT, UML2Package.VARIABLE__TEMPLATE_BINDING, UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE, UML2Package.VARIABLE__NAME_EXPRESSION, UML2Package.VARIABLE__UPPER_VALUE, UML2Package.VARIABLE__LOWER_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,6 +255,17 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			|| eIsSet(UML2Package.VARIABLE__UPPER_VALUE)
 			|| eIsSet(UML2Package.VARIABLE__LOWER_VALUE);
 	}
+
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.VARIABLE__OWNED_COMMENT, UML2Package.VARIABLE__TEMPLATE_BINDING, UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE, UML2Package.VARIABLE__NAME_EXPRESSION, UML2Package.VARIABLE__UPPER_VALUE, UML2Package.VARIABLE__LOWER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,6 +286,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		if (newIsOrdered) eFlags |= IS_ORDERED_EFLAG; else eFlags &= ~IS_ORDERED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__IS_ORDERED, oldIsOrdered, newIsOrdered));
+
 
 	}
 
@@ -263,6 +310,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		if (newIsUnique) eFlags |= IS_UNIQUE_EFLAG; else eFlags &= ~IS_UNIQUE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__IS_UNIQUE, oldIsUnique, newIsUnique));
+
 
 	}
 
@@ -291,7 +339,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.VARIABLE__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -300,9 +348,10 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public NotificationChain basicSetUpperValue(ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UML2Package.VARIABLE__UPPER_VALUE, newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__UPPER_VALUE, oldUpperValue == EVIRTUAL_NO_VALUE ? null : oldUpperValue, newUpperValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__UPPER_VALUE, oldUpperValue, newUpperValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -315,7 +364,6 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.VARIABLE__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -351,7 +399,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.VARIABLE__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -360,9 +408,10 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public NotificationChain basicSetLowerValue(ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UML2Package.VARIABLE__LOWER_VALUE, newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__LOWER_VALUE, oldLowerValue == EVIRTUAL_NO_VALUE ? null : oldLowerValue, newLowerValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.VARIABLE__LOWER_VALUE, oldLowerValue, newLowerValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -375,7 +424,6 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.VARIABLE__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -420,6 +468,17 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetScope(StructuredActivityNode newScope, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newScope, UML2Package.VARIABLE__SCOPE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setScope(StructuredActivityNode newScope) {
 		if (newScope != eInternalContainer() || (eContainerFeatureID != UML2Package.VARIABLE__SCOPE && newScope != null)) {
 			if (EcoreUtil.isAncestor(this, newScope))
@@ -429,7 +488,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newScope != null)
 				msgs = ((InternalEObject)newScope).eInverseAdd(this, UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE, StructuredActivityNode.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newScope, UML2Package.VARIABLE__SCOPE, msgs);
+			msgs = basicSetScope(newScope, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -570,27 +629,25 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
 			case UML2Package.VARIABLE__CLIENT_DEPENDENCY:
 				return ((InternalEList)getClientDependencies()).basicAdd(otherEnd, msgs);
 			case UML2Package.VARIABLE__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.VARIABLE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.VARIABLE__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.VARIABLE__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.VARIABLE__END:
 				return ((InternalEList)getEnds()).basicAdd(otherEnd, msgs);
 			case UML2Package.VARIABLE__SCOPE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.VARIABLE__SCOPE, msgs);
+				return basicSetScope((StructuredActivityNode)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -617,7 +674,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.VARIABLE__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.VARIABLE__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.VARIABLE__END:
 				return ((InternalEList)getEnds()).basicRemove(otherEnd, msgs);
 			case UML2Package.VARIABLE__UPPER_VALUE:
@@ -625,7 +682,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__LOWER_VALUE:
 				return basicSetLowerValue(null, msgs);
 			case UML2Package.VARIABLE__SCOPE:
-				return eBasicSetContainer(null, UML2Package.VARIABLE__SCOPE, msgs);
+				return basicSetScope(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -864,41 +921,35 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.VARIABLE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.VARIABLE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.VARIABLE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.VARIABLE__OWNER:
 				return isSetOwner();
 			case UML2Package.VARIABLE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.VARIABLE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.VARIABLE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.VARIABLE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.VARIABLE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.VARIABLE__NAME:
-				String name = (String)eVirtualGet(UML2Package.VARIABLE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.VARIABLE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.VARIABLE__VISIBILITY:
-				return eVirtualGet(UML2Package.VARIABLE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.VARIABLE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.VARIABLE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.VARIABLE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.VARIABLE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.VARIABLE__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.VARIABLE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.VARIABLE__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.VARIABLE__END:
-				EList end = (EList)eVirtualGet(UML2Package.VARIABLE__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UML2Package.VARIABLE__TYPE:
-				return eVirtualGet(UML2Package.VARIABLE__TYPE) != null;
+				return type != null;
 			case UML2Package.VARIABLE__IS_ORDERED:
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UML2Package.VARIABLE__IS_UNIQUE:
@@ -908,9 +959,9 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			case UML2Package.VARIABLE__UPPER:
 				return getUpper() != UPPER_EDEFAULT;
 			case UML2Package.VARIABLE__UPPER_VALUE:
-				return eVirtualGet(UML2Package.VARIABLE__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.VARIABLE__LOWER_VALUE:
-				return eVirtualGet(UML2Package.VARIABLE__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UML2Package.VARIABLE__SCOPE:
 				return getScope() != null;
 		}

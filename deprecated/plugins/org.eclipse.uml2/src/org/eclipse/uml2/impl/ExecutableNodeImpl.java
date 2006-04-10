@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.22 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.23 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -36,6 +38,7 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 /**
@@ -45,7 +48,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.impl.ExecutableNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExecutableNodeImpl#getHandlers <em>Handler</em>}</li>
  * </ul>
  * </p>
@@ -59,6 +61,16 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+
+	/**
+	 * The cached value of the '{@link #getHandlers() <em>Handler</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHandlers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList handlers = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,13 +96,17 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT, ownedElement = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT, new int[] {UML2Package.EXECUTABLE_NODE__OWNED_COMMENT, UML2Package.EXECUTABLE_NODE__TEMPLATE_BINDING, UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE, UML2Package.EXECUTABLE_NODE__NAME_EXPRESSION, UML2Package.EXECUTABLE_NODE__HANDLER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,17 +118,27 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			|| eIsSet(UML2Package.EXECUTABLE_NODE__HANDLER);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.EXECUTABLE_NODE__OWNED_COMMENT, UML2Package.EXECUTABLE_NODE__TEMPLATE_BINDING, UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE, UML2Package.EXECUTABLE_NODE__NAME_EXPRESSION, UML2Package.EXECUTABLE_NODE__HANDLER};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getHandlers() {
-		EList handler = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__HANDLER);
-		if (handler == null) {
-			eVirtualSet(UML2Package.EXECUTABLE_NODE__HANDLER, handler = new EObjectContainmentWithInverseEList(ExceptionHandler.class, this, UML2Package.EXECUTABLE_NODE__HANDLER, UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE));
+		if (handlers == null) {
+			handlers = new EObjectContainmentWithInverseEList(ExceptionHandler.class, this, UML2Package.EXECUTABLE_NODE__HANDLER, UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE);
 		}
-		return handler;
+		return handlers;
 	}
 
 
@@ -157,7 +183,6 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -170,11 +195,11 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__ACTIVITY:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.EXECUTABLE_NODE__ACTIVITY, msgs);
+				return basicSetActivity((Activity)otherEnd, msgs);
 			case UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode((StructuredActivityNode)otherEnd, msgs);
 			case UML2Package.EXECUTABLE_NODE__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicAdd(otherEnd, msgs);
 			case UML2Package.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
@@ -209,9 +234,9 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__INCOMING:
 				return ((InternalEList)getIncomings()).basicRemove(otherEnd, msgs);
 			case UML2Package.EXECUTABLE_NODE__ACTIVITY:
-				return eBasicSetContainer(null, UML2Package.EXECUTABLE_NODE__ACTIVITY, msgs);
+				return basicSetActivity(null, msgs);
 			case UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
-				return eBasicSetContainer(null, UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE, msgs);
+				return basicSetInStructuredNode(null, msgs);
 			case UML2Package.EXECUTABLE_NODE__IN_PARTITION:
 				return ((InternalEList)getInPartitions()).basicRemove(otherEnd, msgs);
 			case UML2Package.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
@@ -420,42 +445,35 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EXECUTABLE_NODE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.EXECUTABLE_NODE__OWNER:
 				return isSetOwner();
 			case UML2Package.EXECUTABLE_NODE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.EXECUTABLE_NODE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.EXECUTABLE_NODE__NAME:
-				String name = (String)eVirtualGet(UML2Package.EXECUTABLE_NODE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXECUTABLE_NODE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXECUTABLE_NODE__VISIBILITY:
-				return eVirtualGet(UML2Package.EXECUTABLE_NODE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.EXECUTABLE_NODE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.EXECUTABLE_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.EXECUTABLE_NODE__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.EXECUTABLE_NODE__IS_LEAF:
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UML2Package.EXECUTABLE_NODE__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__IN_GROUP:
 				return isSetInGroups();
 			case UML2Package.EXECUTABLE_NODE__ACTIVITY:
@@ -465,14 +483,11 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 			case UML2Package.EXECUTABLE_NODE__IN_STRUCTURED_NODE:
 				return getInStructuredNode() != null;
 			case UML2Package.EXECUTABLE_NODE__IN_PARTITION:
-				EList inPartition = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION:
-				EList inInterruptibleRegion = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null && !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
 			case UML2Package.EXECUTABLE_NODE__HANDLER:
-				EList handler = (EList)eVirtualGet(UML2Package.EXECUTABLE_NODE__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

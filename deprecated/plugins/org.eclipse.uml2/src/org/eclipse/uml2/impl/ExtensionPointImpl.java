@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.17 2005/12/06 23:18:04 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.18 2006/04/10 20:40:19 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,8 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -84,6 +82,17 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetUseCase(UseCase newUseCase, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newUseCase, UML2Package.EXTENSION_POINT__USE_CASE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setUseCase(UseCase newUseCase) {
 		if (newUseCase != eInternalContainer() || (eContainerFeatureID != UML2Package.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
 			if (EcoreUtil.isAncestor(this, newUseCase))
@@ -93,7 +102,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newUseCase != null)
 				msgs = ((InternalEObject)newUseCase).eInverseAdd(this, UML2Package.USE_CASE__EXTENSION_POINT, UseCase.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newUseCase, UML2Package.EXTENSION_POINT__USE_CASE, msgs);
+			msgs = basicSetUseCase(newUseCase, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -114,7 +123,6 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 			case UML2Package.EXTENSION_POINT__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -123,7 +131,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 			case UML2Package.EXTENSION_POINT__USE_CASE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.EXTENSION_POINT__USE_CASE, msgs);
+				return basicSetUseCase((UseCase)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -148,7 +156,7 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 			case UML2Package.EXTENSION_POINT__NAME_EXPRESSION:
 				return basicSetNameExpression(null, msgs);
 			case UML2Package.EXTENSION_POINT__USE_CASE:
-				return eBasicSetContainer(null, UML2Package.EXTENSION_POINT__USE_CASE, msgs);
+				return basicSetUseCase(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -300,32 +308,27 @@ public class ExtensionPointImpl extends RedefinableElementImpl implements Extens
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.EXTENSION_POINT__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.EXTENSION_POINT__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.EXTENSION_POINT__OWNER:
 				return isSetOwner();
 			case UML2Package.EXTENSION_POINT__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.EXTENSION_POINT__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.EXTENSION_POINT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.EXTENSION_POINT__NAME:
-				String name = (String)eVirtualGet(UML2Package.EXTENSION_POINT__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.EXTENSION_POINT__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.EXTENSION_POINT__VISIBILITY:
-				return eVirtualGet(UML2Package.EXTENSION_POINT__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.EXTENSION_POINT__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.EXTENSION_POINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.EXTENSION_POINT__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.EXTENSION_POINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.EXTENSION_POINT__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.EXTENSION_POINT__IS_LEAF:

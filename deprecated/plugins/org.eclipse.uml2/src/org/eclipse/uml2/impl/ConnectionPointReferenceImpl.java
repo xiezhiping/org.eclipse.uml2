@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.14 2005/12/06 23:18:02 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.15 2006/04/10 20:40:17 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,26 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
+	 * The cached value of the '{@link #getEntries() <em>Entry</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList entries = null;
+
+	/**
+	 * The cached value of the '{@link #getExits() <em>Exit</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExits()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList exits = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,11 +93,10 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * @generated
 	 */
 	public EList getEntries() {
-		EList entry = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__ENTRY);
-		if (entry == null) {
-			eVirtualSet(UML2Package.CONNECTION_POINT_REFERENCE__ENTRY, entry = new EObjectResolvingEList(Pseudostate.class, this, UML2Package.CONNECTION_POINT_REFERENCE__ENTRY));
+		if (entries == null) {
+			entries = new EObjectResolvingEList(Pseudostate.class, this, UML2Package.CONNECTION_POINT_REFERENCE__ENTRY);
 		}
-		return entry;
+		return entries;
 	}
 
 
@@ -87,11 +106,20 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * @generated
 	 */
     public Pseudostate getEntry(String name) {
-		for (Iterator i = getEntries().iterator(); i.hasNext(); ) {
+		return getEntry(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pseudostate getEntry(String name, boolean ignoreCase) {
+		entryLoop: for (Iterator i = getEntries().iterator(); i.hasNext(); ) {
 			Pseudostate entry = (Pseudostate) i.next();
-			if (name.equals(entry.getName())) {
-				return entry;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(entry.getName()) : name.equals(entry.getName())))
+				continue entryLoop;
+			return entry;
 		}
 		return null;
 	}
@@ -102,11 +130,10 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * @generated
 	 */
 	public EList getExits() {
-		EList exit = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__EXIT);
-		if (exit == null) {
-			eVirtualSet(UML2Package.CONNECTION_POINT_REFERENCE__EXIT, exit = new EObjectResolvingEList(Pseudostate.class, this, UML2Package.CONNECTION_POINT_REFERENCE__EXIT));
+		if (exits == null) {
+			exits = new EObjectResolvingEList(Pseudostate.class, this, UML2Package.CONNECTION_POINT_REFERENCE__EXIT);
 		}
-		return exit;
+		return exits;
 	}
 
 
@@ -116,11 +143,20 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	 * @generated
 	 */
     public Pseudostate getExit(String name) {
-		for (Iterator i = getExits().iterator(); i.hasNext(); ) {
+		return getExit(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Pseudostate getExit(String name, boolean ignoreCase) {
+		exitLoop: for (Iterator i = getExits().iterator(); i.hasNext(); ) {
 			Pseudostate exit = (Pseudostate) i.next();
-			if (name.equals(exit.getName())) {
-				return exit;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(exit.getName()) : name.equals(exit.getName())))
+				continue exitLoop;
+			return exit;
 		}
 		return null;
 	}
@@ -285,46 +321,37 @@ public class ConnectionPointReferenceImpl extends VertexImpl implements Connecti
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNER:
 				return isSetOwner();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.CONNECTION_POINT_REFERENCE__NAME:
-				String name = (String)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.CONNECTION_POINT_REFERENCE__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.CONNECTION_POINT_REFERENCE__VISIBILITY:
-				return eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.CONNECTION_POINT_REFERENCE__CONTAINER:
 				return isSetContainer();
 			case UML2Package.CONNECTION_POINT_REFERENCE__OUTGOING:
-				EList outgoing = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__INCOMING:
-				EList incoming = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__ENTRY:
-				EList entry = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__ENTRY);
-				return entry != null && !entry.isEmpty();
+				return entries != null && !entries.isEmpty();
 			case UML2Package.CONNECTION_POINT_REFERENCE__EXIT:
-				EList exit = (EList)eVirtualGet(UML2Package.CONNECTION_POINT_REFERENCE__EXIT);
-				return exit != null && !exit.isEmpty();
+				return exits != null && !exits.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

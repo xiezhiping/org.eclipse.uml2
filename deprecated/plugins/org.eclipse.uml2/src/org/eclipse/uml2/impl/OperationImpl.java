@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.40 2006/01/05 13:53:10 khussey Exp $
+ * $Id: OperationImpl.java,v 1.41 2006/04/10 20:40:16 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -23,12 +23,13 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 //import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -55,6 +56,7 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
@@ -78,8 +80,6 @@ import org.eclipse.uml2.internal.operation.OperationOperations;
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getLowerValue <em>Lower Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwningParameter <em>Owning Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#getClass_ <em>Class </em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
@@ -102,14 +102,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits1 = 0;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -152,6 +144,36 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
+	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateParameter templateParameter = null;
+
+	/**
 	 * The default value of the '{@link #isQuery() <em>Is Query</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,6 +192,46 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @ordered
 	 */
 	protected static final int IS_QUERY_EFLAG = 1 << 13;
+
+	/**
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList preconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList postconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedOperations() <em>Redefined Operation</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedOperations = null;
+
+	/**
+	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBodyCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint bodyCondition = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,7 +257,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.OPERATION__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -204,9 +266,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public NotificationChain basicSetUpperValue(ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UML2Package.OPERATION__UPPER_VALUE, newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__UPPER_VALUE, oldUpperValue == EVIRTUAL_NO_VALUE ? null : oldUpperValue, newUpperValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__UPPER_VALUE, oldUpperValue, newUpperValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -219,7 +282,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification)eVirtualGet(UML2Package.OPERATION__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -255,7 +317,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		return (ValueSpecification)eVirtualGet(UML2Package.OPERATION__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -264,9 +326,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public NotificationChain basicSetLowerValue(ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UML2Package.OPERATION__LOWER_VALUE, newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__LOWER_VALUE, oldLowerValue == EVIRTUAL_NO_VALUE ? null : oldLowerValue, newLowerValue);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__LOWER_VALUE, oldLowerValue, newLowerValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
@@ -279,7 +342,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification)eVirtualGet(UML2Package.OPERATION__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -315,12 +377,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
 			templateParameter = (TemplateParameter)eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
-				eVirtualSet(UML2Package.OPERATION__TEMPLATE_PARAMETER, templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UML2Package.OPERATION__TEMPLATE_PARAMETER, oldTemplateParameter, templateParameter));
 			}
@@ -334,7 +394,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return (TemplateParameter)eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER);
+		return templateParameter;
 	}
 
 	/**
@@ -343,14 +403,19 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public NotificationChain basicSetTemplateParameter(TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		Object oldTemplateParameter = eVirtualSet(UML2Package.OPERATION__TEMPLATE_PARAMETER, newTemplateParameter);
+		TemplateParameter oldTemplateParameter = templateParameter;
+		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__TEMPLATE_PARAMETER, oldTemplateParameter == EVIRTUAL_NO_VALUE ? null : oldTemplateParameter, newTemplateParameter);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__TEMPLATE_PARAMETER, oldTemplateParameter, newTemplateParameter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
-		if (getOwningParameter() != null && getOwningParameter() != newTemplateParameter) {
-			setOwningParameter(null);
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			TemplateParameter owningParameter = getOwningParameter();
+			if (owningParameter != null && owningParameter != newTemplateParameter) {
+				setOwningParameter(null);
+			}
 		}
 		return msgs;
 	}
@@ -361,7 +426,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-		TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -392,8 +456,26 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetOwningParameter(TemplateParameter newOwningParameter, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOwningParameter, UML2Package.OPERATION__OWNING_PARAMETER, msgs);
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwningParameter != null) {
+				if (newOwningParameter != templateParameter) {
+					setTemplateParameter(newOwningParameter);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setOwningParameter(TemplateParameter newOwningParameter) {
-		EObject oldOwningParameter = eContainer();
 		if (newOwningParameter != eInternalContainer() || (eContainerFeatureID != UML2Package.OPERATION__OWNING_PARAMETER && newOwningParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningParameter))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -402,15 +484,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newOwningParameter != null)
 				msgs = ((InternalEObject)newOwningParameter).eInverseAdd(this, UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newOwningParameter, UML2Package.OPERATION__OWNING_PARAMETER, msgs);
+			msgs = basicSetOwningParameter(newOwningParameter, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 
-		if (newOwningParameter != null || oldOwningParameter == eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER)) {
-			setTemplateParameter(newOwningParameter);
-		}
 	}
 
 
@@ -420,13 +499,17 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList)eVirtualGet(UML2Package.OPERATION__REDEFINITION_CONTEXT);
-		if (redefinitionContext == null) {
-			eVirtualSet(UML2Package.OPERATION__REDEFINITION_CONTEXT, redefinitionContext = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__REDEFINITION_CONTEXT, new int[] {UML2Package.OPERATION__CLASS_, UML2Package.OPERATION__DATATYPE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinitionContexts = (EList) cache.get(eResource, this, UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			if (redefinitionContexts == null) {
+				cache.put(eResource, this, UML2Package.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, redefinitionContexts = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__REDEFINITION_CONTEXT, REDEFINITION_CONTEXT_ESUBSETS));
+			}
+			return redefinitionContexts;
 		}
-		return redefinitionContext;
+		return new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__REDEFINITION_CONTEXT, REDEFINITION_CONTEXT_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -439,19 +522,24 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.OPERATION__DATATYPE);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList)eVirtualGet(UML2Package.OPERATION__FEATURING_CLASSIFIER);
-		if (featuringClassifier == null) {
-			eVirtualSet(UML2Package.OPERATION__FEATURING_CLASSIFIER, featuringClassifier = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__FEATURING_CLASSIFIER, new int[] {UML2Package.OPERATION__CLASS_, UML2Package.OPERATION__DATATYPE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this, UML2Package.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this, UML2Package.Literals.FEATURE__FEATURING_CLASSIFIER, featuringClassifiers = new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__FEATURING_CLASSIFIER, FEATURING_CLASSIFIER_ESUBSETS));
+			}
+			return featuringClassifiers;
 		}
-		return featuringClassifier;
+		return new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.OPERATION__FEATURING_CLASSIFIER, FEATURING_CLASSIFIER_ESUBSETS);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -463,6 +551,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.OPERATION__CLASS_)
 			|| eIsSet(UML2Package.OPERATION__DATATYPE);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -484,6 +573,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__IS_QUERY, oldIsQuery, newIsQuery));
 
+
 	}
 
 
@@ -493,11 +583,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated NOT
 	 */
 	public EList getOwnedParameters() {
-		EList ownedParameter = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_PARAMETER);
-		if (ownedParameter == null) {
-			eVirtualSet(UML2Package.OPERATION__OWNED_PARAMETER, ownedParameter = new EObjectContainmentWithInverseEList(Parameter.class, this, UML2Package.OPERATION__OWNED_PARAMETER, UML2Package.PARAMETER__OPERATION));
+		if (formalParameters == null) {
+			formalParameters = new EObjectContainmentWithInverseEList(Parameter.class, this, UML2Package.OPERATION__OWNED_PARAMETER, UML2Package.PARAMETER__OPERATION);
 		}
-		return ownedParameter;
+		return formalParameters;
 	}
 
 
@@ -507,8 +596,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated NOT
 	 */
 	public boolean isSetOwnedParameters() {
-		EList ownedParameter = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_PARAMETER);
-		return ownedParameter != null && !ownedParameter.isEmpty();
+		return formalParameters != null && !formalParameters.isEmpty();
 	}
 
 	/**
@@ -517,11 +605,20 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
     public Parameter getOwnedParameter(String name) {
-		for (Iterator i = getOwnedParameters().iterator(); i.hasNext(); ) {
+		return getOwnedParameter(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter getOwnedParameter(String name, boolean ignoreCase) {
+		ownedParameterLoop: for (Iterator i = getOwnedParameters().iterator(); i.hasNext(); ) {
 			Parameter ownedParameter = (Parameter) i.next();
-			if (name.equals(ownedParameter.getName())) {
-				return ownedParameter;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedParameter.getName()) : name.equals(ownedParameter.getName())))
+				continue ownedParameterLoop;
+			return ownedParameter;
 		}
 		return null;
 	}
@@ -570,6 +667,17 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetClass_(org.eclipse.uml2.Class newClass_, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newClass_, UML2Package.OPERATION__CLASS_, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setClass_(org.eclipse.uml2.Class newClass_) {
 		if (newClass_ != eInternalContainer() || (eContainerFeatureID != UML2Package.OPERATION__CLASS_ && newClass_ != null)) {
 			if (EcoreUtil.isAncestor(this, newClass_))
@@ -579,7 +687,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newClass_ != null)
 				msgs = ((InternalEObject)newClass_).eInverseAdd(this, UML2Package.CLASS__OWNED_OPERATION, org.eclipse.uml2.Class.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newClass_, UML2Package.OPERATION__CLASS_, msgs);
+			msgs = basicSetClass_(newClass_, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -603,6 +711,17 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetDatatype(DataType newDatatype, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newDatatype, UML2Package.OPERATION__DATATYPE, msgs);
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer() || (eContainerFeatureID != UML2Package.OPERATION__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
@@ -612,7 +731,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDatatype != null)
 				msgs = ((InternalEObject)newDatatype).eInverseAdd(this, UML2Package.DATA_TYPE__OWNED_OPERATION, DataType.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newDatatype, UML2Package.OPERATION__DATATYPE, msgs);
+			msgs = basicSetDatatype(newDatatype, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -627,11 +746,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getPreconditions() {
-		EList precondition = (EList)eVirtualGet(UML2Package.OPERATION__PRECONDITION);
-		if (precondition == null) {
-			eVirtualSet(UML2Package.OPERATION__PRECONDITION, precondition = new SubsetSupersetEObjectEList(Constraint.class, this, UML2Package.OPERATION__PRECONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE}, null));
+		if (preconditions == null) {
+			preconditions = new SubsetSupersetEObjectEList(Constraint.class, this, UML2Package.OPERATION__PRECONDITION, PRECONDITION_ESUPERSETS, null);
 		}
-		return precondition;
+		return preconditions;
 	}
 
 
@@ -641,11 +759,22 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
     public Constraint getPrecondition(String name) {
-		for (Iterator i = getPreconditions().iterator(); i.hasNext(); ) {
+		return getPrecondition(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPrecondition(String name, boolean ignoreCase, EClass eClass) {
+		preconditionLoop: for (Iterator i = getPreconditions().iterator(); i.hasNext(); ) {
 			Constraint precondition = (Constraint) i.next();
-			if (name.equals(precondition.getName())) {
-				return precondition;
-			}
+			if (eClass != null && !eClass.isInstance(precondition))
+				continue preconditionLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(precondition.getName()) : name.equals(precondition.getName())))
+				continue preconditionLoop;
+			return precondition;
 		}
 		return null;
 	}
@@ -656,11 +785,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getPostconditions() {
-		EList postcondition = (EList)eVirtualGet(UML2Package.OPERATION__POSTCONDITION);
-		if (postcondition == null) {
-			eVirtualSet(UML2Package.OPERATION__POSTCONDITION, postcondition = new SubsetSupersetEObjectEList(Constraint.class, this, UML2Package.OPERATION__POSTCONDITION, new int[] {UML2Package.OPERATION__OWNED_RULE}, null));
+		if (postconditions == null) {
+			postconditions = new SubsetSupersetEObjectEList(Constraint.class, this, UML2Package.OPERATION__POSTCONDITION, POSTCONDITION_ESUPERSETS, null);
 		}
-		return postcondition;
+		return postconditions;
 	}
 
 
@@ -670,11 +798,22 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
     public Constraint getPostcondition(String name) {
-		for (Iterator i = getPostconditions().iterator(); i.hasNext(); ) {
+		return getPostcondition(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPostcondition(String name, boolean ignoreCase, EClass eClass) {
+		postconditionLoop: for (Iterator i = getPostconditions().iterator(); i.hasNext(); ) {
 			Constraint postcondition = (Constraint) i.next();
-			if (name.equals(postcondition.getName())) {
-				return postcondition;
-			}
+			if (eClass != null && !eClass.isInstance(postcondition))
+				continue postconditionLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(postcondition.getName()) : name.equals(postcondition.getName())))
+				continue postconditionLoop;
+			return postcondition;
 		}
 		return null;
 	}
@@ -685,11 +824,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getRedefinedOperations() {
-		EList redefinedOperation = (EList)eVirtualGet(UML2Package.OPERATION__REDEFINED_OPERATION);
-		if (redefinedOperation == null) {
-			eVirtualSet(UML2Package.OPERATION__REDEFINED_OPERATION, redefinedOperation = new EObjectResolvingEList(Operation.class, this, UML2Package.OPERATION__REDEFINED_OPERATION));
+		if (redefinedOperations == null) {
+			redefinedOperations = new EObjectResolvingEList(Operation.class, this, UML2Package.OPERATION__REDEFINED_OPERATION);
 		}
-		return redefinedOperation;
+		return redefinedOperations;
 	}
 
 
@@ -699,11 +837,20 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
     public Operation getRedefinedOperation(String name) {
-		for (Iterator i = getRedefinedOperations().iterator(); i.hasNext(); ) {
+		return getRedefinedOperation(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation getRedefinedOperation(String name, boolean ignoreCase) {
+		redefinedOperationLoop: for (Iterator i = getRedefinedOperations().iterator(); i.hasNext(); ) {
 			Operation redefinedOperation = (Operation) i.next();
-			if (name.equals(redefinedOperation.getName())) {
-				return redefinedOperation;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(redefinedOperation.getName()) : name.equals(redefinedOperation.getName())))
+				continue redefinedOperationLoop;
+			return redefinedOperation;
 		}
 		return null;
 	}
@@ -714,7 +861,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public Constraint getBodyCondition() {
-		return (Constraint)eVirtualGet(UML2Package.OPERATION__BODY_CONDITION);
+		return bodyCondition;
 	}
 
 	/**
@@ -723,14 +870,21 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public void setBodyCondition(Constraint newBodyCondition) {
-		if (newBodyCondition != null && !getOwnedRules().contains(newBodyCondition)) {
-			getOwnedRules().add(newBodyCondition);
-		}
-		Constraint bodyCondition = newBodyCondition;
-		Object oldBodyCondition = eVirtualSet(UML2Package.OPERATION__BODY_CONDITION, bodyCondition);
+		Constraint oldBodyCondition = bodyCondition;
+		bodyCondition = newBodyCondition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__BODY_CONDITION, oldBodyCondition == EVIRTUAL_NO_VALUE ? null : oldBodyCondition, bodyCondition));
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.OPERATION__BODY_CONDITION, oldBodyCondition, bodyCondition));
 
+
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newBodyCondition != null) {
+				EList ownedRules = getOwnedRules();
+				if (!ownedRules.contains(newBodyCondition)) {
+					ownedRules.add(newBodyCondition);
+				}
+			}
+		}
 	}
 
 
@@ -985,7 +1139,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__TEMPLATE_BINDING:
 				return ((InternalEList)getTemplateBindings()).basicAdd(otherEnd, msgs);
 			case UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE:
-				TemplateSignature ownedTemplateSignature = (TemplateSignature)eVirtualGet(UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject)ownedTemplateSignature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE, null, msgs);
 				return basicSetOwnedTemplateSignature((TemplateSignature)otherEnd, msgs);
@@ -1000,24 +1153,23 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__METHOD:
 				return ((InternalEList)getMethods()).basicAdd(otherEnd, msgs);
 			case UML2Package.OPERATION__TEMPLATE_PARAMETER:
-				TemplateParameter templateParameter = (TemplateParameter)eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject)templateParameter).eInverseRemove(this, UML2Package.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.OPERATION__OWNING_PARAMETER:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.OPERATION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter((TemplateParameter)otherEnd, msgs);
 			case UML2Package.OPERATION__OWNED_PARAMETER:
 				return ((InternalEList)getOwnedParameters()).basicAdd(otherEnd, msgs);
 			case UML2Package.OPERATION__CLASS_:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.OPERATION__CLASS_, msgs);
+				return basicSetClass_((org.eclipse.uml2.Class)otherEnd, msgs);
 			case UML2Package.OPERATION__DATATYPE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd, UML2Package.OPERATION__DATATYPE, msgs);
+				return basicSetDatatype((DataType)otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1060,13 +1212,13 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__TEMPLATE_PARAMETER:
 				return basicSetTemplateParameter(null, msgs);
 			case UML2Package.OPERATION__OWNING_PARAMETER:
-				return eBasicSetContainer(null, UML2Package.OPERATION__OWNING_PARAMETER, msgs);
+				return basicSetOwningParameter(null, msgs);
 			case UML2Package.OPERATION__OWNED_PARAMETER:
 				return ((InternalEList)getOwnedParameters()).basicRemove(otherEnd, msgs);
 			case UML2Package.OPERATION__CLASS_:
-				return eBasicSetContainer(null, UML2Package.OPERATION__CLASS_, msgs);
+				return basicSetClass_(null, msgs);
 			case UML2Package.OPERATION__DATATYPE:
-				return eBasicSetContainer(null, UML2Package.OPERATION__DATATYPE, msgs);
+				return basicSetDatatype(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1130,11 +1282,10 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated NOT
 	 */
 	public EList getRaisedExceptions() {
-		EList raisedException = (EList)eVirtualGet(UML2Package.OPERATION__RAISED_EXCEPTION);
-		if (raisedException == null) {
-			eVirtualSet(UML2Package.OPERATION__RAISED_EXCEPTION, raisedException = new EObjectResolvingEList(Type.class, this, UML2Package.OPERATION__RAISED_EXCEPTION));
+		if (raisedExceptions == null) {
+			raisedExceptions = new EObjectResolvingEList(Type.class, this, UML2Package.OPERATION__RAISED_EXCEPTION);
 		}
-		return raisedException;
+		return raisedExceptions;
 	}
 
 	/**
@@ -1143,8 +1294,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public boolean isSetRaisedExceptions() {
-		EList raisedException = (EList)eVirtualGet(UML2Package.OPERATION__RAISED_EXCEPTION);
-		return raisedException != null && !raisedException.isEmpty();
+		return raisedExceptions != null && !raisedExceptions.isEmpty();
 	}
 
 
@@ -1154,11 +1304,22 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
     public Type getRaisedException(String name) {
-		for (Iterator i = getRaisedExceptions().iterator(); i.hasNext(); ) {
+		return getRaisedException(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type getRaisedException(String name, boolean ignoreCase, EClass eClass) {
+		raisedExceptionLoop: for (Iterator i = getRaisedExceptions().iterator(); i.hasNext(); ) {
 			Type raisedException = (Type) i.next();
-			if (name.equals(raisedException.getName())) {
-				return raisedException;
-			}
+			if (eClass != null && !eClass.isInstance(raisedException))
+				continue raisedExceptionLoop;
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(raisedException.getName()) : name.equals(raisedException.getName())))
+				continue raisedExceptionLoop;
+			return raisedException;
 		}
 		return null;
 	}
@@ -1196,11 +1357,20 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
     public Parameter getFormalParameter(String name) {
-		for (Iterator i = getFormalParameters().iterator(); i.hasNext(); ) {
+		return getFormalParameter(name, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Parameter getFormalParameter(String name, boolean ignoreCase) {
+		formalParameterLoop: for (Iterator i = getFormalParameters().iterator(); i.hasNext(); ) {
 			Parameter formalParameter = (Parameter) i.next();
-			if (name.equals(formalParameter.getName())) {
-				return formalParameter;
-			}
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(formalParameter.getName()) : name.equals(formalParameter.getName())))
+				continue formalParameterLoop;
+			return formalParameter;
 		}
 		return null;
 	}
@@ -1220,10 +1390,9 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated NOT
 	 */
 	public boolean isSetType() {
-		EList returnResult = (EList)eVirtualGet(UML2Package.OPERATION__RETURN_RESULT);
-		return null != returnResult
-			&& 1 == returnResult.size()
-			&& ((Parameter) returnResult.get(0))
+		return null != returnResults
+			&& 1 == returnResults.size()
+			&& ((Parameter) returnResults.get(0))
 				.eIsSet(UML2Package.Literals.TYPED_ELEMENT__TYPE);
 	}
 
@@ -1278,21 +1447,21 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected EList getOwnedMembersHelper(EList ownedMember) {
-		super.getOwnedMembersHelper(ownedMember);
+	protected EList getOwnedMembersHelper(EList ownedMembers) {
+		super.getOwnedMembersHelper(ownedMembers);
 		if (eIsSet(UML2Package.Literals.OPERATION__PRECONDITION)) {
-			ownedMember.addAll(getPreconditions());
+			ownedMembers.addAll(getPreconditions());
 		}
 		if (eIsSet(UML2Package.Literals.OPERATION__POSTCONDITION)) {
-			ownedMember.addAll(getPostconditions());
+			ownedMembers.addAll(getPostconditions());
 		}
 		if (eIsSet(UML2Package.Literals.OPERATION__BODY_CONDITION)) {
-			ownedMember.add(getBodyCondition());
+			ownedMembers.add(getBodyCondition());
 		}
 		if (eIsSet(UML2Package.Literals.OPERATION__OWNED_PARAMETER)) {
-			ownedMember.addAll(getOwnedParameters());
+			ownedMembers.addAll(getOwnedParameters());
 		}
-		return ownedMember;
+		return ownedMembers;
 	}
 
 
@@ -1314,15 +1483,14 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getRedefinedElementsHelper(EList redefinedElement) {
-		super.getRedefinedElementsHelper(redefinedElement);
-		EList redefinedOperation = getRedefinedOperations();
-		if (!redefinedOperation.isEmpty()) {
-			for (Iterator i = ((InternalEList) redefinedOperation).basicIterator(); i.hasNext(); ) {
-				redefinedElement.add(i.next());
+	protected EList getRedefinedElementsHelper(EList redefinedElements) {
+		super.getRedefinedElementsHelper(redefinedElements);
+		if (eIsSet(UML2Package.OPERATION__REDEFINED_OPERATION)) {
+			for (Iterator i = ((InternalEList) getRedefinedOperations()).basicIterator(); i.hasNext(); ) {
+				redefinedElements.add(i.next());
 			}
 		}
-		return redefinedElement;
+		return redefinedElements;
 	}
 
 	/**
@@ -1342,13 +1510,42 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		EList ownedRule = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_RULE);
-		if (ownedRule == null) {
-			eVirtualSet(UML2Package.OPERATION__OWNED_RULE, ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.OPERATION__OWNED_RULE, null, new int[] {UML2Package.OPERATION__PRECONDITION, UML2Package.OPERATION__POSTCONDITION, UML2Package.OPERATION__BODY_CONDITION}, UML2Package.CONSTRAINT__NAMESPACE));
+		if (ownedRules == null) {
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList(Constraint.class, this, UML2Package.OPERATION__OWNED_RULE, null, OWNED_RULE_ESUBSETS, UML2Package.CONSTRAINT__NAMESPACE);
 		}
-		return ownedRule;
+		return ownedRules;
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[] {UML2Package.OPERATION__PRECONDITION, UML2Package.OPERATION__POSTCONDITION, UML2Package.OPERATION__BODY_CONDITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PRECONDITION_ESUPERSETS = new int[] {UML2Package.OPERATION__OWNED_RULE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[] {UML2Package.OPERATION__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1701,45 +1898,37 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UML2Package.OPERATION__EANNOTATIONS:
-				EList eAnnotations = (EList)eVirtualGet(UML2Package.OPERATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UML2Package.OPERATION__OWNED_ELEMENT:
 				return isSetOwnedElements();
 			case UML2Package.OPERATION__OWNER:
 				return isSetOwner();
 			case UML2Package.OPERATION__OWNED_COMMENT:
-				EList ownedComment = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UML2Package.OPERATION__TEMPLATE_BINDING:
-				EList templateBinding = (EList)eVirtualGet(UML2Package.OPERATION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE:
-				return eVirtualGet(UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UML2Package.OPERATION__NAME:
-				String name = (String)eVirtualGet(UML2Package.OPERATION__NAME, NAME_EDEFAULT);
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UML2Package.OPERATION__QUALIFIED_NAME:
 				return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UML2Package.OPERATION__VISIBILITY:
-				return eVirtualGet(UML2Package.OPERATION__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UML2Package.OPERATION__CLIENT_DEPENDENCY:
-				EList clientDependency = (EList)eVirtualGet(UML2Package.OPERATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null && !clientDependencies.isEmpty();
 			case UML2Package.OPERATION__NAME_EXPRESSION:
-				return eVirtualGet(UML2Package.OPERATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UML2Package.OPERATION__MEMBER:
 				return isSetMembers();
 			case UML2Package.OPERATION__OWNED_RULE:
-				EList ownedRule = (EList)eVirtualGet(UML2Package.OPERATION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UML2Package.OPERATION__IMPORTED_MEMBER:
 				return !getImportedMembers().isEmpty();
 			case UML2Package.OPERATION__ELEMENT_IMPORT:
-				EList elementImport = (EList)eVirtualGet(UML2Package.OPERATION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UML2Package.OPERATION__PACKAGE_IMPORT:
-				EList packageImport = (EList)eVirtualGet(UML2Package.OPERATION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UML2Package.OPERATION__REDEFINITION_CONTEXT:
 				return isSetRedefinitionContexts();
 			case UML2Package.OPERATION__IS_LEAF:
@@ -1753,17 +1942,15 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
 				return isSetFormalParameters();
 			case UML2Package.OPERATION__RETURN_RESULT:
-				EList returnResult = (EList)eVirtualGet(UML2Package.OPERATION__RETURN_RESULT);
-				return returnResult != null && !returnResult.isEmpty();
+				return returnResults != null && !returnResults.isEmpty();
 			case UML2Package.OPERATION__RAISED_EXCEPTION:
 				return isSetRaisedExceptions();
 			case UML2Package.OPERATION__IS_ABSTRACT:
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.OPERATION__METHOD:
-				EList method = (EList)eVirtualGet(UML2Package.OPERATION__METHOD);
-				return method != null && !method.isEmpty();
+				return methods != null && !methods.isEmpty();
 			case UML2Package.OPERATION__CONCURRENCY:
-				return eVirtualGet(UML2Package.OPERATION__CONCURRENCY, CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
+				return concurrency != CONCURRENCY_EDEFAULT;
 			case UML2Package.OPERATION__TYPE:
 				return isSetType();
 			case UML2Package.OPERATION__IS_ORDERED:
@@ -1775,11 +1962,11 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__UPPER:
 				return isSetUpper();
 			case UML2Package.OPERATION__UPPER_VALUE:
-				return eVirtualGet(UML2Package.OPERATION__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UML2Package.OPERATION__LOWER_VALUE:
-				return eVirtualGet(UML2Package.OPERATION__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UML2Package.OPERATION__TEMPLATE_PARAMETER:
-				return eVirtualGet(UML2Package.OPERATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UML2Package.OPERATION__OWNING_PARAMETER:
 				return getOwningParameter() != null;
 			case UML2Package.OPERATION__OWNED_PARAMETER:
@@ -1791,16 +1978,13 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			case UML2Package.OPERATION__DATATYPE:
 				return getDatatype() != null;
 			case UML2Package.OPERATION__PRECONDITION:
-				EList precondition = (EList)eVirtualGet(UML2Package.OPERATION__PRECONDITION);
-				return precondition != null && !precondition.isEmpty();
+				return preconditions != null && !preconditions.isEmpty();
 			case UML2Package.OPERATION__POSTCONDITION:
-				EList postcondition = (EList)eVirtualGet(UML2Package.OPERATION__POSTCONDITION);
-				return postcondition != null && !postcondition.isEmpty();
+				return postconditions != null && !postconditions.isEmpty();
 			case UML2Package.OPERATION__REDEFINED_OPERATION:
-				EList redefinedOperation = (EList)eVirtualGet(UML2Package.OPERATION__REDEFINED_OPERATION);
-				return redefinedOperation != null && !redefinedOperation.isEmpty();
+				return redefinedOperations != null && !redefinedOperations.isEmpty();
 			case UML2Package.OPERATION__BODY_CONDITION:
-				return eVirtualGet(UML2Package.OPERATION__BODY_CONDITION) != null;
+				return bodyCondition != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1876,40 +2060,6 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -1926,17 +2076,17 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EList getOwnedElementsHelper(EList ownedElement) {
-		super.getOwnedElementsHelper(ownedElement);
+	protected EList getOwnedElementsHelper(EList ownedElements) {
+		super.getOwnedElementsHelper(ownedElements);
 		ValueSpecification upperValue = getUpperValue();
 		if (upperValue != null) {
-			ownedElement.add(upperValue);
+			ownedElements.add(upperValue);
 		}
 		ValueSpecification lowerValue = getLowerValue();
 		if (lowerValue != null) {
-			ownedElement.add(lowerValue);
+			ownedElements.add(lowerValue);
 		}
-		return ownedElement;
+		return ownedElements;
 	}
 
 	/**
@@ -1950,6 +2100,56 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 			|| eIsSet(UML2Package.OPERATION__LOWER_VALUE);
 	}
 
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.OPERATION__OWNED_COMMENT, UML2Package.OPERATION__TEMPLATE_BINDING, UML2Package.OPERATION__OWNED_TEMPLATE_SIGNATURE, UML2Package.OPERATION__NAME_EXPRESSION, UML2Package.OPERATION__ELEMENT_IMPORT, UML2Package.OPERATION__PACKAGE_IMPORT, UML2Package.OPERATION__UPPER_VALUE, UML2Package.OPERATION__LOWER_VALUE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinitionContexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[] {UML2Package.OPERATION__CLASS_, UML2Package.OPERATION__DATATYPE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeaturingClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[] {UML2Package.OPERATION__CLASS_, UML2Package.OPERATION__DATATYPE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.OPERATION__OWNED_RULE, UML2Package.OPERATION__FORMAL_PARAMETER, UML2Package.OPERATION__RETURN_RESULT, UML2Package.OPERATION__PRECONDITION, UML2Package.OPERATION__POSTCONDITION, UML2Package.OPERATION__BODY_CONDITION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[] {UML2Package.OPERATION__REDEFINED_OPERATION};
 
 		// <!-- begin-custom-operations -->
 
@@ -1979,12 +2179,29 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		}
 	}
 
+	/**
+	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * @see #getParameters()
+	 */
+	protected static final int[] PARAMETER_ESUBSETS = new int[] {UML2Package.OPERATION__OWNED_PARAMETER, UML2Package.OPERATION__RETURN_RESULT};
+
 	public EList getParameters() {
-		EList parameter = (EList)eVirtualGet(UML2Package.OPERATION__PARAMETER);
-		if (parameter == null) {
-			eVirtualSet(UML2Package.OPERATION__PARAMETER, parameter = new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.OPERATION__PARAMETER, new int[] {UML2Package.OPERATION__OWNED_PARAMETER, UML2Package.OPERATION__RETURN_RESULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList parameter = (EList) cache.get(eResource, this,
+				UML2Package.Literals.BEHAVIORAL_FEATURE__PARAMETER);
+			if (parameter == null) {
+				cache.put(eResource, this,
+					UML2Package.Literals.BEHAVIORAL_FEATURE__PARAMETER,
+					parameter = new DerivedUnionEObjectEList(Parameter.class,
+						this, UML2Package.OPERATION__PARAMETER,
+						PARAMETER_ESUBSETS));
+			}
+			return parameter;
 		}
-		return parameter;
+		return new DerivedUnionEObjectEList(Parameter.class, this,
+			UML2Package.OPERATION__PARAMETER, PARAMETER_ESUBSETS);
 	}
 
 	// <!-- end-custom-operations -->
