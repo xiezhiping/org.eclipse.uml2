@@ -64,7 +64,7 @@
       </edges>
     </contents>
     <contents xmi:type="notation:Diagram" xmi:id="_i5MJUGvbEdq4DLWZOhbdEA" type="Class" element="_o8I_sGvaEdq4DLWZOhbdEA" name="Element Hierarchy">
-      <children xmi:id="_nDK2cGvbEdq4DLWZOhbdEA" sourceEdges="_qzhioGvbEdq4DLWZOhbdEA _rczwMGvbEdq4DLWZOhbdEA" element="_kl90MGvbEdq4DLWZOhbdEA">
+      <children xmi:id="_nDK2cGvbEdq4DLWZOhbdEA" sourceEdges="_rczwMGvbEdq4DLWZOhbdEA" element="_kl90MGvbEdq4DLWZOhbdEA">
         <children xmi:id="_nDK2c2vbEdq4DLWZOhbdEA" type="ImageCompartment" element="_kl90MGvbEdq4DLWZOhbdEA">
           <layoutConstraint xmi:type="notation:Size" xmi:id="_nDK2dGvbEdq4DLWZOhbdEA" width="1320" height="1320"/>
         </children>
@@ -85,7 +85,7 @@
         <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_nDK2cWvbEdq4DLWZOhbdEA" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nDK2cmvbEdq4DLWZOhbdEA" x="2989" y="6455"/>
       </children>
-      <children xmi:id="_pbnUgGvbEdq4DLWZOhbdEA" targetEdges="_p2SeUGvbEdq4DLWZOhbdEA _qzhioGvbEdq4DLWZOhbdEA">
+      <children xmi:id="_pbnUgGvbEdq4DLWZOhbdEA" targetEdges="_p2SeUGvbEdq4DLWZOhbdEA">
         <children xmi:id="_pbnUg2vbEdq4DLWZOhbdEA" type="ImageCompartment">
           <element xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
           <layoutConstraint xmi:type="notation:Size" xmi:id="_pbnUhGvbEdq4DLWZOhbdEA" width="1320" height="1320"/>
@@ -163,15 +163,6 @@
         <element xmi:type="uml:Generalization" href="Ecore.emx#_439EC3AE03B53C4F1CC50336?Ecore/EModelElement/%3CGeneralization%3E"/>
         <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_p2SeUmvbEdq4DLWZOhbdEA" points="[-14, -450, -1826, 2037]$[1811, -2038, -1, 449]"/>
       </edges>
-      <edges xmi:id="_qzhioGvbEdq4DLWZOhbdEA" element="_qzYYsGvbEdq4DLWZOhbdEA" source="_nDK2cGvbEdq4DLWZOhbdEA" target="_pbnUgGvbEdq4DLWZOhbdEA">
-        <children xmi:id="_qzhio2vbEdq4DLWZOhbdEA" type="NameLabel" element="_qzYYsGvbEdq4DLWZOhbdEA">
-          <children xmi:id="_qzhipWvbEdq4DLWZOhbdEA" type="Stereotype" element="_qzYYsGvbEdq4DLWZOhbdEA"/>
-          <children xmi:id="_qzhipmvbEdq4DLWZOhbdEA" type="Name" element="_qzYYsGvbEdq4DLWZOhbdEA"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qzhipGvbEdq4DLWZOhbdEA" x="257" y="272"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_qzhioWvbEdq4DLWZOhbdEA" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qzhiomvbEdq4DLWZOhbdEA" points="[-1, -450, -1, 4524]$[-1, -4525, -1, 449]"/>
-      </edges>
       <edges xmi:id="_rczwMGvbEdq4DLWZOhbdEA" element="_rcp_MGvbEdq4DLWZOhbdEA" source="_nDK2cGvbEdq4DLWZOhbdEA" target="_p1sBYGvbEdq4DLWZOhbdEA">
         <children xmi:id="_rczwM2vbEdq4DLWZOhbdEA" type="NameLabel" element="_rcp_MGvbEdq4DLWZOhbdEA">
           <children xmi:id="_rczwNWvbEdq4DLWZOhbdEA" type="Stereotype" element="_rcp_MGvbEdq4DLWZOhbdEA"/>
@@ -242,12 +233,6 @@
     <supplier xmi:type="uml:Model" href="L3.emx#_EBtHcBmMEdqvcs97umGEYQ?L3"/>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_kl90MGvbEdq4DLWZOhbdEA" name="Element" isAbstract="true">
-    <generalization xmi:id="_qzYYsGvbEdq4DLWZOhbdEA">
-      <eAnnotations xmi:id="_ZLhloGvlEdqRFtUp8wmbQQ" source="keywords">
-        <details xmi:id="_dZroIGvlEdqRFtUp8wmbQQ" key="extend"/>
-      </eAnnotations>
-      <general xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53C4F1C860123?Ecore/EObject"/>
-    </generalization>
     <generalization xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
       <general xmi:type="uml:Class" href="Ecore.emx#_439EC3AE03B53903D4E40050?Ecore/EModelElement"/>
     </generalization>
