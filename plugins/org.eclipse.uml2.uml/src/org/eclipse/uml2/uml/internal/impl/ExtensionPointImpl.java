@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.13 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -336,15 +334,13 @@ public class ExtensionPointImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION_POINT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXTENSION_POINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXTENSION_POINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXTENSION_POINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXTENSION_POINT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXTENSION_POINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXTENSION_POINT__NAME :
 				return isSetName();
 			case UMLPackage.EXTENSION_POINT__VISIBILITY :
@@ -354,12 +350,12 @@ public class ExtensionPointImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXTENSION_POINT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXTENSION_POINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXTENSION_POINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXTENSION_POINT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.EXTENSION_POINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.EXTENSION_POINT__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.EXTENSION_POINT__REDEFINED_ELEMENT :

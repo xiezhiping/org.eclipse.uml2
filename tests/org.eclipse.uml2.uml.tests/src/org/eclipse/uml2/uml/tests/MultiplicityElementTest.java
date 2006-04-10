@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementTest.java,v 1.3 2006/03/09 21:28:59 khussey Exp $
+ * $Id: MultiplicityElementTest.java,v 1.4 2006/04/10 19:13:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,7 +21,6 @@ import org.eclipse.uml2.uml.MultiplicityElement;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLower() <em>Lower</em>}</li>
  * </ul>
@@ -64,18 +63,6 @@ public abstract class MultiplicityElementTest
 	 */
 	private MultiplicityElement getFixture() {
 		return (MultiplicityElement) fixture;
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**

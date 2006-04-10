@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.9 2006/02/21 16:12:16 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.10 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -51,6 +49,16 @@ public abstract class ValueSpecificationImpl
 		implements ValueSpecification {
 
 	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -74,12 +82,10 @@ public abstract class ValueSpecificationImpl
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = (Type) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject) type;
 			type = (Type) eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UMLPackage.VALUE_SPECIFICATION__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.VALUE_SPECIFICATION__TYPE, oldType, type));
@@ -94,7 +100,7 @@ public abstract class ValueSpecificationImpl
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TYPE);
+		return type;
 	}
 
 	/**
@@ -103,14 +109,11 @@ public abstract class ValueSpecificationImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		Type type = newType;
-		Object oldType = eVirtualSet(UMLPackage.VALUE_SPECIFICATION__TYPE, type);
+		Type oldType = type;
+		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.VALUE_SPECIFICATION__TYPE,
-				oldType == EVIRTUAL_NO_VALUE
-					? null
-					: oldType, type));
+				UMLPackage.VALUE_SPECIFICATION__TYPE, oldType, type));
 
 	}
 
@@ -313,15 +316,13 @@ public abstract class ValueSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VALUE_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.VALUE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.VALUE_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.VALUE_SPECIFICATION__VISIBILITY :
@@ -331,18 +332,18 @@ public abstract class ValueSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.VALUE_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.VALUE_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.VALUE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.VALUE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.VALUE_SPECIFICATION__TYPE :
-				return eVirtualGet(UMLPackage.VALUE_SPECIFICATION__TYPE) != null;
+				return type != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

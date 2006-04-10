@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.14 2006/03/15 19:33:59 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -69,7 +67,6 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (ValueSpecification) eResolveProxy(oldSpecification);
@@ -102,7 +99,7 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -112,15 +109,13 @@ public class IntervalConstraintImpl
 	 */
 	public NotificationChain basicSetSpecificationGen(
 			ValueSpecification newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(
-			UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION, newSpecification);
+		ValueSpecification oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
-				oldSpecification == EVIRTUAL_NO_VALUE
-					? null
-					: oldSpecification, newSpecification);
+				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -146,7 +141,6 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -191,7 +185,7 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
-		return eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION) != null;
+		return specification != null;
 	}
 
 	/**
@@ -257,15 +251,13 @@ public class IntervalConstraintImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
@@ -275,20 +267,19 @@ public class IntervalConstraintImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERVAL_CONSTRAINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
-				EList constrainedElement = (EList) eVirtualGet(UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null
-					&& !constrainedElement.isEmpty();
+				return constrainedElements != null
+					&& !constrainedElements.isEmpty();
 			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :

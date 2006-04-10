@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.13 2006/03/15 19:34:01 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.14 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.AcceptCallAction;
@@ -45,7 +48,6 @@ import org.eclipse.uml2.uml.internal.operations.AcceptCallActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl#getReturnInformation <em>Return Information</em>}</li>
  * </ul>
  * </p>
@@ -55,6 +57,16 @@ import org.eclipse.uml2.uml.internal.operations.AcceptCallActionOperations;
 public class AcceptCallActionImpl
 		extends AcceptEventActionImpl
 		implements AcceptCallAction {
+
+	/**
+	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReturnInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected OutputPin returnInformation = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,15 +92,21 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UMLPackage.ACCEPT_CALL_ACTION__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.ACCEPT_CALL_ACTION__OUTPUT, new int[]{
-						UMLPackage.ACCEPT_CALL_ACTION__RESULT,
-						UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList(OutputPin.class,
+						this, UMLPackage.ACCEPT_CALL_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this,
+			UMLPackage.ACCEPT_CALL_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
 	/**
@@ -97,13 +115,10 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	public OutputPin getReturnInformation() {
-		OutputPin returnInformation = (OutputPin) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
 		if (returnInformation != null && returnInformation.eIsProxy()) {
 			InternalEObject oldReturnInformation = (InternalEObject) returnInformation;
 			returnInformation = (OutputPin) eResolveProxy(oldReturnInformation);
 			if (returnInformation != oldReturnInformation) {
-				eVirtualSet(UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
-					returnInformation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
@@ -119,7 +134,7 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	public OutputPin basicGetReturnInformation() {
-		return (OutputPin) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
+		return returnInformation;
 	}
 
 	/**
@@ -128,16 +143,12 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	public void setReturnInformation(OutputPin newReturnInformation) {
-		OutputPin returnInformation = newReturnInformation;
-		Object oldReturnInformation = eVirtualSet(
-			UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
-			returnInformation);
+		OutputPin oldReturnInformation = returnInformation;
+		returnInformation = newReturnInformation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
-				oldReturnInformation == EVIRTUAL_NO_VALUE
-					? null
-					: oldReturnInformation, returnInformation));
+				oldReturnInformation, returnInformation));
 
 	}
 
@@ -432,15 +443,13 @@ public class AcceptCallActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACCEPT_CALL_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACCEPT_CALL_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACCEPT_CALL_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.ACCEPT_CALL_ACTION__VISIBILITY :
@@ -450,12 +459,12 @@ public class AcceptCallActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACCEPT_CALL_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ACCEPT_CALL_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACCEPT_CALL_ACTION__REDEFINED_ELEMENT :
@@ -467,26 +476,20 @@ public class AcceptCallActionImpl
 			case UMLPackage.ACCEPT_CALL_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.ACCEPT_CALL_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACCEPT_CALL_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.ACCEPT_CALL_ACTION__INPUT :
@@ -494,26 +497,34 @@ public class AcceptCallActionImpl
 			case UMLPackage.ACCEPT_CALL_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__IS_UNMARSHALL :
 				return ((eFlags & IS_UNMARSHALL_EFLAG) != 0) != IS_UNMARSHALL_EDEFAULT;
 			case UMLPackage.ACCEPT_CALL_ACTION__RESULT :
-				EList result = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__RESULT);
-				return result != null && !result.isEmpty();
+				return results != null && !results.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__TRIGGER :
-				EList trigger = (EList) eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__TRIGGER);
-				return trigger != null && !trigger.isEmpty();
+				return triggers != null && !triggers.isEmpty();
 			case UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION :
-				return eVirtualGet(UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION) != null;
+				return returnInformation != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{
+		UMLPackage.ACCEPT_CALL_ACTION__RESULT,
+		UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION};
 
 	/**
 	 * <!-- begin-user-doc -->

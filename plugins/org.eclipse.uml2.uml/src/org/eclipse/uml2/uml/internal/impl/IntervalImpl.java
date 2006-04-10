@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.10 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -49,6 +47,26 @@ public class IntervalImpl
 		implements Interval {
 
 	/**
+	 * The cached value of the '{@link #getMin() <em>Min</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification min = null;
+
+	/**
+	 * The cached value of the '{@link #getMax() <em>Max</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification max = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,12 +90,10 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public ValueSpecification getMin() {
-		ValueSpecification min = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL__MIN);
 		if (min != null && min.eIsProxy()) {
 			InternalEObject oldMin = (InternalEObject) min;
 			min = (ValueSpecification) eResolveProxy(oldMin);
 			if (min != oldMin) {
-				eVirtualSet(UMLPackage.INTERVAL__MIN, min);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INTERVAL__MIN, oldMin, min));
@@ -92,7 +108,7 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetMin() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL__MIN);
+		return min;
 	}
 
 	/**
@@ -101,13 +117,11 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public void setMin(ValueSpecification newMin) {
-		ValueSpecification min = newMin;
-		Object oldMin = eVirtualSet(UMLPackage.INTERVAL__MIN, min);
+		ValueSpecification oldMin = min;
+		min = newMin;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INTERVAL__MIN, oldMin == EVIRTUAL_NO_VALUE
-					? null
-					: oldMin, min));
+				UMLPackage.INTERVAL__MIN, oldMin, min));
 
 	}
 
@@ -117,12 +131,10 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public ValueSpecification getMax() {
-		ValueSpecification max = (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL__MAX);
 		if (max != null && max.eIsProxy()) {
 			InternalEObject oldMax = (InternalEObject) max;
 			max = (ValueSpecification) eResolveProxy(oldMax);
 			if (max != oldMax) {
-				eVirtualSet(UMLPackage.INTERVAL__MAX, max);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INTERVAL__MAX, oldMax, max));
@@ -137,7 +149,7 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetMax() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.INTERVAL__MAX);
+		return max;
 	}
 
 	/**
@@ -146,13 +158,11 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public void setMax(ValueSpecification newMax) {
-		ValueSpecification max = newMax;
-		Object oldMax = eVirtualSet(UMLPackage.INTERVAL__MAX, max);
+		ValueSpecification oldMax = max;
+		max = newMax;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INTERVAL__MAX, oldMax == EVIRTUAL_NO_VALUE
-					? null
-					: oldMax, max));
+				UMLPackage.INTERVAL__MAX, oldMax, max));
 
 	}
 
@@ -312,15 +322,13 @@ public class IntervalImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERVAL__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERVAL__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERVAL__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERVAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERVAL__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERVAL__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERVAL__NAME :
 				return isSetName();
 			case UMLPackage.INTERVAL__VISIBILITY :
@@ -330,22 +338,22 @@ public class IntervalImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERVAL__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERVAL__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERVAL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERVAL__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INTERVAL__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INTERVAL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERVAL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERVAL__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.INTERVAL__TYPE :
-				return eVirtualGet(UMLPackage.INTERVAL__TYPE) != null;
+				return type != null;
 			case UMLPackage.INTERVAL__MIN :
-				return eVirtualGet(UMLPackage.INTERVAL__MIN) != null;
+				return min != null;
 			case UMLPackage.INTERVAL__MAX :
-				return eVirtualGet(UMLPackage.INTERVAL__MAX) != null;
+				return max != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

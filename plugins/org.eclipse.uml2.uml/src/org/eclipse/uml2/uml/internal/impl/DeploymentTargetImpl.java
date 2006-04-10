@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.15 2006/03/07 20:25:14 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.16 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -46,7 +48,6 @@ import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployedElements <em>Deployed Element</em>}</li>
@@ -58,6 +59,16 @@ import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
 public abstract class DeploymentTargetImpl
 		extends NamedElementImpl
 		implements DeploymentTarget {
+
+	/**
+	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList deployments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,16 +94,22 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT,
-					new int[]{UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT,
-						UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION,
-						UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -101,18 +118,34 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
-		if (clientDependency == null) {
-			eVirtualSet(
-				UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY,
-				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
-					Dependency.class, this,
-					UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, null,
-					new int[]{UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT},
-					UMLPackage.DEPENDENCY__CLIENT));
+		if (clientDependencies == null) {
+			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+				Dependency.class, this,
+				UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, null,
+				CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
 		}
-		return clientDependency;
+		return clientDependencies;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,17 +153,13 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public EList getDeployments() {
-		EList deployment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
-		if (deployment == null) {
-			eVirtualSet(
+		if (deployments == null) {
+			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				Deployment.class, this,
 				UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
-				deployment = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					Deployment.class, this,
-					UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
-					new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY},
-					null, UMLPackage.DEPLOYMENT__LOCATION));
+				DEPLOYMENT_ESUPERSETS, null, UMLPackage.DEPLOYMENT__LOCATION);
 		}
-		return deployment;
+		return deployments;
 	}
 
 	/**
@@ -391,15 +420,13 @@ public abstract class DeploymentTargetImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				return isSetName();
 			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
@@ -409,20 +436,32 @@ public abstract class DeploymentTargetImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
-				EList deployment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT,
+		UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION,
+		UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

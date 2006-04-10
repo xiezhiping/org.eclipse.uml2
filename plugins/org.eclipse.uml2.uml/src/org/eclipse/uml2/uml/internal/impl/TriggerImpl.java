@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.11 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,26 @@ public class TriggerImpl
 		implements Trigger {
 
 	/**
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvent()
+	 * @generated
+	 * @ordered
+	 */
+	protected Event event = null;
+
+	/**
+	 * The cached value of the '{@link #getPorts() <em>Port</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ports = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,12 +95,10 @@ public class TriggerImpl
 	 * @generated
 	 */
 	public Event getEvent() {
-		Event event = (Event) eVirtualGet(UMLPackage.TRIGGER__EVENT);
 		if (event != null && event.eIsProxy()) {
 			InternalEObject oldEvent = (InternalEObject) event;
 			event = (Event) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
-				eVirtualSet(UMLPackage.TRIGGER__EVENT, event);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TRIGGER__EVENT, oldEvent, event));
@@ -95,7 +113,7 @@ public class TriggerImpl
 	 * @generated
 	 */
 	public Event basicGetEvent() {
-		return (Event) eVirtualGet(UMLPackage.TRIGGER__EVENT);
+		return event;
 	}
 
 	/**
@@ -104,13 +122,11 @@ public class TriggerImpl
 	 * @generated
 	 */
 	public void setEvent(Event newEvent) {
-		Event event = newEvent;
-		Object oldEvent = eVirtualSet(UMLPackage.TRIGGER__EVENT, event);
+		Event oldEvent = event;
+		event = newEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRIGGER__EVENT, oldEvent == EVIRTUAL_NO_VALUE
-					? null
-					: oldEvent, event));
+				UMLPackage.TRIGGER__EVENT, oldEvent, event));
 
 	}
 
@@ -120,13 +136,11 @@ public class TriggerImpl
 	 * @generated
 	 */
 	public EList getPorts() {
-		EList port = (EList) eVirtualGet(UMLPackage.TRIGGER__PORT);
-		if (port == null) {
-			eVirtualSet(UMLPackage.TRIGGER__PORT,
-				port = new EObjectResolvingEList(Port.class, this,
-					UMLPackage.TRIGGER__PORT));
+		if (ports == null) {
+			ports = new EObjectResolvingEList(Port.class, this,
+				UMLPackage.TRIGGER__PORT);
 		}
-		return port;
+		return ports;
 	}
 
 	/**
@@ -282,15 +296,13 @@ public class TriggerImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TRIGGER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TRIGGER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TRIGGER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TRIGGER__OWNER :
 				return isSetOwner();
 			case UMLPackage.TRIGGER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TRIGGER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TRIGGER__NAME :
 				return isSetName();
 			case UMLPackage.TRIGGER__VISIBILITY :
@@ -300,17 +312,16 @@ public class TriggerImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TRIGGER__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TRIGGER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TRIGGER__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TRIGGER__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TRIGGER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TRIGGER__EVENT :
-				return eVirtualGet(UMLPackage.TRIGGER__EVENT) != null;
+				return event != null;
 			case UMLPackage.TRIGGER__PORT :
-				EList port = (EList) eVirtualGet(UMLPackage.TRIGGER__PORT);
-				return port != null && !port.isEmpty();
+				return ports != null && !ports.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

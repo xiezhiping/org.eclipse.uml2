@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.9 2006/02/21 16:12:16 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.10 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -46,6 +44,16 @@ public abstract class MessageEndImpl
 		implements MessageEnd {
 
 	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message message = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -69,12 +77,10 @@ public abstract class MessageEndImpl
 	 * @generated
 	 */
 	public Message getMessage() {
-		Message message = (Message) eVirtualGet(UMLPackage.MESSAGE_END__MESSAGE);
 		if (message != null && message.eIsProxy()) {
 			InternalEObject oldMessage = (InternalEObject) message;
 			message = (Message) eResolveProxy(oldMessage);
 			if (message != oldMessage) {
-				eVirtualSet(UMLPackage.MESSAGE_END__MESSAGE, message);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.MESSAGE_END__MESSAGE, oldMessage, message));
@@ -89,7 +95,7 @@ public abstract class MessageEndImpl
 	 * @generated
 	 */
 	public Message basicGetMessage() {
-		return (Message) eVirtualGet(UMLPackage.MESSAGE_END__MESSAGE);
+		return message;
 	}
 
 	/**
@@ -98,15 +104,11 @@ public abstract class MessageEndImpl
 	 * @generated
 	 */
 	public void setMessage(Message newMessage) {
-		Message message = newMessage;
-		Object oldMessage = eVirtualSet(UMLPackage.MESSAGE_END__MESSAGE,
-			message);
+		Message oldMessage = message;
+		message = newMessage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE_END__MESSAGE,
-				oldMessage == EVIRTUAL_NO_VALUE
-					? null
-					: oldMessage, message));
+				UMLPackage.MESSAGE_END__MESSAGE, oldMessage, message));
 
 	}
 
@@ -226,15 +228,13 @@ public abstract class MessageEndImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE_END__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MESSAGE_END__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MESSAGE_END__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MESSAGE_END__OWNER :
 				return isSetOwner();
 			case UMLPackage.MESSAGE_END__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.MESSAGE_END__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MESSAGE_END__NAME :
 				return isSetName();
 			case UMLPackage.MESSAGE_END__VISIBILITY :
@@ -244,14 +244,14 @@ public abstract class MessageEndImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MESSAGE_END__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.MESSAGE_END__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MESSAGE_END__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MESSAGE_END__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.MESSAGE_END__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.MESSAGE_END__MESSAGE :
-				return eVirtualGet(UMLPackage.MESSAGE_END__MESSAGE) != null;
+				return message != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

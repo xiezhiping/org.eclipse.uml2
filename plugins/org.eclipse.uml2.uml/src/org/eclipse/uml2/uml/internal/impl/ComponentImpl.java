@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.24 2006/03/08 19:02:44 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.25 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -57,8 +59,6 @@ import org.eclipse.uml2.uml.internal.operations.ComponentOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentImpl#isIndirectlyInstantiated <em>Is Indirectly Instantiated</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentImpl#getRequireds <em>Required</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentImpl#getProvideds <em>Provided</em>}</li>
@@ -91,7 +91,27 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 11;
+	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = 1 << 13;
+
+	/**
+	 * The cached value of the '{@link #getPackagedElements() <em>Packaged Element</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackagedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList packagedElements = null;
+
+	/**
+	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,23 +138,23 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.COMPONENT__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.COMPONENT__OWNED_MEMBER, new int[]{
-						UMLPackage.COMPONENT__OWNED_RULE,
-						UMLPackage.COMPONENT__OWNED_USE_CASE,
-						UMLPackage.COMPONENT__OWNED_ATTRIBUTE,
-						UMLPackage.COMPONENT__OWNED_CONNECTOR,
-						UMLPackage.COMPONENT__OWNED_BEHAVIOR,
-						UMLPackage.COMPONENT__OWNED_TRIGGER,
-						UMLPackage.COMPONENT__NESTED_CLASSIFIER,
-						UMLPackage.COMPONENT__OWNED_OPERATION,
-						UMLPackage.COMPONENT__OWNED_RECEPTION,
-						UMLPackage.COMPONENT__PACKAGED_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList(
+						NamedElement.class, this,
+						UMLPackage.COMPONENT__OWNED_MEMBER,
+						OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.COMPONENT__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -143,25 +163,22 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.COMPONENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.COMPONENT__OWNED_ELEMENT, new int[]{
-						UMLPackage.COMPONENT__OWNED_COMMENT,
-						UMLPackage.COMPONENT__NAME_EXPRESSION,
-						UMLPackage.COMPONENT__ELEMENT_IMPORT,
-						UMLPackage.COMPONENT__PACKAGE_IMPORT,
-						UMLPackage.COMPONENT__OWNED_MEMBER,
-						UMLPackage.COMPONENT__TEMPLATE_BINDING,
-						UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
-						UMLPackage.COMPONENT__GENERALIZATION,
-						UMLPackage.COMPONENT__SUBSTITUTION,
-						UMLPackage.COMPONENT__COLLABORATION_USE,
-						UMLPackage.COMPONENT__INTERFACE_REALIZATION,
-						UMLPackage.COMPONENT__REALIZATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.COMPONENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.COMPONENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -287,14 +304,12 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getPackagedElements() {
-		EList packagedElement = (EList) eVirtualGet(UMLPackage.COMPONENT__PACKAGED_ELEMENT);
-		if (packagedElement == null) {
-			eVirtualSet(UMLPackage.COMPONENT__PACKAGED_ELEMENT,
-				packagedElement = new EObjectContainmentEList.Resolving(
-					PackageableElement.class, this,
-					UMLPackage.COMPONENT__PACKAGED_ELEMENT));
+		if (packagedElements == null) {
+			packagedElements = new EObjectContainmentEList.Resolving(
+				PackageableElement.class, this,
+				UMLPackage.COMPONENT__PACKAGED_ELEMENT);
 		}
-		return packagedElement;
+		return packagedElements;
 	}
 
 	/**
@@ -348,15 +363,13 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getRealizations() {
-		EList realization = (EList) eVirtualGet(UMLPackage.COMPONENT__REALIZATION);
-		if (realization == null) {
-			eVirtualSet(UMLPackage.COMPONENT__REALIZATION,
-				realization = new EObjectContainmentWithInverseEList.Resolving(
-					ComponentRealization.class, this,
-					UMLPackage.COMPONENT__REALIZATION,
-					UMLPackage.COMPONENT_REALIZATION__ABSTRACTION));
+		if (realizations == null) {
+			realizations = new EObjectContainmentWithInverseEList.Resolving(
+				ComponentRealization.class, this,
+				UMLPackage.COMPONENT__REALIZATION,
+				UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
 		}
-		return realization;
+		return realizations;
 	}
 
 	/**
@@ -508,7 +521,6 @@ public class ComponentImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.COMPONENT__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -520,7 +532,6 @@ public class ComponentImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -1089,15 +1100,13 @@ public class ComponentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.COMPONENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.COMPONENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMPONENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.COMPONENT__NAME :
 				return isSetName();
 			case UMLPackage.COMPONENT__VISIBILITY :
@@ -1107,21 +1116,18 @@ public class ComponentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COMPONENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.COMPONENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.COMPONENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.COMPONENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.COMPONENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.COMPONENT__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.COMPONENT__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.COMPONENT__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.COMPONENT__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.COMPONENT__MEMBER :
 				return isSetMembers();
 			case UMLPackage.COMPONENT__IMPORTED_MEMBER :
@@ -1141,44 +1147,37 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.COMPONENT__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.COMPONENT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
 			case UMLPackage.COMPONENT__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.COMPONENT__GENERALIZATION :
-				EList generalization = (EList) eVirtualGet(UMLPackage.COMPONENT__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
-				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.COMPONENT__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UMLPackage.COMPONENT__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.COMPONENT__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.COMPONENT__REDEFINED_CLASSIFIER :
-				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.COMPONENT__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null
-					&& !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
 			case UMLPackage.COMPONENT__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.COMPONENT__SUBSTITUTION :
-				EList substitution = (EList) eVirtualGet(UMLPackage.COMPONENT__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.COMPONENT__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.COMPONENT__REPRESENTATION :
-				return eVirtualGet(UMLPackage.COMPONENT__REPRESENTATION) != null;
+				return representation != null;
 			case UMLPackage.COMPONENT__COLLABORATION_USE :
-				EList collaborationUse = (EList) eVirtualGet(UMLPackage.COMPONENT__COLLABORATION_USE);
-				return collaborationUse != null && !collaborationUse.isEmpty();
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.COMPONENT__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.COMPONENT__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.COMPONENT__PART :
@@ -1186,35 +1185,29 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__ROLE :
 				return isSetRoles();
 			case UMLPackage.COMPONENT__OWNED_CONNECTOR :
-				EList ownedConnector = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.COMPONENT__OWNED_BEHAVIOR :
-				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
 			case UMLPackage.COMPONENT__CLASSIFIER_BEHAVIOR :
-				return eVirtualGet(UMLPackage.COMPONENT__CLASSIFIER_BEHAVIOR) != null;
+				return classifierBehavior != null;
 			case UMLPackage.COMPONENT__INTERFACE_REALIZATION :
-				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.COMPONENT__INTERFACE_REALIZATION);
-				return interfaceRealization != null
-					&& !interfaceRealization.isEmpty();
+				return interfaceRealizations != null
+					&& !interfaceRealizations.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_TRIGGER :
-				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_TRIGGER);
-				return ownedTrigger != null && !ownedTrigger.isEmpty();
+				return ownedTriggers != null && !ownedTriggers.isEmpty();
 			case UMLPackage.COMPONENT__NESTED_CLASSIFIER :
-				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.COMPONENT__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null
+					&& !nestedClassifiers.isEmpty();
 			case UMLPackage.COMPONENT__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.COMPONENT__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
-				EList ownedReception = (EList) eVirtualGet(UMLPackage.COMPONENT__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.COMPONENT__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.COMPONENT__IS_INDIRECTLY_INSTANTIATED :
@@ -1224,11 +1217,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__PROVIDED :
 				return !getProvideds().isEmpty();
 			case UMLPackage.COMPONENT__PACKAGED_ELEMENT :
-				EList packagedElement = (EList) eVirtualGet(UMLPackage.COMPONENT__PACKAGED_ELEMENT);
-				return packagedElement != null && !packagedElement.isEmpty();
+				return packagedElements != null && !packagedElements.isEmpty();
 			case UMLPackage.COMPONENT__REALIZATION :
-				EList realization = (EList) eVirtualGet(UMLPackage.COMPONENT__REALIZATION);
-				return realization != null && !realization.isEmpty();
+				return realizations != null && !realizations.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1250,6 +1241,25 @@ public class ComponentImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.COMPONENT__OWNED_RULE, UMLPackage.COMPONENT__OWNED_USE_CASE,
+		UMLPackage.COMPONENT__OWNED_ATTRIBUTE,
+		UMLPackage.COMPONENT__OWNED_CONNECTOR,
+		UMLPackage.COMPONENT__OWNED_BEHAVIOR,
+		UMLPackage.COMPONENT__OWNED_TRIGGER,
+		UMLPackage.COMPONENT__NESTED_CLASSIFIER,
+		UMLPackage.COMPONENT__OWNED_OPERATION,
+		UMLPackage.COMPONENT__OWNED_RECEPTION,
+		UMLPackage.COMPONENT__PACKAGED_ELEMENT};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1258,6 +1268,28 @@ public class ComponentImpl
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.COMPONENT__PACKAGED_ELEMENT);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.COMPONENT__OWNED_COMMENT,
+		UMLPackage.COMPONENT__NAME_EXPRESSION,
+		UMLPackage.COMPONENT__ELEMENT_IMPORT,
+		UMLPackage.COMPONENT__PACKAGE_IMPORT,
+		UMLPackage.COMPONENT__OWNED_MEMBER,
+		UMLPackage.COMPONENT__TEMPLATE_BINDING,
+		UMLPackage.COMPONENT__OWNED_TEMPLATE_SIGNATURE,
+		UMLPackage.COMPONENT__GENERALIZATION,
+		UMLPackage.COMPONENT__SUBSTITUTION,
+		UMLPackage.COMPONENT__COLLABORATION_USE,
+		UMLPackage.COMPONENT__INTERFACE_REALIZATION,
+		UMLPackage.COMPONENT__REALIZATION};
 
 	/**
 	 * <!-- begin-user-doc -->

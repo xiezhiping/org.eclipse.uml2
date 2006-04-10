@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,9 +24,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -45,7 +48,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getSymbol <em>Symbol</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getOperands <em>Operand</em>}</li>
  * </ul>
@@ -66,6 +68,35 @@ public class ExpressionImpl
 	 * @ordered
 	 */
 	protected static final String SYMBOL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSymbol() <em>Symbol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSymbol()
+	 * @generated
+	 * @ordered
+	 */
+	protected String symbol = SYMBOL_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Symbol attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int SYMBOL_ESETFLAG = 1 << 10;
+
+	/**
+	 * The cached value of the '{@link #getOperands() <em>Operand</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperands()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList operands = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,16 +122,22 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.EXPRESSION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.EXPRESSION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.EXPRESSION__OWNED_ELEMENT, new int[]{
-						UMLPackage.EXPRESSION__OWNED_COMMENT,
-						UMLPackage.EXPRESSION__NAME_EXPRESSION,
-						UMLPackage.EXPRESSION__OPERAND}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.EXPRESSION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -109,8 +146,7 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public String getSymbol() {
-		return (String) eVirtualGet(UMLPackage.EXPRESSION__SYMBOL,
-			SYMBOL_EDEFAULT);
+		return symbol;
 	}
 
 	/**
@@ -119,14 +155,14 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public void setSymbol(String newSymbol) {
-		String symbol = newSymbol;
-		Object oldSymbol = eVirtualSet(UMLPackage.EXPRESSION__SYMBOL, symbol);
-		boolean isSetChange = oldSymbol == EVIRTUAL_NO_VALUE;
+		String oldSymbol = symbol;
+		symbol = newSymbol;
+		boolean oldSymbolESet = (eFlags & SYMBOL_ESETFLAG) != 0;
+		eFlags |= SYMBOL_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXPRESSION__SYMBOL, isSetChange
-					? SYMBOL_EDEFAULT
-					: oldSymbol, symbol, isSetChange));
+				UMLPackage.EXPRESSION__SYMBOL, oldSymbol, symbol,
+				!oldSymbolESet));
 
 	}
 
@@ -136,13 +172,14 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public void unsetSymbol() {
-		Object oldSymbol = eVirtualUnset(UMLPackage.EXPRESSION__SYMBOL);
-		boolean isSetChange = oldSymbol != EVIRTUAL_NO_VALUE;
+		String oldSymbol = symbol;
+		boolean oldSymbolESet = (eFlags & SYMBOL_ESETFLAG) != 0;
+		symbol = SYMBOL_EDEFAULT;
+		eFlags &= ~SYMBOL_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.EXPRESSION__SYMBOL, isSetChange
-					? oldSymbol
-					: SYMBOL_EDEFAULT, SYMBOL_EDEFAULT, isSetChange));
+				UMLPackage.EXPRESSION__SYMBOL, oldSymbol, SYMBOL_EDEFAULT,
+				oldSymbolESet));
 	}
 
 	/**
@@ -151,7 +188,7 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public boolean isSetSymbol() {
-		return eVirtualIsSet(UMLPackage.EXPRESSION__SYMBOL);
+		return (eFlags & SYMBOL_ESETFLAG) != 0;
 	}
 
 	/**
@@ -160,14 +197,11 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public EList getOperands() {
-		EList operand = (EList) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
-		if (operand == null) {
-			eVirtualSet(UMLPackage.EXPRESSION__OPERAND,
-				operand = new EObjectContainmentEList.Resolving(
-					ValueSpecification.class, this,
-					UMLPackage.EXPRESSION__OPERAND));
+		if (operands == null) {
+			operands = new EObjectContainmentEList.Resolving(
+				ValueSpecification.class, this, UMLPackage.EXPRESSION__OPERAND);
 		}
-		return operand;
+		return operands;
 	}
 
 	/**
@@ -402,15 +436,13 @@ public class ExpressionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXPRESSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXPRESSION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXPRESSION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXPRESSION__NAME :
 				return isSetName();
 			case UMLPackage.EXPRESSION__VISIBILITY :
@@ -420,23 +452,22 @@ public class ExpressionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXPRESSION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXPRESSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.EXPRESSION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.EXPRESSION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.EXPRESSION__TYPE :
-				return eVirtualGet(UMLPackage.EXPRESSION__TYPE) != null;
+				return type != null;
 			case UMLPackage.EXPRESSION__SYMBOL :
 				return isSetSymbol();
 			case UMLPackage.EXPRESSION__OPERAND :
-				EList operand = (EList) eVirtualGet(UMLPackage.EXPRESSION__OPERAND);
-				return operand != null && !operand.isEmpty();
+				return operands != null && !operands.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -452,13 +483,25 @@ public class ExpressionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (symbol: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.EXPRESSION__SYMBOL))
-			result.append(eVirtualGet(UMLPackage.EXPRESSION__SYMBOL));
+		if ((eFlags & SYMBOL_ESETFLAG) != 0)
+			result.append(symbol);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.EXPRESSION__OWNED_COMMENT,
+		UMLPackage.EXPRESSION__NAME_EXPRESSION, UMLPackage.EXPRESSION__OPERAND};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -64,7 +65,6 @@ import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getVisibility <em>Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getClassifiers <em>Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getSlots <em>Slot</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl#getSpecification <em>Specification</em>}</li>
@@ -76,6 +76,46 @@ import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 public class InstanceSpecificationImpl
 		extends DeploymentTargetImpl
 		implements InstanceSpecification {
+
+	/**
+	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateParameter templateParameter = null;
+
+	/**
+	 * The cached value of the '{@link #getClassifiers() <em>Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList classifiers = null;
+
+	/**
+	 * The cached value of the '{@link #getSlots() <em>Slot</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSlots()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList slots = null;
+
+	/**
+	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecification()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification specification = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,14 +141,10 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
 			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
-				eVirtualSet(
-					UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER,
-					templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER,
@@ -124,7 +160,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
+		return templateParameter;
 	}
 
 	/**
@@ -134,16 +170,13 @@ public class InstanceSpecificationImpl
 	 */
 	public NotificationChain basicSetTemplateParameter(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		Object oldTemplateParameter = eVirtualSet(
-			UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER,
-			newTemplateParameter);
+		TemplateParameter oldTemplateParameter = templateParameter;
+		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER,
-				oldTemplateParameter == EVIRTUAL_NO_VALUE
-					? null
-					: oldTemplateParameter, newTemplateParameter);
+				oldTemplateParameter, newTemplateParameter);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -167,7 +200,6 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -223,7 +255,6 @@ public class InstanceSpecificationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
-				Object templateParameter = eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (newOwningTemplateParameter != templateParameter) {
 					setTemplateParameter(newOwningTemplateParameter);
 				}
@@ -270,8 +301,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return (VisibilityKind) eVirtualGet(
-			UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY, VISIBILITY_EDEFAULT);
+		return visibility;
 	}
 
 	/**
@@ -280,17 +310,14 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind visibility = newVisibility == null
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
 			: newVisibility;
-		Object oldVisibility = eVirtualSet(
-			UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY, visibility);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
-					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+				UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY, oldVisibility,
+				visibility));
 
 	}
 
@@ -300,8 +327,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY,
-			VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+		return visibility != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -310,18 +336,23 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
-					new int[]{UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT,
-						UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION,
-						UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT,
-						UMLPackage.INSTANCE_SPECIFICATION__SLOT,
-						UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -330,13 +361,11 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public EList getClassifiers() {
-		EList classifier = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
-		if (classifier == null) {
-			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER,
-				classifier = new EObjectResolvingEList(Classifier.class, this,
-					UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER));
+		if (classifiers == null) {
+			classifiers = new EObjectResolvingEList(Classifier.class, this,
+				UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
 		}
-		return classifier;
+		return classifiers;
 	}
 
 	/**
@@ -375,7 +404,6 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (ValueSpecification) eResolveProxy(oldSpecification);
@@ -408,7 +436,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -418,15 +446,13 @@ public class InstanceSpecificationImpl
 	 */
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(
-			UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION, newSpecification);
+		ValueSpecification oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
-				oldSpecification == EVIRTUAL_NO_VALUE
-					? null
-					: oldSpecification, newSpecification);
+				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -442,7 +468,6 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -487,14 +512,12 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public EList getSlots() {
-		EList slot = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
-		if (slot == null) {
-			eVirtualSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT,
-				slot = new EObjectContainmentWithInverseEList.Resolving(
-					Slot.class, this, UMLPackage.INSTANCE_SPECIFICATION__SLOT,
-					UMLPackage.SLOT__OWNING_INSTANCE));
+		if (slots == null) {
+			slots = new EObjectContainmentWithInverseEList.Resolving(
+				Slot.class, this, UMLPackage.INSTANCE_SPECIFICATION__SLOT,
+				UMLPackage.SLOT__OWNING_INSTANCE);
 		}
-		return slot;
+		return slots;
 	}
 
 	/**
@@ -593,7 +616,6 @@ public class InstanceSpecificationImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -822,15 +844,13 @@ public class InstanceSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY :
@@ -840,29 +860,26 @@ public class InstanceSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
-				EList deployment = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
-				EList classifier = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
-				return classifier != null && !classifier.isEmpty();
+				return classifiers != null && !classifiers.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
-				EList slot = (EList) eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SLOT);
-				return slot != null && !slot.isEmpty();
+				return slots != null && !slots.isEmpty();
 			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
-				return eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION) != null;
+				return specification != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -940,9 +957,7 @@ public class InstanceSpecificationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result
-			.append(eVirtualGet(UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY,
-				VISIBILITY_EDEFAULT));
+		result.append(visibility);
 		result.append(')');
 		return result.toString();
 	}
@@ -969,6 +984,21 @@ public class InstanceSpecificationImpl
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT,
+		UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION,
+		UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT,
+		UMLPackage.INSTANCE_SPECIFICATION__SLOT,
+		UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION};
 
 	/**
 	 * <!-- begin-user-doc -->

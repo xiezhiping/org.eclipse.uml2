@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.20 2006/03/07 21:43:25 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.21 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -55,7 +57,6 @@ import org.eclipse.uml2.uml.internal.operations.NamedElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getQualifiedName <em>Qualified Name</em>}</li>
@@ -81,6 +82,25 @@ public abstract class NamedElementImpl
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Name attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NAME_ESETFLAG = 1 << 8;
+
+	/**
 	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,6 +111,25 @@ public abstract class NamedElementImpl
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Visibility attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VISIBILITY_ESETFLAG = 1 << 9;
+
+	/**
 	 * The default value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,6 +138,26 @@ public abstract class NamedElementImpl
 	 * @ordered
 	 */
 	protected static final String QUALIFIED_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList clientDependencies = null;
+
+	/**
+	 * The cached value of the '{@link #getNameExpression() <em>Name Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNameExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected StringExpression nameExpression = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,15 +183,22 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT, new int[]{
-						UMLPackage.NAMED_ELEMENT__OWNED_COMMENT,
-						UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -141,8 +207,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public String getName() {
-		return (String) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME,
-			NAME_EDEFAULT);
+		return name;
 	}
 
 	/**
@@ -151,14 +216,13 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String name = newName;
-		Object oldName = eVirtualSet(UMLPackage.NAMED_ELEMENT__NAME, name);
-		boolean isSetChange = oldName == EVIRTUAL_NO_VALUE;
+		String oldName = name;
+		name = newName;
+		boolean oldNameESet = (eFlags & NAME_ESETFLAG) != 0;
+		eFlags |= NAME_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.NAMED_ELEMENT__NAME, isSetChange
-					? NAME_EDEFAULT
-					: oldName, name, isSetChange));
+				UMLPackage.NAMED_ELEMENT__NAME, oldName, name, !oldNameESet));
 
 	}
 
@@ -168,13 +232,14 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void unsetName() {
-		Object oldName = eVirtualUnset(UMLPackage.NAMED_ELEMENT__NAME);
-		boolean isSetChange = oldName != EVIRTUAL_NO_VALUE;
+		String oldName = name;
+		boolean oldNameESet = (eFlags & NAME_ESETFLAG) != 0;
+		name = NAME_EDEFAULT;
+		eFlags &= ~NAME_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.NAMED_ELEMENT__NAME, isSetChange
-					? oldName
-					: NAME_EDEFAULT, NAME_EDEFAULT, isSetChange));
+				UMLPackage.NAMED_ELEMENT__NAME, oldName, NAME_EDEFAULT,
+				oldNameESet));
 	}
 
 	/**
@@ -183,7 +248,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public boolean isSetName() {
-		return eVirtualIsSet(UMLPackage.NAMED_ELEMENT__NAME);
+		return (eFlags & NAME_ESETFLAG) != 0;
 	}
 
 	/**
@@ -192,8 +257,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return (VisibilityKind) eVirtualGet(
-			UMLPackage.NAMED_ELEMENT__VISIBILITY, VISIBILITY_EDEFAULT);
+		return visibility;
 	}
 
 	/**
@@ -202,17 +266,16 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind visibility = newVisibility == null
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
 			: newVisibility;
-		Object oldVisibility = eVirtualSet(
-			UMLPackage.NAMED_ELEMENT__VISIBILITY, visibility);
-		boolean isSetChange = oldVisibility == EVIRTUAL_NO_VALUE;
+		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
+		eFlags |= VISIBILITY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.NAMED_ELEMENT__VISIBILITY, isSetChange
-					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility, isSetChange));
+				UMLPackage.NAMED_ELEMENT__VISIBILITY, oldVisibility,
+				visibility, !oldVisibilityESet));
 
 	}
 
@@ -222,13 +285,14 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void unsetVisibility() {
-		Object oldVisibility = eVirtualUnset(UMLPackage.NAMED_ELEMENT__VISIBILITY);
-		boolean isSetChange = oldVisibility != EVIRTUAL_NO_VALUE;
+		VisibilityKind oldVisibility = visibility;
+		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
+		visibility = VISIBILITY_EDEFAULT;
+		eFlags &= ~VISIBILITY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.NAMED_ELEMENT__VISIBILITY, isSetChange
-					? oldVisibility
-					: VISIBILITY_EDEFAULT, VISIBILITY_EDEFAULT, isSetChange));
+				UMLPackage.NAMED_ELEMENT__VISIBILITY, oldVisibility,
+				VISIBILITY_EDEFAULT, oldVisibilityESet));
 	}
 
 	/**
@@ -237,7 +301,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualIsSet(UMLPackage.NAMED_ELEMENT__VISIBILITY);
+		return (eFlags & VISIBILITY_ESETFLAG) != 0;
 	}
 
 	/**
@@ -255,16 +319,13 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		EList clientDependency = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
-		if (clientDependency == null) {
-			eVirtualSet(
+		if (clientDependencies == null) {
+			clientDependencies = new EObjectWithInverseResolvingEList.ManyInverse(
+				Dependency.class, this,
 				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY,
-				clientDependency = new EObjectWithInverseResolvingEList.ManyInverse(
-					Dependency.class, this,
-					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY,
-					UMLPackage.DEPENDENCY__CLIENT));
+				UMLPackage.DEPENDENCY__CLIENT);
 		}
-		return clientDependency;
+		return clientDependencies;
 	}
 
 	/**
@@ -303,7 +364,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public StringExpression getNameExpression() {
-		StringExpression nameExpression = (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
 		if (nameExpression != null && nameExpression.eIsProxy()) {
 			InternalEObject oldNameExpression = (InternalEObject) nameExpression;
 			nameExpression = (StringExpression) eResolveProxy(oldNameExpression);
@@ -335,7 +395,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public StringExpression basicGetNameExpression() {
-		return (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
+		return nameExpression;
 	}
 
 	/**
@@ -345,14 +405,12 @@ public abstract class NamedElementImpl
 	 */
 	public NotificationChain basicSetNameExpression(
 			StringExpression newNameExpression, NotificationChain msgs) {
-		Object oldNameExpression = eVirtualSet(
-			UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, newNameExpression);
+		StringExpression oldNameExpression = nameExpression;
+		nameExpression = newNameExpression;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION,
-				oldNameExpression == EVIRTUAL_NO_VALUE
-					? null
-					: oldNameExpression, newNameExpression);
+				oldNameExpression, newNameExpression);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -368,7 +426,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setNameExpression(StringExpression newNameExpression) {
-		StringExpression nameExpression = (StringExpression) eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
 		if (newNameExpression != nameExpression) {
 			NotificationChain msgs = null;
 			if (nameExpression != null)
@@ -669,15 +726,13 @@ public abstract class NamedElementImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.NAMED_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				return isSetName();
 			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
@@ -687,12 +742,12 @@ public abstract class NamedElementImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -708,13 +763,13 @@ public abstract class NamedElementImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.NAMED_ELEMENT__NAME))
-			result.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__NAME));
+		if ((eFlags & NAME_ESETFLAG) != 0)
+			result.append(name);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", visibility: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.NAMED_ELEMENT__VISIBILITY))
-			result.append(eVirtualGet(UMLPackage.NAMED_ELEMENT__VISIBILITY));
+		if ((eFlags & VISIBILITY_ESETFLAG) != 0)
+			result.append(visibility);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
@@ -782,6 +837,18 @@ public abstract class NamedElementImpl
 	public boolean isSetOwner() {
 		return super.isSetOwner() || isSetNamespace();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.NAMED_ELEMENT__OWNED_COMMENT,
+		UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION};
 
 	/**
 	 * <!-- begin-user-doc -->

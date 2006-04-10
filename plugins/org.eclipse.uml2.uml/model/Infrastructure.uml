@@ -98,7 +98,7 @@
               </ownedComment>
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRgG9BTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
-                <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xA;  implies self.qualifiedName->isEmpty()</body>
+                <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xA;&#xA;  implies self.qualifiedName->isEmpty()</body>
               </specification>
             </ownedRule>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_rRgG_BTaEdqZu-3Jy1-uYg" name="has_qualified_name" constrainedElement="_3ADC7B74022D3CA0071C02FD">
@@ -581,9 +581,13 @@
           <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0320C02DB" name="InstanceSpecification">
             <ownedComment xmi:type="uml:Comment" xmi:id="_rVrcXhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA0320C02DB">
               <body>An instance specification specifies existence of an entity in a modeled system and completely or partially describes the entity. The description includes:
+
   - Classification of the entity by one or more classifiers of which the entity is an instance. If the only classifier specified is abstract, then the instance specification only partially describes the entity.
+
   - The kind of instance, based on its classifier or classifiers: for example, an instance specification whose classifier is a class describes an object of that class, while an instance specification whose classifier is an association describes a link of that association.
+
   - Specification of values of structural features of the entity. Not all structural features of all classifiers of the instance specification need be represented by slots, in which case the instance specification is a partial description.
+
   - Specification of how to compute, derive or construct the instance (optional). InstanceSpecification is a concrete class.</body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_rV0mQxTaEdqZu-3Jy1-uYg" name="slots_are_defined" constrainedElement="_3ADC7B74022D3CA0320C02DB">
@@ -974,6 +978,7 @@
           <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA099F902D0" name="Constraint">
             <ownedComment xmi:type="uml:Comment" xmi:id="_rY8yxhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA099F902D0">
               <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
+
 Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to the element. Constraint contains an optional name, although they are commonly unnamed.</body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_rY8yzxTaEdqZu-3Jy1-uYg" name="not_apply_to_self" constrainedElement="_3ADC7B74022D3CA099F902D0">
@@ -1104,9 +1109,13 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAD9E0F01D0" name="VisibilityKind">
             <ownedComment xmi:type="uml:Comment" xmi:id="_raJsoRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAD9E0F01D0">
               <body>VisibilityKind is an enumeration of the following literal values:
+
   - public
+
   - private
+
   - protected
+
   - package</body>
             </ownedComment>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D3E107BB80139" name="bestVisibility" isQuery="true" bodyCondition="_raJsqhTaEdqZu-3Jy1-uYg">
@@ -1702,8 +1711,12 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010AC0090" name="Boolean">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010AC0090">
             <body>Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:
+
   - true: The Boolean condition is satisfied.
+
   - false: The Boolean condition is not satisfied.
+
+
 
 It is used for Boolean attribute and Boolean expressions in the metamodel, such as OCL expression.</body>
           </ownedComment>
@@ -2930,6 +2943,8 @@ It is used for Boolean attribute and Boolean expressions in the metamodel, such 
           <ownedComment xmi:type="uml:Comment" xmi:id="_rmXjwRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6E15D033A">
             <body>An association specifies a semantic relationship that can occur between typed instances. It has at least two ends represented by properties, each of which is connected to the type of the end. More than one end of an association may have the same type.
 
+
+
 An end property of an association that is owned by an end class or that is a navigable owned end of the association indicates that the association is navigable from the opposite ends, otherwise the association is not navigable from the opposite ends.</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_rmXjyxTaEdqZu-3Jy1-uYg" name="association_ends" constrainedElement="_3ADC7B74022D3DE6E15D033A">
@@ -3033,6 +3048,8 @@ An end property of an association that is owned by an end class or that is a nav
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D57500AC" name="Property">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rmgtsxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D57500AC">
             <body>Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association.
+
+
 
 Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property's type.</body>
           </ownedComment>
@@ -3256,6 +3273,8 @@ Property is indirectly a subclass of Constructs::TypedElement. The range of vali
           <ownedComment xmi:type="uml:Comment" xmi:id="_rnHKkxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D25202A6">
             <body>A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.
 
+
+
 A typical use of data types would be to represent programming language primitive types or CORBA basic types. For example, integer and string types are often treated as data types.</body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3DEE7FF2011D" general="_3ADC7B74022D3DE6C8630317"/>
@@ -3296,7 +3315,9 @@ A typical use of data types would be to represent programming language primitive
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D2750152" name="Enumeration">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rnHKohTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6D2750152">
             <body>Enumeration is a kind of data type, whose instances may be any of a number of predefined enumeration literals.
+
 It is possible to extend the set of applicable enumeration literals in other packages or profiles.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3DE6D2D7038E" general="_3ADC7B74022D3DE6D25202A6"/>
@@ -3330,6 +3351,7 @@ It is possible to extend the set of applicable enumeration literals in other pac
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE766450007" name="Constraint">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rnQUhBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE766450007">
             <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
+
 Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to the element. Constraint contains an optional name, although they are commonly unnamed.</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_rnQUjRTaEdqZu-3Jy1-uYg" name="not_apply_to_self" constrainedElement="_3ADC7B74022D3DE766450007">
@@ -3361,6 +3383,7 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3DFCC88D0337" name="specification" type="_3ADC7B74022D3DE6C7F30294" aggregation="composite" subsettedProperty="_3ADC7B74022D3DFCA80700B4" association="_3ADC7B74022D3DFCC88D0157">
             <ownedComment xmi:type="uml:Comment" xmi:id="_rseLsxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFCC88D0337">
               <body>A condition that must be true when evaluated in order for the constraint to be satisfied.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rseLtxTaEdqZu-3Jy1-uYg" value="1"/>
@@ -3864,7 +3887,11 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
           <ownedComment xmi:type="uml:Comment" xmi:id="_rowJbRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DEE8DFE0290">
             <body>A package merge is a directed relationship between two packages, that indicates that the contents of the two packages are to be combined. It is very similar to Generalization in the sense that the source element conceptually adds the characteristics of the target element to its own characteristics resulting in an element that combines the characteristics of both.
 
+
+
 This mechanism should be used when elements defined in different packages have the same name and are intended to represent the same concept. Most often it is used to provide different definitions of a given concept for different purposes, starting from a common base definition. A given base concept is extended in increments, with each increment defined in a separate merged package. By selecting which increments to merge, it is possible to obtain a custom definition of a concept for a specific end. Package merge is particularly useful in meta-modeling and is extensively used in the definition of the UML metamodel.
+
+
 
 Conceptually, a package merge can be viewed as an operation that takes the contents of two packages and produces a new package that combines the contents of the packages involved in the merge. In terms of model semantics, there is no difference between a model with explicit package merges, and a model in which all the merges have been performed.</body>
           </ownedComment>
@@ -3921,7 +3948,7 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_ro5TWxTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xA;  implies self.qualifiedName->isEmpty()</body>
+              <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xA;&#xA;  implies self.qualifiedName->isEmpty()</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEQxTaEdqZu-3Jy1-uYg" name="has_qualified_name" constrainedElement="_3ADC7B74022D3DE6BC6B01BD">
@@ -4061,10 +4088,15 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4161A8F100CC">
             <body>ParameterDirectionKind is an enumeration of the following literal values:
+
   - in Indicates that parameter values are passed into the behavioral element by the caller.
+
   - inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
+
   - out Indicates that parameter values are passed from a behavioral element out to the caller.
+
   - return Indicates that parameter values are passed as return values from a behavioral element back to the caller.
+
 </body>
           </ownedComment>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3ADC7B74022D4161A93C01BC" name="in">
@@ -4091,9 +4123,13 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D41C2D6020188" name="VisibilityKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rpfwPBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41C2D6020188">
             <body>VisibilityKind is an enumeration of the following literal values:
+
   - public
+
   - private
+
   - protected
+
   - package</body>
           </ownedComment>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D42EE305C00E3" name="bestVisibility" isQuery="true" bodyCondition="_rpfwRRTaEdqZu-3Jy1-uYg">
@@ -4386,7 +4422,11 @@ Conceptually, a package merge can be viewed as an operation that takes the conte
         <ownedComment xmi:type="uml:Comment" xmi:id="_rt-AmBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA186E10085">
           <body>A Profile is a kind of Package that extends a reference metamodel. The primary extension construct is the Stereotype, which are defined as part of Profiles.
 
+
+
 A profile introduces several constraints, or restrictions, on ordinary metamodeling through the use of the metaclasses defined in this package.
+
+
 
 A profile is a restricted form of a metamodel that must always be related to a reference metamodel, such as UML, as described below. A profile cannot be used without its reference metamodel, and defines a limited capability to extendmetaclasses of the reference metamodel. The extensions are defined as stereotypes that apply to existing metaclasses.</body>
         </ownedComment>
@@ -4396,7 +4436,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_dCELMTakEdqq1tCaRkgBQQ">
             <language>OCL</language>
-            <body>self.metaclassReference.importedElement->&#xA;  select(c | c.oclIsKindOf(Classifier) and&#xA;    (c.generalization.namespace = self or&#xA;      (c.specialization.namespace = self) )->isEmpty()</body>
+            <body>self.metaclassReference.importedElement->&#xA;&#xA;  select(c | c.oclIsKindOf(Classifier) and&#xA;&#xA;    (c.generalization.namespace = self or&#xA;&#xA;      (c.specialization.namespace = self) )->isEmpty()</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_ichowDakEdqq1tCaRkgBQQ" name="references_same_metamodel" constrainedElement="_3ADC7B74022D3CA186E10085">
@@ -4405,7 +4445,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_ichowTakEdqq1tCaRkgBQQ">
             <language>OCL</language>
-            <body>self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->&#xA;  union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()</body>
+            <body>self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->&#xA;&#xA;  union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_bC_LMEfCEdq0rbStTpEubg" general="_3ADC7B74022D3DE6D5DA0183"/>
@@ -4600,6 +4640,7 @@ A profile is a restricted form of a metamodel that must always be related to a r
         <ownedOperation xmi:type="uml:Operation" xmi:id="_InW3ADajEdqq1tCaRkgBQQ" name="lowerBound" isQuery="true" redefinedOperation="_3ADC7B74022D42EE305C00C6" bodyCondition="_ZWJvkDajEdqq1tCaRkgBQQ">
           <ownedComment xmi:type="uml:Comment" xmi:id="_YkFZcDajEdqq1tCaRkgBQQ" annotatedElement="_InW3ADajEdqq1tCaRkgBQQ">
             <body>The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default
+
 lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_ZWJvkDajEdqq1tCaRkgBQQ" name="spec" constrainedElement="_InW3ADajEdqq1tCaRkgBQQ">
@@ -4633,6 +4674,8 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <ownedAttribute xmi:type="uml:Property" xmi:id="_P1lH4HGhEdqziYxiZo0YtA" name="format" type="_3ADC7B74022D3CA010B103C3">
           <ownedComment xmi:type="uml:Comment" xmi:id="_EbshsHGlEdqziYxiZo0YtA" annotatedElement="_P1lH4HGhEdqziYxiZo0YtA">
             <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP.
+
+
 
 In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example &quot;SVG&quot; could instead be expressed as &quot;MIME: image/svg+xml&quot;.</body>
           </ownedComment>
@@ -4723,95 +4766,95 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EReference xmi:id="_plje8MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CADCD85009B"/>
-  <Ecore:EReference xmi:id="_plje8cRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CADCD8500A5"/>
-  <Ecore:EAttribute xmi:id="_plje8sRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CA0080E03C3" isID="true"/>
-  <Ecore:EAttribute xmi:id="_plje88RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA008400375"/>
-  <Ecore:EReference xmi:id="_plje9MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA008A2036C"/>
-  <Ecore:EOperation xmi:id="_plje9cRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName"/>
-  <Ecore:EReference xmi:id="_plje9sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA008A20358"/>
-  <Ecore:EReference xmi:id="_plplkMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA0098401B9"/>
-  <Ecore:EReference xmi:id="_plplkcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA00B92018D"/>
-  <Ecore:EReference xmi:id="_plplksRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA00B920183"/>
-  <Ecore:EAttribute xmi:id="_plplk8RUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AE11E501C8"/>
-  <Ecore:EAttribute xmi:id="_plpllMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D41AE120C0319"/>
-  <Ecore:EAttribute xmi:id="_plpllcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3E555C7702E8"/>
-  <Ecore:EAttribute xmi:id="_plpllsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DF78F1C034C"/>
-  <Ecore:EAttribute xmi:id="_plvsMMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DF78F2B0290"/>
-  <Ecore:EOperation xmi:id="_plvsMcRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_plvsMsRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper"/>
-  <Ecore:EReference xmi:id="_plvsM8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA02BDB0015"/>
-  <Ecore:EReference xmi:id="_plvsNMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CA01B20019D"/>
-  <Ecore:EReference xmi:id="_plvsNcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CADABFE01E3"/>
-  <Ecore:EReference xmi:id="_plvsNsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DF65B8D0134"/>
-  <Ecore:EOperation xmi:id="_plvsN8RUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E105DC8003E" operationName="getGenerals"/>
-  <Ecore:EAttribute xmi:id="_pl1y0MRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC072502E2"/>
-  <Ecore:EReference xmi:id="_pl1y0cRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DE6A15F02E3"/>
-  <Ecore:EReference xmi:id="_pl1y0sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DE6A1830227"/>
-  <Ecore:EReference xmi:id="_pl1y08RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D7A3113026A"/>
-  <Ecore:EReference xmi:id="_pl1y1MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000D5"/>
-  <Ecore:EReference xmi:id="_pl1y1cRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9EF3300FA"/>
-  <Ecore:EReference xmi:id="_pl1y1sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000FD"/>
-  <Ecore:EAttribute xmi:id="_pl1y18RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CADC5B702BE"/>
-  <Ecore:EReference xmi:id="_pl1y2MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DF65A9D02E0"/>
-  <Ecore:EOperation xmi:id="_pl8ggMRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E10722C00E4" operationName="getInheritedMembers"/>
-  <Ecore:EAttribute xmi:id="_pl8ggcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CB5A28802FF"/>
-  <Ecore:EDataType xmi:id="_pl8ggsRUEdq3a_CVKGVcKw" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3CA010A4007B"/>
-  <Ecore:EDataType xmi:id="_pl8gg8RUEdq3a_CVKGVcKw" instanceClassName="boolean" base_PrimitiveType="_3ADC7B74022D3CA010AC0090"/>
-  <Ecore:EDataType xmi:id="_pl8ghMRUEdq3a_CVKGVcKw" instanceClassName="java.lang.String" base_PrimitiveType="_3ADC7B74022D3CA010B103C3"/>
-  <Ecore:EDataType xmi:id="_pl8ghcRUEdq3a_CVKGVcKw" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3DE6A93C0003"/>
-  <Ecore:EAttribute xmi:id="_pmCnIMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3DE6AC4701DA"/>
-  <Ecore:EAttribute xmi:id="_pmCnIcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3DE6A6EE0069" isID="true"/>
-  <Ecore:EAttribute xmi:id="_pmCnIsRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D417820CB0110"/>
-  <Ecore:EReference xmi:id="_pmCnI8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DE6E42E034A"/>
-  <Ecore:EReference xmi:id="_pmCnJMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F0246"/>
-  <Ecore:EReference xmi:id="_pmCnJcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D4304A13201D9"/>
-  <Ecore:EOperation xmi:id="_pmCnJsRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D42EE305C00D9" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_pmItwMRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D42EE305C00F1" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_pmItwcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCAC7900D9"/>
-  <Ecore:EReference xmi:id="_pmItwsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCACAF0090"/>
-  <Ecore:EReference xmi:id="_pmItw8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700B4"/>
-  <Ecore:EReference xmi:id="_pmItxMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700BE"/>
-  <Ecore:EReference xmi:id="_pmItxcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F025A"/>
-  <Ecore:EReference xmi:id="_pmItxsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DEE234B0163"/>
-  <Ecore:EReference xmi:id="_pmItx8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCB8650177"/>
-  <Ecore:EReference xmi:id="_pmItyMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCB82F00DA"/>
-  <Ecore:EOperation xmi:id="_pmO0YMRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E142ABF004B" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_pmO0YcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCBDBD028D"/>
-  <Ecore:EReference xmi:id="_pmO0YsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCBE1F00FD"/>
-  <Ecore:EReference xmi:id="_pmO0Y8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCAC2F019B"/>
-  <Ecore:EReference xmi:id="_pmO0ZMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DE75D87003B"/>
-  <Ecore:EAttribute xmi:id="_pmO0ZcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D4201104A02AF"/>
-  <Ecore:EReference xmi:id="_pmO0ZsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DE6E76603BD"/>
-  <Ecore:EOperation xmi:id="_pmU7AMRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite"/>
-  <Ecore:EAttribute xmi:id="_pmU7AcRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41FC52E503B5"/>
-  <Ecore:EAttribute xmi:id="_pmU7AsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D41FC52EF0215"/>
-  <Ecore:EAttribute xmi:id="_pmU7A8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E03284C0289"/>
-  <Ecore:EAttribute xmi:id="_pmU7BMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E032859015B"/>
-  <Ecore:EAttribute xmi:id="_pmU7BcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0328B001D9"/>
-  <Ecore:EAttribute xmi:id="_pmU7BsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0328710341"/>
-  <Ecore:EReference xmi:id="_pmU7B8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DEE7BDA017A"/>
-  <Ecore:EOperation xmi:id="_pmbBoMRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E142F3E03CB" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_pmbBocRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E142F7500B3" operationName="upperBound"/>
-  <Ecore:EOperation xmi:id="_pmbBosRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType"/>
-  <Ecore:EAttribute xmi:id="_pmbBo8RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3DE7647D021E"/>
-  <Ecore:EAttribute xmi:id="_pmbBpMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3DEE875F0333"/>
-  <Ecore:EReference xmi:id="_pmbBpcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DEE344701CC"/>
-  <Ecore:EReference xmi:id="_pmbBpsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD3029F"/>
-  <Ecore:EReference xmi:id="_pmbBp8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD302F9"/>
-  <Ecore:EReference xmi:id="_pmhIQMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DEE344701FE"/>
-  <Ecore:EAttribute xmi:id="_pmhIQcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3DE6BF540255" isID="true"/>
-  <Ecore:EAttribute xmi:id="_pmhIQsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D41C2D63E00EE"/>
-  <Ecore:EReference xmi:id="_pmhIQ8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFCB86501A0"/>
-  <Ecore:EAttribute xmi:id="_pmhIRMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_7-d1kIa_EdqhgMOAOWpjfQ"/>
-  <Ecore:EOperation xmi:id="_pmhIRcRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName"/>
-  <Ecore:EAttribute xmi:id="_pmhIRsRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41BDD0260325"/>
-  <Ecore:EReference xmi:id="_pmnO4MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CB24B21030C"/>
-  <Ecore:EReference xmi:id="_pmnO4cRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03DD"/>
-  <Ecore:EAttribute xmi:id="_pmnO4sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CBDA7B50011"/>
-  <Ecore:EReference xmi:id="_pmnO48RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03E7"/>
-  <Ecore:EOperation xmi:id="_pmnO5MRUEdq3a_CVKGVcKw" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass"/>
-  <Ecore:EAttribute xmi:id="_pmtVgMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_GgC74HGhEdqziYxiZo0YtA"/>
-  <Ecore:EAttribute xmi:id="_pmtVgcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_LCBSQHGhEdqziYxiZo0YtA"/>
-  <Ecore:EAttribute xmi:id="_pmtVgsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_P1lH4HGhEdqziYxiZo0YtA"/>
+  <Ecore:EReference xmi:id="_aBH6gMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CADCD85009B"/>
+  <Ecore:EReference xmi:id="_aBREcMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CADCD8500A5"/>
+  <Ecore:EAttribute xmi:id="_aBREccWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CA0080E03C3" isID="true"/>
+  <Ecore:EAttribute xmi:id="_aBREcsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA008400375"/>
+  <Ecore:EReference xmi:id="_aBREc8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA008A2036C"/>
+  <Ecore:EOperation xmi:id="_aBREdMWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName"/>
+  <Ecore:EReference xmi:id="_aBREdcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA008A20358"/>
+  <Ecore:EReference xmi:id="_aBREdsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA0098401B9"/>
+  <Ecore:EReference xmi:id="_aBREd8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA00B92018D"/>
+  <Ecore:EReference xmi:id="_aBREeMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA00B920183"/>
+  <Ecore:EAttribute xmi:id="_aBREecWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AE11E501C8"/>
+  <Ecore:EAttribute xmi:id="_aBREesWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D41AE120C0319"/>
+  <Ecore:EAttribute xmi:id="_aBREe8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3E555C7702E8"/>
+  <Ecore:EAttribute xmi:id="_aBREfMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DF78F1C034C"/>
+  <Ecore:EAttribute xmi:id="_aBREfcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DF78F2B0290"/>
+  <Ecore:EOperation xmi:id="_aBREfsWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower"/>
+  <Ecore:EOperation xmi:id="_aBREf8WCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper"/>
+  <Ecore:EReference xmi:id="_aBa1cMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA02BDB0015"/>
+  <Ecore:EReference xmi:id="_aBa1ccWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CA01B20019D"/>
+  <Ecore:EReference xmi:id="_aBa1csWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CADABFE01E3"/>
+  <Ecore:EReference xmi:id="_aBa1c8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DF65B8D0134"/>
+  <Ecore:EOperation xmi:id="_aBa1dMWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E105DC8003E" operationName="getGenerals"/>
+  <Ecore:EAttribute xmi:id="_aBa1dcWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC072502E2"/>
+  <Ecore:EReference xmi:id="_aBa1dsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DE6A15F02E3"/>
+  <Ecore:EReference xmi:id="_aBa1d8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DE6A1830227"/>
+  <Ecore:EReference xmi:id="_aBa1eMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D7A3113026A"/>
+  <Ecore:EReference xmi:id="_aBa1ecWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000D5"/>
+  <Ecore:EReference xmi:id="_aBa1esWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9EF3300FA"/>
+  <Ecore:EReference xmi:id="_aBa1e8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000FD"/>
+  <Ecore:EAttribute xmi:id="_aBa1fMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CADC5B702BE"/>
+  <Ecore:EReference xmi:id="_aBkmcMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DF65A9D02E0"/>
+  <Ecore:EOperation xmi:id="_aBkmccWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E10722C00E4" operationName="getInheritedMembers"/>
+  <Ecore:EAttribute xmi:id="_aBkmcsWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CB5A28802FF"/>
+  <Ecore:EDataType xmi:id="_aBkmc8WCEdqI1bY5Lwi8Hg" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3CA010A4007B"/>
+  <Ecore:EDataType xmi:id="_aBkmdMWCEdqI1bY5Lwi8Hg" instanceClassName="boolean" base_PrimitiveType="_3ADC7B74022D3CA010AC0090"/>
+  <Ecore:EDataType xmi:id="_aBkmdcWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.String" base_PrimitiveType="_3ADC7B74022D3CA010B103C3"/>
+  <Ecore:EDataType xmi:id="_aBkmdsWCEdqI1bY5Lwi8Hg" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3DE6A93C0003"/>
+  <Ecore:EAttribute xmi:id="_aBkmd8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3DE6AC4701DA"/>
+  <Ecore:EAttribute xmi:id="_aBkmeMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3DE6A6EE0069" isID="true"/>
+  <Ecore:EAttribute xmi:id="_aBtwYMWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D417820CB0110"/>
+  <Ecore:EReference xmi:id="_aBtwYcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DE6E42E034A"/>
+  <Ecore:EReference xmi:id="_aBtwYsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F0246"/>
+  <Ecore:EReference xmi:id="_aBtwY8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D4304A13201D9"/>
+  <Ecore:EOperation xmi:id="_aBtwZMWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D42EE305C00D9" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_aBtwZcWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D42EE305C00F1" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_aBtwZsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCAC7900D9"/>
+  <Ecore:EReference xmi:id="_aBtwZ8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCACAF0090"/>
+  <Ecore:EReference xmi:id="_aBtwaMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700B4"/>
+  <Ecore:EReference xmi:id="_aBtwacWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700BE"/>
+  <Ecore:EReference xmi:id="_aBtwasWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F025A"/>
+  <Ecore:EReference xmi:id="_aB3hYMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DEE234B0163"/>
+  <Ecore:EReference xmi:id="_aB3hYcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCB8650177"/>
+  <Ecore:EReference xmi:id="_aB3hYsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCB82F00DA"/>
+  <Ecore:EOperation xmi:id="_aB3hY8WCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E142ABF004B" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_aB3hZMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCBDBD028D"/>
+  <Ecore:EReference xmi:id="_aB3hZcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCBE1F00FD"/>
+  <Ecore:EReference xmi:id="_aB3hZsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCAC2F019B"/>
+  <Ecore:EReference xmi:id="_aB3hZ8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DE75D87003B"/>
+  <Ecore:EAttribute xmi:id="_aB3haMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D4201104A02AF"/>
+  <Ecore:EReference xmi:id="_aB3hacWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DE6E76603BD"/>
+  <Ecore:EOperation xmi:id="_aB3hasWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite"/>
+  <Ecore:EAttribute xmi:id="_aB3ha8WCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41FC52E503B5"/>
+  <Ecore:EAttribute xmi:id="_aB3hbMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D41FC52EF0215"/>
+  <Ecore:EAttribute xmi:id="_aCArUMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E03284C0289"/>
+  <Ecore:EAttribute xmi:id="_aCArUcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E032859015B"/>
+  <Ecore:EAttribute xmi:id="_aCArUsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0328B001D9"/>
+  <Ecore:EAttribute xmi:id="_aCArU8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0328710341"/>
+  <Ecore:EReference xmi:id="_aCArVMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DEE7BDA017A"/>
+  <Ecore:EOperation xmi:id="_aCArVcWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E142F3E03CB" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_aCArVsWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E142F7500B3" operationName="upperBound"/>
+  <Ecore:EOperation xmi:id="_aCArV8WCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType"/>
+  <Ecore:EAttribute xmi:id="_aCArWMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3DE7647D021E"/>
+  <Ecore:EAttribute xmi:id="_aCArWcWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3DEE875F0333"/>
+  <Ecore:EReference xmi:id="_aCArWsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DEE344701CC"/>
+  <Ecore:EReference xmi:id="_aCArW8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD3029F"/>
+  <Ecore:EReference xmi:id="_aCArXMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD302F9"/>
+  <Ecore:EReference xmi:id="_aCArXcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DEE344701FE"/>
+  <Ecore:EAttribute xmi:id="_aCArXsWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3DE6BF540255" isID="true"/>
+  <Ecore:EAttribute xmi:id="_aCArX8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D41C2D63E00EE"/>
+  <Ecore:EReference xmi:id="_aCArYMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFCB86501A0"/>
+  <Ecore:EAttribute xmi:id="_aCArYcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_7-d1kIa_EdqhgMOAOWpjfQ"/>
+  <Ecore:EOperation xmi:id="_aCKcUMWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName"/>
+  <Ecore:EAttribute xmi:id="_aCKcUcWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41BDD0260325"/>
+  <Ecore:EReference xmi:id="_aCKcUsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CB24B21030C"/>
+  <Ecore:EReference xmi:id="_aCKcU8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03DD"/>
+  <Ecore:EAttribute xmi:id="_aCKcVMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CBDA7B50011"/>
+  <Ecore:EReference xmi:id="_aCKcVcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03E7"/>
+  <Ecore:EOperation xmi:id="_aCKcVsWCEdqI1bY5Lwi8Hg" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass"/>
+  <Ecore:EAttribute xmi:id="_aCKcV8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_GgC74HGhEdqziYxiZo0YtA"/>
+  <Ecore:EAttribute xmi:id="_aCKcWMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_LCBSQHGhEdqziYxiZo0YtA"/>
+  <Ecore:EAttribute xmi:id="_aCKcWcWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_P1lH4HGhEdqziYxiZo0YtA"/>
 </xmi:XMI>

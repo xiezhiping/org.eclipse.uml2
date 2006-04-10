@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationImpl.java,v 1.11 2006/03/15 19:34:05 khussey Exp $
+ * $Id: ActionExecutionSpecificationImpl.java,v 1.12 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -55,6 +53,16 @@ public class ActionExecutionSpecificationImpl
 		implements ActionExecutionSpecification {
 
 	/**
+	 * The cached value of the '{@link #getAction() <em>Action</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAction()
+	 * @generated
+	 * @ordered
+	 */
+	protected Action action = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,13 +86,10 @@ public class ActionExecutionSpecificationImpl
 	 * @generated
 	 */
 	public Action getAction() {
-		Action action = (Action) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION);
 		if (action != null && action.eIsProxy()) {
 			InternalEObject oldAction = (InternalEObject) action;
 			action = (Action) eResolveProxy(oldAction);
 			if (action != oldAction) {
-				eVirtualSet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION,
-					action);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION,
@@ -100,7 +105,7 @@ public class ActionExecutionSpecificationImpl
 	 * @generated
 	 */
 	public Action basicGetAction() {
-		return (Action) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION);
+		return action;
 	}
 
 	/**
@@ -109,15 +114,12 @@ public class ActionExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setAction(Action newAction) {
-		Action action = newAction;
-		Object oldAction = eVirtualSet(
-			UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION, action);
+		Action oldAction = action;
+		action = newAction;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION,
-				oldAction == EVIRTUAL_NO_VALUE
-					? null
-					: oldAction, action));
+				UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION, oldAction,
+				action));
 
 	}
 
@@ -306,15 +308,13 @@ public class ActionExecutionSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__VISIBILITY :
@@ -324,28 +324,26 @@ public class ActionExecutionSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__START :
-				return eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__START) != null;
+				return start != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__FINISH :
-				return eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__FINISH) != null;
+				return finish != null;
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION :
-				return eVirtualGet(UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION) != null;
+				return action != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

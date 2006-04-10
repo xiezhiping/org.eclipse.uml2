@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.20 2006/03/15 19:34:01 khussey Exp $
+ * $Id: RegionImpl.java,v 1.21 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
@@ -60,10 +62,8 @@ import org.eclipse.uml2.uml.internal.operations.RegionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#isLeaf <em>Is Leaf</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getSubvertices <em>Subvertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getTransitions <em>Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getState <em>State</em>}</li>
@@ -96,7 +96,37 @@ public class RegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 8;
+	protected static final int IS_LEAF_EFLAG = 1 << 10;
+
+	/**
+	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubvertices()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList subvertices = null;
+
+	/**
+	 * The cached value of the '{@link #getTransitions() <em>Transition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList transitions = null;
+
+	/**
+	 * The cached value of the '{@link #getExtendedRegion() <em>Extended Region</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtendedRegion()
+	 * @generated
+	 * @ordered
+	 */
+	protected Region extendedRegion = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,15 +152,23 @@ public class RegionImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.REGION__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.REGION__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.REGION__REDEFINED_ELEMENT,
-					new int[]{UMLPackage.REGION__EXTENDED_REGION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.REGION__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.REGION__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -274,16 +312,24 @@ public class RegionImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.REGION__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.REGION__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.REGION__OWNED_MEMBER, new int[]{
-						UMLPackage.REGION__OWNED_RULE,
-						UMLPackage.REGION__SUBVERTEX,
-						UMLPackage.REGION__TRANSITION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache
+					.put(eResource, this,
+						UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+						ownedMembers = new DerivedUnionEObjectEList(
+							NamedElement.class, this,
+							UMLPackage.REGION__OWNED_MEMBER,
+							OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.REGION__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -292,14 +338,12 @@ public class RegionImpl
 	 * @generated
 	 */
 	public EList getSubvertices() {
-		EList subvertex = (EList) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
-		if (subvertex == null) {
-			eVirtualSet(UMLPackage.REGION__SUBVERTEX,
-				subvertex = new EObjectContainmentWithInverseEList.Resolving(
-					Vertex.class, this, UMLPackage.REGION__SUBVERTEX,
-					UMLPackage.VERTEX__CONTAINER));
+		if (subvertices == null) {
+			subvertices = new EObjectContainmentWithInverseEList.Resolving(
+				Vertex.class, this, UMLPackage.REGION__SUBVERTEX,
+				UMLPackage.VERTEX__CONTAINER);
 		}
-		return subvertex;
+		return subvertices;
 	}
 
 	/**
@@ -353,14 +397,12 @@ public class RegionImpl
 	 * @generated
 	 */
 	public EList getTransitions() {
-		EList transition = (EList) eVirtualGet(UMLPackage.REGION__TRANSITION);
-		if (transition == null) {
-			eVirtualSet(UMLPackage.REGION__TRANSITION,
-				transition = new EObjectContainmentWithInverseEList.Resolving(
-					Transition.class, this, UMLPackage.REGION__TRANSITION,
-					UMLPackage.TRANSITION__CONTAINER));
+		if (transitions == null) {
+			transitions = new EObjectContainmentWithInverseEList.Resolving(
+				Transition.class, this, UMLPackage.REGION__TRANSITION,
+				UMLPackage.TRANSITION__CONTAINER);
 		}
-		return transition;
+		return transitions;
 	}
 
 	/**
@@ -484,12 +526,10 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Region getExtendedRegion() {
-		Region extendedRegion = (Region) eVirtualGet(UMLPackage.REGION__EXTENDED_REGION);
 		if (extendedRegion != null && extendedRegion.eIsProxy()) {
 			InternalEObject oldExtendedRegion = (InternalEObject) extendedRegion;
 			extendedRegion = (Region) eResolveProxy(oldExtendedRegion);
 			if (extendedRegion != oldExtendedRegion) {
-				eVirtualSet(UMLPackage.REGION__EXTENDED_REGION, extendedRegion);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.REGION__EXTENDED_REGION, oldExtendedRegion,
@@ -505,7 +545,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public Region basicGetExtendedRegion() {
-		return (Region) eVirtualGet(UMLPackage.REGION__EXTENDED_REGION);
+		return extendedRegion;
 	}
 
 	/**
@@ -514,15 +554,12 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setExtendedRegion(Region newExtendedRegion) {
-		Region extendedRegion = newExtendedRegion;
-		Object oldExtendedRegion = eVirtualSet(
-			UMLPackage.REGION__EXTENDED_REGION, extendedRegion);
+		Region oldExtendedRegion = extendedRegion;
+		extendedRegion = newExtendedRegion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.REGION__EXTENDED_REGION,
-				oldExtendedRegion == EVIRTUAL_NO_VALUE
-					? null
-					: oldExtendedRegion, extendedRegion));
+				UMLPackage.REGION__EXTENDED_REGION, oldExtendedRegion,
+				extendedRegion));
 
 	}
 
@@ -1013,15 +1050,13 @@ public class RegionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.REGION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.REGION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.REGION__OWNER :
 				return isSetOwner();
 			case UMLPackage.REGION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.REGION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.REGION__NAME :
 				return isSetName();
 			case UMLPackage.REGION__VISIBILITY :
@@ -1031,21 +1066,18 @@ public class RegionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.REGION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.REGION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.REGION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.REGION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.REGION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.REGION__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.REGION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.REGION__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.REGION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.REGION__MEMBER :
 				return isSetMembers();
 			case UMLPackage.REGION__IMPORTED_MEMBER :
@@ -1059,15 +1091,13 @@ public class RegionImpl
 			case UMLPackage.REGION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.REGION__SUBVERTEX :
-				EList subvertex = (EList) eVirtualGet(UMLPackage.REGION__SUBVERTEX);
-				return subvertex != null && !subvertex.isEmpty();
+				return subvertices != null && !subvertices.isEmpty();
 			case UMLPackage.REGION__TRANSITION :
-				EList transition = (EList) eVirtualGet(UMLPackage.REGION__TRANSITION);
-				return transition != null && !transition.isEmpty();
+				return transitions != null && !transitions.isEmpty();
 			case UMLPackage.REGION__STATE :
 				return basicGetState() != null;
 			case UMLPackage.REGION__EXTENDED_REGION :
-				return eVirtualGet(UMLPackage.REGION__EXTENDED_REGION) != null;
+				return extendedRegion != null;
 			case UMLPackage.REGION__STATE_MACHINE :
 				return basicGetStateMachine() != null;
 		}
@@ -1131,6 +1161,28 @@ public class RegionImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.REGION__EXTENDED_REGION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.REGION__OWNED_RULE, UMLPackage.REGION__SUBVERTEX,
+		UMLPackage.REGION__TRANSITION};
 
 	/**
 	 * <!-- begin-user-doc -->

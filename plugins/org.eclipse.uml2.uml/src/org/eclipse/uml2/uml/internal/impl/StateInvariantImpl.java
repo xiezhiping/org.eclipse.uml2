@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.17 2006/03/15 19:34:01 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,9 +24,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Constraint;
@@ -46,7 +49,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateInvariantImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateInvariantImpl#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateInvariantImpl#getCovereds <em>Covered</em>}</li>
  * </ul>
@@ -57,6 +59,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class StateInvariantImpl
 		extends InteractionFragmentImpl
 		implements StateInvariant {
+
+	/**
+	 * The cached value of the '{@link #getInvariant() <em>Invariant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInvariant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint invariant = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,17 +94,22 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.STATE_INVARIANT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.STATE_INVARIANT__OWNED_ELEMENT, new int[]{
-						UMLPackage.STATE_INVARIANT__OWNED_COMMENT,
-						UMLPackage.STATE_INVARIANT__NAME_EXPRESSION,
-						UMLPackage.STATE_INVARIANT__GENERAL_ORDERING,
-						UMLPackage.STATE_INVARIANT__INVARIANT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.STATE_INVARIANT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.STATE_INVARIANT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -101,7 +118,6 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Constraint getInvariant() {
-		Constraint invariant = (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
 		if (invariant != null && invariant.eIsProxy()) {
 			InternalEObject oldInvariant = (InternalEObject) invariant;
 			invariant = (Constraint) eResolveProxy(oldInvariant);
@@ -132,7 +148,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public Constraint basicGetInvariant() {
-		return (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
+		return invariant;
 	}
 
 	/**
@@ -142,14 +158,12 @@ public class StateInvariantImpl
 	 */
 	public NotificationChain basicSetInvariant(Constraint newInvariant,
 			NotificationChain msgs) {
-		Object oldInvariant = eVirtualSet(
-			UMLPackage.STATE_INVARIANT__INVARIANT, newInvariant);
+		Constraint oldInvariant = invariant;
+		invariant = newInvariant;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.STATE_INVARIANT__INVARIANT,
-				oldInvariant == EVIRTUAL_NO_VALUE
-					? null
-					: oldInvariant, newInvariant);
+				oldInvariant, newInvariant);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -165,7 +179,6 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public void setInvariant(Constraint newInvariant) {
-		Constraint invariant = (Constraint) eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT);
 		if (newInvariant != invariant) {
 			NotificationChain msgs = null;
 			if (invariant != null)
@@ -214,14 +227,12 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public EList getCovereds() {
-		EList covered = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
-		if (covered == null) {
-			eVirtualSet(UMLPackage.STATE_INVARIANT__COVERED,
-				covered = new EObjectWithInverseResolvingEList.ManyInverse(
-					Lifeline.class, this, UMLPackage.STATE_INVARIANT__COVERED,
-					UMLPackage.LIFELINE__COVERED_BY));
+		if (covereds == null) {
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse(
+				Lifeline.class, this, UMLPackage.STATE_INVARIANT__COVERED,
+				UMLPackage.LIFELINE__COVERED_BY);
 		}
-		return covered;
+		return covereds;
 	}
 
 	/**
@@ -256,8 +267,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		EList covered = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__COVERED);
-		return covered != null && !covered.isEmpty();
+		return covereds != null && !covereds.isEmpty();
 	}
 
 	/**
@@ -449,15 +459,13 @@ public class StateInvariantImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STATE_INVARIANT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STATE_INVARIANT__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAME :
 				return isSetName();
 			case UMLPackage.STATE_INVARIANT__VISIBILITY :
@@ -467,26 +475,39 @@ public class StateInvariantImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STATE_INVARIANT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.STATE_INVARIANT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				return isSetCovereds();
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.STATE_INVARIANT__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.STATE_INVARIANT__INVARIANT :
-				return eVirtualGet(UMLPackage.STATE_INVARIANT__INVARIANT) != null;
+				return invariant != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.STATE_INVARIANT__OWNED_COMMENT,
+		UMLPackage.STATE_INVARIANT__NAME_EXPRESSION,
+		UMLPackage.STATE_INVARIANT__GENERAL_ORDERING,
+		UMLPackage.STATE_INVARIANT__INVARIANT};
 
 	/**
 	 * <!-- begin-user-doc -->

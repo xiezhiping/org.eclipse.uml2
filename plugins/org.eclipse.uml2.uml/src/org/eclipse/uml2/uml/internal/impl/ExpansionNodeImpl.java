@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -56,6 +54,26 @@ public class ExpansionNodeImpl
 		implements ExpansionNode {
 
 	/**
+	 * The cached value of the '{@link #getRegionAsOutput() <em>Region As Output</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegionAsOutput()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExpansionRegion regionAsOutput = null;
+
+	/**
+	 * The cached value of the '{@link #getRegionAsInput() <em>Region As Input</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegionAsInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExpansionRegion regionAsInput = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -79,13 +97,10 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public ExpansionRegion getRegionAsOutput() {
-		ExpansionRegion regionAsOutput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
 		if (regionAsOutput != null && regionAsOutput.eIsProxy()) {
 			InternalEObject oldRegionAsOutput = (InternalEObject) regionAsOutput;
 			regionAsOutput = (ExpansionRegion) eResolveProxy(oldRegionAsOutput);
 			if (regionAsOutput != oldRegionAsOutput) {
-				eVirtualSet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT,
-					regionAsOutput);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT,
@@ -101,7 +116,7 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public ExpansionRegion basicGetRegionAsOutput() {
-		return (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
+		return regionAsOutput;
 	}
 
 	/**
@@ -111,14 +126,12 @@ public class ExpansionNodeImpl
 	 */
 	public NotificationChain basicSetRegionAsOutput(
 			ExpansionRegion newRegionAsOutput, NotificationChain msgs) {
-		Object oldRegionAsOutput = eVirtualSet(
-			UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT, newRegionAsOutput);
+		ExpansionRegion oldRegionAsOutput = regionAsOutput;
+		regionAsOutput = newRegionAsOutput;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT,
-				oldRegionAsOutput == EVIRTUAL_NO_VALUE
-					? null
-					: oldRegionAsOutput, newRegionAsOutput);
+				oldRegionAsOutput, newRegionAsOutput);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -134,7 +147,6 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public void setRegionAsOutput(ExpansionRegion newRegionAsOutput) {
-		ExpansionRegion regionAsOutput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
 		if (newRegionAsOutput != regionAsOutput) {
 			NotificationChain msgs = null;
 			if (regionAsOutput != null)
@@ -161,13 +173,10 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public ExpansionRegion getRegionAsInput() {
-		ExpansionRegion regionAsInput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
 		if (regionAsInput != null && regionAsInput.eIsProxy()) {
 			InternalEObject oldRegionAsInput = (InternalEObject) regionAsInput;
 			regionAsInput = (ExpansionRegion) eResolveProxy(oldRegionAsInput);
 			if (regionAsInput != oldRegionAsInput) {
-				eVirtualSet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT,
-					regionAsInput);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXPANSION_NODE__REGION_AS_INPUT,
@@ -183,7 +192,7 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public ExpansionRegion basicGetRegionAsInput() {
-		return (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
+		return regionAsInput;
 	}
 
 	/**
@@ -193,14 +202,12 @@ public class ExpansionNodeImpl
 	 */
 	public NotificationChain basicSetRegionAsInput(
 			ExpansionRegion newRegionAsInput, NotificationChain msgs) {
-		Object oldRegionAsInput = eVirtualSet(
-			UMLPackage.EXPANSION_NODE__REGION_AS_INPUT, newRegionAsInput);
+		ExpansionRegion oldRegionAsInput = regionAsInput;
+		regionAsInput = newRegionAsInput;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.EXPANSION_NODE__REGION_AS_INPUT,
-				oldRegionAsInput == EVIRTUAL_NO_VALUE
-					? null
-					: oldRegionAsInput, newRegionAsInput);
+				oldRegionAsInput, newRegionAsInput);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -216,7 +223,6 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public void setRegionAsInput(ExpansionRegion newRegionAsInput) {
-		ExpansionRegion regionAsInput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
 		if (newRegionAsInput != regionAsInput) {
 			NotificationChain msgs = null;
 			if (regionAsInput != null)
@@ -273,14 +279,12 @@ public class ExpansionNodeImpl
 				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
-				ExpansionRegion regionAsOutput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
 				if (regionAsOutput != null)
 					msgs = ((InternalEObject) regionAsOutput).eInverseRemove(
 						this, UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT,
 						ExpansionRegion.class, msgs);
 				return basicSetRegionAsOutput((ExpansionRegion) otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
-				ExpansionRegion regionAsInput = (ExpansionRegion) eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
 				if (regionAsInput != null)
 					msgs = ((InternalEObject) regionAsInput).eInverseRemove(
 						this, UMLPackage.EXPANSION_REGION__INPUT_ELEMENT,
@@ -599,15 +603,13 @@ public class ExpansionNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXPANSION_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXPANSION_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXPANSION_NODE__NAME :
 				return isSetName();
 			case UMLPackage.EXPANSION_NODE__VISIBILITY :
@@ -617,12 +619,12 @@ public class ExpansionNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXPANSION_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.EXPANSION_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.EXPANSION_NODE__REDEFINED_ELEMENT :
@@ -634,41 +636,34 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.EXPANSION_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.EXPANSION_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.EXPANSION_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.EXPANSION_NODE__TYPE :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__TYPE) != null;
+				return type != null;
 			case UMLPackage.EXPANSION_NODE__ORDERING :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__ORDERING,
-					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UMLPackage.EXPANSION_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UMLPackage.EXPANSION_NODE__IN_STATE :
-				EList inState = (EList) eVirtualGet(UMLPackage.EXPANSION_NODE__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UMLPackage.EXPANSION_NODE__SELECTION :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__SELECTION) != null;
+				return selection != null;
 			case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT) != null;
+				return regionAsOutput != null;
 			case UMLPackage.EXPANSION_NODE__REGION_AS_INPUT :
-				return eVirtualGet(UMLPackage.EXPANSION_NODE__REGION_AS_INPUT) != null;
+				return regionAsInput != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

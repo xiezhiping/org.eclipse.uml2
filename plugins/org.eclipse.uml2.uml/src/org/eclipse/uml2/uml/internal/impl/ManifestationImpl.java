@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.11 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.12 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -54,6 +54,16 @@ public class ManifestationImpl
 		implements Manifestation {
 
 	/**
+	 * The cached value of the '{@link #getUtilizedElement() <em>Utilized Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUtilizedElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected PackageableElement utilizedElement = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -77,16 +87,23 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(UMLPackage.MANIFESTATION__SUPPLIER,
-				supplier = new SubsetSupersetEObjectResolvingEList(
-					NamedElement.class, this,
-					UMLPackage.MANIFESTATION__SUPPLIER, null,
-					new int[]{UMLPackage.MANIFESTATION__UTILIZED_ELEMENT}));
+		if (suppliers == null) {
+			suppliers = new SubsetSupersetEObjectResolvingEList(
+				NamedElement.class, this, UMLPackage.MANIFESTATION__SUPPLIER,
+				null, SUPPLIER_ESUBSETS);
 		}
-		return supplier;
+		return suppliers;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.MANIFESTATION__UTILIZED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,13 +111,10 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public PackageableElement getUtilizedElement() {
-		PackageableElement utilizedElement = (PackageableElement) eVirtualGet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT);
 		if (utilizedElement != null && utilizedElement.eIsProxy()) {
 			InternalEObject oldUtilizedElement = (InternalEObject) utilizedElement;
 			utilizedElement = (PackageableElement) eResolveProxy(oldUtilizedElement);
 			if (utilizedElement != oldUtilizedElement) {
-				eVirtualSet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT,
-					utilizedElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.MANIFESTATION__UTILIZED_ELEMENT,
@@ -116,7 +130,7 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public PackageableElement basicGetUtilizedElement() {
-		return (PackageableElement) eVirtualGet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT);
+		return utilizedElement;
 	}
 
 	/**
@@ -125,22 +139,19 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public void setUtilizedElement(PackageableElement newUtilizedElement) {
-		PackageableElement utilizedElement = newUtilizedElement;
-		Object oldUtilizedElement = eVirtualSet(
-			UMLPackage.MANIFESTATION__UTILIZED_ELEMENT, utilizedElement);
+		PackageableElement oldUtilizedElement = utilizedElement;
+		utilizedElement = newUtilizedElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MANIFESTATION__UTILIZED_ELEMENT,
-				oldUtilizedElement == EVIRTUAL_NO_VALUE
-					? null
-					: oldUtilizedElement, utilizedElement));
+				UMLPackage.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement,
+				utilizedElement));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newUtilizedElement != null) {
-				EList supplier = getSuppliers();
-				if (!supplier.contains(newUtilizedElement)) {
-					supplier.add(newUtilizedElement);
+				EList suppliers = getSuppliers();
+				if (!suppliers.contains(newUtilizedElement)) {
+					suppliers.add(newUtilizedElement);
 				}
 			}
 		}
@@ -316,15 +327,13 @@ public class ManifestationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MANIFESTATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MANIFESTATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MANIFESTATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.MANIFESTATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MANIFESTATION__NAME :
 				return isSetName();
 			case UMLPackage.MANIFESTATION__VISIBILITY :
@@ -334,16 +343,16 @@ public class ManifestationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MANIFESTATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.MANIFESTATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.MANIFESTATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.MANIFESTATION__SOURCE :
@@ -351,15 +360,13 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.MANIFESTATION__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.MANIFESTATION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.MANIFESTATION__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.MANIFESTATION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UMLPackage.MANIFESTATION__MAPPING :
-				return eVirtualGet(UMLPackage.MANIFESTATION__MAPPING) != null;
+				return mapping != null;
 			case UMLPackage.MANIFESTATION__UTILIZED_ELEMENT :
-				return eVirtualGet(UMLPackage.MANIFESTATION__UTILIZED_ELEMENT) != null;
+				return utilizedElement != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

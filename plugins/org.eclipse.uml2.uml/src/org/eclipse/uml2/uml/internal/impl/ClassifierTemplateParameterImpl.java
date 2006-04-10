@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.15 2006/03/15 19:34:05 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.16 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -77,6 +75,26 @@ public class ClassifierTemplateParameterImpl
 	protected static final int ALLOW_SUBSTITUTABLE_EFLAG = 1 << 8;
 
 	/**
+	 * The cached value of the '{@link #getDefaultClassifier() <em>Default Classifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultClassifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier defaultClassifier = null;
+
+	/**
+	 * The cached value of the '{@link #getConstrainingClassifier() <em>Constraining Classifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstrainingClassifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier constrainingClassifier = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -128,14 +146,10 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public Classifier getDefaultClassifier() {
-		Classifier defaultClassifier = (Classifier) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER);
 		if (defaultClassifier != null && defaultClassifier.eIsProxy()) {
 			InternalEObject oldDefaultClassifier = (InternalEObject) defaultClassifier;
 			defaultClassifier = (Classifier) eResolveProxy(oldDefaultClassifier);
 			if (defaultClassifier != oldDefaultClassifier) {
-				eVirtualSet(
-					UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
-					defaultClassifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(
 						this,
@@ -153,7 +167,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public Classifier basicGetDefaultClassifier() {
-		return (Classifier) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER);
+		return defaultClassifier;
 	}
 
 	/**
@@ -162,16 +176,12 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setDefaultClassifier(Classifier newDefaultClassifier) {
-		Classifier defaultClassifier = newDefaultClassifier;
-		Object oldDefaultClassifier = eVirtualSet(
-			UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
-			defaultClassifier);
+		Classifier oldDefaultClassifier = defaultClassifier;
+		defaultClassifier = newDefaultClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
-				oldDefaultClassifier == EVIRTUAL_NO_VALUE
-					? null
-					: oldDefaultClassifier, defaultClassifier));
+				oldDefaultClassifier, defaultClassifier));
 
 	}
 
@@ -181,14 +191,10 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public Classifier getConstrainingClassifier() {
-		Classifier constrainingClassifier = (Classifier) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER);
 		if (constrainingClassifier != null && constrainingClassifier.eIsProxy()) {
 			InternalEObject oldConstrainingClassifier = (InternalEObject) constrainingClassifier;
 			constrainingClassifier = (Classifier) eResolveProxy(oldConstrainingClassifier);
 			if (constrainingClassifier != oldConstrainingClassifier) {
-				eVirtualSet(
-					UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
-					constrainingClassifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(
 						this,
@@ -206,7 +212,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public Classifier basicGetConstrainingClassifier() {
-		return (Classifier) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER);
+		return constrainingClassifier;
 	}
 
 	/**
@@ -215,18 +221,14 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setConstrainingClassifier(Classifier newConstrainingClassifier) {
-		Classifier constrainingClassifier = newConstrainingClassifier;
-		Object oldConstrainingClassifier = eVirtualSet(
-			UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
-			constrainingClassifier);
+		Classifier oldConstrainingClassifier = constrainingClassifier;
+		constrainingClassifier = newConstrainingClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(
 				this,
 				Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
-				oldConstrainingClassifier == EVIRTUAL_NO_VALUE
-					? null
-					: oldConstrainingClassifier, constrainingClassifier));
+				oldConstrainingClassifier, constrainingClassifier));
 
 	}
 
@@ -236,14 +238,10 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getParameteredElement() {
-		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
 			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
-				eVirtualSet(
-					UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-					parameteredElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(
 						this,
@@ -261,7 +259,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement basicGetParameteredElement() {
-		return (ParameterableElement) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
+		return parameteredElement;
 	}
 
 	/**
@@ -271,16 +269,13 @@ public class ClassifierTemplateParameterImpl
 	 */
 	public NotificationChain basicSetParameteredElementGen(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
-		Object oldParameteredElement = eVirtualSet(
-			UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-			newParameteredElement);
+		ParameterableElement oldParameteredElement = parameteredElement;
+		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-				oldParameteredElement == EVIRTUAL_NO_VALUE
-					? null
-					: oldParameteredElement, newParameteredElement);
+				oldParameteredElement, newParameteredElement);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -304,7 +299,6 @@ public class ClassifierTemplateParameterImpl
 		Resource.Internal eInternalResource = eInternalResource();
 
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			Object ownedParameteredElement = eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 
 			if (ownedParameteredElement != null
 				&& ownedParameteredElement != newParameteredElement) {
@@ -322,7 +316,6 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
-		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -349,7 +342,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public boolean isSetParameteredElement() {
-		return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
+		return parameteredElement != null;
 	}
 
 	/**
@@ -508,31 +501,29 @@ public class ClassifierTemplateParameterImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
+				return ownedParameteredElement != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
-				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT) != null;
+				return default_ != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
+				return ownedDefault != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER :
-				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER) != null;
+				return defaultClassifier != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
-				return eVirtualGet(UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER) != null;
+				return constrainingClassifier != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

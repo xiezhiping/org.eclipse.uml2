@@ -8,12 +8,6 @@
       <mergedPackage xmi:type="uml:Model" href="L3.uml#_EBtHcBmMEdqvcs97umGEYQ"/>
     </packageMerge>
     <packagedElement xmi:type="uml:Class" xmi:id="_kl90MGvbEdq4DLWZOhbdEA" name="Element" isAbstract="true">
-      <generalization xmi:type="uml:Generalization" xmi:id="_qzYYsGvbEdq4DLWZOhbdEA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZLhloGvlEdqRFtUp8wmbQQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_dZroIGvlEdqRFtUp8wmbQQ" key="extend"/>
-        </eAnnotations>
-        <general xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
-      </generalization>
       <generalization xmi:type="uml:Generalization" xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
         <general xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53903D4E40050"/>
       </generalization>
@@ -1023,9 +1017,9 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_jmPn4MRUEdq3a_CVKGVcKw" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
-  <Ecore:EDataType xmi:id="_jm0PoMRUEdq3a_CVKGVcKw" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_jm0PocRUEdq3a_CVKGVcKw" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_jm0PosRUEdq3a_CVKGVcKw" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_jm0Po8RUEdq3a_CVKGVcKw" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EPackage xmi:id="_T_B1MMWCEdqI1bY5Lwi8Hg" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EDataType xmi:id="_T_7NEMWCEdqI1bY5Lwi8Hg" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_T_7NEcWCEdqI1bY5Lwi8Hg" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_T_7NEsWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_T_7NE8WCEdqI1bY5Lwi8Hg" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
 </xmi:XMI>

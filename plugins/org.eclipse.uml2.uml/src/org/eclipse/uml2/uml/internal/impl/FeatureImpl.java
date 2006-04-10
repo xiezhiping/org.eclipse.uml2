@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.11 2006/02/22 20:48:16 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -36,7 +39,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.FeatureImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.FeatureImpl#isStatic <em>Is Static</em>}</li>
  * </ul>
  * </p>
@@ -65,7 +67,7 @@ public abstract class FeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = 1 << 9;
+	protected static final int IS_STATIC_EFLAG = 1 << 11;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,15 +92,50 @@ public abstract class FeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList) eVirtualGet(UMLPackage.FEATURE__FEATURING_CLASSIFIER);
-		if (featuringClassifier == null) {
-			eVirtualSet(UMLPackage.FEATURE__FEATURING_CLASSIFIER,
-				featuringClassifier = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.FEATURE__FEATURING_CLASSIFIER, null));
+	public EList getFeaturingClassifiersGen() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList(
+						Classifier.class, this,
+						UMLPackage.FEATURE__FEATURING_CLASSIFIER, null));
+			}
+			return featuringClassifiers;
 		}
-		return featuringClassifier;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.FEATURE__FEATURING_CLASSIFIER, null);
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
+	 * @see #getFeaturingClassifiers()
+	 */
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{UMLPackage.FEATURE__NAMESPACE};
+
+	public EList getFeaturingClassifiers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList(
+						Classifier.class, this,
+						UMLPackage.FEATURE__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
+			}
+			return featuringClassifiers;
+		}
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.FEATURE__FEATURING_CLASSIFIER,
+			FEATURING_CLASSIFIER_ESUBSETS);
 	}
 
 	/**
@@ -289,15 +326,13 @@ public abstract class FeatureImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.FEATURE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.FEATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.FEATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.FEATURE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.FEATURE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.FEATURE__NAME :
 				return isSetName();
 			case UMLPackage.FEATURE__VISIBILITY :
@@ -307,12 +342,12 @@ public abstract class FeatureImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.FEATURE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.FEATURE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.FEATURE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.FEATURE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.FEATURE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.FEATURE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.FEATURE__REDEFINED_ELEMENT :

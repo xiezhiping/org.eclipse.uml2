@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeTest.java,v 1.1 2006/02/21 16:32:28 khussey Exp $
+ * $Id: PackageMergeTest.java,v 1.2 2006/04/10 19:13:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,13 +21,6 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Package Merge</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class PackageMergeTest
@@ -82,30 +75,6 @@ public class PackageMergeTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.DirectedRelationship#getTargets()
-	 * @generated
-	 */
-	public void testGetTargets() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.DirectedRelationship#getSources()
-	 * @generated
-	 */
-	public void testGetSources() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**

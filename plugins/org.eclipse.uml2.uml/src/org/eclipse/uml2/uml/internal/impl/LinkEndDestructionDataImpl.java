@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.7 2005/12/14 22:34:17 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.8 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -72,6 +70,16 @@ public class LinkEndDestructionDataImpl
 	protected static final int IS_DESTROY_DUPLICATES_EFLAG = 1 << 8;
 
 	/**
+	 * The cached value of the '{@link #getDestroyAt() <em>Destroy At</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDestroyAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin destroyAt = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,13 +130,10 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	public InputPin getDestroyAt() {
-		InputPin destroyAt = (InputPin) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT);
 		if (destroyAt != null && destroyAt.eIsProxy()) {
 			InternalEObject oldDestroyAt = (InternalEObject) destroyAt;
 			destroyAt = (InputPin) eResolveProxy(oldDestroyAt);
 			if (destroyAt != oldDestroyAt) {
-				eVirtualSet(UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT,
-					destroyAt);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT,
@@ -144,7 +149,7 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	public InputPin basicGetDestroyAt() {
-		return (InputPin) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT);
+		return destroyAt;
 	}
 
 	/**
@@ -153,15 +158,12 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	public void setDestroyAt(InputPin newDestroyAt) {
-		InputPin destroyAt = newDestroyAt;
-		Object oldDestroyAt = eVirtualSet(
-			UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT, destroyAt);
+		InputPin oldDestroyAt = destroyAt;
+		destroyAt = newDestroyAt;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT,
-				oldDestroyAt == EVIRTUAL_NO_VALUE
-					? null
-					: oldDestroyAt, destroyAt));
+				UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT, oldDestroyAt,
+				destroyAt));
 
 	}
 
@@ -301,26 +303,23 @@ public class LinkEndDestructionDataImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNER :
 				return isSetOwner();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
-				return eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE) != null;
+				return value != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
-				return eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__END) != null;
+				return end != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
-				EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
 				return ((eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0) != IS_DESTROY_DUPLICATES_EDEFAULT;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
-				return eVirtualGet(UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT) != null;
+				return destroyAt != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

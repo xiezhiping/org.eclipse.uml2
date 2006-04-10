@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImageImpl.java,v 1.3 2005/12/21 20:13:08 khussey Exp $
+ * $Id: ImageImpl.java,v 1.4 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -55,6 +53,25 @@ public class ImageImpl
 	protected static final String CONTENT_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getContent() <em>Content</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContent()
+	 * @generated
+	 * @ordered
+	 */
+	protected String content = CONTENT_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Content attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CONTENT_ESETFLAG = 1 << 8;
+
+	/**
 	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +82,25 @@ public class ImageImpl
 	protected static final String LOCATION_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String location = LOCATION_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Location attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOCATION_ESETFLAG = 1 << 9;
+
+	/**
 	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +109,25 @@ public class ImageImpl
 	 * @ordered
 	 */
 	protected static final String FORMAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String format = FORMAT_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Format attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int FORMAT_ESETFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,7 +153,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public String getContent() {
-		return (String) eVirtualGet(UMLPackage.IMAGE__CONTENT, CONTENT_EDEFAULT);
+		return content;
 	}
 
 	/**
@@ -107,14 +162,13 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void setContent(String newContent) {
-		String content = newContent;
-		Object oldContent = eVirtualSet(UMLPackage.IMAGE__CONTENT, content);
-		boolean isSetChange = oldContent == EVIRTUAL_NO_VALUE;
+		String oldContent = content;
+		content = newContent;
+		boolean oldContentESet = (eFlags & CONTENT_ESETFLAG) != 0;
+		eFlags |= CONTENT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.IMAGE__CONTENT, isSetChange
-					? CONTENT_EDEFAULT
-					: oldContent, content, isSetChange));
+				UMLPackage.IMAGE__CONTENT, oldContent, content, !oldContentESet));
 
 	}
 
@@ -124,13 +178,14 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void unsetContent() {
-		Object oldContent = eVirtualUnset(UMLPackage.IMAGE__CONTENT);
-		boolean isSetChange = oldContent != EVIRTUAL_NO_VALUE;
+		String oldContent = content;
+		boolean oldContentESet = (eFlags & CONTENT_ESETFLAG) != 0;
+		content = CONTENT_EDEFAULT;
+		eFlags &= ~CONTENT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.IMAGE__CONTENT, isSetChange
-					? oldContent
-					: CONTENT_EDEFAULT, CONTENT_EDEFAULT, isSetChange));
+				UMLPackage.IMAGE__CONTENT, oldContent, CONTENT_EDEFAULT,
+				oldContentESet));
 	}
 
 	/**
@@ -139,7 +194,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public boolean isSetContent() {
-		return eVirtualIsSet(UMLPackage.IMAGE__CONTENT);
+		return (eFlags & CONTENT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -148,8 +203,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public String getLocation() {
-		return (String) eVirtualGet(UMLPackage.IMAGE__LOCATION,
-			LOCATION_EDEFAULT);
+		return location;
 	}
 
 	/**
@@ -158,14 +212,14 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void setLocation(String newLocation) {
-		String location = newLocation;
-		Object oldLocation = eVirtualSet(UMLPackage.IMAGE__LOCATION, location);
-		boolean isSetChange = oldLocation == EVIRTUAL_NO_VALUE;
+		String oldLocation = location;
+		location = newLocation;
+		boolean oldLocationESet = (eFlags & LOCATION_ESETFLAG) != 0;
+		eFlags |= LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.IMAGE__LOCATION, isSetChange
-					? LOCATION_EDEFAULT
-					: oldLocation, location, isSetChange));
+				UMLPackage.IMAGE__LOCATION, oldLocation, location,
+				!oldLocationESet));
 
 	}
 
@@ -175,13 +229,14 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void unsetLocation() {
-		Object oldLocation = eVirtualUnset(UMLPackage.IMAGE__LOCATION);
-		boolean isSetChange = oldLocation != EVIRTUAL_NO_VALUE;
+		String oldLocation = location;
+		boolean oldLocationESet = (eFlags & LOCATION_ESETFLAG) != 0;
+		location = LOCATION_EDEFAULT;
+		eFlags &= ~LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.IMAGE__LOCATION, isSetChange
-					? oldLocation
-					: LOCATION_EDEFAULT, LOCATION_EDEFAULT, isSetChange));
+				UMLPackage.IMAGE__LOCATION, oldLocation, LOCATION_EDEFAULT,
+				oldLocationESet));
 	}
 
 	/**
@@ -190,7 +245,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public boolean isSetLocation() {
-		return eVirtualIsSet(UMLPackage.IMAGE__LOCATION);
+		return (eFlags & LOCATION_ESETFLAG) != 0;
 	}
 
 	/**
@@ -199,7 +254,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public String getFormat() {
-		return (String) eVirtualGet(UMLPackage.IMAGE__FORMAT, FORMAT_EDEFAULT);
+		return format;
 	}
 
 	/**
@@ -208,14 +263,13 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void setFormat(String newFormat) {
-		String format = newFormat;
-		Object oldFormat = eVirtualSet(UMLPackage.IMAGE__FORMAT, format);
-		boolean isSetChange = oldFormat == EVIRTUAL_NO_VALUE;
+		String oldFormat = format;
+		format = newFormat;
+		boolean oldFormatESet = (eFlags & FORMAT_ESETFLAG) != 0;
+		eFlags |= FORMAT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.IMAGE__FORMAT, isSetChange
-					? FORMAT_EDEFAULT
-					: oldFormat, format, isSetChange));
+				UMLPackage.IMAGE__FORMAT, oldFormat, format, !oldFormatESet));
 
 	}
 
@@ -225,13 +279,14 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void unsetFormat() {
-		Object oldFormat = eVirtualUnset(UMLPackage.IMAGE__FORMAT);
-		boolean isSetChange = oldFormat != EVIRTUAL_NO_VALUE;
+		String oldFormat = format;
+		boolean oldFormatESet = (eFlags & FORMAT_ESETFLAG) != 0;
+		format = FORMAT_EDEFAULT;
+		eFlags &= ~FORMAT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.IMAGE__FORMAT, isSetChange
-					? oldFormat
-					: FORMAT_EDEFAULT, FORMAT_EDEFAULT, isSetChange));
+				UMLPackage.IMAGE__FORMAT, oldFormat, FORMAT_EDEFAULT,
+				oldFormatESet));
 	}
 
 	/**
@@ -240,7 +295,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public boolean isSetFormat() {
-		return eVirtualIsSet(UMLPackage.IMAGE__FORMAT);
+		return (eFlags & FORMAT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -332,15 +387,13 @@ public class ImageImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.IMAGE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.IMAGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.IMAGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.IMAGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.IMAGE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.IMAGE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.IMAGE__CONTENT :
 				return isSetContent();
 			case UMLPackage.IMAGE__LOCATION :
@@ -362,18 +415,18 @@ public class ImageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (content: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.IMAGE__CONTENT))
-			result.append(eVirtualGet(UMLPackage.IMAGE__CONTENT));
+		if ((eFlags & CONTENT_ESETFLAG) != 0)
+			result.append(content);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", location: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.IMAGE__LOCATION))
-			result.append(eVirtualGet(UMLPackage.IMAGE__LOCATION));
+		if ((eFlags & LOCATION_ESETFLAG) != 0)
+			result.append(location);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", format: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.IMAGE__FORMAT))
-			result.append(eVirtualGet(UMLPackage.IMAGE__FORMAT));
+		if ((eFlags & FORMAT_ESETFLAG) != 0)
+			result.append(format);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

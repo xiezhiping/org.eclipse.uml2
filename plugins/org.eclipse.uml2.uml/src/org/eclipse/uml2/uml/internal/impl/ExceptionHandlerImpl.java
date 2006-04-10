@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.11 2006/03/15 19:34:01 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.12 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,6 +62,36 @@ public class ExceptionHandlerImpl
 		implements ExceptionHandler {
 
 	/**
+	 * The cached value of the '{@link #getHandlerBody() <em>Handler Body</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHandlerBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExecutableNode handlerBody = null;
+
+	/**
+	 * The cached value of the '{@link #getExceptionInput() <em>Exception Input</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExceptionInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected ObjectNode exceptionInput = null;
+
+	/**
+	 * The cached value of the '{@link #getExceptionTypes() <em>Exception Type</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExceptionTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList exceptionTypes = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -85,13 +115,10 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public ExecutableNode getHandlerBody() {
-		ExecutableNode handlerBody = (ExecutableNode) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY);
 		if (handlerBody != null && handlerBody.eIsProxy()) {
 			InternalEObject oldHandlerBody = (InternalEObject) handlerBody;
 			handlerBody = (ExecutableNode) eResolveProxy(oldHandlerBody);
 			if (handlerBody != oldHandlerBody) {
-				eVirtualSet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY,
-					handlerBody);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY,
@@ -107,7 +134,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public ExecutableNode basicGetHandlerBody() {
-		return (ExecutableNode) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY);
+		return handlerBody;
 	}
 
 	/**
@@ -116,15 +143,12 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setHandlerBody(ExecutableNode newHandlerBody) {
-		ExecutableNode handlerBody = newHandlerBody;
-		Object oldHandlerBody = eVirtualSet(
-			UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY, handlerBody);
+		ExecutableNode oldHandlerBody = handlerBody;
+		handlerBody = newHandlerBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY,
-				oldHandlerBody == EVIRTUAL_NO_VALUE
-					? null
-					: oldHandlerBody, handlerBody));
+				UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY, oldHandlerBody,
+				handlerBody));
 
 	}
 
@@ -134,13 +158,10 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public ObjectNode getExceptionInput() {
-		ObjectNode exceptionInput = (ObjectNode) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT);
 		if (exceptionInput != null && exceptionInput.eIsProxy()) {
 			InternalEObject oldExceptionInput = (InternalEObject) exceptionInput;
 			exceptionInput = (ObjectNode) eResolveProxy(oldExceptionInput);
 			if (exceptionInput != oldExceptionInput) {
-				eVirtualSet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT,
-					exceptionInput);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT,
@@ -156,7 +177,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public ObjectNode basicGetExceptionInput() {
-		return (ObjectNode) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT);
+		return exceptionInput;
 	}
 
 	/**
@@ -165,15 +186,12 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setExceptionInput(ObjectNode newExceptionInput) {
-		ObjectNode exceptionInput = newExceptionInput;
-		Object oldExceptionInput = eVirtualSet(
-			UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT, exceptionInput);
+		ObjectNode oldExceptionInput = exceptionInput;
+		exceptionInput = newExceptionInput;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT,
-				oldExceptionInput == EVIRTUAL_NO_VALUE
-					? null
-					: oldExceptionInput, exceptionInput));
+				oldExceptionInput, exceptionInput));
 
 	}
 
@@ -183,13 +201,11 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public EList getExceptionTypes() {
-		EList exceptionType = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
-		if (exceptionType == null) {
-			eVirtualSet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE,
-				exceptionType = new EObjectResolvingEList(Classifier.class,
-					this, UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE));
+		if (exceptionTypes == null) {
+			exceptionTypes = new EObjectResolvingEList(Classifier.class, this,
+				UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
 		}
-		return exceptionType;
+		return exceptionTypes;
 	}
 
 	/**
@@ -486,22 +502,19 @@ public class ExceptionHandlerImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
-				return eVirtualGet(UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY) != null;
+				return handlerBody != null;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
-				return eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT) != null;
+				return exceptionInput != null;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
-				EList exceptionType = (EList) eVirtualGet(UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
-				return exceptionType != null && !exceptionType.isEmpty();
+				return exceptionTypes != null && !exceptionTypes.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				return basicGetProtectedNode() != null;
 		}

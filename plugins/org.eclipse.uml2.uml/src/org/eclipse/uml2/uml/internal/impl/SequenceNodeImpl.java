@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,16 @@ public class SequenceNodeImpl
 		implements SequenceNode {
 
 	/**
+	 * The cached value of the '{@link #getExecutableNodes() <em>Executable Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutableNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList executableNodes = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,14 +83,12 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public EList getExecutableNodes() {
-		EList executableNode = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE);
-		if (executableNode == null) {
-			eVirtualSet(UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE,
-				executableNode = new EObjectContainmentEList.Resolving(
-					ExecutableNode.class, this,
-					UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE));
+		if (executableNodes == null) {
+			executableNodes = new EObjectContainmentEList.Resolving(
+				ExecutableNode.class, this,
+				UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE);
 		}
-		return executableNode;
+		return executableNodes;
 	}
 
 	/**
@@ -134,8 +142,7 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public boolean isSetExecutableNodes() {
-		EList executableNode = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE);
-		return executableNode != null && !executableNode.isEmpty();
+		return executableNodes != null && !executableNodes.isEmpty();
 	}
 
 	/**
@@ -528,15 +535,13 @@ public class SequenceNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.SEQUENCE_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__NAME :
 				return isSetName();
 			case UMLPackage.SEQUENCE_NODE__VISIBILITY :
@@ -546,12 +551,12 @@ public class SequenceNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.SEQUENCE_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__REDEFINED_ELEMENT :
@@ -563,26 +568,20 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.SEQUENCE_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.SEQUENCE_NODE__INPUT :
@@ -590,22 +589,17 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.SEQUENCE_NODE__IMPORTED_MEMBER :
@@ -623,11 +617,9 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
-				EList variable = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__VARIABLE);
-				return variable != null && !variable.isEmpty();
+				return variables != null && !variables.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__EDGE :
-				EList edge = (EList) eVirtualGet(UMLPackage.SEQUENCE_NODE__EDGE);
-				return edge != null && !edge.isEmpty();
+				return edges != null && !edges.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.SEQUENCE_NODE__NODE :

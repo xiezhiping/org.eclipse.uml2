@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Collaboration;
@@ -50,7 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.CollaborationUseOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationUseImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationUseImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationUseImpl#getRoleBindings <em>Role Binding</em>}</li>
  * </ul>
@@ -61,6 +63,26 @@ import org.eclipse.uml2.uml.internal.operations.CollaborationUseOperations;
 public class CollaborationUseImpl
 		extends NamedElementImpl
 		implements CollaborationUse {
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Collaboration type = null;
+
+	/**
+	 * The cached value of the '{@link #getRoleBindings() <em>Role Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoleBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList roleBindings = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,16 +108,22 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.COLLABORATION_USE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.COLLABORATION_USE__OWNED_ELEMENT,
-					new int[]{UMLPackage.COLLABORATION_USE__OWNED_COMMENT,
-						UMLPackage.COLLABORATION_USE__NAME_EXPRESSION,
-						UMLPackage.COLLABORATION_USE__ROLE_BINDING}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.COLLABORATION_USE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.COLLABORATION_USE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -104,12 +132,10 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public Collaboration getType() {
-		Collaboration type = (Collaboration) eVirtualGet(UMLPackage.COLLABORATION_USE__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject) type;
 			type = (Collaboration) eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UMLPackage.COLLABORATION_USE__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.COLLABORATION_USE__TYPE, oldType, type));
@@ -124,7 +150,7 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public Collaboration basicGetType() {
-		return (Collaboration) eVirtualGet(UMLPackage.COLLABORATION_USE__TYPE);
+		return type;
 	}
 
 	/**
@@ -133,14 +159,11 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public void setType(Collaboration newType) {
-		Collaboration type = newType;
-		Object oldType = eVirtualSet(UMLPackage.COLLABORATION_USE__TYPE, type);
+		Collaboration oldType = type;
+		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.COLLABORATION_USE__TYPE,
-				oldType == EVIRTUAL_NO_VALUE
-					? null
-					: oldType, type));
+				UMLPackage.COLLABORATION_USE__TYPE, oldType, type));
 
 	}
 
@@ -150,14 +173,12 @@ public class CollaborationUseImpl
 	 * @generated
 	 */
 	public EList getRoleBindings() {
-		EList roleBinding = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__ROLE_BINDING);
-		if (roleBinding == null) {
-			eVirtualSet(UMLPackage.COLLABORATION_USE__ROLE_BINDING,
-				roleBinding = new EObjectContainmentEList.Resolving(
-					Dependency.class, this,
-					UMLPackage.COLLABORATION_USE__ROLE_BINDING));
+		if (roleBindings == null) {
+			roleBindings = new EObjectContainmentEList.Resolving(
+				Dependency.class, this,
+				UMLPackage.COLLABORATION_USE__ROLE_BINDING);
 		}
-		return roleBinding;
+		return roleBindings;
 	}
 
 	/**
@@ -396,15 +417,13 @@ public class CollaborationUseImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COLLABORATION_USE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COLLABORATION_USE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.COLLABORATION_USE__OWNER :
 				return isSetOwner();
 			case UMLPackage.COLLABORATION_USE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAME :
 				return isSetName();
 			case UMLPackage.COLLABORATION_USE__VISIBILITY :
@@ -414,20 +433,32 @@ public class CollaborationUseImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.COLLABORATION_USE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.COLLABORATION_USE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.COLLABORATION_USE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.COLLABORATION_USE__TYPE :
-				return eVirtualGet(UMLPackage.COLLABORATION_USE__TYPE) != null;
+				return type != null;
 			case UMLPackage.COLLABORATION_USE__ROLE_BINDING :
-				EList roleBinding = (EList) eVirtualGet(UMLPackage.COLLABORATION_USE__ROLE_BINDING);
-				return roleBinding != null && !roleBinding.isEmpty();
+				return roleBindings != null && !roleBindings.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.COLLABORATION_USE__OWNED_COMMENT,
+		UMLPackage.COLLABORATION_USE__NAME_EXPRESSION,
+		UMLPackage.COLLABORATION_USE__ROLE_BINDING};
 
 	/**
 	 * <!-- begin-user-doc -->

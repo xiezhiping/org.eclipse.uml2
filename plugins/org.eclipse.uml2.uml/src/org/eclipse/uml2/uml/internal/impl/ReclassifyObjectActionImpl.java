@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -52,7 +55,6 @@ import org.eclipse.uml2.uml.internal.operations.ReclassifyObjectActionOperations
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl#isReplaceAll <em>Is Replace All</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl#getOldClassifiers <em>Old Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl#getNewClassifiers <em>New Classifier</em>}</li>
@@ -84,7 +86,37 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REPLACE_ALL_EFLAG = 1 << 9;
+	protected static final int IS_REPLACE_ALL_EFLAG = 1 << 11;
+
+	/**
+	 * The cached value of the '{@link #getOldClassifiers() <em>Old Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOldClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList oldClassifiers = null;
+
+	/**
+	 * The cached value of the '{@link #getNewClassifiers() <em>New Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNewClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList newClassifiers = null;
+
+	/**
+	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin object = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,14 +142,21 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT,
-					new int[]{UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+						UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT,
+						INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -153,13 +192,11 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public EList getOldClassifiers() {
-		EList oldClassifier = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER);
-		if (oldClassifier == null) {
-			eVirtualSet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER,
-				oldClassifier = new EObjectResolvingEList(Classifier.class,
-					this, UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER));
+		if (oldClassifiers == null) {
+			oldClassifiers = new EObjectResolvingEList(Classifier.class, this,
+				UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER);
 		}
-		return oldClassifier;
+		return oldClassifiers;
 	}
 
 	/**
@@ -198,13 +235,11 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public EList getNewClassifiers() {
-		EList newClassifier = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER);
-		if (newClassifier == null) {
-			eVirtualSet(UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER,
-				newClassifier = new EObjectResolvingEList(Classifier.class,
-					this, UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER));
+		if (newClassifiers == null) {
+			newClassifiers = new EObjectResolvingEList(Classifier.class, this,
+				UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER);
 		}
-		return newClassifier;
+		return newClassifiers;
 	}
 
 	/**
@@ -243,7 +278,6 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT);
 		if (object != null && object.eIsProxy()) {
 			InternalEObject oldObject = (InternalEObject) object;
 			object = (InputPin) eResolveProxy(oldObject);
@@ -275,7 +309,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetObject() {
-		return (InputPin) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT);
+		return object;
 	}
 
 	/**
@@ -285,14 +319,12 @@ public class ReclassifyObjectActionImpl
 	 */
 	public NotificationChain basicSetObject(InputPin newObject,
 			NotificationChain msgs) {
-		Object oldObject = eVirtualSet(
-			UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT, newObject);
+		InputPin oldObject = object;
+		object = newObject;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT,
-				oldObject == EVIRTUAL_NO_VALUE
-					? null
-					: oldObject, newObject);
+				oldObject, newObject);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -308,7 +340,6 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT);
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -696,15 +727,13 @@ public class ReclassifyObjectActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__VISIBILITY :
@@ -714,12 +743,12 @@ public class ReclassifyObjectActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_ELEMENT :
@@ -731,26 +760,20 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT :
@@ -758,23 +781,19 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL :
 				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER :
-				EList oldClassifier = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER);
-				return oldClassifier != null && !oldClassifier.isEmpty();
+				return oldClassifiers != null && !oldClassifiers.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER :
-				EList newClassifier = (EList) eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER);
-				return newClassifier != null && !newClassifier.isEmpty();
+				return newClassifiers != null && !newClassifiers.isEmpty();
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT :
-				return eVirtualGet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT) != null;
+				return object != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -794,6 +813,16 @@ public class ReclassifyObjectActionImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT};
 
 	/**
 	 * <!-- begin-user-doc -->

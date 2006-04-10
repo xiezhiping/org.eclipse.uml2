@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.20 2006/03/07 20:25:16 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.21 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,6 +61,16 @@ public class StereotypeImpl
 		implements Stereotype {
 
 	/**
+	 * The cached value of the '{@link #getIcons() <em>Icon</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcons()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList icons = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,13 +94,11 @@ public class StereotypeImpl
 	 * @generated
 	 */
 	public EList getIcons() {
-		EList icon = (EList) eVirtualGet(UMLPackage.STEREOTYPE__ICON);
-		if (icon == null) {
-			eVirtualSet(UMLPackage.STEREOTYPE__ICON,
-				icon = new EObjectContainmentEList.Resolving(Image.class, this,
-					UMLPackage.STEREOTYPE__ICON));
+		if (icons == null) {
+			icons = new EObjectContainmentEList.Resolving(Image.class, this,
+				UMLPackage.STEREOTYPE__ICON);
 		}
-		return icon;
+		return icons;
 	}
 
 	/**
@@ -739,15 +747,13 @@ public class StereotypeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STEREOTYPE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STEREOTYPE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STEREOTYPE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STEREOTYPE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STEREOTYPE__NAME :
 				return isSetName();
 			case UMLPackage.STEREOTYPE__VISIBILITY :
@@ -757,21 +763,18 @@ public class StereotypeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STEREOTYPE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.STEREOTYPE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STEREOTYPE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STEREOTYPE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.STEREOTYPE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.STEREOTYPE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.STEREOTYPE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.STEREOTYPE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.STEREOTYPE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.STEREOTYPE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.STEREOTYPE__IMPORTED_MEMBER :
@@ -791,44 +794,37 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.STEREOTYPE__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.STEREOTYPE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
-				EList generalization = (EList) eVirtualGet(UMLPackage.STEREOTYPE__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.STEREOTYPE__POWERTYPE_EXTENT :
-				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.STEREOTYPE__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UMLPackage.STEREOTYPE__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.STEREOTYPE__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.STEREOTYPE__REDEFINED_CLASSIFIER :
-				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.STEREOTYPE__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null
-					&& !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
 			case UMLPackage.STEREOTYPE__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.STEREOTYPE__SUBSTITUTION :
-				EList substitution = (EList) eVirtualGet(UMLPackage.STEREOTYPE__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.STEREOTYPE__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.STEREOTYPE__REPRESENTATION :
-				return eVirtualGet(UMLPackage.STEREOTYPE__REPRESENTATION) != null;
+				return representation != null;
 			case UMLPackage.STEREOTYPE__COLLABORATION_USE :
-				EList collaborationUse = (EList) eVirtualGet(UMLPackage.STEREOTYPE__COLLABORATION_USE);
-				return collaborationUse != null && !collaborationUse.isEmpty();
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.STEREOTYPE__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.STEREOTYPE__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.STEREOTYPE__PART :
@@ -836,40 +832,33 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__ROLE :
 				return isSetRoles();
 			case UMLPackage.STEREOTYPE__OWNED_CONNECTOR :
-				EList ownedConnector = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_BEHAVIOR :
-				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
 			case UMLPackage.STEREOTYPE__CLASSIFIER_BEHAVIOR :
-				return eVirtualGet(UMLPackage.STEREOTYPE__CLASSIFIER_BEHAVIOR) != null;
+				return classifierBehavior != null;
 			case UMLPackage.STEREOTYPE__INTERFACE_REALIZATION :
-				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.STEREOTYPE__INTERFACE_REALIZATION);
-				return interfaceRealization != null
-					&& !interfaceRealization.isEmpty();
+				return interfaceRealizations != null
+					&& !interfaceRealizations.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_TRIGGER :
-				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_TRIGGER);
-				return ownedTrigger != null && !ownedTrigger.isEmpty();
+				return ownedTriggers != null && !ownedTriggers.isEmpty();
 			case UMLPackage.STEREOTYPE__NESTED_CLASSIFIER :
-				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.STEREOTYPE__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null
+					&& !nestedClassifiers.isEmpty();
 			case UMLPackage.STEREOTYPE__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
-				EList ownedReception = (EList) eVirtualGet(UMLPackage.STEREOTYPE__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.STEREOTYPE__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.STEREOTYPE__ICON :
-				EList icon = (EList) eVirtualGet(UMLPackage.STEREOTYPE__ICON);
-				return icon != null && !icon.isEmpty();
+				return icons != null && !icons.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.21 2006/03/15 19:33:42 khussey Exp $
+ * $Id: UMLPackage.java,v 1.22 2006/04/10 19:16:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -88,7 +88,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__EANNOTATIONS = EcorePackage.EOBJECT_FEATURE_COUNT + 0;
+	int ELEMENT__EANNOTATIONS = EcorePackage.EMODEL_ELEMENT__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -97,7 +97,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__OWNED_ELEMENT = EcorePackage.EOBJECT_FEATURE_COUNT + 1;
+	int ELEMENT__OWNED_ELEMENT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -106,7 +106,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__OWNER = EcorePackage.EOBJECT_FEATURE_COUNT + 2;
+	int ELEMENT__OWNER = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -115,7 +115,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__OWNED_COMMENT = EcorePackage.EOBJECT_FEATURE_COUNT + 3;
+	int ELEMENT__OWNED_COMMENT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Element</em>' class.
@@ -124,7 +124,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = EcorePackage.EOBJECT_FEATURE_COUNT + 4;
+	int ELEMENT_FEATURE_COUNT = EcorePackage.EMODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CommentImpl <em>Comment</em>}' class.

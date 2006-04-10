@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.17 2006/03/15 19:34:17 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -50,7 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.ReadExtentActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl#getResult <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl#getClassifier <em>Classifier</em>}</li>
  * </ul>
@@ -61,6 +63,26 @@ import org.eclipse.uml2.uml.internal.operations.ReadExtentActionOperations;
 public class ReadExtentActionImpl
 		extends ActionImpl
 		implements ReadExtentAction {
+
+	/**
+	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected OutputPin result = null;
+
+	/**
+	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier classifier = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,14 +108,21 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UMLPackage.READ_EXTENT_ACTION__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.READ_EXTENT_ACTION__OUTPUT,
-					new int[]{UMLPackage.READ_EXTENT_ACTION__RESULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList(OutputPin.class,
+						this, UMLPackage.READ_EXTENT_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this,
+			UMLPackage.READ_EXTENT_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
 	/**
@@ -102,7 +131,6 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__RESULT);
 		if (result != null && result.eIsProxy()) {
 			InternalEObject oldResult = (InternalEObject) result;
 			result = (OutputPin) eResolveProxy(oldResult);
@@ -132,7 +160,7 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public OutputPin basicGetResult() {
-		return (OutputPin) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__RESULT);
+		return result;
 	}
 
 	/**
@@ -142,14 +170,12 @@ public class ReadExtentActionImpl
 	 */
 	public NotificationChain basicSetResult(OutputPin newResult,
 			NotificationChain msgs) {
-		Object oldResult = eVirtualSet(UMLPackage.READ_EXTENT_ACTION__RESULT,
-			newResult);
+		OutputPin oldResult = result;
+		result = newResult;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.READ_EXTENT_ACTION__RESULT,
-				oldResult == EVIRTUAL_NO_VALUE
-					? null
-					: oldResult, newResult);
+				oldResult, newResult);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -165,7 +191,6 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__RESULT);
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -206,13 +231,10 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public Classifier getClassifier() {
-		Classifier classifier = (Classifier) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__CLASSIFIER);
 		if (classifier != null && classifier.eIsProxy()) {
 			InternalEObject oldClassifier = (InternalEObject) classifier;
 			classifier = (Classifier) eResolveProxy(oldClassifier);
 			if (classifier != oldClassifier) {
-				eVirtualSet(UMLPackage.READ_EXTENT_ACTION__CLASSIFIER,
-					classifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.READ_EXTENT_ACTION__CLASSIFIER,
@@ -228,7 +250,7 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public Classifier basicGetClassifier() {
-		return (Classifier) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__CLASSIFIER);
+		return classifier;
 	}
 
 	/**
@@ -237,15 +259,12 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public void setClassifier(Classifier newClassifier) {
-		Classifier classifier = newClassifier;
-		Object oldClassifier = eVirtualSet(
-			UMLPackage.READ_EXTENT_ACTION__CLASSIFIER, classifier);
+		Classifier oldClassifier = classifier;
+		classifier = newClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.READ_EXTENT_ACTION__CLASSIFIER,
-				oldClassifier == EVIRTUAL_NO_VALUE
-					? null
-					: oldClassifier, classifier));
+				UMLPackage.READ_EXTENT_ACTION__CLASSIFIER, oldClassifier,
+				classifier));
 
 	}
 
@@ -563,15 +582,13 @@ public class ReadExtentActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.READ_EXTENT_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.READ_EXTENT_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.READ_EXTENT_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.READ_EXTENT_ACTION__VISIBILITY :
@@ -581,12 +598,12 @@ public class ReadExtentActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.READ_EXTENT_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.READ_EXTENT_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.READ_EXTENT_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.READ_EXTENT_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.READ_EXTENT_ACTION__REDEFINED_ELEMENT :
@@ -598,26 +615,20 @@ public class ReadExtentActionImpl
 			case UMLPackage.READ_EXTENT_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.READ_EXTENT_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.READ_EXTENT_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.READ_EXTENT_ACTION__INPUT :
@@ -625,20 +636,28 @@ public class ReadExtentActionImpl
 			case UMLPackage.READ_EXTENT_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.READ_EXTENT_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.READ_EXTENT_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.READ_EXTENT_ACTION__RESULT :
-				return eVirtualGet(UMLPackage.READ_EXTENT_ACTION__RESULT) != null;
+				return result != null;
 			case UMLPackage.READ_EXTENT_ACTION__CLASSIFIER :
-				return eVirtualGet(UMLPackage.READ_EXTENT_ACTION__CLASSIFIER) != null;
+				return classifier != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.READ_EXTENT_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -53,8 +56,6 @@ import org.eclipse.uml2.uml.internal.operations.UnmarshallActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getOutputs <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getResults <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getUnmarshallType <em>Unmarshall Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getObject <em>Object</em>}</li>
@@ -66,6 +67,36 @@ import org.eclipse.uml2.uml.internal.operations.UnmarshallActionOperations;
 public class UnmarshallActionImpl
 		extends ActionImpl
 		implements UnmarshallAction {
+
+	/**
+	 * The cached value of the '{@link #getResults() <em>Result</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList results = null;
+
+	/**
+	 * The cached value of the '{@link #getUnmarshallType() <em>Unmarshall Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnmarshallType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier unmarshallType = null;
+
+	/**
+	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObject()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin object = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,14 +122,21 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UMLPackage.UNMARSHALL_ACTION__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.UNMARSHALL_ACTION__OUTPUT,
-					new int[]{UMLPackage.UNMARSHALL_ACTION__RESULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList(OutputPin.class,
+						this, UMLPackage.UNMARSHALL_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this,
+			UMLPackage.UNMARSHALL_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
 	/**
@@ -107,14 +145,20 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.UNMARSHALL_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.UNMARSHALL_ACTION__INPUT,
-					new int[]{UMLPackage.UNMARSHALL_ACTION__OBJECT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+						UMLPackage.UNMARSHALL_ACTION__INPUT, INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.UNMARSHALL_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -123,13 +167,11 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public EList getResults() {
-		EList result = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__RESULT);
-		if (result == null) {
-			eVirtualSet(UMLPackage.UNMARSHALL_ACTION__RESULT,
-				result = new EObjectResolvingEList(OutputPin.class, this,
-					UMLPackage.UNMARSHALL_ACTION__RESULT));
+		if (results == null) {
+			results = new EObjectResolvingEList(OutputPin.class, this,
+				UMLPackage.UNMARSHALL_ACTION__RESULT);
 		}
-		return result;
+		return results;
 	}
 
 	/**
@@ -166,13 +208,10 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public Classifier getUnmarshallType() {
-		Classifier unmarshallType = (Classifier) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE);
 		if (unmarshallType != null && unmarshallType.eIsProxy()) {
 			InternalEObject oldUnmarshallType = (InternalEObject) unmarshallType;
 			unmarshallType = (Classifier) eResolveProxy(oldUnmarshallType);
 			if (unmarshallType != oldUnmarshallType) {
-				eVirtualSet(UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE,
-					unmarshallType);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE,
@@ -188,7 +227,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public Classifier basicGetUnmarshallType() {
-		return (Classifier) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE);
+		return unmarshallType;
 	}
 
 	/**
@@ -197,15 +236,12 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public void setUnmarshallType(Classifier newUnmarshallType) {
-		Classifier unmarshallType = newUnmarshallType;
-		Object oldUnmarshallType = eVirtualSet(
-			UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE, unmarshallType);
+		Classifier oldUnmarshallType = unmarshallType;
+		unmarshallType = newUnmarshallType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE,
-				oldUnmarshallType == EVIRTUAL_NO_VALUE
-					? null
-					: oldUnmarshallType, unmarshallType));
+				oldUnmarshallType, unmarshallType));
 
 	}
 
@@ -215,7 +251,6 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public InputPin getObject() {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OBJECT);
 		if (object != null && object.eIsProxy()) {
 			InternalEObject oldObject = (InternalEObject) object;
 			object = (InputPin) eResolveProxy(oldObject);
@@ -244,7 +279,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetObject() {
-		return (InputPin) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OBJECT);
+		return object;
 	}
 
 	/**
@@ -254,14 +289,12 @@ public class UnmarshallActionImpl
 	 */
 	public NotificationChain basicSetObject(InputPin newObject,
 			NotificationChain msgs) {
-		Object oldObject = eVirtualSet(UMLPackage.UNMARSHALL_ACTION__OBJECT,
-			newObject);
+		InputPin oldObject = object;
+		object = newObject;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.UNMARSHALL_ACTION__OBJECT,
-				oldObject == EVIRTUAL_NO_VALUE
-					? null
-					: oldObject, newObject);
+				oldObject, newObject);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -277,7 +310,6 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-		InputPin object = (InputPin) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OBJECT);
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -698,15 +730,13 @@ public class UnmarshallActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.UNMARSHALL_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.UNMARSHALL_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.UNMARSHALL_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.UNMARSHALL_ACTION__VISIBILITY :
@@ -716,12 +746,12 @@ public class UnmarshallActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.UNMARSHALL_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.UNMARSHALL_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.UNMARSHALL_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.UNMARSHALL_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.UNMARSHALL_ACTION__REDEFINED_ELEMENT :
@@ -733,26 +763,20 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.UNMARSHALL_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.UNMARSHALL_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.UNMARSHALL_ACTION__INPUT :
@@ -760,23 +784,30 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.UNMARSHALL_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__RESULT :
-				EList result = (EList) eVirtualGet(UMLPackage.UNMARSHALL_ACTION__RESULT);
-				return result != null && !result.isEmpty();
+				return results != null && !results.isEmpty();
 			case UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE :
-				return eVirtualGet(UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE) != null;
+				return unmarshallType != null;
 			case UMLPackage.UNMARSHALL_ACTION__OBJECT :
-				return eVirtualGet(UMLPackage.UNMARSHALL_ACTION__OBJECT) != null;
+				return object != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.UNMARSHALL_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -787,6 +818,16 @@ public class UnmarshallActionImpl
 		return super.isSetOutputs()
 			|| eIsSet(UMLPackage.UNMARSHALL_ACTION__RESULT);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.UNMARSHALL_ACTION__OBJECT};
 
 	/**
 	 * <!-- begin-user-doc -->

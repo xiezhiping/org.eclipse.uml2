@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.13 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,16 @@ public class ConsiderIgnoreFragmentImpl
 		implements ConsiderIgnoreFragment {
 
 	/**
+	 * The cached value of the '{@link #getMessages() <em>Message</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList messages = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,13 +85,11 @@ public class ConsiderIgnoreFragmentImpl
 	 * @generated
 	 */
 	public EList getMessages() {
-		EList message = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
-		if (message == null) {
-			eVirtualSet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE,
-				message = new EObjectResolvingEList(NamedElement.class, this,
-					UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE));
+		if (messages == null) {
+			messages = new EObjectResolvingEList(NamedElement.class, this,
+				UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
 		}
-		return message;
+		return messages;
 	}
 
 	/**
@@ -313,15 +321,13 @@ public class ConsiderIgnoreFragmentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				return isSetName();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__VISIBILITY :
@@ -331,35 +337,28 @@ public class ConsiderIgnoreFragmentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR :
-				return eVirtualGet(
-					UMLPackage.CONSIDER_IGNORE_FRAGMENT__INTERACTION_OPERATOR,
-					INTERACTION_OPERATOR_EDEFAULT) != INTERACTION_OPERATOR_EDEFAULT;
+				return interactionOperator != INTERACTION_OPERATOR_EDEFAULT;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
-				EList operand = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND);
-				return operand != null && !operand.isEmpty();
+				return operands != null && !operands.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
-				EList cfragmentGate = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE);
-				return cfragmentGate != null && !cfragmentGate.isEmpty();
+				return cfragmentGates != null && !cfragmentGates.isEmpty();
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE :
-				EList message = (EList) eVirtualGet(UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
-				return message != null && !message.isEmpty();
+				return messages != null && !messages.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

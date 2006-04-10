@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.11 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.12 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -68,7 +66,7 @@ public class ContinuationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SETTING_EFLAG = 1 << 8;
+	protected static final int SETTING_EFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -300,15 +298,13 @@ public class ContinuationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONTINUATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONTINUATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONTINUATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONTINUATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONTINUATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONTINUATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONTINUATION__NAME :
 				return isSetName();
 			case UMLPackage.CONTINUATION__VISIBILITY :
@@ -318,18 +314,16 @@ public class ContinuationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONTINUATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONTINUATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONTINUATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONTINUATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CONTINUATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CONTINUATION__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.CONTINUATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.CONTINUATION__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.CONTINUATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.CONTINUATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.CONTINUATION__ENCLOSING_OPERAND :

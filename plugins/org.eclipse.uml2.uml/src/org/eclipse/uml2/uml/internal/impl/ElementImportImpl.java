@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.11 2006/03/15 19:34:15 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,9 +27,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -48,8 +51,6 @@ import org.eclipse.uml2.uml.internal.operations.ElementImportOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getImportedElement <em>Imported Element</em>}</li>
@@ -74,6 +75,16 @@ public class ElementImportImpl
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getAlias() <em>Alias</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,6 +93,35 @@ public class ElementImportImpl
 	 * @ordered
 	 */
 	protected static final String ALIAS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAlias() <em>Alias</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlias()
+	 * @generated
+	 * @ordered
+	 */
+	protected String alias = ALIAS_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Alias attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ALIAS_ESETFLAG = 1 << 8;
+
+	/**
+	 * The cached value of the '{@link #getImportedElement() <em>Imported Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImportedElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected PackageableElement importedElement = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,14 +147,21 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.ELEMENT_IMPORT__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.ELEMENT_IMPORT__TARGET,
-					new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.ELEMENT_IMPORT__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ELEMENT_IMPORT__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -123,14 +170,21 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.ELEMENT_IMPORT__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.ELEMENT_IMPORT__SOURCE,
-					new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.ELEMENT_IMPORT__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ELEMENT_IMPORT__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -139,8 +193,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return (VisibilityKind) eVirtualGet(
-			UMLPackage.ELEMENT_IMPORT__VISIBILITY, VISIBILITY_EDEFAULT);
+		return visibility;
 	}
 
 	/**
@@ -149,17 +202,14 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind visibility = newVisibility == null
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
 			: newVisibility;
-		Object oldVisibility = eVirtualSet(
-			UMLPackage.ELEMENT_IMPORT__VISIBILITY, visibility);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ELEMENT_IMPORT__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
-					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+				UMLPackage.ELEMENT_IMPORT__VISIBILITY, oldVisibility,
+				visibility));
 
 	}
 
@@ -169,8 +219,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public String getAlias() {
-		return (String) eVirtualGet(UMLPackage.ELEMENT_IMPORT__ALIAS,
-			ALIAS_EDEFAULT);
+		return alias;
 	}
 
 	/**
@@ -179,14 +228,14 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setAlias(String newAlias) {
-		String alias = newAlias;
-		Object oldAlias = eVirtualSet(UMLPackage.ELEMENT_IMPORT__ALIAS, alias);
-		boolean isSetChange = oldAlias == EVIRTUAL_NO_VALUE;
+		String oldAlias = alias;
+		alias = newAlias;
+		boolean oldAliasESet = (eFlags & ALIAS_ESETFLAG) != 0;
+		eFlags |= ALIAS_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ELEMENT_IMPORT__ALIAS, isSetChange
-					? ALIAS_EDEFAULT
-					: oldAlias, alias, isSetChange));
+				UMLPackage.ELEMENT_IMPORT__ALIAS, oldAlias, alias,
+				!oldAliasESet));
 
 	}
 
@@ -196,13 +245,14 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void unsetAlias() {
-		Object oldAlias = eVirtualUnset(UMLPackage.ELEMENT_IMPORT__ALIAS);
-		boolean isSetChange = oldAlias != EVIRTUAL_NO_VALUE;
+		String oldAlias = alias;
+		boolean oldAliasESet = (eFlags & ALIAS_ESETFLAG) != 0;
+		alias = ALIAS_EDEFAULT;
+		eFlags &= ~ALIAS_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.ELEMENT_IMPORT__ALIAS, isSetChange
-					? oldAlias
-					: ALIAS_EDEFAULT, ALIAS_EDEFAULT, isSetChange));
+				UMLPackage.ELEMENT_IMPORT__ALIAS, oldAlias, ALIAS_EDEFAULT,
+				oldAliasESet));
 	}
 
 	/**
@@ -211,7 +261,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public boolean isSetAlias() {
-		return eVirtualIsSet(UMLPackage.ELEMENT_IMPORT__ALIAS);
+		return (eFlags & ALIAS_ESETFLAG) != 0;
 	}
 
 	/**
@@ -220,13 +270,10 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public PackageableElement getImportedElement() {
-		PackageableElement importedElement = (PackageableElement) eVirtualGet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT);
 		if (importedElement != null && importedElement.eIsProxy()) {
 			InternalEObject oldImportedElement = (InternalEObject) importedElement;
 			importedElement = (PackageableElement) eResolveProxy(oldImportedElement);
 			if (importedElement != oldImportedElement) {
-				eVirtualSet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT,
-					importedElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT,
@@ -242,7 +289,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public PackageableElement basicGetImportedElement() {
-		return (PackageableElement) eVirtualGet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT);
+		return importedElement;
 	}
 
 	/**
@@ -251,15 +298,12 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setImportedElement(PackageableElement newImportedElement) {
-		PackageableElement importedElement = newImportedElement;
-		Object oldImportedElement = eVirtualSet(
-			UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT, importedElement);
+		PackageableElement oldImportedElement = importedElement;
+		importedElement = newImportedElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT,
-				oldImportedElement == EVIRTUAL_NO_VALUE
-					? null
-					: oldImportedElement, importedElement));
+				oldImportedElement, importedElement));
 
 	}
 
@@ -519,15 +563,13 @@ public class ElementImportImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ELEMENT_IMPORT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ELEMENT_IMPORT__OWNER :
 				return isSetOwner();
 			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ELEMENT_IMPORT__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.ELEMENT_IMPORT__SOURCE :
@@ -535,12 +577,11 @@ public class ElementImportImpl
 			case UMLPackage.ELEMENT_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.ELEMENT_IMPORT__VISIBILITY :
-				return eVirtualGet(UMLPackage.ELEMENT_IMPORT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UMLPackage.ELEMENT_IMPORT__ALIAS :
 				return isSetAlias();
 			case UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT :
-				return eVirtualGet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT) != null;
+				return importedElement != null;
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				return basicGetImportingNamespace() != null;
 		}
@@ -558,16 +599,25 @@ public class ElementImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.ELEMENT_IMPORT__VISIBILITY,
-			VISIBILITY_EDEFAULT));
+		result.append(visibility);
 		result.append(", alias: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.ELEMENT_IMPORT__ALIAS))
-			result.append(eVirtualGet(UMLPackage.ELEMENT_IMPORT__ALIAS));
+		if ((eFlags & ALIAS_ESETFLAG) != 0)
+			result.append(alias);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -578,6 +628,16 @@ public class ElementImportImpl
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE};
 
 	/**
 	 * <!-- begin-user-doc -->

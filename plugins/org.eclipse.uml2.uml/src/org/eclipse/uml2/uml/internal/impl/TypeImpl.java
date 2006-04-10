@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.15 2006/03/07 21:43:25 khussey Exp $
+ * $Id: TypeImpl.java,v 1.16 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -299,15 +299,13 @@ public abstract class TypeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TYPE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TYPE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TYPE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TYPE__OWNER :
 				return isSetOwner();
 			case UMLPackage.TYPE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TYPE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TYPE__NAME :
 				return isSetName();
 			case UMLPackage.TYPE__VISIBILITY :
@@ -317,16 +315,16 @@ public abstract class TypeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TYPE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TYPE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TYPE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TYPE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TYPE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TYPE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TYPE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.TYPE__PACKAGE :
 				return basicGetPackage() != null;
 		}

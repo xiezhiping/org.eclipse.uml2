@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.15 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,8 +23,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.ChangeEvent;
@@ -43,7 +46,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ChangeEventImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ChangeEventImpl#getChangeExpression <em>Change Expression</em>}</li>
  * </ul>
  * </p>
@@ -53,6 +55,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class ChangeEventImpl
 		extends EventImpl
 		implements ChangeEvent {
+
+	/**
+	 * The cached value of the '{@link #getChangeExpression() <em>Change Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChangeExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification changeExpression = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,16 +90,22 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.CHANGE_EVENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.CHANGE_EVENT__OWNED_ELEMENT, new int[]{
-						UMLPackage.CHANGE_EVENT__OWNED_COMMENT,
-						UMLPackage.CHANGE_EVENT__NAME_EXPRESSION,
-						UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.CHANGE_EVENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.CHANGE_EVENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -96,7 +114,6 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification getChangeExpression() {
-		ValueSpecification changeExpression = (ValueSpecification) eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION);
 		if (changeExpression != null && changeExpression.eIsProxy()) {
 			InternalEObject oldChangeExpression = (InternalEObject) changeExpression;
 			changeExpression = (ValueSpecification) eResolveProxy(oldChangeExpression);
@@ -129,7 +146,7 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetChangeExpression() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION);
+		return changeExpression;
 	}
 
 	/**
@@ -139,14 +156,12 @@ public class ChangeEventImpl
 	 */
 	public NotificationChain basicSetChangeExpression(
 			ValueSpecification newChangeExpression, NotificationChain msgs) {
-		Object oldChangeExpression = eVirtualSet(
-			UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION, newChangeExpression);
+		ValueSpecification oldChangeExpression = changeExpression;
+		changeExpression = newChangeExpression;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION,
-				oldChangeExpression == EVIRTUAL_NO_VALUE
-					? null
-					: oldChangeExpression, newChangeExpression);
+				oldChangeExpression, newChangeExpression);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -162,7 +177,6 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public void setChangeExpression(ValueSpecification newChangeExpression) {
-		ValueSpecification changeExpression = (ValueSpecification) eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION);
 		if (newChangeExpression != changeExpression) {
 			NotificationChain msgs = null;
 			if (changeExpression != null)
@@ -366,15 +380,13 @@ public class ChangeEventImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CHANGE_EVENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CHANGE_EVENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CHANGE_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CHANGE_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.CHANGE_EVENT__VISIBILITY :
@@ -384,21 +396,34 @@ public class ChangeEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CHANGE_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CHANGE_EVENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION :
-				return eVirtualGet(UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION) != null;
+				return changeExpression != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.CHANGE_EVENT__OWNED_COMMENT,
+		UMLPackage.CHANGE_EVENT__NAME_EXPRESSION,
+		UMLPackage.CHANGE_EVENT__CHANGE_EXPRESSION};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.13 2006/03/15 19:34:13 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.14 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,12 +69,10 @@ public class CreateLinkActionImpl
 	 * @generated
 	 */
 	public EList getEndData() {
-		EList endData = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__END_DATA);
 		if (endData == null) {
-			eVirtualSet(UMLPackage.CREATE_LINK_ACTION__END_DATA,
-				endData = new EObjectContainmentEList.Resolving(
-					LinkEndCreationData.class, this,
-					UMLPackage.CREATE_LINK_ACTION__END_DATA));
+			endData = new EObjectContainmentEList.Resolving(
+				LinkEndCreationData.class, this,
+				UMLPackage.CREATE_LINK_ACTION__END_DATA);
 		}
 		return endData;
 	}
@@ -96,7 +94,6 @@ public class CreateLinkActionImpl
 	 * @generated
 	 */
 	public boolean isSetEndData() {
-		EList endData = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__END_DATA);
 		return endData != null && !endData.isEmpty();
 	}
 
@@ -202,15 +199,13 @@ public class CreateLinkActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CREATE_LINK_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CREATE_LINK_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CREATE_LINK_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.CREATE_LINK_ACTION__VISIBILITY :
@@ -220,12 +215,12 @@ public class CreateLinkActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CREATE_LINK_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CREATE_LINK_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CREATE_LINK_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CREATE_LINK_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.CREATE_LINK_ACTION__REDEFINED_ELEMENT :
@@ -237,26 +232,20 @@ public class CreateLinkActionImpl
 			case UMLPackage.CREATE_LINK_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.CREATE_LINK_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.CREATE_LINK_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.CREATE_LINK_ACTION__INPUT :
@@ -264,18 +253,15 @@ public class CreateLinkActionImpl
 			case UMLPackage.CREATE_LINK_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.CREATE_LINK_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.CREATE_LINK_ACTION__END_DATA :
 				return isSetEndData();
 			case UMLPackage.CREATE_LINK_ACTION__INPUT_VALUE :
-				EList inputValue = (EList) eVirtualGet(UMLPackage.CREATE_LINK_ACTION__INPUT_VALUE);
-				return inputValue != null && !inputValue.isEmpty();
+				return inputValues != null && !inputValues.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.15 2006/03/07 20:25:16 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.16 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
@@ -52,7 +53,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
@@ -66,6 +66,26 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class DeploymentImpl
 		extends DependencyImpl
 		implements Deployment {
+
+	/**
+	 * The cached value of the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList deployedArtifacts = null;
+
+	/**
+	 * The cached value of the '{@link #getConfigurations() <em>Configuration</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfigurations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList configurations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,16 +111,22 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.DEPLOYMENT__OWNED_ELEMENT, new int[]{
-						UMLPackage.DEPLOYMENT__OWNED_COMMENT,
-						UMLPackage.DEPLOYMENT__NAME_EXPRESSION,
-						UMLPackage.DEPLOYMENT__CONFIGURATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DEPLOYMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -109,15 +135,23 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT__SUPPLIER,
-				supplier = new SubsetSupersetEObjectResolvingEList(
-					NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER,
-					null, new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT}));
+		if (suppliers == null) {
+			suppliers = new SubsetSupersetEObjectResolvingEList(
+				NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER,
+				null, SUPPLIER_ESUBSETS);
 		}
-		return supplier;
+		return suppliers;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,17 +159,33 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public EList getClients() {
-		EList client = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT);
-		if (client == null) {
-			eVirtualSet(
-				UMLPackage.DEPLOYMENT__CLIENT,
-				client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
-					NamedElement.class, this, UMLPackage.DEPLOYMENT__CLIENT,
-					null, new int[]{UMLPackage.DEPLOYMENT__LOCATION},
-					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		if (clients == null) {
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+				NamedElement.class, this, UMLPackage.DEPLOYMENT__CLIENT, null,
+				CLIENT_ESUBSETS, UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
-		return client;
+		return clients;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__LOCATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT__SUPPLIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,15 +193,13 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public EList getDeployedArtifacts() {
-		EList deployedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
-		if (deployedArtifact == null) {
-			eVirtualSet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
-				deployedArtifact = new SubsetSupersetEObjectResolvingEList(
-					DeployedArtifact.class, this,
-					UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
-					new int[]{UMLPackage.DEPLOYMENT__SUPPLIER}, null));
+		if (deployedArtifacts == null) {
+			deployedArtifacts = new SubsetSupersetEObjectResolvingEList(
+				DeployedArtifact.class, this,
+				UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
+				DEPLOYED_ARTIFACT_ESUPERSETS, null);
 		}
-		return deployedArtifact;
+		return deployedArtifacts;
 	}
 
 	/**
@@ -190,16 +238,13 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public EList getConfigurations() {
-		EList configuration = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
-		if (configuration == null) {
-			eVirtualSet(
+		if (configurations == null) {
+			configurations = new EObjectContainmentWithInverseEList.Resolving(
+				DeploymentSpecification.class, this,
 				UMLPackage.DEPLOYMENT__CONFIGURATION,
-				configuration = new EObjectContainmentWithInverseEList.Resolving(
-					DeploymentSpecification.class, this,
-					UMLPackage.DEPLOYMENT__CONFIGURATION,
-					UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT));
+				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT);
 		}
-		return configuration;
+		return configurations;
 	}
 
 	/**
@@ -281,9 +326,9 @@ public class DeploymentImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newLocation != null) {
-				EList client = getClients();
-				if (!client.contains(newLocation)) {
-					client.add(newLocation);
+				EList clients = getClients();
+				if (!clients.contains(newLocation)) {
+					clients.add(newLocation);
 				}
 			}
 		}
@@ -337,7 +382,6 @@ public class DeploymentImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -591,15 +635,13 @@ public class DeploymentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPLOYMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPLOYMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAME :
 				return isSetName();
 			case UMLPackage.DEPLOYMENT__VISIBILITY :
@@ -609,16 +651,16 @@ public class DeploymentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DEPLOYMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.DEPLOYMENT__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DEPLOYMENT__SOURCE :
@@ -626,22 +668,32 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TARGET :
 				return isSetTargets();
 			case UMLPackage.DEPLOYMENT__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.DEPLOYMENT__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
-				EList deployedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT);
-				return deployedArtifact != null && !deployedArtifact.isEmpty();
+				return deployedArtifacts != null
+					&& !deployedArtifacts.isEmpty();
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
-				EList configuration = (EList) eVirtualGet(UMLPackage.DEPLOYMENT__CONFIGURATION);
-				return configuration != null && !configuration.isEmpty();
+				return configurations != null && !configurations.isEmpty();
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				return basicGetLocation() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.DEPLOYMENT__OWNED_COMMENT,
+		UMLPackage.DEPLOYMENT__NAME_EXPRESSION,
+		UMLPackage.DEPLOYMENT__CONFIGURATION};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.17 2006/03/15 19:34:05 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.18 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,8 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -71,7 +69,7 @@ public class TimeConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FIRST_EVENT_EFLAG = 1 << 8;
+	protected static final int FIRST_EVENT_EFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,7 +123,6 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.TIME_CONSTRAINT__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (ValueSpecification) eResolveProxy(oldSpecification);
@@ -157,7 +154,7 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.TIME_CONSTRAINT__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -167,14 +164,12 @@ public class TimeConstraintImpl
 	 */
 	public NotificationChain basicSetSpecificationGen(
 			ValueSpecification newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(
-			UMLPackage.TIME_CONSTRAINT__SPECIFICATION, newSpecification);
+		ValueSpecification oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.TIME_CONSTRAINT__SPECIFICATION,
-				oldSpecification == EVIRTUAL_NO_VALUE
-					? null
-					: oldSpecification, newSpecification);
+				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -202,7 +197,6 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.TIME_CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -245,7 +239,7 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
-		return eVirtualGet(UMLPackage.TIME_CONSTRAINT__SPECIFICATION) != null;
+		return specification != null;
 	}
 
 	/**
@@ -413,15 +407,13 @@ public class TimeConstraintImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TIME_CONSTRAINT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TIME_CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TIME_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
@@ -431,20 +423,19 @@ public class TimeConstraintImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_CONSTRAINT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TIME_CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.TIME_CONSTRAINT__CONSTRAINED_ELEMENT :
-				EList constrainedElement = (EList) eVirtualGet(UMLPackage.TIME_CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null
-					&& !constrainedElement.isEmpty();
+				return constrainedElements != null
+					&& !constrainedElements.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :

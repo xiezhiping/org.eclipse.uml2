@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.18 2006/03/09 21:30:31 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -46,7 +49,6 @@ import org.eclipse.uml2.uml.internal.operations.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#getUpper <em>Upper</em>}</li>
@@ -123,6 +125,26 @@ public abstract class MultiplicityElementImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -147,16 +169,23 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
-					new int[]{UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT,
-						UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-						UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -255,7 +284,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 		if (upperValue != null && upperValue.eIsProxy()) {
 			InternalEObject oldUpperValue = (InternalEObject) upperValue;
 			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
@@ -288,7 +316,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetUpperValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -298,14 +326,12 @@ public abstract class MultiplicityElementImpl
 	 */
 	public NotificationChain basicSetUpperValue(
 			ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(
-			UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE, newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-				oldUpperValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldUpperValue, newUpperValue);
+				oldUpperValue, newUpperValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -321,7 +347,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -366,7 +391,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 		if (lowerValue != null && lowerValue.eIsProxy()) {
 			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
 			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
@@ -399,7 +423,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetLowerValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -409,14 +433,12 @@ public abstract class MultiplicityElementImpl
 	 */
 	public NotificationChain basicSetLowerValue(
 			ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(
-			UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE, newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-				oldLowerValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldLowerValue, newLowerValue);
+				oldLowerValue, newLowerValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -432,7 +454,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -711,15 +732,13 @@ public abstract class MultiplicityElementImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
@@ -729,9 +748,9 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE) != null;
+				return lowerValue != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -753,6 +772,19 @@ public abstract class MultiplicityElementImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT,
+		UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+		UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

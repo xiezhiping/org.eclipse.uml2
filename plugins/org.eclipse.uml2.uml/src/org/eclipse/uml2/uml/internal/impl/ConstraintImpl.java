@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.16 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,10 +27,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Constraint;
@@ -52,7 +55,6 @@ import org.eclipse.uml2.uml.internal.operations.ConstraintOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getConstrainedElements <em>Constrained Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getContext <em>Context</em>}</li>
@@ -64,6 +66,26 @@ import org.eclipse.uml2.uml.internal.operations.ConstraintOperations;
 public class ConstraintImpl
 		extends PackageableElementImpl
 		implements Constraint {
+
+	/**
+	 * The cached value of the '{@link #getConstrainedElements() <em>Constrained Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstrainedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList constrainedElements = null;
+
+	/**
+	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecification()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification specification = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,16 +111,22 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.CONSTRAINT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.CONSTRAINT__OWNED_ELEMENT, new int[]{
-						UMLPackage.CONSTRAINT__OWNED_COMMENT,
-						UMLPackage.CONSTRAINT__NAME_EXPRESSION,
-						UMLPackage.CONSTRAINT__SPECIFICATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.CONSTRAINT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -107,13 +135,11 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public EList getConstrainedElements() {
-		EList constrainedElement = (EList) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
-		if (constrainedElement == null) {
-			eVirtualSet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT,
-				constrainedElement = new EObjectResolvingEList(Element.class,
-					this, UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT));
+		if (constrainedElements == null) {
+			constrainedElements = new EObjectResolvingEList(Element.class,
+				this, UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
 		}
-		return constrainedElement;
+		return constrainedElements;
 	}
 
 	/**
@@ -122,7 +148,6 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (ValueSpecification) eResolveProxy(oldSpecification);
@@ -153,7 +178,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -163,14 +188,12 @@ public class ConstraintImpl
 	 */
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(
-			UMLPackage.CONSTRAINT__SPECIFICATION, newSpecification);
+		ValueSpecification oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.CONSTRAINT__SPECIFICATION,
-				oldSpecification == EVIRTUAL_NO_VALUE
-					? null
-					: oldSpecification, newSpecification);
+				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -186,7 +209,6 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -358,7 +380,6 @@ public class ConstraintImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -579,15 +600,13 @@ public class ConstraintImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.CONSTRAINT__VISIBILITY :
@@ -597,27 +616,39 @@ public class ConstraintImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONSTRAINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
-				EList constrainedElement = (EList) eVirtualGet(UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null
-					&& !constrainedElement.isEmpty();
+				return constrainedElements != null
+					&& !constrainedElements.isEmpty();
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				return eVirtualGet(UMLPackage.CONSTRAINT__SPECIFICATION) != null;
+				return specification != null;
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				return basicGetContext() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.CONSTRAINT__OWNED_COMMENT,
+		UMLPackage.CONSTRAINT__NAME_EXPRESSION,
+		UMLPackage.CONSTRAINT__SPECIFICATION};
 
 	/**
 	 * <!-- begin-user-doc -->

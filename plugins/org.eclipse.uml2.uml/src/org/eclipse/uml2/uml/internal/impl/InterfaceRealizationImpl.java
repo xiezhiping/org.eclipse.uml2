@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,6 +62,16 @@ public class InterfaceRealizationImpl
 		implements InterfaceRealization {
 
 	/**
+	 * The cached value of the '{@link #getContract() <em>Contract</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContract()
+	 * @generated
+	 * @ordered
+	 */
+	protected Interface contract = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -85,16 +95,24 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER,
-				supplier = new SubsetSupersetEObjectResolvingEList(
-					NamedElement.class, this,
-					UMLPackage.INTERFACE_REALIZATION__SUPPLIER, null,
-					new int[]{UMLPackage.INTERFACE_REALIZATION__CONTRACT}));
+		if (suppliers == null) {
+			suppliers = new SubsetSupersetEObjectResolvingEList(
+				NamedElement.class, this,
+				UMLPackage.INTERFACE_REALIZATION__SUPPLIER, null,
+				SUPPLIER_ESUBSETS);
 		}
-		return supplier;
+		return suppliers;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.INTERFACE_REALIZATION__CONTRACT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,20 +120,24 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public EList getClients() {
-		EList client = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT);
-		if (client == null) {
-			eVirtualSet(
-				UMLPackage.INTERFACE_REALIZATION__CLIENT,
-				client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
-					NamedElement.class,
-					this,
-					UMLPackage.INTERFACE_REALIZATION__CLIENT,
-					null,
-					new int[]{UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER},
-					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		if (clients == null) {
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+				NamedElement.class, this,
+				UMLPackage.INTERFACE_REALIZATION__CLIENT, null,
+				CLIENT_ESUBSETS, UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
-		return client;
+		return clients;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,13 +145,10 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public Interface getContract() {
-		Interface contract = (Interface) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
 			InternalEObject oldContract = (InternalEObject) contract;
 			contract = (Interface) eResolveProxy(oldContract);
 			if (contract != oldContract) {
-				eVirtualSet(UMLPackage.INTERFACE_REALIZATION__CONTRACT,
-					contract);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INTERFACE_REALIZATION__CONTRACT,
@@ -145,7 +164,7 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public Interface basicGetContract() {
-		return (Interface) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CONTRACT);
+		return contract;
 	}
 
 	/**
@@ -154,22 +173,19 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public void setContract(Interface newContract) {
-		Interface contract = newContract;
-		Object oldContract = eVirtualSet(
-			UMLPackage.INTERFACE_REALIZATION__CONTRACT, contract);
+		Interface oldContract = contract;
+		contract = newContract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INTERFACE_REALIZATION__CONTRACT,
-				oldContract == EVIRTUAL_NO_VALUE
-					? null
-					: oldContract, contract));
+				UMLPackage.INTERFACE_REALIZATION__CONTRACT, oldContract,
+				contract));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newContract != null) {
-				EList supplier = getSuppliers();
-				if (!supplier.contains(newContract)) {
-					supplier.add(newContract);
+				EList suppliers = getSuppliers();
+				if (!suppliers.contains(newContract)) {
+					suppliers.add(newContract);
 				}
 			}
 		}
@@ -211,9 +227,9 @@ public class InterfaceRealizationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newImplementingClassifier != null) {
-				EList client = getClients();
-				if (!client.contains(newImplementingClassifier)) {
-					client.add(newImplementingClassifier);
+				EList clients = getClients();
+				if (!clients.contains(newImplementingClassifier)) {
+					clients.add(newImplementingClassifier);
 				}
 			}
 		}
@@ -272,7 +288,6 @@ public class InterfaceRealizationImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -525,15 +540,13 @@ public class InterfaceRealizationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERFACE_REALIZATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				return isSetName();
 			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
@@ -543,16 +556,16 @@ public class InterfaceRealizationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.INTERFACE_REALIZATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INTERFACE_REALIZATION__SOURCE :
@@ -560,15 +573,13 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
-				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__MAPPING) != null;
+				return mapping != null;
 			case UMLPackage.INTERFACE_REALIZATION__CONTRACT :
-				return eVirtualGet(UMLPackage.INTERFACE_REALIZATION__CONTRACT) != null;
+				return contract != null;
 			case UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER :
 				return basicGetImplementingClassifier() != null;
 		}

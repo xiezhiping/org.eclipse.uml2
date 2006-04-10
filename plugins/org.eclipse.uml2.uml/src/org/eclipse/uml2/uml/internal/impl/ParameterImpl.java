@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.27 2006/03/15 19:33:59 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.28 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -58,7 +61,6 @@ import org.eclipse.uml2.uml.internal.operations.ParameterOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterImpl#getUpper <em>Upper</em>}</li>
@@ -100,7 +102,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 8;
+	protected static final int IS_ORDERED_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -120,7 +122,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 9;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -143,6 +145,36 @@ public class ParameterImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
+	 * The cached value of the '{@link #getParameterSets() <em>Parameter Set</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterSets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parameterSets = null;
+
+	/**
 	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,6 +185,16 @@ public class ParameterImpl
 	protected static final ParameterDirectionKind DIRECTION_EDEFAULT = ParameterDirectionKind.IN_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDirection()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterDirectionKind direction = DIRECTION_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -161,6 +203,16 @@ public class ParameterImpl
 	 * @ordered
 	 */
 	protected static final String DEFAULT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification defaultValue = null;
 
 	/**
 	 * The default value of the '{@link #isException() <em>Is Exception</em>}' attribute.
@@ -180,7 +232,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_EXCEPTION_EFLAG = 1 << 10;
+	protected static final int IS_EXCEPTION_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isStream() <em>Is Stream</em>}' attribute.
@@ -200,7 +252,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STREAM_EFLAG = 1 << 11;
+	protected static final int IS_STREAM_EFLAG = 1 << 13;
 
 	/**
 	 * The default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
@@ -211,6 +263,25 @@ public class ParameterImpl
 	 * @ordered
 	 */
 	protected static final ParameterEffectKind EFFECT_EDEFAULT = ParameterEffectKind.CREATE_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEffect()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterEffectKind effect = EFFECT_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Effect attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int EFFECT_ESETFLAG = 1 << 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -237,18 +308,22 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.PARAMETER__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PARAMETER__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PARAMETER__OWNED_ELEMENT, new int[]{
-						UMLPackage.PARAMETER__OWNED_COMMENT,
-						UMLPackage.PARAMETER__NAME_EXPRESSION,
-						UMLPackage.PARAMETER__UPPER_VALUE,
-						UMLPackage.PARAMETER__LOWER_VALUE,
-						UMLPackage.PARAMETER__DEFAULT_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.PARAMETER__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PARAMETER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -345,7 +420,6 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
 		if (upperValue != null && upperValue.eIsProxy()) {
 			InternalEObject oldUpperValue = (InternalEObject) upperValue;
 			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
@@ -376,7 +450,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetUpperValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -386,14 +460,12 @@ public class ParameterImpl
 	 */
 	public NotificationChain basicSetUpperValue(
 			ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UMLPackage.PARAMETER__UPPER_VALUE,
-			newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PARAMETER__UPPER_VALUE,
-				oldUpperValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldUpperValue, newUpperValue);
+				oldUpperValue, newUpperValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -409,7 +481,6 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -451,7 +522,6 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
 		if (lowerValue != null && lowerValue.eIsProxy()) {
 			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
 			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
@@ -482,7 +552,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetLowerValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -492,14 +562,12 @@ public class ParameterImpl
 	 */
 	public NotificationChain basicSetLowerValue(
 			ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UMLPackage.PARAMETER__LOWER_VALUE,
-			newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PARAMETER__LOWER_VALUE,
-				oldLowerValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldLowerValue, newLowerValue);
+				oldLowerValue, newLowerValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -515,7 +583,6 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -557,16 +624,12 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public EList getParameterSets() {
-		EList parameterSet = (EList) eVirtualGet(UMLPackage.PARAMETER__PARAMETER_SET);
-		if (parameterSet == null) {
-			eVirtualSet(
-				UMLPackage.PARAMETER__PARAMETER_SET,
-				parameterSet = new EObjectWithInverseResolvingEList.ManyInverse(
-					ParameterSet.class, this,
-					UMLPackage.PARAMETER__PARAMETER_SET,
-					UMLPackage.PARAMETER_SET__PARAMETER));
+		if (parameterSets == null) {
+			parameterSets = new EObjectWithInverseResolvingEList.ManyInverse(
+				ParameterSet.class, this, UMLPackage.PARAMETER__PARAMETER_SET,
+				UMLPackage.PARAMETER_SET__PARAMETER);
 		}
-		return parameterSet;
+		return parameterSets;
 	}
 
 	/**
@@ -626,8 +689,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
-		return (ParameterDirectionKind) eVirtualGet(
-			UMLPackage.PARAMETER__DIRECTION, DIRECTION_EDEFAULT);
+		return direction;
 	}
 
 	/**
@@ -636,17 +698,13 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDirection(ParameterDirectionKind newDirection) {
-		ParameterDirectionKind direction = newDirection == null
+		ParameterDirectionKind oldDirection = direction;
+		direction = newDirection == null
 			? DIRECTION_EDEFAULT
 			: newDirection;
-		Object oldDirection = eVirtualSet(UMLPackage.PARAMETER__DIRECTION,
-			direction);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__DIRECTION,
-				oldDirection == EVIRTUAL_NO_VALUE
-					? DIRECTION_EDEFAULT
-					: oldDirection, direction));
+				UMLPackage.PARAMETER__DIRECTION, oldDirection, direction));
 
 	}
 
@@ -692,7 +750,6 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
-		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
 		if (defaultValue != null && defaultValue.eIsProxy()) {
 			InternalEObject oldDefaultValue = (InternalEObject) defaultValue;
 			defaultValue = (ValueSpecification) eResolveProxy(oldDefaultValue);
@@ -723,7 +780,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetDefaultValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
+		return defaultValue;
 	}
 
 	/**
@@ -733,14 +790,12 @@ public class ParameterImpl
 	 */
 	public NotificationChain basicSetDefaultValue(
 			ValueSpecification newDefaultValue, NotificationChain msgs) {
-		Object oldDefaultValue = eVirtualSet(
-			UMLPackage.PARAMETER__DEFAULT_VALUE, newDefaultValue);
+		ValueSpecification oldDefaultValue = defaultValue;
+		defaultValue = newDefaultValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PARAMETER__DEFAULT_VALUE,
-				oldDefaultValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldDefaultValue, newDefaultValue);
+				oldDefaultValue, newDefaultValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -756,7 +811,6 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
-		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE);
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -852,8 +906,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
-		return (ParameterEffectKind) eVirtualGet(UMLPackage.PARAMETER__EFFECT,
-			EFFECT_EDEFAULT);
+		return effect;
 	}
 
 	/**
@@ -862,16 +915,15 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setEffect(ParameterEffectKind newEffect) {
-		ParameterEffectKind effect = newEffect == null
+		ParameterEffectKind oldEffect = effect;
+		effect = newEffect == null
 			? EFFECT_EDEFAULT
 			: newEffect;
-		Object oldEffect = eVirtualSet(UMLPackage.PARAMETER__EFFECT, effect);
-		boolean isSetChange = oldEffect == EVIRTUAL_NO_VALUE;
+		boolean oldEffectESet = (eFlags & EFFECT_ESETFLAG) != 0;
+		eFlags |= EFFECT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__EFFECT, isSetChange
-					? EFFECT_EDEFAULT
-					: oldEffect, effect, isSetChange));
+				UMLPackage.PARAMETER__EFFECT, oldEffect, effect, !oldEffectESet));
 
 	}
 
@@ -881,13 +933,14 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void unsetEffect() {
-		Object oldEffect = eVirtualUnset(UMLPackage.PARAMETER__EFFECT);
-		boolean isSetChange = oldEffect != EVIRTUAL_NO_VALUE;
+		ParameterEffectKind oldEffect = effect;
+		boolean oldEffectESet = (eFlags & EFFECT_ESETFLAG) != 0;
+		effect = EFFECT_EDEFAULT;
+		eFlags &= ~EFFECT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.PARAMETER__EFFECT, isSetChange
-					? oldEffect
-					: EFFECT_EDEFAULT, EFFECT_EDEFAULT, isSetChange));
+				UMLPackage.PARAMETER__EFFECT, oldEffect, EFFECT_EDEFAULT,
+				oldEffectESet));
 	}
 
 	/**
@@ -896,7 +949,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public boolean isSetEffect() {
-		return eVirtualIsSet(UMLPackage.PARAMETER__EFFECT);
+		return (eFlags & EFFECT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -1112,7 +1165,6 @@ public class ParameterImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PARAMETER__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETER__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -1435,15 +1487,13 @@ public class ParameterImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PARAMETER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.PARAMETER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PARAMETER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PARAMETER__NAME :
 				return isSetName();
 			case UMLPackage.PARAMETER__VISIBILITY :
@@ -1453,21 +1503,20 @@ public class ParameterImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PARAMETER__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PARAMETER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PARAMETER__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PARAMETER__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PARAMETER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PARAMETER__TYPE :
-				return eVirtualGet(UMLPackage.PARAMETER__TYPE) != null;
+				return type != null;
 			case UMLPackage.PARAMETER__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PARAMETER__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.PARAMETER__END :
-				EList end = (EList) eVirtualGet(UMLPackage.PARAMETER__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UMLPackage.PARAMETER__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PARAMETER__IS_UNIQUE :
@@ -1477,21 +1526,19 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PARAMETER__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.PARAMETER__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.PARAMETER__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.PARAMETER__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.PARAMETER__PARAMETER_SET :
-				EList parameterSet = (EList) eVirtualGet(UMLPackage.PARAMETER__PARAMETER_SET);
-				return parameterSet != null && !parameterSet.isEmpty();
+				return parameterSets != null && !parameterSets.isEmpty();
 			case UMLPackage.PARAMETER__OPERATION :
 				return basicGetOperation() != null;
 			case UMLPackage.PARAMETER__DIRECTION :
-				return eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
-					DIRECTION_EDEFAULT) != DIRECTION_EDEFAULT;
+				return direction != DIRECTION_EDEFAULT;
 			case UMLPackage.PARAMETER__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
-				return eVirtualGet(UMLPackage.PARAMETER__DEFAULT_VALUE) != null;
+				return defaultValue != null;
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
 				return ((eFlags & IS_EXCEPTION_EFLAG) != 0) != IS_EXCEPTION_EDEFAULT;
 			case UMLPackage.PARAMETER__IS_STREAM :
@@ -1571,20 +1618,33 @@ public class ParameterImpl
 		result.append(", isUnique: "); //$NON-NLS-1$
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(", direction: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PARAMETER__DIRECTION,
-			DIRECTION_EDEFAULT));
+		result.append(direction);
 		result.append(", isException: "); //$NON-NLS-1$
 		result.append((eFlags & IS_EXCEPTION_EFLAG) != 0);
 		result.append(", isStream: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.PARAMETER__EFFECT))
-			result.append(eVirtualGet(UMLPackage.PARAMETER__EFFECT));
+		if ((eFlags & EFFECT_ESETFLAG) != 0)
+			result.append(effect);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PARAMETER__OWNED_COMMENT,
+		UMLPackage.PARAMETER__NAME_EXPRESSION,
+		UMLPackage.PARAMETER__UPPER_VALUE, UMLPackage.PARAMETER__LOWER_VALUE,
+		UMLPackage.PARAMETER__DEFAULT_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

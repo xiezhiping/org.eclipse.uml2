@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.13 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -77,7 +75,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_MULTICAST_EFLAG = 1 << 9;
+	protected static final int IS_MULTICAST_EFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #isMultireceive() <em>Is Multireceive</em>}' attribute.
@@ -97,7 +95,27 @@ public class ObjectFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_MULTIRECEIVE_EFLAG = 1 << 10;
+	protected static final int IS_MULTIRECEIVE_EFLAG = 1 << 12;
+
+	/**
+	 * The cached value of the '{@link #getTransformation() <em>Transformation</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior transformation = null;
+
+	/**
+	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelection()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior selection = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,13 +195,10 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public Behavior getTransformation() {
-		Behavior transformation = (Behavior) eVirtualGet(UMLPackage.OBJECT_FLOW__TRANSFORMATION);
 		if (transformation != null && transformation.eIsProxy()) {
 			InternalEObject oldTransformation = (InternalEObject) transformation;
 			transformation = (Behavior) eResolveProxy(oldTransformation);
 			if (transformation != oldTransformation) {
-				eVirtualSet(UMLPackage.OBJECT_FLOW__TRANSFORMATION,
-					transformation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OBJECT_FLOW__TRANSFORMATION,
@@ -199,7 +214,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public Behavior basicGetTransformation() {
-		return (Behavior) eVirtualGet(UMLPackage.OBJECT_FLOW__TRANSFORMATION);
+		return transformation;
 	}
 
 	/**
@@ -208,15 +223,12 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setTransformation(Behavior newTransformation) {
-		Behavior transformation = newTransformation;
-		Object oldTransformation = eVirtualSet(
-			UMLPackage.OBJECT_FLOW__TRANSFORMATION, transformation);
+		Behavior oldTransformation = transformation;
+		transformation = newTransformation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OBJECT_FLOW__TRANSFORMATION,
-				oldTransformation == EVIRTUAL_NO_VALUE
-					? null
-					: oldTransformation, transformation));
+				UMLPackage.OBJECT_FLOW__TRANSFORMATION, oldTransformation,
+				transformation));
 
 	}
 
@@ -226,12 +238,10 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public Behavior getSelection() {
-		Behavior selection = (Behavior) eVirtualGet(UMLPackage.OBJECT_FLOW__SELECTION);
 		if (selection != null && selection.eIsProxy()) {
 			InternalEObject oldSelection = (InternalEObject) selection;
 			selection = (Behavior) eResolveProxy(oldSelection);
 			if (selection != oldSelection) {
-				eVirtualSet(UMLPackage.OBJECT_FLOW__SELECTION, selection);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OBJECT_FLOW__SELECTION, oldSelection,
@@ -247,7 +257,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public Behavior basicGetSelection() {
-		return (Behavior) eVirtualGet(UMLPackage.OBJECT_FLOW__SELECTION);
+		return selection;
 	}
 
 	/**
@@ -256,15 +266,11 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setSelection(Behavior newSelection) {
-		Behavior selection = newSelection;
-		Object oldSelection = eVirtualSet(UMLPackage.OBJECT_FLOW__SELECTION,
-			selection);
+		Behavior oldSelection = selection;
+		selection = newSelection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OBJECT_FLOW__SELECTION,
-				oldSelection == EVIRTUAL_NO_VALUE
-					? null
-					: oldSelection, selection));
+				UMLPackage.OBJECT_FLOW__SELECTION, oldSelection, selection));
 
 	}
 
@@ -603,15 +609,13 @@ public class ObjectFlowImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_FLOW__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OBJECT_FLOW__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OBJECT_FLOW__OWNER :
 				return isSetOwner();
 			case UMLPackage.OBJECT_FLOW__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OBJECT_FLOW__NAME :
 				return isSetName();
 			case UMLPackage.OBJECT_FLOW__VISIBILITY :
@@ -621,12 +625,12 @@ public class ObjectFlowImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OBJECT_FLOW__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.OBJECT_FLOW__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_ELEMENT :
@@ -634,21 +638,19 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.OBJECT_FLOW__SOURCE :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__SOURCE) != null;
+				return source != null;
 			case UMLPackage.OBJECT_FLOW__TARGET :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__TARGET) != null;
+				return target != null;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
-				EList redefinedEdge = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__REDEFINED_EDGE);
-				return redefinedEdge != null && !redefinedEdge.isEmpty();
+				return redefinedEdges != null && !redefinedEdges.isEmpty();
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.OBJECT_FLOW__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.OBJECT_FLOW__GUARD :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__GUARD) != null;
+				return guard != null;
 			case UMLPackage.OBJECT_FLOW__WEIGHT :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__WEIGHT) != null;
+				return weight != null;
 			case UMLPackage.OBJECT_FLOW__INTERRUPTS :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__INTERRUPTS) != null;
+				return interrupts != null;
 			case UMLPackage.OBJECT_FLOW__IN_STRUCTURED_NODE :
 				return basicGetInStructuredNode() != null;
 			case UMLPackage.OBJECT_FLOW__IN_GROUP :
@@ -660,9 +662,9 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :
 				return ((eFlags & IS_MULTIRECEIVE_EFLAG) != 0) != IS_MULTIRECEIVE_EDEFAULT;
 			case UMLPackage.OBJECT_FLOW__TRANSFORMATION :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__TRANSFORMATION) != null;
+				return transformation != null;
 			case UMLPackage.OBJECT_FLOW__SELECTION :
-				return eVirtualGet(UMLPackage.OBJECT_FLOW__SELECTION) != null;
+				return selection != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

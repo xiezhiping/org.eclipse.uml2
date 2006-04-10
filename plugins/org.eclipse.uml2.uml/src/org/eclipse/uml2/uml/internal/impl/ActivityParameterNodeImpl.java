@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.13 2006/03/15 19:34:01 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.14 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -58,6 +56,16 @@ public class ActivityParameterNodeImpl
 		implements ActivityParameterNode {
 
 	/**
+	 * The cached value of the '{@link #getParameter() <em>Parameter</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected Parameter parameter = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,13 +89,10 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public Parameter getParameter() {
-		Parameter parameter = (Parameter) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER);
 		if (parameter != null && parameter.eIsProxy()) {
 			InternalEObject oldParameter = (InternalEObject) parameter;
 			parameter = (Parameter) eResolveProxy(oldParameter);
 			if (parameter != oldParameter) {
-				eVirtualSet(UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER,
-					parameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER,
@@ -103,7 +108,7 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public Parameter basicGetParameter() {
-		return (Parameter) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER);
+		return parameter;
 	}
 
 	/**
@@ -112,15 +117,12 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public void setParameter(Parameter newParameter) {
-		Parameter parameter = newParameter;
-		Object oldParameter = eVirtualSet(
-			UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER, parameter);
+		Parameter oldParameter = parameter;
+		parameter = newParameter;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER,
-				oldParameter == EVIRTUAL_NO_VALUE
-					? null
-					: oldParameter, parameter));
+				UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER, oldParameter,
+				parameter));
 
 	}
 
@@ -431,15 +433,13 @@ public class ActivityParameterNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__VISIBILITY :
@@ -449,12 +449,12 @@ public class ActivityParameterNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_ELEMENT :
@@ -466,40 +466,32 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
-				return eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE) != null;
+				return type != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING :
-				return eVirtualGet(
-					UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING,
-					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__UPPER_BOUND :
-				return eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STATE :
-				EList inState = (EList) eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__SELECTION :
-				return eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__SELECTION) != null;
+				return selection != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER :
-				return eVirtualGet(UMLPackage.ACTIVITY_PARAMETER_NODE__PARAMETER) != null;
+				return parameter != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

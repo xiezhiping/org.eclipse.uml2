@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetTest.java,v 1.1 2006/02/21 16:32:28 khussey Exp $
+ * $Id: DeploymentTargetTest.java,v 1.2 2006/04/10 19:13:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,7 +21,6 @@ import org.eclipse.uml2.uml.DeploymentTarget;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}</li>
  * </ul>
  * </p>
@@ -48,18 +47,6 @@ public abstract class DeploymentTargetTest
 	 */
 	private DeploymentTarget getFixture() {
 		return (DeploymentTarget) fixture;
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**

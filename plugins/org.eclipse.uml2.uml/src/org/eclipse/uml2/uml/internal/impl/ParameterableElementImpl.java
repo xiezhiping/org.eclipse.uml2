@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.9 2006/03/01 17:56:38 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.10 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -54,6 +52,16 @@ public abstract class ParameterableElementImpl
 		implements ParameterableElement {
 
 	/**
+	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateParameter templateParameter = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -77,14 +85,10 @@ public abstract class ParameterableElementImpl
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
 			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
-				eVirtualSet(
-					UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-					templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
@@ -100,7 +104,7 @@ public abstract class ParameterableElementImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
+		return templateParameter;
 	}
 
 	/**
@@ -110,16 +114,13 @@ public abstract class ParameterableElementImpl
 	 */
 	public NotificationChain basicSetTemplateParameter(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		Object oldTemplateParameter = eVirtualSet(
-			UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-			newTemplateParameter);
+		TemplateParameter oldTemplateParameter = templateParameter;
+		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-				oldTemplateParameter == EVIRTUAL_NO_VALUE
-					? null
-					: oldTemplateParameter, newTemplateParameter);
+				oldTemplateParameter, newTemplateParameter);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -143,7 +144,6 @@ public abstract class ParameterableElementImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -199,7 +199,6 @@ public abstract class ParameterableElementImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
-				Object templateParameter = eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 				if (newOwningTemplateParameter != templateParameter) {
 					setTemplateParameter(newOwningTemplateParameter);
 				}
@@ -275,7 +274,6 @@ public abstract class ParameterableElementImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -410,19 +408,17 @@ public abstract class ParameterableElementImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

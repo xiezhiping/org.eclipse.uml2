@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.21 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.22 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
@@ -53,7 +56,6 @@ import org.eclipse.uml2.uml.internal.operations.ActionInputPinOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionInputPinImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionInputPinImpl#getFromAction <em>From Action</em>}</li>
  * </ul>
  * </p>
@@ -63,6 +65,16 @@ import org.eclipse.uml2.uml.internal.operations.ActionInputPinOperations;
 public class ActionInputPinImpl
 		extends InputPinImpl
 		implements ActionInputPin {
+
+	/**
+	 * The cached value of the '{@link #getFromAction() <em>From Action</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFromAction()
+	 * @generated
+	 * @ordered
+	 */
+	protected Action fromAction = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,19 +100,22 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT,
-					new int[]{UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT,
-						UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION,
-						UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND,
-						UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE,
-						UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE,
-						UMLPackage.ACTION_INPUT_PIN__FROM_ACTION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -109,7 +124,6 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public Action getFromAction() {
-		Action fromAction = (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
 		if (fromAction != null && fromAction.eIsProxy()) {
 			InternalEObject oldFromAction = (InternalEObject) fromAction;
 			fromAction = (Action) eResolveProxy(oldFromAction);
@@ -141,7 +155,7 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public Action basicGetFromAction() {
-		return (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
+		return fromAction;
 	}
 
 	/**
@@ -151,14 +165,12 @@ public class ActionInputPinImpl
 	 */
 	public NotificationChain basicSetFromAction(Action newFromAction,
 			NotificationChain msgs) {
-		Object oldFromAction = eVirtualSet(
-			UMLPackage.ACTION_INPUT_PIN__FROM_ACTION, newFromAction);
+		Action oldFromAction = fromAction;
+		fromAction = newFromAction;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.ACTION_INPUT_PIN__FROM_ACTION,
-				oldFromAction == EVIRTUAL_NO_VALUE
-					? null
-					: oldFromAction, newFromAction);
+				oldFromAction, newFromAction);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -174,7 +186,6 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public void setFromAction(Action newFromAction) {
-		Action fromAction = (Action) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION);
 		if (newFromAction != fromAction) {
 			NotificationChain msgs = null;
 			if (fromAction != null)
@@ -606,15 +617,13 @@ public class ActionInputPinImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTION_INPUT_PIN__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTION_INPUT_PIN__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__NAME :
 				return isSetName();
 			case UMLPackage.ACTION_INPUT_PIN__VISIBILITY :
@@ -624,12 +633,12 @@ public class ActionInputPinImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTION_INPUT_PIN__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ACTION_INPUT_PIN__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__REDEFINED_ELEMENT :
@@ -641,37 +650,30 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.ACTION_INPUT_PIN__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTION_INPUT_PIN__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__TYPE :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__TYPE) != null;
+				return type != null;
 			case UMLPackage.ACTION_INPUT_PIN__ORDERING :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__ORDERING,
-					ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UMLPackage.ACTION_INPUT_PIN__IN_STATE :
-				EList inState = (EList) eVirtualGet(UMLPackage.ACTION_INPUT_PIN__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UMLPackage.ACTION_INPUT_PIN__SELECTION :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__SELECTION) != null;
+				return selection != null;
 			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
@@ -681,16 +683,32 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
 				return ((eFlags & IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
 			case UMLPackage.ACTION_INPUT_PIN__FROM_ACTION :
-				return eVirtualGet(UMLPackage.ACTION_INPUT_PIN__FROM_ACTION) != null;
+				return fromAction != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ACTION_INPUT_PIN__OWNED_COMMENT,
+		UMLPackage.ACTION_INPUT_PIN__NAME_EXPRESSION,
+		UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND,
+		UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE,
+		UMLPackage.ACTION_INPUT_PIN__LOWER_VALUE,
+		UMLPackage.ACTION_INPUT_PIN__FROM_ACTION};
 
 	/**
 	 * <!-- begin-user-doc -->

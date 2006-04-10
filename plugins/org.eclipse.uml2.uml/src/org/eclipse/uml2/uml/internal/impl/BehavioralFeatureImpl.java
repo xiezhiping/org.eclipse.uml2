@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.16 2006/03/07 20:25:16 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.17 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,11 +28,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
@@ -60,12 +63,8 @@ import org.eclipse.uml2.uml.internal.operations.RedefinableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#getRedefinedElements <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#isLeaf <em>Is Leaf</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#isStatic <em>Is Static</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#isAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl#getMethods <em>Method</em>}</li>
@@ -99,7 +98,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 8;
+	protected static final int IS_LEAF_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -119,7 +118,17 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = 1 << 9;
+	protected static final int IS_STATIC_EFLAG = 1 << 11;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameters = null;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -139,7 +148,17 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = 1 << 10;
+	protected static final int IS_ABSTRACT_EFLAG = 1 << 12;
+
+	/**
+	 * The cached value of the '{@link #getMethods() <em>Method</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMethods()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList methods = null;
 
 	/**
 	 * The default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
@@ -150,6 +169,36 @@ public abstract class BehavioralFeatureImpl
 	 * @ordered
 	 */
 	protected static final CallConcurrencyKind CONCURRENCY_EDEFAULT = CallConcurrencyKind.SEQUENTIAL_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConcurrency()
+	 * @generated
+	 * @ordered
+	 */
+	protected CallConcurrencyKind concurrency = CONCURRENCY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRaisedExceptions() <em>Raised Exception</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRaisedExceptions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList raisedExceptions = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameterSets() <em>Owned Parameter Set</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameterSets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameterSets = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,14 +224,26 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList(
+							RedefinableElement.class, this,
+							UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT,
+							null));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT, null);
 	}
 
 	/**
@@ -220,15 +281,59 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT);
-		if (redefinitionContext == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
-				redefinitionContext = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, null));
+	public EList getRedefinitionContextsGen() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinitionContexts = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			if (redefinitionContexts == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						redefinitionContexts = new DerivedUnionEObjectEList(
+							Classifier.class,
+							this,
+							UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
+							null));
+			}
+			return redefinitionContexts;
 		}
-		return redefinitionContext;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT, null);
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * @see #getRedefinitionContexts()
+	 */
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE};
+
+	public EList getRedefinitionContexts() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinitionContext = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			if (redefinitionContext == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						redefinitionContext = new DerivedUnionEObjectEList(
+							Classifier.class,
+							this,
+							UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
+							REDEFINITION_CONTEXT_ESUBSETS));
+			}
+			return redefinitionContext;
+		}
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT,
+			REDEFINITION_CONTEXT_ESUBSETS);
 	}
 
 	/**
@@ -292,15 +397,51 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER);
-		if (featuringClassifier == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
-				featuringClassifier = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, null));
+	public EList getFeaturingClassifiersGen() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList(
+						Classifier.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
+						null));
+			}
+			return featuringClassifiers;
 		}
-		return featuringClassifier;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER, null);
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
+	 * @see #getFeaturingClassifiers()
+	 */
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE};
+
+	public EList getFeaturingClassifiers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList(
+						Classifier.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
+			}
+			return featuringClassifiers;
+		}
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER,
+			FEATURING_CLASSIFIER_ESUBSETS);
 	}
 
 	/**
@@ -332,6 +473,19 @@ public abstract class BehavioralFeatureImpl
 		}
 		return null;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE,
+		UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER,
+		UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -366,16 +520,23 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER,
-					new int[]{UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE,
-						UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER,
-						UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList(
+						NamedElement.class, this,
+						UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER,
+						OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -384,14 +545,12 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
-		EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
-		if (ownedParameter == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentEList.Resolving(
-					Parameter.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER));
+		if (ownedParameters == null) {
+			ownedParameters = new EObjectContainmentEList.Resolving(
+				Parameter.class, this,
+				UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
 		}
-		return ownedParameter;
+		return ownedParameters;
 	}
 
 	/**
@@ -474,14 +633,12 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getMethods() {
-		EList method = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
-		if (method == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__METHOD,
-				method = new EObjectWithInverseResolvingEList(Behavior.class,
-					this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
-					UMLPackage.BEHAVIOR__SPECIFICATION));
+		if (methods == null) {
+			methods = new EObjectWithInverseResolvingEList(Behavior.class,
+				this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
+				UMLPackage.BEHAVIOR__SPECIFICATION);
 		}
-		return method;
+		return methods;
 	}
 
 	/**
@@ -518,8 +675,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public CallConcurrencyKind getConcurrency() {
-		return (CallConcurrencyKind) eVirtualGet(
-			UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, CONCURRENCY_EDEFAULT);
+		return concurrency;
 	}
 
 	/**
@@ -528,17 +684,14 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setConcurrency(CallConcurrencyKind newConcurrency) {
-		CallConcurrencyKind concurrency = newConcurrency == null
+		CallConcurrencyKind oldConcurrency = concurrency;
+		concurrency = newConcurrency == null
 			? CONCURRENCY_EDEFAULT
 			: newConcurrency;
-		Object oldConcurrency = eVirtualSet(
-			UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, concurrency);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
-				oldConcurrency == EVIRTUAL_NO_VALUE
-					? CONCURRENCY_EDEFAULT
-					: oldConcurrency, concurrency));
+				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, oldConcurrency,
+				concurrency));
 
 	}
 
@@ -548,13 +701,11 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getRaisedExceptions() {
-		EList raisedException = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
-		if (raisedException == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION,
-				raisedException = new EObjectResolvingEList(Type.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION));
+		if (raisedExceptions == null) {
+			raisedExceptions = new EObjectResolvingEList(Type.class, this,
+				UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
 		}
-		return raisedException;
+		return raisedExceptions;
 	}
 
 	/**
@@ -593,14 +744,12 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getOwnedParameterSets() {
-		EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
-		if (ownedParameterSet == null) {
-			eVirtualSet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET,
-				ownedParameterSet = new EObjectContainmentEList.Resolving(
-					ParameterSet.class, this,
-					UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET));
+		if (ownedParameterSets == null) {
+			ownedParameterSets = new EObjectContainmentEList.Resolving(
+				ParameterSet.class, this,
+				UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
 		}
-		return ownedParameterSet;
+		return ownedParameterSets;
 	}
 
 	/**
@@ -994,15 +1143,13 @@ public abstract class BehavioralFeatureImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME :
 				return isSetName();
 			case UMLPackage.BEHAVIORAL_FEATURE__VISIBILITY :
@@ -1012,21 +1159,18 @@ public abstract class BehavioralFeatureImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE__IMPORTED_MEMBER :
@@ -1044,23 +1188,18 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
-				EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
-				EList method = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__METHOD);
-				return method != null && !method.isEmpty();
+				return methods != null && !methods.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				return eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
-					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
+				return concurrency != CONCURRENCY_EDEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
-				EList raisedException = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION);
-				return raisedException != null && !raisedException.isEmpty();
+				return raisedExceptions != null && !raisedExceptions.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
-				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET);
-				return ownedParameterSet != null
-					&& !ownedParameterSet.isEmpty();
+				return ownedParameterSets != null
+					&& !ownedParameterSets.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1144,8 +1283,7 @@ public abstract class BehavioralFeatureImpl
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(", concurrency: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY,
-			CONCURRENCY_EDEFAULT));
+		result.append(concurrency);
 		result.append(')');
 		return result.toString();
 	}
@@ -1164,8 +1302,12 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetRedefinitionContexts() {
+	public boolean isSetRedefinitionContextsGen() {
 		return false;
+	}
+
+	public boolean isSetRedefinitionContexts() {
+		return basicGetNamespace() instanceof Classifier;
 	}
 
 	/**
@@ -1173,8 +1315,12 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetFeaturingClassifiers() {
+	public boolean isSetFeaturingClassifiersGen() {
 		return false;
+	}
+
+	public boolean isSetFeaturingClassifiers() {
+		return basicGetNamespace() instanceof Classifier;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.15 2006/03/15 19:34:16 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,11 +24,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -49,7 +52,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getCovereds <em>Covered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
@@ -62,6 +64,26 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public abstract class InteractionFragmentImpl
 		extends NamedElementImpl
 		implements InteractionFragment {
+
+	/**
+	 * The cached value of the '{@link #getCovereds() <em>Covered</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCovereds()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList covereds = null;
+
+	/**
+	 * The cached value of the '{@link #getGeneralOrderings() <em>General Ordering</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeneralOrderings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList generalOrderings = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,16 +109,23 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT,
-					new int[]{UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT,
-						UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION,
-						UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -105,15 +134,12 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public EList getCovereds() {
-		EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__COVERED);
-		if (covered == null) {
-			eVirtualSet(UMLPackage.INTERACTION_FRAGMENT__COVERED,
-				covered = new EObjectWithInverseResolvingEList.ManyInverse(
-					Lifeline.class, this,
-					UMLPackage.INTERACTION_FRAGMENT__COVERED,
-					UMLPackage.LIFELINE__COVERED_BY));
+		if (covereds == null) {
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse(
+				Lifeline.class, this, UMLPackage.INTERACTION_FRAGMENT__COVERED,
+				UMLPackage.LIFELINE__COVERED_BY);
 		}
-		return covered;
+		return covereds;
 	}
 
 	/**
@@ -148,14 +174,12 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public EList getGeneralOrderings() {
-		EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING);
-		if (generalOrdering == null) {
-			eVirtualSet(UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING,
-				generalOrdering = new EObjectContainmentEList.Resolving(
-					GeneralOrdering.class, this,
-					UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING));
+		if (generalOrderings == null) {
+			generalOrderings = new EObjectContainmentEList.Resolving(
+				GeneralOrdering.class, this,
+				UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING);
 		}
-		return generalOrdering;
+		return generalOrderings;
 	}
 
 	/**
@@ -553,15 +577,13 @@ public abstract class InteractionFragmentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_FRAGMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERACTION_FRAGMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME :
 				return isSetName();
 			case UMLPackage.INTERACTION_FRAGMENT__VISIBILITY :
@@ -571,18 +593,16 @@ public abstract class InteractionFragmentImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INTERACTION_FRAGMENT__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
@@ -590,6 +610,19 @@ public abstract class InteractionFragmentImpl
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT,
+		UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION,
+		UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING};
 
 	/**
 	 * <!-- begin-user-doc -->

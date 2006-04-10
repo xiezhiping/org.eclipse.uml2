@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.14 2006/03/07 20:25:15 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,8 +23,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Abstraction;
@@ -43,7 +46,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.AbstractionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AbstractionImpl#getMapping <em>Mapping</em>}</li>
  * </ul>
  * </p>
@@ -53,6 +55,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class AbstractionImpl
 		extends DependencyImpl
 		implements Abstraction {
+
+	/**
+	 * The cached value of the '{@link #getMapping() <em>Mapping</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMapping()
+	 * @generated
+	 * @ordered
+	 */
+	protected OpaqueExpression mapping = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,16 +90,22 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.ABSTRACTION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ABSTRACTION__OWNED_ELEMENT, new int[]{
-						UMLPackage.ABSTRACTION__OWNED_COMMENT,
-						UMLPackage.ABSTRACTION__NAME_EXPRESSION,
-						UMLPackage.ABSTRACTION__MAPPING}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.ABSTRACTION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ABSTRACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -96,7 +114,6 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public OpaqueExpression getMapping() {
-		OpaqueExpression mapping = (OpaqueExpression) eVirtualGet(UMLPackage.ABSTRACTION__MAPPING);
 		if (mapping != null && mapping.eIsProxy()) {
 			InternalEObject oldMapping = (InternalEObject) mapping;
 			mapping = (OpaqueExpression) eResolveProxy(oldMapping);
@@ -125,7 +142,7 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public OpaqueExpression basicGetMapping() {
-		return (OpaqueExpression) eVirtualGet(UMLPackage.ABSTRACTION__MAPPING);
+		return mapping;
 	}
 
 	/**
@@ -135,14 +152,12 @@ public class AbstractionImpl
 	 */
 	public NotificationChain basicSetMapping(OpaqueExpression newMapping,
 			NotificationChain msgs) {
-		Object oldMapping = eVirtualSet(UMLPackage.ABSTRACTION__MAPPING,
-			newMapping);
+		OpaqueExpression oldMapping = mapping;
+		mapping = newMapping;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.ABSTRACTION__MAPPING,
-				oldMapping == EVIRTUAL_NO_VALUE
-					? null
-					: oldMapping, newMapping);
+				Notification.SET, UMLPackage.ABSTRACTION__MAPPING, oldMapping,
+				newMapping);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -158,7 +173,6 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public void setMapping(OpaqueExpression newMapping) {
-		OpaqueExpression mapping = (OpaqueExpression) eVirtualGet(UMLPackage.ABSTRACTION__MAPPING);
 		if (newMapping != mapping) {
 			NotificationChain msgs = null;
 			if (mapping != null)
@@ -385,15 +399,13 @@ public class AbstractionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ABSTRACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ABSTRACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ABSTRACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ABSTRACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ABSTRACTION__NAME :
 				return isSetName();
 			case UMLPackage.ABSTRACTION__VISIBILITY :
@@ -403,16 +415,16 @@ public class AbstractionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ABSTRACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ABSTRACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.ABSTRACTION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.ABSTRACTION__SOURCE :
@@ -420,16 +432,27 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__TARGET :
 				return isSetTargets();
 			case UMLPackage.ABSTRACTION__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.ABSTRACTION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.ABSTRACTION__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.ABSTRACTION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UMLPackage.ABSTRACTION__MAPPING :
-				return eVirtualGet(UMLPackage.ABSTRACTION__MAPPING) != null;
+				return mapping != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ABSTRACTION__OWNED_COMMENT,
+		UMLPackage.ABSTRACTION__NAME_EXPRESSION,
+		UMLPackage.ABSTRACTION__MAPPING};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
+ * $Id: MessageImpl.java,v 1.18 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,10 +28,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Connector;
@@ -58,7 +61,6 @@ import org.eclipse.uml2.uml.internal.operations.MessageOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getMessageKind <em>Message Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getMessageSort <em>Message Sort</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getReceiveEvent <em>Receive Event</em>}</li>
@@ -97,6 +99,56 @@ public class MessageImpl
 	protected static final MessageSort MESSAGE_SORT_EDEFAULT = MessageSort.SYNCH_CALL_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessageSort()
+	 * @generated
+	 * @ordered
+	 */
+	protected MessageSort messageSort = MESSAGE_SORT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReceiveEvent() <em>Receive Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReceiveEvent()
+	 * @generated
+	 * @ordered
+	 */
+	protected MessageEnd receiveEvent = null;
+
+	/**
+	 * The cached value of the '{@link #getSendEvent() <em>Send Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSendEvent()
+	 * @generated
+	 * @ordered
+	 */
+	protected MessageEnd sendEvent = null;
+
+	/**
+	 * The cached value of the '{@link #getConnector() <em>Connector</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnector()
+	 * @generated
+	 * @ordered
+	 */
+	protected Connector connector = null;
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList arguments = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -120,16 +172,22 @@ public class MessageImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.MESSAGE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.MESSAGE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.MESSAGE__OWNED_ELEMENT, new int[]{
-						UMLPackage.MESSAGE__OWNED_COMMENT,
-						UMLPackage.MESSAGE__NAME_EXPRESSION,
-						UMLPackage.MESSAGE__ARGUMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.MESSAGE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.MESSAGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -147,8 +205,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageSort getMessageSort() {
-		return (MessageSort) eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
-			MESSAGE_SORT_EDEFAULT);
+		return messageSort;
 	}
 
 	/**
@@ -157,17 +214,13 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setMessageSort(MessageSort newMessageSort) {
-		MessageSort messageSort = newMessageSort == null
+		MessageSort oldMessageSort = messageSort;
+		messageSort = newMessageSort == null
 			? MESSAGE_SORT_EDEFAULT
 			: newMessageSort;
-		Object oldMessageSort = eVirtualSet(UMLPackage.MESSAGE__MESSAGE_SORT,
-			messageSort);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__MESSAGE_SORT,
-				oldMessageSort == EVIRTUAL_NO_VALUE
-					? MESSAGE_SORT_EDEFAULT
-					: oldMessageSort, messageSort));
+				UMLPackage.MESSAGE__MESSAGE_SORT, oldMessageSort, messageSort));
 
 	}
 
@@ -177,12 +230,10 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageEnd getReceiveEvent() {
-		MessageEnd receiveEvent = (MessageEnd) eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT);
 		if (receiveEvent != null && receiveEvent.eIsProxy()) {
 			InternalEObject oldReceiveEvent = (InternalEObject) receiveEvent;
 			receiveEvent = (MessageEnd) eResolveProxy(oldReceiveEvent);
 			if (receiveEvent != oldReceiveEvent) {
-				eVirtualSet(UMLPackage.MESSAGE__RECEIVE_EVENT, receiveEvent);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.MESSAGE__RECEIVE_EVENT, oldReceiveEvent,
@@ -198,7 +249,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageEnd basicGetReceiveEvent() {
-		return (MessageEnd) eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT);
+		return receiveEvent;
 	}
 
 	/**
@@ -207,15 +258,12 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setReceiveEvent(MessageEnd newReceiveEvent) {
-		MessageEnd receiveEvent = newReceiveEvent;
-		Object oldReceiveEvent = eVirtualSet(UMLPackage.MESSAGE__RECEIVE_EVENT,
-			receiveEvent);
+		MessageEnd oldReceiveEvent = receiveEvent;
+		receiveEvent = newReceiveEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__RECEIVE_EVENT,
-				oldReceiveEvent == EVIRTUAL_NO_VALUE
-					? null
-					: oldReceiveEvent, receiveEvent));
+				UMLPackage.MESSAGE__RECEIVE_EVENT, oldReceiveEvent,
+				receiveEvent));
 
 	}
 
@@ -225,12 +273,10 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageEnd getSendEvent() {
-		MessageEnd sendEvent = (MessageEnd) eVirtualGet(UMLPackage.MESSAGE__SEND_EVENT);
 		if (sendEvent != null && sendEvent.eIsProxy()) {
 			InternalEObject oldSendEvent = (InternalEObject) sendEvent;
 			sendEvent = (MessageEnd) eResolveProxy(oldSendEvent);
 			if (sendEvent != oldSendEvent) {
-				eVirtualSet(UMLPackage.MESSAGE__SEND_EVENT, sendEvent);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.MESSAGE__SEND_EVENT, oldSendEvent, sendEvent));
@@ -245,7 +291,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageEnd basicGetSendEvent() {
-		return (MessageEnd) eVirtualGet(UMLPackage.MESSAGE__SEND_EVENT);
+		return sendEvent;
 	}
 
 	/**
@@ -254,15 +300,11 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setSendEvent(MessageEnd newSendEvent) {
-		MessageEnd sendEvent = newSendEvent;
-		Object oldSendEvent = eVirtualSet(UMLPackage.MESSAGE__SEND_EVENT,
-			sendEvent);
+		MessageEnd oldSendEvent = sendEvent;
+		sendEvent = newSendEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__SEND_EVENT,
-				oldSendEvent == EVIRTUAL_NO_VALUE
-					? null
-					: oldSendEvent, sendEvent));
+				UMLPackage.MESSAGE__SEND_EVENT, oldSendEvent, sendEvent));
 
 	}
 
@@ -272,12 +314,10 @@ public class MessageImpl
 	 * @generated
 	 */
 	public Connector getConnector() {
-		Connector connector = (Connector) eVirtualGet(UMLPackage.MESSAGE__CONNECTOR);
 		if (connector != null && connector.eIsProxy()) {
 			InternalEObject oldConnector = (InternalEObject) connector;
 			connector = (Connector) eResolveProxy(oldConnector);
 			if (connector != oldConnector) {
-				eVirtualSet(UMLPackage.MESSAGE__CONNECTOR, connector);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.MESSAGE__CONNECTOR, oldConnector, connector));
@@ -292,7 +332,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public Connector basicGetConnector() {
-		return (Connector) eVirtualGet(UMLPackage.MESSAGE__CONNECTOR);
+		return connector;
 	}
 
 	/**
@@ -301,15 +341,11 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setConnector(Connector newConnector) {
-		Connector connector = newConnector;
-		Object oldConnector = eVirtualSet(UMLPackage.MESSAGE__CONNECTOR,
-			connector);
+		Connector oldConnector = connector;
+		connector = newConnector;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__CONNECTOR,
-				oldConnector == EVIRTUAL_NO_VALUE
-					? null
-					: oldConnector, connector));
+				UMLPackage.MESSAGE__CONNECTOR, oldConnector, connector));
 
 	}
 
@@ -380,14 +416,11 @@ public class MessageImpl
 	 * @generated
 	 */
 	public EList getArguments() {
-		EList argument = (EList) eVirtualGet(UMLPackage.MESSAGE__ARGUMENT);
-		if (argument == null) {
-			eVirtualSet(UMLPackage.MESSAGE__ARGUMENT,
-				argument = new EObjectContainmentEList.Resolving(
-					ValueSpecification.class, this,
-					UMLPackage.MESSAGE__ARGUMENT));
+		if (arguments == null) {
+			arguments = new EObjectContainmentEList.Resolving(
+				ValueSpecification.class, this, UMLPackage.MESSAGE__ARGUMENT);
 		}
-		return argument;
+		return arguments;
 	}
 
 	/**
@@ -769,15 +802,13 @@ public class MessageImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MESSAGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MESSAGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.MESSAGE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MESSAGE__NAME :
 				return isSetName();
 			case UMLPackage.MESSAGE__VISIBILITY :
@@ -787,28 +818,26 @@ public class MessageImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.MESSAGE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MESSAGE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.MESSAGE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				return eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
-					MESSAGE_SORT_EDEFAULT) != MESSAGE_SORT_EDEFAULT;
+				return messageSort != MESSAGE_SORT_EDEFAULT;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
-				return eVirtualGet(UMLPackage.MESSAGE__RECEIVE_EVENT) != null;
+				return receiveEvent != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
-				return eVirtualGet(UMLPackage.MESSAGE__SEND_EVENT) != null;
+				return sendEvent != null;
 			case UMLPackage.MESSAGE__CONNECTOR :
-				return eVirtualGet(UMLPackage.MESSAGE__CONNECTOR) != null;
+				return connector != null;
 			case UMLPackage.MESSAGE__INTERACTION :
 				return basicGetInteraction() != null;
 			case UMLPackage.MESSAGE__ARGUMENT :
-				EList argument = (EList) eVirtualGet(UMLPackage.MESSAGE__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UMLPackage.MESSAGE__SIGNATURE :
 				return basicGetSignature() != null;
 		}
@@ -826,8 +855,7 @@ public class MessageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageSort: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.MESSAGE__MESSAGE_SORT,
-			MESSAGE_SORT_EDEFAULT));
+		result.append(messageSort);
 		result.append(')');
 		return result.toString();
 	}
@@ -854,6 +882,18 @@ public class MessageImpl
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.MESSAGE__INTERACTION);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.MESSAGE__OWNED_COMMENT, UMLPackage.MESSAGE__NAME_EXPRESSION,
+		UMLPackage.MESSAGE__ARGUMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

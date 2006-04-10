@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.20 2006/03/15 19:34:01 khussey Exp $
+ * $Id: PortImpl.java,v 1.21 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -57,7 +59,6 @@ import org.eclipse.uml2.uml.internal.operations.PortOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#isBehavior <em>Is Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#isService <em>Is Service</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#getRequireds <em>Required</em>}</li>
@@ -91,7 +92,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_BEHAVIOR_EFLAG = 1 << 15;
+	protected static final int IS_BEHAVIOR_EFLAG = 1 << 17;
 
 	/**
 	 * The default value of the '{@link #isService() <em>Is Service</em>}' attribute.
@@ -111,7 +112,27 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SERVICE_EFLAG = 1 << 16;
+	protected static final int IS_SERVICE_EFLAG = 1 << 18;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedPorts() <em>Redefined Port</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedPorts = null;
+
+	/**
+	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected ProtocolStateMachine protocol = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,16 +159,23 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.PORT__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.PORT__REDEFINED_ELEMENT, new int[]{
-						UMLPackage.PORT__REDEFINED_PROPERTY,
-						UMLPackage.PORT__REDEFINED_PORT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.PORT__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.PORT__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -253,13 +281,11 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList getRedefinedPorts() {
-		EList redefinedPort = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PORT);
-		if (redefinedPort == null) {
-			eVirtualSet(UMLPackage.PORT__REDEFINED_PORT,
-				redefinedPort = new EObjectResolvingEList(Port.class, this,
-					UMLPackage.PORT__REDEFINED_PORT));
+		if (redefinedPorts == null) {
+			redefinedPorts = new EObjectResolvingEList(Port.class, this,
+				UMLPackage.PORT__REDEFINED_PORT);
 		}
-		return redefinedPort;
+		return redefinedPorts;
 	}
 
 	/**
@@ -342,12 +368,10 @@ public class PortImpl
 	 * @generated
 	 */
 	public ProtocolStateMachine getProtocol() {
-		ProtocolStateMachine protocol = (ProtocolStateMachine) eVirtualGet(UMLPackage.PORT__PROTOCOL);
 		if (protocol != null && protocol.eIsProxy()) {
 			InternalEObject oldProtocol = (InternalEObject) protocol;
 			protocol = (ProtocolStateMachine) eResolveProxy(oldProtocol);
 			if (protocol != oldProtocol) {
-				eVirtualSet(UMLPackage.PORT__PROTOCOL, protocol);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PORT__PROTOCOL, oldProtocol, protocol));
@@ -362,7 +386,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public ProtocolStateMachine basicGetProtocol() {
-		return (ProtocolStateMachine) eVirtualGet(UMLPackage.PORT__PROTOCOL);
+		return protocol;
 	}
 
 	/**
@@ -371,13 +395,11 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
-		ProtocolStateMachine protocol = newProtocol;
-		Object oldProtocol = eVirtualSet(UMLPackage.PORT__PROTOCOL, protocol);
+		ProtocolStateMachine oldProtocol = protocol;
+		protocol = newProtocol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PORT__PROTOCOL, oldProtocol == EVIRTUAL_NO_VALUE
-					? null
-					: oldProtocol, protocol));
+				UMLPackage.PORT__PROTOCOL, oldProtocol, protocol));
 
 	}
 
@@ -869,15 +891,13 @@ public class PortImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PORT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PORT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PORT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PORT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PORT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PORT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PORT__NAME :
 				return isSetName();
 			case UMLPackage.PORT__VISIBILITY :
@@ -887,12 +907,12 @@ public class PortImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PORT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PORT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PORT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PORT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PORT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PORT__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.PORT__REDEFINED_ELEMENT :
@@ -904,7 +924,7 @@ public class PortImpl
 			case UMLPackage.PORT__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.PORT__TYPE :
-				return eVirtualGet(UMLPackage.PORT__TYPE) != null;
+				return type != null;
 			case UMLPackage.PORT__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PORT__IS_UNIQUE :
@@ -914,9 +934,9 @@ public class PortImpl
 			case UMLPackage.PORT__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PORT__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.PORT__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.PORT__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.PORT__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.PORT__IS_READ_ONLY :
 				return isSetIsReadOnly();
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
@@ -924,18 +944,15 @@ public class PortImpl
 			case UMLPackage.PORT__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.PORT__END :
-				EList end = (EList) eVirtualGet(UMLPackage.PORT__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UMLPackage.PORT__DEPLOYMENT :
-				EList deployment = (EList) eVirtualGet(UMLPackage.PORT__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.PORT__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.PORT__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.PORT__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.PORT__CLASS :
 				return basicGetClass_() != null;
 			case UMLPackage.PORT__DATATYPE :
@@ -947,29 +964,25 @@ public class PortImpl
 			case UMLPackage.PORT__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PORT__AGGREGATION :
-				return eVirtualGet(UMLPackage.PORT__AGGREGATION,
-					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
+				return aggregation != AGGREGATION_EDEFAULT;
 			case UMLPackage.PORT__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
-				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PROPERTY);
-				return redefinedProperty != null
-					&& !redefinedProperty.isEmpty();
+				return redefinedProperties != null
+					&& !redefinedProperties.isEmpty();
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
 				return basicGetOwningAssociation() != null;
 			case UMLPackage.PORT__DEFAULT_VALUE :
-				return eVirtualGet(UMLPackage.PORT__DEFAULT_VALUE) != null;
+				return defaultValue != null;
 			case UMLPackage.PORT__OPPOSITE :
 				return basicGetOpposite() != null;
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
-				EList subsettedProperty = (EList) eVirtualGet(UMLPackage.PORT__SUBSETTED_PROPERTY);
-				return subsettedProperty != null
-					&& !subsettedProperty.isEmpty();
+				return subsettedProperties != null
+					&& !subsettedProperties.isEmpty();
 			case UMLPackage.PORT__ASSOCIATION :
-				return eVirtualGet(UMLPackage.PORT__ASSOCIATION) != null;
+				return association != null;
 			case UMLPackage.PORT__QUALIFIER :
-				EList qualifier = (EList) eVirtualGet(UMLPackage.PORT__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 			case UMLPackage.PORT__ASSOCIATION_END :
 				return basicGetAssociationEnd() != null;
 			case UMLPackage.PORT__IS_BEHAVIOR :
@@ -979,12 +992,11 @@ public class PortImpl
 			case UMLPackage.PORT__REQUIRED :
 				return !getRequireds().isEmpty();
 			case UMLPackage.PORT__REDEFINED_PORT :
-				EList redefinedPort = (EList) eVirtualGet(UMLPackage.PORT__REDEFINED_PORT);
-				return redefinedPort != null && !redefinedPort.isEmpty();
+				return redefinedPorts != null && !redefinedPorts.isEmpty();
 			case UMLPackage.PORT__PROVIDED :
 				return !getProvideds().isEmpty();
 			case UMLPackage.PORT__PROTOCOL :
-				return eVirtualGet(UMLPackage.PORT__PROTOCOL) != null;
+				return protocol != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1006,6 +1018,17 @@ public class PortImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PORT__REDEFINED_PROPERTY, UMLPackage.PORT__REDEFINED_PORT};
 
 	/**
 	 * <!-- begin-user-doc -->

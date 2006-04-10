@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.27 2006/03/15 19:34:13 khussey Exp $
+ * $Id: OperationImpl.java,v 1.28 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -75,12 +75,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
@@ -107,12 +103,34 @@ public class OperationImpl
 		implements Operation {
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getTemplateParameter()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits1 = 0;
+	protected TemplateParameter templateParameter = null;
+
+	/**
+	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList templateBindings = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature = null;
 
 	/**
 	 * The default value of the '{@link #isQuery() <em>Is Query</em>}' attribute.
@@ -132,7 +150,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_QUERY_EFLAG = 1 << 11;
+	protected static final int IS_QUERY_EFLAG = 1 << 13;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -175,6 +193,46 @@ public class OperationImpl
 	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList preconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList postconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedOperations() <em>Redefined Operation</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedOperations = null;
+
+	/**
+	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBodyCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint bodyCondition = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,13 +256,10 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
 			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
-				eVirtualSet(UMLPackage.OPERATION__TEMPLATE_PARAMETER,
-					templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OPERATION__TEMPLATE_PARAMETER,
@@ -220,7 +275,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
+		return templateParameter;
 	}
 
 	/**
@@ -230,14 +285,12 @@ public class OperationImpl
 	 */
 	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		Object oldTemplateParameter = eVirtualSet(
-			UMLPackage.OPERATION__TEMPLATE_PARAMETER, newTemplateParameter);
+		TemplateParameter oldTemplateParameter = templateParameter;
+		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.OPERATION__TEMPLATE_PARAMETER,
-				oldTemplateParameter == EVIRTUAL_NO_VALUE
-					? null
-					: oldTemplateParameter, newTemplateParameter);
+				oldTemplateParameter, newTemplateParameter);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -279,7 +332,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -306,7 +358,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
-		return eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER) != null;
+		return templateParameter != null;
 	}
 
 	/**
@@ -344,7 +396,6 @@ public class OperationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
-				Object templateParameter = eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
 				if (newOwningTemplateParameter != templateParameter) {
 					setTemplateParameter(newOwningTemplateParameter);
 				}
@@ -391,20 +442,22 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.OPERATION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.OPERATION__OWNED_ELEMENT, new int[]{
-						UMLPackage.OPERATION__OWNED_COMMENT,
-						UMLPackage.OPERATION__NAME_EXPRESSION,
-						UMLPackage.OPERATION__ELEMENT_IMPORT,
-						UMLPackage.OPERATION__PACKAGE_IMPORT,
-						UMLPackage.OPERATION__OWNED_MEMBER,
-						UMLPackage.OPERATION__TEMPLATE_BINDING,
-						UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.OPERATION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.OPERATION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -413,16 +466,13 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getTemplateBindings() {
-		EList templateBinding = (EList) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_BINDING);
-		if (templateBinding == null) {
-			eVirtualSet(
+		if (templateBindings == null) {
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+				TemplateBinding.class, this,
 				UMLPackage.OPERATION__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
-					TemplateBinding.class, this,
-					UMLPackage.OPERATION__TEMPLATE_BINDING,
-					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
+				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
 		}
-		return templateBinding;
+		return templateBindings;
 	}
 
 	/**
@@ -473,7 +523,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
@@ -505,7 +554,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateSignature basicGetOwnedTemplateSignature() {
-		return (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
+		return ownedTemplateSignature;
 	}
 
 	/**
@@ -515,16 +564,13 @@ public class OperationImpl
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-		Object oldOwnedTemplateSignature = eVirtualSet(
-			UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
-			newOwnedTemplateSignature);
+		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
+		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
-				oldOwnedTemplateSignature == EVIRTUAL_NO_VALUE
-					? null
-					: oldOwnedTemplateSignature, newOwnedTemplateSignature);
+				oldOwnedTemplateSignature, newOwnedTemplateSignature);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -541,7 +587,6 @@ public class OperationImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -590,17 +635,27 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.OPERATION__REDEFINITION_CONTEXT);
-		if (redefinitionContext == null) {
-			eVirtualSet(UMLPackage.OPERATION__REDEFINITION_CONTEXT,
-				redefinitionContext = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.OPERATION__REDEFINITION_CONTEXT, new int[]{
-						UMLPackage.OPERATION__INTERFACE,
-						UMLPackage.OPERATION__CLASS,
-						UMLPackage.OPERATION__DATATYPE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinitionContexts = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			if (redefinitionContexts == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						redefinitionContexts = new DerivedUnionEObjectEList(
+							Classifier.class, this,
+							UMLPackage.OPERATION__REDEFINITION_CONTEXT,
+							REDEFINITION_CONTEXT_ESUBSETS));
+			}
+			return redefinitionContexts;
 		}
-		return redefinitionContext;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.OPERATION__REDEFINITION_CONTEXT,
+			REDEFINITION_CONTEXT_ESUBSETS);
 	}
 
 	/**
@@ -609,16 +664,24 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList) eVirtualGet(UMLPackage.OPERATION__FEATURING_CLASSIFIER);
-		if (featuringClassifier == null) {
-			eVirtualSet(UMLPackage.OPERATION__FEATURING_CLASSIFIER,
-				featuringClassifier = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.OPERATION__FEATURING_CLASSIFIER, new int[]{
-						UMLPackage.OPERATION__CLASS,
-						UMLPackage.OPERATION__DATATYPE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList(
+						Classifier.class, this,
+						UMLPackage.OPERATION__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
+			}
+			return featuringClassifiers;
 		}
-		return featuringClassifier;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.OPERATION__FEATURING_CLASSIFIER,
+			FEATURING_CLASSIFIER_ESUBSETS);
 	}
 
 	/**
@@ -627,15 +690,23 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.OPERATION__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.OPERATION__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.OPERATION__REDEFINED_ELEMENT,
-					new int[]{UMLPackage.OPERATION__REDEFINED_OPERATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.OPERATION__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.OPERATION__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -644,19 +715,46 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		EList ownedRule = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_RULE);
-		if (ownedRule == null) {
-			eVirtualSet(
-				UMLPackage.OPERATION__OWNED_RULE,
-				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE,
-					null, new int[]{UMLPackage.OPERATION__PRECONDITION,
-						UMLPackage.OPERATION__POSTCONDITION,
-						UMLPackage.OPERATION__BODY_CONDITION},
-					UMLPackage.CONSTRAINT__CONTEXT));
+		if (ownedRules == null) {
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE, null,
+				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 		}
-		return ownedRule;
+		return ownedRules;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__PRECONDITION,
+		UMLPackage.OPERATION__POSTCONDITION,
+		UMLPackage.OPERATION__BODY_CONDITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -824,14 +922,12 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getPreconditions() {
-		EList precondition = (EList) eVirtualGet(UMLPackage.OPERATION__PRECONDITION);
-		if (precondition == null) {
-			eVirtualSet(UMLPackage.OPERATION__PRECONDITION,
-				precondition = new SubsetSupersetEObjectResolvingEList(
-					Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
-					new int[]{UMLPackage.OPERATION__OWNED_RULE}, null));
+		if (preconditions == null) {
+			preconditions = new SubsetSupersetEObjectResolvingEList(
+				Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
+				PRECONDITION_ESUPERSETS, null);
 		}
-		return precondition;
+		return preconditions;
 	}
 
 	/**
@@ -894,15 +990,12 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getPostconditions() {
-		EList postcondition = (EList) eVirtualGet(UMLPackage.OPERATION__POSTCONDITION);
-		if (postcondition == null) {
-			eVirtualSet(UMLPackage.OPERATION__POSTCONDITION,
-				postcondition = new SubsetSupersetEObjectResolvingEList(
-					Constraint.class, this,
-					UMLPackage.OPERATION__POSTCONDITION,
-					new int[]{UMLPackage.OPERATION__OWNED_RULE}, null));
+		if (postconditions == null) {
+			postconditions = new SubsetSupersetEObjectResolvingEList(
+				Constraint.class, this, UMLPackage.OPERATION__POSTCONDITION,
+				POSTCONDITION_ESUPERSETS, null);
 		}
-		return postcondition;
+		return postconditions;
 	}
 
 	/**
@@ -965,13 +1058,11 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getRedefinedOperations() {
-		EList redefinedOperation = (EList) eVirtualGet(UMLPackage.OPERATION__REDEFINED_OPERATION);
-		if (redefinedOperation == null) {
-			eVirtualSet(UMLPackage.OPERATION__REDEFINED_OPERATION,
-				redefinedOperation = new EObjectResolvingEList(Operation.class,
-					this, UMLPackage.OPERATION__REDEFINED_OPERATION));
+		if (redefinedOperations == null) {
+			redefinedOperations = new EObjectResolvingEList(Operation.class,
+				this, UMLPackage.OPERATION__REDEFINED_OPERATION);
 		}
-		return redefinedOperation;
+		return redefinedOperations;
 	}
 
 	/**
@@ -1094,12 +1185,10 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Constraint getBodyCondition() {
-		Constraint bodyCondition = (Constraint) eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION);
 		if (bodyCondition != null && bodyCondition.eIsProxy()) {
 			InternalEObject oldBodyCondition = (InternalEObject) bodyCondition;
 			bodyCondition = (Constraint) eResolveProxy(oldBodyCondition);
 			if (bodyCondition != oldBodyCondition) {
-				eVirtualSet(UMLPackage.OPERATION__BODY_CONDITION, bodyCondition);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OPERATION__BODY_CONDITION, oldBodyCondition,
@@ -1115,7 +1204,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Constraint basicGetBodyCondition() {
-		return (Constraint) eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION);
+		return bodyCondition;
 	}
 
 	/**
@@ -1124,22 +1213,19 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setBodyCondition(Constraint newBodyCondition) {
-		Constraint bodyCondition = newBodyCondition;
-		Object oldBodyCondition = eVirtualSet(
-			UMLPackage.OPERATION__BODY_CONDITION, bodyCondition);
+		Constraint oldBodyCondition = bodyCondition;
+		bodyCondition = newBodyCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OPERATION__BODY_CONDITION,
-				oldBodyCondition == EVIRTUAL_NO_VALUE
-					? null
-					: oldBodyCondition, bodyCondition));
+				UMLPackage.OPERATION__BODY_CONDITION, oldBodyCondition,
+				bodyCondition));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newBodyCondition != null) {
-				EList ownedRule = getOwnedRules();
-				if (!ownedRule.contains(newBodyCondition)) {
-					ownedRule.add(newBodyCondition);
+				EList ownedRules = getOwnedRules();
+				if (!ownedRules.contains(newBodyCondition)) {
+					ownedRules.add(newBodyCondition);
 				}
 			}
 		}
@@ -1265,14 +1351,11 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
-		EList ownedParameter = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER);
-		if (ownedParameter == null) {
-			eVirtualSet(UMLPackage.OPERATION__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentEList.Resolving(
-					Parameter.class, this,
-					UMLPackage.OPERATION__OWNED_PARAMETER));
+		if (ownedParameters == null) {
+			ownedParameters = new EObjectContainmentEList.Resolving(
+				Parameter.class, this, UMLPackage.OPERATION__OWNED_PARAMETER);
 		}
-		return ownedParameter;
+		return ownedParameters;
 	}
 
 	/**
@@ -1328,8 +1411,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedParameters() {
-		EList ownedParameter = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER);
-		return ownedParameter != null && !ownedParameter.isEmpty();
+		return ownedParameters != null && !ownedParameters.isEmpty();
 	}
 
 	/**
@@ -1338,13 +1420,11 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getRaisedExceptions() {
-		EList raisedException = (EList) eVirtualGet(UMLPackage.OPERATION__RAISED_EXCEPTION);
-		if (raisedException == null) {
-			eVirtualSet(UMLPackage.OPERATION__RAISED_EXCEPTION,
-				raisedException = new EObjectResolvingEList(Type.class, this,
-					UMLPackage.OPERATION__RAISED_EXCEPTION));
+		if (raisedExceptions == null) {
+			raisedExceptions = new EObjectResolvingEList(Type.class, this,
+				UMLPackage.OPERATION__RAISED_EXCEPTION);
 		}
-		return raisedException;
+		return raisedExceptions;
 	}
 
 	/**
@@ -1383,8 +1463,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetRaisedExceptions() {
-		EList raisedException = (EList) eVirtualGet(UMLPackage.OPERATION__RAISED_EXCEPTION);
-		return raisedException != null && !raisedException.isEmpty();
+		return raisedExceptions != null && !raisedExceptions.isEmpty();
 	}
 
 	/**
@@ -1544,7 +1623,6 @@ public class OperationImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -1556,7 +1634,6 @@ public class OperationImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -2047,15 +2124,13 @@ public class OperationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.OPERATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OPERATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPERATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OPERATION__NAME :
 				return isSetName();
 			case UMLPackage.OPERATION__VISIBILITY :
@@ -2065,21 +2140,18 @@ public class OperationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.OPERATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OPERATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.OPERATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.OPERATION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.OPERATION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.OPERATION__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.OPERATION__MEMBER :
 				return isSetMembers();
 			case UMLPackage.OPERATION__IMPORTED_MEMBER :
@@ -2101,26 +2173,22 @@ public class OperationImpl
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.OPERATION__METHOD :
-				EList method = (EList) eVirtualGet(UMLPackage.OPERATION__METHOD);
-				return method != null && !method.isEmpty();
+				return methods != null && !methods.isEmpty();
 			case UMLPackage.OPERATION__CONCURRENCY :
-				return eVirtualGet(UMLPackage.OPERATION__CONCURRENCY,
-					CONCURRENCY_EDEFAULT) != CONCURRENCY_EDEFAULT;
+				return concurrency != CONCURRENCY_EDEFAULT;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				return isSetRaisedExceptions();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
-				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.OPERATION__OWNED_PARAMETER_SET);
-				return ownedParameterSet != null
-					&& !ownedParameterSet.isEmpty();
+				return ownedParameterSets != null
+					&& !ownedParameterSets.isEmpty();
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.OPERATION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.OPERATION__INTERFACE :
 				return basicGetInterface() != null;
 			case UMLPackage.OPERATION__CLASS :
@@ -2136,19 +2204,16 @@ public class OperationImpl
 			case UMLPackage.OPERATION__UPPER :
 				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.OPERATION__PRECONDITION :
-				EList precondition = (EList) eVirtualGet(UMLPackage.OPERATION__PRECONDITION);
-				return precondition != null && !precondition.isEmpty();
+				return preconditions != null && !preconditions.isEmpty();
 			case UMLPackage.OPERATION__POSTCONDITION :
-				EList postcondition = (EList) eVirtualGet(UMLPackage.OPERATION__POSTCONDITION);
-				return postcondition != null && !postcondition.isEmpty();
+				return postconditions != null && !postconditions.isEmpty();
 			case UMLPackage.OPERATION__REDEFINED_OPERATION :
-				EList redefinedOperation = (EList) eVirtualGet(UMLPackage.OPERATION__REDEFINED_OPERATION);
-				return redefinedOperation != null
-					&& !redefinedOperation.isEmpty();
+				return redefinedOperations != null
+					&& !redefinedOperations.isEmpty();
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicGetDatatype() != null;
 			case UMLPackage.OPERATION__BODY_CONDITION :
-				return eVirtualGet(UMLPackage.OPERATION__BODY_CONDITION) != null;
+				return bodyCondition != null;
 			case UMLPackage.OPERATION__TYPE :
 				return basicGetType() != null;
 		}
@@ -2218,40 +2283,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -2287,6 +2318,23 @@ public class OperationImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__OWNED_COMMENT,
+		UMLPackage.OPERATION__NAME_EXPRESSION,
+		UMLPackage.OPERATION__ELEMENT_IMPORT,
+		UMLPackage.OPERATION__PACKAGE_IMPORT,
+		UMLPackage.OPERATION__OWNED_MEMBER,
+		UMLPackage.OPERATION__TEMPLATE_BINDING,
+		UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2296,6 +2344,18 @@ public class OperationImpl
 			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING)
 			|| eIsSet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinitionContexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__INTERFACE, UMLPackage.OPERATION__CLASS,
+		UMLPackage.OPERATION__DATATYPE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2337,6 +2397,17 @@ public class OperationImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeaturingClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2346,6 +2417,16 @@ public class OperationImpl
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
 			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.OPERATION__REDEFINED_OPERATION};
 
 	/**
 	 * <!-- begin-user-doc -->

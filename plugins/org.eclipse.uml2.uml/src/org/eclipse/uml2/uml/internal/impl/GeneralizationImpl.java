@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.12 2006/03/15 19:34:13 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.13 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,10 +28,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -49,8 +52,6 @@ import org.eclipse.uml2.uml.internal.operations.GeneralizationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#isSubstitutable <em>Is Substitutable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.GeneralizationImpl#getGeneralizationSets <em>Generalization Set</em>}</li>
@@ -94,6 +95,26 @@ public class GeneralizationImpl
 	protected static final int IS_SUBSTITUTABLE_ESETFLAG = 1 << 9;
 
 	/**
+	 * The cached value of the '{@link #getGeneral() <em>General</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeneral()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier general = null;
+
+	/**
+	 * The cached value of the '{@link #getGeneralizationSets() <em>Generalization Set</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeneralizationSets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList generalizationSets = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -117,14 +138,21 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.GENERALIZATION__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.GENERALIZATION__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.GENERALIZATION__TARGET,
-					new int[]{UMLPackage.GENERALIZATION__GENERAL}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.GENERALIZATION__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.GENERALIZATION__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -133,14 +161,21 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.GENERALIZATION__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.GENERALIZATION__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.GENERALIZATION__SOURCE,
-					new int[]{UMLPackage.GENERALIZATION__SPECIFIC}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.GENERALIZATION__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.GENERALIZATION__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -207,12 +242,10 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public Classifier getGeneral() {
-		Classifier general = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION__GENERAL);
 		if (general != null && general.eIsProxy()) {
 			InternalEObject oldGeneral = (InternalEObject) general;
 			general = (Classifier) eResolveProxy(oldGeneral);
 			if (general != oldGeneral) {
-				eVirtualSet(UMLPackage.GENERALIZATION__GENERAL, general);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.GENERALIZATION__GENERAL, oldGeneral, general));
@@ -227,7 +260,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public Classifier basicGetGeneral() {
-		return (Classifier) eVirtualGet(UMLPackage.GENERALIZATION__GENERAL);
+		return general;
 	}
 
 	/**
@@ -236,15 +269,11 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setGeneral(Classifier newGeneral) {
-		Classifier general = newGeneral;
-		Object oldGeneral = eVirtualSet(UMLPackage.GENERALIZATION__GENERAL,
-			general);
+		Classifier oldGeneral = general;
+		general = newGeneral;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.GENERALIZATION__GENERAL,
-				oldGeneral == EVIRTUAL_NO_VALUE
-					? null
-					: oldGeneral, general));
+				UMLPackage.GENERALIZATION__GENERAL, oldGeneral, general));
 
 	}
 
@@ -254,16 +283,13 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public EList getGeneralizationSets() {
-		EList generalizationSet = (EList) eVirtualGet(UMLPackage.GENERALIZATION__GENERALIZATION_SET);
-		if (generalizationSet == null) {
-			eVirtualSet(
+		if (generalizationSets == null) {
+			generalizationSets = new EObjectWithInverseResolvingEList.ManyInverse(
+				GeneralizationSet.class, this,
 				UMLPackage.GENERALIZATION__GENERALIZATION_SET,
-				generalizationSet = new EObjectWithInverseResolvingEList.ManyInverse(
-					GeneralizationSet.class, this,
-					UMLPackage.GENERALIZATION__GENERALIZATION_SET,
-					UMLPackage.GENERALIZATION_SET__GENERALIZATION));
+				UMLPackage.GENERALIZATION_SET__GENERALIZATION);
 		}
-		return generalizationSet;
+		return generalizationSets;
 	}
 
 	/**
@@ -538,15 +564,13 @@ public class GeneralizationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.GENERALIZATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.GENERALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.GENERALIZATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.GENERALIZATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.GENERALIZATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.GENERALIZATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.GENERALIZATION__SOURCE :
@@ -556,11 +580,10 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
 				return isSetIsSubstitutable();
 			case UMLPackage.GENERALIZATION__GENERAL :
-				return eVirtualGet(UMLPackage.GENERALIZATION__GENERAL) != null;
+				return general != null;
 			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
-				EList generalizationSet = (EList) eVirtualGet(UMLPackage.GENERALIZATION__GENERALIZATION_SET);
-				return generalizationSet != null
-					&& !generalizationSet.isEmpty();
+				return generalizationSets != null
+					&& !generalizationSets.isEmpty();
 			case UMLPackage.GENERALIZATION__SPECIFIC :
 				return basicGetSpecific() != null;
 		}
@@ -587,6 +610,16 @@ public class GeneralizationImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.GENERALIZATION__GENERAL};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -595,6 +628,16 @@ public class GeneralizationImpl
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.GENERALIZATION__GENERAL);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.GENERALIZATION__SPECIFIC};
 
 	/**
 	 * <!-- begin-user-doc -->

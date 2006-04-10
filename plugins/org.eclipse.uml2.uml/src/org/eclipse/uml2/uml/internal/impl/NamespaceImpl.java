@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.17 2006/03/07 21:43:25 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.18 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -51,9 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.NamespaceOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedRules <em>Owned Rule</em>}</li>
@@ -66,6 +65,36 @@ import org.eclipse.uml2.uml.internal.operations.NamespaceOperations;
 public abstract class NamespaceImpl
 		extends NamedElementImpl
 		implements Namespace {
+
+	/**
+	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList elementImports = null;
+
+	/**
+	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList packageImports = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedRules = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,18 +120,22 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.NAMESPACE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.NAMESPACE__OWNED_ELEMENT, new int[]{
-						UMLPackage.NAMESPACE__OWNED_COMMENT,
-						UMLPackage.NAMESPACE__NAME_EXPRESSION,
-						UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-						UMLPackage.NAMESPACE__PACKAGE_IMPORT,
-						UMLPackage.NAMESPACE__OWNED_MEMBER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.NAMESPACE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.NAMESPACE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -111,14 +144,23 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.NAMESPACE__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.NAMESPACE__OWNED_MEMBER,
-					new int[]{UMLPackage.NAMESPACE__OWNED_RULE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList(
+						NamedElement.class, this,
+						UMLPackage.NAMESPACE__OWNED_MEMBER,
+						OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.NAMESPACE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -157,15 +199,21 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList getMembers() {
-		EList member = (EList) eVirtualGet(UMLPackage.NAMESPACE__MEMBER);
-		if (member == null) {
-			eVirtualSet(UMLPackage.NAMESPACE__MEMBER,
-				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.NAMESPACE__MEMBER, new int[]{
-						UMLPackage.NAMESPACE__IMPORTED_MEMBER,
-						UMLPackage.NAMESPACE__OWNED_MEMBER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList members = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__MEMBER);
+			if (members == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__MEMBER,
+					members = new DerivedUnionEObjectEList(NamedElement.class,
+						this, UMLPackage.NAMESPACE__MEMBER, MEMBER_ESUBSETS));
+			}
+			return members;
 		}
-		return member;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.NAMESPACE__MEMBER, MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -202,16 +250,13 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList getElementImports() {
-		EList elementImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
-		if (elementImport == null) {
-			eVirtualSet(
+		if (elementImports == null) {
+			elementImports = new EObjectContainmentWithInverseEList.Resolving(
+				ElementImport.class, this,
 				UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-				elementImport = new EObjectContainmentWithInverseEList.Resolving(
-					ElementImport.class, this,
-					UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
+				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 		}
-		return elementImport;
+		return elementImports;
 	}
 
 	/**
@@ -262,16 +307,13 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList getPackageImports() {
-		EList packageImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
-		if (packageImport == null) {
-			eVirtualSet(
+		if (packageImports == null) {
+			packageImports = new EObjectContainmentWithInverseEList.Resolving(
+				PackageImport.class, this,
 				UMLPackage.NAMESPACE__PACKAGE_IMPORT,
-				packageImport = new EObjectContainmentWithInverseEList.Resolving(
-					PackageImport.class, this,
-					UMLPackage.NAMESPACE__PACKAGE_IMPORT,
-					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
+				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
-		return packageImport;
+		return packageImports;
 	}
 
 	/**
@@ -324,14 +366,12 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		EList ownedRule = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
-		if (ownedRule == null) {
-			eVirtualSet(UMLPackage.NAMESPACE__OWNED_RULE,
-				ownedRule = new EObjectContainmentWithInverseEList.Resolving(
-					Constraint.class, this, UMLPackage.NAMESPACE__OWNED_RULE,
-					UMLPackage.CONSTRAINT__CONTEXT));
+		if (ownedRules == null) {
+			ownedRules = new EObjectContainmentWithInverseEList.Resolving(
+				Constraint.class, this, UMLPackage.NAMESPACE__OWNED_RULE,
+				UMLPackage.CONSTRAINT__CONTEXT);
 		}
-		return ownedRule;
+		return ownedRules;
 	}
 
 	/**
@@ -744,15 +784,13 @@ public abstract class NamespaceImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.NAMESPACE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.NAMESPACE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.NAMESPACE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.NAMESPACE__OWNER :
 				return isSetOwner();
 			case UMLPackage.NAMESPACE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.NAMESPACE__NAME :
 				return isSetName();
 			case UMLPackage.NAMESPACE__VISIBILITY :
@@ -762,21 +800,18 @@ public abstract class NamespaceImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.NAMESPACE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.NAMESPACE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.NAMESPACE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.NAMESPACE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.NAMESPACE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.NAMESPACE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.NAMESPACE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.NAMESPACE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.NAMESPACE__IMPORTED_MEMBER :
@@ -786,6 +821,21 @@ public abstract class NamespaceImpl
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_COMMENT,
+		UMLPackage.NAMESPACE__NAME_EXPRESSION,
+		UMLPackage.NAMESPACE__ELEMENT_IMPORT,
+		UMLPackage.NAMESPACE__PACKAGE_IMPORT,
+		UMLPackage.NAMESPACE__OWNED_MEMBER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -798,6 +848,28 @@ public abstract class NamespaceImpl
 			|| eIsSet(UMLPackage.NAMESPACE__PACKAGE_IMPORT)
 			|| isSetOwnedMembers();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{UMLPackage.NAMESPACE__OWNED_RULE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getMembers() <em>Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] MEMBER_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__IMPORTED_MEMBER,
+		UMLPackage.NAMESPACE__OWNED_MEMBER};
 
 	/**
 	 * <!-- begin-user-doc -->

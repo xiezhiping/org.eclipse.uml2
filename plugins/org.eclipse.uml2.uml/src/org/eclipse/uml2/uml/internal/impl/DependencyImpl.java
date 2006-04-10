@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,10 +21,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Dependency;
@@ -44,9 +47,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getClients <em>Client</em>}</li>
  * </ul>
@@ -57,6 +57,26 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class DependencyImpl
 		extends PackageableElementImpl
 		implements Dependency {
+
+	/**
+	 * The cached value of the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList suppliers = null;
+
+	/**
+	 * The cached value of the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList clients = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,15 +102,23 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) eVirtualGet(UMLPackage.DEPENDENCY__RELATED_ELEMENT);
-		if (relatedElement == null) {
-			eVirtualSet(UMLPackage.DEPENDENCY__RELATED_ELEMENT,
-				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.DEPENDENCY__RELATED_ELEMENT, new int[]{
-						UMLPackage.DEPENDENCY__SOURCE,
-						UMLPackage.DEPENDENCY__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList relatedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
+			if (relatedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
+					relatedElements = new DerivedUnionEObjectEList(
+						Element.class, this,
+						UMLPackage.DEPENDENCY__RELATED_ELEMENT,
+						RELATED_ELEMENT_ESUBSETS));
+			}
+			return relatedElements;
 		}
-		return relatedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DEPENDENCY__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -99,14 +127,21 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.DEPENDENCY__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.DEPENDENCY__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DEPENDENCY__SOURCE,
-					new int[]{UMLPackage.DEPENDENCY__CLIENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.DEPENDENCY__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DEPENDENCY__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -115,14 +150,21 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.DEPENDENCY__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.DEPENDENCY__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DEPENDENCY__TARGET,
-					new int[]{UMLPackage.DEPENDENCY__SUPPLIER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.DEPENDENCY__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DEPENDENCY__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -131,13 +173,11 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(UMLPackage.DEPENDENCY__SUPPLIER,
-				supplier = new EObjectResolvingEList(NamedElement.class, this,
-					UMLPackage.DEPENDENCY__SUPPLIER));
+		if (suppliers == null) {
+			suppliers = new EObjectResolvingEList(NamedElement.class, this,
+				UMLPackage.DEPENDENCY__SUPPLIER);
 		}
-		return supplier;
+		return suppliers;
 	}
 
 	/**
@@ -175,14 +215,12 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList getClients() {
-		EList client = (EList) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
-		if (client == null) {
-			eVirtualSet(UMLPackage.DEPENDENCY__CLIENT,
-				client = new EObjectWithInverseResolvingEList.ManyInverse(
-					NamedElement.class, this, UMLPackage.DEPENDENCY__CLIENT,
-					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		if (clients == null) {
+			clients = new EObjectWithInverseResolvingEList.ManyInverse(
+				NamedElement.class, this, UMLPackage.DEPENDENCY__CLIENT,
+				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
-		return client;
+		return clients;
 	}
 
 	/**
@@ -233,7 +271,6 @@ public class DependencyImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -427,15 +464,13 @@ public class DependencyImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DEPENDENCY__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPENDENCY__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPENDENCY__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPENDENCY__NAME :
 				return isSetName();
 			case UMLPackage.DEPENDENCY__VISIBILITY :
@@ -445,16 +480,16 @@ public class DependencyImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPENDENCY__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DEPENDENCY__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DEPENDENCY__SOURCE :
@@ -462,11 +497,9 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__TARGET :
 				return isSetTargets();
 			case UMLPackage.DEPENDENCY__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.DEPENDENCY__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.DEPENDENCY__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.DEPENDENCY__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -526,6 +559,17 @@ public class DependencyImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] RELATED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.DEPENDENCY__SOURCE, UMLPackage.DEPENDENCY__TARGET};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -535,6 +579,16 @@ public class DependencyImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.DEPENDENCY__CLIENT};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -542,6 +596,16 @@ public class DependencyImpl
 	public boolean isSetSources() {
 		return eIsSet(UMLPackage.DEPENDENCY__CLIENT);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.DEPENDENCY__SUPPLIER};
 
 	/**
 	 * <!-- begin-user-doc -->

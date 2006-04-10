@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.13 2006/03/15 19:34:13 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.14 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,9 +25,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -45,7 +48,6 @@ import org.eclipse.uml2.uml.internal.operations.InterruptibleActivityRegionOpera
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getInterruptingEdges <em>Interrupting Edge</em>}</li>
  * </ul>
@@ -56,6 +58,26 @@ import org.eclipse.uml2.uml.internal.operations.InterruptibleActivityRegionOpera
 public class InterruptibleActivityRegionImpl
 		extends ActivityGroupImpl
 		implements InterruptibleActivityRegion {
+
+	/**
+	 * The cached value of the '{@link #getNodes() <em>Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList nodes = null;
+
+	/**
+	 * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edge</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterruptingEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList interruptingEdges = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,16 +103,28 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public EList getContainedNodes() {
-		EList containedNode = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE);
-		if (containedNode == null) {
-			eVirtualSet(
-				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
-				containedNode = new DerivedUnionEObjectEList(
-					ActivityNode.class, this,
-					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
-					new int[]{UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList containedNodes = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
+			if (containedNodes == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+						containedNodes = new DerivedUnionEObjectEList(
+							ActivityNode.class,
+							this,
+							UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
+							CONTAINED_NODE_ESUBSETS));
+			}
+			return containedNodes;
 		}
-		return containedNode;
+		return new DerivedUnionEObjectEList(ActivityNode.class, this,
+			UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
+			CONTAINED_NODE_ESUBSETS);
 	}
 
 	/**
@@ -99,15 +133,13 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public EList getNodes() {
-		EList node = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
-		if (node == null) {
-			eVirtualSet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE,
-				node = new EObjectWithInverseResolvingEList.ManyInverse(
-					ActivityNode.class, this,
-					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE,
-					UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION));
+		if (nodes == null) {
+			nodes = new EObjectWithInverseResolvingEList.ManyInverse(
+				ActivityNode.class, this,
+				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE,
+				UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 		}
-		return node;
+		return nodes;
 	}
 
 	/**
@@ -144,17 +176,13 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public EList getInterruptingEdges() {
-		EList interruptingEdge = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE);
-		if (interruptingEdge == null) {
-			eVirtualSet(
+		if (interruptingEdges == null) {
+			interruptingEdges = new EObjectWithInverseResolvingEList(
+				ActivityEdge.class, this,
 				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-				interruptingEdge = new EObjectWithInverseResolvingEList(
-					ActivityEdge.class,
-					this,
-					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-					UMLPackage.ACTIVITY_EDGE__INTERRUPTS));
+				UMLPackage.ACTIVITY_EDGE__INTERRUPTS);
 		}
-		return interruptingEdge;
+		return interruptingEdges;
 	}
 
 	/**
@@ -350,15 +378,13 @@ public class InterruptibleActivityRegionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUBGROUP :
 				return isSetSubgroups();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__SUPER_GROUP :
@@ -370,14 +396,23 @@ public class InterruptibleActivityRegionImpl
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				EList node = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
-				return node != null && !node.isEmpty();
+				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-				EList interruptingEdge = (EList) eVirtualGet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE);
-				return interruptingEdge != null && !interruptingEdge.isEmpty();
+				return interruptingEdges != null
+					&& !interruptingEdges.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getContainedNodes() <em>Contained Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE};
 
 	/**
 	 * <!-- begin-user-doc -->

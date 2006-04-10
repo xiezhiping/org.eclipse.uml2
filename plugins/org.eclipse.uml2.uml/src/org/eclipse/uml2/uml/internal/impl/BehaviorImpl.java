@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.24 2006/03/07 20:25:15 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.25 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,10 +28,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
@@ -60,9 +63,6 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedElements <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#isReentrant <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
@@ -98,7 +98,67 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REENTRANT_EFLAG = 1 << 11;
+	protected static final int IS_REENTRANT_EFLAG = 1 << 13;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedBehaviors() <em>Redefined Behavior</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedBehaviors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedBehaviors = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameters = null;
+
+	/**
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList preconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList postconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameterSets() <em>Owned Parameter Set</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameterSets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameterSets = null;
+
+	/**
+	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecification()
+	 * @generated
+	 * @ordered
+	 */
+	protected BehavioralFeature specification = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,16 +184,23 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.BEHAVIOR__REDEFINED_ELEMENT, new int[]{
-						UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER,
-						UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.BEHAVIOR__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.BEHAVIOR__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -142,24 +209,23 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.BEHAVIOR__OWNED_MEMBER, new int[]{
-						UMLPackage.BEHAVIOR__OWNED_RULE,
-						UMLPackage.BEHAVIOR__OWNED_USE_CASE,
-						UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE,
-						UMLPackage.BEHAVIOR__OWNED_CONNECTOR,
-						UMLPackage.BEHAVIOR__OWNED_BEHAVIOR,
-						UMLPackage.BEHAVIOR__OWNED_TRIGGER,
-						UMLPackage.BEHAVIOR__NESTED_CLASSIFIER,
-						UMLPackage.BEHAVIOR__OWNED_OPERATION,
-						UMLPackage.BEHAVIOR__OWNED_RECEPTION,
-						UMLPackage.BEHAVIOR__OWNED_PARAMETER,
-						UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList(
+						NamedElement.class, this,
+						UMLPackage.BEHAVIOR__OWNED_MEMBER,
+						OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.BEHAVIOR__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -168,15 +234,27 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
-		EList redefinitionContext = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT);
-		if (redefinitionContext == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
-				redefinitionContext = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
-					new int[]{UMLPackage.BEHAVIOR__CONTEXT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinitionContexts = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			if (redefinitionContexts == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
+						redefinitionContexts = new DerivedUnionEObjectEList(
+							Classifier.class, this,
+							UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
+							REDEFINITION_CONTEXT_ESUBSETS));
+			}
+			return redefinitionContexts;
 		}
-		return redefinitionContext;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT,
+			REDEFINITION_CONTEXT_ESUBSETS);
 	}
 
 	/**
@@ -212,13 +290,11 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getRedefinedBehaviors() {
-		EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
-		if (redefinedBehavior == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR,
-				redefinedBehavior = new EObjectResolvingEList(Behavior.class,
-					this, UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR));
+		if (redefinedBehaviors == null) {
+			redefinedBehaviors = new EObjectResolvingEList(Behavior.class,
+				this, UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 		}
-		return redefinedBehavior;
+		return redefinedBehaviors;
 	}
 
 	/**
@@ -257,14 +333,11 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
-		EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
-		if (ownedParameter == null) {
-			eVirtualSet(
-				UMLPackage.BEHAVIOR__OWNED_PARAMETER,
-				ownedParameter = new EObjectContainmentEList.Resolving(
-					Parameter.class, this, UMLPackage.BEHAVIOR__OWNED_PARAMETER));
+		if (ownedParameters == null) {
+			ownedParameters = new EObjectContainmentEList.Resolving(
+				Parameter.class, this, UMLPackage.BEHAVIOR__OWNED_PARAMETER);
 		}
-		return ownedParameter;
+		return ownedParameters;
 	}
 
 	/**
@@ -341,13 +414,11 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getPreconditions() {
-		EList precondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PRECONDITION);
-		if (precondition == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__PRECONDITION,
-				precondition = new EObjectContainmentEList.Resolving(
-					Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION));
+		if (preconditions == null) {
+			preconditions = new EObjectContainmentEList.Resolving(
+				Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION);
 		}
-		return precondition;
+		return preconditions;
 	}
 
 	/**
@@ -410,13 +481,11 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getPostconditions() {
-		EList postcondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POSTCONDITION);
-		if (postcondition == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__POSTCONDITION,
-				postcondition = new EObjectContainmentEList.Resolving(
-					Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION));
+		if (postconditions == null) {
+			postconditions = new EObjectContainmentEList.Resolving(
+				Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION);
 		}
-		return postcondition;
+		return postconditions;
 	}
 
 	/**
@@ -479,14 +548,12 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getOwnedParameterSets() {
-		EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
-		if (ownedParameterSet == null) {
-			eVirtualSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET,
-				ownedParameterSet = new EObjectContainmentEList.Resolving(
-					ParameterSet.class, this,
-					UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET));
+		if (ownedParameterSets == null) {
+			ownedParameterSets = new EObjectContainmentEList.Resolving(
+				ParameterSet.class, this,
+				UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 		}
-		return ownedParameterSet;
+		return ownedParameterSets;
 	}
 
 	/**
@@ -538,12 +605,10 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public BehavioralFeature getSpecification() {
-		BehavioralFeature specification = (BehavioralFeature) eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (BehavioralFeature) eResolveProxy(oldSpecification);
 			if (specification != oldSpecification) {
-				eVirtualSet(UMLPackage.BEHAVIOR__SPECIFICATION, specification);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.BEHAVIOR__SPECIFICATION, oldSpecification,
@@ -559,7 +624,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public BehavioralFeature basicGetSpecification() {
-		return (BehavioralFeature) eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -569,14 +634,12 @@ public abstract class BehaviorImpl
 	 */
 	public NotificationChain basicSetSpecification(
 			BehavioralFeature newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(
-			UMLPackage.BEHAVIOR__SPECIFICATION, newSpecification);
+		BehavioralFeature oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.BEHAVIOR__SPECIFICATION,
-				oldSpecification == EVIRTUAL_NO_VALUE
-					? null
-					: oldSpecification, newSpecification);
+				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -592,7 +655,6 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public void setSpecification(BehavioralFeature newSpecification) {
-		BehavioralFeature specification = (BehavioralFeature) eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -685,7 +747,6 @@ public abstract class BehaviorImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -697,7 +758,6 @@ public abstract class BehaviorImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -723,7 +783,6 @@ public abstract class BehaviorImpl
 				return ((InternalEList) getOwnedOperations()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				BehavioralFeature specification = (BehavioralFeature) eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION);
 				if (specification != null)
 					msgs = ((InternalEObject) specification).eInverseRemove(
 						this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
@@ -1315,15 +1374,13 @@ public abstract class BehaviorImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.BEHAVIOR__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.BEHAVIOR__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIOR__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.BEHAVIOR__NAME :
 				return isSetName();
 			case UMLPackage.BEHAVIOR__VISIBILITY :
@@ -1333,21 +1390,18 @@ public abstract class BehaviorImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.BEHAVIOR__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.BEHAVIOR__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.BEHAVIOR__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.BEHAVIOR__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.BEHAVIOR__MEMBER :
 				return isSetMembers();
 			case UMLPackage.BEHAVIOR__IMPORTED_MEMBER :
@@ -1367,44 +1421,37 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.BEHAVIOR__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.BEHAVIOR__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
 				return isSetIsAbstract();
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
-				EList generalization = (EList) eVirtualGet(UMLPackage.BEHAVIOR__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
-				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UMLPackage.BEHAVIOR__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.BEHAVIOR__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER :
-				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null
-					&& !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
 			case UMLPackage.BEHAVIOR__GENERAL :
 				return isSetGenerals();
 			case UMLPackage.BEHAVIOR__SUBSTITUTION :
-				EList substitution = (EList) eVirtualGet(UMLPackage.BEHAVIOR__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.BEHAVIOR__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.BEHAVIOR__REPRESENTATION :
-				return eVirtualGet(UMLPackage.BEHAVIOR__REPRESENTATION) != null;
+				return representation != null;
 			case UMLPackage.BEHAVIOR__COLLABORATION_USE :
-				EList collaborationUse = (EList) eVirtualGet(UMLPackage.BEHAVIOR__COLLABORATION_USE);
-				return collaborationUse != null && !collaborationUse.isEmpty();
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.BEHAVIOR__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.BEHAVIOR__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
 			case UMLPackage.BEHAVIOR__PART :
@@ -1412,60 +1459,49 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__ROLE :
 				return isSetRoles();
 			case UMLPackage.BEHAVIOR__OWNED_CONNECTOR :
-				EList ownedConnector = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_BEHAVIOR :
-				EList ownedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_BEHAVIOR);
-				return ownedBehavior != null && !ownedBehavior.isEmpty();
+				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
 			case UMLPackage.BEHAVIOR__CLASSIFIER_BEHAVIOR :
-				return eVirtualGet(UMLPackage.BEHAVIOR__CLASSIFIER_BEHAVIOR) != null;
+				return classifierBehavior != null;
 			case UMLPackage.BEHAVIOR__INTERFACE_REALIZATION :
-				EList interfaceRealization = (EList) eVirtualGet(UMLPackage.BEHAVIOR__INTERFACE_REALIZATION);
-				return interfaceRealization != null
-					&& !interfaceRealization.isEmpty();
+				return interfaceRealizations != null
+					&& !interfaceRealizations.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_TRIGGER :
-				EList ownedTrigger = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_TRIGGER);
-				return ownedTrigger != null && !ownedTrigger.isEmpty();
+				return ownedTriggers != null && !ownedTriggers.isEmpty();
 			case UMLPackage.BEHAVIOR__NESTED_CLASSIFIER :
-				EList nestedClassifier = (EList) eVirtualGet(UMLPackage.BEHAVIOR__NESTED_CLASSIFIER);
-				return nestedClassifier != null && !nestedClassifier.isEmpty();
+				return nestedClassifiers != null
+					&& !nestedClassifiers.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return isSetSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
 				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
-				EList ownedReception = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_RECEPTION);
-				return ownedReception != null && !ownedReception.isEmpty();
+				return ownedReceptions != null && !ownedReceptions.isEmpty();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return !getExtensions().isEmpty();
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
 				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
-				EList redefinedBehavior = (EList) eVirtualGet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
-				return redefinedBehavior != null
-					&& !redefinedBehavior.isEmpty();
+				return redefinedBehaviors != null
+					&& !redefinedBehaviors.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
-				EList ownedParameter = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.BEHAVIOR__PRECONDITION :
-				EList precondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__PRECONDITION);
-				return precondition != null && !precondition.isEmpty();
+				return preconditions != null && !preconditions.isEmpty();
 			case UMLPackage.BEHAVIOR__POSTCONDITION :
-				EList postcondition = (EList) eVirtualGet(UMLPackage.BEHAVIOR__POSTCONDITION);
-				return postcondition != null && !postcondition.isEmpty();
+				return postconditions != null && !postconditions.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
-				EList ownedParameterSet = (EList) eVirtualGet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
-				return ownedParameterSet != null
-					&& !ownedParameterSet.isEmpty();
+				return ownedParameterSets != null
+					&& !ownedParameterSets.isEmpty();
 			case UMLPackage.BEHAVIOR__SPECIFICATION :
-				return eVirtualGet(UMLPackage.BEHAVIOR__SPECIFICATION) != null;
+				return specification != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1487,6 +1523,18 @@ public abstract class BehaviorImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER,
+		UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1495,6 +1543,26 @@ public abstract class BehaviorImpl
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIOR__OWNED_RULE, UMLPackage.BEHAVIOR__OWNED_USE_CASE,
+		UMLPackage.BEHAVIOR__OWNED_ATTRIBUTE,
+		UMLPackage.BEHAVIOR__OWNED_CONNECTOR,
+		UMLPackage.BEHAVIOR__OWNED_BEHAVIOR,
+		UMLPackage.BEHAVIOR__OWNED_TRIGGER,
+		UMLPackage.BEHAVIOR__NESTED_CLASSIFIER,
+		UMLPackage.BEHAVIOR__OWNED_OPERATION,
+		UMLPackage.BEHAVIOR__OWNED_RECEPTION,
+		UMLPackage.BEHAVIOR__OWNED_PARAMETER,
+		UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1506,6 +1574,16 @@ public abstract class BehaviorImpl
 			|| eIsSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER)
 			|| eIsSet(UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinitionContexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.BEHAVIOR__CONTEXT};
 
 	/**
 	 * <!-- begin-user-doc -->

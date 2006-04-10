@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceiveSignalEventImpl.java,v 1.4 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ReceiveSignalEventImpl.java,v 1.5 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -47,6 +45,16 @@ public class ReceiveSignalEventImpl
 		implements ReceiveSignalEvent {
 
 	/**
+	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSignal()
+	 * @generated
+	 * @ordered
+	 */
+	protected Signal signal = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -70,12 +78,10 @@ public class ReceiveSignalEventImpl
 	 * @generated
 	 */
 	public Signal getSignal() {
-		Signal signal = (Signal) eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
 			InternalEObject oldSignal = (InternalEObject) signal;
 			signal = (Signal) eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
-				eVirtualSet(UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL, signal);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL, oldSignal,
@@ -91,7 +97,7 @@ public class ReceiveSignalEventImpl
 	 * @generated
 	 */
 	public Signal basicGetSignal() {
-		return (Signal) eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL);
+		return signal;
 	}
 
 	/**
@@ -100,15 +106,11 @@ public class ReceiveSignalEventImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-		Signal signal = newSignal;
-		Object oldSignal = eVirtualSet(UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL,
-			signal);
+		Signal oldSignal = signal;
+		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL,
-				oldSignal == EVIRTUAL_NO_VALUE
-					? null
-					: oldSignal, signal));
+				UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL, oldSignal, signal));
 
 	}
 
@@ -248,15 +250,13 @@ public class ReceiveSignalEventImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__VISIBILITY :
@@ -266,18 +266,18 @@ public class ReceiveSignalEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL :
-				return eVirtualGet(UMLPackage.RECEIVE_SIGNAL_EVENT__SIGNAL) != null;
+				return signal != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

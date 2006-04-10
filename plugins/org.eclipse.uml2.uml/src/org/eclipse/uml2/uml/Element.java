@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.11 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Element.java,v 1.12 2006/04/10 19:16:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Element
-		extends EObject, EModelElement {
+		extends EModelElement {
 
 	/**
 	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list.

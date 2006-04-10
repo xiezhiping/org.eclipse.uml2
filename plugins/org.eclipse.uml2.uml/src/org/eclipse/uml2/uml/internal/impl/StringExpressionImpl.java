@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.16 2006/03/15 19:34:05 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.17 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -55,7 +57,6 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
@@ -68,6 +69,36 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
 public class StringExpressionImpl
 		extends ExpressionImpl
 		implements StringExpression {
+
+	/**
+	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList templateBindings = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature = null;
+
+	/**
+	 * The cached value of the '{@link #getSubExpressions() <em>Sub Expression</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubExpressions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList subExpressions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,19 +124,22 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
-					new int[]{UMLPackage.STRING_EXPRESSION__OWNED_COMMENT,
-						UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION,
-						UMLPackage.STRING_EXPRESSION__OPERAND,
-						UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
-						UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
-						UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -114,16 +148,13 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public EList getTemplateBindings() {
-		EList templateBinding = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING);
-		if (templateBinding == null) {
-			eVirtualSet(
+		if (templateBindings == null) {
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+				TemplateBinding.class, this,
 				UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
-					TemplateBinding.class, this,
-					UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
-					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
+				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
 		}
-		return templateBinding;
+		return templateBindings;
 	}
 
 	/**
@@ -174,7 +205,6 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
 		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
@@ -206,7 +236,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public TemplateSignature basicGetOwnedTemplateSignature() {
-		return (TemplateSignature) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
+		return ownedTemplateSignature;
 	}
 
 	/**
@@ -216,16 +246,13 @@ public class StringExpressionImpl
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-		Object oldOwnedTemplateSignature = eVirtualSet(
-			UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
-			newOwnedTemplateSignature);
+		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
+		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
-				oldOwnedTemplateSignature == EVIRTUAL_NO_VALUE
-					? null
-					: oldOwnedTemplateSignature, newOwnedTemplateSignature);
+				oldOwnedTemplateSignature, newOwnedTemplateSignature);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -242,7 +269,6 @@ public class StringExpressionImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -291,16 +317,13 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public EList getSubExpressions() {
-		EList subExpression = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
-		if (subExpression == null) {
-			eVirtualSet(
+		if (subExpressions == null) {
+			subExpressions = new EObjectContainmentWithInverseEList.Resolving(
+				StringExpression.class, this,
 				UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
-				subExpression = new EObjectContainmentWithInverseEList.Resolving(
-					StringExpression.class, this,
-					UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
-					UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION));
+				UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION);
 		}
-		return subExpression;
+		return subExpressions;
 	}
 
 	/**
@@ -494,7 +517,6 @@ public class StringExpressionImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -506,7 +528,6 @@ public class StringExpressionImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(
@@ -779,15 +800,13 @@ public class StringExpressionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STRING_EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__NAME :
 				return isSetName();
 			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
@@ -797,31 +816,28 @@ public class StringExpressionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.STRING_EXPRESSION__TYPE :
-				return eVirtualGet(UMLPackage.STRING_EXPRESSION__TYPE) != null;
+				return type != null;
 			case UMLPackage.STRING_EXPRESSION__SYMBOL :
 				return isSetSymbol();
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
-				EList operand = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__OPERAND);
-				return operand != null && !operand.isEmpty();
+				return operands != null && !operands.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				EList subExpression = (EList) eVirtualGet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
-				return subExpression != null && !subExpression.isEmpty();
+				return subExpressions != null && !subExpressions.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return basicGetOwningExpression() != null;
 		}
@@ -865,6 +881,22 @@ public class StringExpressionImpl
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.STRING_EXPRESSION__OWNED_COMMENT,
+		UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION,
+		UMLPackage.STRING_EXPRESSION__OPERAND,
+		UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
+		UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
+		UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION};
 
 	/**
 	 * <!-- begin-user-doc -->

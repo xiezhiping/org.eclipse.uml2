@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.12 2006/03/15 19:34:15 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -69,14 +67,10 @@ public class OperationTemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getParameteredElement() {
-		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
 			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
-				eVirtualSet(
-					UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-					parameteredElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(
 						this,
@@ -94,7 +88,7 @@ public class OperationTemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement basicGetParameteredElement() {
-		return (ParameterableElement) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
+		return parameteredElement;
 	}
 
 	/**
@@ -104,16 +98,13 @@ public class OperationTemplateParameterImpl
 	 */
 	public NotificationChain basicSetParameteredElementGen(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
-		Object oldParameteredElement = eVirtualSet(
-			UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-			newParameteredElement);
+		ParameterableElement oldParameteredElement = parameteredElement;
+		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-				oldParameteredElement == EVIRTUAL_NO_VALUE
-					? null
-					: oldParameteredElement, newParameteredElement);
+				oldParameteredElement, newParameteredElement);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -137,7 +128,6 @@ public class OperationTemplateParameterImpl
 		Resource.Internal eInternalResource = eInternalResource();
 
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			Object ownedParameteredElement = eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 
 			if (ownedParameteredElement != null
 				&& ownedParameteredElement != newParameteredElement) {
@@ -155,7 +145,6 @@ public class OperationTemplateParameterImpl
 	 * @generated
 	 */
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
-		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -182,7 +171,7 @@ public class OperationTemplateParameterImpl
 	 * @generated
 	 */
 	public boolean isSetParameteredElement() {
-		return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
+		return parameteredElement != null;
 	}
 
 	/**
@@ -234,25 +223,23 @@ public class OperationTemplateParameterImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
 				return isSetParameteredElement();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
+				return ownedParameteredElement != null;
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT :
-				return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT) != null;
+				return default_ != null;
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return eVirtualGet(UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
+				return ownedDefault != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

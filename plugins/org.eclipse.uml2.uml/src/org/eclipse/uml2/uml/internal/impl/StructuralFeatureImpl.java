@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.18 2006/03/09 21:30:31 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -51,7 +54,6 @@ import org.eclipse.uml2.uml.internal.operations.MultiplicityElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getUpper <em>Upper</em>}</li>
@@ -67,6 +69,16 @@ import org.eclipse.uml2.uml.internal.operations.MultiplicityElementOperations;
 public abstract class StructuralFeatureImpl
 		extends FeatureImpl
 		implements StructuralFeature {
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected Type type = null;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -86,7 +98,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 10;
+	protected static final int IS_ORDERED_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -106,7 +118,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 11;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 13;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -129,6 +141,26 @@ public abstract class StructuralFeatureImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,7 +178,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = 1 << 12;
+	protected static final int IS_READ_ONLY_EFLAG = 1 << 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,12 +205,10 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public Type getType() {
-		Type type = (Type) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__TYPE);
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject) type;
 			type = (Type) eResolveProxy(oldType);
 			if (type != oldType) {
-				eVirtualSet(UMLPackage.STRUCTURAL_FEATURE__TYPE, type);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.STRUCTURAL_FEATURE__TYPE, oldType, type));
@@ -193,7 +223,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public Type basicGetType() {
-		return (Type) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__TYPE);
+		return type;
 	}
 
 	/**
@@ -202,14 +232,11 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		Type type = newType;
-		Object oldType = eVirtualSet(UMLPackage.STRUCTURAL_FEATURE__TYPE, type);
+		Type oldType = type;
+		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.STRUCTURAL_FEATURE__TYPE,
-				oldType == EVIRTUAL_NO_VALUE
-					? null
-					: oldType, type));
+				UMLPackage.STRUCTURAL_FEATURE__TYPE, oldType, type));
 
 	}
 
@@ -219,17 +246,23 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT,
-					new int[]{UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT,
-						UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION,
-						UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
-						UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -328,7 +361,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE);
 		if (upperValue != null && upperValue.eIsProxy()) {
 			InternalEObject oldUpperValue = (InternalEObject) upperValue;
 			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
@@ -361,7 +393,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetUpperValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -371,14 +403,12 @@ public abstract class StructuralFeatureImpl
 	 */
 	public NotificationChain basicSetUpperValue(
 			ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(
-			UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE, newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
-				oldUpperValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldUpperValue, newUpperValue);
+				oldUpperValue, newUpperValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -394,7 +424,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -439,7 +468,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE);
 		if (lowerValue != null && lowerValue.eIsProxy()) {
 			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
 			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
@@ -472,7 +500,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetLowerValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -482,14 +510,12 @@ public abstract class StructuralFeatureImpl
 	 */
 	public NotificationChain basicSetLowerValue(
 			ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(
-			UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE, newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE,
-				oldLowerValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldLowerValue, newLowerValue);
+				oldLowerValue, newLowerValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -505,7 +531,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -903,15 +928,13 @@ public abstract class StructuralFeatureImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURAL_FEATURE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				return isSetName();
 			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
@@ -921,12 +944,12 @@ public abstract class StructuralFeatureImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINED_ELEMENT :
@@ -938,7 +961,7 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
-				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__TYPE) != null;
+				return type != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
@@ -948,9 +971,9 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 		}
@@ -1046,6 +1069,20 @@ public abstract class StructuralFeatureImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT,
+		UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION,
+		UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
+		UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

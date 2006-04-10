@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.18 2006/03/15 19:34:05 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -50,8 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.TestIdentityActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getInputs <em>Input</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getFirst <em>First</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getSecond <em>Second</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getResult <em>Result</em>}</li>
@@ -63,6 +64,36 @@ import org.eclipse.uml2.uml.internal.operations.TestIdentityActionOperations;
 public class TestIdentityActionImpl
 		extends ActionImpl
 		implements TestIdentityAction {
+
+	/**
+	 * The cached value of the '{@link #getFirst() <em>First</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFirst()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin first = null;
+
+	/**
+	 * The cached value of the '{@link #getSecond() <em>Second</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSecond()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin second = null;
+
+	/**
+	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected OutputPin result = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,15 +119,22 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.TEST_IDENTITY_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.TEST_IDENTITY_ACTION__INPUT, new int[]{
-						UMLPackage.TEST_IDENTITY_ACTION__FIRST,
-						UMLPackage.TEST_IDENTITY_ACTION__SECOND}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache
+					.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+						inputs = new DerivedUnionEObjectEList(InputPin.class,
+							this, UMLPackage.TEST_IDENTITY_ACTION__INPUT,
+							INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.TEST_IDENTITY_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -105,14 +143,21 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UMLPackage.TEST_IDENTITY_ACTION__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.TEST_IDENTITY_ACTION__OUTPUT,
-					new int[]{UMLPackage.TEST_IDENTITY_ACTION__RESULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList(OutputPin.class,
+						this, UMLPackage.TEST_IDENTITY_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this,
+			UMLPackage.TEST_IDENTITY_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
 	/**
@@ -121,7 +166,6 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin getFirst() {
-		InputPin first = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
 		if (first != null && first.eIsProxy()) {
 			InternalEObject oldFirst = (InternalEObject) first;
 			first = (InputPin) eResolveProxy(oldFirst);
@@ -150,7 +194,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetFirst() {
-		return (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
+		return first;
 	}
 
 	/**
@@ -160,14 +204,12 @@ public class TestIdentityActionImpl
 	 */
 	public NotificationChain basicSetFirst(InputPin newFirst,
 			NotificationChain msgs) {
-		Object oldFirst = eVirtualSet(UMLPackage.TEST_IDENTITY_ACTION__FIRST,
-			newFirst);
+		InputPin oldFirst = first;
+		first = newFirst;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.TEST_IDENTITY_ACTION__FIRST,
-				oldFirst == EVIRTUAL_NO_VALUE
-					? null
-					: oldFirst, newFirst);
+				oldFirst, newFirst);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -183,7 +225,6 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public void setFirst(InputPin newFirst) {
-		InputPin first = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST);
 		if (newFirst != first) {
 			NotificationChain msgs = null;
 			if (first != null)
@@ -233,7 +274,6 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin getSecond() {
-		InputPin second = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
 		if (second != null && second.eIsProxy()) {
 			InternalEObject oldSecond = (InternalEObject) second;
 			second = (InputPin) eResolveProxy(oldSecond);
@@ -263,7 +303,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetSecond() {
-		return (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
+		return second;
 	}
 
 	/**
@@ -273,14 +313,12 @@ public class TestIdentityActionImpl
 	 */
 	public NotificationChain basicSetSecond(InputPin newSecond,
 			NotificationChain msgs) {
-		Object oldSecond = eVirtualSet(UMLPackage.TEST_IDENTITY_ACTION__SECOND,
-			newSecond);
+		InputPin oldSecond = second;
+		second = newSecond;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.TEST_IDENTITY_ACTION__SECOND,
-				oldSecond == EVIRTUAL_NO_VALUE
-					? null
-					: oldSecond, newSecond);
+				oldSecond, newSecond);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -296,7 +334,6 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public void setSecond(InputPin newSecond) {
-		InputPin second = (InputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
 		if (newSecond != second) {
 			NotificationChain msgs = null;
 			if (second != null)
@@ -346,7 +383,6 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public OutputPin getResult() {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
 		if (result != null && result.eIsProxy()) {
 			InternalEObject oldResult = (InternalEObject) result;
 			result = (OutputPin) eResolveProxy(oldResult);
@@ -376,7 +412,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public OutputPin basicGetResult() {
-		return (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
+		return result;
 	}
 
 	/**
@@ -386,14 +422,12 @@ public class TestIdentityActionImpl
 	 */
 	public NotificationChain basicSetResult(OutputPin newResult,
 			NotificationChain msgs) {
-		Object oldResult = eVirtualSet(UMLPackage.TEST_IDENTITY_ACTION__RESULT,
-			newResult);
+		OutputPin oldResult = result;
+		result = newResult;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.TEST_IDENTITY_ACTION__RESULT,
-				oldResult == EVIRTUAL_NO_VALUE
-					? null
-					: oldResult, newResult);
+				oldResult, newResult);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -409,7 +443,6 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-		OutputPin result = (OutputPin) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT);
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -781,15 +814,13 @@ public class TestIdentityActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TEST_IDENTITY_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TEST_IDENTITY_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEST_IDENTITY_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.TEST_IDENTITY_ACTION__VISIBILITY :
@@ -799,12 +830,12 @@ public class TestIdentityActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TEST_IDENTITY_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TEST_IDENTITY_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TEST_IDENTITY_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_ELEMENT :
@@ -816,26 +847,20 @@ public class TestIdentityActionImpl
 			case UMLPackage.TEST_IDENTITY_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.TEST_IDENTITY_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.TEST_IDENTITY_ACTION__INPUT :
@@ -843,22 +868,32 @@ public class TestIdentityActionImpl
 			case UMLPackage.TEST_IDENTITY_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.TEST_IDENTITY_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.TEST_IDENTITY_ACTION__FIRST :
-				return eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__FIRST) != null;
+				return first != null;
 			case UMLPackage.TEST_IDENTITY_ACTION__SECOND :
-				return eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__SECOND) != null;
+				return second != null;
 			case UMLPackage.TEST_IDENTITY_ACTION__RESULT :
-				return eVirtualGet(UMLPackage.TEST_IDENTITY_ACTION__RESULT) != null;
+				return result != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.TEST_IDENTITY_ACTION__FIRST,
+		UMLPackage.TEST_IDENTITY_ACTION__SECOND};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -870,6 +905,16 @@ public class TestIdentityActionImpl
 			|| eIsSet(UMLPackage.TEST_IDENTITY_ACTION__FIRST)
 			|| eIsSet(UMLPackage.TEST_IDENTITY_ACTION__SECOND);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.TEST_IDENTITY_ACTION__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->

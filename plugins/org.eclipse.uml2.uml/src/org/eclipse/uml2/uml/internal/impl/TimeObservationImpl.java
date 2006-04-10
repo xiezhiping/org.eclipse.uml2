@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationImpl.java,v 1.4 2006/02/21 16:12:16 khussey Exp $
+ * $Id: TimeObservationImpl.java,v 1.5 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -49,6 +47,16 @@ public class TimeObservationImpl
 		implements TimeObservation {
 
 	/**
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvent()
+	 * @generated
+	 * @ordered
+	 */
+	protected NamedElement event = null;
+
+	/**
 	 * The default value of the '{@link #isFirstEvent() <em>First Event</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,7 +74,7 @@ public class TimeObservationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FIRST_EVENT_EFLAG = 1 << 8;
+	protected static final int FIRST_EVENT_EFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,12 +101,10 @@ public class TimeObservationImpl
 	 * @generated
 	 */
 	public NamedElement getEvent() {
-		NamedElement event = (NamedElement) eVirtualGet(UMLPackage.TIME_OBSERVATION__EVENT);
 		if (event != null && event.eIsProxy()) {
 			InternalEObject oldEvent = (InternalEObject) event;
 			event = (NamedElement) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
-				eVirtualSet(UMLPackage.TIME_OBSERVATION__EVENT, event);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TIME_OBSERVATION__EVENT, oldEvent, event));
@@ -113,7 +119,7 @@ public class TimeObservationImpl
 	 * @generated
 	 */
 	public NamedElement basicGetEvent() {
-		return (NamedElement) eVirtualGet(UMLPackage.TIME_OBSERVATION__EVENT);
+		return event;
 	}
 
 	/**
@@ -122,14 +128,11 @@ public class TimeObservationImpl
 	 * @generated
 	 */
 	public void setEvent(NamedElement newEvent) {
-		NamedElement event = newEvent;
-		Object oldEvent = eVirtualSet(UMLPackage.TIME_OBSERVATION__EVENT, event);
+		NamedElement oldEvent = event;
+		event = newEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TIME_OBSERVATION__EVENT,
-				oldEvent == EVIRTUAL_NO_VALUE
-					? null
-					: oldEvent, event));
+				UMLPackage.TIME_OBSERVATION__EVENT, oldEvent, event));
 
 	}
 
@@ -306,15 +309,13 @@ public class TimeObservationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TIME_OBSERVATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TIME_OBSERVATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TIME_OBSERVATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TIME_OBSERVATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TIME_OBSERVATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TIME_OBSERVATION__NAME :
 				return isSetName();
 			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
@@ -324,18 +325,18 @@ public class TimeObservationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TIME_OBSERVATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.TIME_OBSERVATION__EVENT :
-				return eVirtualGet(UMLPackage.TIME_OBSERVATION__EVENT) != null;
+				return event != null;
 			case UMLPackage.TIME_OBSERVATION__FIRST_EVENT :
 				return ((eFlags & FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -49,10 +52,6 @@ import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getSubgroups <em>Subgroup</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getInActivity <em>In Activity</em>}</li>
  * </ul>
  * </p>
@@ -87,13 +86,22 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		EList subgroup = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__SUBGROUP);
-		if (subgroup == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_GROUP__SUBGROUP,
-				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
-					this, UMLPackage.ACTIVITY_GROUP__SUBGROUP, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList subgroups = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP);
+			if (subgroups == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP,
+					subgroups = new DerivedUnionEObjectEList(
+						ActivityGroup.class, this,
+						UMLPackage.ACTIVITY_GROUP__SUBGROUP, null));
+			}
+			return subgroups;
 		}
-		return subgroup;
+		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
+			UMLPackage.ACTIVITY_GROUP__SUBGROUP, null);
 	}
 
 	/**
@@ -102,15 +110,22 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT, new int[]{
-						UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT,
-						UMLPackage.ACTIVITY_GROUP__SUBGROUP}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -119,14 +134,22 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList getContainedNodes() {
-		EList containedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE);
-		if (containedNode == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE,
-				containedNode = new DerivedUnionEObjectEList(
-					ActivityNode.class, this,
-					UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList containedNodes = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
+			if (containedNodes == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+					containedNodes = new DerivedUnionEObjectEList(
+						ActivityNode.class, this,
+						UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
+			}
+			return containedNodes;
 		}
-		return containedNode;
+		return new DerivedUnionEObjectEList(ActivityNode.class, this,
+			UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null);
 	}
 
 	/**
@@ -165,14 +188,22 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList getContainedEdges() {
-		EList containedEdge = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE);
-		if (containedEdge == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE,
-				containedEdge = new DerivedUnionEObjectEList(
-					ActivityEdge.class, this,
-					UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList containedEdges = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
+			if (containedEdges == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
+					containedEdges = new DerivedUnionEObjectEList(
+						ActivityEdge.class, this,
+						UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
+			}
+			return containedEdges;
 		}
-		return containedEdge;
+		return new DerivedUnionEObjectEList(ActivityEdge.class, this,
+			UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null);
 	}
 
 	/**
@@ -437,15 +468,13 @@ public abstract class ActivityGroupImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
 				return isSetSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
@@ -468,6 +497,18 @@ public abstract class ActivityGroupImpl
 	public boolean isSetSubgroups() {
 		return false;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT,
+		UMLPackage.ACTIVITY_GROUP__SUBGROUP};
 
 	/**
 	 * <!-- begin-user-doc -->

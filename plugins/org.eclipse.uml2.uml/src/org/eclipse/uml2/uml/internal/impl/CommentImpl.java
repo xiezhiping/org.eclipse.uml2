@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.8 2005/12/14 22:34:19 khussey Exp $
+ * $Id: CommentImpl.java,v 1.9 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,35 @@ public class CommentImpl
 	protected static final String BODY_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected String body = BODY_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Body attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int BODY_ESETFLAG = 1 << 8;
+
+	/**
+	 * The cached value of the '{@link #getAnnotatedElements() <em>Annotated Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList annotatedElements = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,7 +107,7 @@ public class CommentImpl
 	 * @generated
 	 */
 	public String getBody() {
-		return (String) eVirtualGet(UMLPackage.COMMENT__BODY, BODY_EDEFAULT);
+		return body;
 	}
 
 	/**
@@ -87,14 +116,13 @@ public class CommentImpl
 	 * @generated
 	 */
 	public void setBody(String newBody) {
-		String body = newBody;
-		Object oldBody = eVirtualSet(UMLPackage.COMMENT__BODY, body);
-		boolean isSetChange = oldBody == EVIRTUAL_NO_VALUE;
+		String oldBody = body;
+		body = newBody;
+		boolean oldBodyESet = (eFlags & BODY_ESETFLAG) != 0;
+		eFlags |= BODY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.COMMENT__BODY, isSetChange
-					? BODY_EDEFAULT
-					: oldBody, body, isSetChange));
+				UMLPackage.COMMENT__BODY, oldBody, body, !oldBodyESet));
 
 	}
 
@@ -104,13 +132,13 @@ public class CommentImpl
 	 * @generated
 	 */
 	public void unsetBody() {
-		Object oldBody = eVirtualUnset(UMLPackage.COMMENT__BODY);
-		boolean isSetChange = oldBody != EVIRTUAL_NO_VALUE;
+		String oldBody = body;
+		boolean oldBodyESet = (eFlags & BODY_ESETFLAG) != 0;
+		body = BODY_EDEFAULT;
+		eFlags &= ~BODY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.COMMENT__BODY, isSetChange
-					? oldBody
-					: BODY_EDEFAULT, BODY_EDEFAULT, isSetChange));
+				UMLPackage.COMMENT__BODY, oldBody, BODY_EDEFAULT, oldBodyESet));
 	}
 
 	/**
@@ -119,7 +147,7 @@ public class CommentImpl
 	 * @generated
 	 */
 	public boolean isSetBody() {
-		return eVirtualIsSet(UMLPackage.COMMENT__BODY);
+		return (eFlags & BODY_ESETFLAG) != 0;
 	}
 
 	/**
@@ -128,13 +156,11 @@ public class CommentImpl
 	 * @generated
 	 */
 	public EList getAnnotatedElements() {
-		EList annotatedElement = (EList) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
-		if (annotatedElement == null) {
-			eVirtualSet(UMLPackage.COMMENT__ANNOTATED_ELEMENT,
-				annotatedElement = new EObjectResolvingEList(Element.class,
-					this, UMLPackage.COMMENT__ANNOTATED_ELEMENT));
+		if (annotatedElements == null) {
+			annotatedElements = new EObjectResolvingEList(Element.class, this,
+				UMLPackage.COMMENT__ANNOTATED_ELEMENT);
 		}
-		return annotatedElement;
+		return annotatedElements;
 	}
 
 	/**
@@ -219,20 +245,18 @@ public class CommentImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.COMMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.COMMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.COMMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.COMMENT__BODY :
 				return isSetBody();
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
-				EList annotatedElement = (EList) eVirtualGet(UMLPackage.COMMENT__ANNOTATED_ELEMENT);
-				return annotatedElement != null && !annotatedElement.isEmpty();
+				return annotatedElements != null
+					&& !annotatedElements.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -248,8 +272,8 @@ public class CommentImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.COMMENT__BODY))
-			result.append(eVirtualGet(UMLPackage.COMMENT__BODY));
+		if ((eFlags & BODY_ESETFLAG) != 0)
+			result.append(body);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

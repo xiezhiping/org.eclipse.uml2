@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.11 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -50,6 +48,26 @@ public class GeneralOrderingImpl
 		implements GeneralOrdering {
 
 	/**
+	 * The cached value of the '{@link #getBefore() <em>Before</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBefore()
+	 * @generated
+	 * @ordered
+	 */
+	protected OccurrenceSpecification before = null;
+
+	/**
+	 * The cached value of the '{@link #getAfter() <em>After</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAfter()
+	 * @generated
+	 * @ordered
+	 */
+	protected OccurrenceSpecification after = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,12 +91,10 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification getBefore() {
-		OccurrenceSpecification before = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
 		if (before != null && before.eIsProxy()) {
 			InternalEObject oldBefore = (InternalEObject) before;
 			before = (OccurrenceSpecification) eResolveProxy(oldBefore);
 			if (before != oldBefore) {
-				eVirtualSet(UMLPackage.GENERAL_ORDERING__BEFORE, before);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.GENERAL_ORDERING__BEFORE, oldBefore, before));
@@ -93,7 +109,7 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification basicGetBefore() {
-		return (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
+		return before;
 	}
 
 	/**
@@ -103,14 +119,12 @@ public class GeneralOrderingImpl
 	 */
 	public NotificationChain basicSetBefore(OccurrenceSpecification newBefore,
 			NotificationChain msgs) {
-		Object oldBefore = eVirtualSet(UMLPackage.GENERAL_ORDERING__BEFORE,
-			newBefore);
+		OccurrenceSpecification oldBefore = before;
+		before = newBefore;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.GENERAL_ORDERING__BEFORE,
-				oldBefore == EVIRTUAL_NO_VALUE
-					? null
-					: oldBefore, newBefore);
+				oldBefore, newBefore);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -126,7 +140,6 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public void setBefore(OccurrenceSpecification newBefore) {
-		OccurrenceSpecification before = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
 		if (newBefore != before) {
 			NotificationChain msgs = null;
 			if (before != null)
@@ -152,12 +165,10 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification getAfter() {
-		OccurrenceSpecification after = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
 		if (after != null && after.eIsProxy()) {
 			InternalEObject oldAfter = (InternalEObject) after;
 			after = (OccurrenceSpecification) eResolveProxy(oldAfter);
 			if (after != oldAfter) {
-				eVirtualSet(UMLPackage.GENERAL_ORDERING__AFTER, after);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.GENERAL_ORDERING__AFTER, oldAfter, after));
@@ -172,7 +183,7 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification basicGetAfter() {
-		return (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
+		return after;
 	}
 
 	/**
@@ -182,14 +193,12 @@ public class GeneralOrderingImpl
 	 */
 	public NotificationChain basicSetAfter(OccurrenceSpecification newAfter,
 			NotificationChain msgs) {
-		Object oldAfter = eVirtualSet(UMLPackage.GENERAL_ORDERING__AFTER,
-			newAfter);
+		OccurrenceSpecification oldAfter = after;
+		after = newAfter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.GENERAL_ORDERING__AFTER,
-				oldAfter == EVIRTUAL_NO_VALUE
-					? null
-					: oldAfter, newAfter);
+				Notification.SET, UMLPackage.GENERAL_ORDERING__AFTER, oldAfter,
+				newAfter);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -205,7 +214,6 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public void setAfter(OccurrenceSpecification newAfter) {
-		OccurrenceSpecification after = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
 		if (newAfter != after) {
 			NotificationChain msgs = null;
 			if (after != null)
@@ -240,14 +248,12 @@ public class GeneralOrderingImpl
 				return ((InternalEList) getClientDependencies()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.GENERAL_ORDERING__BEFORE :
-				OccurrenceSpecification before = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE);
 				if (before != null)
 					msgs = ((InternalEObject) before).eInverseRemove(this,
 						UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
 						OccurrenceSpecification.class, msgs);
 				return basicSetBefore((OccurrenceSpecification) otherEnd, msgs);
 			case UMLPackage.GENERAL_ORDERING__AFTER :
-				OccurrenceSpecification after = (OccurrenceSpecification) eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER);
 				if (after != null)
 					msgs = ((InternalEObject) after).eInverseRemove(this,
 						UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
@@ -410,15 +416,13 @@ public class GeneralOrderingImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.GENERAL_ORDERING__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.GENERAL_ORDERING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.GENERAL_ORDERING__OWNER :
 				return isSetOwner();
 			case UMLPackage.GENERAL_ORDERING__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.GENERAL_ORDERING__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__NAME :
 				return isSetName();
 			case UMLPackage.GENERAL_ORDERING__VISIBILITY :
@@ -428,16 +432,16 @@ public class GeneralOrderingImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.GENERAL_ORDERING__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.GENERAL_ORDERING__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.GENERAL_ORDERING__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.GENERAL_ORDERING__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.GENERAL_ORDERING__BEFORE :
-				return eVirtualGet(UMLPackage.GENERAL_ORDERING__BEFORE) != null;
+				return before != null;
 			case UMLPackage.GENERAL_ORDERING__AFTER :
-				return eVirtualGet(UMLPackage.GENERAL_ORDERING__AFTER) != null;
+				return after != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

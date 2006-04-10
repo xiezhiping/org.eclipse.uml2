@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.12 2006/03/01 17:56:38 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,6 +61,16 @@ public class SubstitutionImpl
 		implements Substitution {
 
 	/**
+	 * The cached value of the '{@link #getContract() <em>Contract</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContract()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier contract = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,16 +94,23 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(UMLPackage.SUBSTITUTION__SUPPLIER,
-				supplier = new SubsetSupersetEObjectResolvingEList(
-					NamedElement.class, this,
-					UMLPackage.SUBSTITUTION__SUPPLIER, null,
-					new int[]{UMLPackage.SUBSTITUTION__CONTRACT}));
+		if (suppliers == null) {
+			suppliers = new SubsetSupersetEObjectResolvingEList(
+				NamedElement.class, this, UMLPackage.SUBSTITUTION__SUPPLIER,
+				null, SUPPLIER_ESUBSETS);
 		}
-		return supplier;
+		return suppliers;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.SUBSTITUTION__CONTRACT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,20 +118,24 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public EList getClients() {
-		EList client = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT);
-		if (client == null) {
-			eVirtualSet(
-				UMLPackage.SUBSTITUTION__CLIENT,
-				client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
-					NamedElement.class,
-					this,
-					UMLPackage.SUBSTITUTION__CLIENT,
-					null,
-					new int[]{UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER},
-					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		if (clients == null) {
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+				NamedElement.class, this, UMLPackage.SUBSTITUTION__CLIENT,
+				null, CLIENT_ESUBSETS,
+				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
-		return client;
+		return clients;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,12 +143,10 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public Classifier getContract() {
-		Classifier contract = (Classifier) eVirtualGet(UMLPackage.SUBSTITUTION__CONTRACT);
 		if (contract != null && contract.eIsProxy()) {
 			InternalEObject oldContract = (InternalEObject) contract;
 			contract = (Classifier) eResolveProxy(oldContract);
 			if (contract != oldContract) {
-				eVirtualSet(UMLPackage.SUBSTITUTION__CONTRACT, contract);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.SUBSTITUTION__CONTRACT, oldContract,
@@ -143,7 +162,7 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public Classifier basicGetContract() {
-		return (Classifier) eVirtualGet(UMLPackage.SUBSTITUTION__CONTRACT);
+		return contract;
 	}
 
 	/**
@@ -152,22 +171,18 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public void setContract(Classifier newContract) {
-		Classifier contract = newContract;
-		Object oldContract = eVirtualSet(UMLPackage.SUBSTITUTION__CONTRACT,
-			contract);
+		Classifier oldContract = contract;
+		contract = newContract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.SUBSTITUTION__CONTRACT,
-				oldContract == EVIRTUAL_NO_VALUE
-					? null
-					: oldContract, contract));
+				UMLPackage.SUBSTITUTION__CONTRACT, oldContract, contract));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newContract != null) {
-				EList supplier = getSuppliers();
-				if (!supplier.contains(newContract)) {
-					supplier.add(newContract);
+				EList suppliers = getSuppliers();
+				if (!suppliers.contains(newContract)) {
+					suppliers.add(newContract);
 				}
 			}
 		}
@@ -208,9 +223,9 @@ public class SubstitutionImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newSubstitutingClassifier != null) {
-				EList client = getClients();
-				if (!client.contains(newSubstitutingClassifier)) {
-					client.add(newSubstitutingClassifier);
+				EList clients = getClients();
+				if (!clients.contains(newSubstitutingClassifier)) {
+					clients.add(newSubstitutingClassifier);
 				}
 			}
 		}
@@ -266,7 +281,6 @@ public class SubstitutionImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -519,15 +533,13 @@ public class SubstitutionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.SUBSTITUTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.SUBSTITUTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAME :
 				return isSetName();
 			case UMLPackage.SUBSTITUTION__VISIBILITY :
@@ -537,16 +549,16 @@ public class SubstitutionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.SUBSTITUTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.SUBSTITUTION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.SUBSTITUTION__SOURCE :
@@ -554,15 +566,13 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__TARGET :
 				return isSetTargets();
 			case UMLPackage.SUBSTITUTION__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.SUBSTITUTION__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.SUBSTITUTION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UMLPackage.SUBSTITUTION__MAPPING :
-				return eVirtualGet(UMLPackage.SUBSTITUTION__MAPPING) != null;
+				return mapping != null;
 			case UMLPackage.SUBSTITUTION__CONTRACT :
-				return eVirtualGet(UMLPackage.SUBSTITUTION__CONTRACT) != null;
+				return contract != null;
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
 				return basicGetSubstitutingClassifier() != null;
 		}

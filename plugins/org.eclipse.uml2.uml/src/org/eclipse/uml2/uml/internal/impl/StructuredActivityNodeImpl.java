@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.25 2006/03/15 19:33:58 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.26 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -63,16 +65,10 @@ import org.eclipse.uml2.uml.internal.operations.StructuredActivityNodeOperations
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getImportedMembers <em>Imported Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getSubgroups <em>Subgroup</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getContainedEdges <em>Contained Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getVariables <em>Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getEdges <em>Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#isMustIsolate <em>Must Isolate</em>}</li>
@@ -88,12 +84,54 @@ public class StructuredActivityNodeImpl
 		implements StructuredActivityNode {
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getElementImports()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits1 = 0;
+	protected EList elementImports = null;
+
+	/**
+	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList packageImports = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedRules = null;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variable</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList variables = null;
+
+	/**
+	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList edges = null;
 
 	/**
 	 * The default value of the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
@@ -113,7 +151,17 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MUST_ISOLATE_EFLAG = 1 << 9;
+	protected static final int MUST_ISOLATE_EFLAG = 1 << 11;
+
+	/**
+	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList nodes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,28 +187,24 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(
-				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(
-					Element.class,
-					this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
-					new int[]{
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTPUT,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__INPUT,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -169,15 +213,24 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
-					new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList(
+						NamedElement.class, this,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
+						OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
+			OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -216,15 +269,22 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getMembers() {
-		EList member = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER);
-		if (member == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER,
-				member = new DerivedUnionEObjectEList(NamedElement.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER, new int[]{
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList members = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__MEMBER);
+			if (members == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__MEMBER,
+					members = new DerivedUnionEObjectEList(NamedElement.class,
+						this, UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER,
+						MEMBER_ESUBSETS));
+			}
+			return members;
 		}
-		return member;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER, MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -261,16 +321,13 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getElementImports() {
-		EList elementImport = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT);
-		if (elementImport == null) {
-			eVirtualSet(
+		if (elementImports == null) {
+			elementImports = new EObjectContainmentWithInverseEList.Resolving(
+				ElementImport.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
-				elementImport = new EObjectContainmentWithInverseEList.Resolving(
-					ElementImport.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
-					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
+				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 		}
-		return elementImport;
+		return elementImports;
 	}
 
 	/**
@@ -321,16 +378,13 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getPackageImports() {
-		EList packageImport = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT);
-		if (packageImport == null) {
-			eVirtualSet(
+		if (packageImports == null) {
+			packageImports = new EObjectContainmentWithInverseEList.Resolving(
+				PackageImport.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
-				packageImport = new EObjectContainmentWithInverseEList.Resolving(
-					PackageImport.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
-					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
+				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
-		return packageImport;
+		return packageImports;
 	}
 
 	/**
@@ -383,15 +437,13 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		EList ownedRule = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE);
-		if (ownedRule == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
-				ownedRule = new EObjectContainmentWithInverseEList.Resolving(
-					Constraint.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
-					UMLPackage.CONSTRAINT__CONTEXT));
+		if (ownedRules == null) {
+			ownedRules = new EObjectContainmentWithInverseEList.Resolving(
+				Constraint.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
+				UMLPackage.CONSTRAINT__CONTEXT);
 		}
-		return ownedRule;
+		return ownedRules;
 	}
 
 	/**
@@ -503,13 +555,22 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getSubgroups() {
-		EList subgroup = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP);
-		if (subgroup == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP,
-				subgroup = new DerivedUnionEObjectEList(ActivityGroup.class,
-					this, UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList subgroups = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP);
+			if (subgroups == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP,
+					subgroups = new DerivedUnionEObjectEList(
+						ActivityGroup.class, this,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null));
+			}
+			return subgroups;
 		}
-		return subgroup;
+		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null);
 	}
 
 	/**
@@ -518,15 +579,24 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getContainedNodes() {
-		EList containedNode = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE);
-		if (containedNode == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
-				containedNode = new DerivedUnionEObjectEList(
-					ActivityNode.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
-					new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList containedNodes = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
+			if (containedNodes == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+					containedNodes = new DerivedUnionEObjectEList(
+						ActivityNode.class, this,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
+						CONTAINED_NODE_ESUBSETS));
+			}
+			return containedNodes;
 		}
-		return containedNode;
+		return new DerivedUnionEObjectEList(ActivityNode.class, this,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
+			CONTAINED_NODE_ESUBSETS);
 	}
 
 	/**
@@ -565,15 +635,24 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getContainedEdges() {
-		EList containedEdge = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE);
-		if (containedEdge == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
-				containedEdge = new DerivedUnionEObjectEList(
-					ActivityEdge.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
-					new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList containedEdges = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
+			if (containedEdges == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
+					containedEdges = new DerivedUnionEObjectEList(
+						ActivityEdge.class, this,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
+						CONTAINED_EDGE_ESUBSETS));
+			}
+			return containedEdges;
 		}
-		return containedEdge;
+		return new DerivedUnionEObjectEList(ActivityEdge.class, this,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
+			CONTAINED_EDGE_ESUBSETS);
 	}
 
 	/**
@@ -612,15 +691,13 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getVariables() {
-		EList variable = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE);
-		if (variable == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
-				variable = new EObjectContainmentWithInverseEList.Resolving(
-					Variable.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
-					UMLPackage.VARIABLE__SCOPE));
+		if (variables == null) {
+			variables = new EObjectContainmentWithInverseEList.Resolving(
+				Variable.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
+				UMLPackage.VARIABLE__SCOPE);
 		}
-		return variable;
+		return variables;
 	}
 
 	/**
@@ -675,15 +752,13 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getNodes() {
-		EList node = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE);
-		if (node == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
-				node = new EObjectContainmentWithInverseEList.Resolving(
-					ActivityNode.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
-					UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE));
+		if (nodes == null) {
+			nodes = new EObjectContainmentWithInverseEList.Resolving(
+				ActivityNode.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
+				UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE);
 		}
-		return node;
+		return nodes;
 	}
 
 	/**
@@ -763,15 +838,13 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getEdges() {
-		EList edge = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE);
-		if (edge == null) {
-			eVirtualSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
-				edge = new EObjectContainmentWithInverseEList.Resolving(
-					ActivityEdge.class, this,
-					UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
-					UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE));
+		if (edges == null) {
+			edges = new EObjectContainmentWithInverseEList.Resolving(
+				ActivityEdge.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
+				UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE);
 		}
-		return edge;
+		return edges;
 	}
 
 	/**
@@ -836,7 +909,8 @@ public class StructuredActivityNodeImpl
 	 * @generated NOT
 	 */
 	public Activity basicGetActivity() {
-		if (eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY)
+		if (eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY
+			&& eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY)
 			return null;
 		return (Activity) eInternalContainer();
 	}
@@ -1448,15 +1522,13 @@ public class StructuredActivityNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
 				return isSetName();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VISIBILITY :
@@ -1466,12 +1538,12 @@ public class StructuredActivityNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__REDEFINED_ELEMENT :
@@ -1483,26 +1555,20 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INPUT :
@@ -1510,22 +1576,17 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER :
@@ -1543,16 +1604,13 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
-				EList variable = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE);
-				return variable != null && !variable.isEmpty();
+				return variables != null && !variables.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
-				EList edge = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE);
-				return edge != null && !edge.isEmpty();
+				return edges != null && !edges.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE :
-				EList node = (EList) eVirtualGet(UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE);
-				return node != null && !node.isEmpty();
+				return nodes != null && !nodes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1648,40 +1706,6 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1694,6 +1718,27 @@ public class StructuredActivityNodeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTPUT,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__INPUT,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1704,6 +1749,30 @@ public class StructuredActivityNodeImpl
 			|| eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT)
 			|| isSetOwnedMembers() || isSetSubgroups();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getMembers() <em>Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] MEMBER_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER,
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1789,6 +1858,26 @@ public class StructuredActivityNodeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CONTAINED_EDGE_ESUBSETS = new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getContainedNodes() <em>Contained Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1831,7 +1920,10 @@ public class StructuredActivityNodeImpl
 	 */
 	public NotificationChain basicSetInActivity(Activity newInActivity,
 			NotificationChain msgs) {
-		return basicSetActivity(newInActivity, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newInActivity,
+			UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY, msgs);
+
+		return msgs;
 	}
 
 	/**

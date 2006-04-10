@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.10 2006/02/21 16:12:17 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.11 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -57,6 +55,25 @@ public class LiteralStringImpl
 	protected static final String VALUE_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected String value = VALUE_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Value attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VALUE_ESETFLAG = 1 << 10;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,8 +97,7 @@ public class LiteralStringImpl
 	 * @generated
 	 */
 	public String getValue() {
-		return (String) eVirtualGet(UMLPackage.LITERAL_STRING__VALUE,
-			VALUE_EDEFAULT);
+		return value;
 	}
 
 	/**
@@ -90,14 +106,14 @@ public class LiteralStringImpl
 	 * @generated
 	 */
 	public void setValue(String newValue) {
-		String value = newValue;
-		Object oldValue = eVirtualSet(UMLPackage.LITERAL_STRING__VALUE, value);
-		boolean isSetChange = oldValue == EVIRTUAL_NO_VALUE;
+		String oldValue = value;
+		value = newValue;
+		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
+		eFlags |= VALUE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LITERAL_STRING__VALUE, isSetChange
-					? VALUE_EDEFAULT
-					: oldValue, value, isSetChange));
+				UMLPackage.LITERAL_STRING__VALUE, oldValue, value,
+				!oldValueESet));
 
 	}
 
@@ -107,13 +123,14 @@ public class LiteralStringImpl
 	 * @generated
 	 */
 	public void unsetValue() {
-		Object oldValue = eVirtualUnset(UMLPackage.LITERAL_STRING__VALUE);
-		boolean isSetChange = oldValue != EVIRTUAL_NO_VALUE;
+		String oldValue = value;
+		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;
+		value = VALUE_EDEFAULT;
+		eFlags &= ~VALUE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.LITERAL_STRING__VALUE, isSetChange
-					? oldValue
-					: VALUE_EDEFAULT, VALUE_EDEFAULT, isSetChange));
+				UMLPackage.LITERAL_STRING__VALUE, oldValue, VALUE_EDEFAULT,
+				oldValueESet));
 	}
 
 	/**
@@ -122,7 +139,7 @@ public class LiteralStringImpl
 	 * @generated
 	 */
 	public boolean isSetValue() {
-		return eVirtualIsSet(UMLPackage.LITERAL_STRING__VALUE);
+		return (eFlags & VALUE_ESETFLAG) != 0;
 	}
 
 	/**
@@ -287,15 +304,13 @@ public class LiteralStringImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LITERAL_STRING__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.LITERAL_STRING__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LITERAL_STRING__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LITERAL_STRING__OWNER :
 				return isSetOwner();
 			case UMLPackage.LITERAL_STRING__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.LITERAL_STRING__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LITERAL_STRING__NAME :
 				return isSetName();
 			case UMLPackage.LITERAL_STRING__VISIBILITY :
@@ -305,18 +320,18 @@ public class LiteralStringImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.LITERAL_STRING__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.LITERAL_STRING__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.LITERAL_STRING__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.LITERAL_STRING__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.LITERAL_STRING__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.LITERAL_STRING__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.LITERAL_STRING__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.LITERAL_STRING__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.LITERAL_STRING__TYPE :
-				return eVirtualGet(UMLPackage.LITERAL_STRING__TYPE) != null;
+				return type != null;
 			case UMLPackage.LITERAL_STRING__VALUE :
 				return isSetValue();
 		}
@@ -334,8 +349,8 @@ public class LiteralStringImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.LITERAL_STRING__VALUE))
-			result.append(eVirtualGet(UMLPackage.LITERAL_STRING__VALUE));
+		if ((eFlags & VALUE_ESETFLAG) != 0)
+			result.append(value);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

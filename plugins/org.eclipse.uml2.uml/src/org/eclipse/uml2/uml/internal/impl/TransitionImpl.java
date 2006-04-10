@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.19 2006/03/15 19:34:13 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.20 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,10 +67,8 @@ import org.eclipse.uml2.uml.internal.operations.TransitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#isLeaf <em>Is Leaf</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getContainer <em>Container</em>}</li>
@@ -107,7 +105,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 8;
+	protected static final int IS_LEAF_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -118,6 +116,76 @@ public class TransitionImpl
 	 * @ordered
 	 */
 	protected static final TransitionKind KIND_EDEFAULT = TransitionKind.EXTERNAL_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected TransitionKind kind = KIND_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vertex target = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedTransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Transition redefinedTransition = null;
+
+	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint guard = null;
+
+	/**
+	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEffect()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior effect = null;
+
+	/**
+	 * The cached value of the '{@link #getTriggers() <em>Trigger</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList triggers = null;
+
+	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vertex source = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,15 +211,24 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.TRANSITION__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.TRANSITION__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.TRANSITION__REDEFINED_ELEMENT,
-					new int[]{UMLPackage.TRANSITION__REDEFINED_TRANSITION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.TRANSITION__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.TRANSITION__REDEFINED_ELEMENT,
+			REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -190,19 +267,22 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.TRANSITION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.TRANSITION__OWNED_ELEMENT, new int[]{
-						UMLPackage.TRANSITION__OWNED_COMMENT,
-						UMLPackage.TRANSITION__NAME_EXPRESSION,
-						UMLPackage.TRANSITION__ELEMENT_IMPORT,
-						UMLPackage.TRANSITION__PACKAGE_IMPORT,
-						UMLPackage.TRANSITION__OWNED_MEMBER,
-						UMLPackage.TRANSITION__EFFECT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.TRANSITION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.TRANSITION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -211,17 +291,23 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList getOwnedRules() {
-		EList ownedRule = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
-		if (ownedRule == null) {
-			eVirtualSet(
-				UMLPackage.TRANSITION__OWNED_RULE,
-				ownedRule = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					Constraint.class, this, UMLPackage.TRANSITION__OWNED_RULE,
-					null, new int[]{UMLPackage.TRANSITION__GUARD},
-					UMLPackage.CONSTRAINT__CONTEXT));
+		if (ownedRules == null) {
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				Constraint.class, this, UMLPackage.TRANSITION__OWNED_RULE,
+				null, OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 		}
-		return ownedRule;
+		return ownedRules;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{UMLPackage.TRANSITION__GUARD};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -334,8 +420,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public TransitionKind getKind() {
-		return (TransitionKind) eVirtualGet(UMLPackage.TRANSITION__KIND,
-			KIND_EDEFAULT);
+		return kind;
 	}
 
 	/**
@@ -344,15 +429,13 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setKind(TransitionKind newKind) {
-		TransitionKind kind = newKind == null
+		TransitionKind oldKind = kind;
+		kind = newKind == null
 			? KIND_EDEFAULT
 			: newKind;
-		Object oldKind = eVirtualSet(UMLPackage.TRANSITION__KIND, kind);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__KIND, oldKind == EVIRTUAL_NO_VALUE
-					? KIND_EDEFAULT
-					: oldKind, kind));
+				UMLPackage.TRANSITION__KIND, oldKind, kind));
 
 	}
 
@@ -423,12 +506,10 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Vertex getTarget() {
-		Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
 			target = (Vertex) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
-				eVirtualSet(UMLPackage.TRANSITION__TARGET, target);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TRANSITION__TARGET, oldTarget, target));
@@ -443,7 +524,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Vertex basicGetTarget() {
-		return (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
+		return target;
 	}
 
 	/**
@@ -453,13 +534,12 @@ public class TransitionImpl
 	 */
 	public NotificationChain basicSetTarget(Vertex newTarget,
 			NotificationChain msgs) {
-		Object oldTarget = eVirtualSet(UMLPackage.TRANSITION__TARGET, newTarget);
+		Vertex oldTarget = target;
+		target = newTarget;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TRANSITION__TARGET,
-				oldTarget == EVIRTUAL_NO_VALUE
-					? null
-					: oldTarget, newTarget);
+				Notification.SET, UMLPackage.TRANSITION__TARGET, oldTarget,
+				newTarget);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -475,7 +555,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setTarget(Vertex newTarget) {
-		Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -499,13 +578,10 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Transition getRedefinedTransition() {
-		Transition redefinedTransition = (Transition) eVirtualGet(UMLPackage.TRANSITION__REDEFINED_TRANSITION);
 		if (redefinedTransition != null && redefinedTransition.eIsProxy()) {
 			InternalEObject oldRedefinedTransition = (InternalEObject) redefinedTransition;
 			redefinedTransition = (Transition) eResolveProxy(oldRedefinedTransition);
 			if (redefinedTransition != oldRedefinedTransition) {
-				eVirtualSet(UMLPackage.TRANSITION__REDEFINED_TRANSITION,
-					redefinedTransition);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TRANSITION__REDEFINED_TRANSITION,
@@ -521,7 +597,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Transition basicGetRedefinedTransition() {
-		return (Transition) eVirtualGet(UMLPackage.TRANSITION__REDEFINED_TRANSITION);
+		return redefinedTransition;
 	}
 
 	/**
@@ -530,15 +606,12 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setRedefinedTransition(Transition newRedefinedTransition) {
-		Transition redefinedTransition = newRedefinedTransition;
-		Object oldRedefinedTransition = eVirtualSet(
-			UMLPackage.TRANSITION__REDEFINED_TRANSITION, redefinedTransition);
+		Transition oldRedefinedTransition = redefinedTransition;
+		redefinedTransition = newRedefinedTransition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__REDEFINED_TRANSITION,
-				oldRedefinedTransition == EVIRTUAL_NO_VALUE
-					? null
-					: oldRedefinedTransition, redefinedTransition));
+				oldRedefinedTransition, redefinedTransition));
 
 	}
 
@@ -548,12 +621,10 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Constraint getGuard() {
-		Constraint guard = (Constraint) eVirtualGet(UMLPackage.TRANSITION__GUARD);
 		if (guard != null && guard.eIsProxy()) {
 			InternalEObject oldGuard = (InternalEObject) guard;
 			guard = (Constraint) eResolveProxy(oldGuard);
 			if (guard != oldGuard) {
-				eVirtualSet(UMLPackage.TRANSITION__GUARD, guard);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TRANSITION__GUARD, oldGuard, guard));
@@ -568,7 +639,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Constraint basicGetGuard() {
-		return (Constraint) eVirtualGet(UMLPackage.TRANSITION__GUARD);
+		return guard;
 	}
 
 	/**
@@ -577,20 +648,18 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
-		Constraint guard = newGuard;
-		Object oldGuard = eVirtualSet(UMLPackage.TRANSITION__GUARD, guard);
+		Constraint oldGuard = guard;
+		guard = newGuard;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__GUARD, oldGuard == EVIRTUAL_NO_VALUE
-					? null
-					: oldGuard, guard));
+				UMLPackage.TRANSITION__GUARD, oldGuard, guard));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newGuard != null) {
-				EList ownedRule = getOwnedRules();
-				if (!ownedRule.contains(newGuard)) {
-					ownedRule.add(newGuard);
+				EList ownedRules = getOwnedRules();
+				if (!ownedRules.contains(newGuard)) {
+					ownedRules.add(newGuard);
 				}
 			}
 		}
@@ -624,7 +693,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Behavior getEffect() {
-		Behavior effect = (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
 		if (effect != null && effect.eIsProxy()) {
 			InternalEObject oldEffect = (InternalEObject) effect;
 			effect = (Behavior) eResolveProxy(oldEffect);
@@ -653,7 +721,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Behavior basicGetEffect() {
-		return (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
+		return effect;
 	}
 
 	/**
@@ -663,13 +731,12 @@ public class TransitionImpl
 	 */
 	public NotificationChain basicSetEffect(Behavior newEffect,
 			NotificationChain msgs) {
-		Object oldEffect = eVirtualSet(UMLPackage.TRANSITION__EFFECT, newEffect);
+		Behavior oldEffect = effect;
+		effect = newEffect;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TRANSITION__EFFECT,
-				oldEffect == EVIRTUAL_NO_VALUE
-					? null
-					: oldEffect, newEffect);
+				Notification.SET, UMLPackage.TRANSITION__EFFECT, oldEffect,
+				newEffect);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -685,7 +752,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setEffect(Behavior newEffect) {
-		Behavior effect = (Behavior) eVirtualGet(UMLPackage.TRANSITION__EFFECT);
 		if (newEffect != effect) {
 			NotificationChain msgs = null;
 			if (effect != null)
@@ -724,13 +790,11 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList getTriggers() {
-		EList trigger = (EList) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
-		if (trigger == null) {
-			eVirtualSet(UMLPackage.TRANSITION__TRIGGER,
-				trigger = new EObjectContainmentEList.Resolving(Trigger.class,
-					this, UMLPackage.TRANSITION__TRIGGER));
+		if (triggers == null) {
+			triggers = new EObjectContainmentEList.Resolving(Trigger.class,
+				this, UMLPackage.TRANSITION__TRIGGER);
 		}
-		return trigger;
+		return triggers;
 	}
 
 	/**
@@ -781,12 +845,10 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Vertex getSource() {
-		Vertex source = (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject) source;
 			source = (Vertex) eResolveProxy(oldSource);
 			if (source != oldSource) {
-				eVirtualSet(UMLPackage.TRANSITION__SOURCE, source);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TRANSITION__SOURCE, oldSource, source));
@@ -801,7 +863,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Vertex basicGetSource() {
-		return (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
+		return source;
 	}
 
 	/**
@@ -811,13 +873,12 @@ public class TransitionImpl
 	 */
 	public NotificationChain basicSetSource(Vertex newSource,
 			NotificationChain msgs) {
-		Object oldSource = eVirtualSet(UMLPackage.TRANSITION__SOURCE, newSource);
+		Vertex oldSource = source;
+		source = newSource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TRANSITION__SOURCE,
-				oldSource == EVIRTUAL_NO_VALUE
-					? null
-					: oldSource, newSource);
+				Notification.SET, UMLPackage.TRANSITION__SOURCE, oldSource,
+				newSource);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -833,7 +894,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setSource(Vertex newSource) {
-		Vertex source = (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
@@ -1015,13 +1075,11 @@ public class TransitionImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetContainer((Region) otherEnd, msgs);
 			case UMLPackage.TRANSITION__TARGET :
-				Vertex target = (Vertex) eVirtualGet(UMLPackage.TRANSITION__TARGET);
 				if (target != null)
 					msgs = ((InternalEObject) target).eInverseRemove(this,
 						UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
 				return basicSetTarget((Vertex) otherEnd, msgs);
 			case UMLPackage.TRANSITION__SOURCE :
-				Vertex source = (Vertex) eVirtualGet(UMLPackage.TRANSITION__SOURCE);
 				if (source != null)
 					msgs = ((InternalEObject) source).eInverseRemove(this,
 						UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
@@ -1318,15 +1376,13 @@ public class TransitionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TRANSITION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TRANSITION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TRANSITION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TRANSITION__NAME :
 				return isSetName();
 			case UMLPackage.TRANSITION__VISIBILITY :
@@ -1336,21 +1392,18 @@ public class TransitionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TRANSITION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TRANSITION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TRANSITION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.TRANSITION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.TRANSITION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.TRANSITION__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.TRANSITION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.TRANSITION__MEMBER :
 				return isSetMembers();
 			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
@@ -1364,22 +1417,21 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.TRANSITION__KIND :
-				return eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 			case UMLPackage.TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.TRANSITION__TARGET :
-				return eVirtualGet(UMLPackage.TRANSITION__TARGET) != null;
+				return target != null;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
-				return eVirtualGet(UMLPackage.TRANSITION__REDEFINED_TRANSITION) != null;
+				return redefinedTransition != null;
 			case UMLPackage.TRANSITION__GUARD :
-				return eVirtualGet(UMLPackage.TRANSITION__GUARD) != null;
+				return guard != null;
 			case UMLPackage.TRANSITION__EFFECT :
-				return eVirtualGet(UMLPackage.TRANSITION__EFFECT) != null;
+				return effect != null;
 			case UMLPackage.TRANSITION__TRIGGER :
-				EList trigger = (EList) eVirtualGet(UMLPackage.TRANSITION__TRIGGER);
-				return trigger != null && !trigger.isEmpty();
+				return triggers != null && !triggers.isEmpty();
 			case UMLPackage.TRANSITION__SOURCE :
-				return eVirtualGet(UMLPackage.TRANSITION__SOURCE) != null;
+				return source != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1439,10 +1491,20 @@ public class TransitionImpl
 		result.append(" (isLeaf: "); //$NON-NLS-1$
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
 		result.append(", kind: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.TRANSITION__KIND, KIND_EDEFAULT));
+		result.append(kind);
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.TRANSITION__REDEFINED_TRANSITION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1466,6 +1528,21 @@ public class TransitionImpl
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.TRANSITION__CONTAINER);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.TRANSITION__OWNED_COMMENT,
+		UMLPackage.TRANSITION__NAME_EXPRESSION,
+		UMLPackage.TRANSITION__ELEMENT_IMPORT,
+		UMLPackage.TRANSITION__PACKAGE_IMPORT,
+		UMLPackage.TRANSITION__OWNED_MEMBER, UMLPackage.TRANSITION__EFFECT};
 
 	/**
 	 * <!-- begin-user-doc -->

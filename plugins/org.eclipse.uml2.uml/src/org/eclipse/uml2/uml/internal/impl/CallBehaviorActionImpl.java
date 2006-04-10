@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.12 2006/03/15 19:34:05 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.13 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -55,12 +53,14 @@ public class CallBehaviorActionImpl
 		implements CallBehaviorAction {
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getBehavior()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits1 = 0;
+	protected Behavior behavior = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,12 +86,10 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public Behavior getBehavior() {
-		Behavior behavior = (Behavior) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
 			InternalEObject oldBehavior = (InternalEObject) behavior;
 			behavior = (Behavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
-				eVirtualSet(UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, behavior);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
@@ -107,7 +105,7 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public Behavior basicGetBehavior() {
-		return (Behavior) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR);
+		return behavior;
 	}
 
 	/**
@@ -116,15 +114,12 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
-		Behavior behavior = newBehavior;
-		Object oldBehavior = eVirtualSet(
-			UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, behavior);
+		Behavior oldBehavior = behavior;
+		behavior = newBehavior;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR,
-				oldBehavior == EVIRTUAL_NO_VALUE
-					? null
-					: oldBehavior, behavior));
+				UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
+				behavior));
 
 	}
 
@@ -431,15 +426,13 @@ public class CallBehaviorActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY :
@@ -449,12 +442,12 @@ public class CallBehaviorActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_ELEMENT :
@@ -466,26 +459,20 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT :
@@ -493,61 +480,23 @@ public class CallBehaviorActionImpl
 			case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT :
-				EList argument = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT :
-				return eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT) != null;
+				return onPort != null;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
 				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT :
-				EList result = (EList) eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__RESULT);
-				return result != null && !result.isEmpty();
+				return results != null && !results.isEmpty();
 			case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR :
-				return eVirtualGet(UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR) != null;
+				return behavior != null;
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
 	}
 
 } //CallBehaviorActionImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.11 2006/03/15 19:34:01 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,9 +27,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -47,8 +50,6 @@ import org.eclipse.uml2.uml.internal.operations.PackageImportOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getImportedPackage <em>Imported Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getImportingNamespace <em>Importing Namespace</em>}</li>
@@ -70,6 +71,26 @@ public class PackageImportImpl
 	 * @ordered
 	 */
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
+
+	/**
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
+	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getImportedPackage() <em>Imported Package</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImportedPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.eclipse.uml2.uml.Package importedPackage = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,14 +116,21 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.PACKAGE_IMPORT__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.PACKAGE_IMPORT__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.PACKAGE_IMPORT__TARGET,
-					new int[]{UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.PACKAGE_IMPORT__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PACKAGE_IMPORT__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -111,14 +139,21 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.PACKAGE_IMPORT__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.PACKAGE_IMPORT__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.PACKAGE_IMPORT__SOURCE,
-					new int[]{UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.PACKAGE_IMPORT__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PACKAGE_IMPORT__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -127,8 +162,7 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return (VisibilityKind) eVirtualGet(
-			UMLPackage.PACKAGE_IMPORT__VISIBILITY, VISIBILITY_EDEFAULT);
+		return visibility;
 	}
 
 	/**
@@ -137,17 +171,14 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind visibility = newVisibility == null
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
 			: newVisibility;
-		Object oldVisibility = eVirtualSet(
-			UMLPackage.PACKAGE_IMPORT__VISIBILITY, visibility);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE_IMPORT__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
-					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+				UMLPackage.PACKAGE_IMPORT__VISIBILITY, oldVisibility,
+				visibility));
 
 	}
 
@@ -157,13 +188,10 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package getImportedPackage() {
-		org.eclipse.uml2.uml.Package importedPackage = (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE);
 		if (importedPackage != null && importedPackage.eIsProxy()) {
 			InternalEObject oldImportedPackage = (InternalEObject) importedPackage;
 			importedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy(oldImportedPackage);
 			if (importedPackage != oldImportedPackage) {
-				eVirtualSet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE,
-					importedPackage);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE,
@@ -179,7 +207,7 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package basicGetImportedPackage() {
-		return (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE);
+		return importedPackage;
 	}
 
 	/**
@@ -189,15 +217,12 @@ public class PackageImportImpl
 	 */
 	public void setImportedPackage(
 			org.eclipse.uml2.uml.Package newImportedPackage) {
-		org.eclipse.uml2.uml.Package importedPackage = newImportedPackage;
-		Object oldImportedPackage = eVirtualSet(
-			UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE, importedPackage);
+		org.eclipse.uml2.uml.Package oldImportedPackage = importedPackage;
+		importedPackage = newImportedPackage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE,
-				oldImportedPackage == EVIRTUAL_NO_VALUE
-					? null
-					: oldImportedPackage, importedPackage));
+				oldImportedPackage, importedPackage));
 
 	}
 
@@ -429,15 +454,13 @@ public class PackageImportImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PACKAGE_IMPORT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PACKAGE_IMPORT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PACKAGE_IMPORT__OWNER :
 				return isSetOwner();
 			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PACKAGE_IMPORT__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.PACKAGE_IMPORT__SOURCE :
@@ -445,10 +468,9 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
-					VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+				return visibility != VISIBILITY_EDEFAULT;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
-				return eVirtualGet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE) != null;
+				return importedPackage != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
 				return basicGetImportingNamespace() != null;
 		}
@@ -466,11 +488,20 @@ public class PackageImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PACKAGE_IMPORT__VISIBILITY,
-			VISIBILITY_EDEFAULT));
+		result.append(visibility);
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -481,6 +512,16 @@ public class PackageImportImpl
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE};
 
 	/**
 	 * <!-- begin-user-doc -->

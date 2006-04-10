@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -51,7 +54,6 @@ import org.eclipse.uml2.uml.internal.operations.SendSignalActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.SendSignalActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SendSignalActionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SendSignalActionImpl#getSignal <em>Signal</em>}</li>
  * </ul>
@@ -62,6 +64,26 @@ import org.eclipse.uml2.uml.internal.operations.SendSignalActionOperations;
 public class SendSignalActionImpl
 		extends InvocationActionImpl
 		implements SendSignalAction {
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin target = null;
+
+	/**
+	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSignal()
+	 * @generated
+	 * @ordered
+	 */
+	protected Signal signal = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,15 +109,20 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.SEND_SIGNAL_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.SEND_SIGNAL_ACTION__INPUT, new int[]{
-						UMLPackage.SEND_SIGNAL_ACTION__ARGUMENT,
-						UMLPackage.SEND_SIGNAL_ACTION__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+						UMLPackage.SEND_SIGNAL_ACTION__INPUT, INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.SEND_SIGNAL_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -104,7 +131,6 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public InputPin getTarget() {
-		InputPin target = (InputPin) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__TARGET);
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
 			target = (InputPin) eResolveProxy(oldTarget);
@@ -134,7 +160,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetTarget() {
-		return (InputPin) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__TARGET);
+		return target;
 	}
 
 	/**
@@ -144,14 +170,12 @@ public class SendSignalActionImpl
 	 */
 	public NotificationChain basicSetTarget(InputPin newTarget,
 			NotificationChain msgs) {
-		Object oldTarget = eVirtualSet(UMLPackage.SEND_SIGNAL_ACTION__TARGET,
-			newTarget);
+		InputPin oldTarget = target;
+		target = newTarget;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.SEND_SIGNAL_ACTION__TARGET,
-				oldTarget == EVIRTUAL_NO_VALUE
-					? null
-					: oldTarget, newTarget);
+				oldTarget, newTarget);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -167,7 +191,6 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
-		InputPin target = (InputPin) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__TARGET);
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -217,12 +240,10 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public Signal getSignal() {
-		Signal signal = (Signal) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__SIGNAL);
 		if (signal != null && signal.eIsProxy()) {
 			InternalEObject oldSignal = (InternalEObject) signal;
 			signal = (Signal) eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
-				eVirtualSet(UMLPackage.SEND_SIGNAL_ACTION__SIGNAL, signal);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal,
@@ -238,7 +259,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public Signal basicGetSignal() {
-		return (Signal) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__SIGNAL);
+		return signal;
 	}
 
 	/**
@@ -247,15 +268,11 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-		Signal signal = newSignal;
-		Object oldSignal = eVirtualSet(UMLPackage.SEND_SIGNAL_ACTION__SIGNAL,
-			signal);
+		Signal oldSignal = signal;
+		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.SEND_SIGNAL_ACTION__SIGNAL,
-				oldSignal == EVIRTUAL_NO_VALUE
-					? null
-					: oldSignal, signal));
+				UMLPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
 
 	}
 
@@ -594,15 +611,13 @@ public class SendSignalActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SEND_SIGNAL_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.SEND_SIGNAL_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.SEND_SIGNAL_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.SEND_SIGNAL_ACTION__VISIBILITY :
@@ -612,12 +627,12 @@ public class SendSignalActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.SEND_SIGNAL_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.SEND_SIGNAL_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.SEND_SIGNAL_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.SEND_SIGNAL_ACTION__REDEFINED_ELEMENT :
@@ -629,26 +644,20 @@ public class SendSignalActionImpl
 			case UMLPackage.SEND_SIGNAL_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.SEND_SIGNAL_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.SEND_SIGNAL_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.SEND_SIGNAL_ACTION__INPUT :
@@ -656,25 +665,34 @@ public class SendSignalActionImpl
 			case UMLPackage.SEND_SIGNAL_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.SEND_SIGNAL_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__ARGUMENT :
-				EList argument = (EList) eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UMLPackage.SEND_SIGNAL_ACTION__ON_PORT :
-				return eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__ON_PORT) != null;
+				return onPort != null;
 			case UMLPackage.SEND_SIGNAL_ACTION__TARGET :
-				return eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__TARGET) != null;
+				return target != null;
 			case UMLPackage.SEND_SIGNAL_ACTION__SIGNAL :
-				return eVirtualGet(UMLPackage.SEND_SIGNAL_ACTION__SIGNAL) != null;
+				return signal != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.SEND_SIGNAL_ACTION__ARGUMENT,
+		UMLPackage.SEND_SIGNAL_ACTION__TARGET};
 
 	/**
 	 * <!-- begin-user-doc -->

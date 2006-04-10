@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.12 2006/02/22 20:48:17 khussey Exp $
+ * $Id: DurationImpl.java,v 1.13 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,26 @@ public class DurationImpl
 		implements Duration {
 
 	/**
+	 * The cached value of the '{@link #getExpr() <em>Expr</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpr()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification expr = null;
+
+	/**
+	 * The cached value of the '{@link #getObservations() <em>Observation</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObservations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList observations = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,12 +98,10 @@ public class DurationImpl
 	 * @generated
 	 */
 	public ValueSpecification getExpr() {
-		ValueSpecification expr = (ValueSpecification) eVirtualGet(UMLPackage.DURATION__EXPR);
 		if (expr != null && expr.eIsProxy()) {
 			InternalEObject oldExpr = (InternalEObject) expr;
 			expr = (ValueSpecification) eResolveProxy(oldExpr);
 			if (expr != oldExpr) {
-				eVirtualSet(UMLPackage.DURATION__EXPR, expr);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.DURATION__EXPR, oldExpr, expr));
@@ -98,7 +116,7 @@ public class DurationImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetExpr() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.DURATION__EXPR);
+		return expr;
 	}
 
 	/**
@@ -107,13 +125,11 @@ public class DurationImpl
 	 * @generated
 	 */
 	public void setExpr(ValueSpecification newExpr) {
-		ValueSpecification expr = newExpr;
-		Object oldExpr = eVirtualSet(UMLPackage.DURATION__EXPR, expr);
+		ValueSpecification oldExpr = expr;
+		expr = newExpr;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.DURATION__EXPR, oldExpr == EVIRTUAL_NO_VALUE
-					? null
-					: oldExpr, expr));
+				UMLPackage.DURATION__EXPR, oldExpr, expr));
 
 	}
 
@@ -123,13 +139,11 @@ public class DurationImpl
 	 * @generated
 	 */
 	public EList getObservations() {
-		EList observation = (EList) eVirtualGet(UMLPackage.DURATION__OBSERVATION);
-		if (observation == null) {
-			eVirtualSet(UMLPackage.DURATION__OBSERVATION,
-				observation = new EObjectResolvingEList(Observation.class,
-					this, UMLPackage.DURATION__OBSERVATION));
+		if (observations == null) {
+			observations = new EObjectResolvingEList(Observation.class, this,
+				UMLPackage.DURATION__OBSERVATION);
 		}
-		return observation;
+		return observations;
 	}
 
 	/**
@@ -326,15 +340,13 @@ public class DurationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DURATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DURATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DURATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DURATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DURATION__NAME :
 				return isSetName();
 			case UMLPackage.DURATION__VISIBILITY :
@@ -344,23 +356,22 @@ public class DurationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DURATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DURATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DURATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DURATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DURATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DURATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DURATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DURATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.DURATION__TYPE :
-				return eVirtualGet(UMLPackage.DURATION__TYPE) != null;
+				return type != null;
 			case UMLPackage.DURATION__EXPR :
-				return eVirtualGet(UMLPackage.DURATION__EXPR) != null;
+				return expr != null;
 			case UMLPackage.DURATION__OBSERVATION :
-				EList observation = (EList) eVirtualGet(UMLPackage.DURATION__OBSERVATION);
-				return observation != null && !observation.isEmpty();
+				return observations != null && !observations.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

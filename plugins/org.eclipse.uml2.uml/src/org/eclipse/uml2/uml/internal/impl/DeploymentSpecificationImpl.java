@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -71,6 +69,25 @@ public class DeploymentSpecificationImpl
 	protected static final String DEPLOYMENT_LOCATION_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getDeploymentLocation() <em>Deployment Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeploymentLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String deploymentLocation = DEPLOYMENT_LOCATION_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Deployment Location attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DEPLOYMENT_LOCATION_ESETFLAG = 1 << 13;
+
+	/**
 	 * The default value of the '{@link #getExecutionLocation() <em>Execution Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +96,25 @@ public class DeploymentSpecificationImpl
 	 * @ordered
 	 */
 	protected static final String EXECUTION_LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExecutionLocation() <em>Execution Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String executionLocation = EXECUTION_LOCATION_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Execution Location attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int EXECUTION_LOCATION_ESETFLAG = 1 << 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,9 +140,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public String getDeploymentLocation() {
-		return (String) eVirtualGet(
-			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-			DEPLOYMENT_LOCATION_EDEFAULT);
+		return deploymentLocation;
 	}
 
 	/**
@@ -115,17 +149,15 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeploymentLocation(String newDeploymentLocation) {
-		String deploymentLocation = newDeploymentLocation;
-		Object oldDeploymentLocation = eVirtualSet(
-			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-			deploymentLocation);
-		boolean isSetChange = oldDeploymentLocation == EVIRTUAL_NO_VALUE;
+		String oldDeploymentLocation = deploymentLocation;
+		deploymentLocation = newDeploymentLocation;
+		boolean oldDeploymentLocationESet = (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
+		eFlags |= DEPLOYMENT_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-				isSetChange
-					? DEPLOYMENT_LOCATION_EDEFAULT
-					: oldDeploymentLocation, deploymentLocation, isSetChange));
+				oldDeploymentLocation, deploymentLocation,
+				!oldDeploymentLocationESet));
 
 	}
 
@@ -135,15 +167,15 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void unsetDeploymentLocation() {
-		Object oldDeploymentLocation = eVirtualUnset(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION);
-		boolean isSetChange = oldDeploymentLocation != EVIRTUAL_NO_VALUE;
+		String oldDeploymentLocation = deploymentLocation;
+		boolean oldDeploymentLocationESet = (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
+		deploymentLocation = DEPLOYMENT_LOCATION_EDEFAULT;
+		eFlags &= ~DEPLOYMENT_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-				isSetChange
-					? oldDeploymentLocation
-					: DEPLOYMENT_LOCATION_EDEFAULT,
-				DEPLOYMENT_LOCATION_EDEFAULT, isSetChange));
+				oldDeploymentLocation, DEPLOYMENT_LOCATION_EDEFAULT,
+				oldDeploymentLocationESet));
 	}
 
 	/**
@@ -152,7 +184,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetDeploymentLocation() {
-		return eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION);
+		return (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
 	}
 
 	/**
@@ -161,9 +193,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public String getExecutionLocation() {
-		return (String) eVirtualGet(
-			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-			EXECUTION_LOCATION_EDEFAULT);
+		return executionLocation;
 	}
 
 	/**
@@ -172,17 +202,15 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setExecutionLocation(String newExecutionLocation) {
-		String executionLocation = newExecutionLocation;
-		Object oldExecutionLocation = eVirtualSet(
-			UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-			executionLocation);
-		boolean isSetChange = oldExecutionLocation == EVIRTUAL_NO_VALUE;
+		String oldExecutionLocation = executionLocation;
+		executionLocation = newExecutionLocation;
+		boolean oldExecutionLocationESet = (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
+		eFlags |= EXECUTION_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-				isSetChange
-					? EXECUTION_LOCATION_EDEFAULT
-					: oldExecutionLocation, executionLocation, isSetChange));
+				oldExecutionLocation, executionLocation,
+				!oldExecutionLocationESet));
 
 	}
 
@@ -192,15 +220,15 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void unsetExecutionLocation() {
-		Object oldExecutionLocation = eVirtualUnset(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION);
-		boolean isSetChange = oldExecutionLocation != EVIRTUAL_NO_VALUE;
+		String oldExecutionLocation = executionLocation;
+		boolean oldExecutionLocationESet = (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
+		executionLocation = EXECUTION_LOCATION_EDEFAULT;
+		eFlags &= ~EXECUTION_LOCATION_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-				isSetChange
-					? oldExecutionLocation
-					: EXECUTION_LOCATION_EDEFAULT, EXECUTION_LOCATION_EDEFAULT,
-				isSetChange));
+				oldExecutionLocation, EXECUTION_LOCATION_EDEFAULT,
+				oldExecutionLocationESet));
 	}
 
 	/**
@@ -209,7 +237,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetExecutionLocation() {
-		return eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION);
+		return (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
 	}
 
 	/**
@@ -326,7 +354,6 @@ public class DeploymentSpecificationImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -338,7 +365,6 @@ public class DeploymentSpecificationImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(
@@ -830,15 +856,13 @@ public class DeploymentSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__VISIBILITY :
@@ -848,21 +872,18 @@ public class DeploymentSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__MEMBER :
 				return isSetMembers();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IMPORTED_MEMBER :
@@ -882,58 +903,47 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
-				EList generalization = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
-				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER :
-				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null
-					&& !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION :
-				EList substitution = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REPRESENTATION :
-				return eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__REPRESENTATION) != null;
+				return representation != null;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE :
-				EList collaborationUse = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__COLLABORATION_USE);
-				return collaborationUse != null && !collaborationUse.isEmpty();
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__FILE_NAME :
 				return isSetFileName();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT :
-				EList nestedArtifact = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__NESTED_ARTIFACT);
-				return nestedArtifact != null && !nestedArtifact.isEmpty();
+				return nestedArtifacts != null && !nestedArtifacts.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION :
-				EList manifestation = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__MANIFESTATION);
-				return manifestation != null && !manifestation.isEmpty();
+				return manifestations != null && !manifestations.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION :
-				EList ownedOperation = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_OPERATION);
-				return ownedOperation != null && !ownedOperation.isEmpty();
+				return ownedOperations != null && !ownedOperations.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE :
-				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION :
 				return isSetDeploymentLocation();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION :
@@ -955,15 +965,13 @@ public class DeploymentSpecificationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (deploymentLocation: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION))
-			result
-				.append(eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION));
+		if ((eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0)
+			result.append(deploymentLocation);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", executionLocation: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION))
-			result
-				.append(eVirtualGet(UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION));
+		if ((eFlags & EXECUTION_LOCATION_ESETFLAG) != 0)
+			result.append(executionLocation);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

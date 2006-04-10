@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.18 2006/03/15 19:34:16 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -51,7 +54,6 @@ import org.eclipse.uml2.uml.internal.operations.CallOperationActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.CallOperationActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CallOperationActionImpl#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CallOperationActionImpl#getTarget <em>Target</em>}</li>
  * </ul>
@@ -64,12 +66,24 @@ public class CallOperationActionImpl
 		implements CallOperationAction {
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getOperation()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits1 = 0;
+	protected Operation operation = null;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin target = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,15 +109,22 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.CALL_OPERATION_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.CALL_OPERATION_ACTION__INPUT, new int[]{
-						UMLPackage.CALL_OPERATION_ACTION__ARGUMENT,
-						UMLPackage.CALL_OPERATION_ACTION__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache
+					.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+						inputs = new DerivedUnionEObjectEList(InputPin.class,
+							this, UMLPackage.CALL_OPERATION_ACTION__INPUT,
+							INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.CALL_OPERATION_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -112,13 +133,10 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public Operation getOperation() {
-		Operation operation = (Operation) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
 			InternalEObject oldOperation = (InternalEObject) operation;
 			operation = (Operation) eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
-				eVirtualSet(UMLPackage.CALL_OPERATION_ACTION__OPERATION,
-					operation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CALL_OPERATION_ACTION__OPERATION,
@@ -134,7 +152,7 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public Operation basicGetOperation() {
-		return (Operation) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OPERATION);
+		return operation;
 	}
 
 	/**
@@ -143,15 +161,12 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-		Operation operation = newOperation;
-		Object oldOperation = eVirtualSet(
-			UMLPackage.CALL_OPERATION_ACTION__OPERATION, operation);
+		Operation oldOperation = operation;
+		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CALL_OPERATION_ACTION__OPERATION,
-				oldOperation == EVIRTUAL_NO_VALUE
-					? null
-					: oldOperation, operation));
+				UMLPackage.CALL_OPERATION_ACTION__OPERATION, oldOperation,
+				operation));
 
 	}
 
@@ -161,7 +176,6 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public InputPin getTarget() {
-		InputPin target = (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject) target;
 			target = (InputPin) eResolveProxy(oldTarget);
@@ -191,7 +205,7 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetTarget() {
-		return (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
+		return target;
 	}
 
 	/**
@@ -201,14 +215,12 @@ public class CallOperationActionImpl
 	 */
 	public NotificationChain basicSetTarget(InputPin newTarget,
 			NotificationChain msgs) {
-		Object oldTarget = eVirtualSet(
-			UMLPackage.CALL_OPERATION_ACTION__TARGET, newTarget);
+		InputPin oldTarget = target;
+		target = newTarget;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.CALL_OPERATION_ACTION__TARGET,
-				oldTarget == EVIRTUAL_NO_VALUE
-					? null
-					: oldTarget, newTarget);
+				oldTarget, newTarget);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -224,7 +236,6 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
-		InputPin target = (InputPin) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET);
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -648,15 +659,13 @@ public class CallOperationActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CALL_OPERATION_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CALL_OPERATION_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.CALL_OPERATION_ACTION__VISIBILITY :
@@ -666,12 +675,12 @@ public class CallOperationActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CALL_OPERATION_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CALL_OPERATION_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CALL_OPERATION_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINED_ELEMENT :
@@ -683,26 +692,20 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.CALL_OPERATION_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.CALL_OPERATION_ACTION__INPUT :
@@ -710,64 +713,38 @@ public class CallOperationActionImpl
 			case UMLPackage.CALL_OPERATION_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.CALL_OPERATION_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__ARGUMENT :
-				EList argument = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__ON_PORT :
-				return eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__ON_PORT) != null;
+				return onPort != null;
 			case UMLPackage.CALL_OPERATION_ACTION__IS_SYNCHRONOUS :
 				return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
 			case UMLPackage.CALL_OPERATION_ACTION__RESULT :
-				EList result = (EList) eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__RESULT);
-				return result != null && !result.isEmpty();
+				return results != null && !results.isEmpty();
 			case UMLPackage.CALL_OPERATION_ACTION__OPERATION :
-				return eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__OPERATION) != null;
+				return operation != null;
 			case UMLPackage.CALL_OPERATION_ACTION__TARGET :
-				return eVirtualGet(UMLPackage.CALL_OPERATION_ACTION__TARGET) != null;
+				return target != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getInputs()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.CALL_OPERATION_ACTION__ARGUMENT,
+		UMLPackage.CALL_OPERATION_ACTION__TARGET};
 
 	/**
 	 * <!-- begin-user-doc -->

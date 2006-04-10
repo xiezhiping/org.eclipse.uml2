@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,9 +27,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
@@ -50,7 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterSubstitutionOpe
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getFormal <em>Formal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedActuals <em>Owned Actual</em>}</li>
@@ -63,6 +65,56 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterSubstitutionOpe
 public class TemplateParameterSubstitutionImpl
 		extends ElementImpl
 		implements TemplateParameterSubstitution {
+
+	/**
+	 * The cached value of the '{@link #getActuals() <em>Actual</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList actuals = null;
+
+	/**
+	 * The cached value of the '{@link #getFormal() <em>Formal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormal()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateParameter formal = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedActuals = null;
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getActuals() <em>Actual</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ACTUAL_ESUBSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ACTUAL_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,19 +140,28 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(
-				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(
-					Element.class,
-					this,
-					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
-					new int[]{
-						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT,
-						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+						ownedElements = new DerivedUnionEObjectEList(
+							Element.class,
+							this,
+							UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
+							OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -109,18 +170,13 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public EList getActuals() {
-		EList actual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
-		if (actual == null) {
-			eVirtualSet(
-				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
-				actual = new SubsetSupersetEObjectResolvingEList(
-					ParameterableElement.class,
-					this,
-					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
-					null,
-					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL}));
+		if (actuals == null) {
+			actuals = new SubsetSupersetEObjectResolvingEList(
+				ParameterableElement.class, this,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, null,
+				ACTUAL_ESUBSETS);
 		}
-		return actual;
+		return actuals;
 	}
 
 	/**
@@ -129,13 +185,10 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public TemplateParameter getFormal() {
-		TemplateParameter formal = (TemplateParameter) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
 		if (formal != null && formal.eIsProxy()) {
 			InternalEObject oldFormal = (InternalEObject) formal;
 			formal = (TemplateParameter) eResolveProxy(oldFormal);
 			if (formal != oldFormal) {
-				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
-					formal);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
@@ -151,7 +204,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetFormal() {
-		return (TemplateParameter) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL);
+		return formal;
 	}
 
 	/**
@@ -160,15 +213,12 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public void setFormal(TemplateParameter newFormal) {
-		TemplateParameter formal = newFormal;
-		Object oldFormal = eVirtualSet(
-			UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL, formal);
+		TemplateParameter oldFormal = formal;
+		formal = newFormal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
-				oldFormal == EVIRTUAL_NO_VALUE
-					? null
-					: oldFormal, formal));
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL, oldFormal,
+				formal));
 
 	}
 
@@ -178,18 +228,13 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public EList getOwnedActuals() {
-		EList ownedActual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
-		if (ownedActual == null) {
-			eVirtualSet(
+		if (ownedActuals == null) {
+			ownedActuals = new SubsetSupersetEObjectContainmentEList.Resolving(
+				ParameterableElement.class, this,
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-				ownedActual = new SubsetSupersetEObjectContainmentEList.Resolving(
-					ParameterableElement.class,
-					this,
-					UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-					new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL},
-					null));
+				OWNED_ACTUAL_ESUPERSETS, null);
 		}
-		return ownedActual;
+		return ownedActuals;
 	}
 
 	/**
@@ -438,28 +483,36 @@ public class TemplateParameterSubstitutionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
-				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL) != null;
+				return formal != null;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
-				EList actual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL);
-				return actual != null && !actual.isEmpty();
+				return actuals != null && !actuals.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				EList ownedActual = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
-				return ownedActual != null && !ownedActual.isEmpty();
+				return ownedActuals != null && !ownedActuals.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				return basicGetTemplateBinding() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT,
+		UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
 
 	/**
 	 * <!-- begin-user-doc -->

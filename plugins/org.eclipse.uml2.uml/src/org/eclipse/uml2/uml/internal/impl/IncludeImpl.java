@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.12 2006/03/15 19:34:01 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,9 +23,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.DirectedRelationship;
@@ -44,9 +47,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getAddition <em>Addition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getIncludingCase <em>Including Case</em>}</li>
  * </ul>
@@ -57,6 +57,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class IncludeImpl
 		extends NamedElementImpl
 		implements Include {
+
+	/**
+	 * The cached value of the '{@link #getAddition() <em>Addition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAddition()
+	 * @generated
+	 * @ordered
+	 */
+	protected UseCase addition = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,15 +92,23 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) eVirtualGet(UMLPackage.INCLUDE__RELATED_ELEMENT);
-		if (relatedElement == null) {
-			eVirtualSet(
-				UMLPackage.INCLUDE__RELATED_ELEMENT,
-				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.INCLUDE__RELATED_ELEMENT, new int[]{
-						UMLPackage.INCLUDE__SOURCE, UMLPackage.INCLUDE__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList relatedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
+			if (relatedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
+					relatedElements = new DerivedUnionEObjectEList(
+						Element.class, this,
+						UMLPackage.INCLUDE__RELATED_ELEMENT,
+						RELATED_ELEMENT_ESUBSETS));
+			}
+			return relatedElements;
 		}
-		return relatedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INCLUDE__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -99,14 +117,21 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.INCLUDE__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.INCLUDE__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.INCLUDE__SOURCE,
-					new int[]{UMLPackage.INCLUDE__INCLUDING_CASE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.INCLUDE__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INCLUDE__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -115,14 +140,21 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.INCLUDE__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.INCLUDE__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.INCLUDE__TARGET,
-					new int[]{UMLPackage.INCLUDE__ADDITION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.INCLUDE__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INCLUDE__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -131,12 +163,10 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public UseCase getAddition() {
-		UseCase addition = (UseCase) eVirtualGet(UMLPackage.INCLUDE__ADDITION);
 		if (addition != null && addition.eIsProxy()) {
 			InternalEObject oldAddition = (InternalEObject) addition;
 			addition = (UseCase) eResolveProxy(oldAddition);
 			if (addition != oldAddition) {
-				eVirtualSet(UMLPackage.INCLUDE__ADDITION, addition);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INCLUDE__ADDITION, oldAddition, addition));
@@ -151,7 +181,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public UseCase basicGetAddition() {
-		return (UseCase) eVirtualGet(UMLPackage.INCLUDE__ADDITION);
+		return addition;
 	}
 
 	/**
@@ -160,13 +190,11 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public void setAddition(UseCase newAddition) {
-		UseCase addition = newAddition;
-		Object oldAddition = eVirtualSet(UMLPackage.INCLUDE__ADDITION, addition);
+		UseCase oldAddition = addition;
+		addition = newAddition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INCLUDE__ADDITION, oldAddition == EVIRTUAL_NO_VALUE
-					? null
-					: oldAddition, addition));
+				UMLPackage.INCLUDE__ADDITION, oldAddition, addition));
 
 	}
 
@@ -426,15 +454,13 @@ public class IncludeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INCLUDE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INCLUDE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INCLUDE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INCLUDE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INCLUDE__NAME :
 				return isSetName();
 			case UMLPackage.INCLUDE__VISIBILITY :
@@ -444,12 +470,12 @@ public class IncludeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INCLUDE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INCLUDE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INCLUDE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INCLUDE__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INCLUDE__SOURCE :
@@ -457,7 +483,7 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__TARGET :
 				return isSetTargets();
 			case UMLPackage.INCLUDE__ADDITION :
-				return eVirtualGet(UMLPackage.INCLUDE__ADDITION) != null;
+				return addition != null;
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
 				return basicGetIncludingCase() != null;
 		}
@@ -519,6 +545,17 @@ public class IncludeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] RELATED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.INCLUDE__SOURCE, UMLPackage.INCLUDE__TARGET};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -528,6 +565,16 @@ public class IncludeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.INCLUDE__INCLUDING_CASE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -535,6 +582,16 @@ public class IncludeImpl
 	public boolean isSetSources() {
 		return eIsSet(UMLPackage.INCLUDE__INCLUDING_CASE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.INCLUDE__ADDITION};
 
 	/**
 	 * <!-- begin-user-doc -->

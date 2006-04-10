@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationImpl.java,v 1.4 2006/02/22 20:48:17 khussey Exp $
+ * $Id: DurationObservationImpl.java,v 1.5 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,26 @@ public class DurationObservationImpl
 		implements DurationObservation {
 
 	/**
+	 * The cached value of the '{@link #getEvents() <em>Event</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList events = null;
+
+	/**
+	 * The cached value of the '{@link #getFirstEvents() <em>First Event</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFirstEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList firstEvents = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,13 +95,11 @@ public class DurationObservationImpl
 	 * @generated
 	 */
 	public EList getEvents() {
-		EList event = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__EVENT);
-		if (event == null) {
-			eVirtualSet(UMLPackage.DURATION_OBSERVATION__EVENT,
-				event = new EObjectResolvingEList(NamedElement.class, this,
-					UMLPackage.DURATION_OBSERVATION__EVENT));
+		if (events == null) {
+			events = new EObjectResolvingEList(NamedElement.class, this,
+				UMLPackage.DURATION_OBSERVATION__EVENT);
 		}
-		return event;
+		return events;
 	}
 
 	/**
@@ -118,13 +136,11 @@ public class DurationObservationImpl
 	 * @generated
 	 */
 	public EList getFirstEvents() {
-		EList firstEvent = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
-		if (firstEvent == null) {
-			eVirtualSet(UMLPackage.DURATION_OBSERVATION__FIRST_EVENT,
-				firstEvent = new EDataTypeUniqueEList(Boolean.class, this,
-					UMLPackage.DURATION_OBSERVATION__FIRST_EVENT));
+		if (firstEvents == null) {
+			firstEvents = new EDataTypeUniqueEList(Boolean.class, this,
+				UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
 		}
-		return firstEvent;
+		return firstEvents;
 	}
 
 	/**
@@ -282,15 +298,13 @@ public class DurationObservationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_OBSERVATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DURATION_OBSERVATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DURATION_OBSERVATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION_OBSERVATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DURATION_OBSERVATION__NAME :
 				return isSetName();
 			case UMLPackage.DURATION_OBSERVATION__VISIBILITY :
@@ -300,22 +314,20 @@ public class DurationObservationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DURATION_OBSERVATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DURATION_OBSERVATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DURATION_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DURATION_OBSERVATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
-				EList event = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__EVENT);
-				return event != null && !event.isEmpty();
+				return events != null && !events.isEmpty();
 			case UMLPackage.DURATION_OBSERVATION__FIRST_EVENT :
-				EList firstEvent = (EList) eVirtualGet(UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
-				return firstEvent != null && !firstEvent.isEmpty();
+				return firstEvents != null && !firstEvents.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -331,8 +343,7 @@ public class DurationObservationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (firstEvent: "); //$NON-NLS-1$
-		result
-			.append(eVirtualGet(UMLPackage.DURATION_OBSERVATION__FIRST_EVENT));
+		result.append(firstEvents);
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.28 2006/03/09 20:55:36 khussey Exp $
+ * $Id: ElementImpl.java,v 1.29 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,16 +27,13 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.EModelElementImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -58,8 +55,6 @@ import org.eclipse.uml2.uml.internal.operations.ElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getEAnnotations <em>EAnnotations</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
  * </p>
@@ -67,24 +62,18 @@ import org.eclipse.uml2.uml.internal.operations.ElementOperations;
  * @generated
  */
 public abstract class ElementImpl
-		extends EObjectImpl
+		extends EModelElementImpl
 		implements Element {
 
 	/**
-	 * An array of objects representing the values of non-primitive features.
+	 * The cached value of the '{@link #getOwnedComments() <em>Owned Comment</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getOwnedComments()
 	 * @generated
+	 * @ordered
 	 */
-	protected Object[] eVirtualValues = null;
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits0 = 0;
+	protected EList ownedComments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,31 +98,23 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEAnnotations() {
-		EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
-		if (eAnnotations == null) {
-			eVirtualSet(UMLPackage.ELEMENT__EANNOTATIONS,
-				eAnnotations = new EObjectContainmentWithInverseEList(
-					EAnnotation.class, this, UMLPackage.ELEMENT__EANNOTATIONS,
-					EcorePackage.EANNOTATION__EMODEL_ELEMENT));
-		}
-		return eAnnotations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.ELEMENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ELEMENT__OWNED_ELEMENT,
-					new int[]{UMLPackage.ELEMENT__OWNED_COMMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.ELEMENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -142,13 +123,11 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getOwnedComments() {
-		EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
-		if (ownedComment == null) {
-			eVirtualSet(UMLPackage.ELEMENT__OWNED_COMMENT,
-				ownedComment = new EObjectContainmentEList.Resolving(
-					Comment.class, this, UMLPackage.ELEMENT__OWNED_COMMENT));
+		if (ownedComments == null) {
+			ownedComments = new EObjectContainmentEList.Resolving(
+				Comment.class, this, UMLPackage.ELEMENT__OWNED_COMMENT);
 		}
-		return ownedComment;
+		return ownedComments;
 	}
 
 	/**
@@ -160,46 +139,6 @@ public abstract class ElementImpl
 		Comment newOwnedComment = (Comment) create(UMLPackage.Literals.COMMENT);
 		getOwnedComments().add(newOwnedComment);
 		return newOwnedComment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EAnnotation getEAnnotation(String source) {
-		BasicEList eAnnotations = (BasicEList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
-
-		if (eAnnotations != null) {
-			int size = eAnnotations.size();
-
-			if (size > 0) {
-				EAnnotation[] eAnnotationArray = (EAnnotation[]) eAnnotations
-					.data();
-
-				if (source == null) {
-
-					for (int i = 0; i < size; i++) {
-						EAnnotation eAnnotation = eAnnotationArray[i];
-
-						if (eAnnotation.getSource() == null) {
-							return eAnnotation;
-						}
-					}
-				} else {
-
-					for (int i = 0; i < size; i++) {
-						EAnnotation eAnnotation = eAnnotationArray[i];
-
-						if (source.equals(eAnnotation.getSource())) {
-							return eAnnotation;
-						}
-					}
-				}
-			}
-		}
-
-		return null;
 	}
 
 	/**
@@ -668,21 +607,6 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.ELEMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -761,98 +685,15 @@ public abstract class ElementImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ELEMENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ELEMENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ELEMENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
-		if (baseClass == EModelElement.class) {
-			switch (derivedFeatureID) {
-				case UMLPackage.ELEMENT__EANNOTATIONS :
-					return EcorePackage.EMODEL_ELEMENT__EANNOTATIONS;
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
-		if (baseClass == EModelElement.class) {
-			switch (baseFeatureID) {
-				case EcorePackage.EMODEL_ELEMENT__EANNOTATIONS :
-					return UMLPackage.ELEMENT__EANNOTATIONS;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Object[] eVirtualValues() {
-		return eVirtualValues;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualValues(Object[] newValues) {
-		eVirtualValues = newValues;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
 	}
 
 	/**
@@ -877,6 +718,16 @@ public abstract class ElementImpl
 	protected CacheAdapter getCacheAdapter() {
 		return CacheAdapter.INSTANCE;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ELEMENT__OWNED_COMMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

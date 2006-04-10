@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
+ * $Id: VertexImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,6 +59,26 @@ public abstract class VertexImpl
 		implements Vertex {
 
 	/**
+	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList outgoings = null;
+
+	/**
+	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList incomings = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,14 +102,12 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public EList getOutgoings() {
-		EList outgoing = (EList) eVirtualGet(UMLPackage.VERTEX__OUTGOING);
-		if (outgoing == null) {
-			eVirtualSet(UMLPackage.VERTEX__OUTGOING,
-				outgoing = new EObjectWithInverseResolvingEList(
-					Transition.class, this, UMLPackage.VERTEX__OUTGOING,
-					UMLPackage.TRANSITION__SOURCE));
+		if (outgoings == null) {
+			outgoings = new EObjectWithInverseResolvingEList(Transition.class,
+				this, UMLPackage.VERTEX__OUTGOING,
+				UMLPackage.TRANSITION__SOURCE);
 		}
-		return outgoing;
+		return outgoings;
 	}
 
 	/**
@@ -126,14 +144,12 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public EList getIncomings() {
-		EList incoming = (EList) eVirtualGet(UMLPackage.VERTEX__INCOMING);
-		if (incoming == null) {
-			eVirtualSet(UMLPackage.VERTEX__INCOMING,
-				incoming = new EObjectWithInverseResolvingEList(
-					Transition.class, this, UMLPackage.VERTEX__INCOMING,
-					UMLPackage.TRANSITION__TARGET));
+		if (incomings == null) {
+			incomings = new EObjectWithInverseResolvingEList(Transition.class,
+				this, UMLPackage.VERTEX__INCOMING,
+				UMLPackage.TRANSITION__TARGET);
 		}
-		return incoming;
+		return incomings;
 	}
 
 	/**
@@ -442,15 +458,13 @@ public abstract class VertexImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.VERTEX__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.VERTEX__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.VERTEX__OWNER :
 				return isSetOwner();
 			case UMLPackage.VERTEX__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.VERTEX__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.VERTEX__NAME :
 				return isSetName();
 			case UMLPackage.VERTEX__VISIBILITY :
@@ -460,18 +474,16 @@ public abstract class VertexImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.VERTEX__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.VERTEX__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.VERTEX__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.VERTEX__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.VERTEX__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.VERTEX__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.VERTEX__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.VERTEX__CONTAINER :
 				return basicGetContainer() != null;
 		}

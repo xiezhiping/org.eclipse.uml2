@@ -260,6 +260,7 @@
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D03F9C80242" name="LinkEndData">
           <ownedComment xmi:type="uml:Comment" xmi:id="_srW13hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D03F9C80242">
             <body>LinkEndData is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of LinkAction. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the staticallyspecified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around LinkEndData. Each association end is identified separately with an instance of the LinkEndData class.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_srW15hTaEdqZu-3Jy1-uYg" name="qualifiers" constrainedElement="_3ADC7B74022D3D03F9C80242">
@@ -708,6 +709,7 @@
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sss5oxTaEdqZu-3Jy1-uYg" name="multiplicity_of_result" constrainedElement="_3ADC7B74022D40F19F8103B3">
             <ownedComment xmi:type="uml:Comment" xmi:id="_ssjIyBTaEdqZu-3Jy1-uYg" annotatedElement="_sss5oxTaEdqZu-3Jy1-uYg">
               <body>The multiplicity of each result output pin must be compatible with the multiplicity of the corresponding structural features of the unmarshall classifier.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sss5pBTaEdqZu-3Jy1-uYg">
@@ -1203,6 +1205,7 @@
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D395CFBA10125" name="result" type="_3ADC7B74022D384B2387039A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DC100E9" association="_3ADC7B74022D395CFBA0032C">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sw3oDRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D395CFBA10125">
               <body>Gives the output pin on which the hosting object is placed.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sw3oERTaEdqZu-3Jy1-uYg" value="1"/>
@@ -1269,6 +1272,7 @@
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D38DC073A03E2" name="object" type="_3ADC7B74022D384B237E021A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DF5031E" association="_3ADC7B74022D38DC073A0161">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sxBY-hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D38DC073A03E2">
               <body>Gives the input pin from which the object whose structural feature is to be read or written is obtained.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sxBY_hTaEdqZu-3Jy1-uYg" value="1"/>
@@ -1347,12 +1351,16 @@
           <ownedComment xmi:type="uml:Comment" xmi:id="_svYaMBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3A7870670003">
             <body>The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the value's multiplicity is 1..1.
 
+
+
 Structural features are potentially multi-valued and ordered, and may support duplicates, so the action supports specification of removal points for new values. It also supports the removal of all duplicate values.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_svYaORTaEdqZu-3Jy1-uYg" name="non_unique_removal" constrainedElement="_3ADC7B74022D3A7870670003">
             <ownedComment xmi:type="uml:Comment" xmi:id="_svYaNRTaEdqZu-3Jy1-uYg" annotatedElement="_svYaORTaEdqZu-3Jy1-uYg">
               <body>Actions removing a value from ordered nonunique structural features must have a single removeAt input pin if isRemoveDuplicates is false. It must be of type Unlimited Natural with multiplicity 1..1. Otherwise, the action has no removeAt input pin.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_svYaOhTaEdqZu-3Jy1-uYg">
@@ -1380,7 +1388,10 @@ Structural features are potentially multi-valued and ordered, and may support du
           <ownedComment xmi:type="uml:Comment" xmi:id="_svYaQxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3A787176007B">
             <body>Structural Features are potentially multi-valued and ordered, so the action supports specification of insertion points for new values. It also supports the removal of existing values of the structural feature before the new value is added.
 
+
+
 The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the value's multiplicity is 1..1.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_svYaTBTaEdqZu-3Jy1-uYg" name="unlimited_natural_and_multiplicity" constrainedElement="_3ADC7B74022D3A787176007B">
@@ -1567,6 +1578,7 @@ The object to access is specified dynamically, by referring to an input pin on w
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D395CD52102DB" name="result" type="_3ADC7B74022D384B2387039A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DC100E9" association="_3ADC7B74022D395CD521012D">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sxUT8xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D395CD52102DB">
               <body>The pin on which are put the objects participating in the association at the end not specified by the inputs.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sxUT9xTaEdqZu-3Jy1-uYg" value="1"/>
@@ -1576,6 +1588,8 @@ The object to access is specified dynamically, by referring to an input pin on w
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D393AD8B602EE" name="LinkEndCreationData">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sv-3OxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D393AD8B602EE">
             <body>This class is required when using CreateLinkAction, to specify insertion points for ordered ends and for replacing all links at end. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, as required. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end. These pieces are brought together around LinkEndData. Each association end is identified separately with an instance of the LinkEndData class.
+
+
 
 Qualifier values are used in CompleteActions to identify links to create.</body>
           </ownedComment>
@@ -1616,6 +1630,7 @@ Qualifier values are used in CompleteActions to identify links to create.</body>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3745C9F20140" name="CreateLinkAction">
           <ownedComment xmi:type="uml:Comment" xmi:id="_swIBHxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3745C9F20140">
             <body>This action can be used to create links and link objects. There is no return value in either case. This is so that no change of the action is required if the association is changed to an association class or vice versa. CreateLinkAction uses a specialization of LinkEndData called LinkEndCreationData, to support ordered associations. The insertion point is specified at runtime by an additional input pin, which is required for ordered association ends and omitted for unordered ends. The insertion point is a positive integer giving the position to insert the link, or unlimited, to insert at the end. Reinserting an existing end at a new position in an ordered unique structural feature moves the end to that position. CreateLinkAction also uses LinkEndCreationData to support the destruction of existing links of the association that connect any of the objects of the new link. When the link is created, this option is available on an end-by-end basis, and causes all links of the association emanating from the 
+
 specified ends to be destroyed before the new link is created.</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_swIBKBTaEdqZu-3Jy1-uYg" name="association_not_abstract" constrainedElement="_3ADC7B74022D3745C9F20140">
@@ -1640,9 +1655,14 @@ specified ends to be destroyed before the new link is created.</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_swIBLRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3745CA190280">
             <body>This action destroys a link or a link object. Link objects can also be destroyed with DestroyObjectAction. The link is specified in the same way as link creation, even for link objects. This allows actions to remain unchanged when their associations are transformed from ordinary ones to association classes and vice versa.
 
+
+
 DestroyLinkAction uses a specialization of LinkEndData, called LinkEndDestructionData, to support ordered nonunique associations. The position of the link to be destroyed is specified at runtime by an additional input pin, which is required for ordered nonunique association ends and omitted for other kinds of ends. This is a positive integer giving the position of the link to destroy.
 
+
+
 DestroyLinkAction also uses LinkEndDestructionData to support the destruction of duplicate links of the association on ends that are nonunique. This option is available on an end-by-end basis, and causes all duplicate links of the association emanating from the specified ends to be destroyed.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3907702E02A1" general="_3ADC7B74022D39076FFD0233"/>
@@ -1761,6 +1781,8 @@ DestroyLinkAction also uses LinkEndDestructionData to support the destruction of
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D40F9B109007B" name="LinkEndDestructionData">
           <ownedComment xmi:type="uml:Comment" xmi:id="_swa8FhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D40F9B109007B">
             <body>This class is required when using DestroyLinkAction, to specify links to destroy for nonunique ordered ends. A link cannot be passed as a runtime value to or from an action.
+
+
 
 Qualifier values are used in CompleteActions to identify links to destroy.</body>
           </ownedComment>
@@ -2149,7 +2171,9 @@ Qualifier values are used in CompleteActions to identify links to destroy.</body
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3E54F8A40273" name="isSynchronous">
             <ownedComment xmi:type="uml:Comment" xmi:id="_syzhqxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E54F8A40273">
               <body>If true, the call is synchronous and the caller waits for completion of the invoked behavior.
+
 If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
+
 </body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
@@ -2226,6 +2250,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <ownedRule xmi:type="uml:Constraint" xmi:id="_szHDoxTaEdqZu-3Jy1-uYg" name="type_ordering_multiplicity" constrainedElement="_3ADC7B74022D3AA6D36700D2">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sy9StRTaEdqZu-3Jy1-uYg" annotatedElement="_szHDoxTaEdqZu-3Jy1-uYg">
               <body>The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding owned parameter of the operation.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_szHDpBTaEdqZu-3Jy1-uYg">
@@ -2283,6 +2308,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <ownedRule xmi:type="uml:Constraint" xmi:id="_szQNkxTaEdqZu-3Jy1-uYg" name="type_ordering_multiplicity" constrainedElement="_3ADC7B74022D3CB5CA3200A1">
             <ownedComment xmi:type="uml:Comment" xmi:id="_szHDyBTaEdqZu-3Jy1-uYg" annotatedElement="_szQNkxTaEdqZu-3Jy1-uYg">
               <body>The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding parameter of the behavior.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_szQNlBTaEdqZu-3Jy1-uYg">
@@ -2780,6 +2806,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r3phARTaEdqZu-3Jy1-uYg" name="compatible_types" constrainedElement="_3ADC7B74022D3B72DADB0283">
             <ownedComment xmi:type="uml:Comment" xmi:id="_r3pg_RTaEdqZu-3Jy1-uYg" annotatedElement="_r3phARTaEdqZu-3Jy1-uYg">
               <body>Object nodes connected by an object flow, with optionally intervening control nodes, must have compatible types. In particular, the downstream object node type must be the same or a supertype of the upstream object node type.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r3phAhTaEdqZu-3Jy1-uYg">
@@ -2831,7 +2858,9 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3C7C22F8028E" name="ActivityGroup" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_r3zSBRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C7C22F8028E">
             <body>Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
+
 They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r3zSDRTaEdqZu-3Jy1-uYg" name="nodes_and_edges" constrainedElement="_3ADC7B74022D3C7C22F8028E">
@@ -2903,6 +2932,7 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r4GM7BTaEdqZu-3Jy1-uYg" name="no_incoming_edges" constrainedElement="_3ADC7B74022D3DF4B90C0266">
             <ownedComment xmi:type="uml:Comment" xmi:id="_r4GM6BTaEdqZu-3Jy1-uYg" annotatedElement="_r4GM7BTaEdqZu-3Jy1-uYg">
               <body>Activity parameter object nodes with no incoming edges and one or more outgoing edges must have a parameter with in or inout direction.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r4GM7RTaEdqZu-3Jy1-uYg">
@@ -2913,6 +2943,7 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r4GM9RTaEdqZu-3Jy1-uYg" name="no_outgoing_edges" constrainedElement="_3ADC7B74022D3DF4B90C0266">
             <ownedComment xmi:type="uml:Comment" xmi:id="_r4GM8RTaEdqZu-3Jy1-uYg" annotatedElement="_r4GM9RTaEdqZu-3Jy1-uYg">
               <body>Activity parameter object nodes with no outgoing edges and one or more incoming edges must have a parameter with out, inout, or return direction.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r4GM9hTaEdqZu-3Jy1-uYg">
@@ -2975,11 +3006,19 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedComment xmi:type="uml:Comment" xmi:id="_r4P95hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D410D113D0024">
             <body>An activity specifies the coordination of executions of subordinate behaviors, using a control and data flow model. The subordinate behaviors coordinated by these models may be initiated because other behaviors in the model finish executing, because objects and data become available, or because events occur external to the flow. The flow of execution is modeled as activity nodes connected by activity edges. A node can be the execution of a subordinate behavior, such as an arithmetic computation, a call to an operation, or manipulation of object contents. Activity nodes also include flow-of-control constructs, such as synchronization, decision, and concurrency control. Activities may form invocation hierarchies invoking other activities, ultimately resolving to individual actions. In an object-oriented model, activities are usually invoked indirectly as methods bound to operations that are directly invoked. 
 
+
+
 Activities may describe procedural computation. In this context, they are the methods corresponding to operations on classes. Activities may be applied to organizational modeling for business process engineering and workflow. In this context, events often originate from inside the system, such as the finishing of a task, but also from outside the system, such as a customer call. Activities can also be used for information system modeling to specify system level processes. Activities may contain actions of various kinds:
+
 - occurrences of primitive functions, such as arithmetic functions.
+
 - invocations of behavior, such as activities.
+
 - communication actions, such as sending of signals.
+
 - manipulations of objects, such as reading or writing attributes or associations.
+
+
 
 Actions have no further decomposition in the activity containing them. However, the execution of a single action may induce the execution of many other actions. For example, a call action invokes an operation which is implemented by an activity containing actions that execute before the call action completes.</body>
           </ownedComment>
@@ -3314,7 +3353,9 @@ Actions have no further decomposition in the activity containing them. However, 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D41B9C8DC02E1" name="ActivityGroup" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_r5vLshTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41B9C8DC02E1">
             <body>Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
+
 They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
+
 </body>
           </ownedComment>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D41B9A15A02F4" name="containedNode" type="_3ADC7B74022D3E82C8060069" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D41B9A15A00DF">
@@ -3341,11 +3382,19 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedComment xmi:type="uml:Comment" xmi:id="_YOSBIDdqEdqq1tCaRkgBQQ" annotatedElement="_TCCGEDdnEdqq1tCaRkgBQQ">
             <body>An activity specifies the coordination of executions of subordinate behaviors, using a control and data flow model. The subordinate behaviors coordinated by these models may be initiated because other behaviors in the model finish executing, because objects and data become available, or because events occur external to the flow. The flow of execution is modeled as activity nodes connected by activity edges. A node can be the execution of a subordinate behavior, such as an arithmetic computation, a call to an operation, or manipulation of object contents. Activity nodes also include flow-of-control constructs, such as synchronization, decision, and concurrency control. Activities may form invocation hierarchies invoking other activities, ultimately resolving to individual actions. In an object-oriented model, activities are usually invoked indirectly as methods bound to operations that are directly invoked. 
 
+
+
 Activities may describe procedural computation. In this context, they are the methods corresponding to operations on classes. Activities may be applied to organizational modeling for business process engineering and workflow. In this context, events often originate from inside the system, such as the finishing of a task, but also from outside the system, such as a customer call. Activities can also be used for information system modeling to specify system level processes. Activities may contain actions of various kinds:
+
 - occurrences of primitive functions, such as arithmetic functions.
+
 - invocations of behavior, such as activities.
+
 - communication actions, such as sending of signals.
+
 - manipulations of objects, such as reading or writing attributes or associations.
+
+
 
 Actions have no further decomposition in the activity containing them. However, the execution of a single action may induce the execution of many other actions. For example, a call action invokes an operation which is implemented by an activity containing actions that execute before the call action completes.</body>
           </ownedComment>
@@ -3426,7 +3475,7 @@ Actions have no further decomposition in the activity containing them. However, 
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r6ojhRTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>(self.incoming.select(e | e.isTypeOf(ObjectFlow)->notEmpty() implies&#xA;  self.outgoing.isTypeOf(ObjectFlow)) and&#xA;    (self.incoming.select(e | e.isTypeOf(ObjectFlow)->empty() implies&#xA;      self.outgoing.isTypeOf(ControlFlow))</body>
+              <body>(self.incoming.select(e | e.isTypeOf(ObjectFlow)->notEmpty() implies&#xA;&#xA;  self.outgoing.isTypeOf(ObjectFlow)) and&#xA;&#xA;    (self.incoming.select(e | e.isTypeOf(ObjectFlow)->empty() implies&#xA;&#xA;      self.outgoing.isTypeOf(ControlFlow))</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D41B0C4E70337" general="_3ADC7B74022D3B72D6550115"/>
@@ -3552,7 +3601,9 @@ Actions have no further decomposition in the activity containing them. However, 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D027FAE021D" name="ObjectNode" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_r67ehhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D027FAE021D">
             <body>An object node is an activity node that indicates an instance of a particular classifier, possibly in a particular state, may be available at a particular point in the activity. Object nodes can be used in a variety of ways, depending on where objects are flowing from and to, as described in the semantics section.
+
 Complete object nodes add support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r7FPgRTaEdqZu-3Jy1-uYg" name="selection_behavior" constrainedElement="_3ADC7B74022D3D027FAE021D">
@@ -3660,11 +3711,19 @@ Complete object nodes add support for token selection, limitation on the number 
           <ownedComment xmi:type="uml:Comment" xmi:id="_r7YKYRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF2911C0251">
             <body>An activity specifies the coordination of executions of subordinate behaviors, using a control and data flow model. The subordinate behaviors coordinated by these models may be initiated because other behaviors in the model finish executing, because objects and data become available, or because events occur external to the flow. The flow of execution is modeled as activity nodes connected by activity edges. A node can be the execution of a subordinate behavior, such as an arithmetic computation, a call to an operation, or manipulation of object contents. Activity nodes also include flow-of-control constructs, such as synchronization, decision, and concurrency control. Activities may form invocation hierarchies invoking other activities, ultimately resolving to individual actions. In an object-oriented model, activities are usually invoked indirectly as methods bound to operations that are directly invoked. 
 
+
+
 Activities may describe procedural computation. In this context, they are the methods corresponding to operations on classes. Activities may be applied to organizational modeling for business process engineering and workflow. In this context, events often originate from inside the system, such as the finishing of a task, but also from outside the system, such as a customer call. Activities can also be used for information system modeling to specify system level processes. Activities may contain actions of various kinds:
+
 - occurrences of primitive functions, such as arithmetic functions.
+
 - invocations of behavior, such as activities.
+
 - communication actions, such as sending of signals.
+
 - manipulations of objects, such as reading or writing attributes or associations.
+
+
 
 Actions have no further decomposition in the activity containing them. However, the execution of a single action may induce the execution of many other actions. For example, a call action invokes an operation which is implemented by an activity containing actions that execute before the call action completes.</body>
           </ownedComment>
@@ -3772,6 +3831,7 @@ Actions have no further decomposition in the activity containing them. However, 
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r-Nb_RTaEdqZu-3Jy1-uYg" name="interrupting_edges" constrainedElement="_3ADC7B74022D3E00BB3F010F">
             <ownedComment xmi:type="uml:Comment" xmi:id="_r-Nb-RTaEdqZu-3Jy1-uYg" annotatedElement="_r-Nb_RTaEdqZu-3Jy1-uYg">
               <body>Interrupting edges of a region must have their source node in the region and their target node outside the region in the same activity containing the region.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r-Nb_hTaEdqZu-3Jy1-uYg">
@@ -3865,7 +3925,9 @@ Actions have no further decomposition in the activity containing them. However, 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D41BDACBB01D3" name="ActivityGroup" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_r-Wl9hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41BDACBB01D3">
             <body>Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
+
 They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
+
 </body>
           </ownedComment>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D41BDACD9026C" name="containedNode" type="_3ADC7B74022D3E00BBF703BC" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D41BDACD802CF">
@@ -3972,7 +4034,10 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedComment xmi:type="uml:Comment" xmi:id="_r_i4uRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D380F459F0348">
             <body>A variable specifies data storage shared by the actions within a group. There are actions to write and read variables. These actions are treated as side effecting actions, similar to the actions to write and read object attributes and associations. There are no sequencing constraints among actions that access the same variable. Such actions must be explicitly coordinated by control flows or other constraints.
 
+
+
 Any values contained by a variable must conform to the type of the variable and have cardinalities allowed by the multiplicity of the variable.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r_sptBTaEdqZu-3Jy1-uYg" name="owned" constrainedElement="_3ADC7B74022D380F459F0348">
@@ -4003,6 +4068,7 @@ Any values contained by a variable must conform to the type of the variable and 
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D4300AD92009C" name="isAccessibleBy" isQuery="true" bodyCondition="_r_spvhTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_r_spuRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300AD92009C">
               <body>The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_r_spvhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300AD92009C">
@@ -4021,7 +4087,10 @@ Any values contained by a variable must conform to the type of the variable and 
           <ownedComment xmi:type="uml:Comment" xmi:id="_r_spwxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF29688033C">
             <body>A structured activity node represents a structured portion of the activity that is not shared with any other structured node, except for nesting. It may have control edges connected to it, and pins when merged with CompleteStructuredActivities. The execution of any embedded actions may not begin until the structured activity node has received its object and control tokens. The availability of output tokens from the structured activity node does not occur until all embedded actions have completed execution.
 
+
+
 Note - Any required isolation may be achieved using a locking mechanisms, or it may simply sequentialize execution to avoid concurrency conflicts. Isolation is different from the property of &quot;atomicity&quot;, which is the guarantee that a group of actions either all complete successfully or have no effect at all. Atomicity generally requires a rollback mechanism to prevent committing partial results.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3DF296E300AB" general="_3ADC7B74022D41BCC7B10055"/>
@@ -4053,9 +4122,15 @@ Note - Any required isolation may be achieved using a locking mechanisms, or it 
           <ownedComment xmi:type="uml:Comment" xmi:id="_r_2asRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF2982700FA">
             <body>A conditional node consists of one or more clauses. Each clause consists of a test section and a body section. When the conditional node begins execution, the test sections of the clauses are executed. If one or more test sections yield a true value, one of the corresponding body sections will be executed. If more than one test section yields a true value, only one body section will be executed. The choice is nondeterministic unless the test sequence of clauses is specified. If no test section yields a true value, then no body section is executed; this may be a semantic error if output values are expected from the conditional node.
 
+
+
 In general, test section may be executed in any order, including simultaneously (if the underlying execution architecture supports it). The result may therefore be nondeterministic if more than one test section can be true concurrently. To enforce ordering of evaluation, sequencing constraints may be specified among clauses. One frequent case is a total ordering of clauses, in which case the clause execution order is determinate. If it is impossible for more than one test section to evaluate true simultaneously, the result is deterministic and it is unnecessary to order the clauses, as ordering may impose undesirable and unnecessary restrictions on implementation. Note that, although evaluation of test sections may be specified as concurrent, this does not require that the implementation evaluate them in parallel; it merely means that the model does not impose any order on evaluation.
 
+
+
 An &quot;else&quot; clause is a clause that is a successor to all other clauses in the conditional and whose test part always returns true.
+
+
 
 Output values created in the test or body section of a clause are potentially available for use outside the conditional. However, any value used outside the conditional must be created in every clause, otherwise an undefined value would be accessed if a clause not defining the value were executed.</body>
           </ownedComment>
@@ -4185,11 +4260,19 @@ If false, the body is executed once before the test is performed.
           <ownedComment xmi:type="uml:Comment" xmi:id="_r__kpBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E82C61F002C">
             <body>An activity specifies the coordination of executions of subordinate behaviors, using a control and data flow model. The subordinate behaviors coordinated by these models may be initiated because other behaviors in the model finish executing, because objects and data become available, or because events occur external to the flow. The flow of execution is modeled as activity nodes connected by activity edges. A node can be the execution of a subordinate behavior, such as an arithmetic computation, a call to an operation, or manipulation of object contents. Activity nodes also include flow-of-control constructs, such as synchronization, decision, and concurrency control. Activities may form invocation hierarchies invoking other activities, ultimately resolving to individual actions. In an object-oriented model, activities are usually invoked indirectly as methods bound to operations that are directly invoked. 
 
+
+
 Activities may describe procedural computation. In this context, they are the methods corresponding to operations on classes. Activities may be applied to organizational modeling for business process engineering and workflow. In this context, events often originate from inside the system, such as the finishing of a task, but also from outside the system, such as a customer call. Activities can also be used for information system modeling to specify system level processes. Activities may contain actions of various kinds:
+
 - occurrences of primitive functions, such as arithmetic functions.
+
 - invocations of behavior, such as activities.
+
 - communication actions, such as sending of signals.
+
 - manipulations of objects, such as reading or writing attributes or associations.
+
+
 
 Actions have no further decomposition in the activity containing them. However, the execution of a single action may induce the execution of many other actions. For example, a call action invokes an operation which is implemented by an activity containing actions that execute before the call action completes.</body>
           </ownedComment>
@@ -4287,7 +4370,9 @@ Actions have no further decomposition in the activity containing them. However, 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D41BCC7B10055" name="ActivityGroup" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sATGpBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41BCC7B10055">
             <body>Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
+
 They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D41BD95D60199" general="_3ADC7B74022D3CAAEC0D0176"/>
@@ -4412,9 +4497,15 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedComment xmi:type="uml:Comment" xmi:id="_sByUZhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF29BFE01A5">
             <body>An expansion region is a strictly nested region of an activity with explicit input and outputs (modeled as ExpansionNodes). Each input is a collection of values. If there are multiple inputs, each of them must hold the same kind of collection, although the types of the elements in the different collections may vary. The expansion region is executed once for each element (or position) in the input collection.
 
+
+
 The number of output collections can differ from the number of input collections. On each execution of the region, an output value from the region is inserted into an output collection at the same position as the input elements. If the region execution ends with no output, then nothing is added to the output collection. When this happens the output collection will not have the same number of elements as the input collections, the region acts as a filter. If all the executions provide an output to the collection, then the output collections will have the same number of elements as the input collections.
 
+
+
 The inputs and outputs to an expansion region are modeled as ExpansionNodes. From &quot;outside&quot; of the region, the values on these nodes appear as collections. From &quot;inside&quot; the region the values appear as elements of the collections. Object flow edges connect pins outside the region to input and output expansion nodes as collections. Object flow edges connect pins inside the region to input and output expansion nodes as individual elements. From the inside of the region, these nodes are visible as individual values. If an expansion node has a name, it is the name of the individual element within the region.
+
+
 
 Any object flow edges that cross the boundary of the region, without passing through expansion nodes, provide values that are fixed within the different executions of the region.</body>
           </ownedComment>
@@ -4431,9 +4522,13 @@ Any object flow edges that cross the boundary of the region, without passing thr
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3DF29D1D0167" name="mode" type="_3ADC7B74022D3DF29C100119">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sByUdBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF29D1D0167">
               <body>The way in which the executions interact:
+
 parallel: all interactions are independent
+
 iterative: the interactions occur in order of the elements
+
 stream: a stream of values flows into a single execution
+
 </body>
             </ownedComment>
             <defaultValue xmi:type="uml:InstanceValue" xmi:id="_w1h48GgYEdqfYrlcy8iLFA" type="_3ADC7B74022D3DF29C100119" instance="_3ADC7B74022D3DF29CF3006D"/>
@@ -4578,9 +4673,15 @@ stream: a stream of values flows into a single execution
           <ownedComment xmi:type="uml:Comment" xmi:id="_sCh7SBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF41CE2026E">
             <body>A conditional node consists of one or more clauses. Each clause consists of a test section and a body section. When the conditional node begins execution, the test sections of the clauses are executed. If one or more test sections yield a true value, one of the corresponding body sections will be executed. If more than one test section yields a true value, only one body section will be executed. The choice is nondeterministic unless the test sequence of clauses is specified. If no test section yields a true value, then no body section is executed; this may be a semantic error if output values are expected from the conditional node.
 
+
+
 In general, test section may be executed in any order, including simultaneously (if the underlying execution architecture supports it). The result may therefore be nondeterministic if more than one test section can be true concurrently. To enforce ordering of evaluation, sequencing constraints may be specified among clauses. One frequent case is a total ordering of clauses, in which case the clause execution order is determinate. If it is impossible for more than one test section to evaluate true simultaneously, the result is deterministic and it is unnecessary to order the clauses, as ordering may impose undesirable and unnecessary restrictions on implementation. Note that, although evaluation of test sections may be specified as concurrent, this does not require that the implementation evaluate them in parallel; it merely means that the model does not impose any order on evaluation.
 
+
+
 An &quot;else&quot; clause is a clause that is a successor to all other clauses in the conditional and whose test part always returns true.
+
+
 
 Output values created in the test or body section of a clause are potentially available for use outside the conditional. However, any value used outside the conditional must be created in every clause, otherwise an undefined value would be accessed if a clause not defining the value were executed.</body>
           </ownedComment>
@@ -4606,9 +4707,14 @@ Output values created in the test or body section of a clause are potentially av
           <ownedComment xmi:type="uml:Comment" xmi:id="_sCh7TRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF42BDA0369">
             <body>A structured activity node represents a structured portion of the activity that is not shared with any other structured node, except for nesting. It may have control edges connected to it, and pins in CompleteStructuredActivities. The execution of any embedded actions may not begin until the structured activity node has received its object and control tokens. The availability of output tokens from the structured activity node does not occur until all embedded actions have completed execution.
 
+
+
 Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is &quot;isolated,&quot; then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
 
+
+
 Note - Any required isolation may be achieved using a locking mechanisms, or it may simply sequentialize execution to avoid concurrency conflicts. Isolation is different from the property of &quot;atomicity&quot;, which is the guarantee that a group of actions either all complete successfully or have no effect at all. Atomicity generally requires a rollback mechanism to prevent committing partial results.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sCh7VhTaEdqZu-3Jy1-uYg" name="edges" constrainedElement="_3ADC7B74022D3DF42BDA0369">
@@ -4752,7 +4858,9 @@ Note - Any required isolation may be achieved using a locking mechanisms, or it 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D41BDADCB01FC" name="ActivityGroup" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sCrsWRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41BDADCB01FC">
             <body>Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
+
 They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
+
 </body>
           </ownedComment>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D41BDADE90322" name="containedEdge" type="_3ADC7B74022D3E82C75A00F8" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_3ADC7B74022D41BDADE90032">
@@ -4815,11 +4923,19 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedComment xmi:type="uml:Comment" xmi:id="_sDbTKxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DF281CE00BB">
             <body>An activity specifies the coordination of executions of subordinate behaviors, using a control and data flow model. The subordinate behaviors coordinated by these models may be initiated because other behaviors in the model finish executing, because objects and data become available, or because events occur external to the flow. The flow of execution is modeled as activity nodes connected by activity edges. A node can be the execution of a subordinate behavior, such as an arithmetic computation, a call to an operation, or manipulation of object contents. Activity nodes also include flow-of-control constructs, such as synchronization, decision, and concurrency control. Activities may form invocation hierarchies invoking other activities, ultimately resolving to individual actions. In an object-oriented model, activities are usually invoked indirectly as methods bound to operations that are directly invoked. 
 
+
+
 Activities may describe procedural computation. In this context, they are the methods corresponding to operations on classes. Activities may be applied to organizational modeling for business process engineering and workflow. In this context, events often originate from inside the system, such as the finishing of a task, but also from outside the system, such as a customer call. Activities can also be used for information system modeling to specify system level processes. Activities may contain actions of various kinds:
+
 - occurrences of primitive functions, such as arithmetic functions.
+
 - invocations of behavior, such as activities.
+
 - communication actions, such as sending of signals.
+
 - manipulations of objects, such as reading or writing attributes or associations.
+
+
 
 Actions have no further decomposition in the activity containing them. However, the execution of a single action may induce the execution of many other actions. For example, a call action invokes an operation which is implemented by an activity containing actions that execute before the call action completes.</body>
           </ownedComment>
@@ -4851,7 +4967,9 @@ Actions have no further decomposition in the activity containing them. However, 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D410D03520266" name="ActivityGroup" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sDbTMBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D410D03520266">
             <body>Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
+
 They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D410D08D30226" general="_3ADC7B74022D3CAAEC0D0176"/>
@@ -4948,6 +5066,7 @@ They have no inherent semantics and can be used for various purposes. Subclasses
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D0CE6480229" name="InformationItem">
           <ownedComment xmi:type="uml:Comment" xmi:id="_skW19xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D0CE6480229">
             <body>An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated. One purpose of InformationItems is to be able to define preliminary models, before having made detailed modeling decisions on types or structures. One other purpose of information items and information flows is to abstract complex models by a less precise but more general representation of the information exchanged betwen entities of a system.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_skW2ABTaEdqZu-3Jy1-uYg" name="sources_and_targets" constrainedElement="_3ADC7B74022D3D0CE6480229">
@@ -4956,7 +5075,7 @@ They have no inherent semantics and can be used for various purposes. Subclasses
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_skW2ARTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>(self.represented->select(p | p->oclIsKindOf(InformationItem))->forAll(p |&#xA;  p.informationFlow.source->forAll(q | self.informationFlow.source->include(q)) and&#xA;    p.informationFlow.target->forAll(q | self.informationFlow.target->include(q)))) and&#xA;      (self.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface) or&#xA;        oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component)))</body>
+              <body>(self.represented->select(p | p->oclIsKindOf(InformationItem))->forAll(p |&#xA;&#xA;  p.informationFlow.source->forAll(q | self.informationFlow.source->include(q)) and&#xA;&#xA;    p.informationFlow.target->forAll(q | self.informationFlow.target->include(q)))) and&#xA;&#xA;      (self.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface) or&#xA;&#xA;        oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component)))</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_skW2CRTaEdqZu-3Jy1-uYg" name="has_no" constrainedElement="_3ADC7B74022D3D0CE6480229">
@@ -4996,7 +5115,7 @@ They have no inherent semantics and can be used for various purposes. Subclasses
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_skf_8xTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>(self.source->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or&#xA;  oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or&#xA;  oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or&#xA;  oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or&#xA;  oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and&#xA;    (self.target->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or&#xA;      oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or&#xA;      oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or&#xA;      oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or&#xA;      oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification)))</body>
+              <body>(self.source->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or&#xA;&#xA;  oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or&#xA;&#xA;  oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or&#xA;&#xA;  oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or&#xA;&#xA;  oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and&#xA;&#xA;    (self.target->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or&#xA;&#xA;      oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or&#xA;&#xA;      oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or&#xA;&#xA;      oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or&#xA;&#xA;      oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification)))</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_skf_-xTaEdqZu-3Jy1-uYg" name="must_conform" constrainedElement="_3ADC7B74022D3D0CE6480246">
@@ -5011,11 +5130,12 @@ They have no inherent semantics and can be used for various purposes. Subclasses
           <ownedRule xmi:type="uml:Constraint" xmi:id="_skgABBTaEdqZu-3Jy1-uYg" name="convey_classifiers" constrainedElement="_3ADC7B74022D3D0CE6480246">
             <ownedComment xmi:type="uml:Comment" xmi:id="_skgAABTaEdqZu-3Jy1-uYg" annotatedElement="_skgABBTaEdqZu-3Jy1-uYg">
               <body>An information flow can only convey classifiers that are allowed to represent an information item.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_skgABRTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>self.conveyed.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface)&#xA;  or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))</body>
+              <body>self.conveyed.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface)&#xA;&#xA;  or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3DD3DD1A0288" general="_3ADC7B74022D3CAAEC1902BE"/>
@@ -5282,6 +5402,7 @@ define a collating sequence between operands and subexpressions).
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D430B689101A4" name="stringValue" isQuery="true" redefinedOperation="_3ADC7B74022D4300DDFE009C" bodyCondition="_slZXxRTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_slZXwRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D430B689101A4">
               <body>The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_slZXxRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D430B689101A4">
@@ -5435,7 +5556,9 @@ define a collating sequence between operands and subexpressions).
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E3126A90208" name="ParameterableElement" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sljI3xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E3126A90208">
             <body>A ParameterableElement can be referenced by a TemplateParameter when defining a formal template parameter for a template. A ParameterableElement can be referenced by a TemplateParameterSubstitution when used as an actual parameter in a binding of a template.
+
 ParameterableElement is an abstract metaclass.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E3746AB03BD" general="_3ADC7B74022D3CAAEC0D0176"/>
@@ -5493,7 +5616,7 @@ ParameterableElement is an abstract metaclass.
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sohkShTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>(isAttribute(self) and (templateParameterSubstitution->notEmpty())&#xA;  implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))</body>
+              <body>(isAttribute(self) and (templateParameterSubstitution->notEmpty())&#xA;&#xA;  implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E33F5F100C8" general="_3ADC7B74022D3E3126A90208"/>
@@ -5501,6 +5624,7 @@ ParameterableElement is an abstract metaclass.
           <ownedOperation xmi:type="uml:Operation" xmi:id="_aNBzYGdaEdqCCpdUvbQY5w" name="isCompatibleWith" isQuery="true" redefinedOperation="_3ADC7B74022D4300AEC9029F" bodyCondition="_aNBzZGdaEdqCCpdUvbQY5w">
             <ownedComment xmi:type="uml:Comment" xmi:id="_aNBzYWdaEdqCCpdUvbQY5w" annotatedElement="_aNBzYGdaEdqCCpdUvbQY5w">
               <body>The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_aNBzZGdaEdqCCpdUvbQY5w" name="spec" constrainedElement="_aNBzYGdaEdqCCpdUvbQY5w">
@@ -5523,6 +5647,7 @@ ParameterableElement is an abstract metaclass.
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D430B6A2C0385" name="isCompatibleWith" isQuery="true" redefinedOperation="_3ADC7B74022D4300AEC9029F" bodyCondition="_sorVSRTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sorVRBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D430B6A2C0385">
               <body>The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sorVSRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D430B6A2C0385">
@@ -5710,7 +5835,9 @@ ParameterableElement is an abstract metaclass.
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E4900540335" name="ConnectableElement" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_so-QRBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E4900540335">
             <body>ConnectableElement is the connectable element of a ConnectableElementTemplateParameter.
+
 The ConnectableElements attached as role to each ConnectorEnd owned by a Connector must be roles of the classifier that owned the Connector, or they must be ports of such roles. 
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E4900700187" general="_3ADC7B74022D3E3126A90208"/>
@@ -5969,7 +6096,7 @@ The ConnectableElements attached as role to each ConnectorEnd owned by a Connect
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sJ-nHhTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xA;  implies self.qualifiedName->isEmpty()</body>
+              <body>(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())&#xA;&#xA;  implies self.qualifiedName->isEmpty()</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sKIYFxTaEdqZu-3Jy1-uYg" name="has_qualified_name" constrainedElement="_3ADC7B74022D3CAAECB901B0">
@@ -6082,7 +6209,9 @@ The ConnectableElements attached as role to each ConnectorEnd owned by a Connect
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAAF87D0107" name="OpaqueExpression">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sK3-8hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAF87D0107">
             <body>An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
+
 One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_7a71wDdiEdqq1tCaRkgBQQ" name="language_body_size" constrainedElement="_3ADC7B74022D3CAAF87D0107">
@@ -6106,6 +6235,7 @@ One predefined language for specifying expressions is OCL. Natural language or p
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D41AF3484006A" name="language" isOrdered="true" aggregation="composite">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sXih-RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41AF3484006A">
               <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
+
 </body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010B103C3"/>
@@ -6360,6 +6490,7 @@ One predefined language for specifying expressions is OCL. Natural language or p
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAAED67023C" name="Constraint">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sLnl5hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAED67023C">
             <body>Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.
+
 Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to that element. Constraint contains an optional name, although they are commonly unnamed.</body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sLnl7xTaEdqZu-3Jy1-uYg" name="boolean_value" constrainedElement="_3ADC7B74022D3CAAED67023C">
@@ -6698,7 +6829,9 @@ Constraint is a condition (a Boolean expression) that restricts the extension of
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAAFD3A006B" name="TypedElement" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sMqHoBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAFD3A006B">
             <body>A typed element is an element that has a type that serves as a constraint on the range of values the element can represent.
+
 Typed element is an abstract metaclass.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E1BF7D20048" general="_3ADC7B74022D3CAAECB901B0"/>
@@ -6713,8 +6846,11 @@ Typed element is an abstract metaclass.
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAAECE80199" name="Classifier" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sMqHpRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAECE80199">
             <body>A classifier is a namespace whose members can include features. Classifier is an abstract metaclass.
+
 A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers. A classifier can specify a generalization hierarchy by referencing its general classifiers.
+
 A classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sMz4qhTaEdqZu-3Jy1-uYg" name="generalization_hierarchies" constrainedElement="_3ADC7B74022D3CAAECE80199">
@@ -6741,6 +6877,7 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3CAB025C02CD" name="isAbstract">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sNQkkBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB025C02CD">
               <body>If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
+
 </body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
@@ -7066,7 +7203,9 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAAECEF0149" name="Generalization">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sNZupBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAECEF0149">
             <body>A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
+
 A generalization can be designated as being a member of a particular generalization set.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3CAB01D20012" general="_3ADC7B74022D3CAAEC1902BE"/>
@@ -7096,7 +7235,9 @@ A generalization can be designated as being a member of a particular generalizat
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAAFD470326" name="BehavioralFeature" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sNjfhBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAFD470326">
             <body>A behavioral feature specifies that an instance of a classifier will respond to a designated request by invoking a behavior.
+
 BehavioralFeature is an abstract metaclass specializing Feature and Namespace. Kinds of behavioral aspects are modeled by subclasses of BehavioralFeature.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3CAB09740397" general="_3ADC7B74022D3CAAFD220337"/>
@@ -7187,14 +7328,23 @@ By specializing multiplicity element, it supports a multiplicity that specifies 
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB11A7010A" name="InstanceSpecification">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sNtQlBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB11A7010A">
             <body>An instance specification specifies existence of an entity in a modeled system and completely or partially describes the entity.
+
 The description may include:
 
+
+
 - Classification of the entity by one or more classifiers of which the entity is an instance. If the only classifier specified is abstract, then the instance specification only partially describes the entity.
+
 - The kind of instance, based on its classifier or classifiers -- for example, an instance specification whose classifier is a class describes an object of that class, while an instance specification whose classifier is an association describes a link of that association.
+
 - Specification of values of structural features of the entity. Not all structural features of all classifiers of the instance specification need be represented by slots, in which case the instance specification is a partial description.
+
 - Specification of how to compute, derive or construct the instance (optional).
 
+
+
 InstanceSpecification is a concrete class.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sN2acxTaEdqZu-3Jy1-uYg" name="defining_feature" constrainedElement="_3ADC7B74022D3CAB11A7010A">
@@ -7268,7 +7418,9 @@ InstanceSpecification is a concrete class.
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB1D7E0162" name="Package">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sN2ahhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB1D7E0162">
             <body>A package is a namespace for its members, and may contain other packages. Only packageable elements can be owned members of a package. By virtue of being a namespace, a package can import either individual members of other packages, or all the members of other packages.
+
 In addition a package can be merged with other packages.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sOALdRTaEdqZu-3Jy1-uYg" name="elements_public_or_private" constrainedElement="_3ADC7B74022D3CAB1D7E0162">
@@ -7466,8 +7618,11 @@ In addition a package can be merged with other packages.
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB1D790101" name="Property">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sOTGcBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB1D790101">
             <body>A property is a structural feature.
+
 A property related to a classifier by ownedAttribute represents an attribute, and it may also represent an association end. It relates an instance of the class to a value or collection of values of the type of the attribute.
+
 A property related to an Association by memberEnd or its specializations represents an end of the association. The type of property is the type of the end of the association.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sOc3YxTaEdqZu-3Jy1-uYg" name="multiplicity_of_composite" constrainedElement="_3ADC7B74022D3CAB1D790101">
@@ -7494,7 +7649,7 @@ A property related to an Association by memberEnd or its specializations represe
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sOc3dhTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>if (redefinedProperty->notEmpty()) then&#xA;  (redefinitionContext->notEmpty() and&#xA;      redefinedProperty->forAll(rp|&#xA;        ((redefinitionContext->collect(fc|&#xA;          fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))</body>
+              <body>if (redefinedProperty->notEmpty()) then&#xA;&#xA;  (redefinitionContext->notEmpty() and&#xA;&#xA;      redefinedProperty->forAll(rp|&#xA;&#xA;        ((redefinitionContext->collect(fc|&#xA;&#xA;          fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sOc3fhTaEdqZu-3Jy1-uYg" name="subsetting_rules" constrainedElement="_3ADC7B74022D3CAB1D790101">
@@ -7608,6 +7763,7 @@ A property related to an Association by memberEnd or its specializations represe
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3CAB56E2011B" name="datatype" type="_3ADC7B74022D3CAB1D9C03C8" subsettedProperty="_3ADC7B74022D3CAAF0B00232 _3ADC7B74022D3CAB047902F3 _3ADC7B74022D3CAB21AF036E" association="_3ADC7B74022D3CAB56E102C8">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sU3BehTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB56E2011B">
               <body>The DataType that owns this Property.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sVALUxTaEdqZu-3Jy1-uYg" value="1"/>
@@ -7736,7 +7892,9 @@ A property related to an Association by memberEnd or its specializations represe
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB1D710164" name="Operation">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sPCtShTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB1D710164">
             <body>An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
+
 One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sPCtUxTaEdqZu-3Jy1-uYg" name="at_most_one_return" constrainedElement="_3ADC7B74022D3CAB1D710164">
@@ -7877,6 +8035,7 @@ One predefined language for specifying expressions is OCL. Natural language or p
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D4300D859009C" name="isUnique" isQuery="true" bodyCondition="_sPMeTBTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sPMeSBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300D859009C">
               <body>If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sPMeTBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300D859009C _3ADC7B74022D3E04B1BD0137">
@@ -7892,6 +8051,7 @@ One predefined language for specifying expressions is OCL. Natural language or p
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D4300D86401A5" name="lower" isQuery="true" bodyCondition="_sPMeVxTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sPMeURTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300D86401A5">
               <body>If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sPMeVxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300D86401A5 _3ADC7B74022D3E04B1CF009D">
@@ -7907,6 +8067,7 @@ One predefined language for specifying expressions is OCL. Natural language or p
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D4300D86A03D8" name="upper" isQuery="true" bodyCondition="_sPMeYhTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sPMeXBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300D86A03D8">
               <body>If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sPMeYhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300D86A03D8 _3ADC7B74022D3E04B1C20171">
@@ -7971,7 +8132,9 @@ One predefined language for specifying expressions is OCL. Natural language or p
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB1D9C03C8" name="DataType">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sPpKMxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB1D9C03C8">
             <body>A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.
+
 A typical use of data types would be to represent programming language primitive types or CORBA basic types. For example, integer and string types are often treated as data types.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3CBC61120274" general="_3ADC7B74022D3CAAECE80199"/>
@@ -7993,7 +8156,9 @@ A typical use of data types would be to represent programming language primitive
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB1DC0026C" name="Enumeration">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sPpKOBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB1DC0026C">
             <body>Enumeration is a kind of data type, whose instances may be any of a number of user-defined enumeration literals.
+
 It is possible to extend the set of applicable enumeration literals in other packages or profiles.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3CAB576C02FA" general="_3ADC7B74022D3CAB1D9C03C8"/>
@@ -8027,6 +8192,8 @@ It is possible to extend the set of applicable enumeration literals in other pac
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAB1DD70016" name="Association">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sPyUIBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB1DD70016">
             <body>An association specifies a semantic relationship that can occur between typed instances. It has at least two ends represented by properties, each of which is connected to the type of the end. More than one end of an association may have the same type.
+
+
 
 An end property of an association that is owned by an end class or that is a navigable owned end of the association indicates that the association is navigable from the opposite ends, otherwise the association is not navigable from the opposite ends.</body>
           </ownedComment>
@@ -8123,9 +8290,15 @@ An end property of an association that is owned by an end class or that is a nav
           <ownedComment xmi:type="uml:Comment" xmi:id="_sP8FNxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAECC502DA">
             <body>A namespace is a named element that can own other named elements. Each named element may be owned by at most one namespace. A namespace provides a means for identifying named elements by name. Named elements can be identified by name in a namespace either by being directly owned by the namespace or by being introduced into the namespace by other means e.g. importing or inheriting. Namespace is an abstract metaclass.
 
+
+
 A namespace can own constraints. The constraint does not necessarily apply to the namespace itself, but may also apply to elements in the namespace.
 
+
+
 A namespace has the ability to import either individual members or all members of a package, thereby making it possible to refer to those named elements without qualification in the importing namespace. In the case of conflicts, it is necessary to use qualified names or aliases to disambiguate the referenced elements.
+
+
 
 </body>
           </ownedComment>
@@ -8368,7 +8541,10 @@ A namespace has the ability to import either individual members or all members o
           <ownedComment xmi:type="uml:Comment" xmi:id="_sQiiLxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D623A8601AB">
             <body>A package merge is a directed relationship between two packages, that indicates that the contents of the two packages are to be combined. It is very similar to Generalization in the sense that the source element conceptually adds the characteristics of the target element to its own characteristics resulting in an element that combines the characteristics of both. This mechanism should be used when elements defined in different packages have the same name and are intended to represent the same concept. Most often it is used to provide different definitions of a given concept for different purposes, starting from a common base definition. A given base concept is extended in increments, with each increment defined in a separate merged package. By selecting which increments to merge, it is possible to obtain a custom definition of a concept for a specific end. Package merge is particularly useful in meta-modeling and is extensively used in the definition of the UML metamodel.
 
+
+
 Conceptually, a package merge can be viewed as an operation that takes the contents of two packages and produces a new package that combines the contents of the packages involved in the merge. In terms of model semantics, there is no difference between a model with explicit package merges, and a model in which all the merges have been performed.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3D623AB503A7" general="_3ADC7B74022D3CAAEC1902BE"/>
@@ -8546,9 +8722,13 @@ responsibility for the existence and storage of the composed objects (parts).
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAAF25600F8" name="VisibilityKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sKuN-BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAF25600F8">
             <body>VisibilityKind is an enumeration of the following literal values:
+
   - public
+
   - private
+
   - protected
+
   - package</body>
           </ownedComment>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D4300DE4E0167" name="bestVisibility" isQuery="true" precondition="_sKuOARTaEdqZu-3Jy1-uYg" bodyCondition="_sKuOAxTaEdqZu-3Jy1-uYg">
@@ -8872,7 +9052,9 @@ responsibility for the existence and storage of the composed objects (parts).
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3342A195014D" name="Interface">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sYb50RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3342A195014D">
             <body>An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
+
 Since interfaces are declarations, they are not instantiable. Instead, an interface specification is implemented by an instance of an instantiable classifier, which means that the instantiable classifier presents a public facade that conforms to the interface specification. Note that a given classifier may implement more than one interface and that an interface may be implemented by a number of different classifiers.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sYb52hTaEdqZu-3Jy1-uYg" name="visibility" constrainedElement="_3ADC7B74022D3342A195014D">
@@ -9005,6 +9187,7 @@ Since interfaces are declarations, they are not instantiable. Instead, an interf
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D33E8FEF701E0" name="Usage">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sZBvtRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D33E8FEF701E0">
             <body>A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. In the metamodel, a Usage is a Dependency in which the client requires the presence of the supplier.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D33E8FF070082" general="_3ADC7B74022D327A646F00E6"/>
@@ -9068,8 +9251,11 @@ Since interfaces are declarations, they are not instantiable. Instead, an interf
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CC0E3C1013D" name="Classifier" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sZLguRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CC0E3C1013D">
             <body>A classifier is a namespace whose members can include features. Classifier is an abstract metaclass.
+
 A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers. A classifier can specify a generalization hierarchy by referencing its general classifiers.
+
 A classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E1D453C0393" general="_3ADC7B74022D3CC0E4E5029C"/>
@@ -9215,8 +9401,11 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D7655C4007B" name="Classifier" isAbstract="true">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sZ7HoBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D7655C4007B">
             <body>A classifier is a namespace whose members can include features. Classifier is an abstract metaclass.
+
 A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers. A classifier can specify a generalization hierarchy by referencing its general classifiers.
+
 A classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sZ7HqBTaEdqZu-3Jy1-uYg" name="maps_to_generalization_set" constrainedElement="_3ADC7B74022D3D7655C4007B">
@@ -9239,6 +9428,8 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D765705003F" name="Generalization">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sZ7HrRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D765705003F">
             <body>A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
+
+
 
 </body>
           </ownedComment>
@@ -9298,6 +9489,7 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CC0DAE103AD" name="Property">
           <ownedComment xmi:type="uml:Comment" xmi:id="_saXzkRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CC0DAE103AD">
             <body>Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property's type.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D41B0D86E03CC" general="_3ADC7B74022D3CAB08ED000D"/>
@@ -9534,9 +9726,14 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D33F0EC2002BC" name="CallConcurrencyKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="_rz7ekBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D33F0EC2002BC">
             <body>CallConcurrencyKind is an enumeration with the following literals:
+
  sequential No concurrency management mechanism is associated with the operation and, therefore, concurrency conflicts may occur. Instances that invoke a behavioral feature need to coordinate so that only one invocation to a target on any behavioral feature occurs at once.
+
  guarded Multiple invocations of a behavioral feature may occur simultaneously to one instance, but only one is allowed to commence. The others are blocked until the performance of the first behavioral feature is complete. It is the responsibility of the system designer to ensure that deadlocks do not occur due to simultaneous blocks.
+
  concurrent Multiple invocations of a behavioral feature may occur simultaneously to one instance and all of them may proceed concurrently.
+
+
 
 </body>
           </ownedComment>
@@ -9629,12 +9826,20 @@ A classifier is a redefinable element, meaning that it is possible to redefine n
           <ownedComment xmi:type="uml:Comment" xmi:id="_r0-AZRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B9A6F4F0008">
             <body>Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.
 
+
+
 A classifier behavior is always a definition of behavior and not an illustration. It describes the sequence of state changes an instance of a classifier may undergo in the course of its lifetime. Its precise semantics depends on the kind of classifier. For example, the classifier behavior of a collaboration represents emergent behavior of all the parts, whereas the classifier behavior of a class is just the behavior of instances of the class separated from the behaviors of any of its parts.
+
 When a behavior is associated as the method of a behavioral feature, it defines the implementation of that feature; i.e., the computation that generates the effects of the behavioral feature.
+
+
 
 As a classifier, a behavior can be specialized. Instantiating a behavior is referred to as &quot;invoking&quot; the behavior, an instantiated behavior is also called a behavior &quot;execution.&quot; A behavior may be invoked directly or its invocation may be the result of invoking the behavioral feature that specifies this behavior. A behavior can also be instantiated as an object in virtue of it being a class. The specification of a behavior can take a number of forms, as described in the subclasses of Behavior. Behavior is an abstract metaclass factoring out the commonalities of these different specification mechanisms.
 
+
+
 When a behavior is invoked, its execution receives a set of input values that are used to affect the course of execution and as a result of its execution it produces a set of output values which are returned, as specified by its parameters. The observable effects of a behavior execution may include changes of values of various objects involved in the execution, the creation and destruction of objects, generation of communications between objects, as well as an explicit set of output values.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r0-AbhTaEdqZu-3Jy1-uYg" name="parameters_match" constrainedElement="_3ADC7B74022D3B9A6F4F0008">
@@ -9700,6 +9905,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3CFADFD20213" name="ownedParameter" type="_3ADC7B74022D3CAB0B3D0362" isOrdered="true" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAF0B00228" association="_3ADC7B74022D3CFADFD20211">
             <ownedComment xmi:type="uml:Comment" xmi:id="_r1tnSxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CFADFD20213">
               <body>References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r1tnTxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -9760,7 +9966,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r1Q7WhTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>self.behavior.notEmpty() implies&#xA;  self.behavior.ownedParameters->select(p | p.direction&lt;>#return)->isEmpty()</body>
+              <body>self.behavior.notEmpty() implies&#xA;&#xA;  self.behavior.ownedParameters->select(p | p.direction&lt;>#return)->isEmpty()</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r1Q7YhTaEdqZu-3Jy1-uYg" name="one_return_result_parameter" constrainedElement="_3ADC7B74022D3CEB52F70346">
@@ -9769,7 +9975,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r1Q7YxTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>self.behavior.notEmpty() implies&#xA;  self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1</body>
+              <body>self.behavior.notEmpty() implies&#xA;&#xA;  self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1</body>
             </specification>
           </ownedRule>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3D06C90B02AF" name="result" type="_3ADC7B74022D3CAB0B3D0362" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3D06C90B0043">
@@ -9840,7 +10046,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r1asYhTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>self.ownedParameters->&#xA;  select(p | p.direction=#out or p.direction=#inout or p.direction=#return)->size() >= 1</body>
+              <body>self.ownedParameters->&#xA;&#xA;  select(p | p.direction=#out or p.direction=#inout or p.direction=#return)->size() >= 1</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_r1asahTaEdqZu-3Jy1-uYg" name="types_of_parameters" constrainedElement="_3ADC7B74022D411FC13F033A">
@@ -9849,7 +10055,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r1asaxTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>def: hasAllDataTypeAttributes(d : DataType) : Boolean =&#xA;  d.ownedAttribute->forAll(a |&#xA;    a.type.oclIsTypeOf(DataType) and&#xA;      hasAllDataTypeAttributes(a.type))&#xA;self.ownedParameters->forAll(p | p.type.notEmpty() and&#xA;  p.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p))</body>
+              <body>def: hasAllDataTypeAttributes(d : DataType) : Boolean =&#xA;&#xA;  d.ownedAttribute->forAll(a |&#xA;&#xA;    a.type.oclIsTypeOf(DataType) and&#xA;&#xA;      hasAllDataTypeAttributes(a.type))&#xA;&#xA;self.ownedParameters->forAll(p | p.type.notEmpty() and&#xA;&#xA;  p.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p))</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D411FC15C013D" general="_3ADC7B74022D410D8B4000F6"/>
@@ -10025,7 +10231,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_y_SvQXIzEdqziYxiZo0YtA">
               <language>OCL</language>
-              <body>if (constrainedElement->size() =2)&#xA;  then (firstEvent->size() = 2) else (firstEvent->size() = 0)</body>
+              <body>if (constrainedElement->size() =2)&#xA;&#xA;  then (firstEvent->size() = 2) else (firstEvent->size() = 0)</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3DE4B6A7001D" general="_3ADC7B74022D3DE4B5F002CD"/>
@@ -10141,7 +10347,7 @@ When a behavior is invoked, its execution receives a set of input values that ar
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_ceaRYXI1EdqziYxiZo0YtA">
               <language>OCL</language>
-              <body>if (event->size() = 2)&#xA;  then (firstEvent->size() = 2) else (firstEvent->size() = 0)</body>
+              <body>if (event->size() = 2)&#xA;&#xA;  then (firstEvent->size() = 2) else (firstEvent->size() = 0)</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_E5i1sHIxEdqziYxiZo0YtA" general="_WKlVIHIwEdqziYxiZo0YtA"/>
@@ -10229,7 +10435,10 @@ When a behavior is invoked, its execution receives a set of input values that ar
           <ownedComment xmi:type="uml:Comment" xmi:id="_sahkihTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0251CD020F">
             <body>A component is a subtype of Class which provides for a Component having attributes and operations, and being able to participate in Associations and Generalizations. A Component may form the abstraction for a set of realizingClassifiers that realize its behavior. In addition, because a Class itself is a subtype of an EncapsulatedClassifier, a Component may optionally have an internal structure and own a set of Ports that formalize its interaction points.
 
+
+
 A component has a number of provided and required Interfaces, that form the basis for wiring components together, either using Dependencies, or by using Connectors. A provided Interface is one that is either implemented directly by the component or one of its realizingClassifiers, or it is the type of a provided Port of the Component. A required interface is designated by a Usage Dependency from the Component or one of its realizingClassifiers, or it is the type of a required Port.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_T33SMEfLEdq0rbStTpEubg" general="_3ADC7B74022D3CAAECC502DA"/>
@@ -10256,7 +10465,10 @@ A component has a number of provided and required Interfaces, that form the basi
           <ownedComment xmi:type="uml:Comment" xmi:id="_saqueBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0251F50022">
             <body>A component is a subtype of Class which provides for a Component having attributes and operations, and being able to participate in Associations and Generalizations. A Component may form the abstraction for a set of realizingClassifiers that realize its behavior. In addition, because a Class itself is a subtype of an EncapsulatedClassifier, a Component may optionally have an internal structure and own a set of Ports that formalize its interaction points.
 
+
+
 A component has a number of provided and required Interfaces, that form the basis for wiring components together, either using Dependencies, or by using Connectors. A provided Interface is one that is either implemented directly by the component or one of its realizingClassifiers, or it is the type of a provided Port of the Component. A required interface is designated by a Usage Dependency from the Component or one of its realizingClassifiers, or it is the type of a required Port.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E02522B02DC" general="_3ADC7B74022D3D5EC6DD001C"/>
@@ -10325,7 +10537,7 @@ A component has a number of provided and required Interfaces, that form the basi
             <ownedRule xmi:type="uml:Constraint" xmi:id="_YjOdoDZ-Edqq1tCaRkgBQQ" name="spec" constrainedElement="_xc4UQDZ9Edqq1tCaRkgBQQ">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_YjOdoTZ-Edqq1tCaRkgBQQ">
                 <language>OCL</language>
-                <body>result = let usedInterfaces = UsedInterfaces(self) and&#xA;  let realizingClassifierUsedInterfaces = UsedInterfaces(self.realizingClassifier) and&#xA;  let typesOfUsedPorts = self.ownedPort.required in&#xA;    ((usedInterfaces->union(realizingClassifierUsedInterfaces))->&#xA;      union(typesOfUsedPorts))->asSet()</body>
+                <body>result = let usedInterfaces = UsedInterfaces(self) and&#xA;&#xA;  let realizingClassifierUsedInterfaces = UsedInterfaces(self.realizingClassifier) and&#xA;&#xA;  let typesOfUsedPorts = self.ownedPort.required in&#xA;&#xA;    ((usedInterfaces->union(realizingClassifierUsedInterfaces))->&#xA;&#xA;      union(typesOfUsedPorts))->asSet()</body>
               </specification>
             </ownedRule>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_4GmaQDZ9Edqq1tCaRkgBQQ" type="_3ADC7B74022D3342A195014D" direction="return">
@@ -10337,7 +10549,7 @@ A component has a number of provided and required Interfaces, that form the basi
             <ownedRule xmi:type="uml:Constraint" xmi:id="_-L2r0DZ-Edqq1tCaRkgBQQ" name="spec" constrainedElement="_2cFjwDZ-Edqq1tCaRkgBQQ">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_-L2r0TZ-Edqq1tCaRkgBQQ">
                 <language>OCL</language>
-                <body>result = let implementedInterfaces = self.implementation->collect(impl|impl.contract) and&#xA;  let realizedInterfaces = RealizedInterfaces(self) and&#xA;  let realizingClassifierInterfaces = RealizedInterfaces(self.realizingClassifier) and&#xA;  let typesOfRequiredPorts = self.ownedPort.provided in&#xA;    (((implementedInterfaces->union(realizedInterfaces)->union(realizingClassifierInterfaces))->&#xA;      union(typesOfRequiredPorts))->asSet()</body>
+                <body>result = let implementedInterfaces = self.implementation->collect(impl|impl.contract) and&#xA;&#xA;  let realizedInterfaces = RealizedInterfaces(self) and&#xA;&#xA;  let realizingClassifierInterfaces = RealizedInterfaces(self.realizingClassifier) and&#xA;&#xA;  let typesOfRequiredPorts = self.ownedPort.provided in&#xA;&#xA;    (((implementedInterfaces->union(realizedInterfaces)->union(realizingClassifierInterfaces))->&#xA;&#xA;      union(typesOfRequiredPorts))->asSet()</body>
               </specification>
             </ownedRule>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_5L7OIDZ-Edqq1tCaRkgBQQ" type="_3ADC7B74022D3342A195014D" direction="return">
@@ -10487,7 +10699,10 @@ A component has a number of provided and required Interfaces, that form the basi
           <ownedComment xmi:type="uml:Comment" xmi:id="_rvAiUxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B8851380231">
             <body>A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations.
 
+
+
 Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_rvAiXBTaEdqZu-3Jy1-uYg" name="client_elements" constrainedElement="_3ADC7B74022D3B8851380231">
@@ -10528,6 +10743,7 @@ Associated dependencies map features of the collaboration type to features in th
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3B885138027F" name="roleBinding" type="_3ADC7B74022D327A646F00E6" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3B885138027E">
             <ownedComment xmi:type="uml:Comment" xmi:id="_rvTdQhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B885138027F">
               <body>A mapping between features of the collaboration type and features of the classifier or operation. This mapping indicates which connectable element of the classifier or operation plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rvTdRhTaEdqZu-3Jy1-uYg" value="*"/>
@@ -10538,7 +10754,10 @@ Associated dependencies map features of the collaboration type to features in th
           <ownedComment xmi:type="uml:Comment" xmi:id="_rvAicxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D337A47290078">
             <body>A collaboration is represented as a kind of classifier and defines a set of cooperating entities to be played by instances (its roles), as well as a set of connectors that define communication paths between the participating instances. The cooperating entities are the properties of the collaboration.
 
+
+
 A collaboration specifies a view (or projection) of a set of cooperating classifiers. It describes the required links between instances that play the roles of the collaboration, as well as the features required of the classifiers that specify the participating instances. Several collaborations may describe different projections of the same set of classifiers.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3CCB577200C8" general="_3ADC7B74022D3CC1A6A70282"/>
@@ -10633,7 +10852,10 @@ A collaboration specifies a view (or projection) of a set of cooperating classif
           <ownedComment xmi:type="uml:Comment" xmi:id="_rw8cERTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3BAFE2B3012C">
             <body>Ports represent interaction points between a classifier and its environment. The interfaces associated with a port specify the nature of the interactions that may occur over a port. The required interfaces of a port characterize the requests which may be made from the classifier to its environment through this port. The provided interfaces of a port characterize requests to the classifier that its environment may make through this port.
 
+
+
 A port has the ability to specify that any requests arriving at this port are handled by the behavior of the instance of the owning classifier, rather than being forwarded to any contained instances, if any.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_rxGNCBTaEdqZu-3Jy1-uYg" name="required_interfaces" constrainedElement="_3ADC7B74022D3BAFE2B3012C">
@@ -10704,6 +10926,7 @@ A port has the ability to specify that any requests arriving at this port are ha
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3D03D15C008B" name="provided" type="_3ADC7B74022D3342A195014D" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3D03D15B01DE">
             <ownedComment xmi:type="uml:Comment" xmi:id="_rxi48xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D03D15C008B">
               <body>References the interfaces specifying the set of operations and receptions which the classifier offers to its environment, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived from the interfaces realized by the type of the port or by the type of the port, if the port was typed by an interface.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rxi49xTaEdqZu-3Jy1-uYg" value="*"/>
@@ -10861,6 +11084,7 @@ A port has the ability to specify that any requests arriving at this port are ha
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3E22160503E3" name="definingEnd" type="_3ADC7B74022D3B99825E03B4" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3E2216050202">
             <ownedComment xmi:type="uml:Comment" xmi:id="_ryvL4BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E22160503E3">
               <body>A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ry4VsxTaEdqZu-3Jy1-uYg" value="1"/>
@@ -10869,6 +11093,7 @@ A port has the ability to specify that any requests arriving at this port are ha
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3E2216A30141" name="role" type="_3ADC7B74022D3CC16F5A00A4" association="_3ADC7B74022D3E2216A2021C">
             <ownedComment xmi:type="uml:Comment" xmi:id="_ry4VwRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E2216A30141">
               <body>The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ry4VxRTaEdqZu-3Jy1-uYg" value="1"/>
@@ -10917,6 +11142,7 @@ A port has the ability to specify that any requests arriving at this port are ha
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3E2214450172" name="redefinedConnector" type="_3ADC7B74022D3B6D7514038E" subsettedProperty="_3ADC7B74022D3E026DFA035B" association="_3ADC7B74022D3E22144300E2">
             <ownedComment xmi:type="uml:Comment" xmi:id="_ryvLzBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E2214450172">
               <body>A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector.
+
 The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ryvL0BTaEdqZu-3Jy1-uYg" value="*"/>
@@ -11109,7 +11335,7 @@ The types of the connector ends of the redefining connector may specialize the t
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sbaVaxTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>self.deployment->forAll (d | d.location.deployedElements->forAll (de |&#xA;  de.oclIsKindOf(Component)))</body>
+              <body>self.deployment->forAll (d | d.location.deployedElements->forAll (de |&#xA;&#xA;  de.oclIsKindOf(Component)))</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sbkGVRTaEdqZu-3Jy1-uYg" name="deployment_target" constrainedElement="_3ADC7B74022D3E0237DD0301">
@@ -11348,7 +11574,9 @@ The types of the connector ends of the redefining connector may specialize the t
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3E0451AB01AC" name="nestedArtifact" type="_3ADC7B74022D3E0235DA036F" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAF0B00228" association="_3ADC7B74022D3E0451A20268">
             <ownedComment xmi:type="uml:Comment" xmi:id="_scmoOhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0451AB01AC">
               <body>The Artifacts that are defined (nested) within the Artifact.
+
 The association is a specialization of the ownedMember association from Namespace to NamedElement.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_scwZIxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -11371,7 +11599,9 @@ The association is a specialization of the ownedMember association from Namespac
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3E0AF84C029D" name="ownedAttribute" type="_3ADC7B74022D3CAB1D790101" isOrdered="true" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAB21AF0364 _3ADC7B74022D3CAAF0B00228" association="_3ADC7B74022D3E0AF84A034E">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sc6KMxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0AF84C029D">
               <body>The attributes or association ends defined for the Artifact.
+
 The association is a specialization of the ownedMember association.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sc6KNxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -11562,6 +11792,7 @@ The association is a specialization of the ownedMember association.
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D33DBAE5E005A" name="Message">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sEUD9BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D33DBAE5E005A">
             <body>A Message is a NamedElement that defines a particular communication between Lifelines of an Interaction. A communication can be e.g. raising a signal, invoking an Operation, creating or destroying an Instance. The Message specifies not only the kind of communication given by the dispatching ExecutionSpecification, but also the sender and the receiver. A Message associates normally two OccurrenceSpecifications - one sending OccurrenceSpecification and one receiving OccurrenceSpecification.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sEUD_RTaEdqZu-3Jy1-uYg" name="sending_receiving_message_event" constrainedElement="_3ADC7B74022D33DBAE5E005A">
@@ -11741,8 +11972,11 @@ v) attributes of the class owning the Interaction
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3C6F946503C8" name="OccurrenceSpecification">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sEwv6hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C6F946503C8">
             <body>An OccurrenceSpecification is the basic semantic unit of Interactions. The sequences of occurrences specified by them are the meanings of Interactions.
+
 OccurrenceSpecifications are ordered along a Lifeline.
+
 The namespace of an OccurrenceSpecification is the Interaction in which it is contained.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3CC3010700E0" general="_3ADC7B74022D38A3F9F00280"/>
@@ -11756,6 +11990,7 @@ The namespace of an OccurrenceSpecification is the Interaction in which it is co
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3C472195038C" name="toAfter" type="_3ADC7B74022D3C47215102B2" association="_3ADC7B74022D3C472194024A">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sF9CwxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C472195038C">
               <body>References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sF9CxxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -11764,6 +11999,7 @@ The namespace of an OccurrenceSpecification is the Interaction in which it is co
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3C4721FE0328" name="toBefore" type="_3ADC7B74022D3C47215102B2" association="_3ADC7B74022D3C4721FE0102">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sF9CyhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C4721FE0328">
               <body>References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sGGzsxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -11963,9 +12199,13 @@ The namespace of an OccurrenceSpecification is the Interaction in which it is co
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3D05BBDA038F" name="MessageKind">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sEwv9BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D05BBDA038F">
             <body>MessageKind is an enumeration of the following values:
+
 - complete = sendEvent and receiveEvent are present
+
 - lost = sendEvent present and receiveEvent absent
+
 - found = sendEvent absent and receiveEvent present
+
 - unknown = sendEvent and receiveEvent absent (should not appear)</body>
           </ownedComment>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3ADC7B74022D3D05BBFF0003" name="complete">
@@ -11992,11 +12232,17 @@ The namespace of an OccurrenceSpecification is the Interaction in which it is co
         <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3D621AD300F4" name="MessageSort">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sE6g8BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D621AD300F4">
             <body>MessageSort is an enumeration of the following values:
+
 - synchCall = the message was generated by a synchronous call to an operation
+
 - asynchCall = the message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous= false
+
 - asynchSignal = the message was generated by an asynchronous send action
+
 - createMessage = the message designating the creation of another lifeline object
+
 - deleteMessage = the message designating the termination of anther lifeline
+
 - reply = the message is a reply message to an operation call</body>
           </ownedComment>
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3ADC7B74022D3D621AFC00CB" name="synchCall">
@@ -12007,7 +12253,9 @@ The namespace of an OccurrenceSpecification is the Interaction in which it is co
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3ADC7B74022D3D621B2A0370" name="asynchCall">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sE6g-BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D621B2A0370">
               <body>The message was generated by an asynchronous call to an operation; i.e., a CallAction with isSynchronous
+
 = false.
+
 </body>
             </ownedComment>
           </ownedLiteral>
@@ -12207,7 +12455,10 @@ The namespace of an OccurrenceSpecification is the Interaction in which it is co
           <ownedComment xmi:type="uml:Comment" xmi:id="_sHTGhhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D38A3FDEF012C">
             <body>An InteractionUse refers to an Interaction. The InteractionUse is a shorthand for copying the contents of the referred Interaction where the InteractionUse is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
 
+
+
 It is common to want to share portions of an interaction between several other interactions. An InteractionUse allows multiple interactions to reference an interaction that represents a common portion of their specification.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sHc3gxTaEdqZu-3Jy1-uYg" name="gates_match" constrainedElement="_3ADC7B74022D38A3FDEF012C">
@@ -12273,9 +12524,14 @@ It is common to want to share portions of an interaction between several other i
           <ownedComment xmi:type="uml:Comment" xmi:id="_sHc3oxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3A641F9802FA">
             <body>PartDecomposition is a description of the internal interactions of one Lifeline relative to an Interaction.
 
+
+
 A Lifeline has a class associated as the type of the ConnectableElement that the Lifeline represents. That class may have an internal structure and the PartDecomposition is an Interaction that describes the behavior of that internal structure relative to the Interaction where the decomposition is referenced.
 
+
+
 A PartDecomposition is a specialization of InteractionUse. It associates with the ConnectableElement that it decomposes.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sHmBcxTaEdqZu-3Jy1-uYg" name="parts_of_internal_structures" constrainedElement="_3ADC7B74022D3A641F9802FA">
@@ -12291,9 +12547,14 @@ A PartDecomposition is a specialization of InteractionUse. It associates with th
             <ownedComment xmi:type="uml:Comment" xmi:id="_sHmBeBTaEdqZu-3Jy1-uYg" annotatedElement="_sHmBfBTaEdqZu-3Jy1-uYg">
               <body>Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Within X there is a sequence of constructs along L (such constructs are CombinedFragments, InteractionUse and (plain) OccurrenceSpecifications). Then a corresponding sequence of constructs must appear within D, matched one-to-one in the same order.
 
+
+
 i) CombinedFragment covering L are matched with an extra-global CombinedFragment in D
+
 ii) An InteractionUse covering L are matched with a global (i.e. covering all Lifelines) InteractionUse in D.
+
 iii) A plain OccurrenceSpecification on L is considered an actualGate that must be matched by a formalGate of D
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sHmBfRTaEdqZu-3Jy1-uYg">
@@ -12304,7 +12565,9 @@ iii) A plain OccurrenceSpecification on L is considered an actualGate that must 
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sHmBhRTaEdqZu-3Jy1-uYg" name="commutativity_of_decomposition" constrainedElement="_3ADC7B74022D3A641F9802FA">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sHmBgRTaEdqZu-3Jy1-uYg" annotatedElement="_sHmBhRTaEdqZu-3Jy1-uYg">
               <body>Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Assume also that there is within X an
+
 InteractionUse (say) U that covers L. According to the constraint above U will have a counterpart CU within D. Within the Interaction referenced by U, L should also be decomposed, and the decomposition should reference CU. (This rule is called commutativity of decomposition)
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sHmBhhTaEdqZu-3Jy1-uYg">
@@ -12318,10 +12581,17 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <ownedComment xmi:type="uml:Comment" xmi:id="_sHmBihTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3A4CAC51006F">
             <body>An InteractionOperand is contained in a CombinedFragment. An InteractionOperand represents one operand of the expression given by the enclosing CombinedFragment. 
 
+
+
 An InteractionOperand is an InteractionFragment with an optional guard expression. An InteractionOperand may be
+
 guarded by a InteractionConstraint. Only InteractionOperands with a guard that evaluates to true at this point in the interaction will be considered for the production of the traces for the enclosing CombinedFragment.
 
+
+
 InteractionOperand contains an ordered set of InteractionFragments.
+
+
 
 In Sequence Diagrams these InteractionFragments are ordered according to their geometrical position vertically. The geometrical position of the InteractionFragment is given by the topmost vertical coordinate of its contained OccurrenceSpecifications or symbols.</body>
           </ownedComment>
@@ -12528,6 +12798,7 @@ In Sequence Diagrams these InteractionFragments are ordered according to their g
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3B9AA23A0296" name="formalGate" type="_3ADC7B74022D38A3FD2A006E" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAF0B00228" association="_3ADC7B74022D3B9AA23A005B">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sI8FUxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B9AA23A0296">
               <body>Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sI8FVxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -12538,9 +12809,14 @@ In Sequence Diagrams these InteractionFragments are ordered according to their g
           <ownedComment xmi:type="uml:Comment" xmi:id="_sIVoWBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE35C7C0043">
             <body>A lifeline represents an individual participant in the Interaction. While Parts and StructuralFeatures may have multiplicity greater than 1, Lifelines represent only one interacting entity. Lifeline is a specialization of NamedElement.
 
+
+
 If the referenced ConnectableElement is multivalued (i.e. has a multiplicity > 1), then the Lifeline may have an expression (the 'selector') that specifies which particular part is represented by this Lifeline.
 
+
+
 If the selector is omitted this means that an arbitrary representative of the multivalued ConnectableElement is chosen.
+
 </body>
           </ownedComment>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3B97C62D00A9" name="decomposedAs" type="_3ADC7B74022D3A641F9802FA" association="_3ADC7B74022D3B97C62C0288">
@@ -12779,11 +13055,17 @@ If the selector is omitted this means that an arbitrary representative of the mu
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D327D9E410186" name="StateMachine">
           <ownedComment xmi:type="uml:Comment" xmi:id="_seZX5BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D327D9E410186">
             <body>A state machine owns one or more regions, which in turn own vertices and transitions.
+
 The behaviored classifier context owning a state machine defines which signal and call triggers are defined for the state machine, and which attributes and operations are available in activities of the state machine. Signal triggers and call triggers for the state machine are defined according to the receptions and operations of this classifier.
+
+
 
 As a kind of behavior, a state machine may have an associated behavioral feature (specification) and be the method of this behavioral feature. In this case the state machine specifies the behavior of this behavioral feature. The parameters of the state machine in this case match the parameters of the behavioral feature and provide the means for accessing (within the state machine) the behavioral feature parameters.
 
+
+
 A state machine without a context classifier may use triggers that are independent of receptions or operations of a classifier, i.e. either just signal triggers or call triggers based upon operation template parameters of the (parameterized) statemachine.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_seZX7RTaEdqZu-3Jy1-uYg" name="classifier_context" constrainedElement="_3ADC7B74022D327D9E410186">
@@ -12869,6 +13151,7 @@ A state machine without a context classifier may use triggers that are independe
           <ownedOperation xmi:type="uml:Operation" xmi:id="_3ADC7B74022D4300F7D601A5" name="ancestor" isQuery="true" bodyCondition="_seih-RTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:type="uml:Comment" xmi:id="_seih8xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300F7D601A5">
               <body>The query ancestor(s1, s2) checks whether s2 is an ancestor state of state s1. context StateMachine::ancestor (s1 : State, s2 : State) : Boolean
+
 </body>
             </ownedComment>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_seih-RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300F7D601A5">
@@ -12918,32 +13201,59 @@ A state machine without a context classifier may use triggers that are independe
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3287F81C0136" name="State">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sesS4BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3287F81C0136">
             <body>A state models a situation during which some (usually implicit) invariant condition holds. The invariant may represent a static situation such as an object waiting for some external event to occur. However, it can also model dynamic conditions such as the process of performing some behavior (i.e., the model element under consideration enters the state when the behavior commences and leaves it as soon as the behavior is completed). The following kinds of states are distinguished:
+
 o Simple state,
+
 o composite state, and
+
 o submachine state.
+
 A composite state is either a simple composite state (with just one region) or an orthogonal state (with more than one region).
 
+
+
 Simple state
+
 A simple state is a state that does not have substates, i.e. it has no regions and it has no submachine state machine.
 
+
+
 Composite state
+
 A composite state either contains one region or is decomposed into two or more orthogonal regions. Each region has a set of mutually exclusive disjoint subvertices and a set of transitions. A given state may only be decomposed in one of these two ways. 
+
 Any state enclosed within a region of a composite state is called a substate of that composite state. It is called a direct substate when it is not contained by any other state; otherwise it is referred to as a indirect substate. 
+
 Each region of a composite state may have an initial pseudostate and a final state. A transition to the enclosing state represents a transition to the initial pseudostate in each region. A newly-created object takes it's topmost default transitions, originating from the topmost initial pseudostates of each region.
+
+
 
 A transition to a final state represents the completion of behavior in the enclosing region. Completion of behavior in all orthogonal regions represents completion of behavior by the enclosing state and triggers a completion event on the enclosing state. Completion of the topmost regions of an object corresponds to its termination.
 
+
+
 An entry pseudostate is used to join an external transition terminating on that entry point to an internal transition emanating from that entry point. An exit pseudostate is used to join an internal transition terminating on that exit point to an external transition emanating from that exit point. The main purpose of such entry and exit points is to execute the state entry and exit actions respectively in between the actions that are associated with the joined transitions.
 
+
+
 Semantic variation point (default entry rule)
+
 If a transition terminates on an enclosing state and the enclosed regions do not have an initial pseudostate, the interpretation of this situation is a semantic variation point. In some interpretations, this is considered an ill-formed model. That is, in those cases the initial pseudostate is mandatory. 
+
 An alternative interpretation allows this situation and it means that, when such a transition is taken, the state machine stays in the composite state, without entering any of the regions or their substates.
 
+
+
 Submachine state
+
 A submachine state specifies the insertion of the specification of a submachine state machine. The state machine that contains the submachine state is called the containing state machine. The same state machine may be a submachine more than once in the context of a single containing state machine.
 
+
+
 A submachine state is semantically equivalent to a composite state. The regions of the submachine state machine are the regions of the composite state. The entry, exit and behavior actions, and internal transitions, are defined as part of the state. Submachine state is a decomposition mechanism that allows factoring of common behaviors and their reuse.
+
 Transitions in the containing state machine can have entry/exit points of the inserted state machine as targets/sources.
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_se2D0xTaEdqZu-3Jy1-uYg" name="submachine_states" constrainedElement="_3ADC7B74022D3287F81C0136">
@@ -12961,7 +13271,7 @@ Transitions in the containing state machine can have entry/exit points of the in
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_se2D3RTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>self.isSubmachineState implies (self.connection->forAll (cp |&#xA;cp.entry->forAll (p | p.statemachine = self.submachine) and&#xA;cp.exit->forAll (p | p.statemachine = self.submachine)))</body>
+              <body>self.isSubmachineState implies (self.connection->forAll (cp |&#xA;&#xA;cp.entry->forAll (p | p.statemachine = self.submachine) and&#xA;&#xA;cp.exit->forAll (p | p.statemachine = self.submachine)))</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_se2D5RTaEdqZu-3Jy1-uYg" name="submachine_or_regions" constrainedElement="_3ADC7B74022D3287F81C0136">
@@ -13068,6 +13378,7 @@ Transitions in the containing state machine can have entry/exit points of the in
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3DFF235A01E8" name="stateInvariant" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3DFF235701F7">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sia8QRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFF235A01E8">
               <body>Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sia8RRTaEdqZu-3Jy1-uYg" value="1"/>
@@ -13076,6 +13387,7 @@ Transitions in the containing state machine can have entry/exit points of the in
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D410DA7800057" name="entry" type="_3ADC7B74022D3B9A6F4F0008" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D410DA77F0006">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sia8VRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D410DA7800057">
               <body>An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sia8WRTaEdqZu-3Jy1-uYg" value="1"/>
@@ -13105,6 +13417,7 @@ Transitions in the containing state machine can have entry/exit points of the in
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D4162AE0F02CD" name="deferrableTrigger" type="_3ADC7B74022D3B9D229602A5" aggregation="composite" association="_3ADC7B74022D4162AE0E0361">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sikGUxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4162AE0F02CD">
               <body>A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sit3MxTaEdqZu-3Jy1-uYg" value="*"/>
@@ -13282,6 +13595,7 @@ Transitions in the containing state machine can have entry/exit points of the in
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sflqxRTaEdqZu-3Jy1-uYg" name="signatures_compatible" constrainedElement="_3ADC7B74022D3288D70A0212">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sflqwRTaEdqZu-3Jy1-uYg" annotatedElement="_sflqxRTaEdqZu-3Jy1-uYg">
               <body>In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
+
 </body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sflqxhTaEdqZu-3Jy1-uYg">
@@ -13372,7 +13686,7 @@ Transitions in the containing state machine can have entry/exit points of the in
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sflq2BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300F9C70261">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_sflq2RTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
-                <body>result = (redefinee.oclIsKindOf(Transition) and&#xA;  let trans: Transition = redefinee.oclAsType(Transition) in&#xA;    (source() = trans.source() and trigger() = tran.trigger())</body>
+                <body>result = (redefinee.oclIsKindOf(Transition) and&#xA;&#xA;  let trans: Transition = redefinee.oclAsType(Transition) in&#xA;&#xA;    (source() = trans.source() and trigger() = tran.trigger())</body>
               </specification>
             </ownedRule>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_tZ6x8DZ5Edqq1tCaRkgBQQ" constrainedElement="_3ADC7B74022D4300F9C70261">
@@ -13520,7 +13834,7 @@ Transitions in the containing state machine can have entry/exit points of the in
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_fhQwgTavEdqq1tCaRkgBQQ">
               <language>OCL</language>
-              <body>(self.kind = #initial) implies (self.outgoing.guard->isEmpty()&#xA;  and self.outgoing.trigger->isEmpty())</body>
+              <body>(self.kind = #initial) implies (self.outgoing.guard->isEmpty()&#xA;&#xA;  and self.outgoing.trigger->isEmpty())</body>
             </specification>
           </ownedRule>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D328A4901001E" general="_3ADC7B74022D328A484303D4"/>
@@ -13841,6 +14155,7 @@ Transitions in the containing state machine can have entry/exit points of the in
           <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3ADC7B74022D3B94B91D03C1" name="fork">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sgebkxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B94B91D03C1">
               <body>Fork vertices serve to split an incoming transition into two or more transitions terminating on orthogonal target vertices
+
 (i.e. vertices in different regions of a composite state). The segments outgoing from a fork vertex must not have guards or triggers.</body>
             </ownedComment>
           </ownedLiteral>
@@ -14061,9 +14376,14 @@ Transitions in the containing state machine can have entry/exit points of the in
           <ownedComment xmi:type="uml:Comment" xmi:id="_sjAyKhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3BCAE87800C1">
             <body>Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines.
 
+
+
 Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
 
+
+
 A protocol state machine is owned by a classifier. The classifiers owning a general state machine and an associated specific state machine are generally also connected by a generalization or a realization link.
+
 </body>
           </ownedComment>
           <generalization xmi:type="uml:Generalization" xmi:id="_3ADC7B74022D3E1D396902DC" general="_3ADC7B74022D3CAAEC1902BE"/>
@@ -14111,7 +14431,10 @@ A protocol state machine is owned by a classifier. The classifiers owning a gene
           <ownedComment xmi:type="uml:Comment" xmi:id="_sjKjIRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B208BE80384">
             <body>A protocol transition (transition as specialized in the ProtocolStateMachines package) specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
 
+
+
 The protocol transition specifies that the associated (referred) operation can be called for an instance in the origin state under the initial condition (guard), and that at the end of the transition, the destination state will be reached under the final condition (post).
+
 </body>
           </ownedComment>
           <ownedRule xmi:type="uml:Constraint" xmi:id="_sjKjKhTaEdqZu-3Jy1-uYg" name="belongs_to_psm" constrainedElement="_3ADC7B74022D3B208BE80384">
@@ -14145,6 +14468,7 @@ The protocol transition specifies that the associated (referred) operation can b
           <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3CE2B1F701C6" name="postCondition" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAF5A9017E" association="_3ADC7B74022D3CE2B1F60356">
             <ownedComment xmi:type="uml:Comment" xmi:id="_sjnPIBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CE2B1F701C6">
               <body>Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
+
 </body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sjnPJBTaEdqZu-3Jy1-uYg" value="1"/>
@@ -14300,7 +14624,10 @@ The protocol transition specifies that the associated (referred) operation can b
         <ownedComment xmi:type="uml:Comment" xmi:id="_sdDUGRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D33656C0B017C">
           <body>An Actor models a type of role played by an entity that interacts with the subject (e.g., by exchanging signals and data), but which is external to the subject (i.e., in the sense that an instance of an actor is not a part of the instance of its corresponding subject). Actors may represent roles played by human users, external hardware, or other subjects. Note that an actor does not necessarily represent a specific physical entity but merely a particular facet (i.e., role) of some entity that is relevant to the specification of its associated use cases. Thus, a single physical instance may play the role of several different actors and, conversely, a given actor may be played by multiple different instances.
 
+
+
 Since an actor is external to the subject, it is typically defined in the same classifier or package that incorporates the subject classifier.
+
 </body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_sdDUIhTaEdqZu-3Jy1-uYg" name="associations" constrainedElement="_3ADC7B74022D33656C0B017C">
@@ -14327,14 +14654,21 @@ Since an actor is external to the subject, it is typically defined in the same c
         <ownedComment xmi:type="uml:Comment" xmi:id="_sdNFGRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D35FDD683021C">
           <body>This relationship specifies that the behavior of a use case may be extended by the behavior of another (usually supplementary) use case. The extension takes place at one or more specific extension points defined in the extended use case. Note, however, that the extended use case is defined independently of the extending use case and is meaningful independently of the extending use case. On the other hand, the extending use case typically defines behavior that may not necessarily be meaningful by itself. Instead, the extending use case defines a set of modular behavior increments that augment an execution of the extended use case under specific conditions.
 
+
+
 Note that the same extending use case can extend more than one use case. Furthermore, an extending use case may itself be extended.
 
+
+
 It is a kind of DirectedRelationship, such that the source is the extending use case and the destination is the extended use case. It is also a kind of NamedElement so that it can have a name in the context of its owning use case. The extend relationship itself is owned by the extending use case.
+
 </body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_sdNFIxTaEdqZu-3Jy1-uYg" name="extension_points" constrainedElement="_3ADC7B74022D35FDD683021C">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sdNFHxTaEdqZu-3Jy1-uYg" annotatedElement="_sdNFIxTaEdqZu-3Jy1-uYg">
             <body>The extension points referenced by the extend relationship must belong to the use case that is being extended.
+
+
 
 </body>
           </ownedComment>
@@ -14362,6 +14696,7 @@ It is a kind of DirectedRelationship, such that the source is the extending use 
         <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3C8C9F020006" name="condition" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3C8C9F00027A">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sdy7DBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C8C9F020006">
             <body>References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
+
 </body>
           </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sd8r8xTaEdqZu-3Jy1-uYg" value="1"/>
@@ -14370,6 +14705,7 @@ It is a kind of DirectedRelationship, such that the source is the extending use 
         <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3D289638024F" name="extensionLocation" type="_3ADC7B74022D3C8C9E4B0284" isOrdered="true" association="_3ADC7B74022D3D289635029B">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sd8r-RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D289638024F">
             <body>An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
+
 </body>
           </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sd8r_RTaEdqZu-3Jy1-uYg" value="*"/>
@@ -14379,6 +14715,8 @@ It is a kind of DirectedRelationship, such that the source is the extending use 
       <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D35FDD6900154" name="Include">
         <ownedComment xmi:type="uml:Comment" xmi:id="_sdNFKBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D35FDD6900154">
           <body>Note that the included use case is not optional, and is always required for the  including use case to execute correctly.
+
+
 
 </body>
         </ownedComment>
@@ -14394,6 +14732,7 @@ It is a kind of DirectedRelationship, such that the source is the extending use 
         <ownedAttribute xmi:type="uml:Property" xmi:id="_3ADC7B74022D3C1F05E000EB" name="addition" type="_3ADC7B74022D3C1F02440042" subsettedProperty="_3ADC7B74022D3CAAEF470200" association="_3ADC7B74022D3C1F05DF0252">
           <ownedComment xmi:type="uml:Comment" xmi:id="_sdpxERTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C1F05E000EB">
             <body>References the use case that is to be included.
+
 </body>
           </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sdpxFRTaEdqZu-3Jy1-uYg" value="1"/>
@@ -14403,13 +14742,21 @@ It is a kind of DirectedRelationship, such that the source is the extending use 
       <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3C1F02440042" name="UseCase">
         <ownedComment xmi:type="uml:Comment" xmi:id="_sdNFLhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C1F02440042">
           <body>A UseCase is a kind of behaviored classifier that represents a declaration of an offered behavior. Each use case specifies some behavior, possibly including variants, that the subject can perform in collaboration with one or more actors. Use cases define the offered behavior of the subject without reference to its internal structure. These behaviors, involving
+
 interactions between the actor and the subject, may result in changes to the state of the subject and communications with its environment. A use case can include possible variations of its basic behavior, including exceptional behavior and error handling.
+
+
 
 The subject of a use case could be a physical system or any other element that may have behavior, such as a component, subsystem or class. Each use case specifies a unit of useful functionality that the subject provides to its users, i.e., a specific way of interacting with the subject. This functionality, which is initiated by an actor, must always be completed for the use case to complete. It is deemed complete if, after its execution, the subject will be in a state in which no further inputs or actions are expected and the use case can be initiated again or in an error state.
 
+
+
 Use cases can be used both for specification of the (external) requirements on a subject and for the specification of the functionality offered by a subject. Moreover, the use cases also state the requirements the specified subject poses on its environment by defining how they should interact with the subject so that it will be able to perform its services.
 
+
+
 The behavior of a use case can be described by a specification that is some kind of Behavior (through its ownedBehavior relationship), such as interactions, activities, and state machines, or by pre-conditions and post-conditions as well as by natural language text where appropriate. It may also be described indirectly through a Collaboration that uses the use case and its actors as the classifiers that type its parts. Which of these techniques to use depends on the nature of the use case behavior as well as on the intended reader. These descriptions can be combined.
+
 </body>
         </ownedComment>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_sdWPCBTaEdqZu-3Jy1-uYg" name="must_have_name" constrainedElement="_3ADC7B74022D3C1F02440042">
@@ -14589,115 +14936,115 @@ The behavior of a use case can be described by a specification that is some kind
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EAttribute xmi:id="_oLTHcMRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6DCF011E"/>
-  <Ecore:EAttribute xmi:id="_oLTHccRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D41AF6E0300D3"/>
-  <Ecore:EReference xmi:id="_oLTHcsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D716DC100E9"/>
-  <Ecore:EReference xmi:id="_oLTHc8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D716DF5031E"/>
-  <Ecore:EReference xmi:id="_oLTHdMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DF3D8E90137"/>
-  <Ecore:EReference xmi:id="_oLZOEMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C7C242F00F0"/>
-  <Ecore:EReference xmi:id="_oLZOEcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C7C242F001E"/>
-  <Ecore:EReference xmi:id="_oLZOEsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9A2B20315"/>
-  <Ecore:EReference xmi:id="_oLZOE8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F2"/>
-  <Ecore:EReference xmi:id="_oLZOFMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F4"/>
-  <Ecore:EReference xmi:id="_oLZOFcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41B9A2B2031F"/>
-  <Ecore:EAttribute xmi:id="_oLfUsMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D4063FB930031"/>
-  <Ecore:EReference xmi:id="_oLfUscRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BDACD90276"/>
-  <Ecore:EReference xmi:id="_oLfUssRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BDACD9026C"/>
-  <Ecore:EReference xmi:id="_oLfUs8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E441FC901D0"/>
-  <Ecore:EReference xmi:id="_oLfUtMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A008A"/>
-  <Ecore:EReference xmi:id="_oLfUtcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A0094"/>
-  <Ecore:EReference xmi:id="_oLlbUMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BDADE90317"/>
-  <Ecore:EReference xmi:id="_oLlbUcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BDADE90322"/>
-  <Ecore:EReference xmi:id="_oLlbUsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B7"/>
-  <Ecore:EReference xmi:id="_oLlbU8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D410D0A3403E6"/>
-  <Ecore:EReference xmi:id="_oLlbVMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D410D0A350008"/>
-  <Ecore:EReference xmi:id="_oLlbVcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B5"/>
-  <Ecore:EAttribute xmi:id="_oLrh8MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_k3pScEfeEdq0rbStTpEubg"/>
-  <Ecore:EAttribute xmi:id="_oLrh8cRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3D2C32860188"/>
-  <Ecore:EReference xmi:id="_oLrh8sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D4127B15000BD"/>
-  <Ecore:EReference xmi:id="_oLrh88RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60187"/>
-  <Ecore:EReference xmi:id="_oLxokMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60189"/>
-  <Ecore:EAttribute xmi:id="_oLxokcRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC07D800D7"/>
-  <Ecore:EReference xmi:id="_oLxoksRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEF70165"/>
-  <Ecore:EReference xmi:id="_oLxok8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAEF470200"/>
-  <Ecore:EAttribute xmi:id="_oLxolMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF00E0351" isID="true"/>
-  <Ecore:EAttribute xmi:id="_oLxolcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF02203B4"/>
-  <Ecore:EAttribute xmi:id="_oLxolsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0300219"/>
-  <Ecore:EReference xmi:id="_oLxol8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00232"/>
-  <Ecore:EAttribute xmi:id="_oL3vMMRUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF34430265"/>
-  <Ecore:EAttribute xmi:id="_oL3vMcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D41AF3484006A"/>
-  <Ecore:EAttribute xmi:id="_oL3vMsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CB5DEA0029E"/>
-  <Ecore:EAttribute xmi:id="_oL3vM8RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
-  <Ecore:EAttribute xmi:id="_oL3vNMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
-  <Ecore:EAttribute xmi:id="_oL3vNcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
-  <Ecore:EOperation xmi:id="_oL3vNsRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_oL3vN8RUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper"/>
-  <Ecore:EReference xmi:id="_oL910MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
-  <Ecore:EReference xmi:id="_oL910cRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
-  <Ecore:EReference xmi:id="_oL910sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
-  <Ecore:EReference xmi:id="_oL9108RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E026F600201"/>
-  <Ecore:EOperation xmi:id="_oL911MRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300CD890196" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_oL911cRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300CDD6036B" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_oL911sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAB047902F3"/>
-  <Ecore:EReference xmi:id="_oL9118RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E026DFA035B"/>
-  <Ecore:EReference xmi:id="_oMD8cMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E026E2C0064"/>
-  <Ecore:EAttribute xmi:id="_oMD8ccRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3DF4FA43024F"/>
-  <Ecore:EAttribute xmi:id="_oMD8csRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFFCC4902FB"/>
-  <Ecore:EReference xmi:id="_oMD8c8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0265FD0094"/>
-  <Ecore:EReference xmi:id="_oMD8dMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E02674A0088"/>
-  <Ecore:EReference xmi:id="_oMD8dcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E02674A00A6"/>
-  <Ecore:EReference xmi:id="_oMD8dsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E027BEB00C8"/>
-  <Ecore:EAttribute xmi:id="_oMKDEMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
-  <Ecore:EAttribute xmi:id="_oMKDEcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
-  <Ecore:EReference xmi:id="_oMKDEsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
-  <Ecore:EOperation xmi:id="_oMKDE8RUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite"/>
-  <Ecore:EAttribute xmi:id="_oMKDFMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
-  <Ecore:EAttribute xmi:id="_oMKDFcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
-  <Ecore:EAttribute xmi:id="_oMKDFsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>
-  <Ecore:EAttribute xmi:id="_oMKDF8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E04B1C20171"/>
-  <Ecore:EReference xmi:id="_oMQJsMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0282460399"/>
-  <Ecore:EOperation xmi:id="_oMQJscRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300D86401A5" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_oMQJssRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300D86A03D8" operationName="upperBound"/>
-  <Ecore:EReference xmi:id="_oMQJs8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D51535A0358"/>
-  <Ecore:EOperation xmi:id="_oMQJtMRUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300CCCA006D" operationName="getEndTypes"/>
-  <Ecore:EReference xmi:id="_oMWQUMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00228"/>
-  <Ecore:EReference xmi:id="_oMWQUcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CAAF1D0036C"/>
-  <Ecore:EReference xmi:id="_oMWQUsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3DDD06680179"/>
-  <Ecore:EOperation xmi:id="_oMWQU8RUEdq3a_CVKGVcKw" base_Operation="_3ADC7B74022D4300D74101E4" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_oMWQVMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D514F6E0106"/>
-  <Ecore:EReference xmi:id="_oMWQVcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0265FD01CA"/>
-  <Ecore:EAttribute xmi:id="_oMWQVsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3E5921F9017E"/>
-  <Ecore:EReference xmi:id="_oMcW8MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BD9B210224"/>
-  <Ecore:EReference xmi:id="_oMidkMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BD9B210226"/>
-  <Ecore:EReference xmi:id="_oMidkcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D40F9B6900288"/>
-  <Ecore:EReference xmi:id="_oMidksRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D06C90B02AF"/>
-  <Ecore:EAttribute xmi:id="_oMidk8RUEdq3a_CVKGVcKw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6EF40300"/>
-  <Ecore:EAttribute xmi:id="_oMidlMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D41AF6F25017A"/>
-  <Ecore:EReference xmi:id="_oMokMMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0257890057"/>
-  <Ecore:EReference xmi:id="_oMokMcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0257B9029B"/>
-  <Ecore:EOperation xmi:id="_oMokMsRUEdq3a_CVKGVcKw" base_Operation="_xc4UQDZ9Edqq1tCaRkgBQQ" operationName="getRequireds"/>
-  <Ecore:EOperation xmi:id="_oMokM8RUEdq3a_CVKGVcKw" base_Operation="_2cFjwDZ-Edqq1tCaRkgBQQ" operationName="getProvideds"/>
-  <Ecore:EAttribute xmi:id="_oMokNMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3E0259E30107"/>
-  <Ecore:EReference xmi:id="_oMuq0MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3CCB579E00F4"/>
-  <Ecore:EReference xmi:id="_oMuq0cRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D03D15C008B"/>
-  <Ecore:EReference xmi:id="_oMuq0sRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D02623F03E2"/>
-  <Ecore:EReference xmi:id="_oMuq08RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E22160503E3"/>
-  <Ecore:EReference xmi:id="_oMuq1MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E0B98C901E2"/>
-  <Ecore:EReference xmi:id="_oM0xcMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E2212D701CF"/>
-  <Ecore:EReference xmi:id="_oM0xccRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D41BDAA5A0141"/>
-  <Ecore:EAttribute xmi:id="_oM0xcsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3E023C610263"/>
-  <Ecore:EAttribute xmi:id="_oM0xc8RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3E023C6802FA"/>
-  <Ecore:EReference xmi:id="_oM0xdMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3E045F15011E"/>
-  <Ecore:EOperation xmi:id="_oM0xdcRUEdq3a_CVKGVcKw" base_Operation="_xZVGsEb0Edq0rbStTpEubg" operationName="getDeployedElements"/>
-  <Ecore:EAttribute xmi:id="_oM0xdsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="_3ADC7B74022D3E0330D40211"/>
-  <Ecore:EAttribute xmi:id="_oM64EMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D05BC66015F"/>
-  <Ecore:EReference xmi:id="_oM64EcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C63983E02AE"/>
-  <Ecore:EAttribute xmi:id="_oNBlwMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C612C28022F"/>
-  <Ecore:EAttribute xmi:id="_oNBlwcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C6136B401B9"/>
-  <Ecore:EAttribute xmi:id="_oNBlwsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C613764000E"/>
-  <Ecore:EAttribute xmi:id="_oNBlw8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3C678F5300CA"/>
-  <Ecore:EReference xmi:id="_oNBlxMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D73412C0329"/>
-  <Ecore:EReference xmi:id="_oNBlxcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D73416A0300"/>
-  <Ecore:EReference xmi:id="_oNHsYMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D733F2200E4"/>
-  <Ecore:EReference xmi:id="_oNHsYcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="_3ADC7B74022D3D07F16101E5"/>
+  <Ecore:EAttribute xmi:id="_Y5mRwMWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6DCF011E"/>
+  <Ecore:EAttribute xmi:id="_Y5mRwcWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D41AF6E0300D3"/>
+  <Ecore:EReference xmi:id="_Y5mRwsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D716DC100E9"/>
+  <Ecore:EReference xmi:id="_Y5mRw8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D716DF5031E"/>
+  <Ecore:EReference xmi:id="_Y5mRxMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DF3D8E90137"/>
+  <Ecore:EReference xmi:id="_Y5mRxcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C7C242F00F0"/>
+  <Ecore:EReference xmi:id="_Y5mRxsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C7C242F001E"/>
+  <Ecore:EReference xmi:id="_Y5mRx8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9A2B20315"/>
+  <Ecore:EReference xmi:id="_Y5vbsMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F2"/>
+  <Ecore:EReference xmi:id="_Y5vbscWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F4"/>
+  <Ecore:EReference xmi:id="_Y5vbssWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41B9A2B2031F"/>
+  <Ecore:EAttribute xmi:id="_Y5vbs8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D4063FB930031"/>
+  <Ecore:EReference xmi:id="_Y5vbtMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BDACD90276"/>
+  <Ecore:EReference xmi:id="_Y5vbtcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BDACD9026C"/>
+  <Ecore:EReference xmi:id="_Y5vbtsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E441FC901D0"/>
+  <Ecore:EReference xmi:id="_Y5vbt8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A008A"/>
+  <Ecore:EReference xmi:id="_Y5vbuMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A0094"/>
+  <Ecore:EReference xmi:id="_Y55MsMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BDADE90317"/>
+  <Ecore:EReference xmi:id="_Y55MscWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BDADE90322"/>
+  <Ecore:EReference xmi:id="_Y55MssWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B7"/>
+  <Ecore:EReference xmi:id="_Y55Ms8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D410D0A3403E6"/>
+  <Ecore:EReference xmi:id="_Y55MtMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D410D0A350008"/>
+  <Ecore:EReference xmi:id="_Y55MtcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B5"/>
+  <Ecore:EAttribute xmi:id="_Y55MtsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_k3pScEfeEdq0rbStTpEubg"/>
+  <Ecore:EAttribute xmi:id="_Y55Mt8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3D2C32860188"/>
+  <Ecore:EReference xmi:id="_Y55MuMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D4127B15000BD"/>
+  <Ecore:EReference xmi:id="_Y6C9sMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60187"/>
+  <Ecore:EReference xmi:id="_Y6C9scWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60189"/>
+  <Ecore:EAttribute xmi:id="_Y6C9ssWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC07D800D7"/>
+  <Ecore:EReference xmi:id="_Y6C9s8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAEEF70165"/>
+  <Ecore:EReference xmi:id="_Y6C9tMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAEF470200"/>
+  <Ecore:EAttribute xmi:id="_Y6C9tcWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF00E0351" isID="true"/>
+  <Ecore:EAttribute xmi:id="_Y6C9tsWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF02203B4"/>
+  <Ecore:EAttribute xmi:id="_Y6C9t8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAF0300219"/>
+  <Ecore:EReference xmi:id="_Y6C9uMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00232"/>
+  <Ecore:EAttribute xmi:id="_Y6C9ucWCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF34430265"/>
+  <Ecore:EAttribute xmi:id="_Y6C9usWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D41AF3484006A"/>
+  <Ecore:EAttribute xmi:id="_Y6C9u8WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CB5DEA0029E"/>
+  <Ecore:EAttribute xmi:id="_Y6C9vMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
+  <Ecore:EAttribute xmi:id="_Y6C9vcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
+  <Ecore:EAttribute xmi:id="_Y6MHoMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
+  <Ecore:EOperation xmi:id="_Y6MHocWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower"/>
+  <Ecore:EOperation xmi:id="_Y6MHosWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper"/>
+  <Ecore:EReference xmi:id="_Y6MHo8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
+  <Ecore:EReference xmi:id="_Y6MHpMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
+  <Ecore:EReference xmi:id="_Y6MHpcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
+  <Ecore:EReference xmi:id="_Y6MHpsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E026F600201"/>
+  <Ecore:EOperation xmi:id="_Y6MHp8WCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300CD890196" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_Y6MHqMWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300CDD6036B" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_Y6MHqcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAB047902F3"/>
+  <Ecore:EReference xmi:id="_Y6MHqsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E026DFA035B"/>
+  <Ecore:EReference xmi:id="_Y6MHq8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E026E2C0064"/>
+  <Ecore:EAttribute xmi:id="_Y6MHrMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3DF4FA43024F"/>
+  <Ecore:EAttribute xmi:id="_Y6MHrcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFFCC4902FB"/>
+  <Ecore:EReference xmi:id="_Y6MHrsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0265FD0094"/>
+  <Ecore:EReference xmi:id="_Y6V4oMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E02674A0088"/>
+  <Ecore:EReference xmi:id="_Y6V4ocWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E02674A00A6"/>
+  <Ecore:EReference xmi:id="_Y6V4osWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E027BEB00C8"/>
+  <Ecore:EAttribute xmi:id="_Y6V4o8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
+  <Ecore:EAttribute xmi:id="_Y6V4pMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
+  <Ecore:EReference xmi:id="_Y6V4pcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
+  <Ecore:EOperation xmi:id="_Y6V4psWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite"/>
+  <Ecore:EAttribute xmi:id="_Y6V4p8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
+  <Ecore:EAttribute xmi:id="_Y6V4qMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
+  <Ecore:EAttribute xmi:id="_Y6V4qcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>
+  <Ecore:EAttribute xmi:id="_Y6V4qsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E04B1C20171"/>
+  <Ecore:EReference xmi:id="_Y6V4q8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0282460399"/>
+  <Ecore:EOperation xmi:id="_Y6V4rMWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300D86401A5" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_Y6V4rcWCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300D86A03D8" operationName="upperBound"/>
+  <Ecore:EReference xmi:id="_Y6V4rsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D51535A0358"/>
+  <Ecore:EOperation xmi:id="_Y6V4r8WCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300CCCA006D" operationName="getEndTypes"/>
+  <Ecore:EReference xmi:id="_Y6fCkMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00228"/>
+  <Ecore:EReference xmi:id="_Y6fCkcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CAAF1D0036C"/>
+  <Ecore:EReference xmi:id="_Y6fCksWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3DDD06680179"/>
+  <Ecore:EOperation xmi:id="_Y6fCk8WCEdqI1bY5Lwi8Hg" base_Operation="_3ADC7B74022D4300D74101E4" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_Y6fClMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D514F6E0106"/>
+  <Ecore:EReference xmi:id="_Y6fClcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0265FD01CA"/>
+  <Ecore:EAttribute xmi:id="_Y6fClsWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3E5921F9017E"/>
+  <Ecore:EReference xmi:id="_Y6fCl8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BD9B210224"/>
+  <Ecore:EReference xmi:id="_Y6ozkMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BD9B210226"/>
+  <Ecore:EReference xmi:id="_Y6ozkcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D40F9B6900288"/>
+  <Ecore:EReference xmi:id="_Y6ozksWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D06C90B02AF"/>
+  <Ecore:EAttribute xmi:id="_Y6ozk8WCEdqI1bY5Lwi8Hg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6EF40300"/>
+  <Ecore:EAttribute xmi:id="_Y6ozlMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D41AF6F25017A"/>
+  <Ecore:EReference xmi:id="_Y6ozlcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0257890057"/>
+  <Ecore:EReference xmi:id="_Y6ozlsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0257B9029B"/>
+  <Ecore:EOperation xmi:id="_Y6ozl8WCEdqI1bY5Lwi8Hg" base_Operation="_xc4UQDZ9Edqq1tCaRkgBQQ" operationName="getRequireds"/>
+  <Ecore:EOperation xmi:id="_Y6ozmMWCEdqI1bY5Lwi8Hg" base_Operation="_2cFjwDZ-Edqq1tCaRkgBQQ" operationName="getProvideds"/>
+  <Ecore:EAttribute xmi:id="_Y6ykkMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3E0259E30107"/>
+  <Ecore:EReference xmi:id="_Y6ykkcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3CCB579E00F4"/>
+  <Ecore:EReference xmi:id="_Y6ykksWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D03D15C008B"/>
+  <Ecore:EReference xmi:id="_Y6ykk8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D02623F03E2"/>
+  <Ecore:EReference xmi:id="_Y6yklMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E22160503E3"/>
+  <Ecore:EReference xmi:id="_Y6yklcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E0B98C901E2"/>
+  <Ecore:EReference xmi:id="_Y6yklsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E2212D701CF"/>
+  <Ecore:EReference xmi:id="_Y6ykl8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D41BDAA5A0141"/>
+  <Ecore:EAttribute xmi:id="_Y6ykmMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3E023C610263"/>
+  <Ecore:EAttribute xmi:id="_Y6ykmcWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3E023C6802FA"/>
+  <Ecore:EReference xmi:id="_Y6ykmsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3E045F15011E"/>
+  <Ecore:EOperation xmi:id="_Y6ykm8WCEdqI1bY5Lwi8Hg" base_Operation="_xZVGsEb0Edq0rbStTpEubg" operationName="getDeployedElements"/>
+  <Ecore:EAttribute xmi:id="_Y6yknMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="_3ADC7B74022D3E0330D40211"/>
+  <Ecore:EAttribute xmi:id="_Y67ugMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D05BC66015F"/>
+  <Ecore:EReference xmi:id="_Y67ugcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C63983E02AE"/>
+  <Ecore:EAttribute xmi:id="_Y67ugsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C612C28022F"/>
+  <Ecore:EAttribute xmi:id="_Y67ug8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C6136B401B9"/>
+  <Ecore:EAttribute xmi:id="_Y67uhMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C613764000E"/>
+  <Ecore:EAttribute xmi:id="_Y67uhcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3C678F5300CA"/>
+  <Ecore:EReference xmi:id="_Y67uhsWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D73412C0329"/>
+  <Ecore:EReference xmi:id="_Y67uh8WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D73416A0300"/>
+  <Ecore:EReference xmi:id="_Y7FfgMWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D733F2200E4"/>
+  <Ecore:EReference xmi:id="_Y7FfgcWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="_3ADC7B74022D3D07F16101E5"/>
 </xmi:XMI>

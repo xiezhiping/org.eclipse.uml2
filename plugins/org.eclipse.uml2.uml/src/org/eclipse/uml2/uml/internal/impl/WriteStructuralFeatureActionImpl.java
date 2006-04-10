@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -50,7 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.WriteStructuralFeatureActionOper
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.WriteStructuralFeatureActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.WriteStructuralFeatureActionImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -60,6 +62,16 @@ import org.eclipse.uml2.uml.internal.operations.WriteStructuralFeatureActionOper
 public abstract class WriteStructuralFeatureActionImpl
 		extends StructuralFeatureActionImpl
 		implements WriteStructuralFeatureAction {
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin value = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,16 +97,21 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT,
-					new int[]{
-						UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT,
-						UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+						UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT,
+						INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -103,7 +120,6 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public InputPin getValue() {
-		InputPin value = (InputPin) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject) value;
 			value = (InputPin) eResolveProxy(oldValue);
@@ -135,7 +151,7 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetValue() {
-		return (InputPin) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
+		return value;
 	}
 
 	/**
@@ -145,15 +161,13 @@ public abstract class WriteStructuralFeatureActionImpl
 	 */
 	public NotificationChain basicSetValue(InputPin newValue,
 			NotificationChain msgs) {
-		Object oldValue = eVirtualSet(
-			UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE, newValue);
+		InputPin oldValue = value;
+		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
-				UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
-				oldValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldValue, newValue);
+				UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE, oldValue,
+				newValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -169,7 +183,6 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-		InputPin value = (InputPin) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -540,15 +553,13 @@ public abstract class WriteStructuralFeatureActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VISIBILITY :
@@ -558,12 +569,12 @@ public abstract class WriteStructuralFeatureActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_ELEMENT :
@@ -575,26 +586,20 @@ public abstract class WriteStructuralFeatureActionImpl
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT :
@@ -602,22 +607,32 @@ public abstract class WriteStructuralFeatureActionImpl
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE :
-				return eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE) != null;
+				return structuralFeature != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT :
-				return eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT) != null;
+				return object != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
-				return eVirtualGet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE) != null;
+				return value != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[]{
+		UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OBJECT,
+		UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

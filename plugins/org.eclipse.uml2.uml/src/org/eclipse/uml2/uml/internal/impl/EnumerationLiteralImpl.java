@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.12 2006/03/15 19:33:58 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -156,7 +154,6 @@ public class EnumerationLiteralImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -405,15 +402,13 @@ public class EnumerationLiteralImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ENUMERATION_LITERAL__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ENUMERATION_LITERAL__OWNER :
 				return isSetOwner();
 			case UMLPackage.ENUMERATION_LITERAL__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__NAME :
 				return isSetName();
 			case UMLPackage.ENUMERATION_LITERAL__VISIBILITY :
@@ -423,29 +418,26 @@ public class EnumerationLiteralImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ENUMERATION_LITERAL__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ENUMERATION_LITERAL__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ENUMERATION_LITERAL__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ENUMERATION_LITERAL__DEPLOYMENT :
-				EList deployment = (EList) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.ENUMERATION_LITERAL__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.ENUMERATION_LITERAL__CLASSIFIER :
-				EList classifier = (EList) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__CLASSIFIER);
-				return classifier != null && !classifier.isEmpty();
+				return classifiers != null && !classifiers.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__SLOT :
-				EList slot = (EList) eVirtualGet(UMLPackage.ENUMERATION_LITERAL__SLOT);
-				return slot != null && !slot.isEmpty();
+				return slots != null && !slots.isEmpty();
 			case UMLPackage.ENUMERATION_LITERAL__SPECIFICATION :
-				return eVirtualGet(UMLPackage.ENUMERATION_LITERAL__SPECIFICATION) != null;
+				return specification != null;
 			case UMLPackage.ENUMERATION_LITERAL__ENUMERATION :
 				return basicGetEnumeration() != null;
 		}

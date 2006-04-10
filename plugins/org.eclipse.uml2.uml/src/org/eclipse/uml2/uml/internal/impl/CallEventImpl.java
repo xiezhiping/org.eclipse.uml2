@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEventImpl.java,v 1.9 2006/02/21 16:12:17 khussey Exp $
+ * $Id: CallEventImpl.java,v 1.10 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -47,6 +45,16 @@ public class CallEventImpl
 		implements CallEvent {
 
 	/**
+	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Operation operation = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -70,12 +78,10 @@ public class CallEventImpl
 	 * @generated
 	 */
 	public Operation getOperation() {
-		Operation operation = (Operation) eVirtualGet(UMLPackage.CALL_EVENT__OPERATION);
 		if (operation != null && operation.eIsProxy()) {
 			InternalEObject oldOperation = (InternalEObject) operation;
 			operation = (Operation) eResolveProxy(oldOperation);
 			if (operation != oldOperation) {
-				eVirtualSet(UMLPackage.CALL_EVENT__OPERATION, operation);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CALL_EVENT__OPERATION, oldOperation,
@@ -91,7 +97,7 @@ public class CallEventImpl
 	 * @generated
 	 */
 	public Operation basicGetOperation() {
-		return (Operation) eVirtualGet(UMLPackage.CALL_EVENT__OPERATION);
+		return operation;
 	}
 
 	/**
@@ -100,15 +106,11 @@ public class CallEventImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-		Operation operation = newOperation;
-		Object oldOperation = eVirtualSet(UMLPackage.CALL_EVENT__OPERATION,
-			operation);
+		Operation oldOperation = operation;
+		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CALL_EVENT__OPERATION,
-				oldOperation == EVIRTUAL_NO_VALUE
-					? null
-					: oldOperation, operation));
+				UMLPackage.CALL_EVENT__OPERATION, oldOperation, operation));
 
 	}
 
@@ -248,15 +250,13 @@ public class CallEventImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CALL_EVENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CALL_EVENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CALL_EVENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CALL_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.CALL_EVENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CALL_EVENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CALL_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.CALL_EVENT__VISIBILITY :
@@ -266,18 +266,18 @@ public class CallEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CALL_EVENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CALL_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CALL_EVENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CALL_EVENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CALL_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.CALL_EVENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.CALL_EVENT__OPERATION :
-				return eVirtualGet(UMLPackage.CALL_EVENT__OPERATION) != null;
+				return operation != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

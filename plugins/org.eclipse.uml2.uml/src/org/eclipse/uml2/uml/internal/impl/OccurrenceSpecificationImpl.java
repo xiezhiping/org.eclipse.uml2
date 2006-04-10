@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,6 +58,36 @@ public class OccurrenceSpecificationImpl
 		implements OccurrenceSpecification {
 
 	/**
+	 * The cached value of the '{@link #getToBefores() <em>To Before</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToBefores()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList toBefores = null;
+
+	/**
+	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvent()
+	 * @generated
+	 * @ordered
+	 */
+	protected Event event = null;
+
+	/**
+	 * The cached value of the '{@link #getToAfters() <em>To After</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getToAfters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList toAfters = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,15 +111,13 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public EList getToBefores() {
-		EList toBefore = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE);
-		if (toBefore == null) {
-			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
-				toBefore = new EObjectWithInverseResolvingEList(
-					GeneralOrdering.class, this,
-					UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
-					UMLPackage.GENERAL_ORDERING__AFTER));
+		if (toBefores == null) {
+			toBefores = new EObjectWithInverseResolvingEList(
+				GeneralOrdering.class, this,
+				UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
+				UMLPackage.GENERAL_ORDERING__AFTER);
 		}
-		return toBefore;
+		return toBefores;
 	}
 
 	/**
@@ -124,12 +152,10 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public Event getEvent() {
-		Event event = (Event) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT);
 		if (event != null && event.eIsProxy()) {
 			InternalEObject oldEvent = (InternalEObject) event;
 			event = (Event) eResolveProxy(oldEvent);
 			if (event != oldEvent) {
-				eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT, event);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OCCURRENCE_SPECIFICATION__EVENT, oldEvent,
@@ -145,7 +171,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public Event basicGetEvent() {
-		return (Event) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT);
+		return event;
 	}
 
 	/**
@@ -154,15 +180,11 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setEvent(Event newEvent) {
-		Event event = newEvent;
-		Object oldEvent = eVirtualSet(
-			UMLPackage.OCCURRENCE_SPECIFICATION__EVENT, event);
+		Event oldEvent = event;
+		event = newEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OCCURRENCE_SPECIFICATION__EVENT,
-				oldEvent == EVIRTUAL_NO_VALUE
-					? null
-					: oldEvent, event));
+				UMLPackage.OCCURRENCE_SPECIFICATION__EVENT, oldEvent, event));
 
 	}
 
@@ -172,15 +194,13 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public EList getToAfters() {
-		EList toAfter = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER);
-		if (toAfter == null) {
-			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
-				toAfter = new EObjectWithInverseResolvingEList(
-					GeneralOrdering.class, this,
-					UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
-					UMLPackage.GENERAL_ORDERING__BEFORE));
+		if (toAfters == null) {
+			toAfters = new EObjectWithInverseResolvingEList(
+				GeneralOrdering.class, this,
+				UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
+				UMLPackage.GENERAL_ORDERING__BEFORE);
 		}
-		return toAfter;
+		return toAfters;
 	}
 
 	/**
@@ -215,15 +235,13 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public EList getCovereds() {
-		EList covered = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
-		if (covered == null) {
-			eVirtualSet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
-				covered = new EObjectWithInverseResolvingEList.ManyInverse(
-					Lifeline.class, this,
-					UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
-					UMLPackage.LIFELINE__COVERED_BY));
+		if (covereds == null) {
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse(
+				Lifeline.class, this,
+				UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
+				UMLPackage.LIFELINE__COVERED_BY);
 		}
-		return covered;
+		return covereds;
 	}
 
 	/**
@@ -258,8 +276,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		EList covered = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__COVERED);
-		return covered != null && !covered.isEmpty();
+		return covereds != null && !covereds.isEmpty();
 	}
 
 	/**
@@ -508,15 +525,13 @@ public class OccurrenceSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__VISIBILITY :
@@ -526,29 +541,26 @@ public class OccurrenceSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				return isSetCovereds();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				EList toBefore = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE);
-				return toBefore != null && !toBefore.isEmpty();
+				return toBefores != null && !toBefores.isEmpty();
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EVENT :
-				return eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__EVENT) != null;
+				return event != null;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
-				EList toAfter = (EList) eVirtualGet(UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER);
-				return toAfter != null && !toAfter.isEmpty();
+				return toAfters != null && !toAfters.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

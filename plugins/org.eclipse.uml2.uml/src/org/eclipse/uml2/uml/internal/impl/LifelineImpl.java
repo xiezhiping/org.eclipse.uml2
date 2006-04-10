@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.15 2006/03/15 19:34:15 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,10 +28,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.ConnectableElement;
@@ -56,7 +59,6 @@ import org.eclipse.uml2.uml.internal.operations.LifelineOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getSelector <em>Selector</em>}</li>
@@ -70,6 +72,46 @@ import org.eclipse.uml2.uml.internal.operations.LifelineOperations;
 public class LifelineImpl
 		extends NamedElementImpl
 		implements Lifeline {
+
+	/**
+	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepresents()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConnectableElement represents = null;
+
+	/**
+	 * The cached value of the '{@link #getSelector() <em>Selector</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelector()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification selector = null;
+
+	/**
+	 * The cached value of the '{@link #getDecomposedAs() <em>Decomposed As</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDecomposedAs()
+	 * @generated
+	 * @ordered
+	 */
+	protected PartDecomposition decomposedAs = null;
+
+	/**
+	 * The cached value of the '{@link #getCoveredBys() <em>Covered By</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoveredBys()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList coveredBys = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,16 +137,22 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.LIFELINE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.LIFELINE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.LIFELINE__OWNED_ELEMENT, new int[]{
-						UMLPackage.LIFELINE__OWNED_COMMENT,
-						UMLPackage.LIFELINE__NAME_EXPRESSION,
-						UMLPackage.LIFELINE__SELECTOR}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.LIFELINE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.LIFELINE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -113,12 +161,10 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public ConnectableElement getRepresents() {
-		ConnectableElement represents = (ConnectableElement) eVirtualGet(UMLPackage.LIFELINE__REPRESENTS);
 		if (represents != null && represents.eIsProxy()) {
 			InternalEObject oldRepresents = (InternalEObject) represents;
 			represents = (ConnectableElement) eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
-				eVirtualSet(UMLPackage.LIFELINE__REPRESENTS, represents);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.LIFELINE__REPRESENTS, oldRepresents,
@@ -134,7 +180,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public ConnectableElement basicGetRepresents() {
-		return (ConnectableElement) eVirtualGet(UMLPackage.LIFELINE__REPRESENTS);
+		return represents;
 	}
 
 	/**
@@ -143,15 +189,11 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setRepresents(ConnectableElement newRepresents) {
-		ConnectableElement represents = newRepresents;
-		Object oldRepresents = eVirtualSet(UMLPackage.LIFELINE__REPRESENTS,
-			represents);
+		ConnectableElement oldRepresents = represents;
+		represents = newRepresents;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LIFELINE__REPRESENTS,
-				oldRepresents == EVIRTUAL_NO_VALUE
-					? null
-					: oldRepresents, represents));
+				UMLPackage.LIFELINE__REPRESENTS, oldRepresents, represents));
 
 	}
 
@@ -223,7 +265,6 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public ValueSpecification getSelector() {
-		ValueSpecification selector = (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
 		if (selector != null && selector.eIsProxy()) {
 			InternalEObject oldSelector = (InternalEObject) selector;
 			selector = (ValueSpecification) eResolveProxy(oldSelector);
@@ -252,7 +293,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetSelector() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
+		return selector;
 	}
 
 	/**
@@ -262,14 +303,12 @@ public class LifelineImpl
 	 */
 	public NotificationChain basicSetSelector(ValueSpecification newSelector,
 			NotificationChain msgs) {
-		Object oldSelector = eVirtualSet(UMLPackage.LIFELINE__SELECTOR,
-			newSelector);
+		ValueSpecification oldSelector = selector;
+		selector = newSelector;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.LIFELINE__SELECTOR,
-				oldSelector == EVIRTUAL_NO_VALUE
-					? null
-					: oldSelector, newSelector);
+				Notification.SET, UMLPackage.LIFELINE__SELECTOR, oldSelector,
+				newSelector);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -285,7 +324,6 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setSelector(ValueSpecification newSelector) {
-		ValueSpecification selector = (ValueSpecification) eVirtualGet(UMLPackage.LIFELINE__SELECTOR);
 		if (newSelector != selector) {
 			NotificationChain msgs = null;
 			if (selector != null)
@@ -327,12 +365,10 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public PartDecomposition getDecomposedAs() {
-		PartDecomposition decomposedAs = (PartDecomposition) eVirtualGet(UMLPackage.LIFELINE__DECOMPOSED_AS);
 		if (decomposedAs != null && decomposedAs.eIsProxy()) {
 			InternalEObject oldDecomposedAs = (InternalEObject) decomposedAs;
 			decomposedAs = (PartDecomposition) eResolveProxy(oldDecomposedAs);
 			if (decomposedAs != oldDecomposedAs) {
-				eVirtualSet(UMLPackage.LIFELINE__DECOMPOSED_AS, decomposedAs);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.LIFELINE__DECOMPOSED_AS, oldDecomposedAs,
@@ -348,7 +384,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public PartDecomposition basicGetDecomposedAs() {
-		return (PartDecomposition) eVirtualGet(UMLPackage.LIFELINE__DECOMPOSED_AS);
+		return decomposedAs;
 	}
 
 	/**
@@ -357,15 +393,12 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setDecomposedAs(PartDecomposition newDecomposedAs) {
-		PartDecomposition decomposedAs = newDecomposedAs;
-		Object oldDecomposedAs = eVirtualSet(
-			UMLPackage.LIFELINE__DECOMPOSED_AS, decomposedAs);
+		PartDecomposition oldDecomposedAs = decomposedAs;
+		decomposedAs = newDecomposedAs;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LIFELINE__DECOMPOSED_AS,
-				oldDecomposedAs == EVIRTUAL_NO_VALUE
-					? null
-					: oldDecomposedAs, decomposedAs));
+				UMLPackage.LIFELINE__DECOMPOSED_AS, oldDecomposedAs,
+				decomposedAs));
 
 	}
 
@@ -375,15 +408,13 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public EList getCoveredBys() {
-		EList coveredBy = (EList) eVirtualGet(UMLPackage.LIFELINE__COVERED_BY);
-		if (coveredBy == null) {
-			eVirtualSet(UMLPackage.LIFELINE__COVERED_BY,
-				coveredBy = new EObjectWithInverseResolvingEList.ManyInverse(
-					InteractionFragment.class, this,
-					UMLPackage.LIFELINE__COVERED_BY,
-					UMLPackage.INTERACTION_FRAGMENT__COVERED));
+		if (coveredBys == null) {
+			coveredBys = new EObjectWithInverseResolvingEList.ManyInverse(
+				InteractionFragment.class, this,
+				UMLPackage.LIFELINE__COVERED_BY,
+				UMLPackage.INTERACTION_FRAGMENT__COVERED);
 		}
-		return coveredBy;
+		return coveredBys;
 	}
 
 	/**
@@ -674,15 +705,13 @@ public class LifelineImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.LIFELINE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LIFELINE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LIFELINE__OWNER :
 				return isSetOwner();
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.LIFELINE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LIFELINE__NAME :
 				return isSetName();
 			case UMLPackage.LIFELINE__VISIBILITY :
@@ -692,23 +721,22 @@ public class LifelineImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.LIFELINE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.LIFELINE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.LIFELINE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.LIFELINE__REPRESENTS :
-				return eVirtualGet(UMLPackage.LIFELINE__REPRESENTS) != null;
+				return represents != null;
 			case UMLPackage.LIFELINE__INTERACTION :
 				return basicGetInteraction() != null;
 			case UMLPackage.LIFELINE__SELECTOR :
-				return eVirtualGet(UMLPackage.LIFELINE__SELECTOR) != null;
+				return selector != null;
 			case UMLPackage.LIFELINE__DECOMPOSED_AS :
-				return eVirtualGet(UMLPackage.LIFELINE__DECOMPOSED_AS) != null;
+				return decomposedAs != null;
 			case UMLPackage.LIFELINE__COVERED_BY :
-				EList coveredBy = (EList) eVirtualGet(UMLPackage.LIFELINE__COVERED_BY);
-				return coveredBy != null && !coveredBy.isEmpty();
+				return coveredBys != null && !coveredBys.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -735,6 +763,18 @@ public class LifelineImpl
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.LIFELINE__INTERACTION);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.LIFELINE__OWNED_COMMENT,
+		UMLPackage.LIFELINE__NAME_EXPRESSION, UMLPackage.LIFELINE__SELECTOR};
 
 	/**
 	 * <!-- begin-user-doc -->

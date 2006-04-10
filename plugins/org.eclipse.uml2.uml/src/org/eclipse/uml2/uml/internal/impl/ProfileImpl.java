@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.23 2006/03/07 21:43:25 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.24 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -74,6 +75,26 @@ public class ProfileImpl
 		implements Profile {
 
 	/**
+	 * The cached value of the '{@link #getMetaclassReferences() <em>Metaclass Reference</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetaclassReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList metaclassReferences = null;
+
+	/**
+	 * The cached value of the '{@link #getMetamodelReferences() <em>Metamodel Reference</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetamodelReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList metamodelReferences = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -97,14 +118,12 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public EList getPackagedElements() {
-		EList packagedElement = (EList) eVirtualGet(UMLPackage.PROFILE__PACKAGED_ELEMENT);
-		if (packagedElement == null) {
-			eVirtualSet(UMLPackage.PROFILE__PACKAGED_ELEMENT,
-				packagedElement = new EObjectContainmentEList.Resolving(
-					PackageableElement.class, this,
-					UMLPackage.PROFILE__PACKAGED_ELEMENT));
+		if (packagedElements == null) {
+			packagedElements = new EObjectContainmentEList.Resolving(
+				PackageableElement.class, this,
+				UMLPackage.PROFILE__PACKAGED_ELEMENT);
 		}
-		return packagedElement;
+		return packagedElements;
 	}
 
 	/**
@@ -113,18 +132,24 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public EList getElementImports() {
-		EList elementImport = (EList) eVirtualGet(UMLPackage.PROFILE__ELEMENT_IMPORT);
-		if (elementImport == null) {
-			eVirtualSet(
-				UMLPackage.PROFILE__ELEMENT_IMPORT,
-				elementImport = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					ElementImport.class, this,
-					UMLPackage.PROFILE__ELEMENT_IMPORT, null,
-					new int[]{UMLPackage.PROFILE__METACLASS_REFERENCE},
-					UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE));
+		if (elementImports == null) {
+			elementImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				ElementImport.class, this, UMLPackage.PROFILE__ELEMENT_IMPORT,
+				null, ELEMENT_IMPORT_ESUBSETS,
+				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 		}
-		return elementImport;
+		return elementImports;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ELEMENT_IMPORT_ESUBSETS = new int[]{UMLPackage.PROFILE__METACLASS_REFERENCE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,18 +157,54 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public EList getPackageImports() {
-		EList packageImport = (EList) eVirtualGet(UMLPackage.PROFILE__PACKAGE_IMPORT);
-		if (packageImport == null) {
-			eVirtualSet(
-				UMLPackage.PROFILE__PACKAGE_IMPORT,
-				packageImport = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					PackageImport.class, this,
-					UMLPackage.PROFILE__PACKAGE_IMPORT, null,
-					new int[]{UMLPackage.PROFILE__METAMODEL_REFERENCE},
-					UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE));
+		if (packageImports == null) {
+			packageImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				PackageImport.class, this, UMLPackage.PROFILE__PACKAGE_IMPORT,
+				null, PACKAGE_IMPORT_ESUBSETS,
+				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 		}
-		return packageImport;
+		return packageImports;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PACKAGE_IMPORT_ESUBSETS = new int[]{UMLPackage.PROFILE__METAMODEL_REFERENCE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedStereotypes() <em>Owned Stereotype</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedStereotypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_STEREOTYPE_ESUPERSETS = new int[]{UMLPackage.PROFILE__PACKAGED_ELEMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getMetaclassReferences() <em>Metaclass Reference</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetaclassReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] METACLASS_REFERENCE_ESUPERSETS = new int[]{UMLPackage.PROFILE__ELEMENT_IMPORT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getMetamodelReferences() <em>Metamodel Reference</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetamodelReferences()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] METAMODEL_REFERENCE_ESUPERSETS = new int[]{UMLPackage.PROFILE__PACKAGE_IMPORT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,15 +212,23 @@ public class ProfileImpl
 	 * @generated NOT
 	 */
 	public EList getOwnedStereotypes() {
-		EList ownedStereotype = (EList) eVirtualGet(UMLPackage.PROFILE__OWNED_STEREOTYPE);
-		if (ownedStereotype == null) {
-			eVirtualSet(UMLPackage.PROFILE__OWNED_STEREOTYPE,
-				ownedStereotype = new DerivedSubsetEObjectEList(
-					Stereotype.class, this,
-					UMLPackage.PROFILE__OWNED_STEREOTYPE,
-					new int[]{UMLPackage.PROFILE__PACKAGED_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedStereotypes = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE);
+			if (ownedStereotypes == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE,
+					ownedStereotypes = new DerivedSubsetEObjectEList(
+						Stereotype.class, this,
+						UMLPackage.PROFILE__OWNED_STEREOTYPE,
+						OWNED_STEREOTYPE_ESUPERSETS));
+			}
+			return ownedStereotypes;
 		}
-		return ownedStereotype;
+		return new DerivedSubsetEObjectEList(Stereotype.class, this,
+			UMLPackage.PROFILE__OWNED_STEREOTYPE, OWNED_STEREOTYPE_ESUPERSETS);
 	}
 
 	/**
@@ -211,15 +280,13 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public EList getMetaclassReferences() {
-		EList metaclassReference = (EList) eVirtualGet(UMLPackage.PROFILE__METACLASS_REFERENCE);
-		if (metaclassReference == null) {
-			eVirtualSet(UMLPackage.PROFILE__METACLASS_REFERENCE,
-				metaclassReference = new SubsetSupersetEObjectResolvingEList(
-					ElementImport.class, this,
-					UMLPackage.PROFILE__METACLASS_REFERENCE,
-					new int[]{UMLPackage.PROFILE__ELEMENT_IMPORT}, null));
+		if (metaclassReferences == null) {
+			metaclassReferences = new SubsetSupersetEObjectResolvingEList(
+				ElementImport.class, this,
+				UMLPackage.PROFILE__METACLASS_REFERENCE,
+				METACLASS_REFERENCE_ESUPERSETS, null);
 		}
-		return metaclassReference;
+		return metaclassReferences;
 	}
 
 	/**
@@ -273,15 +340,13 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public EList getMetamodelReferences() {
-		EList metamodelReference = (EList) eVirtualGet(UMLPackage.PROFILE__METAMODEL_REFERENCE);
-		if (metamodelReference == null) {
-			eVirtualSet(UMLPackage.PROFILE__METAMODEL_REFERENCE,
-				metamodelReference = new SubsetSupersetEObjectResolvingEList(
-					PackageImport.class, this,
-					UMLPackage.PROFILE__METAMODEL_REFERENCE,
-					new int[]{UMLPackage.PROFILE__PACKAGE_IMPORT}, null));
+		if (metamodelReferences == null) {
+			metamodelReferences = new SubsetSupersetEObjectResolvingEList(
+				PackageImport.class, this,
+				UMLPackage.PROFILE__METAMODEL_REFERENCE,
+				METAMODEL_REFERENCE_ESUPERSETS, null);
 		}
-		return metamodelReference;
+		return metamodelReferences;
 	}
 
 	/**
@@ -483,7 +548,6 @@ public class ProfileImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PROFILE__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROFILE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -495,7 +559,6 @@ public class ProfileImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -823,15 +886,13 @@ public class ProfileImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PROFILE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROFILE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PROFILE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROFILE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROFILE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PROFILE__NAME :
 				return isSetName();
 			case UMLPackage.PROFILE__VISIBILITY :
@@ -841,21 +902,18 @@ public class ProfileImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PROFILE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PROFILE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PROFILE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PROFILE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PROFILE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PROFILE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.PROFILE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.PROFILE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.PROFILE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.PROFILE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.PROFILE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.PROFILE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.PROFILE__IMPORTED_MEMBER :
@@ -865,38 +923,32 @@ public class ProfileImpl
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PROFILE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PROFILE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.PROFILE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.PROFILE__OWNED_TYPE :
 				return !getOwnedTypes().isEmpty();
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
-				EList packageMerge = (EList) eVirtualGet(UMLPackage.PROFILE__PACKAGE_MERGE);
-				return packageMerge != null && !packageMerge.isEmpty();
+				return packageMerges != null && !packageMerges.isEmpty();
 			case UMLPackage.PROFILE__PACKAGED_ELEMENT :
-				EList packagedElement = (EList) eVirtualGet(UMLPackage.PROFILE__PACKAGED_ELEMENT);
-				return packagedElement != null && !packagedElement.isEmpty();
+				return packagedElements != null && !packagedElements.isEmpty();
 			case UMLPackage.PROFILE__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.PROFILE__NESTING_PACKAGE :
 				return basicGetNestingPackage() != null;
 			case UMLPackage.PROFILE__PROFILE_APPLICATION :
-				EList profileApplication = (EList) eVirtualGet(UMLPackage.PROFILE__PROFILE_APPLICATION);
-				return profileApplication != null
-					&& !profileApplication.isEmpty();
+				return profileApplications != null
+					&& !profileApplications.isEmpty();
 			case UMLPackage.PROFILE__OWNED_STEREOTYPE :
 				return !getOwnedStereotypes().isEmpty();
 			case UMLPackage.PROFILE__METACLASS_REFERENCE :
-				EList metaclassReference = (EList) eVirtualGet(UMLPackage.PROFILE__METACLASS_REFERENCE);
-				return metaclassReference != null
-					&& !metaclassReference.isEmpty();
+				return metaclassReferences != null
+					&& !metaclassReferences.isEmpty();
 			case UMLPackage.PROFILE__METAMODEL_REFERENCE :
-				EList metamodelReference = (EList) eVirtualGet(UMLPackage.PROFILE__METAMODEL_REFERENCE);
-				return metamodelReference != null
-					&& !metamodelReference.isEmpty();
+				return metamodelReferences != null
+					&& !metamodelReferences.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

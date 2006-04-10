@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: ModelImpl.java,v 1.11 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -57,6 +55,25 @@ public class ModelImpl
 	protected static final String VIEWPOINT_EDEFAULT = null;
 
 	/**
+	 * The cached value of the '{@link #getViewpoint() <em>Viewpoint</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getViewpoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected String viewpoint = VIEWPOINT_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Viewpoint attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VIEWPOINT_ESETFLAG = 1 << 10;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,8 +97,7 @@ public class ModelImpl
 	 * @generated
 	 */
 	public String getViewpoint() {
-		return (String) eVirtualGet(UMLPackage.MODEL__VIEWPOINT,
-			VIEWPOINT_EDEFAULT);
+		return viewpoint;
 	}
 
 	/**
@@ -90,15 +106,14 @@ public class ModelImpl
 	 * @generated
 	 */
 	public void setViewpoint(String newViewpoint) {
-		String viewpoint = newViewpoint;
-		Object oldViewpoint = eVirtualSet(UMLPackage.MODEL__VIEWPOINT,
-			viewpoint);
-		boolean isSetChange = oldViewpoint == EVIRTUAL_NO_VALUE;
+		String oldViewpoint = viewpoint;
+		viewpoint = newViewpoint;
+		boolean oldViewpointESet = (eFlags & VIEWPOINT_ESETFLAG) != 0;
+		eFlags |= VIEWPOINT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MODEL__VIEWPOINT, isSetChange
-					? VIEWPOINT_EDEFAULT
-					: oldViewpoint, viewpoint, isSetChange));
+				UMLPackage.MODEL__VIEWPOINT, oldViewpoint, viewpoint,
+				!oldViewpointESet));
 
 	}
 
@@ -108,13 +123,14 @@ public class ModelImpl
 	 * @generated
 	 */
 	public void unsetViewpoint() {
-		Object oldViewpoint = eVirtualUnset(UMLPackage.MODEL__VIEWPOINT);
-		boolean isSetChange = oldViewpoint != EVIRTUAL_NO_VALUE;
+		String oldViewpoint = viewpoint;
+		boolean oldViewpointESet = (eFlags & VIEWPOINT_ESETFLAG) != 0;
+		viewpoint = VIEWPOINT_EDEFAULT;
+		eFlags &= ~VIEWPOINT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.MODEL__VIEWPOINT, isSetChange
-					? oldViewpoint
-					: VIEWPOINT_EDEFAULT, VIEWPOINT_EDEFAULT, isSetChange));
+				UMLPackage.MODEL__VIEWPOINT, oldViewpoint, VIEWPOINT_EDEFAULT,
+				oldViewpointESet));
 	}
 
 	/**
@@ -123,7 +139,7 @@ public class ModelImpl
 	 * @generated
 	 */
 	public boolean isSetViewpoint() {
-		return eVirtualIsSet(UMLPackage.MODEL__VIEWPOINT);
+		return (eFlags & VIEWPOINT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -376,15 +392,13 @@ public class ModelImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MODEL__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MODEL__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MODEL__OWNER :
 				return isSetOwner();
 			case UMLPackage.MODEL__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.MODEL__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MODEL__NAME :
 				return isSetName();
 			case UMLPackage.MODEL__VISIBILITY :
@@ -394,21 +408,18 @@ public class ModelImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.MODEL__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MODEL__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MODEL__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.MODEL__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.MODEL__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.MODEL__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.MODEL__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.MODEL__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.MODEL__MEMBER :
 				return isSetMembers();
 			case UMLPackage.MODEL__IMPORTED_MEMBER :
@@ -418,28 +429,24 @@ public class ModelImpl
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.MODEL__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.MODEL__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.MODEL__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.MODEL__OWNED_TYPE :
 				return !getOwnedTypes().isEmpty();
 			case UMLPackage.MODEL__PACKAGE_MERGE :
-				EList packageMerge = (EList) eVirtualGet(UMLPackage.MODEL__PACKAGE_MERGE);
-				return packageMerge != null && !packageMerge.isEmpty();
+				return packageMerges != null && !packageMerges.isEmpty();
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
-				EList packagedElement = (EList) eVirtualGet(UMLPackage.MODEL__PACKAGED_ELEMENT);
-				return packagedElement != null && !packagedElement.isEmpty();
+				return packagedElements != null && !packagedElements.isEmpty();
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				return basicGetNestingPackage() != null;
 			case UMLPackage.MODEL__PROFILE_APPLICATION :
-				EList profileApplication = (EList) eVirtualGet(UMLPackage.MODEL__PROFILE_APPLICATION);
-				return profileApplication != null
-					&& !profileApplication.isEmpty();
+				return profileApplications != null
+					&& !profileApplications.isEmpty();
 			case UMLPackage.MODEL__VIEWPOINT :
 				return isSetViewpoint();
 		}
@@ -457,8 +464,8 @@ public class ModelImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (viewpoint: "); //$NON-NLS-1$
-		if (eVirtualIsSet(UMLPackage.MODEL__VIEWPOINT))
-			result.append(eVirtualGet(UMLPackage.MODEL__VIEWPOINT));
+		if ((eFlags & VIEWPOINT_ESETFLAG) != 0)
+			result.append(viewpoint);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

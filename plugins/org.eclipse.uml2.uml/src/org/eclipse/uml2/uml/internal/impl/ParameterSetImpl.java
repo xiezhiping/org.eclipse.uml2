@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.14 2006/03/07 20:25:16 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -25,10 +25,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Constraint;
@@ -49,7 +52,6 @@ import org.eclipse.uml2.uml.internal.operations.ParameterSetOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterSetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterSetImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ParameterSetImpl#getConditions <em>Condition</em>}</li>
  * </ul>
@@ -60,6 +62,26 @@ import org.eclipse.uml2.uml.internal.operations.ParameterSetOperations;
 public class ParameterSetImpl
 		extends NamedElementImpl
 		implements ParameterSet {
+
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parameters = null;
+
+	/**
+	 * The cached value of the '{@link #getConditions() <em>Condition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList conditions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,16 +107,22 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PARAMETER_SET__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PARAMETER_SET__OWNED_ELEMENT, new int[]{
-						UMLPackage.PARAMETER_SET__OWNED_COMMENT,
-						UMLPackage.PARAMETER_SET__NAME_EXPRESSION,
-						UMLPackage.PARAMETER_SET__CONDITION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.PARAMETER_SET__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PARAMETER_SET__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -103,14 +131,12 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public EList getParameters() {
-		EList parameter = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__PARAMETER);
-		if (parameter == null) {
-			eVirtualSet(UMLPackage.PARAMETER_SET__PARAMETER,
-				parameter = new EObjectWithInverseResolvingEList.ManyInverse(
-					Parameter.class, this, UMLPackage.PARAMETER_SET__PARAMETER,
-					UMLPackage.PARAMETER__PARAMETER_SET));
+		if (parameters == null) {
+			parameters = new EObjectWithInverseResolvingEList.ManyInverse(
+				Parameter.class, this, UMLPackage.PARAMETER_SET__PARAMETER,
+				UMLPackage.PARAMETER__PARAMETER_SET);
 		}
-		return parameter;
+		return parameters;
 	}
 
 	/**
@@ -148,14 +174,11 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public EList getConditions() {
-		EList condition = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__CONDITION);
-		if (condition == null) {
-			eVirtualSet(
-				UMLPackage.PARAMETER_SET__CONDITION,
-				condition = new EObjectContainmentEList.Resolving(
-					Constraint.class, this, UMLPackage.PARAMETER_SET__CONDITION));
+		if (conditions == null) {
+			conditions = new EObjectContainmentEList.Resolving(
+				Constraint.class, this, UMLPackage.PARAMETER_SET__CONDITION);
 		}
-		return condition;
+		return conditions;
 	}
 
 	/**
@@ -417,15 +440,13 @@ public class ParameterSetImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PARAMETER_SET__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PARAMETER_SET__OWNER :
 				return isSetOwner();
 			case UMLPackage.PARAMETER_SET__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PARAMETER_SET__NAME :
 				return isSetName();
 			case UMLPackage.PARAMETER_SET__VISIBILITY :
@@ -435,21 +456,32 @@ public class ParameterSetImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PARAMETER_SET__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PARAMETER_SET__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PARAMETER_SET__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PARAMETER_SET__PARAMETER :
-				EList parameter = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__PARAMETER);
-				return parameter != null && !parameter.isEmpty();
+				return parameters != null && !parameters.isEmpty();
 			case UMLPackage.PARAMETER_SET__CONDITION :
-				EList condition = (EList) eVirtualGet(UMLPackage.PARAMETER_SET__CONDITION);
-				return condition != null && !condition.isEmpty();
+				return conditions != null && !conditions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PARAMETER_SET__OWNED_COMMENT,
+		UMLPackage.PARAMETER_SET__NAME_EXPRESSION,
+		UMLPackage.PARAMETER_SET__CONDITION};
 
 	/**
 	 * <!-- begin-user-doc -->

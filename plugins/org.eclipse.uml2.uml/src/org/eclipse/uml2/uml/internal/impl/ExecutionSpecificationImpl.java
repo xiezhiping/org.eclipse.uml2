@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationImpl.java,v 1.11 2006/03/15 19:33:59 khussey Exp $
+ * $Id: ExecutionSpecificationImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -55,6 +53,26 @@ public abstract class ExecutionSpecificationImpl
 		implements ExecutionSpecification {
 
 	/**
+	 * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStart()
+	 * @generated
+	 * @ordered
+	 */
+	protected OccurrenceSpecification start = null;
+
+	/**
+	 * The cached value of the '{@link #getFinish() <em>Finish</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFinish()
+	 * @generated
+	 * @ordered
+	 */
+	protected OccurrenceSpecification finish = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,12 +96,10 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification getStart() {
-		OccurrenceSpecification start = (OccurrenceSpecification) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__START);
 		if (start != null && start.eIsProxy()) {
 			InternalEObject oldStart = (InternalEObject) start;
 			start = (OccurrenceSpecification) eResolveProxy(oldStart);
 			if (start != oldStart) {
-				eVirtualSet(UMLPackage.EXECUTION_SPECIFICATION__START, start);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXECUTION_SPECIFICATION__START, oldStart,
@@ -99,7 +115,7 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification basicGetStart() {
-		return (OccurrenceSpecification) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__START);
+		return start;
 	}
 
 	/**
@@ -108,15 +124,11 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setStart(OccurrenceSpecification newStart) {
-		OccurrenceSpecification start = newStart;
-		Object oldStart = eVirtualSet(
-			UMLPackage.EXECUTION_SPECIFICATION__START, start);
+		OccurrenceSpecification oldStart = start;
+		start = newStart;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXECUTION_SPECIFICATION__START,
-				oldStart == EVIRTUAL_NO_VALUE
-					? null
-					: oldStart, start));
+				UMLPackage.EXECUTION_SPECIFICATION__START, oldStart, start));
 
 	}
 
@@ -126,12 +138,10 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification getFinish() {
-		OccurrenceSpecification finish = (OccurrenceSpecification) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__FINISH);
 		if (finish != null && finish.eIsProxy()) {
 			InternalEObject oldFinish = (InternalEObject) finish;
 			finish = (OccurrenceSpecification) eResolveProxy(oldFinish);
 			if (finish != oldFinish) {
-				eVirtualSet(UMLPackage.EXECUTION_SPECIFICATION__FINISH, finish);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.EXECUTION_SPECIFICATION__FINISH, oldFinish,
@@ -147,7 +157,7 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public OccurrenceSpecification basicGetFinish() {
-		return (OccurrenceSpecification) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__FINISH);
+		return finish;
 	}
 
 	/**
@@ -156,15 +166,11 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setFinish(OccurrenceSpecification newFinish) {
-		OccurrenceSpecification finish = newFinish;
-		Object oldFinish = eVirtualSet(
-			UMLPackage.EXECUTION_SPECIFICATION__FINISH, finish);
+		OccurrenceSpecification oldFinish = finish;
+		finish = newFinish;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXECUTION_SPECIFICATION__FINISH,
-				oldFinish == EVIRTUAL_NO_VALUE
-					? null
-					: oldFinish, finish));
+				UMLPackage.EXECUTION_SPECIFICATION__FINISH, oldFinish, finish));
 
 	}
 
@@ -342,15 +348,13 @@ public abstract class ExecutionSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXECUTION_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.EXECUTION_SPECIFICATION__VISIBILITY :
@@ -360,26 +364,24 @@ public abstract class ExecutionSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.EXECUTION_SPECIFICATION__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.EXECUTION_SPECIFICATION__START :
-				return eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__START) != null;
+				return start != null;
 			case UMLPackage.EXECUTION_SPECIFICATION__FINISH :
-				return eVirtualGet(UMLPackage.EXECUTION_SPECIFICATION__FINISH) != null;
+				return finish != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

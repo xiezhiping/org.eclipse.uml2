@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.10 2006/02/21 16:12:18 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.11 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -50,6 +48,16 @@ public class InstanceValueImpl
 		implements InstanceValue {
 
 	/**
+	 * The cached value of the '{@link #getInstance() <em>Instance</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstance()
+	 * @generated
+	 * @ordered
+	 */
+	protected InstanceSpecification instance = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,12 +81,10 @@ public class InstanceValueImpl
 	 * @generated
 	 */
 	public InstanceSpecification getInstance() {
-		InstanceSpecification instance = (InstanceSpecification) eVirtualGet(UMLPackage.INSTANCE_VALUE__INSTANCE);
 		if (instance != null && instance.eIsProxy()) {
 			InternalEObject oldInstance = (InternalEObject) instance;
 			instance = (InstanceSpecification) eResolveProxy(oldInstance);
 			if (instance != oldInstance) {
-				eVirtualSet(UMLPackage.INSTANCE_VALUE__INSTANCE, instance);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INSTANCE_VALUE__INSTANCE, oldInstance,
@@ -94,7 +100,7 @@ public class InstanceValueImpl
 	 * @generated
 	 */
 	public InstanceSpecification basicGetInstance() {
-		return (InstanceSpecification) eVirtualGet(UMLPackage.INSTANCE_VALUE__INSTANCE);
+		return instance;
 	}
 
 	/**
@@ -103,15 +109,11 @@ public class InstanceValueImpl
 	 * @generated
 	 */
 	public void setInstance(InstanceSpecification newInstance) {
-		InstanceSpecification instance = newInstance;
-		Object oldInstance = eVirtualSet(UMLPackage.INSTANCE_VALUE__INSTANCE,
-			instance);
+		InstanceSpecification oldInstance = instance;
+		instance = newInstance;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INSTANCE_VALUE__INSTANCE,
-				oldInstance == EVIRTUAL_NO_VALUE
-					? null
-					: oldInstance, instance));
+				UMLPackage.INSTANCE_VALUE__INSTANCE, oldInstance, instance));
 
 	}
 
@@ -270,15 +272,13 @@ public class InstanceValueImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_VALUE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INSTANCE_VALUE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INSTANCE_VALUE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INSTANCE_VALUE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INSTANCE_VALUE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INSTANCE_VALUE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INSTANCE_VALUE__NAME :
 				return isSetName();
 			case UMLPackage.INSTANCE_VALUE__VISIBILITY :
@@ -288,20 +288,20 @@ public class InstanceValueImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INSTANCE_VALUE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INSTANCE_VALUE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INSTANCE_VALUE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INSTANCE_VALUE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INSTANCE_VALUE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INSTANCE_VALUE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INSTANCE_VALUE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INSTANCE_VALUE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.INSTANCE_VALUE__TYPE :
-				return eVirtualGet(UMLPackage.INSTANCE_VALUE__TYPE) != null;
+				return type != null;
 			case UMLPackage.INSTANCE_VALUE__INSTANCE :
-				return eVirtualGet(UMLPackage.INSTANCE_VALUE__INSTANCE) != null;
+				return instance != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

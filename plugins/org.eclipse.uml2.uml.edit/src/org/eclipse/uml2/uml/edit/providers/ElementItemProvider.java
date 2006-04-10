@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.8 2006/04/03 20:59:02 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.9 2006/04/10 19:16:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -30,6 +30,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.provider.EModelElementItemProvider;
+
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 
@@ -78,7 +80,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  * @generated
  */
 public class ElementItemProvider
-		extends EObjectItemProvider
+		extends EModelElementItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		IItemQualifiedTextProvider {
@@ -181,23 +183,9 @@ public class ElementItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(EcorePackage.Literals.EMODEL_ELEMENT__EANNOTATIONS);
 			childrenFeatures.add(UMLPackage.Literals.ELEMENT__OWNED_COMMENT);
 		}
 		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -221,7 +209,6 @@ public class ElementItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Element.class)) {
-			case UMLPackage.ELEMENT__EANNOTATIONS :
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -240,10 +227,6 @@ public class ElementItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(
-			EcorePackage.Literals.EMODEL_ELEMENT__EANNOTATIONS,
-			EcoreFactory.eINSTANCE.createEAnnotation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ELEMENT__OWNED_COMMENT, UMLFactory.eINSTANCE

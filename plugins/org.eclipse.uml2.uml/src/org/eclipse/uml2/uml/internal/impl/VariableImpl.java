@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.23 2006/03/15 19:34:15 khussey Exp $
+ * $Id: VariableImpl.java,v 1.24 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,9 +27,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
@@ -56,7 +59,6 @@ import org.eclipse.uml2.uml.internal.operations.VariableOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getUpper <em>Upper</em>}</li>
@@ -92,7 +94,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 8;
+	protected static final int IS_ORDERED_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -112,7 +114,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 9;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -133,6 +135,26 @@ public class VariableImpl
 	 * @ordered
 	 */
 	protected static final int LOWER_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,17 +181,22 @@ public class VariableImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.VARIABLE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.VARIABLE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.VARIABLE__OWNED_ELEMENT, new int[]{
-						UMLPackage.VARIABLE__OWNED_COMMENT,
-						UMLPackage.VARIABLE__NAME_EXPRESSION,
-						UMLPackage.VARIABLE__UPPER_VALUE,
-						UMLPackage.VARIABLE__LOWER_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.VARIABLE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.VARIABLE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -266,7 +293,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
 		if (upperValue != null && upperValue.eIsProxy()) {
 			InternalEObject oldUpperValue = (InternalEObject) upperValue;
 			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
@@ -297,7 +323,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetUpperValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -307,14 +333,12 @@ public class VariableImpl
 	 */
 	public NotificationChain basicSetUpperValue(
 			ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UMLPackage.VARIABLE__UPPER_VALUE,
-			newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.VARIABLE__UPPER_VALUE,
-				oldUpperValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldUpperValue, newUpperValue);
+				oldUpperValue, newUpperValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -330,7 +354,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -372,7 +395,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
 		if (lowerValue != null && lowerValue.eIsProxy()) {
 			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
 			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
@@ -403,7 +425,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetLowerValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -413,14 +435,12 @@ public class VariableImpl
 	 */
 	public NotificationChain basicSetLowerValue(
 			ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UMLPackage.VARIABLE__LOWER_VALUE,
-			newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.VARIABLE__LOWER_VALUE,
-				oldLowerValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldLowerValue, newLowerValue);
+				oldLowerValue, newLowerValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -436,7 +456,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -731,7 +750,6 @@ public class VariableImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.VARIABLE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -1034,15 +1052,13 @@ public class VariableImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.VARIABLE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.VARIABLE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.VARIABLE__OWNER :
 				return isSetOwner();
 			case UMLPackage.VARIABLE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.VARIABLE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.VARIABLE__NAME :
 				return isSetName();
 			case UMLPackage.VARIABLE__VISIBILITY :
@@ -1052,21 +1068,20 @@ public class VariableImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.VARIABLE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.VARIABLE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.VARIABLE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.VARIABLE__TYPE :
-				return eVirtualGet(UMLPackage.VARIABLE__TYPE) != null;
+				return type != null;
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.VARIABLE__END :
-				EList end = (EList) eVirtualGet(UMLPackage.VARIABLE__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.VARIABLE__IS_UNIQUE :
@@ -1076,9 +1091,9 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.VARIABLE__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.VARIABLE__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.VARIABLE__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.VARIABLE__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.VARIABLE__SCOPE :
 				return basicGetScope() != null;
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
@@ -1158,6 +1173,19 @@ public class VariableImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.VARIABLE__OWNED_COMMENT,
+		UMLPackage.VARIABLE__NAME_EXPRESSION, UMLPackage.VARIABLE__UPPER_VALUE,
+		UMLPackage.VARIABLE__LOWER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

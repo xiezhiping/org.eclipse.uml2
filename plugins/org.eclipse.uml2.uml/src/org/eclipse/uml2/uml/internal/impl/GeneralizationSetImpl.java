@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,7 +79,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_COVERING_EFLAG = 1 << 8;
+	protected static final int IS_COVERING_EFLAG = 1 << 10;
 
 	/**
 	 * The default value of the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
@@ -99,7 +99,27 @@ public class GeneralizationSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DISJOINT_EFLAG = 1 << 9;
+	protected static final int IS_DISJOINT_EFLAG = 1 << 11;
+
+	/**
+	 * The cached value of the '{@link #getPowertype() <em>Powertype</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPowertype()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier powertype = null;
+
+	/**
+	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeneralizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList generalizations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,12 +199,10 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public Classifier getPowertype() {
-		Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
 		if (powertype != null && powertype.eIsProxy()) {
 			InternalEObject oldPowertype = (InternalEObject) powertype;
 			powertype = (Classifier) eResolveProxy(oldPowertype);
 			if (powertype != oldPowertype) {
-				eVirtualSet(UMLPackage.GENERALIZATION_SET__POWERTYPE, powertype);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.GENERALIZATION_SET__POWERTYPE, oldPowertype,
@@ -200,7 +218,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public Classifier basicGetPowertype() {
-		return (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
+		return powertype;
 	}
 
 	/**
@@ -210,14 +228,12 @@ public class GeneralizationSetImpl
 	 */
 	public NotificationChain basicSetPowertype(Classifier newPowertype,
 			NotificationChain msgs) {
-		Object oldPowertype = eVirtualSet(
-			UMLPackage.GENERALIZATION_SET__POWERTYPE, newPowertype);
+		Classifier oldPowertype = powertype;
+		powertype = newPowertype;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.GENERALIZATION_SET__POWERTYPE,
-				oldPowertype == EVIRTUAL_NO_VALUE
-					? null
-					: oldPowertype, newPowertype);
+				oldPowertype, newPowertype);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -233,7 +249,6 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setPowertype(Classifier newPowertype) {
-		Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
 		if (newPowertype != powertype) {
 			NotificationChain msgs = null;
 			if (powertype != null)
@@ -260,16 +275,13 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public EList getGeneralizations() {
-		EList generalization = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__GENERALIZATION);
-		if (generalization == null) {
-			eVirtualSet(
+		if (generalizations == null) {
+			generalizations = new EObjectWithInverseResolvingEList.ManyInverse(
+				Generalization.class, this,
 				UMLPackage.GENERALIZATION_SET__GENERALIZATION,
-				generalization = new EObjectWithInverseResolvingEList.ManyInverse(
-					Generalization.class, this,
-					UMLPackage.GENERALIZATION_SET__GENERALIZATION,
-					UMLPackage.GENERALIZATION__GENERALIZATION_SET));
+				UMLPackage.GENERALIZATION__GENERALIZATION_SET);
 		}
-		return generalization;
+		return generalizations;
 	}
 
 	/**
@@ -330,7 +342,6 @@ public class GeneralizationSetImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -339,7 +350,6 @@ public class GeneralizationSetImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
-				Classifier powertype = (Classifier) eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE);
 				if (powertype != null)
 					msgs = ((InternalEObject) powertype).eInverseRemove(this,
 						UMLPackage.CLASSIFIER__POWERTYPE_EXTENT,
@@ -549,15 +559,13 @@ public class GeneralizationSetImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.GENERALIZATION_SET__OWNER :
 				return isSetOwner();
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				return isSetName();
 			case UMLPackage.GENERALIZATION_SET__VISIBILITY :
@@ -567,25 +575,24 @@ public class GeneralizationSetImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.GENERALIZATION_SET__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.GENERALIZATION_SET__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
 				return ((eFlags & IS_COVERING_EFLAG) != 0) != IS_COVERING_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
 				return ((eFlags & IS_DISJOINT_EFLAG) != 0) != IS_DISJOINT_EDEFAULT;
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
-				return eVirtualGet(UMLPackage.GENERALIZATION_SET__POWERTYPE) != null;
+				return powertype != null;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-				EList generalization = (EList) eVirtualGet(UMLPackage.GENERALIZATION_SET__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

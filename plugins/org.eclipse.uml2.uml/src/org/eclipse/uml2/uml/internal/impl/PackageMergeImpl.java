@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.10 2006/03/15 19:34:01 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.11 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,9 +23,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -39,8 +42,6 @@ import org.eclipse.uml2.uml.UMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getMergedPackage <em>Merged Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getReceivingPackage <em>Receiving Package</em>}</li>
  * </ul>
@@ -51,6 +52,16 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class PackageMergeImpl
 		extends DirectedRelationshipImpl
 		implements PackageMerge {
+
+	/**
+	 * The cached value of the '{@link #getMergedPackage() <em>Merged Package</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMergedPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.eclipse.uml2.uml.Package mergedPackage = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,14 +87,21 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.PACKAGE_MERGE__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.PACKAGE_MERGE__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.PACKAGE_MERGE__TARGET,
-					new int[]{UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.PACKAGE_MERGE__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PACKAGE_MERGE__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -92,14 +110,21 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.PACKAGE_MERGE__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.PACKAGE_MERGE__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.PACKAGE_MERGE__SOURCE,
-					new int[]{UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.PACKAGE_MERGE__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PACKAGE_MERGE__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -108,13 +133,10 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package getMergedPackage() {
-		org.eclipse.uml2.uml.Package mergedPackage = (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE);
 		if (mergedPackage != null && mergedPackage.eIsProxy()) {
 			InternalEObject oldMergedPackage = (InternalEObject) mergedPackage;
 			mergedPackage = (org.eclipse.uml2.uml.Package) eResolveProxy(oldMergedPackage);
 			if (mergedPackage != oldMergedPackage) {
-				eVirtualSet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE,
-					mergedPackage);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE,
@@ -130,7 +152,7 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package basicGetMergedPackage() {
-		return (org.eclipse.uml2.uml.Package) eVirtualGet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE);
+		return mergedPackage;
 	}
 
 	/**
@@ -139,15 +161,12 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public void setMergedPackage(org.eclipse.uml2.uml.Package newMergedPackage) {
-		org.eclipse.uml2.uml.Package mergedPackage = newMergedPackage;
-		Object oldMergedPackage = eVirtualSet(
-			UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE, mergedPackage);
+		org.eclipse.uml2.uml.Package oldMergedPackage = mergedPackage;
+		mergedPackage = newMergedPackage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE,
-				oldMergedPackage == EVIRTUAL_NO_VALUE
-					? null
-					: oldMergedPackage, mergedPackage));
+				UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE, oldMergedPackage,
+				mergedPackage));
 
 	}
 
@@ -363,15 +382,13 @@ public class PackageMergeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE_MERGE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PACKAGE_MERGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PACKAGE_MERGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PACKAGE_MERGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PACKAGE_MERGE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PACKAGE_MERGE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PACKAGE_MERGE__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.PACKAGE_MERGE__SOURCE :
@@ -379,12 +396,22 @@ public class PackageMergeImpl
 			case UMLPackage.PACKAGE_MERGE__TARGET :
 				return isSetTargets();
 			case UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE :
-				return eVirtualGet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE) != null;
+				return mergedPackage != null;
 			case UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE :
 				return basicGetReceivingPackage() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -395,6 +422,16 @@ public class PackageMergeImpl
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE};
 
 	/**
 	 * <!-- begin-user-doc -->

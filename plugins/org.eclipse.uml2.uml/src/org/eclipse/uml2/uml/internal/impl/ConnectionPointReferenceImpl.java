@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.13 2006/03/15 19:33:59 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.14 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,6 +63,26 @@ public class ConnectionPointReferenceImpl
 		implements ConnectionPointReference {
 
 	/**
+	 * The cached value of the '{@link #getEntries() <em>Entry</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList entries = null;
+
+	/**
+	 * The cached value of the '{@link #getExits() <em>Exit</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExits()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList exits = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -86,13 +106,11 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public EList getEntries() {
-		EList entry = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
-		if (entry == null) {
-			eVirtualSet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY,
-				entry = new EObjectResolvingEList(Pseudostate.class, this,
-					UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY));
+		if (entries == null) {
+			entries = new EObjectResolvingEList(Pseudostate.class, this,
+				UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
 		}
-		return entry;
+		return entries;
 	}
 
 	/**
@@ -127,13 +145,11 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public EList getExits() {
-		EList exit = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
-		if (exit == null) {
-			eVirtualSet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT,
-				exit = new EObjectResolvingEList(Pseudostate.class, this,
-					UMLPackage.CONNECTION_POINT_REFERENCE__EXIT));
+		if (exits == null) {
+			exits = new EObjectResolvingEList(Pseudostate.class, this,
+				UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
 		}
-		return exit;
+		return exits;
 	}
 
 	/**
@@ -491,15 +507,13 @@ public class ConnectionPointReferenceImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				return isSetName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
@@ -509,26 +523,22 @@ public class ConnectionPointReferenceImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
-				EList entry = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
-				return entry != null && !entry.isEmpty();
+				return entries != null && !entries.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
-				EList exit = (EList) eVirtualGet(UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
-				return exit != null && !exit.isEmpty();
+				return exits != null && !exits.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
 				return basicGetState() != null;
 		}

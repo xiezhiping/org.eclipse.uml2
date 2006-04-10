@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.18 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -53,8 +56,6 @@ import org.eclipse.uml2.uml.internal.operations.ConditionalNodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#isDeterminate <em>Is Determinate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#isAssured <em>Is Assured</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#getClauses <em>Clause</em>}</li>
@@ -86,7 +87,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DETERMINATE_EFLAG = 1 << 10;
+	protected static final int IS_DETERMINATE_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isAssured() <em>Is Assured</em>}' attribute.
@@ -106,7 +107,27 @@ public class ConditionalNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ASSURED_EFLAG = 1 << 11;
+	protected static final int IS_ASSURED_EFLAG = 1 << 13;
+
+	/**
+	 * The cached value of the '{@link #getClauses() <em>Clause</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClauses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList clauses = null;
+
+	/**
+	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResults()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList results = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,25 +153,22 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT,
-					new int[]{UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT,
-						UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION,
-						UMLPackage.CONDITIONAL_NODE__HANDLER,
-						UMLPackage.CONDITIONAL_NODE__OUTPUT,
-						UMLPackage.CONDITIONAL_NODE__INPUT,
-						UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION,
-						UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION,
-						UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT,
-						UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT,
-						UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER,
-						UMLPackage.CONDITIONAL_NODE__SUBGROUP,
-						UMLPackage.CONDITIONAL_NODE__CLAUSE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -159,14 +177,21 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UMLPackage.CONDITIONAL_NODE__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.CONDITIONAL_NODE__OUTPUT,
-					new int[]{UMLPackage.CONDITIONAL_NODE__RESULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList(OutputPin.class,
+						this, UMLPackage.CONDITIONAL_NODE__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this,
+			UMLPackage.CONDITIONAL_NODE__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
 	/**
@@ -229,13 +254,11 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public EList getClauses() {
-		EList clause = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
-		if (clause == null) {
-			eVirtualSet(UMLPackage.CONDITIONAL_NODE__CLAUSE,
-				clause = new EObjectContainmentEList.Resolving(Clause.class,
-					this, UMLPackage.CONDITIONAL_NODE__CLAUSE));
+		if (clauses == null) {
+			clauses = new EObjectContainmentEList.Resolving(Clause.class, this,
+				UMLPackage.CONDITIONAL_NODE__CLAUSE);
 		}
-		return clause;
+		return clauses;
 	}
 
 	/**
@@ -255,13 +278,11 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public EList getResults() {
-		EList result = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__RESULT);
-		if (result == null) {
-			eVirtualSet(UMLPackage.CONDITIONAL_NODE__RESULT,
-				result = new EObjectContainmentEList.Resolving(OutputPin.class,
-					this, UMLPackage.CONDITIONAL_NODE__RESULT));
+		if (results == null) {
+			results = new EObjectContainmentEList.Resolving(OutputPin.class,
+				this, UMLPackage.CONDITIONAL_NODE__RESULT);
 		}
-		return result;
+		return results;
 	}
 
 	/**
@@ -743,15 +764,13 @@ public class ConditionalNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONDITIONAL_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONDITIONAL_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__NAME :
 				return isSetName();
 			case UMLPackage.CONDITIONAL_NODE__VISIBILITY :
@@ -761,12 +780,12 @@ public class ConditionalNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.CONDITIONAL_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_ELEMENT :
@@ -778,26 +797,20 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__ACTIVITY :
 				return isSetActivity();
 			case UMLPackage.CONDITIONAL_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.CONDITIONAL_NODE__INPUT :
@@ -805,22 +818,17 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.CONDITIONAL_NODE__IMPORTED_MEMBER :
@@ -838,26 +846,21 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__CONTAINED_NODE :
 				return isSetContainedNodes();
 			case UMLPackage.CONDITIONAL_NODE__VARIABLE :
-				EList variable = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__VARIABLE);
-				return variable != null && !variable.isEmpty();
+				return variables != null && !variables.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
-				EList edge = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__EDGE);
-				return edge != null && !edge.isEmpty();
+				return edges != null && !edges.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
 				return ((eFlags & MUST_ISOLATE_EFLAG) != 0) != MUST_ISOLATE_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__NODE :
-				EList node = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__NODE);
-				return node != null && !node.isEmpty();
+				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
 				return ((eFlags & IS_DETERMINATE_EFLAG) != 0) != IS_DETERMINATE_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
 				return ((eFlags & IS_ASSURED_EFLAG) != 0) != IS_ASSURED_EDEFAULT;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
-				EList clause = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
-				return clause != null && !clause.isEmpty();
+				return clauses != null && !clauses.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__RESULT :
-				EList result = (EList) eVirtualGet(UMLPackage.CONDITIONAL_NODE__RESULT);
-				return result != null && !result.isEmpty();
+				return results != null && !results.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -881,6 +884,28 @@ public class ConditionalNodeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.CONDITIONAL_NODE__OWNED_COMMENT,
+		UMLPackage.CONDITIONAL_NODE__NAME_EXPRESSION,
+		UMLPackage.CONDITIONAL_NODE__HANDLER,
+		UMLPackage.CONDITIONAL_NODE__OUTPUT,
+		UMLPackage.CONDITIONAL_NODE__INPUT,
+		UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION,
+		UMLPackage.CONDITIONAL_NODE__LOCAL_POSTCONDITION,
+		UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT,
+		UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT,
+		UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER,
+		UMLPackage.CONDITIONAL_NODE__SUBGROUP,
+		UMLPackage.CONDITIONAL_NODE__CLAUSE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -889,6 +914,16 @@ public class ConditionalNodeImpl
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.CONDITIONAL_NODE__CLAUSE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.CONDITIONAL_NODE__RESULT};
 
 	/**
 	 * <!-- begin-user-doc -->

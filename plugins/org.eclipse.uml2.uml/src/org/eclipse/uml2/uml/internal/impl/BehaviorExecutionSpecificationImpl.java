@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorExecutionSpecificationImpl.java,v 1.11 2006/03/15 19:33:59 khussey Exp $
+ * $Id: BehaviorExecutionSpecificationImpl.java,v 1.12 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -49,6 +47,16 @@ public class BehaviorExecutionSpecificationImpl
 		implements BehaviorExecutionSpecification {
 
 	/**
+	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBehavior()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior behavior = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -72,14 +80,10 @@ public class BehaviorExecutionSpecificationImpl
 	 * @generated
 	 */
 	public Behavior getBehavior() {
-		Behavior behavior = (Behavior) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
 			InternalEObject oldBehavior = (InternalEObject) behavior;
 			behavior = (Behavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
-				eVirtualSet(
-					UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR,
-					behavior);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR,
@@ -95,7 +99,7 @@ public class BehaviorExecutionSpecificationImpl
 	 * @generated
 	 */
 	public Behavior basicGetBehavior() {
-		return (Behavior) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR);
+		return behavior;
 	}
 
 	/**
@@ -104,15 +108,12 @@ public class BehaviorExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
-		Behavior behavior = newBehavior;
-		Object oldBehavior = eVirtualSet(
-			UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR, behavior);
+		Behavior oldBehavior = behavior;
+		behavior = newBehavior;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR,
-				oldBehavior == EVIRTUAL_NO_VALUE
-					? null
-					: oldBehavior, behavior));
+				oldBehavior, behavior));
 
 	}
 
@@ -290,15 +291,13 @@ public class BehaviorExecutionSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
@@ -308,28 +307,26 @@ public class BehaviorExecutionSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
-				return eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START) != null;
+				return start != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
-				return eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH) != null;
+				return finish != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR :
-				return eVirtualGet(UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR) != null;
+				return behavior != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.25 2006/03/15 19:34:15 khussey Exp $
+ * $Id: StateImpl.java,v 1.26 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -68,14 +70,11 @@ import org.eclipse.uml2.uml.internal.operations.StateOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isLeaf <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getContainer <em>Container</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isOrthogonal <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isSimple <em>Is Simple</em>}</li>
@@ -100,14 +99,6 @@ public class StateImpl
 		implements State {
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits1 = 0;
-
-	/**
 	 * The default value of the '{@link #isLeaf() <em>Is Leaf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,7 +116,27 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 8;
+	protected static final int IS_LEAF_EFLAG = 1 << 10;
+
+	/**
+	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList outgoings = null;
+
+	/**
+	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList incomings = null;
 
 	/**
 	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
@@ -168,6 +179,106 @@ public class StateImpl
 	protected static final boolean IS_SUBMACHINE_STATE_EDEFAULT = false;
 
 	/**
+	 * The cached value of the '{@link #getSubmachine() <em>Submachine</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubmachine()
+	 * @generated
+	 * @ordered
+	 */
+	protected StateMachine submachine = null;
+
+	/**
+	 * The cached value of the '{@link #getConnections() <em>Connection</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnections()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList connections = null;
+
+	/**
+	 * The cached value of the '{@link #getConnectionPoints() <em>Connection Point</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnectionPoints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList connectionPoints = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedState() <em>Redefined State</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedState()
+	 * @generated
+	 * @ordered
+	 */
+	protected State redefinedState = null;
+
+	/**
+	 * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStateInvariant()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint stateInvariant = null;
+
+	/**
+	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEntry()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior entry = null;
+
+	/**
+	 * The cached value of the '{@link #getExit() <em>Exit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExit()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior exit = null;
+
+	/**
+	 * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoActivity()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior doActivity = null;
+
+	/**
+	 * The cached value of the '{@link #getDeferrableTriggers() <em>Deferrable Trigger</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeferrableTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList deferrableTriggers = null;
+
+	/**
+	 * The cached value of the '{@link #getRegions() <em>Region</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList regions = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -191,15 +302,23 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.STATE__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.STATE__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.STATE__REDEFINED_ELEMENT,
-					new int[]{UMLPackage.STATE__REDEFINED_STATE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.STATE__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.STATE__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -343,14 +462,11 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getOutgoings() {
-		EList outgoing = (EList) eVirtualGet(UMLPackage.STATE__OUTGOING);
-		if (outgoing == null) {
-			eVirtualSet(UMLPackage.STATE__OUTGOING,
-				outgoing = new EObjectWithInverseResolvingEList(
-					Transition.class, this, UMLPackage.STATE__OUTGOING,
-					UMLPackage.TRANSITION__SOURCE));
+		if (outgoings == null) {
+			outgoings = new EObjectWithInverseResolvingEList(Transition.class,
+				this, UMLPackage.STATE__OUTGOING, UMLPackage.TRANSITION__SOURCE);
 		}
-		return outgoing;
+		return outgoings;
 	}
 
 	/**
@@ -387,14 +503,11 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getIncomings() {
-		EList incoming = (EList) eVirtualGet(UMLPackage.STATE__INCOMING);
-		if (incoming == null) {
-			eVirtualSet(UMLPackage.STATE__INCOMING,
-				incoming = new EObjectWithInverseResolvingEList(
-					Transition.class, this, UMLPackage.STATE__INCOMING,
-					UMLPackage.TRANSITION__TARGET));
+		if (incomings == null) {
+			incomings = new EObjectWithInverseResolvingEList(Transition.class,
+				this, UMLPackage.STATE__INCOMING, UMLPackage.TRANSITION__TARGET);
 		}
-		return incoming;
+		return incomings;
 	}
 
 	/**
@@ -492,16 +605,22 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.STATE__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(
-				UMLPackage.STATE__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.STATE__OWNED_MEMBER, new int[]{
-						UMLPackage.STATE__OWNED_RULE,
-						UMLPackage.STATE__CONNECTION, UMLPackage.STATE__REGION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+					ownedMembers = new DerivedUnionEObjectEList(
+						NamedElement.class, this,
+						UMLPackage.STATE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.STATE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -510,22 +629,22 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.STATE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.STATE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.STATE__OWNED_ELEMENT, new int[]{
-						UMLPackage.STATE__OWNED_COMMENT,
-						UMLPackage.STATE__NAME_EXPRESSION,
-						UMLPackage.STATE__ELEMENT_IMPORT,
-						UMLPackage.STATE__PACKAGE_IMPORT,
-						UMLPackage.STATE__OWNED_MEMBER,
-						UMLPackage.STATE__CONNECTION_POINT,
-						UMLPackage.STATE__STATE_INVARIANT,
-						UMLPackage.STATE__ENTRY, UMLPackage.STATE__EXIT,
-						UMLPackage.STATE__DO_ACTIVITY}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.STATE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.STATE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -570,12 +689,10 @@ public class StateImpl
 	 * @generated
 	 */
 	public StateMachine getSubmachine() {
-		StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
 		if (submachine != null && submachine.eIsProxy()) {
 			InternalEObject oldSubmachine = (InternalEObject) submachine;
 			submachine = (StateMachine) eResolveProxy(oldSubmachine);
 			if (submachine != oldSubmachine) {
-				eVirtualSet(UMLPackage.STATE__SUBMACHINE, submachine);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.STATE__SUBMACHINE, oldSubmachine, submachine));
@@ -590,7 +707,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public StateMachine basicGetSubmachine() {
-		return (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
+		return submachine;
 	}
 
 	/**
@@ -600,14 +717,12 @@ public class StateImpl
 	 */
 	public NotificationChain basicSetSubmachine(StateMachine newSubmachine,
 			NotificationChain msgs) {
-		Object oldSubmachine = eVirtualSet(UMLPackage.STATE__SUBMACHINE,
-			newSubmachine);
+		StateMachine oldSubmachine = submachine;
+		submachine = newSubmachine;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.STATE__SUBMACHINE,
-				oldSubmachine == EVIRTUAL_NO_VALUE
-					? null
-					: oldSubmachine, newSubmachine);
+				Notification.SET, UMLPackage.STATE__SUBMACHINE, oldSubmachine,
+				newSubmachine);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -623,7 +738,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setSubmachine(StateMachine newSubmachine) {
-		StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
 		if (newSubmachine != submachine) {
 			NotificationChain msgs = null;
 			if (submachine != null)
@@ -649,15 +763,13 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getConnections() {
-		EList connection = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION);
-		if (connection == null) {
-			eVirtualSet(UMLPackage.STATE__CONNECTION,
-				connection = new EObjectContainmentWithInverseEList.Resolving(
-					ConnectionPointReference.class, this,
-					UMLPackage.STATE__CONNECTION,
-					UMLPackage.CONNECTION_POINT_REFERENCE__STATE));
+		if (connections == null) {
+			connections = new EObjectContainmentWithInverseEList.Resolving(
+				ConnectionPointReference.class, this,
+				UMLPackage.STATE__CONNECTION,
+				UMLPackage.CONNECTION_POINT_REFERENCE__STATE);
 		}
-		return connection;
+		return connections;
 	}
 
 	/**
@@ -710,16 +822,12 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getConnectionPoints() {
-		EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
-		if (connectionPoint == null) {
-			eVirtualSet(
-				UMLPackage.STATE__CONNECTION_POINT,
-				connectionPoint = new EObjectContainmentWithInverseEList.Resolving(
-					Pseudostate.class, this,
-					UMLPackage.STATE__CONNECTION_POINT,
-					UMLPackage.PSEUDOSTATE__STATE));
+		if (connectionPoints == null) {
+			connectionPoints = new EObjectContainmentWithInverseEList.Resolving(
+				Pseudostate.class, this, UMLPackage.STATE__CONNECTION_POINT,
+				UMLPackage.PSEUDOSTATE__STATE);
 		}
-		return connectionPoint;
+		return connectionPoints;
 	}
 
 	/**
@@ -771,12 +879,10 @@ public class StateImpl
 	 * @generated
 	 */
 	public State getRedefinedState() {
-		State redefinedState = (State) eVirtualGet(UMLPackage.STATE__REDEFINED_STATE);
 		if (redefinedState != null && redefinedState.eIsProxy()) {
 			InternalEObject oldRedefinedState = (InternalEObject) redefinedState;
 			redefinedState = (State) eResolveProxy(oldRedefinedState);
 			if (redefinedState != oldRedefinedState) {
-				eVirtualSet(UMLPackage.STATE__REDEFINED_STATE, redefinedState);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.STATE__REDEFINED_STATE, oldRedefinedState,
@@ -792,7 +898,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public State basicGetRedefinedState() {
-		return (State) eVirtualGet(UMLPackage.STATE__REDEFINED_STATE);
+		return redefinedState;
 	}
 
 	/**
@@ -801,15 +907,12 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setRedefinedState(State newRedefinedState) {
-		State redefinedState = newRedefinedState;
-		Object oldRedefinedState = eVirtualSet(
-			UMLPackage.STATE__REDEFINED_STATE, redefinedState);
+		State oldRedefinedState = redefinedState;
+		redefinedState = newRedefinedState;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.STATE__REDEFINED_STATE,
-				oldRedefinedState == EVIRTUAL_NO_VALUE
-					? null
-					: oldRedefinedState, redefinedState));
+				UMLPackage.STATE__REDEFINED_STATE, oldRedefinedState,
+				redefinedState));
 
 	}
 
@@ -819,7 +922,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public Constraint getStateInvariant() {
-		Constraint stateInvariant = (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
 		if (stateInvariant != null && stateInvariant.eIsProxy()) {
 			InternalEObject oldStateInvariant = (InternalEObject) stateInvariant;
 			stateInvariant = (Constraint) eResolveProxy(oldStateInvariant);
@@ -850,7 +952,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Constraint basicGetStateInvariant() {
-		return (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
+		return stateInvariant;
 	}
 
 	/**
@@ -860,14 +962,12 @@ public class StateImpl
 	 */
 	public NotificationChain basicSetStateInvariant(
 			Constraint newStateInvariant, NotificationChain msgs) {
-		Object oldStateInvariant = eVirtualSet(
-			UMLPackage.STATE__STATE_INVARIANT, newStateInvariant);
+		Constraint oldStateInvariant = stateInvariant;
+		stateInvariant = newStateInvariant;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.STATE__STATE_INVARIANT,
-				oldStateInvariant == EVIRTUAL_NO_VALUE
-					? null
-					: oldStateInvariant, newStateInvariant);
+				oldStateInvariant, newStateInvariant);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -883,7 +983,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setStateInvariant(Constraint newStateInvariant) {
-		Constraint stateInvariant = (Constraint) eVirtualGet(UMLPackage.STATE__STATE_INVARIANT);
 		if (newStateInvariant != stateInvariant) {
 			NotificationChain msgs = null;
 			if (stateInvariant != null)
@@ -932,7 +1031,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getEntry() {
-		Behavior entry = (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
 		if (entry != null && entry.eIsProxy()) {
 			InternalEObject oldEntry = (InternalEObject) entry;
 			entry = (Behavior) eResolveProxy(oldEntry);
@@ -961,7 +1059,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior basicGetEntry() {
-		return (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
+		return entry;
 	}
 
 	/**
@@ -971,13 +1069,11 @@ public class StateImpl
 	 */
 	public NotificationChain basicSetEntry(Behavior newEntry,
 			NotificationChain msgs) {
-		Object oldEntry = eVirtualSet(UMLPackage.STATE__ENTRY, newEntry);
+		Behavior oldEntry = entry;
+		entry = newEntry;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.STATE__ENTRY,
-				oldEntry == EVIRTUAL_NO_VALUE
-					? null
-					: oldEntry, newEntry);
+				Notification.SET, UMLPackage.STATE__ENTRY, oldEntry, newEntry);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -993,7 +1089,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setEntry(Behavior newEntry) {
-		Behavior entry = (Behavior) eVirtualGet(UMLPackage.STATE__ENTRY);
 		if (newEntry != entry) {
 			NotificationChain msgs = null;
 			if (entry != null)
@@ -1032,7 +1127,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getExit() {
-		Behavior exit = (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
 		if (exit != null && exit.eIsProxy()) {
 			InternalEObject oldExit = (InternalEObject) exit;
 			exit = (Behavior) eResolveProxy(oldExit);
@@ -1061,7 +1155,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior basicGetExit() {
-		return (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
+		return exit;
 	}
 
 	/**
@@ -1071,13 +1165,11 @@ public class StateImpl
 	 */
 	public NotificationChain basicSetExit(Behavior newExit,
 			NotificationChain msgs) {
-		Object oldExit = eVirtualSet(UMLPackage.STATE__EXIT, newExit);
+		Behavior oldExit = exit;
+		exit = newExit;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.STATE__EXIT,
-				oldExit == EVIRTUAL_NO_VALUE
-					? null
-					: oldExit, newExit);
+				Notification.SET, UMLPackage.STATE__EXIT, oldExit, newExit);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -1093,7 +1185,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setExit(Behavior newExit) {
-		Behavior exit = (Behavior) eVirtualGet(UMLPackage.STATE__EXIT);
 		if (newExit != exit) {
 			NotificationChain msgs = null;
 			if (exit != null)
@@ -1132,7 +1223,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior getDoActivity() {
-		Behavior doActivity = (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
 		if (doActivity != null && doActivity.eIsProxy()) {
 			InternalEObject oldDoActivity = (InternalEObject) doActivity;
 			doActivity = (Behavior) eResolveProxy(oldDoActivity);
@@ -1163,7 +1253,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Behavior basicGetDoActivity() {
-		return (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
+		return doActivity;
 	}
 
 	/**
@@ -1173,14 +1263,12 @@ public class StateImpl
 	 */
 	public NotificationChain basicSetDoActivity(Behavior newDoActivity,
 			NotificationChain msgs) {
-		Object oldDoActivity = eVirtualSet(UMLPackage.STATE__DO_ACTIVITY,
-			newDoActivity);
+		Behavior oldDoActivity = doActivity;
+		doActivity = newDoActivity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.STATE__DO_ACTIVITY,
-				oldDoActivity == EVIRTUAL_NO_VALUE
-					? null
-					: oldDoActivity, newDoActivity);
+				Notification.SET, UMLPackage.STATE__DO_ACTIVITY, oldDoActivity,
+				newDoActivity);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -1196,7 +1284,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setDoActivity(Behavior newDoActivity) {
-		Behavior doActivity = (Behavior) eVirtualGet(UMLPackage.STATE__DO_ACTIVITY);
 		if (newDoActivity != doActivity) {
 			NotificationChain msgs = null;
 			if (doActivity != null)
@@ -1235,13 +1322,11 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getDeferrableTriggers() {
-		EList deferrableTrigger = (EList) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
-		if (deferrableTrigger == null) {
-			eVirtualSet(UMLPackage.STATE__DEFERRABLE_TRIGGER,
-				deferrableTrigger = new EObjectContainmentEList.Resolving(
-					Trigger.class, this, UMLPackage.STATE__DEFERRABLE_TRIGGER));
+		if (deferrableTriggers == null) {
+			deferrableTriggers = new EObjectContainmentEList.Resolving(
+				Trigger.class, this, UMLPackage.STATE__DEFERRABLE_TRIGGER);
 		}
-		return deferrableTrigger;
+		return deferrableTriggers;
 	}
 
 	/**
@@ -1293,14 +1378,12 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getRegions() {
-		EList region = (EList) eVirtualGet(UMLPackage.STATE__REGION);
-		if (region == null) {
-			eVirtualSet(UMLPackage.STATE__REGION,
-				region = new EObjectContainmentWithInverseEList.Resolving(
-					Region.class, this, UMLPackage.STATE__REGION,
-					UMLPackage.REGION__STATE));
+		if (regions == null) {
+			regions = new EObjectContainmentWithInverseEList.Resolving(
+				Region.class, this, UMLPackage.STATE__REGION,
+				UMLPackage.REGION__STATE);
 		}
-		return region;
+		return regions;
 	}
 
 	/**
@@ -1504,7 +1587,6 @@ public class StateImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetContainer((Region) otherEnd, msgs);
 			case UMLPackage.STATE__SUBMACHINE :
-				StateMachine submachine = (StateMachine) eVirtualGet(UMLPackage.STATE__SUBMACHINE);
 				if (submachine != null)
 					msgs = ((InternalEObject) submachine).eInverseRemove(this,
 						UMLPackage.STATE_MACHINE__SUBMACHINE_STATE,
@@ -1892,15 +1974,13 @@ public class StateImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.STATE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.STATE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STATE__OWNER :
 				return isSetOwner();
 			case UMLPackage.STATE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.STATE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STATE__NAME :
 				return isSetName();
 			case UMLPackage.STATE__VISIBILITY :
@@ -1910,21 +1990,18 @@ public class StateImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.STATE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.STATE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STATE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.STATE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.STATE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.STATE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.STATE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.STATE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.STATE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.STATE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.STATE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.STATE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.STATE__IMPORTED_MEMBER :
@@ -1938,11 +2015,9 @@ public class StateImpl
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.STATE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.STATE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.STATE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.STATE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.STATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.STATE__IS_COMPOSITE :
@@ -1954,30 +2029,26 @@ public class StateImpl
 			case UMLPackage.STATE__IS_SUBMACHINE_STATE :
 				return isSubmachineState() != IS_SUBMACHINE_STATE_EDEFAULT;
 			case UMLPackage.STATE__SUBMACHINE :
-				return eVirtualGet(UMLPackage.STATE__SUBMACHINE) != null;
+				return submachine != null;
 			case UMLPackage.STATE__CONNECTION :
-				EList connection = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION);
-				return connection != null && !connection.isEmpty();
+				return connections != null && !connections.isEmpty();
 			case UMLPackage.STATE__CONNECTION_POINT :
-				EList connectionPoint = (EList) eVirtualGet(UMLPackage.STATE__CONNECTION_POINT);
-				return connectionPoint != null && !connectionPoint.isEmpty();
+				return connectionPoints != null && !connectionPoints.isEmpty();
 			case UMLPackage.STATE__REDEFINED_STATE :
-				return eVirtualGet(UMLPackage.STATE__REDEFINED_STATE) != null;
+				return redefinedState != null;
 			case UMLPackage.STATE__STATE_INVARIANT :
-				return eVirtualGet(UMLPackage.STATE__STATE_INVARIANT) != null;
+				return stateInvariant != null;
 			case UMLPackage.STATE__ENTRY :
-				return eVirtualGet(UMLPackage.STATE__ENTRY) != null;
+				return entry != null;
 			case UMLPackage.STATE__EXIT :
-				return eVirtualGet(UMLPackage.STATE__EXIT) != null;
+				return exit != null;
 			case UMLPackage.STATE__DO_ACTIVITY :
-				return eVirtualGet(UMLPackage.STATE__DO_ACTIVITY) != null;
+				return doActivity != null;
 			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
-				EList deferrableTrigger = (EList) eVirtualGet(UMLPackage.STATE__DEFERRABLE_TRIGGER);
-				return deferrableTrigger != null
-					&& !deferrableTrigger.isEmpty();
+				return deferrableTriggers != null
+					&& !deferrableTriggers.isEmpty();
 			case UMLPackage.STATE__REGION :
-				EList region = (EList) eVirtualGet(UMLPackage.STATE__REGION);
-				return region != null && !region.isEmpty();
+				return regions != null && !regions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -2053,40 +2124,6 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -2097,6 +2134,16 @@ public class StateImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.STATE__REDEFINED_STATE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2130,6 +2177,18 @@ public class StateImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.STATE__OWNED_RULE, UMLPackage.STATE__CONNECTION,
+		UMLPackage.STATE__REGION};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2139,6 +2198,21 @@ public class StateImpl
 			|| eIsSet(UMLPackage.STATE__CONNECTION)
 			|| eIsSet(UMLPackage.STATE__REGION);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.STATE__OWNED_COMMENT, UMLPackage.STATE__NAME_EXPRESSION,
+		UMLPackage.STATE__ELEMENT_IMPORT, UMLPackage.STATE__PACKAGE_IMPORT,
+		UMLPackage.STATE__OWNED_MEMBER, UMLPackage.STATE__CONNECTION_POINT,
+		UMLPackage.STATE__STATE_INVARIANT, UMLPackage.STATE__ENTRY,
+		UMLPackage.STATE__EXIT, UMLPackage.STATE__DO_ACTIVITY};
 
 	/**
 	 * <!-- begin-user-doc -->

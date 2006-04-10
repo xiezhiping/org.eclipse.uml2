@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.14 2006/02/21 16:12:17 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,6 +62,36 @@ public class OpaqueExpressionImpl
 		implements OpaqueExpression {
 
 	/**
+	 * The cached value of the '{@link #getBodies() <em>Body</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBodies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList bodies = null;
+
+	/**
+	 * The cached value of the '{@link #getLanguages() <em>Language</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList languages = null;
+
+	/**
+	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBehavior()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior behavior = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -85,13 +115,11 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public EList getBodies() {
-		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
-		if (body == null) {
-			eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__BODY,
-				body = new EDataTypeUniqueEList.Unsettable(String.class, this,
-					UMLPackage.OPAQUE_EXPRESSION__BODY));
+		if (bodies == null) {
+			bodies = new EDataTypeUniqueEList.Unsettable(String.class, this,
+				UMLPackage.OPAQUE_EXPRESSION__BODY);
 		}
-		return body;
+		return bodies;
 	}
 
 	/**
@@ -109,8 +137,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean isSetBodies() {
-		EList body = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY);
-		return body != null && ((InternalEList.Unsettable) body).isSet();
+		return bodies != null && ((InternalEList.Unsettable) bodies).isSet();
 	}
 
 	/**
@@ -119,13 +146,11 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public EList getLanguages() {
-		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
-		if (language == null) {
-			eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE,
-				language = new EDataTypeUniqueEList.Unsettable(String.class,
-					this, UMLPackage.OPAQUE_EXPRESSION__LANGUAGE));
+		if (languages == null) {
+			languages = new EDataTypeUniqueEList.Unsettable(String.class, this,
+				UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
 		}
-		return language;
+		return languages;
 	}
 
 	/**
@@ -143,9 +168,8 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean isSetLanguages() {
-		EList language = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
-		return language != null
-			&& ((InternalEList.Unsettable) language).isSet();
+		return languages != null
+			&& ((InternalEList.Unsettable) languages).isSet();
 	}
 
 	/**
@@ -175,12 +199,10 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public Behavior getBehavior() {
-		Behavior behavior = (Behavior) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR);
 		if (behavior != null && behavior.eIsProxy()) {
 			InternalEObject oldBehavior = (InternalEObject) behavior;
 			behavior = (Behavior) eResolveProxy(oldBehavior);
 			if (behavior != oldBehavior) {
-				eVirtualSet(UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR, behavior);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR, oldBehavior,
@@ -196,7 +218,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public Behavior basicGetBehavior() {
-		return (Behavior) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR);
+		return behavior;
 	}
 
 	/**
@@ -205,15 +227,11 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
-		Behavior behavior = newBehavior;
-		Object oldBehavior = eVirtualSet(
-			UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR, behavior);
+		Behavior oldBehavior = behavior;
+		behavior = newBehavior;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR,
-				oldBehavior == EVIRTUAL_NO_VALUE
-					? null
-					: oldBehavior, behavior));
+				UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR, oldBehavior, behavior));
 
 	}
 
@@ -463,15 +481,13 @@ public class OpaqueExpressionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNER :
 				return isSetOwner();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				return isSetName();
 			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
@@ -481,18 +497,18 @@ public class OpaqueExpressionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
-				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__TYPE) != null;
+				return type != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
@@ -500,7 +516,7 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__RESULT :
 				return basicGetResult() != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
-				return eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR) != null;
+				return behavior != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -516,9 +532,9 @@ public class OpaqueExpressionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__BODY));
+		result.append(bodies);
 		result.append(", language: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.OPAQUE_EXPRESSION__LANGUAGE));
+		result.append(languages);
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.18 2006/03/15 19:34:15 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,8 +23,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -43,7 +46,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RaiseExceptionActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RaiseExceptionActionImpl#getException <em>Exception</em>}</li>
  * </ul>
  * </p>
@@ -53,6 +55,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class RaiseExceptionActionImpl
 		extends ActionImpl
 		implements RaiseExceptionAction {
+
+	/**
+	 * The cached value of the '{@link #getException() <em>Exception</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getException()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin exception = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,14 +90,21 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.RAISE_EXCEPTION_ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.RAISE_EXCEPTION_ACTION__INPUT,
-					new int[]{UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+						UMLPackage.RAISE_EXCEPTION_ACTION__INPUT,
+						INPUT_ESUBSETS));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.RAISE_EXCEPTION_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
 	/**
@@ -94,7 +113,6 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public InputPin getException() {
-		InputPin exception = (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
 		if (exception != null && exception.eIsProxy()) {
 			InternalEObject oldException = (InternalEObject) exception;
 			exception = (InputPin) eResolveProxy(oldException);
@@ -127,7 +145,7 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public InputPin basicGetException() {
-		return (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
+		return exception;
 	}
 
 	/**
@@ -137,14 +155,12 @@ public class RaiseExceptionActionImpl
 	 */
 	public NotificationChain basicSetException(InputPin newException,
 			NotificationChain msgs) {
-		Object oldException = eVirtualSet(
-			UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION, newException);
+		InputPin oldException = exception;
+		exception = newException;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION,
-				oldException == EVIRTUAL_NO_VALUE
-					? null
-					: oldException, newException);
+				oldException, newException);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -160,7 +176,6 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public void setException(InputPin newException) {
-		InputPin exception = (InputPin) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION);
 		if (newException != exception) {
 			NotificationChain msgs = null;
 			if (exception != null)
@@ -489,15 +504,13 @@ public class RaiseExceptionActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
 				return isSetName();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
@@ -507,12 +520,12 @@ public class RaiseExceptionActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_ELEMENT :
@@ -524,26 +537,20 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
@@ -551,18 +558,26 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
-				return eVirtualGet(UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION) != null;
+				return exception != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INPUT_ESUBSETS = new int[]{UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION};
 
 	/**
 	 * <!-- begin-user-doc -->

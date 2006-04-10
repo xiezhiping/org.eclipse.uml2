@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.20 2006/03/15 19:34:13 khussey Exp $
+ * $Id: PinImpl.java,v 1.21 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,8 +28,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -55,7 +58,6 @@ import org.eclipse.uml2.uml.internal.operations.PinOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getUpper <em>Upper</em>}</li>
@@ -71,14 +73,6 @@ import org.eclipse.uml2.uml.internal.operations.PinOperations;
 public class PinImpl
 		extends ObjectNodeImpl
 		implements Pin {
-
-	/**
-	 * A bit field representing the indices of non-primitive feature values.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected int eVirtualIndexBits1 = 0;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -98,7 +92,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 10;
+	protected static final int IS_ORDERED_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -118,7 +112,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 11;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 13;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -141,6 +135,26 @@ public class PinImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue = null;
+
+	/**
+	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLowerValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification lowerValue = null;
+
+	/**
 	 * The default value of the '{@link #isControl() <em>Is Control</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,7 +172,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_CONTROL_EFLAG = 1 << 12;
+	protected static final int IS_CONTROL_EFLAG = 1 << 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,18 +199,22 @@ public class PinImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.PIN__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PIN__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PIN__OWNED_ELEMENT, new int[]{
-						UMLPackage.PIN__OWNED_COMMENT,
-						UMLPackage.PIN__NAME_EXPRESSION,
-						UMLPackage.PIN__UPPER_BOUND,
-						UMLPackage.PIN__UPPER_VALUE,
-						UMLPackage.PIN__LOWER_VALUE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.PIN__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PIN__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -293,7 +311,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public ValueSpecification getUpperValue() {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PIN__UPPER_VALUE);
 		if (upperValue != null && upperValue.eIsProxy()) {
 			InternalEObject oldUpperValue = (InternalEObject) upperValue;
 			upperValue = (ValueSpecification) eResolveProxy(oldUpperValue);
@@ -323,7 +340,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetUpperValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.PIN__UPPER_VALUE);
+		return upperValue;
 	}
 
 	/**
@@ -333,14 +350,12 @@ public class PinImpl
 	 */
 	public NotificationChain basicSetUpperValue(
 			ValueSpecification newUpperValue, NotificationChain msgs) {
-		Object oldUpperValue = eVirtualSet(UMLPackage.PIN__UPPER_VALUE,
-			newUpperValue);
+		ValueSpecification oldUpperValue = upperValue;
+		upperValue = newUpperValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.PIN__UPPER_VALUE,
-				oldUpperValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldUpperValue, newUpperValue);
+				Notification.SET, UMLPackage.PIN__UPPER_VALUE, oldUpperValue,
+				newUpperValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -356,7 +371,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-		ValueSpecification upperValue = (ValueSpecification) eVirtualGet(UMLPackage.PIN__UPPER_VALUE);
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -398,7 +412,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public ValueSpecification getLowerValue() {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PIN__LOWER_VALUE);
 		if (lowerValue != null && lowerValue.eIsProxy()) {
 			InternalEObject oldLowerValue = (InternalEObject) lowerValue;
 			lowerValue = (ValueSpecification) eResolveProxy(oldLowerValue);
@@ -428,7 +441,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetLowerValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.PIN__LOWER_VALUE);
+		return lowerValue;
 	}
 
 	/**
@@ -438,14 +451,12 @@ public class PinImpl
 	 */
 	public NotificationChain basicSetLowerValue(
 			ValueSpecification newLowerValue, NotificationChain msgs) {
-		Object oldLowerValue = eVirtualSet(UMLPackage.PIN__LOWER_VALUE,
-			newLowerValue);
+		ValueSpecification oldLowerValue = lowerValue;
+		lowerValue = newLowerValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.PIN__LOWER_VALUE,
-				oldLowerValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldLowerValue, newLowerValue);
+				Notification.SET, UMLPackage.PIN__LOWER_VALUE, oldLowerValue,
+				newLowerValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -461,7 +472,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-		ValueSpecification lowerValue = (ValueSpecification) eVirtualGet(UMLPackage.PIN__LOWER_VALUE);
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -984,15 +994,13 @@ public class PinImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PIN__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PIN__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PIN__OWNER :
 				return isSetOwner();
 			case UMLPackage.PIN__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PIN__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PIN__NAME :
 				return isSetName();
 			case UMLPackage.PIN__VISIBILITY :
@@ -1002,12 +1010,12 @@ public class PinImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PIN__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PIN__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PIN__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PIN__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PIN__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.PIN__REDEFINED_ELEMENT :
@@ -1019,36 +1027,30 @@ public class PinImpl
 			case UMLPackage.PIN__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.PIN__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.PIN__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.PIN__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.PIN__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.PIN__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.PIN__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.PIN__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.PIN__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.PIN__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.PIN__TYPE :
-				return eVirtualGet(UMLPackage.PIN__TYPE) != null;
+				return type != null;
 			case UMLPackage.PIN__ORDERING :
-				return eVirtualGet(UMLPackage.PIN__ORDERING, ORDERING_EDEFAULT) != ORDERING_EDEFAULT;
+				return ordering != ORDERING_EDEFAULT;
 			case UMLPackage.PIN__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.PIN__UPPER_BOUND :
-				return eVirtualGet(UMLPackage.PIN__UPPER_BOUND) != null;
+				return upperBound != null;
 			case UMLPackage.PIN__IN_STATE :
-				EList inState = (EList) eVirtualGet(UMLPackage.PIN__IN_STATE);
-				return inState != null && !inState.isEmpty();
+				return inStates != null && !inStates.isEmpty();
 			case UMLPackage.PIN__SELECTION :
-				return eVirtualGet(UMLPackage.PIN__SELECTION) != null;
+				return selection != null;
 			case UMLPackage.PIN__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PIN__IS_UNIQUE :
@@ -1058,9 +1060,9 @@ public class PinImpl
 			case UMLPackage.PIN__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PIN__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.PIN__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.PIN__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.PIN__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.PIN__IS_CONTROL :
 				return ((eFlags & IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
 		}
@@ -1126,40 +1128,6 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1174,6 +1142,19 @@ public class PinImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PIN__OWNED_COMMENT, UMLPackage.PIN__NAME_EXPRESSION,
+		UMLPackage.PIN__UPPER_BOUND, UMLPackage.PIN__UPPER_VALUE,
+		UMLPackage.PIN__LOWER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.17 2006/03/15 19:34:13 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,9 +28,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
@@ -52,7 +55,6 @@ import org.eclipse.uml2.uml.internal.operations.InteractionUseOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getRefersTo <em>Refers To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getActualGates <em>Actual Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getArguments <em>Argument</em>}</li>
@@ -64,6 +66,36 @@ import org.eclipse.uml2.uml.internal.operations.InteractionUseOperations;
 public class InteractionUseImpl
 		extends InteractionFragmentImpl
 		implements InteractionUse {
+
+	/**
+	 * The cached value of the '{@link #getRefersTo() <em>Refers To</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRefersTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected Interaction refersTo = null;
+
+	/**
+	 * The cached value of the '{@link #getActualGates() <em>Actual Gate</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActualGates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList actualGates = null;
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList arguments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,17 +121,22 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.INTERACTION_USE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.INTERACTION_USE__OWNED_ELEMENT, new int[]{
-						UMLPackage.INTERACTION_USE__OWNED_COMMENT,
-						UMLPackage.INTERACTION_USE__NAME_EXPRESSION,
-						UMLPackage.INTERACTION_USE__GENERAL_ORDERING,
-						UMLPackage.INTERACTION_USE__ACTUAL_GATE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.INTERACTION_USE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INTERACTION_USE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -108,12 +145,10 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public Interaction getRefersTo() {
-		Interaction refersTo = (Interaction) eVirtualGet(UMLPackage.INTERACTION_USE__REFERS_TO);
 		if (refersTo != null && refersTo.eIsProxy()) {
 			InternalEObject oldRefersTo = (InternalEObject) refersTo;
 			refersTo = (Interaction) eResolveProxy(oldRefersTo);
 			if (refersTo != oldRefersTo) {
-				eVirtualSet(UMLPackage.INTERACTION_USE__REFERS_TO, refersTo);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.INTERACTION_USE__REFERS_TO, oldRefersTo,
@@ -129,7 +164,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public Interaction basicGetRefersTo() {
-		return (Interaction) eVirtualGet(UMLPackage.INTERACTION_USE__REFERS_TO);
+		return refersTo;
 	}
 
 	/**
@@ -138,15 +173,11 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public void setRefersTo(Interaction newRefersTo) {
-		Interaction refersTo = newRefersTo;
-		Object oldRefersTo = eVirtualSet(UMLPackage.INTERACTION_USE__REFERS_TO,
-			refersTo);
+		Interaction oldRefersTo = refersTo;
+		refersTo = newRefersTo;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.INTERACTION_USE__REFERS_TO,
-				oldRefersTo == EVIRTUAL_NO_VALUE
-					? null
-					: oldRefersTo, refersTo));
+				UMLPackage.INTERACTION_USE__REFERS_TO, oldRefersTo, refersTo));
 
 	}
 
@@ -156,13 +187,11 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public EList getActualGates() {
-		EList actualGate = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
-		if (actualGate == null) {
-			eVirtualSet(UMLPackage.INTERACTION_USE__ACTUAL_GATE,
-				actualGate = new EObjectContainmentEList.Resolving(Gate.class,
-					this, UMLPackage.INTERACTION_USE__ACTUAL_GATE));
+		if (actualGates == null) {
+			actualGates = new EObjectContainmentEList.Resolving(Gate.class,
+				this, UMLPackage.INTERACTION_USE__ACTUAL_GATE);
 		}
-		return actualGate;
+		return actualGates;
 	}
 
 	/**
@@ -214,13 +243,11 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public EList getArguments() {
-		EList argument = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
-		if (argument == null) {
-			eVirtualSet(UMLPackage.INTERACTION_USE__ARGUMENT,
-				argument = new EObjectContainmentEList.Resolving(Action.class,
-					this, UMLPackage.INTERACTION_USE__ARGUMENT));
+		if (arguments == null) {
+			arguments = new EObjectContainmentEList.Resolving(Action.class,
+				this, UMLPackage.INTERACTION_USE__ARGUMENT);
 		}
-		return argument;
+		return arguments;
 	}
 
 	/**
@@ -520,15 +547,13 @@ public class InteractionUseImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INTERACTION_USE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERACTION_USE__OWNER :
 				return isSetOwner();
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERACTION_USE__NAME :
 				return isSetName();
 			case UMLPackage.INTERACTION_USE__VISIBILITY :
@@ -538,33 +563,43 @@ public class InteractionUseImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERACTION_USE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INTERACTION_USE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INTERACTION_USE__COVERED :
-				EList covered = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__COVERED);
-				return covered != null && !covered.isEmpty();
+				return covereds != null && !covereds.isEmpty();
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.INTERACTION_USE__REFERS_TO :
-				return eVirtualGet(UMLPackage.INTERACTION_USE__REFERS_TO) != null;
+				return refersTo != null;
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
-				EList actualGate = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);
-				return actualGate != null && !actualGate.isEmpty();
+				return actualGates != null && !actualGates.isEmpty();
 			case UMLPackage.INTERACTION_USE__ARGUMENT :
-				EList argument = (EList) eVirtualGet(UMLPackage.INTERACTION_USE__ARGUMENT);
-				return argument != null && !argument.isEmpty();
+				return arguments != null && !arguments.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.INTERACTION_USE__OWNED_COMMENT,
+		UMLPackage.INTERACTION_USE__NAME_EXPRESSION,
+		UMLPackage.INTERACTION_USE__GENERAL_ORDERING,
+		UMLPackage.INTERACTION_USE__ACTUAL_GATE};
 
 	/**
 	 * <!-- begin-user-doc -->

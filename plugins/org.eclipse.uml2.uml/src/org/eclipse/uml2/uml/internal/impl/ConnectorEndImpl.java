@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.12 2006/03/09 21:30:31 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -55,6 +53,26 @@ import org.eclipse.uml2.uml.internal.operations.ConnectorEndOperations;
 public class ConnectorEndImpl
 		extends MultiplicityElementImpl
 		implements ConnectorEnd {
+
+	/**
+	 * The cached value of the '{@link #getPartWithPort() <em>Part With Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartWithPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property partWithPort = null;
+
+	/**
+	 * The cached value of the '{@link #getRole() <em>Role</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRole()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConnectableElement role = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,13 +119,10 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public Property getPartWithPort() {
-		Property partWithPort = (Property) eVirtualGet(UMLPackage.CONNECTOR_END__PART_WITH_PORT);
 		if (partWithPort != null && partWithPort.eIsProxy()) {
 			InternalEObject oldPartWithPort = (InternalEObject) partWithPort;
 			partWithPort = (Property) eResolveProxy(oldPartWithPort);
 			if (partWithPort != oldPartWithPort) {
-				eVirtualSet(UMLPackage.CONNECTOR_END__PART_WITH_PORT,
-					partWithPort);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CONNECTOR_END__PART_WITH_PORT,
@@ -123,7 +138,7 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public Property basicGetPartWithPort() {
-		return (Property) eVirtualGet(UMLPackage.CONNECTOR_END__PART_WITH_PORT);
+		return partWithPort;
 	}
 
 	/**
@@ -132,15 +147,12 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public void setPartWithPort(Property newPartWithPort) {
-		Property partWithPort = newPartWithPort;
-		Object oldPartWithPort = eVirtualSet(
-			UMLPackage.CONNECTOR_END__PART_WITH_PORT, partWithPort);
+		Property oldPartWithPort = partWithPort;
+		partWithPort = newPartWithPort;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CONNECTOR_END__PART_WITH_PORT,
-				oldPartWithPort == EVIRTUAL_NO_VALUE
-					? null
-					: oldPartWithPort, partWithPort));
+				UMLPackage.CONNECTOR_END__PART_WITH_PORT, oldPartWithPort,
+				partWithPort));
 
 	}
 
@@ -150,12 +162,10 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public ConnectableElement getRole() {
-		ConnectableElement role = (ConnectableElement) eVirtualGet(UMLPackage.CONNECTOR_END__ROLE);
 		if (role != null && role.eIsProxy()) {
 			InternalEObject oldRole = (InternalEObject) role;
 			role = (ConnectableElement) eResolveProxy(oldRole);
 			if (role != oldRole) {
-				eVirtualSet(UMLPackage.CONNECTOR_END__ROLE, role);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.CONNECTOR_END__ROLE, oldRole, role));
@@ -170,7 +180,7 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public ConnectableElement basicGetRole() {
-		return (ConnectableElement) eVirtualGet(UMLPackage.CONNECTOR_END__ROLE);
+		return role;
 	}
 
 	/**
@@ -180,13 +190,12 @@ public class ConnectorEndImpl
 	 */
 	public NotificationChain basicSetRole(ConnectableElement newRole,
 			NotificationChain msgs) {
-		Object oldRole = eVirtualSet(UMLPackage.CONNECTOR_END__ROLE, newRole);
+		ConnectableElement oldRole = role;
+		role = newRole;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.CONNECTOR_END__ROLE,
-				oldRole == EVIRTUAL_NO_VALUE
-					? null
-					: oldRole, newRole);
+				Notification.SET, UMLPackage.CONNECTOR_END__ROLE, oldRole,
+				newRole);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -202,7 +211,6 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public void setRole(ConnectableElement newRole) {
-		ConnectableElement role = (ConnectableElement) eVirtualGet(UMLPackage.CONNECTOR_END__ROLE);
 		if (newRole != role) {
 			NotificationChain msgs = null;
 			if (role != null)
@@ -277,7 +285,6 @@ public class ConnectorEndImpl
 				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
 					msgs);
 			case UMLPackage.CONNECTOR_END__ROLE :
-				ConnectableElement role = (ConnectableElement) eVirtualGet(UMLPackage.CONNECTOR_END__ROLE);
 				if (role != null)
 					msgs = ((InternalEObject) role).eInverseRemove(this,
 						UMLPackage.CONNECTABLE_ELEMENT__END,
@@ -456,15 +463,13 @@ public class ConnectorEndImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR_END__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.CONNECTOR_END__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.CONNECTOR_END__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONNECTOR_END__OWNER :
 				return isSetOwner();
 			case UMLPackage.CONNECTOR_END__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.CONNECTOR_END__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONNECTOR_END__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.CONNECTOR_END__IS_UNIQUE :
@@ -474,15 +479,15 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.CONNECTOR_END__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.CONNECTOR_END__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.CONNECTOR_END__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.CONNECTOR_END__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.CONNECTOR_END__DEFINING_END :
 				return basicGetDefiningEnd() != null;
 			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
-				return eVirtualGet(UMLPackage.CONNECTOR_END__PART_WITH_PORT) != null;
+				return partWithPort != null;
 			case UMLPackage.CONNECTOR_END__ROLE :
-				return eVirtualGet(UMLPackage.CONNECTOR_END__ROLE) != null;
+				return role != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

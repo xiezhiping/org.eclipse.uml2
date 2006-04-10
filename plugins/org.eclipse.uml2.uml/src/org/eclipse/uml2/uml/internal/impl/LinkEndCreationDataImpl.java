@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.7 2005/12/14 22:34:17 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.8 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -72,6 +70,16 @@ public class LinkEndCreationDataImpl
 	protected static final int IS_REPLACE_ALL_EFLAG = 1 << 8;
 
 	/**
+	 * The cached value of the '{@link #getInsertAt() <em>Insert At</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInsertAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin insertAt = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,13 +130,10 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public InputPin getInsertAt() {
-		InputPin insertAt = (InputPin) eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__INSERT_AT);
 		if (insertAt != null && insertAt.eIsProxy()) {
 			InternalEObject oldInsertAt = (InternalEObject) insertAt;
 			insertAt = (InputPin) eResolveProxy(oldInsertAt);
 			if (insertAt != oldInsertAt) {
-				eVirtualSet(UMLPackage.LINK_END_CREATION_DATA__INSERT_AT,
-					insertAt);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.LINK_END_CREATION_DATA__INSERT_AT,
@@ -144,7 +149,7 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public InputPin basicGetInsertAt() {
-		return (InputPin) eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__INSERT_AT);
+		return insertAt;
 	}
 
 	/**
@@ -153,15 +158,12 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
-		InputPin insertAt = newInsertAt;
-		Object oldInsertAt = eVirtualSet(
-			UMLPackage.LINK_END_CREATION_DATA__INSERT_AT, insertAt);
+		InputPin oldInsertAt = insertAt;
+		insertAt = newInsertAt;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LINK_END_CREATION_DATA__INSERT_AT,
-				oldInsertAt == EVIRTUAL_NO_VALUE
-					? null
-					: oldInsertAt, insertAt));
+				UMLPackage.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt,
+				insertAt));
 
 	}
 
@@ -301,26 +303,23 @@ public class LinkEndCreationDataImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_CREATION_DATA__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LINK_END_CREATION_DATA__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LINK_END_CREATION_DATA__OWNER :
 				return isSetOwner();
 			case UMLPackage.LINK_END_CREATION_DATA__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LINK_END_CREATION_DATA__VALUE :
-				return eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__VALUE) != null;
+				return value != null;
 			case UMLPackage.LINK_END_CREATION_DATA__END :
-				return eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__END) != null;
+				return end != null;
 			case UMLPackage.LINK_END_CREATION_DATA__QUALIFIER :
-				EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 			case UMLPackage.LINK_END_CREATION_DATA__IS_REPLACE_ALL :
 				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 			case UMLPackage.LINK_END_CREATION_DATA__INSERT_AT :
-				return eVirtualGet(UMLPackage.LINK_END_CREATION_DATA__INSERT_AT) != null;
+				return insertAt != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

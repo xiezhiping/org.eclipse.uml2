@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.26 2006/03/07 21:43:25 khussey Exp $
+ * $Id: PackageImpl.java,v 1.27 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -72,10 +72,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getVisibility <em>Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackagedElements <em>Packaged Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackageMerges <em>Package Merge</em>}</li>
@@ -90,6 +88,86 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
 public class PackageImpl
 		extends NamespaceImpl
 		implements org.eclipse.uml2.uml.Package {
+
+	/**
+	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateParameter()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateParameter templateParameter = null;
+
+	/**
+	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList templateBindings = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature = null;
+
+	/**
+	 * The cached value of the '{@link #getPackagedElements() <em>Packaged Element</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackagedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList packagedElements = null;
+
+	/**
+	 * The cached value of the '{@link #getPackageMerges() <em>Package Merge</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageMerges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList packageMerges = null;
+
+	/**
+	 * The cached value of the '{@link #getProfileApplications() <em>Profile Application</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProfileApplications()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList profileApplications = null;
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedTypes() <em>Owned Type</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_TYPE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getNestedPackages() <em>Nested Package</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestedPackages()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] NESTED_PACKAGE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,13 +193,10 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
 			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
-				eVirtualSet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER,
-					templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PACKAGE__TEMPLATE_PARAMETER,
@@ -137,7 +212,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
+		return templateParameter;
 	}
 
 	/**
@@ -147,14 +222,12 @@ public class PackageImpl
 	 */
 	public NotificationChain basicSetTemplateParameter(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		Object oldTemplateParameter = eVirtualSet(
-			UMLPackage.PACKAGE__TEMPLATE_PARAMETER, newTemplateParameter);
+		TemplateParameter oldTemplateParameter = templateParameter;
+		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PACKAGE__TEMPLATE_PARAMETER,
-				oldTemplateParameter == EVIRTUAL_NO_VALUE
-					? null
-					: oldTemplateParameter, newTemplateParameter);
+				oldTemplateParameter, newTemplateParameter);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -178,7 +251,6 @@ public class PackageImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -234,7 +306,6 @@ public class PackageImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
-				Object templateParameter = eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
 				if (newOwningTemplateParameter != templateParameter) {
 					setTemplateParameter(newOwningTemplateParameter);
 				}
@@ -281,8 +352,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return (VisibilityKind) eVirtualGet(UMLPackage.PACKAGE__VISIBILITY,
-			VISIBILITY_EDEFAULT);
+		return visibility;
 	}
 
 	/**
@@ -291,17 +361,13 @@ public class PackageImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind visibility = newVisibility == null
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
 			: newVisibility;
-		Object oldVisibility = eVirtualSet(UMLPackage.PACKAGE__VISIBILITY,
-			visibility);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE__VISIBILITY,
-				oldVisibility == EVIRTUAL_NO_VALUE
-					? VISIBILITY_EDEFAULT
-					: oldVisibility, visibility));
+				UMLPackage.PACKAGE__VISIBILITY, oldVisibility, visibility));
 
 	}
 
@@ -311,7 +377,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public boolean isSetVisibility() {
-		return eVirtualGet(UMLPackage.PACKAGE__VISIBILITY, VISIBILITY_EDEFAULT) != VISIBILITY_EDEFAULT;
+		return visibility != VISIBILITY_EDEFAULT;
 	}
 
 	/**
@@ -320,22 +386,22 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.PACKAGE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PACKAGE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PACKAGE__OWNED_ELEMENT, new int[]{
-						UMLPackage.PACKAGE__OWNED_COMMENT,
-						UMLPackage.PACKAGE__NAME_EXPRESSION,
-						UMLPackage.PACKAGE__ELEMENT_IMPORT,
-						UMLPackage.PACKAGE__PACKAGE_IMPORT,
-						UMLPackage.PACKAGE__OWNED_MEMBER,
-						UMLPackage.PACKAGE__TEMPLATE_BINDING,
-						UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
-						UMLPackage.PACKAGE__PACKAGE_MERGE,
-						UMLPackage.PACKAGE__PROFILE_APPLICATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.PACKAGE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PACKAGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -344,16 +410,13 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getTemplateBindings() {
-		EList templateBinding = (EList) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_BINDING);
-		if (templateBinding == null) {
-			eVirtualSet(
+		if (templateBindings == null) {
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+				TemplateBinding.class, this,
 				UMLPackage.PACKAGE__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
-					TemplateBinding.class, this,
-					UMLPackage.PACKAGE__TEMPLATE_BINDING,
-					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
+				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
 		}
-		return templateBinding;
+		return templateBindings;
 	}
 
 	/**
@@ -404,7 +467,6 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
 		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
@@ -436,7 +498,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateSignature basicGetOwnedTemplateSignature() {
-		return (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
+		return ownedTemplateSignature;
 	}
 
 	/**
@@ -446,15 +508,12 @@ public class PackageImpl
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-		Object oldOwnedTemplateSignature = eVirtualSet(
-			UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
-			newOwnedTemplateSignature);
+		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
+		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
-				oldOwnedTemplateSignature == EVIRTUAL_NO_VALUE
-					? null
-					: oldOwnedTemplateSignature, newOwnedTemplateSignature);
+				oldOwnedTemplateSignature, newOwnedTemplateSignature);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -471,7 +530,6 @@ public class PackageImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -520,15 +578,24 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
-		EList ownedMember = (EList) eVirtualGet(UMLPackage.PACKAGE__OWNED_MEMBER);
-		if (ownedMember == null) {
-			eVirtualSet(UMLPackage.PACKAGE__OWNED_MEMBER,
-				ownedMember = new DerivedUnionEObjectEList(NamedElement.class,
-					this, UMLPackage.PACKAGE__OWNED_MEMBER, new int[]{
-						UMLPackage.PACKAGE__OWNED_RULE,
-						UMLPackage.PACKAGE__PACKAGED_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedMembers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			if (ownedMembers == null) {
+				cache
+					.put(eResource, this,
+						UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
+						ownedMembers = new DerivedUnionEObjectEList(
+							NamedElement.class, this,
+							UMLPackage.PACKAGE__OWNED_MEMBER,
+							OWNED_MEMBER_ESUBSETS));
+			}
+			return ownedMembers;
 		}
-		return ownedMember;
+		return new DerivedUnionEObjectEList(NamedElement.class, this,
+			UMLPackage.PACKAGE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -537,14 +604,12 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getPackagedElements() {
-		EList packagedElement = (EList) eVirtualGet(UMLPackage.PACKAGE__PACKAGED_ELEMENT);
-		if (packagedElement == null) {
-			eVirtualSet(UMLPackage.PACKAGE__PACKAGED_ELEMENT,
-				packagedElement = new EObjectContainmentEList.Resolving(
-					PackageableElement.class, this,
-					UMLPackage.PACKAGE__PACKAGED_ELEMENT));
+		if (packagedElements == null) {
+			packagedElements = new EObjectContainmentEList.Resolving(
+				PackageableElement.class, this,
+				UMLPackage.PACKAGE__PACKAGED_ELEMENT);
 		}
-		return packagedElement;
+		return packagedElements;
 	}
 
 	/**
@@ -598,16 +663,12 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getPackageMerges() {
-		EList packageMerge = (EList) eVirtualGet(UMLPackage.PACKAGE__PACKAGE_MERGE);
-		if (packageMerge == null) {
-			eVirtualSet(
-				UMLPackage.PACKAGE__PACKAGE_MERGE,
-				packageMerge = new EObjectContainmentWithInverseEList.Resolving(
-					PackageMerge.class, this,
-					UMLPackage.PACKAGE__PACKAGE_MERGE,
-					UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE));
+		if (packageMerges == null) {
+			packageMerges = new EObjectContainmentWithInverseEList.Resolving(
+				PackageMerge.class, this, UMLPackage.PACKAGE__PACKAGE_MERGE,
+				UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE);
 		}
-		return packageMerge;
+		return packageMerges;
 	}
 
 	/**
@@ -660,14 +721,21 @@ public class PackageImpl
 	 * @generated NOT
 	 */
 	public EList getOwnedTypes() {
-		EList ownedType = (EList) eVirtualGet(UMLPackage.PACKAGE__OWNED_TYPE);
-		if (ownedType == null) {
-			eVirtualSet(UMLPackage.PACKAGE__OWNED_TYPE,
-				ownedType = new DerivedSubsetEObjectEList(Type.class, this,
-					UMLPackage.PACKAGE__OWNED_TYPE,
-					new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedTypes = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.PACKAGE__OWNED_TYPE);
+			if (ownedTypes == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.PACKAGE__OWNED_TYPE,
+					ownedTypes = new DerivedSubsetEObjectEList(Type.class, this,
+						UMLPackage.PACKAGE__OWNED_TYPE, OWNED_TYPE_ESUPERSETS));
+			}
+			return ownedTypes;
 		}
-		return ownedType;
+		return new DerivedSubsetEObjectEList(Type.class, this,
+			UMLPackage.PACKAGE__OWNED_TYPE, OWNED_TYPE_ESUPERSETS);
 	}
 
 	/**
@@ -721,15 +789,24 @@ public class PackageImpl
 	 * @generated NOT
 	 */
 	public EList getNestedPackages() {
-		EList nestedPackage = (EList) eVirtualGet(UMLPackage.PACKAGE__NESTED_PACKAGE);
-		if (nestedPackage == null) {
-			eVirtualSet(UMLPackage.PACKAGE__NESTED_PACKAGE,
-				nestedPackage = new DerivedSubsetEObjectEList(
-					org.eclipse.uml2.uml.Package.class, this,
-					UMLPackage.PACKAGE__NESTED_PACKAGE,
-					new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList nestedPackages = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.PACKAGE__NESTED_PACKAGE);
+			if (nestedPackages == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.PACKAGE__NESTED_PACKAGE,
+					nestedPackages = new DerivedSubsetEObjectEList(
+						org.eclipse.uml2.uml.Package.class, this,
+						UMLPackage.PACKAGE__NESTED_PACKAGE,
+						NESTED_PACKAGE_ESUPERSETS));
+			}
+			return nestedPackages;
 		}
-		return nestedPackage;
+		return new DerivedSubsetEObjectEList(
+			org.eclipse.uml2.uml.Package.class, this,
+			UMLPackage.PACKAGE__NESTED_PACKAGE, NESTED_PACKAGE_ESUPERSETS);
 	}
 
 	/**
@@ -836,16 +913,13 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getProfileApplications() {
-		EList profileApplication = (EList) eVirtualGet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
-		if (profileApplication == null) {
-			eVirtualSet(
+		if (profileApplications == null) {
+			profileApplications = new EObjectContainmentWithInverseEList.Resolving(
+				ProfileApplication.class, this,
 				UMLPackage.PACKAGE__PROFILE_APPLICATION,
-				profileApplication = new EObjectContainmentWithInverseEList.Resolving(
-					ProfileApplication.class, this,
-					UMLPackage.PACKAGE__PROFILE_APPLICATION,
-					UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE));
+				UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE);
 		}
-		return profileApplication;
+		return profileApplications;
 	}
 
 	/**
@@ -1165,7 +1239,6 @@ public class PackageImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -1177,7 +1250,6 @@ public class PackageImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -1494,15 +1566,13 @@ public class PackageImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PACKAGE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PACKAGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PACKAGE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PACKAGE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PACKAGE__NAME :
 				return isSetName();
 			case UMLPackage.PACKAGE__VISIBILITY :
@@ -1512,21 +1582,18 @@ public class PackageImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PACKAGE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PACKAGE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PACKAGE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PACKAGE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.PACKAGE__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.PACKAGE__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.PACKAGE__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.PACKAGE__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.PACKAGE__MEMBER :
 				return isSetMembers();
 			case UMLPackage.PACKAGE__IMPORTED_MEMBER :
@@ -1536,28 +1603,24 @@ public class PackageImpl
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.PACKAGE__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.PACKAGE__OWNED_TYPE :
 				return !getOwnedTypes().isEmpty();
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
-				EList packageMerge = (EList) eVirtualGet(UMLPackage.PACKAGE__PACKAGE_MERGE);
-				return packageMerge != null && !packageMerge.isEmpty();
+				return packageMerges != null && !packageMerges.isEmpty();
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
-				EList packagedElement = (EList) eVirtualGet(UMLPackage.PACKAGE__PACKAGED_ELEMENT);
-				return packagedElement != null && !packagedElement.isEmpty();
+				return packagedElements != null && !packagedElements.isEmpty();
 			case UMLPackage.PACKAGE__NESTED_PACKAGE :
 				return !getNestedPackages().isEmpty();
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
 				return basicGetNestingPackage() != null;
 			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
-				EList profileApplication = (EList) eVirtualGet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
-				return profileApplication != null
-					&& !profileApplication.isEmpty();
+				return profileApplications != null
+					&& !profileApplications.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1643,8 +1706,7 @@ public class PackageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PACKAGE__VISIBILITY,
-			VISIBILITY_EDEFAULT));
+		result.append(visibility);
 		result.append(')');
 		return result.toString();
 	}
@@ -1673,6 +1735,22 @@ public class PackageImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PACKAGE__OWNED_COMMENT, UMLPackage.PACKAGE__NAME_EXPRESSION,
+		UMLPackage.PACKAGE__ELEMENT_IMPORT, UMLPackage.PACKAGE__PACKAGE_IMPORT,
+		UMLPackage.PACKAGE__OWNED_MEMBER, UMLPackage.PACKAGE__TEMPLATE_BINDING,
+		UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
+		UMLPackage.PACKAGE__PACKAGE_MERGE,
+		UMLPackage.PACKAGE__PROFILE_APPLICATION};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1684,6 +1762,17 @@ public class PackageImpl
 			|| eIsSet(UMLPackage.PACKAGE__PACKAGE_MERGE)
 			|| eIsSet(UMLPackage.PACKAGE__PROFILE_APPLICATION);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.PACKAGE__OWNED_RULE, UMLPackage.PACKAGE__PACKAGED_ELEMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

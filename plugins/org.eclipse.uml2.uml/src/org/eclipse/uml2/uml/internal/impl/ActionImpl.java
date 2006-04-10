@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.21 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ActionImpl.java,v 1.22 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,9 +22,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
@@ -48,9 +51,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getOutputs <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getLocalPreconditions <em>Local Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getLocalPostconditions <em>Local Postcondition</em>}</li>
@@ -62,6 +62,26 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public abstract class ActionImpl
 		extends ExecutableNodeImpl
 		implements Action {
+
+	/**
+	 * The cached value of the '{@link #getLocalPreconditions() <em>Local Precondition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocalPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList localPreconditions = null;
+
+	/**
+	 * The cached value of the '{@link #getLocalPostconditions() <em>Local Postcondition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocalPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList localPostconditions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,13 +107,20 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
-		EList output = (EList) eVirtualGet(UMLPackage.ACTION__OUTPUT);
-		if (output == null) {
-			eVirtualSet(UMLPackage.ACTION__OUTPUT,
-				output = new DerivedUnionEObjectEList(OutputPin.class, this,
-					UMLPackage.ACTION__OUTPUT, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList outputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList(OutputPin.class,
+						this, UMLPackage.ACTION__OUTPUT, null));
+			}
+			return outputs;
 		}
-		return output;
+		return new DerivedUnionEObjectEList(OutputPin.class, this,
+			UMLPackage.ACTION__OUTPUT, null);
 	}
 
 	/**
@@ -125,24 +152,41 @@ public abstract class ActionImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ACTION__OWNED_COMMENT, UMLPackage.ACTION__NAME_EXPRESSION,
+		UMLPackage.ACTION__HANDLER, UMLPackage.ACTION__OUTPUT,
+		UMLPackage.ACTION__INPUT, UMLPackage.ACTION__LOCAL_PRECONDITION,
+		UMLPackage.ACTION__LOCAL_POSTCONDITION};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.ACTION__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.ACTION__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.ACTION__OWNED_ELEMENT, new int[]{
-						UMLPackage.ACTION__OWNED_COMMENT,
-						UMLPackage.ACTION__NAME_EXPRESSION,
-						UMLPackage.ACTION__HANDLER, UMLPackage.ACTION__OUTPUT,
-						UMLPackage.ACTION__INPUT,
-						UMLPackage.ACTION__LOCAL_PRECONDITION,
-						UMLPackage.ACTION__LOCAL_POSTCONDITION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.ACTION__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.ACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -151,13 +195,20 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
-		EList input = (EList) eVirtualGet(UMLPackage.ACTION__INPUT);
-		if (input == null) {
-			eVirtualSet(UMLPackage.ACTION__INPUT,
-				input = new DerivedUnionEObjectEList(InputPin.class, this,
-					UMLPackage.ACTION__INPUT, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inputs = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTION__INPUT);
+			if (inputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
+					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+						UMLPackage.ACTION__INPUT, null));
+			}
+			return inputs;
 		}
-		return input;
+		return new DerivedUnionEObjectEList(InputPin.class, this,
+			UMLPackage.ACTION__INPUT, null);
 	}
 
 	/**
@@ -221,14 +272,11 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList getLocalPreconditions() {
-		EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
-		if (localPrecondition == null) {
-			eVirtualSet(UMLPackage.ACTION__LOCAL_PRECONDITION,
-				localPrecondition = new EObjectContainmentEList.Resolving(
-					Constraint.class, this,
-					UMLPackage.ACTION__LOCAL_PRECONDITION));
+		if (localPreconditions == null) {
+			localPreconditions = new EObjectContainmentEList.Resolving(
+				Constraint.class, this, UMLPackage.ACTION__LOCAL_PRECONDITION);
 		}
-		return localPrecondition;
+		return localPreconditions;
 	}
 
 	/**
@@ -291,14 +339,11 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList getLocalPostconditions() {
-		EList localPostcondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
-		if (localPostcondition == null) {
-			eVirtualSet(UMLPackage.ACTION__LOCAL_POSTCONDITION,
-				localPostcondition = new EObjectContainmentEList.Resolving(
-					Constraint.class, this,
-					UMLPackage.ACTION__LOCAL_POSTCONDITION));
+		if (localPostconditions == null) {
+			localPostconditions = new EObjectContainmentEList.Resolving(
+				Constraint.class, this, UMLPackage.ACTION__LOCAL_POSTCONDITION);
 		}
-		return localPostcondition;
+		return localPostconditions;
 	}
 
 	/**
@@ -625,15 +670,13 @@ public abstract class ActionImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTION__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTION__NAME :
 				return isSetName();
 			case UMLPackage.ACTION__VISIBILITY :
@@ -643,12 +686,12 @@ public abstract class ActionImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACTION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ACTION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTION__REDEFINED_ELEMENT :
@@ -660,26 +703,20 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.ACTION__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTION__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTION__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.ACTION__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.ACTION__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTION__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.ACTION__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTION__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTION__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.ACTION__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 			case UMLPackage.ACTION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.ACTION__INPUT :
@@ -687,13 +724,11 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				EList localPrecondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_PRECONDITION);
-				return localPrecondition != null
-					&& !localPrecondition.isEmpty();
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
-				EList localPostcondition = (EList) eVirtualGet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
-				return localPostcondition != null
-					&& !localPostcondition.isEmpty();
+				return localPostconditions != null
+					&& !localPostconditions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

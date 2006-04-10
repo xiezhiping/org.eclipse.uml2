@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.7 2005/12/14 22:34:17 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.8 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,8 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -52,6 +50,26 @@ public class QualifierValueImpl
 		implements QualifierValue {
 
 	/**
+	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property qualifier = null;
+
+	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin value = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,12 +93,10 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public Property getQualifier() {
-		Property qualifier = (Property) eVirtualGet(UMLPackage.QUALIFIER_VALUE__QUALIFIER);
 		if (qualifier != null && qualifier.eIsProxy()) {
 			InternalEObject oldQualifier = (InternalEObject) qualifier;
 			qualifier = (Property) eResolveProxy(oldQualifier);
 			if (qualifier != oldQualifier) {
-				eVirtualSet(UMLPackage.QUALIFIER_VALUE__QUALIFIER, qualifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.QUALIFIER_VALUE__QUALIFIER, oldQualifier,
@@ -96,7 +112,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public Property basicGetQualifier() {
-		return (Property) eVirtualGet(UMLPackage.QUALIFIER_VALUE__QUALIFIER);
+		return qualifier;
 	}
 
 	/**
@@ -105,15 +121,11 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
-		Property qualifier = newQualifier;
-		Object oldQualifier = eVirtualSet(
-			UMLPackage.QUALIFIER_VALUE__QUALIFIER, qualifier);
+		Property oldQualifier = qualifier;
+		qualifier = newQualifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.QUALIFIER_VALUE__QUALIFIER,
-				oldQualifier == EVIRTUAL_NO_VALUE
-					? null
-					: oldQualifier, qualifier));
+				UMLPackage.QUALIFIER_VALUE__QUALIFIER, oldQualifier, qualifier));
 
 	}
 
@@ -123,12 +135,10 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public InputPin getValue() {
-		InputPin value = (InputPin) eVirtualGet(UMLPackage.QUALIFIER_VALUE__VALUE);
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject) value;
 			value = (InputPin) eResolveProxy(oldValue);
 			if (value != oldValue) {
-				eVirtualSet(UMLPackage.QUALIFIER_VALUE__VALUE, value);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.QUALIFIER_VALUE__VALUE, oldValue, value));
@@ -143,7 +153,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public InputPin basicGetValue() {
-		return (InputPin) eVirtualGet(UMLPackage.QUALIFIER_VALUE__VALUE);
+		return value;
 	}
 
 	/**
@@ -152,14 +162,11 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-		InputPin value = newValue;
-		Object oldValue = eVirtualSet(UMLPackage.QUALIFIER_VALUE__VALUE, value);
+		InputPin oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.QUALIFIER_VALUE__VALUE,
-				oldValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldValue, value));
+				UMLPackage.QUALIFIER_VALUE__VALUE, oldValue, value));
 
 	}
 
@@ -281,19 +288,17 @@ public class QualifierValueImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.QUALIFIER_VALUE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.QUALIFIER_VALUE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.QUALIFIER_VALUE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.QUALIFIER_VALUE__OWNER :
 				return isSetOwner();
 			case UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.QUALIFIER_VALUE__QUALIFIER :
-				return eVirtualGet(UMLPackage.QUALIFIER_VALUE__QUALIFIER) != null;
+				return qualifier != null;
 			case UMLPackage.QUALIFIER_VALUE__VALUE :
-				return eVirtualGet(UMLPackage.QUALIFIER_VALUE__VALUE) != null;
+				return value != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

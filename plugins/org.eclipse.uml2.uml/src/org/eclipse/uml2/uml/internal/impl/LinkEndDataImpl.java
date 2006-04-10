@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.10 2006/03/07 20:25:16 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.11 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,6 +58,36 @@ public class LinkEndDataImpl
 		implements LinkEndData {
 
 	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin value = null;
+
+	/**
+	 * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property end = null;
+
+	/**
+	 * The cached value of the '{@link #getQualifiers() <em>Qualifier</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList qualifiers = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,12 +111,10 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public InputPin getValue() {
-		InputPin value = (InputPin) eVirtualGet(UMLPackage.LINK_END_DATA__VALUE);
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject) value;
 			value = (InputPin) eResolveProxy(oldValue);
 			if (value != oldValue) {
-				eVirtualSet(UMLPackage.LINK_END_DATA__VALUE, value);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.LINK_END_DATA__VALUE, oldValue, value));
@@ -101,7 +129,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public InputPin basicGetValue() {
-		return (InputPin) eVirtualGet(UMLPackage.LINK_END_DATA__VALUE);
+		return value;
 	}
 
 	/**
@@ -110,13 +138,11 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-		InputPin value = newValue;
-		Object oldValue = eVirtualSet(UMLPackage.LINK_END_DATA__VALUE, value);
+		InputPin oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LINK_END_DATA__VALUE, oldValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldValue, value));
+				UMLPackage.LINK_END_DATA__VALUE, oldValue, value));
 
 	}
 
@@ -126,12 +152,10 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public Property getEnd() {
-		Property end = (Property) eVirtualGet(UMLPackage.LINK_END_DATA__END);
 		if (end != null && end.eIsProxy()) {
 			InternalEObject oldEnd = (InternalEObject) end;
 			end = (Property) eResolveProxy(oldEnd);
 			if (end != oldEnd) {
-				eVirtualSet(UMLPackage.LINK_END_DATA__END, end);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.LINK_END_DATA__END, oldEnd, end));
@@ -146,7 +170,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public Property basicGetEnd() {
-		return (Property) eVirtualGet(UMLPackage.LINK_END_DATA__END);
+		return end;
 	}
 
 	/**
@@ -155,13 +179,11 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public void setEnd(Property newEnd) {
-		Property end = newEnd;
-		Object oldEnd = eVirtualSet(UMLPackage.LINK_END_DATA__END, end);
+		Property oldEnd = end;
+		end = newEnd;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.LINK_END_DATA__END, oldEnd == EVIRTUAL_NO_VALUE
-					? null
-					: oldEnd, end));
+				UMLPackage.LINK_END_DATA__END, oldEnd, end));
 
 	}
 
@@ -171,14 +193,11 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public EList getQualifiers() {
-		EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
-		if (qualifier == null) {
-			eVirtualSet(UMLPackage.LINK_END_DATA__QUALIFIER,
-				qualifier = new EObjectContainmentEList.Resolving(
-					QualifierValue.class, this,
-					UMLPackage.LINK_END_DATA__QUALIFIER));
+		if (qualifiers == null) {
+			qualifiers = new EObjectContainmentEList.Resolving(
+				QualifierValue.class, this, UMLPackage.LINK_END_DATA__QUALIFIER);
 		}
-		return qualifier;
+		return qualifiers;
 	}
 
 	/**
@@ -359,22 +378,19 @@ public class LinkEndDataImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.LINK_END_DATA__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LINK_END_DATA__OWNER :
 				return isSetOwner();
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LINK_END_DATA__VALUE :
-				return eVirtualGet(UMLPackage.LINK_END_DATA__VALUE) != null;
+				return value != null;
 			case UMLPackage.LINK_END_DATA__END :
-				return eVirtualGet(UMLPackage.LINK_END_DATA__END) != null;
+				return end != null;
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
-				EList qualifier = (EList) eVirtualGet(UMLPackage.LINK_END_DATA__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

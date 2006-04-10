@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.12 2006/03/01 17:56:37 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.13 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,6 +63,16 @@ public class ComponentRealizationImpl
 		implements ComponentRealization {
 
 	/**
+	 * The cached value of the '{@link #getRealizingClassifier() <em>Realizing Classifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizingClassifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classifier realizingClassifier = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -86,18 +96,24 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public EList getClients() {
-		EList client = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__CLIENT);
-		if (client == null) {
-			eVirtualSet(
-				UMLPackage.COMPONENT_REALIZATION__CLIENT,
-				client = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
-					NamedElement.class, this,
-					UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
-					new int[]{UMLPackage.COMPONENT_REALIZATION__ABSTRACTION},
-					UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY));
+		if (clients == null) {
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+				NamedElement.class, this,
+				UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
+				CLIENT_ESUBSETS, UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
-		return client;
+		return clients;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__ABSTRACTION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,19 +121,24 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public EList getSuppliers() {
-		EList supplier = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__SUPPLIER);
-		if (supplier == null) {
-			eVirtualSet(
-				UMLPackage.COMPONENT_REALIZATION__SUPPLIER,
-				supplier = new SubsetSupersetEObjectResolvingEList(
-					NamedElement.class,
-					this,
-					UMLPackage.COMPONENT_REALIZATION__SUPPLIER,
-					null,
-					new int[]{UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER}));
+		if (suppliers == null) {
+			suppliers = new SubsetSupersetEObjectResolvingEList(
+				NamedElement.class, this,
+				UMLPackage.COMPONENT_REALIZATION__SUPPLIER, null,
+				SUPPLIER_ESUBSETS);
 		}
-		return supplier;
+		return suppliers;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,9 +175,9 @@ public class ComponentRealizationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newAbstraction != null) {
-				EList client = getClients();
-				if (!client.contains(newAbstraction)) {
-					client.add(newAbstraction);
+				EList clients = getClients();
+				if (!clients.contains(newAbstraction)) {
+					clients.add(newAbstraction);
 				}
 			}
 		}
@@ -196,14 +217,10 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public Classifier getRealizingClassifier() {
-		Classifier realizingClassifier = (Classifier) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER);
 		if (realizingClassifier != null && realizingClassifier.eIsProxy()) {
 			InternalEObject oldRealizingClassifier = (InternalEObject) realizingClassifier;
 			realizingClassifier = (Classifier) eResolveProxy(oldRealizingClassifier);
 			if (realizingClassifier != oldRealizingClassifier) {
-				eVirtualSet(
-					UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-					realizingClassifier);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
@@ -219,7 +236,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public Classifier basicGetRealizingClassifier() {
-		return (Classifier) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER);
+		return realizingClassifier;
 	}
 
 	/**
@@ -228,23 +245,19 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public void setRealizingClassifier(Classifier newRealizingClassifier) {
-		Classifier realizingClassifier = newRealizingClassifier;
-		Object oldRealizingClassifier = eVirtualSet(
-			UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-			realizingClassifier);
+		Classifier oldRealizingClassifier = realizingClassifier;
+		realizingClassifier = newRealizingClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-				oldRealizingClassifier == EVIRTUAL_NO_VALUE
-					? null
-					: oldRealizingClassifier, realizingClassifier));
+				oldRealizingClassifier, realizingClassifier));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newRealizingClassifier != null) {
-				EList supplier = getSuppliers();
-				if (!supplier.contains(newRealizingClassifier)) {
-					supplier.add(newRealizingClassifier);
+				EList suppliers = getSuppliers();
+				if (!suppliers.contains(newRealizingClassifier)) {
+					suppliers.add(newRealizingClassifier);
 				}
 			}
 		}
@@ -270,7 +283,6 @@ public class ComponentRealizationImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -521,15 +533,13 @@ public class ComponentRealizationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.COMPONENT_REALIZATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
 				return isSetName();
 			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
@@ -539,16 +549,16 @@ public class ComponentRealizationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.COMPONENT_REALIZATION__SOURCE :
@@ -556,17 +566,15 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				EList supplier = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__SUPPLIER);
-				return supplier != null && !supplier.isEmpty();
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				EList client = (EList) eVirtualGet(UMLPackage.COMPONENT_REALIZATION__CLIENT);
-				return client != null && !client.isEmpty();
+				return clients != null && !clients.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__MAPPING) != null;
+				return mapping != null;
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				return basicGetAbstraction() != null;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				return eVirtualGet(UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) != null;
+				return realizingClassifier != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

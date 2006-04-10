@@ -8,13 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.8 2006/01/05 13:54:02 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.9 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
+
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.DirectedRelationship;
@@ -26,12 +29,6 @@ import org.eclipse.uml2.uml.UMLPackage;
  * An implementation of the model object '<em><b>Directed Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DirectedRelationshipImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DirectedRelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DirectedRelationshipImpl#getTargets <em>Target</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
@@ -64,13 +61,21 @@ public abstract class DirectedRelationshipImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, null));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, null);
 	}
 
 	/**
@@ -79,15 +84,24 @@ public abstract class DirectedRelationshipImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT);
-		if (relatedElement == null) {
-			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
-				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
-					new int[]{UMLPackage.DIRECTED_RELATIONSHIP__SOURCE,
-						UMLPackage.DIRECTED_RELATIONSHIP__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList relatedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
+			if (relatedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
+					relatedElements = new DerivedUnionEObjectEList(
+						Element.class, this,
+						UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
+						RELATED_ELEMENT_ESUBSETS));
+			}
+			return relatedElements;
 		}
-		return relatedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
+			RELATED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -96,67 +110,21 @@ public abstract class DirectedRelationshipImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.DIRECTED_RELATIONSHIP__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null));
+			}
+			return targets;
 		}
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
-				return getEAnnotations();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
-				return getOwnedElements();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
-				return getRelatedElements();
-			case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :
-				return getSources();
-			case UMLPackage.DIRECTED_RELATIONSHIP__TARGET :
-				return getTargets();
-		}
-		return eDynamicGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS);
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
-				return isSetOwnedElements();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
-				return isSetOwner();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
-			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
-				return isSetRelatedElements();
-			case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :
-				return isSetSources();
-			case UMLPackage.DIRECTED_RELATIONSHIP__TARGET :
-				return isSetTargets();
-		}
-		return eDynamicIsSet(featureID);
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null);
 	}
 
 	/**
@@ -167,6 +135,18 @@ public abstract class DirectedRelationshipImpl
 	public boolean isSetSources() {
 		return false;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] RELATED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.DIRECTED_RELATIONSHIP__SOURCE,
+		UMLPackage.DIRECTED_RELATIONSHIP__TARGET};
 
 	/**
 	 * <!-- begin-user-doc -->

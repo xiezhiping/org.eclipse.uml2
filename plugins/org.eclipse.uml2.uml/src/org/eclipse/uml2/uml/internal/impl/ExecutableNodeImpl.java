@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.16 2006/04/10 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,9 +20,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -41,7 +44,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExecutableNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExecutableNodeImpl#getHandlers <em>Handler</em>}</li>
  * </ul>
  * </p>
@@ -51,6 +53,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public abstract class ExecutableNodeImpl
 		extends ActivityNodeImpl
 		implements ExecutableNode {
+
+	/**
+	 * The cached value of the '{@link #getHandlers() <em>Handler</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHandlers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList handlers = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,16 +88,22 @@ public abstract class ExecutableNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT, new int[]{
-						UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT,
-						UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION,
-						UMLPackage.EXECUTABLE_NODE__HANDLER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -94,15 +112,13 @@ public abstract class ExecutableNodeImpl
 	 * @generated
 	 */
 	public EList getHandlers() {
-		EList handler = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
-		if (handler == null) {
-			eVirtualSet(UMLPackage.EXECUTABLE_NODE__HANDLER,
-				handler = new EObjectContainmentWithInverseEList.Resolving(
-					ExceptionHandler.class, this,
-					UMLPackage.EXECUTABLE_NODE__HANDLER,
-					UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE));
+		if (handlers == null) {
+			handlers = new EObjectContainmentWithInverseEList.Resolving(
+				ExceptionHandler.class, this,
+				UMLPackage.EXECUTABLE_NODE__HANDLER,
+				UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE);
 		}
-		return handler;
+		return handlers;
 	}
 
 	/**
@@ -395,15 +411,13 @@ public abstract class ExecutableNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXECUTABLE_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXECUTABLE_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAME :
 				return isSetName();
 			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
@@ -413,12 +427,12 @@ public abstract class ExecutableNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.EXECUTABLE_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_ELEMENT :
@@ -430,29 +444,36 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :
-				EList handler = (EList) eVirtualGet(UMLPackage.EXECUTABLE_NODE__HANDLER);
-				return handler != null && !handler.isEmpty();
+				return handlers != null && !handlers.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT,
+		UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION,
+		UMLPackage.EXECUTABLE_NODE__HANDLER};
 
 	/**
 	 * <!-- begin-user-doc -->

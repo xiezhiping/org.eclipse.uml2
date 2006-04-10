@@ -8,14 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOccurrenceSpecificationImpl.java,v 1.11 2006/03/15 19:34:05 khussey Exp $
+ * $Id: MessageOccurrenceSpecificationImpl.java,v 1.12 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -50,6 +48,16 @@ public class MessageOccurrenceSpecificationImpl
 		implements MessageOccurrenceSpecification {
 
 	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected Message message = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -73,14 +81,10 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public Message getMessage() {
-		Message message = (Message) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE);
 		if (message != null && message.eIsProxy()) {
 			InternalEObject oldMessage = (InternalEObject) message;
 			message = (Message) eResolveProxy(oldMessage);
 			if (message != oldMessage) {
-				eVirtualSet(
-					UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE,
-					message);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE,
@@ -96,7 +100,7 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public Message basicGetMessage() {
-		return (Message) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE);
+		return message;
 	}
 
 	/**
@@ -105,15 +109,12 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setMessage(Message newMessage) {
-		Message message = newMessage;
-		Object oldMessage = eVirtualSet(
-			UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE, message);
+		Message oldMessage = message;
+		message = newMessage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE,
-				oldMessage == EVIRTUAL_NO_VALUE
-					? null
-					: oldMessage, message));
+				oldMessage, message));
 
 	}
 
@@ -299,15 +300,13 @@ public class MessageOccurrenceSpecificationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME :
 				return isSetName();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__VISIBILITY :
@@ -317,31 +316,28 @@ public class MessageOccurrenceSpecificationImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__COVERED :
 				return isSetCovereds();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				EList generalOrdering = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING);
-				return generalOrdering != null && !generalOrdering.isEmpty();
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				EList toBefore = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE);
-				return toBefore != null && !toBefore.isEmpty();
+				return toBefores != null && !toBefores.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT :
-				return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT) != null;
+				return event != null;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER :
-				EList toAfter = (EList) eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER);
-				return toAfter != null && !toAfter.isEmpty();
+				return toAfters != null && !toAfters.isEmpty();
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE :
-				return eVirtualGet(UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE) != null;
+				return message != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

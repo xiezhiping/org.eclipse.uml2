@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.16 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,9 +26,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -46,8 +49,6 @@ import org.eclipse.uml2.uml.internal.operations.ProfileApplicationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getAppliedProfile <em>Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#isStrict <em>Is Strict</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProfileApplicationImpl#getApplyingPackage <em>Applying Package</em>}</li>
@@ -59,6 +60,16 @@ import org.eclipse.uml2.uml.internal.operations.ProfileApplicationOperations;
 public class ProfileApplicationImpl
 		extends DirectedRelationshipImpl
 		implements ProfileApplication {
+
+	/**
+	 * The cached value of the '{@link #getAppliedProfile() <em>Applied Profile</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppliedProfile()
+	 * @generated
+	 * @ordered
+	 */
+	protected Profile appliedProfile = null;
 
 	/**
 	 * The default value of the '{@link #isStrict() <em>Is Strict</em>}' attribute.
@@ -104,14 +115,23 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.PROFILE_APPLICATION__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.PROFILE_APPLICATION__TARGET,
-					new int[]{UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache
+					.put(eResource, this,
+						UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+						targets = new DerivedUnionEObjectEList(Element.class,
+							this, UMLPackage.PROFILE_APPLICATION__TARGET,
+							TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PROFILE_APPLICATION__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -120,15 +140,23 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__SOURCE);
-		if (source == null) {
-			eVirtualSet(
-				UMLPackage.PROFILE_APPLICATION__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.PROFILE_APPLICATION__SOURCE,
-					new int[]{UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache
+					.put(eResource, this,
+						UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+						sources = new DerivedUnionEObjectEList(Element.class,
+							this, UMLPackage.PROFILE_APPLICATION__SOURCE,
+							SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PROFILE_APPLICATION__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -137,13 +165,10 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public Profile getAppliedProfile() {
-		Profile appliedProfile = (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
 		if (appliedProfile != null && appliedProfile.eIsProxy()) {
 			InternalEObject oldAppliedProfile = (InternalEObject) appliedProfile;
 			appliedProfile = (Profile) eResolveProxy(oldAppliedProfile);
 			if (appliedProfile != oldAppliedProfile) {
-				eVirtualSet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
-					appliedProfile);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
@@ -159,7 +184,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public Profile basicGetAppliedProfile() {
-		return (Profile) eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
+		return appliedProfile;
 	}
 
 	/**
@@ -168,15 +193,12 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public void setAppliedProfile(Profile newAppliedProfile) {
-		Profile appliedProfile = newAppliedProfile;
-		Object oldAppliedProfile = eVirtualSet(
-			UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE, appliedProfile);
+		Profile oldAppliedProfile = appliedProfile;
+		appliedProfile = newAppliedProfile;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
-				oldAppliedProfile == EVIRTUAL_NO_VALUE
-					? null
-					: oldAppliedProfile, appliedProfile));
+				oldAppliedProfile, appliedProfile));
 
 	}
 
@@ -448,15 +470,13 @@ public class ProfileApplicationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROFILE_APPLICATION__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROFILE_APPLICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PROFILE_APPLICATION__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROFILE_APPLICATION__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PROFILE_APPLICATION__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.PROFILE_APPLICATION__SOURCE :
@@ -464,7 +484,7 @@ public class ProfileApplicationImpl
 			case UMLPackage.PROFILE_APPLICATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE :
-				return eVirtualGet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE) != null;
+				return appliedProfile != null;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
 				return ((eFlags & IS_STRICT_EFLAG) != 0) != IS_STRICT_EDEFAULT;
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
@@ -490,6 +510,16 @@ public class ProfileApplicationImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -498,6 +528,16 @@ public class ProfileApplicationImpl
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.13 2006/03/15 19:34:05 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.14 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -49,7 +50,6 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
@@ -63,6 +63,46 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterOperations;
 public class TemplateParameterImpl
 		extends ElementImpl
 		implements TemplateParameter {
+
+	/**
+	 * The cached value of the '{@link #getParameteredElement() <em>Parametered Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameteredElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement parameteredElement = null;
+
+	/**
+	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement default_ = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameteredElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement ownedParameteredElement = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedDefault() <em>Owned Default</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement ownedDefault = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,20 +128,23 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(
-				UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(
-					Element.class,
-					this,
-					UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
-					new int[]{
-						UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT,
-						UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-						UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -110,13 +153,10 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getParameteredElement() {
-		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
 			parameteredElement = (ParameterableElement) eResolveProxy(oldParameteredElement);
 			if (parameteredElement != oldParameteredElement) {
-				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-					parameteredElement);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
@@ -132,7 +172,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement basicGetParameteredElement() {
-		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
+		return parameteredElement;
 	}
 
 	/**
@@ -142,16 +182,13 @@ public class TemplateParameterImpl
 	 */
 	public NotificationChain basicSetParameteredElement(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
-		Object oldParameteredElement = eVirtualSet(
-			UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-			newParameteredElement);
+		ParameterableElement oldParameteredElement = parameteredElement;
+		parameteredElement = newParameteredElement;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-				oldParameteredElement == EVIRTUAL_NO_VALUE
-					? null
-					: oldParameteredElement, newParameteredElement);
+				oldParameteredElement, newParameteredElement);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -160,7 +197,6 @@ public class TemplateParameterImpl
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			Object ownedParameteredElement = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 			if (ownedParameteredElement != null
 				&& ownedParameteredElement != newParameteredElement) {
 				setOwnedParameteredElement(null);
@@ -175,7 +211,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
-		ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -202,12 +237,10 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getDefault() {
-		ParameterableElement default_ = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT);
 		if (default_ != null && default_.eIsProxy()) {
 			InternalEObject oldDefault = (InternalEObject) default_;
 			default_ = (ParameterableElement) eResolveProxy(oldDefault);
 			if (default_ != oldDefault) {
-				eVirtualSet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT, default_);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TEMPLATE_PARAMETER__DEFAULT, oldDefault,
@@ -223,7 +256,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement basicGetDefault() {
-		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT);
+		return default_;
 	}
 
 	/**
@@ -232,19 +265,14 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setDefault(ParameterableElement newDefault) {
-		ParameterableElement default_ = newDefault;
-		Object oldDefault = eVirtualSet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT,
-			default_);
+		ParameterableElement oldDefault = default_;
+		default_ = newDefault;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TEMPLATE_PARAMETER__DEFAULT,
-				oldDefault == EVIRTUAL_NO_VALUE
-					? null
-					: oldDefault, default_));
+				UMLPackage.TEMPLATE_PARAMETER__DEFAULT, oldDefault, default_));
 
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			Object ownedDefault = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 			if (ownedDefault != null && ownedDefault != newDefault) {
 				setOwnedDefault(null);
 			}
@@ -320,7 +348,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getOwnedParameteredElement() {
-		ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 		if (ownedParameteredElement != null
 			&& ownedParameteredElement.eIsProxy()) {
 			InternalEObject oldOwnedParameteredElement = (InternalEObject) ownedParameteredElement;
@@ -358,7 +385,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement basicGetOwnedParameteredElement() {
-		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
+		return ownedParameteredElement;
 	}
 
 	/**
@@ -369,16 +396,13 @@ public class TemplateParameterImpl
 	public NotificationChain basicSetOwnedParameteredElement(
 			ParameterableElement newOwnedParameteredElement,
 			NotificationChain msgs) {
-		Object oldOwnedParameteredElement = eVirtualSet(
-			UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			newOwnedParameteredElement);
+		ParameterableElement oldOwnedParameteredElement = ownedParameteredElement;
+		ownedParameteredElement = newOwnedParameteredElement;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-				oldOwnedParameteredElement == EVIRTUAL_NO_VALUE
-					? null
-					: oldOwnedParameteredElement, newOwnedParameteredElement);
+				oldOwnedParameteredElement, newOwnedParameteredElement);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -388,7 +412,6 @@ public class TemplateParameterImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwnedParameteredElement != null) {
-				Object parameteredElement = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 				if (newOwnedParameteredElement != parameteredElement) {
 					setParameteredElement(newOwnedParameteredElement);
 				}
@@ -404,7 +427,6 @@ public class TemplateParameterImpl
 	 */
 	public void setOwnedParameteredElement(
 			ParameterableElement newOwnedParameteredElement) {
-		ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 		if (newOwnedParameteredElement != ownedParameteredElement) {
 			NotificationChain msgs = null;
 			if (ownedParameteredElement != null)
@@ -447,7 +469,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement getOwnedDefault() {
-		ParameterableElement ownedDefault = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 		if (ownedDefault != null && ownedDefault.eIsProxy()) {
 			InternalEObject oldOwnedDefault = (InternalEObject) ownedDefault;
 			ownedDefault = (ParameterableElement) eResolveProxy(oldOwnedDefault);
@@ -480,7 +501,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public ParameterableElement basicGetOwnedDefault() {
-		return (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
+		return ownedDefault;
 	}
 
 	/**
@@ -490,14 +511,12 @@ public class TemplateParameterImpl
 	 */
 	public NotificationChain basicSetOwnedDefault(
 			ParameterableElement newOwnedDefault, NotificationChain msgs) {
-		Object oldOwnedDefault = eVirtualSet(
-			UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT, newOwnedDefault);
+		ParameterableElement oldOwnedDefault = ownedDefault;
+		ownedDefault = newOwnedDefault;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-				oldOwnedDefault == EVIRTUAL_NO_VALUE
-					? null
-					: oldOwnedDefault, newOwnedDefault);
+				oldOwnedDefault, newOwnedDefault);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -507,7 +526,6 @@ public class TemplateParameterImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwnedDefault != null) {
-				Object default_ = eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT);
 				if (newOwnedDefault != default_) {
 					setDefault(newOwnedDefault);
 				}
@@ -522,7 +540,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setOwnedDefault(ParameterableElement newOwnedDefault) {
-		ParameterableElement ownedDefault = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 		if (newOwnedDefault != ownedDefault) {
 			NotificationChain msgs = null;
 			if (ownedDefault != null)
@@ -583,7 +600,6 @@ public class TemplateParameterImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSignature((TemplateSignature) otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				ParameterableElement parameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT);
 				if (parameteredElement != null)
 					msgs = ((InternalEObject) parameteredElement)
 						.eInverseRemove(
@@ -593,7 +609,6 @@ public class TemplateParameterImpl
 				return basicSetParameteredElement(
 					(ParameterableElement) otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				ParameterableElement ownedParameteredElement = (ParameterableElement) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT);
 				if (ownedParameteredElement != null)
 					msgs = ((InternalEObject) ownedParameteredElement)
 						.eInverseRemove(
@@ -764,25 +779,23 @@ public class TemplateParameterImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
 				return basicGetSignature() != null;
 			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT) != null;
+				return parameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT) != null;
+				return ownedParameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
-				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__DEFAULT) != null;
+				return default_ != null;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return eVirtualGet(UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT) != null;
+				return ownedDefault != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -809,6 +822,19 @@ public class TemplateParameterImpl
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.TEMPLATE_PARAMETER__SIGNATURE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT,
+		UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+		UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT};
 
 	/**
 	 * <!-- begin-user-doc -->

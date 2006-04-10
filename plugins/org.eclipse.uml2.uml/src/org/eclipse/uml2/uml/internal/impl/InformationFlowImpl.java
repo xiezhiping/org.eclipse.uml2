@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.10 2006/02/22 20:48:16 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.11 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,8 +21,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -48,9 +51,6 @@ import org.eclipse.uml2.uml.internal.operations.InformationFlowOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRelatedElements <em>Related Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getConveyeds <em>Conveyed</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getInformationSources <em>Information Source</em>}</li>
@@ -66,6 +66,76 @@ import org.eclipse.uml2.uml.internal.operations.InformationFlowOperations;
 public class InformationFlowImpl
 		extends PackageableElementImpl
 		implements InformationFlow {
+
+	/**
+	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizations = null;
+
+	/**
+	 * The cached value of the '{@link #getConveyeds() <em>Conveyed</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConveyeds()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList conveyeds = null;
+
+	/**
+	 * The cached value of the '{@link #getInformationSources() <em>Information Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInformationSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList informationSources = null;
+
+	/**
+	 * The cached value of the '{@link #getInformationTargets() <em>Information Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInformationTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList informationTargets = null;
+
+	/**
+	 * The cached value of the '{@link #getRealizingActivityEdges() <em>Realizing Activity Edge</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizingActivityEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizingActivityEdges = null;
+
+	/**
+	 * The cached value of the '{@link #getRealizingConnectors() <em>Realizing Connector</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizingConnectors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizingConnectors = null;
+
+	/**
+	 * The cached value of the '{@link #getRealizingMessages() <em>Realizing Message</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizingMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList realizingMessages = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,15 +161,24 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
-		EList relatedElement = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT);
-		if (relatedElement == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
-				relatedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
-					new int[]{UMLPackage.INFORMATION_FLOW__SOURCE,
-						UMLPackage.INFORMATION_FLOW__TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList relatedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
+			if (relatedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
+					relatedElements = new DerivedUnionEObjectEList(
+						Element.class, this,
+						UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
+						RELATED_ELEMENT_ESUBSETS));
+			}
+			return relatedElements;
 		}
-		return relatedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
+			RELATED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -108,14 +187,21 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getSources() {
-		EList source = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__SOURCE);
-		if (source == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__SOURCE,
-				source = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.INFORMATION_FLOW__SOURCE,
-					new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList sources = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			if (sources == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
+					sources = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.INFORMATION_FLOW__SOURCE, SOURCE_ESUBSETS));
+			}
+			return sources;
 		}
-		return source;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INFORMATION_FLOW__SOURCE, SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -124,14 +210,21 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getTargets() {
-		EList target = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__TARGET);
-		if (target == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__TARGET,
-				target = new DerivedUnionEObjectEList(Element.class, this,
-					UMLPackage.INFORMATION_FLOW__TARGET,
-					new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList targets = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			if (targets == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
+					targets = new DerivedUnionEObjectEList(Element.class, this,
+						UMLPackage.INFORMATION_FLOW__TARGET, TARGET_ESUBSETS));
+			}
+			return targets;
 		}
-		return target;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.INFORMATION_FLOW__TARGET, TARGET_ESUBSETS);
 	}
 
 	/**
@@ -140,13 +233,11 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getRealizations() {
-		EList realization = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZATION);
-		if (realization == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZATION,
-				realization = new EObjectResolvingEList(Relationship.class,
-					this, UMLPackage.INFORMATION_FLOW__REALIZATION));
+		if (realizations == null) {
+			realizations = new EObjectResolvingEList(Relationship.class, this,
+				UMLPackage.INFORMATION_FLOW__REALIZATION);
 		}
-		return realization;
+		return realizations;
 	}
 
 	/**
@@ -155,13 +246,11 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getConveyeds() {
-		EList conveyed = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__CONVEYED);
-		if (conveyed == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__CONVEYED,
-				conveyed = new EObjectResolvingEList(Classifier.class, this,
-					UMLPackage.INFORMATION_FLOW__CONVEYED));
+		if (conveyeds == null) {
+			conveyeds = new EObjectResolvingEList(Classifier.class, this,
+				UMLPackage.INFORMATION_FLOW__CONVEYED);
 		}
-		return conveyed;
+		return conveyeds;
 	}
 
 	/**
@@ -198,14 +287,11 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getInformationSources() {
-		EList informationSource = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
-		if (informationSource == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE,
-				informationSource = new EObjectResolvingEList(
-					NamedElement.class, this,
-					UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE));
+		if (informationSources == null) {
+			informationSources = new EObjectResolvingEList(NamedElement.class,
+				this, UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
 		}
-		return informationSource;
+		return informationSources;
 	}
 
 	/**
@@ -244,14 +330,11 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getInformationTargets() {
-		EList informationTarget = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
-		if (informationTarget == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET,
-				informationTarget = new EObjectResolvingEList(
-					NamedElement.class, this,
-					UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET));
+		if (informationTargets == null) {
+			informationTargets = new EObjectResolvingEList(NamedElement.class,
+				this, UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
 		}
-		return informationTarget;
+		return informationTargets;
 	}
 
 	/**
@@ -290,14 +373,12 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getRealizingActivityEdges() {
-		EList realizingActivityEdge = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
-		if (realizingActivityEdge == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE,
-				realizingActivityEdge = new EObjectResolvingEList(
-					ActivityEdge.class, this,
-					UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE));
+		if (realizingActivityEdges == null) {
+			realizingActivityEdges = new EObjectResolvingEList(
+				ActivityEdge.class, this,
+				UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
 		}
-		return realizingActivityEdge;
+		return realizingActivityEdges;
 	}
 
 	/**
@@ -336,13 +417,11 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getRealizingConnectors() {
-		EList realizingConnector = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
-		if (realizingConnector == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR,
-				realizingConnector = new EObjectResolvingEList(Connector.class,
-					this, UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR));
+		if (realizingConnectors == null) {
+			realizingConnectors = new EObjectResolvingEList(Connector.class,
+				this, UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
 		}
-		return realizingConnector;
+		return realizingConnectors;
 	}
 
 	/**
@@ -378,13 +457,11 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public EList getRealizingMessages() {
-		EList realizingMessage = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
-		if (realizingMessage == null) {
-			eVirtualSet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE,
-				realizingMessage = new EObjectResolvingEList(Message.class,
-					this, UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE));
+		if (realizingMessages == null) {
+			realizingMessages = new EObjectResolvingEList(Message.class, this,
+				UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
 		}
-		return realizingMessage;
+		return realizingMessages;
 	}
 
 	/**
@@ -641,15 +718,13 @@ public class InformationFlowImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INFORMATION_FLOW__OWNER :
 				return isSetOwner();
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				return isSetName();
 			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
@@ -659,16 +734,16 @@ public class InformationFlowImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INFORMATION_FLOW__SOURCE :
@@ -676,30 +751,24 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__TARGET :
 				return isSetTargets();
 			case UMLPackage.INFORMATION_FLOW__REALIZATION :
-				EList realization = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZATION);
-				return realization != null && !realization.isEmpty();
+				return realizations != null && !realizations.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
-				EList conveyed = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__CONVEYED);
-				return conveyed != null && !conveyed.isEmpty();
+				return conveyeds != null && !conveyeds.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE :
-				EList informationSource = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
-				return informationSource != null
-					&& !informationSource.isEmpty();
+				return informationSources != null
+					&& !informationSources.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
-				EList informationTarget = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
-				return informationTarget != null
-					&& !informationTarget.isEmpty();
+				return informationTargets != null
+					&& !informationTargets.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
-				EList realizingActivityEdge = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
-				return realizingActivityEdge != null
-					&& !realizingActivityEdge.isEmpty();
+				return realizingActivityEdges != null
+					&& !realizingActivityEdges.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR :
-				EList realizingConnector = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
-				return realizingConnector != null
-					&& !realizingConnector.isEmpty();
+				return realizingConnectors != null
+					&& !realizingConnectors.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE :
-				EList realizingMessage = (EList) eVirtualGet(UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
-				return realizingMessage != null && !realizingMessage.isEmpty();
+				return realizingMessages != null
+					&& !realizingMessages.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -759,6 +828,18 @@ public class InformationFlowImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] RELATED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.INFORMATION_FLOW__SOURCE,
+		UMLPackage.INFORMATION_FLOW__TARGET};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -768,6 +849,16 @@ public class InformationFlowImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -775,6 +866,16 @@ public class InformationFlowImpl
 	public boolean isSetSources() {
 		return eIsSet(UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET};
 
 	/**
 	 * <!-- begin-user-doc -->

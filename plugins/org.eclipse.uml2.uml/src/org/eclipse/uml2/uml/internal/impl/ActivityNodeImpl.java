@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.15 2006/03/15 19:34:13 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -28,11 +28,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -57,8 +60,6 @@ import org.eclipse.uml2.uml.internal.operations.ActivityNodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
@@ -74,6 +75,56 @@ import org.eclipse.uml2.uml.internal.operations.ActivityNodeOperations;
 public abstract class ActivityNodeImpl
 		extends RedefinableElementImpl
 		implements ActivityNode {
+
+	/**
+	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutgoings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList outgoings = null;
+
+	/**
+	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIncomings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList incomings = null;
+
+	/**
+	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInPartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList inPartitions = null;
+
+	/**
+	 * The cached value of the '{@link #getInInterruptibleRegions() <em>In Interruptible Region</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInInterruptibleRegions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList inInterruptibleRegions = null;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedNodes() <em>Redefined Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedNodes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,16 +150,22 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getInGroups() {
-		EList inGroup = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_GROUP);
-		if (inGroup == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_NODE__IN_GROUP,
-				inGroup = new DerivedUnionEObjectEList(ActivityGroup.class,
-					this, UMLPackage.ACTIVITY_NODE__IN_GROUP, new int[]{
-						UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
-						UMLPackage.ACTIVITY_NODE__IN_PARTITION,
-						UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList inGroups = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP);
+			if (inGroups == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP,
+					inGroups = new DerivedUnionEObjectEList(
+						ActivityGroup.class, this,
+						UMLPackage.ACTIVITY_NODE__IN_GROUP, IN_GROUP_ESUBSETS));
+			}
+			return inGroups;
 		}
-		return inGroup;
+		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
+			UMLPackage.ACTIVITY_NODE__IN_GROUP, IN_GROUP_ESUBSETS);
 	}
 
 	/**
@@ -117,15 +174,24 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
-					new int[]{UMLPackage.ACTIVITY_NODE__REDEFINED_NODE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
+			REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -134,15 +200,12 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getOutgoings() {
-		EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__OUTGOING);
-		if (outgoing == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_NODE__OUTGOING,
-				outgoing = new EObjectWithInverseResolvingEList(
-					ActivityEdge.class, this,
-					UMLPackage.ACTIVITY_NODE__OUTGOING,
-					UMLPackage.ACTIVITY_EDGE__SOURCE));
+		if (outgoings == null) {
+			outgoings = new EObjectWithInverseResolvingEList(
+				ActivityEdge.class, this, UMLPackage.ACTIVITY_NODE__OUTGOING,
+				UMLPackage.ACTIVITY_EDGE__SOURCE);
 		}
-		return outgoing;
+		return outgoings;
 	}
 
 	/**
@@ -180,15 +243,13 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getInPartitions() {
-		EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_PARTITION);
-		if (inPartition == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_NODE__IN_PARTITION,
-				inPartition = new EObjectWithInverseResolvingEList.ManyInverse(
-					ActivityPartition.class, this,
-					UMLPackage.ACTIVITY_NODE__IN_PARTITION,
-					UMLPackage.ACTIVITY_PARTITION__NODE));
+		if (inPartitions == null) {
+			inPartitions = new EObjectWithInverseResolvingEList.ManyInverse(
+				ActivityPartition.class, this,
+				UMLPackage.ACTIVITY_NODE__IN_PARTITION,
+				UMLPackage.ACTIVITY_PARTITION__NODE);
 		}
-		return inPartition;
+		return inPartitions;
 	}
 
 	/**
@@ -348,15 +409,12 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getIncomings() {
-		EList incoming = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__INCOMING);
-		if (incoming == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_NODE__INCOMING,
-				incoming = new EObjectWithInverseResolvingEList(
-					ActivityEdge.class, this,
-					UMLPackage.ACTIVITY_NODE__INCOMING,
-					UMLPackage.ACTIVITY_EDGE__TARGET));
+		if (incomings == null) {
+			incomings = new EObjectWithInverseResolvingEList(
+				ActivityEdge.class, this, UMLPackage.ACTIVITY_NODE__INCOMING,
+				UMLPackage.ACTIVITY_EDGE__TARGET);
 		}
-		return incoming;
+		return incomings;
 	}
 
 	/**
@@ -394,16 +452,13 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getInInterruptibleRegions() {
-		EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
-		if (inInterruptibleRegion == null) {
-			eVirtualSet(
+		if (inInterruptibleRegions == null) {
+			inInterruptibleRegions = new EObjectWithInverseResolvingEList.ManyInverse(
+				InterruptibleActivityRegion.class, this,
 				UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
-				inInterruptibleRegion = new EObjectWithInverseResolvingEList.ManyInverse(
-					InterruptibleActivityRegion.class, this,
-					UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
-					UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE));
+				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
 		}
-		return inInterruptibleRegion;
+		return inInterruptibleRegions;
 	}
 
 	/**
@@ -412,13 +467,11 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getRedefinedNodes() {
-		EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
-		if (redefinedNode == null) {
-			eVirtualSet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE,
-				redefinedNode = new EObjectResolvingEList(ActivityNode.class,
-					this, UMLPackage.ACTIVITY_NODE__REDEFINED_NODE));
+		if (redefinedNodes == null) {
+			redefinedNodes = new EObjectResolvingEList(ActivityNode.class,
+				this, UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
 		}
-		return redefinedNode;
+		return redefinedNodes;
 	}
 
 	/**
@@ -755,15 +808,13 @@ public abstract class ActivityNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__NAME :
 				return isSetName();
 			case UMLPackage.ACTIVITY_NODE__VISIBILITY :
@@ -773,12 +824,12 @@ public abstract class ActivityNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ACTIVITY_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT :
@@ -790,26 +841,34 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.ACTIVITY_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getInGroups() <em>In Group</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] IN_GROUP_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
+		UMLPackage.ACTIVITY_NODE__IN_PARTITION,
+		UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -843,6 +902,16 @@ public abstract class ActivityNodeImpl
 	public boolean isSetOwner() {
 		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_NODE__ACTIVITY);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ACTIVITY_NODE__REDEFINED_NODE};
 
 	/**
 	 * <!-- begin-user-doc -->

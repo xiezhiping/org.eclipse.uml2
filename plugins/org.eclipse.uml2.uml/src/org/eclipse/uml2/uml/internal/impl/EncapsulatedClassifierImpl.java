@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.20 2006/03/07 20:25:14 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.21 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,9 +21,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
@@ -55,6 +57,16 @@ public abstract class EncapsulatedClassifierImpl
 		implements EncapsulatedClassifier {
 
 	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedPorts() <em>Owned Port</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_PORT_ESUPERSETS = new int[]{UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,14 +90,12 @@ public abstract class EncapsulatedClassifierImpl
 	 * @generated
 	 */
 	public EList getOwnedAttributes() {
-		EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
-		if (ownedAttribute == null) {
-			eVirtualSet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE,
-				ownedAttribute = new EObjectContainmentEList.Resolving(
-					Property.class, this,
-					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE));
+		if (ownedAttributes == null) {
+			ownedAttributes = new EObjectContainmentEList.Resolving(
+				Property.class, this,
+				UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 		}
-		return ownedAttribute;
+		return ownedAttributes;
 	}
 
 	/**
@@ -94,17 +104,23 @@ public abstract class EncapsulatedClassifierImpl
 	 * @generated NOT
 	 */
 	public EList getOwnedPorts() {
-		EList ownedPort = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
-		if (ownedPort == null) {
-			eVirtualSet(
-				UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
-				ownedPort = new DerivedSubsetEObjectEList(
-					Port.class,
-					this,
-					UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
-					new int[]{UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedPorts = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
+			if (ownedPorts == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
+					ownedPorts = new DerivedSubsetEObjectEList(Port.class, this,
+						UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
+						OWNED_PORT_ESUPERSETS));
+			}
+			return ownedPorts;
 		}
-		return ownedPort;
+		return new DerivedSubsetEObjectEList(Port.class, this,
+			UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
+			OWNED_PORT_ESUPERSETS);
 	}
 
 	/**
@@ -550,15 +566,13 @@ public abstract class EncapsulatedClassifierImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNER :
 				return isSetOwner();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
 				return isSetName();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__VISIBILITY :
@@ -568,21 +582,18 @@ public abstract class EncapsulatedClassifierImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
-				EList elementImport = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT);
-				return elementImport != null && !elementImport.isEmpty();
+				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
-				EList packageImport = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT);
-				return packageImport != null && !packageImport.isEmpty();
+				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				EList ownedRule = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE);
-				return ownedRule != null && !ownedRule.isEmpty();
+				return ownedRules != null && !ownedRules.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__MEMBER :
 				return isSetMembers();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IMPORTED_MEMBER :
@@ -602,54 +613,45 @@ public abstract class EncapsulatedClassifierImpl
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE :
 				return basicGetPackage() != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION :
-				EList generalization = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION);
-				return generalization != null && !generalization.isEmpty();
+				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT :
-				EList powertypeExtent = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT);
-				return powertypeExtent != null && !powertypeExtent.isEmpty();
+				return powertypeExtents != null && !powertypeExtents.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__FEATURE :
 				return isSetFeatures();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER :
-				EList redefinedClassifier = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER);
-				return redefinedClassifier != null
-					&& !redefinedClassifier.isEmpty();
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERAL :
 				return !getGenerals().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION :
-				EList substitution = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION);
-				return substitution != null && !substitution.isEmpty();
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ATTRIBUTE :
 				return isSetAttributes();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REPRESENTATION :
-				return eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__REPRESENTATION) != null;
+				return representation != null;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
-				EList collaborationUse = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE);
-				return collaborationUse != null && !collaborationUse.isEmpty();
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE :
-				EList ownedUseCase = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE);
-				return ownedUseCase != null && !ownedUseCase.isEmpty();
+				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
-				EList useCase = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE);
-				return useCase != null && !useCase.isEmpty();
+				return useCases != null && !useCases.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
-				EList ownedAttribute = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
-				return ownedAttribute != null && !ownedAttribute.isEmpty();
+				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ROLE :
 				return isSetRoles();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR :
-				EList ownedConnector = (EList) eVirtualGet(UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR);
-				return ownedConnector != null && !ownedConnector.isEmpty();
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
 		}

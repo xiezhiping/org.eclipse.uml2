@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.15 2006/03/07 20:25:15 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.16 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Element;
@@ -49,7 +52,6 @@ import org.eclipse.uml2.uml.internal.operations.TimeEventOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeEventImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeEventImpl#isRelative <em>Is Relative</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeEventImpl#getWhen <em>When</em>}</li>
  * </ul>
@@ -79,7 +81,17 @@ public class TimeEventImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_RELATIVE_EFLAG = 1 << 8;
+	protected static final int IS_RELATIVE_EFLAG = 1 << 10;
+
+	/**
+	 * The cached value of the '{@link #getWhen() <em>When</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWhen()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification when = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,16 +117,22 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.TIME_EVENT__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.TIME_EVENT__OWNED_ELEMENT, new int[]{
-						UMLPackage.TIME_EVENT__OWNED_COMMENT,
-						UMLPackage.TIME_EVENT__NAME_EXPRESSION,
-						UMLPackage.TIME_EVENT__WHEN}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.TIME_EVENT__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.TIME_EVENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -150,7 +168,6 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification getWhen() {
-		ValueSpecification when = (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
 		if (when != null && when.eIsProxy()) {
 			InternalEObject oldWhen = (InternalEObject) when;
 			when = (ValueSpecification) eResolveProxy(oldWhen);
@@ -179,7 +196,7 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetWhen() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
+		return when;
 	}
 
 	/**
@@ -189,13 +206,11 @@ public class TimeEventImpl
 	 */
 	public NotificationChain basicSetWhen(ValueSpecification newWhen,
 			NotificationChain msgs) {
-		Object oldWhen = eVirtualSet(UMLPackage.TIME_EVENT__WHEN, newWhen);
+		ValueSpecification oldWhen = when;
+		when = newWhen;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TIME_EVENT__WHEN,
-				oldWhen == EVIRTUAL_NO_VALUE
-					? null
-					: oldWhen, newWhen);
+				Notification.SET, UMLPackage.TIME_EVENT__WHEN, oldWhen, newWhen);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -211,7 +226,6 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public void setWhen(ValueSpecification newWhen) {
-		ValueSpecification when = (ValueSpecification) eVirtualGet(UMLPackage.TIME_EVENT__WHEN);
 		if (newWhen != when) {
 			NotificationChain msgs = null;
 			if (when != null)
@@ -442,15 +456,13 @@ public class TimeEventImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TIME_EVENT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TIME_EVENT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TIME_EVENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TIME_EVENT__OWNER :
 				return isSetOwner();
 			case UMLPackage.TIME_EVENT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TIME_EVENT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TIME_EVENT__NAME :
 				return isSetName();
 			case UMLPackage.TIME_EVENT__VISIBILITY :
@@ -460,20 +472,20 @@ public class TimeEventImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.TIME_EVENT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TIME_EVENT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.TIME_EVENT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.TIME_EVENT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.TIME_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.TIME_EVENT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
 				return ((eFlags & IS_RELATIVE_EFLAG) != 0) != IS_RELATIVE_EDEFAULT;
 			case UMLPackage.TIME_EVENT__WHEN :
-				return eVirtualGet(UMLPackage.TIME_EVENT__WHEN) != null;
+				return when != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -493,6 +505,18 @@ public class TimeEventImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.TIME_EVENT__OWNED_COMMENT,
+		UMLPackage.TIME_EVENT__NAME_EXPRESSION, UMLPackage.TIME_EVENT__WHEN};
 
 	/**
 	 * <!-- begin-user-doc -->

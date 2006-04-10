@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.32 2006/03/15 19:34:05 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.33 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,14 +82,11 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getEnds <em>End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDeployedElements <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
@@ -116,12 +113,64 @@ public class PropertyImpl
 		implements Property {
 
 	/**
-	 * A bit field representing the indices of non-primitive feature values.
+	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getTemplateParameter()
 	 * @generated
+	 * @ordered
 	 */
-	protected int eVirtualIndexBits1 = 0;
+	protected TemplateParameter templateParameter = null;
+
+	/**
+	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnds()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ends = null;
+
+	/**
+	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList deployments = null;
+
+	/**
+	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList templateBindings = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature = null;
+
+	/**
+	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssociation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Association association = null;
 
 	/**
 	 * The default value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
@@ -141,7 +190,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_EFLAG = 1 << 13;
+	protected static final int IS_DERIVED_EFLAG = 1 << 15;
 
 	/**
 	 * The default value of the '{@link #isDerivedUnion() <em>Is Derived Union</em>}' attribute.
@@ -161,7 +210,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_UNION_EFLAG = 1 << 14;
+	protected static final int IS_DERIVED_UNION_EFLAG = 1 << 16;
 
 	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
@@ -184,6 +233,16 @@ public class PropertyImpl
 	protected static final AggregationKind AGGREGATION_EDEFAULT = AggregationKind.NONE_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAggregation()
+	 * @generated
+	 * @ordered
+	 */
+	protected AggregationKind aggregation = AGGREGATION_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -192,6 +251,46 @@ public class PropertyImpl
 	 * @ordered
 	 */
 	protected static final boolean IS_COMPOSITE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedProperties() <em>Redefined Property</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList redefinedProperties = null;
+
+	/**
+	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification defaultValue = null;
+
+	/**
+	 * The cached value of the '{@link #getSubsettedProperties() <em>Subsetted Property</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubsettedProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList subsettedProperties = null;
+
+	/**
+	 * The cached value of the '{@link #getQualifiers() <em>Qualifier</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList qualifiers = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,13 +316,10 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateParameter getTemplateParameter() {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
 			templateParameter = (TemplateParameter) eResolveProxy(oldTemplateParameter);
 			if (templateParameter != oldTemplateParameter) {
-				eVirtualSet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER,
-					templateParameter);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PROPERTY__TEMPLATE_PARAMETER,
@@ -239,7 +335,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetTemplateParameter() {
-		return (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
+		return templateParameter;
 	}
 
 	/**
@@ -249,14 +345,12 @@ public class PropertyImpl
 	 */
 	public NotificationChain basicSetTemplateParameterGen(
 			TemplateParameter newTemplateParameter, NotificationChain msgs) {
-		Object oldTemplateParameter = eVirtualSet(
-			UMLPackage.PROPERTY__TEMPLATE_PARAMETER, newTemplateParameter);
+		TemplateParameter oldTemplateParameter = templateParameter;
+		templateParameter = newTemplateParameter;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PROPERTY__TEMPLATE_PARAMETER,
-				oldTemplateParameter == EVIRTUAL_NO_VALUE
-					? null
-					: oldTemplateParameter, newTemplateParameter);
+				oldTemplateParameter, newTemplateParameter);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -298,7 +392,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-		TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -325,7 +418,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
-		return eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER) != null;
+		return templateParameter != null;
 	}
 
 	/**
@@ -363,7 +456,6 @@ public class PropertyImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
-				Object templateParameter = eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
 				if (newOwningTemplateParameter != templateParameter) {
 					setTemplateParameter(newOwningTemplateParameter);
 				}
@@ -410,14 +502,11 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getEnds() {
-		EList end = (EList) eVirtualGet(UMLPackage.PROPERTY__END);
-		if (end == null) {
-			eVirtualSet(UMLPackage.PROPERTY__END,
-				end = new EObjectWithInverseResolvingEList(ConnectorEnd.class,
-					this, UMLPackage.PROPERTY__END,
-					UMLPackage.CONNECTOR_END__ROLE));
+		if (ends == null) {
+			ends = new EObjectWithInverseResolvingEList(ConnectorEnd.class,
+				this, UMLPackage.PROPERTY__END, UMLPackage.CONNECTOR_END__ROLE);
 		}
-		return end;
+		return ends;
 	}
 
 	/**
@@ -426,22 +515,22 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.PROPERTY__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.PROPERTY__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.PROPERTY__OWNED_ELEMENT, new int[]{
-						UMLPackage.PROPERTY__OWNED_COMMENT,
-						UMLPackage.PROPERTY__NAME_EXPRESSION,
-						UMLPackage.PROPERTY__UPPER_VALUE,
-						UMLPackage.PROPERTY__LOWER_VALUE,
-						UMLPackage.PROPERTY__DEPLOYMENT,
-						UMLPackage.PROPERTY__TEMPLATE_BINDING,
-						UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-						UMLPackage.PROPERTY__DEFAULT_VALUE,
-						UMLPackage.PROPERTY__QUALIFIER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.PROPERTY__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.PROPERTY__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -450,18 +539,33 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getClientDependencies() {
-		EList clientDependency = (EList) eVirtualGet(UMLPackage.PROPERTY__CLIENT_DEPENDENCY);
-		if (clientDependency == null) {
-			eVirtualSet(
-				UMLPackage.PROPERTY__CLIENT_DEPENDENCY,
-				clientDependency = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
-					Dependency.class, this,
-					UMLPackage.PROPERTY__CLIENT_DEPENDENCY, null,
-					new int[]{UMLPackage.PROPERTY__DEPLOYMENT},
-					UMLPackage.DEPENDENCY__CLIENT));
+		if (clientDependencies == null) {
+			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+				Dependency.class, this, UMLPackage.PROPERTY__CLIENT_DEPENDENCY,
+				null, CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
 		}
-		return clientDependency;
+		return clientDependencies;
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.PROPERTY__DEPLOYMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -469,16 +573,12 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getDeployments() {
-		EList deployment = (EList) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
-		if (deployment == null) {
-			eVirtualSet(
-				UMLPackage.PROPERTY__DEPLOYMENT,
-				deployment = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					Deployment.class, this, UMLPackage.PROPERTY__DEPLOYMENT,
-					new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY}, null,
-					UMLPackage.DEPLOYMENT__LOCATION));
+		if (deployments == null) {
+			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				Deployment.class, this, UMLPackage.PROPERTY__DEPLOYMENT,
+				DEPLOYMENT_ESUPERSETS, null, UMLPackage.DEPLOYMENT__LOCATION);
 		}
-		return deployment;
+		return deployments;
 	}
 
 	/**
@@ -581,16 +681,13 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getTemplateBindings() {
-		EList templateBinding = (EList) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
-		if (templateBinding == null) {
-			eVirtualSet(
+		if (templateBindings == null) {
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+				TemplateBinding.class, this,
 				UMLPackage.PROPERTY__TEMPLATE_BINDING,
-				templateBinding = new EObjectContainmentWithInverseEList.Resolving(
-					TemplateBinding.class, this,
-					UMLPackage.PROPERTY__TEMPLATE_BINDING,
-					UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT));
+				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
 		}
-		return templateBinding;
+		return templateBindings;
 	}
 
 	/**
@@ -641,7 +738,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateSignature getOwnedTemplateSignature() {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
 		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
 			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
 			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
@@ -673,7 +769,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateSignature basicGetOwnedTemplateSignature() {
-		return (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
+		return ownedTemplateSignature;
 	}
 
 	/**
@@ -683,16 +779,13 @@ public class PropertyImpl
 	 */
 	public NotificationChain basicSetOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-		Object oldOwnedTemplateSignature = eVirtualSet(
-			UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-			newOwnedTemplateSignature);
+		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
+		ownedTemplateSignature = newOwnedTemplateSignature;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-				oldOwnedTemplateSignature == EVIRTUAL_NO_VALUE
-					? null
-					: oldOwnedTemplateSignature, newOwnedTemplateSignature);
+				oldOwnedTemplateSignature, newOwnedTemplateSignature);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -709,7 +802,6 @@ public class PropertyImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-		TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -758,17 +850,24 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
-		EList featuringClassifier = (EList) eVirtualGet(UMLPackage.PROPERTY__FEATURING_CLASSIFIER);
-		if (featuringClassifier == null) {
-			eVirtualSet(UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
-				featuringClassifier = new DerivedUnionEObjectEList(
-					Classifier.class, this,
-					UMLPackage.PROPERTY__FEATURING_CLASSIFIER, new int[]{
-						UMLPackage.PROPERTY__CLASS,
-						UMLPackage.PROPERTY__DATATYPE,
-						UMLPackage.PROPERTY__OWNING_ASSOCIATION}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList featuringClassifiers = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			if (featuringClassifiers == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+					featuringClassifiers = new DerivedUnionEObjectEList(
+						Classifier.class, this,
+						UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
+						FEATURING_CLASSIFIER_ESUBSETS));
+			}
+			return featuringClassifiers;
 		}
-		return featuringClassifier;
+		return new DerivedUnionEObjectEList(Classifier.class, this,
+			UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
+			FEATURING_CLASSIFIER_ESUBSETS);
 	}
 
 	/**
@@ -777,15 +876,23 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
-		EList redefinedElement = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_ELEMENT);
-		if (redefinedElement == null) {
-			eVirtualSet(UMLPackage.PROPERTY__REDEFINED_ELEMENT,
-				redefinedElement = new DerivedUnionEObjectEList(
-					RedefinableElement.class, this,
-					UMLPackage.PROPERTY__REDEFINED_ELEMENT,
-					new int[]{UMLPackage.PROPERTY__REDEFINED_PROPERTY}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList redefinedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			if (redefinedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+					redefinedElements = new DerivedUnionEObjectEList(
+						RedefinableElement.class, this,
+						UMLPackage.PROPERTY__REDEFINED_ELEMENT,
+						REDEFINED_ELEMENT_ESUBSETS));
+			}
+			return redefinedElements;
 		}
-		return redefinedElement;
+		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+			UMLPackage.PROPERTY__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -794,12 +901,10 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Association getAssociation() {
-		Association association = (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
 		if (association != null && association.eIsProxy()) {
 			InternalEObject oldAssociation = (InternalEObject) association;
 			association = (Association) eResolveProxy(oldAssociation);
 			if (association != oldAssociation) {
-				eVirtualSet(UMLPackage.PROPERTY__ASSOCIATION, association);
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.PROPERTY__ASSOCIATION, oldAssociation,
@@ -815,7 +920,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Association basicGetAssociation() {
-		return (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
+		return association;
 	}
 
 	/**
@@ -825,14 +930,12 @@ public class PropertyImpl
 	 */
 	public NotificationChain basicSetAssociation(Association newAssociation,
 			NotificationChain msgs) {
-		Object oldAssociation = eVirtualSet(UMLPackage.PROPERTY__ASSOCIATION,
-			newAssociation);
+		Association oldAssociation = association;
+		association = newAssociation;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PROPERTY__ASSOCIATION,
-				oldAssociation == EVIRTUAL_NO_VALUE
-					? null
-					: oldAssociation, newAssociation);
+				oldAssociation, newAssociation);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -856,7 +959,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAssociation(Association newAssociation) {
-		Association association = (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
 		if (newAssociation != association) {
 			NotificationChain msgs = null;
 			if (association != null)
@@ -1034,8 +1136,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public AggregationKind getAggregation() {
-		return (AggregationKind) eVirtualGet(UMLPackage.PROPERTY__AGGREGATION,
-			AGGREGATION_EDEFAULT);
+		return aggregation;
 	}
 
 	/**
@@ -1044,17 +1145,13 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAggregation(AggregationKind newAggregation) {
-		AggregationKind aggregation = newAggregation == null
+		AggregationKind oldAggregation = aggregation;
+		aggregation = newAggregation == null
 			? AGGREGATION_EDEFAULT
 			: newAggregation;
-		Object oldAggregation = eVirtualSet(UMLPackage.PROPERTY__AGGREGATION,
-			aggregation);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROPERTY__AGGREGATION,
-				oldAggregation == EVIRTUAL_NO_VALUE
-					? AGGREGATION_EDEFAULT
-					: oldAggregation, aggregation));
+				UMLPackage.PROPERTY__AGGREGATION, oldAggregation, aggregation));
 
 	}
 
@@ -1106,13 +1203,11 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getRedefinedProperties() {
-		EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
-		if (redefinedProperty == null) {
-			eVirtualSet(UMLPackage.PROPERTY__REDEFINED_PROPERTY,
-				redefinedProperty = new EObjectResolvingEList(Property.class,
-					this, UMLPackage.PROPERTY__REDEFINED_PROPERTY));
+		if (redefinedProperties == null) {
+			redefinedProperties = new EObjectResolvingEList(Property.class,
+				this, UMLPackage.PROPERTY__REDEFINED_PROPERTY);
 		}
-		return redefinedProperty;
+		return redefinedProperties;
 	}
 
 	/**
@@ -1182,7 +1277,6 @@ public class PropertyImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningAssociation != null) {
-				Object association = eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
 				if (newOwningAssociation != association) {
 					setAssociation(newOwningAssociation);
 				}
@@ -1225,7 +1319,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public ValueSpecification getDefaultValue() {
-		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE);
 		if (defaultValue != null && defaultValue.eIsProxy()) {
 			InternalEObject oldDefaultValue = (InternalEObject) defaultValue;
 			defaultValue = (ValueSpecification) eResolveProxy(oldDefaultValue);
@@ -1256,7 +1349,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetDefaultValue() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE);
+		return defaultValue;
 	}
 
 	/**
@@ -1266,14 +1359,12 @@ public class PropertyImpl
 	 */
 	public NotificationChain basicSetDefaultValue(
 			ValueSpecification newDefaultValue, NotificationChain msgs) {
-		Object oldDefaultValue = eVirtualSet(
-			UMLPackage.PROPERTY__DEFAULT_VALUE, newDefaultValue);
+		ValueSpecification oldDefaultValue = defaultValue;
+		defaultValue = newDefaultValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET, UMLPackage.PROPERTY__DEFAULT_VALUE,
-				oldDefaultValue == EVIRTUAL_NO_VALUE
-					? null
-					: oldDefaultValue, newDefaultValue);
+				oldDefaultValue, newDefaultValue);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -1289,7 +1380,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
-		ValueSpecification defaultValue = (ValueSpecification) eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE);
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -1362,13 +1452,11 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getSubsettedProperties() {
-		EList subsettedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
-		if (subsettedProperty == null) {
-			eVirtualSet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY,
-				subsettedProperty = new EObjectResolvingEList(Property.class,
-					this, UMLPackage.PROPERTY__SUBSETTED_PROPERTY));
+		if (subsettedProperties == null) {
+			subsettedProperties = new EObjectResolvingEList(Property.class,
+				this, UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
 		}
-		return subsettedProperty;
+		return subsettedProperties;
 	}
 
 	/**
@@ -1409,14 +1497,12 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getQualifiers() {
-		EList qualifier = (EList) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
-		if (qualifier == null) {
-			eVirtualSet(UMLPackage.PROPERTY__QUALIFIER,
-				qualifier = new EObjectContainmentWithInverseEList.Resolving(
-					Property.class, this, UMLPackage.PROPERTY__QUALIFIER,
-					UMLPackage.PROPERTY__ASSOCIATION_END));
+		if (qualifiers == null) {
+			qualifiers = new EObjectContainmentWithInverseEList.Resolving(
+				Property.class, this, UMLPackage.PROPERTY__QUALIFIER,
+				UMLPackage.PROPERTY__ASSOCIATION_END);
 		}
-		return qualifier;
+		return qualifiers;
 	}
 
 	/**
@@ -1863,7 +1949,6 @@ public class PropertyImpl
 				return basicSetOwningTemplateParameter(
 					(TemplateParameter) otherEnd, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
-				TemplateParameter templateParameter = (TemplateParameter) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_PARAMETER);
 				if (templateParameter != null)
 					msgs = ((InternalEObject) templateParameter)
 						.eInverseRemove(this,
@@ -1880,7 +1965,6 @@ public class PropertyImpl
 				return ((InternalEList) getTemplateBindings()).basicAdd(
 					otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				TemplateSignature ownedTemplateSignature = (TemplateSignature) eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE);
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
 						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -1897,7 +1981,6 @@ public class PropertyImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetOwningAssociation((Association) otherEnd, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION :
-				Association association = (Association) eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION);
 				if (association != null)
 					msgs = ((InternalEObject) association).eInverseRemove(this,
 						UMLPackage.ASSOCIATION__MEMBER_END, Association.class,
@@ -2399,15 +2482,13 @@ public class PropertyImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PROPERTY__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PROPERTY__OWNER :
 				return isSetOwner();
 			case UMLPackage.PROPERTY__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PROPERTY__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PROPERTY__NAME :
 				return isSetName();
 			case UMLPackage.PROPERTY__VISIBILITY :
@@ -2417,12 +2498,12 @@ public class PropertyImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PROPERTY__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PROPERTY__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PROPERTY__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PROPERTY__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PROPERTY__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.PROPERTY__REDEFINED_ELEMENT :
@@ -2434,7 +2515,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
 			case UMLPackage.PROPERTY__TYPE :
-				return eVirtualGet(UMLPackage.PROPERTY__TYPE) != null;
+				return type != null;
 			case UMLPackage.PROPERTY__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_UNIQUE :
@@ -2444,9 +2525,9 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__LOWER :
 				return getLower() != LOWER_EDEFAULT;
 			case UMLPackage.PROPERTY__UPPER_VALUE :
-				return eVirtualGet(UMLPackage.PROPERTY__UPPER_VALUE) != null;
+				return upperValue != null;
 			case UMLPackage.PROPERTY__LOWER_VALUE :
-				return eVirtualGet(UMLPackage.PROPERTY__LOWER_VALUE) != null;
+				return lowerValue != null;
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
 				return isSetIsReadOnly();
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
@@ -2454,18 +2535,15 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.PROPERTY__END :
-				EList end = (EList) eVirtualGet(UMLPackage.PROPERTY__END);
-				return end != null && !end.isEmpty();
+				return ends != null && !ends.isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYMENT :
-				EList deployment = (EList) eVirtualGet(UMLPackage.PROPERTY__DEPLOYMENT);
-				return deployment != null && !deployment.isEmpty();
+				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
 			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				EList templateBinding = (EList) eVirtualGet(UMLPackage.PROPERTY__TEMPLATE_BINDING);
-				return templateBinding != null && !templateBinding.isEmpty();
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				return eVirtualGet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE) != null;
+				return ownedTemplateSignature != null;
 			case UMLPackage.PROPERTY__CLASS :
 				return basicGetClass_() != null;
 			case UMLPackage.PROPERTY__DATATYPE :
@@ -2477,29 +2555,25 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PROPERTY__AGGREGATION :
-				return eVirtualGet(UMLPackage.PROPERTY__AGGREGATION,
-					AGGREGATION_EDEFAULT) != AGGREGATION_EDEFAULT;
+				return aggregation != AGGREGATION_EDEFAULT;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
-				EList redefinedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);
-				return redefinedProperty != null
-					&& !redefinedProperty.isEmpty();
+				return redefinedProperties != null
+					&& !redefinedProperties.isEmpty();
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				return basicGetOwningAssociation() != null;
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
-				return eVirtualGet(UMLPackage.PROPERTY__DEFAULT_VALUE) != null;
+				return defaultValue != null;
 			case UMLPackage.PROPERTY__OPPOSITE :
 				return basicGetOpposite() != null;
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
-				EList subsettedProperty = (EList) eVirtualGet(UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
-				return subsettedProperty != null
-					&& !subsettedProperty.isEmpty();
+				return subsettedProperties != null
+					&& !subsettedProperties.isEmpty();
 			case UMLPackage.PROPERTY__ASSOCIATION :
-				return eVirtualGet(UMLPackage.PROPERTY__ASSOCIATION) != null;
+				return association != null;
 			case UMLPackage.PROPERTY__QUALIFIER :
-				EList qualifier = (EList) eVirtualGet(UMLPackage.PROPERTY__QUALIFIER);
-				return qualifier != null && !qualifier.isEmpty();
+				return qualifiers != null && !qualifiers.isEmpty();
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return basicGetAssociationEnd() != null;
 		}
@@ -2605,40 +2679,6 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int eVirtualIndexBits(int offset) {
-		switch (offset) {
-			case 0 :
-				return eVirtualIndexBits0;
-			case 1 :
-				return eVirtualIndexBits1;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void eSetVirtualIndexBits(int offset, int newIndexBits) {
-		switch (offset) {
-			case 0 :
-				eVirtualIndexBits0 = newIndexBits;
-				break;
-			case 1 :
-				eVirtualIndexBits1 = newIndexBits;
-				break;
-			default :
-				throw new IndexOutOfBoundsException();
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -2649,8 +2689,7 @@ public class PropertyImpl
 		result.append(", isDerivedUnion: "); //$NON-NLS-1$
 		result.append((eFlags & IS_DERIVED_UNION_EFLAG) != 0);
 		result.append(", aggregation: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PROPERTY__AGGREGATION,
-			AGGREGATION_EDEFAULT));
+		result.append(aggregation);
 		result.append(", isReadOnly: "); //$NON-NLS-1$
 		result.append((eFlags & IS_READ_ONLY_EFLAG) != 0);
 		result.append(')');
@@ -2684,6 +2723,22 @@ public class PropertyImpl
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
 			|| eIsSet(UMLPackage.PROPERTY__ASSOCIATION_END);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.PROPERTY__OWNED_COMMENT,
+		UMLPackage.PROPERTY__NAME_EXPRESSION, UMLPackage.PROPERTY__UPPER_VALUE,
+		UMLPackage.PROPERTY__LOWER_VALUE, UMLPackage.PROPERTY__DEPLOYMENT,
+		UMLPackage.PROPERTY__TEMPLATE_BINDING,
+		UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
+		UMLPackage.PROPERTY__DEFAULT_VALUE, UMLPackage.PROPERTY__QUALIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2732,6 +2787,18 @@ public class PropertyImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeaturingClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
+		UMLPackage.PROPERTY__CLASS, UMLPackage.PROPERTY__DATATYPE,
+		UMLPackage.PROPERTY__OWNING_ASSOCIATION};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2742,6 +2809,16 @@ public class PropertyImpl
 			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.PROPERTY__REDEFINED_PROPERTY};
 
 	/**
 	 * <!-- begin-user-doc -->

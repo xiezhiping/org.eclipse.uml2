@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.12 2006/03/15 19:34:01 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.13 2006/04/10 19:16:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,8 +19,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -73,6 +71,16 @@ public class PseudostateImpl
 	protected static final PseudostateKind KIND_EDEFAULT = PseudostateKind.INITIAL_LITERAL;
 
 	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected PseudostateKind kind = KIND_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -96,8 +104,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public PseudostateKind getKind() {
-		return (PseudostateKind) eVirtualGet(UMLPackage.PSEUDOSTATE__KIND,
-			KIND_EDEFAULT);
+		return kind;
 	}
 
 	/**
@@ -106,15 +113,13 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setKind(PseudostateKind newKind) {
-		PseudostateKind kind = newKind == null
+		PseudostateKind oldKind = kind;
+		kind = newKind == null
 			? KIND_EDEFAULT
 			: newKind;
-		Object oldKind = eVirtualSet(UMLPackage.PSEUDOSTATE__KIND, kind);
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PSEUDOSTATE__KIND, oldKind == EVIRTUAL_NO_VALUE
-					? KIND_EDEFAULT
-					: oldKind, kind));
+				UMLPackage.PSEUDOSTATE__KIND, oldKind, kind));
 
 	}
 
@@ -593,15 +598,13 @@ public class PseudostateImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.PSEUDOSTATE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PSEUDOSTATE__OWNER :
 				return isSetOwner();
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAME :
 				return isSetName();
 			case UMLPackage.PSEUDOSTATE__VISIBILITY :
@@ -611,22 +614,20 @@ public class PseudostateImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.PSEUDOSTATE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.PSEUDOSTATE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.PSEUDOSTATE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				return eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT) != KIND_EDEFAULT;
+				return kind != KIND_EDEFAULT;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return basicGetStateMachine() != null;
 			case UMLPackage.PSEUDOSTATE__STATE :
@@ -646,7 +647,7 @@ public class PseudostateImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.PSEUDOSTATE__KIND, KIND_EDEFAULT));
+		result.append(kind);
 		result.append(')');
 		return result.toString();
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.14 2006/03/15 19:34:13 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,9 +27,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
@@ -49,7 +52,6 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getTemplate <em>Template</em>}</li>
@@ -61,6 +63,46 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
 public class TemplateSignatureImpl
 		extends ElementImpl
 		implements TemplateSignature {
+
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList parameters = null;
+
+	/**
+	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList ownedParameters = null;
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PARAMETER_ESUBSETS = new int[]{UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_SIGNATURE__PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,15 +128,23 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT,
-					new int[]{UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT,
-						UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT,
+			OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -103,15 +153,13 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getParameters() {
-		EList parameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER);
-		if (parameter == null) {
-			eVirtualSet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER,
-				parameter = new SubsetSupersetEObjectResolvingEList(
-					TemplateParameter.class, this,
-					UMLPackage.TEMPLATE_SIGNATURE__PARAMETER, null,
-					new int[]{UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER}));
+		if (parameters == null) {
+			parameters = new SubsetSupersetEObjectResolvingEList(
+				TemplateParameter.class, this,
+				UMLPackage.TEMPLATE_SIGNATURE__PARAMETER, null,
+				PARAMETER_ESUBSETS);
 		}
-		return parameter;
+		return parameters;
 	}
 
 	/**
@@ -183,17 +231,14 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getOwnedParameters() {
-		EList ownedParameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-		if (ownedParameter == null) {
-			eVirtualSet(
+		if (ownedParameters == null) {
+			ownedParameters = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+				TemplateParameter.class, this,
 				UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-				ownedParameter = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
-					TemplateParameter.class, this,
-					UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-					new int[]{UMLPackage.TEMPLATE_SIGNATURE__PARAMETER}, null,
-					UMLPackage.TEMPLATE_PARAMETER__SIGNATURE));
+				OWNED_PARAMETER_ESUPERSETS, null,
+				UMLPackage.TEMPLATE_PARAMETER__SIGNATURE);
 		}
-		return ownedParameter;
+		return ownedParameters;
 	}
 
 	/**
@@ -380,26 +425,34 @@ public class TemplateSignatureImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_SIGNATURE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNER :
 				return isSetOwner();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__PARAMETER :
-				EList parameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__PARAMETER);
-				return parameter != null && !parameter.isEmpty();
+				return parameters != null && !parameters.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER :
-				EList ownedParameter = (EList) eVirtualGet(UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
-				return ownedParameter != null && !ownedParameter.isEmpty();
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE :
 				return basicGetTemplate() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT,
+		UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->

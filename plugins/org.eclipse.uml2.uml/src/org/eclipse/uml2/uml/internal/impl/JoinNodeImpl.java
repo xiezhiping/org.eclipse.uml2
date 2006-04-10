@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.18 2006/03/15 19:34:13 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -27,8 +27,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
@@ -50,7 +53,6 @@ import org.eclipse.uml2.uml.internal.operations.JoinNodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.JoinNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.JoinNodeImpl#isCombineDuplicate <em>Is Combine Duplicate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.JoinNodeImpl#getJoinSpec <em>Join Spec</em>}</li>
  * </ul>
@@ -80,7 +82,17 @@ public class JoinNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_COMBINE_DUPLICATE_EFLAG = 1 << 9;
+	protected static final int IS_COMBINE_DUPLICATE_EFLAG = 1 << 11;
+
+	/**
+	 * The cached value of the '{@link #getJoinSpec() <em>Join Spec</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJoinSpec()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification joinSpec = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,16 +119,22 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
-		EList ownedElement = (EList) eVirtualGet(UMLPackage.JOIN_NODE__OWNED_ELEMENT);
-		if (ownedElement == null) {
-			eVirtualSet(UMLPackage.JOIN_NODE__OWNED_ELEMENT,
-				ownedElement = new DerivedUnionEObjectEList(Element.class,
-					this, UMLPackage.JOIN_NODE__OWNED_ELEMENT, new int[]{
-						UMLPackage.JOIN_NODE__OWNED_COMMENT,
-						UMLPackage.JOIN_NODE__NAME_EXPRESSION,
-						UMLPackage.JOIN_NODE__JOIN_SPEC}));
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			EList ownedElements = (EList) cache.get(eResource, this,
+				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList(Element.class,
+						this, UMLPackage.JOIN_NODE__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
 		}
-		return ownedElement;
+		return new DerivedUnionEObjectEList(Element.class, this,
+			UMLPackage.JOIN_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -152,7 +170,6 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public ValueSpecification getJoinSpec() {
-		ValueSpecification joinSpec = (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
 		if (joinSpec != null && joinSpec.eIsProxy()) {
 			InternalEObject oldJoinSpec = (InternalEObject) joinSpec;
 			joinSpec = (ValueSpecification) eResolveProxy(oldJoinSpec);
@@ -181,7 +198,7 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetJoinSpec() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
+		return joinSpec;
 	}
 
 	/**
@@ -191,14 +208,12 @@ public class JoinNodeImpl
 	 */
 	public NotificationChain basicSetJoinSpec(ValueSpecification newJoinSpec,
 			NotificationChain msgs) {
-		Object oldJoinSpec = eVirtualSet(UMLPackage.JOIN_NODE__JOIN_SPEC,
-			newJoinSpec);
+		ValueSpecification oldJoinSpec = joinSpec;
+		joinSpec = newJoinSpec;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.JOIN_NODE__JOIN_SPEC,
-				oldJoinSpec == EVIRTUAL_NO_VALUE
-					? null
-					: oldJoinSpec, newJoinSpec);
+				Notification.SET, UMLPackage.JOIN_NODE__JOIN_SPEC, oldJoinSpec,
+				newJoinSpec);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -214,7 +229,6 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public void setJoinSpec(ValueSpecification newJoinSpec) {
-		ValueSpecification joinSpec = (ValueSpecification) eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC);
 		if (newJoinSpec != joinSpec) {
 			NotificationChain msgs = null;
 			if (joinSpec != null)
@@ -520,15 +534,13 @@ public class JoinNodeImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.JOIN_NODE__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.JOIN_NODE__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.JOIN_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.JOIN_NODE__OWNER :
 				return isSetOwner();
 			case UMLPackage.JOIN_NODE__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.JOIN_NODE__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.JOIN_NODE__NAME :
 				return isSetName();
 			case UMLPackage.JOIN_NODE__VISIBILITY :
@@ -538,12 +550,12 @@ public class JoinNodeImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.JOIN_NODE__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.JOIN_NODE__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.JOIN_NODE__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.JOIN_NODE__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.JOIN_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.JOIN_NODE__REDEFINED_ELEMENT :
@@ -555,27 +567,22 @@ public class JoinNodeImpl
 			case UMLPackage.JOIN_NODE__ACTIVITY :
 				return basicGetActivity() != null;
 			case UMLPackage.JOIN_NODE__OUTGOING :
-				EList outgoing = (EList) eVirtualGet(UMLPackage.JOIN_NODE__OUTGOING);
-				return outgoing != null && !outgoing.isEmpty();
+				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.JOIN_NODE__INCOMING :
-				EList incoming = (EList) eVirtualGet(UMLPackage.JOIN_NODE__INCOMING);
-				return incoming != null && !incoming.isEmpty();
+				return incomings != null && !incomings.isEmpty();
 			case UMLPackage.JOIN_NODE__IN_PARTITION :
-				EList inPartition = (EList) eVirtualGet(UMLPackage.JOIN_NODE__IN_PARTITION);
-				return inPartition != null && !inPartition.isEmpty();
+				return inPartitions != null && !inPartitions.isEmpty();
 			case UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION :
-				EList inInterruptibleRegion = (EList) eVirtualGet(UMLPackage.JOIN_NODE__IN_INTERRUPTIBLE_REGION);
-				return inInterruptibleRegion != null
-					&& !inInterruptibleRegion.isEmpty();
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.JOIN_NODE__IN_GROUP :
 				return isSetInGroups();
 			case UMLPackage.JOIN_NODE__REDEFINED_NODE :
-				EList redefinedNode = (EList) eVirtualGet(UMLPackage.JOIN_NODE__REDEFINED_NODE);
-				return redefinedNode != null && !redefinedNode.isEmpty();
+				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE :
 				return ((eFlags & IS_COMBINE_DUPLICATE_EFLAG) != 0) != IS_COMBINE_DUPLICATE_EDEFAULT;
 			case UMLPackage.JOIN_NODE__JOIN_SPEC :
-				return eVirtualGet(UMLPackage.JOIN_NODE__JOIN_SPEC) != null;
+				return joinSpec != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -595,6 +602,18 @@ public class JoinNodeImpl
 		result.append(')');
 		return result.toString();
 	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.JOIN_NODE__OWNED_COMMENT,
+		UMLPackage.JOIN_NODE__NAME_EXPRESSION, UMLPackage.JOIN_NODE__JOIN_SPEC};
 
 	/**
 	 * <!-- begin-user-doc -->

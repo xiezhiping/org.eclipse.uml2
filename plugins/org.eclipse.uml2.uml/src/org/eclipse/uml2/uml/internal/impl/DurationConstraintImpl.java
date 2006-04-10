@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.16 2006/03/15 19:34:13 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.17 2006/04/10 19:16:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,6 +60,16 @@ public class DurationConstraintImpl
 		implements DurationConstraint {
 
 	/**
+	 * The cached value of the '{@link #getFirstEvents() <em>First Event</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFirstEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList firstEvents = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -83,13 +93,11 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public EList getFirstEvents() {
-		EList firstEvent = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
-		if (firstEvent == null) {
-			eVirtualSet(UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT,
-				firstEvent = new EDataTypeUniqueEList(Boolean.class, this,
-					UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT));
+		if (firstEvents == null) {
+			firstEvents = new EDataTypeUniqueEList(Boolean.class, this,
+				UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
 		}
-		return firstEvent;
+		return firstEvents;
 	}
 
 	/**
@@ -98,7 +106,6 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification getSpecification() {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (ValueSpecification) eResolveProxy(oldSpecification);
@@ -131,7 +138,7 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public ValueSpecification basicGetSpecification() {
-		return (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
+		return specification;
 	}
 
 	/**
@@ -141,15 +148,13 @@ public class DurationConstraintImpl
 	 */
 	public NotificationChain basicSetSpecificationGen(
 			ValueSpecification newSpecification, NotificationChain msgs) {
-		Object oldSpecification = eVirtualSet(
-			UMLPackage.DURATION_CONSTRAINT__SPECIFICATION, newSpecification);
+		ValueSpecification oldSpecification = specification;
+		specification = newSpecification;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
 				Notification.SET,
 				UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
-				oldSpecification == EVIRTUAL_NO_VALUE
-					? null
-					: oldSpecification, newSpecification);
+				oldSpecification, newSpecification);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -177,7 +182,6 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-		ValueSpecification specification = (ValueSpecification) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION);
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -222,7 +226,7 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
-		return eVirtualGet(UMLPackage.DURATION_CONSTRAINT__SPECIFICATION) != null;
+		return specification != null;
 	}
 
 	/**
@@ -400,15 +404,13 @@ public class DurationConstraintImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
-				EList eAnnotations = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS);
 				return eAnnotations != null && !eAnnotations.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DURATION_CONSTRAINT__OWNER :
 				return isSetOwner();
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
-				EList ownedComment = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT);
-				return ownedComment != null && !ownedComment.isEmpty();
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
 				return isSetName();
 			case UMLPackage.DURATION_CONSTRAINT__VISIBILITY :
@@ -418,27 +420,25 @@ public class DurationConstraintImpl
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
-				EList clientDependency = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY);
-				return clientDependency != null && !clientDependency.isEmpty();
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__NAMESPACE :
 				return isSetNamespace();
 			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
-				return eVirtualGet(UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION) != null;
+				return nameExpression != null;
 			case UMLPackage.DURATION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DURATION_CONSTRAINT__TEMPLATE_PARAMETER :
-				return eVirtualGet(UMLPackage.DURATION_CONSTRAINT__TEMPLATE_PARAMETER) != null;
+				return templateParameter != null;
 			case UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT :
-				EList constrainedElement = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT);
-				return constrainedElement != null
-					&& !constrainedElement.isEmpty();
+				return constrainedElements != null
+					&& !constrainedElements.isEmpty();
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
 				return isSetSpecification();
 			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT :
-				EList firstEvent = (EList) eVirtualGet(UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
-				return firstEvent != null && !firstEvent.isEmpty();
+				return firstEvents != null && !firstEvents.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -454,7 +454,7 @@ public class DurationConstraintImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (firstEvent: "); //$NON-NLS-1$
-		result.append(eVirtualGet(UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT));
+		result.append(firstEvents);
 		result.append(')');
 		return result.toString();
 	}
