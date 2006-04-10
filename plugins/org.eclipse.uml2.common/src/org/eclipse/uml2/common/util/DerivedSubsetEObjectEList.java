@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.5 2006/02/15 16:36:16 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.6 2006/04/10 19:05:45 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.RandomAccess;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -33,7 +32,7 @@ public class DerivedSubsetEObjectEList
 		public void remove() {
 			checkModCount();
 
-			if (values == null) {
+			if (valuesIterator == null) {
 				throw new IllegalStateException();
 			}
 
@@ -48,11 +47,7 @@ public class DerivedSubsetEObjectEList
 
 			prepared = 0;
 
-			if (valuesIterator == null) {
-				values.remove(valuesIndex);
-			} else {
-				valuesIterator.remove();
-			}
+			valuesIterator.remove();
 
 			modCount++;
 			expectedModCount++;
@@ -61,7 +56,7 @@ public class DerivedSubsetEObjectEList
 		public void set(Object element) {
 			checkModCount();
 
-			if (values == null) {
+			if (valuesIterator == null) {
 				throw new IllegalStateException();
 			}
 
@@ -76,11 +71,7 @@ public class DerivedSubsetEObjectEList
 
 			prepared = 0;
 
-			if (valuesIterator == null) {
-				values.set(valuesIndex, element);
-			} else {
-				valuesIterator.set(element);
-			}
+			valuesIterator.set(element);
 
 			modCount++;
 			expectedModCount++;
@@ -89,7 +80,7 @@ public class DerivedSubsetEObjectEList
 		public void add(Object element) {
 			checkModCount();
 
-			if (values == null) {
+			if (valuesIterator == null) {
 				List valuesList = resolve()
 					? (List) owner.eGet(sourceFeatureIDs[featureIndex],
 						resolve(), true)
@@ -97,11 +88,7 @@ public class DerivedSubsetEObjectEList
 						sourceFeatureIDs[featureIndex], resolve(), true))
 						.basicList();
 
-				if (valuesList instanceof RandomAccess) {
-					valuesList.add(0, element);
-				} else {
-					valuesList.listIterator().add(element);
-				}
+				valuesList.listIterator().add(element);
 			} else {
 
 				switch (prepared) {
@@ -113,11 +100,7 @@ public class DerivedSubsetEObjectEList
 						break;
 				}
 
-				if (valuesIterator == null) {
-					values.add(valuesIndex, element);
-				} else {
-					valuesIterator.add(element);
-				}
+				valuesIterator.add(element);
 			}
 
 			prepared = 0;
