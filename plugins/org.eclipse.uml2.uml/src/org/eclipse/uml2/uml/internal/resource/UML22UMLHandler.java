@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLHandler.java,v 1.1 2006/04/06 04:30:32 khussey Exp $
+ * $Id: UML22UMLHandler.java,v 1.2 2006/04/10 21:06:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -26,12 +26,15 @@ public class UML22UMLHandler
 	protected static final Map xsiTypeMap = new HashMap();
 
 	static {
+		xsiTypeMap.put("effect", "uml:Activity"); //$NON-NLS-1$ //$NON-NLS-2$
 		xsiTypeMap.put("formalParameter", "uml:Parameter"); //$NON-NLS-1$ //$NON-NLS-2$
 		xsiTypeMap.put("ownedStateMachine", "uml:StateMachine"); //$NON-NLS-1$ //$NON-NLS-2$
 		xsiTypeMap.put("packageableElement_visibility", "uml:VisibilityKind"); //$NON-NLS-1$ //$NON-NLS-2$
 		xsiTypeMap.put("packageExtension", "uml:PackageMerge"); //$NON-NLS-1$ //$NON-NLS-2$
 		xsiTypeMap.put("packageImport", "uml:PackageImport"); //$NON-NLS-1$ //$NON-NLS-2$
 		xsiTypeMap.put("returnResult", "uml:Parameter"); //$NON-NLS-1$ //$NON-NLS-2$
+		xsiTypeMap.put("receiveMessage", "uml:Message"); //$NON-NLS-1$ //$NON-NLS-2$
+		xsiTypeMap.put("sendMessage", "uml:Message"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public UML22UMLHandler(XMLResource xmiResource, XMLHelper helper,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.5 2006/04/06 04:30:32 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.6 2006/04/10 21:06:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -49,6 +49,11 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
+import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.InteractionFragment;
+import org.eclipse.uml2.uml.Message;
+import org.eclipse.uml2.uml.MessageEnd;
+import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -292,6 +297,29 @@ public class UML22UMLResourceHandler
 				return super.caseExtensionEnd(extensionEnd);
 			}
 
+			public Object caseInteraction(Interaction interaction) {
+				AnyType extension = getExtension(resource, interaction);
+
+				if (extension != null) {
+					EList fragments = interaction.getFragments();
+
+					for (Iterator cd = getValues(extension.getMixed(),
+						"fragment", true).iterator(); cd.hasNext();) {
+
+						EObject fragment = (EObject) cd.next();
+
+						if (fragment instanceof InteractionFragment) {
+							doSwitch(fragment);
+							fragments.add(fragment);
+						} else {
+							// TODO convert stops to occurrence specifications
+						}
+					}
+				}
+
+				return super.caseInteraction(interaction);
+			}
+
 			public Object caseMultiplicityElement(
 					MultiplicityElement multiplicityElement) {
 				AnyType extension = getExtension(resource, multiplicityElement);
@@ -306,6 +334,46 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseMultiplicityElement(multiplicityElement);
+			}
+
+			public Object caseMessage(Message message) {
+				AnyType extension = getExtension(resource, message);
+
+				if (extension != null) {
+					String messageSort = (String) getValue(extension
+						.getAnyAttribute(), "messageSort", true); //$NON-NLS-1$
+
+					if (messageSort != null) {
+						message.setMessageSort("synchSignal" //$NON-NLS-1$
+							.equals(messageSort)
+								? MessageSort.ASYNCH_SIGNAL_LITERAL
+								: MessageSort.get(messageSort));
+					}
+				}
+
+				return super.caseMessage(message);
+			}
+
+			public Object caseMessageEnd(MessageEnd messageEnd) {
+				AnyType extension = getExtension(resource, messageEnd);
+
+				if (extension != null) {
+					Message receiveMessage = (Message) getValue(extension
+						.getMixed(), "receiveMessage", true); //$NON-NLS-1$
+
+					if (receiveMessage != null) {
+						messageEnd.setMessage(receiveMessage);
+					}
+
+					Message sendMessage = (Message) getValue(extension
+						.getMixed(), "sendMessage", true); //$NON-NLS-1$
+
+					if (receiveMessage != null) {
+						messageEnd.setMessage(sendMessage);
+					}
+				}
+
+				return super.caseMessageEnd(messageEnd);
 			}
 
 			public Object caseNamedElement(NamedElement namedElement) {
@@ -323,6 +391,8 @@ public class UML22UMLResourceHandler
 						if (clientDependency instanceof Dependency) {
 							doSwitch(clientDependency);
 							clientDependencies.add(clientDependency);
+						} else {
+							// TODO convert permissions to dependencies
 						}
 					}
 				}
@@ -369,13 +439,13 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, packageableElement);
 
 				if (extension != null) {
-					VisibilityKind packageableElement_visibility = (VisibilityKind) getValue(
+					String packageableElement_visibility = (String) getValue(
 						extension.getAnyAttribute(),
 						"packageableElement_visibility", true); //$NON-NLS-1$
 
 					if (packageableElement_visibility != null) {
-						packageableElement
-							.setVisibility(packageableElement_visibility);
+						packageableElement.setVisibility(VisibilityKind
+							.get(packageableElement_visibility));
 					}
 				}
 
