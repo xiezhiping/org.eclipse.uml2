@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.13 2006/03/01 17:57:18 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.14 2006/04/10 19:15:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -314,11 +314,27 @@ public class UML2GenModelUtil {
 			: Collections.EMPTY_LIST;
 	}
 
+	public static List getSupersetGenFeatures(GenClass genClass,
+			GenFeature subsetGenFeature, boolean includeDerived) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSupersetGenFeatures(subsetGenFeature, includeDerived)
+			: Collections.EMPTY_LIST;
+	}
+
 	public static String getSupersetFeatureAccessorArray(GenClass genClass,
 			GenFeature subsetGenFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSupersetFeatureAccessorArray(subsetGenFeature)
+			: null;
+	}
+
+	public static String getSupersetFeatureIDArray(GenClass genClass,
+			GenFeature subsetGenFeature) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSupersetFeatureIDArray(subsetGenFeature)
 			: null;
 	}
 
@@ -359,6 +375,14 @@ public class UML2GenModelUtil {
 	}
 
 	public static List getSubsetGenFeatures(GenClass genClass,
+			GenFeature supersetGenFeature, boolean includeDerived) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSubsetGenFeatures(supersetGenFeature, includeDerived)
+			: Collections.EMPTY_LIST;
+	}
+
+	public static List getSubsetGenFeatures(GenClass genClass,
 			GenFeature supersetGenFeature, boolean includeDerived,
 			boolean includeListType) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
@@ -381,6 +405,22 @@ public class UML2GenModelUtil {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSubsetFeatureAccessorArray(supersetGenFeature)
+			: null;
+	}
+
+	public static String getSubsetFeatureIDArray(GenClass genClass,
+			GenFeature supersetGenFeature) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSubsetFeatureIDArray(supersetGenFeature)
+			: null;
+	}
+
+	public static String getSubsetFeatureIDArray(GenClass genClass,
+			GenFeature supersetGenFeature, boolean includeDerived) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getSubsetFeatureIDArray(supersetGenFeature, includeDerived)
 			: null;
 	}
 
@@ -474,6 +514,12 @@ public class UML2GenModelUtil {
 	}
 
 	// GenFeature utilities
+
+	public static boolean isCached(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.isCached();
+	}
 
 	public static boolean isKey(GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature

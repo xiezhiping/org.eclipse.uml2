@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.16 2006/02/22 20:48:43 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.17 2006/04/10 19:15:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -223,6 +223,13 @@ public class GenFeatureImpl
 					: getCapName()));
 	}
 
+	public String getSafeName() {
+		return isListType()
+			&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
+			? safeName(Generator.pluralize(uncapPrefixedName(getName())))
+			: super.getSafeName();
+	}
+
 	public String getGetAccessor() {
 		String result = isBooleanType()
 			? "is" + getIsName() //$NON-NLS-1$
@@ -259,6 +266,10 @@ public class GenFeatureImpl
 		}
 
 		return result;
+	}
+
+	public boolean isCached() {
+		return isListType() && isDerived();
 	}
 
 	public boolean isDuplicate() {

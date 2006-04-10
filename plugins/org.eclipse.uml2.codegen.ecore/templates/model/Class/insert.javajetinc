@@ -80,7 +80,30 @@
       <%}%>
     <%} else if (genFeature.isGet()) {%>
       <%if (genFeature.isListType()) {%>
-        <%if (!UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
+        <%if (UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>()
+	{
+            <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genFeature)) {%>
+		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
+		if (cache != null) {
+			<%=genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource")%> eResource = eResource();
+			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource, this, <%=genFeature.getQualifiedFeatureAccessor()%>);
+			if (<%=genFeature.getSafeName()%> == null)
+			{
+				cache.put(eResource, this, <%=genFeature.getQualifiedFeatureAccessor()%>, <%=genFeature.getSafeName()%> = new <%=genClass.getListConstructor(genFeature)%>);
+			}
+			return <%=genFeature.getSafeName()%>;
+		}
+            <%}%>
+		return new <%=genClass.getListConstructor(genFeature)%>;
+	}
+
+        <%} else {%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,7 +198,7 @@
 	 */
 	public <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>()
 	{
-            <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel)) {%>
+            <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genFeature)) {%>
 		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
 		if (cache != null) {
               <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
@@ -294,9 +317,7 @@
     <%}%>
 	}
 
-    <%if (!UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
 <%@ include file="genFeature.insert.javajetinc" fail="silent" %>
-    <%}%>
   <%}%>
   <%for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next(); GenFeature redefinitionGenFeature = (GenFeature) UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();%>
     <%if (genFeature.isGet()) {%>

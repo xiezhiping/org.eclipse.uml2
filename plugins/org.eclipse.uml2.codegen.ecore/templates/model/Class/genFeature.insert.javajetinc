@@ -1,3 +1,29 @@
+<%if (isImplementation && genFeature.isListType()) {%>
+  <%if (!UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)).isEmpty()) {%>
+	/**
+	 * The array of subset feature identifiers for the '{@link #<%=genFeature.getGetAccessor()%>() <em><%=genFeature.getFormattedName()%></em>}' <%=genFeature.getFeatureKind()%>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] <%=genFeature.getUpperName()%>_ESUBSETS = <%=UML2GenModelUtil.getSubsetFeatureIDArray(genClass, genFeature, UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature))%>;
+
+  <%}%>
+  <%if (!UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false).isEmpty()) {%>
+	/**
+	 * The array of superset feature identifiers for the '{@link #<%=genFeature.getGetAccessor()%>() <em><%=genFeature.getFormattedName()%></em>}' <%=genFeature.getFeatureKind()%>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #<%=genFeature.getGetAccessor()%>()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] <%=genFeature.getUpperName()%>_ESUPERSETS = <%=UML2GenModelUtil.getSupersetFeatureIDArray(genClass, genFeature)%>;
+
+  <%}%>
+<%}%>
 <%if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);%>
   <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
     <%if (isInterface) {%>

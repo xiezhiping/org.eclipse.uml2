@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.27 2006/03/02 20:51:19 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.28 2006/04/10 19:15:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -248,14 +248,14 @@ public class GenClassImpl
 							redefinedGenFeature)) {
 
 							return (!UML2GenModelUtil
-								.isUnion(redefinedGenFeature) || isDerivedUnionListType(redefinedGenFeature))
+								.isUnion(redefinedGenFeature))
 								&& !isRedefined(redefinedGenFeature);
 						}
 					}
 				}
 
 				return !getExtendedGenFeatures().contains(genFeature)
-					&& (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
+					&& (!UML2GenModelUtil.isUnion(genFeature))
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -265,7 +265,7 @@ public class GenClassImpl
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
-				return (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
+				return (!UML2GenModelUtil.isUnion(genFeature))
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -590,9 +590,19 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSupersetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUPERSETS"); //$NON-NLS-1$
+				}
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSubsetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUBSETS"); //$NON-NLS-1$
+				}
 				sb.append(", "); //$NON-NLS-1$
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
 					reverseFeature));
@@ -611,9 +621,19 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSupersetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUPERSETS"); //$NON-NLS-1$
+				}
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSubsetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUBSETS"); //$NON-NLS-1$
+				}
 				sb.append(")"); //$NON-NLS-1$
 			}
 		} else if (genFeature.isReferenceType()) {
@@ -639,9 +659,19 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSupersetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUPERSETS"); //$NON-NLS-1$
+				}
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSubsetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUBSETS"); //$NON-NLS-1$
+				}
 				sb.append(", "); //$NON-NLS-1$
 				sb.append(reverseFeature.getGenClass().getQualifiedFeatureID(
 					reverseFeature));
@@ -664,9 +694,19 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSupersetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUPERSETS"); //$NON-NLS-1$
+				}
 				sb.append(", "); //$NON-NLS-1$
-				sb.append(getSubsetFeatureIDArray(genFeature));
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+					sb.append("null"); //$NON-NLS-1$
+				} else {
+					sb.append(genFeature.getUpperName());
+					sb.append("_ESUBSETS"); //$NON-NLS-1$
+				}
 				sb.append(")"); //$NON-NLS-1$
 			}
 		} else { // datatype
@@ -690,7 +730,12 @@ public class GenClassImpl
 			sb.append(".class, this, "); //$NON-NLS-1$
 			sb.append(getQualifiedFeatureID(genFeature));
 			sb.append(", "); //$NON-NLS-1$
-			sb.append(getSubsetFeatureIDArray(genFeature, true));
+			if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, true).isEmpty()) {
+				sb.append("null"); //$NON-NLS-1$
+			} else {
+				sb.append(genFeature.getUpperName());
+				sb.append("_ESUBSETS"); //$NON-NLS-1$
+			}
 			sb.append(")"); //$NON-NLS-1$
 		} else { // datatype
 			return super.getListConstructor(genFeature);
@@ -986,11 +1031,11 @@ public class GenClassImpl
 		return sb.toString();
 	}
 
-	protected String getSubsetFeatureIDArray(GenFeature supersetGenFeature) {
+	public String getSubsetFeatureIDArray(GenFeature supersetGenFeature) {
 		return getSubsetFeatureIDArray(supersetGenFeature, false);
 	}
 
-	protected String getSubsetFeatureIDArray(GenFeature supersetGenFeature,
+	public String getSubsetFeatureIDArray(GenFeature supersetGenFeature,
 			boolean includeDerived) {
 		StringBuffer sb = new StringBuffer();
 
@@ -1091,7 +1136,7 @@ public class GenClassImpl
 		return sb.toString();
 	}
 
-	protected String getSupersetFeatureIDArray(GenFeature subsetGenFeature) {
+	public String getSupersetFeatureIDArray(GenFeature subsetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
 		Iterator supersetGenFeatures = getSupersetGenFeatures(subsetGenFeature,
@@ -1292,13 +1337,13 @@ public class GenClassImpl
 
 	public boolean isESetField(GenFeature genFeature) {
 		return super.isESetField(genFeature)
-			&& (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
+			&& (!UML2GenModelUtil.isUnion(genFeature))
 			&& !isRedefined(genFeature);
 	}
 
 	public boolean isField(GenFeature genFeature) {
 		return super.isField(genFeature)
-			&& (!UML2GenModelUtil.isUnion(genFeature) || isDerivedUnionListType(genFeature))
+			&& (!UML2GenModelUtil.isUnion(genFeature))
 			&& !isRedefined(genFeature);
 	}
 

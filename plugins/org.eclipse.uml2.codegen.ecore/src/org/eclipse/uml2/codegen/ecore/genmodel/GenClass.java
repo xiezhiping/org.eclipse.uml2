@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.12 2006/03/07 20:10:20 khussey Exp $
+ * $Id: GenClass.java,v 1.13 2006/04/10 19:15:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -76,9 +76,14 @@ public interface GenClass
 	List/* GenFeature */getSupersetGenFeatures(GenFeature subsetGenFeature);
 
 	List/* GenFeature */getSupersetGenFeatures(GenFeature subsetGenFeature,
+			boolean includeDerived);
+
+	List/* GenFeature */getSupersetGenFeatures(GenFeature subsetGenFeature,
 			boolean includeDerived, boolean includeListType);
 
 	String getSupersetFeatureAccessorArray(GenFeature subsetGenFeature);
+
+	String getSupersetFeatureIDArray(GenFeature subsetGenFeature);
 
 	boolean isSuperset(GenFeature genFeature);
 
@@ -91,11 +96,18 @@ public interface GenClass
 	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature);
 
 	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature,
+			boolean includeDerived);
+
+	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature,
 			boolean includeDerived, boolean includeListType);
 
 	List/* GenFeature */getIsSetSubsetGenFeatures(GenFeature unionGenFeature);
 
 	String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature);
+
+	String getSubsetFeatureIDArray(GenFeature supersetGenFeature);
+
+	String getSubsetFeatureIDArray(GenFeature supersetGenFeature, boolean includeDerived);
 
 	boolean isRedefined(GenFeature genFeature);
 

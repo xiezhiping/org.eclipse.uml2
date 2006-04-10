@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.4 2006/03/07 20:10:20 khussey Exp $
+ * $Id: GenFeature.java,v 1.5 2006/04/10 19:15:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -66,6 +66,8 @@ public interface GenFeature
 	 * @generated
 	 */
 	void setKey(boolean value);
+
+	boolean isCached();
 
 	boolean isDuplicate();
 
