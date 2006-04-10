@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.2 2006/04/06 12:56:52 khussey Exp $
+ * $Id: UMLExporter.java,v 1.3 2006/04/10 21:04:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -20,11 +20,15 @@ import java.util.Map;
 import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.converter.ConverterPlugin;
+import org.eclipse.emf.converter.util.ConverterUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -66,10 +70,22 @@ public class UMLExporter
 		return super.doCheckEPackageArtifactLocation(location, packageName);
 	}
 
-	protected void doExport(Monitor monitor, ExportData exportData)
+	protected Diagnostic doExport(Monitor monitor, ExportData exportData)
 			throws Exception {
+		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
+
 		ResourceSet resourceSet = new ResourceSetImpl();
 		UMLUtil.Ecore2UMLConverter ecore2umlConverter = new UMLUtil.Ecore2UMLConverter();
+
+		BasicDiagnostic diagnostics = new BasicDiagnostic(ConverterPlugin.ID,
+			ConverterUtil.ACTION_DEFAULT, UMLExporterPlugin.INSTANCE
+				.getString("_UI_ProblemsEncounteredProcessing_message"), //$NON-NLS-1$
+			null);
+
+		Map context = new HashMap();
+		context.put(
+			org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider.class,
+			UMLUtil.QualifiedTextProvider.DEFAULT);
 
 		monitor.beginTask(UML2Util.EMPTY_STRING,
 			exportData.genPackageToArtifactURI.size());
@@ -86,7 +102,7 @@ public class UMLExporter
 				"_UI_Exporting_message", new Object[]{artifactURI.toString()})); //$NON-NLS-1$
 
 			ecore2umlConverter.convert(Collections.singleton(ePackage),
-				getOptions(), null, null);
+				getOptions(), diagnostics, context);
 
 			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) ecore2umlConverter
 				.doSwitch(ePackage);
@@ -114,6 +130,12 @@ public class UMLExporter
 		}
 
 		monitor.done();
+
+		if (Diagnostic.INFO < diagnostics.getSeverity()) {
+			diagnostic = diagnostics;
+		}
+
+		return diagnostic;
 	}
 
 	public void setGenModel(GenModel genModel)

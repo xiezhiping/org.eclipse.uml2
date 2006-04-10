@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.24 2006/04/05 13:56:30 khussey Exp $
+ * $Id: UMLUtil.java,v 1.25 2006/04/10 21:04:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5887,14 +5887,24 @@ public class UMLUtil
 
 		if (!element.isStereotypeApplied(stereotype)) {
 			Profile profile = stereotype.getProfile();
+			org.eclipse.uml2.uml.Package nearestPackage = element
+				.getNearestPackage();
 
-			if (!element.getNearestPackage().getAllAppliedProfiles().contains(
-				profile)) {
+			if (nearestPackage != null) {
 
-				element.getModel().applyProfile(profile);
+				if (!nearestPackage.getAllAppliedProfiles().contains(profile)) {
+					EList allOwningPackages = nearestPackage
+						.allOwningPackages();
+					int size = allOwningPackages.size();
+
+					(size > 0
+						? (org.eclipse.uml2.uml.Package) allOwningPackages
+							.get(size - 1)
+						: nearestPackage).applyProfile(profile);
+				}
+
+				element.applyStereotype(stereotype);
 			}
-
-			element.applyStereotype(stereotype);
 		}
 	}
 
