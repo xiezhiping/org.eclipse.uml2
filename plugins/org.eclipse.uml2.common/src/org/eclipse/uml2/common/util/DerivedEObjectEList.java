@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.7 2006/04/10 19:05:45 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.8 2006/04/11 19:53:24 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.AbstractSequentialList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -146,7 +147,7 @@ public class DerivedEObjectEList
 				prepared = 0;
 				Object next = preparedValues.get(index++);
 				hasNext();
-				return next;
+				return derive(next);
 			} else {
 				throw new NoSuchElementException();
 			}
@@ -242,7 +243,7 @@ public class DerivedEObjectEList
 				prepared = 0;
 				Object previous = preparedValues.remove(--index);
 				hasPrevious();
-				return previous;
+				return derive(previous);
 			} else {
 				throw new NoSuchElementException();
 			}
@@ -496,6 +497,79 @@ public class DerivedEObjectEList
 		return true;
 	}
 
+	public boolean contains(Object object) {
+
+		if (sourceFeatureIDs != null) {
+
+			for (int i = 0; i < sourceFeatureIDs.length; i++) {
+				int sourceFeatureID = sourceFeatureIDs[i];
+
+				if (owner.eIsSet(sourceFeatureID)) {
+					EStructuralFeature sourceFeature = getEStructuralFeature(sourceFeatureID);
+					Object value = owner.eGet(sourceFeatureID, true, true);
+
+					if (FeatureMapUtil.isFeatureMap(sourceFeature)) {
+						FeatureMap featureMap = (FeatureMap) value;
+
+						for (int j = 0, size = featureMap.size(); j < size; j++) {
+							value = featureMap.getValue(j);
+
+							if (isIncluded(featureMap.getEStructuralFeature(j))
+								? value == object
+								: isIncluded(value) && derive(value) == object) {
+
+								return true;
+							}
+						}
+					} else if (isIncluded(sourceFeature)) {
+
+						if (sourceFeature.isMany()
+							? ((List) value).contains(object)
+							: value == object) {
+
+							return true;
+						}
+					} else {
+
+						if (sourceFeature.isMany()) {
+							InternalEList valuesList = (InternalEList) value;
+
+							if (valuesList instanceof RandomAccess) {
+
+								for (int j = 0, size = valuesList.size(); j < size; j++) {
+									value = valuesList.basicGet(j);
+
+									if (isIncluded(value)
+										&& derive(value) == object) {
+
+										return true;
+									}
+								}
+							} else {
+
+								for (Iterator v = valuesList.basicIterator(); v
+									.hasNext();) {
+
+									value = v.next();
+
+									if (isIncluded(value)
+										&& derive(value) == object) {
+
+										return true;
+									}
+								}
+							}
+						} else if (isIncluded(value) && derive(value) == object) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
 	public Object basicGet(int index) {
 		return basicList().get(index);
 	}
@@ -582,6 +656,47 @@ public class DerivedEObjectEList
 		}
 	}
 
+	public boolean addAll(int index, Collection objects) {
+		return addAllUnique(index, objects);
+	}
+
+	public boolean addAllUnique(int index, Collection objects) {
+		int size = objects.size();
+
+		if (size > 0) {
+
+			if (isNotificationRequired()) {
+				boolean oldIsSet = isSet();
+
+				if (doAddAllUnique(index, objects)) {
+					NotificationImpl notification = size == 1
+						? createNotification(Notification.ADD, null, objects
+							.iterator().next(), index, oldIsSet)
+						: createNotification(Notification.ADD_MANY, null,
+							objects, index, oldIsSet);
+					dispatchNotification(notification);
+					return true;
+				}
+			} else {
+				return doAddAllUnique(index, objects);
+			}
+		}
+
+		return false;
+	}
+
+	protected boolean doAddAllUnique(int index, Collection objects) {
+		boolean modified = false;
+		ListIterator listIterator = listIterator(index);
+
+		for (Iterator o = objects.iterator(); o.hasNext();) {
+			listIterator.add(validate(index, o.next()));
+			modified = true;
+		}
+
+		return modified;
+	}
+
 	public Object remove(int index) {
 
 		if (isNotificationRequired()) {
@@ -627,20 +742,24 @@ public class DerivedEObjectEList
 	}
 
 	protected boolean isIncluded(Object object) {
-		return dataClass.isInstance(object);
+		return dataClass.isInstance(derive(object));
 	}
 
-	protected ListIterator newListIterator() {
-		return new DerivedListIterator();
+	protected Object derive(Object object) {
+		return object;
 	}
 
 	protected Object validate(int index, Object object) {
 
-		if (!isIncluded(object)) {
+		if (!dataClass.isInstance(object)) {
 			throw new IllegalArgumentException(String.valueOf(object));
 		}
 
 		return object;
+	}
+
+	protected ListIterator newListIterator() {
+		return new DerivedListIterator();
 	}
 
 	protected ListIterator newResolvingListIterator() {

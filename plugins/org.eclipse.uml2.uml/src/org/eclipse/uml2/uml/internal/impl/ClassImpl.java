@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.33 2006/04/10 19:16:18 khussey Exp $
+ * $Id: ClassImpl.java,v 1.34 2006/04/11 19:53:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -756,41 +757,6 @@ public class ClassImpl
 	protected static class SuperClassEList
 			extends DerivedSubsetEObjectEList {
 
-		protected class SuperClassListIterator
-				extends DerivedSubsetListIterator {
-
-			public Object next() {
-				return ((Generalization) super.next()).getGeneral();
-			}
-
-			public Object previous() {
-				return ((Generalization) super.previous()).getGeneral();
-			}
-
-			public void set(Object element) {
-				Generalization generalization = UMLFactory.eINSTANCE
-					.createGeneralization();
-				generalization.setGeneral((org.eclipse.uml2.uml.Class) element);
-				super.set(generalization);
-			}
-
-			public void add(Object element) {
-				Generalization generalization = UMLFactory.eINSTANCE
-					.createGeneralization();
-				generalization.setGeneral((org.eclipse.uml2.uml.Class) element);
-				super.add(generalization);
-			}
-		}
-
-		protected class ResolvingSuperClassListIterator
-				extends SuperClassListIterator {
-
-			protected boolean resolve() {
-				return true;
-			}
-
-		}
-
 		protected SuperClassEList(Class dataClass, InternalEObject owner,
 				int featureID, int[] sourceFeatureIDs) {
 			super(dataClass, owner, featureID, sourceFeatureIDs);
@@ -806,19 +772,22 @@ public class ClassImpl
 			};
 		}
 
-		protected ListIterator newListIterator() {
-			return new SuperClassListIterator();
+		protected boolean isIncluded(EStructuralFeature feature) {
+			return false;
 		}
 
-		protected ListIterator newResolvingListIterator() {
-			return new ResolvingSuperClassListIterator();
+		protected Object derive(Object object) {
+			return ((Generalization) object).getGeneral();
 		}
 
-		protected boolean isIncluded(Object object) {
-			return super.isIncluded(object instanceof Generalization
-				? ((Generalization) object).getGeneral()
-				: object);
+		protected Object validate(int index, Object object) {
+			Generalization generalization = UMLFactory.eINSTANCE
+				.createGeneralization();
+			generalization.setGeneral((org.eclipse.uml2.uml.Class) super
+				.validate(index, object));
+			return generalization;
 		}
+
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.29 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.30 2006/04/11 19:53:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -273,30 +274,6 @@ public class ProtocolTransitionImpl
 	protected static class ReferredEList
 			extends DerivedEObjectEList {
 
-		protected class ReferredListIterator
-				extends DerivedListIterator {
-
-			public Object next() {
-				return ((CallEvent) ((Trigger) super.next()).getEvent())
-					.getOperation();
-			}
-
-			public Object previous() {
-				return ((CallEvent) ((Trigger) super.previous()).getEvent())
-					.getOperation();
-			}
-
-		}
-
-		protected class ResolvingReferredListIterator
-				extends ReferredListIterator {
-
-			protected boolean resolve() {
-				return true;
-			}
-
-		}
-
 		protected ReferredEList(Class dataClass, InternalEObject owner,
 				int featureID, int[] sourceFeatureIDs) {
 			super(dataClass, owner, featureID, sourceFeatureIDs);
@@ -312,19 +289,17 @@ public class ProtocolTransitionImpl
 			};
 		}
 
-		protected ListIterator newListIterator() {
-			return new ReferredListIterator();
+		protected boolean isIncluded(EStructuralFeature feature) {
+			return false;
 		}
 
-		protected ListIterator newResolvingListIterator() {
-			return new ResolvingReferredListIterator();
-		}
-
-		protected boolean isIncluded(Object object) {
+		protected Object derive(Object object) {
 			Event event = ((Trigger) object).getEvent();
 			return event instanceof CallEvent
-				&& super.isIncluded(((CallEvent) event).getOperation());
+				? ((CallEvent) event).getOperation()
+				: null;
 		}
+
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.23 2006/04/10 19:16:21 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.24 2006/04/11 19:53:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -360,6 +360,7 @@ public abstract class StructuredClassifierImpl
 			return super.isIncluded(object)
 				&& ((Property) object).isComposite();
 		}
+
 	}
 
 	/**
