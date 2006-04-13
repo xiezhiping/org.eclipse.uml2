@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.4 2006/04/10 21:06:04 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.5 2006/04/13 01:13:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1160,12 +1160,12 @@ public class UML22UMLExtendedMetadata
 //			fragmentMap.put("_h4AtvcenEdm17tz62ORDiA", "_ownedMember.202"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4AtvsenEdm17tz62ORDiA", "_ownedMember.202-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKYK86EdiEh75YJ_3n8g", "Activity"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9VKYq86EdiEh75YJ_3n8g", "Activity-body"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9VKZK86EdiEh75YJ_3n8g", "Activity-language"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9VKYq86EdiEh75YJ_3n8g", "OpaqueBehavior-body"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9VKZK86EdiEh75YJ_3n8g", "OpaqueBehavior-language"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKZq86EdiEh75YJ_3n8g", "Activity-edge"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKaa86EdiEh75YJ_3n8g", "Activity-group"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKbK86EdiEh75YJ_3n8g", "Activity-node"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9VKb686EdiEh75YJ_3n8g", "Activity-action"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9VKb686EdiEh75YJ_3n8g", "Activity-node"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKcq86EdiEh75YJ_3n8g", "Activity-structuredNode"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKda86EdiEh75YJ_3n8g", "Activity-isSingleExecution"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9VKd686EdiEh75YJ_3n8g", "Activity-isReadOnly"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1715,14 +1715,14 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9nei686EdiEh75YJ_3n8g", "GeneralOrdering-after"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KgAMenEdm17tz62ORDiA", "_ownedMember.431"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9neja86EdiEh75YJ_3n8g", "OccurrenceSpecification"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nekK86EdiEh75YJ_3n8g", "EventOccurrence-startExec"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nek686EdiEh75YJ_3n8g", "EventOccurrence-finishExec"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_m9nekK86EdiEh75YJ_3n8g", "EventOccurrence-startExec"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_m9nek686EdiEh75YJ_3n8g", "EventOccurrence-finishExec"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nelq86EdiEh75YJ_3n8g", "OccurrenceSpecification-toBefore"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nema86EdiEh75YJ_3n8g", "OccurrenceSpecification-toAfter"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KgEMenEdm17tz62ORDiA", "_ownedMember.433"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nen686EdiEh75YJ_3n8g", "ExecutionSpecification"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9neoa86EdiEh75YJ_3n8g", "ExecutionSpecification-finish"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9neoq86EdiEh75YJ_3n8g", "ExecutionOccurrence-behavior"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9neoq86EdiEh75YJ_3n8g", "BehaviorExecutionOccurrence-behavior"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nepa86EdiEh75YJ_3n8g", "ExecutionSpecification-start"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KgGMenEdm17tz62ORDiA", "_ownedMember.435"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KgGcenEdm17tz62ORDiA", "_ownedMember.436"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1909,15 +1909,15 @@ public class UML22UMLExtendedMetadata
 //			fragmentMap.put("_h4KhGcenEdm17tz62ORDiA", "_ownedMember.520"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhGsenEdm17tz62ORDiA", "_ownedMember.520-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nfsq86EdiEh75YJ_3n8g", "RemoveVariableValueAction"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nftK86EdiEh75YJ_3n8g", "ApplyFunctionAction"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nftq86EdiEh75YJ_3n8g", "ApplyFunctionAction-function"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nft686EdiEh75YJ_3n8g", "ApplyFunctionAction-argument"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nfuq86EdiEh75YJ_3n8g", "ApplyFunctionAction-result"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nftK86EdiEh75YJ_3n8g", "CallBehaviorAction"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nftq86EdiEh75YJ_3n8g", "CallBehaviorAction-behavior"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nft686EdiEh75YJ_3n8g", "InvocationAction-argument"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nfuq86EdiEh75YJ_3n8g", "CallAction-result"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhJsenEdm17tz62ORDiA", "_ownedMember.523"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhJ8enEdm17tz62ORDiA", "_ownedMember.523-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nfw686EdiEh75YJ_3n8g", "PrimitiveFunction"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nfxa86EdiEh75YJ_3n8g", "PrimitiveFunction-body"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nfx686EdiEh75YJ_3n8g", "PrimitiveFunction-language"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nfw686EdiEh75YJ_3n8g", "FunctionBehavior"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nfxa86EdiEh75YJ_3n8g", "OpaqueBehavior-body"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nfx686EdiEh75YJ_3n8g", "OpaqueBehavior-language"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhLsenEdm17tz62ORDiA", "_ownedMember.525"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhL8enEdm17tz62ORDiA", "_ownedMember.525-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhMMenEdm17tz62ORDiA", "_ownedMember.526"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1964,17 +1964,17 @@ public class UML22UMLExtendedMetadata
 //			fragmentMap.put("_h4KhZsenEdm17tz62ORDiA", "_ownedMember.544"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhZ8enEdm17tz62ORDiA", "_ownedMember.544-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9ng8q86EdiEh75YJ_3n8g", "TimeExpression"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9ng9K86EdiEh75YJ_3n8g", "TimeExpression-firstTime"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9ng9q86EdiEh75YJ_3n8g", "TimeExpression-event"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9ng9K86EdiEh75YJ_3n8g", "TimeObservation-firstEvent"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9ng9q86EdiEh75YJ_3n8g", "TimeObservation-event"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhbsenEdm17tz62ORDiA", "_ownedMember.546"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khb8enEdm17tz62ORDiA", "_ownedMember.546-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9ng-q86EdiEh75YJ_3n8g", "Duration"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9ng_K86EdiEh75YJ_3n8g", "Duration-firstTime"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9ng_q86EdiEh75YJ_3n8g", "Duration-event"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9ng_K86EdiEh75YJ_3n8g", "DurationObservation-firstEvent"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9ng_q86EdiEh75YJ_3n8g", "DurationObservation-event"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khd8enEdm17tz62ORDiA", "_ownedMember.548"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KheMenEdm17tz62ORDiA", "_ownedMember.548-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nhA686EdiEh75YJ_3n8g", "TimeObservationAction"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nhBa86EdiEh75YJ_3n8g", "TimeObservationAction-now"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhA686EdiEh75YJ_3n8g", "WriteStructuralFeatureAction"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhBa86EdiEh75YJ_3n8g", "WriteStructuralFeatureAction-value"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhfsenEdm17tz62ORDiA", "_ownedMember.550"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khf8enEdm17tz62ORDiA", "_ownedMember.550-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhDq86EdiEh75YJ_3n8g", "DurationInterval"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1988,8 +1988,8 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9nhIK86EdiEh75YJ_3n8g", "TimeConstraint"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhJq86EdiEh75YJ_3n8g", "IntervalConstraint"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhLK86EdiEh75YJ_3n8g", "TimeInterval"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nhMq86EdiEh75YJ_3n8g", "DurationObservationAction"); //$NON-NLS-1$ //$NON-NLS-2$
-//TODO		fragmentMap.put("_m9nhNK86EdiEh75YJ_3n8g", "DurationObservationAction-duration"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhMq86EdiEh75YJ_3n8g", "WriteStructuralFeatureAction"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhNK86EdiEh75YJ_3n8g", "WriteStructuralFeatureAction-value"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khl8enEdm17tz62ORDiA", "_ownedMember.559"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhmMenEdm17tz62ORDiA", "_ownedMember.559-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhPa86EdiEh75YJ_3n8g", "DurationConstraint"); //$NON-NLS-1$ //$NON-NLS-2$

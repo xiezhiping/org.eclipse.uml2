@@ -62,9 +62,6 @@
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Permission"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//NamedElement/clientDependency"/>
-  </nested>
-  <nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Component/ownedMember"/>
     <outputs href="UML.ecore#//Component/packagedElement"/>
   </nested>
@@ -83,9 +80,6 @@
   <nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//CollaborationOccurrence"/>
     <outputs href="UML.ecore#//CollaborationUse"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//BehavioredClassifier/ownedTrigger"/>
   </nested>
   <nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//CallTrigger"/>
@@ -155,12 +149,40 @@
     <outputs href="UML.ecore#//InteractionUse"/>
   </nested>
   <nested>
-    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//EventOccurrence"/>
-    <outputs href="UML.ecore#//OccurrenceSpecification"/>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ExecutionOccurrence"/>
+    <outputs href="UML.ecore#//BehaviorExecutionSpecification"/>
   </nested>
   <nested>
-    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ExecutionOccurrence"/>
-    <outputs href="UML.ecore#//ExecutionSpecification"/>
+    <outputs href="UML.ecore#//ActivityGroup/containedEdge"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityGroup/containedNode"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//EventOccurrence"/>
+    <outputs href="UML.ecore#//MessageOccurrenceSpecification"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//PrimitiveFunction"/>
+    <outputs href="UML.ecore#//FunctionBehavior"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//ApplyFunctionAction"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//DurationObservationAction"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//TimeObservationAction"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//TemplateSignature/nestedSignature"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//TemplateSignature/nestingSignature"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Stop"/>
   </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>

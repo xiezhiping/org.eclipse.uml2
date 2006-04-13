@@ -57,10 +57,6 @@
     <value name="implementation"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xsi:type="ecore:EReference" href="UML.ecore#//NamedElement/clientDependency"/>
-    <value xMLRepresentation="1"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
     <key xsi:type="ecore:EReference" href="UML.ecore#//Component/packagedElement"/>
     <value name="ownedMember"/>
   </ecoreToXMLInfo>
@@ -79,10 +75,6 @@
   <ecoreToXMLInfo>
     <key xsi:type="ecore:EClass" href="UML.ecore#//CollaborationUse"/>
     <value name="CollaborationOccurrence" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
-  </ecoreToXMLInfo>
-  <ecoreToXMLInfo>
-    <key xsi:type="ecore:EReference" href="UML.ecore#//BehavioredClassifier/ownedTrigger"/>
-    <value xMLRepresentation="0"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
     <key xsi:type="ecore:EReference" href="UML.ecore#//StructuredActivityNode/node"/>
@@ -133,11 +125,23 @@
     <value name="InteractionOccurrence" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xsi:type="ecore:EClass" href="UML.ecore#//OccurrenceSpecification"/>
+    <key xsi:type="ecore:EClass" href="UML.ecore#//BehaviorExecutionSpecification"/>
+    <value name="ExecutionOccurrence" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//ActivityGroup/containedEdge"/>
+    <value xMLRepresentation="1"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//ActivityGroup/containedNode"/>
+    <value xMLRepresentation="1"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EClass" href="UML.ecore#//MessageOccurrenceSpecification"/>
     <value name="EventOccurrence" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
   </ecoreToXMLInfo>
   <ecoreToXMLInfo>
-    <key xsi:type="ecore:EClass" href="UML.ecore#//ExecutionSpecification"/>
-    <value name="ExecutionOccurrence" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
+    <key xsi:type="ecore:EClass" href="UML.ecore#//FunctionBehavior"/>
+    <value name="PrimitiveFunction" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
   </ecoreToXMLInfo>
 </ecore2xml:XMLMap>

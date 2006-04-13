@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.6 2006/04/10 21:06:04 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.7 2006/04/13 01:13:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -43,14 +43,18 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
+import org.eclipse.uml2.uml.CallBehaviorAction;
+import org.eclipse.uml2.uml.CallEvent;
+import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Duration;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
-import org.eclipse.uml2.uml.Interaction;
-import org.eclipse.uml2.uml.InteractionFragment;
+import org.eclipse.uml2.uml.FunctionBehavior;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageSort;
@@ -58,25 +62,34 @@ import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OpaqueExpression;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Signal;
+import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.TimeEvent;
+import org.eclipse.uml2.uml.TimeExpression;
+import org.eclipse.uml2.uml.TimeObservation;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValuePin;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.eclipse.uml2.uml.WriteStructuralFeatureAction;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class UML22UMLResourceHandler
 		extends BasicResourceHandler {
 
-	protected static final boolean DEBUG = true;
+	protected static final boolean DEBUG = false;
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
@@ -174,7 +187,7 @@ public class UML22UMLResourceHandler
 						.getOwnedParameters();
 
 					for (Iterator returnResults = getValues(
-						extension.getMixed(), "returnResult", true).iterator(); returnResults
+						extension.getMixed(), "returnResult", true).iterator(); returnResults //$NON-NLS-1$
 						.hasNext();) {
 
 						Parameter returnResult = (Parameter) returnResults
@@ -185,7 +198,7 @@ public class UML22UMLResourceHandler
 					}
 
 					for (Iterator formalParameters = getValues(
-						extension.getMixed(), "formalParameter", true)
+						extension.getMixed(), "formalParameter", true) //$NON-NLS-1$
 						.iterator(); formalParameters.hasNext();) {
 
 						Parameter formalParameter = (Parameter) formalParameters
@@ -208,7 +221,7 @@ public class UML22UMLResourceHandler
 						.getOwnedBehaviors();
 
 					for (Iterator ownedStateMachines = getValues(
-						extension.getMixed(), "ownedStateMachine", true)
+						extension.getMixed(), "ownedStateMachine", true) //$NON-NLS-1$
 						.iterator(); ownedStateMachines.hasNext();) {
 
 						StateMachine ownedStateMachine = (StateMachine) ownedStateMachines
@@ -217,21 +230,30 @@ public class UML22UMLResourceHandler
 						doSwitch(ownedStateMachine);
 						ownedBehaviors.add(ownedStateMachine);
 					}
-
-					EList ownedTriggers = behavioredClassifier
-						.getOwnedTriggers();
-
-					for (Iterator ot = getValues(extension.getMixed(),
-						"ownedTrigger", true).iterator(); ot.hasNext();) {
-
-						EObject ownedTrigger = (EObject) ot.next();
-
-						// TODO convert triggers to events
-					}
-
 				}
 
 				return super.caseBehavioredClassifier(behavioredClassifier);
+			}
+
+			public Object caseCallBehaviorAction(
+					CallBehaviorAction callBehaviorAction) {
+				AnyType extension = getExtension(resource, callBehaviorAction);
+
+				if (extension != null) {
+					String function = (String) getValue(extension
+						.getAnyAttribute(), "function", true); //$NON-NLS-1$
+
+					if (function != null) {
+						FunctionBehavior functionBehavior = (FunctionBehavior) resource
+							.getEObject(function);
+
+						if (functionBehavior != null) {
+							callBehaviorAction.setBehavior(functionBehavior);
+						}
+					}
+				}
+
+				return super.caseCallBehaviorAction(callBehaviorAction);
 			}
 
 			public Object caseComment(Comment comment) {
@@ -247,6 +269,41 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseComment(comment);
+			}
+
+			public Object caseDuration(Duration duration) {
+				AnyType extension = getExtension(resource, duration);
+
+				if (extension != null) {
+					Boolean isFirstEvent = Boolean.valueOf(!"false" //$NON-NLS-1$
+						.equals(getValue(extension.getAnyAttribute(),
+							"isFirstTime"))); //$NON-NLS-1$
+
+					Collection events = getValues(extension.getAnyAttribute(),
+						"event", true);
+
+					if (!events.isEmpty()) {
+						DurationObservation durationObservation = (DurationObservation) duration
+							.getNearestPackage().createPackagedElement(
+								duration.getName(),
+								UMLPackage.Literals.DURATION_OBSERVATION);
+
+						for (Iterator e = events.iterator(); e.hasNext();) {
+							NamedElement event = (NamedElement) resource
+								.getEObject((String) e.next());
+
+							if (event != null) {
+								durationObservation.getEvents().add(event);
+								durationObservation.getFirstEvents().add(
+									isFirstEvent);
+							}
+						}
+
+						duration.getObservations().add(durationObservation);
+					}
+				}
+
+				return super.caseDuration(duration);
 			}
 
 			public Object caseElement(Element element) {
@@ -297,29 +354,6 @@ public class UML22UMLResourceHandler
 				return super.caseExtensionEnd(extensionEnd);
 			}
 
-			public Object caseInteraction(Interaction interaction) {
-				AnyType extension = getExtension(resource, interaction);
-
-				if (extension != null) {
-					EList fragments = interaction.getFragments();
-
-					for (Iterator cd = getValues(extension.getMixed(),
-						"fragment", true).iterator(); cd.hasNext();) {
-
-						EObject fragment = (EObject) cd.next();
-
-						if (fragment instanceof InteractionFragment) {
-							doSwitch(fragment);
-							fragments.add(fragment);
-						} else {
-							// TODO convert stops to occurrence specifications
-						}
-					}
-				}
-
-				return super.caseInteraction(interaction);
-			}
-
 			public Object caseMultiplicityElement(
 					MultiplicityElement multiplicityElement) {
 				AnyType extension = getExtension(resource, multiplicityElement);
@@ -358,46 +392,32 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, messageEnd);
 
 				if (extension != null) {
-					Message receiveMessage = (Message) getValue(extension
-						.getMixed(), "receiveMessage", true); //$NON-NLS-1$
+					String receiveMessage = (String) getValue(extension
+						.getAnyAttribute(), "receiveMessage", true); //$NON-NLS-1$
 
 					if (receiveMessage != null) {
-						messageEnd.setMessage(receiveMessage);
+						Message message = (Message) resource
+							.getEObject(receiveMessage);
+
+						if (message != null) {
+							messageEnd.setMessage(message);
+						}
 					}
 
-					Message sendMessage = (Message) getValue(extension
-						.getMixed(), "sendMessage", true); //$NON-NLS-1$
+					String sendMessage = (String) getValue(extension
+						.getAnyAttribute(), "sendMessage", true); //$NON-NLS-1$
 
-					if (receiveMessage != null) {
-						messageEnd.setMessage(sendMessage);
-					}
-				}
+					if (sendMessage != null) {
+						Message message = (Message) resource
+							.getEObject(sendMessage);
 
-				return super.caseMessageEnd(messageEnd);
-			}
-
-			public Object caseNamedElement(NamedElement namedElement) {
-				AnyType extension = getExtension(resource, namedElement);
-
-				if (extension != null) {
-					EList clientDependencies = namedElement
-						.getClientDependencies();
-
-					for (Iterator cd = getValues(extension.getMixed(),
-						"clientDependency", true).iterator(); cd.hasNext();) {
-
-						EObject clientDependency = (EObject) cd.next();
-
-						if (clientDependency instanceof Dependency) {
-							doSwitch(clientDependency);
-							clientDependencies.add(clientDependency);
-						} else {
-							// TODO convert permissions to dependencies
+						if (message != null) {
+							messageEnd.setMessage(message);
 						}
 					}
 				}
 
-				return super.caseNamedElement(namedElement);
+				return super.caseMessageEnd(messageEnd);
 			}
 
 			public Object caseNamespace(Namespace namespace) {
@@ -407,7 +427,7 @@ public class UML22UMLResourceHandler
 					EList packageImports = namespace.getPackageImports();
 
 					for (Iterator pi = getValues(extension.getMixed(),
-						"packageImport", true).iterator(); pi.hasNext();) {
+						"packageImport", true).iterator(); pi.hasNext();) { //$NON-NLS-1$
 
 						PackageImport packageImport = (PackageImport) pi.next();
 
@@ -662,7 +682,6 @@ public class UML22UMLResourceHandler
 
 				caseNamespace(profile);
 				casePackageableElement(profile);
-				caseNamedElement(profile);
 				caseElement(profile);
 
 				return profile;
@@ -684,12 +703,145 @@ public class UML22UMLResourceHandler
 				return super.caseProperty(property);
 			}
 
+			public Object caseTimeExpression(TimeExpression timeExpression) {
+				AnyType extension = getExtension(resource, timeExpression);
+
+				if (extension != null) {
+					boolean firstEvent = !"false".equals(getValue(extension //$NON-NLS-1$
+						.getAnyAttribute(), "isFirstTime")); //$NON-NLS-1$
+
+					NamedElement event = (NamedElement) resource
+						.getEObject((String) getValue(extension
+							.getAnyAttribute(), "event", true)); //$NON-NLS-1$
+
+					if (event != null) {
+						TimeObservation timeObservation = (TimeObservation) timeExpression
+							.getNearestPackage().createPackagedElement(
+								timeExpression.getName(),
+								UMLPackage.Literals.TIME_OBSERVATION);
+
+						timeObservation.setEvent(event);
+						timeObservation.setFirstEvent(firstEvent);
+					}
+				}
+
+				return super.caseTimeExpression(timeExpression);
+			}
+
+			public Object caseTrigger(Trigger trigger) {
+				Event event = null;
+
+				AnyType extension = getExtension(resource, trigger);
+
+				if (extension != null) {
+					ValueSpecification changeExpression = (ValueSpecification) getValue(
+						extension.getMixed(), "changeExpression"); //$NON-NLS-1$
+
+					if (changeExpression != null) {
+						event = (Event) trigger.getNearestPackage()
+							.createPackagedElement(trigger.getName(),
+								UMLPackage.Literals.CHANGE_EVENT);
+						((ChangeEvent) event)
+							.setChangeExpression(changeExpression);
+					} else {
+						Operation operation = (Operation) getValue(extension
+							.getMixed(), "operation"); //$NON-NLS-1$
+
+						if (operation != null) {
+							event = (CallEvent) trigger.getNearestPackage()
+								.createPackagedElement(trigger.getName(),
+									UMLPackage.Literals.CALL_EVENT);
+							((CallEvent) event).setOperation(operation);
+						} else {
+							Signal signal = (Signal) getValue(extension
+								.getMixed(), "signal"); //$NON-NLS-1$
+
+							if (signal != null) {
+								event = (SignalEvent) trigger
+									.getNearestPackage().createPackagedElement(
+										trigger.getName(),
+										UMLPackage.Literals.SIGNAL_EVENT);
+								((SignalEvent) event).setSignal(signal);
+							} else {
+								ValueSpecification when = (ValueSpecification) getValue(
+									extension.getMixed(), "when"); //$NON-NLS-1$
+
+								if (when != null) {
+									event = (TimeEvent) trigger
+										.getNearestPackage()
+										.createPackagedElement(
+											trigger.getName(),
+											UMLPackage.Literals.TIME_EVENT);
+									((TimeEvent) event).setWhen(when);
+
+									String isRelative = (String) getValue(
+										extension.getAnyAttribute(),
+										"isRelative"); //$NON-NLS-1$
+
+									if (isRelative != null) {
+										((TimeEvent) event)
+											.setIsRelative(Boolean.valueOf(
+												isRelative).booleanValue());
+									}
+								}
+							}
+						}
+					}
+				}
+
+				if (event == null) {
+					event = (Event) trigger.getNearestPackage()
+						.createPackagedElement(trigger.getName(),
+							UMLPackage.Literals.ANY_RECEIVE_EVENT);
+				}
+
+				trigger.setEvent(event);
+
+				return super.caseTrigger(trigger);
+			}
+
+			public Object caseWriteStructuralFeatureAction(
+					WriteStructuralFeatureAction writeStructuralFeatureAction) {
+				AnyType extension = getExtension(resource,
+					writeStructuralFeatureAction);
+
+				if (extension != null) {
+					Duration duration = (Duration) getValue(extension
+						.getMixed(), "duration", true); //$NON-NLS-1$
+
+					if (duration != null) {
+						doSwitch(duration);
+
+						((ValuePin) writeStructuralFeatureAction.createValue(
+							duration.getName(), duration.getType(),
+							UMLPackage.Literals.VALUE_PIN)).setValue(duration);
+					}
+
+					TimeExpression timeExpression = (TimeExpression) getValue(
+						extension.getMixed(), "now", true); //$NON-NLS-1$
+
+					if (timeExpression != null) {
+						doSwitch(timeExpression);
+
+						((ValuePin) writeStructuralFeatureAction.createValue(
+							timeExpression.getName(), timeExpression.getType(),
+							UMLPackage.Literals.VALUE_PIN))
+							.setValue(timeExpression);
+					}
+				}
+
+				return super
+					.caseWriteStructuralFeatureAction(writeStructuralFeatureAction);
+			}
+
 			public Object defaultCase(EObject eObject) {
 				AnyType extension = getExtension(resource, eObject);
 
 				if (extension != null) {
 
-					if (extension.eContents().isEmpty()) {
+					if (extension.getAnyAttribute().isEmpty()
+						&& extension.getMixed().isEmpty()) {
+
 						removeExtension(resource, eObject);
 					} else if (DEBUG) {
 						System.out.println(eObject);
