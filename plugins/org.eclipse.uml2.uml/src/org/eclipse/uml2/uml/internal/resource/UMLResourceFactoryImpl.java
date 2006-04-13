@@ -8,29 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.5 2006/03/01 16:27:04 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.6 2006/04/13 18:27:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Resource Factory</b> associated with the package.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Resource Factory</b> associated with the
+ * package. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.uml2.uml.internal.resource.UMLResourceImpl
  * @generated
  */
@@ -39,9 +33,9 @@ public class UMLResourceFactoryImpl
 		implements UMLResource.Factory {
 
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the resource factory. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public UMLResourceFactoryImpl() {
@@ -49,9 +43,9 @@ public class UMLResourceFactoryImpl
 	}
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the resource. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Resource createResourceGen(URI uri) {
@@ -79,24 +73,12 @@ public class UMLResourceFactoryImpl
 		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			Boolean.TRUE);
 		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
-			new XMLSave.XMLTypeInfo() {
-
-				public boolean shouldSaveType(EClass objectType,
-						EClassifier featureType, EStructuralFeature feature) {
-					return true;
-				}
-
-				public boolean shouldSaveType(EClass objectType,
-						EClass featureType, EStructuralFeature feature) {
-					return true;
-				}
-
-			});
+			Boolean.TRUE);
 		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
 		defaultSaveOptions
 			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 
 		return resource;
 	}
-	
-} //UMLResourceFactoryImpl
+
+} // UMLResourceFactoryImpl

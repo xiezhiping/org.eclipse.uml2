@@ -8,17 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceFactoryImpl.java,v 1.3 2006/04/06 04:30:32 khussey Exp $
+ * $Id: UML22UMLResourceFactoryImpl.java,v 1.4 2006/04/13 18:27:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -28,7 +25,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLPackage;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
@@ -101,19 +97,7 @@ public class UML22UMLResourceFactoryImpl
 		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			Boolean.TRUE);
 		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
-			new XMLSave.XMLTypeInfo() {
-
-				public boolean shouldSaveType(EClass objectType,
-						EClassifier featureType, EStructuralFeature feature) {
-					return true;
-				}
-
-				public boolean shouldSaveType(EClass objectType,
-						EClass featureType, EStructuralFeature feature) {
-					return true;
-				}
-
-			});
+			Boolean.TRUE);
 		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
 		defaultSaveOptions
 			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
