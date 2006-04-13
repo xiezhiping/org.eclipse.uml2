@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.3 2006/04/10 21:04:15 khussey Exp $
+ * $Id: UMLExporter.java,v 1.4 2006/04/13 01:48:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -70,7 +70,7 @@ public class UMLExporter
 		return super.doCheckEPackageArtifactLocation(location, packageName);
 	}
 
-	protected Diagnostic doExport(Monitor monitor, ExportData exportData)
+	protected void doExport(Monitor monitor, ExportData exportData)
 			throws Exception {
 		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
 
@@ -135,7 +135,7 @@ public class UMLExporter
 			diagnostic = diagnostics;
 		}
 
-		return diagnostic;
+//		return diagnostic;
 	}
 
 	public void setGenModel(GenModel genModel)
