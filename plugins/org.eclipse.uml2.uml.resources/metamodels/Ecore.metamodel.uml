@@ -284,7 +284,7 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EStringToStringMapEntry" name="EStringToStringMapEntry">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EStringToStringMapEntry-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EStringToStringMapEntry-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-key" name="key" type="EString"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="EStringToStringMapEntry-value" name="value" type="EString"/>
     </packagedElement>
@@ -327,100 +327,100 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigDecimal" name="EBigDecimal">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBigDecimal-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBigDecimal-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBigInteger" name="EBigInteger">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBigInteger-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBigInteger-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBoolean" name="EBoolean">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBoolean-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBoolean-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EBooleanObject" name="EBooleanObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBooleanObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EBooleanObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByte" name="EByte">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EByte-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EByte-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByteArray" name="EByteArray">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EByteArray-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EByteArray-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EByteObject" name="EByteObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EByteObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EByteObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EChar" name="EChar">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EChar-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EChar-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ECharacterObject" name="ECharacterObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ECharacterObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ECharacterObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDate" name="EDate">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDate-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDate-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDiagnosticChain" name="EDiagnosticChain" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDiagnosticChain-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDiagnosticChain-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDouble" name="EDouble">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDouble-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDouble-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDoubleObject" name="EDoubleObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDoubleObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EDoubleObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEList" name="EEList" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EEList-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EEList-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEnumerator" name="EEnumerator" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EEnumerator-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EEnumerator-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMap" name="EFeatureMap" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFeatureMap-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFeatureMap-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMapEntry" name="EFeatureMapEntry">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFeatureMapEntry-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFeatureMapEntry-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloat" name="EFloat">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFloat-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFloat-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloatObject" name="EFloatObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFloatObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EFloatObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInt" name="EInt">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EInt-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EInt-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EIntegerObject" name="EIntegerObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EIntegerObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EIntegerObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaClass" name="EJavaClass">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EJavaClass-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EJavaClass-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaObject" name="EJavaObject" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EJavaObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EJavaObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELong" name="ELong">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ELong-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ELong-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELongObject" name="ELongObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ELongObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ELongObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EMap" name="EMap" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EMap-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EMap-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResource" name="EResource" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EResource-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EResource-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResourceSet" name="EResourceSet" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EResourceSet-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EResourceSet-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShort" name="EShort">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EShort-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EShort-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShortObject" name="EShortObject">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EShortObject-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EShortObject-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EString" name="EString">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EString-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="EString-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator" isAbstract="true">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ETreeIterator-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="ETreeIterator-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_eAllAttributes_eClass" name="A_eAllAttributes_eClass" memberEnd="EClass-eAllAttributes A_eAllAttributes_eClass-_ownedEnd.0" isDerived="true">
       <ownedEnd xmi:type="uml:Property" xmi:id="A_eAllAttributes_eClass-_ownedEnd.0" type="EClass" isReadOnly="true" association="A_eAllAttributes_eClass"/>
@@ -482,115 +482,115 @@
       <ownedEnd xmi:type="uml:Property" xmi:id="A_eAnnotation_references-_ownedEnd.0" type="EAnnotation" association="A_eAnnotation_references"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.0-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.1">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.1-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.1-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_lPmyYMRUEdq3a_CVKGVcKw" base_Package="_0" packageName="ecore" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore" basePackage="org.eclipse.emf" prefix="Ecore"/>
-  <Ecore:EAttribute xmi:id="_lPs5AMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EAnnotation-source"/>
-  <Ecore:EReference xmi:id="_lPs5AcRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EAttribute-eAttributeType"/>
-  <Ecore:EAttribute xmi:id="_lPs5AsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EClass-abstract"/>
-  <Ecore:EAttribute xmi:id="_lPs5A8RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EClass-interface"/>
-  <Ecore:EReference xmi:id="_lPs5BMRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAllAttributes"/>
-  <Ecore:EReference xmi:id="_lPs5BcRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAllReferences"/>
-  <Ecore:EReference xmi:id="_lPs5BsRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eReferences"/>
-  <Ecore:EReference xmi:id="_lPs5B8RUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAttributes"/>
-  <Ecore:EReference xmi:id="_lPs5CMRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAllContainments"/>
-  <Ecore:EReference xmi:id="_lPy_oMRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAllOperations"/>
-  <Ecore:EReference xmi:id="_lPy_ocRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAllStructuralFeatures"/>
-  <Ecore:EReference xmi:id="_lPy_osRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eAllSuperTypes"/>
-  <Ecore:EReference xmi:id="_lPy_o8RUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClass-eIDAttribute"/>
-  <Ecore:EAttribute xmi:id="_lPy_pMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EClassifier-instanceClassName"/>
-  <Ecore:EAttribute xmi:id="_lPy_pcRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClassifier-instanceClass"/>
-  <Ecore:EAttribute xmi:id="_lPy_psRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EClassifier-defaultValue"/>
-  <Ecore:EReference xmi:id="_lPy_p8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="EClassifier-ePackage"/>
-  <Ecore:EAttribute xmi:id="_lPy_qMRUEdq3a_CVKGVcKw" isTransient="true" isUnsettable="true" base_Property="EEnumLiteral-instance"/>
-  <Ecore:EAttribute xmi:id="_lP5GQMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EEnumLiteral-literal"/>
-  <Ecore:EReference xmi:id="_lP5GQcRUEdq3a_CVKGVcKw" isTransient="true" base_Property="EEnumLiteral-eEnum"/>
-  <Ecore:EReference xmi:id="_lP5GQsRUEdq3a_CVKGVcKw" isTransient="true" base_Property="EFactory-ePackage"/>
-  <Ecore:EAttribute xmi:id="_lP5GQ8RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="ENamedElement-name"/>
-  <Ecore:EReference xmi:id="_lP5GRMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="EOperation-eContainingClass"/>
-  <Ecore:EAttribute xmi:id="_lP5GRcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EPackage-nsURI"/>
-  <Ecore:EAttribute xmi:id="_lP5GRsRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EPackage-nsPrefix"/>
-  <Ecore:EReference xmi:id="_lP5GR8RUEdq3a_CVKGVcKw" isTransient="true" base_Property="EPackage-eFactoryInstance"/>
-  <Ecore:EReference xmi:id="_lP5GSMRUEdq3a_CVKGVcKw" isTransient="true" base_Property="EPackage-eSuperPackage"/>
-  <Ecore:EReference xmi:id="_lP_z8MRUEdq3a_CVKGVcKw" isTransient="true" base_Property="EParameter-eOperation"/>
-  <Ecore:EAttribute xmi:id="_lP_z8cRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EReference-container"/>
-  <Ecore:EReference xmi:id="_lP_z8sRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EReference-eReferenceType"/>
-  <Ecore:EClass xmi:id="_lP_z88RUEdq3a_CVKGVcKw" instanceClassName="java.util.Map$Entry" base_Class="EStringToStringMapEntry"/>
-  <Ecore:EAttribute xmi:id="_lP_z9MRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStringToStringMapEntry-key"/>
-  <Ecore:EAttribute xmi:id="_lP_z9cRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStringToStringMapEntry-value"/>
-  <Ecore:EAttribute xmi:id="_lP_z9sRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStructuralFeature-volatile"/>
-  <Ecore:EAttribute xmi:id="_lP_z98RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStructuralFeature-transient"/>
-  <Ecore:EAttribute xmi:id="_lP_z-MRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStructuralFeature-defaultValueLiteral"/>
-  <Ecore:EAttribute xmi:id="_lP_z-cRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="EStructuralFeature-defaultValue"/>
-  <Ecore:EAttribute xmi:id="_lQF6kMRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStructuralFeature-unsettable"/>
-  <Ecore:EAttribute xmi:id="_lQF6kcRUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="EStructuralFeature-derived"/>
-  <Ecore:EReference xmi:id="_lQF6ksRUEdq3a_CVKGVcKw" isTransient="true" base_Property="EStructuralFeature-eContainingClass"/>
-  <Ecore:EAttribute xmi:id="_lQF6k8RUEdq3a_CVKGVcKw" isUnsettable="true" base_Property="ETypedElement-lowerBound"/>
-  <Ecore:EAttribute xmi:id="_lQF6lMRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="ETypedElement-many"/>
-  <Ecore:EAttribute xmi:id="_lQF6lcRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="ETypedElement-required"/>
-  <Ecore:EDataType xmi:id="_lQF6lsRUEdq3a_CVKGVcKw" instanceClassName="java.math.BigDecimal" base_PrimitiveType="EBigDecimal"/>
-  <Ecore:EDataType xmi:id="_lQF6l8RUEdq3a_CVKGVcKw" instanceClassName="java.math.BigInteger" base_PrimitiveType="EBigInteger"/>
-  <Ecore:EDataType xmi:id="_lQF6mMRUEdq3a_CVKGVcKw" instanceClassName="boolean" base_PrimitiveType="EBoolean"/>
-  <Ecore:EDataType xmi:id="_lQF6mcRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Boolean" base_PrimitiveType="EBooleanObject"/>
-  <Ecore:EDataType xmi:id="_lQF6msRUEdq3a_CVKGVcKw" instanceClassName="byte" base_PrimitiveType="EByte"/>
-  <Ecore:EDataType xmi:id="_lQF6m8RUEdq3a_CVKGVcKw" instanceClassName="byte[]" base_PrimitiveType="EByteArray"/>
-  <Ecore:EDataType xmi:id="_lQMBMMRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Byte" base_PrimitiveType="EByteObject"/>
-  <Ecore:EDataType xmi:id="_lQMBMcRUEdq3a_CVKGVcKw" instanceClassName="char" base_PrimitiveType="EChar"/>
-  <Ecore:EDataType xmi:id="_lQMBMsRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Character" base_PrimitiveType="ECharacterObject"/>
-  <Ecore:EDataType xmi:id="_lQMBM8RUEdq3a_CVKGVcKw" instanceClassName="java.util.Date" base_PrimitiveType="EDate"/>
-  <Ecore:EDataType xmi:id="_lQMBNMRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="EDiagnosticChain"/>
-  <Ecore:EDataType xmi:id="_lQMBNcRUEdq3a_CVKGVcKw" instanceClassName="double" base_PrimitiveType="EDouble"/>
-  <Ecore:EDataType xmi:id="_lQMBNsRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Double" base_PrimitiveType="EDoubleObject"/>
-  <Ecore:EDataType xmi:id="_lQMBN8RUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="EEList"/>
-  <Ecore:EDataType xmi:id="_lQMBOMRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="EEnumerator"/>
-  <Ecore:EDataType xmi:id="_lQMBOcRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="EFeatureMap"/>
-  <Ecore:EDataType xmi:id="_lQMBOsRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="EFeatureMapEntry"/>
-  <Ecore:EDataType xmi:id="_lQMBO8RUEdq3a_CVKGVcKw" instanceClassName="float" base_PrimitiveType="EFloat"/>
-  <Ecore:EDataType xmi:id="_lQMBPMRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Float" base_PrimitiveType="EFloatObject"/>
-  <Ecore:EDataType xmi:id="_lQMBPcRUEdq3a_CVKGVcKw" instanceClassName="int" base_PrimitiveType="EInt"/>
-  <Ecore:EDataType xmi:id="_lQMBPsRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Integer" base_PrimitiveType="EIntegerObject"/>
-  <Ecore:EDataType xmi:id="_lQSH0MRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Class" base_PrimitiveType="EJavaClass"/>
-  <Ecore:EDataType xmi:id="_lQSH0cRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Object" base_PrimitiveType="EJavaObject"/>
-  <Ecore:EDataType xmi:id="_lQSH0sRUEdq3a_CVKGVcKw" instanceClassName="long" base_PrimitiveType="ELong"/>
-  <Ecore:EDataType xmi:id="_lQSH08RUEdq3a_CVKGVcKw" instanceClassName="java.lang.Long" base_PrimitiveType="ELongObject"/>
-  <Ecore:EDataType xmi:id="_lQSH1MRUEdq3a_CVKGVcKw" instanceClassName="java.util.Map" base_PrimitiveType="EMap"/>
-  <Ecore:EDataType xmi:id="_lQSH1cRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="EResource"/>
-  <Ecore:EDataType xmi:id="_lQSH1sRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="EResourceSet"/>
-  <Ecore:EDataType xmi:id="_lQSH18RUEdq3a_CVKGVcKw" instanceClassName="short" base_PrimitiveType="EShort"/>
-  <Ecore:EDataType xmi:id="_lQSH2MRUEdq3a_CVKGVcKw" instanceClassName="java.lang.Short" base_PrimitiveType="EShortObject"/>
-  <Ecore:EDataType xmi:id="_lQSH2cRUEdq3a_CVKGVcKw" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
-  <Ecore:EDataType xmi:id="_lQSH2sRUEdq3a_CVKGVcKw" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
-  <Ecore:EReference xmi:id="_lQSH28RUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="A_eAllAttributes_eClass-_ownedEnd.0"/>
-  <Ecore:EReference xmi:id="_lQYOcMRUEdq3a_CVKGVcKw" isVolatile="true" base_Property="A_eAttributes_eClass-_ownedEnd.0"/>
-  <Ecore:EReference xmi:id="_lQYOccRUEdq3a_CVKGVcKw" isTransient="true" isVolatile="true" base_Property="A_eAllReferences_eClass-_ownedEnd.0"/>
-  <Ecore:EReference xmi:id="_lQYOcsRUEdq3a_CVKGVcKw" isVolatile="true" base_Property="A_eReferences_eClass-_ownedEnd.0"/>
-  <Standard:Metamodel xmi:id="_UgHAgsSnEdq3a_CVKGVcKw" base_Model="_0"/>
-  <Standard:Metaclass xmi:id="_UgHAg8SnEdq3a_CVKGVcKw" base_Class="EAnnotation"/>
-  <Standard:Metaclass xmi:id="_UgHAhMSnEdq3a_CVKGVcKw" base_Class="EAttribute"/>
-  <Standard:Metaclass xmi:id="_UgHAhcSnEdq3a_CVKGVcKw" base_Class="EClass"/>
-  <Standard:Metaclass xmi:id="_UgHAhsSnEdq3a_CVKGVcKw" base_Class="EClassifier"/>
-  <Standard:Metaclass xmi:id="_UgHAh8SnEdq3a_CVKGVcKw" base_Class="EDataType"/>
-  <Standard:Metaclass xmi:id="_UgNHIMSnEdq3a_CVKGVcKw" base_Class="EEnum"/>
-  <Standard:Metaclass xmi:id="_UgNHIcSnEdq3a_CVKGVcKw" base_Class="EEnumLiteral"/>
-  <Standard:Metaclass xmi:id="_UgNHIsSnEdq3a_CVKGVcKw" base_Class="EFactory"/>
-  <Standard:Metaclass xmi:id="_UgNHI8SnEdq3a_CVKGVcKw" base_Class="EModelElement"/>
-  <Standard:Metaclass xmi:id="_UgNHJMSnEdq3a_CVKGVcKw" base_Class="ENamedElement"/>
-  <Standard:Metaclass xmi:id="_UgNHJcSnEdq3a_CVKGVcKw" base_Class="EObject"/>
-  <Standard:Metaclass xmi:id="_UgNHJsSnEdq3a_CVKGVcKw" base_Class="EOperation"/>
-  <Standard:Metaclass xmi:id="_UgNHJ8SnEdq3a_CVKGVcKw" base_Class="EPackage"/>
-  <Standard:Metaclass xmi:id="_UgNHKMSnEdq3a_CVKGVcKw" base_Class="EParameter"/>
-  <Standard:Metaclass xmi:id="_UgNHKcSnEdq3a_CVKGVcKw" base_Class="EReference"/>
-  <Standard:Metaclass xmi:id="_UgTNwMSnEdq3a_CVKGVcKw" base_Class="EStringToStringMapEntry"/>
-  <Standard:Metaclass xmi:id="_UgTNwcSnEdq3a_CVKGVcKw" base_Class="EStructuralFeature"/>
-  <Standard:Metaclass xmi:id="_UgTNwsSnEdq3a_CVKGVcKw" base_Class="ETypedElement"/>
+  <Ecore:EPackage xmi:id="_WTl40MWCEdqI1bY5Lwi8Hg" base_Package="_0" packageName="ecore" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore" basePackage="org.eclipse.emf" prefix="Ecore"/>
+  <Ecore:EAttribute xmi:id="_WTl40cWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EAnnotation-source"/>
+  <Ecore:EReference xmi:id="_WTl40sWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EAttribute-eAttributeType"/>
+  <Ecore:EAttribute xmi:id="_WTl408WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EClass-abstract"/>
+  <Ecore:EAttribute xmi:id="_WTl41MWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EClass-interface"/>
+  <Ecore:EReference xmi:id="_WTl41cWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAllAttributes"/>
+  <Ecore:EReference xmi:id="_WTl41sWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAllReferences"/>
+  <Ecore:EReference xmi:id="_WTl418WCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eReferences"/>
+  <Ecore:EReference xmi:id="_WTvp0MWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAttributes"/>
+  <Ecore:EReference xmi:id="_WTvp0cWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAllContainments"/>
+  <Ecore:EReference xmi:id="_WTvp0sWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAllOperations"/>
+  <Ecore:EReference xmi:id="_WTvp08WCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAllStructuralFeatures"/>
+  <Ecore:EReference xmi:id="_WTvp1MWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eAllSuperTypes"/>
+  <Ecore:EReference xmi:id="_WTvp1cWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClass-eIDAttribute"/>
+  <Ecore:EAttribute xmi:id="_WTvp1sWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EClassifier-instanceClassName"/>
+  <Ecore:EAttribute xmi:id="_WTvp18WCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClassifier-instanceClass"/>
+  <Ecore:EAttribute xmi:id="_WTvp2MWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EClassifier-defaultValue"/>
+  <Ecore:EReference xmi:id="_WTvp2cWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EClassifier-ePackage"/>
+  <Ecore:EAttribute xmi:id="_WTvp2sWCEdqI1bY5Lwi8Hg" isTransient="true" isUnsettable="true" base_Property="EEnumLiteral-instance"/>
+  <Ecore:EAttribute xmi:id="_WTvp28WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EEnumLiteral-literal"/>
+  <Ecore:EReference xmi:id="_WTvp3MWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EEnumLiteral-eEnum"/>
+  <Ecore:EReference xmi:id="_WTvp3cWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EFactory-ePackage"/>
+  <Ecore:EAttribute xmi:id="_WTvp3sWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="ENamedElement-name"/>
+  <Ecore:EReference xmi:id="_WTvp38WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EOperation-eContainingClass"/>
+  <Ecore:EAttribute xmi:id="_WT5a0MWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EPackage-nsURI"/>
+  <Ecore:EAttribute xmi:id="_WT5a0cWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EPackage-nsPrefix"/>
+  <Ecore:EReference xmi:id="_WT5a0sWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EPackage-eFactoryInstance"/>
+  <Ecore:EReference xmi:id="_WT5a08WCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EPackage-eSuperPackage"/>
+  <Ecore:EReference xmi:id="_WT5a1MWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EParameter-eOperation"/>
+  <Ecore:EAttribute xmi:id="_WT5a1cWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EReference-container"/>
+  <Ecore:EReference xmi:id="_WT5a1sWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EReference-eReferenceType"/>
+  <Ecore:EClass xmi:id="_WT5a18WCEdqI1bY5Lwi8Hg" instanceClassName="java.util.Map$Entry" base_Class="EStringToStringMapEntry"/>
+  <Ecore:EAttribute xmi:id="_WT5a2MWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStringToStringMapEntry-key"/>
+  <Ecore:EAttribute xmi:id="_WT5a2cWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStringToStringMapEntry-value"/>
+  <Ecore:EAttribute xmi:id="_WT5a2sWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStructuralFeature-volatile"/>
+  <Ecore:EAttribute xmi:id="_WT5a28WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStructuralFeature-transient"/>
+  <Ecore:EAttribute xmi:id="_WT5a3MWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStructuralFeature-defaultValueLiteral"/>
+  <Ecore:EAttribute xmi:id="_WT5a3cWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="EStructuralFeature-defaultValue"/>
+  <Ecore:EAttribute xmi:id="_WT5a3sWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStructuralFeature-unsettable"/>
+  <Ecore:EAttribute xmi:id="_WT5a38WCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="EStructuralFeature-derived"/>
+  <Ecore:EReference xmi:id="_WT5a4MWCEdqI1bY5Lwi8Hg" isTransient="true" base_Property="EStructuralFeature-eContainingClass"/>
+  <Ecore:EAttribute xmi:id="_WUCkwMWCEdqI1bY5Lwi8Hg" isUnsettable="true" base_Property="ETypedElement-lowerBound"/>
+  <Ecore:EAttribute xmi:id="_WUCkwcWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="ETypedElement-many"/>
+  <Ecore:EAttribute xmi:id="_WUCkwsWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="ETypedElement-required"/>
+  <Ecore:EDataType xmi:id="_WUCkw8WCEdqI1bY5Lwi8Hg" instanceClassName="java.math.BigDecimal" base_PrimitiveType="EBigDecimal"/>
+  <Ecore:EDataType xmi:id="_WUCkxMWCEdqI1bY5Lwi8Hg" instanceClassName="java.math.BigInteger" base_PrimitiveType="EBigInteger"/>
+  <Ecore:EDataType xmi:id="_WUCkxcWCEdqI1bY5Lwi8Hg" instanceClassName="boolean" base_PrimitiveType="EBoolean"/>
+  <Ecore:EDataType xmi:id="_WUCkxsWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Boolean" base_PrimitiveType="EBooleanObject"/>
+  <Ecore:EDataType xmi:id="_WUCkx8WCEdqI1bY5Lwi8Hg" instanceClassName="byte" base_PrimitiveType="EByte"/>
+  <Ecore:EDataType xmi:id="_WUCkyMWCEdqI1bY5Lwi8Hg" instanceClassName="byte[]" base_PrimitiveType="EByteArray"/>
+  <Ecore:EDataType xmi:id="_WUCkycWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Byte" base_PrimitiveType="EByteObject"/>
+  <Ecore:EDataType xmi:id="_WUCkysWCEdqI1bY5Lwi8Hg" instanceClassName="char" base_PrimitiveType="EChar"/>
+  <Ecore:EDataType xmi:id="_WUCky8WCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Character" base_PrimitiveType="ECharacterObject"/>
+  <Ecore:EDataType xmi:id="_WUCkzMWCEdqI1bY5Lwi8Hg" instanceClassName="java.util.Date" base_PrimitiveType="EDate"/>
+  <Ecore:EDataType xmi:id="_WUCkzcWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="EDiagnosticChain"/>
+  <Ecore:EDataType xmi:id="_WUCkzsWCEdqI1bY5Lwi8Hg" instanceClassName="double" base_PrimitiveType="EDouble"/>
+  <Ecore:EDataType xmi:id="_WUCkz8WCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Double" base_PrimitiveType="EDoubleObject"/>
+  <Ecore:EDataType xmi:id="_WUCk0MWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="EEList"/>
+  <Ecore:EDataType xmi:id="_WUCk0cWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="EEnumerator"/>
+  <Ecore:EDataType xmi:id="_WUCk0sWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="EFeatureMap"/>
+  <Ecore:EDataType xmi:id="_WUCk08WCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="EFeatureMapEntry"/>
+  <Ecore:EDataType xmi:id="_WUMVwMWCEdqI1bY5Lwi8Hg" instanceClassName="float" base_PrimitiveType="EFloat"/>
+  <Ecore:EDataType xmi:id="_WUMVwcWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Float" base_PrimitiveType="EFloatObject"/>
+  <Ecore:EDataType xmi:id="_WUMVwsWCEdqI1bY5Lwi8Hg" instanceClassName="int" base_PrimitiveType="EInt"/>
+  <Ecore:EDataType xmi:id="_WUMVw8WCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Integer" base_PrimitiveType="EIntegerObject"/>
+  <Ecore:EDataType xmi:id="_WUMVxMWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Class" base_PrimitiveType="EJavaClass"/>
+  <Ecore:EDataType xmi:id="_WUMVxcWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Object" base_PrimitiveType="EJavaObject"/>
+  <Ecore:EDataType xmi:id="_WUMVxsWCEdqI1bY5Lwi8Hg" instanceClassName="long" base_PrimitiveType="ELong"/>
+  <Ecore:EDataType xmi:id="_WUMVx8WCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Long" base_PrimitiveType="ELongObject"/>
+  <Ecore:EDataType xmi:id="_WUMVyMWCEdqI1bY5Lwi8Hg" instanceClassName="java.util.Map" base_PrimitiveType="EMap"/>
+  <Ecore:EDataType xmi:id="_WUMVycWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="EResource"/>
+  <Ecore:EDataType xmi:id="_WUMVysWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="EResourceSet"/>
+  <Ecore:EDataType xmi:id="_WUMVy8WCEdqI1bY5Lwi8Hg" instanceClassName="short" base_PrimitiveType="EShort"/>
+  <Ecore:EDataType xmi:id="_WUMVzMWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.Short" base_PrimitiveType="EShortObject"/>
+  <Ecore:EDataType xmi:id="_WUMVzcWCEdqI1bY5Lwi8Hg" instanceClassName="java.lang.String" base_PrimitiveType="EString"/>
+  <Ecore:EDataType xmi:id="_WUMVzsWCEdqI1bY5Lwi8Hg" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="ETreeIterator"/>
+  <Ecore:EReference xmi:id="_WUMVz8WCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="A_eAllAttributes_eClass-_ownedEnd.0"/>
+  <Ecore:EReference xmi:id="_WUMV0MWCEdqI1bY5Lwi8Hg" isVolatile="true" base_Property="A_eAttributes_eClass-_ownedEnd.0"/>
+  <Ecore:EReference xmi:id="_WUMV0cWCEdqI1bY5Lwi8Hg" isTransient="true" isVolatile="true" base_Property="A_eAllReferences_eClass-_ownedEnd.0"/>
+  <Ecore:EReference xmi:id="_WUWGwMWCEdqI1bY5Lwi8Hg" isVolatile="true" base_Property="A_eReferences_eClass-_ownedEnd.0"/>
+  <Standard:Metamodel xmi:id="_C1CHMcqMEdqU2-rhYb36jQ" base_Model="_0"/>
+  <Standard:Metaclass xmi:id="_C1CHMsqMEdqU2-rhYb36jQ" base_Class="EAnnotation"/>
+  <Standard:Metaclass xmi:id="_C1CHM8qMEdqU2-rhYb36jQ" base_Class="EAttribute"/>
+  <Standard:Metaclass xmi:id="_C1IN0MqMEdqU2-rhYb36jQ" base_Class="EClass"/>
+  <Standard:Metaclass xmi:id="_C1IN0cqMEdqU2-rhYb36jQ" base_Class="EClassifier"/>
+  <Standard:Metaclass xmi:id="_C1IN0sqMEdqU2-rhYb36jQ" base_Class="EDataType"/>
+  <Standard:Metaclass xmi:id="_C1IN08qMEdqU2-rhYb36jQ" base_Class="EEnum"/>
+  <Standard:Metaclass xmi:id="_C1IN1MqMEdqU2-rhYb36jQ" base_Class="EEnumLiteral"/>
+  <Standard:Metaclass xmi:id="_C1IN1cqMEdqU2-rhYb36jQ" base_Class="EFactory"/>
+  <Standard:Metaclass xmi:id="_C1IN1sqMEdqU2-rhYb36jQ" base_Class="EModelElement"/>
+  <Standard:Metaclass xmi:id="_C1IN18qMEdqU2-rhYb36jQ" base_Class="ENamedElement"/>
+  <Standard:Metaclass xmi:id="_C1IN2MqMEdqU2-rhYb36jQ" base_Class="EObject"/>
+  <Standard:Metaclass xmi:id="_C1O7gMqMEdqU2-rhYb36jQ" base_Class="EOperation"/>
+  <Standard:Metaclass xmi:id="_C1O7gcqMEdqU2-rhYb36jQ" base_Class="EPackage"/>
+  <Standard:Metaclass xmi:id="_C1O7gsqMEdqU2-rhYb36jQ" base_Class="EParameter"/>
+  <Standard:Metaclass xmi:id="_C1O7g8qMEdqU2-rhYb36jQ" base_Class="EReference"/>
+  <Standard:Metaclass xmi:id="_C1O7hMqMEdqU2-rhYb36jQ" base_Class="EStringToStringMapEntry"/>
+  <Standard:Metaclass xmi:id="_C1O7hcqMEdqU2-rhYb36jQ" base_Class="EStructuralFeature"/>
+  <Standard:Metaclass xmi:id="_C1O7hsqMEdqU2-rhYb36jQ" base_Class="ETypedElement"/>
 </xmi:XMI>
