@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.5 2006/04/13 01:13:49 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.6 2006/04/13 15:52:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1669,7 +1669,7 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9neRK86EdiEh75YJ_3n8g", "InteractionUse"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9neRq86EdiEh75YJ_3n8g", "InteractionUse-refersTo"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9neR686EdiEh75YJ_3n8g", "InteractionUse-actualGate"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_m9neSq86EdiEh75YJ_3n8g", "InteractionUse-argument"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9neSq86EdiEh75YJ_3n8g", "CallBehaviorAction-argument"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Kfw8enEdm17tz62ORDiA", "_ownedMember.415"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KfxMenEdm17tz62ORDiA", "_ownedMember.415-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KfxcenEdm17tz62ORDiA", "_ownedMember.416"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1973,8 +1973,8 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9ng_q86EdiEh75YJ_3n8g", "DurationObservation-event"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khd8enEdm17tz62ORDiA", "_ownedMember.548"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KheMenEdm17tz62ORDiA", "_ownedMember.548-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_m9nhA686EdiEh75YJ_3n8g", "WriteStructuralFeatureAction"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_m9nhBa86EdiEh75YJ_3n8g", "WriteStructuralFeatureAction-value"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhA686EdiEh75YJ_3n8g", "OpaqueAction"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhBa86EdiEh75YJ_3n8g", "ValuePin-value"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhfsenEdm17tz62ORDiA", "_ownedMember.550"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khf8enEdm17tz62ORDiA", "_ownedMember.550-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhDq86EdiEh75YJ_3n8g", "DurationInterval"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -1988,8 +1988,8 @@ public class UML22UMLExtendedMetadata
 			fragmentMap.put("_m9nhIK86EdiEh75YJ_3n8g", "TimeConstraint"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhJq86EdiEh75YJ_3n8g", "IntervalConstraint"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhLK86EdiEh75YJ_3n8g", "TimeInterval"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_m9nhMq86EdiEh75YJ_3n8g", "WriteStructuralFeatureAction"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_m9nhNK86EdiEh75YJ_3n8g", "WriteStructuralFeatureAction-value"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhMq86EdiEh75YJ_3n8g", "OpaqueAction"); //$NON-NLS-1$ //$NON-NLS-2$
+			fragmentMap.put("_m9nhNK86EdiEh75YJ_3n8g", "ValuePin-value"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4Khl8enEdm17tz62ORDiA", "_ownedMember.559"); //$NON-NLS-1$ //$NON-NLS-2$
 //			fragmentMap.put("_h4KhmMenEdm17tz62ORDiA", "_ownedMember.559-_ownedEnd.0"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_m9nhPa86EdiEh75YJ_3n8g", "DurationConstraint"); //$NON-NLS-1$ //$NON-NLS-2$

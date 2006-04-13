@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLHandler.java,v 1.3 2006/04/13 01:13:49 khussey Exp $
+ * $Id: UML22UMLHandler.java,v 1.4 2006/04/13 15:52:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -41,13 +41,20 @@ public class UML22UMLHandler
 		typeToTypeMap.put("uml:Stop", featureMap); //$NON-NLS-1$
 
 		typeMap = new BasicEMap();
+		typeMap.put(UMLPackage.Literals.DESTROY_LINK_ACTION, "uml:LinkEndDestructionData"); //$NON-NLS-1$
+		featureMap = new BasicEMap();
+		featureMap.put("endData", typeMap); //$NON-NLS-1$
+		typeToTypeMap.put("uml:LinkEndCreationData", featureMap); //$NON-NLS-1$
+		typeToTypeMap.put("uml:LinkEndData", featureMap); //$NON-NLS-1$
+
+		typeMap = new BasicEMap();
 		typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:CallBehaviorAction"); //$NON-NLS-1$
 		featureMap = new BasicEMap();
 		featureMap.put("node", typeMap); //$NON-NLS-1$
 		typeToTypeMap.put("uml:ApplyFunctionAction", featureMap); //$NON-NLS-1$
 
 		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:WriteStructuralFeatureAction"); //$NON-NLS-1$
+		typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:OpaqueAction"); //$NON-NLS-1$
 		featureMap = new BasicEMap();
 		featureMap.put("node", typeMap); //$NON-NLS-1$
 		typeToTypeMap.put("uml:DurationObservationAction", featureMap); //$NON-NLS-1$
@@ -76,7 +83,11 @@ public class UML22UMLHandler
 		EMap typeMap = null;
 
 		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION, "uml:Duration"); //$NON-NLS-1$
+		typeMap.put(UMLPackage.Literals.INTERACTION_USE, "uml:InputPin"); //$NON-NLS-1$
+		featureToTypeMap.put("argument", typeMap); //$NON-NLS-1$
+
+		typeMap = new BasicEMap();
+		typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:Duration"); //$NON-NLS-1$
 		featureToTypeMap.put("duration", typeMap); //$NON-NLS-1$
 
 		typeMap = new BasicEMap();
@@ -88,7 +99,7 @@ public class UML22UMLHandler
 		featureToTypeMap.put("formalParameter", typeMap); //$NON-NLS-1$
 
 		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION, "uml:TimeExpression"); //$NON-NLS-1$
+		typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:TimeExpression"); //$NON-NLS-1$
 		featureToTypeMap.put("now", typeMap); //$NON-NLS-1$
 
 		typeMap = new BasicEMap();

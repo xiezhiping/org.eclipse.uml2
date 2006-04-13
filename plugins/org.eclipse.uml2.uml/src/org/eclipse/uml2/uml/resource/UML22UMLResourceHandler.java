@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.7 2006/04/13 01:13:49 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.8 2006/04/13 15:52:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CallBehaviorAction;
@@ -55,12 +56,15 @@ import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.FunctionBehavior;
+import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InteractionUse;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageImport;
@@ -82,7 +86,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValuePin;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.uml2.uml.WriteStructuralFeatureAction;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
@@ -354,6 +357,26 @@ public class UML22UMLResourceHandler
 				return super.caseExtensionEnd(extensionEnd);
 			}
 
+			public Object caseInteractionUse(InteractionUse interactionUse) {
+				AnyType extension = getExtension(resource, interactionUse);
+
+				if (extension != null) {
+					InputPin argument = (InputPin) getValue(extension
+						.getMixed(), "argument", true); //$NON-NLS-1$
+
+					if (argument != null) {
+						doSwitch(argument);
+
+						((CallBehaviorAction) interactionUse.createArgument(
+							argument.getName(),
+							UMLPackage.Literals.CALL_BEHAVIOR_ACTION))
+							.getArguments().add(argument);
+					}
+				}
+
+				return super.caseInteractionUse(interactionUse);
+			}
+
 			public Object caseMultiplicityElement(
 					MultiplicityElement multiplicityElement) {
 				AnyType extension = getExtension(resource, multiplicityElement);
@@ -429,10 +452,12 @@ public class UML22UMLResourceHandler
 					for (Iterator pi = getValues(extension.getMixed(),
 						"packageImport", true).iterator(); pi.hasNext();) { //$NON-NLS-1$
 
-						PackageImport packageImport = (PackageImport) pi.next();
+						EObject packageImport = (EObject) pi.next();
 
-						doSwitch(packageImport);
-						packageImports.add(packageImport);
+						if (packageImport instanceof PackageImport) {
+							doSwitch(packageImport);
+							packageImports.add(packageImport);
+						}
 					}
 				}
 
@@ -800,38 +825,48 @@ public class UML22UMLResourceHandler
 				return super.caseTrigger(trigger);
 			}
 
-			public Object caseWriteStructuralFeatureAction(
-					WriteStructuralFeatureAction writeStructuralFeatureAction) {
-				AnyType extension = getExtension(resource,
-					writeStructuralFeatureAction);
+			public Object caseOpaqueAction(OpaqueAction opaqueAction) {
+				AnyType extension = getExtension(resource, opaqueAction);
 
 				if (extension != null) {
-					Duration duration = (Duration) getValue(extension
-						.getMixed(), "duration", true); //$NON-NLS-1$
+					Activity activity = opaqueAction.getActivity();
 
-					if (duration != null) {
-						doSwitch(duration);
+					if (activity != null) {
+						Duration duration = (Duration) getValue(extension
+							.getMixed(), "duration", true); //$NON-NLS-1$
 
-						((ValuePin) writeStructuralFeatureAction.createValue(
-							duration.getName(), duration.getType(),
-							UMLPackage.Literals.VALUE_PIN)).setValue(duration);
-					}
+						if (duration != null) {
+							doSwitch(duration);
 
-					TimeExpression timeExpression = (TimeExpression) getValue(
-						extension.getMixed(), "now", true); //$NON-NLS-1$
+							ValuePin inputValue = (ValuePin) activity
+								.createNode(duration.getName(),
+									UMLPackage.Literals.VALUE_PIN);
 
-					if (timeExpression != null) {
-						doSwitch(timeExpression);
+							inputValue.setType(duration.getType());
+							inputValue.setValue(duration);
 
-						((ValuePin) writeStructuralFeatureAction.createValue(
-							timeExpression.getName(), timeExpression.getType(),
-							UMLPackage.Literals.VALUE_PIN))
-							.setValue(timeExpression);
+							opaqueAction.getInputValues().add(inputValue);
+						}
+
+						TimeExpression timeExpression = (TimeExpression) getValue(
+							extension.getMixed(), "now", true); //$NON-NLS-1$
+
+						if (timeExpression != null) {
+							doSwitch(timeExpression);
+
+							ValuePin inputValue = (ValuePin) activity
+								.createNode(timeExpression.getName(),
+									UMLPackage.Literals.VALUE_PIN);
+
+							inputValue.setType(timeExpression.getType());
+							inputValue.setValue(timeExpression);
+
+							opaqueAction.getInputValues().add(inputValue);
+						}
 					}
 				}
 
-				return super
-					.caseWriteStructuralFeatureAction(writeStructuralFeatureAction);
+				return super.caseOpaqueAction(opaqueAction);
 			}
 
 			public Object defaultCase(EObject eObject) {

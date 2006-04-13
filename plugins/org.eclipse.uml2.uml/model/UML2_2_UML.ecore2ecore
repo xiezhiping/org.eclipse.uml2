@@ -145,6 +145,9 @@
     <outputs href="UML.ecore#//InterruptibleActivityRegion/node"/>
   </nested>
   <nested>
+    <nested>
+      <outputs href="UML.ecore#//InteractionUse/argument"/>
+    </nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//InteractionOccurrence"/>
     <outputs href="UML.ecore#//InteractionUse"/>
   </nested>
