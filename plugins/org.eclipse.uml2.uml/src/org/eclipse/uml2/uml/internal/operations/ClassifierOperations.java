@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.17 2006/03/13 20:50:41 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.18 2006/04/13 03:21:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -22,8 +24,10 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -35,6 +39,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.Usage;
@@ -379,6 +384,44 @@ public class ClassifierOperations
 		return c.eClass().isSuperTypeOf(classifier.eClass());
 	}
 
+	protected static class GeneralEList
+			extends DerivedSubsetEObjectEList {
+
+		protected GeneralEList(Class dataClass, InternalEObject owner,
+				int featureID, int[] sourceFeatureIDs) {
+			super(dataClass, owner, featureID, sourceFeatureIDs);
+		}
+
+		public List basicList() {
+			return new GeneralEList(dataClass, owner, featureID,
+				sourceFeatureIDs) {
+
+				public ListIterator listIterator(int index) {
+					return basicListIterator(index);
+				}
+			};
+		}
+
+		protected boolean isIncluded(EStructuralFeature feature) {
+			return false;
+		}
+
+		protected Object derive(Object object) {
+			return ((Generalization) object).getGeneral();
+		}
+
+		protected Object validate(int index, Object object) {
+			Generalization generalization = UMLFactory.eINSTANCE
+				.createGeneralization();
+			generalization.setGeneral((Classifier) super
+				.validate(index, object));
+			return generalization;
+		}
+
+	}
+
+	protected static final int[] GENERAL_ESUPERSETS = new int[]{UMLPackage.CLASS__GENERALIZATION};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -389,11 +432,8 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static EList getGenerals(Classifier classifier) {
-		EList parents = classifier.parents();
-
-		return new UnionEObjectEList((InternalEObject) classifier,
-			UMLPackage.Literals.CLASSIFIER__GENERAL, parents.size(), parents
-				.toArray());
+		return new GeneralEList(Classifier.class, (InternalEObject) classifier,
+			UMLPackage.CLASSIFIER__GENERAL, GENERAL_ESUPERSETS);
 	}
 
 	/**
