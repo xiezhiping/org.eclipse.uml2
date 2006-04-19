@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.8 2006/01/24 22:46:31 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.9 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -337,14 +337,17 @@ public class TransitionItemProvider
 	}
 
 	/**
-	 * This returns Transition.gif.
+	 * This returns Transition_{kind}.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Transition")); //$NON-NLS-1$
+		return overlayImage(
+			object,
+			getResourceLocator()
+				.getImage(
+					"full/obj16/Transition_" + ((Transition) object).getKind().getName())); //$NON-NLS-1$
 	}
 
 	/**

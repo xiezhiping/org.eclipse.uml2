@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementItemProvider.java,v 1.2 2005/12/12 18:34:30 khussey Exp $
+ * $Id: MultiplicityElementItemProvider.java,v 1.3 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -31,6 +32,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -419,6 +421,76 @@ public class MultiplicityElementItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	protected static ComposedImage composeMultiplicityImage(Object object,
+			ComposedImage composedImage) {
+		MultiplicityElement multiplicityElement = (MultiplicityElement) object;
+
+		if (multiplicityElement
+			.eIsSet(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER)
+			|| multiplicityElement
+				.eIsSet(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER)) {
+
+			String imageName = "full/obj16/EOccurrence"; //$NON-NLS-1$
+
+			int lowerBound = multiplicityElement.lowerBound();
+			int upperBound = multiplicityElement.upperBound();
+
+			if (lowerBound >= 0
+				&& (lowerBound <= upperBound || upperBound == LiteralUnlimitedNatural.UNLIMITED)) {
+
+				switch (lowerBound) {
+					case 0 : {
+						imageName += "Zero"; //$NON-NLS-1$
+						break;
+					}
+					case 1 : {
+						imageName += "One"; //$NON-NLS-1$
+						break;
+					}
+					default : {
+						imageName += "N"; //$NON-NLS-1$
+						break;
+					}
+				}
+
+				if (lowerBound != upperBound) {
+
+					switch (upperBound) {
+						case LiteralUnlimitedNatural.UNLIMITED : {
+							imageName += "ToUnbounded"; //$NON-NLS-1$
+							break;
+						}
+						case 0 : {
+							break;
+						}
+						case 1 : {
+							imageName += "ToOne"; //$NON-NLS-1$
+							break;
+						}
+						default : {
+							imageName += lowerBound <= 1
+								? "ToN" //$NON-NLS-1$
+								: "ToM"; //$NON-NLS-1$
+							break;
+						}
+					}
+				}
+			} else {
+				imageName += "NToM"; //$NON-NLS-1$
+			}
+
+			composedImage.getImages().add(
+				UMLEditPlugin.INSTANCE.getImage(imageName));
+		}
+
+		return composedImage;
+	}
+
+	protected ComposedImage getComposedImage(Object object, Object image) {
+		return composeMultiplicityImage(object, super.getComposedImage(object,
+			image));
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ConnectorItemProvider.java,v 1.4 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -186,14 +186,14 @@ public class ConnectorItemProvider
 	}
 
 	/**
-	 * This returns Connector.gif.
+	 * This returns Connector_{kind}.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Connector")); //$NON-NLS-1$
+			"full/obj16/Connector_" + ((Connector) object).getKind().getName())); //$NON-NLS-1$
 	}
 
 	/**

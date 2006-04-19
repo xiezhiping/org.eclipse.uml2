@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureItemProvider.java,v 1.3 2006/01/04 17:47:48 khussey Exp $
+ * $Id: StructuralFeatureItemProvider.java,v 1.4 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -463,6 +465,14 @@ public class StructuralFeatureItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	protected ComposedImage getComposedImage(Object object, Object image) {
+		List images = new ArrayList();
+		images.add(image);
+
+		return MultiplicityElementItemProvider.composeMultiplicityImage(object,
+			new ComposedImage(images));
 	}
 
 }

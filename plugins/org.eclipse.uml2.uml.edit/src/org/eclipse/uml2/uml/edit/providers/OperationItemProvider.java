@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.8 2006/03/15 19:34:31 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.9 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -461,14 +463,17 @@ public class OperationItemProvider
 	}
 
 	/**
-	 * This returns Operation.gif.
+	 * This returns Operation_{visibility}.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Operation")); //$NON-NLS-1$
+		return overlayImage(
+			object,
+			getResourceLocator()
+				.getImage(
+					"full/obj16/Operation_" + ((Operation) object).getVisibility().getName())); //$NON-NLS-1$
 	}
 
 	/**
@@ -652,6 +657,13 @@ public class OperationItemProvider
 				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
+	}
+
+	protected ComposedImage getComposedImage(Object object, Object image) {
+		List images = new ArrayList();
+		images.add(image);
+
+		return new ComposedImage(images);
 	}
 
 }

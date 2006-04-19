@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.9 2006/04/10 19:16:57 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.10 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -32,10 +32,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.provider.EModelElementItemProvider;
 
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
-
-import org.eclipse.emf.ecore.provider.EObjectItemProvider;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -43,7 +39,6 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
-import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -237,12 +232,14 @@ public class ElementItemProvider
 	 * This returns the icon image for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Object getCreateChildImage(Object owner, Object feature,
 			Object child, Collection selection) {
+
 		if (feature instanceof EStructuralFeature
 			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) feature)) {
+
 			FeatureMap.Entry entry = (FeatureMap.Entry) child;
 			feature = entry.getEStructuralFeature();
 			child = entry.getValue();
@@ -252,7 +249,19 @@ public class ElementItemProvider
 			String name = "full/obj16/" + ((EObject) child).eClass().getName(); //$NON-NLS-1$
 
 			try {
-				return getResourceLocator().getImage(name);
+				List images = new ArrayList();
+				ResourceLocator resourceLocator = getResourceLocator();
+				images.add(resourceLocator.getImage(name));
+				images.add(resourceLocator.getImage("full/ovr16/CreateChild")); //$NON-NLS-1$
+
+				return new ComposedImage(images) {
+
+					public List getDrawPoints(Size size) {
+						List result = super.getDrawPoints(size);
+						((Point) result.get(1)).x = size.width - 7;
+						return result;
+					}
+				};
 			} catch (Exception e) {
 				UMLEditPlugin.INSTANCE.log(e);
 			}
@@ -531,8 +540,16 @@ public class ElementItemProvider
 			category, filterFlags);
 	}
 
+	protected ComposedImage getComposedImage(Object object, Object image) {
+		List images = new ArrayList();
+		images.add(image);
+
+		return new ComposedImage(images);
+	}
+
 	protected Object overlayImage(Object object, Object image) {
-		List images = null;
+		ComposedImage composedImage = getComposedImage(object, image);
+		Collection images = composedImage.getImages();
 
 		if (object instanceof Element) {
 			Element element = (Element) object;
@@ -562,11 +579,6 @@ public class ElementItemProvider
 							if (!UML2Util.isEmpty(location)
 								&& location.indexOf("ovr16") != -1) { //$NON-NLS-1$
 
-								if (images == null) {
-									images = new ArrayList();
-									images.add(image);
-								}
-
 								URI uri = URI.createURI(location).resolve(
 									normalizedURI);
 
@@ -586,19 +598,11 @@ public class ElementItemProvider
 		}
 
 		if (AdapterFactoryEditingDomain.isControlled(object)) {
-
-			if (images == null) {
-				images = new ArrayList();
-				images.add(image);
-			}
-
-			images.add(EMFEditPlugin.INSTANCE
-				.getImage("full/ovr16/ControlledObject")); //$NON-NLS-1$
+			images.add(getResourceLocator().getImage(
+				"full/ovr16/ControlledObject")); //$NON-NLS-1$
 		}
 
-		return images == null
-			? image
-			: new ComposedImage(images);
+		return composedImage;
 	}
 
 }

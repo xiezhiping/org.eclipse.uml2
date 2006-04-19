@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditPlugin.java,v 1.2 2005/12/14 22:34:56 khussey Exp $
+ * $Id: UMLEditPlugin.java,v 1.3 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+import org.eclipse.emf.edit.EMFEditPlugin;
 
 /**
  * This is the central singleton for the UML edit plugin.
@@ -47,10 +48,11 @@ public final class UMLEditPlugin
 	 * Create the instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UMLEditPlugin() {
-		super(new ResourceLocator[]{EcoreEditPlugin.INSTANCE,});
+		super(new ResourceLocator[]{EcoreEditPlugin.INSTANCE,
+			EMFEditPlugin.INSTANCE});
 	}
 
 	/**

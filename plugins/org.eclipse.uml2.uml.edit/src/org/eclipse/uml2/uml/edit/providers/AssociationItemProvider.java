@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.7 2006/02/21 21:40:13 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.8 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -42,6 +42,7 @@ import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.util.UML2Util;
 
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
@@ -225,14 +226,30 @@ public class AssociationItemProvider
 	}
 
 	/**
-	 * This returns Association.gif.
+	 * This returns Association_{aggregation}.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Association")); //$NON-NLS-1$
+		int aggregation = 0;
+
+		for (Iterator memberEnds = ((Association) object).getMemberEnds()
+			.iterator(); memberEnds.hasNext();) {
+
+			int value = ((Property) memberEnds.next()).getAggregation()
+				.getValue();
+
+			if (value > aggregation) {
+				aggregation = value;
+			}
+		}
+
+		return overlayImage(
+			object,
+			getResourceLocator()
+				.getImage(
+					"full/obj16/Association_" + AggregationKind.get(aggregation).getName())); //$NON-NLS-1$
 	}
 
 	/**

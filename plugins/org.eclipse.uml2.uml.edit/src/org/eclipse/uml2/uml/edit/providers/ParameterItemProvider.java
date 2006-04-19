@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterItemProvider.java,v 1.7 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.8 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -390,14 +392,17 @@ public class ParameterItemProvider
 	}
 
 	/**
-	 * This returns Parameter.gif.
+	 * This returns Parameter_{direction}.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Parameter")); //$NON-NLS-1$
+		return overlayImage(
+			object,
+			getResourceLocator()
+				.getImage(
+					"full/obj16/Parameter_" + ((Parameter) object).getDirection().getName())); //$NON-NLS-1$
 	}
 
 	/**
@@ -657,6 +662,14 @@ public class ParameterItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	protected ComposedImage getComposedImage(Object object, Object image) {
+		List images = new ArrayList();
+		images.add(image);
+
+		return MultiplicityElementItemProvider.composeMultiplicityImage(object,
+			new ComposedImage(images));
 	}
 
 }

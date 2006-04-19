@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.1 2005/12/07 14:20:28 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.2 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -273,6 +274,24 @@ public class NamedElementItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	protected static ComposedImage composeVisibilityImage(Object object,
+			ComposedImage composedImage) {
+		NamedElement namedElement = (NamedElement) object;
+
+		if (namedElement.isSetVisibility()) {
+			composedImage.getImages().add(
+				UMLEditPlugin.INSTANCE.getImage("full/ovr16/VisibilityKind_" //$NON-NLS-1$
+					+ namedElement.getVisibility().getName()));
+		}
+
+		return composedImage;
+	}
+
+	protected ComposedImage getComposedImage(Object object, Object image) {
+		return composeVisibilityImage(object, super.getComposedImage(object,
+			image));
 	}
 
 }

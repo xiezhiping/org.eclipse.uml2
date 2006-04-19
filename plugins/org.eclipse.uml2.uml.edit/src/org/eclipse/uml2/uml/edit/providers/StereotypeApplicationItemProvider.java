@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.1 2006/03/23 18:42:45 khussey Exp $
+ * $Id: StereotypeApplicationItemProvider.java,v 1.2 2006/04/19 20:36:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -49,8 +49,7 @@ class StereotypeApplicationItemProvider
 		return new AddCommand(domain, owner, feature, collection, index) {
 
 			public Collection doGetAffectedObjects() {
-				return Collections.singleton(UMLUtil
-					.getBaseElement((EObject) owner));
+				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
@@ -60,8 +59,7 @@ class StereotypeApplicationItemProvider
 		return new MoveCommand(domain, owner, feature, value, index) {
 
 			public Collection doGetAffectedObjects() {
-				return Collections.singleton(UMLUtil
-					.getBaseElement((EObject) owner));
+				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
@@ -71,8 +69,7 @@ class StereotypeApplicationItemProvider
 		return new RemoveCommand(domain, owner, feature, collection) {
 
 			public Collection doGetAffectedObjects() {
-				return Collections.singleton(UMLUtil
-					.getBaseElement((EObject) owner));
+				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
@@ -82,8 +79,7 @@ class StereotypeApplicationItemProvider
 		return new ReplaceCommand(domain, owner, feature, value, collection) {
 
 			public Collection doGetAffectedObjects() {
-				return Collections.singleton(UMLUtil
-					.getBaseElement((EObject) owner));
+				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
@@ -98,8 +94,7 @@ class StereotypeApplicationItemProvider
 		return new SetCommand(domain, owner, feature, value, index) {
 
 			public Collection doGetAffectedObjects() {
-				return Collections.singleton(UMLUtil
-					.getBaseElement((EObject) owner));
+				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
