@@ -187,6 +187,15 @@
   <nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Stop"/>
   </nested>
+  <nested>
+    <outputs href="UML.ecore#//ParameterableElement/templateParameter"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateParameter/parameteredElement"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateParameter/ownedParameteredElement"/>
+  </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>

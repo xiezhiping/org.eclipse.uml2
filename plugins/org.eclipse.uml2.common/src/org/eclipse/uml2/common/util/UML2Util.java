@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.19 2006/03/28 22:24:24 khussey Exp $
+ * $Id: UML2Util.java,v 1.20 2006/04/19 21:54:11 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -836,7 +836,7 @@ public class UML2Util {
 			: eAnnotation;
 	}
 
-	protected static Collection getNonNavigableInverseReferences(EObject eObject) {
+	public static Collection getNonNavigableInverseReferences(EObject eObject) {
 		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
 			.getCrossReferenceAdapter(eObject);
 		return crossReferenceAdapter == null
@@ -844,7 +844,7 @@ public class UML2Util {
 			: crossReferenceAdapter.getNonNavigableInverseReferences(eObject);
 	}
 
-	protected static Collection getInverseReferences(EObject eObject) {
+	public static Collection getInverseReferences(EObject eObject) {
 		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
 			.getCrossReferenceAdapter(eObject);
 		return crossReferenceAdapter == null

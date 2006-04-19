@@ -148,4 +148,16 @@
     <key xsi:type="ecore:EClass" href="UML.ecore#//FunctionBehavior"/>
     <value name="PrimitiveFunction" targetNamespace="http://www.eclipse.org/uml2/1.0.0/UML"/>
   </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//ParameterableElement/templateParameter"/>
+    <value xMLRepresentation="1"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//TemplateParameter/parameteredElement"/>
+    <value xMLRepresentation="1"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//TemplateParameter/ownedParameteredElement"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
 </ecore2xml:XMLMap>

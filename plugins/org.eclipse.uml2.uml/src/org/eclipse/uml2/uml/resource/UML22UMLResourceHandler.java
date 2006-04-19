@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.8 2006/04/13 15:52:25 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.9 2006/04/19 21:54:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
@@ -47,7 +48,9 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CallBehaviorAction;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.ChangeEvent;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
@@ -70,6 +73,7 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
@@ -77,12 +81,14 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValuePin;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -174,6 +180,65 @@ public class UML22UMLResourceHandler
 		return internalEObject;
 	}
 
+	protected EObject reincarnate(EObject eObject, EClass eClass) {
+
+		if (eObject.eClass() == eClass) {
+			return eObject;
+		} else {
+			EObject newEObject = EcoreUtil.create(eClass);
+
+			for (Iterator eAllStructuralFeatures = eObject.eClass()
+				.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+				.hasNext();) {
+
+				EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+					.next();
+
+				if (eStructuralFeature.isChangeable()
+					&& eObject.eIsSet(eStructuralFeature)) {
+
+					try {
+						newEObject.eSet(
+							eClass.getEStructuralFeature(eStructuralFeature
+								.getName()), eStructuralFeature.isMany()
+								? ((InternalEList) eObject
+									.eGet(eStructuralFeature)).basicList()
+								: eObject.eGet(eStructuralFeature));
+					} catch (Exception e) {
+						UMLPlugin.INSTANCE.log(e);
+					}
+				}
+			}
+
+			for (Iterator nonNavigableInverseReferences = UML2Util
+				.getNonNavigableInverseReferences(eObject).iterator(); nonNavigableInverseReferences
+				.hasNext();) {
+
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+					.next();
+				EStructuralFeature eStructuralFeature = setting
+					.getEStructuralFeature();
+
+				if (eStructuralFeature.isChangeable()) {
+
+					try {
+
+						if (eStructuralFeature.isMany()) {
+							List values = (List) setting.get(false);
+							values.set(values.indexOf(eObject), newEObject);
+						} else {
+							setting.set(newEObject);
+						}
+					} catch (Exception e) {
+						UMLPlugin.INSTANCE.log(e);
+					}
+				}
+			}
+
+			return newEObject;
+		}
+	}
+
 	public void postLoad(final XMLResource resource, InputStream inputStream,
 			Map options) {
 		final EList resourceContents = resource.getContents();
@@ -189,26 +254,28 @@ public class UML22UMLResourceHandler
 					EList ownedParameters = behavioralFeature
 						.getOwnedParameters();
 
-					for (Iterator returnResults = getValues(
-						extension.getMixed(), "returnResult", true).iterator(); returnResults //$NON-NLS-1$
+					for (Iterator values = getValues(extension.getMixed(),
+						"returnResult", true).iterator(); values //$NON-NLS-1$
 						.hasNext();) {
 
-						Parameter returnResult = (Parameter) returnResults
-							.next();
+						Object value = values.next();
 
-						doSwitch(returnResult);
-						ownedParameters.add(0, returnResult);
+						if (value instanceof Parameter) {
+							doSwitch((Parameter) value);
+							ownedParameters.add(0, value);
+						}
 					}
 
-					for (Iterator formalParameters = getValues(
-						extension.getMixed(), "formalParameter", true) //$NON-NLS-1$
-						.iterator(); formalParameters.hasNext();) {
+					for (Iterator values = getValues(extension.getMixed(),
+						"formalParameter", true) //$NON-NLS-1$
+						.iterator(); values.hasNext();) {
 
-						Parameter formalParameter = (Parameter) formalParameters
-							.next();
+						Object value = values.next();
 
-						doSwitch(formalParameter);
-						ownedParameters.add(formalParameter);
+						if (value instanceof Parameter) {
+							doSwitch((Parameter) value);
+							ownedParameters.add(value);
+						}
 					}
 				}
 
@@ -223,15 +290,16 @@ public class UML22UMLResourceHandler
 					EList ownedBehaviors = behavioredClassifier
 						.getOwnedBehaviors();
 
-					for (Iterator ownedStateMachines = getValues(
-						extension.getMixed(), "ownedStateMachine", true) //$NON-NLS-1$
-						.iterator(); ownedStateMachines.hasNext();) {
+					for (Iterator values = getValues(extension.getMixed(),
+						"ownedStateMachine", true) //$NON-NLS-1$
+						.iterator(); values.hasNext();) {
 
-						StateMachine ownedStateMachine = (StateMachine) ownedStateMachines
-							.next();
+						Object value = values.next();
 
-						doSwitch(ownedStateMachine);
-						ownedBehaviors.add(ownedStateMachine);
+						if (value instanceof StateMachine) {
+							doSwitch((StateMachine) value);
+							ownedBehaviors.add(value);
+						}
 					}
 				}
 
@@ -243,15 +311,15 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, callBehaviorAction);
 
 				if (extension != null) {
-					String function = (String) getValue(extension
-						.getAnyAttribute(), "function", true); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"function", true); //$NON-NLS-1$
 
-					if (function != null) {
-						FunctionBehavior functionBehavior = (FunctionBehavior) resource
-							.getEObject(function);
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
 
-						if (functionBehavior != null) {
-							callBehaviorAction.setBehavior(functionBehavior);
+						if (eObject instanceof FunctionBehavior) {
+							callBehaviorAction
+								.setBehavior((FunctionBehavior) eObject);
 						}
 					}
 				}
@@ -263,11 +331,11 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, comment);
 
 				if (extension != null) {
-					String body = (String) getValue(
-						extension.getAnyAttribute(), "body", true); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
 
-					if (body != null) {
-						comment.setBody(body);
+					if (value instanceof String) {
+						comment.setBody((String) value);
 					}
 				}
 
@@ -282,23 +350,30 @@ public class UML22UMLResourceHandler
 						.equals(getValue(extension.getAnyAttribute(),
 							"isFirstTime"))); //$NON-NLS-1$
 
-					Collection events = getValues(extension.getAnyAttribute(),
+					Collection values = getValues(extension.getAnyAttribute(),
 						"event", true);
 
-					if (!events.isEmpty()) {
+					if (!values.isEmpty()) {
 						DurationObservation durationObservation = (DurationObservation) duration
 							.getNearestPackage().createPackagedElement(
 								duration.getName(),
 								UMLPackage.Literals.DURATION_OBSERVATION);
 
-						for (Iterator e = events.iterator(); e.hasNext();) {
-							NamedElement event = (NamedElement) resource
-								.getEObject((String) e.next());
+						EList events = durationObservation.getEvents();
+						EList firstEvents = durationObservation
+							.getFirstEvents();
 
-							if (event != null) {
-								durationObservation.getEvents().add(event);
-								durationObservation.getFirstEvents().add(
-									isFirstEvent);
+						for (Iterator v = values.iterator(); v.hasNext();) {
+							Object value = v.next();
+
+							if (value instanceof String) {
+								EObject eObject = resource
+									.getEObject((String) value);
+
+								if (eObject instanceof NamedElement) {
+									events.add((NamedElement) eObject);
+									firstEvents.add(isFirstEvent);
+								}
 							}
 						}
 
@@ -361,16 +436,18 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, interactionUse);
 
 				if (extension != null) {
-					InputPin argument = (InputPin) getValue(extension
-						.getMixed(), "argument", true); //$NON-NLS-1$
+					Object value = getValue(extension.getMixed(),
+						"argument", true); //$NON-NLS-1$
 
-					if (argument != null) {
-						doSwitch(argument);
+					if (value instanceof InputPin) {
+						InputPin inputPin = (InputPin) value;
+
+						doSwitch(inputPin);
 
 						((CallBehaviorAction) interactionUse.createArgument(
-							argument.getName(),
+							inputPin.getName(),
 							UMLPackage.Literals.CALL_BEHAVIOR_ACTION))
-							.getArguments().add(argument);
+							.getArguments().add(inputPin);
 					}
 				}
 
@@ -382,11 +459,12 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, multiplicityElement);
 
 				if (extension != null) {
-					ValueSpecification lowerValue = (ValueSpecification) getValue(
-						extension.getMixed(), "lowerValue", true); //$NON-NLS-1$
+					Object value = getValue(extension.getMixed(),
+						"lowerValue", true); //$NON-NLS-1$
 
-					if (lowerValue != null) {
-						multiplicityElement.setLowerValue(lowerValue);
+					if (value instanceof ValueSpecification) {
+						multiplicityElement
+							.setLowerValue((ValueSpecification) value);
 					}
 				}
 
@@ -397,14 +475,14 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, message);
 
 				if (extension != null) {
-					String messageSort = (String) getValue(extension
-						.getAnyAttribute(), "messageSort", true); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"messageSort", true); //$NON-NLS-1$
 
-					if (messageSort != null) {
+					if (value instanceof String) {
 						message.setMessageSort("synchSignal" //$NON-NLS-1$
-							.equals(messageSort)
+							.equals(value)
 								? MessageSort.ASYNCH_SIGNAL_LITERAL
-								: MessageSort.get(messageSort));
+								: MessageSort.get((String) value));
 					}
 				}
 
@@ -415,27 +493,25 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, messageEnd);
 
 				if (extension != null) {
-					String receiveMessage = (String) getValue(extension
-						.getAnyAttribute(), "receiveMessage", true); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"receiveMessage", true); //$NON-NLS-1$
 
-					if (receiveMessage != null) {
-						Message message = (Message) resource
-							.getEObject(receiveMessage);
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
 
-						if (message != null) {
-							messageEnd.setMessage(message);
+						if (eObject instanceof Message) {
+							messageEnd.setMessage((Message) eObject);
 						}
 					}
 
-					String sendMessage = (String) getValue(extension
-						.getAnyAttribute(), "sendMessage", true); //$NON-NLS-1$
+					value = getValue(extension.getAnyAttribute(),
+						"sendMessage", true); //$NON-NLS-1$
 
-					if (sendMessage != null) {
-						Message message = (Message) resource
-							.getEObject(sendMessage);
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
 
-						if (message != null) {
-							messageEnd.setMessage(message);
+						if (eObject instanceof Message) {
+							messageEnd.setMessage((Message) eObject);
 						}
 					}
 				}
@@ -449,14 +525,14 @@ public class UML22UMLResourceHandler
 				if (extension != null) {
 					EList packageImports = namespace.getPackageImports();
 
-					for (Iterator pi = getValues(extension.getMixed(),
-						"packageImport", true).iterator(); pi.hasNext();) { //$NON-NLS-1$
+					for (Iterator values = getValues(extension.getMixed(),
+						"packageImport", true).iterator(); values.hasNext();) { //$NON-NLS-1$
 
-						EObject packageImport = (EObject) pi.next();
+						Object value = values.next();
 
-						if (packageImport instanceof PackageImport) {
-							doSwitch(packageImport);
-							packageImports.add(packageImport);
+						if (value instanceof PackageImport) {
+							doSwitch((PackageImport) value);
+							packageImports.add(value);
 						}
 					}
 				}
@@ -464,15 +540,62 @@ public class UML22UMLResourceHandler
 				return super.caseNamespace(namespace);
 			}
 
+			public Object caseOpaqueAction(OpaqueAction opaqueAction) {
+				AnyType extension = getExtension(resource, opaqueAction);
+
+				if (extension != null) {
+					Activity activity = opaqueAction.getActivity();
+
+					if (activity != null) {
+						Object value = getValue(extension.getMixed(),
+							"duration", true); //$NON-NLS-1$
+
+						if (value instanceof Duration) {
+							Duration duration = (Duration) value;
+
+							doSwitch(duration);
+
+							ValuePin inputValue = (ValuePin) activity
+								.createNode(duration.getName(),
+									UMLPackage.Literals.VALUE_PIN);
+
+							inputValue.setType(duration.getType());
+							inputValue.setValue(duration);
+
+							opaqueAction.getInputValues().add(inputValue);
+						}
+
+						value = getValue(extension.getMixed(), "now", true); //$NON-NLS-1$
+
+						if (value instanceof TimeExpression) {
+							TimeExpression timeExpression = (TimeExpression) value;
+
+							doSwitch(timeExpression);
+
+							ValuePin inputValue = (ValuePin) activity
+								.createNode(timeExpression.getName(),
+									UMLPackage.Literals.VALUE_PIN);
+
+							inputValue.setType(timeExpression.getType());
+							inputValue.setValue(timeExpression);
+
+							opaqueAction.getInputValues().add(inputValue);
+						}
+					}
+				}
+
+				return super.caseOpaqueAction(opaqueAction);
+			}
+
 			public Object caseOpaqueExpression(OpaqueExpression opaqueExpression) {
 				AnyType extension = getExtension(resource, opaqueExpression);
 
 				if (extension != null) {
-					String body = (String) getValue(
-						extension.getAnyAttribute(), "body", true); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
 
-					if (body != null) {
-						opaqueExpression.getBodies().add(body);
+					if (value instanceof String) {
+						opaqueExpression.getBodies().add(value);
 					}
 				}
 
@@ -484,13 +607,12 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, packageableElement);
 
 				if (extension != null) {
-					String packageableElement_visibility = (String) getValue(
-						extension.getAnyAttribute(),
+					Object value = getValue(extension.getAnyAttribute(),
 						"packageableElement_visibility", true); //$NON-NLS-1$
 
-					if (packageableElement_visibility != null) {
+					if (value instanceof String) {
 						packageableElement.setVisibility(VisibilityKind
-							.get(packageableElement_visibility));
+							.get((String) value));
 					}
 				}
 
@@ -728,6 +850,91 @@ public class UML22UMLResourceHandler
 				return super.caseProperty(property);
 			}
 
+			public Object caseTemplateParameter(
+					TemplateParameter templateParameter) {
+				AnyType extension = getExtension(resource, templateParameter);
+
+				Object value = getValue(extension.getMixed(),
+					"ownedParameteredElement", true); //$NON-NLS-1$
+
+				if (value instanceof ParameterableElement) {
+					ParameterableElement parameterableElement = (ParameterableElement) value;
+
+					doSwitch(parameterableElement);
+
+					String id = resource.getID(templateParameter);
+
+					if (parameterableElement instanceof Classifier) {
+						resource
+							.setID(
+								templateParameter = (TemplateParameter) reincarnate(
+									templateParameter,
+									UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
+								id);
+					} else if (parameterableElement instanceof ConnectableElement) {
+						resource
+							.setID(
+								templateParameter = (TemplateParameter) reincarnate(
+									templateParameter,
+									UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
+								id);
+					} else if (parameterableElement instanceof Operation) {
+						resource
+							.setID(
+								templateParameter = (TemplateParameter) reincarnate(
+									templateParameter,
+									UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
+								id);
+					}
+
+					templateParameter
+						.setOwnedParameteredElement(parameterableElement);
+					templateParameter
+						.setParameteredElement(parameterableElement);
+				} else {
+					value = getValue(extension.getAnyAttribute(),
+						"parameteredElement", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
+
+						if (eObject instanceof ParameterableElement) {
+							ParameterableElement parameterableElement = (ParameterableElement) eObject;
+
+							String id = resource.getID(templateParameter);
+
+							if (parameterableElement instanceof Classifier) {
+								resource
+									.setID(
+										templateParameter = (TemplateParameter) reincarnate(
+											templateParameter,
+											UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
+										id);
+							} else if (parameterableElement instanceof ConnectableElement) {
+								resource
+									.setID(
+										templateParameter = (TemplateParameter) reincarnate(
+											templateParameter,
+											UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
+										id);
+							} else if (parameterableElement instanceof Operation) {
+								resource
+									.setID(
+										templateParameter = (TemplateParameter) reincarnate(
+											templateParameter,
+											UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
+										id);
+							}
+
+							templateParameter
+								.setParameteredElement(parameterableElement);
+						}
+					}
+				}
+
+				return super.caseTemplateParameter(templateParameter);
+			}
+
 			public Object caseTimeExpression(TimeExpression timeExpression) {
 				AnyType extension = getExtension(resource, timeExpression);
 
@@ -735,18 +942,21 @@ public class UML22UMLResourceHandler
 					boolean firstEvent = !"false".equals(getValue(extension //$NON-NLS-1$
 						.getAnyAttribute(), "isFirstTime")); //$NON-NLS-1$
 
-					NamedElement event = (NamedElement) resource
-						.getEObject((String) getValue(extension
-							.getAnyAttribute(), "event", true)); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"event", true);
 
-					if (event != null) {
-						TimeObservation timeObservation = (TimeObservation) timeExpression
-							.getNearestPackage().createPackagedElement(
-								timeExpression.getName(),
-								UMLPackage.Literals.TIME_OBSERVATION);
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
 
-						timeObservation.setEvent(event);
-						timeObservation.setFirstEvent(firstEvent);
+						if (eObject instanceof NamedElement) {
+							TimeObservation timeObservation = (TimeObservation) timeExpression
+								.getNearestPackage().createPackagedElement(
+									timeExpression.getName(),
+									UMLPackage.Literals.TIME_OBSERVATION);
+
+							timeObservation.setEvent((NamedElement) eObject);
+							timeObservation.setFirstEvent(firstEvent);
+						}
 					}
 				}
 
@@ -759,54 +969,51 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, trigger);
 
 				if (extension != null) {
-					ValueSpecification changeExpression = (ValueSpecification) getValue(
-						extension.getMixed(), "changeExpression"); //$NON-NLS-1$
+					Object value = getValue(extension.getMixed(),
+						"changeExpression"); //$NON-NLS-1$
 
-					if (changeExpression != null) {
+					if (value instanceof ValueSpecification) {
 						event = (Event) trigger.getNearestPackage()
 							.createPackagedElement(trigger.getName(),
 								UMLPackage.Literals.CHANGE_EVENT);
 						((ChangeEvent) event)
-							.setChangeExpression(changeExpression);
+							.setChangeExpression((ValueSpecification) value);
 					} else {
-						Operation operation = (Operation) getValue(extension
-							.getMixed(), "operation"); //$NON-NLS-1$
+						value = getValue(extension.getMixed(), "operation"); //$NON-NLS-1$
 
-						if (operation != null) {
+						if (value instanceof Operation) {
 							event = (CallEvent) trigger.getNearestPackage()
 								.createPackagedElement(trigger.getName(),
 									UMLPackage.Literals.CALL_EVENT);
-							((CallEvent) event).setOperation(operation);
+							((CallEvent) event).setOperation((Operation) value);
 						} else {
-							Signal signal = (Signal) getValue(extension
-								.getMixed(), "signal"); //$NON-NLS-1$
+							value = getValue(extension.getMixed(), "signal"); //$NON-NLS-1$
 
-							if (signal != null) {
+							if (value instanceof Signal) {
 								event = (SignalEvent) trigger
 									.getNearestPackage().createPackagedElement(
 										trigger.getName(),
 										UMLPackage.Literals.SIGNAL_EVENT);
-								((SignalEvent) event).setSignal(signal);
+								((SignalEvent) event).setSignal((Signal) value);
 							} else {
-								ValueSpecification when = (ValueSpecification) getValue(
-									extension.getMixed(), "when"); //$NON-NLS-1$
+								value = getValue(extension.getMixed(), "when"); //$NON-NLS-1$
 
-								if (when != null) {
+								if (value instanceof ValueSpecification) {
 									event = (TimeEvent) trigger
 										.getNearestPackage()
 										.createPackagedElement(
 											trigger.getName(),
 											UMLPackage.Literals.TIME_EVENT);
-									((TimeEvent) event).setWhen(when);
+									((TimeEvent) event)
+										.setWhen((ValueSpecification) value);
 
-									String isRelative = (String) getValue(
-										extension.getAnyAttribute(),
-										"isRelative"); //$NON-NLS-1$
+									value = getValue(extension
+										.getAnyAttribute(), "isRelative"); //$NON-NLS-1$
 
-									if (isRelative != null) {
+									if (value instanceof String) {
 										((TimeEvent) event)
 											.setIsRelative(Boolean.valueOf(
-												isRelative).booleanValue());
+												(String) value).booleanValue());
 									}
 								}
 							}
@@ -823,50 +1030,6 @@ public class UML22UMLResourceHandler
 				trigger.setEvent(event);
 
 				return super.caseTrigger(trigger);
-			}
-
-			public Object caseOpaqueAction(OpaqueAction opaqueAction) {
-				AnyType extension = getExtension(resource, opaqueAction);
-
-				if (extension != null) {
-					Activity activity = opaqueAction.getActivity();
-
-					if (activity != null) {
-						Duration duration = (Duration) getValue(extension
-							.getMixed(), "duration", true); //$NON-NLS-1$
-
-						if (duration != null) {
-							doSwitch(duration);
-
-							ValuePin inputValue = (ValuePin) activity
-								.createNode(duration.getName(),
-									UMLPackage.Literals.VALUE_PIN);
-
-							inputValue.setType(duration.getType());
-							inputValue.setValue(duration);
-
-							opaqueAction.getInputValues().add(inputValue);
-						}
-
-						TimeExpression timeExpression = (TimeExpression) getValue(
-							extension.getMixed(), "now", true); //$NON-NLS-1$
-
-						if (timeExpression != null) {
-							doSwitch(timeExpression);
-
-							ValuePin inputValue = (ValuePin) activity
-								.createNode(timeExpression.getName(),
-									UMLPackage.Literals.VALUE_PIN);
-
-							inputValue.setType(timeExpression.getType());
-							inputValue.setValue(timeExpression);
-
-							opaqueAction.getInputValues().add(inputValue);
-						}
-					}
-				}
-
-				return super.caseOpaqueAction(opaqueAction);
 			}
 
 			public Object defaultCase(EObject eObject) {
