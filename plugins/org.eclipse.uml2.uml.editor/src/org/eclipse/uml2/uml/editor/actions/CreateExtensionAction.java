@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.2 2005/12/23 06:44:36 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.3 2006/04/19 20:02:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
@@ -59,36 +60,42 @@ public class CreateExtensionAction
 
 			List choiceOfValues = new ArrayList();
 
-			for (Iterator referencedMetamodels = stereotype.getProfile()
-				.getReferencedMetamodels().iterator(); referencedMetamodels
-				.hasNext();) {
+			Profile profile = stereotype.getProfile();
 
-				Model metamodel = (Model) referencedMetamodels.next();
+			if (profile != null) {
 
-				for (Iterator ownedTypes = metamodel.getOwnedTypes().iterator(); ownedTypes
+				for (Iterator referencedMetamodels = profile
+					.getReferencedMetamodels().iterator(); referencedMetamodels
 					.hasNext();) {
-					Object type = ownedTypes.next();
 
-					if (type instanceof org.eclipse.uml2.uml.Class
-						&& ((org.eclipse.uml2.uml.Class) type).isMetaclass()
-						&& !allExtendedMetaclasses.contains(type)) {
+					Model metamodel = (Model) referencedMetamodels.next();
 
-						choiceOfValues.add(type);
+					for (Iterator ownedTypes = metamodel.getOwnedTypes()
+						.iterator(); ownedTypes.hasNext();) {
+						Object type = ownedTypes.next();
+
+						if (type instanceof org.eclipse.uml2.uml.Class
+							&& ((org.eclipse.uml2.uml.Class) type)
+								.isMetaclass()
+							&& !allExtendedMetaclasses.contains(type)) {
+
+							choiceOfValues.add(type);
+						}
 					}
 				}
-			}
 
-			for (Iterator referencedMetaclasses = stereotype.getProfile()
-				.getReferencedMetaclasses().iterator(); referencedMetaclasses
-				.hasNext();) {
+				for (Iterator referencedMetaclasses = profile
+					.getReferencedMetaclasses().iterator(); referencedMetaclasses
+					.hasNext();) {
 
-				org.eclipse.uml2.uml.Class metaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
-					.next();
+					org.eclipse.uml2.uml.Class metaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
+						.next();
 
-				if (!allExtendedMetaclasses.contains(metaclass)
-					&& !choiceOfValues.contains(metaclass)) {
+					if (!allExtendedMetaclasses.contains(metaclass)
+						&& !choiceOfValues.contains(metaclass)) {
 
-					choiceOfValues.add(metaclass);
+						choiceOfValues.add(metaclass);
+					}
 				}
 			}
 
