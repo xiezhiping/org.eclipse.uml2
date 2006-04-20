@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.9 2006/04/19 21:54:08 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.10 2006/04/20 17:07:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -98,7 +98,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UML22UMLResourceHandler
 		extends BasicResourceHandler {
 
-	protected static final boolean DEBUG = false;
+	protected static final boolean DEBUG = true;
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
@@ -854,80 +854,83 @@ public class UML22UMLResourceHandler
 					TemplateParameter templateParameter) {
 				AnyType extension = getExtension(resource, templateParameter);
 
-				Object value = getValue(extension.getMixed(),
-					"ownedParameteredElement", true); //$NON-NLS-1$
+				if (extension != null) {
+					Object value = getValue(extension.getMixed(),
+						"ownedParameteredElement", true); //$NON-NLS-1$
 
-				if (value instanceof ParameterableElement) {
-					ParameterableElement parameterableElement = (ParameterableElement) value;
+					if (value instanceof ParameterableElement) {
+						ParameterableElement parameterableElement = (ParameterableElement) value;
 
-					doSwitch(parameterableElement);
+						doSwitch(parameterableElement);
 
-					String id = resource.getID(templateParameter);
+						String id = resource.getID(templateParameter);
 
-					if (parameterableElement instanceof Classifier) {
-						resource
-							.setID(
-								templateParameter = (TemplateParameter) reincarnate(
-									templateParameter,
-									UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
-								id);
-					} else if (parameterableElement instanceof ConnectableElement) {
-						resource
-							.setID(
-								templateParameter = (TemplateParameter) reincarnate(
-									templateParameter,
-									UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
-								id);
-					} else if (parameterableElement instanceof Operation) {
-						resource
-							.setID(
-								templateParameter = (TemplateParameter) reincarnate(
-									templateParameter,
-									UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
-								id);
-					}
+						if (parameterableElement instanceof Classifier) {
+							resource
+								.setID(
+									templateParameter = (TemplateParameter) reincarnate(
+										templateParameter,
+										UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
+									id);
+						} else if (parameterableElement instanceof ConnectableElement) {
+							resource
+								.setID(
+									templateParameter = (TemplateParameter) reincarnate(
+										templateParameter,
+										UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
+									id);
+						} else if (parameterableElement instanceof Operation) {
+							resource
+								.setID(
+									templateParameter = (TemplateParameter) reincarnate(
+										templateParameter,
+										UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
+									id);
+						}
 
-					templateParameter
-						.setOwnedParameteredElement(parameterableElement);
-					templateParameter
-						.setParameteredElement(parameterableElement);
-				} else {
-					value = getValue(extension.getAnyAttribute(),
-						"parameteredElement", true); //$NON-NLS-1$
+						templateParameter
+							.setOwnedParameteredElement(parameterableElement);
+						templateParameter
+							.setParameteredElement(parameterableElement);
+					} else {
+						value = getValue(extension.getAnyAttribute(),
+							"parameteredElement", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
+						if (value instanceof String) {
+							EObject eObject = resource
+								.getEObject((String) value);
 
-						if (eObject instanceof ParameterableElement) {
-							ParameterableElement parameterableElement = (ParameterableElement) eObject;
+							if (eObject instanceof ParameterableElement) {
+								ParameterableElement parameterableElement = (ParameterableElement) eObject;
 
-							String id = resource.getID(templateParameter);
+								String id = resource.getID(templateParameter);
 
-							if (parameterableElement instanceof Classifier) {
-								resource
-									.setID(
-										templateParameter = (TemplateParameter) reincarnate(
-											templateParameter,
-											UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
-										id);
-							} else if (parameterableElement instanceof ConnectableElement) {
-								resource
-									.setID(
-										templateParameter = (TemplateParameter) reincarnate(
-											templateParameter,
-											UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
-										id);
-							} else if (parameterableElement instanceof Operation) {
-								resource
-									.setID(
-										templateParameter = (TemplateParameter) reincarnate(
-											templateParameter,
-											UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
-										id);
+								if (parameterableElement instanceof Classifier) {
+									resource
+										.setID(
+											templateParameter = (TemplateParameter) reincarnate(
+												templateParameter,
+												UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
+											id);
+								} else if (parameterableElement instanceof ConnectableElement) {
+									resource
+										.setID(
+											templateParameter = (TemplateParameter) reincarnate(
+												templateParameter,
+												UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
+											id);
+								} else if (parameterableElement instanceof Operation) {
+									resource
+										.setID(
+											templateParameter = (TemplateParameter) reincarnate(
+												templateParameter,
+												UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
+											id);
+								}
+
+								templateParameter
+									.setParameteredElement(parameterableElement);
 							}
-
-							templateParameter
-								.setParameteredElement(parameterableElement);
 						}
 					}
 				}
