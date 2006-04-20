@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.6 2006/04/13 15:52:25 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.7 2006/04/20 16:35:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -16,12 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
-
 import org.eclipse.emf.mapping.ecore2xml.util.Ecore2XMLExtendedMetaData;
+import org.eclipse.uml2.uml.UMLPackage;
 
 public class UML22UMLExtendedMetadata
 		extends Ecore2XMLExtendedMetaData {
@@ -2342,6 +2340,131 @@ public class UML22UMLExtendedMetadata
 		}
 
 		return fragmentMap;
+	}
+
+	protected static Map typeToTypeMap = null;
+
+	public static Map getTypeToTypeMap() {
+		
+		if (typeToTypeMap == null) {
+			typeToTypeMap = new HashMap();
+			
+			Map typeMap = null;
+			Map featureMap = null;
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.INTERACTION, "uml:MessageOccurrenceSpecification"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("fragment", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:Stop", featureMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.DESTROY_LINK_ACTION, "uml:LinkEndDestructionData"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("endData", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:LinkEndCreationData", featureMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:LinkEndData", featureMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:CallBehaviorAction"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("node", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:ApplyFunctionAction", featureMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:OpaqueAction"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("node", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:DurationObservationAction", featureMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:TimeObservationAction", featureMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.BEHAVIORED_CLASSIFIER, "uml:Trigger"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("ownedTrigger", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:AnyTrigger", featureMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:CallTrigger", featureMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:ChangeTrigger", featureMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:SignalTrigger", featureMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:TimeTrigger", featureMap); //$NON-NLS-1$
+			
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.NAMESPACE, "uml:Dependency"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("packagedElement", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:Permission", featureMap); //$NON-NLS-1$
+		}
+		
+		return typeToTypeMap;
+	}
+
+	protected static Map featureToTypeMap = null;
+
+	public static Map getFeatureToTypeMap() {
+		
+		if (featureToTypeMap == null) {
+			featureToTypeMap = new HashMap();
+			
+			Map typeMap = null;
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.INTERACTION_USE, "uml:InputPin"); //$NON-NLS-1$
+			featureToTypeMap.put("argument", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:Duration"); //$NON-NLS-1$
+			featureToTypeMap.put("duration", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.TRANSITION, "uml:Activity"); //$NON-NLS-1$
+			featureToTypeMap.put("effect", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.BEHAVIORAL_FEATURE, "uml:Parameter"); //$NON-NLS-1$
+			featureToTypeMap.put("formalParameter", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:TimeExpression"); //$NON-NLS-1$
+			featureToTypeMap.put("now", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.TRIGGER, "uml:Operation"); //$NON-NLS-1$
+			featureToTypeMap.put("operation", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.BEHAVIORED_CLASSIFIER, "uml:StateMachine"); //$NON-NLS-1$
+			featureToTypeMap.put("ownedStateMachine", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.CLASSIFIER, "uml:RedefinableTemplateSignature"); //$NON-NLS-1$
+			featureToTypeMap.put("ownedTemplateSignature", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.PACKAGE, "uml:PackageMerge"); //$NON-NLS-1$
+			featureToTypeMap.put("packageExtension", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.NAMESPACE, "uml:PackageImport"); //$NON-NLS-1$
+			featureToTypeMap.put("packageImport", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.MESSAGE_END, "uml:Message"); //$NON-NLS-1$
+			featureToTypeMap.put("receiveMessage", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.BEHAVIORAL_FEATURE, "uml:Parameter"); //$NON-NLS-1$
+			featureToTypeMap.put("returnResult", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.MESSAGE_END, "uml:Message"); //$NON-NLS-1$
+			featureToTypeMap.put("sendMessage", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.TRIGGER, "uml:Signal"); //$NON-NLS-1$
+			featureToTypeMap.put("signal", typeMap); //$NON-NLS-1$			
+		}
+		
+		return featureToTypeMap;
 	}
 
 	public UML22UMLExtendedMetadata(EPackage.Registry ePackageRegistry,

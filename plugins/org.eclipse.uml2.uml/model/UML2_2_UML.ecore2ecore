@@ -196,6 +196,9 @@
   <nested>
     <outputs href="UML.ecore#//TemplateParameter/ownedParameteredElement"/>
   </nested>
+  <nested>
+    <outputs href="UML.ecore#//Message/signature"/>
+  </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>

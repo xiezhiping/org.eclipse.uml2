@@ -160,4 +160,8 @@
     <key xsi:type="ecore:EReference" href="UML.ecore#//TemplateParameter/ownedParameteredElement"/>
     <value xMLRepresentation="0"/>
   </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Message/signature"/>
+    <value xMLRepresentation="1"/>
+  </ecoreToXMLInfo>
 </ecore2xml:XMLMap>

@@ -8,136 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLHandler.java,v 1.4 2006/04/13 15:52:25 khussey Exp $
+ * $Id: UML22UMLHandler.java,v 1.5 2006/04/20 16:35:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicEMap;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetadata;
 
 public class UML22UMLHandler
 		extends UMLHandler {
-
-	protected static final EMap typeToTypeMap = new BasicEMap();
-
-	static {
-		EMap typeMap = null;
-		EMap featureMap = null;
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.INTERACTION, "uml:MessageOccurrenceSpecification"); //$NON-NLS-1$
-		featureMap = new BasicEMap();
-		featureMap.put("fragment", typeMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:Stop", featureMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.DESTROY_LINK_ACTION, "uml:LinkEndDestructionData"); //$NON-NLS-1$
-		featureMap = new BasicEMap();
-		featureMap.put("endData", typeMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:LinkEndCreationData", featureMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:LinkEndData", featureMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:CallBehaviorAction"); //$NON-NLS-1$
-		featureMap = new BasicEMap();
-		featureMap.put("node", typeMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:ApplyFunctionAction", featureMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:OpaqueAction"); //$NON-NLS-1$
-		featureMap = new BasicEMap();
-		featureMap.put("node", typeMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:DurationObservationAction", featureMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:TimeObservationAction", featureMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.BEHAVIORED_CLASSIFIER, "uml:Trigger"); //$NON-NLS-1$
-		featureMap = new BasicEMap();
-		featureMap.put("ownedTrigger", typeMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:AnyTrigger", featureMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:CallTrigger", featureMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:ChangeTrigger", featureMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:SignalTrigger", featureMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:TimeTrigger", featureMap); //$NON-NLS-1$
-		
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.NAMESPACE, "uml:Dependency"); //$NON-NLS-1$
-		featureMap = new BasicEMap();
-		featureMap.put("packagedElement", typeMap); //$NON-NLS-1$
-		typeToTypeMap.put("uml:Permission", featureMap); //$NON-NLS-1$
-	}
-
-	protected static final EMap featureToTypeMap = new BasicEMap();
-
-	static {
-		EMap typeMap = null;
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.INTERACTION_USE, "uml:InputPin"); //$NON-NLS-1$
-		featureToTypeMap.put("argument", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:Duration"); //$NON-NLS-1$
-		featureToTypeMap.put("duration", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.TRANSITION, "uml:Activity"); //$NON-NLS-1$
-		featureToTypeMap.put("effect", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.BEHAVIORAL_FEATURE, "uml:Parameter"); //$NON-NLS-1$
-		featureToTypeMap.put("formalParameter", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:TimeExpression"); //$NON-NLS-1$
-		featureToTypeMap.put("now", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.TRIGGER, "uml:Operation"); //$NON-NLS-1$
-		featureToTypeMap.put("operation", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.BEHAVIORED_CLASSIFIER, "uml:StateMachine"); //$NON-NLS-1$
-		featureToTypeMap.put("ownedStateMachine", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.CLASSIFIER, "uml:RedefinableTemplateSignature"); //$NON-NLS-1$
-		featureToTypeMap.put("ownedTemplateSignature", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.PACKAGE, "uml:PackageMerge"); //$NON-NLS-1$
-		featureToTypeMap.put("packageExtension", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.NAMESPACE, "uml:PackageImport"); //$NON-NLS-1$
-		featureToTypeMap.put("packageImport", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.MESSAGE_END, "uml:Message"); //$NON-NLS-1$
-		featureToTypeMap.put("receiveMessage", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.BEHAVIORAL_FEATURE, "uml:Parameter"); //$NON-NLS-1$
-		featureToTypeMap.put("returnResult", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.MESSAGE_END, "uml:Message"); //$NON-NLS-1$
-		featureToTypeMap.put("sendMessage", typeMap); //$NON-NLS-1$
-
-		typeMap = new BasicEMap();
-		typeMap.put(UMLPackage.Literals.TRIGGER, "uml:Signal"); //$NON-NLS-1$
-		featureToTypeMap.put("signal", typeMap); //$NON-NLS-1$
-	}
 
 	public UML22UMLHandler(XMLResource xmiResource, XMLHelper helper,
 			Map options) {
@@ -149,12 +36,13 @@ public class UML22UMLHandler
 		if (!isNull()) {
 			String xsiType = getXSIType();
 
-			EMap typeMap = xsiType == null
-				? featureToTypeMap
-				: (EMap) typeToTypeMap.get(xsiType);
+			Map typeMap = xsiType == null
+				? UML22UMLExtendedMetadata.getFeatureToTypeMap()
+				: (Map) UML22UMLExtendedMetadata.getTypeToTypeMap()
+					.get(xsiType);
 			typeMap = typeMap == null
 				? null
-				: (EMap) typeMap.get(feature.getName());
+				: (Map) typeMap.get(feature.getName());
 
 			if (typeMap != null) {
 				EObject eObject = peekObject instanceof AnyType
