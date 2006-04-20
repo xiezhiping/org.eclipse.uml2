@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.8 2006/04/20 16:54:36 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.9 2006/04/20 17:13:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -2372,7 +2372,7 @@ public class UML22UMLExtendedMetadata
 			typeToTypeMap.put("uml:ApplyFunctionAction", featureMap); //$NON-NLS-1$
 
 			typeMap = new HashMap();
-			typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:OpaqueAction"); //$NON-NLS-1$
+			typeMap.put(UMLPackage.Literals.ACTIVITY, "uml:Action"); //$NON-NLS-1$
 			featureMap = new HashMap();
 			featureMap.put("node", typeMap); //$NON-NLS-1$
 			typeToTypeMap.put("uml:DurationObservationAction", featureMap); //$NON-NLS-1$
