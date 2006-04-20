@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.7 2006/04/20 16:35:57 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.8 2006/04/20 16:54:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -2353,7 +2353,7 @@ public class UML22UMLExtendedMetadata
 			Map featureMap = null;
 
 			typeMap = new HashMap();
-			typeMap.put(UMLPackage.Literals.INTERACTION, "uml:MessageOccurrenceSpecification"); //$NON-NLS-1$
+			typeMap.put(UMLPackage.Literals.INTERACTION, "uml:EventOccurrence"); //$NON-NLS-1$
 			featureMap = new HashMap();
 			featureMap.put("fragment", typeMap); //$NON-NLS-1$
 			typeToTypeMap.put("uml:Stop", featureMap); //$NON-NLS-1$
