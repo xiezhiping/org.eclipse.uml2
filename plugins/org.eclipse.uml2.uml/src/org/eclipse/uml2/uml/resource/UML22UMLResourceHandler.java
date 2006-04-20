@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.10 2006/04/20 17:07:45 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.11 2006/04/20 17:13:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -98,7 +98,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UML22UMLResourceHandler
 		extends BasicResourceHandler {
 
-	protected static final boolean DEBUG = true;
+	protected static final boolean DEBUG = false;
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
