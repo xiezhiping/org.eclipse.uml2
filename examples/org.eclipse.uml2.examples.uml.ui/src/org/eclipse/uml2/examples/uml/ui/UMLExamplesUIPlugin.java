@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExamplesUIPlugin.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: UMLExamplesUIPlugin.java,v 1.2 2006/04/24 02:05:38 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.uml2.uml.ecore.exporter.UMLExporterPlugin;
 
 /**
  * This is the central singleton for the UML2 UML Examples UI plugin.
@@ -35,7 +36,7 @@ public class UMLExamplesUIPlugin
 	 * Create the instance.
 	 */
 	public UMLExamplesUIPlugin() {
-		super(new ResourceLocator[]{});
+		super(new ResourceLocator[]{UMLExporterPlugin.INSTANCE});
 	}
 
 	/**
