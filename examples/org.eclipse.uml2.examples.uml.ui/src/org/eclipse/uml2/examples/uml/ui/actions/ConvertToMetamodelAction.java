@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToMetamodelAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: ConvertToMetamodelAction.java,v 1.2 2006/04/24 22:15:34 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -21,9 +21,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
@@ -71,6 +73,14 @@ public class ConvertToMetamodelAction
 									applyStereotype(class_, metaclassStereotype);
 
 									return defaultCase(class_);
+								}
+
+								public Object caseClassifier(
+										Classifier classifier) {
+									classifier
+										.setVisibility(VisibilityKind.PRIVATE_LITERAL);
+
+									return defaultCase(classifier);
 								}
 
 								public Object defaultCase(EObject eObject) {

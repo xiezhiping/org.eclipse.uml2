@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.12 2006/03/13 20:50:41 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.13 2006/04/24 22:15:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -248,7 +248,7 @@ public class NamespaceOperations
 					namesOfMember.add(name);
 				}
 			} else {
-				EList elementImportNames = new UniqueEList.FastCompare();
+				EList elementImportNames = new UniqueEList();
 
 				for (Iterator elementImports = namespace.getElementImports()
 					.iterator(); elementImports.hasNext();) {
@@ -282,6 +282,8 @@ public class NamespaceOperations
 								namespaces, namesOfMember);
 						}
 					}
+				} else {
+					namesOfMember.addAll(elementImportNames);
 				}
 			}
 		}
@@ -309,8 +311,7 @@ public class NamespaceOperations
 	public static EList getNamesOfMember(Namespace namespace,
 			NamedElement element) {
 		return ECollections.unmodifiableEList(getNamesOfMember(namespace,
-			element, new UniqueEList.FastCompare(),
-			new UniqueEList.FastCompare()));
+			element, new UniqueEList.FastCompare(), new UniqueEList()));
 	}
 
 	/**
