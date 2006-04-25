@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.23 2006/04/25 17:53:05 khussey Exp $
+ * $Id: PackageOperations.java,v 1.24 2006/04/25 21:27:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -503,8 +503,7 @@ public class PackageOperations
 
 								if (eResource == copy.eResource()) {
 									contents.move(contents
-										.indexOf(stereotypeApplication),
-										contents.indexOf(copy));
+										.indexOf(stereotypeApplication), copy);
 								} else {
 									contents.set(contents
 										.indexOf(stereotypeApplication), copy);
