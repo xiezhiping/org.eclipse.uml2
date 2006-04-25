@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.2 2006/04/04 16:20:55 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.3 2006/04/25 20:58:28 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -167,11 +167,6 @@ public abstract class GenerateProfileAction
 				if (internalEObject instanceof EAnnotation) {
 					eAllContents.prune();
 				} else {
-					System.out.println("fragmentMap.put(\""
-						+ xmiResource.getID(internalEObject) + "\", \""
-						+ UML2Util.getXMIIdentifier(internalEObject)
-						+ "\"); //$NON-NLS-1$ //$NON-NLS-2$");
-
 					xmiResource.setID(internalEObject, UML2Util
 						.getXMIIdentifier(internalEObject));
 				}

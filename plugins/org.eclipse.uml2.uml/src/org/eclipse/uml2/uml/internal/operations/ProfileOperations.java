@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.23 2006/04/05 19:55:53 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.24 2006/04/25 20:58:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -146,8 +146,7 @@ public class ProfileOperations
 			Type type = property.getType();
 
 			if (type == null
-				|| (property.getAggregation() == AggregationKind.COMPOSITE_LITERAL && (type instanceof Stereotype || (type instanceof org.eclipse.uml2.uml.Class && ((org.eclipse.uml2.uml.Class) type)
-					.isMetaclass())))) {
+				|| (property.getAggregation() == AggregationKind.COMPOSITE_LITERAL && type instanceof Stereotype)) {
 
 				throw new IllegalStateException();
 			}

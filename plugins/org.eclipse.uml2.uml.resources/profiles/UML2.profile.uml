@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w">
+  <uml:Profile xmi:id="_0" name="UML2" metamodelReference="_packageImport.0">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__n5r8NSTEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_dhEUENSUEdqN9tnr0j3PAQ" name="UML2" nsURI="http://www.eclipse.org/uml2/schemas/UML2/0" nsPrefix="UML2">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUEdSUEdqN9tnr0j3PAQ" name="Action">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUEtSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Action"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUE9SUEdqN9tnr0j3PAQ" name="base_Action" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Action"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dhEUFNSUEdqN9tnr0j3PAQ" name="effect" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUFdSUEdqN9tnr0j3PAQ" name="Activity">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUFtSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Activity"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUF9SUEdqN9tnr0j3PAQ" name="base_Activity" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Activity"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dhEUGNSUEdqN9tnr0j3PAQ" name="body" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_dhEUGdSUEdqN9tnr0j3PAQ" name="language" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUGtSUEdqN9tnr0j3PAQ" name="Comment">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUG9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Comment"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUHNSUEdqN9tnr0j3PAQ" name="base_Comment" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Comment"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUHdSUEdqN9tnr0j3PAQ" name="bodyExpression" ordered="false" containment="true">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//StringExpression"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUHtSUEdqN9tnr0j3PAQ" name="Message">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUH9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Message"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUINSUEdqN9tnr0j3PAQ" name="base_Message" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Message"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUIdSUEdqN9tnr0j3PAQ" name="signature" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//NamedElement"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUItSUEdqN9tnr0j3PAQ" name="TemplateSignature">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUI9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="TemplateSignature"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUJNSUEdqN9tnr0j3PAQ" name="base_TemplateSignature" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//TemplateSignature"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUJdSUEdqN9tnr0j3PAQ" name="nestedSignature" ordered="false" upperBound="-1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//TemplateSignature"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUJtSUEdqN9tnr0j3PAQ" name="nestingSignature" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//TemplateSignature"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.0">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Action" name="Action">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Action-base_Action" name="base_Action" association="Action_Action">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Action"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Action-effect" name="effect">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Action-effect-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Action-effect-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Action_Action" name="Action_Action" memberEnd="Action_Action-extension_Action Action-base_Action">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Action_Action-extension_Action" name="extension_Action" type="Action" aggregation="composite" association="Action_Action">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Action_Action-extension_Action-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Activity" name="Activity">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-base_Activity" name="base_Activity" association="Activity_Activity">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Activity"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-body" name="body">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Activity-body-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Activity-body-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-language" name="language">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Activity-language-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Activity-language-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Activity_Activity" name="Activity_Activity" memberEnd="Activity_Activity-extension_Activity Activity-base_Activity">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Activity_Activity-extension_Activity" name="extension_Activity" type="Activity" aggregation="composite" association="Activity_Activity">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Activity_Activity-extension_Activity-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Comment" name="Comment">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Comment-base_Comment" name="base_Comment" association="Comment_Comment">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Comment"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Comment-bodyExpression" name="bodyExpression" aggregation="composite">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#StringExpression"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Comment-bodyExpression-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Comment-bodyExpression-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Comment_Comment" name="Comment_Comment" memberEnd="Comment_Comment-extension_Comment Comment-base_Comment">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Comment_Comment-extension_Comment" name="extension_Comment" type="Comment" aggregation="composite" association="Comment_Comment">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Comment_Comment-extension_Comment-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Message" name="Message">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Message-base_Message" name="base_Message" association="Message_Message">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Message"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Message-signature" name="signature">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Message-signature-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Message-signature-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Message_Message" name="Message_Message" memberEnd="Message_Message-extension_Message Message-base_Message">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Message_Message-extension_Message" name="extension_Message" type="Message" aggregation="composite" association="Message_Message">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Message_Message-extension_Message-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="TemplateSignature" name="TemplateSignature">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TemplateSignature-base_TemplateSignature" name="base_TemplateSignature" association="TemplateSignature_TemplateSignature">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TemplateSignature"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TemplateSignature-nestedSignature" name="nestedSignature">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TemplateSignature"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TemplateSignature-nestedSignature-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TemplateSignature-nestedSignature-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="TemplateSignature-nestingSignature" name="nestingSignature">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TemplateSignature"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TemplateSignature-nestingSignature-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TemplateSignature-nestingSignature-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="TemplateSignature_TemplateSignature" name="TemplateSignature_TemplateSignature" memberEnd="TemplateSignature_TemplateSignature-extension_TemplateSignature TemplateSignature-base_TemplateSignature">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="TemplateSignature_TemplateSignature-extension_TemplateSignature" name="extension_TemplateSignature" type="TemplateSignature" aggregation="composite" association="TemplateSignature_TemplateSignature">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TemplateSignature_TemplateSignature-extension_TemplateSignature-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_VFz_ANSUEdqN9tnr0j3PAQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VFz_AdSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_WI_TQNSUEdqN9tnr0j3PAQ" base_Package="_0" nsURI="http://www.eclipse.org/uml2/schemas/UML2/0"/>
+</xmi:XMI>

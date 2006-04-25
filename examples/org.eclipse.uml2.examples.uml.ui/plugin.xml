@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.3 2006/04/24 02:05:38 khussey Exp $
+ $Id: plugin.xml,v 1.4 2006/04/25 20:58:28 khussey Exp $
 -->
 
 <plugin>
@@ -49,6 +49,18 @@
          id="org.eclipse.uml2.examples.uml.ui.StereotypesMenuID">
         <separator name="additions"/>
       </menu>
+      <action
+         label="%_UI_UML2Action_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateUML2StereotypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.StereotypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateUML2StereotypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Profile">
+          </objectClass>
+        </enablement>
+      </action>
       <action
          label="%_UI_StandardAction_label"
          class="org.eclipse.uml2.examples.uml.ui.actions.GenerateStandardStereotypesAction"
