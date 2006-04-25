@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.11 2006/04/20 17:13:28 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.12 2006/04/25 21:01:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -33,6 +33,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
@@ -42,6 +44,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
@@ -63,6 +66,7 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InteractionUse;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
+import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -77,11 +81,14 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Realization;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeObservation;
@@ -99,6 +106,30 @@ public class UML22UMLResourceHandler
 		extends BasicResourceHandler {
 
 	protected static final boolean DEBUG = false;
+
+	protected static final String STEREOTYPE__ACTION = "Action"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__ACTIVITY = "Activity"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__COMMENT = "Comment"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__MESSAGE = "Message"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__TEMPLATE_SIGNATURE = "TemplateSignature"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__BODY = "body"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__BODY_EXPRESSION = "bodyExpression"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__EFFECT = "effect"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__LANGUAGE = "language"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__NESTED_SIGNATURE = "nestedSignature"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__NESTING_SIGNATURE = "nestingSignature"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__SIGNATURE = "signature"; //$NON-NLS-1$
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
@@ -239,12 +270,82 @@ public class UML22UMLResourceHandler
 		}
 	}
 
+	protected Profile getUML2Profile(Element element) {
+		Resource eResource = element.eResource();
+
+		if (eResource != null) {
+			ResourceSet resourceSet = eResource.getResourceSet();
+
+			if (resourceSet != null) {
+				return (Profile) UML2Util.load(resourceSet, URI
+					.createURI(UML22UMLResource.UML2_PROFILE_URI),
+					UMLPackage.Literals.PROFILE);
+			}
+		}
+
+		return null;
+	}
+
+	protected Stereotype getUML2Stereotype(Element element, String name) {
+		Profile ecoreProfile = getUML2Profile(element);
+
+		return ecoreProfile != null
+			? ecoreProfile.getOwnedStereotype(name)
+			: null;
+	}
+
 	public void postLoad(final XMLResource resource, InputStream inputStream,
 			Map options) {
 		final EList resourceContents = resource.getContents();
 		final List annotationsToRemove = new ArrayList();
 
 		UMLSwitch umlSwitch = new UMLSwitch() {
+
+			public Object caseAction(Action action) {
+				AnyType extension = getExtension(resource, action);
+
+				if (extension != null) {
+					Object value = getValue(extension.getAnyAttribute(),
+						"effect", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						UMLUtil.setTaggedValue(action, getUML2Stereotype(
+							action, STEREOTYPE__ACTION),
+							TAG_DEFINITION__EFFECT, value);
+					}
+				}
+
+				return super.caseAction(action);
+			}
+
+			public Object caseActivity(Activity activity) {
+				AnyType extension = getExtension(resource, activity);
+
+				if (extension != null) {
+					getValues(extension.getAnyAttribute(), "action", true); //$NON-NLS-1$
+
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						UMLUtil.setTaggedValue(activity, getUML2Stereotype(
+							activity, STEREOTYPE__ACTIVITY),
+							TAG_DEFINITION__BODY, value);
+					}
+
+					value = getValue(extension.getAnyAttribute(),
+						"language", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						UMLUtil.setTaggedValue(activity, getUML2Stereotype(
+							activity, STEREOTYPE__ACTIVITY),
+							TAG_DEFINITION__LANGUAGE, value);
+					}
+
+				}
+
+				return super.caseActivity(activity);
+			}
 
 			public Object caseBehavioralFeature(
 					BehavioralFeature behavioralFeature) {
@@ -337,6 +438,17 @@ public class UML22UMLResourceHandler
 					if (value instanceof String) {
 						comment.setBody((String) value);
 					}
+
+					value = getValue(extension.getMixed(),
+						"bodyExpression", true); //$NON-NLS-1$
+
+					if (value instanceof StringExpression) {
+						doSwitch((StringExpression) value);
+
+						UMLUtil.setTaggedValue(comment, getUML2Stereotype(
+							comment, STEREOTYPE__COMMENT),
+							TAG_DEFINITION__BODY_EXPRESSION, value);
+					}
 				}
 
 				return super.caseComment(comment);
@@ -351,7 +463,7 @@ public class UML22UMLResourceHandler
 							"isFirstTime"))); //$NON-NLS-1$
 
 					Collection values = getValues(extension.getAnyAttribute(),
-						"event", true);
+						"event", true); //$NON-NLS-1$
 
 					if (!values.isEmpty()) {
 						DurationObservation durationObservation = (DurationObservation) duration
@@ -484,6 +596,19 @@ public class UML22UMLResourceHandler
 								? MessageSort.ASYNCH_SIGNAL_LITERAL
 								: MessageSort.get((String) value));
 					}
+
+					value = getValue(extension.getAnyAttribute(),
+						"signature", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
+
+						if (eObject instanceof NamedElement) {
+							UMLUtil.setTaggedValue(message, getUML2Stereotype(
+								message, STEREOTYPE__MESSAGE),
+								TAG_DEFINITION__SIGNATURE, eObject);
+						}
+					}
 				}
 
 				return super.caseMessage(message);
@@ -517,6 +642,21 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseMessageEnd(messageEnd);
+			}
+
+			public Object caseMessageOccurrenceSpecification(
+					MessageOccurrenceSpecification messageOccurrenceSpecification) {
+				AnyType extension = getExtension(resource,
+					messageOccurrenceSpecification);
+
+				if (extension != null) {
+					getValues(extension.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
+
+					getValues(extension.getAnyAttribute(), "finishExec", true); //$NON-NLS-1$
+				}
+
+				return super
+					.caseMessageOccurrenceSpecification(messageOccurrenceSpecification);
 			}
 
 			public Object caseNamespace(Namespace namespace) {
@@ -632,13 +772,12 @@ public class UML22UMLResourceHandler
 				if (internalEObject != null && internalEObject.eIsProxy()) {
 					URI eProxyURI = internalEObject.eProxyURI();
 
-					if (eProxyURI.segmentCount() > 0) {
-						String segment0 = eProxyURI.segment(0);
+					if (eProxyURI.toString().startsWith(
+						UML22UMLResource.UML2__PROFILES_PATHMAP)) {
 
-						int index = segment0.indexOf('.');
-						profileName = index == -1
-							? segment0
-							: segment0.substring(0, index);
+						String segment0 = eProxyURI.segment(0);
+						profileName = segment0.substring(0, segment0
+							.indexOf('.'));
 					}
 				}
 
@@ -850,6 +989,17 @@ public class UML22UMLResourceHandler
 				return super.caseProperty(property);
 			}
 
+			public Object caseRealization(Realization realization) {
+				AnyType extension = getExtension(resource, realization);
+
+				if (extension != null) {
+					getValue(extension.getAnyAttribute(),
+						"realizingClassifier", true); //$NON-NLS-1$
+				}
+
+				return super.caseRealization(realization);
+			}
+
 			public Object caseTemplateParameter(
 					TemplateParameter templateParameter) {
 				AnyType extension = getExtension(resource, templateParameter);
@@ -938,6 +1088,58 @@ public class UML22UMLResourceHandler
 				return super.caseTemplateParameter(templateParameter);
 			}
 
+			public Object caseTemplateSignature(
+					TemplateSignature templateSignature) {
+				AnyType extension = getExtension(resource, templateSignature);
+
+				if (extension != null) {
+					Stereotype stereotype = getUML2Stereotype(
+						templateSignature, STEREOTYPE__TEMPLATE_SIGNATURE);
+
+					Collection values = getValues(extension.getAnyAttribute(),
+						"nestedSignature", true); //$NON-NLS-1$
+
+					if (!values.isEmpty()) {
+
+						if (UMLUtil.safeApplyStereotype(templateSignature,
+							stereotype) != null) {
+
+							EList nestedSignatures = (EList) templateSignature
+								.getValue(stereotype,
+									TAG_DEFINITION__NESTED_SIGNATURE);
+
+							for (Iterator v = values.iterator(); v.hasNext();) {
+								Object value = v.next();
+
+								if (value instanceof String) {
+									EObject eObject = resource
+										.getEObject((String) value);
+
+									if (eObject instanceof TemplateSignature) {
+										nestedSignatures.add(eObject);
+									}
+								}
+							}
+						}
+					}
+
+					Object value = getValue(extension.getAnyAttribute(),
+						"nestingSignature", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
+
+						if (eObject instanceof TemplateSignature) {
+							UMLUtil.setTaggedValue(templateSignature,
+								stereotype, TAG_DEFINITION__NESTING_SIGNATURE,
+								eObject);
+						}
+					}
+				}
+
+				return super.caseTemplateSignature(templateSignature);
+			}
+
 			public Object caseTimeExpression(TimeExpression timeExpression) {
 				AnyType extension = getExtension(resource, timeExpression);
 
@@ -946,7 +1148,7 @@ public class UML22UMLResourceHandler
 						.getAnyAttribute(), "isFirstTime")); //$NON-NLS-1$
 
 					Object value = getValue(extension.getAnyAttribute(),
-						"event", true);
+						"event", true); //$NON-NLS-1$
 
 					if (value instanceof String) {
 						EObject eObject = resource.getEObject((String) value);

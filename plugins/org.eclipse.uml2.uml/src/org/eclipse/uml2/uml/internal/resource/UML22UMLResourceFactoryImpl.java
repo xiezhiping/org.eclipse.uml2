@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceFactoryImpl.java,v 1.4 2006/04/13 18:27:01 khussey Exp $
+ * $Id: UML22UMLResourceFactoryImpl.java,v 1.5 2006/04/25 21:01:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -53,24 +53,17 @@ public class UML22UMLResourceFactoryImpl
 
 		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION,
-			Boolean.TRUE);
-
-		defaultLoadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE,
-			Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
 		ePackageRegistry.put(UML2Package__eNS_URI, UMLPackage.eINSTANCE);
-		ePackageRegistry.put(
-			"platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", //$NON-NLS-1$
-			UMLPackage.eINSTANCE);
+		ePackageRegistry.put("platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", UMLPackage.eINSTANCE); //$NON-NLS-1$
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.setPackageRegistry(ePackageRegistry);
 
-		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(
-			Ecore2XMLRegistry.INSTANCE);
+		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(Ecore2XMLRegistry.INSTANCE);
 		ecore2xmlRegistry
 			.put(
 				UML2Package__eNS_URI,
@@ -83,24 +76,18 @@ public class UML22UMLResourceFactoryImpl
 								true).getContents(),
 						Ecore2XMLPackage.Literals.XML_MAP));
 
-		ExtendedMetaData extendedMetaData = new UML22UMLExtendedMetadata(
-			ePackageRegistry, ecore2xmlRegistry);
+		ExtendedMetaData extendedMetaData = new UML22UMLExtendedMetadata(ePackageRegistry, ecore2xmlRegistry);
 
-		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
-			extendedMetaData);
-
-		defaultLoadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER,
-			new UML22UMLResourceHandler());
+		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+		defaultLoadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, new UML22UMLResourceHandler());
 
 		Map defaultSaveOptions = resource.getDefaultSaveOptions();
 
-		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
-			Boolean.TRUE);
-		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
-			Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
-		defaultSaveOptions
-			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 
 		return resource;
 	}

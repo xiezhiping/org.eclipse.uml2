@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.12 2006/04/04 16:22:00 khussey Exp $
+ * $Id: UMLEditor.java,v 1.13 2006/04/25 21:01:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.ui.ViewerPane;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -58,7 +59,6 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import java.io.IOException;
 
@@ -837,7 +837,6 @@ public class UMLEditor
 			}
 
 			if (newURI != null) {
-				((XMLResource) resource).getEObjectToExtensionMap().clear();
 				resource.setURI(newURI);
 			}
 
@@ -1408,15 +1407,36 @@ public class UMLEditor
 	 * This also changes the editor's input.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void doSaveAs() {
 		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
 		saveAsDialog.open();
 		IPath path = saveAsDialog.getResult();
+
 		if (path != null) {
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+
 			if (file != null) {
+				URI uri = URI.createPlatformResourceURI(file.getFullPath()
+					.toString());
+
+				ResourceSet resourceSet = editingDomain.getResourceSet();
+				Resource resource = resourceSet.createResource(uri);
+				EList contents = resource.getContents();
+				EList resources = resourceSet.getResources();
+
+				for (Iterator c = ((Resource) resources.get(0)).getContents()
+					.iterator(); c.hasNext();) {
+
+					Object object = c.next();
+					c.remove();
+					contents.add(object);
+				}
+
+				resources.remove(0);
+				resources.move(0, resource);
+
 				doSaveAs(URI.createPlatformResourceURI(file.getFullPath()
 					.toString()), new FileEditorInput(file));
 			}

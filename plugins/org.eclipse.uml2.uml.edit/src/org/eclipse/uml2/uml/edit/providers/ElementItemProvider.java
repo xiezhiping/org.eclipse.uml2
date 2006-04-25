@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.10 2006/04/19 20:36:06 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.11 2006/04/25 21:01:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -518,8 +518,8 @@ public class ElementItemProvider
 	protected String getTypeText(ResourceLocator resourceLocator, EClass eClass) {
 
 		if (resourceLocator != null) {
-
 			String typeKey = eClass.getName();
+
 			try {
 				return resourceLocator.getString("_UI_" + typeKey + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
 			} catch (MissingResourceException mre) {
@@ -528,6 +528,24 @@ public class ElementItemProvider
 		}
 
 		return getString("_UI_Unknown_type"); //$NON-NLS-1$
+	}
+
+	
+	protected String getFeatureText(Object feature) {
+		String featureKey = "Unknown";
+
+		if (feature instanceof EStructuralFeature) {
+			EStructuralFeature eFeature = (EStructuralFeature) feature;
+			featureKey = eFeature.getEContainingClass().getName() + "_"
+				+ eFeature.getName();
+		}
+
+		try {
+			return getResourceLocator().getString(
+				"_UI_" + featureKey + "_feature");
+		} catch (MissingResourceException mre) {
+			return featureKey;
+		}
 	}
 
 	protected ItemPropertyDescriptor createItemPropertyDescriptor(

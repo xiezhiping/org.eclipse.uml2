@@ -162,6 +162,12 @@
     <outputs href="UML.ecore#//ActivityGroup/containedNode"/>
   </nested>
   <nested>
+    <nested>
+      <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//EventOccurrence/startExec"/>
+    </nested>
+    <nested>
+      <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//EventOccurrence/finishExec"/>
+    </nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//EventOccurrence"/>
     <outputs href="UML.ecore#//MessageOccurrenceSpecification"/>
   </nested>
@@ -198,6 +204,12 @@
   </nested>
   <nested>
     <outputs href="UML.ecore#//Message/signature"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//Comment/bodyExpression"/>
+  </nested>
+  <nested>
+    <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//StateMachine/stateMachine_redefinitionContext"/>
   </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>

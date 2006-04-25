@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.25 2006/04/10 21:04:11 khussey Exp $
+ * $Id: UMLUtil.java,v 1.26 2006/04/25 21:01:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5882,30 +5882,41 @@ public class UMLUtil
 		return stereotypeApplication;
 	}
 
-	protected static void safeApplyStereotype(Element element,
+	public static EObject safeApplyStereotype(Element element,
 			Stereotype stereotype) {
 
-		if (!element.isStereotypeApplied(stereotype)) {
-			Profile profile = stereotype.getProfile();
-			org.eclipse.uml2.uml.Package nearestPackage = element
-				.getNearestPackage();
+		if (stereotype != null) {
+			EObject stereotypeApplication = element
+				.getStereotypeApplication(stereotype);
 
-			if (nearestPackage != null) {
+			if (stereotypeApplication == null) {
+				org.eclipse.uml2.uml.Package nearestPackage = element
+					.getNearestPackage();
 
-				if (!nearestPackage.getAllAppliedProfiles().contains(profile)) {
-					EList allOwningPackages = nearestPackage
-						.allOwningPackages();
-					int size = allOwningPackages.size();
+				if (nearestPackage != null) {
+					Profile profile = stereotype.getProfile();
 
-					(size > 0
-						? (org.eclipse.uml2.uml.Package) allOwningPackages
-							.get(size - 1)
-						: nearestPackage).applyProfile(profile);
+					if (!nearestPackage.getAllAppliedProfiles().contains(
+						profile)) {
+
+						EList allOwningPackages = nearestPackage
+							.allOwningPackages();
+						int size = allOwningPackages.size();
+
+						(size > 0
+							? (org.eclipse.uml2.uml.Package) allOwningPackages
+								.get(size - 1)
+							: nearestPackage).applyProfile(profile);
+					}
+
+					stereotypeApplication = element.applyStereotype(stereotype);
 				}
-
-				element.applyStereotype(stereotype);
 			}
+
+			return stereotypeApplication;
 		}
+
+		return null;
 	}
 
 	protected static Property getTagDefinition(Stereotype stereotype,
@@ -5931,11 +5942,15 @@ public class UMLUtil
 			: element.getValue(stereotype, propertyName);
 	}
 
-	protected static void setTaggedValue(Element element,
+	public static boolean setTaggedValue(Element element,
 			Stereotype stereotype, String propertyName, Object value) {
-		safeApplyStereotype(element, stereotype);
 
-		element.setValue(stereotype, propertyName, value);
+		if (safeApplyStereotype(element, stereotype) != null) {
+			element.setValue(stereotype, propertyName, value);
+			return true;
+		}
+
+		return false;
 	}
 
 	protected static EList getOwnedAttributes(Type type) {

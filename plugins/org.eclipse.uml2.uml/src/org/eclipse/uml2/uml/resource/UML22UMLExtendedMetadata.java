@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.9 2006/04/20 17:13:10 khussey Exp $
+ * $Id: UML22UMLExtendedMetadata.java,v 1.10 2006/04/25 21:01:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -24,24 +24,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class UML22UMLExtendedMetadata
 		extends Ecore2XMLExtendedMetaData {
 
-	protected static final String UML2Resource__ECORE_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__JAVA_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__UML2_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__ECORE_METAMODEL_URI = "pathmap://UML2_METAMODELS/Ecore.metamodel.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__UML2_METAMODEL_URI = "pathmap://UML2_METAMODELS/UML2.metamodel.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__BASIC_PROFILE_URI = "pathmap://UML2_PROFILES/Basic.profile.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__INTERMEDIATE_PROFILE_URI = "pathmap://UML2_PROFILES/Intermediate.profile.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__COMPLETE_PROFILE_URI = "pathmap://UML2_PROFILES/Complete.profile.uml2"; //$NON-NLS-1$
-
-	protected static final String UML2Resource__ECORE_PROFILE_URI = "pathmap://UML2_PROFILES/Ecore.profile.uml2"; //$NON-NLS-1$
-
 	protected static Map uriMap = null;
 
 	public static Map getURIMap() {
@@ -49,17 +31,17 @@ public class UML22UMLExtendedMetadata
 		if (uriMap == null) {
 			uriMap = new HashMap();
 
-			uriMap.put(URI.createURI(UML2Resource__ECORE_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI));
-			uriMap.put(URI.createURI(UML2Resource__JAVA_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI));
-			uriMap.put(URI.createURI(UML2Resource__UML2_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__ECORE_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__JAVA_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__UML2_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI));
 
-			uriMap.put(URI.createURI(UML2Resource__ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
-			uriMap.put(URI.createURI(UML2Resource__UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
 
-			uriMap.put(URI.createURI(UML2Resource__BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML2Resource__INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML2Resource__COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML2Resource__ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2__ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
 		}
 
 		return uriMap;
@@ -2410,6 +2392,10 @@ public class UML22UMLExtendedMetadata
 			typeMap = new HashMap();
 			typeMap.put(UMLPackage.Literals.INTERACTION_USE, "uml:InputPin"); //$NON-NLS-1$
 			featureToTypeMap.put("argument", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.COMMENT, "uml:StringExpression"); //$NON-NLS-1$
+			featureToTypeMap.put("bodyExpression", typeMap); //$NON-NLS-1$
 
 			typeMap = new HashMap();
 			typeMap.put(UMLPackage.Literals.OPAQUE_ACTION, "uml:Duration"); //$NON-NLS-1$

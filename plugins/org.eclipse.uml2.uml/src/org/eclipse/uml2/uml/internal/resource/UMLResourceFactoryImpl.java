@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.6 2006/04/13 18:27:01 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.7 2006/04/25 21:01:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
 /**
- * <!-- begin-user-doc --> The <b>Resource Factory</b> associated with the
- * package. <!-- end-user-doc -->
- * 
+ * <!-- begin-user-doc -->
+ * The <b>Resource Factory</b> associated with the package.
+ * <!-- end-user-doc -->
  * @see org.eclipse.uml2.uml.internal.resource.UMLResourceImpl
  * @generated
  */
@@ -33,9 +33,9 @@ public class UMLResourceFactoryImpl
 		implements UMLResource.Factory {
 
 	/**
-	 * Creates an instance of the resource factory. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
+	 * Creates an instance of the resource factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public UMLResourceFactoryImpl() {
@@ -43,9 +43,9 @@ public class UMLResourceFactoryImpl
 	}
 
 	/**
-	 * Creates an instance of the resource. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Resource createResourceGen(URI uri) {
@@ -61,22 +61,17 @@ public class UMLResourceFactoryImpl
 
 		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION,
-			Boolean.TRUE);
-		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
-			Boolean.TRUE);
-		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING,
-			Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING, Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
 		Map defaultSaveOptions = resource.getDefaultSaveOptions();
 
-		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
-			Boolean.TRUE);
-		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
-			Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
-		defaultSaveOptions
-			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 
 		return resource;
 	}

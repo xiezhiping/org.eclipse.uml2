@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.9 2006/02/23 17:31:37 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.10 2006/04/25 21:01:48 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -64,25 +64,18 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 
 		Map defaultLoadOptions = resource.getDefaultLoadOptions();
 
-		defaultLoadOptions.put(XMLResource.OPTION_DEFER_ATTACHMENT,
-			Boolean.TRUE);
-		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION,
-			Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.TRUE);
+		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_DISABLE_NOTIFY, Boolean.TRUE);
-		defaultLoadOptions.put(XMIResource.OPTION_EXTENDED_META_DATA,
-			Boolean.TRUE);
-		defaultLoadOptions.put(XMIResource.OPTION_LAX_FEATURE_PROCESSING,
-			Boolean.TRUE);
+		defaultLoadOptions.put(XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		defaultLoadOptions.put(XMIResource.OPTION_LAX_FEATURE_PROCESSING, Boolean.TRUE);
+		defaultLoadOptions.put(XMIResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
 		Map defaultSaveOptions = resource.getDefaultSaveOptions();
 
-		defaultSaveOptions
-			.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+		defaultSaveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
-		defaultSaveOptions.put(XMIResource.OPTION_SAVE_TYPE_INFORMATION,
-			Boolean.TRUE);
-		defaultSaveOptions.put(XMIResource.OPTION_EXTENDED_META_DATA,
-			Boolean.TRUE);
+		defaultSaveOptions.put(XMIResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
 		return resource;
 	}
