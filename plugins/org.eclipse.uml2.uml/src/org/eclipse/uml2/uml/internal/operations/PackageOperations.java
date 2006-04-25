@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.22 2006/04/05 19:55:53 khussey Exp $
+ * $Id: PackageOperations.java,v 1.23 2006/04/25 17:53:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
@@ -104,8 +105,10 @@ public class PackageOperations
 		}
 
 		protected EObject createCopy(EObject eObject) {
-			return applyStereotype(getBaseElement(eObject), getTarget(eObject
-				.eClass()));
+			Element baseElement = getBaseElement(eObject);
+			return baseElement == null
+				? super.createCopy(eObject)
+				: applyStereotype(baseElement, getTarget(eObject.eClass()));
 		}
 
 		protected EClass getTarget(EClass eClass) {
@@ -130,7 +133,7 @@ public class PackageOperations
 						copyEDataTypeAttribute(eAttribute, eObject, copyEObject);
 					}
 				} catch (Exception e) {
-					// ignore
+					UMLPlugin.INSTANCE.log(e);
 				}
 			}
 		}
@@ -140,31 +143,31 @@ public class PackageOperations
 			EDataType eDataType = eAttribute.getEAttributeType();
 			EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
 
-			EAttribute copyEAttribute = (EAttribute) getTarget(eAttribute);
-			EDataType copyEDataType = copyEAttribute.getEAttributeType();
-			EFactory copyEFactory = copyEDataType.getEPackage()
+			EAttribute targetEAttribute = (EAttribute) getTarget(eAttribute);
+			EDataType targetEDataType = targetEAttribute.getEAttributeType();
+			EFactory targetEFactory = targetEDataType.getEPackage()
 				.getEFactoryInstance();
 
-			if (copyEAttribute.isMany()) {
-				EList copyValues = (EList) copyEObject.eGet(copyEAttribute);
+			if (targetEAttribute.isMany()) {
+				EList copyValues = (EList) copyEObject.eGet(targetEAttribute);
 
 				if (eAttribute.isMany()) {
 					EList values = (EList) eObject.eGet(eAttribute);
 
-					for (int i = 0; i < values.size(); i++) {
-						copyValues.add(i, copyEFactory.createFromString(
-							copyEDataType, eFactory.convertToString(eDataType,
-								values.get(i))));
+					for (int i = 0, size = values.size(); i < size; i++) {
+						copyValues.add(i, targetEFactory.createFromString(
+							targetEDataType, eFactory.convertToString(
+								eDataType, values.get(i))));
 					}
 				} else {
-					copyValues.add(copyEFactory.createFromString(copyEDataType,
-						eFactory.convertToString(eDataType, eObject
-							.eGet(eAttribute))));
+					copyValues.add(targetEFactory.createFromString(
+						targetEDataType, eFactory.convertToString(eDataType,
+							eObject.eGet(eAttribute))));
 				}
 			} else {
-				copyEObject.eSet(copyEAttribute, copyEFactory.createFromString(
-					copyEDataType, eFactory.convertToString(eDataType,
-						eAttribute.isMany()
+				copyEObject.eSet(targetEAttribute, targetEFactory
+					.createFromString(targetEDataType, eFactory
+						.convertToString(eDataType, eAttribute.isMany()
 							? ((EList) eObject.eGet(eAttribute)).get(0)
 							: eObject.eGet(eAttribute))));
 			}
@@ -172,27 +175,27 @@ public class PackageOperations
 
 		protected void copyEEnumAttribute(EAttribute eAttribute,
 				EObject eObject, EObject copyEObject) {
-			EAttribute copyEAttribute = (EAttribute) getTarget(eAttribute);
-			EEnum copyEEnum = (EEnum) copyEAttribute.getEAttributeType();
+			EAttribute targetEAttribute = (EAttribute) getTarget(eAttribute);
+			EEnum targetEEnum = (EEnum) targetEAttribute.getEAttributeType();
 
-			if (copyEAttribute.isMany()) {
-				EList copyValues = (EList) copyEObject.eGet(copyEAttribute);
+			if (targetEAttribute.isMany()) {
+				EList copyValues = (EList) copyEObject.eGet(targetEAttribute);
 
 				if (eAttribute.isMany()) {
 					EList values = (EList) eObject.eGet(eAttribute);
 
-					for (int i = 0; i < values.size(); i++) {
-						copyValues.add(i, copyEEnum.getEEnumLiteral(
+					for (int i = 0, size = values.size(); i < size; i++) {
+						copyValues.add(i, targetEEnum.getEEnumLiteral(
 							((EEnumLiteral) values.get(i)).getName())
 							.getInstance());
 					}
 				} else {
-					copyValues.add(copyEEnum.getEEnumLiteral(
+					copyValues.add(targetEEnum.getEEnumLiteral(
 						((EEnumLiteral) eObject.eGet(eAttribute)).getName())
 						.getInstance());
 				}
 			} else {
-				copyEObject.eSet(copyEAttribute, copyEEnum.getEEnumLiteral(
+				copyEObject.eSet(targetEAttribute, targetEEnum.getEEnumLiteral(
 					((EEnumLiteral) (eAttribute.isMany()
 						? ((EList) eObject.eGet(eAttribute)).get(0)
 						: eObject.eGet(eAttribute))).getName()).getInstance());
@@ -202,20 +205,118 @@ public class PackageOperations
 		protected void copyContainment(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
-			try {
-				super.copyContainment(eReference, eObject, copyEObject);
-			} catch (Exception e) {
-				// ignore
+			if (eObject.eIsSet(eReference)) {
+				Object value = eObject.eGet(eReference);
+
+				try {
+					EReference targetEReference = (EReference) getTarget(eReference);
+
+					if (targetEReference.isMany()) {
+						EList copyValues = (EList) copyEObject
+							.eGet(targetEReference);
+
+						if (eReference.isMany()) {
+							copyValues.addAll(copyAll((EList) value));
+						} else if (value != null) {
+							copyValues.add(copy((EObject) value));
+						}
+					} else {
+						copyEObject.eSet(targetEReference,
+							copy((EObject) (eReference.isMany()
+								? ((EList) value).get(0)
+								: value)));
+					}
+				} catch (Exception e) {
+					UMLPlugin.INSTANCE.log(e);
+				}
 			}
 		}
 
 		protected void copyReference(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
+			if (eObject.eIsSet(eReference)) {
+				Object value = eObject.eGet(eReference);
+
+				try {
+					EReference targetEReference = (EReference) getTarget(eReference);
+
+					if (targetEReference.isMany()) {
+						InternalEList copyValues = (InternalEList) copyEObject
+							.eGet(targetEReference);
+
+						if (eReference.isMany()) {
+							EReference targetEOpposite = targetEReference
+								.getEOpposite();
+							int index = 0;
+
+							for (Iterator v = ((EList) value).iterator(); v
+								.hasNext();) {
+
+								value = v.next();
+								Object copyValue = get(value);
+
+								if (copyValue == null) {
+
+									if (targetEOpposite == null) {
+										copyValues.addUnique(index++, value);
+									}
+								} else {
+
+									if (targetEOpposite != null) {
+										int position = copyValues
+											.indexOf(copyValue);
+
+										if (position == -1) {
+											copyValues.addUnique(index++,
+												copyValue);
+										} else if (position != index) {
+											copyValues.move(index++, copyValue);
+										}
+									} else {
+										copyValues
+											.addUnique(index++, copyValue);
+									}
+								}
+							}
+						} else if (value != null) {
+							Object copyValue = get(value);
+
+							if (copyValue == null) {
+
+								if (targetEReference.getEOpposite() == null) {
+									copyValues.addUnique(value);
+								}
+							} else {
+								copyValues.addUnique(copyValue);
+							}
+						}
+					} else {
+
+						if (eReference.isMany()) {
+							value = ((EList) value).get(0);
+						}
+
+						Object copyValue = get(value);
+
+						if (copyValue == null) {
+
+							if (targetEReference.getEOpposite() == null) {
+								copyEObject.eSet(targetEReference, value);
+							}
+						} else {
+							copyEObject.eSet(targetEReference, copyValue);
+						}
+					}
+				} catch (Exception e) {
+					UMLPlugin.INSTANCE.log(e);
+				}
+			}
+
 			try {
 				super.copyReference(eReference, eObject, copyEObject);
 			} catch (Exception e) {
-				// ignore
+				UMLPlugin.INSTANCE.log(e);
 			}
 		}
 	}
@@ -344,63 +445,82 @@ public class PackageOperations
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
-		ProfileApplication profileApplication = package_
-			.getProfileApplication(profile);
+		if (package_.getProfileApplication(profile) == null) {
+			package_.createProfileApplication().setAppliedProfile(profile);
+		}
 
-		if (profileApplication == null) {
-			profileApplication = package_.createProfileApplication();
-			profileApplication.setAppliedProfile(profile);
+		EList stereotypeApplications = new UniqueEList.FastCompare();
+		StereotypeApplicationCopier copier = new StereotypeApplicationCopier(
+			profile);
 
-			getEAnnotation(profileApplication, UMLPackage.eNS_URI, true)
-				.getReferences().add(profileDefinition);
-		} else {
-			getEAnnotation(profileApplication, UMLPackage.eNS_URI, true)
-				.getReferences().set(0, profileDefinition);
+		for (Iterator allContents = getAllContents(package_, true, false); allContents
+			.hasNext();) {
 
-			EList stereotypeApplications = new UniqueEList.FastCompare();
-			StereotypeApplicationCopier copier = new StereotypeApplicationCopier(
-				profile);
+			Object object = allContents.next();
 
-			for (Iterator allContents = getAllContents(package_, true, false); allContents
-				.hasNext();) {
+			if (object instanceof Element) {
+				Element element = (Element) object;
 
-				Object object = allContents.next();
+				if (element instanceof org.eclipse.uml2.uml.Package) {
 
-				if (object instanceof Element) {
-					Element element = (Element) object;
+					for (Iterator profileApplications = ((org.eclipse.uml2.uml.Package) element)
+						.getProfileApplications().iterator(); profileApplications
+						.hasNext();) {
 
-					for (Iterator sa = element.getStereotypeApplications()
-						.iterator(); sa.hasNext();) {
+						ProfileApplication profileApplication = (ProfileApplication) profileApplications
+							.next();
 
-						EObject stereotypeApplication = (EObject) sa.next();
-						Stereotype stereotype = getStereotype(stereotypeApplication);
+						if (profileApplication.getAppliedProfile() == profile) {
+							EList references = getEAnnotation(
+								profileApplication, UMLPackage.eNS_URI, true)
+								.getReferences();
 
-						if (stereotype != null
-							&& stereotype.getProfile() == profile) {
+							if (references.isEmpty()) {
+								references.add(profileDefinition);
+							} else {
+								references.set(0, profileDefinition);
+							}
+						}
+					}
+				}
 
-							if (element.isStereotypeApplicable(stereotype)) {
-								EObject copy = copier
-									.copy(stereotypeApplication);
-								Resource eResource = stereotypeApplication
-									.eResource();
+				for (Iterator sa = element.getStereotypeApplications()
+					.iterator(); sa.hasNext();) {
 
-								if (eResource != null && eResource != copy.eResource()) {
-									EList contents = eResource.getContents();
+					EObject stereotypeApplication = (EObject) sa.next();
+					Stereotype stereotype = getStereotype(stereotypeApplication);
+
+					if (stereotype != null
+						&& stereotype.getProfile() == profile) {
+
+						if (element.isStereotypeApplicable(stereotype)) {
+							EObject copy = copier.copy(stereotypeApplication);
+							Resource eResource = stereotypeApplication
+								.eResource();
+
+							if (eResource != null) {
+								EList contents = eResource.getContents();
+
+								if (eResource == copy.eResource()) {
+									contents.move(contents
+										.indexOf(stereotypeApplication),
+										contents.indexOf(copy));
+								} else {
 									contents.set(contents
 										.indexOf(stereotypeApplication), copy);
 								}
 							}
-
-							stereotypeApplications.add(stereotypeApplication);
 						}
+
+						stereotypeApplications.add(stereotypeApplication);
 					}
 				}
 			}
-
-			copier.copyReferences();
-
-			destroyAll(stereotypeApplications);
 		}
+
+		copier.copyReferences();
+
+		destroyAll(stereotypeApplications);
 
 		EList requiredExtensions = profile.getOwnedExtensions(true);
 
@@ -417,20 +537,37 @@ public class PackageOperations
 	public static EList unapplyProfile(org.eclipse.uml2.uml.Package package_,
 			Profile profile) {
 
-		if (profile == null) {
+		if (profile == null || package_.getProfileApplication(profile) == null) {
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
-		ProfileApplication profileApplication = package_
-			.getProfileApplication(profile);
+		EList profileApplications = new UniqueEList.FastCompare();
 
-		if (profileApplication == null) {
-			throw new IllegalArgumentException(String.valueOf(profile));
+		for (Iterator allContents = getAllContents(package_, true, false); allContents
+			.hasNext();) {
+
+			Object object = allContents.next();
+
+			if (object instanceof org.eclipse.uml2.uml.Package) {
+
+				for (Iterator pa = ((org.eclipse.uml2.uml.Package) object)
+					.getProfileApplications().iterator(); pa.hasNext();) {
+
+					ProfileApplication profileApplication = (ProfileApplication) pa
+						.next();
+
+					if (profileApplication.getAppliedProfile() == profile) {
+						profileApplications.add(profileApplication);
+					}
+				}
+			}
 		}
 
-		profileApplication.destroy();
+		destroyAll(profileApplications);
 
-		return unapplyAllNonApplicableStereotypes(package_);
+		return package_.getAllAppliedProfiles().contains(profile)
+			? ECollections.EMPTY_ELIST
+			: unapplyAllNonApplicableStereotypes(package_);
 	}
 
 	protected static EList getAppliedProfiles(
@@ -539,6 +676,7 @@ public class PackageOperations
 
 		for (Iterator profileApplications = package_.getProfileApplications()
 			.iterator(); profileApplications.hasNext();) {
+
 			ProfileApplication profileApplication = (ProfileApplication) profileApplications
 				.next();
 
