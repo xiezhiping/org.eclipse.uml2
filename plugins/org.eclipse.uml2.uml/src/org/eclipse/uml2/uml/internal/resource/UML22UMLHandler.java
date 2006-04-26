@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLHandler.java,v 1.5 2006/04/20 16:35:57 khussey Exp $
+ * $Id: UML22UMLHandler.java,v 1.6 2006/04/26 15:48:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetadata;
+import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 
 public class UML22UMLHandler
 		extends UMLHandler {
@@ -37,8 +37,8 @@ public class UML22UMLHandler
 			String xsiType = getXSIType();
 
 			Map typeMap = xsiType == null
-				? UML22UMLExtendedMetadata.getFeatureToTypeMap()
-				: (Map) UML22UMLExtendedMetadata.getTypeToTypeMap()
+				? UML22UMLExtendedMetaData.getFeatureToTypeMap()
+				: (Map) UML22UMLExtendedMetaData.getTypeToTypeMap()
 					.get(xsiType);
 			typeMap = typeMap == null
 				? null

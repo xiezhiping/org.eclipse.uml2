@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.12 2006/04/25 21:01:44 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.13 2006/04/26 15:48:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -195,11 +195,11 @@ public class UML22UMLResourceHandler
 
 		if (internalEObject != null && internalEObject.eIsProxy()) {
 			URI eProxyURI = internalEObject.eProxyURI();
-			URI uri = (URI) UML22UMLExtendedMetadata.getURIMap().get(
+			URI uri = (URI) UML22UMLExtendedMetaData.getURIMap().get(
 				eProxyURI.trimFragment());
 
 			if (uri != null) {
-				String fragment = (String) UML22UMLExtendedMetadata
+				String fragment = (String) UML22UMLExtendedMetaData
 					.getFragmentMap().get(eProxyURI.fragment());
 
 				if (fragment != null) {
@@ -773,7 +773,7 @@ public class UML22UMLResourceHandler
 					URI eProxyURI = internalEObject.eProxyURI();
 
 					if (eProxyURI.toString().startsWith(
-						UML22UMLResource.UML2__PROFILES_PATHMAP)) {
+						UML22UMLResource.PROFILES_PATHMAP)) {
 
 						String segment0 = eProxyURI.segment(0);
 						profileName = segment0.substring(0, segment0

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetadata.java,v 1.10 2006/04/25 21:01:44 khussey Exp $
+ * $Id: UML22UMLExtendedMetaData.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.util.Ecore2XMLExtendedMetaData;
 import org.eclipse.uml2.uml.UMLPackage;
 
-public class UML22UMLExtendedMetadata
+public class UML22UMLExtendedMetaData
 		extends Ecore2XMLExtendedMetaData {
 
 	protected static Map uriMap = null;
@@ -31,17 +31,17 @@ public class UML22UMLExtendedMetadata
 		if (uriMap == null) {
 			uriMap = new HashMap();
 
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__ECORE_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__JAVA_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__UML2_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2_PRIMITIVE_TYPES_LIBRARY_URI), URI.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI));
 
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
 
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.UML2__ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
 		}
 
 		return uriMap;
@@ -2453,7 +2453,7 @@ public class UML22UMLExtendedMetadata
 		return featureToTypeMap;
 	}
 
-	public UML22UMLExtendedMetadata(EPackage.Registry ePackageRegistry,
+	public UML22UMLExtendedMetaData(EPackage.Registry ePackageRegistry,
 			Ecore2XMLRegistry ecore2xmlRegistry) {
 		super(ePackageRegistry, ecore2xmlRegistry);
 	}

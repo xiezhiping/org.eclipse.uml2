@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResource.java,v 1.2 2006/04/25 21:01:44 khussey Exp $
+ * $Id: UML22UMLResource.java,v 1.3 2006/04/26 15:48:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -24,29 +24,32 @@ public interface UML22UMLResource
 		public static final Factory INSTANCE = new UML22UMLResourceFactoryImpl();
 	}
 
-	String UML2__FILE_EXTENSION = "uml2"; //$NON-NLS-1$
+	String FILE_EXTENSION = "uml2"; //$NON-NLS-1$
 
-	String UML2__PROFILES_PATHMAP = "pathmap://UML2_PROFILES/"; //$NON-NLS-1$
+	String PROFILES_PATHMAP = "pathmap://UML2_PROFILES/"; //$NON-NLS-1$
 
-	String UML2__ECORE_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2"; //$NON-NLS-1$
+	String ECORE_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2"; //$NON-NLS-1$
 
-	String UML2__JAVA_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2"; //$NON-NLS-1$
+	String JAVA_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/JavaPrimitiveTypes.library.uml2"; //$NON-NLS-1$
 
-	String UML2__UML2_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2"; //$NON-NLS-1$
+	String UML2_PRIMITIVE_TYPES_LIBRARY_URI = "pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2"; //$NON-NLS-1$
 
-	String UML2__ECORE_METAMODEL_URI = "pathmap://UML2_METAMODELS/Ecore.metamodel.uml2"; //$NON-NLS-1$
+	String ECORE_METAMODEL_URI = "pathmap://UML2_METAMODELS/Ecore.metamodel.uml2"; //$NON-NLS-1$
 
-	String UML2__UML2_METAMODEL_URI = "pathmap://UML2_METAMODELS/UML2.metamodel.uml2"; //$NON-NLS-1$
+	String UML2_METAMODEL_NS_URI = "http://www.eclipse.org/uml2/1.0.0/UML"; //$NON-NLS-1$
 
-	String UML2__BASIC_PROFILE_URI = "pathmap://UML2_PROFILES/Basic.profile.uml2"; //$NON-NLS-1$
+	String UML2_METAMODEL_URI = "pathmap://UML2_METAMODELS/UML2.metamodel.uml2"; //$NON-NLS-1$
 
-	String UML2__INTERMEDIATE_PROFILE_URI = "pathmap://UML2_PROFILES/Intermediate.profile.uml2"; //$NON-NLS-1$
+	String BASIC_PROFILE_URI = "pathmap://UML2_PROFILES/Basic.profile.uml2"; //$NON-NLS-1$
 
-	String UML2__COMPLETE_PROFILE_URI = "pathmap://UML2_PROFILES/Complete.profile.uml2"; //$NON-NLS-1$
+	String INTERMEDIATE_PROFILE_URI = "pathmap://UML2_PROFILES/Intermediate.profile.uml2"; //$NON-NLS-1$
 
-	String UML2__ECORE_PROFILE_URI = "pathmap://UML2_PROFILES/Ecore.profile.uml2"; //$NON-NLS-1$
+	String COMPLETE_PROFILE_URI = "pathmap://UML2_PROFILES/Complete.profile.uml2"; //$NON-NLS-1$
 
-	String UML2_PROFILE_URI = PROFILES_PATHMAP + "UML2." //$NON-NLS-1$
-		+ PROFILE_FILE_EXTENSION;
+	String ECORE_PROFILE_URI = "pathmap://UML2_PROFILES/Ecore.profile.uml2"; //$NON-NLS-1$
+
+	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/0"; //$NON-NLS-1$
+
+	String UML2_PROFILE_URI = PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 }

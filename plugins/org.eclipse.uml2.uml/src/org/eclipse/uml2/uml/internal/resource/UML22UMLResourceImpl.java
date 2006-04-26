@@ -8,15 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLResourceImpl.java,v 1.1 2006/04/06 04:30:32 khussey Exp $
+ * $Id: UML22UMLResourceImpl.java,v 1.2 2006/04/26 15:48:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
+import org.eclipse.uml2.uml.resource.UML22UMLResource;
 
 public class UML22UMLResourceImpl
-		extends UMLResourceImpl {
+		extends UMLResourceImpl
+		implements UML22UMLResource {
 
 	public UML22UMLResourceImpl(URI uri) {
 		super(uri);

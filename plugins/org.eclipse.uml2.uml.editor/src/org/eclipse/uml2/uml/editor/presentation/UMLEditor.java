@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.13 2006/04/25 21:01:49 khussey Exp $
+ * $Id: UMLEditor.java,v 1.14 2006/04/26 15:48:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -172,9 +172,10 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 
-import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetadata;
+import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 /**
  * This is an example of a UML model editor.
@@ -795,10 +796,15 @@ public class UMLEditor
 	public void createModel() {
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-			.put(UML22UMLResource.UML2__FILE_EXTENSION,
-				UML22UMLResource.Factory.INSTANCE);
-		Map uriMap = UML22UMLExtendedMetadata.getURIMap();
+		Map extensionToFactoryMap = resourceSet.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap();
+
+		extensionToFactoryMap.put(UML22UMLResource.FILE_EXTENSION,
+			UML22UMLResource.Factory.INSTANCE);
+		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
+			XMI2UMLResource.Factory.INSTANCE);
+
+		Map uriMap = UML22UMLExtendedMetaData.getURIMap();
 		resourceSet.getURIConverter().getURIMap().putAll(uriMap);
 
 		createModelGen();
@@ -813,7 +819,7 @@ public class UMLEditor
 			URI newURI = (URI) uriMap.get(oldURI);
 
 			if (newURI == null
-				&& UML22UMLResource.UML2__FILE_EXTENSION.equals(oldURI
+				&& UML22UMLResource.FILE_EXTENSION.equals(oldURI
 					.fileExtension())) {
 
 				newURI = oldURI.trimFileExtension().appendFileExtension(
@@ -1422,23 +1428,28 @@ public class UMLEditor
 					.toString());
 
 				ResourceSet resourceSet = editingDomain.getResourceSet();
-				Resource resource = resourceSet.createResource(uri);
-				EList contents = resource.getContents();
 				EList resources = resourceSet.getResources();
+				Resource resource = (Resource) resources.get(0);
 
-				for (Iterator c = ((Resource) resources.get(0)).getContents()
-					.iterator(); c.hasNext();) {
+				if (!resource.getURI().fileExtension().equals(
+					uri.fileExtension())) {
 
-					Object object = c.next();
-					c.remove();
-					contents.add(object);
+					Resource newResource = resourceSet.createResource(uri);
+					EList newContents = newResource.getContents();
+
+					for (Iterator contents = resource.getContents().iterator(); contents
+						.hasNext();) {
+
+						Object object = contents.next();
+						contents.remove();
+						newContents.add(object);
+					}
+
+					resources.remove(0);
+					resources.move(0, newResource);
 				}
 
-				resources.remove(0);
-				resources.move(0, resource);
-
-				doSaveAs(URI.createPlatformResourceURI(file.getFullPath()
-					.toString()), new FileEditorInput(file));
+				doSaveAs(uri, new FileEditorInput(file));
 			}
 		}
 	}
