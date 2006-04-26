@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLHandler.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.2 2006/04/26 17:22:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -76,14 +76,12 @@ public class XMI2UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))) {
+			&& XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
+			&& attribs != null
+			&& EcorePackage.eNS_URI.equals(attribs
+				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
 
-			if (attribs != null
-				&& EcorePackage.eNS_URI.equals(attribs
-					.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
-
-				types.push(ECORE_EXTENSION_TYPE);
-			}
+			types.push(ECORE_EXTENSION_TYPE);
 		} else {
 			super.processElement(name, prefix, localName);
 		}
