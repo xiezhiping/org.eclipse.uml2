@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinItemProvider.java,v 1.5 2006/04/19 20:36:06 khussey Exp $
+ * $Id: PinItemProvider.java,v 1.6 2006/04/27 14:38:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -269,7 +269,7 @@ public class PinItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_InputPin_type"), object).toString(); //$NON-NLS-1$
+				"_UI_Pin_type"), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
