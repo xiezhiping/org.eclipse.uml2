@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.13 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.14 2006/04/28 20:00:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -535,8 +535,8 @@ public class UML22UMLResourceHandler
 
 				AnyType extension = getExtension(resource, extensionEnd);
 
-				if (extension != null
-					&& getValue(extension.getMixed(), "lowerValue") == null) { //$NON-NLS-1$
+				if (extension == null
+					|| getValue(extension.getMixed(), "lowerValue") == null) { //$NON-NLS-1$
 
 					extensionEnd.setLower(1);
 				}
