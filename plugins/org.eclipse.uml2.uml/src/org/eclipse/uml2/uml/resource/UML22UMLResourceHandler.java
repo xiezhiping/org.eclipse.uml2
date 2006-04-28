@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.14 2006/04/28 20:00:11 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.15 2006/04/28 20:21:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1302,7 +1302,5 @@ public class UML22UMLResourceHandler
 		for (Iterator atr = annotationsToRemove.iterator(); atr.hasNext();) {
 			((EAnnotation) atr.next()).setEModelElement(null);
 		}
-
-		EcoreUtil.resolveAll(resource);
 	}
 }
