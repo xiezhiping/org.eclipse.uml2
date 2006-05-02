@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.28 2006/04/10 19:15:59 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.29 2006/05/02 22:05:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,16 +20,13 @@ import java.util.Map;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;
 import org.eclipse.uml2.codegen.ecore.Generator;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClass;
-import org.eclipse.uml2.codegen.ecore.genmodel.GenModel;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
@@ -69,40 +66,6 @@ public class GenClassImpl
 	 */
 	protected EClass eStaticClass() {
 		return GenModelPackage.Literals.GEN_CLASS;
-	}
-
-	public void generate(Monitor progressMonitor) {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75925
-
-		try {
-
-			if (!canGenerate()) {
-				return;
-			}
-
-			if (UML2GenModelUtil.isOperationsClasses(getGenPackage())
-				&& !getDuplicateGenOperations().isEmpty()) {
-
-				progressMonitor.beginTask("", 1); //$NON-NLS-1$
-
-				if (!isInterface()) {
-					progressMonitor.subTask(CodeGenEcorePlugin.INSTANCE
-						.getString("_UI_GeneratingJavaClass_message", //$NON-NLS-1$
-							new Object[]{getQualifiedOperationsClassName()}));
-					generate(createMonitor(progressMonitor, 1),
-						Generator.EMF_MODEL_PROJECT_STYLE, getGenModel()
-							.getEffectiveModelPluginVariables(), getGenModel()
-							.getModelDirectory(), UML2GenModelUtil
-							.getOperationsPackageName(getGenPackage()),
-						getOperationsClassName(), ((GenModel) getGenModel())
-							.getOperationsClassEmitter());
-				}
-			}
-
-			super.generate(progressMonitor);
-		} finally {
-			progressMonitor.done();
-		}
 	}
 
 	protected List duplicateGenFeatures = null;
@@ -590,14 +553,16 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
 					sb.append("_ESUPERSETS"); //$NON-NLS-1$
 				}
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
@@ -621,14 +586,16 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
 					sb.append("_ESUPERSETS"); //$NON-NLS-1$
 				}
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
@@ -659,14 +626,16 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
 					sb.append("_ESUPERSETS"); //$NON-NLS-1$
 				}
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
@@ -694,14 +663,16 @@ public class GenClassImpl
 				sb.append(".class, this, "); //$NON-NLS-1$
 				sb.append(getQualifiedFeatureID(genFeature));
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSupersetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
 					sb.append("_ESUPERSETS"); //$NON-NLS-1$
 				}
 				sb.append(", "); //$NON-NLS-1$
-				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, false).isEmpty()) {
+				if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature,
+					false).isEmpty()) {
 					sb.append("null"); //$NON-NLS-1$
 				} else {
 					sb.append(genFeature.getUpperName());
@@ -730,7 +701,8 @@ public class GenClassImpl
 			sb.append(".class, this, "); //$NON-NLS-1$
 			sb.append(getQualifiedFeatureID(genFeature));
 			sb.append(", "); //$NON-NLS-1$
-			if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, true).isEmpty()) {
+			if (UML2GenModelUtil.getSubsetGenFeatures(this, genFeature, true)
+				.isEmpty()) {
 				sb.append("null"); //$NON-NLS-1$
 			} else {
 				sb.append(genFeature.getUpperName());

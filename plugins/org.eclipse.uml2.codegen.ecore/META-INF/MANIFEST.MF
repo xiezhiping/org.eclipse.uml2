@@ -9,6 +9,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.uml2.codegen.ecore,
  org.eclipse.uml2.codegen.ecore.genmodel,
+ org.eclipse.uml2.codegen.ecore.genmodel.generator,
  org.eclipse.uml2.codegen.ecore.genmodel.impl;x-internal:=true,
  org.eclipse.uml2.codegen.ecore.genmodel.util,
  org.eclipse.uml2.codegen.ecore.templates.edit,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,20 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.11 2005/12/12 21:43:54 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.12 2006/05/02 22:05:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.Monitor;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;
-import org.eclipse.uml2.codegen.ecore.Generator;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenPackage;
@@ -315,39 +311,6 @@ public class GenPackageImpl
 				return true;
 			default :
 				return false;
-		}
-	}
-
-	public void generate(Monitor progressMonitor) {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75925
-
-		try {
-
-			if (!canGenerate()) {
-				return;
-			}
-
-			if (GenResourceKind.NONE_LITERAL != getResource()
-				&& isResourceInterfaces()) {
-				progressMonitor.beginTask("", 1); //$NON-NLS-1$
-
-				progressMonitor.subTask(CodeGenEcorePlugin.INSTANCE.getString(
-					"_UI_GeneratingJavaClass_message", //$NON-NLS-1$
-					new Object[]{getQualifiedResourceInterfaceName()}));
-				generate(
-					createMonitor(progressMonitor, 1),
-					Generator.EMF_MODEL_PROJECT_STYLE,
-					getGenModel().getEffectiveModelPluginVariables(),
-					getGenModel().getModelDirectory(),
-					getUtilitiesPackageName(),
-					getResourceInterfaceName(),
-					((org.eclipse.uml2.codegen.ecore.genmodel.GenModel) getGenModel())
-						.getResourceInterfaceEmitter());
-			}
-
-			super.generate(progressMonitor);
-		} finally {
-			progressMonitor.done();
 		}
 	}
 

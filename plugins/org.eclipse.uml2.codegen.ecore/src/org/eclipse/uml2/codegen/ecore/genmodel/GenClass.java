@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.13 2006/04/10 19:15:59 khussey Exp $
+ * $Id: GenClass.java,v 1.14 2006/05/02 22:05:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -107,7 +107,8 @@ public interface GenClass
 
 	String getSubsetFeatureIDArray(GenFeature supersetGenFeature);
 
-	String getSubsetFeatureIDArray(GenFeature supersetGenFeature, boolean includeDerived);
+	String getSubsetFeatureIDArray(GenFeature supersetGenFeature,
+			boolean includeDerived);
 
 	boolean isRedefined(GenFeature genFeature);
 

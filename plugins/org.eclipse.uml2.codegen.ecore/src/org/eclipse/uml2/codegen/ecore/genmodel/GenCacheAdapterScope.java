@@ -1,8 +1,14 @@
-/**
- * <copyright>
- * </copyright>
+/*
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- * $Id: GenCacheAdapterScope.java,v 1.3 2005/11/14 16:54:12 khussey Exp $
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: GenCacheAdapterScope.java,v 1.4 2006/05/02 22:05:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -85,7 +91,7 @@ public final class GenCacheAdapterScope
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope NONE_LITERAL = new GenCacheAdapterScope(
-		NONE, "None", "None"); //$NON-NLS-1$
+		NONE, "None", "None"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Global</b></em>' literal object.
@@ -96,7 +102,7 @@ public final class GenCacheAdapterScope
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope GLOBAL_LITERAL = new GenCacheAdapterScope(
-		GLOBAL, "Global", "Global"); //$NON-NLS-1$
+		GLOBAL, "Global", "Global"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Resource</b></em>' literal object.
@@ -107,7 +113,7 @@ public final class GenCacheAdapterScope
 	 * @ordered
 	 */
 	public static final GenCacheAdapterScope RESOURCE_LITERAL = new GenCacheAdapterScope(
-		RESOURCE, "Resource", "Resource"); //$NON-NLS-1$
+		RESOURCE, "Resource", "Resource"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * An array of all the '<em><b>Gen Cache Adapter Scope</b></em>' enumerators.

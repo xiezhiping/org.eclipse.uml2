@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.11 2005/12/12 21:43:55 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.12 2006/05/02 22:05:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -21,18 +21,17 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenParameter;
-import org.eclipse.emf.codegen.jet.JETEmitter;
-import org.eclipse.emf.codegen.jet.JETException;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin;
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModel;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
+
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
 /**
@@ -476,28 +475,6 @@ public class GenModelImpl
 		return GenModelFactory.eINSTANCE.createGenParameter();
 	}
 
-	protected String[] getTemplatePath() {
-
-		if (null == templatePath) {
-			String[] superTemplatePath = super.getTemplatePath();
-			templatePath = new String[3];
-			System.arraycopy(superTemplatePath, 0, templatePath, 0, 2);
-			templatePath[2] = templatePath[1];
-			templatePath[1] = CodeGenEcorePlugin.INSTANCE.getBaseURL()
-				.toString()
-				+ "templates"; //$NON-NLS-1$
-		}
-		return templatePath;
-	}
-
-	protected void addClasspathEntries(JETEmitter jetEmitter)
-			throws JETException {
-		super.addClasspathEntries(jetEmitter);
-
-		jetEmitter.addVariable("UML2_CODEGEN_ECORE", //$NON-NLS-1$
-			"org.eclipse.uml2.codegen.ecore"); //$NON-NLS-1$
-	}
-
 	public List getEditRequiredPlugins() {
 		List result = super.getEditRequiredPlugins();
 		result.add("org.eclipse.uml2.common.edit"); //$NON-NLS-1$
@@ -508,74 +485,6 @@ public class GenModelImpl
 		List result = super.getModelRequiredPlugins();
 		result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
 		return result;
-	}
-
-	public JETEmitter getClassEmitter() {
-		if (classEmitter == null) {
-			classEmitter = createJETEmitter(classTemplateName);
-			setMethod(classEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.Class"); //$NON-NLS-1$
-		}
-		return classEmitter;
-	}
-
-	public JETEmitter getResourceFactoryClassEmitter() {
-		if (resourceFactoryClassEmitter == null) {
-			resourceFactoryClassEmitter = createJETEmitter(resourceFactoryTemplateName);
-			setMethod(resourceFactoryClassEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.ResourceFactoryClass"); //$NON-NLS-1$
-		}
-		return resourceFactoryClassEmitter;
-	}
-
-	public JETEmitter getItemProviderEmitter() {
-		if (itemProviderEmitter == null) {
-			itemProviderEmitter = createJETEmitter(itemProviderTemplateName);
-			setMethod(itemProviderEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.edit.ItemProvider"); //$NON-NLS-1$
-		}
-		return itemProviderEmitter;
-	}
-
-	public JETEmitter getTestCaseEmitter() {
-		if (testCaseEmitter == null) {
-			testCaseEmitter = createJETEmitter(testCaseTemplateName);
-			setMethod(testCaseEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.tests.TestCase"); //$NON-NLS-1$
-		}
-		return testCaseEmitter;
-	}
-
-	protected String resourceInterfaceTemplateName = "model/ResourceInterface.javajet"; //$NON-NLS-1$
-
-	protected JETEmitter resourceInterfaceEmitter = null;
-
-	public JETEmitter getResourceInterfaceEmitter() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75925
-
-		if (resourceInterfaceEmitter == null) {
-			resourceInterfaceEmitter = createJETEmitter(resourceInterfaceTemplateName);
-			setMethod(resourceInterfaceEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.ResourceInterface"); //$NON-NLS-1$
-		}
-
-		return resourceInterfaceEmitter;
-	}
-
-	protected String operationsClassTemplateName = "model/OperationsClass.javajet"; //$NON-NLS-1$
-
-	protected JETEmitter operationsClassEmitter = null;
-
-	public JETEmitter getOperationsClassEmitter() {
-		// TODO https://bugs.eclipse.org/bugs/show_bug.cgi?id=75925
-
-		if (operationsClassEmitter == null) {
-			operationsClassEmitter = createJETEmitter(operationsClassTemplateName);
-			setMethod(operationsClassEmitter,
-				"org.eclipse.uml2.codegen.ecore.templates.model.OperationsClass"); //$NON-NLS-1$
-		}
-
-		return operationsClassEmitter;
 	}
 
 	protected void reconcileSettings(
