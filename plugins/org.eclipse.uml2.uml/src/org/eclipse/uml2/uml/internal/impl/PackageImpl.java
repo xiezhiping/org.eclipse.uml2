@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.27 2006/04/10 19:16:20 khussey Exp $
+ * $Id: PackageImpl.java,v 1.28 2006/05/02 21:51:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -729,8 +729,9 @@ public class PackageImpl
 			if (ownedTypes == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.PACKAGE__OWNED_TYPE,
-					ownedTypes = new DerivedSubsetEObjectEList(Type.class, this,
-						UMLPackage.PACKAGE__OWNED_TYPE, OWNED_TYPE_ESUPERSETS));
+					ownedTypes = new DerivedSubsetEObjectEList(Type.class,
+						this, UMLPackage.PACKAGE__OWNED_TYPE,
+						OWNED_TYPE_ESUPERSETS));
 			}
 			return ownedTypes;
 		}

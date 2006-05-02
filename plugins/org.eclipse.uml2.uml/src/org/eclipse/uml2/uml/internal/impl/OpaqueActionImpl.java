@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.16 2006/05/02 21:51:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,7 +180,8 @@ public class OpaqueActionImpl
 	 * @generated
 	 */
 	public void unsetBodies() {
-		((InternalEList.Unsettable) getBodies()).unset();
+		if (bodies != null)
+			((InternalEList.Unsettable) bodies).unset();
 	}
 
 	/**
@@ -211,7 +212,8 @@ public class OpaqueActionImpl
 	 * @generated
 	 */
 	public void unsetLanguages() {
-		((InternalEList.Unsettable) getLanguages()).unset();
+		if (languages != null)
+			((InternalEList.Unsettable) languages).unset();
 	}
 
 	/**

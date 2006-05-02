@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.24 2006/04/25 21:27:00 khussey Exp $
+ * $Id: PackageOperations.java,v 1.25 2006/05/02 21:51:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -893,7 +893,7 @@ public class PackageOperations
 	public static boolean mustBeOwned(org.eclipse.uml2.uml.Package package_) {
 		return false;
 	}
-	
+
 	protected static boolean containsSpecializations(
 			org.eclipse.uml2.uml.Package package_, Classifier classifier) {
 

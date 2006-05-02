@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.21 2006/04/10 19:16:19 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.22 2006/05/02 21:51:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,8 +112,8 @@ public abstract class EncapsulatedClassifierImpl
 			if (ownedPorts == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
-					ownedPorts = new DerivedSubsetEObjectEList(Port.class, this,
-						UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
+					ownedPorts = new DerivedSubsetEObjectEList(Port.class,
+						this, UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 						OWNED_PORT_ESUPERSETS));
 			}
 			return ownedPorts;

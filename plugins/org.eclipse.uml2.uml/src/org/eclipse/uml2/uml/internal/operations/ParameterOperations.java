@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.16 2006/04/05 19:26:35 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.17 2006/05/02 21:51:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -348,7 +348,7 @@ public class ParameterOperations
 				UMLPackage.Literals.LITERAL_NULL);
 		}
 	}
-	
+
 	protected static boolean matches(Parameter parameter,
 			Parameter otherParameter) {
 		Type type = parameter.getType();
