@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.7 2006/04/04 18:06:50 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.8 2006/05/02 20:18:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -78,47 +79,45 @@ public class ConnectorOperations
 	 */
 	public static boolean validateTypes(Connector connector,
 			DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
 		Association connectorType = connector.getType();
 
 		if (connectorType != null) {
-			EList ends = connector.getEnds();
+			Iterator ends = connector.getEnds().iterator();
+			Iterator memberEnds = connectorType.getMemberEnds().iterator();
 
-			if (ends.size() == 2) {
-				ConnectorEnd fromEnd = (ConnectorEnd) ends.get(0);
-				ConnectableElement fromRole = fromEnd.getRole();
-				Type fromType = fromRole == null
+			while (ends.hasNext() && memberEnds.hasNext()) {
+				ConnectableElement role = ((ConnectorEnd) ends.next())
+					.getRole();
+				Type type = role == null
 					? null
-					: fromRole.getType();
+					: role.getType();
 
-				ConnectorEnd toEnd = (ConnectorEnd) ends.get(1);
-				ConnectableElement toRole = toEnd.getRole();
-				Type toType = toRole == null
-					? null
-					: toRole.getType();
+				Type memberEndType = ((Property) memberEnds.next()).getType();
 
-				EList endTypes = connectorType.getEndTypes();
+				if (type == null
+					? memberEndType != null
+					: !type.conformsTo(memberEndType)) {
 
-				if ((fromType != null && !TypeOperations.conformsToAny(
-					fromType, endTypes))
-					|| (toType != null && !TypeOperations.conformsToAny(toType,
-						endTypes))) {
-
-					if (diagnostics != null) {
-						diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-							UMLValidator.DIAGNOSTIC_SOURCE,
-							UMLValidator.CONNECTOR__TYPES,
-							UMLPlugin.INSTANCE.getString(
-								"_UI_Connector_Types_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, connector)),
-							new Object[]{connector}));
-					}
-
-					return false;
+					result = false;
+					break;
 				}
+			}
+
+			if (ends.hasNext() || memberEnds.hasNext()) {
+				result = false;
 			}
 		}
 
-		return true;
+		if (!result && diagnostics != null) {
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE, UMLValidator.CONNECTOR__TYPES,
+				UMLPlugin.INSTANCE.getString("_UI_Connector_Types_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, connector)),
+				new Object[]{connector}));
+		}
+
+		return result;
 	}
 
 	/**

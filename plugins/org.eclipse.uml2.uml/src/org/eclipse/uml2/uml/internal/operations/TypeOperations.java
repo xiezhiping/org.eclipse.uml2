@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.13 2006/03/28 18:26:14 khussey Exp $
+ * $Id: TypeOperations.java,v 1.14 2006/05/02 20:18:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -283,18 +283,6 @@ public class TypeOperations
 	 * @generated NOT
 	 */
 	public static boolean conformsTo(Type type, Type other) {
-		return false;
-	}
-
-	protected static boolean conformsToAny(Type type, EList types) {
-
-		for (Iterator t = types.iterator(); t.hasNext();) {
-
-			if (type.conformsTo((Type) t.next())) {
-				return true;
-			}
-		}
-
 		return false;
 	}
 
