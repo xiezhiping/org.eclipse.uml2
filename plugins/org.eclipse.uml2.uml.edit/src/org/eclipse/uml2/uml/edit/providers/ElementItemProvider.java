@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.11 2006/04/25 21:01:39 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.12 2006/05/02 22:00:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -530,7 +530,6 @@ public class ElementItemProvider
 		return getString("_UI_Unknown_type"); //$NON-NLS-1$
 	}
 
-	
 	protected String getFeatureText(Object feature) {
 		String featureKey = "Unknown";
 
