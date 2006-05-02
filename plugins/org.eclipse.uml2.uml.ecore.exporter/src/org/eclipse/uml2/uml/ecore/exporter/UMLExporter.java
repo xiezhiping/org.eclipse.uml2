@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.5 2006/04/13 16:46:49 khussey Exp $
+ * $Id: UMLExporter.java,v 1.6 2006/05/02 21:42:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -64,7 +64,7 @@ public class UMLExporter
 
 		if (!location.endsWith('.' + UMLResource.FILE_EXTENSION)) {
 			return UMLExporterPlugin.INSTANCE
-				.getString("_UI_InvalidArtifactFileNameExtension_message");
+				.getString("_UI_InvalidArtifactFileNameExtension_message"); //$NON-NLS-1$
 		}
 
 		return super.doCheckEPackageArtifactLocation(location, packageName);

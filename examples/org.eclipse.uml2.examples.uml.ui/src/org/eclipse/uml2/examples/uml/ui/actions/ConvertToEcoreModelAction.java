@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToEcoreModelAction.java,v 1.1 2006/04/24 02:05:38 khussey Exp $
+ * $Id: ConvertToEcoreModelAction.java,v 1.2 2006/05/02 21:42:28 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -53,6 +54,10 @@ public class ConvertToEcoreModelAction
 
 	public ConvertToEcoreModelAction() {
 		super();
+	}
+
+	protected String getMarkerID() {
+		return EValidator.MARKER;
 	}
 
 	protected Command createActionCommand(EditingDomain editingDomain,

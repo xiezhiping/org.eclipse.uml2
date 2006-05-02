@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.7 2006/04/26 15:48:55 khussey Exp $
+ $Id: plugin.xml,v 1.8 2006/05/02 21:42:26 khussey Exp $
 -->
 
 <plugin>
@@ -208,6 +208,10 @@
         </enablement>
       </action>
     </editorContribution>
+  </extension>
+
+  <extension id="diagnostic" name="%_UI_UMLEditorDiagnostic_marker" point="org.eclipse.core.resources.markers">
+    <super type="org.eclipse.emf.ecore.diagnostic" />
   </extension>
 
 </plugin>

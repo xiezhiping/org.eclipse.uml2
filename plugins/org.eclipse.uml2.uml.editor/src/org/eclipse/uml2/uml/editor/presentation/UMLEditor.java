@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.15 2006/04/28 20:21:14 khussey Exp $
+ * $Id: UMLEditor.java,v 1.16 2006/05/02 21:42:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1477,11 +1477,11 @@ public class UMLEditor
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void gotoMarker(IMarker marker) {
 		try {
-			if (marker.getType().equals(EValidator.MARKER)) {
+			if (marker.isSubtypeOf((EValidator.MARKER))) {
 				String uriAttribute = marker.getAttribute(
 					EValidator.URI_ATTRIBUTE, null);
 				if (uriAttribute != null) {

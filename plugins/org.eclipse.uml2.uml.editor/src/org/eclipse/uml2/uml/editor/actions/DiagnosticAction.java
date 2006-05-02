@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DiagnosticAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: DiagnosticAction.java,v 1.2 2006/05/02 21:42:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -18,45 +18,38 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
-import org.eclipse.emf.edit.ui.action.ValidateAction.EclipseResourcesUtil;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ISetSelectionTarget;
-import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
-import org.osgi.framework.Bundle;
 
 public class DiagnosticAction
 		extends UMLCommandAction {
 
-	protected final Bundle resourcesBundle = Platform
-		.getBundle("org.eclipse.core.resources"); //$NON-NLS-1$
+	protected ValidateAction.EclipseResourcesUtil eclipseResourcesUtil = Platform
+		.getBundle("org.eclipse.core.resources") != null //$NON-NLS-1$
+		? new ValidateAction.EclipseResourcesUtil() {
 
-	protected final ValidateAction.EclipseResourcesUtil eclipseResourcesUtil = resourcesBundle == null
-		? null
-		: new EclipseResourcesUtil();
+			protected String getMarkerID() {
+				return DiagnosticAction.this.getMarkerID();
+			}
+		}
+		: null;
 
 	protected final EValidator.SubstitutionLabelProvider substitutionLabelProvider = new EValidator.SubstitutionLabelProvider() {
 
@@ -85,10 +78,12 @@ public class DiagnosticAction
 		}
 	};
 
-	protected final Map resourceToFileMap = new HashMap();
-
 	protected DiagnosticAction() {
 		super();
+	}
+
+	protected String getMarkerID() {
+		return "org.eclipse.uml2.uml.editor.diagnostic"; //$NON-NLS-1$
 	}
 
 	protected void handleDiagnostic(Diagnostic diagnostic, String dialogTitle) {
@@ -116,27 +111,23 @@ public class DiagnosticAction
 					BasicDiagnostic.toIStatus(diagnostic));
 		}
 
-		if (resourcesBundle != null) {
-			Map fileToDiagnosticMap = new HashMap();
+		if (eclipseResourcesUtil != null) {
+			Map resourceToDiagnosticMap = new HashMap();
 
 			for (Iterator children = diagnostic.getChildren().iterator(); children
 				.hasNext();) {
 
 				Diagnostic child = (Diagnostic) children.next();
-				IFile file = getFile(child);
+				Resource resource = getResource(child);
 
-				if (file != null) {
-					List diagnostics = (List) fileToDiagnosticMap.get(file);
+				if (resource != null) {
+					List diagnostics = (List) resourceToDiagnosticMap
+						.get(resource);
 
 					if (diagnostics == null) {
-						try {
-							file.deleteMarkers(EValidator.MARKER, true,
-								IResource.DEPTH_ZERO);
-						} catch (CoreException ce) {
-							UMLEditorPlugin.INSTANCE.log(ce);
-						}
+						eclipseResourcesUtil.deleteMarkers(resource);
 
-						fileToDiagnosticMap.put(file,
+						resourceToDiagnosticMap.put(resource,
 							diagnostics = new ArrayList());
 					}
 
@@ -146,16 +137,17 @@ public class DiagnosticAction
 
 			if (diagnostic.getSeverity() > Diagnostic.INFO) {
 
-				for (Iterator entries = fileToDiagnosticMap.entrySet()
+				for (Iterator entries = resourceToDiagnosticMap.entrySet()
 					.iterator(); entries.hasNext();) {
 
 					Map.Entry entry = (Map.Entry) entries.next();
-					IFile file = (IFile) entry.getKey();
+					Resource resource = (Resource) entry.getKey();
 
 					for (Iterator diagnostics = ((List) entry.getValue())
 						.iterator(); diagnostics.hasNext();) {
 
-						createMarkers(file, (Diagnostic) diagnostics.next());
+						eclipseResourcesUtil.createMarkers(resource,
+							(Diagnostic) diagnostics.next());
 					}
 				}
 
@@ -199,50 +191,6 @@ public class DiagnosticAction
 		}
 
 		return (Resource) editingDomain.getResourceSet().getResources().get(0);
-	}
-
-	protected void createMarkers(IFile file, Diagnostic diagnostic) {
-
-		if (diagnostic.getSeverity() > Diagnostic.INFO) {
-			eclipseResourcesUtil.createMarkers(file, diagnostic);
-		}
-	}
-
-	protected IFile getFile(Diagnostic diagnostic) {
-		Resource resource = getResource(diagnostic);
-
-		if (resource != null) {
-			IFile file = (IFile) resourceToFileMap.get(resource);
-
-			if (file == null) {
-				ResourceSet resourceSet = resource.getResourceSet();
-
-				if (resourceSet != null) {
-					URI uri = resourceSet.getURIConverter().normalize(
-						resource.getURI());
-
-					if (UML2Util.URI_SCHEME_PLATFORM.equals(uri.scheme())
-						&& uri.segmentCount() > 1
-						&& UML2Util.URI_SEGMENT_RESOURCE.equals(uri.segment(0))) {
-
-						StringBuffer platformResourcePath = new StringBuffer();
-
-						for (int i = 1, size = uri.segmentCount(); i < size; i++) {
-							platformResourcePath.append('/');
-							platformResourcePath.append(uri.segment(i));
-						}
-
-						resourceToFileMap.put(resource, file = ResourcesPlugin
-							.getWorkspace().getRoot().getFile(
-								new Path(platformResourcePath.toString())));
-					}
-				}
-			}
-
-			return file;
-		}
-
-		return null;
 	}
 
 }

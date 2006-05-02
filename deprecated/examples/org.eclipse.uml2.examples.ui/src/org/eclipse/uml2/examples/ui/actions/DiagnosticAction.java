@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DiagnosticAction.java,v 1.5 2005/06/02 14:29:46 khussey Exp $
+ * $Id: DiagnosticAction.java,v 1.6 2006/05/02 21:42:23 khussey Exp $
  */
 package org.eclipse.uml2.examples.ui.actions;
 
@@ -18,25 +18,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
-import org.eclipse.emf.edit.ui.action.ValidateAction.EclipseResourcesUtil;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -45,7 +37,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.eclipse.uml2.examples.ui.ExamplesUIPlugin;
 import org.eclipse.uml2.util.UML2Util;
-import org.osgi.framework.Bundle;
 
 /**
  * 
@@ -53,16 +44,10 @@ import org.osgi.framework.Bundle;
 public class DiagnosticAction
 		extends UML2CommandAction {
 
-	protected static final String URI_SCHEME_PLATFORM = "platform"; //$NON-NLS-1$
-
-	protected static final String URI_SEGMENT_RESOURCE = "resource"; //$NON-NLS-1$
-
-	protected final Bundle resourcesBundle = Platform
-		.getBundle("org.eclipse.core.resources"); //$NON-NLS-1$
-
-	protected final ValidateAction.EclipseResourcesUtil eclipseResourcesUtil = null == resourcesBundle
-		? null
-		: new EclipseResourcesUtil();
+	protected ValidateAction.EclipseResourcesUtil eclipseResourcesUtil = Platform
+		.getBundle("org.eclipse.core.resources") != null //$NON-NLS-1$
+		? new ValidateAction.EclipseResourcesUtil()
+		: null;
 
 	protected final EValidator.SubstitutionLabelProvider substitutionLabelProvider = new EValidator.SubstitutionLabelProvider() {
 
@@ -122,27 +107,23 @@ public class DiagnosticAction
 					BasicDiagnostic.toIStatus(diagnostic));
 		}
 
-		if (null != resourcesBundle) {
-			Map fileToDiagnosticMap = new HashMap();
+		if (null != eclipseResourcesUtil) {
+			Map resourceToDiagnosticMap = new HashMap();
 
 			for (Iterator children = diagnostic.getChildren().iterator(); children
 				.hasNext();) {
 
 				Diagnostic child = (Diagnostic) children.next();
-				IFile file = getFile(child);
+				Resource resource = getResource(child);
 
-				if (null != file) {
-					List diagnostics = (List) fileToDiagnosticMap.get(file);
+				if (null != resource) {
+					List diagnostics = (List) resourceToDiagnosticMap
+						.get(resource);
 
 					if (null == diagnostics) {
-						try {
-							file.deleteMarkers(EValidator.MARKER, true,
-								IResource.DEPTH_ZERO);
-						} catch (CoreException exception) {
-							ExamplesUIPlugin.INSTANCE.log(exception);
-						}
+						eclipseResourcesUtil.deleteMarkers(resource);
 
-						fileToDiagnosticMap.put(file,
+						resourceToDiagnosticMap.put(resource,
 							diagnostics = new ArrayList());
 					}
 
@@ -152,16 +133,17 @@ public class DiagnosticAction
 
 			if (Diagnostic.INFO < diagnostic.getSeverity()) {
 
-				for (Iterator entries = fileToDiagnosticMap.entrySet()
+				for (Iterator entries = resourceToDiagnosticMap.entrySet()
 					.iterator(); entries.hasNext();) {
 
 					Map.Entry entry = (Map.Entry) entries.next();
-					IFile file = (IFile) entry.getKey();
+					Resource resource = (Resource) entry.getKey();
 
 					for (Iterator diagnostics = ((List) entry.getValue())
 						.iterator(); diagnostics.hasNext();) {
 
-						createMarkers(file, (Diagnostic) diagnostics.next());
+						eclipseResourcesUtil.createMarkers(resource,
+							(Diagnostic) diagnostics.next());
 					}
 				}
 
@@ -194,52 +176,15 @@ public class DiagnosticAction
 	protected Resource getResource(Diagnostic diagnostic) {
 		List data = diagnostic.getData();
 
-		return !data.isEmpty() && data.get(0) instanceof EObject
-			? ((EObject) data.get(0)).eResource()
-			: (Resource) editingDomain.getResourceSet().getResources().get(0);
-	}
+		if (!data.isEmpty()) {
+			Object datum = data.get(0);
 
-	protected void createMarkers(IFile file, Diagnostic diagnostic) {
-
-		if (Diagnostic.INFO < diagnostic.getSeverity()) {
-			eclipseResourcesUtil.createMarkers(file, diagnostic);
-		}
-	}
-
-	protected IFile getFile(Diagnostic diagnostic) {
-		Resource resource = getResource(diagnostic);
-
-		if (null != resource) {
-			IFile file = (IFile) resourceToFileMap.get(resource);
-
-			if (null == file) {
-				ResourceSet resourceSet = resource.getResourceSet();
-
-				if (null != resourceSet) {
-					URI uri = resourceSet.getURIConverter().normalize(
-						resource.getURI());
-
-					if (URI_SCHEME_PLATFORM.equals(uri.scheme())
-						&& uri.segmentCount() > 1
-						&& URI_SEGMENT_RESOURCE.equals(uri.segment(0))) {
-
-						StringBuffer platformResourcePath = new StringBuffer();
-
-						for (int i = 1, size = uri.segmentCount(); i < size; i++) {
-							platformResourcePath.append('/');
-							platformResourcePath.append(uri.segment(i));
-						}
-
-						resourceToFileMap.put(resource, file = ResourcesPlugin
-							.getWorkspace().getRoot().getFile(
-								new Path(platformResourcePath.toString())));
-					}
-				}
+			if (datum instanceof EObject) {
+				return ((EObject) datum).eResource();
 			}
-
-			return file;
 		}
 
-		return null;
+		return (Resource) editingDomain.getResourceSet().getResources().get(0);
 	}
+
 }
