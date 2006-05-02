@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.12 2006/02/22 20:48:22 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.13 2006/05/02 14:55:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -157,7 +157,7 @@ public class StereotypeOperations
 		}
 
 		if (metaclass == null || !metaclass.isMetaclass()
-			|| stereotype.getAllExtendedMetaclasses().contains(metaclass)) {
+			|| stereotype.getExtendedMetaclasses().contains(metaclass)) {
 
 			throw new IllegalArgumentException(String.valueOf(metaclass));
 		}

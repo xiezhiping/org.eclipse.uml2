@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.24 2006/04/25 20:58:39 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.25 2006/05/02 14:55:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -211,6 +211,8 @@ public class ProfileOperations
 
 		public static EPackage convert(Profile profile) {
 			Map options = new HashMap();
+			options.put(OPTION__DUPLICATE_FEATURE_INHERITANCE, OPTION__PROCESS);
+			options.put(OPTION__DUPLICATE_FEATURES, OPTION__PROCESS);
 			options.put(OPTION__ECORE_TAGGED_VALUES, OPTION__PROCESS);
 
 			Collection ePackages = new Profile2EPackageConverter().convert(
