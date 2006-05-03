@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.37 2006/04/05 13:50:02 khussey Exp $
+ * $Id: ElementOperations.java,v 1.38 2006/05/03 19:44:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1146,20 +1146,23 @@ public class ElementOperations
 	protected static EList applyAllStereotypes(Element element,
 			EList extensions, EList stereotypeApplications) {
 
-		for (Iterator e = extensions.iterator(); e.hasNext();) {
-			Extension extension = (Extension) e.next();
-			org.eclipse.uml2.uml.Class metaclass = extension.getMetaclass();
+		if (!element.eIsProxy()) {
 
-			if (metaclass != null) {
-				EClassifier eClassifier = ClassOperations
-					.getEClassifier(metaclass);
+			for (Iterator e = extensions.iterator(); e.hasNext();) {
+				Extension extension = (Extension) e.next();
+				org.eclipse.uml2.uml.Class metaclass = extension.getMetaclass();
 
-				if (eClassifier != null && eClassifier.isInstance(element)) {
-					Stereotype stereotype = extension.getStereotype();
+				if (metaclass != null) {
+					EClassifier eClassifier = ClassOperations
+						.getEClassifier(metaclass);
 
-					if (!element.isStereotypeApplied(stereotype)) {
-						stereotypeApplications.add(applyStereotype(element,
-							stereotype.getDefinition()));
+					if (eClassifier != null && eClassifier.isInstance(element)) {
+						Stereotype stereotype = extension.getStereotype();
+
+						if (!element.isStereotypeApplied(stereotype)) {
+							stereotypeApplications.add(applyStereotype(element,
+								stereotype.getDefinition()));
+						}
 					}
 				}
 			}
@@ -1168,17 +1171,18 @@ public class ElementOperations
 		return stereotypeApplications;
 	}
 
-	protected static EList applyAllStereotypes(Element element, EList extensions) {
+	protected static EList applyAllStereotypes(Element element,
+			EList extensions, boolean resolve) {
 		EList stereotypeApplications = new UniqueEList.FastCompare();
 
 		applyAllStereotypes(element, extensions, stereotypeApplications);
 
 		if (!element.eContents().isEmpty()) {
 
-			for (Iterator eAllContents = element.eAllContents(); eAllContents
-				.hasNext();) {
+			for (Iterator allContents = EcoreUtil.getAllContents(element,
+				resolve); allContents.hasNext();) {
 
-				EObject eObject = (EObject) eAllContents.next();
+				EObject eObject = (EObject) allContents.next();
 
 				if (eObject instanceof Element) {
 					applyAllStereotypes((Element) eObject, extensions,
@@ -1191,6 +1195,11 @@ public class ElementOperations
 	}
 
 	public static EList applyAllRequiredStereotypes(Element element) {
+		return applyAllRequiredStereotypes(element, true);
+	}
+
+	public static EList applyAllRequiredStereotypes(Element element,
+			boolean resolve) {
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
@@ -1205,7 +1214,8 @@ public class ElementOperations
 			}
 
 			if (!allRequiredExtensions.isEmpty()) {
-				return applyAllStereotypes(element, allRequiredExtensions);
+				return applyAllStereotypes(element, allRequiredExtensions,
+					resolve);
 			}
 		}
 
@@ -1236,17 +1246,20 @@ public class ElementOperations
 	protected static EList unapplyAllNonApplicableStereotypes(Element element,
 			EList nonApplicableStereotypes) {
 
-		for (Iterator sa = element.getStereotypeApplications().iterator(); sa
-			.hasNext();) {
+		if (!element.eIsProxy()) {
 
-			EObject stereotypeApplication = (EObject) sa.next();
+			for (Iterator sa = element.getStereotypeApplications().iterator(); sa
+				.hasNext();) {
 
-			if (!element
-				.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
+				EObject stereotypeApplication = (EObject) sa.next();
 
-				nonApplicableStereotypes.add(stereotypeApplication);
+				if (!element
+					.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
 
-				destroy(stereotypeApplication);
+					nonApplicableStereotypes.add(stereotypeApplication);
+
+					destroy(stereotypeApplication);
+				}
 			}
 		}
 
@@ -1254,16 +1267,21 @@ public class ElementOperations
 	}
 
 	public static EList unapplyAllNonApplicableStereotypes(Element element) {
+		return unapplyAllNonApplicableStereotypes(element, true);
+	}
+
+	public static EList unapplyAllNonApplicableStereotypes(Element element,
+			boolean resolve) {
 		EList nonApplicableStereotypes = new UniqueEList.FastCompare();
 
 		unapplyAllNonApplicableStereotypes(element, nonApplicableStereotypes);
 
 		if (!element.eContents().isEmpty()) {
 
-			for (Iterator eAllContents = element.eAllContents(); eAllContents
-				.hasNext();) {
+			for (Iterator allContents = EcoreUtil.getAllContents(element,
+				resolve); allContents.hasNext();) {
 
-				EObject eObject = (EObject) eAllContents.next();
+				EObject eObject = (EObject) allContents.next();
 
 				if (eObject instanceof Element) {
 					unapplyAllNonApplicableStereotypes((Element) eObject,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.29 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ElementImpl.java,v 1.30 2006/05/03 19:44:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -787,8 +787,9 @@ public abstract class ElementImpl
 			Resource.Internal eInternalResource = eInternalResource();
 
 			if (eInternalResource == null || !eInternalResource.isLoading()) {
-				ElementOperations.unapplyAllNonApplicableStereotypes(this);
-				ElementOperations.applyAllRequiredStereotypes(this);
+				ElementOperations.unapplyAllNonApplicableStereotypes(this,
+					false);
+				ElementOperations.applyAllRequiredStereotypes(this, false);
 			}
 		}
 	}
