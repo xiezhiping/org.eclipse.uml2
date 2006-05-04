@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.18 2006/05/04 14:20:35 khussey Exp $
+ * $Id: UMLEditor.java,v 1.19 2006/05/04 15:46:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -588,6 +588,7 @@ public class UMLEditor
 				problemEditorPart.setDiagnostic(diagnostic);
 				problemEditorPart.setMarkerHelper(markerHelper);
 				try {
+					showTabs();
 					addPage(getPageCount(), problemEditorPart, getEditorInput());
 					lastEditorPage++;
 					setPageText(lastEditorPage, problemEditorPart.getPartName());
@@ -1042,6 +1043,24 @@ public class UMLEditor
 				((CTabFolder) getContainer()).setTabHeight(1);
 				Point point = getContainer().getSize();
 				getContainer().setSize(point.x, point.y + 6);
+			}
+		}
+	}
+
+	/**
+	 * If there is just one page in the multi-page editor part, this shows
+	 * the single tab at the bottom.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void showTabs() {
+		if (getPageCount() == 1) {
+			setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
+			if (getContainer() instanceof CTabFolder) {
+				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
+				Point point = getContainer().getSize();
+				getContainer().setSize(point.x, point.y - 6);
 			}
 		}
 	}
