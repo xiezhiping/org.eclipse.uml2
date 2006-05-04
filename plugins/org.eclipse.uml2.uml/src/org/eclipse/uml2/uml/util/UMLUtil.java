@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.26 2006/04/25 21:01:44 khussey Exp $
+ * $Id: UMLUtil.java,v 1.27 2006/05/04 18:30:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -137,8 +137,9 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || ((Comment) eObject)
-						.getBody().equals(((Comment) otherEObject).getBody()));
+					&& ((eObject == null && otherEObject == null) || safeEquals(
+						((Comment) eObject).getBody(), ((Comment) otherEObject)
+							.getBody()));
 			}
 		}
 
@@ -168,9 +169,9 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || ((BasicEMap.Entry) eObject)
-						.getKey().equals(
-							((BasicEMap.Entry) otherEObject).getKey()));
+					&& ((eObject == null && otherEObject == null) || safeEquals(
+						((BasicEMap.Entry) eObject).getKey(),
+						((BasicEMap.Entry) otherEObject).getKey()));
 			}
 		}
 
@@ -199,9 +200,9 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || ((ValueSpecification) eObject)
-						.stringValue().equals(
-							((ValueSpecification) otherEObject).stringValue()));
+					&& ((eObject == null && otherEObject == null) || safeEquals(
+						((ValueSpecification) eObject).stringValue(),
+						((ValueSpecification) otherEObject).stringValue()));
 			}
 		}
 
@@ -215,9 +216,9 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || ((EAnnotation) eObject)
-						.getSource().equals(
-							((EAnnotation) otherEObject).getSource()));
+					&& ((eObject == null && otherEObject == null) || safeEquals(
+						((EAnnotation) eObject).getSource(),
+						((EAnnotation) otherEObject).getSource()));
 			}
 		}
 
