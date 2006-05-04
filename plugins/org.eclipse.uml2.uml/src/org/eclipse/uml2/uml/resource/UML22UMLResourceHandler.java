@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.15 2006/04/28 20:21:09 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.16 2006/05/04 16:58:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -362,7 +362,6 @@ public class UML22UMLResourceHandler
 						Object value = values.next();
 
 						if (value instanceof Parameter) {
-							doSwitch((Parameter) value);
 							ownedParameters.add(0, value);
 						}
 					}
@@ -374,7 +373,6 @@ public class UML22UMLResourceHandler
 						Object value = values.next();
 
 						if (value instanceof Parameter) {
-							doSwitch((Parameter) value);
 							ownedParameters.add(value);
 						}
 					}
@@ -398,7 +396,6 @@ public class UML22UMLResourceHandler
 						Object value = values.next();
 
 						if (value instanceof StateMachine) {
-							doSwitch((StateMachine) value);
 							ownedBehaviors.add(value);
 						}
 					}
@@ -443,8 +440,6 @@ public class UML22UMLResourceHandler
 						"bodyExpression", true); //$NON-NLS-1$
 
 					if (value instanceof StringExpression) {
-						doSwitch((StringExpression) value);
-
 						UMLUtil.setTaggedValue(comment, getUML2Stereotype(
 							comment, STEREOTYPE__COMMENT),
 							TAG_DEFINITION__BODY_EXPRESSION, value);
@@ -671,7 +666,6 @@ public class UML22UMLResourceHandler
 						Object value = values.next();
 
 						if (value instanceof PackageImport) {
-							doSwitch((PackageImport) value);
 							packageImports.add(value);
 						}
 					}
@@ -1295,7 +1289,7 @@ public class UML22UMLResourceHandler
 			}
 		};
 
-		for (int i = 0, size = resourceContents.size(); i < size; i++) {
+		for (int i = 0; i < resourceContents.size(); i++) {
 			umlSwitch.doSwitch((EObject) resourceContents.get(i));
 		}
 
