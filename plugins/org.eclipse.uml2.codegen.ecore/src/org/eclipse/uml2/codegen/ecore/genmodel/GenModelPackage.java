@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.16 2006/01/19 16:41:19 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.17 2006/05/04 14:02:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1290,6 +1290,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__DATA_TYPE_CONVERTERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__DATA_TYPE_CONVERTERS;
+
+	/**
+	 * The feature id for the '<em><b>Multiple Editor Pages</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__MULTIPLE_EDITOR_PAGES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__MULTIPLE_EDITOR_PAGES;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.
