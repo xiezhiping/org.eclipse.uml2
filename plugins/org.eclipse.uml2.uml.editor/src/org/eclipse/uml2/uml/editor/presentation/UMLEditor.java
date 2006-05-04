@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.19 2006/05/04 15:46:33 khussey Exp $
+ * $Id: UMLEditor.java,v 1.20 2006/05/04 18:20:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -901,10 +901,10 @@ public class UMLEditor
 
 		boolean first = true;
 
-		for (Iterator i = editingDomain.getResourceSet().getResources()
-			.iterator(); i.hasNext();) {
+		EList resources = editingDomain.getResourceSet().getResources();
 
-			Resource resource = (Resource) i.next();
+		for (int i = 0; i < resources.size(); i++) {
+			Resource resource = (Resource) resources.get(i);
 			URI oldURI = resource.getURI();
 			URI newURI = (URI) uriMap.get(oldURI);
 
@@ -929,9 +929,9 @@ public class UMLEditor
 						setInputWithNotify(editorInput);
 						setPartName(editorInput.getName());
 					}
-
-					EcoreUtil.resolveAll(resource);
 				}
+
+				EcoreUtil.resolveAll(resource);
 			}
 
 			if (newURI != null) {
