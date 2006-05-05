@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.10 2006/04/05 19:26:35 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.11 2006/05/05 19:36:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -110,7 +110,6 @@ public class BehaviorOperations
 
 		return result;
 	}
-			
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,7 +213,7 @@ public class BehaviorOperations
 		}
 		return true;
 	}
-	 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -224,6 +223,5 @@ public class BehaviorOperations
 		return (BehavioredClassifier) getOwningElement(behavior,
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER, false);
 	}
-		
 
 } // BehaviorOperations

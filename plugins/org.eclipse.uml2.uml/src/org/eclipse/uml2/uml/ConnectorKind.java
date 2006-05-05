@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorKind.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: ConnectorKind.java,v 1.2 2006/05/05 19:36:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,9 +25,8 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * ConnectorKind is an enumeration of the following literal values:
- * ? assembly Indicates that the connector is an assembly connector.
- * ? delegation Indicates that the connector is a delegation connector.
- * 
+ *   - assembly = Indicates that the connector is an assembly connector.
+ *   - delegation = Indicates that the connector is a delegation connector.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getConnectorKind()
  * @model

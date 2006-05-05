@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: PseudostateKind.java,v 1.3 2006/05/05 19:36:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,17 +25,16 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * PseudoStateKind is an enumeration of the following literal values:
- * ? initial
- * ? deepHistory
- * ? shallowHistory
- * ? join
- * ? fork
- * ? junction
- * ? choice
- * ? entryPoint
- * ? exitPoint
- * ? terminate
- * 
+ *   - initial
+ *   - deepHistory
+ *   - shallowHistory
+ *   - join
+ *   - fork
+ *   - junction
+ *   - choice
+ *   - entryPoint
+ *   - exitPoint
+ *   - terminate
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getPseudostateKind()
  * @model
@@ -120,7 +119,7 @@ public final class PseudostateKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Junction vertices are semantic-free vertices that are used to chain together multiple transitions. They are used to construct compound transition paths between states. For example, a junction can be used to converge multiple incoming transitions into a single outgoing transition representing a shared transition path (this is known as an merge). Conversely, they can be used to split an incoming transition into multiple outgoing transition segments with different guard conditions. This realizes a static conditional branch. (In the latter case, outgoing transitions whose guard conditions evaluate to false are disabled. A predefined guard denoted ?else? may be defined for at most one outgoing transition. This transition is enabled if all the guards labeling the other transitions are false.) Static conditional branches are distinct from dynamic conditional branches that are realized by choice vertices (described below).
+	 * Junction vertices are semantic-free vertices that are used to chain together multiple transitions. They are used to construct compound transition paths between states. For example, a junction can be used to converge multiple incoming transitions into a single outgoing transition representing a shared transition path (this is known as an merge). Conversely, they can be used to split an incoming transition into multiple outgoing transition segments with different guard conditions. This realizes a static conditional branch. (In the latter case, outgoing transitions whose guard conditions evaluate to false are disabled. A predefined guard denoted 'else' may be defined for at most one outgoing transition. This transition is enabled if all the guards labeling the other transitions are false.) Static conditional branches are distinct from dynamic conditional branches that are realized by choice vertices (described below).
 	 * <!-- end-model-doc -->
 	 * @see #JUNCTION_LITERAL
 	 * @model name="junction"

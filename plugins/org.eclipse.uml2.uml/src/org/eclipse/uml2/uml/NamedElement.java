@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
+ * $Id: NamedElement.java,v 1.12 2006/05/05 19:36:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface NamedElement
 	 * @see #unsetName()
 	 * @see #setName(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_Name()
-	 * @model unsettable="true" id="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	String getName();

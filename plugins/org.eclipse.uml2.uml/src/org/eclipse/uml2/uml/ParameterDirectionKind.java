@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterDirectionKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ParameterDirectionKind.java,v 1.3 2006/05/05 19:36:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,17 +25,10 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * ParameterDirectionKind is an enumeration of the following literal values:
- *   - in Indicates that parameter values are passed into the behavioral element by the caller.
- *   - inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
- *   - out Indicates that parameter values are passed from a behavioral element out to the caller.
- *   - return Indicates that parameter values are passed as return values from a behavioral element back to the caller.
- * 
- * ParameterDirectionKind is an enumeration of the following literal values:
- * ? in Indicates that parameter values are passed into the behavioral element by the caller.
- * ? inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
- * ? out Indicates that parameter values are passed from a behavioral element out to the caller.
- * ? return Indicates that parameter values are passed as return values from a behavioral element back to the caller.
- * 
+ *   - in = Indicates that parameter values are passed into the behavioral element by the caller.
+ *   - inout = Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
+ *   - out = Indicates that parameter values are passed from a behavioral element out to the caller.
+ *   - return = Indicates that parameter values are passed as return values from a behavioral element back to the caller.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getParameterDirectionKind()
  * @model

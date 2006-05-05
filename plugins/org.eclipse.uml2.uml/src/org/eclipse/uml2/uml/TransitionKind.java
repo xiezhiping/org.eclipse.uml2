@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionKind.java,v 1.1 2005/11/14 22:25:56 khussey Exp $
+ * $Id: TransitionKind.java,v 1.2 2006/05/05 19:36:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25,10 +25,9 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * TransitionKind is an enumeration of the following literal values:
- * ? external
- * ? internal
- * ? local
- * 
+ *   - external
+ *   - internal
+ *   - local
  * kind=#local implies owner.source.isComposite
  * kind=#external implies owner.source.isComposite
  * <!-- end-model-doc -->
