@@ -1161,7 +1161,7 @@
           <generalization xmi:id="_3ADC7B74022D3CADD38B00D4" general="_3ADC7B74022D3CADCAEE0250"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0080E03C3" name="name" type="_3ADC7B74022D3CA010B103C3">
             <eAnnotations xmi:id="_MfBDcCrOEdqvsvjq9GOA3Q" source="appliedStereotypes">
-              <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_MfBDcSrOEdqvsvjq9GOA3Q" isUnsettable="true" isID="true"/>
+              <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_MfBDcSrOEdqvsvjq9GOA3Q" isUnsettable="true"/>
             </eAnnotations>
             <ownedComment xmi:id="_rR8y5BTaEdqZu-3Jy1-uYg" body="The name of the NamedElement." annotatedElement="_3ADC7B74022D3CA0080E03C3">
               <eAnnotations xmi:id="_rSGj4BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -6217,7 +6217,7 @@
         <eAnnotations xmi:id="_reBgABTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_reBgARTaEdqZu-3Jy1-uYg" instanceClassName="boolean"/>
         </eAnnotations>
-        <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" body="Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:&#xD;&#xA;  - true: The Boolean condition is satisfied.&#xD;&#xA;  - false: The Boolean condition is not satisfied.&#xD;&#xA;&#xD;&#xA;It is used for Boolean attribute and Boolean expressions in the metamodel, such as OCL expression." annotatedElement="_3ADC7B74022D3CA010AC0090">
+        <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" body="Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:&#xD;&#xA;  - true = The Boolean condition is satisfied.&#xD;&#xA;  - false = The Boolean condition is not satisfied.&#xD;&#xA;&#xD;&#xA;It is used for Boolean attribute and Boolean expressions in the metamodel, such as OCL expression." annotatedElement="_3ADC7B74022D3CA010AC0090">
           <eAnnotations xmi:id="_rd3vAhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rd3vAxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -7739,7 +7739,7 @@
         <generalization xmi:id="_3ADC7B74022D3DF78D3B035F" general="_3ADC7B74022D416D58F70035"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6A6EE0069" name="name" type="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_PmGJICrOEdqvsvjq9GOA3Q" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_PmGJISrOEdqvsvjq9GOA3Q" isUnsettable="true" isID="true"/>
+            <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_PmGJISrOEdqvsvjq9GOA3Q" isUnsettable="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rexG7xTaEdqZu-3Jy1-uYg" body="The name of the NamedElement." annotatedElement="_3ADC7B74022D3DE6A6EE0069">
             <eAnnotations xmi:id="_rexG8BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -14673,7 +14673,7 @@
         <generalization xmi:id="_3ADC7B74022D3DE6BC7D03AE" general="_3ADC7B74022D3DE6BAB70076"/>
         <ownedAttribute xmi:id="_3ADC7B74022D3DE6BF540255" name="name" type="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_TAsnwCrOEdqvsvjq9GOA3Q" source="appliedStereotypes">
-            <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_TAsnwSrOEdqvsvjq9GOA3Q" isUnsettable="true" isID="true"/>
+            <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_TAsnwSrOEdqvsvjq9GOA3Q" isUnsettable="true"/>
           </eAnnotations>
           <ownedComment xmi:id="_rpM1TBTaEdqZu-3Jy1-uYg" body="The name of the NamedElement." annotatedElement="_3ADC7B74022D3DE6BF540255">
             <eAnnotations xmi:id="_rpM1TRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
@@ -14819,7 +14819,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind">
-        <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" body="ParameterDirectionKind is an enumeration of the following literal values:&#xD;&#xA;  - in Indicates that parameter values are passed into the behavioral element by the caller.&#xD;&#xA;  - inout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.&#xD;&#xA;  - out Indicates that parameter values are passed from a behavioral element out to the caller.&#xD;&#xA;  - return Indicates that parameter values are passed as return values from a behavioral element back to the caller.&#xD;&#xA;" annotatedElement="_3ADC7B74022D4161A8F100CC">
+        <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" body="ParameterDirectionKind is an enumeration of the following literal values:&#xD;&#xA;  - in = Indicates that parameter values are passed into the behavioral element by the caller.&#xD;&#xA;  - inout = Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.&#xD;&#xA;  - out = Indicates that parameter values are passed from a behavioral element out to the caller.&#xD;&#xA;  - return = Indicates that parameter values are passed as return values from a behavioral element back to the caller." annotatedElement="_3ADC7B74022D4161A8F100CC">
           <eAnnotations xmi:id="_rpM1XhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpM1XxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
