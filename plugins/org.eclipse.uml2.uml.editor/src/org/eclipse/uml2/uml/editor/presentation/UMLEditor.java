@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.20 2006/05/04 18:20:06 khussey Exp $
+ * $Id: UMLEditor.java,v 1.21 2006/05/05 19:30:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -387,7 +387,16 @@ public class UMLEditor
 						} else {
 							resourceToDiagnosticMap.remove(resource);
 						}
-						updateProblemIndication();
+
+						if (updateProblemIndication) {
+							getSite().getShell().getDisplay().asyncExec(
+								new Runnable() {
+
+									public void run() {
+										updateProblemIndication();
+									}
+								});
+						}
 					}
 				}
 			} else {
@@ -565,8 +574,8 @@ public class UMLEditor
 	protected void updateProblemIndication() {
 		if (updateProblemIndication) {
 			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
-				"org.eclipse.uml2.uml.editor", 0, null,
-				new Object[]{editingDomain.getResourceSet()});
+				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
+				0, null, new Object[]{editingDomain.getResourceSet()});
 			for (Iterator i = resourceToDiagnosticMap.values().iterator(); i
 				.hasNext();) {
 				Diagnostic childDiagnostic = (Diagnostic) i.next();
@@ -954,17 +963,21 @@ public class UMLEditor
 		if (!resource.getErrors().isEmpty()
 			|| !resource.getWarnings().isEmpty()) {
 			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
-				Diagnostic.ERROR, "org.eclipse.uml2.uml.editor", 0, getString(
-					"_UI_CreateModelError_message", resource.getURI()),
+				Diagnostic.ERROR,
+				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
+				0,
+				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 				new Object[]{exception == null
 					? (Object) resource
 					: exception});
 			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
 			return basicDiagnostic;
 		} else if (exception != null) {
-			return new BasicDiagnostic(Diagnostic.ERROR,
-				"org.eclipse.uml2.uml.editor", 0, getString(
-					"_UI_CreateModelError_message", resource.getURI()),
+			return new BasicDiagnostic(
+				Diagnostic.ERROR,
+				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
+				0,
+				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 				new Object[]{exception});
 		} else {
 			return Diagnostic.OK_INSTANCE;
