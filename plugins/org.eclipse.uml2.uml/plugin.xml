@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
- Copyright (c) 2005 IBM Corporation and others.
+ Copyright (c) 2005, 2006 IBM Corporation and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.2 2005/12/07 14:17:51 khussey Exp $
+ $Id: plugin.xml,v 1.3 2006/05/05 19:48:58 khussey Exp $
 -->
 
 <plugin>
@@ -27,6 +27,10 @@
     <parser 
        type="uml" 
        class="org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl" />
+  </extension>
+
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes extension="uml" type="text" />
   </extension>
 
 </plugin>
