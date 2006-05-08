@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.22 2006/04/10 19:16:18 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.23 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -213,9 +213,9 @@ public class ActionInputPinImpl
 	 */
 	public Action createFromAction(String name, EClass eClass) {
 		Action newFromAction = (Action) create(eClass);
+		setFromAction(newFromAction);
 		if (name != null)
 			newFromAction.setName(name);
-		setFromAction(newFromAction);
 		return newFromAction;
 	}
 

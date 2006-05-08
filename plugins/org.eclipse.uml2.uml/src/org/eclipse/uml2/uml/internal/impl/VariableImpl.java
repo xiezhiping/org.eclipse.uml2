@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.24 2006/04/10 19:16:19 khussey Exp $
+ * $Id: VariableImpl.java,v 1.25 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -381,11 +381,11 @@ public class VariableImpl
 	public ValueSpecification createUpperValue(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) create(eClass);
+		setUpperValue(newUpperValue);
 		if (name != null)
 			newUpperValue.setName(name);
 		if (type != null)
 			newUpperValue.setType(type);
-		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
 
@@ -483,11 +483,11 @@ public class VariableImpl
 	public ValueSpecification createLowerValue(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) create(eClass);
+		setLowerValue(newLowerValue);
 		if (name != null)
 			newLowerValue.setName(name);
 		if (type != null)
 			newLowerValue.setType(type);
-		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}
 

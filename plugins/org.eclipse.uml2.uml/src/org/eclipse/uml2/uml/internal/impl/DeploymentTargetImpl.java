@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.16 2006/04/10 19:16:18 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.17 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -169,9 +169,9 @@ public abstract class DeploymentTargetImpl
 	 */
 	public Deployment createDeployment(String name) {
 		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
+		getDeployments().add(newDeployment);
 		if (name != null)
 			newDeployment.setName(name);
-		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
 

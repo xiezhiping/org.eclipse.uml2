@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,9 +98,9 @@ public class SequenceNodeImpl
 	 */
 	public ExecutableNode createExecutableNode(String name, EClass eClass) {
 		ExecutableNode newExecutableNode = (ExecutableNode) create(eClass);
+		getExecutableNodes().add(newExecutableNode);
 		if (name != null)
 			newExecutableNode.setName(name);
-		getExecutableNodes().add(newExecutableNode);
 		return newExecutableNode;
 	}
 

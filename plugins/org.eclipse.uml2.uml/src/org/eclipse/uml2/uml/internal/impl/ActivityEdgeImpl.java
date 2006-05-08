@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.19 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -616,11 +616,11 @@ public abstract class ActivityEdgeImpl
 	 */
 	public ValueSpecification createGuard(String name, Type type, EClass eClass) {
 		ValueSpecification newGuard = (ValueSpecification) create(eClass);
+		setGuard(newGuard);
 		if (name != null)
 			newGuard.setName(name);
 		if (type != null)
 			newGuard.setType(type);
-		setGuard(newGuard);
 		return newGuard;
 	}
 
@@ -715,11 +715,11 @@ public abstract class ActivityEdgeImpl
 	 */
 	public ValueSpecification createWeight(String name, Type type, EClass eClass) {
 		ValueSpecification newWeight = (ValueSpecification) create(eClass);
+		setWeight(newWeight);
 		if (name != null)
 			newWeight.setName(name);
 		if (type != null)
 			newWeight.setType(type);
-		setWeight(newWeight);
 		return newWeight;
 	}
 

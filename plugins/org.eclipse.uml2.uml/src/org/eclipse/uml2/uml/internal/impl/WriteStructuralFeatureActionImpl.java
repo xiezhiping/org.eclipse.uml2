@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,11 +212,11 @@ public abstract class WriteStructuralFeatureActionImpl
 	 */
 	public InputPin createValue(String name, Type type, EClass eClass) {
 		InputPin newValue = (InputPin) create(eClass);
+		setValue(newValue);
 		if (name != null)
 			newValue.setName(name);
 		if (type != null)
 			newValue.setType(type);
-		setValue(newValue);
 		return newValue;
 	}
 

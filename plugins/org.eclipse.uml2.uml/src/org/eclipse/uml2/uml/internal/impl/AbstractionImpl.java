@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.16 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,11 +199,11 @@ public class AbstractionImpl
 	 */
 	public OpaqueExpression createMapping(String name, Type type) {
 		OpaqueExpression newMapping = (OpaqueExpression) create(UMLPackage.Literals.OPAQUE_EXPRESSION);
+		setMapping(newMapping);
 		if (name != null)
 			newMapping.setName(name);
 		if (type != null)
 			newMapping.setType(type);
-		setMapping(newMapping);
 		return newMapping;
 	}
 

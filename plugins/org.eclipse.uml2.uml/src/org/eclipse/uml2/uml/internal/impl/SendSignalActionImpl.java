@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -217,11 +217,11 @@ public class SendSignalActionImpl
 	 */
 	public InputPin createTarget(String name, Type type, EClass eClass) {
 		InputPin newTarget = (InputPin) create(eClass);
+		setTarget(newTarget);
 		if (name != null)
 			newTarget.setName(name);
 		if (type != null)
 			newTarget.setType(type);
-		setTarget(newTarget);
 		return newTarget;
 	}
 

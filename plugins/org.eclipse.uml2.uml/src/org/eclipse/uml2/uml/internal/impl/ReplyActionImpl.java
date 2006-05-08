@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.19 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -279,11 +279,11 @@ public class ReplyActionImpl
 	public InputPin createReturnInformation(String name, Type type,
 			EClass eClass) {
 		InputPin newReturnInformation = (InputPin) create(eClass);
+		setReturnInformation(newReturnInformation);
 		if (name != null)
 			newReturnInformation.setName(name);
 		if (type != null)
 			newReturnInformation.setType(type);
-		setReturnInformation(newReturnInformation);
 		return newReturnInformation;
 	}
 
@@ -317,11 +317,11 @@ public class ReplyActionImpl
 	 */
 	public InputPin createReplyValue(String name, Type type, EClass eClass) {
 		InputPin newReplyValue = (InputPin) create(eClass);
+		getReplyValues().add(newReplyValue);
 		if (name != null)
 			newReplyValue.setName(name);
 		if (type != null)
 			newReplyValue.setType(type);
-		getReplyValues().add(newReplyValue);
 		return newReplyValue;
 	}
 

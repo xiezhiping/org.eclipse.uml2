@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.16 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -498,11 +498,11 @@ public class InstanceSpecificationImpl
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
+		setSpecification(newSpecification);
 		if (name != null)
 			newSpecification.setName(name);
 		if (type != null)
 			newSpecification.setType(type);
-		setSpecification(newSpecification);
 		return newSpecification;
 	}
 

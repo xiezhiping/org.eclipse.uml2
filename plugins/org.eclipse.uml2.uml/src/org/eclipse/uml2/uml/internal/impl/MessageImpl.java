@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.18 2006/04/10 19:16:20 khussey Exp $
+ * $Id: MessageImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -431,11 +431,11 @@ public class MessageImpl
 	public ValueSpecification createArgument(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newArgument = (ValueSpecification) create(eClass);
+		getArguments().add(newArgument);
 		if (name != null)
 			newArgument.setName(name);
 		if (type != null)
 			newArgument.setType(type);
-		getArguments().add(newArgument);
 		return newArgument;
 	}
 

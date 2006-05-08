@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.22 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.23 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -275,11 +275,11 @@ public class InterfaceImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) create(eClass);
+		getOwnedAttributes().add(newOwnedAttribute);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
 			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
 
@@ -346,9 +346,9 @@ public class InterfaceImpl
 	 */
 	public Classifier createNestedClassifier(String name, EClass eClass) {
 		Classifier newNestedClassifier = (Classifier) create(eClass);
+		getNestedClassifiers().add(newNestedClassifier);
 		if (name != null)
 			newNestedClassifier.setName(name);
-		getNestedClassifiers().add(newNestedClassifier);
 		return newNestedClassifier;
 	}
 
@@ -445,6 +445,7 @@ public class InterfaceImpl
 	public Reception createOwnedReception(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Reception newOwnedReception = (Reception) create(UMLPackage.Literals.RECEPTION);
+		getOwnedReceptions().add(newOwnedReception);
 		if (name != null)
 			newOwnedReception.setName(name);
 		int ownedParameterListSize = 0;
@@ -465,7 +466,6 @@ public class InterfaceImpl
 				? (Type) ownedParameterTypes.get(i)
 				: null);
 		}
-		getOwnedReceptions().add(newOwnedReception);
 		return newOwnedReception;
 	}
 
@@ -615,9 +615,9 @@ public class InterfaceImpl
 	 */
 	public ProtocolStateMachine createProtocol(String name) {
 		ProtocolStateMachine newProtocol = (ProtocolStateMachine) create(UMLPackage.Literals.PROTOCOL_STATE_MACHINE);
+		setProtocol(newProtocol);
 		if (name != null)
 			newProtocol.setName(name);
-		setProtocol(newProtocol);
 		return newProtocol;
 	}
 
@@ -643,6 +643,7 @@ public class InterfaceImpl
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
+		getOwnedOperations().add(newOwnedOperation);
 		if (name != null)
 			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
@@ -663,7 +664,6 @@ public class InterfaceImpl
 				? (Type) ownedParameterTypes.get(i)
 				: null);
 		}
-		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
 	}
 

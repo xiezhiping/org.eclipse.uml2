@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.23 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.24 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,11 +112,11 @@ public class ExtensionImpl
 	 */
 	public Property createOwnedEnd(String name, Type type) {
 		ExtensionEnd newOwnedEnd = (ExtensionEnd) create(UMLPackage.Literals.EXTENSION_END);
+		getOwnedEnds().add(newOwnedEnd);
 		if (name != null)
 			newOwnedEnd.setName(name);
 		if (type != null)
 			newOwnedEnd.setType(type);
-		getOwnedEnds().add(newOwnedEnd);
 		return newOwnedEnd;
 	}
 

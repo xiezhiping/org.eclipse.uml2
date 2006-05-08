@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.23 2006/04/10 19:16:20 khussey Exp $
+ * $Id: NodeImpl.java,v 1.24 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -192,9 +192,9 @@ public class NodeImpl
 	 */
 	public Deployment createDeployment(String name) {
 		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
+		getDeployments().add(newDeployment);
 		if (name != null)
 			newDeployment.setName(name);
-		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
 
@@ -323,9 +323,9 @@ public class NodeImpl
 	 */
 	public Node createNestedNode(String name, EClass eClass) {
 		Node newNestedNode = (Node) create(eClass);
+		getNestedNodes().add(newNestedNode);
 		if (name != null)
 			newNestedNode.setName(name);
-		getNestedNodes().add(newNestedNode);
 		return newNestedNode;
 	}
 

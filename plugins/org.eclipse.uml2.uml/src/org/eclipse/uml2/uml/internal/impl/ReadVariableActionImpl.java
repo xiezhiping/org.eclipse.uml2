@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.19 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,11 +206,11 @@ public class ReadVariableActionImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		setResult(newResult);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
 			newResult.setType(type);
-		setResult(newResult);
 		return newResult;
 	}
 

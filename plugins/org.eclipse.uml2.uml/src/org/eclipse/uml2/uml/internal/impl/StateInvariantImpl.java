@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.19 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,9 +206,9 @@ public class StateInvariantImpl
 	 */
 	public Constraint createInvariant(String name, EClass eClass) {
 		Constraint newInvariant = (Constraint) create(eClass);
+		setInvariant(newInvariant);
 		if (name != null)
 			newInvariant.setName(name);
-		setInvariant(newInvariant);
 		return newInvariant;
 	}
 

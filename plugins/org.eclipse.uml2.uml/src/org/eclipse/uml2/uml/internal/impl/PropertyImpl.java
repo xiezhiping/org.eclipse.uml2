@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.33 2006/04/10 19:16:18 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.34 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -588,9 +588,9 @@ public class PropertyImpl
 	 */
 	public Deployment createDeployment(String name) {
 		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
+		getDeployments().add(newDeployment);
 		if (name != null)
 			newDeployment.setName(name);
-		getDeployments().add(newDeployment);
 		return newDeployment;
 	}
 
@@ -697,9 +697,9 @@ public class PropertyImpl
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
-		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
 
@@ -1408,11 +1408,11 @@ public class PropertyImpl
 	public ValueSpecification createDefaultValue(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newDefaultValue = (ValueSpecification) create(eClass);
+		setDefaultValue(newDefaultValue);
 		if (name != null)
 			newDefaultValue.setName(name);
 		if (type != null)
 			newDefaultValue.setType(type);
-		setDefaultValue(newDefaultValue);
 		return newDefaultValue;
 	}
 
@@ -1512,11 +1512,11 @@ public class PropertyImpl
 	 */
 	public Property createQualifier(String name, Type type, EClass eClass) {
 		Property newQualifier = (Property) create(eClass);
+		getQualifiers().add(newQualifier);
 		if (name != null)
 			newQualifier.setName(name);
 		if (type != null)
 			newQualifier.setType(type);
-		getQualifiers().add(newQualifier);
 		return newQualifier;
 	}
 

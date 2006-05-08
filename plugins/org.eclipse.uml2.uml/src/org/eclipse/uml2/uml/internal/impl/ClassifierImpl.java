@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.34 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.35 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -769,9 +769,9 @@ public abstract class ClassifierImpl
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
-		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
 
@@ -1165,9 +1165,9 @@ public abstract class ClassifierImpl
 	 */
 	public CollaborationUse createCollaborationUse(String name) {
 		CollaborationUse newCollaborationUse = (CollaborationUse) create(UMLPackage.Literals.COLLABORATION_USE);
+		getCollaborationUses().add(newCollaborationUse);
 		if (name != null)
 			newCollaborationUse.setName(name);
-		getCollaborationUses().add(newCollaborationUse);
 		return newCollaborationUse;
 	}
 
@@ -1445,9 +1445,9 @@ public abstract class ClassifierImpl
 	 */
 	public UseCase createOwnedUseCase(String name) {
 		UseCase newOwnedUseCase = (UseCase) create(UMLPackage.Literals.USE_CASE);
+		getOwnedUseCases().add(newOwnedUseCase);
 		if (name != null)
 			newOwnedUseCase.setName(name);
-		getOwnedUseCases().add(newOwnedUseCase);
 		return newOwnedUseCase;
 	}
 
@@ -1543,11 +1543,11 @@ public abstract class ClassifierImpl
 	 */
 	public Substitution createSubstitution(String name, Classifier contract) {
 		Substitution newSubstitution = (Substitution) create(UMLPackage.Literals.SUBSTITUTION);
+		getSubstitutions().add(newSubstitution);
 		if (name != null)
 			newSubstitution.setName(name);
 		if (contract != null)
 			newSubstitution.setContract(contract);
-		getSubstitutions().add(newSubstitution);
 		return newSubstitution;
 	}
 
@@ -1643,9 +1643,9 @@ public abstract class ClassifierImpl
 	 */
 	public CollaborationUse createRepresentation(String name) {
 		CollaborationUse newRepresentation = (CollaborationUse) create(UMLPackage.Literals.COLLABORATION_USE);
+		setRepresentation(newRepresentation);
 		if (name != null)
 			newRepresentation.setName(name);
-		setRepresentation(newRepresentation);
 		return newRepresentation;
 	}
 
@@ -1824,9 +1824,9 @@ public abstract class ClassifierImpl
 	 */
 	public Generalization createGeneralization(Classifier general) {
 		Generalization newGeneralization = (Generalization) create(UMLPackage.Literals.GENERALIZATION);
+		getGeneralizations().add(newGeneralization);
 		if (general != null)
 			newGeneralization.setGeneral(general);
-		getGeneralizations().add(newGeneralization);
 		return newGeneralization;
 	}
 

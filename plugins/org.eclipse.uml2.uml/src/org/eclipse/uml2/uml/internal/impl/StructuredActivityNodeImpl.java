@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.26 2006/04/10 19:16:18 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.27 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -337,9 +337,9 @@ public class StructuredActivityNodeImpl
 	 */
 	public ElementImport createElementImport(PackageableElement importedElement) {
 		ElementImport newElementImport = (ElementImport) create(UMLPackage.Literals.ELEMENT_IMPORT);
+		getElementImports().add(newElementImport);
 		if (importedElement != null)
 			newElementImport.setImportedElement(importedElement);
-		getElementImports().add(newElementImport);
 		return newElementImport;
 	}
 
@@ -395,9 +395,9 @@ public class StructuredActivityNodeImpl
 	public PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
 		PackageImport newPackageImport = (PackageImport) create(UMLPackage.Literals.PACKAGE_IMPORT);
+		getPackageImports().add(newPackageImport);
 		if (importedPackage != null)
 			newPackageImport.setImportedPackage(importedPackage);
-		getPackageImports().add(newPackageImport);
 		return newPackageImport;
 	}
 
@@ -453,9 +453,9 @@ public class StructuredActivityNodeImpl
 	 */
 	public Constraint createOwnedRule(String name, EClass eClass) {
 		Constraint newOwnedRule = (Constraint) create(eClass);
+		getOwnedRules().add(newOwnedRule);
 		if (name != null)
 			newOwnedRule.setName(name);
-		getOwnedRules().add(newOwnedRule);
 		return newOwnedRule;
 	}
 
@@ -707,11 +707,11 @@ public class StructuredActivityNodeImpl
 	 */
 	public Variable createVariable(String name, Type type) {
 		Variable newVariable = (Variable) create(UMLPackage.Literals.VARIABLE);
+		getVariables().add(newVariable);
 		if (name != null)
 			newVariable.setName(name);
 		if (type != null)
 			newVariable.setType(type);
-		getVariables().add(newVariable);
 		return newVariable;
 	}
 
@@ -768,9 +768,9 @@ public class StructuredActivityNodeImpl
 	 */
 	public ActivityNode createNode(String name, EClass eClass) {
 		ActivityNode newNode = (ActivityNode) create(eClass);
+		getNodes().add(newNode);
 		if (name != null)
 			newNode.setName(name);
-		getNodes().add(newNode);
 		return newNode;
 	}
 
@@ -854,9 +854,9 @@ public class StructuredActivityNodeImpl
 	 */
 	public ActivityEdge createEdge(String name, EClass eClass) {
 		ActivityEdge newEdge = (ActivityEdge) create(eClass);
+		getEdges().add(newEdge);
 		if (name != null)
 			newEdge.setName(name);
-		getEdges().add(newEdge);
 		return newEdge;
 	}
 

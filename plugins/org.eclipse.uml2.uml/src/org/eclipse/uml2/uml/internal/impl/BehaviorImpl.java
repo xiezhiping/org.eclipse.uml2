@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.25 2006/04/10 19:16:20 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.26 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -347,11 +347,11 @@ public abstract class BehaviorImpl
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
+		getOwnedParameters().add(newOwnedParameter);
 		if (name != null)
 			newOwnedParameter.setName(name);
 		if (type != null)
 			newOwnedParameter.setType(type);
-		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
 
@@ -428,9 +428,9 @@ public abstract class BehaviorImpl
 	 */
 	public Constraint createPrecondition(String name, EClass eClass) {
 		Constraint newPrecondition = (Constraint) create(eClass);
+		getPreconditions().add(newPrecondition);
 		if (name != null)
 			newPrecondition.setName(name);
-		getPreconditions().add(newPrecondition);
 		return newPrecondition;
 	}
 
@@ -495,9 +495,9 @@ public abstract class BehaviorImpl
 	 */
 	public Constraint createPostcondition(String name, EClass eClass) {
 		Constraint newPostcondition = (Constraint) create(eClass);
+		getPostconditions().add(newPostcondition);
 		if (name != null)
 			newPostcondition.setName(name);
-		getPostconditions().add(newPostcondition);
 		return newPostcondition;
 	}
 
@@ -563,9 +563,9 @@ public abstract class BehaviorImpl
 	 */
 	public ParameterSet createOwnedParameterSet(String name) {
 		ParameterSet newOwnedParameterSet = (ParameterSet) create(UMLPackage.Literals.PARAMETER_SET);
+		getOwnedParameterSets().add(newOwnedParameterSet);
 		if (name != null)
 			newOwnedParameterSet.setName(name);
-		getOwnedParameterSets().add(newOwnedParameterSet);
 		return newOwnedParameterSet;
 	}
 

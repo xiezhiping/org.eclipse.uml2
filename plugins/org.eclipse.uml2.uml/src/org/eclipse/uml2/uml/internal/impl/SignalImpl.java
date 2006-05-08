@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.22 2006/04/10 19:16:21 khussey Exp $
+ * $Id: SignalImpl.java,v 1.23 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -158,11 +158,11 @@ public class SignalImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) create(eClass);
+		getOwnedAttributes().add(newOwnedAttribute);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
 			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
 

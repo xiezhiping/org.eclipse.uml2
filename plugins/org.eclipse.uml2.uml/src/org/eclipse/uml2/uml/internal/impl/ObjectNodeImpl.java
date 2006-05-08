@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.18 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.19 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -384,11 +384,11 @@ public abstract class ObjectNodeImpl
 	public ValueSpecification createUpperBound(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newUpperBound = (ValueSpecification) create(eClass);
+		setUpperBound(newUpperBound);
 		if (name != null)
 			newUpperBound.setName(name);
 		if (type != null)
 			newUpperBound.setType(type);
-		setUpperBound(newUpperBound);
 		return newUpperBound;
 	}
 

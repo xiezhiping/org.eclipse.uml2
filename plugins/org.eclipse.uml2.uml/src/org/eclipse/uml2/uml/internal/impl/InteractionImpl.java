@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.24 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.25 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -253,9 +253,9 @@ public class InteractionImpl
 	 */
 	public GeneralOrdering createGeneralOrdering(String name) {
 		GeneralOrdering newGeneralOrdering = (GeneralOrdering) create(UMLPackage.Literals.GENERAL_ORDERING);
+		getGeneralOrderings().add(newGeneralOrdering);
 		if (name != null)
 			newGeneralOrdering.setName(name);
-		getGeneralOrderings().add(newGeneralOrdering);
 		return newGeneralOrdering;
 	}
 
@@ -461,9 +461,9 @@ public class InteractionImpl
 	 */
 	public Lifeline createLifeline(String name) {
 		Lifeline newLifeline = (Lifeline) create(UMLPackage.Literals.LIFELINE);
+		getLifelines().add(newLifeline);
 		if (name != null)
 			newLifeline.setName(name);
-		getLifelines().add(newLifeline);
 		return newLifeline;
 	}
 
@@ -518,9 +518,9 @@ public class InteractionImpl
 	 */
 	public InteractionFragment createFragment(String name, EClass eClass) {
 		InteractionFragment newFragment = (InteractionFragment) create(eClass);
+		getFragments().add(newFragment);
 		if (name != null)
 			newFragment.setName(name);
-		getFragments().add(newFragment);
 		return newFragment;
 	}
 
@@ -575,9 +575,9 @@ public class InteractionImpl
 	 */
 	public Action createAction(String name, EClass eClass) {
 		Action newAction = (Action) create(eClass);
+		getActions().add(newAction);
 		if (name != null)
 			newAction.setName(name);
-		getActions().add(newAction);
 		return newAction;
 	}
 
@@ -632,9 +632,9 @@ public class InteractionImpl
 	 */
 	public Gate createFormalGate(String name) {
 		Gate newFormalGate = (Gate) create(UMLPackage.Literals.GATE);
+		getFormalGates().add(newFormalGate);
 		if (name != null)
 			newFormalGate.setName(name);
-		getFormalGates().add(newFormalGate);
 		return newFormalGate;
 	}
 
@@ -689,9 +689,9 @@ public class InteractionImpl
 	 */
 	public Message createMessage(String name) {
 		Message newMessage = (Message) create(UMLPackage.Literals.MESSAGE);
+		getMessages().add(newMessage);
 		if (name != null)
 			newMessage.setName(name);
-		getMessages().add(newMessage);
 		return newMessage;
 	}
 

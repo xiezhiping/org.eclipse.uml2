@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.22 2006/05/02 21:51:04 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.23 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -130,11 +130,11 @@ public abstract class EncapsulatedClassifierImpl
 	 */
 	public Port createOwnedPort(String name, Type type) {
 		Port newOwnedPort = (Port) create(UMLPackage.Literals.PORT);
+		getOwnedPorts().add(newOwnedPort);
 		if (name != null)
 			newOwnedPort.setName(name);
 		if (type != null)
 			newOwnedPort.setType(type);
-		getOwnedPorts().add(newOwnedPort);
 		return newOwnedPort;
 	}
 

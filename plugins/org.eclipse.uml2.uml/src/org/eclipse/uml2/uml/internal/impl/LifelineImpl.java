@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.17 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -351,11 +351,11 @@ public class LifelineImpl
 	public ValueSpecification createSelector(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newSelector = (ValueSpecification) create(eClass);
+		setSelector(newSelector);
 		if (name != null)
 			newSelector.setName(name);
 		if (type != null)
 			newSelector.setType(type);
-		setSelector(newSelector);
 		return newSelector;
 	}
 

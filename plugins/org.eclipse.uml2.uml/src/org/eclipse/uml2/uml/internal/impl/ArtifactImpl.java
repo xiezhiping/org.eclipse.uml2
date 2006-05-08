@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.23 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.24 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -365,9 +365,9 @@ public class ArtifactImpl
 	 */
 	public Artifact createNestedArtifact(String name, EClass eClass) {
 		Artifact newNestedArtifact = (Artifact) create(eClass);
+		getNestedArtifacts().add(newNestedArtifact);
 		if (name != null)
 			newNestedArtifact.setName(name);
-		getNestedArtifacts().add(newNestedArtifact);
 		return newNestedArtifact;
 	}
 
@@ -434,11 +434,11 @@ public class ArtifactImpl
 	public Manifestation createManifestation(String name,
 			PackageableElement utilizedElement) {
 		Manifestation newManifestation = (Manifestation) create(UMLPackage.Literals.MANIFESTATION);
+		getManifestations().add(newManifestation);
 		if (name != null)
 			newManifestation.setName(name);
 		if (utilizedElement != null)
 			newManifestation.setUtilizedElement(utilizedElement);
-		getManifestations().add(newManifestation);
 		return newManifestation;
 	}
 
@@ -498,6 +498,7 @@ public class ArtifactImpl
 	public Operation createOwnedOperation(String name,
 			EList ownedParameterNames, EList ownedParameterTypes) {
 		Operation newOwnedOperation = (Operation) create(UMLPackage.Literals.OPERATION);
+		getOwnedOperations().add(newOwnedOperation);
 		if (name != null)
 			newOwnedOperation.setName(name);
 		int ownedParameterListSize = 0;
@@ -518,7 +519,6 @@ public class ArtifactImpl
 				? (Type) ownedParameterTypes.get(i)
 				: null);
 		}
-		getOwnedOperations().add(newOwnedOperation);
 		return newOwnedOperation;
 	}
 
@@ -597,11 +597,11 @@ public class ArtifactImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) create(eClass);
+		getOwnedAttributes().add(newOwnedAttribute);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
 			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
 

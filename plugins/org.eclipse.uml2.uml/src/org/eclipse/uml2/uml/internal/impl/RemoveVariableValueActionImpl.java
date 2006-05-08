@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.19 2006/04/10 19:16:21 khussey Exp $
+ * $Id: RemoveVariableValueActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -260,11 +260,11 @@ public class RemoveVariableValueActionImpl
 	 */
 	public InputPin createRemoveAt(String name, Type type, EClass eClass) {
 		InputPin newRemoveAt = (InputPin) create(eClass);
+		setRemoveAt(newRemoveAt);
 		if (name != null)
 			newRemoveAt.setName(name);
 		if (type != null)
 			newRemoveAt.setType(type);
-		setRemoveAt(newRemoveAt);
 		return newRemoveAt;
 	}
 

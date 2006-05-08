@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.23 2006/04/10 19:16:20 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.24 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -293,11 +293,11 @@ public class CollaborationImpl
 	 */
 	public Property createOwnedAttribute(String name, Type type, EClass eClass) {
 		Property newOwnedAttribute = (Property) create(eClass);
+		getOwnedAttributes().add(newOwnedAttribute);
 		if (name != null)
 			newOwnedAttribute.setName(name);
 		if (type != null)
 			newOwnedAttribute.setType(type);
-		getOwnedAttributes().add(newOwnedAttribute);
 		return newOwnedAttribute;
 	}
 
@@ -426,9 +426,9 @@ public class CollaborationImpl
 	 */
 	public Connector createOwnedConnector(String name) {
 		Connector newOwnedConnector = (Connector) create(UMLPackage.Literals.CONNECTOR);
+		getOwnedConnectors().add(newOwnedConnector);
 		if (name != null)
 			newOwnedConnector.setName(name);
-		getOwnedConnectors().add(newOwnedConnector);
 		return newOwnedConnector;
 	}
 

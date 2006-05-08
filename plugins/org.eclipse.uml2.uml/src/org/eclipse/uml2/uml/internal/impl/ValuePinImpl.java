@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.20 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.21 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -176,11 +176,11 @@ public class ValuePinImpl
 	 */
 	public ValueSpecification createValue(String name, Type type, EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) create(eClass);
+		setValue(newValue);
 		if (name != null)
 			newValue.setName(name);
 		if (type != null)
 			newValue.setType(type);
-		setValue(newValue);
 		return newValue;
 	}
 

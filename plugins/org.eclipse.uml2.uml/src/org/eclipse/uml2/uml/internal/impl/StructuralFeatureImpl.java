@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -454,11 +454,11 @@ public abstract class StructuralFeatureImpl
 	public ValueSpecification createUpperValue(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newUpperValue = (ValueSpecification) create(eClass);
+		setUpperValue(newUpperValue);
 		if (name != null)
 			newUpperValue.setName(name);
 		if (type != null)
 			newUpperValue.setType(type);
-		setUpperValue(newUpperValue);
 		return newUpperValue;
 	}
 
@@ -561,11 +561,11 @@ public abstract class StructuralFeatureImpl
 	public ValueSpecification createLowerValue(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newLowerValue = (ValueSpecification) create(eClass);
+		setLowerValue(newLowerValue);
 		if (name != null)
 			newLowerValue.setName(name);
 		if (type != null)
 			newLowerValue.setType(type);
-		setLowerValue(newLowerValue);
 		return newLowerValue;
 	}
 

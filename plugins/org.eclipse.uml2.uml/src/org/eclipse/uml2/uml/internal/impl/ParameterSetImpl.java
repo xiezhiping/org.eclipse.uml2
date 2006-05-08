@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.16 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -188,9 +188,9 @@ public class ParameterSetImpl
 	 */
 	public Constraint createCondition(String name, EClass eClass) {
 		Constraint newCondition = (Constraint) create(eClass);
+		getConditions().add(newCondition);
 		if (name != null)
 			newCondition.setName(name);
-		getConditions().add(newCondition);
 		return newCondition;
 	}
 

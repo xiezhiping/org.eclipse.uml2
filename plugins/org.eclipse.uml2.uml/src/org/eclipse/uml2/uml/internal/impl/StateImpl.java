@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.26 2006/04/10 19:16:21 khussey Exp $
+ * $Id: StateImpl.java,v 1.27 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -779,9 +779,9 @@ public class StateImpl
 	 */
 	public ConnectionPointReference createConnection(String name) {
 		ConnectionPointReference newConnection = (ConnectionPointReference) create(UMLPackage.Literals.CONNECTION_POINT_REFERENCE);
+		getConnections().add(newConnection);
 		if (name != null)
 			newConnection.setName(name);
-		getConnections().add(newConnection);
 		return newConnection;
 	}
 
@@ -837,9 +837,9 @@ public class StateImpl
 	 */
 	public Pseudostate createConnectionPoint(String name) {
 		Pseudostate newConnectionPoint = (Pseudostate) create(UMLPackage.Literals.PSEUDOSTATE);
+		getConnectionPoints().add(newConnectionPoint);
 		if (name != null)
 			newConnectionPoint.setName(name);
-		getConnectionPoints().add(newConnectionPoint);
 		return newConnectionPoint;
 	}
 
@@ -1010,9 +1010,9 @@ public class StateImpl
 	 */
 	public Constraint createStateInvariant(String name, EClass eClass) {
 		Constraint newStateInvariant = (Constraint) create(eClass);
+		setStateInvariant(newStateInvariant);
 		if (name != null)
 			newStateInvariant.setName(name);
-		setStateInvariant(newStateInvariant);
 		return newStateInvariant;
 	}
 
@@ -1115,9 +1115,9 @@ public class StateImpl
 	 */
 	public Behavior createEntry(String name, EClass eClass) {
 		Behavior newEntry = (Behavior) create(eClass);
+		setEntry(newEntry);
 		if (name != null)
 			newEntry.setName(name);
-		setEntry(newEntry);
 		return newEntry;
 	}
 
@@ -1211,9 +1211,9 @@ public class StateImpl
 	 */
 	public Behavior createExit(String name, EClass eClass) {
 		Behavior newExit = (Behavior) create(eClass);
+		setExit(newExit);
 		if (name != null)
 			newExit.setName(name);
-		setExit(newExit);
 		return newExit;
 	}
 
@@ -1310,9 +1310,9 @@ public class StateImpl
 	 */
 	public Behavior createDoActivity(String name, EClass eClass) {
 		Behavior newDoActivity = (Behavior) create(eClass);
+		setDoActivity(newDoActivity);
 		if (name != null)
 			newDoActivity.setName(name);
-		setDoActivity(newDoActivity);
 		return newDoActivity;
 	}
 
@@ -1336,9 +1336,9 @@ public class StateImpl
 	 */
 	public Trigger createDeferrableTrigger(String name) {
 		Trigger newDeferrableTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
+		getDeferrableTriggers().add(newDeferrableTrigger);
 		if (name != null)
 			newDeferrableTrigger.setName(name);
-		getDeferrableTriggers().add(newDeferrableTrigger);
 		return newDeferrableTrigger;
 	}
 
@@ -1393,9 +1393,9 @@ public class StateImpl
 	 */
 	public Region createRegion(String name) {
 		Region newRegion = (Region) create(UMLPackage.Literals.REGION);
+		getRegions().add(newRegion);
 		if (name != null)
 			newRegion.setName(name);
-		getRegions().add(newRegion);
 		return newRegion;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -201,9 +201,9 @@ public class InteractionUseImpl
 	 */
 	public Gate createActualGate(String name) {
 		Gate newActualGate = (Gate) create(UMLPackage.Literals.GATE);
+		getActualGates().add(newActualGate);
 		if (name != null)
 			newActualGate.setName(name);
-		getActualGates().add(newActualGate);
 		return newActualGate;
 	}
 
@@ -257,9 +257,9 @@ public class InteractionUseImpl
 	 */
 	public Action createArgument(String name, EClass eClass) {
 		Action newArgument = (Action) create(eClass);
+		getArguments().add(newArgument);
 		if (name != null)
 			newArgument.setName(name);
-		getArguments().add(newArgument);
 		return newArgument;
 	}
 

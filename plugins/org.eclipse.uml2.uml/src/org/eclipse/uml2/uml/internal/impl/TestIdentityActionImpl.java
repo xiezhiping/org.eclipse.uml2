@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -251,11 +251,11 @@ public class TestIdentityActionImpl
 	 */
 	public InputPin createFirst(String name, Type type, EClass eClass) {
 		InputPin newFirst = (InputPin) create(eClass);
+		setFirst(newFirst);
 		if (name != null)
 			newFirst.setName(name);
 		if (type != null)
 			newFirst.setType(type);
-		setFirst(newFirst);
 		return newFirst;
 	}
 
@@ -360,11 +360,11 @@ public class TestIdentityActionImpl
 	 */
 	public InputPin createSecond(String name, Type type, EClass eClass) {
 		InputPin newSecond = (InputPin) create(eClass);
+		setSecond(newSecond);
 		if (name != null)
 			newSecond.setName(name);
 		if (type != null)
 			newSecond.setType(type);
-		setSecond(newSecond);
 		return newSecond;
 	}
 
@@ -469,11 +469,11 @@ public class TestIdentityActionImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		setResult(newResult);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
 			newResult.setType(type);
-		setResult(newResult);
 		return newResult;
 	}
 

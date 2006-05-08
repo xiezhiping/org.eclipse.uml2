@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.19 2006/04/10 19:16:18 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -272,11 +272,11 @@ public class AddStructuralFeatureValueActionImpl
 	 */
 	public InputPin createInsertAt(String name, Type type, EClass eClass) {
 		InputPin newInsertAt = (InputPin) create(eClass);
+		setInsertAt(newInsertAt);
 		if (name != null)
 			newInsertAt.setName(name);
 		if (type != null)
 			newInsertAt.setType(type);
-		setInsertAt(newInsertAt);
 		return newInsertAt;
 	}
 

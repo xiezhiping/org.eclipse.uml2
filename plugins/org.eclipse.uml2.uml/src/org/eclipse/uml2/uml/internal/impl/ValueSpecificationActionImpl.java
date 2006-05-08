@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -222,11 +222,11 @@ public class ValueSpecificationActionImpl
 	 */
 	public ValueSpecification createValue(String name, Type type, EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) create(eClass);
+		setValue(newValue);
 		if (name != null)
 			newValue.setName(name);
 		if (type != null)
 			newValue.setType(type);
-		setValue(newValue);
 		return newValue;
 	}
 
@@ -328,11 +328,11 @@ public class ValueSpecificationActionImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		setResult(newResult);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
 			newResult.setType(type);
-		setResult(newResult);
 		return newResult;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
+ * $Id: SlotImpl.java,v 1.16 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -248,11 +248,11 @@ public class SlotImpl
 	 */
 	public ValueSpecification createValue(String name, Type type, EClass eClass) {
 		ValueSpecification newValue = (ValueSpecification) create(eClass);
+		getValues().add(newValue);
 		if (name != null)
 			newValue.setName(name);
 		if (type != null)
 			newValue.setType(type);
-		getValues().add(newValue);
 		return newValue;
 	}
 

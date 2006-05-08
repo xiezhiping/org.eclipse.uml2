@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.25 2006/04/10 19:16:18 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.26 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -218,9 +218,9 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public Behavior createOwnedBehavior(String name, EClass eClass) {
 		Behavior newOwnedBehavior = (Behavior) create(eClass);
+		getOwnedBehaviors().add(newOwnedBehavior);
 		if (name != null)
 			newOwnedBehavior.setName(name);
-		getOwnedBehaviors().add(newOwnedBehavior);
 		return newOwnedBehavior;
 	}
 
@@ -352,9 +352,9 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public Behavior createClassifierBehavior(String name, EClass eClass) {
 		Behavior newClassifierBehavior = (Behavior) create(eClass);
+		setClassifierBehavior(newClassifierBehavior);
 		if (name != null)
 			newClassifierBehavior.setName(name);
-		setClassifierBehavior(newClassifierBehavior);
 		return newClassifierBehavior;
 	}
 
@@ -382,11 +382,11 @@ public abstract class BehavioredClassifierImpl
 	public InterfaceRealization createInterfaceRealization(String name,
 			Interface contract) {
 		InterfaceRealization newInterfaceRealization = (InterfaceRealization) create(UMLPackage.Literals.INTERFACE_REALIZATION);
+		getInterfaceRealizations().add(newInterfaceRealization);
 		if (name != null)
 			newInterfaceRealization.setName(name);
 		if (contract != null)
 			newInterfaceRealization.setContract(contract);
-		getInterfaceRealizations().add(newInterfaceRealization);
 		return newInterfaceRealization;
 	}
 
@@ -446,9 +446,9 @@ public abstract class BehavioredClassifierImpl
 	 */
 	public Trigger createOwnedTrigger(String name) {
 		Trigger newOwnedTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
+		getOwnedTriggers().add(newOwnedTrigger);
 		if (name != null)
 			newOwnedTrigger.setName(name);
-		getOwnedTriggers().add(newOwnedTrigger);
 		return newOwnedTrigger;
 	}
 

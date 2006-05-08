@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.17 2006/04/10 19:16:19 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.18 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -560,11 +560,11 @@ public abstract class BehavioralFeatureImpl
 	 */
 	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
+		getOwnedParameters().add(newOwnedParameter);
 		if (name != null)
 			newOwnedParameter.setName(name);
 		if (type != null)
 			newOwnedParameter.setType(type);
-		getOwnedParameters().add(newOwnedParameter);
 		return newOwnedParameter;
 	}
 
@@ -759,9 +759,9 @@ public abstract class BehavioralFeatureImpl
 	 */
 	public ParameterSet createOwnedParameterSet(String name) {
 		ParameterSet newOwnedParameterSet = (ParameterSet) create(UMLPackage.Literals.PARAMETER_SET);
+		getOwnedParameterSets().add(newOwnedParameterSet);
 		if (name != null)
 			newOwnedParameterSet.setName(name);
-		getOwnedParameterSets().add(newOwnedParameterSet);
 		return newOwnedParameterSet;
 	}
 

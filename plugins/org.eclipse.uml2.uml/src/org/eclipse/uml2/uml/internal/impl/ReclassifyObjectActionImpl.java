@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -369,11 +369,11 @@ public class ReclassifyObjectActionImpl
 	 */
 	public InputPin createObject(String name, Type type, EClass eClass) {
 		InputPin newObject = (InputPin) create(eClass);
+		setObject(newObject);
 		if (name != null)
 			newObject.setName(name);
 		if (type != null)
 			newObject.setType(type);
-		setObject(newObject);
 		return newObject;
 	}
 

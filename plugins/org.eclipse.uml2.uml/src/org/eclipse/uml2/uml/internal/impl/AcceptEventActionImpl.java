@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -237,9 +237,9 @@ public class AcceptEventActionImpl
 	 */
 	public Trigger createTrigger(String name) {
 		Trigger newTrigger = (Trigger) create(UMLPackage.Literals.TRIGGER);
+		getTriggers().add(newTrigger);
 		if (name != null)
 			newTrigger.setName(name);
-		getTriggers().add(newTrigger);
 		return newTrigger;
 	}
 

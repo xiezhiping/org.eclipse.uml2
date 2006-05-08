@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.17 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.18 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -347,9 +347,9 @@ public class ExtendImpl
 	 */
 	public Constraint createCondition(String name, EClass eClass) {
 		Constraint newCondition = (Constraint) create(eClass);
+		setCondition(newCondition);
 		if (name != null)
 			newCondition.setName(name);
-		setCondition(newCondition);
 		return newCondition;
 	}
 

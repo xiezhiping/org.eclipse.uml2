@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.28 2006/05/02 21:51:04 khussey Exp $
+ * $Id: PackageImpl.java,v 1.29 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -426,9 +426,9 @@ public class PackageImpl
 	 */
 	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
 		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
+		getTemplateBindings().add(newTemplateBinding);
 		if (signature != null)
 			newTemplateBinding.setSignature(signature);
-		getTemplateBindings().add(newTemplateBinding);
 		return newTemplateBinding;
 	}
 
@@ -619,9 +619,9 @@ public class PackageImpl
 	 */
 	public PackageableElement createPackagedElement(String name, EClass eClass) {
 		PackageableElement newPackagedElement = (PackageableElement) create(eClass);
+		getPackagedElements().add(newPackagedElement);
 		if (name != null)
 			newPackagedElement.setName(name);
-		getPackagedElements().add(newPackagedElement);
 		return newPackagedElement;
 	}
 
@@ -679,9 +679,9 @@ public class PackageImpl
 	public PackageMerge createPackageMerge(
 			org.eclipse.uml2.uml.Package mergedPackage) {
 		PackageMerge newPackageMerge = (PackageMerge) create(UMLPackage.Literals.PACKAGE_MERGE);
+		getPackageMerges().add(newPackageMerge);
 		if (mergedPackage != null)
 			newPackageMerge.setMergedPackage(mergedPackage);
-		getPackageMerges().add(newPackageMerge);
 		return newPackageMerge;
 	}
 
@@ -746,9 +746,9 @@ public class PackageImpl
 	 */
 	public Type createOwnedType(String name, EClass eClass) {
 		Type newOwnedType = (Type) create(eClass);
+		getOwnedTypes().add(newOwnedType);
 		if (name != null)
 			newOwnedType.setName(name);
-		getOwnedTypes().add(newOwnedType);
 		return newOwnedType;
 	}
 
@@ -818,9 +818,9 @@ public class PackageImpl
 	public org.eclipse.uml2.uml.Package createNestedPackage(String name,
 			EClass eClass) {
 		org.eclipse.uml2.uml.Package newNestedPackage = (org.eclipse.uml2.uml.Package) create(eClass);
+		getNestedPackages().add(newNestedPackage);
 		if (name != null)
 			newNestedPackage.setName(name);
-		getNestedPackages().add(newNestedPackage);
 		return newNestedPackage;
 	}
 

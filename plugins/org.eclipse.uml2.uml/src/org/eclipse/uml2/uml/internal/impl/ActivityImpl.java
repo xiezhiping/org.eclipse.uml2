@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.26 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.27 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -318,9 +318,9 @@ public class ActivityImpl
 	 */
 	public ActivityNode createNode(String name, EClass eClass) {
 		ActivityNode newNode = (ActivityNode) create(eClass);
+		getNodes().add(newNode);
 		if (name != null)
 			newNode.setName(name);
-		getNodes().add(newNode);
 		return newNode;
 	}
 
@@ -485,11 +485,11 @@ public class ActivityImpl
 	 */
 	public Variable createVariable(String name, Type type) {
 		Variable newVariable = (Variable) create(UMLPackage.Literals.VARIABLE);
+		getVariables().add(newVariable);
 		if (name != null)
 			newVariable.setName(name);
 		if (type != null)
 			newVariable.setType(type);
-		getVariables().add(newVariable);
 		return newVariable;
 	}
 
@@ -545,9 +545,9 @@ public class ActivityImpl
 	 */
 	public ActivityEdge createEdge(String name, EClass eClass) {
 		ActivityEdge newEdge = (ActivityEdge) create(eClass);
+		getEdges().add(newEdge);
 		if (name != null)
 			newEdge.setName(name);
-		getEdges().add(newEdge);
 		return newEdge;
 	}
 
@@ -603,9 +603,9 @@ public class ActivityImpl
 	 */
 	public ActivityPartition createPartition(String name) {
 		ActivityPartition newPartition = (ActivityPartition) create(UMLPackage.Literals.ACTIVITY_PARTITION);
+		getPartitions().add(newPartition);
 		if (name != null)
 			newPartition.setName(name);
-		getPartitions().add(newPartition);
 		return newPartition;
 	}
 

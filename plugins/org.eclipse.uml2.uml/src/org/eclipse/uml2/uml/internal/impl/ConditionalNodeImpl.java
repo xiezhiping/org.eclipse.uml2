@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.18 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -292,11 +292,11 @@ public class ConditionalNodeImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		getResults().add(newResult);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
 			newResult.setType(type);
-		getResults().add(newResult);
 		return newResult;
 	}
 

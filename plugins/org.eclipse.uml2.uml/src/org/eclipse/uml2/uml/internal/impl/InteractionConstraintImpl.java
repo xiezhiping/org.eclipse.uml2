@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.17 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.18 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -221,11 +221,11 @@ public class InteractionConstraintImpl
 	 */
 	public ValueSpecification createMinint(String name, Type type, EClass eClass) {
 		ValueSpecification newMinint = (ValueSpecification) create(eClass);
+		setMinint(newMinint);
 		if (name != null)
 			newMinint.setName(name);
 		if (type != null)
 			newMinint.setType(type);
-		setMinint(newMinint);
 		return newMinint;
 	}
 
@@ -323,11 +323,11 @@ public class InteractionConstraintImpl
 	 */
 	public ValueSpecification createMaxint(String name, Type type, EClass eClass) {
 		ValueSpecification newMaxint = (ValueSpecification) create(eClass);
+		setMaxint(newMaxint);
 		if (name != null)
 			newMaxint.setName(name);
 		if (type != null)
 			newMaxint.setType(type);
-		setMaxint(newMaxint);
 		return newMaxint;
 	}
 

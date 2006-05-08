@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.19 2006/04/10 19:16:19 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -205,11 +205,11 @@ public class RaiseExceptionActionImpl
 	 */
 	public InputPin createException(String name, Type type, EClass eClass) {
 		InputPin newException = (InputPin) create(eClass);
+		setException(newException);
 		if (name != null)
 			newException.setName(name);
 		if (type != null)
 			newException.setType(type);
-		setException(newException);
 		return newException;
 	}
 

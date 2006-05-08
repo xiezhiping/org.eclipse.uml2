@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.14 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.15 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -312,11 +312,11 @@ public class ReduceActionImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		setResult(newResult);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
 			newResult.setType(type);
-		setResult(newResult);
 		return newResult;
 	}
 
@@ -414,11 +414,11 @@ public class ReduceActionImpl
 	 */
 	public InputPin createCollection(String name, Type type, EClass eClass) {
 		InputPin newCollection = (InputPin) create(eClass);
+		setCollection(newCollection);
 		if (name != null)
 			newCollection.setName(name);
 		if (type != null)
 			newCollection.setType(type);
-		setCollection(newCollection);
 		return newCollection;
 	}
 

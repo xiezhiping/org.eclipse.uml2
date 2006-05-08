@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.21 2006/04/10 19:16:21 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.22 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -451,11 +451,11 @@ public class LoopNodeImpl
 	 */
 	public OutputPin createResult(String name, Type type) {
 		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		getResults().add(newResult);
 		if (name != null)
 			newResult.setName(name);
 		if (type != null)
 			newResult.setType(type);
-		getResults().add(newResult);
 		return newResult;
 	}
 
@@ -595,11 +595,11 @@ public class LoopNodeImpl
 	public InputPin createLoopVariableInput(String name, Type type,
 			EClass eClass) {
 		InputPin newLoopVariableInput = (InputPin) create(eClass);
+		getLoopVariableInputs().add(newLoopVariableInput);
 		if (name != null)
 			newLoopVariableInput.setName(name);
 		if (type != null)
 			newLoopVariableInput.setType(type);
-		getLoopVariableInputs().add(newLoopVariableInput);
 		return newLoopVariableInput;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.30 2006/04/11 19:53:26 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.31 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -256,9 +256,9 @@ public class ProtocolTransitionImpl
 	 */
 	public Constraint createPostCondition(String name, EClass eClass) {
 		Constraint newPostCondition = (Constraint) create(eClass);
+		setPostCondition(newPostCondition);
 		if (name != null)
 			newPostCondition.setName(name);
-		setPostCondition(newPostCondition);
 		return newPostCondition;
 	}
 

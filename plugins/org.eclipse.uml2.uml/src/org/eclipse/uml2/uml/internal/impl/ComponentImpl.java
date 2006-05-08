@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.25 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.26 2006/05/08 17:46:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -319,9 +319,9 @@ public class ComponentImpl
 	 */
 	public PackageableElement createPackagedElement(String name, EClass eClass) {
 		PackageableElement newPackagedElement = (PackageableElement) create(eClass);
+		getPackagedElements().add(newPackagedElement);
 		if (name != null)
 			newPackagedElement.setName(name);
-		getPackagedElements().add(newPackagedElement);
 		return newPackagedElement;
 	}
 
@@ -379,9 +379,9 @@ public class ComponentImpl
 	 */
 	public ComponentRealization createRealization(String name) {
 		ComponentRealization newRealization = (ComponentRealization) create(UMLPackage.Literals.COMPONENT_REALIZATION);
+		getRealizations().add(newRealization);
 		if (name != null)
 			newRealization.setName(name);
-		getRealizations().add(newRealization);
 		return newRealization;
 	}
 

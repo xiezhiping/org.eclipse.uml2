@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.24 2006/04/10 19:16:20 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.25 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -349,11 +349,11 @@ public class AssociationImpl
 	 */
 	public Property createOwnedEnd(String name, Type type, EClass eClass) {
 		Property newOwnedEnd = (Property) create(eClass);
+		getOwnedEnds().add(newOwnedEnd);
 		if (name != null)
 			newOwnedEnd.setName(name);
 		if (type != null)
 			newOwnedEnd.setType(type);
-		getOwnedEnds().add(newOwnedEnd);
 		return newOwnedEnd;
 	}
 
@@ -495,11 +495,11 @@ public class AssociationImpl
 	public Property createNavigableOwnedEnd(String name, Type type,
 			EClass eClass) {
 		Property newNavigableOwnedEnd = (Property) create(eClass);
+		getNavigableOwnedEnds().add(newNavigableOwnedEnd);
 		if (name != null)
 			newNavigableOwnedEnd.setName(name);
 		if (type != null)
 			newNavigableOwnedEnd.setType(type);
-		getNavigableOwnedEnds().add(newNavigableOwnedEnd);
 		return newNavigableOwnedEnd;
 	}
 

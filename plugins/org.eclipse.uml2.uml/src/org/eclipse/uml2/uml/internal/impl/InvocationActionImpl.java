@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.20 2006/04/10 19:16:20 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.21 2006/05/08 17:46:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -146,11 +146,11 @@ public abstract class InvocationActionImpl
 	 */
 	public InputPin createArgument(String name, Type type, EClass eClass) {
 		InputPin newArgument = (InputPin) create(eClass);
+		getArguments().add(newArgument);
 		if (name != null)
 			newArgument.setName(name);
 		if (type != null)
 			newArgument.setType(type);
-		getArguments().add(newArgument);
 		return newArgument;
 	}
 
