@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.8 2006/05/02 20:18:32 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.9 2006/05/08 18:10:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -163,36 +163,26 @@ public class ConnectorOperations
 	 */
 	public static boolean validateRoles(Connector connector,
 			DiagnosticChain diagnostics, Map context) {
-		EList ends = connector.getEnds();
+		Iterator ends = connector.getEnds().iterator();
 
-		if (ends.size() == 2) {
-			ConnectorEnd fromEnd = (ConnectorEnd) ends.get(0);
-			ConnectableElement fromRole = fromEnd.getRole();
-			Element fromOwner = null;
+		while (ends.hasNext()) {
+			ConnectorEnd end = (ConnectorEnd) ends.next();
+			ConnectableElement role = end.getRole();
 
-			if (fromRole instanceof Port) {
-				fromOwner = fromEnd.getPartWithPort().getOwner();
+			Element owner = null;
+
+			if (role instanceof Port) {
+				Property partWithPort = end.getPartWithPort();
+				owner = partWithPort == null
+					? role.getOwner()
+					: partWithPort.getOwner();
 			} else {
-				fromOwner = fromRole == null
+				owner = role == null
 					? null
-					: fromRole.getOwner();
+					: role.getOwner();
 			}
 
-			ConnectorEnd toEnd = (ConnectorEnd) ends.get(1);
-			ConnectableElement toRole = toEnd.getRole();
-			Element toOwner = null;
-
-			if (toRole instanceof Port) {
-				toOwner = toEnd.getPartWithPort().getOwner();
-			} else {
-				toOwner = toRole == null
-					? null
-					: toRole.getOwner();
-			}
-
-			Element connectorOwner = connector.getOwner();
-
-			if (connectorOwner != fromOwner || connectorOwner != toOwner) {
+			if (connector.getOwner() != owner) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
@@ -226,21 +216,20 @@ public class ConnectorOperations
 		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectableElement fromRole = ((ConnectorEnd) ends.get(0))
-				.getRole();
-			Collection fromRequired = ConnectableElementOperations
-				.getRequiredInterfaces(fromRole);
-			Collection fromProvided = ConnectableElementOperations
-				.getProvidedInterfaces(fromRole);
+			ConnectableElement role1 = ((ConnectorEnd) ends.get(0)).getRole();
+			Collection required1 = ConnectableElementOperations
+				.getRequiredInterfaces(role1);
+			Collection provided1 = ConnectableElementOperations
+				.getProvidedInterfaces(role1);
 
-			ConnectableElement toRole = ((ConnectorEnd) ends.get(1)).getRole();
-			Collection toRequired = ConnectableElementOperations
-				.getRequiredInterfaces(toRole);
-			Collection toProvided = ConnectableElementOperations
-				.getProvidedInterfaces(toRole);
+			ConnectableElement role2 = ((ConnectorEnd) ends.get(1)).getRole();
+			Collection required2 = ConnectableElementOperations
+				.getRequiredInterfaces(role2);
+			Collection provided2 = ConnectableElementOperations
+				.getProvidedInterfaces(role2);
 
-			if (intersect(toProvided, fromRequired)
-				|| intersect(fromProvided, toRequired)) {
+			if (intersect(provided2, required1)
+				|| intersect(provided1, required2)) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
@@ -275,24 +264,23 @@ public class ConnectorOperations
 		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectorEnd fromEnd = (ConnectorEnd) ends.get(0);
-			ConnectableElement fromRole = fromEnd.getRole();
+			ConnectorEnd end1 = (ConnectorEnd) ends.get(0);
+			ConnectableElement role1 = end1.getRole();
 
-			ConnectorEnd toEnd = (ConnectorEnd) ends.get(1);
-			ConnectableElement toRole = toEnd.getRole();
+			ConnectorEnd end2 = (ConnectorEnd) ends.get(1);
+			ConnectableElement role2 = end2.getRole();
 
-			Collection fromProvided = ConnectableElementOperations
-				.getProvidedInterfaces(fromRole);
+			Collection provided1 = ConnectableElementOperations
+				.getProvidedInterfaces(role1);
 
-			if (!fromProvided.isEmpty() && !(toRole instanceof Port)
-				&& toRole instanceof Property) {
+			if (!provided1.isEmpty() && !(role2 instanceof Port)
+				&& role2 instanceof Property) {
 
-				Type toType = ((Property) toRole).getType();
+				Type toType = ((Property) role2).getType();
 
 				if (toType instanceof BehavioredClassifier
 					&& (!((BehavioredClassifier) toType)
-						.getAllImplementedInterfaces()
-						.containsAll(fromProvided))) {
+						.getAllImplementedInterfaces().containsAll(provided1))) {
 
 					if (diagnostics != null) {
 						diagnostics
@@ -334,25 +322,24 @@ public class ConnectorOperations
 		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectableElement fromRole = ((ConnectorEnd) ends.get(0))
-				.getRole();
-			Collection fromRequired = ConnectableElementOperations
-				.getRequiredInterfaces(fromRole);
-			Collection fromProvided = ConnectableElementOperations
-				.getProvidedInterfaces(fromRole);
+			ConnectableElement role1 = ((ConnectorEnd) ends.get(0)).getRole();
+			Collection required1 = ConnectableElementOperations
+				.getRequiredInterfaces(role1);
+			Collection provided1 = ConnectableElementOperations
+				.getProvidedInterfaces(role1);
 
-			ConnectableElement toRole = ((ConnectorEnd) ends.get(1)).getRole();
-			Collection toRequired = ConnectableElementOperations
-				.getRequiredInterfaces(toRole);
-			Collection toProvided = ConnectableElementOperations
-				.getProvidedInterfaces(toRole);
+			ConnectableElement role2 = ((ConnectorEnd) ends.get(1)).getRole();
+			Collection required2 = ConnectableElementOperations
+				.getRequiredInterfaces(role2);
+			Collection provided2 = ConnectableElementOperations
+				.getProvidedInterfaces(role2);
 
-			if (!fromProvided.isEmpty() && !toProvided.isEmpty()) {
-				result = result && intersect(fromProvided, toProvided);
+			if (!provided1.isEmpty() && !provided2.isEmpty()) {
+				result = result && intersect(provided1, provided2);
 			}
 
-			if (!fromRequired.isEmpty() && !toRequired.isEmpty()) {
-				result = result && intersect(fromRequired, toRequired);
+			if (!required1.isEmpty() && !required2.isEmpty()) {
+				result = result && intersect(required1, required2);
 			}
 
 			if (!result && diagnostics != null) {
@@ -420,21 +407,20 @@ public class ConnectorOperations
 		if (connector.getKind() == ConnectorKind.ASSEMBLY_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectableElement fromRole = ((ConnectorEnd) ends.get(0))
-				.getRole();
-			Collection fromRequired = ConnectableElementOperations
-				.getRequiredInterfaces(fromRole);
-			Collection fromProvided = ConnectableElementOperations
-				.getProvidedInterfaces(fromRole);
+			ConnectableElement role1 = ((ConnectorEnd) ends.get(0)).getRole();
+			Collection required1 = ConnectableElementOperations
+				.getRequiredInterfaces(role1);
+			Collection provided1 = ConnectableElementOperations
+				.getProvidedInterfaces(role1);
 
-			ConnectableElement toRole = ((ConnectorEnd) ends.get(1)).getRole();
-			Collection toRequired = ConnectableElementOperations
-				.getRequiredInterfaces(toRole);
-			Collection toProvided = ConnectableElementOperations
-				.getProvidedInterfaces(toRole);
+			ConnectableElement role2 = ((ConnectorEnd) ends.get(1)).getRole();
+			Collection required2 = ConnectableElementOperations
+				.getRequiredInterfaces(role2);
+			Collection provided2 = ConnectableElementOperations
+				.getProvidedInterfaces(role2);
 
-			if (!intersect(fromProvided, toRequired)
-				&& !intersect(toProvided, fromRequired)) {
+			if (!intersect(provided1, required2)
+				&& !intersect(provided2, required1)) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
