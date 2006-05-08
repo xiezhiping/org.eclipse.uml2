@@ -65,6 +65,11 @@
 	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
 	{
 		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) create(eClass);
+      <%if (genFeature.isListType()) {%>
+		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
+      <%} else {%>
+		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
+      <%}%>
       <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
         <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
           <%if (keyGenFeature.isListType()) {%>
@@ -88,11 +93,6 @@
 			new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
           <%}%>
         <%}%>
-      <%}%>
-      <%if (genFeature.isListType()) {%>
-		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
-      <%} else {%>
-		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
       <%}%>
 		return new<%=genFeature.getCapName()%>;
 	}
@@ -141,6 +141,11 @@
 		return create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature, false)%>, <%}%><%=genFeature.getTypeGenClass().getQualifiedClassifierAccessor()%>);
       <%} else {%>
 		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) create(<%=genFeature.getTypeGenClass().getQualifiedClassifierAccessor()%>);
+        <%if (genFeature.isListType()) {%>
+		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
+        <%} else {%>
+		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
+        <%}%>
         <%for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();%>
           <%if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;%>
             <%if (keyGenFeature.isListType()) {%>
@@ -164,11 +169,6 @@
 			new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
             <%}%>
           <%}%>
-        <%}%>
-        <%if (genFeature.isListType()) {%>
-		<%=genFeature.getGetAccessor()%>().add(new<%=genFeature.getCapName()%>);
-        <%} else {%>
-		set<%=genFeature.getAccessorName()%>(new<%=genFeature.getCapName()%>);
         <%}%>
 		return new<%=genFeature.getCapName()%>;
       <%}%>
