@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.18 2006/04/04 18:06:50 khussey Exp $
+ * $Id: ClassOperations.java,v 1.19 2006/05/09 17:53:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.emf.common.util.UniqueEList;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -157,11 +156,6 @@ public class ClassOperations
 	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
 		return class_.getAppliedStereotype("Standard" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "Metaclass") != null; //$NON-NLS-1$
-	}
-
-	protected static EClassifier getEClassifier(
-			org.eclipse.uml2.uml.Class metaclass) {
-		return UMLPackage.eINSTANCE.getEClassifier(metaclass.getName());
 	}
 
 	/**

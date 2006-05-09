@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.38 2006/05/03 19:44:58 khussey Exp $
+ * $Id: ElementOperations.java,v 1.39 2006/05/09 17:53:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1053,8 +1053,7 @@ public class ElementOperations
 				Type type = attribute.getType();
 
 				if (type instanceof org.eclipse.uml2.uml.Class) {
-					EClassifier eClassifier = ClassOperations
-						.getEClassifier((org.eclipse.uml2.uml.Class) type);
+					EClassifier eClassifier = getEClassifier((org.eclipse.uml2.uml.Class) type);
 
 					if (eClassifier != null && eClassifier.isInstance(element)) {
 						return (Extension) association;
@@ -1153,8 +1152,7 @@ public class ElementOperations
 				org.eclipse.uml2.uml.Class metaclass = extension.getMetaclass();
 
 				if (metaclass != null) {
-					EClassifier eClassifier = ClassOperations
-						.getEClassifier(metaclass);
+					EClassifier eClassifier = getEClassifier(metaclass);
 
 					if (eClassifier != null && eClassifier.isInstance(element)) {
 						Stereotype stereotype = extension.getStereotype();

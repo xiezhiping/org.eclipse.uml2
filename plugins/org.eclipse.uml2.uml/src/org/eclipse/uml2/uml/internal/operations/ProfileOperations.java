@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.25 2006/05/02 14:55:08 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.26 2006/05/09 17:53:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,19 +25,14 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -48,7 +42,6 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -86,180 +79,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  */
 public class ProfileOperations
 		extends PackageOperations {
-
-	public static final class Profile2EPackageConverter
-			extends UML2EcoreConverter {
-
-		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
-			return packages.contains(package_)
-				? super.casePackage(package_)
-				: doSwitch((Profile) packages.iterator().next());
-		}
-
-		public Object caseProfile(Profile profile) {
-			EPackage ePackage = (EPackage) casePackage(profile);
-
-			if (packages.contains(profile)) {
-				String profileName = ePackage.getName();
-
-				ePackage.setNsPrefix(profileName);
-
-				org.eclipse.uml2.uml.Package nestingPackage = profile
-					.getNestingPackage();
-				String profileParentQualifiedName = nestingPackage == null
-					? EMPTY_STRING
-					: getQualifiedName(nestingPackage, "."); //$NON-NLS-1$
-
-				String version = String.valueOf(0);
-
-				try {
-					EPackage definition = profile.getDefinition();
-					String nsURI = definition.getNsURI();
-					int lastIndex = nsURI.lastIndexOf('/');
-
-					if (lastIndex > 7) { // 2.0 format
-						version = String.valueOf(Integer.parseInt(nsURI
-							.substring(lastIndex + 1)) + 1);
-					} else { // 1.x format
-						String nsPrefix = definition.getNsPrefix();
-						version = String.valueOf(Integer.parseInt(nsPrefix
-							.substring(nsPrefix.lastIndexOf('_') + 1)) + 1);
-					}
-				} catch (Exception e) {
-					// ignore
-				}
-
-				StringBuffer nsURI = new StringBuffer("http://"); //$NON-NLS-1$
-				nsURI.append(profileParentQualifiedName);
-				nsURI.append("/schemas/"); //$NON-NLS-1$
-				nsURI.append(profileName);
-				nsURI.append('/');
-				nsURI.append(version);
-
-				ePackage.setNsURI(nsURI.toString());
-			}
-
-			return ePackage;
-		}
-
-		public Object caseProperty(Property property) {
-			Type type = property.getType();
-
-			if (type == null
-				|| (property.getAggregation() == AggregationKind.COMPOSITE_LITERAL && type instanceof Stereotype)) {
-
-				throw new IllegalStateException();
-			}
-
-			return super.caseProperty(property);
-		}
-
-		protected EClassifier getEType(Type type) {
-
-			if (type instanceof org.eclipse.uml2.uml.Class) {
-				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
-
-				if (class_.isMetaclass()) {
-					return ClassOperations.getEClassifier(class_);
-				}
-			}
-
-			return super.getEType(type);
-		}
-
-		protected void setName(final ENamedElement eNamedElement,
-				NamedElement namedElement) {
-
-			new UMLSwitch() {
-
-				public Object caseClassifier(Classifier classifier) {
-					setName(eNamedElement, packages.contains(classifier
-						.getPackage())
-						? classifier.getName()
-						: getQualifiedName(classifier, "_"), true); //$NON-NLS-1$
-					return classifier;
-				}
-
-				public Object caseEnumerationLiteral(
-						EnumerationLiteral enumerationLiteral) {
-					setName(eNamedElement, enumerationLiteral.getName(), false);
-					return enumerationLiteral;
-				}
-
-				public Object caseNamedElement(NamedElement namedElement) {
-					setName(eNamedElement, namedElement.getName(), true);
-					return namedElement;
-				}
-
-			}.doSwitch(namedElement);
-		}
-
-		public Object doSwitch(EObject eObject) {
-			Object eModelElement = super.doSwitch(eObject);
-
-			if (eModelElement instanceof EClassifier) {
-				EList references = getEAnnotation((EClassifier) eModelElement,
-					UMLPackage.eNS_URI, true).getReferences();
-
-				if (references.isEmpty()) {
-					references.add(eObject);
-				}
-			}
-
-			return eModelElement;
-		}
-
-		public static EPackage convert(Profile profile) {
-			Map options = new HashMap();
-			options.put(OPTION__DUPLICATE_FEATURE_INHERITANCE, OPTION__PROCESS);
-			options.put(OPTION__DUPLICATE_FEATURES, OPTION__PROCESS);
-			options.put(OPTION__ECORE_TAGGED_VALUES, OPTION__PROCESS);
-
-			Collection ePackages = new Profile2EPackageConverter().convert(
-				Collections.singleton(profile), options, null, null);
-
-			EPackage ePackage = ePackages.size() == 1
-				? (EPackage) ePackages.iterator().next()
-				: null;
-
-			if (ePackage != null) {
-
-				for (Iterator eAllContents = ePackage.eAllContents(); eAllContents
-					.hasNext();) {
-
-					new EcoreSwitch() {
-
-						public Object caseEAttribute(EAttribute eAttribute) {
-
-							try {
-								eAttribute.getDefaultValue();
-							} catch (Exception e) {
-								eAttribute.setDefaultValueLiteral(null);
-							}
-
-							return eAttribute;
-						}
-
-						public Object caseEDataType(EDataType eDataType) {
-
-							try {
-								eDataType.getInstanceClass();
-							} catch (Exception e) {
-								eDataType
-									.setInstanceClassName(EcorePackage.Literals.ESTRING
-										.getInstanceClassName());
-							}
-
-							return eDataType;
-						}
-
-					}.doSwitch((EObject) eAllContents.next());
-				}
-			}
-
-			return ePackage;
-		}
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -441,7 +260,19 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static EPackage define(Profile profile) {
-		EPackage definition = Profile2EPackageConverter.convert(profile);
+		Map options = new HashMap();
+
+		options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+			OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES,
+			OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+			OPTION__PROCESS);
+
+		Collection ePackages = convertToEcore(profile, options);
+		EPackage definition = ePackages.size() == 1
+			? (EPackage) ePackages.iterator().next()
+			: null;
 
 		if (definition != null) {
 			getEAnnotation(profile, UMLPackage.eNS_URI, true).getContents()

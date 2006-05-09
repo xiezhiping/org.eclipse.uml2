@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.15 2006/04/05 13:50:03 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.16 2006/05/09 17:53:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -217,32 +217,6 @@ public class NamedElementOperations
 				? EMPTY_STRING
 				: qualifiedName.replace(':', '_')), namedElement.getName(),
 			localize);
-	}
-
-	protected static String getQualifiedName(NamedElement namedElement,
-			String separator) {
-		String name = namedElement.getName();
-
-		if (isEmpty(name)) {
-			return null;
-		}
-
-		StringBuffer qualifiedName = new StringBuffer(name);
-
-		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
-			.hasNext();) {
-
-			String namespaceName = ((Namespace) allNamespaces.next()).getName();
-
-			if (isEmpty(namespaceName)) {
-				return null;
-			} else {
-				qualifiedName.insert(0, separator);
-				qualifiedName.insert(0, namespaceName);
-			}
-		}
-
-		return qualifiedName.toString();
 	}
 
 	/**

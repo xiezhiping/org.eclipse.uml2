@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.27 2006/05/04 18:30:58 khussey Exp $
+ * $Id: UMLUtil.java,v 1.28 2006/05/09 17:53:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4322,6 +4322,117 @@ public class UMLUtil
 
 	}
 
+	public static class Profile2EPackageConverter
+			extends UML2EcoreConverter {
+
+		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+			return packages.contains(package_)
+				? super.casePackage(package_)
+				: doSwitch((Profile) packages.iterator().next());
+		}
+
+		public Object caseProfile(Profile profile) {
+			EPackage ePackage = (EPackage) casePackage(profile);
+
+			if (packages.contains(profile)) {
+				String profileName = ePackage.getName();
+
+				ePackage.setNsPrefix(profileName);
+
+				org.eclipse.uml2.uml.Package nestingPackage = profile
+					.getNestingPackage();
+				String profileParentQualifiedName = nestingPackage == null
+					? EMPTY_STRING
+					: getQualifiedName(nestingPackage, "."); //$NON-NLS-1$
+
+				String version = String.valueOf(0);
+
+				try {
+					EPackage definition = profile.getDefinition();
+					String nsURI = definition.getNsURI();
+					int lastIndex = nsURI.lastIndexOf('/');
+
+					if (lastIndex > 7) { // 2.0 format
+						version = String.valueOf(Integer.parseInt(nsURI
+							.substring(lastIndex + 1)) + 1);
+					} else { // 1.x format
+						String nsPrefix = definition.getNsPrefix();
+						version = String.valueOf(Integer.parseInt(nsPrefix
+							.substring(nsPrefix.lastIndexOf('_') + 1)) + 1);
+					}
+				} catch (Exception e) {
+					// ignore
+				}
+
+				StringBuffer nsURI = new StringBuffer("http://"); //$NON-NLS-1$
+				nsURI.append(profileParentQualifiedName);
+				nsURI.append("/schemas/"); //$NON-NLS-1$
+				nsURI.append(profileName);
+				nsURI.append('/');
+				nsURI.append(version);
+
+				ePackage.setNsURI(nsURI.toString());
+			}
+
+			return ePackage;
+		}
+
+		protected EClassifier getEType(Type type) {
+
+			if (type instanceof org.eclipse.uml2.uml.Class) {
+				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
+
+				if (class_.isMetaclass()) {
+					return getEClassifier(class_);
+				}
+			}
+
+			return super.getEType(type);
+		}
+
+		protected void setName(final ENamedElement eNamedElement,
+				NamedElement namedElement) {
+
+			new UMLSwitch() {
+
+				public Object caseClassifier(Classifier classifier) {
+					setName(eNamedElement, packages.contains(classifier
+						.getPackage())
+						? classifier.getName()
+						: getQualifiedName(classifier, "_"), true); //$NON-NLS-1$
+					return classifier;
+				}
+
+				public Object caseEnumerationLiteral(
+						EnumerationLiteral enumerationLiteral) {
+					setName(eNamedElement, enumerationLiteral.getName(), false);
+					return enumerationLiteral;
+				}
+
+				public Object caseNamedElement(NamedElement namedElement) {
+					setName(eNamedElement, namedElement.getName(), true);
+					return namedElement;
+				}
+
+			}.doSwitch(namedElement);
+		}
+
+		public Object doSwitch(EObject eObject) {
+			Object eModelElement = super.doSwitch(eObject);
+
+			if (eModelElement instanceof EClassifier) {
+				EList references = getEAnnotation((EClassifier) eModelElement,
+					UMLPackage.eNS_URI, true).getReferences();
+
+				if (references.isEmpty()) {
+					references.add(eObject);
+				}
+			}
+
+			return eModelElement;
+		}
+	}
+
 	public static class Ecore2UMLConverter
 			extends EcoreSwitch
 			implements Converter {
@@ -5608,6 +5719,32 @@ public class UMLUtil
 		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);
 	}
 
+	protected static String getQualifiedName(NamedElement namedElement,
+			String separator) {
+		String name = namedElement.getName();
+
+		if (isEmpty(name)) {
+			return null;
+		}
+
+		StringBuffer qualifiedName = new StringBuffer(name);
+
+		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
+			.hasNext();) {
+
+			String namespaceName = ((Namespace) allNamespaces.next()).getName();
+
+			if (isEmpty(namespaceName)) {
+				return null;
+			} else {
+				qualifiedName.insert(0, separator);
+				qualifiedName.insert(0, namespaceName);
+			}
+		}
+
+		return qualifiedName.toString();
+	}
+
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName) {
 		return findNamedElements(resourceSet, qualifiedName, false);
@@ -5735,6 +5872,11 @@ public class UMLUtil
 		}
 
 		return null;
+	}
+
+	protected static EClassifier getEClassifier(
+			org.eclipse.uml2.uml.Class metaclass) {
+		return UMLPackage.eINSTANCE.getEClassifier(metaclass.getName());
 	}
 
 	protected static NamedElement getNamedElement(ENamedElement definition) {
@@ -6291,6 +6433,13 @@ public class UMLUtil
 		}
 
 		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES)) {
+
+			options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
 			.containsKey(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS)) {
 
 			options.put(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
@@ -6371,6 +6520,13 @@ public class UMLUtil
 		}
 
 		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES)) {
+
+			options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+				OPTION__REPORT);
+		}
+
+		if (!options
 			.containsKey(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS)) {
 
 			options.put(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
@@ -6441,6 +6597,212 @@ public class UMLUtil
 
 		return new UML2EcoreConverter().convert(
 			Collections.singleton(package_), options, diagnostics, context);
+	}
+
+	public static Collection convertToEcore(Profile profile, Map options) {
+
+		if (options == null) {
+			options = new HashMap();
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES)) {
+
+			options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS)) {
+
+			options.put(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES)) {
+
+			options.put(UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES)) {
+
+			options.put(UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNION_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNION_PROPERTIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__DERIVED_FEATURES)) {
+			options.put(UML2EcoreConverter.OPTION__DERIVED_FEATURES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS)) {
+
+			options.put(UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+			options.put(
+				UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES)) {
+			options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+
+			options.put(
+				UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER)) {
+			options.put(UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS)) {
+			options.put(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
+				OPTION__IGNORE);
+		}
+
+		return convertToEcore(profile, options, null, null);
+	}
+
+	public static Collection convertToEcore(Profile profile, Map options,
+			DiagnosticChain diagnostics, Map context) {
+
+		if (options == null) {
+			options = new HashMap();
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES)) {
+
+			options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS)) {
+
+			options.put(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES)) {
+
+			options.put(UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES)) {
+
+			options.put(UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNION_PROPERTIES)) {
+			options.put(UML2EcoreConverter.OPTION__UNION_PROPERTIES,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__DERIVED_FEATURES)) {
+			options.put(UML2EcoreConverter.OPTION__DERIVED_FEATURES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS)) {
+
+			options.put(UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE)) {
+
+			options.put(
+				UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES)) {
+			options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE)) {
+
+			options.put(
+				UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER)) {
+			options.put(UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS)) {
+			options.put(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
+				OPTION__REPORT);
+		}
+
+		Collection ePackages = new Profile2EPackageConverter().convert(
+			Collections.singleton(profile), options, null, null);
+
+		for (Iterator allContents = EcoreUtil.getAllContents(ePackages); allContents
+			.hasNext();) {
+
+			new EcoreSwitch() {
+
+				public Object caseEAttribute(EAttribute eAttribute) {
+
+					try {
+						eAttribute.getDefaultValue();
+					} catch (Exception e) {
+						eAttribute.setDefaultValueLiteral(null);
+					}
+
+					return eAttribute;
+				}
+
+				public Object caseEDataType(EDataType eDataType) {
+
+					try {
+						eDataType.getInstanceClass();
+					} catch (Exception e) {
+						eDataType
+							.setInstanceClassName(EcorePackage.Literals.ESTRING
+								.getInstanceClassName());
+					}
+
+					return eDataType;
+				}
+
+			}.doSwitch((EObject) allContents.next());
+		}
+
+		return ePackages;
 	}
 
 	public static Collection convertFromEcore(EPackage ePackage, Map options) {
