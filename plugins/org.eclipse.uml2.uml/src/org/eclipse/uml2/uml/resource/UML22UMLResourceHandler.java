@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.16 2006/05/04 16:58:04 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.17 2006/05/10 17:12:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -54,11 +55,15 @@ import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.DestructionEvent;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Event;
+import org.eclipse.uml2.uml.ExecutionEvent;
+import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
+import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.FunctionBehavior;
@@ -71,6 +76,7 @@ import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
@@ -82,6 +88,10 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Realization;
+import org.eclipse.uml2.uml.ReceiveOperationEvent;
+import org.eclipse.uml2.uml.ReceiveSignalEvent;
+import org.eclipse.uml2.uml.SendOperationEvent;
+import org.eclipse.uml2.uml.SendSignalEvent;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.StateMachine;
@@ -297,7 +307,13 @@ public class UML22UMLResourceHandler
 	public void postLoad(final XMLResource resource, InputStream inputStream,
 			Map options) {
 		final EList resourceContents = resource.getContents();
+
 		final List annotationsToRemove = new ArrayList();
+
+		final Map destructionEvents = new HashMap();
+		final Map executionEvents = new HashMap();
+		final Map sendEvents = new HashMap();
+		final Map receiveEvents = new HashMap();
 
 		UMLSwitch umlSwitch = new UMLSwitch() {
 
@@ -520,6 +536,29 @@ public class UML22UMLResourceHandler
 				return super.caseElement(element);
 			}
 
+			public Object caseExecutionOccurrenceSpecification(
+					ExecutionOccurrenceSpecification executionOccurrenceSpecification) {
+				org.eclipse.uml2.uml.Package nearestPackage = executionOccurrenceSpecification
+					.getNearestPackage();
+
+				if (nearestPackage != null) {
+					ExecutionEvent executionEvent = (ExecutionEvent) executionEvents
+						.get(nearestPackage);
+
+					if (executionEvent == null) {
+						executionEvents.put(nearestPackage,
+							executionEvent = (ExecutionEvent) nearestPackage
+								.createPackagedElement(null,
+									UMLPackage.Literals.EXECUTION_EVENT));
+					}
+
+					executionOccurrenceSpecification.setEvent(executionEvent);
+				}
+
+				return super
+					.caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
+			}
+
 			public Object caseExtensionEnd(ExtensionEnd extensionEnd) {
 				String name = extensionEnd.getName();
 
@@ -641,13 +680,266 @@ public class UML22UMLResourceHandler
 
 			public Object caseMessageOccurrenceSpecification(
 					MessageOccurrenceSpecification messageOccurrenceSpecification) {
+				caseMessageEnd(messageOccurrenceSpecification);
+
 				AnyType extension = getExtension(resource,
 					messageOccurrenceSpecification);
 
-				if (extension != null) {
-					getValues(extension.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
+				Message message = messageOccurrenceSpecification.getMessage();
 
-					getValues(extension.getAnyAttribute(), "finishExec", true); //$NON-NLS-1$
+				if (message == null) {
+					String id = resource.getID(messageOccurrenceSpecification);
+
+					if (extension != null) {
+						Collection values = getValues(extension
+							.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
+
+						if (values.isEmpty()) {
+							values = getValues(extension.getAnyAttribute(),
+								"finishExec", true); //$NON-NLS-1$
+						}
+
+						for (Iterator v = values.iterator(); v.hasNext();) {
+							Object value = v.next();
+
+							if (value instanceof String) {
+								EObject eObject = resource
+									.getEObject((String) value);
+
+								if (eObject instanceof ExecutionSpecification) {
+									ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) reincarnate(
+										messageOccurrenceSpecification,
+										UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION);
+
+									resource.setID(
+										executionOccurrenceSpecification, id);
+
+									executionOccurrenceSpecification
+										.setExecution((ExecutionSpecification) eObject);
+
+									return caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
+								}
+							}
+						}
+					}
+
+					OccurrenceSpecification occurrenceSpecification = (OccurrenceSpecification) reincarnate(
+						messageOccurrenceSpecification,
+						UMLPackage.Literals.OCCURRENCE_SPECIFICATION);
+
+					resource.setID(occurrenceSpecification, id);
+
+					return caseOccurrenceSpecification(occurrenceSpecification);
+				} else {
+					org.eclipse.uml2.uml.Package nearestPackage = messageOccurrenceSpecification
+						.getNearestPackage();
+
+					if (nearestPackage != null) {
+						doSwitch(message);
+
+						Stereotype stereotype = getUML2Stereotype(message,
+							STEREOTYPE__MESSAGE);
+
+						NamedElement signature = message.hasValue(stereotype,
+							TAG_DEFINITION__SIGNATURE)
+							? (NamedElement) message.getValue(stereotype,
+								TAG_DEFINITION__SIGNATURE)
+							: null;
+
+						if (message.getSendEvent() == messageOccurrenceSpecification) {
+							Map nearestSendEvents = (Map) sendEvents
+								.get(nearestPackage);
+
+							switch (message.getMessageSort().getValue()) {
+								case MessageSort.SYNCH_CALL :
+								case MessageSort.ASYNCH_CALL :
+									SendOperationEvent sendOperationEvent = signature instanceof Operation
+										? (nearestSendEvents == null
+											? null
+											: (SendOperationEvent) nearestSendEvents
+												.get(signature))
+										: null;
+
+									if (sendOperationEvent == null) {
+										sendOperationEvent = (SendOperationEvent) nearestPackage
+											.createPackagedElement(
+												null,
+												UMLPackage.Literals.SEND_OPERATION_EVENT);
+
+										if (signature instanceof Operation) {
+											sendOperationEvent
+												.setOperation((Operation) signature);
+
+											if (nearestSendEvents == null) {
+												sendEvents
+													.put(
+														nearestPackage,
+														nearestSendEvents = new HashMap());
+											}
+
+											nearestSendEvents.put(signature,
+												sendOperationEvent);
+										}
+									}
+
+									messageOccurrenceSpecification
+										.setEvent(sendOperationEvent);
+									break;
+								case MessageSort.ASYNCH_SIGNAL :
+									SendSignalEvent sendSignalEvent = signature instanceof Signal
+										? (nearestSendEvents == null
+											? null
+											: (SendSignalEvent) nearestSendEvents
+												.get(signature))
+										: null;
+
+									if (sendSignalEvent == null) {
+										sendSignalEvent = (SendSignalEvent) nearestPackage
+											.createPackagedElement(
+												null,
+												UMLPackage.Literals.SEND_SIGNAL_EVENT);
+
+										if (signature instanceof Signal) {
+											sendSignalEvent
+												.setSignal((Signal) signature);
+
+											if (nearestSendEvents == null) {
+												sendEvents
+													.put(
+														nearestPackage,
+														nearestSendEvents = new HashMap());
+											}
+
+											nearestSendEvents.put(signature,
+												sendSignalEvent);
+										}
+									}
+
+									messageOccurrenceSpecification
+										.setEvent(sendSignalEvent);
+									break;
+							}
+						} else if (message.getReceiveEvent() == messageOccurrenceSpecification) {
+							Map nearestReceiveEvents = (Map) receiveEvents
+								.get(nearestPackage);
+
+							switch (message.getMessageSort().getValue()) {
+								case MessageSort.SYNCH_CALL :
+								case MessageSort.ASYNCH_CALL :
+									ReceiveOperationEvent receiveOperationEvent = signature instanceof Operation
+										? (nearestReceiveEvents == null
+											? null
+											: (ReceiveOperationEvent) nearestReceiveEvents
+												.get(signature))
+										: null;
+
+									if (receiveOperationEvent == null) {
+										receiveOperationEvent = (ReceiveOperationEvent) nearestPackage
+											.createPackagedElement(
+												null,
+												UMLPackage.Literals.RECEIVE_OPERATION_EVENT);
+
+										if (signature instanceof Operation) {
+											receiveOperationEvent
+												.setOperation((Operation) signature);
+
+											if (nearestReceiveEvents == null) {
+												receiveEvents
+													.put(
+														nearestPackage,
+														nearestReceiveEvents = new HashMap());
+											}
+
+											nearestReceiveEvents.put(signature,
+												receiveOperationEvent);
+										}
+									}
+
+									messageOccurrenceSpecification
+										.setEvent(receiveOperationEvent);
+									break;
+								case MessageSort.ASYNCH_SIGNAL :
+									ReceiveSignalEvent receiveSignalEvent = signature instanceof Signal
+										? (nearestReceiveEvents == null
+											? null
+											: (ReceiveSignalEvent) nearestReceiveEvents
+												.get(signature))
+										: null;
+
+									if (receiveSignalEvent == null) {
+										receiveSignalEvent = (ReceiveSignalEvent) nearestPackage
+											.createPackagedElement(
+												null,
+												UMLPackage.Literals.RECEIVE_SIGNAL_EVENT);
+
+										if (signature instanceof Signal) {
+											receiveSignalEvent
+												.setSignal((Signal) signature);
+
+											if (nearestReceiveEvents == null) {
+												receiveEvents
+													.put(
+														nearestPackage,
+														nearestReceiveEvents = new HashMap());
+											}
+
+											nearestReceiveEvents.put(signature,
+												receiveSignalEvent);
+										}
+									}
+
+									messageOccurrenceSpecification
+										.setEvent(receiveSignalEvent);
+									break;
+							}
+						}
+					}
+
+					if (extension != null) {
+						Collection values = getValues(extension
+							.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
+
+						if (values.isEmpty()) {
+							values = getValues(extension.getAnyAttribute(),
+								"finishExec", true); //$NON-NLS-1$
+						}
+
+						for (Iterator v = values.iterator(); v.hasNext();) {
+							Object value = v.next();
+
+							if (value instanceof String) {
+								EObject eObject = resource
+									.getEObject((String) value);
+
+								if (eObject instanceof ExecutionSpecification) {
+									ExecutionSpecification execution = (ExecutionSpecification) eObject;
+
+									if (execution.getFinish() == messageOccurrenceSpecification) {
+										OccurrenceSpecification start = execution
+											.getStart();
+
+										if (start instanceof MessageOccurrenceSpecification) {
+											Message startMessage = ((MessageOccurrenceSpecification) start)
+												.getMessage();
+
+											if (startMessage != null) {
+												doSwitch(startMessage);
+
+												if (startMessage
+													.getMessageSort() == MessageSort.SYNCH_CALL_LITERAL) {
+
+													message
+														.setMessageSort(MessageSort.REPLY_LITERAL);
+												}
+											}
+										}
+
+										break;
+									}
+								}
+							}
+						}
+					}
 				}
 
 				return super
@@ -672,6 +964,35 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseNamespace(namespace);
+			}
+
+			public Object caseOccurrenceSpecification(
+					OccurrenceSpecification occurrenceSpecification) {
+
+				if (occurrenceSpecification.getEvent() == null) {
+					org.eclipse.uml2.uml.Package nearestPackage = occurrenceSpecification
+						.getNearestPackage();
+
+					if (nearestPackage != null) {
+						DestructionEvent destructionEvent = (DestructionEvent) destructionEvents
+							.get(nearestPackage);
+
+						if (destructionEvent == null) {
+							destructionEvents
+								.put(
+									nearestPackage,
+									destructionEvent = (DestructionEvent) nearestPackage
+										.createPackagedElement(
+											null,
+											UMLPackage.Literals.DESTRUCTION_EVENT));
+						}
+
+						occurrenceSpecification.setEvent(destructionEvent);
+					}
+				}
+
+				return super
+					.caseOccurrenceSpecification(occurrenceSpecification);
 			}
 
 			public Object caseOpaqueAction(OpaqueAction opaqueAction) {

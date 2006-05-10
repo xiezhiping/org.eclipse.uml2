@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResource.java,v 1.3 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UML22UMLResource.java,v 1.4 2006/05/10 17:12:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -50,6 +50,6 @@ public interface UML22UMLResource
 
 	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/0"; //$NON-NLS-1$
 
-	String UML2_PROFILE_URI = PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+	String UML2_PROFILE_URI = UMLResource.PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 }
