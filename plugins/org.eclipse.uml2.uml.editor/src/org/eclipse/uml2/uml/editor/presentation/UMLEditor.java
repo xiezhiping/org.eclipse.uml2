@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.21 2006/05/05 19:30:26 khussey Exp $
+ * $Id: UMLEditor.java,v 1.22 2006/05/10 19:54:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -597,11 +597,11 @@ public class UMLEditor
 				problemEditorPart.setDiagnostic(diagnostic);
 				problemEditorPart.setMarkerHelper(markerHelper);
 				try {
-					showTabs();
-					addPage(getPageCount(), problemEditorPart, getEditorInput());
-					lastEditorPage++;
+					addPage(++lastEditorPage, problemEditorPart,
+						getEditorInput());
 					setPageText(lastEditorPage, problemEditorPart.getPartName());
 					setActivePage(lastEditorPage);
+					showTabs();
 				} catch (PartInitException exception) {
 					UMLEditorPlugin.INSTANCE.log(exception);
 				}
@@ -1043,8 +1043,8 @@ public class UMLEditor
 	}
 
 	/**
-	 * If there is just one page in the multi-page editor part, this hides
-	 * the single tab at the bottom.
+	 * If there is just one page in the multi-page editor part,
+	 * this hides the single tab at the bottom.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1061,14 +1061,14 @@ public class UMLEditor
 	}
 
 	/**
-	 * If there is just one page in the multi-page editor part, this shows
-	 * the single tab at the bottom.
+	 * If there is more than one page in the multi-page editor part,
+	 * this shows the tabs at the bottom.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void showTabs() {
-		if (getPageCount() == 1) {
+		if (getPageCount() > 1) {
 			setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
 			if (getContainer() instanceof CTabFolder) {
 				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
@@ -1639,6 +1639,8 @@ public class UMLEditor
 	 * @generated
 	 */
 	public void disposeGen() {
+		updateProblemIndication = false;
+
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
 			resourceChangeListener);
 
