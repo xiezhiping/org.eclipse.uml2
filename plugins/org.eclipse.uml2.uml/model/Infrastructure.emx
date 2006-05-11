@@ -851,7 +851,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DF78BD10282" importedPackage="_3ADC7B74022D3DF78B7503C0"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CADCAEE0250" name="Element" isAbstract="true">
-          <ownedComment xmi:id="_rMSPwBTaEdqZu-3Jy1-uYg" body="Element has a derived composition association to itself to support the general capability for elements to own other elements." annotatedElement="_3ADC7B74022D3CADCAEE0250">
+          <ownedComment xmi:id="_rMSPwBTaEdqZu-3Jy1-uYg" body="An element is a constituent of a model. As such, it has the capability of owning other elements." annotatedElement="_3ADC7B74022D3CADCAEE0250">
             <eAnnotations xmi:id="_rMcAwBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rMcAwRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1137,7 +1137,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A4350048" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0071C02FD" name="NamedElement" isAbstract="true">
-          <ownedComment xmi:id="_rRNMBBTaEdqZu-3Jy1-uYg" body="A named element represents elements that may have a name. The name is used for identification of the named element within the namespace in which it is defined. A named element also has a qualified name that allows it to be unambiguously identified within a hierarchy of nested namespaces. NamedElement is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA0071C02FD">
+          <ownedComment xmi:id="_rRNMBBTaEdqZu-3Jy1-uYg" body="A named element is an element in a model that may have a name." annotatedElement="_3ADC7B74022D3CA0071C02FD">
             <eAnnotations xmi:id="_rRNMBRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRNMBhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1249,7 +1249,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0072700FA" name="Namespace" isAbstract="true">
-          <ownedComment xmi:id="_rSPt1xTaEdqZu-3Jy1-uYg" body="A namespace is a named element that can own other named elements. Each named element may be owned by at most one namespace. A namespace provides a means for identifying named elements by name. Named elements can be identified by name in a namespace either by being directly owned by the namespace or by being introduced into the namespace by other means e.g. importing or inheriting. Namespace is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA0072700FA">
+          <ownedComment xmi:id="_rSPt1xTaEdqZu-3Jy1-uYg" body="A namespace is an element in a model that contains a set of named elements that can be identified by name." annotatedElement="_3ADC7B74022D3CA0072700FA">
             <eAnnotations xmi:id="_rSZe0BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rSZe0RTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1486,7 +1486,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6A3270343" importedPackage="_3ADC7B74022D3CA002FD0120"/>
         <packageImport xmi:id="_h9WTwD9HEdqjIv4r4xIGZw" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA00A2A018F" name="Classifier" isAbstract="true">
-          <ownedComment xmi:id="_rS_7zBTaEdqZu-3Jy1-uYg" body="A classifier is a classification of instances; it describes a set of instances that have features in common. A classifier is a namespace whose members can include features. Classifier is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA00A2A018F">
+          <ownedComment xmi:id="_rS_7zBTaEdqZu-3Jy1-uYg" body="A classifier is a classification of instances - it describes a set of instances that have features in common." annotatedElement="_3ADC7B74022D3CA00A2A018F">
             <eAnnotations xmi:id="_rTJFsBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rTJFsRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1520,7 +1520,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA00A3900A0" name="Feature" isAbstract="true">
-          <ownedComment xmi:id="_rTJFvRTaEdqZu-3Jy1-uYg" body="A feature declares a behavioral or structural characteristic of instances of classifiers. Feature is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA00A3900A0">
+          <ownedComment xmi:id="_rTJFvRTaEdqZu-3Jy1-uYg" body="A feature declares a behavioral or structural characteristic of instances of classifiers." annotatedElement="_3ADC7B74022D3CA00A3900A0">
             <eAnnotations xmi:id="_rTS2sBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rTS2sRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1717,7 +1717,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A3C401C2" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA00EFB03B9" name="OpaqueExpression">
-          <ownedComment xmi:id="_rTvipRTaEdqZu-3Jy1-uYg" body="An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages." annotatedElement="_3ADC7B74022D3CA00EFB03B9">
+          <ownedComment xmi:id="_rTvipRTaEdqZu-3Jy1-uYg" body="An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context." annotatedElement="_3ADC7B74022D3CA00EFB03B9">
             <eAnnotations xmi:id="_rTviphTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rTvipxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1749,7 +1749,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA00F020323" name="ValueSpecification" isAbstract="true">
-          <ownedComment xmi:id="_rTviqhTaEdqZu-3Jy1-uYg" body="ValueSpecification is an abstract metaclass used to identify a value or values in a model. It may reference an instance or it may be an expression denoting an instance or instances when evaluated." annotatedElement="_3ADC7B74022D3CA00F020323">
+          <ownedComment xmi:id="_rTviqhTaEdqZu-3Jy1-uYg" body="A value specification is the specification of a (possibly empty) set of instances, including both objects and data values." annotatedElement="_3ADC7B74022D3CA00F020323">
             <eAnnotations xmi:id="_rTviqxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rTvirBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -1823,7 +1823,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E555C610097" name="Expression">
-          <ownedComment xmi:id="_rUCdsRTaEdqZu-3Jy1-uYg" body="An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications." annotatedElement="_3ADC7B74022D3E555C610097">
+          <ownedComment xmi:id="_rUCdsRTaEdqZu-3Jy1-uYg" body="An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context." annotatedElement="_3ADC7B74022D3E555C610097">
             <eAnnotations xmi:id="_rULngBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rULngRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -2052,7 +2052,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6A41C01AB" importedPackage="_3ADC7B74022D3CA00EE60015"/>
         <packageImport xmi:id="_3ADC7B74022D3DF6636E0383" importedPackage="_3ADC7B74022D3DF65C06026F"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0237A0346" name="MultiplicityElement" isAbstract="true">
-          <ownedComment xmi:id="_rUoTdxTaEdqZu-3Jy1-uYg" body="MultiplicityElement is specialized to support the use of value specifications to define each bound of the multiplicity." annotatedElement="_3ADC7B74022D3CA0237A0346">
+          <ownedComment xmi:id="_rUoTdxTaEdqZu-3Jy1-uYg" body="MultiplicityElement supports the use of value specifications to define each bound of the multiplicity." annotatedElement="_3ADC7B74022D3CA0237A0346">
             <eAnnotations xmi:id="_rUyEcBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rUyEcRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -2390,7 +2390,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6A2F2033D" importedPackage="_3ADC7B74022D3CA003360013"/>
         <packageImport xmi:id="_3ADC7B74022D3E56169B00A7" importedPackage="_3ADC7B74022D3E554B4A028B"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA026FB0381" name="BehavioralFeature" isAbstract="true">
-          <ownedComment xmi:id="_rVYhYBTaEdqZu-3Jy1-uYg" body="A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances. BehavioralFeature is an abstract metaclass specializing Feature and Namespace. Kinds of behavioral aspects are modeled by subclasses of BehavioralFeature." annotatedElement="_3ADC7B74022D3CA026FB0381">
+          <ownedComment xmi:id="_rVYhYBTaEdqZu-3Jy1-uYg" body="A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances." annotatedElement="_3ADC7B74022D3CA026FB0381">
             <eAnnotations xmi:id="_rVYhYRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rVYhYhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -2424,7 +2424,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA02702036E" name="Parameter" isAbstract="true">
-          <ownedComment xmi:id="_rVhrWhTaEdqZu-3Jy1-uYg" body="Parameter is an abstract metaclass specializing TypedElement and NamedElement." annotatedElement="_3ADC7B74022D3CA02702036E">
+          <ownedComment xmi:id="_rVhrWhTaEdqZu-3Jy1-uYg" body="A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral&#xD;&#xA;feature." annotatedElement="_3ADC7B74022D3CA02702036E">
             <eAnnotations xmi:id="_rVhrWxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rVhrXBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -2950,7 +2950,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6A40303D6" importedPackage="_3ADC7B74022D3CA00EE60015"/>
         <packageImport xmi:id="_3ADC7B74022D3DE6A40C0270" importedPackage="_3ADC7B74022D3CAB68D00279"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0320C02DB" name="InstanceSpecification">
-          <ownedComment xmi:id="_rVrcXhTaEdqZu-3Jy1-uYg" body="An instance specification specifies existence of an entity in a modeled system and completely or partially describes the entity. The description includes:&#xD;&#xA;  - Classification of the entity by one or more classifiers of which the entity is an instance. If the only classifier specified is abstract, then the instance specification only partially describes the entity.&#xD;&#xA;  - The kind of instance, based on its classifier or classifiers: for example, an instance specification whose classifier is a class describes an object of that class, while an instance specification whose classifier is an association describes a link of that association.&#xD;&#xA;  - Specification of values of structural features of the entity. Not all structural features of all classifiers of the instance specification need be represented by slots, in which case the instance specification is a partial description.&#xD;&#xA;  - Specification of how to compute, derive or construct the instance (optional). InstanceSpecification is a concrete class." annotatedElement="_3ADC7B74022D3CA0320C02DB">
+          <ownedComment xmi:id="_rVrcXhTaEdqZu-3Jy1-uYg" body="An instance specification is a model element that represents an instance in a modeled system." annotatedElement="_3ADC7B74022D3CA0320C02DB">
             <eAnnotations xmi:id="_rVrcXxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rVrcYBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -3001,7 +3001,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA032120334" name="Slot">
-          <ownedComment xmi:id="_rV-XQhTaEdqZu-3Jy1-uYg" body="A slot is owned by an instance specification. It specifies the value or values for its defining feature, which must be a structural feature of a classifier of the instance specification owning the slot." annotatedElement="_3ADC7B74022D3CA032120334">
+          <ownedComment xmi:id="_rV-XQhTaEdqZu-3Jy1-uYg" body="A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature." annotatedElement="_3ADC7B74022D3CA032120334">
             <eAnnotations xmi:id="_rV-XQxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rV-XRBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -3036,7 +3036,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D1115A7028B" name="InstanceValue">
-          <ownedComment xmi:id="_rV-XRxTaEdqZu-3Jy1-uYg" body="An instance value specifies the value modeled by an instance specification." annotatedElement="_3ADC7B74022D3D1115A7028B">
+          <ownedComment xmi:id="_rV-XRxTaEdqZu-3Jy1-uYg" body="An instance value is a value specification that identifies an instance." annotatedElement="_3ADC7B74022D3D1115A7028B">
             <eAnnotations xmi:id="_rV-XSBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rV-XSRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -3247,7 +3247,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A44502D6" importedPackage="_3ADC7B74022D3DF65990033B"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA019640144" name="RedefinableElement" isAbstract="true">
-          <ownedComment xmi:id="_rWbDNRTaEdqZu-3Jy1-uYg" body="A redefinable element is a named element that can be redefined in the context of a generalization. RedefinableElement is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA019640144">
+          <ownedComment xmi:id="_rWbDNRTaEdqZu-3Jy1-uYg" body="A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier." annotatedElement="_3ADC7B74022D3CA019640144">
             <eAnnotations xmi:id="_rWbDNhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rWbDNxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -3573,6 +3573,11 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6A3E90189" importedPackage="_3ADC7B74022D3DF65990033B"/>
         <packageImport xmi:id="_3ADC7B74022D3E55640A0169" importedPackage="_3ADC7B74022D3E554B4A028B"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA011B1028A" name="Generalization">
+          <ownedComment xmi:id="_5kpB0eDwEdqI1ohUEQYFdg" body="A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an instance of the general classifier. Thus, the specific classifier indirectly has features of the more general classifier." annotatedElement="_3ADC7B74022D3CA011B1028A">
+            <eAnnotations xmi:id="_5kpB0uDwEdqI1ohUEQYFdg" source="appliedStereotypes">
+              <contents xmi:type="Default_0:Default__Documentation" xmi:id="_5kpB0-DwEdqI1ohUEQYFdg"/>
+            </eAnnotations>
+          </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3CA01274037B" general="_3ADC7B74022D3D51445B01FA"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3CA0127D01D9" name="specific" type="_3ADC7B74022D3CA011BE01AD" subsettedProperty="_3ADC7B74022D3DE6A15F02E3 _3ADC7B74022D3CADCD8500A5" association="_3ADC7B74022D3CA0127C032D">
             <ownedComment xmi:id="_rXUbIBTaEdqZu-3Jy1-uYg" body="References the specializing classifier in the Generalization relationship. " annotatedElement="_3ADC7B74022D3CA0127D01D9">
@@ -3594,7 +3599,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA011BE01AD" name="Classifier" isAbstract="true">
-          <ownedComment xmi:id="_rW3vMBTaEdqZu-3Jy1-uYg" body="A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers." annotatedElement="_3ADC7B74022D3CA011BE01AD">
+          <ownedComment xmi:id="_rW3vMBTaEdqZu-3Jy1-uYg" body="A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to&#xD;&#xA;other classifiers." annotatedElement="_3ADC7B74022D3CA011BE01AD">
             <eAnnotations xmi:id="_rW3vMRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rW3vMhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -3824,7 +3829,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A3030189" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CAC070A03AB" name="Comment">
-          <ownedComment xmi:id="_rXxHARTaEdqZu-3Jy1-uYg" body="A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler. A comment may be owned by any element." annotatedElement="_3ADC7B74022D3CAC070A03AB">
+          <ownedComment xmi:id="_rXxHARTaEdqZu-3Jy1-uYg" body="A comment is a textual annotation that can be attached to a set of elements." annotatedElement="_3ADC7B74022D3CAC070A03AB">
             <eAnnotations xmi:id="_rXxHAhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rXxHAxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4099,7 +4104,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A4590393" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D51445B01FA" name="DirectedRelationship" isAbstract="true">
-          <ownedComment xmi:id="_rYEB8RTaEdqZu-3Jy1-uYg" body="A directed relationship references one or more source elements and one or more target elements. DirectedRelationship is an abstract metaclass." annotatedElement="_3ADC7B74022D3D51445B01FA">
+          <ownedComment xmi:id="_rYEB8RTaEdqZu-3Jy1-uYg" body="A directed relationship represents a relationship between a collection of source model elements and a collection of target&#xD;&#xA;model elements." annotatedElement="_3ADC7B74022D3D51445B01FA">
             <eAnnotations xmi:id="_rYEB8hTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rYEB8xTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4131,7 +4136,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA004180181" name="Relationship" isAbstract="true">
-          <ownedComment xmi:id="_rYEB9hTaEdqZu-3Jy1-uYg" body="A relationship references one or more related elements. Relationship is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA004180181">
+          <ownedComment xmi:id="_rYEB9hTaEdqZu-3Jy1-uYg" body="Relationship is an abstract concept that specifies some kind of relationship between elements." annotatedElement="_3ADC7B74022D3CA004180181">
             <eAnnotations xmi:id="_rYEB9xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rYEB-BTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4191,7 +4196,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A31202D5" importedPackage="_3ADC7B74022D3CAB68D00279"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D627A6F0193" name="StructuralFeature" isAbstract="true">
-          <ownedComment xmi:id="_rYW85RTaEdqZu-3Jy1-uYg" body="StructuralFeature is specialized to add an attribute that determines whether a client may modify its value." annotatedElement="_3ADC7B74022D3D627A6F0193">
+          <ownedComment xmi:id="_rYW85RTaEdqZu-3Jy1-uYg" body="StructuralFeature has an attribute that determines whether a client may modify its value." annotatedElement="_3ADC7B74022D3D627A6F0193">
             <eAnnotations xmi:id="_rYW85hTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rYW85xTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4300,7 +4305,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6A46C0124" importedPackage="_3ADC7B74022D3CA003360013"/>
         <packageImport xmi:id="_3ADC7B74022D3E56169000F2" importedPackage="_3ADC7B74022D3E554B4A028B"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA00A410002" name="StructuralFeature" isAbstract="true">
-          <ownedComment xmi:id="_rYgt7RTaEdqZu-3Jy1-uYg" body="A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier. Structural feature is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA00A410002">
+          <ownedComment xmi:id="_rYgt7RTaEdqZu-3Jy1-uYg" body="A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier." annotatedElement="_3ADC7B74022D3CA00A410002">
             <eAnnotations xmi:id="_rYp30BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rYp30RTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4711,7 +4716,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6C2A902E7" importedPackage="_3ADC7B74022D3CA002FD0120"/>
         <packageImport xmi:id="_m_pwAD9HEdqjIv4r4xIGZw" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA099F902D0" name="Constraint">
-          <ownedComment xmi:id="_rY8yxhTaEdqZu-3Jy1-uYg" body="Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.&#xD;&#xA;Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to the element. Constraint contains an optional name, although they are commonly unnamed." annotatedElement="_3ADC7B74022D3CA099F902D0">
+          <ownedComment xmi:id="_rY8yxhTaEdqZu-3Jy1-uYg" body="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the&#xD;&#xA;purpose of declaring some of the semantics of an element." annotatedElement="_3ADC7B74022D3CA099F902D0">
             <eAnnotations xmi:id="_rY8yxxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rY8yyBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4762,7 +4767,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA0A069009F" name="Namespace" isAbstract="true">
-          <ownedComment xmi:id="_rZGjyBTaEdqZu-3Jy1-uYg" body="A namespace can own constraints. The constraint does not necessarily apply to the namespace itself, but may also apply to elements in the namespace." annotatedElement="_3ADC7B74022D3CA0A069009F">
+          <ownedComment xmi:id="_rZGjyBTaEdqZu-3Jy1-uYg" body="A namespace can own constraints. A constraint associated with a namespace may either apply to the namespace itself, or it may apply to elements in the namespace." annotatedElement="_3ADC7B74022D3CA0A069009F">
             <eAnnotations xmi:id="_rZGjyRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rZGjyhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4803,7 +4808,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D41B9EDB10307" name="NamedElement" isAbstract="true">
-          <ownedComment xmi:id="_rZGjzRTaEdqZu-3Jy1-uYg" body="A named element represents elements that may have a name. The name is used for identification of the named element within the namespace in which it is defined. A named element also has a qualified name that allows it to be unambiguously identified within a hierarchy of nested namespaces. NamedElement is an abstract metaclass." annotatedElement="_3ADC7B74022D41B9EDB10307">
+          <ownedComment xmi:id="_rZGjzRTaEdqZu-3Jy1-uYg" body="A named element is an element in a model that may have a name." annotatedElement="_3ADC7B74022D41B9EDB10307">
             <eAnnotations xmi:id="_rZGjzhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rZGjzxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4924,7 +4929,7 @@
           </ownedAttribute>
         </ownedMember>
         <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAD9E0F01D0" name="VisibilityKind">
-          <ownedComment xmi:id="_raJsoRTaEdqZu-3Jy1-uYg" body="VisibilityKind is an enumeration of the following literal values:&#xD;&#xA;  - public&#xD;&#xA;  - private&#xD;&#xA;  - protected&#xD;&#xA;  - package" annotatedElement="_3ADC7B74022D3CAD9E0F01D0">
+          <ownedComment xmi:id="_raJsoRTaEdqZu-3Jy1-uYg" body="VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model." annotatedElement="_3ADC7B74022D3CAD9E0F01D0">
             <eAnnotations xmi:id="_raJsohTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_raJsoxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5526,7 +5531,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DF663400034" importedPackage="_3ADC7B74022D3CA00EE60015"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CB5A2FE03E5" name="LiteralBoolean">
-          <ownedComment xmi:id="_rbfJaxTaEdqZu-3Jy1-uYg" body="A literal boolean contains a Boolean-valued attribute." annotatedElement="_3ADC7B74022D3CB5A2FE03E5">
+          <ownedComment xmi:id="_rbfJaxTaEdqZu-3Jy1-uYg" body="A literal Boolean is a specification of a Boolean value." annotatedElement="_3ADC7B74022D3CB5A2FE03E5">
             <eAnnotations xmi:id="_rbfJbBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbfJbRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5564,7 +5569,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CB5A2720176" name="LiteralString">
-          <ownedComment xmi:id="_rbo6dhTaEdqZu-3Jy1-uYg" body="A literal string contains a String-valued attribute." annotatedElement="_3ADC7B74022D3CB5A2720176">
+          <ownedComment xmi:id="_rbo6dhTaEdqZu-3Jy1-uYg" body="A literal string is a specification of a string value." annotatedElement="_3ADC7B74022D3CB5A2720176">
             <eAnnotations xmi:id="_rbo6dxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbo6eBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5606,7 +5611,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CB5A2060370" name="LiteralSpecification" isAbstract="true">
-          <ownedComment xmi:id="_rbyEXhTaEdqZu-3Jy1-uYg" body="A literal specification is an abstract specialization of ValueSpecification that identifies a literal constant being modeled." annotatedElement="_3ADC7B74022D3CB5A2060370">
+          <ownedComment xmi:id="_rbyEXhTaEdqZu-3Jy1-uYg" body="A literal specification identifies a literal constant being modeled." annotatedElement="_3ADC7B74022D3CB5A2060370">
             <eAnnotations xmi:id="_rbyEXxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbyEYBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5614,7 +5619,7 @@
           <generalization xmi:id="_3ADC7B74022D3CB5A2250324" general="_3ADC7B74022D3CA00F020323"/>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CB5A29200D2" name="LiteralNull">
-          <ownedComment xmi:id="_rbyEYxTaEdqZu-3Jy1-uYg" body="A literal null is used to represent null, i.e., the absence of a value." annotatedElement="_3ADC7B74022D3CB5A29200D2">
+          <ownedComment xmi:id="_rbyEYxTaEdqZu-3Jy1-uYg" body="A literal null specifies the lack of a value." annotatedElement="_3ADC7B74022D3CB5A29200D2">
             <eAnnotations xmi:id="_rbyEZBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbyEZRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5644,7 +5649,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CB5A23B01F0" name="LiteralInteger">
-          <ownedComment xmi:id="_rb71YRTaEdqZu-3Jy1-uYg" body="A literal integer contains an Integer-valued attribute." annotatedElement="_3ADC7B74022D3CB5A23B01F0">
+          <ownedComment xmi:id="_rb71YRTaEdqZu-3Jy1-uYg" body="A literal integer is a specification of an integer value." annotatedElement="_3ADC7B74022D3CB5A23B01F0">
             <eAnnotations xmi:id="_rb71YhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rb71YxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5682,7 +5687,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DF664BD01AE" name="LiteralUnlimitedNatural">
-          <ownedComment xmi:id="_rcFmUxTaEdqZu-3Jy1-uYg" body="A literal unlimited natural is a specification of an unlimited natural number and contains a UnlimitedNatural-valued attribute." annotatedElement="_3ADC7B74022D3DF664BD01AE">
+          <ownedComment xmi:id="_rcFmUxTaEdqZu-3Jy1-uYg" body="A literal unlimited natural is a specification of an unlimited natural number." annotatedElement="_3ADC7B74022D3DF664BD01AE">
             <eAnnotations xmi:id="_rcFmVBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcFmVRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5793,7 +5798,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A42501FE" importedPackage="_3ADC7B74022D3DF78B7503C0"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DF65EC002AE" name="MultiplicityElement" isAbstract="true">
-          <ownedComment xmi:id="_rcOwSBTaEdqZu-3Jy1-uYg" body="A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element. A MultiplicityElement also includes specifications of whether the values in an instantiation of this element must be unique or ordered." annotatedElement="_3ADC7B74022D3DF65EC002AE">
+          <ownedComment xmi:id="_rcOwSBTaEdqZu-3Jy1-uYg" body="A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element." annotatedElement="_3ADC7B74022D3DF65EC002AE">
             <eAnnotations xmi:id="_rcOwSRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcOwShTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -5955,7 +5960,7 @@
           </contents>
         </eAnnotations>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DF78BA701E1" name="Element" isAbstract="true">
-          <ownedComment xmi:id="_rc-XJBTaEdqZu-3Jy1-uYg" body="Element is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the infrastructure library." annotatedElement="_3ADC7B74022D3DF78BA701E1">
+          <ownedComment xmi:id="_rc-XJBTaEdqZu-3Jy1-uYg" body="An element is a constituent of a model." annotatedElement="_3ADC7B74022D3DF78BA701E1">
             <eAnnotations xmi:id="_rc-XJRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rc-XJhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -6092,7 +6097,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3E554EDC0181" importedPackage="_3ADC7B74022D3CA002FD0120"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E554AF2005E" name="Type" isAbstract="true">
-          <ownedComment xmi:id="_rdR5JBTaEdqZu-3Jy1-uYg" body="A type serves as a constraint on the range of values represented by a typed element. Type is an abstract metaclass." annotatedElement="_3ADC7B74022D3E554AF2005E">
+          <ownedComment xmi:id="_rdR5JBTaEdqZu-3Jy1-uYg" body="A type constrains the values represented by a typed element." annotatedElement="_3ADC7B74022D3E554AF2005E">
             <eAnnotations xmi:id="_rdR5JRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rdR5JhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -6112,7 +6117,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA00A3100E5" name="TypedElement" isAbstract="true">
-          <ownedComment xmi:id="_rdR5MxTaEdqZu-3Jy1-uYg" body="A typed element is an element that has a type that serves as a constraint on the range of values the element can represent. Typed element is an abstract metaclass." annotatedElement="_3ADC7B74022D3CA00A3100E5">
+          <ownedComment xmi:id="_rdR5MxTaEdqZu-3Jy1-uYg" body="A typed element has a type." annotatedElement="_3ADC7B74022D3CA00A3100E5">
             <eAnnotations xmi:id="_rdR5NBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rdR5NRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -6207,7 +6212,7 @@
         <eAnnotations xmi:id="_rdk0GxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_rdk0HBTaEdqZu-3Jy1-uYg" instanceClassName="int"/>
         </eAnnotations>
-        <ownedComment xmi:id="_rdk0FBTaEdqZu-3Jy1-uYg" body="An instance of Integer is an element in the (infinite) set of integers (...-2, -1, 0, 1, 2...). It is used for integer attributes and integer expressions in the metamodel." annotatedElement="_3ADC7B74022D3CA010A4007B">
+        <ownedComment xmi:id="_rdk0FBTaEdqZu-3Jy1-uYg" body="An integer is a primitive type representing integer values." annotatedElement="_3ADC7B74022D3CA010A4007B">
           <eAnnotations xmi:id="_rdk0FRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rdk0FhTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -6217,7 +6222,7 @@
         <eAnnotations xmi:id="_reBgABTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_reBgARTaEdqZu-3Jy1-uYg" instanceClassName="boolean"/>
         </eAnnotations>
-        <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" body="Boolean is an instance of PrimitiveType. In the metamodel, Boolean defines an enumeration that denotes a logical condition. Its enumeration literals are:&#xD;&#xA;  - true = The Boolean condition is satisfied.&#xD;&#xA;  - false = The Boolean condition is not satisfied.&#xD;&#xA;&#xD;&#xA;It is used for Boolean attribute and Boolean expressions in the metamodel, such as OCL expression." annotatedElement="_3ADC7B74022D3CA010AC0090">
+        <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" body="A Boolean type is used for logical expression, consisting of the predefined values true and false." annotatedElement="_3ADC7B74022D3CA010AC0090">
           <eAnnotations xmi:id="_rd3vAhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rd3vAxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -6227,7 +6232,7 @@
         <eAnnotations xmi:id="_reBgChTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_reBgCxTaEdqZu-3Jy1-uYg" instanceClassName="java.lang.String"/>
         </eAnnotations>
-        <ownedComment xmi:id="_reBgAxTaEdqZu-3Jy1-uYg" body="An instance of String defines a piece of text. The semantics of the string itself depends on its purpose, it can be a comment, computational language expression, OCL expression, etc. It is used for String attributes and String expressions in the metamodel." annotatedElement="_3ADC7B74022D3CA010B103C3">
+        <ownedComment xmi:id="_reBgAxTaEdqZu-3Jy1-uYg" body="A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters." annotatedElement="_3ADC7B74022D3CA010B103C3">
           <eAnnotations xmi:id="_reBgBBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_reBgBRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -6237,7 +6242,7 @@
         <eAnnotations xmi:id="_reKp8BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Ecore_0:Ecore__EDataType" xmi:id="_reKp8RTaEdqZu-3Jy1-uYg" instanceClassName="int"/>
         </eAnnotations>
-        <ownedComment xmi:id="_reBgDRTaEdqZu-3Jy1-uYg" body="An instance of UnlimitedNatural is an element in the (infinite) set of naturals (0, 1, 2...). The value of infinity is shown using an asterisk ('*')." annotatedElement="_3ADC7B74022D3DE6A93C0003">
+        <ownedComment xmi:id="_reBgDRTaEdqZu-3Jy1-uYg" body="An unlimited natural is a primitive type representing unlimited natural values." annotatedElement="_3ADC7B74022D3DE6A93C0003">
           <eAnnotations xmi:id="_reBgDhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_reBgDxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -7731,7 +7736,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6A6B90257" name="NamedElement" isAbstract="true">
-        <ownedComment xmi:id="_rexG6hTaEdqZu-3Jy1-uYg" body="A named element represents elements with names." annotatedElement="_3ADC7B74022D3DE6A6B90257">
+        <ownedComment xmi:id="_rexG6hTaEdqZu-3Jy1-uYg" body="A named element represents an element with a name." annotatedElement="_3ADC7B74022D3DE6A6B90257">
           <eAnnotations xmi:id="_rexG6xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rexG7BTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -7751,7 +7756,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6AA3D016B" name="TypedElement" isAbstract="true">
-        <ownedComment xmi:id="_DR3QwBVsEdqDjccWl3Bw0Q" body="A typed element is a kind of named element that represents elements with types." annotatedElement="_3ADC7B74022D3DE6AA3D016B">
+        <ownedComment xmi:id="_DR3QwBVsEdqDjccWl3Bw0Q" body="A typed element is a kind of named element that represents an element with a type." annotatedElement="_3ADC7B74022D3DE6AA3D016B">
           <eAnnotations xmi:id="_DSAasBVsEdqDjccWl3Bw0Q" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_DSAasRVsEdqDjccWl3Bw0Q"/>
           </eAnnotations>
@@ -7853,7 +7858,7 @@
         <generalization xmi:id="_3ADC7B74022D3DEE7F810066" general="_3ADC7B74022D3DE6A6CC00B0"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D416D57E502DA" name="MultiplicityElement" isAbstract="true">
-        <ownedComment xmi:id="_re63-BTaEdqZu-3Jy1-uYg" body="A MultiplicityElement is an abstract metaclass which includes optional attributes for defining the bounds of a multiplicity. A MultiplicityElement also includes specifications of whether the values in an instantiation of this element must be unique or ordered." annotatedElement="_3ADC7B74022D416D57E502DA">
+        <ownedComment xmi:id="_re63-BTaEdqZu-3Jy1-uYg" body="A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element." annotatedElement="_3ADC7B74022D416D57E502DA">
           <eAnnotations xmi:id="_rfEB0BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfEB0RTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -7987,7 +7992,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D416D58F70035" name="Element" isAbstract="true">
-        <ownedComment xmi:id="_rfW84BTaEdqZu-3Jy1-uYg" body="Element is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the infrastructure library." annotatedElement="_3ADC7B74022D416D58F70035">
+        <ownedComment xmi:id="_rfW84BTaEdqZu-3Jy1-uYg" body="An element is a constituent of a model." annotatedElement="_3ADC7B74022D416D58F70035">
           <eAnnotations xmi:id="_rfgtwBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfgtwRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -8003,7 +8008,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DFCA934027A" name="Comment">
-        <ownedComment xmi:id="_rfgtwxTaEdqZu-3Jy1-uYg" body="A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler. A comment may be owned by any element." annotatedElement="_3ADC7B74022D3DFCA934027A">
+        <ownedComment xmi:id="_rfgtwxTaEdqZu-3Jy1-uYg" body="A comment is a textual annotation that can be attached to a set of elements." annotatedElement="_3ADC7B74022D3DFCA934027A">
           <eAnnotations xmi:id="_rfgtxBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfgtxRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -12661,7 +12666,7 @@
       </eAnnotations>
       <packageImport xmi:id="_3ADC7B74022D41C2C20602EA" importedPackage="_3ADC7B74022D3C9FFCC70354"/>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C8630317" name="Classifier" isAbstract="true">
-        <ownedComment xmi:id="_rg2xkRTaEdqZu-3Jy1-uYg" body="A classifier is a type. It can specify a generalization hierarchy by referencing its general classifiers.  A classifier is also a namespace whose members can include features. Classifier is an abstract metaclass." annotatedElement="_3ADC7B74022D3DE6C8630317">
+        <ownedComment xmi:id="_rg2xkRTaEdqZu-3Jy1-uYg" body="A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers." annotatedElement="_3ADC7B74022D3DE6C8630317">
           <eAnnotations xmi:id="_rg2xkhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rg2xkxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -12882,7 +12887,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C82E03E4" name="DirectedRelationship" isAbstract="true">
-        <ownedComment xmi:id="_rhTdnxTaEdqZu-3Jy1-uYg" body="A directed relationship references one or more source elements and one or more target elements. DirectedRelationship is an abstract metaclass." annotatedElement="_3ADC7B74022D3DE6C82E03E4">
+        <ownedComment xmi:id="_rhTdnxTaEdqZu-3Jy1-uYg" body="A directed relationship represents a relationship between a collection of source model elements and a collection of target&#xD;&#xA;model elements." annotatedElement="_3ADC7B74022D3DE6C82E03E4">
           <eAnnotations xmi:id="_rhTdoBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhTdoRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -12914,7 +12919,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6BAB70076" name="Element" isAbstract="true">
-        <ownedComment xmi:id="_rhcncBTaEdqZu-3Jy1-uYg" body="An element can own comments." annotatedElement="_3ADC7B74022D3DE6BAB70076">
+        <ownedComment xmi:id="_rhcncBTaEdqZu-3Jy1-uYg" body="An element is a constituent of a model. As such, it has the capability of owning other elements." annotatedElement="_3ADC7B74022D3DE6BAB70076">
           <eAnnotations xmi:id="_rhcncRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhcnchTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -12995,7 +13000,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C7BD0034" name="Feature" isAbstract="true">
-        <ownedComment xmi:id="_rhmYgRTaEdqZu-3Jy1-uYg" body="A feature declares a behavioral or structural characteristic of instances of classifiers. Feature is an abstract metaclass." annotatedElement="_3ADC7B74022D3DE6C7BD0034">
+        <ownedComment xmi:id="_rhmYgRTaEdqZu-3Jy1-uYg" body="A feature declares a behavioral or structural characteristic of instances of classifiers." annotatedElement="_3ADC7B74022D3DE6C7BD0034">
           <eAnnotations xmi:id="_rhmYghTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhmYgxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13015,7 +13020,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C66D02F8" name="MultiplicityElement" isAbstract="true">
-        <ownedComment xmi:id="_rhmYhhTaEdqZu-3Jy1-uYg" body="A MultiplicityElement is an abstract metaclass which includes optional attributes for defining the bounds of a multiplicity. A MultiplicityElement also includes specifications of whether the values in an instantiation of this element must be unique or ordered." annotatedElement="_3ADC7B74022D3DE6C66D02F8">
+        <ownedComment xmi:id="_rhmYhhTaEdqZu-3Jy1-uYg" body="A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element." annotatedElement="_3ADC7B74022D3DE6C66D02F8">
           <eAnnotations xmi:id="_rhmYhxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhmYiBTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13149,7 +13154,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C03E0388" name="Namespace" isAbstract="true">
-        <ownedComment xmi:id="_rleL8BTaEdqZu-3Jy1-uYg" body="A namespace has the ability to import either individial members or all members of a package, thereby making it possible to refer to those named elements without qualification in the importing namespace. In the case of conflicts, it is necessary to use qualified names or aliases to disambiguate the referenced elements." annotatedElement="_3ADC7B74022D3DE6C03E0388">
+        <ownedComment xmi:id="_rleL8BTaEdqZu-3Jy1-uYg" body="A namespace is an element in a model that contains a set of named elements that can be identified by name." annotatedElement="_3ADC7B74022D3DE6C03E0388">
           <eAnnotations xmi:id="_rln80BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rln80RTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13310,7 +13315,7 @@
         <generalization xmi:id="_3ADC7B74022D3DE6C2130328" general="_3ADC7B74022D3DE6BC6B01BD"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C81D0244" name="RedefinableElement" isAbstract="true">
-        <ownedComment xmi:id="_rlxG4BTaEdqZu-3Jy1-uYg" body="A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier. " annotatedElement="_3ADC7B74022D3DE6C81D0244">
+        <ownedComment xmi:id="_rlxG4BTaEdqZu-3Jy1-uYg" body="A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier." annotatedElement="_3ADC7B74022D3DE6C81D0244">
           <eAnnotations xmi:id="_rl63wBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rl63wRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13382,7 +13387,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C8270177" name="Relationship" isAbstract="true">
-        <ownedComment xmi:id="_rmEowRTaEdqZu-3Jy1-uYg" body="A relationship references one or more related elements. Relationship is an abstract metaclass." annotatedElement="_3ADC7B74022D3DE6C8270177">
+        <ownedComment xmi:id="_rmEowRTaEdqZu-3Jy1-uYg" body="Relationship is an abstract concept that specifies some kind of relationship between elements." annotatedElement="_3ADC7B74022D3DE6C8270177">
           <eAnnotations xmi:id="_rmEowhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmEowxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13402,7 +13407,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C7C40188" name="StructuralFeature" isAbstract="true">
-        <ownedComment xmi:id="_rmEoxhTaEdqZu-3Jy1-uYg" body="A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier. Structural feature is an abstract metaclass." annotatedElement="_3ADC7B74022D3DE6C7C40188">
+        <ownedComment xmi:id="_rmEoxhTaEdqZu-3Jy1-uYg" body="A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier." annotatedElement="_3ADC7B74022D3DE6C7C40188">
           <eAnnotations xmi:id="_rmEoxxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmEoyBTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13412,7 +13417,7 @@
         <generalization xmi:id="_3ADC7B74022D3E5613120088" general="_3ADC7B74022D3DE6C66D02F8"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C3F20254" name="TypedElement" isAbstract="true">
-        <ownedComment xmi:id="_rmEozRTaEdqZu-3Jy1-uYg" body="A typed element is an element that has a type that serves as a constraint on the range of values the element can represent. Typed element is an abstract metaclass." annotatedElement="_3ADC7B74022D3DE6C3F20254">
+        <ownedComment xmi:id="_rmEozRTaEdqZu-3Jy1-uYg" body="A typed element is a kind of named element that represents an element with a type." annotatedElement="_3ADC7B74022D3DE6C3F20254">
           <eAnnotations xmi:id="_rmEozhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmEozxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13429,7 +13434,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C7F30294" name="ValueSpecification" isAbstract="true">
-        <ownedComment xmi:id="_rmEo0hTaEdqZu-3Jy1-uYg" body="ValueSpecification is an abstract metaclass used to identify a value or values in a model. It may reference an instance or it may be an expression denoting an instance or instances when evaluated. It adds a specialization to Constructs::TypedElement." annotatedElement="_3ADC7B74022D3DE6C7F30294">
+        <ownedComment xmi:id="_rmEo0hTaEdqZu-3Jy1-uYg" body="A value specification is the specification of a (possibly empty) set of instances, including both objects and data values." annotatedElement="_3ADC7B74022D3DE6C7F30294">
           <eAnnotations xmi:id="_rmEo0xTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmEo1BTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13504,7 +13509,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6E15D033A" name="Association">
-        <ownedComment xmi:id="_rmXjwRTaEdqZu-3Jy1-uYg" body="An association specifies a semantic relationship that can occur between typed instances. It has at least two ends represented by properties, each of which is connected to the type of the end. More than one end of an association may have the same type.&#xD;&#xA;&#xD;&#xA;An end property of an association that is owned by an end class or that is a navigable owned end of the association indicates that the association is navigable from the opposite ends, otherwise the association is not navigable from the opposite ends." annotatedElement="_3ADC7B74022D3DE6E15D033A">
+        <ownedComment xmi:id="_rmXjwRTaEdqZu-3Jy1-uYg" body="An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a&#xD;&#xA;link." annotatedElement="_3ADC7B74022D3DE6E15D033A">
           <eAnnotations xmi:id="_rmXjwhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmXjwxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13568,7 +13573,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D5AD039B" name="Class">
-        <ownedComment xmi:id="_rmXj1RTaEdqZu-3Jy1-uYg" body="Class is a kind of classifier whose features are attributes and operations. Attributes of a class are represented by instances of Property that are owned by the class. Some of these attributes may represent the navigable ends of binary associations." annotatedElement="_3ADC7B74022D3DE6D5AD039B">
+        <ownedComment xmi:id="_rmXj1RTaEdqZu-3Jy1-uYg" body="A class describes a set of objects that share the same specifications of features, constraints, and semantics." annotatedElement="_3ADC7B74022D3DE6D5AD039B">
           <eAnnotations xmi:id="_rmgtoBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmgtoRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13629,7 +13634,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D57500AC" name="Property">
-        <ownedComment xmi:id="_rmgtsxTaEdqZu-3Jy1-uYg" body="Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association.&#xD;&#xA;&#xD;&#xA;Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property's type." annotatedElement="_3ADC7B74022D3DE6D57500AC">
+        <ownedComment xmi:id="_rmgtsxTaEdqZu-3Jy1-uYg" body="A property is a structural feature of a classifier that characterizes instances of the classifier.&#xD;&#xA;A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end.&#xD;&#xA;It relates an instance of the class to a value or set of values of the type of the attribute.&#xD;&#xA;A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association." annotatedElement="_3ADC7B74022D3DE6D57500AC">
           <eAnnotations xmi:id="_rmgttBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmgttRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13869,7 +13874,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D25202A6" name="DataType">
-        <ownedComment xmi:id="_rnHKkxTaEdqZu-3Jy1-uYg" body="A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.&#xD;&#xA;&#xD;&#xA;A typical use of data types would be to represent programming language primitive types or CORBA basic types. For example, integer and string types are often treated as data types." annotatedElement="_3ADC7B74022D3DE6D25202A6">
+        <ownedComment xmi:id="_rnHKkxTaEdqZu-3Jy1-uYg" body="A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types." annotatedElement="_3ADC7B74022D3DE6D25202A6">
           <eAnnotations xmi:id="_rnHKlBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnHKlRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13913,7 +13918,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D2750152" name="Enumeration">
-        <ownedComment xmi:id="_rnHKohTaEdqZu-3Jy1-uYg" body="Enumeration is a kind of data type, whose instances may be any of a number of predefined enumeration literals.&#xD;&#xA;It is possible to extend the set of applicable enumeration literals in other packages or profiles.&#xD;&#xA;" annotatedElement="_3ADC7B74022D3DE6D2750152">
+        <ownedComment xmi:id="_rnHKohTaEdqZu-3Jy1-uYg" body="An enumeration is a data type whose values are enumerated in the model as enumeration literals." annotatedElement="_3ADC7B74022D3DE6D2750152">
           <eAnnotations xmi:id="_rnHKoxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnHKpBTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13930,7 +13935,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D2910397" name="EnumerationLiteral">
-        <ownedComment xmi:id="_rnHKpxTaEdqZu-3Jy1-uYg" body="An enumeration literal is a value of an enumeration." annotatedElement="_3ADC7B74022D3DE6D2910397">
+        <ownedComment xmi:id="_rnHKpxTaEdqZu-3Jy1-uYg" body="An enumeration literal is a user-defined data value for an enumeration." annotatedElement="_3ADC7B74022D3DE6D2910397">
           <eAnnotations xmi:id="_rnHKqBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnHKqRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13947,7 +13952,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D2570393" name="PrimitiveType">
-        <ownedComment xmi:id="_rnHKrBTaEdqZu-3Jy1-uYg" body="A primitive type defines a predefined data type, without any relevant substructure (i.e. it has no parts in the context of the UML). A primitive datatype may have an algebra and operations defined out of UML, for example, mathematically." annotatedElement="_3ADC7B74022D3DE6D2570393">
+        <ownedComment xmi:id="_rnHKrBTaEdqZu-3Jy1-uYg" body="A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of&#xD;&#xA;UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically." annotatedElement="_3ADC7B74022D3DE6D2570393">
           <eAnnotations xmi:id="_rnQUgBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnQUgRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13955,7 +13960,7 @@
         <generalization xmi:id="_3ADC7B74022D3DE6D2C30371" general="_3ADC7B74022D3DE6D25202A6"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE766450007" name="Constraint">
-        <ownedComment xmi:id="_rnQUhBTaEdqZu-3Jy1-uYg" body="Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association &quot;xor&quot; constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used.&#xD;&#xA;Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to the element. Constraint contains an optional name, although they are commonly unnamed." annotatedElement="_3ADC7B74022D3DE766450007">
+        <ownedComment xmi:id="_rnQUhBTaEdqZu-3Jy1-uYg" body="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the&#xD;&#xA;purpose of declaring some of the semantics of an element." annotatedElement="_3ADC7B74022D3DE766450007">
           <eAnnotations xmi:id="_rnQUhRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnQUhhTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14001,7 +14006,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D62D0024" name="OpaqueExpression">
-        <ownedComment xmi:id="_rnQUmhTaEdqZu-3Jy1-uYg" body="An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages." annotatedElement="_3ADC7B74022D3DE6D62D0024">
+        <ownedComment xmi:id="_rnQUmhTaEdqZu-3Jy1-uYg" body="An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context." annotatedElement="_3ADC7B74022D3DE6D62D0024">
           <eAnnotations xmi:id="_rnQUmxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnQUnBTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14041,7 +14046,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D56F031A" name="Operation">
-        <ownedComment xmi:id="_rnaFgRTaEdqZu-3Jy1-uYg" body="An operation is owned by a class and may be invoked in the context of objects that are instances of that class. It is a typed element and a multiplicity element." annotatedElement="_3ADC7B74022D3DE6D56F031A">
+        <ownedComment xmi:id="_rnaFgRTaEdqZu-3Jy1-uYg" body="An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior." annotatedElement="_3ADC7B74022D3DE6D56F031A">
           <eAnnotations xmi:id="_rnaFghTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnaFgxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14278,7 +14283,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D57D00A3" name="Parameter">
-        <ownedComment xmi:id="_roAiexTaEdqZu-3Jy1-uYg" body="A parameter is a kind of typed element in order to allow the specification of an optional multiplicity on parameters. In addition, it supports the specification of an optional default value." annotatedElement="_3ADC7B74022D3DE6D57D00A3">
+        <ownedComment xmi:id="_roAiexTaEdqZu-3Jy1-uYg" body="A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral&#xD;&#xA;feature." annotatedElement="_3ADC7B74022D3DE6D57D00A3">
           <eAnnotations xmi:id="_roAifBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roAifRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14316,7 +14321,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE7632A0090" name="BehavioralFeature" isAbstract="true">
-        <ownedComment xmi:id="_roTdYRTaEdqZu-3Jy1-uYg" body="A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances. BehavioralFeature is an abstract metaclass specializing Feature and Namespace. Kinds of behavioral aspects are modeled by subclasses of BehavioralFeature." annotatedElement="_3ADC7B74022D3DE7632A0090">
+        <ownedComment xmi:id="_roTdYRTaEdqZu-3Jy1-uYg" body="A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances." annotatedElement="_3ADC7B74022D3DE7632A0090">
           <eAnnotations xmi:id="_roTdYhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roTdYxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14356,7 +14361,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D5E7016E" name="ElementImport">
-        <ownedComment xmi:id="_roTdchTaEdqZu-3Jy1-uYg" body="An element import is defined as a directed relationship between an importing namespace and a packageable element. The name of the packageable element or its alias is to be added to the namespace of the importing namespace. It is also possible to control whether the imported element can be further imported." annotatedElement="_3ADC7B74022D3DE6D5E7016E">
+        <ownedComment xmi:id="_roTdchTaEdqZu-3Jy1-uYg" body="An element import identifies an element in another package, and allows the element to be referenced using its name&#xD;&#xA;without a qualifier." annotatedElement="_3ADC7B74022D3DE6D5E7016E">
           <eAnnotations xmi:id="_roTdcxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roTddBTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14429,7 +14434,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D5DA0183" name="Package">
-        <ownedComment xmi:id="_rodOhBTaEdqZu-3Jy1-uYg" body="A package is a namespace for its members, and may contain other packages. Only packageable elements can be owned members of a package. By virtue of being a namespace, a package can import either individual members of other packages, or all the members of other packages. In addition a package can be merged with other packages." annotatedElement="_3ADC7B74022D3DE6D5DA0183">
+        <ownedComment xmi:id="_rodOhBTaEdqZu-3Jy1-uYg" body="A package is used to group elements, and provides a namespace for the grouped elements." annotatedElement="_3ADC7B74022D3DE6D5DA0183">
           <eAnnotations xmi:id="_romYUBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_romYURTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14540,7 +14545,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D5E002D7" name="PackageImport">
-        <ownedComment xmi:id="_rowJWxTaEdqZu-3Jy1-uYg" body="A package import is defined as a directed relationship that identifies a package whose members are to be imported by a namespace." annotatedElement="_3ADC7B74022D3DE6D5E002D7">
+        <ownedComment xmi:id="_rowJWxTaEdqZu-3Jy1-uYg" body="A package import is a relationship that allows the use of unqualified names to refer to package members from other&#xD;&#xA;namespaces." annotatedElement="_3ADC7B74022D3DE6D5E002D7">
           <eAnnotations xmi:id="_rowJXBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rowJXRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14582,7 +14587,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DEE8DFE0290" name="PackageMerge">
-        <ownedComment xmi:id="_rowJbRTaEdqZu-3Jy1-uYg" body="A package merge is a directed relationship between two packages, that indicates that the contents of the two packages are to be combined. It is very similar to Generalization in the sense that the source element conceptually adds the characteristics of the target element to its own characteristics resulting in an element that combines the characteristics of both.&#xD;&#xA;&#xD;&#xA;This mechanism should be used when elements defined in different packages have the same name and are intended to represent the same concept. Most often it is used to provide different definitions of a given concept for different purposes, starting from a common base definition. A given base concept is extended in increments, with each increment defined in a separate merged package. By selecting which increments to merge, it is possible to obtain a custom definition of a concept for a specific end. Package merge is particularly useful in meta-modeling and is extensively used in the definition of the UML metamodel.&#xD;&#xA;&#xD;&#xA;Conceptually, a package merge can be viewed as an operation that takes the contents of two packages and produces a new package that combines the contents of the packages involved in the merge. In terms of model semantics, there is no difference between a model with explicit package merges, and a model in which all the merges have been performed." annotatedElement="_3ADC7B74022D3DEE8DFE0290">
+        <ownedComment xmi:id="_rowJbRTaEdqZu-3Jy1-uYg" body="A package merge defines how the contents of one package are extended by the contents of another package." annotatedElement="_3ADC7B74022D3DEE8DFE0290">
           <eAnnotations xmi:id="_rowJbhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rowJbxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14608,7 +14613,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E555229003B" name="Type" isAbstract="true">
-        <ownedComment xmi:id="_ro5TQRTaEdqZu-3Jy1-uYg" body="A type serves as a constraint on the range of values represented by a typed element. Type is an abstract metaclass." annotatedElement="_3ADC7B74022D3E555229003B">
+        <ownedComment xmi:id="_ro5TQRTaEdqZu-3Jy1-uYg" body="A type is a named element that is used as the type for a typed element. A type can be contained in a package." annotatedElement="_3ADC7B74022D3E555229003B">
           <eAnnotations xmi:id="_ro5TQhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ro5TQxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14641,7 +14646,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6BC6B01BD" name="NamedElement" isAbstract="true">
-        <ownedComment xmi:id="_ro5TURTaEdqZu-3Jy1-uYg" body="NamedElement has a visibility attribute." annotatedElement="_3ADC7B74022D3DE6BC6B01BD">
+        <ownedComment xmi:id="_ro5TURTaEdqZu-3Jy1-uYg" body="A named element is an element in a model that may have a name." annotatedElement="_3ADC7B74022D3DE6BC6B01BD">
           <eAnnotations xmi:id="_ro5TUhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ro5TUxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14819,7 +14824,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind">
-        <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" body="ParameterDirectionKind is an enumeration of the following literal values:&#xD;&#xA;  - in = Indicates that parameter values are passed into the behavioral element by the caller.&#xD;&#xA;  - inout = Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.&#xD;&#xA;  - out = Indicates that parameter values are passed from a behavioral element out to the caller.&#xD;&#xA;  - return = Indicates that parameter values are passed as return values from a behavioral element back to the caller." annotatedElement="_3ADC7B74022D4161A8F100CC">
+        <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" body="Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters." annotatedElement="_3ADC7B74022D4161A8F100CC">
           <eAnnotations xmi:id="_rpM1XhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpM1XxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -15953,7 +15958,7 @@
     <packageImport xmi:id="_3ADC7B74022D3DE7959801E8" importedPackage="_3ADC7B74022D3DE692AD00C7"/>
     <packageImport xmi:id="_3ADC7B74022D41B0672E00DE" importedPackage="_3ADC7B74022D3C9FFCC70354"/>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA186DB0022" name="Stereotype">
-      <ownedComment xmi:id="_rt-AgRTaEdqZu-3Jy1-uYg" body="Stereotype is a kind of Class that extends Classes through Extensions. Just like a class, a stereotype may have properties, which may be referred to as tag definitions. When a stereotype is applied to a model element, the values of the properties may be referred to as tagged values. Also, stereotype names should not clash with keyword names for the extended model element." annotatedElement="_3ADC7B74022D3CA186DB0022">
+      <ownedComment xmi:id="_rt-AgRTaEdqZu-3Jy1-uYg" body="A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass." annotatedElement="_3ADC7B74022D3CA186DB0022">
         <eAnnotations xmi:id="_rt-AghTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rt-AgxTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -15986,7 +15991,7 @@
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA186E10085" name="Profile">
-      <ownedComment xmi:id="_rt-AmBTaEdqZu-3Jy1-uYg" body="A Profile is a kind of Package that extends a reference metamodel. The primary extension construct is the Stereotype, which are defined as part of Profiles.&#xD;&#xA;&#xD;&#xA;A profile introduces several constraints, or restrictions, on ordinary metamodeling through the use of the metaclasses defined in this package.&#xD;&#xA;&#xD;&#xA;A profile is a restricted form of a metamodel that must always be related to a reference metamodel, such as UML, as described below. A profile cannot be used without its reference metamodel, and defines a limited capability to extendmetaclasses of the reference metamodel. The extensions are defined as stereotypes that apply to existing metaclasses." annotatedElement="_3ADC7B74022D3CA186E10085">
+      <ownedComment xmi:id="_rt-AmBTaEdqZu-3Jy1-uYg" body="A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific&#xD;&#xA;platform or domain." annotatedElement="_3ADC7B74022D3CA186E10085">
         <eAnnotations xmi:id="_rt-AmRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rt-AmhTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16040,7 +16045,7 @@
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA18745029B" name="Package">
-      <ownedComment xmi:id="_ruHKcBTaEdqZu-3Jy1-uYg" body="A Package can have one or more ProfileApplications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles." annotatedElement="_3ADC7B74022D3CA18745029B">
+      <ownedComment xmi:id="_ruHKcBTaEdqZu-3Jy1-uYg" body="A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles." annotatedElement="_3ADC7B74022D3CA18745029B">
         <eAnnotations xmi:id="_ruHKcRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruHKchTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16057,7 +16062,7 @@
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA22B8803DA" name="Class">
-      <ownedComment xmi:id="_ruHKdRTaEdqZu-3Jy1-uYg" body="Class has derived association that indicates how it may be extended through one or more stereotypes." annotatedElement="_3ADC7B74022D3CA22B8803DA">
+      <ownedComment xmi:id="_ruHKdRTaEdqZu-3Jy1-uYg" body="Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes." annotatedElement="_3ADC7B74022D3CA22B8803DA">
         <eAnnotations xmi:id="_ruHKdhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruHKdxTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16076,7 +16081,7 @@
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CBDA36602FA" name="ProfileApplication">
-      <ownedComment xmi:id="_ruHKeRTaEdqZu-3Jy1-uYg" body="ProfileApplication is a kind of PackageImport that adds the capability to state that a Profile is applied to a Package." annotatedElement="_3ADC7B74022D3CBDA36602FA">
+      <ownedComment xmi:id="_ruHKeRTaEdqZu-3Jy1-uYg" body="A profile application is used to show which profiles have been applied to a package." annotatedElement="_3ADC7B74022D3CBDA36602FA">
         <eAnnotations xmi:id="_ruHKehTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruHKexTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16105,7 +16110,7 @@
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CBDA5E903C7" name="Extension">
-      <ownedComment xmi:id="_ruHKfhTaEdqZu-3Jy1-uYg" body="Extension is a kind of Association. One end of the Extension is an ordinary Property and the other end is an ExtensionEnd. The former ties the Extension to a Class, while the latter ties the Extension to a Stereotype that extends the Class." annotatedElement="_3ADC7B74022D3CBDA5E903C7">
+      <ownedComment xmi:id="_ruHKfhTaEdqZu-3Jy1-uYg" body="An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes." annotatedElement="_3ADC7B74022D3CBDA5E903C7">
         <eAnnotations xmi:id="_ruHKfxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruHKgBTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16197,7 +16202,7 @@
       </ownedOperation>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CBDA5F701B4" name="ExtensionEnd">
-      <ownedComment xmi:id="_ruQ7cRTaEdqZu-3Jy1-uYg" body="ExtensionEnd is a kind of Property that is always typed by a Stereotype. An ExtensionEnd is never navigable. If it was navigable, it would be a property of the extended classifier. Since a profile is not allowed to change the referenced metamodel, it is not possible to add properties to the extended classifier. As a consequence, an ExtensionEnd can only be owned by an Extension. The aggregation of an ExtensionEnd is always composite. The default multiplicity of an ExtensionEnd is 0..1." annotatedElement="_3ADC7B74022D3CBDA5F701B4">
+      <ownedComment xmi:id="_ruQ7cRTaEdqZu-3Jy1-uYg" body="An extension end is used to tie an extension to a stereotype when extending a metaclass." annotatedElement="_3ADC7B74022D3CBDA5F701B4">
         <eAnnotations xmi:id="_ruQ7chTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruQ7cxTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16251,7 +16256,7 @@
       </ownedOperation>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D40E7EDE1009F" name="Image">
-      <ownedComment xmi:id="_ruQ7dhTaEdqZu-3Jy1-uYg" body="The Image class provides the necessary information to display an Image in a diagram. Icons are typically handled through the Image class." annotatedElement="_3ADC7B74022D40E7EDE1009F">
+      <ownedComment xmi:id="_ruQ7dhTaEdqZu-3Jy1-uYg" body="Physical definition of a graphical image." annotatedElement="_3ADC7B74022D40E7EDE1009F">
         <eAnnotations xmi:id="_ruQ7dxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruQ7eBTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16294,13 +16299,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ssj8EHGhEdqziYxiZo0YtA"/>
       </ownedAttribute>
     </ownedMember>
-    <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D41925B100079" name="Element" isAbstract="true">
-      <ownedComment xmi:id="_ruQ7ehTaEdqZu-3Jy1-uYg" body=" An element is a constituent of a model. An element can own comments." annotatedElement="_3ADC7B74022D41925B100079">
-        <eAnnotations xmi:id="_ruQ7exTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-          <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ruQ7fBTaEdqZu-3Jy1-uYg"/>
-        </eAnnotations>
-      </ownedComment>
-    </ownedMember>
+    <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D41925B100079" name="Element" isAbstract="true"/>
     <ownedMember xmi:type="uml:Class" xmi:id="_6OXXoXDLEdqziYxiZo0YtA" name="NamedElement" isAbstract="true">
       <ownedOperation xmi:id="_qifDQDakEdqq1tCaRkgBQQ" name="allOwningPackages" type="_3ADC7B74022D3CA18745029B" isQuery="true" bodyCondition="_3LBREDakEdqq1tCaRkgBQQ">
         <ownedComment xmi:id="_5-hO8Dp_Edq16aujGBCOZg" body="The query allOwningPackages() returns all the directly or indirectly owning packages." annotatedElement="_qifDQDakEdqq1tCaRkgBQQ">
