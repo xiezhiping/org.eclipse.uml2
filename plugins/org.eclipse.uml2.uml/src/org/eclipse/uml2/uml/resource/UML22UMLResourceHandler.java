@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.17 2006/05/10 17:12:14 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.18 2006/05/11 00:48:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -232,10 +232,11 @@ public class UML22UMLResourceHandler
 				.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
 				.hasNext();) {
 
-				EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+				EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eAllStructuralFeatures
 					.next();
 
 				if (eStructuralFeature.isChangeable()
+					&& eStructuralFeature.getEOpposite() == null
 					&& eObject.eIsSet(eStructuralFeature)) {
 
 					try {
@@ -251,11 +252,10 @@ public class UML22UMLResourceHandler
 				}
 			}
 
-			for (Iterator nonNavigableInverseReferences = UML2Util
-				.getNonNavigableInverseReferences(eObject).iterator(); nonNavigableInverseReferences
-				.hasNext();) {
+			for (Iterator inverseReferences = UML2Util.getInverseReferences(
+				eObject).iterator(); inverseReferences.hasNext();) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
 					.next();
 				EStructuralFeature eStructuralFeature = setting
 					.getEStructuralFeature();
@@ -555,8 +555,10 @@ public class UML22UMLResourceHandler
 					executionOccurrenceSpecification.setEvent(executionEvent);
 				}
 
-				return super
-					.caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
+				defaultCase(executionOccurrenceSpecification);
+				caseNamedElement(executionOccurrenceSpecification);
+
+				return executionOccurrenceSpecification;
 			}
 
 			public Object caseExtensionEnd(ExtensionEnd extensionEnd) {
@@ -699,6 +701,16 @@ public class UML22UMLResourceHandler
 								"finishExec", true); //$NON-NLS-1$
 						}
 
+						if (values.isEmpty()) {
+							OccurrenceSpecification occurrenceSpecification = (OccurrenceSpecification) reincarnate(
+								messageOccurrenceSpecification,
+								UMLPackage.Literals.OCCURRENCE_SPECIFICATION);
+
+							resource.setID(occurrenceSpecification, id);
+
+							return caseOccurrenceSpecification(occurrenceSpecification);
+						}
+
 						for (Iterator v = values.iterator(); v.hasNext();) {
 							Object value = v.next();
 
@@ -707,6 +719,20 @@ public class UML22UMLResourceHandler
 									.getEObject((String) value);
 
 								if (eObject instanceof ExecutionSpecification) {
+									ExecutionSpecification execution = (ExecutionSpecification) eObject;
+
+									if (execution.getFinish() == messageOccurrenceSpecification) {
+										OccurrenceSpecification start = execution
+											.getStart();
+
+										if (start instanceof MessageOccurrenceSpecification
+											&& ((MessageOccurrenceSpecification) start)
+												.getMessage() != null) {
+
+											break;
+										}
+									}
+
 									ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) reincarnate(
 										messageOccurrenceSpecification,
 										UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION);
@@ -715,21 +741,13 @@ public class UML22UMLResourceHandler
 										executionOccurrenceSpecification, id);
 
 									executionOccurrenceSpecification
-										.setExecution((ExecutionSpecification) eObject);
+										.setExecution(execution);
 
 									return caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
 								}
 							}
 						}
 					}
-
-					OccurrenceSpecification occurrenceSpecification = (OccurrenceSpecification) reincarnate(
-						messageOccurrenceSpecification,
-						UMLPackage.Literals.OCCURRENCE_SPECIFICATION);
-
-					resource.setID(occurrenceSpecification, id);
-
-					return caseOccurrenceSpecification(occurrenceSpecification);
 				} else {
 					org.eclipse.uml2.uml.Package nearestPackage = messageOccurrenceSpecification
 						.getNearestPackage();
@@ -942,8 +960,10 @@ public class UML22UMLResourceHandler
 					}
 				}
 
-				return super
-					.caseMessageOccurrenceSpecification(messageOccurrenceSpecification);
+				defaultCase(messageOccurrenceSpecification);
+				caseNamedElement(messageOccurrenceSpecification);
+
+				return messageOccurrenceSpecification;
 			}
 
 			public Object caseNamespace(Namespace namespace) {
@@ -991,8 +1011,10 @@ public class UML22UMLResourceHandler
 					}
 				}
 
-				return super
-					.caseOccurrenceSpecification(occurrenceSpecification);
+				defaultCase(occurrenceSpecification);
+				caseNamedElement(occurrenceSpecification);
+
+				return occurrenceSpecification;
 			}
 
 			public Object caseOpaqueAction(OpaqueAction opaqueAction) {
