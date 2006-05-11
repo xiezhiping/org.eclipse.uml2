@@ -54,6 +54,33 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//TemplateSignature"/>
           </eStructuralFeatures>
         </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_3Bb8Z-CPEdqoz4RYXIwjlw" name="Expression">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3Bb8aOCPEdqoz4RYXIwjlw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Expression"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3Bb8aeCPEdqoz4RYXIwjlw" name="base_OpaqueExpression" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//OpaqueExpression"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3Bb8auCPEdqoz4RYXIwjlw" name="operand" ordered="false" upperBound="-1" containment="true">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//ValueSpecification"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_3Bb8a-CPEdqoz4RYXIwjlw" name="symbol" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_3Bb8bOCPEdqoz4RYXIwjlw" name="OpaqueExpression">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3Bb8beCPEdqoz4RYXIwjlw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="OpaqueExpression"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3Bb8buCPEdqoz4RYXIwjlw" name="base_Expression" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Expression"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3Bb8b-CPEdqoz4RYXIwjlw" name="behavior" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Behavior"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_3Bb8cOCPEdqoz4RYXIwjlw" name="body" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_3Bb8ceCPEdqoz4RYXIwjlw" name="language" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
       </contents>
     </eAnnotations>
     <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
@@ -147,7 +174,52 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TemplateSignature_TemplateSignature-extension_TemplateSignature-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_VFz_ANSUEdqN9tnr0j3PAQ">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Expression" name="Expression">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Expression-base_OpaqueExpression" name="base_OpaqueExpression" association="OpaqueExpression_Expression">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#OpaqueExpression"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Expression-operand" name="operand" aggregation="composite">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ValueSpecification"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Expression-operand-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Expression-operand-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Expression-symbol" name="symbol">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Expression-symbol-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Expression-symbol-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="OpaqueExpression_Expression" name="OpaqueExpression_Expression" memberEnd="OpaqueExpression_Expression-extension_Expression Expression-base_OpaqueExpression">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="OpaqueExpression_Expression-extension_Expression" name="extension_Expression" type="Expression" aggregation="composite" association="OpaqueExpression_Expression">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression_Expression-extension_Expression-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="OpaqueExpression" name="OpaqueExpression">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-base_Expression" name="base_Expression" association="Expression_OpaqueExpression">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Expression"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-behavior" name="behavior">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Behavior"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OpaqueExpression-behavior-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression-behavior-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-body" name="body">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OpaqueExpression-body-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression-body-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-language" name="language">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OpaqueExpression-language-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression-language-_lowerValue"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Expression_OpaqueExpression" name="Expression_OpaqueExpression" memberEnd="Expression_OpaqueExpression-extension_OpaqueExpression OpaqueExpression-base_Expression">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Expression_OpaqueExpression-extension_OpaqueExpression" name="extension_OpaqueExpression" type="OpaqueExpression" aggregation="composite" association="Expression_OpaqueExpression">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Expression_OpaqueExpression-extension_OpaqueExpression-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VFz_AdSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
       </eAnnotations>

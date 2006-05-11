@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.18 2006/05/11 00:48:42 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.19 2006/05/11 04:16:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -47,6 +47,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.CallBehaviorAction;
@@ -64,6 +65,7 @@ import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.FunctionBehavior;
@@ -123,9 +125,15 @@ public class UML22UMLResourceHandler
 
 	protected static final String STEREOTYPE__COMMENT = "Comment"; //$NON-NLS-1$
 
+	protected static final String STEREOTYPE__EXPRESSION = "Expression"; //$NON-NLS-1$
+
 	protected static final String STEREOTYPE__MESSAGE = "Message"; //$NON-NLS-1$
 
+	protected static final String STEREOTYPE__OPAQUE_EXPRESSION = "OpaqueExpression"; //$NON-NLS-1$
+
 	protected static final String STEREOTYPE__TEMPLATE_SIGNATURE = "TemplateSignature"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__BEHAVIOR = "behavior"; //$NON-NLS-1$
 
 	protected static final String TAG_DEFINITION__BODY = "body"; //$NON-NLS-1$
 
@@ -139,7 +147,11 @@ public class UML22UMLResourceHandler
 
 	protected static final String TAG_DEFINITION__NESTING_SIGNATURE = "nestingSignature"; //$NON-NLS-1$
 
+	protected static final String TAG_DEFINITION__OPERAND = "operand"; //$NON-NLS-1$
+
 	protected static final String TAG_DEFINITION__SIGNATURE = "signature"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__SYMBOL = "symbol"; //$NON-NLS-1$
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
@@ -559,6 +571,55 @@ public class UML22UMLResourceHandler
 				caseNamedElement(executionOccurrenceSpecification);
 
 				return executionOccurrenceSpecification;
+			}
+
+			public Object caseExpression(Expression expression) {
+				AnyType extension = getExtension(resource, expression);
+
+				if (extension != null) {
+					Stereotype stereotype = getUML2Stereotype(expression,
+						STEREOTYPE__OPAQUE_EXPRESSION);
+
+					Object value = getValue(extension.getAnyAttribute(),
+						"behavior", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
+
+						if (eObject instanceof Behavior) {
+							UMLUtil.setTaggedValue(expression, stereotype,
+								TAG_DEFINITION__BEHAVIOR, eObject);
+						}
+					}
+
+					value = getValue(extension.getAnyAttribute(), "body", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						UMLUtil.setTaggedValue(expression, stereotype,
+							TAG_DEFINITION__BODY, value);
+					}
+
+					value = getValue(extension.getMixed(), "body", true); //$NON-NLS-1$
+
+					if (value instanceof AnyType) {
+						value = getValue(((AnyType) value).getMixed(), "text"); //$NON-NLS-1$
+
+						if (value instanceof String) {
+							UMLUtil.setTaggedValue(expression, stereotype,
+								TAG_DEFINITION__BODY, value);
+						}
+					}
+
+					value = getValue(extension.getAnyAttribute(),
+						"language", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						UMLUtil.setTaggedValue(expression, stereotype,
+							TAG_DEFINITION__LANGUAGE, value);
+					}
+				}
+
+				return super.caseExpression(expression);
 			}
 
 			public Object caseExtensionEnd(ExtensionEnd extensionEnd) {
@@ -1073,6 +1134,38 @@ public class UML22UMLResourceHandler
 
 					if (value instanceof String) {
 						opaqueExpression.getBodies().add(value);
+					}
+
+					Stereotype stereotype = getUML2Stereotype(opaqueExpression,
+						STEREOTYPE__EXPRESSION);
+
+					Collection values = getValues(extension.getMixed(),
+						"operand", true); //$NON-NLS-1$
+
+					if (!values.isEmpty()) {
+
+						if (UMLUtil.safeApplyStereotype(opaqueExpression,
+							stereotype) != null) {
+
+							EList operands = (EList) opaqueExpression.getValue(
+								stereotype, TAG_DEFINITION__OPERAND);
+
+							for (Iterator v = values.iterator(); v.hasNext();) {
+								value = v.next();
+
+								if (value instanceof ValueSpecification) {
+									operands.add(value);
+								}
+							}
+						}
+					}
+
+					value = getValue(extension.getAnyAttribute(),
+						"symbol", true); //$NON-NLS-1$
+
+					if (value instanceof String) {
+						UMLUtil.setTaggedValue(opaqueExpression, stereotype,
+							TAG_DEFINITION__SYMBOL, value);
 					}
 				}
 

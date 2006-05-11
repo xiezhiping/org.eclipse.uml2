@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateUML2StereotypesAction.java,v 1.1 2006/04/25 20:58:28 khussey Exp $
+ * $Id: GenerateUML2StereotypesAction.java,v 1.2 2006/05/11 04:16:43 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -76,6 +76,22 @@ public class GenerateUML2StereotypesAction
 							stringExpressionMetaclass, 0, 1).setAggregation(
 							AggregationKind.COMPOSITE_LITERAL);
 
+						Stereotype expressionStereotype = generateOwnedStereotype(
+							profile, "Expression", false); //$NON-NLS-1$
+						org.eclipse.uml2.uml.Class opaqueExpressionMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.OPAQUE_EXPRESSION);
+						generateExtension(expressionStereotype,
+							opaqueExpressionMetaclass, false);
+						org.eclipse.uml2.uml.Class valueSpecificationMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.VALUE_SPECIFICATION);
+						generateOwnedAttribute(expressionStereotype,
+							"operand", //$NON-NLS-1$
+							valueSpecificationMetaclass, 0,
+							LiteralUnlimitedNatural.UNLIMITED).setAggregation(
+							AggregationKind.COMPOSITE_LITERAL);
+						generateOwnedAttribute(expressionStereotype, "symbol", //$NON-NLS-1$
+							stringPrimitiveType, 0, 1);
+
 						Stereotype messageStereotype = generateOwnedStereotype(
 							profile, "Message", false); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class messageMetaclass = getReferencedUMLMetaclass(
@@ -86,6 +102,24 @@ public class GenerateUML2StereotypesAction
 							profile, UMLPackage.Literals.NAMED_ELEMENT);
 						generateOwnedAttribute(messageStereotype, "signature", //$NON-NLS-1$
 							namedElementMetaclass, 0, 1);
+
+						Stereotype opaqueExpressionStereotype = generateOwnedStereotype(
+							profile, "OpaqueExpression", false); //$NON-NLS-1$
+						org.eclipse.uml2.uml.Class expressionMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.EXPRESSION);
+						generateExtension(opaqueExpressionStereotype,
+							expressionMetaclass, false);
+						org.eclipse.uml2.uml.Class behaviorMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.BEHAVIOR);
+						generateOwnedAttribute(opaqueExpressionStereotype,
+							"behavior", //$NON-NLS-1$
+							behaviorMetaclass, 0, 1);
+						generateOwnedAttribute(opaqueExpressionStereotype,
+							"body", //$NON-NLS-1$
+							stringPrimitiveType, 0, 1);
+						generateOwnedAttribute(opaqueExpressionStereotype,
+							"language", //$NON-NLS-1$
+							stringPrimitiveType, 0, 1);
 
 						Stereotype templateSignatureStereotype = generateOwnedStereotype(
 							profile, "TemplateSignature", false); //$NON-NLS-1$

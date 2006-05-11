@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetaData.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UML22UMLExtendedMetaData.java,v 1.2 2006/05/11 04:16:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -2336,6 +2336,7 @@ public class UML22UMLExtendedMetaData
 
 			typeMap = new HashMap();
 			typeMap.put(UMLPackage.Literals.INTERACTION, "uml:EventOccurrence"); //$NON-NLS-1$
+			typeMap.put(UMLPackage.Literals.INTERACTION_OPERAND, "uml:EventOccurrence"); //$NON-NLS-1$
 			featureMap = new HashMap();
 			featureMap.put("fragment", typeMap); //$NON-NLS-1$
 			typeToTypeMap.put("uml:Stop", featureMap); //$NON-NLS-1$
@@ -2375,6 +2376,13 @@ public class UML22UMLExtendedMetaData
 			featureMap = new HashMap();
 			featureMap.put("packagedElement", typeMap); //$NON-NLS-1$
 			typeToTypeMap.put("uml:Permission", featureMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.NAMED_ELEMENT, "uml:OpaqueExpression"); //$NON-NLS-1$
+			featureMap = new HashMap();
+			featureMap.put("mapping", typeMap); //$NON-NLS-1$
+			featureMap.put("selector", typeMap); //$NON-NLS-1$
+			typeToTypeMap.put("uml:Expression", featureMap); //$NON-NLS-1$
 		}
 		
 		return typeToTypeMap;
