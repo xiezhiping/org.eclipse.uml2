@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragment.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ConsiderIgnoreFragment.java,v 1.4 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A ConsiderIgnoreFragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
+ * A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  * <!-- end-model-doc -->
  *
  * <p>

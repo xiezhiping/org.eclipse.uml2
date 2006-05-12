@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElement.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: TypedElement.java,v 1.3 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,10 +18,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A typed element is an element that has a type that serves as a constraint on the range of values the element can represent. Typed element is an abstract metaclass.
- * A typed element is an element that has a type that serves as a constraint on the range of values the element can represent.
- * Typed element is an abstract metaclass.
- * 
+ * A typed element is a kind of named element that represents an element with a type.
+ * A typed element has a type.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureAction.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: StructuralFeatureAction.java,v 1.5 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This abstract action class statically specifies the structural feature being accessed. The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the value's multiplicity is 1..1.
+ * StructuralFeatureAction is an abstract class for all structural feature actions.
  * <!-- end-model-doc -->
  *
  * <p>

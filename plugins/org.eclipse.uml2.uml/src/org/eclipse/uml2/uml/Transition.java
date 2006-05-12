@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.11 2006/05/05 19:36:07 khussey Exp $
+ * $Id: Transition.java,v 1.12 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -427,7 +427,6 @@ public interface Transition
 	 * endif
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	Classifier redefinitionContext();
@@ -440,7 +439,6 @@ public interface Transition
 	 * result = container.containingStateMachine()
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	StateMachine containingStateMachine();

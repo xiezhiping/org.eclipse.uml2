@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfAction.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ReadSelfAction.java,v 1.5 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Every action is ultimately a part of some behavior, which is in turn optionally attached in some way to the specification of a classifier; for example as the body of a method or as part of a state machine. When the behavior executes, it does so in the context of some specific host instance of that classifier. This action produces this host instance, if any, on its output pin. The type of the output pin is the classifier to which the behavior is associated in the user model.
+ * A read self action is an action that retrieves the host object of an action.
  * <!-- end-model-doc -->
  *
  * <p>

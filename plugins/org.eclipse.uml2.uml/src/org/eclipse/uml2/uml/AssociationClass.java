@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClass.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
+ * $Id: AssociationClass.java,v 1.3 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * In the metamodel, an AssociationClass is a declaration of a semantic relationship between Classifiers, which has a set of features of its own. AssociationClass is both an Association and a Class.
+ * A model element that has both association and class properties. An AssociationClass can be seen as an association that also has class properties, or as a class that also has association properties. It not only connects a set of classifiers but also defines a set of features that belong to the relationship itself and not to any of the classifiers.
  * <!-- end-model-doc -->
  *
  *
@@ -55,7 +55,6 @@ public interface AssociationClass
 	 * result = memberEnd->union ( self.parents ()->collect (p | p.allConnections () )
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Property" lower="2" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList allConnections();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Trigger.java,v 1.3 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Trigger.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A trigger specifies an event that may cause the execution of an associated behavior. An event is often ultimately caused by the execution of an action, but need not be.
+ * A trigger relates an event to a behavior that may affect an instance of the classifier.
  * A trigger specification may be qualified by the port on which the event occurred.
  * <!-- end-model-doc -->
  *

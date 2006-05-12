@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationAction.java,v 1.3 2006/02/22 20:48:14 khussey Exp $
+ * $Id: ClearAssociationAction.java,v 1.4 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action destroys all links of an association that have a particular object at one end.
+ * A clear association action is an action that destroys all links of an association in which a particular object participates.
  * <!-- end-model-doc -->
  *
  * <p>

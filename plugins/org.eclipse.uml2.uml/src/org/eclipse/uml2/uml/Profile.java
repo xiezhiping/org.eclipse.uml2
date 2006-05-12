@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Profile.java,v 1.12 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,11 +28,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A Profile is a kind of Package that extends a reference metamodel. The primary extension construct is the Stereotype, which are defined as part of Profiles.
- * 
- * A profile introduces several constraints, or restrictions, on ordinary metamodeling through the use of the metaclasses defined in this package.
- * 
- * A profile is a restricted form of a metamodel that must always be related to a reference metamodel, such as UML, as described below. A profile cannot be used without its reference metamodel, and defines a limited capability to extendmetaclasses of the reference metamodel. The extensions are defined as stereotypes that apply to existing metaclasses.
+ * A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceiveSignalEvent.java,v 1.1 2005/12/08 14:56:26 khussey Exp $
+ * $Id: ReceiveSignalEvent.java,v 1.2 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A ReceiveSignalEvent models the receiving of a signal.
+ * A receive signal event specifies the event of receiving a signal by the target entity.
  * <!-- end-model-doc -->
  *
  * <p>

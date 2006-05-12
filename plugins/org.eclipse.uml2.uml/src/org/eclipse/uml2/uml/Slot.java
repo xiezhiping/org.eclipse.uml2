@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Slot.java,v 1.6 2006/03/15 19:33:58 khussey Exp $
+ * $Id: Slot.java,v 1.7 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A slot is owned by an instance specification. It specifies the value or values for its defining feature, which must be a structural feature of a classifier of the instance specification owning the slot.
+ * A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecification.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
+ * $Id: DeploymentSpecification.java,v 1.7 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * In the metamodel, a DeploymentSpecification is a subtype of Artifact. It defines a set of deployment properties that are specific to a certain Container type. An instance of a DeploymentSpecification with specific values for these properties may be contained in a complex Artifact.
+ * A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  * <!-- end-model-doc -->
  *
  * <p>

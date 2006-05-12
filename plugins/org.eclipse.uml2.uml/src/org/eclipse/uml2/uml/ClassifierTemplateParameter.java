@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameter.java,v 1.4 2006/02/02 23:30:18 khussey Exp $
+ * $Id: ClassifierTemplateParameter.java,v 1.5 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ClassifierTemplateParameter is a template parameter where the parametered element is a Classifier in its capacity of being a kind of ParameterableElement.
+ * A classifier template parameter exposes a classifier as a formal template parameter.
  * <!-- end-model-doc -->
  *
  * <p>

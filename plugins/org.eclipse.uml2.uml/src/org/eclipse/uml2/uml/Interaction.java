@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Interaction.java,v 1.7 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An interaction is a unit of behavior that focuses on the observable exchange of information between ConnectableElements. An Interaction is a specialization of InteractionFragment and of Behavior.
+ * An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -53,5 +53,5 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_eHw7sNxrEdqEPrOCkNZ5Vg" base_Package="_EBtHcBmMEdqvcs97umGEYQ" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1/uml.xml"/>
+  <Ecore:EPackage xmi:id="_D2OXwOHgEdq-hoB9-WtIbg" base_Package="_EBtHcBmMEdqvcs97umGEYQ" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1/uml.xml"/>
 </xmi:XMI>

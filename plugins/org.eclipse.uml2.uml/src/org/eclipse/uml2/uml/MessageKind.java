@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageKind.java,v 1.3 2006/05/05 19:36:07 khussey Exp $
+ * $Id: MessageKind.java,v 1.4 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,11 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * MessageKind is an enumeration of the following values:
- *   - complete = sendEvent and receiveEvent are present
- *   - lost = sendEvent present and receiveEvent absent
- *   - found = sendEvent absent and receiveEvent present
- *   - unknown = sendEvent and receiveEvent absent (should not appear)
+ * This is an enumerated type that identifies the type of message.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getMessageKind()
  * @model

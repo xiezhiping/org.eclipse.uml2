@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationData.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: LinkEndCreationData.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,9 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This class is required when using CreateLinkAction, to specify insertion points for ordered ends and for replacing all links at end. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, as required. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end. These pieces are brought together around LinkEndData. Each association end is identified separately with an instance of the LinkEndData class.
- * 
- * Qualifier values are used in CompleteActions to identify links to create.
+ * A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  * <!-- end-model-doc -->
  *
  * <p>

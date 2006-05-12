@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.4 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Deployment.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * In the metamodel, Deployment is a subtype of Dependency.
+ * A deployment is the allocation of an artifact or artifact instance to a deployment target.
  * A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  * <!-- end-model-doc -->
  *

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Stereotype.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Stereotype is a kind of Class that extends Classes through Extensions. Just like a class, a stereotype may have properties, which may be referred to as tag definitions. When a stereotype is applied to a model element, the values of the properties may be referred to as tagged values. Also, stereotype names should not clash with keyword names for the extended model element.
+ * A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  * <!-- end-model-doc -->
  *
  * <p>

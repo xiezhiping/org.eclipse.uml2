@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraint.java,v 1.3 2006/02/02 23:30:18 khussey Exp $
+ * $Id: TimeConstraint.java,v 1.4 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A TimeConstraint defines a Constraint that refers to a TimeInterval.
+ * A time constraint is a constraint that refers to a time interval.
  * <!-- end-model-doc -->
  *
  * <p>

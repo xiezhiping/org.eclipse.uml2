@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.9 2006/03/15 19:33:42 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.10 2006/05/12 20:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ProfileApplication is a kind of PackageImport that adds the capability to state that a Profile is applied to a Package.
+ * A profile application is used to show which profiles have been applied to a package.
  * <!-- end-model-doc -->
  *
  * <p>

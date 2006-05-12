@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Abstraction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Abstraction.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints. In the metamodel, an Abstraction is a Dependency in which there is a mapping between the supplier and the client.
+ * An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  * <!-- end-model-doc -->
  *
  * <p>

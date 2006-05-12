@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpression.java,v 1.6 2006/03/15 19:33:58 khussey Exp $
+ * $Id: StringExpression.java,v 1.7 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * StringExpression is a specialization of the general Expression metaclass which adds the ability to contain sub-expressions and whose operands are exclusively LiteralStrings.
+ * An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
  * <!-- end-model-doc -->
  *
  * <p>

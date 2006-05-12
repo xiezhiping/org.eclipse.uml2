@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEvent.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: CallEvent.java,v 1.2 2006/05/12 20:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A call event represents the reception of a request to invoke a specific operation. A call event is distinct from the call action that caused it. A call event may cause the invocation of a behavior that is the method of the operation referenced by the call request, if that operation is owned or inherited by the classifier that specified the receiver object.
+ * A call event models the receipt by an object of a message invoking a call of an operation.
  * <!-- end-model-doc -->
  *
  * <p>

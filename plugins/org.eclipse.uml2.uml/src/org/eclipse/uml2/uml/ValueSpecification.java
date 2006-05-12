@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecification.java,v 1.2 2005/12/12 16:58:34 khussey Exp $
+ * $Id: ValueSpecification.java,v 1.3 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,8 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ValueSpecification is an abstract metaclass used to identify a value or values in a model. It may reference an instance or it may be an expression denoting an instance or instances when evaluated. It adds a specialization to Constructs::TypedElement.
- * ValueSpecification is an abstract metaclass used to identify a value or values in a model. It may reference an instance or it may be an expression denoting an instance or instances when evaluated.
+ * A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
  * ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  * <!-- end-model-doc -->
  *
@@ -39,7 +38,6 @@ public interface ValueSpecification
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isComputable();
@@ -52,7 +50,6 @@ public interface ValueSpecification
 	 * result = Set{}
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int integerValue();
@@ -65,7 +62,6 @@ public interface ValueSpecification
 	 * result = Set{}
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean booleanValue();
@@ -78,7 +74,6 @@ public interface ValueSpecification
 	 * result = Set{}
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	String stringValue();
@@ -91,7 +86,6 @@ public interface ValueSpecification
 	 * result = Set{}
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int unlimitedValue();
@@ -104,7 +98,6 @@ public interface ValueSpecification
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isNull();

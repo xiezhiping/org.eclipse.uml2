@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteral.java,v 1.3 2006/03/15 19:33:48 khussey Exp $
+ * $Id: EnumerationLiteral.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,6 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An enumeration literal is a value of an enumeration.
  * An enumeration literal is a user-defined data value for an enumeration.
  * <!-- end-model-doc -->
  *

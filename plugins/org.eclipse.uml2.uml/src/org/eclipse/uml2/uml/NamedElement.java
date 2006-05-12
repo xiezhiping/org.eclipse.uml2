@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.12 2006/05/05 19:36:07 khussey Exp $
+ * $Id: NamedElement.java,v 1.13 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,9 +26,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * NamedElement has a visibility attribute.
- * A named element represents elements that may have a name. The name is used for identification of the named element within the namespace in which it is defined. A named element also has a qualified name that allows it to be unambiguously identified within a hierarchy of nested namespaces. NamedElement is an abstract metaclass.
- * NamedElement specializes Kernel::NamedElement and adds a composition association to Expression.
+ * A named element is an element in a model that may have a name.
+ * A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).
  * <!-- end-model-doc -->
  *
  * <p>
@@ -340,7 +339,6 @@ public interface NamedElement
 	 * endif
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Namespace"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList allNamespaces();
@@ -356,7 +354,6 @@ public interface NamedElement
 	 * endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false" nsRequired="true" nsOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
@@ -369,7 +366,6 @@ public interface NamedElement
 	 * result = '::'
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	String separator();
@@ -382,7 +378,6 @@ public interface NamedElement
 	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Package" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList allOwningPackages();

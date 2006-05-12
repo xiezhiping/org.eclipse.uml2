@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElement.java,v 1.1 2005/11/14 22:25:57 khussey Exp $
+ * $Id: PackageableElement.java,v 1.2 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,7 +19,7 @@ package org.eclipse.uml2.uml;
  *
  * <!-- begin-model-doc -->
  * A packageable element indicates a named element that may be owned directly by a package.
- * PackageableElements are extended to enable any such element to serve as a template parameter.
+ * Packageable elements are able to serve as a template parameter.
  * <!-- end-model-doc -->
  *
  *

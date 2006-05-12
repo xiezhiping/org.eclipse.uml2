@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.7 2006/02/22 20:48:15 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.8 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,8 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier. 
- * A redefinable element is a named element that can be redefined in the context of a generalization. RedefinableElement is an abstract metaclass.
+ * A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -186,7 +185,6 @@ public interface RedefinableElement
 	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(RedefinableElement redefined);
@@ -196,13 +194,9 @@ public interface RedefinableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
-	 * redefinee.isRedefinitionContextValid(self)
-	 * 
-	 * 
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefineeRequired="true" redefineeOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isConsistentWith(RedefinableElement redefinee);

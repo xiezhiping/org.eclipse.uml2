@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
+ * $Id: DataType.java,v 1.7 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,12 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.
- * 
- * A typical use of data types would be to represent programming language primitive types or CORBA basic types. For example, integer and string types are often treated as data types.
- * A data type is a type whose instances are identified only by their value. A DataType may contain attributes to support the modeling of structured data types.
- * A typical use of data types would be to represent programming language primitive types or CORBA basic types. For example, integer and string types are often treated as data types.
- * 
+ * A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  * <!-- end-model-doc -->
  *
  * <p>

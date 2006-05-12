@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: WriteStructuralFeatureAction.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A write structural feature action operates on a structural feature of an object to modify its values. It has an input pin on which the value that will be added or removed is put. Other aspects of write structural feature actions are inherited from StructuralFeatureAction.
+ * WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
  * <!-- end-model-doc -->
  *
  * <p>

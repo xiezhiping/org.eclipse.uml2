@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.2 2005/12/14 22:34:16 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.3 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A directed relationship references one or more source elements and one or more target elements. DirectedRelationship is an abstract metaclass.
+ * A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  * <!-- end-model-doc -->
  *
  * <p>

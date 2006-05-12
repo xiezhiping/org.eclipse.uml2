@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.6 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action tests the classification of an object against a given class. It can be restricted to testing direct instances.
+ * A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  * <!-- end-model-doc -->
  *
  * <p>

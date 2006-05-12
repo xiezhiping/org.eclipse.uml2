@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.7 2006/02/22 20:48:15 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.8 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * AcceptEventAction is an action that waits for the occurrence of an event meeting specified conditions.
+ * A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  * <!-- end-model-doc -->
  *
  * <p>

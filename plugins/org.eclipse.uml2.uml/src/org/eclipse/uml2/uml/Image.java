@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Image.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Image.java,v 1.5 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The Image class provides the necessary information to display an Image in a diagram. Icons are typically handled through the Image class.
+ * Physical definition of a graphical image.
  * <!-- end-model-doc -->
  *
  * <p>

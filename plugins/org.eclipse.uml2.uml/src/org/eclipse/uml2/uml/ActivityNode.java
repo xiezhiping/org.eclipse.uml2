@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.7 2006/03/15 19:33:56 khussey Exp $
+ * $Id: ActivityNode.java,v 1.8 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,9 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes. Nodes can be replaced in generalization.
- * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes.
- * An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object nodes. Nodes can be contained in interruptible regions.
+ * ActivityNode is an abstract class for points in the flow of an activity connected by edges.
  * <!-- end-model-doc -->
  *
  * <p>

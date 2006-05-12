@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * TemplateableElement may contain a template signature which specifies the formal template parameters. A TemplateableElement that contains a template signature is often referred to as a template. TemplateableElement may contain bindings to templates that describe how the templateable element is constructed by replacing the formal template parameters with actual parameters. A TemplateableElement containing bindings is oftenreferred to as a bound element.
+ * A templateable element is an element that can optionally be defined as a template and bound to other templates.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -148,7 +148,6 @@ public interface TemplateableElement
 	 * result = allOwnedElements->select(oclIsKindOf(ParameterableElement))
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.ParameterableElement" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList parameterableElements();
@@ -161,7 +160,6 @@ public interface TemplateableElement
 	 * result = ownedTemplateSignature->notEmpty()
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isTemplate();

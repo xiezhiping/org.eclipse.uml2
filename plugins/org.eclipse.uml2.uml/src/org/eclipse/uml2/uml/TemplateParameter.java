@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.6 2006/03/15 19:33:42 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.7 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * TemplateParameter references a ParameterableElement which is exposed as a formal template parameter in the containing template.
+ * A template parameter exposes a parameterable element as a formal template parameter of a template.
  * <!-- end-model-doc -->
  *
  * <p>

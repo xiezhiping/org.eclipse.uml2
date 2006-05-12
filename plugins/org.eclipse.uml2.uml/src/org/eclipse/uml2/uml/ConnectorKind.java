@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorKind.java,v 1.2 2006/05/05 19:36:07 khussey Exp $
+ * $Id: ConnectorKind.java,v 1.3 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,9 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * ConnectorKind is an enumeration of the following literal values:
- *   - assembly = Indicates that the connector is an assembly connector.
- *   - delegation = Indicates that the connector is a delegation connector.
+ * ConnectorKind is an enumeration type.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getConnectorKind()
  * @model

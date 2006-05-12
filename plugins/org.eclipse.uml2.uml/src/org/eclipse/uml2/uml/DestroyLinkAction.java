@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkAction.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: DestroyLinkAction.java,v 1.3 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,12 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action destroys a link or a link object. Link objects can also be destroyed with DestroyObjectAction. The link is specified in the same way as link creation, even for link objects. This allows actions to remain unchanged when their associations are transformed from ordinary ones to association classes and vice versa.
- * 
- * DestroyLinkAction uses a specialization of LinkEndData, called LinkEndDestructionData, to support ordered nonunique associations. The position of the link to be destroyed is specified at runtime by an additional input pin, which is required for ordered nonunique association ends and omitted for other kinds of ends. This is a positive integer giving the position of the link to destroy.
- * 
- * DestroyLinkAction also uses LinkEndDestructionData to support the destruction of duplicate links of the association on ends that are nonunique. This option is available on an end-by-end basis, and causes all duplicate links of the association emanating from the specified ends to be destroyed.
- * 
+ * A destroy link action is a write link action that destroys links and link objects.
  * <!-- end-model-doc -->
  *
  *

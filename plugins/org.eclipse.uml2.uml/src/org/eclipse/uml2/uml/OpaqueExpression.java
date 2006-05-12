@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.8 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,10 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
- * An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
- * One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.
- * 
+ * An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
  * Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  * <!-- end-model-doc -->
  *
@@ -211,11 +208,9 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query value() gives an integer value for an expression intended to produce one.
-	 * self.isIntegral()
 	 * true
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int value();
@@ -228,7 +223,6 @@ public interface OpaqueExpression
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isIntegral();
@@ -238,11 +232,9 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isPositive() tells whether an integer expression has a positive value.
-	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isPositive();
@@ -252,11 +244,9 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
-	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isNonNegative();

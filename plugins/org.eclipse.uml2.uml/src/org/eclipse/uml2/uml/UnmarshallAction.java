@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallAction.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
+ * $Id: UnmarshallAction.java,v 1.6 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The outputs of this action correspond to the structural features of the specified type. The input must be of this type.
+ * An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  * <!-- end-model-doc -->
  *
  * <p>

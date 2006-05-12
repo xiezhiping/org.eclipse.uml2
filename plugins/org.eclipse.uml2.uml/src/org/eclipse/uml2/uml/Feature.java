@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Feature.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Feature.java,v 1.6 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A feature declares a behavioral or structural characteristic of instances of classifiers. Feature is an abstract metaclass.
+ * A feature declares a behavioral or structural characteristic of instances of classifiers.
  * <!-- end-model-doc -->
  *
  * <p>

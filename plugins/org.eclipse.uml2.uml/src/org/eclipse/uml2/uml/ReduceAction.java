@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceAction.java,v 1.4 2006/02/22 20:48:14 khussey Exp $
+ * $Id: ReduceAction.java,v 1.5 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action takes a collection as input and produces an output by applying a behavior with two inputs pairwise to the elements of the collection.
+ * A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  * <!-- end-model-doc -->
  *
  * <p>

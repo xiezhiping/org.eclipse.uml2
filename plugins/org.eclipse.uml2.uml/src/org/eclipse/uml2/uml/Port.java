@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Port.java,v 1.7 2006/05/12 20:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,11 +24,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Ports represent interaction points between a classifier and its environment. The interfaces associated with a port specify the nature of the interactions that may occur over a port. The required interfaces of a port characterize the requests which may be made from the classifier to its environment through this port. The provided interfaces of a port characterize requests to the classifier that its environment may make through this port.
- * 
- * A port has the ability to specify that any requests arriving at this port are handled by the behavior of the instance of the owning classifier, rather than being forwarded to any contained instances, if any.
- * 
- * Port is defined as a specialization of the general Port, adding an association to a protocol state machine.
+ * A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
+ * A port has an associated protocol state machine.
  * <!-- end-model-doc -->
  *
  * <p>

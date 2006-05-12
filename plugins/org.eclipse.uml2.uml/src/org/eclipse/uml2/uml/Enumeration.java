@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Enumeration.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Enumeration.java,v 1.6 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,12 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Enumeration is a kind of data type, whose instances may be any of a number of predefined enumeration literals.
- * It is possible to extend the set of applicable enumeration literals in other packages or profiles.
- * 
- * Enumeration is a kind of data type, whose instances may be any of a number of user-defined enumeration literals.
- * It is possible to extend the set of applicable enumeration literals in other packages or profiles.
- * 
+ * An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  * <!-- end-model-doc -->
  *
  * <p>

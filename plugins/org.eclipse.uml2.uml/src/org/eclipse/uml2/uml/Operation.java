@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.11 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Operation.java,v 1.12 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,13 +26,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An operation is owned by a class and may be invoked in the context of objects that are instances of that class. It is a typed element and a multiplicity element.
- * An expression contains language-specific text strings used to describe a value or values, and an optional specification of the languages.
- * One predefined language for specifying expressions is OCL. Natural language or programming languages may also be used.
- * 
  * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
- * Operation specializes TemplateableElement in order to support specification of template operations and bound operations.
+ * Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -566,7 +562,6 @@ public interface Operation
 	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int lowerBound();
@@ -581,7 +576,6 @@ public interface Operation
 	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int upperBound();
@@ -594,7 +588,6 @@ public interface Operation
 	 * result = ownedParameter->select (par | par.direction = #return)
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Parameter" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList returnResult();

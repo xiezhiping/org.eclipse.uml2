@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEvent.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ChangeEvent.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A change event occurs when a Boolean-valued expression becomes true, for example, as a result of a change in the value held in a slot corresponding to an attribute, or a change in the value referenced by a link corresponding to an association. A change event is raised implicitly and is not the result of an explicit action.
+ * A change event models a change in the system configuration that makes a condition true.
  * <!-- end-model-doc -->
  *
  * <p>

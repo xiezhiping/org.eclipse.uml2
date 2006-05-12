@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecification.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
+ * $Id: OccurrenceSpecification.java,v 1.6 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,10 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OccurrenceSpecification is the basic semantic unit of Interactions. The sequences of occurrences specified by them are the meanings of Interactions.
- * OccurrenceSpecifications are ordered along a Lifeline.
- * The namespace of an OccurrenceSpecification is the Interaction in which it is contained.
- * 
+ * An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  * <!-- end-model-doc -->
  *
  * <p>

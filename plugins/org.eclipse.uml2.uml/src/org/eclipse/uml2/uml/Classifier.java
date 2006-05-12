@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.14 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Classifier.java,v 1.15 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,14 +26,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A classifier is a type. It can specify a generalization hierarchy by referencing its general classifiers.  A classifier is also a namespace whose members can include features. Classifier is an abstract metaclass.
- * Classifier is extended with the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
- * Extends a classifier with the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a UseCase.
- * A classifier is a namespace whose members can include features. Classifier is an abstract metaclass.
- * A classifier is a type and can own generalizations, thereby making it possible to define generalization relationships to other classifiers. A classifier can specify a generalization hierarchy by referencing its general classifiers.
- * A classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.
- * 
- * A classifier can be parameterized, exposed as a formal template parameter, and specified as an actual parameter in a binding of a template.
+ * A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.
+ * A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
+ * A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.
+ * Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -735,7 +731,6 @@ public interface Classifier
 	 * result = self.oclIsKindOf(c.oclType)
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" cRequired="true" cOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean maySpecializeType(Classifier c);
@@ -748,7 +743,6 @@ public interface Classifier
 	 * result = member->select(oclIsKindOf(Feature))
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Feature" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList allFeatures();
@@ -761,7 +755,6 @@ public interface Classifier
 	 * result = generalization.general
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList parents();
@@ -771,11 +764,9 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
-	 * c.allParents()->includes(self)
 	 * result = member->select(m | c.hasVisibilityOf(m))
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false" cRequired="true" cOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList inheritableMembers(Classifier c);
@@ -785,11 +776,9 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
-	 * self.allParents()->collect(c | c.member)->includes(n)
 	 * result = if (self.inheritedMember->includes(n)) then (n.visibility <> #private) else true
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean hasVisibilityOf(NamedElement n);
@@ -802,7 +791,6 @@ public interface Classifier
 	 * result = (self=other) or (self.allParents()->includes(other))
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean conformsTo(Classifier other);
@@ -816,7 +804,6 @@ public interface Classifier
 	 * result = inhs
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false" inhsType="org.eclipse.uml2.uml.NamedElement" inhsMany="true" inhsOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList inherit(EList inhs);
@@ -829,7 +816,6 @@ public interface Classifier
 	 * result = self.parents()->union(self.parents()->collect(p | p.allParents())
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList allParents();

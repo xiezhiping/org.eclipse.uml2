@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierAction.java,v 1.4 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action reads a qualifier value or values on an end of a link object. The association end to retrieve the qualifier from is specified statically, and the link object to read is provided on the input pin at run time.
+ * A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  * <!-- end-model-doc -->
  *
  * <p>

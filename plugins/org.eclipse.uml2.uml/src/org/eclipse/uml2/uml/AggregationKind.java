@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AggregationKind.java,v 1.2 2006/05/05 19:36:07 khussey Exp $
+ * $Id: AggregationKind.java,v 1.3 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,10 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * AggregationKind is an enumeration of the following literal values:
- *   - none = Indicates that the property has no aggregation.
- *   - shared = Indicates that the property has a shared aggregation.
- *   - composite = Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).
+ * AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getAggregationKind()
  * @model

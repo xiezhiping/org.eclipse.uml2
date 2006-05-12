@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: Include.java,v 1.5 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,9 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Note that the included use case is not optional, and is always required for the  including use case to execute correctly.
- * 
- * 
+ * An include relationship defines that a use case contains the behavior defined in another use case.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlow.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ObjectFlow.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An object flow models the flow of values to or from object nodes.
+ * An object flow is an activity edge that can have objects or data passing along it.
+ * Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.6 2006/02/22 20:48:15 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.7 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Extends a classifier with the ability to own ports as specific and type checked interaction points.
+ * A classifier has the ability to own ports as specific and type checked interaction points.
  * <!-- end-model-doc -->
  *
  * <p>

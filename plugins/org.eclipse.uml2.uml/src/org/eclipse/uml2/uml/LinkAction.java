@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: LinkAction.java,v 1.5 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A link action creates, destroys, or reads links, identifying a link by its end objects and qualifier values, if any.
+ * LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -197,7 +197,6 @@ public interface LinkAction
 	 * result = self.endData->asSequence().first().end.association
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	Association association();

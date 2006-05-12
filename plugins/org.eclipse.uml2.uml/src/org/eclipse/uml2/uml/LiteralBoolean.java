@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBoolean.java,v 1.4 2006/02/02 23:30:18 khussey Exp $
+ * $Id: LiteralBoolean.java,v 1.5 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A literal boolean contains a Boolean-valued attribute.
+ * A literal Boolean is a specification of a Boolean value.
  * <!-- end-model-doc -->
  *
  * <p>

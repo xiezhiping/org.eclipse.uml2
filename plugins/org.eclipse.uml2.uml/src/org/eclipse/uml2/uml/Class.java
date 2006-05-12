@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.11 2006/03/15 19:33:43 khussey Exp $
+ * $Id: Class.java,v 1.12 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,10 +26,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Class is a kind of classifier whose features are attributes and operations. Attributes of a class are represented by instances of Property that are owned by the class. Some of these attributes may represent the navigable ends of binary associations.
- * A class may be designated as active, i.e., each of its instances having its own thread of control, or passive, i.e., each of its instance executing within the context of some other object. A class may also specify which signals the instances of this class handle.
- * Extends the metaclass Class with the capability to have an internal structure and ports.
- * Class has derived association that indicates how it may be extended through one or more stereotypes.
+ * A class describes a set of objects that share the same specifications of features, constraints, and semantics.
+ * A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.
+ * A class has the capability to have an internal structure and ports.
+ * Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes.
  * <!-- end-model-doc -->
  *
  * <p>

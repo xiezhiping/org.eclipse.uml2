@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectAction.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
+ * $Id: DestroyObjectAction.java,v 1.6 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action destroys the object on its input pin at runtime. The object may be a link object, in which case the semantics of DestroyLinkAction also applies.
+ * A destroy object action is an action that destroys objects.
  * <!-- end-model-doc -->
  *
  * <p>

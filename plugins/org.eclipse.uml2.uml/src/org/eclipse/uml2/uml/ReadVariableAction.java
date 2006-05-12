@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ReadVariableAction.java,v 1.4 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action reads the values of a variables, in order if the variable is ordered.
+ * A read variable action is a variable action that retrieves the values of a variable.
  * <!-- end-model-doc -->
  *
  * <p>

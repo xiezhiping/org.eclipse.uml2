@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.6 2006/03/15 19:33:57 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.7 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * TemplateParameterSubstitution associates one or more actual parameters with a formal template parameter within the context of a TemplateBinding.
+ * A template parameter substitution relates the actual parameter(s) to a formal template parameter as part of a template binding.
  * <!-- end-model-doc -->
  *
  * <p>

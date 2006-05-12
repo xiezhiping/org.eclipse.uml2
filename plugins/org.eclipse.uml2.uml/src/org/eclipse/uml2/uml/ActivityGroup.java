@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.9 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.10 2006/05/12 20:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,9 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one group.
- * They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add semantics.
- * 
+ * ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueAction.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: RemoveVariableValueAction.java,v 1.6 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * One value is removed from the set of possible variable values. Variables are potentially multi-valued and ordered, and may support duplicates, so the action supports specification of removal points for new values.  It also supports the removal of all duplicate values.
+ * A remove variable value action is a write variable action that removes values from variables.
  * <!-- end-model-doc -->
  *
  * <p>

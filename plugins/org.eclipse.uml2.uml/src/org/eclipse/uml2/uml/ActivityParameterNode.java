@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNode.java,v 1.3 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ActivityParameterNode.java,v 1.4 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Activity parameter nodes are object nodes at the beginning and end of flows that provide a means to accept inputs to an activity and provide outputs from the activity, through the activity parameters.
+ * An activity parameter node is an object node for inputs and outputs to activities.
  * <!-- end-model-doc -->
  *
  * <p>

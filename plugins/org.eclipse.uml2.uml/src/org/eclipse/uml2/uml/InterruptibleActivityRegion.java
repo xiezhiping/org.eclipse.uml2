@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegion.java,v 1.4 2006/04/05 13:49:57 khussey Exp $
+ * $Id: InterruptibleActivityRegion.java,v 1.5 2006/05/12 20:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An interruptible region contains activity nodes. When a token leaves an interruptible region via edges designated by the region as interrupting edges, all tokens and behaviors in the region are terminated.
+ * An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
  * <!-- end-model-doc -->
  *
  * <p>

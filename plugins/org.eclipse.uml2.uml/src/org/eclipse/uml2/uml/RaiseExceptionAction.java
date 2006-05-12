@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: RaiseExceptionAction.java,v 1.4 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * RaiseExceptionAction is an action that causes an exception to occur. The input value becomes the exception object.
+ * A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  * <!-- end-model-doc -->
  *
  * <p>

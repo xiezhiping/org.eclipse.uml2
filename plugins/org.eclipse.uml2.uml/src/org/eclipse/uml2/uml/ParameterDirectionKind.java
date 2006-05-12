@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterDirectionKind.java,v 1.3 2006/05/05 19:36:07 khussey Exp $
+ * $Id: ParameterDirectionKind.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,11 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * ParameterDirectionKind is an enumeration of the following literal values:
- *   - in = Indicates that parameter values are passed into the behavioral element by the caller.
- *   - inout = Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
- *   - out = Indicates that parameter values are passed from a behavioral element out to the caller.
- *   - return = Indicates that parameter values are passed as return values from a behavioral element back to the caller.
+ * Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getParameterDirectionKind()
  * @model

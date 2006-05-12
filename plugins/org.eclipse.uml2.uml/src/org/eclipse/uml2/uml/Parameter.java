@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.14 2006/03/15 19:33:42 khussey Exp $
+ * $Id: Parameter.java,v 1.15 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,10 +26,9 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A parameter is a kind of typed element in order to allow the specification of an optional multiplicity on parameters. In addition, it supports the specification of an optional default value.
- * A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature. It has a type, and may have a multiplicity and an optional default value.
+ * A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
  * Parameters are allowed to be treated as connectable elements.
- * Parameters are extended in complete activities to add support for streaming, exceptions, and parameter sets.
+ * Parameters have support for streaming, exceptions, and parameter sets.
  * <!-- end-model-doc -->
  *
  * <p>

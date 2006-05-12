@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureAction.java,v 1.3 2006/02/22 20:48:14 khussey Exp $
+ * $Id: ReadStructuralFeatureAction.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action reads the values of a structural feature, in order if the structural feature is ordered.
+ * A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  * <!-- end-model-doc -->
  *
  * <p>

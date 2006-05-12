@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.7 2006/03/15 19:33:56 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.8 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * TemplateParameterSubstitution associates one or more actual parameters with a formal template parameter within the context of a TemplateBinding.
+ * A template signature bundles the set of formal template parameters for a templated element.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecification.java,v 1.1 2005/11/14 22:26:02 khussey Exp $
+ * $Id: ActionExecutionSpecification.java,v 1.2 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ActionExecutionSpecification is a kind of ExecutionSpecification representing the execution of an action.
+ * An action execution specification is a kind of execution specification representing the execution of an action.
  * <!-- end-model-doc -->
  *
  * <p>

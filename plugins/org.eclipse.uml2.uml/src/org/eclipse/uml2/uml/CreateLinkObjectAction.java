@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectAction.java,v 1.3 2006/02/22 20:48:14 khussey Exp $
+ * $Id: CreateLinkObjectAction.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action is exclusively for creating links of association classes. It returns the created link object.
+ * A create link object action creates a link object.
  * <!-- end-model-doc -->
  *
  * <p>

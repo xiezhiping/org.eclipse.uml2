@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.10 2006/03/09 21:30:34 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.11 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A MultiplicityElement is an abstract metaclass which includes optional attributes for defining the bounds of a multiplicity. A MultiplicityElement also includes specifications of whether the values in an instantiation of this element must be unique or ordered.
+ * A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -296,11 +296,9 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
-	 * upperBound()->notEmpty()
 	 * result = upperBound() > 1
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean isMultivalued();
@@ -310,11 +308,9 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
-	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
 	 * result = (lowerBound() <= C) and (upperBound() >= C)
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" CDataType="org.eclipse.uml2.uml.Integer" CRequired="true" COrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean includesCardinality(int C);
@@ -324,13 +320,9 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
-	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty()
-	 * and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
-	 * 
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean includesMultiplicity(MultiplicityElement M);
@@ -343,7 +335,6 @@ public interface MultiplicityElement
 	 * result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int lowerBound();
@@ -356,7 +347,6 @@ public interface MultiplicityElement
 	 * result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	int upperBound();

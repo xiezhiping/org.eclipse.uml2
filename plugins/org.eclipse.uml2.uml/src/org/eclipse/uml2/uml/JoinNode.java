@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.6 2006/04/05 13:49:57 khussey Exp $
+ * $Id: JoinNode.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A join node has multiple incoming edges and one outgoing edge.
- * A join node has multiple incoming edges and one outgoing edge. In CompleteActivities, Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
+ * A join node is a control node that synchronizes multiple flows.
+ * Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  * <!-- end-model-doc -->
  *
  * <p>

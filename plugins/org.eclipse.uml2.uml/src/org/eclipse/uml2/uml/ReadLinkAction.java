@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkAction.java,v 1.5 2006/05/05 19:36:07 khussey Exp $
+ * $Id: ReadLinkAction.java,v 1.6 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action navigates an association towards one end, which is the end that does not have an input pin to take its object (the open end). The objects put on the result output pin are the ones participating in the association at the open end, conforming to the specified qualifiers, in order if the end is ordered. The semantics is undefined for reading a link that violates the navigability or visibility of the open end.
+ * A read link action is a link action that navigates across associations to retrieve objects on one end.
  * <!-- end-model-doc -->
  *
  * <p>

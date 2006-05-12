@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.7 2006/03/08 19:02:44 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.8 2006/05/12 20:38:10 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A BehavioredClassifier may have an interface realization.
+ * A behaviored classifier may have an interface realization.
  * A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
  * <!-- end-model-doc -->
  *

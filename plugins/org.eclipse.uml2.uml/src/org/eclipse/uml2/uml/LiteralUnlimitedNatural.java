@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNatural.java,v 1.5 2006/02/02 23:30:18 khussey Exp $
+ * $Id: LiteralUnlimitedNatural.java,v 1.6 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A literal unlimited natural contains a UnlimitedNatural-valued attribute.
+ * A literal unlimited natural is a specification of an unlimited natural number.
  * <!-- end-model-doc -->
  *
  * <p>

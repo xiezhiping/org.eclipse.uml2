@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Observation.java,v 1.2 2006/01/04 17:47:25 khussey Exp $
+ * $Id: Observation.java,v 1.3 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpressions and Duration to refer to either in a simple way.
+ * Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
  * <!-- end-model-doc -->
  *
  *

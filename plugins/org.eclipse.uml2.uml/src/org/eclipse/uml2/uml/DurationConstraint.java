@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraint.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
+ * $Id: DurationConstraint.java,v 1.6 2006/05/12 20:38:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A DurationConstraint defines a Constraint that refers to a DurationInterval.
+ * A duration constraint is a constraint that refers to a duration interval.
  * <!-- end-model-doc -->
  *
  * <p>

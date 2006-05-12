@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.7 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ObjectNode.java,v 1.8 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,10 +26,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An object node is an activity node that indicates an instance of a particular classifier, possibly in a particular state, may be available at a particular point in the activity. Object nodes can be used in a variety of ways, depending on where objects are flowing from and to, as described in the semantics section.
- * An object node is an activity node that indicates an instance of a particular classifier, possibly in a particular state, may be available at a particular point in the activity. Object nodes can be used in a variety of ways, depending on where objects are flowing from and to, as described in the semantics section.
- * Complete object nodes add support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
- * 
+ * An object node is an abstract activity node that is part of defining object flow in an activity.
+ * Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
  * <!-- end-model-doc -->
  *
  * <p>

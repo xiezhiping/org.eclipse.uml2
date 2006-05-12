@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: CreateObjectAction.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * CreateObjectAction is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
+ * A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InvocationAction.java,v 1.6 2006/05/12 20:38:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Invocation is an abstract class for the various actions that invoke behavior.
+ * InvocationAction is an abstract class for the various actions that invoke behavior.
  * In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
  * <!-- end-model-doc -->
  *

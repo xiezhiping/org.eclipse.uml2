@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEvent.java,v 1.7 2006/02/22 20:48:14 khussey Exp $
+ * $Id: TimeEvent.java,v 1.8 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A time event specifies a point in time by an expression. The expression might be absolute or might be relative to some other point in time.
- * Extends TimeEvent to be defined relative to entering the current state of the executing state machine.
+ * A time event specifies a point in time. At the specified time, the event occurs.
+ * A time event can be defined relative to entering the current state of the executing state machine.
  * <!-- end-model-doc -->
  *
  * <p>

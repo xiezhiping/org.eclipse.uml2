@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Type.java,v 1.6 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -20,7 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A type serves as a constraint on the range of values represented by a typed element. Type is an abstract metaclass.
+ * A type is a named element that is used as the type for a typed element. A type can be contained in a package.
+ * A type constrains the values represented by a typed element.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -93,7 +94,6 @@ public interface Type
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean conformsTo(Type other);

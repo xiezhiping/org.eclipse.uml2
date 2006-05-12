@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationAction.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ValueSpecificationAction.java,v 1.5 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The action returns the result of evaluating a value specification.
+ * A value specification action is an action that evaluates a value specification.
  * <!-- end-model-doc -->
  *
  * <p>

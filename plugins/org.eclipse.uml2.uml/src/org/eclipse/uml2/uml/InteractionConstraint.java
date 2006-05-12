@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraint.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: InteractionConstraint.java,v 1.5 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An InteractionConstraint is a Boolean expression that guards an operand in a CombinedFragment. InteractionConstraint is a specialization of Constraint. Furthermore the InteractionConstraint contains two expressions designating the minimum and maximum number of times a loop CombinedFragment should execute.
+ * An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  * <!-- end-model-doc -->
  *
  * <p>

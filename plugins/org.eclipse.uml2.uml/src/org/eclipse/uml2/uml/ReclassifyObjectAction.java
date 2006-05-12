@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.6 2006/02/22 20:48:14 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ReclassifyObjectAction adds given classifier to an object and removes given classifiers from that object. Multiple classifiers may be added and removed at a time.
+ * A reclassify object action is an action that changes which classifiers classify an object.
  * <!-- end-model-doc -->
  *
  * <p>

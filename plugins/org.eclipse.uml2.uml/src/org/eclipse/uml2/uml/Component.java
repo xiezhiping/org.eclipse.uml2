@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.13 2006/05/05 19:36:07 khussey Exp $
+ * $Id: Component.java,v 1.14 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,10 +22,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A component is a subtype of Class which provides for a Component having attributes and operations, and being able to participate in Associations and Generalizations. A Component may form the abstraction for a set of realizingClassifiers that realize its behavior. In addition, because a Class itself is a subtype of an EncapsulatedClassifier, a Component may optionally have an internal structure and own a set of Ports that formalize its interaction points.
- * 
- * A component has a number of provided and required Interfaces, that form the basis for wiring components together, either using Dependencies, or by using Connectors. A provided Interface is one that is either implemented directly by the component or one of its realizingClassifiers, or it is the type of a provided Port of the Component. A required interface is designated by a Usage Dependency from the Component or one of its realizingClassifiers, or it is the type of a required Port.
- * 
+ * A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
+ * In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -296,7 +294,6 @@ public interface Component
 	 * collect(dependency|dependency.client)
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList realizedInterfaces(Classifier classifier);
@@ -311,7 +308,6 @@ public interface Component
 	 * collect(dependency|dependency.supplier)
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList usedInterfaces(Classifier classifier);

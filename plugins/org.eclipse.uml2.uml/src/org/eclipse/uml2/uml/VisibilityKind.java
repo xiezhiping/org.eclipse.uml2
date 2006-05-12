@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VisibilityKind.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: VisibilityKind.java,v 1.3 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,11 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * VisibilityKind is an enumeration of the following literal values:
- *   - public
- *   - private
- *   - protected
- *   - package
+ * VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getVisibilityKind()
  * @model

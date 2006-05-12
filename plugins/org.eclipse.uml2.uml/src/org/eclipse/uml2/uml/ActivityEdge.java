@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.9 2006/03/15 19:33:52 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.10 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -26,7 +26,8 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ActivityEdge is an abstract class for the connections along which tokens flow between activity nodes. It covers control and data flow edges. Activity edges can control token flow.
+ * An activity edge is an abstract class for directed connections between two activity nodes.
+ * Activity edges can be contained in interruptible regions.
  * <!-- end-model-doc -->
  *
  * <p>

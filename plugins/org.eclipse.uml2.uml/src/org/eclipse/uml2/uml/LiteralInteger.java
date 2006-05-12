@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralInteger.java,v 1.4 2006/02/02 23:30:18 khussey Exp $
+ * $Id: LiteralInteger.java,v 1.5 2006/05/12 20:38:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A literal integer contains an Integer-valued attribute.
+ * A literal integer is a specification of an integer value.
  * <!-- end-model-doc -->
  *
  * <p>

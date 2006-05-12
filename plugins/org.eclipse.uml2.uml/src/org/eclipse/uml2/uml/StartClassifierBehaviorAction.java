@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartClassifierBehaviorAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: StartClassifierBehaviorAction.java,v 1.4 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * StartClassifierBehaviorAction is an action that starts the classifier behavior of the input.
+ * A start classifier behavior action is an action that starts the classifier behavior of the input.
  * <!-- end-model-doc -->
  *
  * <p>

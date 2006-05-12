@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: TestIdentityAction.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action returns true if the two input values are the same identity, false if they are not.
+ * A test identity action is an action that tests if two values are identical objects.
  * <!-- end-model-doc -->
  *
  * <p>

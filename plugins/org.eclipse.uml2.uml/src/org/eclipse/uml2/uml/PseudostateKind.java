@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateKind.java,v 1.3 2006/05/05 19:36:07 khussey Exp $
+ * $Id: PseudostateKind.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -24,17 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * PseudoStateKind is an enumeration of the following literal values:
- *   - initial
- *   - deepHistory
- *   - shallowHistory
- *   - join
- *   - fork
- *   - junction
- *   - choice
- *   - entryPoint
- *   - exitPoint
- *   - terminate
+ * PseudostateKind is an enumeration type.
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getPseudostateKind()
  * @model

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentAction.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ReadExtentAction.java,v 1.4 2006/05/12 20:38:07 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * ReadExtentAction is an action that retrieves the current instances of a classifier.
+ * A read extent action is an action that retrieves the current instances of a classifier.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.12 2006/04/10 19:16:28 khussey Exp $
+ * $Id: Element.java,v 1.13 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -29,9 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An element can own comments.
- * Element is an abstract metaclass with no superclass. It is used as the common superclass for all metaclasses in the infrastructure library. Element has a derived composition association to itself to support the general capability for elements to own other elements.
- *  An element is a constituent of a model. An element can own comments.
+ * An element is a constituent of a model. As such, it has the capability of owning other elements.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -397,7 +395,6 @@ public interface Element
 	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Element" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	EList allOwnedElements();
@@ -410,7 +407,6 @@ public interface Element
 	 * result = true
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='spec'"
 	 * @generated
 	 */
 	boolean mustBeOwned();

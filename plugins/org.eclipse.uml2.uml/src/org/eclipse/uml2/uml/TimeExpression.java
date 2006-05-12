@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpression.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: TimeExpression.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A TimeExpression defines a value specification that represents a time value.
+ * A time expression defines a value specification that represents a time value.
  * <!-- end-model-doc -->
  *
  * <p>

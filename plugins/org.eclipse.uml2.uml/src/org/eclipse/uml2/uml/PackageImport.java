@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.5 2006/03/15 19:33:56 khussey Exp $
+ * $Id: PackageImport.java,v 1.6 2006/05/12 20:38:09 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A package import is defined as a directed relationship that identifies a package whose members are to be imported by a namespace.
+ * A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  * <!-- end-model-doc -->
  *
  * <p>
