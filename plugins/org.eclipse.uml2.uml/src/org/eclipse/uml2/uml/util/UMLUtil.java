@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.28 2006/05/09 17:53:38 khussey Exp $
+ * $Id: UMLUtil.java,v 1.29 2006/05/12 03:52:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5955,29 +5955,34 @@ public class UMLUtil
 	}
 
 	public static Stereotype getStereotype(EObject stereotypeApplication) {
-		return getStereotype(stereotypeApplication.eClass());
+		return stereotypeApplication == null
+			? null
+			: getStereotype(stereotypeApplication.eClass());
 	}
 
 	public static Element getBaseElement(EObject stereotypeApplication) {
 
-		if (getStereotype(stereotypeApplication) != null) {
+		if (stereotypeApplication != null) {
 			EClass eClass = stereotypeApplication.eClass();
 
-			for (Iterator eAllStructuralFeatures = eClass
-				.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-				.hasNext();) {
+			if (getStereotype(eClass) != null) {
 
-				EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
-					.next();
+				for (Iterator eAllStructuralFeatures = eClass
+					.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+					.hasNext();) {
 
-				if (eStructuralFeature.getName().startsWith(
-					Extension.METACLASS_ROLE_PREFIX)) {
+					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+						.next();
 
-					Object value = stereotypeApplication
-						.eGet(eStructuralFeature);
+					if (eStructuralFeature.getName().startsWith(
+						Extension.METACLASS_ROLE_PREFIX)) {
 
-					if (value instanceof Element) {
-						return (Element) value;
+						Object value = stereotypeApplication
+							.eGet(eStructuralFeature);
+
+						if (value instanceof Element) {
+							return (Element) value;
+						}
 					}
 				}
 			}
