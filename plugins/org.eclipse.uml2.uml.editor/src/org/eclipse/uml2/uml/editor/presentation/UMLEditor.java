@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.22 2006/05/10 19:54:37 khussey Exp $
+ * $Id: UMLEditor.java,v 1.23 2006/05/12 03:46:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -908,23 +908,22 @@ public class UMLEditor
 
 		createModelGen();
 
-		boolean first = true;
-
-		EList resources = editingDomain.getResourceSet().getResources();
+		Map resourceToURIMap = new HashMap();
+		EList resources = resourceSet.getResources();
 
 		for (int i = 0; i < resources.size(); i++) {
 			Resource resource = (Resource) resources.get(i);
-			URI oldURI = resource.getURI();
-			URI newURI = (URI) uriMap.get(oldURI);
+			URI uri = resource.getURI();
 
-			if (newURI == null
-				&& UML22UMLResource.FILE_EXTENSION.equals(oldURI
-					.fileExtension())) {
+			if (uriMap.containsKey(uri)) {
+				uri = (URI) uriMap.get(uri);
+			} else if (UML22UMLResource.FILE_EXTENSION.equals(uri
+				.fileExtension())) {
 
-				newURI = oldURI.trimFileExtension().appendFileExtension(
+				uri = uri.trimFileExtension().appendFileExtension(
 					UMLResource.FILE_EXTENSION);
 
-				if (first) {
+				if (i == 0) {
 					IEditorInput editorInput = getEditorInput();
 
 					if (editorInput instanceof FileEditorInput) {
@@ -943,11 +942,14 @@ public class UMLEditor
 				EcoreUtil.resolveAll(resource);
 			}
 
-			if (newURI != null) {
-				resource.setURI(newURI);
-			}
+			resourceToURIMap.put(resource, uri);
+		}
 
-			first = false;
+		for (Iterator entries = resourceToURIMap.entrySet().iterator(); entries
+			.hasNext();) {
+	
+			Map.Entry entry = (Map.Entry) entries.next();
+			((Resource) entry.getKey()).setURI((URI) entry.getValue());
 		}
 	}
 
