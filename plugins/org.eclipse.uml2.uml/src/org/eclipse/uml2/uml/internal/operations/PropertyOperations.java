@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.27 2006/04/05 13:50:02 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.28 2006/05/12 19:55:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -836,8 +836,11 @@ public class PropertyOperations
 			List memberEnds = association.getMemberEnds();
 
 			if (memberEnds.size() == 2) {
-				return (Property) memberEnds.get(Math.abs(memberEnds
-					.indexOf(property) - 1));
+				int index = memberEnds.indexOf(property);
+
+				if (index != -1) {
+					return (Property) memberEnds.get(Math.abs(index - 1));
+				}
 			}
 		}
 
