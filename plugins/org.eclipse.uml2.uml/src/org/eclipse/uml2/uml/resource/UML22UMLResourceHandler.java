@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.19 2006/05/11 04:16:53 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.20 2006/05/12 03:56:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -630,12 +630,14 @@ public class UML22UMLResourceHandler
 						+ name.substring(10));
 				}
 
-				AnyType extension = getExtension(resource, extensionEnd);
+				if (extensionEnd.getLowerValue() == null) {
+					AnyType extension = getExtension(resource, extensionEnd);
 
-				if (extension == null
-					|| getValue(extension.getMixed(), "lowerValue") == null) { //$NON-NLS-1$
+					if (extension == null
+						|| getValue(extension.getMixed(), "lowerValue") == null) { //$NON-NLS-1$
 
-					extensionEnd.setLower(1);
+						extensionEnd.setLower(1);
+					}
 				}
 
 				return super.caseExtensionEnd(extensionEnd);
