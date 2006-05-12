@@ -4716,7 +4716,7 @@
         <packageImport xmi:id="_3ADC7B74022D3DE6C2A902E7" importedPackage="_3ADC7B74022D3CA002FD0120"/>
         <packageImport xmi:id="_m_pwAD9HEdqjIv4r4xIGZw" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA099F902D0" name="Constraint">
-          <ownedComment xmi:id="_rY8yxhTaEdqZu-3Jy1-uYg" body="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the&#xD;&#xA;purpose of declaring some of the semantics of an element." annotatedElement="_3ADC7B74022D3CA099F902D0">
+          <ownedComment xmi:id="_rY8yxhTaEdqZu-3Jy1-uYg" body="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element." annotatedElement="_3ADC7B74022D3CA099F902D0">
             <eAnnotations xmi:id="_rY8yxxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rY8yyBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -13952,7 +13952,7 @@
         </ownedAttribute>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D2570393" name="PrimitiveType">
-        <ownedComment xmi:id="_rnHKrBTaEdqZu-3Jy1-uYg" body="A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of&#xD;&#xA;UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically." annotatedElement="_3ADC7B74022D3DE6D2570393">
+        <ownedComment xmi:id="_rnHKrBTaEdqZu-3Jy1-uYg" body="A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically." annotatedElement="_3ADC7B74022D3DE6D2570393">
           <eAnnotations xmi:id="_rnQUgBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnQUgRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13960,7 +13960,7 @@
         <generalization xmi:id="_3ADC7B74022D3DE6D2C30371" general="_3ADC7B74022D3DE6D25202A6"/>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE766450007" name="Constraint">
-        <ownedComment xmi:id="_rnQUhBTaEdqZu-3Jy1-uYg" body="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the&#xD;&#xA;purpose of declaring some of the semantics of an element." annotatedElement="_3ADC7B74022D3DE766450007">
+        <ownedComment xmi:id="_rnQUhBTaEdqZu-3Jy1-uYg" body="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element." annotatedElement="_3ADC7B74022D3DE766450007">
           <eAnnotations xmi:id="_rnQUhRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnQUhhTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14361,7 +14361,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D5E7016E" name="ElementImport">
-        <ownedComment xmi:id="_roTdchTaEdqZu-3Jy1-uYg" body="An element import identifies an element in another package, and allows the element to be referenced using its name&#xD;&#xA;without a qualifier." annotatedElement="_3ADC7B74022D3DE6D5E7016E">
+        <ownedComment xmi:id="_roTdchTaEdqZu-3Jy1-uYg" body="An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier." annotatedElement="_3ADC7B74022D3DE6D5E7016E">
           <eAnnotations xmi:id="_roTdcxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roTddBTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14859,7 +14859,7 @@
         </ownedLiteral>
       </ownedMember>
       <ownedMember xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D41C2D6020188" name="VisibilityKind">
-        <ownedComment xmi:id="_rpfwPBTaEdqZu-3Jy1-uYg" body="VisibilityKind is an enumeration of the following literal values:&#xD;&#xA;  - public&#xD;&#xA;  - private&#xD;&#xA;  - protected&#xD;&#xA;  - package" annotatedElement="_3ADC7B74022D41C2D6020188">
+        <ownedComment xmi:id="_rpfwPBTaEdqZu-3Jy1-uYg" body="VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model." annotatedElement="_3ADC7B74022D41C2D6020188">
           <eAnnotations xmi:id="_rpfwPRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwPhTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
