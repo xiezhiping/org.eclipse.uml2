@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.29 2006/05/12 03:52:03 khussey Exp $
+ * $Id: UMLUtil.java,v 1.30 2006/05/12 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2026,9 +2026,8 @@ public class UMLUtil
 
 							eModelElement = eOperation;
 						} else {
-							addConstraint(eModelElement, name);
 
-							if (DEBUG) {
+							if (addConstraint(eModelElement, name) && DEBUG) {
 								System.out
 									.println(getQualifiedText(eModelElement)
 										+ " is constrained with '" //$NON-NLS-1$

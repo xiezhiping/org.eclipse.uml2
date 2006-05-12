@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.21 2006/05/08 17:44:20 khussey Exp $
+ * $Id: UML2Util.java,v 1.22 2006/05/12 20:41:25 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -770,16 +770,20 @@ public class UML2Util {
 		return count;
 	}
 
-	protected static void addConstraint(EModelElement eModelElement,
+	protected static boolean addConstraint(EModelElement eModelElement,
 			String constraint) {
 
-		if (!isEmpty(constraint)) {
+		if (isEmpty(constraint)) {
+			return false;
+		} else {
 			List constraints = new ArrayList(EcoreUtil
 				.getConstraints(eModelElement));
 
-			constraints.add(constraint);
+			boolean result = constraints.add(constraint);
 
 			EcoreUtil.setConstraints(eModelElement, constraints);
+
+			return result;
 		}
 	}
 
