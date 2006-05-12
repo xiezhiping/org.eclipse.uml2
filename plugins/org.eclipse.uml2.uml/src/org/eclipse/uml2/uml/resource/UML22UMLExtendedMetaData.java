@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetaData.java,v 1.2 2006/05/11 04:16:53 khussey Exp $
+ * $Id: UML22UMLExtendedMetaData.java,v 1.3 2006/05/12 20:39:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -2412,6 +2412,11 @@ public class UML22UMLExtendedMetaData
 			typeMap = new HashMap();
 			typeMap.put(UMLPackage.Literals.TRANSITION, "uml:Activity"); //$NON-NLS-1$
 			featureToTypeMap.put("effect", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap();
+			typeMap.put(UMLPackage.Literals.STATE, "uml:Activity"); //$NON-NLS-1$
+			featureToTypeMap.put("entry", typeMap); //$NON-NLS-1$
+			featureToTypeMap.put("exit", typeMap); //$NON-NLS-1$
 
 			typeMap = new HashMap();
 			typeMap.put(UMLPackage.Literals.BEHAVIORAL_FEATURE, "uml:Parameter"); //$NON-NLS-1$
