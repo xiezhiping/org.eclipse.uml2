@@ -8,16 +8,27 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenPackageGeneratorAdapter.java,v 1.1 2006/05/02 22:05:25 khussey Exp $
+ * $Id: UML2GenPackageGeneratorAdapter.java,v 1.2 2006/05/12 20:43:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.CodeGenEcorePlugin;
 import org.eclipse.emf.codegen.ecore.generator.GeneratorAdapterFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenPackage;
 
 /**
@@ -43,7 +54,7 @@ public class UML2GenPackageGeneratorAdapter
 
 	protected Diagnostic generateModel(Object object, Monitor monitor) {
 		GenPackage genPackage = (GenPackage) object;
-		monitor.beginTask("", 1); //$NON-NLS-1$
+		monitor.beginTask("", 2); //$NON-NLS-1$
 
 		message = CodeGenEcorePlugin.INSTANCE.getString(
 			"_UI_GeneratingPackage_message", new Object[]{genPackage //$NON-NLS-1$
@@ -55,6 +66,7 @@ public class UML2GenPackageGeneratorAdapter
 			MODEL_PROJECT_TYPE, genModel.isUpdateClasspath(), createMonitor(
 				monitor, 1));
 
+		generatePackageSerialization(genPackage, monitor);
 		generateResourceInterface(genPackage, monitor);
 
 		return Diagnostic.OK_INSTANCE;
@@ -75,6 +87,63 @@ public class UML2GenPackageGeneratorAdapter
 					.getResourceInterfaceName(), getJETEmitter(
 					getJETEmitterDescriptors(), RESOURCE_INTERFACE_ID), null,
 				createMonitor(monitor, 1));
+		} else {
+			monitor.worked(1);
+		}
+	}
+
+	protected void generatePackageSerialization(GenPackage genPackage,
+			Monitor monitor) {
+
+		if (genPackage.hasClassifiers() && genPackage.isLoadingInitialization()) {
+			monitor = createMonitor(monitor, 1);
+
+			try {
+				monitor.beginTask("", 1); //$NON-NLS-1$
+
+				String targetPathName = genPackage.getGenModel()
+					.getModelDirectory()
+					+ '/'
+					+ genPackage.getClassPackageName().replace('.', '/')
+					+ '/' + genPackage.getSerializedPackageFilename();
+				message = CodeGenEcorePlugin.INSTANCE.getString(
+					"_UI_GeneratingPackageSerialization_message", //$NON-NLS-1$
+					new Object[]{targetPathName});
+				monitor.subTask(message);
+
+				Resource resource = new ResourceSetImpl().getResource(
+					toPlatformResourceURI(toURI(targetPathName)), true);
+
+				List annotationsToRemove = new ArrayList();
+
+				for (TreeIterator allContents = resource.getAllContents(); allContents
+					.hasNext();) {
+
+					EObject eObject = (EObject) allContents.next();
+
+					if (eObject instanceof EAnnotation
+						&& GenModelPackage.eNS_URI
+							.equals(((EAnnotation) eObject).getSource())) {
+
+						annotationsToRemove.add(eObject);
+						allContents.prune();
+					}
+				}
+
+				for (Iterator atr = annotationsToRemove.iterator(); atr
+					.hasNext();) {
+
+					((EAnnotation) atr.next()).setEModelElement(null);
+				}
+
+				try {
+					resource.save(null);
+				} catch (IOException ioe) {
+					CodeGenEcorePlugin.INSTANCE.log(ioe);
+				}
+			} finally {
+				monitor.done();
+			}
 		} else {
 			monitor.worked(1);
 		}
