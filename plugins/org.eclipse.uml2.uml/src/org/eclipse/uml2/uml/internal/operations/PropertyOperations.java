@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.28 2006/05/12 19:55:40 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.29 2006/05/12 20:17:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -114,37 +114,28 @@ public class PropertyOperations
 	 */
 	public static boolean validateMultiplicityOfComposite(Property property,
 			DiagnosticChain diagnostics, Map context) {
-		boolean result = true;
+		int upperBound = property.upperBound();
 
-		if (property.isComposite()) {
+		if (upperBound == LiteralUnlimitedNatural.UNLIMITED || upperBound > 1) {
 			Property otherEnd = property.getOtherEnd();
 
-			if (otherEnd != null) {
-				int upperBound = otherEnd.upperBound();
+			if (otherEnd != null && otherEnd.isComposite()) {
 
-				if (upperBound == LiteralUnlimitedNatural.UNLIMITED
-					|| upperBound < 1) {
-
-					result = false;
-
-					if (diagnostics != null) {
-						diagnostics
-							.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UMLValidator.DIAGNOSTIC_SOURCE,
-								UMLValidator.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
-								UMLPlugin.INSTANCE
-									.getString(
-										"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
-										getMessageSubstitutions(context,
-											property)), new Object[]{property,
-									new Integer(upperBound)}));
-					}
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.PROPERTY__MULTIPLICITY_OF_COMPOSITE,
+						UMLPlugin.INSTANCE.getString(
+							"_UI_Property_MultiplicityOfComposite_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, property)),
+						new Object[]{property, new Integer(upperBound)}));
 				}
+
+				return false;
 			}
 		}
 
-		return result;
+		return true;
 	}
 
 	/**
@@ -161,7 +152,6 @@ public class PropertyOperations
 	 */
 	public static boolean validateSubsettingContextConforms(Property property,
 			DiagnosticChain diagnostics, Map context) {
-
 		boolean result = true;
 
 		spLoop : for (Iterator sp = property.getSubsettedProperties()
