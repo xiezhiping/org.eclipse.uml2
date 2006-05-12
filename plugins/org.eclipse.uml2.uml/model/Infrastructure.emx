@@ -911,7 +911,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rMu7uhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rMu7vBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106A8400E6">
+            <ownedRule xmi:id="_rMu7vBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106A8400E6">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rM4ssBTaEdqZu-3Jy1-uYg" body="result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rMu7uxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CADCAEE0250" direction="return">
@@ -925,7 +925,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rNLnoRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rNLnoxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106AD00153">
+            <ownedRule xmi:id="_rNLnoxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106AD00153">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rNLnpBTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rNLnohTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -1201,7 +1201,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRp38RTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rRp38xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10644F034E">
+            <ownedRule xmi:id="_rRp38xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10644F034E">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRp39BTaEdqZu-3Jy1-uYg" body="result = if self.namespace->isEmpty()&#xA;then Sequence{}&#xA;else self.namespace.allNamespaces()->prepend(self.namespace)&#xA;endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rRp38hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA0072700FA" isOrdered="true" direction="return">
@@ -1215,7 +1215,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRp3-hTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rRp3_hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1064C70329">
+            <ownedRule xmi:id="_rRp3_hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1064C70329">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRp3_xTaEdqZu-3Jy1-uYg" body="result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)&#xA;then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()&#xA;else true&#xA;endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rRp3-xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -1228,7 +1228,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRzB4RTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rRzB4xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10653C0010">
+            <ownedRule xmi:id="_rRzB4xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10653C0010">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRzB5BTaEdqZu-3Jy1-uYg" body="result = '::'" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rRzB4hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -1242,7 +1242,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rRzB6hTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rRzB7BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1065EF023E _3ADC7B74022D3CA008400375">
+            <ownedRule xmi:id="_rRzB7BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1065EF023E _3ADC7B74022D3CA008400375">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rR8y4BTaEdqZu-3Jy1-uYg" body="result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rRzB6xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -1293,7 +1293,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rSZe3xTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rSZe4hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1068D4021B">
+            <ownedRule xmi:id="_rSZe4hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1068D4021B">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rSZe4xTaEdqZu-3Jy1-uYg" body="result = if member->includes(element) then Set{}->including(element.name) else Set{} endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rSZe4BTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return">
@@ -1308,7 +1308,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rSjP0hTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rSjP1BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106939005E">
+            <ownedRule xmi:id="_rSjP1BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106939005E">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rSjP1RTaEdqZu-3Jy1-uYg" body="result = self.member->forAll( memb |&#xA;self.member->excluding(memb)->forAll(other |&#xA;memb.isDistinguishableFrom(other, self)))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rSjP0xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -1510,7 +1510,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rTJFthTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rTJFuBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E118E370051">
+            <ownedRule xmi:id="_rTJFuBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E118E370051">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rTJFuRTaEdqZu-3Jy1-uYg" body="result = member->select(oclIsKindOf(Feature))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rTJFtxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA00A3900A0" direction="return">
@@ -1761,7 +1761,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rT4skRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rT4skxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1402B00031">
+            <ownedRule xmi:id="_rT4skxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1402B00031">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rT4slBTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rT4skhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -1772,7 +1772,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rT4smhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rT4snBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1402DE0204">
+            <ownedRule xmi:id="_rT4snBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1402DE0204">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rT4snRTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rT4smxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -1783,7 +1783,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rT4soxTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rUCdkRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14030E0325">
+            <ownedRule xmi:id="_rUCdkRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14030E0325">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdkhTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rUCdkBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -1794,7 +1794,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rUCdmBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rUCdmhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1403380299">
+            <ownedRule xmi:id="_rUCdmhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1403380299">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdmxTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rUCdmRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -1805,7 +1805,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rUCdoRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rUCdoxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140370027C">
+            <ownedRule xmi:id="_rUCdoxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140370027C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdpBTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rUCdohTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -1816,7 +1816,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rUCdqhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rUCdrBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1403A502BE">
+            <ownedRule xmi:id="_rUCdrBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1403A502BE">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdrRTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rUCdqxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -2111,7 +2111,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rUyEdhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rUyEehTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140A3102FA _3ADC7B74022D3DF78F1C034C">
+            <ownedRule xmi:id="_rUyEehTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140A3102FA _3ADC7B74022D3DF78F1C034C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUyEexTaEdqZu-3Jy1-uYg" body="result = lowerBound()" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rUyEdxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -2125,7 +2125,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rUyEgRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rUyEhRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140A6C013C _3ADC7B74022D3DF78F2B0290">
+            <ownedRule xmi:id="_rUyEhRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140A6C013C _3ADC7B74022D3DF78F2B0290">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUyEhhTaEdqZu-3Jy1-uYg" body="result = upperBound()" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rUyEghTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -2136,7 +2136,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rU71cRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rU71cxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140B0801A5">
+            <ownedRule xmi:id="_rU71cxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140B0801A5">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rU71dBTaEdqZu-3Jy1-uYg" body="result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rU71chTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -2147,7 +2147,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rU71ehTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rU71fBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140B58039F">
+            <ownedRule xmi:id="_rU71fBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140B58039F">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rU71fRTaEdqZu-3Jy1-uYg" body="result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rU71exTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -2415,7 +2415,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rVhrURTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rVhrVRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105A8A018F">
+            <ownedRule xmi:id="_rVhrVRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105A8A018F">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rVhrVhTaEdqZu-3Jy1-uYg" body="result = if n.oclIsKindOf(BehavioralFeature)&#xA;then&#xA;  if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()&#xA;  then Set{}->including(self)->including(n)->isUnique( bf | bf.parameter->collect(type))&#xA;  else true&#xA;  endif&#xA;else true&#xA;endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rVhrUhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -2424,7 +2424,7 @@
           </ownedOperation>
         </ownedMember>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA02702036E" name="Parameter" isAbstract="true">
-          <ownedComment xmi:id="_rVhrWhTaEdqZu-3Jy1-uYg" body="A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral&#xD;&#xA;feature." annotatedElement="_3ADC7B74022D3CA02702036E">
+          <ownedComment xmi:id="_rVhrWhTaEdqZu-3Jy1-uYg" body="A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature." annotatedElement="_3ADC7B74022D3CA02702036E">
             <eAnnotations xmi:id="_rVhrWxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rVhrXBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -3302,7 +3302,7 @@
             <ownedRule xmi:id="_rWkNJxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106C2C03A3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNKBTaEdqZu-3Jy1-uYg" body="redefinee.isRedefinitionContextValid(self)" language="OCL"/>
             </ownedRule>
-            <ownedRule xmi:id="_rWkNKRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106C2C03A3">
+            <ownedRule xmi:id="_rWkNKRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106C2C03A3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNKhTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rWkNJRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -3314,7 +3314,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rWkNMBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rWkNMxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106C8A007D">
+            <ownedRule xmi:id="_rWkNMxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106C8A007D">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNNBTaEdqZu-3Jy1-uYg" body="result = redefinitionContext->exists(c | c.allParents()->includes (redefined.redefinitionContext)))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rWkNMRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -3635,7 +3635,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rXA5FBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rXKqExTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105DC8003E _3ADC7B74022D3DF65B8D0134">
+            <ownedRule xmi:id="_rXKqExTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105DC8003E _3ADC7B74022D3DF65B8D0134">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rXKqFBTaEdqZu-3Jy1-uYg" body="result = self.parents()" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rXKqEBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA011BE01AD" direction="return">
@@ -3649,7 +3649,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rXKqGhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rXKqHBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105E6D030C">
+            <ownedRule xmi:id="_rXKqHBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105E6D030C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rXKqHRTaEdqZu-3Jy1-uYg" body="result = generalization.general" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rXKqGxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA011BE01AD" direction="return">
@@ -3663,7 +3663,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rXUbERTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rXUbFBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10747B0198">
+            <ownedRule xmi:id="_rXUbFBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10747B0198">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rXUbFRTaEdqZu-3Jy1-uYg" body="result = (self=other) or (self.allParents()->includes(other))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rXUbEhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -4104,7 +4104,7 @@
         </eAnnotations>
         <packageImport xmi:id="_3ADC7B74022D3DE6A4590393" importedPackage="_3ADC7B74022D3CA002E901AD"/>
         <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3D51445B01FA" name="DirectedRelationship" isAbstract="true">
-          <ownedComment xmi:id="_rYEB8RTaEdqZu-3Jy1-uYg" body="A directed relationship represents a relationship between a collection of source model elements and a collection of target&#xD;&#xA;model elements." annotatedElement="_3ADC7B74022D3D51445B01FA">
+          <ownedComment xmi:id="_rYEB8RTaEdqZu-3Jy1-uYg" body="A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements." annotatedElement="_3ADC7B74022D3D51445B01FA">
             <eAnnotations xmi:id="_rYEB8hTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rYEB8xTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -4940,7 +4940,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_raJspxTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_raJsqhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E107BB80139">
+            <ownedRule xmi:id="_raJsqhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E107BB80139">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_raJsqxTaEdqZu-3Jy1-uYg" body="result = if vis->includes(#public) then #public else #private endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_raJsqBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CAD9E0F01D0" direction="return"/>
@@ -5202,7 +5202,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ravihRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_raviiRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10722C00E4 _3ADC7B74022D3DF65A9D02E0">
+            <ownedRule xmi:id="_raviiRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10722C00E4 _3ADC7B74022D3DF65A9D02E0">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_raviihTaEdqZu-3Jy1-uYg" body="result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ravihhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA0071C02FD" direction="return">
@@ -5216,7 +5216,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ravikBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_ravikhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1072FF02E6">
+            <ownedRule xmi:id="_ravikhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1072FF02E6">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ravikxTaEdqZu-3Jy1-uYg" body="result = general" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ravikRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DF659AC02FF" direction="return">
@@ -5230,7 +5230,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ravimRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_ravimxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10734200DA">
+            <ownedRule xmi:id="_ravimxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10734200DA">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ravinBTaEdqZu-3Jy1-uYg" body="result = self.parents()->union(self.parents()->collect(p | p.allParents())" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ravimhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DF659AC02FF" direction="return">
@@ -5247,7 +5247,7 @@
             <ownedRule xmi:id="_ra5ThBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10738400DF">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5ThRTaEdqZu-3Jy1-uYg" body="c.allParents()->includes(self)" language="OCL"/>
             </ownedRule>
-            <ownedRule xmi:id="_ra5ThhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10738400DF">
+            <ownedRule xmi:id="_ra5ThhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10738400DF">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5ThxTaEdqZu-3Jy1-uYg" body="result = member->select(m | c.hasVisibilityOf(m))" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ra5TghTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA0071C02FD" direction="return">
@@ -5265,7 +5265,7 @@
             <ownedRule xmi:id="_ra5TkBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10740603B7">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TkRTaEdqZu-3Jy1-uYg" body="self.allParents()->collect(c | c.member)->includes(n)" language="OCL"/>
             </ownedRule>
-            <ownedRule xmi:id="_ra5TkhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10740603B7">
+            <ownedRule xmi:id="_ra5TkhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10740603B7">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TkxTaEdqZu-3Jy1-uYg" body="result = if (self.inheritedMember->includes (n)) then (n.visibility &lt;> #private) else true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ra5TjhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5277,7 +5277,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ra5TmRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_ra5TnBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1074EF0344">
+            <ownedRule xmi:id="_ra5TnBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1074EF0344">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TnRTaEdqZu-3Jy1-uYg" body="result = inhs" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ra5TmhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA0071C02FD" direction="return">
@@ -5295,7 +5295,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ra5ToxTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_ra5TphTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10770902B1">
+            <ownedRule xmi:id="_ra5TphTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10770902B1">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TpxTaEdqZu-3Jy1-uYg" body="result = self.oclIsKindOf(c.oclType)" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_ra5TpBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5551,7 +5551,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbo6YhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rbo6ZBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1406E501AC">
+            <ownedRule xmi:id="_rbo6ZBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1406E501AC">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbo6ZRTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rbo6YxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5562,7 +5562,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbo6axTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rbo6bRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407110029">
+            <ownedRule xmi:id="_rbo6bRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407110029">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbo6bhTaEdqZu-3Jy1-uYg" body="result = value" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rbo6bBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5593,7 +5593,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbo6fRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rbo6fxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407FF0374">
+            <ownedRule xmi:id="_rbo6fxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407FF0374">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbo6gBTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rbo6fhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5604,7 +5604,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rbyEUxTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rbyEVRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140821003E">
+            <ownedRule xmi:id="_rbyEVRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140821003E">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbyEVhTaEdqZu-3Jy1-uYg" body="result = value" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rbyEVBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -5631,7 +5631,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rb71URTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rb71UxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407B4000F">
+            <ownedRule xmi:id="_rb71UxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407B4000F">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71VBTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rb71UhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5642,7 +5642,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rb71WhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rb71XBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407D8029C">
+            <ownedRule xmi:id="_rb71XBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407D8029C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71XRTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rb71WxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5669,7 +5669,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rb71aBTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rb71ahTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14074A00F3">
+            <ownedRule xmi:id="_rb71ahTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14074A00F3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71axTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rb71aRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5680,7 +5680,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rb71cRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rb71cxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14077700E4">
+            <ownedRule xmi:id="_rb71cxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14077700E4">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71dBTaEdqZu-3Jy1-uYg" body="result = value" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rb71chTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -5707,7 +5707,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcFmWhTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rcFmXBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140869018C">
+            <ownedRule xmi:id="_rcFmXBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140869018C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcFmXRTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcFmWxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5718,7 +5718,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcFmYxTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rcFmZRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14088F01CD">
+            <ownedRule xmi:id="_rcFmZRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14088F01CD">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcFmZhTaEdqZu-3Jy1-uYg" body="result = value" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcFmZBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -5870,7 +5870,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcYhQRTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rcYhQxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105FFF0120">
+            <ownedRule xmi:id="_rcYhQxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105FFF0120">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhRBTaEdqZu-3Jy1-uYg" body="result = if lower->notEmpty() then lower else 1 endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcYhQhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -5881,7 +5881,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rcYhShTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rcYhTBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10604500E4">
+            <ownedRule xmi:id="_rcYhTBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10604500E4">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhTRTaEdqZu-3Jy1-uYg" body="result = if upper->notEmpty() then upper else 1 endif" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcYhSxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -5895,7 +5895,7 @@
             <ownedRule xmi:id="_rcYhVRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1060A900DE">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhVhTaEdqZu-3Jy1-uYg" body="upperBound()->notEmpty()" language="OCL"/>
             </ownedRule>
-            <ownedRule xmi:id="_rcYhVxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1060A900DE">
+            <ownedRule xmi:id="_rcYhVxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1060A900DE">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhWBTaEdqZu-3Jy1-uYg" body="result = upperBound() > 1" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcYhVBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5909,7 +5909,7 @@
             <ownedRule xmi:id="_rcYhYRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1060D80399">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhYhTaEdqZu-3Jy1-uYg" body="upperBound()->notEmpty() and lowerBound()->notEmpty()&#xA;includesCardinality = (lowerBound() &lt;= C) and (upperBound() >= C)&#xA;" language="OCL"/>
             </ownedRule>
-            <ownedRule xmi:id="_rcYhYxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1060D80399">
+            <ownedRule xmi:id="_rcYhYxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1060D80399">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhZBTaEdqZu-3Jy1-uYg" body="result = (lowerBound() &lt;= C) and (upperBound() >= C)" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcYhXxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -5924,7 +5924,7 @@
             <ownedRule xmi:id="_rcYhbRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10616C00C0">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhbhTaEdqZu-3Jy1-uYg" body="self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()" language="OCL"/>
             </ownedRule>
-            <ownedRule xmi:id="_rcYhbxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10616C00C0">
+            <ownedRule xmi:id="_rcYhbxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10616C00C0">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rciSQBTaEdqZu-3Jy1-uYg" body="result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rcYhaxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -6109,7 +6109,7 @@
                 <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rdR5KxTaEdqZu-3Jy1-uYg"/>
               </eAnnotations>
             </ownedComment>
-            <ownedRule xmi:id="_rdR5LhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E554FFD0353">
+            <ownedRule xmi:id="_rdR5LhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E554FFD0353">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rdR5LxTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
             </ownedRule>
             <returnResult xmi:id="_rdR5LBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -7930,7 +7930,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfEB1hTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rfEB2BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B0">
+          <ownedRule xmi:id="_rfEB2BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B0">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB2RTaEdqZu-3Jy1-uYg" body="result = if lower->notEmpty() then lower else 1 endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rfEB1xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -7941,7 +7941,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rfEB3xTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rfEB4RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B1">
+          <ownedRule xmi:id="_rfEB4RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB4hTaEdqZu-3Jy1-uYg" body="result = if upper->notEmpty() then upper else 1 endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rfEB4BTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -7955,7 +7955,7 @@
           <ownedRule xmi:id="_rfEB6hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B2">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB6xTaEdqZu-3Jy1-uYg" body="upperBound()->notEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rfEB7BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B2">
+          <ownedRule xmi:id="_rfEB7BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B2">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB7RTaEdqZu-3Jy1-uYg" body="result = upperBound() > 1" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rfEB6RTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -7969,7 +7969,7 @@
           <ownedRule xmi:id="_rfNy1BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfNy1RTaEdqZu-3Jy1-uYg" body="upperBound()->notEmpty() and lowerBound()->notEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rfNy1hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B3">
+          <ownedRule xmi:id="_rfNy1hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfNy1xTaEdqZu-3Jy1-uYg" body="result = (lowerBound() &lt;= C) and (upperBound() >= C)" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rfNy0hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -7984,7 +7984,7 @@
           <ownedRule xmi:id="_rfNy4BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B5">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfNy4RTaEdqZu-3Jy1-uYg" body="self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rfNy4hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B5">
+          <ownedRule xmi:id="_rfNy4hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B5">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfNy4xTaEdqZu-3Jy1-uYg" body="result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rfNy3hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -12740,7 +12740,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rg2xmRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rg2xnBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E555A26019A">
+          <ownedRule xmi:id="_rg2xnBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E555A26019A">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg2xnRTaEdqZu-3Jy1-uYg" body="result = (self=other) or (self.allParents()->includes(other))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rg2xmhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -12752,7 +12752,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rg_7gRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rg_7gxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00B1">
+          <ownedRule xmi:id="_rg_7gxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00B1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg_7hBTaEdqZu-3Jy1-uYg" body="result = member->select(oclIsKindOf(Feature))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rg_7ghTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C7BD0034" direction="return">
@@ -12769,7 +12769,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rg_7ihTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rg_7jhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D9 _3ADC7B74022D3E0270BE0395">
+          <ownedRule xmi:id="_rg_7jhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00D9 _3ADC7B74022D3E0270BE0395">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg_7jxTaEdqZu-3Jy1-uYg" body="result = self.parents()" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rg_7ixTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C8630317" direction="return">
@@ -12783,7 +12783,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rg_7lRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rg_7lxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00DB">
+          <ownedRule xmi:id="_rg_7lxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00DB">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg_7mBTaEdqZu-3Jy1-uYg" body="result = generalization.general" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rg_7lhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C8630317" direction="return">
@@ -12800,7 +12800,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhJsihTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rhJsjhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00F1 _3ADC7B74022D4304A13201D9">
+          <ownedRule xmi:id="_rhJsjhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F1 _3ADC7B74022D4304A13201D9">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsjxTaEdqZu-3Jy1-uYg" body="result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhJsixTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6BC6B01BD" direction="return">
@@ -12814,7 +12814,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhJslRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rhJslxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00F5">
+          <ownedRule xmi:id="_rhJslxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F5">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsmBTaEdqZu-3Jy1-uYg" body="result = self.parents()->union(self.parents()->collect(p | p.allParents())" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhJslhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C8630317" direction="return">
@@ -12831,7 +12831,7 @@
           <ownedRule xmi:id="_rhJsoBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F7">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsoRTaEdqZu-3Jy1-uYg" body="c.allParents()->includes(self)" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rhJsohTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00F7">
+          <ownedRule xmi:id="_rhJsohTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F7">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsoxTaEdqZu-3Jy1-uYg" body="result = member->select(m | c.hasVisibilityOf(m))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhJsnxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6BC6B01BD" direction="return">
@@ -12849,7 +12849,7 @@
           <ownedRule xmi:id="_rhTdhBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00FA">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdhRTaEdqZu-3Jy1-uYg" body="self.allParents()->collect(c | c.member)->includes(n)" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rhTdhhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00FA">
+          <ownedRule xmi:id="_rhTdhhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00FA">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdhxTaEdqZu-3Jy1-uYg" body="result = if (self.inheritedMember->includes(n)) then (n.visibility &lt;> #private) else true" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhTdghTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -12861,7 +12861,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhTdjRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rhTdkBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0100">
+          <ownedRule xmi:id="_rhTdkBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0100">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdkRTaEdqZu-3Jy1-uYg" body="result = inhs" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhTdjhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6BC6B01BD" direction="return">
@@ -12879,7 +12879,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhTdlxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rhTdmhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0108">
+          <ownedRule xmi:id="_rhTdmhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0108">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdmxTaEdqZu-3Jy1-uYg" body="result = self.oclIsKindOf(c.oclType)" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhTdmBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -12887,7 +12887,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6C82E03E4" name="DirectedRelationship" isAbstract="true">
-        <ownedComment xmi:id="_rhTdnxTaEdqZu-3Jy1-uYg" body="A directed relationship represents a relationship between a collection of source model elements and a collection of target&#xD;&#xA;model elements." annotatedElement="_3ADC7B74022D3DE6C82E03E4">
+        <ownedComment xmi:id="_rhTdnxTaEdqZu-3Jy1-uYg" body="A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements." annotatedElement="_3ADC7B74022D3DE6C82E03E4">
           <eAnnotations xmi:id="_rhTdoBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhTdoRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -12979,7 +12979,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhmYcRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rhmYcxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C006A">
+          <ownedRule xmi:id="_rhmYcxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C006A">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhmYdBTaEdqZu-3Jy1-uYg" body="result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhmYchTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6BAB70076" direction="return">
@@ -12993,7 +12993,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rhmYehTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rhmYfBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0073">
+          <ownedRule xmi:id="_rhmYfBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0073">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhmYfRTaEdqZu-3Jy1-uYg" body="result = true" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rhmYexTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13095,7 +13095,7 @@
           <ownedRule xmi:id="_rlUa0xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02B1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa1BTaEdqZu-3Jy1-uYg" body="upperBound()->notEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rlUa1RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D41C06EDF02B1">
+          <ownedRule xmi:id="_rlUa1RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02B1">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa1hTaEdqZu-3Jy1-uYg" body="result = upperBound() > 1" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rlUa0hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13109,7 +13109,7 @@
           <ownedRule xmi:id="_rlUa3xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02BB">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa4BTaEdqZu-3Jy1-uYg" body="self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rlUa4RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D41C06EDF02BB">
+          <ownedRule xmi:id="_rlUa4RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02BB">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa4hTaEdqZu-3Jy1-uYg" body="result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rlUa3RTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13124,7 +13124,7 @@
           <ownedRule xmi:id="_rlUa6xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02BD">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa7BTaEdqZu-3Jy1-uYg" body="upperBound()->notEmpty() and lowerBound()->notEmpty()" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rlUa7RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D41C06EDF02BD">
+          <ownedRule xmi:id="_rlUa7RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02BD">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa7hTaEdqZu-3Jy1-uYg" body="result = (lowerBound() &lt;= C) and (upperBound() >= C)" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rlUa6RTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13136,7 +13136,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rlUa9BTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rlUa9hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C6">
+          <ownedRule xmi:id="_rlUa9hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C6">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa9xTaEdqZu-3Jy1-uYg" body="result = if lower->notEmpty() then lower else 1 endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rlUa9RTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -13147,7 +13147,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rleL0RTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rleL0xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C8">
+          <ownedRule xmi:id="_rleL0xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C8">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rleL1BTaEdqZu-3Jy1-uYg" body="result = if upper->notEmpty() then upper else 1 endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rleL0hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -13235,7 +13235,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rln81hTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rln82hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142ABF004B _3ADC7B74022D3DEE234B0163">
+          <ownedRule xmi:id="_rln82hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142ABF004B _3ADC7B74022D3DEE234B0163">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rln82xTaEdqZu-3Jy1-uYg" body="result = self.importMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rln81xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C1F002C3" direction="return">
@@ -13249,7 +13249,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rln84RTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rln85BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142BF301A2">
+          <ownedRule xmi:id="_rln85BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142BF301A2">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rln85RTaEdqZu-3Jy1-uYg" body="result = if self.ownedMember->includes(element)&#xA;then Set{}->include(element.name)&#xA;else let elementImports: ElementImport = self.elementImport->select(ei | ei.importedElement = element) in&#xA;  if elementImports->notEmpty()&#xA;  then elementImports->collect(el | el.getName())&#xA;  else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))->collect(pi | pi.importedPackage.getNamesOfMember(element))&#xA;  endif&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rln84hTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return">
@@ -13264,7 +13264,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rln86xTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rln87hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142CAC03E3">
+          <ownedRule xmi:id="_rln87hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142CAC03E3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rln87xTaEdqZu-3Jy1-uYg" body="result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem | mem.imp.isDistinguishableFrom(mem, self)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rln87BTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C1F002C3" direction="return">
@@ -13282,7 +13282,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rlxGwRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rlxGxBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142D230163">
+          <ownedRule xmi:id="_rlxGxBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142D230163">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlxGxRTaEdqZu-3Jy1-uYg" body="result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rlxGwhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C1F002C3" direction="return">
@@ -13300,7 +13300,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rlxG1BTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rlxG1hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00AF">
+          <ownedRule xmi:id="_rlxG1hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00AF">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlxG1xTaEdqZu-3Jy1-uYg" body="result = self.member->forAll( memb |&#xA;&#x9;self.member->excluding(memb)->forAll(other |&#xA;&#x9;&#x9;memb.isDistinguishableFrom(other, self)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rlxG1RTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13367,7 +13367,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rl632BTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rl632xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D3">
+          <ownedRule xmi:id="_rl632xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00D3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rl633BTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rl632RTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13379,7 +13379,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rl634hTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rl635RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D6">
+          <ownedRule xmi:id="_rl635RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00D6">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rl635hTaEdqZu-3Jy1-uYg" body="result = self.redefinitionContext->exists(c | redefined.redefinitionContext->exists(r | c.allParents()->includes(r)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rl634xTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13447,7 +13447,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmNysRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmNysxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00B9">
+          <ownedRule xmi:id="_rmNysxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00B9">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNytBTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmNyshTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13458,7 +13458,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmNyuhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmNyvBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00BB">
+          <ownedRule xmi:id="_rmNyvBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00BB">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNyvRTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmNyuxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -13469,7 +13469,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmNywxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmNyxRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00BD">
+          <ownedRule xmi:id="_rmNyxRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00BD">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNyxhTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmNyxBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13480,7 +13480,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmNyzBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmNyzhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00BF">
+          <ownedRule xmi:id="_rmNyzhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00BF">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNyzxTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmNyzRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -13491,7 +13491,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmXjsRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmXjsxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C2">
+          <ownedRule xmi:id="_rmXjsxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C2">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmXjtBTaEdqZu-3Jy1-uYg" body="result = Set{}" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmXjshTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -13502,14 +13502,14 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmXjuhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmXjvBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C4">
+          <ownedRule xmi:id="_rmXjvBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C4">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmXjvRTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmXjuxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6E15D033A" name="Association">
-        <ownedComment xmi:id="_rmXjwRTaEdqZu-3Jy1-uYg" body="An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a&#xD;&#xA;link." annotatedElement="_3ADC7B74022D3DE6E15D033A">
+        <ownedComment xmi:id="_rmXjwRTaEdqZu-3Jy1-uYg" body="An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link." annotatedElement="_3ADC7B74022D3DE6E15D033A">
           <eAnnotations xmi:id="_rmXjwhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmXjwxTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13620,7 +13620,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmgtphTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmgtqRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1420C102C4">
+          <ownedRule xmi:id="_rmgtqRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1420C102C4">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmgtqhTaEdqZu-3Jy1-uYg" body="result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmgtpxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6BC6B01BD" direction="return">
@@ -13634,7 +13634,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D57500AC" name="Property">
-        <ownedComment xmi:id="_rmgtsxTaEdqZu-3Jy1-uYg" body="A property is a structural feature of a classifier that characterizes instances of the classifier.&#xD;&#xA;A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end.&#xD;&#xA;It relates an instance of the class to a value or set of values of the type of the attribute.&#xD;&#xA;A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association." annotatedElement="_3ADC7B74022D3DE6D57500AC">
+        <ownedComment xmi:id="_rmgtsxTaEdqZu-3Jy1-uYg" body="A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association." annotatedElement="_3ADC7B74022D3DE6D57500AC">
           <eAnnotations xmi:id="_rmgttBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmgttRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -13815,7 +13815,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rmgtuhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rmgtvBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14246901E3 _3ADC7B74022D3DE6E76603BD">
+          <ownedRule xmi:id="_rmgtvBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14246901E3 _3ADC7B74022D3DE6E76603BD">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmgtvRTaEdqZu-3Jy1-uYg" body="result = if owningAssociation->isEmpty() and association.memberEnd->size() = 2&#xA;  then&#xA;    let otherEnd = (association.memberEnd - self)->any() in&#xA;      if otherEnd.owningAssociation->isEmpty() then otherEnd else Set{} endif&#xA;    else Set {}&#xA;    endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rmgtuxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6D57500AC" direction="return"/>
@@ -13829,7 +13829,7 @@
           <ownedRule xmi:id="_rm0PthTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1427A80242">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PtxTaEdqZu-3Jy1-uYg" body="redefinee.isRedefinitionContextValid(self)" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rm0PuBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1427A80242">
+          <ownedRule xmi:id="_rm0PuBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1427A80242">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PuRTaEdqZu-3Jy1-uYg" body="result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rm0PtBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13841,7 +13841,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rm0PvxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rm0PwRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1428A50264">
+          <ownedRule xmi:id="_rm0PwRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1428A50264">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PwhTaEdqZu-3Jy1-uYg" body="result = if association->notEmpty()&#xA;then association.endType-type &#xA;else if classifier->notEmpty then Set{classifier} else Set{} endif&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rm0PwBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C8630317" direction="return">
@@ -13855,7 +13855,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rm0PyBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rm0PyhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D430B77C7031C">
+          <ownedRule xmi:id="_rm0PyhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D430B77C7031C">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PyxTaEdqZu-3Jy1-uYg" body="result = not classifier->isEmpty() or&#xA;association.owningAssociation.navigableOwnedEnd->includes(self)" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rm0PyRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13866,7 +13866,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_BL2vgjc3Edqq1tCaRkgBQQ"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_LLHN8Dc3Edqq1tCaRkgBQQ" name="spec" constrainedElement="_1PbZwDc2Edqq1tCaRkgBQQ">
+          <ownedRule xmi:id="_LLHN8Dc3Edqq1tCaRkgBQQ" constrainedElement="_1PbZwDc2Edqq1tCaRkgBQQ">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_LLHN8Tc3Edqq1tCaRkgBQQ" body="result = Classifier->allInstances->exists(c | c.attribute->includes(p))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_61gRcDc2Edqq1tCaRkgBQQ" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -13904,7 +13904,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnHKmhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rnHKnRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1423CF02D2">
+          <ownedRule xmi:id="_rnHKnRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1423CF02D2">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnHKnhTaEdqZu-3Jy1-uYg" body="result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rnHKmxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6BC6B01BD" direction="return">
@@ -14199,7 +14199,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnaFiBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rnaFihTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142EC50359 _3ADC7B74022D3E03284C0289">
+          <ownedRule xmi:id="_rnaFihTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142EC50359 _3ADC7B74022D3E03284C0289">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnaFixTaEdqZu-3Jy1-uYg" body="result = if returnResult->size() = 1 then returnResult->any().isOrdered else false endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rnaFiRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14210,7 +14210,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnaFkRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rnaFkxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142F090090 _3ADC7B74022D3E032859015B">
+          <ownedRule xmi:id="_rnaFkxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142F090090 _3ADC7B74022D3E032859015B">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnaFlBTaEdqZu-3Jy1-uYg" body="result = if returnResult->size() = 1 then returnResult->any().isUnique else true endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rnaFkhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14224,7 +14224,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnj2ghTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rnj2hhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142F3E03CB _3ADC7B74022D3E0328B001D9">
+          <ownedRule xmi:id="_rnj2hhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142F3E03CB _3ADC7B74022D3E0328B001D9">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnj2hxTaEdqZu-3Jy1-uYg" body="result = if returnResult->size() = 1 then returnResult->any().lower else Set{} endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rnj2gxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -14238,7 +14238,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnj2jRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rnj2kRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142F7500B3 _3ADC7B74022D3E0328710341">
+          <ownedRule xmi:id="_rnj2kRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142F7500B3 _3ADC7B74022D3E0328710341">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnj2khTaEdqZu-3Jy1-uYg" body="result = if returnResult->size() = 1 then returnResult->any().upper else Set{} endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rnj2jhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6A93C0003" direction="return"/>
@@ -14252,7 +14252,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rnj2mBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rntAchTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142FBB01EA _3ADC7B74022D3DEE7BDA017A">
+          <ownedRule xmi:id="_rntAchTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142FBB01EA _3ADC7B74022D3DEE7BDA017A">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rntAcxTaEdqZu-3Jy1-uYg" body="result = if returnResult->size() = 1 then returnResult->any().type else Set{} endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rnj2mRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3E555229003B" direction="return"/>
@@ -14266,14 +14266,14 @@
           <ownedRule xmi:id="_rntAhRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E143033011B">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rntAhhTaEdqZu-3Jy1-uYg" body="redefinee.isRedefinitionContextValid(self)" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rntAhxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E143033011B">
+          <ownedRule xmi:id="_rntAhxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E143033011B">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rntAiBTaEdqZu-3Jy1-uYg" body="result = (redefinee.oclIsKindOf(Operation) and&#xA;    let op: Operation = redefinee.oclAsType(Operation) in&#xA;        self.formalParameter.size() = op.formalParameter.size() and&#xA;        self.returnResult.size() = op.returnResult.size() and&#xA;        forAll(i | op.formalParameter[i].type.conformsTo(self.formalParameter[i].type)) and&#xA;        forAll(i | op.returnResult[i].type.conformsTo(self.returnResult[i].type))&#xA;)" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rntAgxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
           <ownedParameter xmi:id="_3ADC7B74022D3E14304B03AA" name="redefinee" type="_3ADC7B74022D3DE6C81D0244"/>
         </ownedOperation>
         <ownedOperation xmi:id="_ipBfsB8WEdqZ_KzuBfefCA" name="returnResult" type="_3ADC7B74022D3DE6D57D00A3" isQuery="true" bodyCondition="__KtXgB8WEdqZ_KzuBfefCA">
-          <ownedRule xmi:id="__KtXgB8WEdqZ_KzuBfefCA" name="spec" constrainedElement="_ipBfsB8WEdqZ_KzuBfefCA">
+          <ownedRule xmi:id="__KtXgB8WEdqZ_KzuBfefCA" constrainedElement="_ipBfsB8WEdqZ_KzuBfefCA">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="__KtXgR8WEdqZ_KzuBfefCA" body="result = ownedParameter->select (par | par.direction = #return)" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_q_YGoB8WEdqZ_KzuBfefCA" type="_3ADC7B74022D3DE6D57D00A3" direction="return">
@@ -14283,7 +14283,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D57D00A3" name="Parameter">
-        <ownedComment xmi:id="_roAiexTaEdqZu-3Jy1-uYg" body="A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral&#xD;&#xA;feature." annotatedElement="_3ADC7B74022D3DE6D57D00A3">
+        <ownedComment xmi:id="_roAiexTaEdqZu-3Jy1-uYg" body="A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature." annotatedElement="_3ADC7B74022D3DE6D57D00A3">
           <eAnnotations xmi:id="_roAifBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roAifRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14352,7 +14352,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_roTdaRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_roTdbRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142E0F01A9">
+          <ownedRule xmi:id="_roTdbRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142E0F01A9">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_roTdbhTaEdqZu-3Jy1-uYg" body="result = if n.oclIsKindOf(BehavioralFeature)&#xA;then&#xA;  if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()&#xA;  then Set{}->include(self)->include(n)->isUnique( bf | bf.parameter->collect(type))&#xA;  else true&#xA;  endif&#xA;else true&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_roTdahTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14427,7 +14427,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rodOcxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rodOdRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1429E403A3">
+          <ownedRule xmi:id="_rodOdRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1429E403A3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rodOdhTaEdqZu-3Jy1-uYg" body="result = if self.alias->notEmpty() then &#xA;  self.alias&#xA;else&#xA;  self.importedElement.name&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rodOdBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -14509,7 +14509,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_romYYBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_romYYhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14315003AF">
+          <ownedRule xmi:id="_romYYhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14315003AF">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_romYYxTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_romYYRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14520,7 +14520,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_romYaRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_romYaxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E143175007D">
+          <ownedRule xmi:id="_romYaxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E143175007D">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_romYbBTaEdqZu-3Jy1-uYg" body="result = member->select( m | self.makesVisible(m))" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_romYahTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C1F002C3" direction="return">
@@ -14537,7 +14537,7 @@
           <ownedRule xmi:id="_rowJVBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1431A90385">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rowJVRTaEdqZu-3Jy1-uYg" body="self.member->includes(el)" language="OCL"/>
           </ownedRule>
-          <ownedRule xmi:id="_rowJVhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1431A90385">
+          <ownedRule xmi:id="_rowJVhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1431A90385">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rowJVxTaEdqZu-3Jy1-uYg" body="result = (ownedMember->includes(el)) or&#xA;   (elementImport->&#xA;      select(ei|ei.visibility = #public)->&#xA;         collect(ei|ei.importedElement)->includes(el)) or&#xA;   (packageImport->&#xA;      select(pi|pi.visibility = #public)->&#xA;        collect(pi|&#xA;           pi.importedPackage.member->includes(el))->notEmpty())" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rowJUhTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14545,7 +14545,7 @@
         </ownedOperation>
       </ownedMember>
       <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3DE6D5E002D7" name="PackageImport">
-        <ownedComment xmi:id="_rowJWxTaEdqZu-3Jy1-uYg" body="A package import is a relationship that allows the use of unqualified names to refer to package members from other&#xD;&#xA;namespaces." annotatedElement="_3ADC7B74022D3DE6D5E002D7">
+        <ownedComment xmi:id="_rowJWxTaEdqZu-3Jy1-uYg" body="A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces." annotatedElement="_3ADC7B74022D3DE6D5E002D7">
           <eAnnotations xmi:id="_rowJXBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rowJXRTaEdqZu-3Jy1-uYg"/>
           </eAnnotations>
@@ -14638,7 +14638,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_ro5TSRTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_ro5TTBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C010B">
+          <ownedRule xmi:id="_ro5TTBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C010B">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_ro5TTRTaEdqZu-3Jy1-uYg" body="result = false" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_ro5TShTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14730,7 +14730,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpDEShTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rpDETBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C007F">
+          <ownedRule xmi:id="_rpDETBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C007F">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDETRTaEdqZu-3Jy1-uYg" body="result = if self.namespace->isEmpty()&#xA;then Sequence{}&#xA;else self.namespace.allNamespaces()->prepend(self.namespace)&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rpDESxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3DE6C03E0388" isOrdered="true" direction="return">
@@ -14744,7 +14744,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpDEUxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rpDEVxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0081">
+          <ownedRule xmi:id="_rpDEVxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0081">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDEWBTaEdqZu-3Jy1-uYg" body="result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)&#xA;then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()&#xA;else true&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rpDEVBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -14757,7 +14757,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpDEXhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rpDEYBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00A4">
+          <ownedRule xmi:id="_rpDEYBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00A4">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDEYRTaEdqZu-3Jy1-uYg" body="result = '::'" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rpDEXxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -14771,7 +14771,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpDEZxTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rpDEaRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00A6">
+          <ownedRule xmi:id="_rpDEaRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00A6">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDEahTaEdqZu-3Jy1-uYg" body="result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rpDEaBTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D3CA010B103C3" direction="return"/>
@@ -14870,7 +14870,7 @@
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rpfwQhTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
           </ownedComment>
-          <ownedRule xmi:id="_rpfwRRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00E3">
+          <ownedRule xmi:id="_rpfwRRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00E3">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpfwRhTaEdqZu-3Jy1-uYg" body="result = if vis->includes(#public) then #public else #private endif" language="OCL"/>
           </ownedRule>
           <returnResult xmi:id="_rpfwQxTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D41C2D6020188" direction="return"/>
@@ -15991,7 +15991,7 @@
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="uml:Class" xmi:id="_3ADC7B74022D3CA186E10085" name="Profile">
-      <ownedComment xmi:id="_rt-AmBTaEdqZu-3Jy1-uYg" body="A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific&#xD;&#xA;platform or domain." annotatedElement="_3ADC7B74022D3CA186E10085">
+      <ownedComment xmi:id="_rt-AmBTaEdqZu-3Jy1-uYg" body="A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain." annotatedElement="_3ADC7B74022D3CA186E10085">
         <eAnnotations xmi:id="_rt-AmRTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
           <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rt-AmhTaEdqZu-3Jy1-uYg"/>
         </eAnnotations>
@@ -16170,7 +16170,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_QggOIjqAEdq16aujGBCOZg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_-tfZcDajEdqq1tCaRkgBQQ" name="spec" constrainedElement="_17RV4DajEdqq1tCaRkgBQQ">
+        <ownedRule xmi:id="_-tfZcDajEdqq1tCaRkgBQQ" constrainedElement="_17RV4DajEdqq1tCaRkgBQQ">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_-tfZcTajEdqq1tCaRkgBQQ" body="result = memberEnd->reject(ownedEnd)" language="OCL"/>
         </ownedRule>
         <returnResult xmi:id="_7E4UADajEdqq1tCaRkgBQQ" type="_3ADC7B74022D3DE6D57500AC" direction="return"/>
@@ -16184,7 +16184,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_O8Em8jqAEdq16aujGBCOZg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_IyQqADakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
+        <ownedRule xmi:id="_IyQqADakEdqq1tCaRkgBQQ" constrainedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_IyQqATakEdqq1tCaRkgBQQ" body="result = metaclassEnd().type" language="OCL"/>
         </ownedRule>
         <returnResult xmi:id="_HSTTIDakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA22B8803DA" direction="return"/>
@@ -16195,7 +16195,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_NjHP8jqAEdq16aujGBCOZg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_SD7CoDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_LziCoDakEdqq1tCaRkgBQQ">
+        <ownedRule xmi:id="_SD7CoDakEdqq1tCaRkgBQQ" constrainedElement="_LziCoDakEdqq1tCaRkgBQQ">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_SD7CoTakEdqq1tCaRkgBQQ" body="result = (ownedEnd->lowerBound() = 1)" language="OCL"/>
         </ownedRule>
         <returnResult xmi:id="_Qhu3IDakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA010AC0090" direction="return"/>
@@ -16249,7 +16249,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_YkFZcjajEdqq1tCaRkgBQQ"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_ZWJvkDajEdqq1tCaRkgBQQ" name="spec" constrainedElement="_InW3ADajEdqq1tCaRkgBQQ">
+        <ownedRule xmi:id="_ZWJvkDajEdqq1tCaRkgBQQ" constrainedElement="_InW3ADajEdqq1tCaRkgBQQ">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_ZWJvkTajEdqq1tCaRkgBQQ" body="result = lowerBound = if lowerValue->isEmpty() then 0 else lowerValue->IntegerValue() endif" language="OCL"/>
         </ownedRule>
         <returnResult xmi:id="_Ni0EYDajEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA010A4007B" direction="return"/>
@@ -16307,7 +16307,7 @@
             <contents xmi:type="Default_0:Default__Documentation" xmi:id="_5-hO8jp_Edq16aujGBCOZg"/>
           </eAnnotations>
         </ownedComment>
-        <ownedRule xmi:id="_3LBREDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
+        <ownedRule xmi:id="_3LBREDakEdqq1tCaRkgBQQ" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_3LBRETakEdqq1tCaRkgBQQ" body="result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())" language="OCL"/>
         </ownedRule>
         <returnResult xmi:id="_yH9m4DakEdqq1tCaRkgBQQ" type="_3ADC7B74022D3CA18745029B" direction="return">
