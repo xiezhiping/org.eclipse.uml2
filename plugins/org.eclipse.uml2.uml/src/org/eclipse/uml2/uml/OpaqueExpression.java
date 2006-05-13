@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.8 2006/05/12 20:38:05 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.9 2006/05/13 04:46:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -208,6 +208,7 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query value() gives an integer value for an expression intended to produce one.
+	 * self.isIntegral()
 	 * true
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
@@ -232,6 +233,7 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isPositive() tells whether an integer expression has a positive value.
+	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
@@ -244,6 +246,7 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
+	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"

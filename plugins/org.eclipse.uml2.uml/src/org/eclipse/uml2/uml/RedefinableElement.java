@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.8 2006/05/12 20:38:05 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.9 2006/05/13 04:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -194,6 +194,7 @@ public interface RedefinableElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
+	 * redefinee.isRedefinitionContextValid(self)
 	 * result = false
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefineeRequired="true" redefineeOrdered="false"

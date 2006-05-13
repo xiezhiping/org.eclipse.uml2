@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.11 2006/05/12 20:38:03 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.12 2006/05/13 04:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -296,6 +296,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
+	 * upperBound()->notEmpty()
 	 * result = upperBound() > 1
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
@@ -308,6 +309,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
+	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
 	 * result = (lowerBound() <= C) and (upperBound() >= C)
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" CDataType="org.eclipse.uml2.uml.Integer" CRequired="true" COrdered="false"
@@ -320,6 +322,7 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
+	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"

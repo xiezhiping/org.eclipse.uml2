@@ -6481,7 +6481,7 @@ define a collating sequence between operands and subexpressions).
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sMXMyxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D4300D31F01F4">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_sMXMzBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
-                <body>self.upperBound()->notEmpty() and self.lowerBound()->notEmpty()&#xA;and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()&#xA;</body>
+                <body>self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()</body>
               </specification>
             </ownedRule>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sMXMzRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300D31F01F4">
@@ -6857,7 +6857,7 @@ define a collating sequence between operands and subexpressions).
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sNZujxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D4300DD4100CB">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_sNZukBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
-                <body>redefinee.isRedefinitionContextValid(self)&#xA;&#xA;</body>
+                <body>redefinee.isRedefinitionContextValid(self)</body>
               </specification>
             </ownedRule>
             <ownedRule xmi:type="uml:Constraint" xmi:id="_sNZukRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300DD4100CB">

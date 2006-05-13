@@ -246,7 +246,7 @@
     </eOperations>
     <eOperations name="makesVisible" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.&#xD;&#xA;result = (ownedMember->includes(el)) or&#xA;(elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or&#xA;(packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())"/>
+        <details key="documentation" value="The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.&#xD;&#xA;self.member->includes(el)&#xD;&#xA;result = (ownedMember->includes(el)) or&#xA;(elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or&#xA;(packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())"/>
       </eAnnotations>
       <eParameters name="el" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
@@ -984,13 +984,13 @@
     </eOperations>
     <eOperations name="inheritableMembers" ordered="false" upperBound="-1" eType="#//NamedElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.&#xD;&#xA;result = member->select(m | c.hasVisibilityOf(m))"/>
+        <details key="documentation" value="The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.&#xD;&#xA;c.allParents()->includes(self)&#xD;&#xA;result = member->select(m | c.hasVisibilityOf(m))"/>
       </eAnnotations>
       <eParameters name="c" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
     <eOperations name="hasVisibilityOf" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.&#xD;&#xA;result = if (self.inheritedMember->includes(n)) then (n.visibility &lt;> #private) else true"/>
+        <details key="documentation" value="The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.&#xD;&#xA;self.allParents()->collect(c | c.member)->includes(n)&#xD;&#xA;result = if (self.inheritedMember->includes(n)) then (n.visibility &lt;> #private) else true"/>
       </eAnnotations>
       <eParameters name="n" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
@@ -1131,7 +1131,7 @@
     </eOperations>
     <eOperations name="isConsistentWith" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.&#xD;&#xA;result = false"/>
+        <details key="documentation" value="The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = false"/>
       </eAnnotations>
       <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
     </eOperations>
@@ -1545,7 +1545,7 @@
     <eOperations name="getResult" ordered="false" eType="#//Parameter"/>
     <eOperations name="value" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query value() gives an integer value for an expression intended to produce one.&#xD;&#xA;true"/>
+        <details key="documentation" value="The query value() gives an integer value for an expression intended to produce one.&#xD;&#xA;self.isIntegral()&#xD;&#xA;true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isIntegral" ordered="false" lowerBound="1" eType="#//Boolean">
@@ -1555,12 +1555,12 @@
     </eOperations>
     <eOperations name="isPositive" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query isPositive() tells whether an integer expression has a positive value.&#xD;&#xA;result = false"/>
+        <details key="documentation" value="The query isPositive() tells whether an integer expression has a positive value.&#xD;&#xA;self.isIntegral()&#xD;&#xA;result = false"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isNonNegative" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query isNonNegative() tells whether an integer expression has a non-negative value.&#xD;&#xA;result = false"/>
+        <details key="documentation" value="The query isNonNegative() tells whether an integer expression has a non-negative value.&#xD;&#xA;self.isIntegral()&#xD;&#xA;result = false"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
@@ -1758,18 +1758,18 @@
     </eOperations>
     <eOperations name="isMultivalued" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.&#xD;&#xA;result = upperBound() > 1"/>
+        <details key="documentation" value="The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.&#xD;&#xA;upperBound()->notEmpty()&#xD;&#xA;result = upperBound() > 1"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="includesCardinality" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.&#xD;&#xA;result = (lowerBound() &lt;= C) and (upperBound() >= C)"/>
+        <details key="documentation" value="The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.&#xD;&#xA;upperBound()->notEmpty() and lowerBound()->notEmpty()&#xD;&#xA;result = (lowerBound() &lt;= C) and (upperBound() >= C)"/>
       </eAnnotations>
       <eParameters name="C" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="includesMultiplicity" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.&#xD;&#xA;result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())"/>
+        <details key="documentation" value="The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.&#xD;&#xA;self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()&#xD;&#xA;result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())"/>
       </eAnnotations>
       <eParameters name="M" ordered="false" lowerBound="1" eType="#//MultiplicityElement"/>
     </eOperations>
@@ -1905,7 +1905,7 @@
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.&#xD;&#xA;The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined attribute is property.&#xD;&#xA;result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))"/>
+          <details key="documentation" value="The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.&#xD;&#xA;The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined attribute is property.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
@@ -2313,7 +2313,7 @@
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.&#xD;&#xA;The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter. &#xD;&#xA;result = (redefinee.oclIsKindOf(Operation) and&#xA;let op: Operation = redefinee.oclAsType(Operation) in&#xA;self.ownedParameter.size() = op.ownedParameter.size() and&#xA;forAll(i | op.ownedParameter[i].type.conformsTo(self.ownedParameter[i].type))&#xA;)"/>
+          <details key="documentation" value="The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.&#xD;&#xA;The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter. &#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = (redefinee.oclIsKindOf(Operation) and&#xA;let op: Operation = redefinee.oclAsType(Operation) in&#xA;self.ownedParameter.size() = op.ownedParameter.size() and&#xA;forAll(i | op.ownedParameter[i].type.conformsTo(self.ownedParameter[i].type))&#xA;)"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
@@ -3165,7 +3165,7 @@
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)"/>
+          <details key="documentation" value="The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.&#xD;&#xA;result = (redefinee.oclIsKindOf(Transition) and&#xD;&#xA;  let trans: Transition = redefinee.oclAsType(Transition) in&#xD;&#xA;    (source() = trans.source() and trigger() = tran.trigger())&#xD;&#xA;redefinee.isRedefinitionContextValid(self)"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
@@ -4611,7 +4611,7 @@
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.&#xD;&#xA;result = redefinee.oclIsKindOf(RedefineableTemplateSignature)"/>
+          <details key="documentation" value="The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = redefinee.oclIsKindOf(RedefineableTemplateSignature)"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>

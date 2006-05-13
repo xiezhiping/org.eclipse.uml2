@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.15 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Classifier.java,v 1.16 2006/05/13 04:46:31 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -764,6 +764,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
+	 * c.allParents()->includes(self)
 	 * result = member->select(m | c.hasVisibilityOf(m))
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false" cRequired="true" cOrdered="false"
@@ -776,6 +777,7 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
+	 * self.allParents()->collect(c | c.member)->includes(n)
 	 * result = if (self.inheritedMember->includes(n)) then (n.visibility <> #private) else true
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
