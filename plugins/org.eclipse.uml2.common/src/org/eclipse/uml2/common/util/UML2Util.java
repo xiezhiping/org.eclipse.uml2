@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.22 2006/05/12 20:41:25 khussey Exp $
+ * $Id: UML2Util.java,v 1.23 2006/05/13 04:43:20 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -84,10 +84,30 @@ public class UML2Util {
 		}
 
 		public boolean matches(EObject otherEObject) {
+			return eObject == null
+				? false
+				: (otherEObject == null
+					? false
+					: eObject.eClass() == otherEObject.eClass());
+		}
+	}
 
-			return eObject == null || otherEObject == null
-				? eObject == null && otherEObject == null
-				: eObject.eClass() == otherEObject.eClass();
+	public static class EStructuralFeatureMatcher
+			extends EClassMatcher {
+
+		protected final EStructuralFeature eStructuralFeature;
+
+		public EStructuralFeatureMatcher(EObject eObject,
+				EStructuralFeature EStructuralFeature) {
+			super(eObject);
+
+			this.eStructuralFeature = EStructuralFeature;
+		}
+
+		public boolean matches(EObject otherEObject) {
+			return super.matches(eObject)
+				&& safeEquals(eObject.eGet(eStructuralFeature), otherEObject
+					.eGet(eStructuralFeature));
 		}
 	}
 

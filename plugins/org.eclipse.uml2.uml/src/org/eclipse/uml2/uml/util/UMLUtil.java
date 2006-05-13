@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.30 2006/05/12 20:41:28 khussey Exp $
+ * $Id: UMLUtil.java,v 1.31 2006/05/13 04:43:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -128,34 +128,18 @@ public class UMLUtil
 			extends EcoreUtil.Copier {
 
 		protected class BodyMatcher
-				extends EClassMatcher {
+				extends EStructuralFeatureMatcher {
 
 			protected BodyMatcher(Comment comment) {
-				super(comment);
-			}
-
-			public boolean matches(EObject otherEObject) {
-
-				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || safeEquals(
-						((Comment) eObject).getBody(), ((Comment) otherEObject)
-							.getBody()));
+				super(comment, UMLPackage.Literals.COMMENT__BODY);
 			}
 		}
 
 		protected class NameMatcher
-				extends EClassMatcher {
+				extends EStructuralFeatureMatcher {
 
 			protected NameMatcher(NamedElement namedElement) {
-				super(namedElement);
-			}
-
-			public boolean matches(EObject otherEObject) {
-
-				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || safeEquals(
-						((NamedElement) eObject).getName(),
-						((NamedElement) otherEObject).getName()));
+				super(namedElement, UMLPackage.Literals.NAMED_ELEMENT__NAME);
 			}
 		}
 
@@ -167,11 +151,9 @@ public class UMLUtil
 			}
 
 			public boolean matches(EObject otherEObject) {
-
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || safeEquals(
-						((BasicEMap.Entry) eObject).getKey(),
-						((BasicEMap.Entry) otherEObject).getKey()));
+					&& safeEquals(((BasicEMap.Entry) eObject).getKey(),
+						((BasicEMap.Entry) otherEObject).getKey());
 			}
 		}
 
@@ -183,10 +165,9 @@ public class UMLUtil
 			}
 
 			public boolean matches(EObject otherEObject) {
-
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || getResultingQName(
-						eObject).equals(getResultingQName(otherEObject)));
+					&& safeEquals(getResultingQName(eObject),
+						getResultingQName(otherEObject));
 			}
 		}
 
@@ -198,27 +179,17 @@ public class UMLUtil
 			}
 
 			public boolean matches(EObject otherEObject) {
-
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || safeEquals(
-						((ValueSpecification) eObject).stringValue(),
-						((ValueSpecification) otherEObject).stringValue()));
+					&& safeEquals(((ValueSpecification) eObject).stringValue(),
+						((ValueSpecification) otherEObject).stringValue());
 			}
 		}
 
 		protected class SourceMatcher
-				extends EClassMatcher {
+				extends EStructuralFeatureMatcher {
 
 			protected SourceMatcher(EAnnotation eAnnotation) {
-				super(eAnnotation);
-			}
-
-			public boolean matches(EObject otherEObject) {
-
-				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || safeEquals(
-						((EAnnotation) eObject).getSource(),
-						((EAnnotation) otherEObject).getSource()));
+				super(eAnnotation, EcorePackage.Literals.EANNOTATION__SOURCE);
 			}
 		}
 
@@ -232,23 +203,16 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				if (super.matches(otherEObject)) {
+					Type type = ((TypedElement) eObject).getType();
+					Type otherType = ((TypedElement) otherEObject).getType();
 
-					if (eObject == null && otherEObject == null) {
-						return true;
-					} else {
-						Type type = ((TypedElement) eObject).getType();
-						Type otherType = ((TypedElement) otherEObject)
-							.getType();
-
-						return new ResultingQNameMatcher(type)
-							.matches(otherType)
-							|| (type instanceof Classifier
-								&& otherType instanceof Classifier && (findEObject(
-								((Classifier) type).allParents(),
-								new ResultingQNameMatcher(otherType)) != null || findEObject(
-								((Classifier) otherType).allParents(),
-								new ResultingQNameMatcher(type)) != null));
-					}
+					return new ResultingQNameMatcher(type).matches(otherType)
+						|| (type instanceof Classifier
+							&& otherType instanceof Classifier && (findEObject(
+							((Classifier) type).allParents(),
+							new ResultingQNameMatcher(otherType)) != null || findEObject(
+							((Classifier) otherType).allParents(),
+							new ResultingQNameMatcher(type)) != null));
 				}
 
 				return false;
@@ -1750,18 +1714,10 @@ public class UMLUtil
 			implements Converter {
 
 		protected class NameMatcher
-				extends EClassMatcher {
+				extends EStructuralFeatureMatcher {
 
 			protected NameMatcher(ENamedElement eNamedElement) {
-				super(eNamedElement);
-			}
-
-			public boolean matches(EObject otherEObject) {
-
-				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || ((ENamedElement) eObject)
-						.getName().equalsIgnoreCase(
-							((ENamedElement) otherEObject).getName()));
+				super(eNamedElement, EcorePackage.Literals.ENAMED_ELEMENT__NAME);
 			}
 		}
 
@@ -1773,11 +1729,9 @@ public class UMLUtil
 			}
 
 			public boolean matches(EObject otherEObject) {
-
 				return super.matches(otherEObject)
-					&& ((eObject == null && otherEObject == null) || safeEquals(
-						((ETypedElement) eObject).getEType(),
-						((ETypedElement) otherEObject).getEType()));
+					&& safeEquals(((ETypedElement) eObject).getEType(),
+						((ETypedElement) otherEObject).getEType());
 			}
 		}
 
@@ -1986,58 +1940,60 @@ public class UMLUtil
 				EModelElement eModelElement = (EModelElement) doSwitch(context);
 
 				if (eModelElement != null) {
-					String name = constraint.getName();
+					ValueSpecification specification = constraint
+						.getSpecification();
 
-					if (!isEmpty(name)) {
+					if (eModelElement instanceof EClassifier) {
+						String name = constraint.getName();
 
-						if (eModelElement instanceof EClass) {
-							EOperation eOperation = EcoreFactory.eINSTANCE
-								.createEOperation();
-							elementToEModelElementMap.put(constraint,
-								eOperation);
+						if (!isEmpty(name)) {
 
-							((EClass) eModelElement).getEOperations().add(
-								eOperation);
+							if (eModelElement instanceof EClass) {
+								EOperation eOperation = EcoreFactory.eINSTANCE
+									.createEOperation();
+								elementToEModelElementMap.put(constraint,
+									eOperation);
 
-							setName(eOperation, name, true);
+								((EClass) eModelElement).getEOperations().add(
+									eOperation);
 
-							eOperation.setEType(EcorePackage.eINSTANCE
-								.getEBoolean());
+								setName(eOperation, name, true);
 
-							EParameter eParameter = EcoreFactory.eINSTANCE
-								.createEParameter();
+								eOperation.setEType(EcorePackage.eINSTANCE
+									.getEBoolean());
 
-							eOperation.getEParameters().add(eParameter);
+								EParameter eParameter = EcoreFactory.eINSTANCE
+									.createEParameter();
 
-							setName(eParameter, "diagnostics", false); //$NON-NLS-1$
-							eParameter.setEType(EcorePackage.eINSTANCE
-								.getEDiagnosticChain());
+								eOperation.getEParameters().add(eParameter);
 
-							eParameter = EcoreFactory.eINSTANCE
-								.createEParameter();
+								setName(eParameter, "diagnostics", false); //$NON-NLS-1$
+								eParameter.setEType(EcorePackage.eINSTANCE
+									.getEDiagnosticChain());
 
-							eOperation.getEParameters().add(eParameter);
+								eParameter = EcoreFactory.eINSTANCE
+									.createEParameter();
 
-							setName(eParameter, "context", false); //$NON-NLS-1$
-							eParameter.setEType(EcorePackage.eINSTANCE
-								.getEMap());
+								eOperation.getEParameters().add(eParameter);
 
-							defaultCase(constraint);
+								setName(eParameter, "context", false); //$NON-NLS-1$
+								eParameter.setEType(EcorePackage.eINSTANCE
+									.getEMap());
 
-							eModelElement = eOperation;
-						} else {
+								defaultCase(constraint);
 
-							if (addConstraint(eModelElement, name) && DEBUG) {
-								System.out
-									.println(getQualifiedText(eModelElement)
-										+ " is constrained with '" //$NON-NLS-1$
-										+ name + "'"); //$NON-NLS-1$
+								eModelElement = eOperation;
+							} else {
+
+								if (addConstraint(eModelElement, name) && DEBUG) {
+									System.out
+										.println(getQualifiedText(eModelElement)
+											+ " is constrained with '" //$NON-NLS-1$
+											+ name + "'"); //$NON-NLS-1$
+								}
 							}
 						}
 					}
-
-					ValueSpecification specification = constraint
-						.getSpecification();
 
 					if (specification != null) {
 						addDocumentation(eModelElement, specification
@@ -6208,13 +6164,11 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				if (super.matches(otherEObject)) {
-					Feature feature = (Feature) eObject;
 					Feature otherFeature = (Feature) otherEObject;
 
-					return (feature == null && otherFeature == null)
-						|| (feature != otherFeature
-							&& safeEquals(otherFeature.getName(), name) && isRedefinitionValid(
-							feature, otherFeature));
+					return eObject != otherFeature
+						&& safeEquals(otherFeature.getName(), name)
+						&& isRedefinitionValid((Feature) eObject, otherFeature);
 				}
 
 				return false;
@@ -6282,13 +6236,11 @@ public class UMLUtil
 			public boolean matches(EObject otherEObject) {
 
 				if (super.matches(otherEObject)) {
-					Property property = (Property) eObject;
 					Property otherProperty = (Property) otherEObject;
 
-					return (property == null && otherProperty == null)
-						|| (property != otherProperty
-							&& otherProperty.getName().equals(name) && isSubsetValid(
-							property, otherProperty));
+					return eObject != otherProperty
+						&& safeEquals(otherProperty.getName(), name)
+						&& isSubsetValid((Property) eObject, otherProperty);
 				}
 
 				return false;

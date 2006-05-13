@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.3 2006/04/25 20:58:28 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.4 2006/05/13 04:43:26 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -38,6 +38,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.editor.actions.UMLCommandAction;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 public abstract class GenerateProfileAction
 		extends UMLCommandAction {
@@ -85,8 +86,7 @@ public abstract class GenerateProfileAction
 			final org.eclipse.uml2.uml.Class metaclass, boolean required) {
 		Extension extension = (Extension) UML2Util.findEObject(EcoreUtil
 			.getObjectsByType(stereotype.getProfile().getOwnedTypes(),
-				UMLPackage.Literals.EXTENSION), new UML2Util.EClassMatcher(
-			UMLPackage.Literals.EXTENSION) {
+				UMLPackage.Literals.EXTENSION), new UML2Util.EObjectMatcher() {
 
 			public boolean matches(EObject eObject) {
 				Extension extension = (Extension) eObject;
@@ -137,8 +137,8 @@ public abstract class GenerateProfileAction
 			new UML2Util.EObjectMatcher() {
 
 				public boolean matches(EObject eObject) {
-					return eObject instanceof Image
-						&& ((Image) eObject).getLocation().equals(location);
+					return UMLUtil.safeEquals(((Image) eObject).getLocation(),
+						location);
 				}
 			});
 
