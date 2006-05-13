@@ -53,7 +53,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rMu7uBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E106A8400E6">
                 <body>The query allOwnedElements() gives all of the direct and indirect owned elements of an element.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rMu7vBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106A8400E6">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rMu7vBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106A8400E6">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rM4ssBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))</body>
@@ -68,7 +68,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rM4stRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E106AD00153">
                 <body>The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rNLnoxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106AD00153">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rNLnoxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106AD00153">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rNLnpBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -136,7 +136,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rRgHARTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10644F034E">
                 <body>The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRp38xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10644F034E">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRp38xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10644F034E">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRp39BTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if self.namespace->isEmpty()&#xA;then Sequence{}&#xA;else self.namespace.allNamespaces()->prepend(self.namespace)&#xA;endif</body>
@@ -151,7 +151,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rRp3-BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1064C70329">
                 <body>The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRp3_hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1064C70329">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRp3_hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1064C70329">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRp3_xTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)&#xA;then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()&#xA;else true&#xA;endif</body>
@@ -165,7 +165,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rRp4AxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10653C0010">
                 <body>The query separator() gives the string that is used to separate names when constructing a qualified name.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRzB4xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10653C0010">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRzB4xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10653C0010">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rRzB5BTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = '::'</body>
@@ -177,7 +177,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rRzB6BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1065EF023E">
                 <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRzB7BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1065EF023E _3ADC7B74022D3CA008400375">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rRzB7BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1065EF023E _3ADC7B74022D3CA008400375">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rR8y4BTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif</body>
@@ -218,7 +218,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rSZe3RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1068D4021B">
                 <body>The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. Those semantics are specified by overriding the getNamesOfMember operation. The specification here simply returns a set containing a single name, or the empty set if no name.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rSZe4hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1068D4021B">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rSZe4hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1068D4021B">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rSZe4xTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if member->includes(element) then Set{}->including(element.name) else Set{} endif</body>
@@ -234,7 +234,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rSjP0BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E106939005E">
                 <body>The Boolean query membersAreDistinguishable() determines whether all of the namespaces members are distinguishable within it.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rSjP1BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106939005E">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rSjP1BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106939005E">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rSjP1RTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = self.member->forAll( memb |&#xA;self.member->excluding(memb)->forAll(other |&#xA;memb.isDistinguishableFrom(other, self)))</body>
@@ -270,7 +270,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rTJFtBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E118E370051">
                 <body>The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rTJFuBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E118E370051">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rTJFuBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E118E370051">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rTJFuRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = member->select(oclIsKindOf(Feature))</body>
@@ -330,7 +330,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rTvirxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1402B00031">
                 <body>The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rT4skxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1402B00031">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rT4skxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1402B00031">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rT4slBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = false</body>
@@ -342,7 +342,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rT4smBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1402DE0204">
                 <body>The query integerValue() gives a single Integer value when one can be computed.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rT4snBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1402DE0204">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rT4snBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1402DE0204">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rT4snRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = Set{}</body>
@@ -354,7 +354,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rT4soRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14030E0325">
                 <body>The query booleanValue() gives a single Boolean value when one can be computed.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdkRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14030E0325">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdkRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14030E0325">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdkhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = Set{}</body>
@@ -366,7 +366,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rUCdlhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1403380299">
                 <body>The query stringValue() gives a single String value when one can be computed.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdmhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1403380299">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdmhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1403380299">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdmxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = Set{}</body>
@@ -378,7 +378,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rUCdnxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140370027C">
                 <body>The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdoxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140370027C">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdoxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140370027C">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdpBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = Set{}</body>
@@ -390,7 +390,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rUCdqBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1403A502BE">
                 <body>The query isNull() returns true when it can be computed that the value is null.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdrBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1403A502BE">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUCdrBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1403A502BE">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUCdrRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = false</body>
@@ -469,7 +469,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rUyEdBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140A3102FA">
                 <body>The derived lower attribute must equal the lowerBound.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUyEehTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140A3102FA _3ADC7B74022D3DF78F1C034C">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUyEehTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140A3102FA _3ADC7B74022D3DF78F1C034C">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUyEexTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = lowerBound()</body>
@@ -481,7 +481,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rUyEfxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140A6C013C">
                 <body>The derived upper attribute must equal the upperBound.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUyEhRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140A6C013C _3ADC7B74022D3DF78F2B0290">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rUyEhRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140A6C013C _3ADC7B74022D3DF78F2B0290">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rUyEhhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = upperBound()</body>
@@ -493,7 +493,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rUyEihTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140B0801A5">
                 <body>The query lowerBound() returns the lower bound of the multiplicity as an integer.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rU71cxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140B0801A5">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rU71cxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140B0801A5">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rU71dBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif</body>
@@ -505,7 +505,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rU71eBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140B58039F">
                 <body>The query upperBound() returns the upper bound of the multiplicity as an unlimited natural.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rU71fBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140B58039F">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rU71fBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140B58039F">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rU71fRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif</body>
@@ -549,7 +549,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rVYhZhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E105A8A018F">
                 <body>The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rVhrVRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105A8A018F">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rVhrVRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105A8A018F">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rVhrVhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if n.oclIsKindOf(BehavioralFeature)&#xA;then&#xA;  if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()&#xA;  then Set{}->including(self)->including(n)->isUnique( bf | bf.parameter->collect(type))&#xA;  else true&#xA;  endif&#xA;else true&#xA;endif</body>
@@ -739,7 +739,7 @@
                   <body>redefinee.isRedefinitionContextValid(self)</body>
                 </specification>
               </ownedRule>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rWkNKRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106C2C03A3">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rWkNKRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106C2C03A3">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNKhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = false</body>
@@ -752,7 +752,7 @@
               <ownedComment xmi:type="uml:Comment" xmi:id="_rWkNLhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E106C8A007D">
                 <body>The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rWkNMxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E106C8A007D">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rWkNMxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E106C8A007D">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rWkNNBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = redefinitionContext->exists(c | c.allParents()->includes (redefined.redefinitionContext)))</body>
@@ -817,7 +817,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rXA5EhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E105DC8003E">
                 <body>The general classifiers are the classifiers referenced by the generalization relationships.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rXKqExTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105DC8003E _3ADC7B74022D3DF65B8D0134">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rXKqExTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105DC8003E _3ADC7B74022D3DF65B8D0134">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rXKqFBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = self.parents()</body>
@@ -832,7 +832,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rXKqGBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E105E6D030C">
                 <body>The query parents() gives all of the immediate ancestors of a generalized Classifier.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rXKqHBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105E6D030C">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rXKqHBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105E6D030C">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rXKqHRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = generalization.general</body>
@@ -847,7 +847,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rXKqIRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10747B0198">
                 <body>The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rXUbFBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10747B0198">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rXUbFBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10747B0198">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rXUbFRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = (self=other) or (self.allParents()->includes(other))</body>
@@ -1108,7 +1108,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_raJspRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E107BB80139">
                 <body>The query bestVisibility() examines a set of VisibilityKinds, and returns public as the preferred visibility.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_raJsqhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E107BB80139">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_raJsqhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E107BB80139">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_raJsqxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if vis->includes(#public) then #public else #private endif</body>
@@ -1191,7 +1191,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_ravigxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10722C00E4">
                 <body>The inheritedMember association is derived by inheriting the inheritable members of the parents.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_raviiRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10722C00E4 _3ADC7B74022D3DF65A9D02E0">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_raviiRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10722C00E4 _3ADC7B74022D3DF65A9D02E0">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_raviihTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))</body>
@@ -1206,7 +1206,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_ravijhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1072FF02E6">
                 <body>The query parents() gives all of the immediate ancestors of a generalized Classifier.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_ravikhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1072FF02E6">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_ravikhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1072FF02E6">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_ravikxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = general</body>
@@ -1221,7 +1221,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_ravilxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10734200DA">
                 <body>The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_ravimxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10734200DA">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_ravimxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10734200DA">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_ravinBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = self.parents()->union(self.parents()->collect(p | p.allParents())</body>
@@ -1242,7 +1242,7 @@ other classifiers.</body>
                   <body>c.allParents()->includes(self)</body>
                 </specification>
               </ownedRule>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5ThhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10738400DF">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5ThhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10738400DF">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5ThxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = member->select(m | c.hasVisibilityOf(m))</body>
@@ -1264,7 +1264,7 @@ other classifiers.</body>
                   <body>self.allParents()->collect(c | c.member)->includes(n)</body>
                 </specification>
               </ownedRule>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5TkhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10740603B7">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5TkhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10740603B7">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TkxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if (self.inheritedMember->includes (n)) then (n.visibility &lt;> #private) else true</body>
@@ -1277,7 +1277,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_ra5TlxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1074EF0344">
                 <body>The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5TnBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1074EF0344">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5TnBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1074EF0344">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TnRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = inhs</body>
@@ -1296,7 +1296,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_ra5ToRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10770902B1">
                 <body>The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5TphTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10770902B1">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_ra5TphTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10770902B1">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_ra5TpxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = self.oclIsKindOf(c.oclType)</body>
@@ -1331,7 +1331,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rbo6YBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1406E501AC">
                 <body>The query isComputable() is redefined to be true.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbo6ZBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1406E501AC">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbo6ZBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1406E501AC">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbo6ZRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -1343,7 +1343,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rbo6aRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1407110029">
                 <body>The query booleanValue() gives the value.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbo6bRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407110029">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbo6bRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407110029">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbo6bhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = value</body>
@@ -1368,7 +1368,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rbo6exTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1407FF0374">
                 <body>The query isComputable() is redefined to be true.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbo6fxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407FF0374">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbo6fxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407FF0374">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbo6gBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -1380,7 +1380,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rbyEURTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140821003E">
                 <body>The query stringValue() gives the value.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbyEVRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140821003E">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rbyEVRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140821003E">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rbyEVhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = value</body>
@@ -1404,7 +1404,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rbyEaBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1407B4000F">
                 <body>The query isComputable() is redefined to be true.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71UxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407B4000F">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71UxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407B4000F">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71VBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -1416,7 +1416,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rb71WBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1407D8029C">
                 <body>The query isNull() returns true.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71XBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1407D8029C">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71XBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1407D8029C">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71XRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -1440,7 +1440,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rb71ZhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14074A00F3">
                 <body>The query isComputable() is redefined to be true.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71ahTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14074A00F3">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71ahTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14074A00F3">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71axTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -1452,7 +1452,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rb71bxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14077700E4">
                 <body>The query integerValue() gives the value.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71cxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14077700E4">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rb71cxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14077700E4">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb71dBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = value</body>
@@ -1476,7 +1476,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rcFmWBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E140869018C">
                 <body>The query isComputable() is redefined to be true.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcFmXBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E140869018C">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcFmXBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E140869018C">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcFmXRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = true</body>
@@ -1488,7 +1488,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rcFmYRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14088F01CD">
                 <body>The query unlimitedValue() gives the value.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcFmZRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14088F01CD">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcFmZRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14088F01CD">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcFmZhTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = value</body>
@@ -1564,7 +1564,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rcOwTRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E105FFF0120">
                 <body>The query lowerBound() returns the lower bound of the multiplicity as an integer.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhQxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E105FFF0120">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhQxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E105FFF0120">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhRBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if lower->notEmpty() then lower else 1 endif</body>
@@ -1576,7 +1576,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rcYhSBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E10604500E4">
                 <body>The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhTBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10604500E4">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhTBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10604500E4">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhTRTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = if upper->notEmpty() then upper else 1 endif</body>
@@ -1594,7 +1594,7 @@ other classifiers.</body>
                   <body>upperBound()->notEmpty()</body>
                 </specification>
               </ownedRule>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhVxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1060A900DE">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhVxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1060A900DE">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhWBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = upperBound() > 1</body>
@@ -1612,7 +1612,7 @@ other classifiers.</body>
                   <body>upperBound()->notEmpty() and lowerBound()->notEmpty()&#xA;includesCardinality = (lowerBound() &lt;= C) and (upperBound() >= C)&#xA;</body>
                 </specification>
               </ownedRule>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhYxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1060D80399">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhYxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1060D80399">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rcYhZBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = (lowerBound() &lt;= C) and (upperBound() >= C)</body>
@@ -1631,7 +1631,7 @@ other classifiers.</body>
                   <body>self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()</body>
                 </specification>
               </ownedRule>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhbxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E10616C00C0">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rcYhbxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E10616C00C0">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rciSQBTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())</body>
@@ -1660,7 +1660,7 @@ other classifiers.</body>
               <ownedComment xmi:type="uml:Comment" xmi:id="_rdR5KRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E554FFD0353">
                 <body>The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.</body>
               </ownedComment>
-              <ownedRule xmi:type="uml:Constraint" xmi:id="_rdR5LhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E554FFD0353">
+              <ownedRule xmi:type="uml:Constraint" xmi:id="_rdR5LhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E554FFD0353">
                 <specification xmi:type="uml:OpaqueExpression" xmi:id="_rdR5LxTaEdqZu-3Jy1-uYg">
                   <language>OCL</language>
                   <body>result = false</body>
@@ -2001,7 +2001,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rfEB1BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D416D580600B0">
               <body>The query lowerBound() returns the lower bound of the multiplicity as an integer.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfEB2BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B0">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfEB2BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B0">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB2RTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if lower->notEmpty() then lower else 1 endif</body>
@@ -2013,7 +2013,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rfEB3RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D416D580600B1">
               <body>The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfEB4RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B1">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfEB4RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B1">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB4hTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if upper->notEmpty() then upper else 1 endif</body>
@@ -2031,7 +2031,7 @@ other classifiers.</body>
                 <body>upperBound()->notEmpty()</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfEB7BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B2">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfEB7BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B2">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfEB7RTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = upperBound() > 1</body>
@@ -2049,7 +2049,7 @@ other classifiers.</body>
                 <body>upperBound()->notEmpty() and lowerBound()->notEmpty()</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfNy1hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B3">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfNy1hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfNy1xTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (lowerBound() &lt;= C) and (upperBound() >= C)</body>
@@ -2068,7 +2068,7 @@ other classifiers.</body>
                 <body>self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfNy4hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D416D580600B5">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rfNy4hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D416D580600B5">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rfNy4xTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())</body>
@@ -2196,7 +2196,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rg2xlxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E555A26019A">
               <body>The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg2xnBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E555A26019A">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg2xnBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E555A26019A">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg2xnRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (self=other) or (self.allParents()->includes(other))</body>
@@ -2209,7 +2209,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rg2xoRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00B1">
               <body>The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg_7gxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00B1">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg_7gxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00B1">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg_7hBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = member->select(oclIsKindOf(Feature))</body>
@@ -2224,7 +2224,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rg_7iBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00D9">
               <body>The general classifiers are the classifiers referenced by the generalization relationships.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg_7jhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00D9 _3ADC7B74022D3E0270BE0395">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg_7jhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D9 _3ADC7B74022D3E0270BE0395">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg_7jxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.parents()</body>
@@ -2239,7 +2239,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rg_7kxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00DB">
               <body>The query parents() gives all of the immediate ancestors of a generalized Classifier.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg_7lxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00DB">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rg_7lxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00DB">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rg_7mBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = generalization.general</body>
@@ -2254,7 +2254,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rhJsiBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00F1">
               <body>The inheritedMember association is derived by inheriting the inheritable members of the parents.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhJsjhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F1 _3ADC7B74022D4304A13201D9">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhJsjhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00F1 _3ADC7B74022D4304A13201D9">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsjxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))</body>
@@ -2269,7 +2269,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rhJskxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00F5">
               <body>The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhJslxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F5">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhJslxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00F5">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsmBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.parents()->union(self.parents()->collect(p | p.allParents())</body>
@@ -2290,7 +2290,7 @@ other classifiers.</body>
                 <body>c.allParents()->includes(self)</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhJsohTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00F7">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhJsohTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00F7">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhJsoxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = member->select(m | c.hasVisibilityOf(m))</body>
@@ -2312,7 +2312,7 @@ other classifiers.</body>
                 <body>self.allParents()->collect(c | c.member)->includes(n)</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhTdhhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00FA">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhTdhhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00FA">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdhxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if (self.inheritedMember->includes(n)) then (n.visibility &lt;> #private) else true</body>
@@ -2325,7 +2325,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rhTdixTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C0100">
               <body>The inherit operation is overridden to exclude redefined properties.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhTdkBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0100">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhTdkBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0100">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdkRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = inhs</body>
@@ -2344,7 +2344,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rhTdlRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C0108">
               <body>The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhTdmhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0108">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhTdmhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0108">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhTdmxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.oclIsKindOf(c.oclType)</body>
@@ -2421,7 +2421,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rhcnhhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C006A">
               <body>The query allOwnedElements() gives all of the direct and indirect owned elements of an element.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhmYcxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C006A">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhmYcxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C006A">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhmYdBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))</body>
@@ -2436,7 +2436,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rhmYeBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C0073">
               <body>The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhmYfBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0073">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rhmYfBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0073">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rhmYfRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = true</body>
@@ -2528,7 +2528,7 @@ other classifiers.</body>
                 <body>upperBound()->notEmpty()</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa1RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02B1">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa1RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D41C06EDF02B1">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa1hTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = upperBound() > 1</body>
@@ -2546,7 +2546,7 @@ other classifiers.</body>
                 <body>self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa4RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02BB">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa4RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D41C06EDF02BB">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa4hTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (self.lowerBound() &lt;= M.lowerBound()) and (self.upperBound() >= M.upperBound())</body>
@@ -2565,7 +2565,7 @@ other classifiers.</body>
                 <body>upperBound()->notEmpty() and lowerBound()->notEmpty()</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa7RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D41C06EDF02BD">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa7RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D41C06EDF02BD">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa7hTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (lowerBound() &lt;= C) and (upperBound() >= C)</body>
@@ -2578,7 +2578,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rlUa8hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00C6">
               <body>The query lowerBound() returns the lower bound of the multiplicity as an integer.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa9hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C6">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlUa9hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C6">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlUa9xTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if lower->notEmpty() then lower else 1 endif</body>
@@ -2590,7 +2590,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rlUa-xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00C8">
               <body>The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rleL0xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C8">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rleL0xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C8">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rleL1BTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if upper->notEmpty() then upper else 1 endif</body>
@@ -2656,7 +2656,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rln81BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142ABF004B">
               <body>The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rln82hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142ABF004B _3ADC7B74022D3DEE234B0163">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rln82hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142ABF004B _3ADC7B74022D3DEE234B0163">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rln82xTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.importMembers(self.elementImport.importedElement.asSet()->union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))</body>
@@ -2671,7 +2671,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rln83xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142BF301A2">
               <body>The query getNamesOfMember() is overridden to take account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rln85BTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142BF301A2">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rln85BTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142BF301A2">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rln85RTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if self.ownedMember->includes(element)&#xA;then Set{}->include(element.name)&#xA;else let elementImports: ElementImport = self.elementImport->select(ei | ei.importedElement = element) in&#xA;  if elementImports->notEmpty()&#xA;  then elementImports->collect(el | el.getName())&#xA;  else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))->collect(pi | pi.importedPackage.getNamesOfMember(element))&#xA;  endif&#xA;endif</body>
@@ -2687,7 +2687,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rln86RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142CAC03E3">
               <body>The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rln87hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142CAC03E3">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rln87hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142CAC03E3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rln87xTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem | mem.imp.isDistinguishableFrom(mem, self)))</body>
@@ -2706,7 +2706,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rln88xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142D230163">
               <body>The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlxGxBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142D230163">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlxGxBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142D230163">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlxGxRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))</body>
@@ -2725,7 +2725,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rlxG0hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00AF">
               <body>The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlxG1hTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00AF">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rlxG1hTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00AF">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rlxG1xTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.member->forAll( memb |&#xA;&#x9;self.member->excluding(memb)->forAll(other |&#xA;&#x9;&#x9;memb.isDistinguishableFrom(other, self)))</body>
@@ -2781,7 +2781,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rl631hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00D3">
               <body>The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rl632xTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00D3">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rl632xTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rl633BTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = false</body>
@@ -2794,7 +2794,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rl634BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00D6">
               <body>The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rl635RTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00D6">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rl635RTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00D6">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rl635hTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = self.redefinitionContext->exists(c | redefined.redefinitionContext->exists(r | c.allParents()->includes(r)))</body>
@@ -2848,7 +2848,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmEo2BTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00B9">
               <body>The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNysxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00B9">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNysxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00B9">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNytBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = false</body>
@@ -2860,7 +2860,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmNyuBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00BB">
               <body>The query integerValue() gives a single Integer value when one can be computed.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNyvBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00BB">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNyvBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00BB">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNyvRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = Set{}</body>
@@ -2872,7 +2872,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmNywRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00BD">
               <body>The query booleanValue() gives a single Boolean value when one can be computed.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNyxRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00BD">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNyxRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00BD">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNyxhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = Set{}</body>
@@ -2884,7 +2884,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmNyyhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00BF">
               <body>The query stringValue() gives a single String value when one can be computed.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNyzhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00BF">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmNyzhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00BF">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmNyzxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = Set{}</body>
@@ -2896,7 +2896,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmNy0xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00C2">
               <body>The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmXjsxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C2">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmXjsxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C2">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmXjtBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = Set{}</body>
@@ -2908,7 +2908,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmXjuBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00C4">
               <body>The query isNull() returns true when it can be computed that the value is null.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmXjvBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00C4">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmXjvBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00C4">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmXjvRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = false</body>
@@ -3003,7 +3003,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmgtpBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1420C102C4">
               <body>The inherit operation is overridden to exclude redefined properties.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmgtqRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1420C102C4">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmgtqRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1420C102C4">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmgtqhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))</body>
@@ -3171,7 +3171,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rmgtuBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14246901E3">
               <body>If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmgtvBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14246901E3 _3ADC7B74022D3DE6E76603BD">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rmgtvBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14246901E3 _3ADC7B74022D3DE6E76603BD">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rmgtvRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if owningAssociation->isEmpty() and association.memberEnd->size() = 2&#xA;  then&#xA;    let otherEnd = (association.memberEnd - self)->any() in&#xA;      if otherEnd.owningAssociation->isEmpty() then otherEnd else Set{} endif&#xA;    else Set {}&#xA;    endif</body>
@@ -3189,7 +3189,7 @@ other classifiers.</body>
                 <body>redefinee.isRedefinitionContextValid(self)</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rm0PuBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1427A80242">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rm0PuBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1427A80242">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PuRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))</body>
@@ -3202,7 +3202,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rm0PvRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1428A50264">
               <body>The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rm0PwRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1428A50264">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rm0PwRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1428A50264">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PwhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if association->notEmpty()&#xA;then association.endType-type &#xA;else if classifier->notEmpty then Set{classifier} else Set{} endif&#xA;endif</body>
@@ -3217,7 +3217,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rm0PxhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D430B77C7031C">
               <body>The query isNavigable indicates whether it is possible to navigate across the property.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rm0PyhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D430B77C7031C">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rm0PyhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D430B77C7031C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rm0PyxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = not classifier->isEmpty() or&#xA;association.owningAssociation.navigableOwnedEnd->includes(self)</body>
@@ -3229,7 +3229,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_BL2vgDc3Edqq1tCaRkgBQQ" annotatedElement="_1PbZwDc2Edqq1tCaRkgBQQ">
               <body>The query isAttribute() is true if the Property is defined as an attribute of some classifier.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_LLHN8Dc3Edqq1tCaRkgBQQ" constrainedElement="_1PbZwDc2Edqq1tCaRkgBQQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_LLHN8Dc3Edqq1tCaRkgBQQ" name="spec" constrainedElement="_1PbZwDc2Edqq1tCaRkgBQQ">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_LLHN8Tc3Edqq1tCaRkgBQQ">
                 <language>OCL</language>
                 <body>result = Classifier->allInstances->exists(c | c.attribute->includes(p))</body>
@@ -3262,7 +3262,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rnHKmBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1423CF02D2">
               <body>The inherit operation is overridden to exclude redefined properties.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnHKnRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1423CF02D2">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnHKnRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1423CF02D2">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnHKnhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))</body>
@@ -3497,7 +3497,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rnaFhhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142EC50359">
               <body>If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnaFihTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142EC50359 _3ADC7B74022D3E03284C0289">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnaFihTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142EC50359 _3ADC7B74022D3E03284C0289">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnaFixTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if returnResult->size() = 1 then returnResult->any().isOrdered else false endif</body>
@@ -3509,7 +3509,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rnaFjxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142F090090">
               <body>If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnaFkxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142F090090 _3ADC7B74022D3E032859015B">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnaFkxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142F090090 _3ADC7B74022D3E032859015B">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnaFlBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if returnResult->size() = 1 then returnResult->any().isUnique else true endif</body>
@@ -3521,7 +3521,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rnj2gBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142F3E03CB">
               <body>If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnj2hhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142F3E03CB _3ADC7B74022D3E0328B001D9">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnj2hhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142F3E03CB _3ADC7B74022D3E0328B001D9">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnj2hxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if returnResult->size() = 1 then returnResult->any().lower else Set{} endif</body>
@@ -3533,7 +3533,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rnj2ixTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142F7500B3">
               <body>If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnj2kRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142F7500B3 _3ADC7B74022D3E0328710341">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rnj2kRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142F7500B3 _3ADC7B74022D3E0328710341">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rnj2khTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if returnResult->size() = 1 then returnResult->any().upper else Set{} endif</body>
@@ -3545,7 +3545,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rnj2lhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142FBB01EA">
               <body>If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rntAchTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142FBB01EA _3ADC7B74022D3DEE7BDA017A">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rntAchTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142FBB01EA _3ADC7B74022D3DEE7BDA017A">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rntAcxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if returnResult->size() = 1 then returnResult->any().type else Set{} endif</body>
@@ -3563,7 +3563,7 @@ other classifiers.</body>
                 <body>redefinee.isRedefinitionContextValid(self)</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rntAhxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E143033011B">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rntAhxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E143033011B">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rntAiBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (redefinee.oclIsKindOf(Operation) and&#xA;    let op: Operation = redefinee.oclAsType(Operation) in&#xA;        self.formalParameter.size() = op.formalParameter.size() and&#xA;        self.returnResult.size() = op.returnResult.size() and&#xA;        forAll(i | op.formalParameter[i].type.conformsTo(self.formalParameter[i].type)) and&#xA;        forAll(i | op.returnResult[i].type.conformsTo(self.returnResult[i].type))&#xA;)</body>
@@ -3573,7 +3573,7 @@ other classifiers.</body>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_3ADC7B74022D3E14304B03AA" name="redefinee" type="_3ADC7B74022D3DE6C81D0244"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_ipBfsB8WEdqZ_KzuBfefCA" name="returnResult" isQuery="true" bodyCondition="__KtXgB8WEdqZ_KzuBfefCA">
-            <ownedRule xmi:type="uml:Constraint" xmi:id="__KtXgB8WEdqZ_KzuBfefCA" constrainedElement="_ipBfsB8WEdqZ_KzuBfefCA">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="__KtXgB8WEdqZ_KzuBfefCA" name="spec" constrainedElement="_ipBfsB8WEdqZ_KzuBfefCA">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="__KtXgR8WEdqZ_KzuBfefCA">
                 <language>OCL</language>
                 <body>result = ownedParameter->select (par | par.direction = #return)</body>
@@ -3636,7 +3636,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_roTdZxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E142E0F01A9">
               <body>The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_roTdbRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E142E0F01A9">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_roTdbRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E142E0F01A9">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_roTdbhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if n.oclIsKindOf(BehavioralFeature)&#xA;then&#xA;  if ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->notEmpty()&#xA;  then Set{}->include(self)->include(n)->isUnique( bf | bf.parameter->collect(type))&#xA;  else true&#xA;  endif&#xA;else true&#xA;endif</body>
@@ -3701,7 +3701,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rodOcRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E1429E403A3">
               <body>The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rodOdRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1429E403A3">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rodOdRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1429E403A3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rodOdhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if self.alias->notEmpty() then &#xA;  self.alias&#xA;else&#xA;  self.importedElement.name&#xA;endif</body>
@@ -3764,7 +3764,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_romYXhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E14315003AF">
               <body>The query mustBeOwned() indicates whether elements of this type must have an owner.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_romYYhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E14315003AF">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_romYYhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E14315003AF">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_romYYxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = false</body>
@@ -3776,7 +3776,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_romYZxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E143175007D">
               <body>The query visibleMembers() defines which members of a Package can be accessed outside it.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_romYaxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E143175007D">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_romYaxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E143175007D">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_romYbBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = member->select( m | self.makesVisible(m))</body>
@@ -3797,7 +3797,7 @@ other classifiers.</body>
                 <body>self.member->includes(el)</body>
               </specification>
             </ownedRule>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rowJVhTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D3E1431A90385">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rowJVhTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D3E1431A90385">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rowJVxTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = (ownedMember->includes(el)) or&#xA;   (elementImport->&#xA;      select(ei|ei.visibility = #public)->&#xA;         collect(ei|ei.importedElement)->includes(el)) or&#xA;   (packageImport->&#xA;      select(pi|pi.visibility = #public)->&#xA;        collect(pi|&#xA;           pi.importedPackage.member->includes(el))->notEmpty())</body>
@@ -3879,7 +3879,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_ro5TRxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C010B">
               <body>The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_ro5TTBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C010B">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_ro5TTBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C010B">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_ro5TTRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = false</body>
@@ -3953,7 +3953,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rpDESBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C007F">
               <body>The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDETBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C007F">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDETBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C007F">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDETRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if self.namespace->isEmpty()&#xA;then Sequence{}&#xA;else self.namespace.allNamespaces()->prepend(self.namespace)&#xA;endif</body>
@@ -3968,7 +3968,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rpDEURTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C0081">
               <body>The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEVxTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C0081">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEVxTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C0081">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDEWBTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)&#xA;then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()&#xA;else true&#xA;endif</body>
@@ -3982,7 +3982,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rpDEXBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00A4">
               <body>The query separator() gives the string that is used to separate names when constructing a qualified name.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEYBTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00A4">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEYBTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00A4">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDEYRTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = '::'</body>
@@ -3994,7 +3994,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rpDEZRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00A6">
               <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEaRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00A6">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpDEaRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00A6">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpDEahTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif</body>
@@ -4069,7 +4069,7 @@ other classifiers.</body>
             <ownedComment xmi:type="uml:Comment" xmi:id="_rpfwQBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D42EE305C00E3">
               <body>The query bestVisibility() examines a set of VisibilityKinds, and returns public as the preferred visibility.</body>
             </ownedComment>
-            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpfwRRTaEdqZu-3Jy1-uYg" constrainedElement="_3ADC7B74022D42EE305C00E3">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_rpfwRRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D42EE305C00E3">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_rpfwRhTaEdqZu-3Jy1-uYg">
                 <language>OCL</language>
                 <body>result = if vis->includes(#public) then #public else #private endif</body>
@@ -4491,7 +4491,7 @@ other classifiers.</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_QggOIDqAEdq16aujGBCOZg" annotatedElement="_17RV4DajEdqq1tCaRkgBQQ">
             <body>The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).</body>
           </ownedComment>
-          <ownedRule xmi:type="uml:Constraint" xmi:id="_-tfZcDajEdqq1tCaRkgBQQ" constrainedElement="_17RV4DajEdqq1tCaRkgBQQ">
+          <ownedRule xmi:type="uml:Constraint" xmi:id="_-tfZcDajEdqq1tCaRkgBQQ" name="spec" constrainedElement="_17RV4DajEdqq1tCaRkgBQQ">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_-tfZcTajEdqq1tCaRkgBQQ">
               <language>OCL</language>
               <body>result = memberEnd->reject(ownedEnd)</body>
@@ -4503,7 +4503,7 @@ other classifiers.</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_O8Em8DqAEdq16aujGBCOZg" annotatedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
             <body>The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).</body>
           </ownedComment>
-          <ownedRule xmi:type="uml:Constraint" xmi:id="_IyQqADakEdqq1tCaRkgBQQ" constrainedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
+          <ownedRule xmi:type="uml:Constraint" xmi:id="_IyQqADakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_Ccgo4DakEdqq1tCaRkgBQQ">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_IyQqATakEdqq1tCaRkgBQQ">
               <language>OCL</language>
               <body>result = metaclassEnd().type</body>
@@ -4515,7 +4515,7 @@ other classifiers.</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_NjHP8DqAEdq16aujGBCOZg" annotatedElement="_LziCoDakEdqq1tCaRkgBQQ">
             <body>The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.</body>
           </ownedComment>
-          <ownedRule xmi:type="uml:Constraint" xmi:id="_SD7CoDakEdqq1tCaRkgBQQ" constrainedElement="_LziCoDakEdqq1tCaRkgBQQ">
+          <ownedRule xmi:type="uml:Constraint" xmi:id="_SD7CoDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_LziCoDakEdqq1tCaRkgBQQ">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_SD7CoTakEdqq1tCaRkgBQQ">
               <language>OCL</language>
               <body>result = (ownedEnd->lowerBound() = 1)</body>
@@ -4567,7 +4567,7 @@ other classifiers.</body>
             <body>The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default&#xD;
 lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.</body>
           </ownedComment>
-          <ownedRule xmi:type="uml:Constraint" xmi:id="_ZWJvkDajEdqq1tCaRkgBQQ" constrainedElement="_InW3ADajEdqq1tCaRkgBQQ">
+          <ownedRule xmi:type="uml:Constraint" xmi:id="_ZWJvkDajEdqq1tCaRkgBQQ" name="spec" constrainedElement="_InW3ADajEdqq1tCaRkgBQQ">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_ZWJvkTajEdqq1tCaRkgBQQ">
               <language>OCL</language>
               <body>result = lowerBound = if lowerValue->isEmpty() then 0 else lowerValue->IntegerValue() endif</body>
@@ -4611,7 +4611,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <ownedComment xmi:type="uml:Comment" xmi:id="_5-hO8Dp_Edq16aujGBCOZg" annotatedElement="_qifDQDakEdqq1tCaRkgBQQ">
             <body>The query allOwningPackages() returns all the directly or indirectly owning packages.</body>
           </ownedComment>
-          <ownedRule xmi:type="uml:Constraint" xmi:id="_3LBREDakEdqq1tCaRkgBQQ" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
+          <ownedRule xmi:type="uml:Constraint" xmi:id="_3LBREDakEdqq1tCaRkgBQQ" name="spec" constrainedElement="_qifDQDakEdqq1tCaRkgBQQ">
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_3LBRETakEdqq1tCaRkgBQQ">
               <language>OCL</language>
               <body>result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())</body>
@@ -4684,95 +4684,95 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EReference xmi:id="_G1Q7wOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CADCD85009B"/>
-  <Ecore:EReference xmi:id="_G1Q7weHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CADCD8500A5"/>
-  <Ecore:EAttribute xmi:id="_G1Q7wuHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3CA0080E03C3"/>
-  <Ecore:EAttribute xmi:id="_G1Q7w-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA008400375"/>
-  <Ecore:EReference xmi:id="_G1Q7xOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA008A2036C"/>
-  <Ecore:EOperation xmi:id="_G1Q7xeHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName"/>
-  <Ecore:EReference xmi:id="_G1Q7xuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA008A20358"/>
-  <Ecore:EReference xmi:id="_G1Q7x-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA0098401B9"/>
-  <Ecore:EReference xmi:id="_G1Q7yOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA00B92018D"/>
-  <Ecore:EReference xmi:id="_G1Q7yeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA00B920183"/>
-  <Ecore:EAttribute xmi:id="_G1Q7yuHgEdq-hoB9-WtIbg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AE11E501C8"/>
-  <Ecore:EAttribute xmi:id="_G1Q7y-HgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D41AE120C0319"/>
-  <Ecore:EAttribute xmi:id="_G1Q7zOHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3E555C7702E8"/>
-  <Ecore:EAttribute xmi:id="_G1aFsOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DF78F1C034C"/>
-  <Ecore:EAttribute xmi:id="_G1aFseHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DF78F2B0290"/>
-  <Ecore:EOperation xmi:id="_G1aFsuHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_G1aFs-HgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper"/>
-  <Ecore:EReference xmi:id="_G1aFtOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA02BDB0015"/>
-  <Ecore:EReference xmi:id="_G1aFteHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CA01B20019D"/>
-  <Ecore:EReference xmi:id="_G1aFtuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CADABFE01E3"/>
-  <Ecore:EReference xmi:id="_G1aFt-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DF65B8D0134"/>
-  <Ecore:EOperation xmi:id="_G1aFuOHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E105DC8003E" operationName="getGenerals"/>
-  <Ecore:EAttribute xmi:id="_G1aFueHgEdq-hoB9-WtIbg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC072502E2"/>
-  <Ecore:EReference xmi:id="_G1aFuuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DE6A15F02E3"/>
-  <Ecore:EReference xmi:id="_G1aFu-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DE6A1830227"/>
-  <Ecore:EReference xmi:id="_G1j2sOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3D7A3113026A"/>
-  <Ecore:EReference xmi:id="_G1j2seHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000D5"/>
-  <Ecore:EReference xmi:id="_G1j2suHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D41B9EF3300FA"/>
-  <Ecore:EReference xmi:id="_G1j2s-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000FD"/>
-  <Ecore:EAttribute xmi:id="_G1j2tOHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3CADC5B702BE"/>
-  <Ecore:EReference xmi:id="_G1j2teHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DF65A9D02E0"/>
-  <Ecore:EOperation xmi:id="_G1j2tuHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E10722C00E4" operationName="getInheritedMembers"/>
-  <Ecore:EAttribute xmi:id="_G1j2t-HgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3CB5A28802FF"/>
-  <Ecore:EDataType xmi:id="_G1j2uOHgEdq-hoB9-WtIbg" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3CA010A4007B"/>
-  <Ecore:EDataType xmi:id="_G1j2ueHgEdq-hoB9-WtIbg" instanceClassName="boolean" base_PrimitiveType="_3ADC7B74022D3CA010AC0090"/>
-  <Ecore:EDataType xmi:id="_G1j2uuHgEdq-hoB9-WtIbg" instanceClassName="java.lang.String" base_PrimitiveType="_3ADC7B74022D3CA010B103C3"/>
-  <Ecore:EDataType xmi:id="_G1tnsOHgEdq-hoB9-WtIbg" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3DE6A93C0003"/>
-  <Ecore:EAttribute xmi:id="_G1tnseHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3DE6AC4701DA"/>
-  <Ecore:EAttribute xmi:id="_G1tnsuHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3DE6A6EE0069"/>
-  <Ecore:EAttribute xmi:id="_G1tns-HgEdq-hoB9-WtIbg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D417820CB0110"/>
-  <Ecore:EReference xmi:id="_G1tntOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DE6E42E034A"/>
-  <Ecore:EReference xmi:id="_G12xoOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F0246"/>
-  <Ecore:EReference xmi:id="_G12xoeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D4304A13201D9"/>
-  <Ecore:EOperation xmi:id="_G12xouHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D42EE305C00D9" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_G12xo-HgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D42EE305C00F1" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_G12xpOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCAC7900D9"/>
-  <Ecore:EReference xmi:id="_G12xpeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCACAF0090"/>
-  <Ecore:EReference xmi:id="_G12xpuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700B4"/>
-  <Ecore:EReference xmi:id="_G12xp-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700BE"/>
-  <Ecore:EReference xmi:id="_G12xqOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F025A"/>
-  <Ecore:EReference xmi:id="_G12xqeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DEE234B0163"/>
-  <Ecore:EReference xmi:id="_G12xquHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCB8650177"/>
-  <Ecore:EReference xmi:id="_G12xq-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCB82F00DA"/>
-  <Ecore:EOperation xmi:id="_G12xrOHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E142ABF004B" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_G2AioOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCBDBD028D"/>
-  <Ecore:EReference xmi:id="_G2AioeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCBE1F00FD"/>
-  <Ecore:EReference xmi:id="_G2AiouHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCAC2F019B"/>
-  <Ecore:EReference xmi:id="_G2Aio-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DE75D87003B"/>
-  <Ecore:EAttribute xmi:id="_G2AipOHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D4201104A02AF"/>
-  <Ecore:EReference xmi:id="_G2AipeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DE6E76603BD"/>
-  <Ecore:EOperation xmi:id="_G2AipuHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite"/>
-  <Ecore:EAttribute xmi:id="_G2Aip-HgEdq-hoB9-WtIbg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41FC52E503B5"/>
-  <Ecore:EAttribute xmi:id="_G2AiqOHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D41FC52EF0215"/>
-  <Ecore:EAttribute xmi:id="_G2AiqeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3E03284C0289"/>
-  <Ecore:EAttribute xmi:id="_G2AiquHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3E032859015B"/>
-  <Ecore:EAttribute xmi:id="_G2Aiq-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3E0328B001D9"/>
-  <Ecore:EAttribute xmi:id="_G2JskOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3E0328710341"/>
-  <Ecore:EReference xmi:id="_G2JskeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DEE7BDA017A"/>
-  <Ecore:EOperation xmi:id="_G2JskuHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E142F3E03CB" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_G2Jsk-HgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E142F7500B3" operationName="upperBound"/>
-  <Ecore:EOperation xmi:id="_G2JslOHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType"/>
-  <Ecore:EAttribute xmi:id="_G2JsleHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3DE7647D021E"/>
-  <Ecore:EAttribute xmi:id="_G2JsluHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3DEE875F0333"/>
-  <Ecore:EReference xmi:id="_G2Jsl-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DEE344701CC"/>
-  <Ecore:EReference xmi:id="_G2JsmOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD3029F"/>
-  <Ecore:EReference xmi:id="_G2JsmeHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD302F9"/>
-  <Ecore:EReference xmi:id="_G2JsmuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DEE344701FE"/>
-  <Ecore:EAttribute xmi:id="_G2Jsm-HgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D3DE6BF540255"/>
-  <Ecore:EAttribute xmi:id="_G2JsnOHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_3ADC7B74022D41C2D63E00EE"/>
-  <Ecore:EReference xmi:id="_G2JsneHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3DFCB86501A0"/>
-  <Ecore:EAttribute xmi:id="_G2JsnuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_7-d1kIa_EdqhgMOAOWpjfQ"/>
-  <Ecore:EOperation xmi:id="_G2TdkOHgEdq-hoB9-WtIbg" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName"/>
-  <Ecore:EAttribute xmi:id="_G2TdkeHgEdq-hoB9-WtIbg" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41BDD0260325"/>
-  <Ecore:EReference xmi:id="_G2TdkuHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CB24B21030C"/>
-  <Ecore:EReference xmi:id="_G2Tdk-HgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03DD"/>
-  <Ecore:EAttribute xmi:id="_G2TdlOHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CBDA7B50011"/>
-  <Ecore:EReference xmi:id="_G2TdleHgEdq-hoB9-WtIbg" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03E7"/>
-  <Ecore:EOperation xmi:id="_G2TdluHgEdq-hoB9-WtIbg" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass"/>
-  <Ecore:EAttribute xmi:id="_G2Tdl-HgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_GgC74HGhEdqziYxiZo0YtA"/>
-  <Ecore:EAttribute xmi:id="_G2dOkOHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_LCBSQHGhEdqziYxiZo0YtA"/>
-  <Ecore:EAttribute xmi:id="_G2dOkeHgEdq-hoB9-WtIbg" isUnsettable="true" base_Property="_P1lH4HGhEdqziYxiZo0YtA"/>
+  <Ecore:EReference xmi:id="_3-aYcOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CADCD85009B"/>
+  <Ecore:EReference xmi:id="_3-aYceIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CADCD8500A5"/>
+  <Ecore:EAttribute xmi:id="_3-aYcuIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3CA0080E03C3"/>
+  <Ecore:EAttribute xmi:id="_3-aYc-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA008400375"/>
+  <Ecore:EReference xmi:id="_3-aYdOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA008A2036C"/>
+  <Ecore:EOperation xmi:id="_3-aYdeIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName"/>
+  <Ecore:EReference xmi:id="_3-aYduIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA008A20358"/>
+  <Ecore:EReference xmi:id="_3-kJcOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA0098401B9"/>
+  <Ecore:EReference xmi:id="_3-kJceIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA00B92018D"/>
+  <Ecore:EReference xmi:id="_3-kJcuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA00B920183"/>
+  <Ecore:EAttribute xmi:id="_3-kJc-IwEdqcSeI1OFy_ig" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AE11E501C8"/>
+  <Ecore:EAttribute xmi:id="_3-kJdOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D41AE120C0319"/>
+  <Ecore:EAttribute xmi:id="_3-kJdeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3E555C7702E8"/>
+  <Ecore:EAttribute xmi:id="_3-kJduIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DF78F1C034C"/>
+  <Ecore:EAttribute xmi:id="_3-kJd-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DF78F2B0290"/>
+  <Ecore:EOperation xmi:id="_3-kJeOIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower"/>
+  <Ecore:EOperation xmi:id="_3-kJeeIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper"/>
+  <Ecore:EReference xmi:id="_3-kJeuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA02BDB0015"/>
+  <Ecore:EReference xmi:id="_3-kJe-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CA01B20019D"/>
+  <Ecore:EReference xmi:id="_3-kJfOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CADABFE01E3"/>
+  <Ecore:EReference xmi:id="_3-tTYOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DF65B8D0134"/>
+  <Ecore:EOperation xmi:id="_3-tTYeIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E105DC8003E" operationName="getGenerals"/>
+  <Ecore:EAttribute xmi:id="_3-tTYuIwEdqcSeI1OFy_ig" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC072502E2"/>
+  <Ecore:EReference xmi:id="_3-tTY-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DE6A15F02E3"/>
+  <Ecore:EReference xmi:id="_3-tTZOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DE6A1830227"/>
+  <Ecore:EReference xmi:id="_3-tTZeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3D7A3113026A"/>
+  <Ecore:EReference xmi:id="_3-tTZuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000D5"/>
+  <Ecore:EReference xmi:id="_3-tTZ-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D41B9EF3300FA"/>
+  <Ecore:EReference xmi:id="_3-tTaOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D41B9C1A000FD"/>
+  <Ecore:EAttribute xmi:id="_3-tTaeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3CADC5B702BE"/>
+  <Ecore:EReference xmi:id="_3-tTauIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DF65A9D02E0"/>
+  <Ecore:EOperation xmi:id="_3-tTa-IwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E10722C00E4" operationName="getInheritedMembers"/>
+  <Ecore:EAttribute xmi:id="_3-tTbOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3CB5A28802FF"/>
+  <Ecore:EDataType xmi:id="_3-3EYOIwEdqcSeI1OFy_ig" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3CA010A4007B"/>
+  <Ecore:EDataType xmi:id="_3-3EYeIwEdqcSeI1OFy_ig" instanceClassName="boolean" base_PrimitiveType="_3ADC7B74022D3CA010AC0090"/>
+  <Ecore:EDataType xmi:id="_3-3EYuIwEdqcSeI1OFy_ig" instanceClassName="java.lang.String" base_PrimitiveType="_3ADC7B74022D3CA010B103C3"/>
+  <Ecore:EDataType xmi:id="_3-3EY-IwEdqcSeI1OFy_ig" instanceClassName="int" base_PrimitiveType="_3ADC7B74022D3DE6A93C0003"/>
+  <Ecore:EAttribute xmi:id="_3-3EZOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3DE6AC4701DA"/>
+  <Ecore:EAttribute xmi:id="_3-3EZeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3DE6A6EE0069"/>
+  <Ecore:EAttribute xmi:id="_3-3EZuIwEdqcSeI1OFy_ig" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D417820CB0110"/>
+  <Ecore:EReference xmi:id="_3-3EZ-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DE6E42E034A"/>
+  <Ecore:EReference xmi:id="_3-3EaOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F0246"/>
+  <Ecore:EReference xmi:id="_3-3EaeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D4304A13201D9"/>
+  <Ecore:EOperation xmi:id="_3-3EauIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D42EE305C00D9" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_3-3Ea-IwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D42EE305C00F1" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_3_AOUOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCAC7900D9"/>
+  <Ecore:EReference xmi:id="_3_AOUeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCACAF0090"/>
+  <Ecore:EReference xmi:id="_3_AOUuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700B4"/>
+  <Ecore:EReference xmi:id="_3_AOU-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCA80700BE"/>
+  <Ecore:EReference xmi:id="_3_AOVOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCBE7F025A"/>
+  <Ecore:EReference xmi:id="_3_AOVeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DEE234B0163"/>
+  <Ecore:EReference xmi:id="_3_AOVuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCB8650177"/>
+  <Ecore:EReference xmi:id="_3_AOV-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCB82F00DA"/>
+  <Ecore:EOperation xmi:id="_3_AOWOIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E142ABF004B" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_3_AOWeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCBDBD028D"/>
+  <Ecore:EReference xmi:id="_3_AOWuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCBE1F00FD"/>
+  <Ecore:EReference xmi:id="_3_AOW-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCAC2F019B"/>
+  <Ecore:EReference xmi:id="_3_AOXOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DE75D87003B"/>
+  <Ecore:EAttribute xmi:id="_3_J_UOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D4201104A02AF"/>
+  <Ecore:EReference xmi:id="_3_J_UeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DE6E76603BD"/>
+  <Ecore:EOperation xmi:id="_3_J_UuIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite"/>
+  <Ecore:EAttribute xmi:id="_3_J_U-IwEdqcSeI1OFy_ig" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41FC52E503B5"/>
+  <Ecore:EAttribute xmi:id="_3_J_VOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D41FC52EF0215"/>
+  <Ecore:EAttribute xmi:id="_3_J_VeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3E03284C0289"/>
+  <Ecore:EAttribute xmi:id="_3_J_VuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3E032859015B"/>
+  <Ecore:EAttribute xmi:id="_3_J_V-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3E0328B001D9"/>
+  <Ecore:EAttribute xmi:id="_3_J_WOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3E0328710341"/>
+  <Ecore:EReference xmi:id="_3_J_WeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DEE7BDA017A"/>
+  <Ecore:EOperation xmi:id="_3_J_WuIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E142F3E03CB" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_3_J_W-IwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E142F7500B3" operationName="upperBound"/>
+  <Ecore:EOperation xmi:id="_3_J_XOIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType"/>
+  <Ecore:EAttribute xmi:id="_3_J_XeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3DE7647D021E"/>
+  <Ecore:EAttribute xmi:id="_3_TwUOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3DEE875F0333"/>
+  <Ecore:EReference xmi:id="_3_TwUeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DEE344701CC"/>
+  <Ecore:EReference xmi:id="_3_TwUuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD3029F"/>
+  <Ecore:EReference xmi:id="_3_TwU-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DEE6FD302F9"/>
+  <Ecore:EReference xmi:id="_3_TwVOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DEE344701FE"/>
+  <Ecore:EAttribute xmi:id="_3_TwVeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D3DE6BF540255"/>
+  <Ecore:EAttribute xmi:id="_3_TwVuIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_3ADC7B74022D41C2D63E00EE"/>
+  <Ecore:EReference xmi:id="_3_TwV-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3DFCB86501A0"/>
+  <Ecore:EAttribute xmi:id="_3_TwWOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_7-d1kIa_EdqhgMOAOWpjfQ"/>
+  <Ecore:EOperation xmi:id="_3_TwWeIwEdqcSeI1OFy_ig" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName"/>
+  <Ecore:EAttribute xmi:id="_3_TwWuIwEdqcSeI1OFy_ig" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41BDD0260325"/>
+  <Ecore:EReference xmi:id="_3_c6QOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CB24B21030C"/>
+  <Ecore:EReference xmi:id="_3_c6QeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03DD"/>
+  <Ecore:EAttribute xmi:id="_3_c6QuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CBDA7B50011"/>
+  <Ecore:EReference xmi:id="_3_c6Q-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03E7"/>
+  <Ecore:EOperation xmi:id="_3_c6ROIwEdqcSeI1OFy_ig" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass"/>
+  <Ecore:EAttribute xmi:id="_3_c6ReIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_GgC74HGhEdqziYxiZo0YtA"/>
+  <Ecore:EAttribute xmi:id="_3_c6RuIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_LCBSQHGhEdqziYxiZo0YtA"/>
+  <Ecore:EAttribute xmi:id="_3_c6R-IwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_P1lH4HGhEdqziYxiZo0YtA"/>
 </xmi:XMI>
