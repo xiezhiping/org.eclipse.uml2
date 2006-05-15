@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.8 2006/05/12 20:38:04 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.9 2006/05/15 22:13:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,22 +70,34 @@ public interface AcceptEventAction
 	void setIsUnmarshall(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Result</b></em>' reference list.
+	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Result</em>' reference list.
+	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptEventAction_Result()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getResults();
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Result</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
+	 * @see #getResults()
+	 * @generated
+	 */
+	OutputPin createResult(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
@@ -97,6 +109,21 @@ public interface AcceptEventAction
 	OutputPin getResult(String name, Type type);
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Result</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.OutputPin} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getResults()
+	 * @generated
+	 */
+	OutputPin getResult(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Result</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,7 +132,7 @@ public interface AcceptEventAction
 	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
 	 * @return The first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getResults()
-	 * @generated
+	 * @generated NOT
 	 */
 	OutputPin getResult(String name, Type type, boolean ignoreCase);
 

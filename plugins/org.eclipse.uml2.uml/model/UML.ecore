@@ -5122,14 +5122,14 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputValue" ordered="false"
-        upperBound="-1" eType="#//InputPin">
+        upperBound="-1" eType="#//InputPin" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Provides input to the action."/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Action/input"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputValue" ordered="false"
-        upperBound="-1" eType="#//OutputPin">
+        upperBound="-1" eType="#//OutputPin" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Takes output from the action."/>
       </eAnnotations>
@@ -9041,7 +9041,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" ordered="false"
-        upperBound="-1" eType="#//OutputPin">
+        upperBound="-1" eType="#//OutputPin" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved."/>
       </eAnnotations>
@@ -9080,7 +9080,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnInformation" ordered="false"
-        lowerBound="1" eType="#//OutputPin">
+        lowerBound="1" eType="#//OutputPin" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model."/>
       </eAnnotations>
@@ -9180,7 +9180,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" ordered="false"
-        lowerBound="1" upperBound="-1" eType="#//OutputPin">
+        lowerBound="1" upperBound="-1" eType="#//OutputPin" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The values of the structural features of the input object."/>
       </eAnnotations>

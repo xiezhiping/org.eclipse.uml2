@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.13 2006/05/13 04:46:32 khussey Exp $
+ * $Id: Transition.java,v 1.14 2006/05/15 22:13:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -387,7 +387,7 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype «create».
+	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype Â«createÂ».
 	 * self.source.oclIsKindOf(Pseudostate) implies
 	 * (self.source.oclAsType(Pseudostate).kind = #initial) implies
 	 * (self.source.container = self.stateMachine.top) implies

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionItemProvider.java,v 1.5 2006/05/15 21:06:21 khussey Exp $
+ * $Id: AcceptEventActionItemProvider.java,v 1.6 2006/05/15 22:13:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -109,7 +111,9 @@ public class AcceptEventActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_result_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT, true, false,
-				true, null, null, null));
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -145,9 +149,23 @@ public class AcceptEventActionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
+				.add(UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT);
+			childrenFeatures
 				.add(UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -188,6 +206,7 @@ public class AcceptEventActionItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
+			case UMLPackage.ACCEPT_EVENT_ACTION__RESULT :
 			case UMLPackage.ACCEPT_EVENT_ACTION__TRIGGER :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -206,6 +225,10 @@ public class AcceptEventActionItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER,

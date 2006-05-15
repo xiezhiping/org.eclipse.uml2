@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionItemProvider.java,v 1.6 2006/05/15 21:06:22 khussey Exp $
+ * $Id: AcceptCallActionItemProvider.java,v 1.7 2006/05/15 22:13:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -27,7 +27,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-//import org.eclipse.uml2.uml.AcceptCallAction;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import org.eclipse.uml2.uml.AcceptCallAction;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -84,7 +87,26 @@ public class AcceptCallActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptCallAction_returnInformation_feature", "_UI_AcceptCallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
-				true, false, true, null, null, null));
+				true, false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures
+				.add(UMLPackage.Literals.ACCEPT_CALL_ACTION__RETURN_INFORMATION);
+		}
+		return childrenFeatures;
 	}
 
 	/**
@@ -119,6 +141,13 @@ public class AcceptCallActionItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(AcceptCallAction.class)) {
+			case UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -132,6 +161,10 @@ public class AcceptCallActionItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -146,7 +179,9 @@ public class AcceptCallActionItemProvider
 		Object childObject = child;
 
 		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT
+			|| childFeature == UMLPackage.Literals.ACCEPT_CALL_ACTION__RETURN_INFORMATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

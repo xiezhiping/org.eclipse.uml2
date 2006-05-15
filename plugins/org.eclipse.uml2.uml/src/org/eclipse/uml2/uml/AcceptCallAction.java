@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.3 2006/05/12 20:38:04 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.4 2006/05/15 22:13:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -40,29 +40,41 @@ public interface AcceptCallAction
 		extends AcceptEventAction {
 
 	/**
-	 * Returns the value of the '<em><b>Return Information</b></em>' reference.
+	 * Returns the value of the '<em><b>Return Information</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Return Information</em>' reference.
+	 * @return the value of the '<em>Return Information</em>' containment reference.
 	 * @see #setReturnInformation(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptCallAction_ReturnInformation()
-	 * @model required="true" ordered="false"
+	 * @model containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getReturnInformation();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.AcceptCallAction#getReturnInformation <em>Return Information</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.AcceptCallAction#getReturnInformation <em>Return Information</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Return Information</em>' reference.
+	 * @param value the new value of the '<em>Return Information</em>' containment reference.
 	 * @see #getReturnInformation()
 	 * @generated
 	 */
 	void setReturnInformation(OutputPin value);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Return Information</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
+	 * @see #getReturnInformation()
+	 * @generated
+	 */
+	OutputPin createReturnInformation(String name, Type type);
 
 	/**
 	 * <!-- begin-user-doc -->

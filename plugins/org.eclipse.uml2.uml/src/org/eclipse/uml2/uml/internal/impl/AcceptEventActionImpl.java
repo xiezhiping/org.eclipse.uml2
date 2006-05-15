@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.21 2006/05/15 22:13:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -89,7 +88,7 @@ public class AcceptEventActionImpl
 	protected static final int IS_UNMARSHALL_EFLAG = 1 << 11;
 
 	/**
-	 * The cached value of the '{@link #getResults() <em>Result</em>}' reference list.
+	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getResults()
@@ -183,8 +182,8 @@ public class AcceptEventActionImpl
 	 */
 	public EList getResults() {
 		if (results == null) {
-			results = new EObjectResolvingEList(OutputPin.class, this,
-				UMLPackage.ACCEPT_EVENT_ACTION__RESULT);
+			results = new EObjectContainmentEList.Resolving(OutputPin.class,
+				this, UMLPackage.ACCEPT_EVENT_ACTION__RESULT);
 		}
 		return results;
 	}
@@ -194,8 +193,14 @@ public class AcceptEventActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getResult(String name, Type type) {
-		return getResult(name, type, false);
+	public OutputPin createResult(String name, Type type) {
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		getResults().add(newResult);
+		if (name != null)
+			newResult.setName(name);
+		if (type != null)
+			newResult.setType(type);
+		return newResult;
 	}
 
 	/**
@@ -203,7 +208,17 @@ public class AcceptEventActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getResult(String name, Type type, boolean ignoreCase) {
+	public OutputPin getResult(String name, Type type) {
+		return getResult(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getResult(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
 		resultLoop : for (Iterator i = getResults().iterator(); i.hasNext();) {
 			OutputPin result = (OutputPin) i.next();
 			if (name != null && !(ignoreCase
@@ -214,7 +229,18 @@ public class AcceptEventActionImpl
 				continue resultLoop;
 			return result;
 		}
-		return null;
+		return createOnDemand
+			? createResult(name, type)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OutputPin getResult(String name, Type type, boolean ignoreCase) {
+		return getResult(name, type, ignoreCase, false);
 	}
 
 	/**
@@ -358,6 +384,9 @@ public class AcceptEventActionImpl
 			case UMLPackage.ACCEPT_EVENT_ACTION__LOCAL_POSTCONDITION :
 				return ((InternalEList) getLocalPostconditions()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ACCEPT_EVENT_ACTION__RESULT :
+				return ((InternalEList) getResults()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.ACCEPT_EVENT_ACTION__TRIGGER :
 				return ((InternalEList) getTriggers()).basicRemove(otherEnd,
 					msgs);

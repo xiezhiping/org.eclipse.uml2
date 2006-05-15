@@ -2703,11 +2703,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" upperBound="-1"
         eType="#//String" unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputValue" ordered="false"
-        upperBound="-1" eType="#//InputPin">
+        upperBound="-1" eType="#//InputPin" containment="true">
       <eAnnotations source="subsets" references="#//Action/input"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputValue" ordered="false"
-        upperBound="-1" eType="#//OutputPin">
+        upperBound="-1" eType="#//OutputPin" containment="true">
       <eAnnotations source="subsets" references="#//Action/output"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -4639,7 +4639,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnmarshall" ordered="false"
         lowerBound="1" eType="#//Boolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" ordered="false"
-        upperBound="-1" eType="#//OutputPin">
+        upperBound="-1" eType="#//OutputPin" containment="true">
       <eAnnotations source="subsets" references="#//Action/output"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" ordered="false"
@@ -4659,7 +4659,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnInformation" ordered="false"
-        lowerBound="1" eType="#//OutputPin">
+        lowerBound="1" eType="#//OutputPin" containment="true">
       <eAnnotations source="subsets" references="#//Action/output"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -4713,7 +4713,7 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" ordered="false"
-        lowerBound="1" upperBound="-1" eType="#//OutputPin">
+        lowerBound="1" upperBound="-1" eType="#//OutputPin" containment="true">
       <eAnnotations source="subsets" references="#//Action/output"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="unmarshallType" ordered="false"

@@ -1017,9 +1017,9 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_ygO4geIwEdqcSeI1OFy_ig" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
-  <Ecore:EDataType xmi:id="_yghzcOIwEdqcSeI1OFy_ig" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_yghzceIwEdqcSeI1OFy_ig" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_yghzcuIwEdqcSeI1OFy_ig" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_yghzc-IwEdqcSeI1OFy_ig" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EPackage xmi:id="_po7yMeRVEdqHWbeY3nX1gQ" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EDataType xmi:id="_ppOtIORVEdqHWbeY3nX1gQ" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_ppOtIeRVEdqHWbeY3nX1gQ" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_ppOtIuRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_ppOtI-RVEdqHWbeY3nX1gQ" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
 </xmi:XMI>

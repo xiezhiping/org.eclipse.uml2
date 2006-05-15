@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.22 2006/04/10 19:16:27 khussey Exp $
+ * $Id: UMLPackage.java,v 1.23 2006/05/15 22:13:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -25126,7 +25126,7 @@ public interface UMLPackage
 	int OPAQUE_ACTION__LANGUAGE = ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Input Value</b></em>' reference list.
+	 * The feature id for the '<em><b>Input Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -25135,7 +25135,7 @@ public interface UMLPackage
 	int OPAQUE_ACTION__INPUT_VALUE = ACTION_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Output Value</b></em>' reference list.
+	 * The feature id for the '<em><b>Output Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54136,7 +54136,7 @@ public interface UMLPackage
 	int ACCEPT_EVENT_ACTION__IS_UNMARSHALL = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Result</b></em>' reference list.
+	 * The feature id for the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54415,7 +54415,7 @@ public interface UMLPackage
 	int ACCEPT_CALL_ACTION__IS_UNMARSHALL = ACCEPT_EVENT_ACTION__IS_UNMARSHALL;
 
 	/**
-	 * The feature id for the '<em><b>Result</b></em>' reference list.
+	 * The feature id for the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54433,7 +54433,7 @@ public interface UMLPackage
 	int ACCEPT_CALL_ACTION__TRIGGER = ACCEPT_EVENT_ACTION__TRIGGER;
 
 	/**
-	 * The feature id for the '<em><b>Return Information</b></em>' reference.
+	 * The feature id for the '<em><b>Return Information</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -54973,7 +54973,7 @@ public interface UMLPackage
 	int UNMARSHALL_ACTION__LOCAL_POSTCONDITION = ACTION__LOCAL_POSTCONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Result</b></em>' reference list.
+	 * The feature id for the '<em><b>Result</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -65836,10 +65836,10 @@ public interface UMLPackage
 	EAttribute getOpaqueAction_Language();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.OpaqueAction#getInputValues <em>Input Value</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.OpaqueAction#getInputValues <em>Input Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Input Value</em>'.
+	 * @return the meta object for the containment reference list '<em>Input Value</em>'.
 	 * @see org.eclipse.uml2.uml.OpaqueAction#getInputValues()
 	 * @see #getOpaqueAction()
 	 * @generated
@@ -65847,10 +65847,10 @@ public interface UMLPackage
 	EReference getOpaqueAction_InputValue();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.OpaqueAction#getOutputValues <em>Output Value</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.OpaqueAction#getOutputValues <em>Output Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Output Value</em>'.
+	 * @return the meta object for the containment reference list '<em>Output Value</em>'.
 	 * @see org.eclipse.uml2.uml.OpaqueAction#getOutputValues()
 	 * @see #getOpaqueAction()
 	 * @generated
@@ -66572,10 +66572,10 @@ public interface UMLPackage
 	EAttribute getAcceptEventAction_IsUnmarshall();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.AcceptEventAction#getResults <em>Result</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.AcceptEventAction#getResults <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Result</em>'.
+	 * @return the meta object for the containment reference list '<em>Result</em>'.
 	 * @see org.eclipse.uml2.uml.AcceptEventAction#getResults()
 	 * @see #getAcceptEventAction()
 	 * @generated
@@ -66604,10 +66604,10 @@ public interface UMLPackage
 	EClass getAcceptCallAction();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.uml2.uml.AcceptCallAction#getReturnInformation <em>Return Information</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.uml2.uml.AcceptCallAction#getReturnInformation <em>Return Information</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Return Information</em>'.
+	 * @return the meta object for the containment reference '<em>Return Information</em>'.
 	 * @see org.eclipse.uml2.uml.AcceptCallAction#getReturnInformation()
 	 * @see #getAcceptCallAction()
 	 * @generated
@@ -66668,10 +66668,10 @@ public interface UMLPackage
 	EClass getUnmarshallAction();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.UnmarshallAction#getResults <em>Result</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.UnmarshallAction#getResults <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Result</em>'.
+	 * @return the meta object for the containment reference list '<em>Result</em>'.
 	 * @see org.eclipse.uml2.uml.UnmarshallAction#getResults()
 	 * @see #getUnmarshallAction()
 	 * @generated
@@ -73800,7 +73800,7 @@ public interface UMLPackage
 			.getOpaqueAction_Language();
 
 		/**
-		 * The meta object literal for the '<em><b>Input Value</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Input Value</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -73809,7 +73809,7 @@ public interface UMLPackage
 			.getOpaqueAction_InputValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Output Value</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Output Value</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -74449,7 +74449,7 @@ public interface UMLPackage
 			.getAcceptEventAction_IsUnmarshall();
 
 		/**
-		 * The meta object literal for the '<em><b>Result</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -74477,7 +74477,7 @@ public interface UMLPackage
 		EClass ACCEPT_CALL_ACTION = eINSTANCE.getAcceptCallAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Return Information</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Return Information</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -74533,7 +74533,7 @@ public interface UMLPackage
 		EClass UNMARSHALL_ACTION = eINSTANCE.getUnmarshallAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Result</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueAction.java,v 1.5 2006/02/22 20:48:14 khussey Exp $
+ * $Id: OpaqueAction.java,v 1.6 2006/05/15 22:13:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -120,22 +120,47 @@ public interface OpaqueAction
 	boolean isSetLanguages();
 
 	/**
-	 * Returns the value of the '<em><b>Input Value</b></em>' reference list.
+	 * Returns the value of the '<em><b>Input Value</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InputPin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Provides input to the action.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Input Value</em>' reference list.
+	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_InputValue()
-	 * @model type="org.eclipse.uml2.uml.InputPin" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getInputValues();
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Input Value</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Input Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
+	 * @see #getInputValues()
+	 * @generated
+	 */
+	InputPin createInputValue(String name, Type type, EClass eClass);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Input Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
+	 * @see #getInputValues()
+	 * @generated
+	 */
+	InputPin createInputValue(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Input Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
@@ -147,6 +172,22 @@ public interface OpaqueAction
 	InputPin getInputValue(String name, Type type);
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Input Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.InputPin} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getInputValues()
+	 * @generated
+	 */
+	InputPin getInputValue(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Input Value</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,28 +197,40 @@ public interface OpaqueAction
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
 	 * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getInputValues()
-	 * @generated
+	 * @generated NOT
 	 */
 	InputPin getInputValue(String name, Type type, boolean ignoreCase,
 			EClass eClass);
 
 	/**
-	 * Returns the value of the '<em><b>Output Value</b></em>' reference list.
+	 * Returns the value of the '<em><b>Output Value</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Takes output from the action.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Output Value</em>' reference list.
+	 * @return the value of the '<em>Output Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_OutputValue()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOutputValues();
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Output Value</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Output Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.OutputPin}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.OutputPin}.
+	 * @see #getOutputValues()
+	 * @generated
+	 */
+	OutputPin createOutputValue(String name, Type type);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Output Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
@@ -189,6 +242,21 @@ public interface OpaqueAction
 	OutputPin getOutputValue(String name, Type type);
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Output Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.OutputPin} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.OutputPin} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+	 * @see #getOutputValues()
+	 * @generated
+	 */
+	OutputPin getOutputValue(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Output Value</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,7 +265,7 @@ public interface OpaqueAction
 	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
 	 * @return The first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getOutputValues()
-	 * @generated
+	 * @generated NOT
 	 */
 	OutputPin getOutputValue(String name, Type type, boolean ignoreCase);
 

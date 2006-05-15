@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionItemProvider.java,v 1.5 2006/05/15 21:06:23 khussey Exp $
+ * $Id: UnmarshallActionItemProvider.java,v 1.6 2006/05/15 22:13:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -88,7 +90,9 @@ public class UnmarshallActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UnmarshallAction_result_feature", "_UI_UnmarshallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.UNMARSHALL_ACTION__RESULT, true, false,
-				true, null, null, null));
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -142,9 +146,22 @@ public class UnmarshallActionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(UMLPackage.Literals.UNMARSHALL_ACTION__RESULT);
 			childrenFeatures.add(UMLPackage.Literals.UNMARSHALL_ACTION__OBJECT);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -181,6 +198,7 @@ public class UnmarshallActionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(UnmarshallAction.class)) {
+			case UMLPackage.UNMARSHALL_ACTION__RESULT :
 			case UMLPackage.UNMARSHALL_ACTION__OBJECT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -199,6 +217,10 @@ public class UnmarshallActionItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.UNMARSHALL_ACTION__RESULT, UMLFactory.eINSTANCE
+				.createOutputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.UNMARSHALL_ACTION__OBJECT, UMLFactory.eINSTANCE

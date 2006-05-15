@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.14 2006/04/10 19:16:18 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.15 2006/05/15 22:13:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
@@ -28,6 +30,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
@@ -36,6 +40,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -59,7 +64,7 @@ public class AcceptCallActionImpl
 		implements AcceptCallAction {
 
 	/**
-	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' reference.
+	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getReturnInformation()
@@ -119,6 +124,21 @@ public class AcceptCallActionImpl
 			InternalEObject oldReturnInformation = (InternalEObject) returnInformation;
 			returnInformation = (OutputPin) eResolveProxy(oldReturnInformation);
 			if (returnInformation != oldReturnInformation) {
+				InternalEObject newReturnInformation = (InternalEObject) returnInformation;
+				NotificationChain msgs = oldReturnInformation.eInverseRemove(
+					this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
+					null, null);
+				if (newReturnInformation.eInternalContainer() == null) {
+					msgs = newReturnInformation
+						.eInverseAdd(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
+							null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
@@ -142,14 +162,65 @@ public class AcceptCallActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReturnInformation(OutputPin newReturnInformation) {
+	public NotificationChain basicSetReturnInformation(
+			OutputPin newReturnInformation, NotificationChain msgs) {
 		OutputPin oldReturnInformation = returnInformation;
 		returnInformation = newReturnInformation;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET,
+				UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
+				oldReturnInformation, newReturnInformation);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReturnInformation(OutputPin newReturnInformation) {
+		if (newReturnInformation != returnInformation) {
+			NotificationChain msgs = null;
+			if (returnInformation != null)
+				msgs = ((InternalEObject) returnInformation).eInverseRemove(
+					this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
+					null, msgs);
+			if (newReturnInformation != null)
+				msgs = ((InternalEObject) newReturnInformation).eInverseAdd(
+					this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
+					null, msgs);
+			msgs = basicSetReturnInformation(newReturnInformation, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION,
-				oldReturnInformation, returnInformation));
+				newReturnInformation, newReturnInformation));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin createReturnInformation(String name, Type type) {
+		OutputPin newReturnInformation = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		setReturnInformation(newReturnInformation);
+		if (name != null)
+			newReturnInformation.setName(name);
+		if (type != null)
+			newReturnInformation.setType(type);
+		return newReturnInformation;
 	}
 
 	/**
@@ -181,6 +252,62 @@ public class AcceptCallActionImpl
 	public boolean validateUnmarshall(DiagnosticChain diagnostics, Map context) {
 		return AcceptCallActionOperations.validateUnmarshall(this, diagnostics,
 			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.ACCEPT_CALL_ACTION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__ACTIVITY :
+				return basicSetActivity(null, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__HANDLER :
+				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_PRECONDITION :
+				return ((InternalEList) getLocalPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__LOCAL_POSTCONDITION :
+				return ((InternalEList) getLocalPostconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__RESULT :
+				return ((InternalEList) getResults()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__TRIGGER :
+				return ((InternalEList) getTriggers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACCEPT_CALL_ACTION__RETURN_INFORMATION :
+				return basicSetReturnInformation(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

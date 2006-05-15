@@ -8,19 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.16 2006/05/02 21:51:04 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.17 2006/05/15 22:13:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -78,7 +82,7 @@ public class OpaqueActionImpl
 	protected EList languages = null;
 
 	/**
-	 * The cached value of the '{@link #getInputValues() <em>Input Value</em>}' reference list.
+	 * The cached value of the '{@link #getInputValues() <em>Input Value</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInputValues()
@@ -88,7 +92,7 @@ public class OpaqueActionImpl
 	protected EList inputValues = null;
 
 	/**
-	 * The cached value of the '{@link #getOutputValues() <em>Output Value</em>}' reference list.
+	 * The cached value of the '{@link #getOutputValues() <em>Output Value</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOutputValues()
@@ -233,8 +237,8 @@ public class OpaqueActionImpl
 	 */
 	public EList getInputValues() {
 		if (inputValues == null) {
-			inputValues = new EObjectResolvingEList(InputPin.class, this,
-				UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
+			inputValues = new EObjectContainmentEList.Resolving(InputPin.class,
+				this, UMLPackage.OPAQUE_ACTION__INPUT_VALUE);
 		}
 		return inputValues;
 	}
@@ -244,8 +248,32 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InputPin createInputValue(String name, Type type, EClass eClass) {
+		InputPin newInputValue = (InputPin) create(eClass);
+		getInputValues().add(newInputValue);
+		if (name != null)
+			newInputValue.setName(name);
+		if (type != null)
+			newInputValue.setType(type);
+		return newInputValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputPin createInputValue(String name, Type type) {
+		return createInputValue(name, type, UMLPackage.Literals.INPUT_PIN);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InputPin getInputValue(String name, Type type) {
-		return getInputValue(name, type, false, null);
+		return getInputValue(name, type, false, null, false);
 	}
 
 	/**
@@ -254,7 +282,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 */
 	public InputPin getInputValue(String name, Type type, boolean ignoreCase,
-			EClass eClass) {
+			EClass eClass, boolean createOnDemand) {
 		inputValueLoop : for (Iterator i = getInputValues().iterator(); i
 			.hasNext();) {
 			InputPin inputValue = (InputPin) i.next();
@@ -268,7 +296,19 @@ public class OpaqueActionImpl
 				continue inputValueLoop;
 			return inputValue;
 		}
-		return null;
+		return createOnDemand && eClass != null
+			? createInputValue(name, type, eClass)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InputPin getInputValue(String name, Type type, boolean ignoreCase,
+			EClass eClass) {
+		return getInputValue(name, type, ignoreCase, eClass, false);
 	}
 
 	/**
@@ -278,8 +318,8 @@ public class OpaqueActionImpl
 	 */
 	public EList getOutputValues() {
 		if (outputValues == null) {
-			outputValues = new EObjectResolvingEList(OutputPin.class, this,
-				UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
+			outputValues = new EObjectContainmentEList.Resolving(
+				OutputPin.class, this, UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE);
 		}
 		return outputValues;
 	}
@@ -289,8 +329,14 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getOutputValue(String name, Type type) {
-		return getOutputValue(name, type, false);
+	public OutputPin createOutputValue(String name, Type type) {
+		OutputPin newOutputValue = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		getOutputValues().add(newOutputValue);
+		if (name != null)
+			newOutputValue.setName(name);
+		if (type != null)
+			newOutputValue.setType(type);
+		return newOutputValue;
 	}
 
 	/**
@@ -298,7 +344,17 @@ public class OpaqueActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutputPin getOutputValue(String name, Type type, boolean ignoreCase) {
+	public OutputPin getOutputValue(String name, Type type) {
+		return getOutputValue(name, type, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin getOutputValue(String name, Type type, boolean ignoreCase,
+			boolean createOnDemand) {
 		outputValueLoop : for (Iterator i = getOutputValues().iterator(); i
 			.hasNext();) {
 			OutputPin outputValue = (OutputPin) i.next();
@@ -310,7 +366,72 @@ public class OpaqueActionImpl
 				continue outputValueLoop;
 			return outputValue;
 		}
-		return null;
+		return createOnDemand
+			? createOutputValue(name, type)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.OPAQUE_ACTION__EANNOTATIONS :
+				return ((InternalEList) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__OWNED_COMMENT :
+				return ((InternalEList) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__CLIENT_DEPENDENCY :
+				return ((InternalEList) getClientDependencies()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.OPAQUE_ACTION__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.OPAQUE_ACTION__ACTIVITY :
+				return basicSetActivity(null, msgs);
+			case UMLPackage.OPAQUE_ACTION__OUTGOING :
+				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OPAQUE_ACTION__INCOMING :
+				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OPAQUE_ACTION__IN_PARTITION :
+				return ((InternalEList) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__HANDLER :
+				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OPAQUE_ACTION__LOCAL_PRECONDITION :
+				return ((InternalEList) getLocalPreconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__LOCAL_POSTCONDITION :
+				return ((InternalEList) getLocalPostconditions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
+				return ((InternalEList) getInputValues()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE :
+				return ((InternalEList) getOutputValues()).basicRemove(
+					otherEnd, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public OutputPin getOutputValue(String name, Type type, boolean ignoreCase) {
+		return getOutputValue(name, type, ignoreCase, false);
 	}
 
 	/**

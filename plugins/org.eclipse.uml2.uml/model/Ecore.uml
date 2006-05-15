@@ -488,84 +488,84 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_zgwhYOIwEdqcSeI1OFy_ig" base_Package="439EC3AE03B5" packageName="ecore" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore" basePackage="org.eclipse.emf" prefix="Ecore"/>
-  <Ecore:EAttribute xmi:id="_zgwhYeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53D98A349020A"/>
-  <Ecore:EReference xmi:id="_zgwhYuIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D5D261200E9"/>
-  <Ecore:EAttribute xmi:id="_zgwhY-IwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53CF6636F001D"/>
-  <Ecore:EAttribute xmi:id="_zgwhZOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53D0616AE039B"/>
-  <Ecore:EReference xmi:id="_zgwhZeIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD4C0061"/>
-  <Ecore:EReference xmi:id="_zgwhZuIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD8A010A"/>
-  <Ecore:EReference xmi:id="_zgwhZ-IwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D7678D02EF"/>
-  <Ecore:EReference xmi:id="_zgwhaOIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539DE157703CC"/>
-  <Ecore:EReference xmi:id="_zgwhaeIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53AF07CB900F8"/>
-  <Ecore:EReference xmi:id="_zg5rUOIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53AF87E2E006C"/>
-  <Ecore:EReference xmi:id="_zg5rUeIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53CD7CA8D0078"/>
-  <Ecore:EReference xmi:id="_zg5rUuIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D0618C600DE"/>
-  <Ecore:EReference xmi:id="_zg5rU-IwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53DDF795201B1"/>
-  <Ecore:EAttribute xmi:id="_zg5rVOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53B0F0B800186"/>
-  <Ecore:EAttribute xmi:id="_zg5rVeIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53CA8BD1C01FA"/>
-  <Ecore:EAttribute xmi:id="_zg5rVuIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D3C1AEE014B"/>
-  <Ecore:EReference xmi:id="_zg5rV-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53A7DAB6D0239"/>
-  <Ecore:EAttribute xmi:id="_zg5rWOIwEdqcSeI1OFy_ig" isTransient="true" isUnsettable="true" base_Property="_439EC3AE03B53D2DB8A701BE"/>
-  <Ecore:EAttribute xmi:id="_zhDcUOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B5430B327502D1"/>
-  <Ecore:EReference xmi:id="_zhDcUeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53ACCDD3C00FE"/>
-  <Ecore:EReference xmi:id="_zhDcUuIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53A773F5B00D7"/>
-  <Ecore:EAttribute xmi:id="_zhDcU-IwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53B65CCCF0007"/>
-  <Ecore:EReference xmi:id="_zhDcVOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53904D81303AD"/>
-  <Ecore:EAttribute xmi:id="_zhDcVeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B539EB787703D8"/>
-  <Ecore:EAttribute xmi:id="_zhDcVuIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53A773FA4026D"/>
-  <Ecore:EReference xmi:id="_zhDcV-IwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53A773F5B00CD"/>
-  <Ecore:EReference xmi:id="_zhDcWOIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53C06C4F203B1"/>
-  <Ecore:EReference xmi:id="_zhDcWeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53B4DFCAC02CB"/>
-  <Ecore:EAttribute xmi:id="_zhDcWuIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D5D254701DE"/>
-  <Ecore:EReference xmi:id="_zhDcW-IwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D5D2A6100E7"/>
-  <Ecore:EClass xmi:id="_zhNNUOIwEdqcSeI1OFy_ig" instanceClassName="java.util.Map$Entry" base_Class="_439EC3AE03B53DA69D3C00F6"/>
-  <Ecore:EAttribute xmi:id="_zhNNUeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53DA69D3C00F8"/>
-  <Ecore:EAttribute xmi:id="_zhNNUuIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53DA69D3C00F9"/>
-  <Ecore:EAttribute xmi:id="_zhNNU-IwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B539EB782D01D4"/>
-  <Ecore:EAttribute xmi:id="_zhNNVOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B539EB78210280"/>
-  <Ecore:EAttribute xmi:id="_zhNNVeIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53B5F07A60290"/>
-  <Ecore:EAttribute xmi:id="_zhNNVuIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53CA44568000B"/>
-  <Ecore:EAttribute xmi:id="_zhNNV-IwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53E37C5F603D4"/>
-  <Ecore:EAttribute xmi:id="_zhNNWOIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53FC61EC301EE"/>
-  <Ecore:EReference xmi:id="_zhNNWeIwEdqcSeI1OFy_ig" isTransient="true" base_Property="_439EC3AE03B53F72EF6B0212"/>
-  <Ecore:EAttribute xmi:id="_zhNNWuIwEdqcSeI1OFy_ig" isUnsettable="true" base_Property="_439EC3AE03B53F5E13E90031"/>
-  <Ecore:EAttribute xmi:id="_zhNNW-IwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53F5E13FC0150"/>
-  <Ecore:EAttribute xmi:id="_zhNNXOIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53F5E14050212"/>
-  <Ecore:EDataType xmi:id="_zhNNXeIwEdqcSeI1OFy_ig" instanceClassName="java.math.BigDecimal" base_PrimitiveType="_439EC3AE03B53FC6252D01C7"/>
-  <Ecore:EDataType xmi:id="_zhNNXuIwEdqcSeI1OFy_ig" instanceClassName="java.math.BigInteger" base_PrimitiveType="_439EC3AE03B53FC625080137"/>
-  <Ecore:EDataType xmi:id="_zhNNX-IwEdqcSeI1OFy_ig" instanceClassName="boolean" base_PrimitiveType="_439EC3AE03B53D0672EC0024"/>
-  <Ecore:EDataType xmi:id="_zhNNYOIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Boolean" base_PrimitiveType="_439EC3AE03B539EB7E1202AF"/>
-  <Ecore:EDataType xmi:id="_zhNNYeIwEdqcSeI1OFy_ig" instanceClassName="byte" base_PrimitiveType="_439EC3AE03B53D06745301D9"/>
-  <Ecore:EDataType xmi:id="_zhNNYuIwEdqcSeI1OFy_ig" instanceClassName="byte[]" base_PrimitiveType="_439EC3AE03B53FC62489001C"/>
-  <Ecore:EDataType xmi:id="_zhNNY-IwEdqcSeI1OFy_ig" instanceClassName="java.lang.Byte" base_PrimitiveType="_439EC3AE03B53D0672FE0070"/>
-  <Ecore:EDataType xmi:id="_zhNNZOIwEdqcSeI1OFy_ig" instanceClassName="char" base_PrimitiveType="_439EC3AE03B53D06731003B5"/>
-  <Ecore:EDataType xmi:id="_zhWXQOIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Character" base_PrimitiveType="_439EC3AE03B539EB7E480148"/>
-  <Ecore:EDataType xmi:id="_zhWXQeIwEdqcSeI1OFy_ig" instanceClassName="java.util.Date" base_PrimitiveType="_439EC3AE03B53FC625DC038B"/>
-  <Ecore:EDataType xmi:id="_zhWXQuIwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="_439EC3AE03B540916FF702ED"/>
-  <Ecore:EDataType xmi:id="_zhWXQ-IwEdqcSeI1OFy_ig" instanceClassName="double" base_PrimitiveType="_439EC3AE03B53D06745D0364"/>
-  <Ecore:EDataType xmi:id="_zhWXROIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Double" base_PrimitiveType="_439EC3AE03B53A68EBB8012A"/>
-  <Ecore:EDataType xmi:id="_zhWXReIwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="_439EC3AE03B53AD37E40003D"/>
-  <Ecore:EDataType xmi:id="_zhWXRuIwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="_439EC3AE03B53D2DB651020A"/>
-  <Ecore:EDataType xmi:id="_zhWXR-IwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="_439EC3AE03B53FC6258F00C3"/>
-  <Ecore:EDataType xmi:id="_zhWXSOIwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="_439EC3AE03B53F44E79E02B2"/>
-  <Ecore:EDataType xmi:id="_zhWXSeIwEdqcSeI1OFy_ig" instanceClassName="float" base_PrimitiveType="_439EC3AE03B53D067469025C"/>
-  <Ecore:EDataType xmi:id="_zhWXSuIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Float" base_PrimitiveType="_439EC3AE03B539EB7E2600BB"/>
-  <Ecore:EDataType xmi:id="_zhWXS-IwEdqcSeI1OFy_ig" instanceClassName="int" base_PrimitiveType="_439EC3AE03B53D0674720115"/>
-  <Ecore:EDataType xmi:id="_zhWXTOIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Integer" base_PrimitiveType="_439EC3AE03B539EB7E0702AF"/>
-  <Ecore:EDataType xmi:id="_zhWXTeIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Class" base_PrimitiveType="_439EC3AE03B53B1531690285"/>
-  <Ecore:EDataType xmi:id="_zhWXTuIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Object" base_PrimitiveType="_439EC3AE03B53ACDF8200182"/>
-  <Ecore:EDataType xmi:id="_zhWXT-IwEdqcSeI1OFy_ig" instanceClassName="long" base_PrimitiveType="_439EC3AE03B53D06747C0390"/>
-  <Ecore:EDataType xmi:id="_zhWXUOIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Long" base_PrimitiveType="_439EC3AE03B53A68EBAB02DA"/>
-  <Ecore:EDataType xmi:id="_zhWXUeIwEdqcSeI1OFy_ig" instanceClassName="java.util.Map" base_PrimitiveType="_439EC3AE03B54091704001A5"/>
-  <Ecore:EDataType xmi:id="_zhWXUuIwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="_439EC3AE03B53C4F231001FC"/>
-  <Ecore:EDataType xmi:id="_zhWXU-IwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="_439EC3AE03B53FC6255C012E"/>
-  <Ecore:EDataType xmi:id="_zhWXVOIwEdqcSeI1OFy_ig" instanceClassName="short" base_PrimitiveType="_439EC3AE03B53D06748601FA"/>
-  <Ecore:EDataType xmi:id="_zhWXVeIwEdqcSeI1OFy_ig" instanceClassName="java.lang.Short" base_PrimitiveType="_439EC3AE03B53A971C630333"/>
-  <Ecore:EDataType xmi:id="_zhWXVuIwEdqcSeI1OFy_ig" instanceClassName="java.lang.String" base_PrimitiveType="_439EC3AE03B539EB7E000186"/>
-  <Ecore:EDataType xmi:id="_zhgIQOIwEdqcSeI1OFy_ig" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="_439EC3AE03B53D08E8A002C4"/>
-  <Ecore:EReference xmi:id="_zhgIQeIwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD4C006B"/>
-  <Ecore:EReference xmi:id="_zhgIQuIwEdqcSeI1OFy_ig" isVolatile="true" base_Property="_439EC3AE03B539DE15780002"/>
-  <Ecore:EReference xmi:id="_zhgIQ-IwEdqcSeI1OFy_ig" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD8A0114"/>
-  <Ecore:EReference xmi:id="_zhgIROIwEdqcSeI1OFy_ig" isVolatile="true" base_Property="_439EC3AE03B539D7678D0303"/>
+  <Ecore:EPackage xmi:id="_qaZrYORVEdqHWbeY3nX1gQ" base_Package="439EC3AE03B5" packageName="ecore" nsPrefix="ecore" nsURI="http://www.eclipse.org/emf/2002/Ecore" basePackage="org.eclipse.emf" prefix="Ecore"/>
+  <Ecore:EAttribute xmi:id="_qaZrYeRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53D98A349020A"/>
+  <Ecore:EReference xmi:id="_qaZrYuRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D5D261200E9"/>
+  <Ecore:EAttribute xmi:id="_qaZrY-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53CF6636F001D"/>
+  <Ecore:EAttribute xmi:id="_qaZrZORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53D0616AE039B"/>
+  <Ecore:EReference xmi:id="_qaZrZeRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD4C0061"/>
+  <Ecore:EReference xmi:id="_qaZrZuRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD8A010A"/>
+  <Ecore:EReference xmi:id="_qajcYORVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D7678D02EF"/>
+  <Ecore:EReference xmi:id="_qajcYeRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539DE157703CC"/>
+  <Ecore:EReference xmi:id="_qajcYuRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53AF07CB900F8"/>
+  <Ecore:EReference xmi:id="_qajcY-RVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53AF87E2E006C"/>
+  <Ecore:EReference xmi:id="_qajcZORVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53CD7CA8D0078"/>
+  <Ecore:EReference xmi:id="_qajcZeRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D0618C600DE"/>
+  <Ecore:EReference xmi:id="_qajcZuRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53DDF795201B1"/>
+  <Ecore:EAttribute xmi:id="_qajcZ-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53B0F0B800186"/>
+  <Ecore:EAttribute xmi:id="_qatNYORVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53CA8BD1C01FA"/>
+  <Ecore:EAttribute xmi:id="_qatNYeRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D3C1AEE014B"/>
+  <Ecore:EReference xmi:id="_qatNYuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53A7DAB6D0239"/>
+  <Ecore:EAttribute xmi:id="_qatNY-RVEdqHWbeY3nX1gQ" isTransient="true" isUnsettable="true" base_Property="_439EC3AE03B53D2DB8A701BE"/>
+  <Ecore:EAttribute xmi:id="_qatNZORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B5430B327502D1"/>
+  <Ecore:EReference xmi:id="_qatNZeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53ACCDD3C00FE"/>
+  <Ecore:EReference xmi:id="_qatNZuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53A773F5B00D7"/>
+  <Ecore:EAttribute xmi:id="_qatNZ-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53B65CCCF0007"/>
+  <Ecore:EReference xmi:id="_qatNaORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53904D81303AD"/>
+  <Ecore:EAttribute xmi:id="_qatNaeRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B539EB787703D8"/>
+  <Ecore:EAttribute xmi:id="_qatNauRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53A773FA4026D"/>
+  <Ecore:EReference xmi:id="_qatNa-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53A773F5B00CD"/>
+  <Ecore:EReference xmi:id="_qa2XUORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53C06C4F203B1"/>
+  <Ecore:EReference xmi:id="_qa2XUeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53B4DFCAC02CB"/>
+  <Ecore:EAttribute xmi:id="_qa2XUuRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D5D254701DE"/>
+  <Ecore:EReference xmi:id="_qa2XU-RVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53D5D2A6100E7"/>
+  <Ecore:EClass xmi:id="_qa2XVORVEdqHWbeY3nX1gQ" instanceClassName="java.util.Map$Entry" base_Class="_439EC3AE03B53DA69D3C00F6"/>
+  <Ecore:EAttribute xmi:id="_qa2XVeRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53DA69D3C00F8"/>
+  <Ecore:EAttribute xmi:id="_qa2XVuRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53DA69D3C00F9"/>
+  <Ecore:EAttribute xmi:id="_qa2XV-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B539EB782D01D4"/>
+  <Ecore:EAttribute xmi:id="_qa2XWORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B539EB78210280"/>
+  <Ecore:EAttribute xmi:id="_qa2XWeRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53B5F07A60290"/>
+  <Ecore:EAttribute xmi:id="_qa2XWuRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53CA44568000B"/>
+  <Ecore:EAttribute xmi:id="_qa2XW-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53E37C5F603D4"/>
+  <Ecore:EAttribute xmi:id="_qa2XXORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53FC61EC301EE"/>
+  <Ecore:EReference xmi:id="_qa2XXeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_439EC3AE03B53F72EF6B0212"/>
+  <Ecore:EAttribute xmi:id="_qa2XXuRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_439EC3AE03B53F5E13E90031"/>
+  <Ecore:EAttribute xmi:id="_qa2XX-RVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53F5E13FC0150"/>
+  <Ecore:EAttribute xmi:id="_qa2XYORVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B53F5E14050212"/>
+  <Ecore:EDataType xmi:id="_qa2XYeRVEdqHWbeY3nX1gQ" instanceClassName="java.math.BigDecimal" base_PrimitiveType="_439EC3AE03B53FC6252D01C7"/>
+  <Ecore:EDataType xmi:id="_qa2XYuRVEdqHWbeY3nX1gQ" instanceClassName="java.math.BigInteger" base_PrimitiveType="_439EC3AE03B53FC625080137"/>
+  <Ecore:EDataType xmi:id="_qa2XY-RVEdqHWbeY3nX1gQ" instanceClassName="boolean" base_PrimitiveType="_439EC3AE03B53D0672EC0024"/>
+  <Ecore:EDataType xmi:id="_qbAIUORVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Boolean" base_PrimitiveType="_439EC3AE03B539EB7E1202AF"/>
+  <Ecore:EDataType xmi:id="_qbAIUeRVEdqHWbeY3nX1gQ" instanceClassName="byte" base_PrimitiveType="_439EC3AE03B53D06745301D9"/>
+  <Ecore:EDataType xmi:id="_qbAIUuRVEdqHWbeY3nX1gQ" instanceClassName="byte[]" base_PrimitiveType="_439EC3AE03B53FC62489001C"/>
+  <Ecore:EDataType xmi:id="_qbAIU-RVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Byte" base_PrimitiveType="_439EC3AE03B53D0672FE0070"/>
+  <Ecore:EDataType xmi:id="_qbAIVORVEdqHWbeY3nX1gQ" instanceClassName="char" base_PrimitiveType="_439EC3AE03B53D06731003B5"/>
+  <Ecore:EDataType xmi:id="_qbAIVeRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Character" base_PrimitiveType="_439EC3AE03B539EB7E480148"/>
+  <Ecore:EDataType xmi:id="_qbAIVuRVEdqHWbeY3nX1gQ" instanceClassName="java.util.Date" base_PrimitiveType="_439EC3AE03B53FC625DC038B"/>
+  <Ecore:EDataType xmi:id="_qbAIV-RVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain" base_PrimitiveType="_439EC3AE03B540916FF702ED"/>
+  <Ecore:EDataType xmi:id="_qbAIWORVEdqHWbeY3nX1gQ" instanceClassName="double" base_PrimitiveType="_439EC3AE03B53D06745D0364"/>
+  <Ecore:EDataType xmi:id="_qbAIWeRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Double" base_PrimitiveType="_439EC3AE03B53A68EBB8012A"/>
+  <Ecore:EDataType xmi:id="_qbAIWuRVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.common.util.EList" base_PrimitiveType="_439EC3AE03B53AD37E40003D"/>
+  <Ecore:EDataType xmi:id="_qbAIW-RVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.common.util.Enumerator" base_PrimitiveType="_439EC3AE03B53D2DB651020A"/>
+  <Ecore:EDataType xmi:id="_qbAIXORVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap" base_PrimitiveType="_439EC3AE03B53FC6258F00C3"/>
+  <Ecore:EDataType xmi:id="_qbAIXeRVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.ecore.util.FeatureMap$Entry" base_PrimitiveType="_439EC3AE03B53F44E79E02B2"/>
+  <Ecore:EDataType xmi:id="_qbAIXuRVEdqHWbeY3nX1gQ" instanceClassName="float" base_PrimitiveType="_439EC3AE03B53D067469025C"/>
+  <Ecore:EDataType xmi:id="_qbAIX-RVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Float" base_PrimitiveType="_439EC3AE03B539EB7E2600BB"/>
+  <Ecore:EDataType xmi:id="_qbAIYORVEdqHWbeY3nX1gQ" instanceClassName="int" base_PrimitiveType="_439EC3AE03B53D0674720115"/>
+  <Ecore:EDataType xmi:id="_qbAIYeRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Integer" base_PrimitiveType="_439EC3AE03B539EB7E0702AF"/>
+  <Ecore:EDataType xmi:id="_qbAIYuRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Class" base_PrimitiveType="_439EC3AE03B53B1531690285"/>
+  <Ecore:EDataType xmi:id="_qbAIY-RVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Object" base_PrimitiveType="_439EC3AE03B53ACDF8200182"/>
+  <Ecore:EDataType xmi:id="_qbAIZORVEdqHWbeY3nX1gQ" instanceClassName="long" base_PrimitiveType="_439EC3AE03B53D06747C0390"/>
+  <Ecore:EDataType xmi:id="_qbAIZeRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Long" base_PrimitiveType="_439EC3AE03B53A68EBAB02DA"/>
+  <Ecore:EDataType xmi:id="_qbAIZuRVEdqHWbeY3nX1gQ" instanceClassName="java.util.Map" base_PrimitiveType="_439EC3AE03B54091704001A5"/>
+  <Ecore:EDataType xmi:id="_qbAIZ-RVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.ecore.resource.Resource" base_PrimitiveType="_439EC3AE03B53C4F231001FC"/>
+  <Ecore:EDataType xmi:id="_qbJ5UORVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.ecore.resource.ResourceSet" base_PrimitiveType="_439EC3AE03B53FC6255C012E"/>
+  <Ecore:EDataType xmi:id="_qbJ5UeRVEdqHWbeY3nX1gQ" instanceClassName="short" base_PrimitiveType="_439EC3AE03B53D06748601FA"/>
+  <Ecore:EDataType xmi:id="_qbJ5UuRVEdqHWbeY3nX1gQ" instanceClassName="java.lang.Short" base_PrimitiveType="_439EC3AE03B53A971C630333"/>
+  <Ecore:EDataType xmi:id="_qbJ5U-RVEdqHWbeY3nX1gQ" instanceClassName="java.lang.String" base_PrimitiveType="_439EC3AE03B539EB7E000186"/>
+  <Ecore:EDataType xmi:id="_qbJ5VORVEdqHWbeY3nX1gQ" instanceClassName="org.eclipse.emf.common.util.TreeIterator" base_PrimitiveType="_439EC3AE03B53D08E8A002C4"/>
+  <Ecore:EReference xmi:id="_qbJ5VeRVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD4C006B"/>
+  <Ecore:EReference xmi:id="_qbJ5VuRVEdqHWbeY3nX1gQ" isVolatile="true" base_Property="_439EC3AE03B539DE15780002"/>
+  <Ecore:EReference xmi:id="_qbJ5V-RVEdqHWbeY3nX1gQ" isTransient="true" isVolatile="true" base_Property="_439EC3AE03B539D6BD8A0114"/>
+  <Ecore:EReference xmi:id="_qbJ5WORVEdqHWbeY3nX1gQ" isVolatile="true" base_Property="_439EC3AE03B539D7678D0303"/>
 </xmi:XMI>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.9 2006/05/13 04:46:32 khussey Exp $
+ * $Id: Connector.java,v 1.10 2006/05/15 22:13:41 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
- * A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component’s parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.
+ * A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the componentâ€™s parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.
  * An assembly connector is a connector between two components that defines that one component provides the services that another component requires. An assembly connector is a connector that is defined from a required interface or port to a provided interface or port.
  * <!-- end-model-doc -->
  *

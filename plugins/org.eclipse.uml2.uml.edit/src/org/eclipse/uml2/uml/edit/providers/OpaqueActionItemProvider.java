@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionItemProvider.java,v 1.5 2006/05/15 21:06:21 khussey Exp $
+ * $Id: OpaqueActionItemProvider.java,v 1.6 2006/05/15 22:13:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -30,6 +32,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.OpaqueAction;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -127,7 +130,9 @@ public class OpaqueActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueAction_inputValue_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE, true, false,
-				true, null, null, null));
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -146,7 +151,40 @@ public class OpaqueActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueAction_outputValue_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE, true, false,
-				true, null, null, null));
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures
+				.add(UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE);
+			childrenFeatures
+				.add(UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -188,6 +226,11 @@ public class OpaqueActionItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
+			case UMLPackage.OPAQUE_ACTION__INPUT_VALUE :
+			case UMLPackage.OPAQUE_ACTION__OUTPUT_VALUE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -202,6 +245,22 @@ public class OpaqueActionItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE,
+			UMLFactory.eINSTANCE.createInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE,
+			UMLFactory.eINSTANCE.createValuePin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE,
+			UMLFactory.eINSTANCE.createActionInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**

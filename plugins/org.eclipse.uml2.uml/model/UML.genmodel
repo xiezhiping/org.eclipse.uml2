@@ -2336,10 +2336,14 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyMultiLine="true"
           ecoreFeature="ecore:EAttribute UML.ecore#//OpaqueAction/body"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//OpaqueAction/language"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/inputValue"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/outputValue"/>
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/inputValue">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//OpaqueAction/outputValue">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Action">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
@@ -4045,8 +4049,10 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//AcceptEventAction">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//AcceptEventAction/isUnmarshall"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//AcceptEventAction/result"/>
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//AcceptEventAction/result">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//AcceptEventAction/trigger">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -4069,8 +4075,10 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//AcceptCallAction">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//AcceptCallAction/returnInformation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//AcceptCallAction/returnInformation">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//AcceptCallAction/result_pins">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//AcceptCallAction/result_pins/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//AcceptCallAction/result_pins/context"/>
@@ -4105,8 +4113,10 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//UnmarshallAction">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//UnmarshallAction/result"/>
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//UnmarshallAction/result">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//UnmarshallAction/unmarshallType"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
