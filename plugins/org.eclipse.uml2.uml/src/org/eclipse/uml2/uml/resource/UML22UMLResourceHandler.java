@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.20 2006/05/12 03:56:59 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.21 2006/05/15 22:29:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -651,14 +651,10 @@ public class UML22UMLResourceHandler
 						"argument", true); //$NON-NLS-1$
 
 					if (value instanceof InputPin) {
-						InputPin inputPin = (InputPin) value;
-
-						doSwitch(inputPin);
-
-						((CallBehaviorAction) interactionUse.createArgument(
-							inputPin.getName(),
-							UMLPackage.Literals.CALL_BEHAVIOR_ACTION))
-							.getArguments().add(inputPin);
+						((OpaqueAction) interactionUse.createArgument(
+							((InputPin) value).getName(),
+							UMLPackage.Literals.OPAQUE_ACTION))
+							.getInputValues().add(value);
 					}
 				}
 
@@ -1084,43 +1080,30 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, opaqueAction);
 
 				if (extension != null) {
-					Activity activity = opaqueAction.getActivity();
+					Object value = getValue(extension.getMixed(),
+						"duration", true); //$NON-NLS-1$
 
-					if (activity != null) {
-						Object value = getValue(extension.getMixed(),
-							"duration", true); //$NON-NLS-1$
+					if (value instanceof Duration) {
+						Duration duration = (Duration) value;
 
-						if (value instanceof Duration) {
-							Duration duration = (Duration) value;
+						ValuePin inputValue = (ValuePin) opaqueAction
+							.createInputValue(duration.getName(), duration
+								.getType(), UMLPackage.Literals.VALUE_PIN);
 
-							doSwitch(duration);
+						inputValue.setValue(duration);
+					}
 
-							ValuePin inputValue = (ValuePin) activity
-								.createNode(duration.getName(),
-									UMLPackage.Literals.VALUE_PIN);
+					value = getValue(extension.getMixed(), "now", true); //$NON-NLS-1$
 
-							inputValue.setType(duration.getType());
-							inputValue.setValue(duration);
+					if (value instanceof TimeExpression) {
+						TimeExpression timeExpression = (TimeExpression) value;
 
-							opaqueAction.getInputValues().add(inputValue);
-						}
+						ValuePin inputValue = (ValuePin) opaqueAction
+							.createInputValue(timeExpression.getName(),
+								timeExpression.getType(),
+								UMLPackage.Literals.VALUE_PIN);
 
-						value = getValue(extension.getMixed(), "now", true); //$NON-NLS-1$
-
-						if (value instanceof TimeExpression) {
-							TimeExpression timeExpression = (TimeExpression) value;
-
-							doSwitch(timeExpression);
-
-							ValuePin inputValue = (ValuePin) activity
-								.createNode(timeExpression.getName(),
-									UMLPackage.Literals.VALUE_PIN);
-
-							inputValue.setType(timeExpression.getType());
-							inputValue.setValue(timeExpression);
-
-							opaqueAction.getInputValues().add(inputValue);
-						}
+						inputValue.setValue(timeExpression);
 					}
 				}
 
@@ -1484,6 +1467,8 @@ public class UML22UMLResourceHandler
 
 							if (eObject instanceof ParameterableElement) {
 								ParameterableElement parameterableElement = (ParameterableElement) eObject;
+
+								doSwitch(parameterableElement);
 
 								String id = resource.getID(templateParameter);
 
