@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageItemProvider.java,v 1.3 2005/11/23 17:34:08 khussey Exp $
+ * $Id: GenPackageItemProvider.java,v 1.4 2006/05/15 20:56:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -95,7 +95,7 @@ public class GenPackageItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenPackage_resourceInterfaces_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_PACKAGE__RESOURCE_INTERFACES,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}
@@ -116,7 +116,7 @@ public class GenPackageItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenPackage_operationsPackage_feature", "_UI_GenPackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_PACKAGE__OPERATIONS_PACKAGE, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}

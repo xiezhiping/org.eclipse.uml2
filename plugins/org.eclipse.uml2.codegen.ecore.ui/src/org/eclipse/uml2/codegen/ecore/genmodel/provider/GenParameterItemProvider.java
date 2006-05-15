@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenParameterItemProvider.java,v 1.4 2005/11/23 17:34:08 khussey Exp $
+ * $Id: GenParameterItemProvider.java,v 1.5 2006/05/15 20:56:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -94,7 +94,7 @@ public class GenParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenParameter_ecoreParameter_feature", "_UI_GenParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_PARAMETER__ECORE_PARAMETER, false,
-				null, getString("_UI_EcorePropertyCategory"), //$NON-NLS-1$
+				false, false, null, getString("_UI_EcorePropertyCategory"), //$NON-NLS-1$
 				null));
 	}
 

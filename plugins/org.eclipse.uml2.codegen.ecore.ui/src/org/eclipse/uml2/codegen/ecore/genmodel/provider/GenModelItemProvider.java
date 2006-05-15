@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelItemProvider.java,v 1.3 2005/11/23 17:34:08 khussey Exp $
+ * $Id: GenModelItemProvider.java,v 1.4 2006/05/15 20:56:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -97,7 +97,7 @@ public class GenModelItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenModel_factoryMethods_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_MODEL__FACTORY_METHODS, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}
@@ -118,7 +118,7 @@ public class GenModelItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenModel_pluralizedGetters_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_MODEL__PLURALIZED_GETTERS, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}
@@ -139,7 +139,7 @@ public class GenModelItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenModel_cacheAdapterSupport_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_MODEL__CACHE_ADAPTER_SUPPORT,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}
@@ -159,8 +159,8 @@ public class GenModelItemProvider
 				getString("_UI_GenModel_safeStrings_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenModel_safeStrings_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_MODEL__SAFE_STRINGS, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				GenModelPackage.Literals.GEN_MODEL__SAFE_STRINGS, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}
@@ -181,7 +181,7 @@ public class GenModelItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenModel_invariantPrefix_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_MODEL__INVARIANT_PREFIX, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}

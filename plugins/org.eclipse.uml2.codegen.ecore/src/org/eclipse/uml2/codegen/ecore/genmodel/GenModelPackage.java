@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.17 2006/05/04 14:02:21 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.18 2006/05/15 20:56:48 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -477,6 +477,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_FEATURE__PROPERTY_DESCRIPTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__PROPERTY_DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Property Multi Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__PROPERTY_MULTI_LINE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__PROPERTY_MULTI_LINE;
+
+	/**
+	 * The feature id for the '<em><b>Property Sort Choices</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__PROPERTY_SORT_CHOICES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__PROPERTY_SORT_CHOICES;
 
 	/**
 	 * The feature id for the '<em><b>Gen Class</b></em>' container reference.

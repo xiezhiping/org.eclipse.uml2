@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureItemProvider.java,v 1.5 2005/11/23 17:34:08 khussey Exp $
+ * $Id: GenFeatureItemProvider.java,v 1.6 2006/05/15 20:56:46 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -96,7 +96,7 @@ public class GenFeatureItemProvider
 				getString("_UI_GenFeature_key_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_GenFeature_key_feature", "_UI_GenFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_FEATURE__KEY, true,
+				GenModelPackage.Literals.GEN_FEATURE__KEY, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
