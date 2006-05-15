@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionItemProvider.java,v 1.5 2006/02/21 21:40:13 khussey Exp $
+ * $Id: ExtensionItemProvider.java,v 1.6 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,8 +90,8 @@ public class ExtensionItemProvider
 				getString("_UI_Extension_isRequired_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Extension_isRequired_feature", "_UI_Extension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.EXTENSION__IS_REQUIRED, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				UMLPackage.Literals.EXTENSION__IS_REQUIRED, false, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -111,7 +111,8 @@ public class ExtensionItemProvider
 				getString("_UI_Extension_metaclass_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Extension_metaclass_feature", "_UI_Extension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.EXTENSION__METACLASS, false, null, null,
+				UMLPackage.Literals.EXTENSION__METACLASS, false, false, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

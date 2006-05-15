@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: LinkEndDestructionDataItemProvider.java,v 1.4 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,7 +87,8 @@ public class LinkEndDestructionDataItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndDestructionData_isDestroyDuplicates_feature", "_UI_LinkEndDestructionData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class LinkEndDestructionDataItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndDestructionData_destroyAt_feature", "_UI_LinkEndDestructionData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.LINK_END_DESTRUCTION_DATA__DESTROY_AT,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**

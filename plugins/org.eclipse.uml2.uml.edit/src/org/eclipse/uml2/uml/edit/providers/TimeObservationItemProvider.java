@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: TimeObservationItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,8 +86,8 @@ public class TimeObservationItemProvider
 				getString("_UI_TimeObservation_event_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeObservation_event_feature", "_UI_TimeObservation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_OBSERVATION__EVENT, true, null, null,
-				null));
+				UMLPackage.Literals.TIME_OBSERVATION__EVENT, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class TimeObservationItemProvider
 				getString("_UI_TimeObservation_firstEvent_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeObservation_firstEvent_feature", "_UI_TimeObservation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_OBSERVATION__FIRST_EVENT, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.TIME_OBSERVATION__FIRST_EVENT, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**

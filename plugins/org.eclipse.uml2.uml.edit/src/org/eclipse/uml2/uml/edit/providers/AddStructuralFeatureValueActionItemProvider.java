@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,7 +89,8 @@ public class AddStructuralFeatureValueActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AddStructuralFeatureValueAction_isReplaceAll_feature", "_UI_AddStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -108,7 +109,7 @@ public class AddStructuralFeatureValueActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AddStructuralFeatureValueAction_insertAt_feature", "_UI_AddStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

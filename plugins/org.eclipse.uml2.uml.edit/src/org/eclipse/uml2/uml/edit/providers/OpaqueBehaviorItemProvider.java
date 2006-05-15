@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorItemProvider.java,v 1.5 2006/02/21 21:40:13 khussey Exp $
+ * $Id: OpaqueBehaviorItemProvider.java,v 1.6 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,7 @@ public class OpaqueBehaviorItemProvider
 				getString("_UI_OpaqueBehavior_body_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueBehavior_body_feature", "_UI_OpaqueBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_BEHAVIOR__BODY, true,
+				UMLPackage.Literals.OPAQUE_BEHAVIOR__BODY, true, true, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -105,8 +105,8 @@ public class OpaqueBehaviorItemProvider
 				getString("_UI_OpaqueBehavior_language_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueBehavior_language_feature", "_UI_OpaqueBehavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_BEHAVIOR__LANGUAGE, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.OPAQUE_BEHAVIOR__LANGUAGE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

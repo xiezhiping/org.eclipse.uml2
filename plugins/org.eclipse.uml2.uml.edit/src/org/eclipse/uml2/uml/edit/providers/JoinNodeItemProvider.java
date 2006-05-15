@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: JoinNodeItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -88,7 +88,8 @@ public class JoinNodeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_JoinNode_isCombineDuplicate_feature", "_UI_JoinNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.JOIN_NODE__IS_COMBINE_DUPLICATE, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -106,7 +107,8 @@ public class JoinNodeItemProvider
 				getString("_UI_JoinNode_joinSpec_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_JoinNode_joinSpec_feature", "_UI_JoinNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, true, null, null,
+				UMLPackage.Literals.JOIN_NODE__JOIN_SPEC, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

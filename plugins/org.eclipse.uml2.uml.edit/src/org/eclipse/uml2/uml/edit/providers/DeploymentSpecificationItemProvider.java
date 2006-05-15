@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
+ * $Id: DeploymentSpecificationItemProvider.java,v 1.5 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -88,7 +88,8 @@ public class DeploymentSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentSpecification_deploymentLocation_feature", "_UI_DeploymentSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
-				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -107,7 +108,8 @@ public class DeploymentSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentSpecification_executionLocation_feature", "_UI_DeploymentSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
-				true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -126,7 +128,7 @@ public class DeploymentSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentSpecification_deployment_feature", "_UI_DeploymentSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

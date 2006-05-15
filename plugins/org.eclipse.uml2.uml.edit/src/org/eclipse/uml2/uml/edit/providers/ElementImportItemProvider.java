@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportItemProvider.java,v 1.4 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ElementImportItemProvider.java,v 1.5 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class ElementImportItemProvider
 				getString("_UI_ElementImport_visibility_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_visibility_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ELEMENT_IMPORT__VISIBILITY, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.ELEMENT_IMPORT__VISIBILITY, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class ElementImportItemProvider
 				getString("_UI_ElementImport_alias_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_alias_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ELEMENT_IMPORT__ALIAS, true,
+				UMLPackage.Literals.ELEMENT_IMPORT__ALIAS, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -128,7 +128,7 @@ public class ElementImportItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_importedElement_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ELEMENT_IMPORT__IMPORTED_ELEMENT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class ElementImportItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ElementImport_importingNamespace_feature", "_UI_ElementImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ELEMENT_IMPORT__IMPORTING_NAMESPACE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

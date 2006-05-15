@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.6 2006/01/24 22:46:31 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.7 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -107,8 +107,8 @@ public class StateItemProvider
 				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class StateItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-				false, null, null,
+				false, false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -148,7 +148,7 @@ public class StateItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-				false, null, null,
+				false, false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -168,7 +168,8 @@ public class StateItemProvider
 				getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__OUTGOING, true, null, null, null));
+				UMLPackage.Literals.VERTEX__OUTGOING, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -186,7 +187,8 @@ public class StateItemProvider
 				getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__INCOMING, true, null, null, null));
+				UMLPackage.Literals.VERTEX__INCOMING, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -204,8 +206,8 @@ public class StateItemProvider
 				getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__CONTAINER, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.VERTEX__CONTAINER, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -224,7 +226,7 @@ public class StateItemProvider
 				getString("_UI_State_isComposite_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isComposite_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_COMPOSITE, false,
+				UMLPackage.Literals.STATE__IS_COMPOSITE, false, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -245,7 +247,7 @@ public class StateItemProvider
 				getString("_UI_State_isOrthogonal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isOrthogonal_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_ORTHOGONAL, false,
+				UMLPackage.Literals.STATE__IS_ORTHOGONAL, false, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -266,7 +268,7 @@ public class StateItemProvider
 				getString("_UI_State_isSimple_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isSimple_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_SIMPLE, false,
+				UMLPackage.Literals.STATE__IS_SIMPLE, false, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -287,8 +289,8 @@ public class StateItemProvider
 				getString("_UI_State_isSubmachineState_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_isSubmachineState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__IS_SUBMACHINE_STATE, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				UMLPackage.Literals.STATE__IS_SUBMACHINE_STATE, false, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -308,7 +310,8 @@ public class StateItemProvider
 				getString("_UI_State_submachine_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_submachine_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__SUBMACHINE, true, null, null, null));
+				UMLPackage.Literals.STATE__SUBMACHINE, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -326,8 +329,8 @@ public class StateItemProvider
 				getString("_UI_State_connection_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_connection_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__CONNECTION, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE__CONNECTION, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -346,7 +349,8 @@ public class StateItemProvider
 				getString("_UI_State_connectionPoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_connectionPoint_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__CONNECTION_POINT, true, null, null,
+				UMLPackage.Literals.STATE__CONNECTION_POINT, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -366,8 +370,8 @@ public class StateItemProvider
 				getString("_UI_State_redefinedState_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_redefinedState_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__REDEFINED_STATE, true, null, null,
-				null));
+				UMLPackage.Literals.STATE__REDEFINED_STATE, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -385,7 +389,8 @@ public class StateItemProvider
 				getString("_UI_State_stateInvariant_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_stateInvariant_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__STATE_INVARIANT, true, null, null,
+				UMLPackage.Literals.STATE__STATE_INVARIANT, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -405,8 +410,8 @@ public class StateItemProvider
 				getString("_UI_State_entry_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__ENTRY, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE__ENTRY, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -425,7 +430,7 @@ public class StateItemProvider
 				getString("_UI_State_exit_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__EXIT, true, null, null,
+				UMLPackage.Literals.STATE__EXIT, true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -445,7 +450,8 @@ public class StateItemProvider
 				getString("_UI_State_doActivity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__DO_ACTIVITY, true, null, null,
+				UMLPackage.Literals.STATE__DO_ACTIVITY, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -465,8 +471,9 @@ public class StateItemProvider
 				getString("_UI_State_deferrableTrigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_deferrableTrigger_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -485,8 +492,8 @@ public class StateItemProvider
 				getString("_UI_State_region_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_State_region_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE__REGION, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STATE__REGION, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

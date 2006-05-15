@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ConnectorEndItemProvider.java,v 1.5 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,8 +85,9 @@ public class ConnectorEndItemProvider
 				getString("_UI_ConnectorEnd_definingEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_definingEnd_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR_END__DEFINING_END, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CONNECTOR_END__DEFINING_END, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -105,8 +106,8 @@ public class ConnectorEndItemProvider
 				getString("_UI_ConnectorEnd_partWithPort_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_partWithPort_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR_END__PART_WITH_PORT, true, null,
-				null, null));
+				UMLPackage.Literals.CONNECTOR_END__PART_WITH_PORT, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -124,7 +125,8 @@ public class ConnectorEndItemProvider
 				getString("_UI_ConnectorEnd_role_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectorEnd_role_feature", "_UI_ConnectorEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR_END__ROLE, true, null, null, null));
+				UMLPackage.Literals.CONNECTOR_END__ROLE, true, false, true,
+				null, null, null));
 	}
 
 	/**

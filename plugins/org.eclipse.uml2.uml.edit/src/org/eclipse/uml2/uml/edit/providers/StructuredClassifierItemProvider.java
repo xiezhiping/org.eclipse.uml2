@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierItemProvider.java,v 1.2 2006/02/21 21:40:13 khussey Exp $
+ * $Id: StructuredClassifierItemProvider.java,v 1.3 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -91,7 +91,7 @@ public class StructuredClassifierItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedAttribute_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -111,8 +111,9 @@ public class StructuredClassifierItemProvider
 				getString("_UI_StructuredClassifier_part_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_part_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -131,8 +132,9 @@ public class StructuredClassifierItemProvider
 				getString("_UI_StructuredClassifier_role_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_role_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -152,7 +154,7 @@ public class StructuredClassifierItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuredClassifier_ownedConnector_feature", "_UI_StructuredClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

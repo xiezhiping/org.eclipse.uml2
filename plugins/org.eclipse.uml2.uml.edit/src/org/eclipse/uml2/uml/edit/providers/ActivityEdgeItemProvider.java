@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeItemProvider.java,v 1.4 2006/01/04 17:47:49 khussey Exp $
+ * $Id: ActivityEdgeItemProvider.java,v 1.5 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -96,7 +96,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_activity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_activity_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__ACTIVITY, true, null, null,
+				UMLPackage.Literals.ACTIVITY_EDGE__ACTIVITY, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -116,7 +117,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_inGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inGroup_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP, false, null, null,
+				UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP, false, false,
+				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -136,8 +138,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_inPartition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inPartition_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__IN_PARTITION, true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_EDGE__IN_PARTITION, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -156,7 +158,7 @@ public class ActivityEdgeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_inStructuredNode_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_EDGE__IN_STRUCTURED_NODE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -176,8 +178,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_target_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__TARGET, true, null, null,
-				null));
+				UMLPackage.Literals.ACTIVITY_EDGE__TARGET, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -195,8 +197,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_redefinedEdge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_redefinedEdge_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__REDEFINED_EDGE, true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_EDGE__REDEFINED_EDGE, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -214,7 +216,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_guard_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_guard_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__GUARD, true, null, null,
+				UMLPackage.Literals.ACTIVITY_EDGE__GUARD, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -234,7 +237,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_weight_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_weight_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT, true, null, null,
+				UMLPackage.Literals.ACTIVITY_EDGE__WEIGHT, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -254,8 +258,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_interrupts_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_interrupts_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__INTERRUPTS, true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_EDGE__INTERRUPTS, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -273,8 +277,8 @@ public class ActivityEdgeItemProvider
 				getString("_UI_ActivityEdge_source_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityEdge_source_feature", "_UI_ActivityEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_EDGE__SOURCE, true, null, null,
-				null));
+				UMLPackage.Literals.ACTIVITY_EDGE__SOURCE, true, false, true,
+				null, null, null));
 	}
 
 	/**

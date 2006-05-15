@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionItemProvider.java,v 1.5 2006/01/24 22:46:32 khussey Exp $
+ * $Id: TimeExpressionItemProvider.java,v 1.6 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,8 +86,8 @@ public class TimeExpressionItemProvider
 				getString("_UI_TimeExpression_expr_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_expr_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_EXPRESSION__EXPR, true, null, null,
-				null));
+				UMLPackage.Literals.TIME_EXPRESSION__EXPR, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class TimeExpressionItemProvider
 				getString("_UI_TimeExpression_observation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_observation_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TIME_EXPRESSION__OBSERVATION, true, null,
-				null, null));
+				UMLPackage.Literals.TIME_EXPRESSION__OBSERVATION, true, false,
+				true, null, null, null));
 	}
 
 	/**

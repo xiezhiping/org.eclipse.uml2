@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentItemProvider.java,v 1.5 2006/01/24 22:46:30 khussey Exp $
+ * $Id: DeploymentItemProvider.java,v 1.6 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -102,8 +102,8 @@ public class DeploymentItemProvider
 				getString("_UI_Deployment_deployedArtifact_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Deployment_deployedArtifact_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT, true, null,
-				null, null));
+				UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -121,8 +121,9 @@ public class DeploymentItemProvider
 				getString("_UI_Deployment_configuration_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Deployment_configuration_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT__CONFIGURATION, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DEPLOYMENT__CONFIGURATION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -141,7 +142,8 @@ public class DeploymentItemProvider
 				getString("_UI_Deployment_location_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Deployment_location_feature", "_UI_Deployment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT__LOCATION, true, null, null,
+				UMLPackage.Literals.DEPLOYMENT__LOCATION, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

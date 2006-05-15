@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ReadLinkActionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,7 +85,8 @@ public class ReadLinkActionItemProvider
 				getString("_UI_ReadLinkAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadLinkAction_result_feature", "_UI_ReadLinkAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.READ_LINK_ACTION__RESULT, true, null, null,
+				UMLPackage.Literals.READ_LINK_ACTION__RESULT, true, false,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

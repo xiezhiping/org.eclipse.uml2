@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -96,8 +96,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_isTestedFirst_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_isTestedFirst_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__IS_TESTED_FIRST, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.LOOP_NODE__IS_TESTED_FIRST, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -115,8 +115,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_bodyPart_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_bodyPart_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__BODY_PART, true, null, null,
-				null));
+				UMLPackage.Literals.LOOP_NODE__BODY_PART, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -134,8 +134,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_setupPart_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_setupPart_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__SETUP_PART, true, null, null,
-				null));
+				UMLPackage.Literals.LOOP_NODE__SETUP_PART, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -153,7 +153,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_decider_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_decider_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__DECIDER, true, null, null, null));
+				UMLPackage.Literals.LOOP_NODE__DECIDER, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -171,7 +172,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_test_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_test_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__TEST, true, null, null, null));
+				UMLPackage.Literals.LOOP_NODE__TEST, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -189,8 +191,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_result_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__RESULT, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LOOP_NODE__RESULT, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -209,7 +211,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_loopVariable_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_loopVariable_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, true, null, null,
+				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, true, false,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -229,8 +232,8 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_bodyOutput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_bodyOutput_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__BODY_OUTPUT, true, null, null,
-				null));
+				UMLPackage.Literals.LOOP_NODE__BODY_OUTPUT, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -248,8 +251,9 @@ public class LoopNodeItemProvider
 				getString("_UI_LoopNode_loopVariableInput_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_loopVariableInput_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT, true,
+				false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

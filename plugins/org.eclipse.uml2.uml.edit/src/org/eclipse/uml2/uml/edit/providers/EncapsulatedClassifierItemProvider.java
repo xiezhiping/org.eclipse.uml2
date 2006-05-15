@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierItemProvider.java,v 1.3 2006/02/21 21:40:13 khussey Exp $
+ * $Id: EncapsulatedClassifierItemProvider.java,v 1.4 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -84,7 +84,7 @@ public class EncapsulatedClassifierItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_EncapsulatedClassifier_ownedPort_feature", "_UI_EncapsulatedClassifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: OccurrenceSpecificationItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,7 @@ public class OccurrenceSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_toBefore_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__TO_BEFORE, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class OccurrenceSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_event_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__EVENT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class OccurrenceSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_toAfter_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__TO_AFTER, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

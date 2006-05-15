@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationItemProvider.java,v 1.5 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ManifestationItemProvider.java,v 1.6 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -98,7 +98,7 @@ public class ManifestationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Manifestation_utilizedElement_feature", "_UI_Manifestation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

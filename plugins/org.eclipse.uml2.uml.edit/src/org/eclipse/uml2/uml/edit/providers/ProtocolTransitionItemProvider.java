@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.8 2006/02/24 17:28:06 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.9 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -98,7 +98,7 @@ public class ProtocolTransitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_postCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -118,8 +118,9 @@ public class ProtocolTransitionItemProvider
 				getString("_UI_ProtocolTransition_referred_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_referred_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED, false,
+				false, false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -139,7 +140,7 @@ public class ProtocolTransitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_preCondition_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

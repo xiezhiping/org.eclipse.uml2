@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ReclassifyObjectActionItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,7 +90,8 @@ public class ReclassifyObjectActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_isReplaceAll_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -109,7 +110,7 @@ public class ReclassifyObjectActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_oldClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -128,7 +129,7 @@ public class ReclassifyObjectActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_newClassifier_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -147,7 +148,7 @@ public class ReclassifyObjectActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReclassifyObjectAction_object_feature", "_UI_ReclassifyObjectAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION__OBJECT, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

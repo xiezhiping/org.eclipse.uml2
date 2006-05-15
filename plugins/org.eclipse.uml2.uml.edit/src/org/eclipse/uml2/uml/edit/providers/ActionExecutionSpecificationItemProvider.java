@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ActionExecutionSpecificationItemProvider.java,v 1.5 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,7 +85,7 @@ public class ActionExecutionSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActionExecutionSpecification_action_feature", "_UI_ActionExecutionSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTION_EXECUTION_SPECIFICATION__ACTION,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**

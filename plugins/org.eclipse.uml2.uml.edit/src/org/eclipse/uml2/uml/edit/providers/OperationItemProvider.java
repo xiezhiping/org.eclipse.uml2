@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.9 2006/04/19 20:36:06 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.10 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -116,7 +116,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningTemplateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -156,7 +156,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -177,7 +177,7 @@ public class OperationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -197,7 +197,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isQuery_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isQuery_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__IS_QUERY, true,
+				UMLPackage.Literals.OPERATION__IS_QUERY, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -216,7 +216,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isOrdered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isOrdered_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__IS_ORDERED, true,
+				UMLPackage.Literals.OPERATION__IS_ORDERED, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -235,7 +235,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_isUnique_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_isUnique_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__IS_UNIQUE, true,
+				UMLPackage.Literals.OPERATION__IS_UNIQUE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -254,7 +254,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_lower_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_lower_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__LOWER, true,
+				UMLPackage.Literals.OPERATION__LOWER, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -273,7 +273,7 @@ public class OperationItemProvider
 				getString("_UI_Operation_upper_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_upper_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__UPPER, true,
+				UMLPackage.Literals.OPERATION__UPPER, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -292,8 +292,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_precondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_precondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__PRECONDITION, true, null, null,
-				null));
+				UMLPackage.Literals.OPERATION__PRECONDITION, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -311,8 +311,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_postcondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_postcondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__POSTCONDITION, true, null, null,
-				null));
+				UMLPackage.Literals.OPERATION__POSTCONDITION, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -330,8 +330,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_redefinedOperation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_redefinedOperation_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__REDEFINED_OPERATION, true, null,
-				null, null));
+				UMLPackage.Literals.OPERATION__REDEFINED_OPERATION, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -349,7 +349,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_datatype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_datatype_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__DATATYPE, true, null, null,
+				UMLPackage.Literals.OPERATION__DATATYPE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -369,8 +370,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_bodyCondition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_bodyCondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__BODY_CONDITION, true, null,
-				null, null));
+				UMLPackage.Literals.OPERATION__BODY_CONDITION, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -388,7 +389,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_type_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__TYPE, true, null, null, null));
+				UMLPackage.Literals.OPERATION__TYPE, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -406,7 +408,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_interface_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_interface_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__INTERFACE, true, null, null,
+				UMLPackage.Literals.OPERATION__INTERFACE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -426,8 +429,8 @@ public class OperationItemProvider
 				getString("_UI_Operation_class_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Operation_class_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPERATION__CLASS, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.OPERATION__CLASS, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

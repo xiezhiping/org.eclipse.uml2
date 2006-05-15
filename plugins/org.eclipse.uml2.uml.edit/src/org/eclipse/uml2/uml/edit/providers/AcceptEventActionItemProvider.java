@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: AcceptEventActionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,7 +89,8 @@ public class AcceptEventActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_isUnmarshall_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACCEPT_EVENT_ACTION__IS_UNMARSHALL, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -107,8 +108,8 @@ public class AcceptEventActionItemProvider
 				getString("_UI_AcceptEventAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_result_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT, true, null,
-				null, null));
+				UMLPackage.Literals.ACCEPT_EVENT_ACTION__RESULT, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -126,8 +127,9 @@ public class AcceptEventActionItemProvider
 				getString("_UI_AcceptEventAction_trigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_AcceptEventAction_trigger_feature", "_UI_AcceptEventAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACCEPT_EVENT_ACTION__TRIGGER, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

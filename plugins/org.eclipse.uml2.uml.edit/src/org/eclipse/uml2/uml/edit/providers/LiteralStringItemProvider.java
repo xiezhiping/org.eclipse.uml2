@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: LiteralStringItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,7 @@ public class LiteralStringItemProvider
 				getString("_UI_LiteralString_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LiteralString_value_feature", "_UI_LiteralString_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LITERAL_STRING__VALUE, true,
+				UMLPackage.Literals.LITERAL_STRING__VALUE, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

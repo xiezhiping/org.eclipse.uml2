@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionItemProvider.java,v 1.11 2006/02/21 21:40:13 khussey Exp $
+ * $Id: InteractionItemProvider.java,v 1.12 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -95,8 +95,8 @@ public class InteractionItemProvider
 				getString("_UI_InteractionFragment_covered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_covered_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, null,
-				null, null));
+				UMLPackage.Literals.INTERACTION_FRAGMENT__COVERED, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class InteractionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_generalOrdering_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.INTERACTION_FRAGMENT__GENERAL_ORDERING,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -136,7 +136,7 @@ public class InteractionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingInteraction_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -157,7 +157,7 @@ public class InteractionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionFragment_enclosingOperand_feature", "_UI_InteractionFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -177,7 +177,8 @@ public class InteractionItemProvider
 				getString("_UI_Interaction_lifeline_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interaction_lifeline_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__LIFELINE, true, null, null,
+				UMLPackage.Literals.INTERACTION__LIFELINE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -197,7 +198,8 @@ public class InteractionItemProvider
 				getString("_UI_Interaction_fragment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interaction_fragment_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__FRAGMENT, true, null, null,
+				UMLPackage.Literals.INTERACTION__FRAGMENT, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -217,7 +219,8 @@ public class InteractionItemProvider
 				getString("_UI_Interaction_action_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interaction_action_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__ACTION, true, null, null,
+				UMLPackage.Literals.INTERACTION__ACTION, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -237,7 +240,8 @@ public class InteractionItemProvider
 				getString("_UI_Interaction_formalGate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interaction_formalGate_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__FORMAL_GATE, true, null, null,
+				UMLPackage.Literals.INTERACTION__FORMAL_GATE, true, false,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -257,7 +261,8 @@ public class InteractionItemProvider
 				getString("_UI_Interaction_message_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Interaction_message_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION__MESSAGE, true, null, null,
+				UMLPackage.Literals.INTERACTION__MESSAGE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

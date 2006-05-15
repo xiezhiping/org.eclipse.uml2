@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
+ * $Id: SignalItemProvider.java,v 1.5 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,7 +85,8 @@ public class SignalItemProvider
 				getString("_UI_Signal_ownedAttribute_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Signal_ownedAttribute_feature", "_UI_Signal_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SIGNAL__OWNED_ATTRIBUTE, true, null, null,
+				UMLPackage.Literals.SIGNAL__OWNED_ATTRIBUTE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeItemProvider.java,v 1.4 2006/01/24 22:46:30 khussey Exp $
+ * $Id: ActivityParameterNodeItemProvider.java,v 1.5 2006/05/15 20:57:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -84,7 +84,7 @@ public class ActivityParameterNodeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityParameterNode_parameter_feature", "_UI_ActivityParameterNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_PARAMETER_NODE__PARAMETER, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

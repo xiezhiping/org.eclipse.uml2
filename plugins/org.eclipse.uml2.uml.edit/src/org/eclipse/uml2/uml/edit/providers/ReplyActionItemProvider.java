@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: ReplyActionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class ReplyActionItemProvider
 				getString("_UI_ReplyAction_replyToCall_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReplyAction_replyToCall_feature", "_UI_ReplyAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REPLY_ACTION__REPLY_TO_CALL, true, null,
-				null, null));
+				UMLPackage.Literals.REPLY_ACTION__REPLY_TO_CALL, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class ReplyActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReplyAction_returnInformation_feature", "_UI_ReplyAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -129,8 +129,9 @@ public class ReplyActionItemProvider
 				getString("_UI_ReplyAction_replyValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReplyAction_replyValue_feature", "_UI_ReplyAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

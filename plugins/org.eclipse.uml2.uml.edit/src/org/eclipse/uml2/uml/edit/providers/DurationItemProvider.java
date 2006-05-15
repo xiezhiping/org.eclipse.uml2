@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationItemProvider.java,v 1.5 2006/01/24 22:46:32 khussey Exp $
+ * $Id: DurationItemProvider.java,v 1.6 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,8 @@ public class DurationItemProvider
 				getString("_UI_Duration_expr_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Duration_expr_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DURATION__EXPR, true, null, null, null));
+				UMLPackage.Literals.DURATION__EXPR, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -104,8 +105,8 @@ public class DurationItemProvider
 				getString("_UI_Duration_observation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Duration_observation_feature", "_UI_Duration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DURATION__OBSERVATION, true, null, null,
-				null));
+				UMLPackage.Literals.DURATION__OBSERVATION, true, false, true,
+				null, null, null));
 	}
 
 	/**

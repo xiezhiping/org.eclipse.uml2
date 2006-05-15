@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorItemProvider.java,v 1.4 2006/04/19 20:36:06 khussey Exp $
+ * $Id: ConnectorItemProvider.java,v 1.5 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,7 +90,8 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_type_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR__TYPE, true, null, null, null));
+				UMLPackage.Literals.CONNECTOR__TYPE, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -108,8 +109,8 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_redefinedConnector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_redefinedConnector_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR__REDEFINED_CONNECTOR, true, null,
-				null, null));
+				UMLPackage.Literals.CONNECTOR__REDEFINED_CONNECTOR, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -127,8 +128,8 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_end_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_end_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR__END, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CONNECTOR__END, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -147,7 +148,7 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_kind_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_kind_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR__KIND, true,
+				UMLPackage.Literals.CONNECTOR__KIND, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -166,7 +167,8 @@ public class ConnectorItemProvider
 				getString("_UI_Connector_contract_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Connector_contract_feature", "_UI_Connector_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTOR__CONTRACT, true, null, null, null));
+				UMLPackage.Literals.CONNECTOR__CONTRACT, true, false, true,
+				null, null, null));
 	}
 
 	/**

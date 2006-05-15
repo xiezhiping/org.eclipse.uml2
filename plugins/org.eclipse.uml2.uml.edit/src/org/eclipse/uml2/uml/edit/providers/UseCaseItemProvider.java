@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
+ * $Id: UseCaseItemProvider.java,v 1.5 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,8 +90,8 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_include_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_include_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.USE_CASE__INCLUDE, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.USE_CASE__INCLUDE, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -110,8 +110,8 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_extend_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_extend_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.USE_CASE__EXTEND, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.USE_CASE__EXTEND, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -130,8 +130,9 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_extensionPoint_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_extensionPoint_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.USE_CASE__EXTENSION_POINT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.USE_CASE__EXTENSION_POINT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -150,7 +151,8 @@ public class UseCaseItemProvider
 				getString("_UI_UseCase_subject_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UseCase_subject_feature", "_UI_UseCase_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.USE_CASE__SUBJECT, true, null, null, null));
+				UMLPackage.Literals.USE_CASE__SUBJECT, true, false, true, null,
+				null, null));
 	}
 
 	/**

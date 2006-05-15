@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.6 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.7 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -95,8 +95,8 @@ public class ProfileItemProvider
 				getString("_UI_Profile_ownedStereotype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Profile_ownedStereotype_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE, true, null,
-				null, null));
+				UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -114,8 +114,8 @@ public class ProfileItemProvider
 				getString("_UI_Profile_metaclassReference_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Profile_metaclassReference_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROFILE__METACLASS_REFERENCE, true, null,
-				null, null));
+				UMLPackage.Literals.PROFILE__METACLASS_REFERENCE, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -133,8 +133,8 @@ public class ProfileItemProvider
 				getString("_UI_Profile_metamodelReference_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Profile_metamodelReference_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE, true, null,
-				null, null));
+				UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE, true, false,
+				true, null, null, null));
 	}
 
 	/**

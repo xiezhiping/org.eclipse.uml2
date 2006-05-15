@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.9 2006/02/24 17:28:06 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.10 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -93,7 +93,8 @@ public class ComponentItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Component_isIndirectlyInstantiated_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.COMPONENT__IS_INDIRECTLY_INSTANTIATED,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -111,7 +112,8 @@ public class ComponentItemProvider
 				getString("_UI_Component_required_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Component_required_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.COMPONENT__REQUIRED, false, null, null,
+				UMLPackage.Literals.COMPONENT__REQUIRED, false, false, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -131,7 +133,8 @@ public class ComponentItemProvider
 				getString("_UI_Component_provided_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Component_provided_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.COMPONENT__PROVIDED, false, null, null,
+				UMLPackage.Literals.COMPONENT__PROVIDED, false, false, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -151,8 +154,9 @@ public class ComponentItemProvider
 				getString("_UI_Component_packagedElement_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Component_packagedElement_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -171,7 +175,8 @@ public class ComponentItemProvider
 				getString("_UI_Component_realization_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Component_realization_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.COMPONENT__REALIZATION, true, null, null,
+				UMLPackage.Literals.COMPONENT__REALIZATION, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: SendSignalActionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,8 +86,9 @@ public class SendSignalActionItemProvider
 				getString("_UI_SendSignalAction_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendSignalAction_target_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.SEND_SIGNAL_ACTION__TARGET, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -106,8 +107,8 @@ public class SendSignalActionItemProvider
 				getString("_UI_SendSignalAction_signal_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SendSignalAction_signal_feature", "_UI_SendSignalAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL, true, null,
-				null, null));
+				UMLPackage.Literals.SEND_SIGNAL_ACTION__SIGNAL, true, false,
+				true, null, null, null));
 	}
 
 	/**

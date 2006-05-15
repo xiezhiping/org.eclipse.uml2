@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationItemProvider.java,v 1.5 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ProfileApplicationItemProvider.java,v 1.6 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,7 @@ public class ProfileApplicationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_appliedProfile_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROFILE_APPLICATION__APPLIED_PROFILE, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -105,7 +105,8 @@ public class ProfileApplicationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_isStrict_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROFILE_APPLICATION__IS_STRICT, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**

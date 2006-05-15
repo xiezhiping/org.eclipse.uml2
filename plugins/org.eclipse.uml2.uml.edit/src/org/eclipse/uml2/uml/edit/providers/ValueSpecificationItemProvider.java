@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationItemProvider.java,v 1.2 2006/01/04 17:47:49 khussey Exp $
+ * $Id: ValueSpecificationItemProvider.java,v 1.3 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,7 +85,8 @@ public class ValueSpecificationItemProvider
 				getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TYPED_ELEMENT__TYPE, true, null, null, null));
+				UMLPackage.Literals.TYPED_ELEMENT__TYPE, true, false, true,
+				null, null, null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseItemProvider.java,v 1.6 2006/01/24 22:46:31 khussey Exp $
+ * $Id: CollaborationUseItemProvider.java,v 1.7 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,8 +86,8 @@ public class CollaborationUseItemProvider
 				getString("_UI_CollaborationUse_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CollaborationUse_type_feature", "_UI_CollaborationUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.COLLABORATION_USE__TYPE, true, null, null,
-				null));
+				UMLPackage.Literals.COLLABORATION_USE__TYPE, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class CollaborationUseItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_CollaborationUse_roleBinding_feature", "_UI_CollaborationUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.COLLABORATION_USE__ROLE_BINDING, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

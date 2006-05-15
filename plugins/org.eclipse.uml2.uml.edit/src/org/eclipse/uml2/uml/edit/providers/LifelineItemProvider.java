@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: LifelineItemProvider.java,v 1.4 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_represents_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_represents_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LIFELINE__REPRESENTS, true, null, null,
-				null));
+				UMLPackage.Literals.LIFELINE__REPRESENTS, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -108,7 +108,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_interaction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_interaction_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LIFELINE__INTERACTION, true, null, null,
+				UMLPackage.Literals.LIFELINE__INTERACTION, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -128,7 +129,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_selector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_selector_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LIFELINE__SELECTOR, true, null, null,
+				UMLPackage.Literals.LIFELINE__SELECTOR, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -148,8 +150,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_decomposedAs_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_decomposedAs_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LIFELINE__DECOMPOSED_AS, true, null, null,
-				null));
+				UMLPackage.Literals.LIFELINE__DECOMPOSED_AS, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -167,8 +169,8 @@ public class LifelineItemProvider
 				getString("_UI_Lifeline_coveredBy_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Lifeline_coveredBy_feature", "_UI_Lifeline_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LIFELINE__COVERED_BY, true, null, null,
-				null));
+				UMLPackage.Literals.LIFELINE__COVERED_BY, true, false, true,
+				null, null, null));
 	}
 
 	/**

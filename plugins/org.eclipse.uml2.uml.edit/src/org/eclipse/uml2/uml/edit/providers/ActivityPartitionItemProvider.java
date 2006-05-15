@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionItemProvider.java,v 1.5 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ActivityPartitionItemProvider.java,v 1.6 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -97,8 +97,9 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_subgroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_subgroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -117,8 +118,9 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_superGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_superGroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -138,7 +140,7 @@ public class ActivityPartitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedNode_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE, false,
-				null, null,
+				false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -158,8 +160,9 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityGroup_inActivity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_inActivity_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_GROUP__IN_ACTIVITY, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ACTIVITY_GROUP__IN_ACTIVITY, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -179,7 +182,7 @@ public class ActivityPartitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityGroup_containedEdge_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE, false,
-				null, null,
+				false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -200,7 +203,8 @@ public class ActivityPartitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_isDimension_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_PARTITION__IS_DIMENSION, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -219,7 +223,8 @@ public class ActivityPartitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_isExternal_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_PARTITION__IS_EXTERNAL, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -237,8 +242,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_edge_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_edge_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_PARTITION__EDGE, true, null, null,
-				null));
+				UMLPackage.Literals.ACTIVITY_PARTITION__EDGE, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -256,8 +261,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_node_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_node_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_PARTITION__NODE, true, null, null,
-				null));
+				UMLPackage.Literals.ACTIVITY_PARTITION__NODE, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -276,7 +281,7 @@ public class ActivityPartitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_subpartition_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_PARTITION__SUBPARTITION, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -297,7 +302,7 @@ public class ActivityPartitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_superPartition_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -317,8 +322,8 @@ public class ActivityPartitionItemProvider
 				getString("_UI_ActivityPartition_represents_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityPartition_represents_feature", "_UI_ActivityPartition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_PARTITION__REPRESENTS, true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_PARTITION__REPRESENTS, true,
+				false, true, null, null, null));
 	}
 
 	/**

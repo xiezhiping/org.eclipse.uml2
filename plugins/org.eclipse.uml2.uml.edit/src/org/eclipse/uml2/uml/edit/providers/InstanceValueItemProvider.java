@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueItemProvider.java,v 1.5 2006/03/09 15:08:16 khussey Exp $
+ * $Id: InstanceValueItemProvider.java,v 1.6 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -84,8 +84,8 @@ public class InstanceValueItemProvider
 				getString("_UI_InstanceValue_instance_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InstanceValue_instance_feature", "_UI_InstanceValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INSTANCE_VALUE__INSTANCE, true, null, null,
-				null));
+				UMLPackage.Literals.INSTANCE_VALUE__INSTANCE, true, false,
+				true, null, null, null));
 	}
 
 	/**

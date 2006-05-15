@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ExpansionRegionItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,7 +87,7 @@ public class ExpansionRegionItemProvider
 				getString("_UI_ExpansionRegion_mode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_mode_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.EXPANSION_REGION__MODE, true,
+				UMLPackage.Literals.EXPANSION_REGION__MODE, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class ExpansionRegionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_inputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.EXPANSION_REGION__INPUT_ELEMENT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class ExpansionRegionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ExpansionRegion_outputElement_feature", "_UI_ExpansionRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.EXPANSION_REGION__OUTPUT_ELEMENT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

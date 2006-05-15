@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionItemProvider.java,v 1.1 2005/12/07 14:20:24 khussey Exp $
+ * $Id: StructuralFeatureActionItemProvider.java,v 1.2 2006/05/15 20:57:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,7 +87,7 @@ public class StructuralFeatureActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuralFeatureAction_structuralFeature_feature", "_UI_StructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class StructuralFeatureActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StructuralFeatureAction_object_feature", "_UI_StructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

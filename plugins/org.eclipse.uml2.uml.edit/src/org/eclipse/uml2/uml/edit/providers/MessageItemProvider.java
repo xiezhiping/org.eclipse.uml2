@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageItemProvider.java,v 1.4 2006/04/19 20:36:06 khussey Exp $
+ * $Id: MessageItemProvider.java,v 1.5 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -93,7 +93,7 @@ public class MessageItemProvider
 				getString("_UI_Message_messageKind_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_messageKind_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__MESSAGE_KIND, false,
+				UMLPackage.Literals.MESSAGE__MESSAGE_KIND, false, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -114,7 +114,7 @@ public class MessageItemProvider
 				getString("_UI_Message_messageSort_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_messageSort_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__MESSAGE_SORT, true,
+				UMLPackage.Literals.MESSAGE__MESSAGE_SORT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -133,8 +133,8 @@ public class MessageItemProvider
 				getString("_UI_Message_receiveEvent_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_receiveEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, true, null, null,
-				null));
+				UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -152,7 +152,8 @@ public class MessageItemProvider
 				getString("_UI_Message_sendEvent_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_sendEvent_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__SEND_EVENT, true, null, null, null));
+				UMLPackage.Literals.MESSAGE__SEND_EVENT, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -170,7 +171,8 @@ public class MessageItemProvider
 				getString("_UI_Message_connector_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_connector_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__CONNECTOR, true, null, null, null));
+				UMLPackage.Literals.MESSAGE__CONNECTOR, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -188,7 +190,8 @@ public class MessageItemProvider
 				getString("_UI_Message_interaction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_interaction_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__INTERACTION, true, null, null,
+				UMLPackage.Literals.MESSAGE__INTERACTION, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -208,8 +211,8 @@ public class MessageItemProvider
 				getString("_UI_Message_argument_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_argument_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__ARGUMENT, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.MESSAGE__ARGUMENT, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -228,7 +231,8 @@ public class MessageItemProvider
 				getString("_UI_Message_signature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Message_signature_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MESSAGE__SIGNATURE, false, null, null,
+				UMLPackage.Literals.MESSAGE__SIGNATURE, false, false, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

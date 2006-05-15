@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,7 +89,8 @@ public class RemoveStructuralFeatureValueActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RemoveStructuralFeatureValueAction_isRemoveDuplicates_feature", "_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -108,7 +109,7 @@ public class RemoveStructuralFeatureValueActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RemoveStructuralFeatureValueAction_removeAt_feature", "_UI_RemoveStructuralFeatureValueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

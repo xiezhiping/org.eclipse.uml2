@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
+ * $Id: EnumerationItemProvider.java,v 1.5 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,8 +85,9 @@ public class EnumerationItemProvider
 				getString("_UI_Enumeration_ownedLiteral_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Enumeration_ownedLiteral_feature", "_UI_Enumeration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ENUMERATION__OWNED_LITERAL, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.ENUMERATION__OWNED_LITERAL, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

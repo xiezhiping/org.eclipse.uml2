@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.9 2006/01/24 22:46:31 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.10 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -98,8 +98,9 @@ public class TemplateParameterItemProvider
 				getString("_UI_TemplateParameter_signature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_signature_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__SIGNATURE, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TEMPLATE_PARAMETER__SIGNATURE, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -119,7 +120,7 @@ public class TemplateParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_ownedParameteredElement_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -139,8 +140,8 @@ public class TemplateParameterItemProvider
 				getString("_UI_TemplateParameter_default_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_default_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT, true, null,
-				null, null));
+				UMLPackage.Literals.TEMPLATE_PARAMETER__DEFAULT, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class TemplateParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_ownedDefault_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -180,7 +181,7 @@ public class TemplateParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameter_parameteredElement_feature", "_UI_TemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**

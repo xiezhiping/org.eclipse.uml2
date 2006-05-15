@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ObjectFlowItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -88,8 +88,8 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_isMulticast_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_isMulticast_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_FLOW__IS_MULTICAST, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.OBJECT_FLOW__IS_MULTICAST, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -107,8 +107,8 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_isMultireceive_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_isMultireceive_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_FLOW__IS_MULTIRECEIVE, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.OBJECT_FLOW__IS_MULTIRECEIVE, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -126,8 +126,8 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_transformation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_transformation_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_FLOW__TRANSFORMATION, true, null,
-				null, null));
+				UMLPackage.Literals.OBJECT_FLOW__TRANSFORMATION, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -145,8 +145,8 @@ public class ObjectFlowItemProvider
 				getString("_UI_ObjectFlow_selection_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectFlow_selection_feature", "_UI_ObjectFlow_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_FLOW__SELECTION, true, null, null,
-				null));
+				UMLPackage.Literals.OBJECT_FLOW__SELECTION, true, false, true,
+				null, null, null));
 	}
 
 	/**

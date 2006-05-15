@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeItemProvider.java,v 1.8 2006/01/24 22:46:32 khussey Exp $
+ * $Id: SequenceNodeItemProvider.java,v 1.9 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -85,8 +85,9 @@ public class SequenceNodeItemProvider
 				getString("_UI_SequenceNode_executableNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_SequenceNode_executableNode_feature", "_UI_SequenceNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE, true,
+				false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

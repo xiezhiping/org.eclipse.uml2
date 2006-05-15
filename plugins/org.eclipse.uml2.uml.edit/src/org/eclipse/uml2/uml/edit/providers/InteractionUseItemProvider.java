@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseItemProvider.java,v 1.8 2006/01/24 22:46:30 khussey Exp $
+ * $Id: InteractionUseItemProvider.java,v 1.9 2006/05/15 20:57:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class InteractionUseItemProvider
 				getString("_UI_InteractionUse_refersTo_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionUse_refersTo_feature", "_UI_InteractionUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_USE__REFERS_TO, true, null,
-				null, null));
+				UMLPackage.Literals.INTERACTION_USE__REFERS_TO, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -108,8 +108,9 @@ public class InteractionUseItemProvider
 				getString("_UI_InteractionUse_actualGate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionUse_actualGate_feature", "_UI_InteractionUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_USE__ACTUAL_GATE, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INTERACTION_USE__ACTUAL_GATE, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -128,8 +129,9 @@ public class InteractionUseItemProvider
 				getString("_UI_InteractionUse_argument_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InteractionUse_argument_feature", "_UI_InteractionUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INTERACTION_USE__ARGUMENT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INTERACTION_USE__ARGUMENT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

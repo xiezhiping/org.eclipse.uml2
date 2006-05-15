@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: InterruptibleActivityRegionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -84,7 +84,7 @@ public class InterruptibleActivityRegionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InterruptibleActivityRegion_node_feature", "_UI_InterruptibleActivityRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION__NODE, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class InterruptibleActivityRegionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InterruptibleActivityRegion_interruptingEdge_feature", "_UI_InterruptibleActivityRegion_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: OpaqueActionItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -88,7 +88,7 @@ public class OpaqueActionItemProvider
 				getString("_UI_OpaqueAction_body_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueAction_body_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_ACTION__BODY, true,
+				UMLPackage.Literals.OPAQUE_ACTION__BODY, true, true, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -107,8 +107,8 @@ public class OpaqueActionItemProvider
 				getString("_UI_OpaqueAction_language_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueAction_language_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_ACTION__LANGUAGE, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.OPAQUE_ACTION__LANGUAGE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -126,8 +126,8 @@ public class OpaqueActionItemProvider
 				getString("_UI_OpaqueAction_inputValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueAction_inputValue_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE, true, null,
-				null, null));
+				UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -145,8 +145,8 @@ public class OpaqueActionItemProvider
 				getString("_UI_OpaqueAction_outputValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueAction_outputValue_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE, true, null,
-				null, null));
+				UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE, true, false,
+				true, null, null, null));
 	}
 
 	/**

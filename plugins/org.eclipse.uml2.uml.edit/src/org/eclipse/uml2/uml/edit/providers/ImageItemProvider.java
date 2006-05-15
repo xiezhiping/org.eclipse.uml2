@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImageItemProvider.java,v 1.7 2006/02/24 17:28:06 khussey Exp $
+ * $Id: ImageItemProvider.java,v 1.8 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -88,7 +88,7 @@ public class ImageItemProvider
 				getString("_UI_Image_content_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Image_content_feature", "_UI_Image_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.IMAGE__CONTENT, true,
+				UMLPackage.Literals.IMAGE__CONTENT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -107,7 +107,7 @@ public class ImageItemProvider
 				getString("_UI_Image_location_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Image_location_feature", "_UI_Image_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.IMAGE__LOCATION, true,
+				UMLPackage.Literals.IMAGE__LOCATION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -126,7 +126,7 @@ public class ImageItemProvider
 				getString("_UI_Image_format_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Image_format_feature", "_UI_Image_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.IMAGE__FORMAT, true,
+				UMLPackage.Literals.IMAGE__FORMAT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

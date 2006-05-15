@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetItemProvider.java,v 1.4 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.5 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class ParameterSetItemProvider
 				getString("_UI_ParameterSet_parameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterSet_parameter_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER_SET__PARAMETER, true, null, null,
-				null));
+				UMLPackage.Literals.PARAMETER_SET__PARAMETER, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -108,7 +108,8 @@ public class ParameterSetItemProvider
 				getString("_UI_ParameterSet_condition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterSet_condition_feature", "_UI_ParameterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER_SET__CONDITION, true, null, null,
+				UMLPackage.Literals.PARAMETER_SET__CONDITION, true, false,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

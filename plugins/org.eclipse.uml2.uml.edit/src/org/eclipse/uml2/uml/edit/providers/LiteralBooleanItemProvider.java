@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: LiteralBooleanItemProvider.java,v 1.4 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,7 @@ public class LiteralBooleanItemProvider
 				getString("_UI_LiteralBoolean_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LiteralBoolean_value_feature", "_UI_LiteralBoolean_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.LITERAL_BOOLEAN__VALUE, true,
+				UMLPackage.Literals.LITERAL_BOOLEAN__VALUE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 

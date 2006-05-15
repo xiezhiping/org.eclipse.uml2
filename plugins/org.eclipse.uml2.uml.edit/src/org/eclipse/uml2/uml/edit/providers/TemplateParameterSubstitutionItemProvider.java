@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.9 2006/01/24 22:46:31 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.10 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -100,7 +100,7 @@ public class TemplateParameterSubstitutionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_formal_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class TemplateParameterSubstitutionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_actual_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class TemplateParameterSubstitutionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_ownedActual_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -159,7 +159,7 @@ public class TemplateParameterSubstitutionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateParameterSubstitution_templateBinding_feature", "_UI_TemplateParameterSubstitution_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

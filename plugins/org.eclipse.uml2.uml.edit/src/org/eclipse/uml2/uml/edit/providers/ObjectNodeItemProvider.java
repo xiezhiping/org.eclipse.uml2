@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeItemProvider.java,v 1.2 2006/01/04 17:47:48 khussey Exp $
+ * $Id: ObjectNodeItemProvider.java,v 1.3 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -91,7 +91,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_TypedElement_type_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TYPED_ELEMENT__TYPE, true, null, null, null));
+				UMLPackage.Literals.TYPED_ELEMENT__TYPE, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -109,7 +110,7 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_ordering_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_ordering_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_NODE__ORDERING, true,
+				UMLPackage.Literals.OBJECT_NODE__ORDERING, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -128,8 +129,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_isControlType_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_isControlType_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_NODE__IS_CONTROL_TYPE, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.OBJECT_NODE__IS_CONTROL_TYPE, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -147,7 +148,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_upperBound_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_upperBound_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, true, null, null,
+				UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, true, false,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -167,8 +169,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_inState_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_inState_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_NODE__IN_STATE, true, null, null,
-				null));
+				UMLPackage.Literals.OBJECT_NODE__IN_STATE, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -186,8 +188,8 @@ public class ObjectNodeItemProvider
 				getString("_UI_ObjectNode_selection_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ObjectNode_selection_feature", "_UI_ObjectNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OBJECT_NODE__SELECTION, true, null, null,
-				null));
+				UMLPackage.Literals.OBJECT_NODE__SELECTION, true, false, true,
+				null, null, null));
 	}
 
 	/**

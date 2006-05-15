@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotItemProvider.java,v 1.5 2006/01/24 22:46:32 khussey Exp $
+ * $Id: SlotItemProvider.java,v 1.6 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,7 +87,8 @@ public class SlotItemProvider
 				getString("_UI_Slot_owningInstance_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Slot_owningInstance_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SLOT__OWNING_INSTANCE, true, null, null,
+				UMLPackage.Literals.SLOT__OWNING_INSTANCE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -107,8 +108,8 @@ public class SlotItemProvider
 				getString("_UI_Slot_definingFeature_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Slot_definingFeature_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SLOT__DEFINING_FEATURE, true, null, null,
-				null));
+				UMLPackage.Literals.SLOT__DEFINING_FEATURE, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -126,7 +127,7 @@ public class SlotItemProvider
 				getString("_UI_Slot_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Slot_value_feature", "_UI_Slot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.SLOT__VALUE, true, null, null,
+				UMLPackage.Literals.SLOT__VALUE, true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

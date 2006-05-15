@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ReadStructuralFeatureActionItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,7 @@ public class ReadStructuralFeatureActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReadStructuralFeatureAction_result_feature", "_UI_ReadStructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.READ_STRUCTURAL_FEATURE_ACTION__RESULT,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

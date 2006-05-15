@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.9 2006/04/19 20:36:06 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.10 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -106,8 +106,8 @@ public class TransitionItemProvider
 				getString("_UI_RedefinableElement_isLeaf_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_isLeaf_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class TransitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinedElement_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-				false, null, null,
+				false, false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -147,7 +147,7 @@ public class TransitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableElement_redefinitionContext_feature", "_UI_RedefinableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-				false, null, null,
+				false, false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -167,7 +167,7 @@ public class TransitionItemProvider
 				getString("_UI_Transition_kind_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_kind_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__KIND, true,
+				UMLPackage.Literals.TRANSITION__KIND, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -186,7 +186,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_container_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_container_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__CONTAINER, true, null, null,
+				UMLPackage.Literals.TRANSITION__CONTAINER, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -206,7 +207,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_target_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_target_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__TARGET, true, null, null, null));
+				UMLPackage.Literals.TRANSITION__TARGET, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -225,7 +227,7 @@ public class TransitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_redefinedTransition_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TRANSITION__REDEFINED_TRANSITION, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -243,8 +245,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_guard_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_guard_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__GUARD, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.TRANSITION__GUARD, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -263,7 +265,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_effect_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_effect_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__EFFECT, true, null, null,
+				UMLPackage.Literals.TRANSITION__EFFECT, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -283,7 +286,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_trigger_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_trigger_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__TRIGGER, true, null, null,
+				UMLPackage.Literals.TRANSITION__TRIGGER, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -303,7 +307,8 @@ public class TransitionItemProvider
 				getString("_UI_Transition_source_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Transition_source_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TRANSITION__SOURCE, true, null, null, null));
+				UMLPackage.Literals.TRANSITION__SOURCE, true, false, true,
+				null, null, null));
 	}
 
 	/**

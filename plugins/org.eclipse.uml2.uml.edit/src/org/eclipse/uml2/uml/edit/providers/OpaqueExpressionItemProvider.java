@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: OpaqueExpressionItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,7 +89,7 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_body_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_body_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_EXPRESSION__BODY, true,
+				UMLPackage.Literals.OPAQUE_EXPRESSION__BODY, true, true, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -108,8 +108,8 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_language_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_language_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_EXPRESSION__LANGUAGE, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.OPAQUE_EXPRESSION__LANGUAGE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -127,8 +127,9 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_result_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_EXPRESSION__RESULT, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.OPAQUE_EXPRESSION__RESULT, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -147,8 +148,8 @@ public class OpaqueExpressionItemProvider
 				getString("_UI_OpaqueExpression_behavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OpaqueExpression_behavior_feature", "_UI_OpaqueExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OPAQUE_EXPRESSION__BEHAVIOR, true, null,
-				null, null));
+				UMLPackage.Literals.OPAQUE_EXPRESSION__BEHAVIOR, true, false,
+				true, null, null, null));
 	}
 
 	/**

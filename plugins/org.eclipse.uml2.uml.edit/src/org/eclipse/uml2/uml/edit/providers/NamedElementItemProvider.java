@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.2 2006/04/19 20:36:06 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.3 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -92,7 +92,7 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_name_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMED_ELEMENT__NAME, true,
+				UMLPackage.Literals.NAMED_ELEMENT__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -111,8 +111,8 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_visibility_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_visibility_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY, true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.NAMED_ELEMENT__VISIBILITY, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class NamedElementItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_qualifiedName_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.NAMED_ELEMENT__QUALIFIED_NAME, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -152,7 +152,7 @@ public class NamedElementItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_clientDependency_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -170,8 +170,9 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_namespace_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_namespace_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE, false, false,
+				false, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -190,8 +191,9 @@ public class NamedElementItemProvider
 				getString("_UI_NamedElement_nameExpression_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_NamedElement_nameExpression_feature", "_UI_NamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION, true,
+				false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

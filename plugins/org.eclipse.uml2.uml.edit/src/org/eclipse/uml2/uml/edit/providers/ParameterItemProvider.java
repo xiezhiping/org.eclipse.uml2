@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterItemProvider.java,v 1.8 2006/04/19 20:36:06 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.9 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -104,7 +104,8 @@ public class ParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -123,7 +124,8 @@ public class ParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -141,8 +143,8 @@ public class ParameterItemProvider
 				getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upper_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER, true,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER, true, false,
+				false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -160,8 +162,8 @@ public class ParameterItemProvider
 				getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true, false,
+				false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -180,7 +182,7 @@ public class ParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upperValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -201,7 +203,7 @@ public class ParameterItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -221,8 +223,8 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_parameterSet_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_parameterSet_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__PARAMETER_SET, true, null, null,
-				null));
+				UMLPackage.Literals.PARAMETER__PARAMETER_SET, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -240,8 +242,8 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_operation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_operation_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__OPERATION, false, null, null,
-				null));
+				UMLPackage.Literals.PARAMETER__OPERATION, false, false, false,
+				null, null, null));
 	}
 
 	/**
@@ -259,7 +261,7 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_direction_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_direction_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__DIRECTION, true,
+				UMLPackage.Literals.PARAMETER__DIRECTION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -278,7 +280,7 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_default_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_default_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__DEFAULT, true,
+				UMLPackage.Literals.PARAMETER__DEFAULT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -297,7 +299,8 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_defaultValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_defaultValue_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__DEFAULT_VALUE, true, null, null,
+				UMLPackage.Literals.PARAMETER__DEFAULT_VALUE, true, false,
+				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -317,8 +320,8 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_isException_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_isException_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__IS_EXCEPTION, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.PARAMETER__IS_EXCEPTION, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -336,7 +339,7 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_isStream_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_isStream_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__IS_STREAM, true,
+				UMLPackage.Literals.PARAMETER__IS_STREAM, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -355,7 +358,7 @@ public class ParameterItemProvider
 				getString("_UI_Parameter_effect_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Parameter_effect_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PARAMETER__EFFECT, true,
+				UMLPackage.Literals.PARAMETER__EFFECT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

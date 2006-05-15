@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: UnmarshallActionItemProvider.java,v 1.4 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,8 +87,8 @@ public class UnmarshallActionItemProvider
 				getString("_UI_UnmarshallAction_result_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UnmarshallAction_result_feature", "_UI_UnmarshallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.UNMARSHALL_ACTION__RESULT, true, null,
-				null, null));
+				UMLPackage.Literals.UNMARSHALL_ACTION__RESULT, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class UnmarshallActionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UnmarshallAction_unmarshallType_feature", "_UI_UnmarshallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.UNMARSHALL_ACTION__UNMARSHALL_TYPE, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -125,8 +125,9 @@ public class UnmarshallActionItemProvider
 				getString("_UI_UnmarshallAction_object_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_UnmarshallAction_object_feature", "_UI_UnmarshallAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.UNMARSHALL_ACTION__OBJECT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.UNMARSHALL_ACTION__OBJECT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineItemProvider.java,v 1.6 2006/02/21 21:40:13 khussey Exp $
+ * $Id: StateMachineItemProvider.java,v 1.7 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,7 +90,8 @@ public class StateMachineItemProvider
 				getString("_UI_StateMachine_region_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_region_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE_MACHINE__REGION, true, null, null,
+				UMLPackage.Literals.STATE_MACHINE__REGION, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -111,7 +112,7 @@ public class StateMachineItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_submachineState_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STATE_MACHINE__SUBMACHINE_STATE, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -130,7 +131,7 @@ public class StateMachineItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_connectionPoint_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -151,7 +152,7 @@ public class StateMachineItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_StateMachine_extendedStateMachine_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**

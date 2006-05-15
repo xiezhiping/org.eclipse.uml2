@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.7 2006/02/21 21:40:13 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.8 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -93,7 +93,7 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_isReentrant_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_isReentrant_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__IS_REENTRANT, true,
+				UMLPackage.Literals.BEHAVIOR__IS_REENTRANT, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -112,8 +112,8 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_redefinedBehavior_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_redefinedBehavior_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR, true, null,
-				null, null));
+				UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -131,8 +131,9 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_ownedParameter_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameter_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -151,7 +152,8 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_context_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__CONTEXT, true, null, null,
+				UMLPackage.Literals.BEHAVIOR__CONTEXT, true, false, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -171,8 +173,9 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_ownedParameterSet_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameterSet_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -191,8 +194,8 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_specification_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_specification_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__SPECIFICATION, true, null, null,
-				null));
+				UMLPackage.Literals.BEHAVIOR__SPECIFICATION, true, false, true,
+				null, null, null));
 	}
 
 	/**

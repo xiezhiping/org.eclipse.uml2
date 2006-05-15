@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinItemProvider.java,v 1.6 2006/04/27 14:38:41 khussey Exp $
+ * $Id: PinItemProvider.java,v 1.7 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -97,7 +97,8 @@ public class PinItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isOrdered_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_ORDERED, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -116,7 +117,8 @@ public class PinItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_isUnique_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__IS_UNIQUE, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -134,8 +136,8 @@ public class PinItemProvider
 				getString("_UI_MultiplicityElement_upper_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upper_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER, true,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER, true, false,
+				false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -153,8 +155,8 @@ public class PinItemProvider
 				getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true, false,
+				false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -173,7 +175,7 @@ public class PinItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_upperValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -194,7 +196,7 @@ public class PinItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lowerValue_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -214,7 +216,7 @@ public class PinItemProvider
 				getString("_UI_Pin_isControl_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Pin_isControl_feature", "_UI_Pin_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PIN__IS_CONTROL, true,
+				UMLPackage.Literals.PIN__IS_CONTROL, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 

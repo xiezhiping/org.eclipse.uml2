@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionItemProvider.java,v 1.3 2006/01/24 22:46:31 khussey Exp $
+ * $Id: ReduceActionItemProvider.java,v 1.4 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class ReduceActionItemProvider
 				getString("_UI_ReduceAction_reducer_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReduceAction_reducer_feature", "_UI_ReduceAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDUCE_ACTION__REDUCER, true, null, null,
-				null));
+				UMLPackage.Literals.REDUCE_ACTION__REDUCER, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -108,8 +108,8 @@ public class ReduceActionItemProvider
 				getString("_UI_ReduceAction_isOrdered_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ReduceAction_isOrdered_feature", "_UI_ReduceAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.REDUCE_ACTION__IS_ORDERED, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.REDUCE_ACTION__IS_ORDERED, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**

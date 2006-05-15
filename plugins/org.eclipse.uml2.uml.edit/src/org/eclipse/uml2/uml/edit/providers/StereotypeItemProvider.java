@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeItemProvider.java,v 1.6 2006/02/21 21:40:13 khussey Exp $
+ * $Id: StereotypeItemProvider.java,v 1.7 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,7 +86,8 @@ public class StereotypeItemProvider
 				getString("_UI_Stereotype_icon_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Stereotype_icon_feature", "_UI_Stereotype_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STEREOTYPE__ICON, true, null, null, null));
+				UMLPackage.Literals.STEREOTYPE__ICON, true, false, true, null,
+				null, null));
 	}
 
 	/**

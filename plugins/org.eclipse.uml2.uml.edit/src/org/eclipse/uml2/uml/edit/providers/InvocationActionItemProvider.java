@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionItemProvider.java,v 1.1 2005/12/07 14:20:26 khussey Exp $
+ * $Id: InvocationActionItemProvider.java,v 1.2 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -86,8 +86,9 @@ public class InvocationActionItemProvider
 				getString("_UI_InvocationAction_argument_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InvocationAction_argument_feature", "_UI_InvocationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -106,8 +107,8 @@ public class InvocationActionItemProvider
 				getString("_UI_InvocationAction_onPort_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_InvocationAction_onPort_feature", "_UI_InvocationAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.INVOCATION_ACTION__ON_PORT, true, null,
-				null, null));
+				UMLPackage.Literals.INVOCATION_ACTION__ON_PORT, true, false,
+				true, null, null, null));
 	}
 
 	/**

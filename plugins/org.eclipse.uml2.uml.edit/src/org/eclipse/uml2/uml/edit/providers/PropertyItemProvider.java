@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.11 2006/04/19 20:36:06 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.12 2006/05/15 20:57:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -122,7 +122,7 @@ public class PropertyItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_templateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class PropertyItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ParameterableElement_owningTemplateParameter_feature", "_UI_ParameterableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -161,8 +161,8 @@ public class PropertyItemProvider
 				getString("_UI_ConnectableElement_end_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectableElement_end_feature", "_UI_ConnectableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTABLE_ELEMENT__END, true, null, null,
-				null));
+				UMLPackage.Literals.CONNECTABLE_ELEMENT__END, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -180,8 +180,9 @@ public class PropertyItemProvider
 				getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -201,7 +202,7 @@ public class PropertyItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
-				null, null,
+				false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -222,7 +223,7 @@ public class PropertyItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -243,7 +244,7 @@ public class PropertyItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
-				true, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -263,7 +264,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_class_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_class_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__CLASS, false, null, null, null));
+				UMLPackage.Literals.PROPERTY__CLASS, false, false, false, null,
+				null, null));
 	}
 
 	/**
@@ -281,7 +283,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_datatype_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_datatype_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__DATATYPE, true, null, null,
+				UMLPackage.Literals.PROPERTY__DATATYPE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -301,7 +304,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_isDerived_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_isDerived_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__IS_DERIVED, true,
+				UMLPackage.Literals.PROPERTY__IS_DERIVED, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -320,8 +323,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_isDerivedUnion_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_isDerivedUnion_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION, true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -339,7 +342,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_default_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_default_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__DEFAULT, true,
+				UMLPackage.Literals.PROPERTY__DEFAULT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -358,7 +361,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_aggregation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_aggregation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__AGGREGATION, true,
+				UMLPackage.Literals.PROPERTY__AGGREGATION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -377,7 +380,7 @@ public class PropertyItemProvider
 				getString("_UI_Property_isComposite_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_isComposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__IS_COMPOSITE, true,
+				UMLPackage.Literals.PROPERTY__IS_COMPOSITE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -398,8 +401,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_redefinedProperty_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_redefinedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__REDEFINED_PROPERTY, true, null,
-				null, null));
+				UMLPackage.Literals.PROPERTY__REDEFINED_PROPERTY, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -417,8 +420,9 @@ public class PropertyItemProvider
 				getString("_UI_Property_owningAssociation_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -437,8 +441,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_association_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_association_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__ASSOCIATION, true, null, null,
-				null));
+				UMLPackage.Literals.PROPERTY__ASSOCIATION, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -456,7 +460,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_defaultValue_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_defaultValue_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, true, null, null,
+				UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -476,7 +481,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_opposite_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_opposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__OPPOSITE, true, null, null,
+				UMLPackage.Literals.PROPERTY__OPPOSITE, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -496,8 +502,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_subsettedProperty_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_subsettedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__SUBSETTED_PROPERTY, true, null,
-				null, null));
+				UMLPackage.Literals.PROPERTY__SUBSETTED_PROPERTY, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -515,7 +521,8 @@ public class PropertyItemProvider
 				getString("_UI_Property_qualifier_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__QUALIFIER, true, null, null,
+				UMLPackage.Literals.PROPERTY__QUALIFIER, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -535,8 +542,9 @@ public class PropertyItemProvider
 				getString("_UI_Property_associationEnd_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__ASSOCIATION_END, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.PROPERTY__ASSOCIATION_END, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 

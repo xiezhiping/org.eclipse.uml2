@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataItemProvider.java,v 1.3 2006/01/24 22:46:30 khussey Exp $
+ * $Id: LinkEndCreationDataItemProvider.java,v 1.4 2006/05/15 20:57:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -87,7 +87,8 @@ public class LinkEndCreationDataItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndCreationData_isReplaceAll_feature", "_UI_LinkEndCreationData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.LINK_END_CREATION_DATA__IS_REPLACE_ALL,
-				true, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class LinkEndCreationDataItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LinkEndCreationData_insertAt_feature", "_UI_LinkEndCreationData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.LINK_END_CREATION_DATA__INSERT_AT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**

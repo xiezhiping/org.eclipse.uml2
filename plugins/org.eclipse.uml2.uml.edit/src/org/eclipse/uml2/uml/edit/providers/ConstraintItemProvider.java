@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintItemProvider.java,v 1.3 2006/01/24 22:46:32 khussey Exp $
+ * $Id: ConstraintItemProvider.java,v 1.4 2006/05/15 20:57:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -88,7 +88,7 @@ public class ConstraintItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Constraint_constrainedElement_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.CONSTRAINT__CONSTRAINED_ELEMENT, true,
-				null, null, null));
+				false, true, null, null, null));
 	}
 
 	/**
@@ -106,8 +106,9 @@ public class ConstraintItemProvider
 				getString("_UI_Constraint_specification_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Constraint_specification_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONSTRAINT__SPECIFICATION, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.CONSTRAINT__SPECIFICATION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -126,7 +127,8 @@ public class ConstraintItemProvider
 				getString("_UI_Constraint_context_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Constraint_context_feature", "_UI_Constraint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONSTRAINT__CONTEXT, true, null, null,
+				UMLPackage.Literals.CONSTRAINT__CONTEXT, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}

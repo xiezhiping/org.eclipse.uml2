@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeItemProvider.java,v 1.3 2006/01/03 19:51:58 khussey Exp $
+ * $Id: ActivityNodeItemProvider.java,v 1.4 2006/05/15 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,8 +90,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_outgoing_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_outgoing_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_NODE__OUTGOING, true, null, null,
-				null));
+				UMLPackage.Literals.ACTIVITY_NODE__OUTGOING, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -109,7 +109,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_inGroup_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inGroup_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP, false, null, null,
+				UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP, false, false,
+				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -129,8 +130,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_inPartition_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inPartition_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_NODE__IN_PARTITION, true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_NODE__IN_PARTITION, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -149,7 +150,7 @@ public class ActivityNodeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inStructuredNode_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true,
-				null, null,
+				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -169,7 +170,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_activity_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_activity_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_NODE__ACTIVITY, true, null, null,
+				UMLPackage.Literals.ACTIVITY_NODE__ACTIVITY, true, false, true,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -189,8 +191,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_incoming_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_incoming_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_NODE__INCOMING, true, null, null,
-				null));
+				UMLPackage.Literals.ACTIVITY_NODE__INCOMING, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -209,7 +211,7 @@ public class ActivityNodeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_inInterruptibleRegion_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
-				true, null, null, null));
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -227,8 +229,8 @@ public class ActivityNodeItemProvider
 				getString("_UI_ActivityNode_redefinedNode_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ActivityNode_redefinedNode_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTIVITY_NODE__REDEFINED_NODE, true, null,
-				null, null));
+				UMLPackage.Literals.ACTIVITY_NODE__REDEFINED_NODE, true, false,
+				true, null, null, null));
 	}
 
 	/**
