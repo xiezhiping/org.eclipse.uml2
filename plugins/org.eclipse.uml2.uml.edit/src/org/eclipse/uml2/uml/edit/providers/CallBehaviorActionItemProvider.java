@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionItemProvider.java,v 1.5 2006/05/15 20:57:51 khussey Exp $
+ * $Id: CallBehaviorActionItemProvider.java,v 1.6 2006/05/15 21:06:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

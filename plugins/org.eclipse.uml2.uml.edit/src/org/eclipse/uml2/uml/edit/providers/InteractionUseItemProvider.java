@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseItemProvider.java,v 1.9 2006/05/15 20:57:49 khussey Exp $
+ * $Id: InteractionUseItemProvider.java,v 1.10 2006/05/15 21:06:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

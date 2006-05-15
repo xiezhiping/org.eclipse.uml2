@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationItemProvider.java,v 1.6 2006/05/15 20:57:49 khussey Exp $
+ * $Id: ComponentRealizationItemProvider.java,v 1.7 2006/05/15 21:06:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

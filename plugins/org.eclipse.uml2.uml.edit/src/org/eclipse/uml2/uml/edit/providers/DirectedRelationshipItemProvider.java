@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipItemProvider.java,v 1.2 2006/05/15 20:57:53 khussey Exp $
+ * $Id: DirectedRelationshipItemProvider.java,v 1.3 2006/05/15 21:06:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

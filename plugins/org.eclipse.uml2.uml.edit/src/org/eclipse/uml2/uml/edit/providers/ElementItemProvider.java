@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.13 2006/05/15 20:57:50 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.14 2006/05/15 21:06:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -533,17 +533,17 @@ public class ElementItemProvider
 	}
 
 	protected String getFeatureText(Object feature) {
-		String featureKey = "Unknown";
+		String featureKey = "Unknown"; //$NON-NLS-1$
 
 		if (feature instanceof EStructuralFeature) {
 			EStructuralFeature eFeature = (EStructuralFeature) feature;
-			featureKey = eFeature.getEContainingClass().getName() + "_"
+			featureKey = eFeature.getEContainingClass().getName() + "_" //$NON-NLS-1$
 				+ eFeature.getName();
 		}
 
 		try {
 			return getResourceLocator().getString(
-				"_UI_" + featureKey + "_feature");
+				"_UI_" + featureKey + "_feature"); //$NON-NLS-1$ //$NON-NLS-2$
 		} catch (MissingResourceException mre) {
 			return featureKey;
 		}
@@ -552,17 +552,16 @@ public class ElementItemProvider
 	protected ItemPropertyDescriptor createItemPropertyDescriptor(
 			AdapterFactory adapterFactory, ResourceLocator resourceLocator,
 			String displayName, String description, EStructuralFeature feature,
-			boolean isSettable, Object staticImage, String category,
-			String[] filterFlags) {
+			boolean isSettable, boolean multiLine, boolean sortChoices,
+			Object staticImage, String category, String[] filterFlags) {
 		return new UMLItemPropertyDescriptor(adapterFactory, resourceLocator,
-			displayName, description, feature, isSettable, staticImage,
-			category, filterFlags);
+			displayName, description, feature, isSettable, multiLine,
+			sortChoices, staticImage, category, filterFlags);
 	}
 
 	protected ComposedImage getComposedImage(Object object, Object image) {
 		List images = new ArrayList();
 		images.add(image);
-
 		return new ComposedImage(images);
 	}
 

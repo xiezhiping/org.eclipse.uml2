@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.8 2006/05/15 20:57:51 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.9 2006/05/15 21:06:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

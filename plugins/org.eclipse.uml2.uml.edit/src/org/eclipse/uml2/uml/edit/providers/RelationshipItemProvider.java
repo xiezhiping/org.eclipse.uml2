@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipItemProvider.java,v 1.2 2006/05/15 20:57:52 khussey Exp $
+ * $Id: RelationshipItemProvider.java,v 1.3 2006/05/15 21:06:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

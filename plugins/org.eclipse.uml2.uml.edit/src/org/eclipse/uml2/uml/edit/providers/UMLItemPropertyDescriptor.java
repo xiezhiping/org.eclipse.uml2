@@ -8,14 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.4 2006/04/04 18:10:59 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.5 2006/05/15 21:06:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,40 +62,19 @@ class UMLItemPropertyDescriptor
 		}
 	}
 
-	protected UMLItemPropertyDescriptor(AdapterFactory adapterFactory,
+	public UMLItemPropertyDescriptor(AdapterFactory adapterFactory,
 			ResourceLocator resourceLocator, String displayName,
 			String description, EStructuralFeature feature, boolean isSettable,
-			Object staticImage, String category, String[] filterFlags) {
+			boolean multiLine, boolean sortChoices, Object staticImage,
+			String category, String[] filterFlags) {
 		super(adapterFactory, resourceLocator, displayName, description,
-			feature, isSettable, staticImage, category == null
-				&& resourceLocator != null
+			feature, isSettable, multiLine, sortChoices, staticImage,
+			category == null && resourceLocator != null
 				? resourceLocator.getString("_UI_UML_category") //$NON-NLS-1$
 				: category, filterFlags);
 
 		this.itemDelegator = new UMLItemDelegator(adapterFactory,
 			resourceLocator);
-	}
-
-	public Collection getChoiceOfValues(Object object) {
-		Collection comboBoxObjects = getComboBoxObjects(object);
-
-		if (comboBoxObjects != null) {
-			List choiceOfValues = new ArrayList(comboBoxObjects);
-
-			if (choiceOfValues != null) {
-				Collections.sort(choiceOfValues, new Comparator() {
-
-					public int compare(Object o1, Object o2) {
-						return getQualifiedText(o1).compareTo(
-							getQualifiedText(o2));
-					}
-				});
-			}
-
-			return choiceOfValues;
-		}
-
-		return null;
 	}
 
 	public String getQualifiedText(Object object) {

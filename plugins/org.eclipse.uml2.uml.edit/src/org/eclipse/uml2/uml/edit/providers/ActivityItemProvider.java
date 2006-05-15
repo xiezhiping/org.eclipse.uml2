@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.14 2006/05/15 20:57:52 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.15 2006/05/15 21:06:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.2 2006/04/19 20:36:06 khussey Exp $
+ * $Id: StereotypeApplicationItemProvider.java,v 1.3 2006/05/15 21:06:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -124,7 +125,8 @@ class StereotypeApplicationItemProvider
 						new Object[]{getFeatureText(eStructuralFeature),
 							eStructuralFeature.getEType().getName()}),
 				eStructuralFeature, !isBaseReference
-					&& eStructuralFeature.isChangeable(),
+					&& eStructuralFeature.isChangeable(), false,
+				eStructuralFeature instanceof EReference,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getTypeText(object), filterFlags));
 		}

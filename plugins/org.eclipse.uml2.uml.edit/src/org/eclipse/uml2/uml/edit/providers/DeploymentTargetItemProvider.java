@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetItemProvider.java,v 1.3 2006/05/15 20:57:51 khussey Exp $
+ * $Id: DeploymentTargetItemProvider.java,v 1.4 2006/05/15 21:06:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

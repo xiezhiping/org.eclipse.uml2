@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.7 2006/05/15 20:57:50 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.8 2006/05/15 21:06:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

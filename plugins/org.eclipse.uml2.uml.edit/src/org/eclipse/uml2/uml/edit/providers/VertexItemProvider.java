@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexItemProvider.java,v 1.2 2006/05/15 20:57:50 khussey Exp $
+ * $Id: VertexItemProvider.java,v 1.3 2006/05/15 21:06:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionItemProvider.java,v 1.2 2006/05/15 20:57:49 khussey Exp $
+ * $Id: StructuralFeatureActionItemProvider.java,v 1.3 2006/05/15 21:06:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

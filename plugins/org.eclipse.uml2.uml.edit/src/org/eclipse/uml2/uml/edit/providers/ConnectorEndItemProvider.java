@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndItemProvider.java,v 1.5 2006/05/15 20:57:53 khussey Exp $
+ * $Id: ConnectorEndItemProvider.java,v 1.6 2006/05/15 21:06:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

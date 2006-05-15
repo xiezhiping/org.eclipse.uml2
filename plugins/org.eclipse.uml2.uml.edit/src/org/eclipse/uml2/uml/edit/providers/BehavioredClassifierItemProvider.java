@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.7 2006/05/15 20:57:51 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.8 2006/05/15 21:06:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 

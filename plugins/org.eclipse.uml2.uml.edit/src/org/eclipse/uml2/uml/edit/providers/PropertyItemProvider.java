@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.12 2006/05/15 20:57:53 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.13 2006/05/15 21:06:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
