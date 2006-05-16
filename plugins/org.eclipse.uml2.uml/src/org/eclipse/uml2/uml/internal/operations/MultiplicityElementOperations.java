@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.14 2006/03/13 20:50:41 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.15 2006/05/16 13:06:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -49,6 +49,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.uml.MultiplicityElement) <em>Includes Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#lowerBound() <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#upperBound() <em>Upper Bound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#compatibleWith(org.eclipse.uml2.uml.MultiplicityElement) <em>Compatible With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#is(int, int) <em>Is</em>}</li>
  * </ul>
  * </p>
  *
@@ -372,6 +374,35 @@ public class MultiplicityElementOperations
 		return upperValue instanceof LiteralUnlimitedNatural
 			? upperValue.unlimitedValue()
 			: 1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
+	 * result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean compatibleWith(
+			MultiplicityElement multiplicityElement, MultiplicityElement other) {
+		return other != null && other.includesMultiplicity(multiplicityElement);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operation is determines if the upper and lower bound of the ranges are the ones given.
+	 * result = (lowerbound = self.lowerbound and upperbound = self.upperbound)
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static boolean is(MultiplicityElement multiplicityElement,
+			int lowerbound, int upperbound) {
+		return multiplicityElement.lowerBound() == lowerbound
+			&& multiplicityElement.upperBound() == upperbound;
 	}
 
 	/**

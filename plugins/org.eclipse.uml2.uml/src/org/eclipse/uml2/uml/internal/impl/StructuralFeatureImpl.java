@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.21 2006/05/16 13:06:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -691,6 +691,24 @@ public abstract class StructuralFeatureImpl
 	 */
 	public int upperBound() {
 		return MultiplicityElementOperations.upperBound(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean compatibleWith(MultiplicityElement other) {
+		return MultiplicityElementOperations.compatibleWith(this, other);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean is(int lowerbound, int upperbound) {
+		return MultiplicityElementOperations.is(this, lowerbound, upperbound);
 	}
 
 	/**

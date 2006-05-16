@@ -1783,6 +1783,19 @@
         <details key="documentation" value="The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.&#xD;&#xA;result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="compatibleWith" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.&#xD;&#xA;result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))"/>
+      </eAnnotations>
+      <eParameters name="other" ordered="false" lowerBound="1" eType="#//MultiplicityElement"/>
+    </eOperations>
+    <eOperations name="is" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The operation is determines if the upper and lower bound of the ranges are the ones given.&#xD;&#xA;result = (lowerbound = self.lowerbound and upperbound = self.upperbound)"/>
+      </eAnnotations>
+      <eParameters name="lowerbound" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="upperbound" ordered="false" lowerBound="1" eType="#//Integer"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOrdered" ordered="false"
         lowerBound="1" eType="#//Boolean" defaultValueLiteral="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2476,7 +2489,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">

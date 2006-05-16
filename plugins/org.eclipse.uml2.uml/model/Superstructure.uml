@@ -2377,6 +2377,43 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <generalization xmi:type="uml:Generalization" xmi:id="_ESoxETd1EdqTteuwC5r3FA" general="_3ADC7B74022D3D716DC100E7"/>
           <ownedEnd xmi:type="uml:Property" xmi:id="_LizMEjaxEdqq1tCaRkgBQQ" type="_3ADC7B74022D40FACF5B017F" redefinedProperty="_3ADC7B74022D3D716DC100E8" association="_LizMEDaxEdqq1tCaRkgBQQ"/>
         </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_7gKt8ORfEdqI1ohUEQYFdg" name="MultiplicityElement" isAbstract="true">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_JJOkoORgEdqI1ohUEQYFdg" name="compatibleWith" isQuery="true" bodyCondition="_JJOkpuRgEdqI1ohUEQYFdg">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_JJOkoeRgEdqI1ohUEQYFdg" annotatedElement="_JJOkoORgEdqI1ohUEQYFdg">
+              <body>The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.</body>
+            </ownedComment>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_JJOkpuRgEdqI1ohUEQYFdg" name="spec" constrainedElement="_JJOkoORgEdqI1ohUEQYFdg">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_JJOkp-RgEdqI1ohUEQYFdg">
+                <language>OCL</language>
+                <body>result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_JJOkqORgEdqI1ohUEQYFdg" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_JJOkqeRgEdqI1ohUEQYFdg" name="other" type="_7gKt8ORfEdqI1ohUEQYFdg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ds2ZsORgEdqI1ohUEQYFdg" name="is" isQuery="true" bodyCondition="_ds2ZtuRgEdqI1ohUEQYFdg">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_ds2ZseRgEdqI1ohUEQYFdg" annotatedElement="_ds2ZsORgEdqI1ohUEQYFdg">
+              <body>The operation is determines if the upper and lower bound of the ranges are the ones given.</body>
+            </ownedComment>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_ds2ZtuRgEdqI1ohUEQYFdg" name="spec" constrainedElement="_ds2ZsORgEdqI1ohUEQYFdg">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_ds2Zt-RgEdqI1ohUEQYFdg">
+                <language>OCL</language>
+                <body>result = (lowerbound = self.lowerbound and upperbound = self.upperbound)</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ds2ZuORgEdqI1ohUEQYFdg" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ds2ZueRgEdqI1ohUEQYFdg" name="lowerbound">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010A4007B"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jgelMORgEdqI1ohUEQYFdg" name="upperbound">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010A4007B"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_3ADC7B74022D410C265D0152" name="StructuredActions">
         <packageImport xmi:type="uml:PackageImport" xmi:id="_3ADC7B74022D410C27100268" importedPackage="_3ADC7B74022D3DF1253C0119"/>
@@ -14189,115 +14226,115 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EAttribute xmi:id="_sP-s8ORVEdqHWbeY3nX1gQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6DCF011E"/>
-  <Ecore:EAttribute xmi:id="_sP-s8eRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D41AF6E0300D3"/>
-  <Ecore:EReference xmi:id="_sP-s8uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D716DC100E9"/>
-  <Ecore:EReference xmi:id="_sP-s8-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D716DF5031E"/>
-  <Ecore:EReference xmi:id="_sP-s9ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DF3D8E90137"/>
-  <Ecore:EReference xmi:id="_sQH24ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C7C242F00F0"/>
-  <Ecore:EReference xmi:id="_sQH24eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C7C242F001E"/>
-  <Ecore:EReference xmi:id="_sQH24uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41B9A2B20315"/>
-  <Ecore:EReference xmi:id="_sQH24-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F2"/>
-  <Ecore:EReference xmi:id="_sQH25ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F4"/>
-  <Ecore:EReference xmi:id="_sQH25eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41B9A2B2031F"/>
-  <Ecore:EAttribute xmi:id="_sQRn4ORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D4063FB930031"/>
-  <Ecore:EReference xmi:id="_sQRn4eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BDACD90276"/>
-  <Ecore:EReference xmi:id="_sQRn4uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BDACD9026C"/>
-  <Ecore:EReference xmi:id="_sQRn4-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E441FC901D0"/>
-  <Ecore:EReference xmi:id="_sQRn5ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A008A"/>
-  <Ecore:EReference xmi:id="_sQRn5eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A0094"/>
-  <Ecore:EReference xmi:id="_sQax0ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BDADE90317"/>
-  <Ecore:EReference xmi:id="_sQax0eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BDADE90322"/>
-  <Ecore:EReference xmi:id="_sQax0uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B7"/>
-  <Ecore:EReference xmi:id="_sQax0-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D410D0A3403E6"/>
-  <Ecore:EReference xmi:id="_sQax1ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D410D0A350008"/>
-  <Ecore:EReference xmi:id="_sQax1eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B5"/>
-  <Ecore:EAttribute xmi:id="_sQax1uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_k3pScEfeEdq0rbStTpEubg"/>
-  <Ecore:EAttribute xmi:id="_sQax1-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3D2C32860188"/>
-  <Ecore:EReference xmi:id="_sQax2ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D4127B15000BD"/>
-  <Ecore:EReference xmi:id="_sQki0ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60187"/>
-  <Ecore:EReference xmi:id="_sQki0eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60189"/>
-  <Ecore:EAttribute xmi:id="_sQki0uRVEdqHWbeY3nX1gQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC07D800D7"/>
-  <Ecore:EReference xmi:id="_sQki0-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEEF70165"/>
-  <Ecore:EReference xmi:id="_sQki1ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEF470200"/>
-  <Ecore:EAttribute xmi:id="_sQki1eRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF00E0351"/>
-  <Ecore:EAttribute xmi:id="_sQki1uRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF02203B4"/>
-  <Ecore:EAttribute xmi:id="_sQki1-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF0300219"/>
-  <Ecore:EReference xmi:id="_sQki2ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00232"/>
-  <Ecore:EAttribute xmi:id="_sQki2eRVEdqHWbeY3nX1gQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF34430265"/>
-  <Ecore:EAttribute xmi:id="_sQki2uRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D41AF3484006A"/>
-  <Ecore:EAttribute xmi:id="_sQki2-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3CB5DEA0029E"/>
-  <Ecore:EAttribute xmi:id="_sQki3ORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
-  <Ecore:EAttribute xmi:id="_sQuT0ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
-  <Ecore:EAttribute xmi:id="_sQuT0eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
-  <Ecore:EOperation xmi:id="_sQuT0uRVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_sQuT0-RVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper"/>
-  <Ecore:EReference xmi:id="_sQuT1ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
-  <Ecore:EReference xmi:id="_sQuT1eRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
-  <Ecore:EReference xmi:id="_sQuT1uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
-  <Ecore:EReference xmi:id="_sQuT1-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E026F600201"/>
-  <Ecore:EOperation xmi:id="_sQuT2ORVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300CD890196" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_sQuT2eRVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300CDD6036B" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_sQuT2uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAB047902F3"/>
-  <Ecore:EReference xmi:id="_sQuT2-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E026DFA035B"/>
-  <Ecore:EReference xmi:id="_sQuT3ORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E026E2C0064"/>
-  <Ecore:EAttribute xmi:id="_sQuT3eRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3DF4FA43024F"/>
-  <Ecore:EAttribute xmi:id="_sQuT3uRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DFFCC4902FB"/>
-  <Ecore:EReference xmi:id="_sQ3dwORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E0265FD0094"/>
-  <Ecore:EReference xmi:id="_sQ3dweRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E02674A0088"/>
-  <Ecore:EReference xmi:id="_sQ3dwuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E02674A00A6"/>
-  <Ecore:EReference xmi:id="_sQ3dw-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E027BEB00C8"/>
-  <Ecore:EAttribute xmi:id="_sQ3dxORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
-  <Ecore:EAttribute xmi:id="_sQ3dxeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
-  <Ecore:EReference xmi:id="_sQ3dxuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
-  <Ecore:EOperation xmi:id="_sQ3dx-RVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite"/>
-  <Ecore:EAttribute xmi:id="_sQ3dyORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
-  <Ecore:EAttribute xmi:id="_sQ3dyeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
-  <Ecore:EAttribute xmi:id="_sQ3dyuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>
-  <Ecore:EAttribute xmi:id="_sQ3dy-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1C20171"/>
-  <Ecore:EReference xmi:id="_sQ3dzORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E0282460399"/>
-  <Ecore:EOperation xmi:id="_sRBOwORVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300D86401A5" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_sRBOweRVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300D86A03D8" operationName="upperBound"/>
-  <Ecore:EReference xmi:id="_sRBOwuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D51535A0358"/>
-  <Ecore:EOperation xmi:id="_sRBOw-RVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300CCCA006D" operationName="getEndTypes"/>
-  <Ecore:EReference xmi:id="_sRBOxORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00228"/>
-  <Ecore:EReference xmi:id="_sRBOxeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF1D0036C"/>
-  <Ecore:EReference xmi:id="_sRBOxuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3DDD06680179"/>
-  <Ecore:EOperation xmi:id="_sRBOx-RVEdqHWbeY3nX1gQ" base_Operation="_3ADC7B74022D4300D74101E4" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_sRBOyORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D514F6E0106"/>
-  <Ecore:EReference xmi:id="_sRBOyeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E0265FD01CA"/>
-  <Ecore:EAttribute xmi:id="_sRBOyuRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3E5921F9017E"/>
-  <Ecore:EReference xmi:id="_sRK_wORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BD9B210224"/>
-  <Ecore:EReference xmi:id="_sRK_weRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BD9B210226"/>
-  <Ecore:EReference xmi:id="_sRK_wuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D40F9B6900288"/>
-  <Ecore:EReference xmi:id="_sRUJsORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D06C90B02AF"/>
-  <Ecore:EAttribute xmi:id="_sRUJseRVEdqHWbeY3nX1gQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6EF40300"/>
-  <Ecore:EAttribute xmi:id="_sRUJsuRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D41AF6F25017A"/>
-  <Ecore:EReference xmi:id="_sRUJs-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E0257890057"/>
-  <Ecore:EReference xmi:id="_sRUJtORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E0257B9029B"/>
-  <Ecore:EOperation xmi:id="_sRUJteRVEdqHWbeY3nX1gQ" base_Operation="_xc4UQDZ9Edqq1tCaRkgBQQ" operationName="getRequireds"/>
-  <Ecore:EOperation xmi:id="_sRUJtuRVEdqHWbeY3nX1gQ" base_Operation="_2cFjwDZ-Edqq1tCaRkgBQQ" operationName="getProvideds"/>
-  <Ecore:EAttribute xmi:id="_sRUJt-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3E0259E30107"/>
-  <Ecore:EReference xmi:id="_sRUJuORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3CCB579E00F4"/>
-  <Ecore:EReference xmi:id="_sRd6sORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D03D15C008B"/>
-  <Ecore:EReference xmi:id="_sRd6seRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D02623F03E2"/>
-  <Ecore:EReference xmi:id="_sRd6suRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E22160503E3"/>
-  <Ecore:EReference xmi:id="_sRd6s-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E0B98C901E2"/>
-  <Ecore:EReference xmi:id="_sRd6tORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E2212D701CF"/>
-  <Ecore:EReference xmi:id="_sRd6teRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D41BDAA5A0141"/>
-  <Ecore:EAttribute xmi:id="_sRd6tuRVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3E023C610263"/>
-  <Ecore:EAttribute xmi:id="_sRd6t-RVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3E023C6802FA"/>
-  <Ecore:EReference xmi:id="_sRd6uORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3E045F15011E"/>
-  <Ecore:EOperation xmi:id="_sRd6ueRVEdqHWbeY3nX1gQ" base_Operation="_xZVGsEb0Edq0rbStTpEubg" operationName="getDeployedElements"/>
-  <Ecore:EAttribute xmi:id="_sRnEoORVEdqHWbeY3nX1gQ" isUnsettable="true" base_Property="_3ADC7B74022D3E0330D40211"/>
-  <Ecore:EAttribute xmi:id="_sRnEoeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D05BC66015F"/>
-  <Ecore:EReference xmi:id="_sRnEouRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C63983E02AE"/>
-  <Ecore:EAttribute xmi:id="_sR6moORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C612C28022F"/>
-  <Ecore:EAttribute xmi:id="_sR6moeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C6136B401B9"/>
-  <Ecore:EAttribute xmi:id="_sR6mouRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C613764000E"/>
-  <Ecore:EAttribute xmi:id="_sR6mo-RVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3C678F5300CA"/>
-  <Ecore:EReference xmi:id="_sR6mpORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D73412C0329"/>
-  <Ecore:EReference xmi:id="_sR6mpeRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D73416A0300"/>
-  <Ecore:EReference xmi:id="_sR6mpuRVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D733F2200E4"/>
-  <Ecore:EReference xmi:id="_sSDwkORVEdqHWbeY3nX1gQ" isTransient="true" base_Property="_3ADC7B74022D3D07F16101E5"/>
+  <Ecore:EAttribute xmi:id="_xuG2oORiEdqPjdRrexB-Yw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6DCF011E"/>
+  <Ecore:EAttribute xmi:id="_xuQnoORiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D41AF6E0300D3"/>
+  <Ecore:EReference xmi:id="_xuQnoeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D716DC100E9"/>
+  <Ecore:EReference xmi:id="_xuQnouRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D716DF5031E"/>
+  <Ecore:EReference xmi:id="_xuQno-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DF3D8E90137"/>
+  <Ecore:EReference xmi:id="_xuQnpORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C7C242F00F0"/>
+  <Ecore:EReference xmi:id="_xuQnpeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C7C242F001E"/>
+  <Ecore:EReference xmi:id="_xuQnpuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41B9A2B20315"/>
+  <Ecore:EReference xmi:id="_xuQnp-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F2"/>
+  <Ecore:EReference xmi:id="_xuaYoORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F4"/>
+  <Ecore:EReference xmi:id="_xuaYoeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41B9A2B2031F"/>
+  <Ecore:EAttribute xmi:id="_xuaYouRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D4063FB930031"/>
+  <Ecore:EReference xmi:id="_xuaYo-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BDACD90276"/>
+  <Ecore:EReference xmi:id="_xuaYpORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BDACD9026C"/>
+  <Ecore:EReference xmi:id="_xuaYpeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E441FC901D0"/>
+  <Ecore:EReference xmi:id="_xuaYpuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A008A"/>
+  <Ecore:EReference xmi:id="_xuaYp-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A0094"/>
+  <Ecore:EReference xmi:id="_xujikORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BDADE90317"/>
+  <Ecore:EReference xmi:id="_xujikeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BDADE90322"/>
+  <Ecore:EReference xmi:id="_xujikuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B7"/>
+  <Ecore:EReference xmi:id="_xujik-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D410D0A3403E6"/>
+  <Ecore:EReference xmi:id="_xujilORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D410D0A350008"/>
+  <Ecore:EReference xmi:id="_xujileRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B5"/>
+  <Ecore:EAttribute xmi:id="_xujiluRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_k3pScEfeEdq0rbStTpEubg"/>
+  <Ecore:EAttribute xmi:id="_xujil-RiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3D2C32860188"/>
+  <Ecore:EReference xmi:id="_xutTkORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D4127B15000BD"/>
+  <Ecore:EReference xmi:id="_xutTkeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60187"/>
+  <Ecore:EReference xmi:id="_xutTkuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60189"/>
+  <Ecore:EAttribute xmi:id="_xutTk-RiEdqPjdRrexB-Yw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC07D800D7"/>
+  <Ecore:EReference xmi:id="_xutTlORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEF70165"/>
+  <Ecore:EReference xmi:id="_xutTleRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAEF470200"/>
+  <Ecore:EAttribute xmi:id="_xutTluRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF00E0351"/>
+  <Ecore:EAttribute xmi:id="_xutTl-RiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF02203B4"/>
+  <Ecore:EAttribute xmi:id="_xutTmORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0300219"/>
+  <Ecore:EReference xmi:id="_xutTmeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00232"/>
+  <Ecore:EAttribute xmi:id="_xutTmuRiEdqPjdRrexB-Yw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF34430265"/>
+  <Ecore:EAttribute xmi:id="_xu3EkORiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D41AF3484006A"/>
+  <Ecore:EAttribute xmi:id="_xu3EkeRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3CB5DEA0029E"/>
+  <Ecore:EAttribute xmi:id="_xu3EkuRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
+  <Ecore:EAttribute xmi:id="_xu3Ek-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
+  <Ecore:EAttribute xmi:id="_xu3ElORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
+  <Ecore:EOperation xmi:id="_xu3EleRiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower"/>
+  <Ecore:EOperation xmi:id="_xu3EluRiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper"/>
+  <Ecore:EReference xmi:id="_xu3El-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
+  <Ecore:EReference xmi:id="_xu3EmORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
+  <Ecore:EReference xmi:id="_xu3EmeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
+  <Ecore:EReference xmi:id="_xu3EmuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E026F600201"/>
+  <Ecore:EOperation xmi:id="_xvAOgORiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300CD890196" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_xvAOgeRiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300CDD6036B" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_xvAOguRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAB047902F3"/>
+  <Ecore:EReference xmi:id="_xvAOg-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E026DFA035B"/>
+  <Ecore:EReference xmi:id="_xvAOhORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E026E2C0064"/>
+  <Ecore:EAttribute xmi:id="_xvAOheRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3DF4FA43024F"/>
+  <Ecore:EAttribute xmi:id="_xvAOhuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DFFCC4902FB"/>
+  <Ecore:EReference xmi:id="_xvAOh-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E0265FD0094"/>
+  <Ecore:EReference xmi:id="_xvAOiORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E02674A0088"/>
+  <Ecore:EReference xmi:id="_xvAOieRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E02674A00A6"/>
+  <Ecore:EReference xmi:id="_xvAOiuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E027BEB00C8"/>
+  <Ecore:EAttribute xmi:id="_xvAOi-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
+  <Ecore:EAttribute xmi:id="_xvJ_gORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
+  <Ecore:EReference xmi:id="_xvJ_geRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
+  <Ecore:EOperation xmi:id="_xvJ_guRiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite"/>
+  <Ecore:EAttribute xmi:id="_xvJ_g-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
+  <Ecore:EAttribute xmi:id="_xvJ_hORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
+  <Ecore:EAttribute xmi:id="_xvJ_heRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>
+  <Ecore:EAttribute xmi:id="_xvJ_huRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E04B1C20171"/>
+  <Ecore:EReference xmi:id="_xvJ_h-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E0282460399"/>
+  <Ecore:EOperation xmi:id="_xvJ_iORiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300D86401A5" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_xvJ_ieRiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300D86A03D8" operationName="upperBound"/>
+  <Ecore:EReference xmi:id="_xvJ_iuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D51535A0358"/>
+  <Ecore:EOperation xmi:id="_xvTJcORiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300CCCA006D" operationName="getEndTypes"/>
+  <Ecore:EReference xmi:id="_xvTJceRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00228"/>
+  <Ecore:EReference xmi:id="_xvTJcuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CAAF1D0036C"/>
+  <Ecore:EReference xmi:id="_xvTJc-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3DDD06680179"/>
+  <Ecore:EOperation xmi:id="_xvTJdORiEdqPjdRrexB-Yw" base_Operation="_3ADC7B74022D4300D74101E4" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_xvTJdeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D514F6E0106"/>
+  <Ecore:EReference xmi:id="_xvTJduRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E0265FD01CA"/>
+  <Ecore:EAttribute xmi:id="_xvTJd-RiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3E5921F9017E"/>
+  <Ecore:EReference xmi:id="_xvc6cORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BD9B210224"/>
+  <Ecore:EReference xmi:id="_xvc6ceRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BD9B210226"/>
+  <Ecore:EReference xmi:id="_xvc6cuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D40F9B6900288"/>
+  <Ecore:EReference xmi:id="_xvc6c-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D06C90B02AF"/>
+  <Ecore:EAttribute xmi:id="_xvmrcORiEdqPjdRrexB-Yw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6EF40300"/>
+  <Ecore:EAttribute xmi:id="_xvmrceRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D41AF6F25017A"/>
+  <Ecore:EReference xmi:id="_xvmrcuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E0257890057"/>
+  <Ecore:EReference xmi:id="_xvmrc-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E0257B9029B"/>
+  <Ecore:EOperation xmi:id="_xvmrdORiEdqPjdRrexB-Yw" base_Operation="_xc4UQDZ9Edqq1tCaRkgBQQ" operationName="getRequireds"/>
+  <Ecore:EOperation xmi:id="_xvmrdeRiEdqPjdRrexB-Yw" base_Operation="_2cFjwDZ-Edqq1tCaRkgBQQ" operationName="getProvideds"/>
+  <Ecore:EAttribute xmi:id="_xvmrduRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3E0259E30107"/>
+  <Ecore:EReference xmi:id="_xvmrd-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3CCB579E00F4"/>
+  <Ecore:EReference xmi:id="_xvmreORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D03D15C008B"/>
+  <Ecore:EReference xmi:id="_xvmreeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D02623F03E2"/>
+  <Ecore:EReference xmi:id="_xvv1YORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E22160503E3"/>
+  <Ecore:EReference xmi:id="_xvv1YeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E0B98C901E2"/>
+  <Ecore:EReference xmi:id="_xvv1YuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E2212D701CF"/>
+  <Ecore:EReference xmi:id="_xvv1Y-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D41BDAA5A0141"/>
+  <Ecore:EAttribute xmi:id="_xvv1ZORiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3E023C610263"/>
+  <Ecore:EAttribute xmi:id="_xvv1ZeRiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3E023C6802FA"/>
+  <Ecore:EReference xmi:id="_xvv1ZuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3E045F15011E"/>
+  <Ecore:EOperation xmi:id="_xvv1Z-RiEdqPjdRrexB-Yw" base_Operation="_xZVGsEb0Edq0rbStTpEubg" operationName="getDeployedElements"/>
+  <Ecore:EAttribute xmi:id="_xvv1aORiEdqPjdRrexB-Yw" isUnsettable="true" base_Property="_3ADC7B74022D3E0330D40211"/>
+  <Ecore:EAttribute xmi:id="_xv5mYORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D05BC66015F"/>
+  <Ecore:EReference xmi:id="_xv5mYeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C63983E02AE"/>
+  <Ecore:EAttribute xmi:id="_xwDXYORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C612C28022F"/>
+  <Ecore:EAttribute xmi:id="_xwMhUORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C6136B401B9"/>
+  <Ecore:EAttribute xmi:id="_xwMhUeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C613764000E"/>
+  <Ecore:EAttribute xmi:id="_xwMhUuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3C678F5300CA"/>
+  <Ecore:EReference xmi:id="_xwMhU-RiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D73412C0329"/>
+  <Ecore:EReference xmi:id="_xwMhVORiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D73416A0300"/>
+  <Ecore:EReference xmi:id="_xwMhVeRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D733F2200E4"/>
+  <Ecore:EReference xmi:id="_xwMhVuRiEdqPjdRrexB-Yw" isTransient="true" base_Property="_3ADC7B74022D3D07F16101E5"/>
 </xmi:XMI>

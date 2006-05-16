@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinTest.java,v 1.4 2006/04/10 19:13:16 khussey Exp $
+ * $Id: PinTest.java,v 1.5 2006/05/16 13:06:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -41,6 +41,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#includesMultiplicity(org.eclipse.uml2.uml.MultiplicityElement) <em>Includes Multiplicity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#lowerBound() <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#upperBound() <em>Upper Bound</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#compatibleWith(org.eclipse.uml2.uml.MultiplicityElement) <em>Compatible With</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#is(int, int) <em>Is</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pin#validateControlPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Control Pins</em>}</li>
  * </ul>
  * </p>
@@ -264,6 +266,30 @@ public class PinTest
 	 * @generated
 	 */
 	public void testUpperBound() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.MultiplicityElement#compatibleWith(org.eclipse.uml2.uml.MultiplicityElement) <em>Compatible With</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.MultiplicityElement#compatibleWith(org.eclipse.uml2.uml.MultiplicityElement)
+	 * @generated
+	 */
+	public void testCompatibleWith__MultiplicityElement() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.MultiplicityElement#is(int, int) <em>Is</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.MultiplicityElement#is(int, int)
+	 * @generated
+	 */
+	public void testIs__int_int() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

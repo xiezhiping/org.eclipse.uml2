@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.12 2006/05/13 04:46:31 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.13 2006/05/16 13:06:55 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -353,5 +353,29 @@ public interface MultiplicityElement
 	 * @generated
 	 */
 	int upperBound();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
+	 * result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
+	 * @generated
+	 */
+	boolean compatibleWith(MultiplicityElement other);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The operation is determines if the upper and lower bound of the ranges are the ones given.
+	 * result = (lowerbound = self.lowerbound and upperbound = self.upperbound)
+	 * <!-- end-model-doc -->
+	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" lowerboundDataType="org.eclipse.uml2.uml.Integer" lowerboundRequired="true" lowerboundOrdered="false" upperboundDataType="org.eclipse.uml2.uml.Integer" upperboundRequired="true" upperboundOrdered="false"
+	 * @generated
+	 */
+	boolean is(int lowerbound, int upperbound);
 
 } // MultiplicityElement

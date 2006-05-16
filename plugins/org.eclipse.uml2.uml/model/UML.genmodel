@@ -995,6 +995,13 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/lowerBound"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/upperBound"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/compatibleWith">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//MultiplicityElement/compatibleWith/other"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//MultiplicityElement/is">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//MultiplicityElement/is/lowerbound"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//MultiplicityElement/is/upperbound"/>
+      </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//ConnectableElement">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
