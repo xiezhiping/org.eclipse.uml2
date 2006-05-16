@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: ValuePinTest.java,v 1.2 2006/05/16 15:08:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,6 +25,7 @@ import org.eclipse.uml2.uml.ValuePin;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ValuePin#validateCompatibleType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ValuePin#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -91,6 +92,18 @@ public class ValuePinTest
 	 * @generated
 	 */
 	public void testValidateCompatibleType__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ValuePin#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ValuePin#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateNoIncomingEdges__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

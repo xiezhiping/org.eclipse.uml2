@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePin.java,v 1.3 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ValuePin.java,v 1.4 2006/05/16 15:07:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -90,5 +90,17 @@ public interface ValuePin
 	 * @generated
 	 */
 	boolean validateCompatibleType(DiagnosticChain diagnostics, Map context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value pins have no incoming edges.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateNoIncomingEdges(DiagnosticChain diagnostics, Map context);
 
 } // ValuePin

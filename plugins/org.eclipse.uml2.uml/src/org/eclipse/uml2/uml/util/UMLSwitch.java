@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.10 2006/01/20 20:55:51 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.11 2006/05/16 15:07:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2758,33 +2758,6 @@ public class UMLSwitch {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.VALUE_PIN : {
-				ValuePin valuePin = (ValuePin) theEObject;
-				Object result = caseValuePin(valuePin);
-				if (result == null)
-					result = caseInputPin(valuePin);
-				if (result == null)
-					result = casePin(valuePin);
-				if (result == null)
-					result = caseObjectNode(valuePin);
-				if (result == null)
-					result = caseMultiplicityElement(valuePin);
-				if (result == null)
-					result = caseActivityNode(valuePin);
-				if (result == null)
-					result = caseTypedElement(valuePin);
-				if (result == null)
-					result = caseElement(valuePin);
-				if (result == null)
-					result = caseRedefinableElement(valuePin);
-				if (result == null)
-					result = caseNamedElement(valuePin);
-				if (result == null)
-					result = caseEModelElement(valuePin);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
 			case UMLPackage.CALL_ACTION : {
 				CallAction callAction = (CallAction) theEObject;
 				Object result = caseCallAction(callAction);
@@ -3022,6 +2995,33 @@ public class UMLSwitch {
 					result = caseElement(activityParameterNode);
 				if (result == null)
 					result = caseEModelElement(activityParameterNode);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.VALUE_PIN : {
+				ValuePin valuePin = (ValuePin) theEObject;
+				Object result = caseValuePin(valuePin);
+				if (result == null)
+					result = caseInputPin(valuePin);
+				if (result == null)
+					result = casePin(valuePin);
+				if (result == null)
+					result = caseObjectNode(valuePin);
+				if (result == null)
+					result = caseMultiplicityElement(valuePin);
+				if (result == null)
+					result = caseActivityNode(valuePin);
+				if (result == null)
+					result = caseTypedElement(valuePin);
+				if (result == null)
+					result = caseElement(valuePin);
+				if (result == null)
+					result = caseRedefinableElement(valuePin);
+				if (result == null)
+					result = caseNamedElement(valuePin);
+				if (result == null)
+					result = caseEModelElement(valuePin);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinOperations.java,v 1.4 2006/01/05 22:43:25 khussey Exp $
+ * $Id: ValuePinOperations.java,v 1.5 2006/05/16 15:07:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,13 +31,14 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ValuePin#validateCompatibleType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ValuePin#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ValuePinOperations
-		extends PinOperations {
+		extends InputPinOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,6 +74,38 @@ public class ValuePinOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCompatibleType", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(valuePin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{valuePin}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Value pins have no incoming edges.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNoIncomingEdges(ValuePin valuePin,
+			DiagnosticChain diagnostics, Map context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.VALUE_PIN__NO_INCOMING_EDGES,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoIncomingEdges", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(valuePin, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{valuePin}));
 			}
 			return false;

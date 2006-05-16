@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.13 2006/01/19 23:06:34 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.14 2006/05/16 15:07:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -451,8 +451,6 @@ public class UMLFactoryImpl
 				return createPin();
 			case UMLPackage.INPUT_PIN :
 				return createInputPin();
-			case UMLPackage.VALUE_PIN :
-				return createValuePin();
 			case UMLPackage.SEND_SIGNAL_ACTION :
 				return createSendSignalAction();
 			case UMLPackage.CALL_OPERATION_ACTION :
@@ -469,6 +467,8 @@ public class UMLFactoryImpl
 				return createInitialNode();
 			case UMLPackage.ACTIVITY_PARAMETER_NODE :
 				return createActivityParameterNode();
+			case UMLPackage.VALUE_PIN :
+				return createValuePin();
 			case UMLPackage.MESSAGE :
 				return createMessage();
 			case UMLPackage.INTERACTION :

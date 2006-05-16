@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.23 2006/05/15 22:13:41 khussey Exp $
+ * $Id: UMLPackage.java,v 1.24 2006/05/16 15:07:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -4736,7 +4736,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUsage()
 	 * @generated
 	 */
-	int USAGE = 126;
+	int USAGE = 125;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.MessageImpl <em>Message</em>}' class.
@@ -5426,7 +5426,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInvocationAction()
 	 * @generated
 	 */
-	int INVOCATION_ACTION = 121;
+	int INVOCATION_ACTION = 120;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.BroadcastSignalActionImpl <em>Broadcast Signal Action</em>}' class.
@@ -5486,7 +5486,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getValuePin()
 	 * @generated
 	 */
-	int VALUE_PIN = 119;
+	int VALUE_PIN = 130;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.IntervalImpl <em>Interval</em>}' class.
@@ -5566,7 +5566,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallAction()
 	 * @generated
 	 */
-	int CALL_ACTION = 120;
+	int CALL_ACTION = 119;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SendSignalActionImpl <em>Send Signal Action</em>}' class.
@@ -5576,7 +5576,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSendSignalAction()
 	 * @generated
 	 */
-	int SEND_SIGNAL_ACTION = 122;
+	int SEND_SIGNAL_ACTION = 121;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallOperationActionImpl <em>Call Operation Action</em>}' class.
@@ -5586,7 +5586,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallOperationAction()
 	 * @generated
 	 */
-	int CALL_OPERATION_ACTION = 123;
+	int CALL_OPERATION_ACTION = 122;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallBehaviorActionImpl <em>Call Behavior Action</em>}' class.
@@ -5596,7 +5596,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallBehaviorAction()
 	 * @generated
 	 */
-	int CALL_BEHAVIOR_ACTION = 124;
+	int CALL_BEHAVIOR_ACTION = 123;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InformationItemImpl <em>Information Item</em>}' class.
@@ -28273,330 +28273,6 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_PIN__EANNOTATIONS = INPUT_PIN__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OWNED_ELEMENT = INPUT_PIN__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OWNER = INPUT_PIN__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OWNED_COMMENT = INPUT_PIN__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAME = INPUT_PIN__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__VISIBILITY = INPUT_PIN__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__QUALIFIED_NAME = INPUT_PIN__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__CLIENT_DEPENDENCY = INPUT_PIN__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAMESPACE = INPUT_PIN__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAME_EXPRESSION = INPUT_PIN__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_LEAF = INPUT_PIN__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__REDEFINED_ELEMENT = INPUT_PIN__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__REDEFINITION_CONTEXT = INPUT_PIN__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_STRUCTURED_NODE = INPUT_PIN__IN_STRUCTURED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Activity</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__ACTIVITY = INPUT_PIN__ACTIVITY;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__OUTGOING = INPUT_PIN__OUTGOING;
-
-	/**
-	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__INCOMING = INPUT_PIN__INCOMING;
-
-	/**
-	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_PARTITION = INPUT_PIN__IN_PARTITION;
-
-	/**
-	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_INTERRUPTIBLE_REGION = INPUT_PIN__IN_INTERRUPTIBLE_REGION;
-
-	/**
-	 * The feature id for the '<em><b>In Group</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_GROUP = INPUT_PIN__IN_GROUP;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__REDEFINED_NODE = INPUT_PIN__REDEFINED_NODE;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__TYPE = INPUT_PIN__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__ORDERING = INPUT_PIN__ORDERING;
-
-	/**
-	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_CONTROL_TYPE = INPUT_PIN__IS_CONTROL_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__UPPER_BOUND = INPUT_PIN__UPPER_BOUND;
-
-	/**
-	 * The feature id for the '<em><b>In State</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IN_STATE = INPUT_PIN__IN_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Selection</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__SELECTION = INPUT_PIN__SELECTION;
-
-	/**
-	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_ORDERED = INPUT_PIN__IS_ORDERED;
-
-	/**
-	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_UNIQUE = INPUT_PIN__IS_UNIQUE;
-
-	/**
-	 * The feature id for the '<em><b>Upper</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__UPPER = INPUT_PIN__UPPER;
-
-	/**
-	 * The feature id for the '<em><b>Lower</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__LOWER = INPUT_PIN__LOWER;
-
-	/**
-	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__UPPER_VALUE = INPUT_PIN__UPPER_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__LOWER_VALUE = INPUT_PIN__LOWER_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__IS_CONTROL = INPUT_PIN__IS_CONTROL;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__VALUE = INPUT_PIN_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Value Pin</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN_FEATURE_COUNT = INPUT_PIN_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
 	int INVOCATION_ACTION__EANNOTATIONS = ACTION__EANNOTATIONS;
 
 	/**
@@ -30247,7 +29923,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlNode()
 	 * @generated
 	 */
-	int CONTROL_NODE = 127;
+	int CONTROL_NODE = 126;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ControlFlowImpl <em>Control Flow</em>}' class.
@@ -30257,7 +29933,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlFlow()
 	 * @generated
 	 */
-	int CONTROL_FLOW = 128;
+	int CONTROL_FLOW = 127;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InitialNodeImpl <em>Initial Node</em>}' class.
@@ -30267,7 +29943,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInitialNode()
 	 * @generated
 	 */
-	int INITIAL_NODE = 129;
+	int INITIAL_NODE = 128;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityParameterNodeImpl <em>Activity Parameter Node</em>}' class.
@@ -30277,7 +29953,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityParameterNode()
 	 * @generated
 	 */
-	int ACTIVITY_PARAMETER_NODE = 130;
+	int ACTIVITY_PARAMETER_NODE = 129;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ForkNodeImpl <em>Fork Node</em>}' class.
@@ -30387,7 +30063,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSequenceNode()
 	 * @generated
 	 */
-	int SEQUENCE_NODE = 125;
+	int SEQUENCE_NODE = 124;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -31819,6 +31495,330 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ACTIVITY_PARAMETER_NODE_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__EANNOTATIONS = INPUT_PIN__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNED_ELEMENT = INPUT_PIN__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNER = INPUT_PIN__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OWNED_COMMENT = INPUT_PIN__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAME = INPUT_PIN__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__VISIBILITY = INPUT_PIN__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__QUALIFIED_NAME = INPUT_PIN__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__CLIENT_DEPENDENCY = INPUT_PIN__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAMESPACE = INPUT_PIN__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAME_EXPRESSION = INPUT_PIN__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_LEAF = INPUT_PIN__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__REDEFINED_ELEMENT = INPUT_PIN__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__REDEFINITION_CONTEXT = INPUT_PIN__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>In Structured Node</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_STRUCTURED_NODE = INPUT_PIN__IN_STRUCTURED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__ACTIVITY = INPUT_PIN__ACTIVITY;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__OUTGOING = INPUT_PIN__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__INCOMING = INPUT_PIN__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>In Partition</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_PARTITION = INPUT_PIN__IN_PARTITION;
+
+	/**
+	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_INTERRUPTIBLE_REGION = INPUT_PIN__IN_INTERRUPTIBLE_REGION;
+
+	/**
+	 * The feature id for the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_GROUP = INPUT_PIN__IN_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Node</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__REDEFINED_NODE = INPUT_PIN__REDEFINED_NODE;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__TYPE = INPUT_PIN__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Ordering</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__ORDERING = INPUT_PIN__ORDERING;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_CONTROL_TYPE = INPUT_PIN__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__UPPER_BOUND = INPUT_PIN__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>In State</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IN_STATE = INPUT_PIN__IN_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Selection</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__SELECTION = INPUT_PIN__SELECTION;
+
+	/**
+	 * The feature id for the '<em><b>Is Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_ORDERED = INPUT_PIN__IS_ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Is Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_UNIQUE = INPUT_PIN__IS_UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Upper</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__UPPER = INPUT_PIN__UPPER;
+
+	/**
+	 * The feature id for the '<em><b>Lower</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__LOWER = INPUT_PIN__LOWER;
+
+	/**
+	 * The feature id for the '<em><b>Upper Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__UPPER_VALUE = INPUT_PIN__UPPER_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__LOWER_VALUE = INPUT_PIN__LOWER_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Is Control</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__IS_CONTROL = INPUT_PIN__IS_CONTROL;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__VALUE = INPUT_PIN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Value Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN_FEATURE_COUNT = INPUT_PIN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.

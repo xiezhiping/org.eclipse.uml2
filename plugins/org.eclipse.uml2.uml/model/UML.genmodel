@@ -2664,7 +2664,12 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ObjectNode/input_output_parameter/context"/>
       </genOperations>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//OutputPin"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//OutputPin">
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//OutputPin/incoming_edges_structured_only">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//OutputPin/incoming_edges_structured_only/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//OutputPin/incoming_edges_structured_only/context"/>
+      </genOperations>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Pin">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Pin/isControl"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Pin/control_pins">
@@ -2672,15 +2677,10 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Pin/control_pins/context"/>
       </genOperations>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//InputPin"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ValuePin">
-      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//ValuePin/value">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ValuePin/compatible_type">
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/compatible_type/diagnostics"/>
-        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/compatible_type/context"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//InputPin">
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//InputPin/outgoing_edges_structured_only">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//InputPin/outgoing_edges_structured_only/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//InputPin/outgoing_edges_structured_only/context"/>
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//CallAction">
@@ -2808,6 +2808,20 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ActivityParameterNode/no_outgoing_edges">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityParameterNode/no_outgoing_edges/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ActivityParameterNode/no_outgoing_edges/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ValuePin">
+      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//ValuePin/value">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ValuePin/compatible_type">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/compatible_type/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/compatible_type/context"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ValuePin/no_incoming_edges">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/no_incoming_edges/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//ValuePin/no_incoming_edges/context"/>
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Message">

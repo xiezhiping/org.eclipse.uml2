@@ -5838,6 +5838,13 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An output pin is a pin that holds output values produced by an action."/>
     </eAnnotations>
+    <eOperations name="incoming_edges_structured_only" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Output pins may have incoming edges only when they are on actions that are structured nodes, and these edges may not target a node contained by the structured node.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pin" eSuperTypes="#//ObjectNode #//MultiplicityElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5861,24 +5868,13 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An input pin is a pin that holds input values to be consumed by an action."/>
     </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ValuePin" eSuperTypes="#//InputPin">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A value pin is an input pin that provides a value by evaluating a value specification."/>
-    </eAnnotations>
-    <eOperations name="compatible_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+    <eOperations name="outgoing_edges_structured_only" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The type of value specification must be compatible with the type of the value pin.&#xD;&#xA;true"/>
+        <details key="documentation" value="Input pins may have outgoing edges only when they are on actions that are structured nodes, and these edges must target a node contained by the structured node.&#xD;&#xA;true"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" ordered="false"
-        lowerBound="1" eType="#//ValueSpecification" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Value that the pin will provide."/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallAction" abstract="true" eSuperTypes="#//InvocationAction">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -6156,6 +6152,31 @@
         lowerBound="1" eType="#//Parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The parameter the object node will be accepting or providing values for."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValuePin" eSuperTypes="#//InputPin">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A value pin is an input pin that provides a value by evaluating a value specification."/>
+    </eAnnotations>
+    <eOperations name="compatible_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of value specification must be compatible with the type of the value pin.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eOperations name="no_incoming_edges" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Value pins have no incoming edges.&#xD;&#xA;true"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" ordered="false"
+        lowerBound="1" eType="#//ValueSpecification" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Value that the pin will provide."/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

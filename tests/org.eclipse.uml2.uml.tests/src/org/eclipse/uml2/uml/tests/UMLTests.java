@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLTests.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: UMLTests.java,v 1.2 2006/05/16 15:08:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -128,7 +128,6 @@ public class UMLTests
 		suite.addTestSuite(OutputPinTest.class);
 		suite.addTestSuite(PinTest.class);
 		suite.addTestSuite(InputPinTest.class);
-		suite.addTestSuite(ValuePinTest.class);
 		suite.addTestSuite(SendSignalActionTest.class);
 		suite.addTestSuite(CallOperationActionTest.class);
 		suite.addTestSuite(CallBehaviorActionTest.class);
@@ -137,6 +136,7 @@ public class UMLTests
 		suite.addTestSuite(ControlFlowTest.class);
 		suite.addTestSuite(InitialNodeTest.class);
 		suite.addTestSuite(ActivityParameterNodeTest.class);
+		suite.addTestSuite(ValuePinTest.class);
 		suite.addTestSuite(MessageTest.class);
 		suite.addTestSuite(InteractionTest.class);
 		suite.addTestSuite(LifelineTest.class);

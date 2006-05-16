@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPin.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: OutputPin.java,v 1.2 2006/05/16 15:07:26 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,4 +32,18 @@ package org.eclipse.uml2.uml;
  */
 public interface OutputPin
 		extends Pin {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Output pins may have incoming edges only when they are on actions that are structured nodes, and these edges may not target a node contained by the structured node.
+	 * true
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateIncomingEdgesStructuredOnly(DiagnosticChain diagnostics,
+			Map context);
+
 } // OutputPin

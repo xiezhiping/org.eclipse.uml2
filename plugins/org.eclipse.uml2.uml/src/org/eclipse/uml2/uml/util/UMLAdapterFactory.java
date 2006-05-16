@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.7 2006/01/19 23:06:34 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.8 2006/05/16 15:07:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -806,10 +806,6 @@ public class UMLAdapterFactory
 			return createInputPinAdapter();
 		}
 
-		public Object caseValuePin(ValuePin object) {
-			return createValuePinAdapter();
-		}
-
 		public Object caseCallAction(CallAction object) {
 			return createCallActionAdapter();
 		}
@@ -852,6 +848,10 @@ public class UMLAdapterFactory
 
 		public Object caseActivityParameterNode(ActivityParameterNode object) {
 			return createActivityParameterNodeAdapter();
+		}
+
+		public Object caseValuePin(ValuePin object) {
+			return createValuePinAdapter();
 		}
 
 		public Object caseMessage(Message object) {

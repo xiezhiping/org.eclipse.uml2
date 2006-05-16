@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InputPinTest.java,v 1.1 2006/02/21 16:32:29 khussey Exp $
+ * $Id: InputPinTest.java,v 1.2 2006/05/16 15:08:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Input Pin</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.InputPin#validateOutgoingEdgesStructuredOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Outgoing Edges Structured Only</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class InputPinTest
@@ -75,6 +81,18 @@ public class InputPinTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.InputPin#validateOutgoingEdgesStructuredOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Outgoing Edges Structured Only</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.InputPin#validateOutgoingEdgesStructuredOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateOutgoingEdgesStructuredOnly__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 } //InputPinTest

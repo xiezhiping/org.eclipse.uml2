@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ActionInputPinOperations.java,v 1.5 2006/05/16 15:07:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,7 +39,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class ActionInputPinOperations
-		extends PinOperations {
+		extends InputPinOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

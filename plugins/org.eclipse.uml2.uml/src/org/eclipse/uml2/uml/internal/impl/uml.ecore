@@ -3077,7 +3077,12 @@
     <eLiterals name="LIFO" value="2"/>
     <eLiterals name="FIFO" value="3"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OutputPin" eSuperTypes="#//Pin"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPin" eSuperTypes="#//Pin">
+    <eOperations name="incoming_edges_structured_only" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pin" eSuperTypes="#//ObjectNode #//MultiplicityElement">
     <eOperations name="control_pins" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
@@ -3086,14 +3091,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControl" ordered="false"
         lowerBound="1" eType="#//Boolean" defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputPin" eSuperTypes="#//Pin"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ValuePin" eSuperTypes="#//InputPin">
-    <eOperations name="compatible_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+  <eClassifiers xsi:type="ecore:EClass" name="InputPin" eSuperTypes="#//Pin">
+    <eOperations name="outgoing_edges_structured_only" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" ordered="false"
-        lowerBound="1" eType="#//ValueSpecification" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallAction" abstract="true" eSuperTypes="#//InvocationAction">
     <eOperations name="synchronous_call" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -3236,6 +3238,18 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" ordered="false"
         lowerBound="1" eType="#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValuePin" eSuperTypes="#//InputPin">
+    <eOperations name="compatible_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eOperations name="no_incoming_edges" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" ordered="false"
+        lowerBound="1" eType="#//ValueSpecification" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//NamedElement">
     <eOperations name="sending_receiving_message_event" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

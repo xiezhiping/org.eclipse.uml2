@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.21 2006/05/08 17:46:10 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.22 2006/05/16 15:07:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -192,6 +192,17 @@ public class ValuePinImpl
 	public boolean validateCompatibleType(DiagnosticChain diagnostics,
 			Map context) {
 		return ValuePinOperations.validateCompatibleType(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
+			Map context) {
+		return ValuePinOperations.validateNoIncomingEdges(this, diagnostics,
 			context);
 	}
 
