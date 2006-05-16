@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.26 2006/05/09 17:53:38 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.27 2006/05/16 14:59:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -103,32 +103,43 @@ public class ProfileOperations
 	 */
 	public static boolean validateMetaclassReferenceNotSpecialized(
 			Profile profile, DiagnosticChain diagnostics, Map context) {
+		boolean result = true;
 
 		for (Iterator referencedMetaclasses = profile
-			.getReferencedMetaclasses().iterator(); referencedMetaclasses
-			.hasNext();) {
+			.getReferencedMetaclasses().iterator(); result
+			&& referencedMetaclasses.hasNext();) {
 
-			if (PackageOperations.containsSpecializations(profile,
-				(Classifier) referencedMetaclasses.next())) {
+			org.eclipse.uml2.uml.Class referencedMetaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
+				.next();
 
-				if (diagnostics != null) {
-					diagnostics
-						.add(new BasicDiagnostic(
-							Diagnostic.WARNING,
-							UMLValidator.DIAGNOSTIC_SOURCE,
-							UMLValidator.PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED,
-							UMLPlugin.INSTANCE
-								.getString(
-									"_UI_Profile_MetaclassReferenceNotSpecialized_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, profile)),
-							new Object[]{profile}));
+			if (containsSpecializations(profile, referencedMetaclass)) {
+				result = false;
+			} else {
+
+				for (Iterator allParents = referencedMetaclass.allParents()
+					.iterator(); allParents.hasNext();) {
+
+					if (EcoreUtil.isAncestor(profile, (Classifier) allParents
+						.next())) {
+
+						result = false;
+						break;
+					}
 				}
-
-				return false;
 			}
 		}
 
-		return true;
+		if (!result && diagnostics != null) {
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_Profile_MetaclassReferenceNotSpecialized_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, profile)),
+				new Object[]{profile}));
+		}
+
+		return result;
 	}
 
 	/**
