@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.23 2006/05/12 03:46:20 khussey Exp $
+ * $Id: UMLEditor.java,v 1.24 2006/05/16 13:08:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -947,7 +947,7 @@ public class UMLEditor
 
 		for (Iterator entries = resourceToURIMap.entrySet().iterator(); entries
 			.hasNext();) {
-	
+
 			Map.Entry entry = (Map.Entry) entries.next();
 			((Resource) entry.getKey()).setURI((URI) entry.getValue());
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.4 2006/01/24 17:22:47 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.5 2006/05/16 13:08:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -167,6 +167,7 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	public UMLActionBarContributor() {
+		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
 		controlAction = new ControlAction();
@@ -448,12 +449,12 @@ public class UMLActionBarContributor
 		submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
 			.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createChildActions, null);
-		menuManager.insertBefore("additions", submenuManager); //$NON-NLS-1$
+		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
 		submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
 			.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createSiblingActions, null);
-		menuManager.insertBefore("additions", submenuManager); //$NON-NLS-1$
+		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 	}
 
 	/**
