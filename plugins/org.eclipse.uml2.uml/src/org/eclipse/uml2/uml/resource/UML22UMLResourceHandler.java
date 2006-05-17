@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.21 2006/05/15 22:29:41 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.22 2006/05/17 21:28:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1601,22 +1601,36 @@ public class UML22UMLResourceHandler
 						((ChangeEvent) event)
 							.setChangeExpression((ValueSpecification) value);
 					} else {
-						value = getValue(extension.getMixed(), "operation"); //$NON-NLS-1$
+						value = getValue(extension.getAnyAttribute(),
+							"operation"); //$NON-NLS-1$
 
-						if (value instanceof Operation) {
-							event = (CallEvent) trigger.getNearestPackage()
-								.createPackagedElement(trigger.getName(),
-									UMLPackage.Literals.CALL_EVENT);
-							((CallEvent) event).setOperation((Operation) value);
+						if (value instanceof String) {
+							EObject eObject = resource
+								.getEObject((String) value);
+
+							if (eObject instanceof Operation) {
+								event = (CallEvent) trigger.getNearestPackage()
+									.createPackagedElement(trigger.getName(),
+										UMLPackage.Literals.CALL_EVENT);
+								((CallEvent) event)
+									.setOperation((Operation) eObject);
+							}
 						} else {
 							value = getValue(extension.getMixed(), "signal"); //$NON-NLS-1$
 
-							if (value instanceof Signal) {
-								event = (SignalEvent) trigger
-									.getNearestPackage().createPackagedElement(
-										trigger.getName(),
-										UMLPackage.Literals.SIGNAL_EVENT);
-								((SignalEvent) event).setSignal((Signal) value);
+							if (value instanceof String) {
+								EObject eObject = resource
+									.getEObject((String) value);
+
+								if (eObject instanceof Signal) {
+									event = (SignalEvent) trigger
+										.getNearestPackage()
+										.createPackagedElement(
+											trigger.getName(),
+											UMLPackage.Literals.SIGNAL_EVENT);
+									((SignalEvent) event)
+										.setSignal((Signal) eObject);
+								}
 							} else {
 								value = getValue(extension.getMixed(), "when"); //$NON-NLS-1$
 
