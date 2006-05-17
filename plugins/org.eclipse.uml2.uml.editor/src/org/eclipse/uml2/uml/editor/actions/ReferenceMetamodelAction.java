@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReferenceMetamodelAction.java,v 1.2 2005/12/23 06:44:36 khussey Exp $
+ * $Id: ReferenceMetamodelAction.java,v 1.3 2006/05/17 21:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -85,7 +85,7 @@ public class ReferenceMetamodelAction
 			Collections.sort(choiceOfValues, new TextComparator());
 
 			String label = UMLEditorPlugin.INSTANCE
-				.getString("_UI_ReferenceMetaclassActionCommand_label"); //$NON-NLS-1$
+				.getString("_UI_ReferenceMetamodelActionCommand_label"); //$NON-NLS-1$
 
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
