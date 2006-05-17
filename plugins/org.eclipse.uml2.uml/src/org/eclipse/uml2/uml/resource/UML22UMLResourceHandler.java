@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.22 2006/05/17 21:28:59 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.23 2006/05/17 21:30:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1616,7 +1616,8 @@ public class UML22UMLResourceHandler
 									.setOperation((Operation) eObject);
 							}
 						} else {
-							value = getValue(extension.getMixed(), "signal"); //$NON-NLS-1$
+							value = getValue(extension.getAnyAttribute(),
+								"signal"); //$NON-NLS-1$
 
 							if (value instanceof String) {
 								EObject eObject = resource
