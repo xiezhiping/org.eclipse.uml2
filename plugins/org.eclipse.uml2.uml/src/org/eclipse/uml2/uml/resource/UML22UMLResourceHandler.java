@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.23 2006/05/17 21:30:17 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.24 2006/05/18 16:55:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -568,7 +568,6 @@ public class UML22UMLResourceHandler
 				}
 
 				defaultCase(executionOccurrenceSpecification);
-				caseNamedElement(executionOccurrenceSpecification);
 
 				return executionOccurrenceSpecification;
 			}
@@ -742,6 +741,8 @@ public class UML22UMLResourceHandler
 			public Object caseMessageOccurrenceSpecification(
 					MessageOccurrenceSpecification messageOccurrenceSpecification) {
 				caseMessageEnd(messageOccurrenceSpecification);
+				caseNamedElement(messageOccurrenceSpecification);
+				caseElement(messageOccurrenceSpecification);
 
 				AnyType extension = getExtension(resource,
 					messageOccurrenceSpecification);
@@ -1020,7 +1021,6 @@ public class UML22UMLResourceHandler
 				}
 
 				defaultCase(messageOccurrenceSpecification);
-				caseNamedElement(messageOccurrenceSpecification);
 
 				return messageOccurrenceSpecification;
 			}
@@ -1071,7 +1071,6 @@ public class UML22UMLResourceHandler
 				}
 
 				defaultCase(occurrenceSpecification);
-				caseNamedElement(occurrenceSpecification);
 
 				return occurrenceSpecification;
 			}
@@ -1176,6 +1175,8 @@ public class UML22UMLResourceHandler
 
 			public Object caseProfileApplication(
 					ProfileApplication profileApplication) {
+				caseElement(profileApplication);
+
 				removeExtension(resource, profileApplication);
 
 				String profileName = null;
@@ -1245,12 +1246,14 @@ public class UML22UMLResourceHandler
 					details.clear();
 				}
 
-				caseElement(profileApplication);
-
 				return profileApplication;
 			}
 
 			public Object caseProfile(Profile profile) {
+				caseNamespace(profile);
+				casePackageableElement(profile);
+				caseElement(profile);
+
 				defaultCase(profile);
 
 				EAnnotation attributesAnnotation = profile
@@ -1380,10 +1383,6 @@ public class UML22UMLResourceHandler
 						}
 					}.doSwitch(ePackagesAnnotation);
 				}
-
-				caseNamespace(profile);
-				casePackageableElement(profile);
-				caseElement(profile);
 
 				return profile;
 			}
@@ -1587,7 +1586,6 @@ public class UML22UMLResourceHandler
 
 			public Object caseTrigger(Trigger trigger) {
 				Event event = null;
-
 				AnyType extension = getExtension(resource, trigger);
 
 				if (extension != null) {
