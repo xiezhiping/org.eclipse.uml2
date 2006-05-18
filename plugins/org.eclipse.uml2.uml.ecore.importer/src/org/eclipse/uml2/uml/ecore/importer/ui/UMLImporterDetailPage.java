@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterDetailPage.java,v 1.1 2006/02/09 01:25:22 khussey Exp $
+ * $Id: UMLImporterDetailPage.java,v 1.2 2006/05/18 17:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -20,6 +20,9 @@ import org.eclipse.emf.importer.ModelImporter;
 import org.eclipse.emf.importer.ui.contribution.base.ModelImporterDetailPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -70,58 +73,46 @@ public class UMLImporterDetailPage
 
 	protected void addOptionControl(Composite parent, String text,
 			final String option, String[] choices, String initialChoice) {
-
 		Label label = new Label(parent, SWT.LEFT);
-		{
-			GridData data = new GridData();
-			data.horizontalAlignment = GridData.FILL;
-			label.setLayoutData(data);
-
-			label.setText(text);
-		}
+		label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
+		label.setText(text);
 
 		final CCombo combo = new CCombo(parent, SWT.BORDER | SWT.READ_ONLY);
-		{
-			GridData data = new GridData();
-			data.horizontalAlignment = GridData.FILL;
-			data.grabExcessHorizontalSpace = true;
-			combo.setLayoutData(data);
+		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		combo.setItems(choices);
 
-			combo.setItems(choices);
+		combo.addModifyListener(new ModifyListener() {
 
-			combo.addModifyListener(new ModifyListener() {
-
-				public void modifyText(ModifyEvent me) {
-					getUMLImporter().getOptions().put(option,
-						choiceLabels.get(combo.getText()));
-				}
-			});
-
-			String choice = (String) getUMLImporter().getOptions().get(option);
-
-			for (Iterator entries = choiceLabels.entrySet().iterator(); entries
-				.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-
-				if (entry.getValue().equals(choice)) {
-					initialChoice = (String) entry.getKey();
-					break;
-				}
+			public void modifyText(ModifyEvent me) {
+				getUMLImporter().getOptions().put(option,
+					choiceLabels.get(combo.getText()));
 			}
+		});
 
-			combo.setText(initialChoice);
+		String choice = (String) getUMLImporter().getOptions().get(option);
+
+		for (Iterator entries = choiceLabels.entrySet().iterator(); entries
+			.hasNext();) {
+
+			Map.Entry entry = (Map.Entry) entries.next();
+
+			if (entry.getValue().equals(choice)) {
+				initialChoice = (String) entry.getKey();
+				break;
+			}
 		}
+
+		combo.setText(initialChoice);
 	}
 
-	protected void addOptionButton(final Group group, Composite parent,
-			String text, final String choiceLabel) {
+	protected void addOptionButton(final Composite optionsParent,
+			Composite parent, String text, final String choiceLabel) {
 		Button button = new Button(parent, SWT.PUSH);
 		button.setText(text);
 		button.addSelectionListener(new SelectionAdapter() {
 
 			public void widgetSelected(SelectionEvent se) {
-				Control[] children = group.getChildren();
+				Control[] children = optionsParent.getChildren();
 				for (int i = 0; i < children.length; i++) {
 					if (children[i] instanceof CCombo) {
 						((CCombo) children[i]).setText(choiceLabel);
@@ -132,106 +123,118 @@ public class UMLImporterDetailPage
 	}
 
 	protected void addDetailControl(Composite parent) {
+		Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
+		group.setLayout(new GridLayout());
+		group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		group
+			.setText(UMLImporterPlugin.INSTANCE.getString("_UI_Options_label")); //$NON-NLS-1$
 
-		final Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
-		{
-			GridLayout layout = new GridLayout();
-			layout.numColumns = 2;
-			group.setLayout(layout);
+		final ScrolledComposite scrolledComposite = new ScrolledComposite(
+			group, SWT.V_SCROLL);
+		scrolledComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+			true));
 
-			GridData data = new GridData(GridData.FILL_BOTH);
-			data.horizontalSpan = 2;
-			group.setLayoutData(data);
-
-			group.setText(UMLImporterPlugin.INSTANCE
-				.getString("_UI_Options_label")); //$NON-NLS-1$
-		}
+		final Composite optionsComposite = new Composite(scrolledComposite,
+			SWT.NONE);
+		optionsComposite.setLayout(new GridLayout(2, false));
+		optionsComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+			true));
 
 		addOptionControl(
-			group,
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_EcoreTaggedValues_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_DerivedFeatures_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DERIVED_FEATURES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateFeatureInheritance_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
 		addOptionControl(
-			group,
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_DuplicateFeatures_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateOperationInheritance_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_DuplicateOperations_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				discardChoiceLabel, processChoiceLabel}, discardChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_RedefiningOperations_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_RedefiningProperties_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE
 				.getString("_UI_SubsettingProperties_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, reportChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_UnionProperties_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			reportChoiceLabel);
-		addOptionControl(group,
+		addOptionControl(optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_SuperClassOrder_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
 		addOptionControl(
-			group,
+			optionsComposite,
 			UMLImporterPlugin.INSTANCE.getString("_UI_AnnotationDetails_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 
-		Composite composite = new Composite(group, SWT.NONE);
-		{
-			composite.setLayout(new RowLayout());
+		scrolledComposite.setContent(optionsComposite);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
 
-			GridData data = new GridData();
-			data.horizontalAlignment = GridData.END;
-			data.horizontalSpan = 2;
-			composite.setLayoutData(data);
-		}
+		scrolledComposite.addControlListener(new ControlAdapter() {
 
-		addOptionButton(group, composite, UMLImporterPlugin.INSTANCE
-			.getString("_UI_IgnoreAll_label"), ignoreChoiceLabel); //$NON-NLS-1$
+			public void controlResized(ControlEvent ce) {
+				scrolledComposite.setMinHeight(optionsComposite.computeSize(
+					SWT.DEFAULT, SWT.DEFAULT).y);
+			}
+		});
 
-		addOptionButton(group, composite, UMLImporterPlugin.INSTANCE
-			.getString("_UI_ProcessAll_label"), processChoiceLabel); //$NON-NLS-1$
+		Composite buttonsComposite = new Composite(group, SWT.NONE);
+		buttonsComposite.setLayout(new RowLayout());
+		buttonsComposite.setLayoutData(new GridData(SWT.END, SWT.BOTTOM, false,
+			false));
+
+		addOptionButton(
+			optionsComposite,
+			buttonsComposite,
+			UMLImporterPlugin.INSTANCE.getString("_UI_IgnoreAll_label"), ignoreChoiceLabel); //$NON-NLS-1$
+		addOptionButton(
+			optionsComposite,
+			buttonsComposite,
+			UMLImporterPlugin.INSTANCE.getString("_UI_ProcessAll_label"), processChoiceLabel); //$NON-NLS-1$
 	}
 
 	protected UMLImporter getUMLImporter() {
