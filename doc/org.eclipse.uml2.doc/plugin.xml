@@ -11,10 +11,17 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.2 2006/05/23 19:48:11 khussey Exp $
+ $Id: plugin.xml,v 1.3 2006/05/23 20:19:05 khussey Exp $
 -->
 
 <plugin>
+
+<!-- ====================================================================== -->
+<!-- Define primary TOC                                                     -->
+<!-- ====================================================================== -->
+  <extension point="org.eclipse.help.toc">
+    <toc file="toc.xml" primary="true" />
+  </extension>
 
 <!-- ====================================================================== -->
 <!-- Define TOCs                                                            -->
