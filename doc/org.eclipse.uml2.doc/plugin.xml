@@ -11,20 +11,22 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.1 2006/03/28 21:10:59 khussey Exp $
+ $Id: plugin.xml,v 1.2 2006/05/23 19:48:11 khussey Exp $
 -->
 
 <plugin>
 
 <!-- ====================================================================== -->
-<!-- Define primary TOC                                                     -->
+<!-- Define TOCs                                                            -->
 <!-- ====================================================================== -->
-  <extension
-     point="org.eclipse.help.toc">
-    <toc
-       file="toc.xml"
-       primary="true">
-    </toc>
+  <extension point="org.eclipse.help.toc">
+    <toc file="topics_Reference.xml" />
   </extension>
 
+<!-- ====================================================================== -->
+<!-- Define Javadoc locations                                               -->
+<!-- ====================================================================== -->
+  <extension point="org.eclipse.pde.core.javadoc">
+    <javadoc path="references/javadoc" /> <!-- defaults to reference/api -->
+  </extension>
 </plugin>

@@ -11,13 +11,15 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: toc.xml,v 1.1 2006/03/28 21:10:59 khussey Exp $
+ $Id: toc.xml,v 1.2 2006/05/23 19:48:11 khussey Exp $
 -->
 
 <!-- ====================================================================== -->
 <!-- Define the top level topics                                            -->
 <!-- ====================================================================== -->
 
-<toc label="UML2 Documentation">
-	<topic label="Javadoc" href="references/javadoc/index.html"/>
+<toc label="UML2 Developer Guide">
+	<topic label="Reference">
+		<link toc="topics_Reference.xml"/>
+	</topic>
 </toc>
