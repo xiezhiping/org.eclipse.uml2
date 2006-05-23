@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.8 2006/04/04 18:06:50 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.9 2006/05/23 14:37:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.UseCase;
@@ -201,6 +202,22 @@ public class UseCaseOperations
 		return true;
 	}
 
+	protected static EList allIncludedUseCases(UseCase useCase,
+			EList allIncludedUseCases) {
+
+		for (Iterator includes = useCase.getIncludes().iterator(); includes
+			.hasNext();) {
+
+			UseCase addition = ((Include) includes.next()).getAddition();
+
+			if (allIncludedUseCases.add(addition)) {
+				allIncludedUseCases(addition, allIncludedUseCases);
+			}
+		}
+
+		return allIncludedUseCases;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,15 +228,8 @@ public class UseCaseOperations
 	 * @generated NOT
 	 */
 	public static EList allIncludedUseCases(UseCase useCase) {
-		EList includes = useCase.getIncludes();
-		EList allIncludedUseCases = new UniqueEList.FastCompare(includes);
-
-		for (Iterator i = includes.iterator(); i.hasNext();) {
-			allIncludedUseCases.addAll(((UseCase) i.next())
-				.allIncludedUseCases());
-		}
-
-		return ECollections.unmodifiableEList(allIncludedUseCases);
+		return ECollections.unmodifiableEList(allIncludedUseCases(useCase,
+			new UniqueEList.FastCompare()));
 	}
 
 } // UseCaseOperations
