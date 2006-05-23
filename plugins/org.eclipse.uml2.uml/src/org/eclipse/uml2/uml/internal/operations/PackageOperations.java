@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.25 2006/05/02 21:51:04 khussey Exp $
+ * $Id: PackageOperations.java,v 1.26 2006/05/23 17:32:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
@@ -631,11 +630,11 @@ public class PackageOperations
 
 		if (appliedProfile == null && recurse) {
 
-			for (Namespace namespace = package_.getNamespace(); namespace != null
-				&& appliedProfile == null; namespace = namespace.getNamespace()) {
+			for (Element owner = package_.getOwner(); owner != null
+				&& appliedProfile == null; owner = owner.getOwner()) {
 
-				if (namespace instanceof org.eclipse.uml2.uml.Package) {
-					appliedProfile = ((org.eclipse.uml2.uml.Package) namespace)
+				if (owner instanceof org.eclipse.uml2.uml.Package) {
+					appliedProfile = ((org.eclipse.uml2.uml.Package) owner)
 						.getAppliedProfile(qualifiedName);
 				}
 			}
@@ -700,12 +699,11 @@ public class PackageOperations
 
 		if (profileApplication == null && recurse) {
 
-			for (Namespace namespace = package_.getNamespace(); namespace != null
-				&& profileApplication == null; namespace = namespace
-				.getNamespace()) {
+			for (Element owner = package_.getOwner(); owner != null
+				&& profileApplication == null; owner = owner.getOwner()) {
 
-				if (namespace instanceof org.eclipse.uml2.uml.Package) {
-					profileApplication = ((org.eclipse.uml2.uml.Package) namespace)
+				if (owner instanceof org.eclipse.uml2.uml.Package) {
+					profileApplication = ((org.eclipse.uml2.uml.Package) owner)
 						.getProfileApplication(profile);
 				}
 			}
