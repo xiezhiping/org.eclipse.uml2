@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.9 2006/05/23 14:37:52 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.10 2006/05/23 16:07:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -210,7 +210,7 @@ public class UseCaseOperations
 
 			UseCase addition = ((Include) includes.next()).getAddition();
 
-			if (allIncludedUseCases.add(addition)) {
+			if (addition != null && allIncludedUseCases.add(addition)) {
 				allIncludedUseCases(addition, allIncludedUseCases);
 			}
 		}
