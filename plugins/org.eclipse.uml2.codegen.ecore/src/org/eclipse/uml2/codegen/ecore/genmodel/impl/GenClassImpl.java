@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.29 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.30 2006/05/24 20:13:42 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -228,8 +228,7 @@ public class GenClassImpl
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
-				return (!UML2GenModelUtil.isUnion(genFeature))
-					&& !isRedefined(genFeature);
+				return !isRedefined(genFeature);
 			}
 		});
 	}
