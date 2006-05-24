@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.24 2006/05/08 17:46:11 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.25 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,6 +59,11 @@ import org.eclipse.uml2.uml.internal.operations.StructuredClassifierOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getRoles <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getParts <em>Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationImpl#getOwnedConnectors <em>Owned Connector</em>}</li>

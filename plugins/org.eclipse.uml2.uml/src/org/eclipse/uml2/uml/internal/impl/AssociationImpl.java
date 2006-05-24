@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.25 2006/05/08 17:46:10 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.26 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,6 +61,10 @@ import org.eclipse.uml2.uml.internal.operations.AssociationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getMembers <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getOwnedEnds <em>Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#getMemberEnds <em>Member End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl#isDerived <em>Is Derived</em>}</li>
@@ -124,46 +128,6 @@ public class AssociationImpl
 	 * @ordered
 	 */
 	protected EList navigableOwnedEnds = null;
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_END_ESUBSETS = new int[]{UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_END_ESUPERSETS = new int[]{UMLPackage.ASSOCIATION__MEMBER_END};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getMemberEnds() <em>Member End</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMemberEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] MEMBER_END_ESUBSETS = new int[]{UMLPackage.ASSOCIATION__OWNED_END};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getNavigableOwnedEnds() <em>Navigable Owned End</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNavigableOwnedEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] NAVIGABLE_OWNED_END_ESUPERSETS = new int[]{UMLPackage.ASSOCIATION__OWNED_END};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1304,5 +1268,45 @@ public class AssociationImpl
 		UMLPackage.ASSOCIATION__OWNED_MEMBER, UMLPackage.ASSOCIATION__FEATURE,
 		UMLPackage.ASSOCIATION__INHERITED_MEMBER,
 		UMLPackage.ASSOCIATION__MEMBER_END};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedEnds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_END_ESUBSETS = new int[]{UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedEnds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_END_ESUPERSETS = new int[]{UMLPackage.ASSOCIATION__MEMBER_END};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getMemberEnds() <em>Member End</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMemberEnds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] MEMBER_END_ESUBSETS = new int[]{UMLPackage.ASSOCIATION__OWNED_END};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getNavigableOwnedEnds() <em>Navigable Owned End</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNavigableOwnedEnds()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] NAVIGABLE_OWNED_END_ESUPERSETS = new int[]{UMLPackage.ASSOCIATION__OWNED_END};
 
 } //AssociationImpl

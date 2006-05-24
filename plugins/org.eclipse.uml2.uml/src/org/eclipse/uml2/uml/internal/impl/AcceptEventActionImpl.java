@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.21 2006/05/15 22:13:40 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,7 @@ import org.eclipse.uml2.uml.internal.operations.AcceptEventActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl#isUnmarshall <em>Is Unmarshall</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl#getResults <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl#getTriggers <em>Trigger</em>}</li>

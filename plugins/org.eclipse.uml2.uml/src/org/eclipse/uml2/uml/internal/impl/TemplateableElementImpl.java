@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.15 2006/05/08 17:46:11 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateableElementImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  * </ul>

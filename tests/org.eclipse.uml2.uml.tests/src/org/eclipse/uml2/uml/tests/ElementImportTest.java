@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportTest.java,v 1.3 2006/04/10 19:13:15 khussey Exp $
+ * $Id: ElementImportTest.java,v 1.4 2006/05/24 20:54:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,6 +21,14 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Element Import</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -86,6 +94,30 @@ public class ElementImportTest
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DirectedRelationship#getTargets()
+	 * @generated
+	 */
+	public void testGetTargets() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DirectedRelationship#getSources()
+	 * @generated
+	 */
+	public void testGetSources() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.ElementImport#validateVisibilityPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility Public Or Private</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,7 +161,8 @@ public class ElementImportTest
 	 * @generated
 	 */
 	public void testGetOwner() {
-		// TODO: implement this union feature getter test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 } //ElementImportTest

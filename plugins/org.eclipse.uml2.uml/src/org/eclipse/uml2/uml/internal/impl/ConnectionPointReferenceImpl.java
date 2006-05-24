@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.14 2006/04/10 19:16:18 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.15 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ import org.eclipse.uml2.uml.internal.operations.ConnectionPointReferenceOperatio
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectionPointReferenceImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectionPointReferenceImpl#getEntries <em>Entry</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectionPointReferenceImpl#getExits <em>Exit</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectionPointReferenceImpl#getState <em>State</em>}</li>
@@ -98,6 +99,18 @@ public class ConnectionPointReferenceImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONNECTION_POINT_REFERENCE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.17 2006/05/15 22:13:40 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl#getBodies <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl#getLanguages <em>Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl#getInputValues <em>Input Value</em>}</li>

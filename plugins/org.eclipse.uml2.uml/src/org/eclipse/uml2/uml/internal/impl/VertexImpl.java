@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
+ * $Id: VertexImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,6 +46,7 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getContainer <em>Container</em>}</li>
@@ -94,6 +95,18 @@ public abstract class VertexImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.VERTEX;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**

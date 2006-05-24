@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.uml.internal.operations.ReadStructuralFeatureActionOpera
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadStructuralFeatureActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadStructuralFeatureActionImpl#getResult <em>Result</em>}</li>
  * </ul>
  * </p>

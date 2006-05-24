@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,6 +56,8 @@ import org.eclipse.uml2.uml.internal.operations.ConditionalNodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#isDeterminate <em>Is Determinate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#isAssured <em>Is Assured</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConditionalNodeImpl#getClauses <em>Clause</em>}</li>

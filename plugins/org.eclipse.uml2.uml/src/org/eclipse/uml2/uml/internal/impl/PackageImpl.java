@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.29 2006/05/08 17:46:11 khussey Exp $
+ * $Id: PackageImpl.java,v 1.30 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,11 +69,15 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getVisibility <em>Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackagedElements <em>Packaged Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getOwnedTypes <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImpl#getPackageMerges <em>Package Merge</em>}</li>
@@ -150,26 +154,6 @@ public class PackageImpl
 	protected EList profileApplications = null;
 
 	/**
-	 * The array of superset feature identifiers for the '{@link #getOwnedTypes() <em>Owned Type</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_TYPE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getNestedPackages() <em>Nested Package</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNestedPackages()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] NESTED_PACKAGE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -185,6 +169,18 @@ public class PackageImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PACKAGE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**
@@ -1774,6 +1770,38 @@ public class PackageImpl
 	 */
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
 		UMLPackage.PACKAGE__OWNED_RULE, UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedTypes() <em>Owned Type</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_TYPE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getNestedPackages() <em>Nested Package</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNestedPackages()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] NESTED_PACKAGE_ESUPERSETS = new int[]{UMLPackage.PACKAGE__PACKAGED_ELEMENT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

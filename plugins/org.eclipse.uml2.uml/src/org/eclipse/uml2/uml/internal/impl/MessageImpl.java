@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
+ * $Id: MessageImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,6 +61,8 @@ import org.eclipse.uml2.uml.internal.operations.MessageOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getMessageKind <em>Message Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getMessageSort <em>Message Sort</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getReceiveEvent <em>Receive Event</em>}</li>
@@ -164,6 +166,18 @@ public class MessageImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.MESSAGE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.14 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.EnumerationLiteralImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.EnumerationLiteralImpl#getEnumeration <em>Enumeration</em>}</li>
  * </ul>
  * </p>
@@ -66,6 +67,18 @@ public class EnumerationLiteralImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ENUMERATION_LITERAL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.8 2006/05/12 20:38:09 khussey Exp $
+ * $Id: ActivityNode.java,v 1.9 2006/05/24 20:54:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,7 +103,7 @@ public interface ActivityNode
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_InGroup()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getContainedNodes
-	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="containedNode" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="containedNode" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();

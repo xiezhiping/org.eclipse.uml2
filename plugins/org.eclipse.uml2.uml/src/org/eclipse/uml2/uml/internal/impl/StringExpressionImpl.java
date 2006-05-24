@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.18 2006/05/08 17:46:10 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.19 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,8 +57,10 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwningExpression <em>Owning Expression</em>}</li>
  * </ul>
@@ -309,6 +311,18 @@ public class StringExpressionImpl
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
 		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**

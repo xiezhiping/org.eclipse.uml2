@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.internal.operations.AddVariableValueActionOperations
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl#isReplaceAll <em>Is Replace All</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl#getInsertAt <em>Insert At</em>}</li>
  * </ul>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,6 +62,10 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedEdges <em>Redefined Edge</em>}</li>
@@ -1356,6 +1360,18 @@ public abstract class ActivityEdgeImpl
 		UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT,
 		UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION,
 		UMLPackage.ACTIVITY_EDGE__GUARD, UMLPackage.ACTIVITY_EDGE__WEIGHT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

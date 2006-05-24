@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.13 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,6 +51,9 @@ import org.eclipse.uml2.uml.internal.operations.ElementImportOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImportImpl#getImportedElement <em>Imported Element</em>}</li>
@@ -638,6 +641,18 @@ public class ElementImportImpl
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

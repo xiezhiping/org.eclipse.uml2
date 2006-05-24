@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.30 2006/05/03 19:44:58 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,8 @@ import org.eclipse.uml2.uml.internal.operations.ElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
  * </p>
@@ -761,9 +763,9 @@ public abstract class ElementImpl
 	 */
 	public Element getOwner() {
 		Element owner = basicGetOwner();
-		return owner == null
-			? null
-			: (Element) eResolveProxy((InternalEObject) owner);
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**

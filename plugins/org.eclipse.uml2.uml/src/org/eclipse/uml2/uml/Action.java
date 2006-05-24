@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.9 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Action.java,v 1.10 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Output()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList getOutputs();
@@ -95,7 +95,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Input()
-	 * @model type="org.eclipse.uml2.uml.InputPin" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.uml.InputPin" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList getInputs();

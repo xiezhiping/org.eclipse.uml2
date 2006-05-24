@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.21 2006/05/08 17:46:10 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.22 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,6 +58,12 @@ import org.eclipse.uml2.uml.internal.operations.ActivityPartitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSuperGroup <em>Super Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getInActivity <em>In Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#isDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#isExternal <em>Is External</em>}</li>
@@ -1231,11 +1237,23 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ActivityGroup getSuperGroup() {
 		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null
-			? null
-			: (ActivityGroup) eResolveProxy((InternalEObject) superGroup);
+		return superGroup != null && superGroup.eIsProxy()
+			? (ActivityGroup) eResolveProxy((InternalEObject) superGroup)
+			: superGroup;
 	}
 
 	/**

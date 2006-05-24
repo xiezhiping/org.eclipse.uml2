@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.22 2006/05/08 17:46:10 khussey Exp $
+ * $Id: RegionImpl.java,v 1.23 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,8 +62,11 @@ import org.eclipse.uml2.uml.internal.operations.RegionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getSubvertices <em>Subvertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getTransitions <em>Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getState <em>State</em>}</li>
@@ -1183,6 +1186,18 @@ public class RegionImpl
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
 		UMLPackage.REGION__OWNED_RULE, UMLPackage.REGION__SUBVERTEX,
 		UMLPackage.REGION__TRANSITION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

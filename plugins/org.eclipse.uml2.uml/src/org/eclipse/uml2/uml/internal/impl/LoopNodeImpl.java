@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.22 2006/05/08 17:46:11 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.23 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,6 +57,8 @@ import org.eclipse.uml2.uml.internal.operations.LoopNodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getOutputs <em>Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#isTestedFirst <em>Is Tested First</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getBodyParts <em>Body Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LoopNodeImpl#getSetupParts <em>Setup Part</em>}</li>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.17 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,8 @@ import org.eclipse.uml2.uml.internal.operations.ConstraintOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getConstrainedElements <em>Constrained Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getContext <em>Context</em>}</li>
@@ -649,6 +651,18 @@ public class ConstraintImpl
 		UMLPackage.CONSTRAINT__OWNED_COMMENT,
 		UMLPackage.CONSTRAINT__NAME_EXPRESSION,
 		UMLPackage.CONSTRAINT__SPECIFICATION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

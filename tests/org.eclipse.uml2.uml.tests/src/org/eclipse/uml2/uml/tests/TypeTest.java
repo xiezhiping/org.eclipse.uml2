@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeTest.java,v 1.2 2006/03/08 19:03:10 khussey Exp $
+ * $Id: TypeTest.java,v 1.3 2006/05/24 20:54:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,6 +21,7 @@ import org.eclipse.uml2.uml.Type;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Type#getPackage() <em>Package</em>}</li>
  * </ul>
  * </p>
@@ -125,7 +126,8 @@ public abstract class TypeTest
 	 * @generated
 	 */
 	public void testGetNamespace() {
-		// TODO: implement this union feature getter test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 } //TypeTest

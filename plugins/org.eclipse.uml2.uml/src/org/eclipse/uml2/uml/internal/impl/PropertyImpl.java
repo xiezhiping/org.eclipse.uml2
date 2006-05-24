@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.34 2006/05/08 17:46:10 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.35 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,14 +79,19 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getEnds <em>End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDeployedElements <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
@@ -308,6 +313,18 @@ public class PropertyImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PROPERTY;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**
@@ -546,26 +563,6 @@ public class PropertyImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.PROPERTY__DEPLOYMENT};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -842,6 +839,18 @@ public class PropertyImpl
 	 */
 	public TemplateSignature createOwnedTemplateSignature() {
 		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**
@@ -2739,6 +2748,26 @@ public class PropertyImpl
 		UMLPackage.PROPERTY__TEMPLATE_BINDING,
 		UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.PROPERTY__DEFAULT_VALUE, UMLPackage.PROPERTY__QUALIFIER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.PROPERTY__DEPLOYMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.PROPERTY__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

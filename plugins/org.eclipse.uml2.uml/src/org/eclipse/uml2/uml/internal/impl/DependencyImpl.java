@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.14 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,6 +47,9 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getClients <em>Client</em>}</li>
  * </ul>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,6 +60,9 @@ import org.eclipse.uml2.uml.internal.operations.ActivityNodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
@@ -869,6 +872,18 @@ public abstract class ActivityNodeImpl
 		UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
 		UMLPackage.ACTIVITY_NODE__IN_PARTITION,
 		UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.17 2006/05/08 17:46:11 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,6 +59,8 @@ import org.eclipse.uml2.uml.internal.operations.LifelineOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getSelector <em>Selector</em>}</li>
@@ -129,6 +131,18 @@ public class LifelineImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LIFELINE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**

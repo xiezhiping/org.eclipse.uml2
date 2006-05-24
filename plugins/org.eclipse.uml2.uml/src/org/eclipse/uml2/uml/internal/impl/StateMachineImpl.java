@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.24 2006/05/08 17:46:10 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.25 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,6 +60,8 @@ import org.eclipse.uml2.uml.internal.operations.StateMachineOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getConnectionPoints <em>Connection Point</em>}</li>

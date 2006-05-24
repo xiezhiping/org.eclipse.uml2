@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.17 2006/05/08 17:46:11 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,7 @@ import org.eclipse.uml2.uml.internal.operations.TimeEventOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeEventImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeEventImpl#isRelative <em>Is Relative</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TimeEventImpl#getWhen <em>When</em>}</li>
  * </ul>

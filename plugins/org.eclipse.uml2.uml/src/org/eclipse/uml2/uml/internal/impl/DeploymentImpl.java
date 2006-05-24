@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.17 2006/05/08 17:46:11 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
@@ -144,16 +145,6 @@ public class DeploymentImpl
 	}
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -166,26 +157,6 @@ public class DeploymentImpl
 		}
 		return clients;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__LOCATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployedArtifacts()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT__SUPPLIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -694,6 +665,36 @@ public class DeploymentImpl
 		UMLPackage.DEPLOYMENT__OWNED_COMMENT,
 		UMLPackage.DEPLOYMENT__NAME_EXPRESSION,
 		UMLPackage.DEPLOYMENT__CONFIGURATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT__LOCATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT__SUPPLIER};
 
 	/**
 	 * <!-- begin-user-doc -->

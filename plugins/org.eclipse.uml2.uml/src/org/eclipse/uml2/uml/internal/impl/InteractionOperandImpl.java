@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.18 2006/05/08 17:46:10 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.19 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,10 +61,13 @@ import org.eclipse.uml2.uml.internal.operations.InteractionOperandOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getCovereds <em>Covered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getEnclosingOperand <em>Enclosing Operand</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getFragments <em>Fragment</em>}</li>
  * </ul>
@@ -1001,6 +1004,18 @@ public class InteractionOperandImpl
 		UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER,
 		UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING,
 		UMLPackage.INTERACTION_OPERAND__GUARD};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.11 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.12 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -43,6 +43,9 @@ import org.eclipse.uml2.uml.UMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolConformanceImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolConformanceImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolConformanceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolConformanceImpl#getGeneralMachine <em>General Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolConformanceImpl#getSpecificMachine <em>Specific Machine</em>}</li>
  * </ul>
@@ -433,6 +436,18 @@ public class ProtocolConformanceImpl
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

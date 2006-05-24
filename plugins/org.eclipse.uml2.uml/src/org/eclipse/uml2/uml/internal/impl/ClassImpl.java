@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.35 2006/05/08 17:46:10 khussey Exp $
+ * $Id: ClassImpl.java,v 1.36 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,11 +79,15 @@ import org.eclipse.uml2.uml.internal.operations.ClassOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getOwnedBehaviors <em>Owned Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getClassifierBehavior <em>Classifier Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getInterfaceRealizations <em>Interface Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getOwnedTriggers <em>Owned Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassImpl#getSuperClasses <em>Super Class</em>}</li>
@@ -190,16 +194,6 @@ public class ClassImpl
 	 * @ordered
 	 */
 	protected EList ownedReceptions = null;
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedBehaviors() <em>Owned Behavior</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedBehaviors()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_BEHAVIOR_ESUBSETS = new int[]{UMLPackage.CLASS__CLASSIFIER_BEHAVIOR};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -339,27 +333,6 @@ public class ClassImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
-		UMLPackage.CLASS__SUBSTITUTION, UMLPackage.CLASS__INTERFACE_REALIZATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterfaceRealizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] INTERFACE_REALIZATION_ESUPERSETS = new int[]{UMLPackage.CLASS__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2030,6 +2003,37 @@ public class ClassImpl
 		UMLPackage.CLASS__GENERALIZATION, UMLPackage.CLASS__SUBSTITUTION,
 		UMLPackage.CLASS__COLLABORATION_USE,
 		UMLPackage.CLASS__INTERFACE_REALIZATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedBehaviors() <em>Owned Behavior</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedBehaviors()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_BEHAVIOR_ESUBSETS = new int[]{UMLPackage.CLASS__CLASSIFIER_BEHAVIOR};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
+		UMLPackage.CLASS__SUBSTITUTION, UMLPackage.CLASS__INTERFACE_REALIZATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INTERFACE_REALIZATION_ESUPERSETS = new int[]{UMLPackage.CLASS__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

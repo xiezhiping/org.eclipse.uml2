@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.21 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.internal.operations.ValueSpecificationActionOperatio
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ValueSpecificationActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ValueSpecificationActionImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ValueSpecificationActionImpl#getResult <em>Result</em>}</li>
  * </ul>

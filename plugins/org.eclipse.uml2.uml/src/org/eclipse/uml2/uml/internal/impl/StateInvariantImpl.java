@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.19 2006/05/08 17:46:10 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.20 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateInvariantImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateInvariantImpl#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateInvariantImpl#getCovereds <em>Covered</em>}</li>
  * </ul>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.17 2006/05/08 17:46:11 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getCovereds <em>Covered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionFragmentImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
@@ -623,6 +625,18 @@ public abstract class InteractionFragmentImpl
 		UMLPackage.INTERACTION_FRAGMENT__OWNED_COMMENT,
 		UMLPackage.INTERACTION_FRAGMENT__NAME_EXPRESSION,
 		UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

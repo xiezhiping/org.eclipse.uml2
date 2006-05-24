@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationTest.java,v 1.3 2006/04/10 19:13:15 khussey Exp $
+ * $Id: EnumerationTest.java,v 1.4 2006/05/24 20:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,6 +21,12 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Enumeration</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class EnumerationTest
@@ -75,6 +81,18 @@ public class EnumerationTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
+	 * @generated
+	 */
+	public void testGetOwnedMembers() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 } //EnumerationTest

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.26 2006/05/08 17:46:10 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.27 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,6 +63,8 @@ import org.eclipse.uml2.uml.internal.operations.BehavioredClassifierOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getOwnedBehaviors <em>Owned Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl#getClassifierBehavior <em>Classifier Behavior</em>}</li>
@@ -116,16 +118,6 @@ public abstract class BehavioredClassifierImpl
 	 * @ordered
 	 */
 	protected EList ownedTriggers = null;
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedBehaviors() <em>Owned Behavior</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedBehaviors()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_BEHAVIOR_ESUBSETS = new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,28 +262,6 @@ public abstract class BehavioredClassifierImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
-		UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
-		UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterfaceRealizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] INTERFACE_REALIZATION_ESUPERSETS = new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1145,6 +1115,38 @@ public abstract class BehavioredClassifierImpl
 		UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
 		UMLPackage.BEHAVIORED_CLASSIFIER__COLLABORATION_USE,
 		UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedBehaviors() <em>Owned Behavior</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedBehaviors()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_BEHAVIOR_ESUBSETS = new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIORED_CLASSIFIER__SUBSTITUTION,
+		UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterfaceRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] INTERFACE_REALIZATION_ESUPERSETS = new int[]{UMLPackage.BEHAVIORED_CLASSIFIER__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

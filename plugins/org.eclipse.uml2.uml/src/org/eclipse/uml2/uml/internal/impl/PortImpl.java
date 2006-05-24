@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.21 2006/04/10 19:16:18 khussey Exp $
+ * $Id: PortImpl.java,v 1.22 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,6 +59,7 @@ import org.eclipse.uml2.uml.internal.operations.PortOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#isBehavior <em>Is Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#isService <em>Is Service</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PortImpl#getRequireds <em>Required</em>}</li>

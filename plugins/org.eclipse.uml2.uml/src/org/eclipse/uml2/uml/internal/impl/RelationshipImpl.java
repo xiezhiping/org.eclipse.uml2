@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.9 2006/04/10 19:16:20 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.10 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,10 @@ import org.eclipse.uml2.uml.UMLPackage;
  * An implementation of the model object '<em><b>Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -77,6 +81,50 @@ public abstract class RelationshipImpl
 		}
 		return new DerivedUnionEObjectEList(Element.class, this,
 			UMLPackage.RELATIONSHIP__RELATED_ELEMENT, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UMLPackage.RELATIONSHIP__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.RELATIONSHIP__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.RELATIONSHIP__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.RELATIONSHIP__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
+				return getRelatedElements();
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UMLPackage.RELATIONSHIP__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.RELATIONSHIP__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.RELATIONSHIP__OWNER :
+				return isSetOwner();
+			case UMLPackage.RELATIONSHIP__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
+				return isSetRelatedElements();
+		}
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

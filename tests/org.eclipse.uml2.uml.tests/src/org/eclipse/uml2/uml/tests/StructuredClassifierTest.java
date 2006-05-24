@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierTest.java,v 1.2 2006/04/10 19:13:15 khussey Exp $
+ * $Id: StructuredClassifierTest.java,v 1.3 2006/05/24 20:54:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,6 +21,11 @@ import org.eclipse.uml2.uml.StructuredClassifier;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getParts() <em>Part</em>}</li>
  * </ul>
  * </p>
@@ -54,6 +59,66 @@ public abstract class StructuredClassifierTest
 	 */
 	private StructuredClassifier getFixture() {
 		return (StructuredClassifier) fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.StructuredClassifier#getRoles()
+	 * @generated
+	 */
+	public void testGetRoles() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
+	 * @generated
+	 */
+	public void testGetOwnedMembers() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#getAttributes()
+	 * @generated
+	 */
+	public void testGetAttributes() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Namespace#getMembers()
+	 * @generated
+	 */
+	public void testGetMembers() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Classifier#getFeatures()
+	 * @generated
+	 */
+	public void testGetFeatures() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**

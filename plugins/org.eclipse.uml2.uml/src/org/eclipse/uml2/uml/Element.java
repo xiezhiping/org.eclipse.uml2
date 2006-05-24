@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.13 2006/05/12 20:38:09 khussey Exp $
+ * $Id: Element.java,v 1.14 2006/05/24 20:54:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Element
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedElement()
 	 * @see org.eclipse.uml2.uml.Element#getOwner
-	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedElements();
@@ -76,7 +76,7 @@ public interface Element
 	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_Owner()
 	 * @see org.eclipse.uml2.uml.Element#getOwnedElements
-	 * @model opposite="ownedElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model opposite="ownedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Element getOwner();

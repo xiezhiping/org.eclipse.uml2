@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.24 2006/05/08 17:46:11 khussey Exp $
+ * $Id: NodeImpl.java,v 1.25 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,9 +60,11 @@ import org.eclipse.uml2.uml.internal.operations.NodeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NodeImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NodeImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NodeImpl#getDeployedElements <em>Deployed Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NodeImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NodeImpl#getNestedNodes <em>Nested Node</em>}</li>
  * </ul>
  * </p>
@@ -148,28 +150,6 @@ public class NodeImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
-		UMLPackage.NODE__SUBSTITUTION, UMLPackage.NODE__INTERFACE_REALIZATION,
-		UMLPackage.NODE__DEPLOYMENT};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.NODE__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1151,6 +1131,28 @@ public class NodeImpl
 		UMLPackage.NODE__GENERALIZATION, UMLPackage.NODE__SUBSTITUTION,
 		UMLPackage.NODE__COLLABORATION_USE,
 		UMLPackage.NODE__INTERFACE_REALIZATION, UMLPackage.NODE__DEPLOYMENT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
+		UMLPackage.NODE__SUBSTITUTION, UMLPackage.NODE__INTERFACE_REALIZATION,
+		UMLPackage.NODE__DEPLOYMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.NODE__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

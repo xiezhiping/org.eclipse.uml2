@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.35 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.36 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -88,13 +88,22 @@ import org.eclipse.uml2.uml.internal.operations.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getRedefinedElements <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getVisibility <em>Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getPackage <em>Package</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#getCollaborationUses <em>Collaboration Use</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl#isAbstract <em>Is Abstract</em>}</li>
@@ -458,6 +467,18 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject) templateParameter;
@@ -671,6 +692,18 @@ public abstract class ClassifierImpl
 	 */
 	public boolean isSetVisibility() {
 		return visibility != VISIBILITY_EDEFAULT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**
@@ -1112,36 +1145,6 @@ public abstract class ClassifierImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__SUBSTITUTION};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getCollaborationUses() <em>Collaboration Use</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCollaborationUses()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] COLLABORATION_USE_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__REPRESENTATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubstitutions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUBSTITUTION_ESUPERSETS = new int[]{UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2875,6 +2878,36 @@ public abstract class ClassifierImpl
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
 		UMLPackage.CLASSIFIER__OWNED_RULE,
 		UMLPackage.CLASSIFIER__OWNED_USE_CASE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__SUBSTITUTION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getCollaborationUses() <em>Collaboration Use</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCollaborationUses()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] COLLABORATION_USE_ESUBSETS = new int[]{UMLPackage.CLASSIFIER__REPRESENTATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubstitutions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUBSTITUTION_ESUPERSETS = new int[]{UMLPackage.CLASSIFIER__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.18 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.19 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,6 +57,10 @@ import org.eclipse.uml2.uml.internal.operations.ExtendOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getExtendedCase <em>Extended Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getExtensionLocations <em>Extension Location</em>}</li>

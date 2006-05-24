@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.21 2006/05/08 17:46:11 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,8 +67,11 @@ import org.eclipse.uml2.uml.internal.operations.TransitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getContainer <em>Container</em>}</li>
@@ -300,16 +303,6 @@ public class TransitionImpl
 	}
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{UMLPackage.TRANSITION__GUARD};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -412,6 +405,18 @@ public class TransitionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__IS_LEAF, oldIsLeaf, newIsLeaf));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**
@@ -1543,6 +1548,16 @@ public class TransitionImpl
 		UMLPackage.TRANSITION__ELEMENT_IMPORT,
 		UMLPackage.TRANSITION__PACKAGE_IMPORT,
 		UMLPackage.TRANSITION__OWNED_MEMBER, UMLPackage.TRANSITION__EFFECT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{UMLPackage.TRANSITION__GUARD};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.13 2006/05/12 20:38:05 khussey Exp $
+ * $Id: NamedElement.java,v 1.14 2006/05/24 20:54:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -223,7 +223,7 @@ public interface NamedElement
 	 * @return the value of the '<em>Namespace</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_Namespace()
 	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers
-	 * @model opposite="ownedMember" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model opposite="ownedMember" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Namespace getNamespace();

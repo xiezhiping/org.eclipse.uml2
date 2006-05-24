@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.10 2006/05/12 20:38:07 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.11 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -93,7 +93,7 @@ public interface ActivityEdge
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_InGroup()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getContainedEdges
-	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="containedEdge" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="containedEdge" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.14 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.15 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.uml.internal.operations.InterruptibleActivityRegionOpera
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl#getInterruptingEdges <em>Interrupting Edge</em>}</li>
  * </ul>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.6 2006/05/24 20:54:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -165,7 +165,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_Role()
-	 * @model type="org.eclipse.uml2.uml.ConnectableElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRoles();

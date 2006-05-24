@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeTest.java,v 1.2 2006/04/10 19:13:15 khussey Exp $
+ * $Id: ActivityEdgeTest.java,v 1.3 2006/05/24 20:54:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,6 +21,15 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Activity Edge</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups() <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -52,6 +61,42 @@ public abstract class ActivityEdgeTest
 	 */
 	private ActivityEdge getFixture() {
 		return (ActivityEdge) fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements()
+	 * @generated
+	 */
+	public void testGetRedefinedElements() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups() <em>In Group</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ActivityEdge#getInGroups()
+	 * @generated
+	 */
+	public void testGetInGroups() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
+	 * @generated
+	 */
+	public void testGetOwnedElements() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -98,7 +143,8 @@ public abstract class ActivityEdgeTest
 	 * @generated
 	 */
 	public void testGetOwner() {
-		// TODO: implement this union feature getter test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 } //ActivityEdgeTest

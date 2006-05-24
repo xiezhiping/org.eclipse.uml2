@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.27 2006/05/08 17:46:11 khussey Exp $
+ * $Id: StateImpl.java,v 1.28 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,11 +70,15 @@ import org.eclipse.uml2.uml.internal.operations.StateOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isOrthogonal <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isSimple <em>Is Simple</em>}</li>
@@ -454,6 +458,18 @@ public class StateImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__IS_LEAF, oldIsLeaf, newIsLeaf));
 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**

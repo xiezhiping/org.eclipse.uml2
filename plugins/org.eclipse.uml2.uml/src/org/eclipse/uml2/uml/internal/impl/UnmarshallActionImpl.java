@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.21 2006/05/15 22:13:40 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,6 +56,8 @@ import org.eclipse.uml2.uml.internal.operations.UnmarshallActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getOutputs <em>Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getResults <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getUnmarshallType <em>Unmarshall Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl#getObject <em>Object</em>}</li>

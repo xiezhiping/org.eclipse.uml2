@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.16 2006/05/08 17:46:11 khussey Exp $
+ * $Id: SlotImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,8 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getDefiningFeature <em>Defining Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getValues <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SlotImpl#getOwningInstance <em>Owning Instance</em>}</li>
@@ -469,6 +471,18 @@ public class SlotImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.SLOT__OWNED_COMMENT, UMLPackage.SLOT__VALUE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

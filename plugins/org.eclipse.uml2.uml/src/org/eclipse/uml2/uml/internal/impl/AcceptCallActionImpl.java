@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.15 2006/05/15 22:13:40 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.16 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.internal.operations.AcceptCallActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl#getReturnInformation <em>Return Information</em>}</li>
  * </ul>
  * </p>

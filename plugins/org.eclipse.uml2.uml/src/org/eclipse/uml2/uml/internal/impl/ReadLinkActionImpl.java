@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,7 @@ import org.eclipse.uml2.uml.internal.operations.ReadLinkActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadLinkActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReadLinkActionImpl#getResult <em>Result</em>}</li>
  * </ul>
  * </p>

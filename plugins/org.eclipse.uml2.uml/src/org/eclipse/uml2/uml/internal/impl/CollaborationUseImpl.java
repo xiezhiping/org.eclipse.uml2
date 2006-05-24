@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.16 2006/05/08 17:46:11 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.internal.operations.CollaborationUseOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationUseImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationUseImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CollaborationUseImpl#getRoleBindings <em>Role Binding</em>}</li>
  * </ul>

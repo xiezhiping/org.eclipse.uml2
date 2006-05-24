@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.21 2006/05/16 13:06:54 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.uml.internal.operations.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MultiplicityElementImpl#getUpper <em>Upper</em>}</li>

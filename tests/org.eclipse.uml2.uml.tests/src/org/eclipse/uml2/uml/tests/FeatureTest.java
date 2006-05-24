@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureTest.java,v 1.2 2006/04/10 19:13:15 khussey Exp $
+ * $Id: FeatureTest.java,v 1.3 2006/05/24 20:54:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -18,6 +18,12 @@ import org.eclipse.uml2.uml.Feature;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Feature</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public abstract class FeatureTest
@@ -41,6 +47,18 @@ public abstract class FeatureTest
 	 */
 	private Feature getFixture() {
 		return (Feature) fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Feature#getFeaturingClassifiers()
+	 * @generated
+	 */
+	public void testGetFeaturingClassifiers() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 } //FeatureTest

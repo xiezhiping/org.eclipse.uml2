@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.27 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.28 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,6 +67,8 @@ import org.eclipse.uml2.uml.internal.operations.ActivityOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getGroups <em>Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getStructuredNodes <em>Structured Node</em>}</li>
@@ -173,37 +175,6 @@ public class ActivityImpl
 	 * @ordered
 	 */
 	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 15;
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getGroups() <em>Group</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] GROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY__PARTITION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getStructuredNodes() <em>Structured Node</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStructuredNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[]{
-		UMLPackage.ACTIVITY__NODE, UMLPackage.ACTIVITY__GROUP};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getPartitions() <em>Partition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPartitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] PARTITION_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__GROUP};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1639,5 +1610,36 @@ public class ActivityImpl
 		UMLPackage.ACTIVITY__COLLABORATION_USE,
 		UMLPackage.ACTIVITY__INTERFACE_REALIZATION, UMLPackage.ACTIVITY__NODE,
 		UMLPackage.ACTIVITY__EDGE, UMLPackage.ACTIVITY__GROUP};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getGroups() <em>Group</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] GROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY__PARTITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getStructuredNodes() <em>Structured Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStructuredNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[]{
+		UMLPackage.ACTIVITY__NODE, UMLPackage.ACTIVITY__GROUP};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPartitions() <em>Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PARTITION_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__GROUP};
 
 } //ActivityImpl

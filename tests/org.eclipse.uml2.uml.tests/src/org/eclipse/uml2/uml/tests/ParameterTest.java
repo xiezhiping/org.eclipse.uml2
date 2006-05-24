@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterTest.java,v 1.6 2006/05/16 13:06:56 khussey Exp $
+ * $Id: ParameterTest.java,v 1.7 2006/05/24 20:54:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,8 +24,10 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLower() <em>Lower</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation() <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefault() <em>Default</em>}</li>
  * </ul>
@@ -111,6 +113,18 @@ public class ParameterTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
+	 * @generated
+	 */
+	public void testGetOwnedElements() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -493,7 +507,8 @@ public class ParameterTest
 	 * @generated
 	 */
 	public void testGetNamespace() {
-		// TODO: implement this union feature getter test method
+		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
+
 } //ParameterTest

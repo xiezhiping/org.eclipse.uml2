@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,7 @@ import org.eclipse.uml2.uml.internal.operations.InteractionUseOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getRefersTo <em>Refers To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getActualGates <em>Actual Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionUseImpl#getArguments <em>Argument</em>}</li>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.8 2006/05/12 20:38:09 khussey Exp $
+ * $Id: Namespace.java,v 1.9 2006/05/24 20:54:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -230,7 +230,7 @@ public interface Namespace
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_Member()
-	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getMembers();
@@ -312,7 +312,7 @@ public interface Namespace
 	 * @return the value of the '<em>Owned Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedMember()
 	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace
-	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="namespace" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="namespace" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedMembers();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.13 2006/04/10 19:16:18 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.14 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,8 @@ import org.eclipse.uml2.uml.internal.operations.PseudostateOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getStateMachine <em>State Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getState <em>State</em>}</li>
@@ -96,6 +98,18 @@ public class PseudostateImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PSEUDOSTATE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
 	}
 
 	/**
@@ -663,6 +677,18 @@ public class PseudostateImpl
 			return stateMachine;
 		}
 		return super.basicGetNamespace();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**

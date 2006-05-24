@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateSignatureOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateSignatureImpl#getTemplate <em>Template</em>}</li>
@@ -83,26 +85,6 @@ public class TemplateSignatureImpl
 	 * @ordered
 	 */
 	protected EList ownedParameters = null;
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] PARAMETER_ESUBSETS = new int[]{UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_SIGNATURE__PARAMETER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,6 +435,38 @@ public class TemplateSignatureImpl
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.TEMPLATE_SIGNATURE__OWNED_COMMENT,
 		UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PARAMETER_ESUBSETS = new int[]{UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_SIGNATURE__PARAMETER};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

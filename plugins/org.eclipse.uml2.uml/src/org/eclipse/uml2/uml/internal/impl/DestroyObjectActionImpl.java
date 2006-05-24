@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,7 @@ import org.eclipse.uml2.uml.internal.operations.DestroyObjectActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DestroyObjectActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DestroyObjectActionImpl#isDestroyLinks <em>Is Destroy Links</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DestroyObjectActionImpl#isDestroyOwnedObjects <em>Is Destroy Owned Objects</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DestroyObjectActionImpl#getTarget <em>Target</em>}</li>

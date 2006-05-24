@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.11 2006/04/10 19:16:20 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.12 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,6 +42,9 @@ import org.eclipse.uml2.uml.UMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getMergedPackage <em>Merged Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageMergeImpl#getReceivingPackage <em>Receiving Package</em>}</li>
  * </ul>
@@ -432,6 +435,18 @@ public class PackageMergeImpl
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[]{UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

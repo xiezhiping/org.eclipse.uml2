@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.12 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.13 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.uml.internal.operations.ExceptionHandlerOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getHandlerBody <em>Handler Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getExceptionInput <em>Exception Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getExceptionTypes <em>Exception Type</em>}</li>
@@ -107,6 +108,18 @@ public class ExceptionHandlerImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXCEPTION_HANDLER;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**

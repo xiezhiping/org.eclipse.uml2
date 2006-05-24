@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.17 2006/05/08 17:46:10 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.18 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployedElements <em>Deployed Element</em>}</li>
@@ -126,26 +127,6 @@ public abstract class DeploymentTargetImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployments()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -462,6 +443,26 @@ public abstract class DeploymentTargetImpl
 		UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT,
 		UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION,
 		UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployments()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

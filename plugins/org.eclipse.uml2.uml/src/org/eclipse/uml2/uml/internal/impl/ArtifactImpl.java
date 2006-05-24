@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.24 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.25 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,6 +61,10 @@ import org.eclipse.uml2.uml.internal.operations.ArtifactOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl#getNestedArtifacts <em>Nested Artifact</em>}</li>
@@ -272,27 +276,6 @@ public class ArtifactImpl
 		}
 		return clientDependencies;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
-		UMLPackage.ARTIFACT__SUBSTITUTION, UMLPackage.ARTIFACT__MANIFESTATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getManifestations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] MANIFESTATION_ESUPERSETS = new int[]{UMLPackage.ARTIFACT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1343,6 +1326,27 @@ public class ArtifactImpl
 	 * @ordered
 	 */
 	protected static final int[] ATTRIBUTE_ESUBSETS = new int[]{UMLPackage.ARTIFACT__OWNED_ATTRIBUTE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[]{
+		UMLPackage.ARTIFACT__SUBSTITUTION, UMLPackage.ARTIFACT__MANIFESTATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManifestations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] MANIFESTATION_ESUPERSETS = new int[]{UMLPackage.ARTIFACT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

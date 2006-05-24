@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.15 2006/04/10 19:16:20 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,8 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterSubstitutionOpe
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getFormal <em>Formal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedActuals <em>Owned Actual</em>}</li>
@@ -95,26 +97,6 @@ public class TemplateParameterSubstitutionImpl
 	 * @ordered
 	 */
 	protected EList ownedActuals = null;
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getActuals() <em>Actual</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActuals()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ACTUAL_ESUBSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedActuals()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ACTUAL_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -513,6 +495,38 @@ public class TemplateParameterSubstitutionImpl
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT,
 		UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getActuals() <em>Actual</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ACTUAL_ESUBSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ACTUAL_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.internal.operations.LinkActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkActionImpl#getEndData <em>End Data</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkActionImpl#getInputValues <em>Input Value</em>}</li>
  * </ul>

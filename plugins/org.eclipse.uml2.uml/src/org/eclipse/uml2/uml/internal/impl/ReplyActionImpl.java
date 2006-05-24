@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,7 @@ import org.eclipse.uml2.uml.internal.operations.ReplyActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReplyActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReplyActionImpl#getReplyToCall <em>Reply To Call</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReplyActionImpl#getReturnInformation <em>Return Information</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ReplyActionImpl#getReplyValues <em>Reply Value</em>}</li>

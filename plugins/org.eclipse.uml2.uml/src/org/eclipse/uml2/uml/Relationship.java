@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Relationship.java,v 1.3 2006/05/12 20:38:05 khussey Exp $
+ * $Id: Relationship.java,v 1.4 2006/05/24 20:54:29 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,7 @@ public interface Relationship
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Related Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRelationship_RelatedElement()
-	 * @model type="org.eclipse.uml2.uml.Element" required="true" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRelatedElements();

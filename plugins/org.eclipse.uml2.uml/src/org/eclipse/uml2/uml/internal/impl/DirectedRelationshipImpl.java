@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.9 2006/04/10 19:16:21 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.10 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -29,6 +29,12 @@ import org.eclipse.uml2.uml.UMLPackage;
  * An implementation of the model object '<em><b>Directed Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DirectedRelationshipImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DirectedRelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DirectedRelationshipImpl#getTargets <em>Target</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -125,6 +131,58 @@ public abstract class DirectedRelationshipImpl
 		}
 		return new DerivedUnionEObjectEList(Element.class, this,
 			UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
+				return getEAnnotations();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
+				return getOwnedElements();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
+				if (resolve)
+					return getOwner();
+				return basicGetOwner();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
+				return getOwnedComments();
+			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
+				return getRelatedElements();
+			case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :
+				return getSources();
+			case UMLPackage.DIRECTED_RELATIONSHIP__TARGET :
+				return getTargets();
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
+				return isSetOwnedElements();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
+				return isSetOwner();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
+				return isSetRelatedElements();
+			case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :
+				return isSetSources();
+			case UMLPackage.DIRECTED_RELATIONSHIP__TARGET :
+				return isSetTargets();
+		}
+		return eDynamicIsSet(featureID);
 	}
 
 	/**

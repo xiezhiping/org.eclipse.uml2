@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.14 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,6 +47,9 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getAddition <em>Addition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getIncludingCase <em>Including Case</em>}</li>
  * </ul>

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.29 2006/05/08 17:46:11 khussey Exp $
+ * $Id: OperationImpl.java,v 1.30 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -73,10 +73,16 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
@@ -248,6 +254,18 @@ public class OperationImpl
 	 */
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OPERATION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
 	}
 
 	/**
@@ -722,39 +740,6 @@ public class OperationImpl
 		}
 		return ownedRules;
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__PRECONDITION,
-		UMLPackage.OPERATION__POSTCONDITION,
-		UMLPackage.OPERATION__BODY_CONDITION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2362,6 +2347,18 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
 			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
@@ -2427,6 +2424,39 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.OPERATION__REDEFINED_OPERATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__PRECONDITION,
+		UMLPackage.OPERATION__POSTCONDITION,
+		UMLPackage.OPERATION__BODY_CONDITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->

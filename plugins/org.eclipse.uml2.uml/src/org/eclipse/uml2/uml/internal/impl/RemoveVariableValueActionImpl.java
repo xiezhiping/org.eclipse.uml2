@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
+ * $Id: RemoveVariableValueActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.internal.operations.RemoveVariableValueActionOperati
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl#isRemoveDuplicates <em>Is Remove Duplicates</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl#getRemoveAt <em>Remove At</em>}</li>
  * </ul>

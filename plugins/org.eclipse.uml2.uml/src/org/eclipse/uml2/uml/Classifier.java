@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.16 2006/05/13 04:46:31 khussey Exp $
+ * $Id: Classifier.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -155,7 +155,7 @@ public interface Classifier
 	 * @return the value of the '<em>Feature</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Feature()
 	 * @see org.eclipse.uml2.uml.Feature#getFeaturingClassifiers
-	 * @model type="org.eclipse.uml2.uml.Feature" opposite="featuringClassifier" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Feature" opposite="featuringClassifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getFeatures();
@@ -461,7 +461,7 @@ public interface Classifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Attribute</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Attribute()
-	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getAttributes();

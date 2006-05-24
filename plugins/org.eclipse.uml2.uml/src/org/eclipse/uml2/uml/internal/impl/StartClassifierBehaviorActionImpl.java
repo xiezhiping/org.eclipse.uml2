@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartClassifierBehaviorActionImpl.java,v 1.20 2006/05/08 17:46:10 khussey Exp $
+ * $Id: StartClassifierBehaviorActionImpl.java,v 1.21 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -52,6 +52,7 @@ import org.eclipse.uml2.uml.internal.operations.StartClassifierBehaviorActionOpe
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StartClassifierBehaviorActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StartClassifierBehaviorActionImpl#getObject <em>Object</em>}</li>
  * </ul>
  * </p>

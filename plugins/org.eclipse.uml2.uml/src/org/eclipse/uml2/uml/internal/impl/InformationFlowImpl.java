@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.11 2006/04/10 19:16:18 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.12 2006/05/24 20:54:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -51,6 +51,9 @@ import org.eclipse.uml2.uml.internal.operations.InformationFlowOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getConveyeds <em>Conveyed</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getInformationSources <em>Information Source</em>}</li>

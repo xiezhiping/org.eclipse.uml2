@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.20 2006/05/08 17:46:11 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,8 @@ import org.eclipse.uml2.uml.internal.operations.TestIdentityActionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getFirst <em>First</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getSecond <em>Second</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TestIdentityActionImpl#getResult <em>Result</em>}</li>
