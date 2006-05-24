@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RoseEcoreBuilder.java,v 1.6 2005/11/29 13:31:27 khussey Exp $
+ * $Id: RoseEcoreBuilder.java,v 1.7 2006/05/24 20:12:48 khussey Exp $
  */
 package org.eclipse.uml2.importer.rose.builder;
 
@@ -1718,15 +1718,11 @@ public class RoseEcoreBuilder
 
 							eOpposite.setContainment(false);
 
-							if (!Generator.isUnion(eOpposite)) {
-								eOpposite.setVolatile(true);
-							}
+							eOpposite.setVolatile(true);
 						}
 					}
 
-					if (!Generator.isUnion(eStructuralFeature)) {
-						eStructuralFeature.setVolatile(true);
-					}
+					eStructuralFeature.setVolatile(true);
 				}
 
 				return eStructuralFeature;

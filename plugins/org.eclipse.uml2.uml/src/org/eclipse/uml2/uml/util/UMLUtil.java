@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.31 2006/05/13 04:43:40 khussey Exp $
+ * $Id: UMLUtil.java,v 1.32 2006/05/24 20:12:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3014,7 +3014,6 @@ public class UMLUtil
 							.next();
 
 						if (redefinedProperty.getOwningAssociation() == null) {
-
 							EStructuralFeature eStructuralFeature = (EStructuralFeature) elementToEModelElementMap
 								.get(redefinedProperty);
 
@@ -3232,7 +3231,7 @@ public class UMLUtil
 							true);
 
 						eStructuralFeature.setChangeable(false);
-						eStructuralFeature.setVolatile(false);
+						eStructuralFeature.setVolatile(true);
 					} else if (OPTION__REPORT.equals(options
 						.get(OPTION__UNION_PROPERTIES))
 						&& diagnostics != null) {
