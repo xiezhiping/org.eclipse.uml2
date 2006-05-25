@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.2 2006/04/06 12:56:54 khussey Exp $
+ * $Id: UMLImporter.java,v 1.3 2006/05/25 16:42:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -42,7 +42,10 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class UMLImporter
@@ -249,7 +252,10 @@ public class UMLImporter
 
 			String value = (String) i.next();
 
-			if (value.endsWith('.' + UMLResource.FILE_EXTENSION)) {
+			if (value.endsWith('.' + UMLResource.FILE_EXTENSION)
+				|| value.endsWith('.' + UML22UMLResource.FILE_EXTENSION)
+				|| value.endsWith('.' + XMI2UMLResource.FILE_EXTENSION)) {
+
 				text.append(makeAbsolute(URI.createURI(value), genModelURI)
 					.toString());
 				text.append(" "); //$NON-NLS-1$
@@ -269,6 +275,23 @@ public class UMLImporter
 		UML2GenModelUtil.getGenAnnotation(genModel,
 			getConverterGenAnnotationSource(), true).getDetails().putAll(
 			getOptions());
+	}
+
+	public ResourceSet createResourceSet() {
+		ResourceSet resourceSet = super.createResourceSet();
+
+		Map extensionToFactoryMap = resourceSet.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap();
+
+		extensionToFactoryMap.put(UML22UMLResource.FILE_EXTENSION,
+			UML22UMLResource.Factory.INSTANCE);
+		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
+			XMI2UMLResource.Factory.INSTANCE);
+
+		resourceSet.getURIConverter().getURIMap().putAll(
+			UML22UMLExtendedMetaData.getURIMap());
+
+		return resourceSet;
 	}
 
 }

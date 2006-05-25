@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.1 2006/02/09 01:25:21 khussey Exp $
+ $Id: plugin.xml,v 1.2 2006/05/25 16:42:17 khussey Exp $
 -->
 
 <plugin>
@@ -21,7 +21,7 @@
        id="org.eclipse.uml2.uml.ecore.importer"
        name="%_UI_UMLImporter_label"
        icon="platform:/plugin/org.eclipse.uml2.uml.editor/icons/full/obj16/UMLModelFile.gif"
-       extensions="uml"
+       extensions="uml,uml2,xmi"
        description="%_UI_UMLModelImporter_description"
        wizard="org.eclipse.uml2.uml.ecore.importer.ui.UMLImporterWizard"/>
   </extension>	

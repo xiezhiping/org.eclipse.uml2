@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterDetailPage.java,v 1.2 2006/05/18 17:54:28 khussey Exp $
+ * $Id: UMLImporterDetailPage.java,v 1.3 2006/05/25 16:42:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -37,7 +37,9 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.uml2.uml.ecore.importer.UMLImporter;
 import org.eclipse.uml2.uml.ecore.importer.UMLImporterPlugin;
+import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class UMLImporterDetailPage
@@ -242,6 +244,8 @@ public class UMLImporterDetailPage
 	}
 
 	protected String[] getFilterExtensions() {
-		return new String[]{"*." + UMLResource.FILE_EXTENSION}; //$NON-NLS-1$
+		return new String[]{
+			"*." + UMLResource.FILE_EXTENSION, "*." + UML22UMLResource.FILE_EXTENSION, "*." + XMI2UMLResource.FILE_EXTENSION}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
+
 }
