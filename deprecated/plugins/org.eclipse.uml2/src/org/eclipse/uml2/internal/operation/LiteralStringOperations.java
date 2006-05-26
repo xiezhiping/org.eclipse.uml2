@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringOperations.java,v 1.5 2006/01/05 22:42:56 khussey Exp $
+ * $Id: LiteralStringOperations.java,v 1.6 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,8 +22,8 @@ import org.eclipse.uml2.LiteralString;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralString#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralString#stringValue() <em>String Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralString#isComputable() <em>Is Computable</em>}</li>
  * </ul>
  * </p>
  *

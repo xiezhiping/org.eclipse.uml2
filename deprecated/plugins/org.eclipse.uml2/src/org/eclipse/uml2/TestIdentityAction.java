@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityAction.java,v 1.10 2006/04/10 20:40:21 khussey Exp $
+ * $Id: TestIdentityAction.java,v 1.11 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface TestIdentityAction extends Action {
 	 * @return the value of the '<em>First</em>' containment reference.
 	 * @see #setFirst(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getTestIdentityAction_First()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	InputPin getFirst();
@@ -109,7 +109,7 @@ public interface TestIdentityAction extends Action {
 	 * @return the value of the '<em>Second</em>' containment reference.
 	 * @see #setSecond(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getTestIdentityAction_Second()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	InputPin getSecond();
@@ -160,7 +160,7 @@ public interface TestIdentityAction extends Action {
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getTestIdentityAction_Result()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OutputPin getResult();

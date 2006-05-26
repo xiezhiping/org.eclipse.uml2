@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.40 2006/04/10 20:40:16 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.41 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,10 +68,16 @@ import org.eclipse.uml2.internal.operation.NamespaceOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getImportedMembers <em>Imported Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getPackageImports <em>Package Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getSuperGroup <em>Super Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getContainedEdges <em>Contained Edge</em>}</li>
@@ -208,6 +214,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -217,7 +224,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER)
 			|| isSetOwnedMembers();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -473,7 +479,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	public ActivityGroup getSuperGroup() {
 		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
+		return superGroup != null && superGroup.eIsProxy() ? (ActivityGroup)eResolveProxy((InternalEObject)superGroup) : superGroup;
 	}
 
 	/**
@@ -485,7 +491,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return false;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -493,6 +498,17 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 */
 	public ActivityGroup basicGetSuperGroup() {
 		return null;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -922,6 +938,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -930,7 +947,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	public boolean isSetSubgroups() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -947,6 +963,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -957,7 +974,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			|| isSetSuperGroup()
 			|| isSetActivityGroup_activity();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1058,6 +1074,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1067,7 +1084,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__OWNED_RULE)
 			|| eIsSet(UML2Package.STRUCTURED_ACTIVITY_NODE__VARIABLE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
@@ -1150,6 +1166,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1162,7 +1179,6 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 			|| isSetOwnedMembers()
 			|| isSetSubgroups();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

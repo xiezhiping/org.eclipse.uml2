@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.12 2006/04/10 20:40:20 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.13 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface EncapsulatedClassifier extends StructuredClassifier {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Port</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getEncapsulatedClassifier_OwnedPort()
-	 * @model type="org.eclipse.uml2.Port" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Port" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedPorts();

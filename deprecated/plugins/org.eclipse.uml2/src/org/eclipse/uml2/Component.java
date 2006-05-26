@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.15 2006/04/10 20:40:20 khussey Exp $
+ * $Id: Component.java,v 1.16 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -53,7 +53,7 @@ public interface Component extends org.eclipse.uml2.Class {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. «specification, «focus», «subsystem ».
+	 * {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. Â«specification, Â«focusÂ», Â«subsystem Â».
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Indirectly Instantiated</em>' attribute.
 	 * @see #setIsIndirectlyInstantiated(boolean)
@@ -167,7 +167,7 @@ public interface Component extends org.eclipse.uml2.Class {
 	 * @return the value of the '<em>Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getComponent_Realization()
 	 * @see org.eclipse.uml2.Realization#getAbstraction
-	 * @model type="org.eclipse.uml2.Realization" opposite="abstraction" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Realization" opposite="abstraction" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getRealizations();

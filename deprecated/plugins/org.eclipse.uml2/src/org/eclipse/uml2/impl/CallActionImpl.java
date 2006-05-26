@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.23 2006/04/10 20:40:19 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.24 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,6 +51,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.CallActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CallActionImpl#isSynchronous <em>Is Synchronous</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CallActionImpl#getResults <em>Result</em>}</li>
  * </ul>
@@ -133,6 +134,7 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.CALL_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,7 +144,6 @@ public abstract class CallActionImpl extends InvocationActionImpl implements Cal
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.CALL_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

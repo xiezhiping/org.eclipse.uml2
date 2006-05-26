@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNode.java,v 1.11 2006/04/10 20:40:29 khussey Exp $
+ * $Id: ExecutableNode.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface ExecutableNode extends ActivityNode {
 	 * @return the value of the '<em>Handler</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getExecutableNode_Handler()
 	 * @see org.eclipse.uml2.ExceptionHandler#getProtectedNode
-	 * @model type="org.eclipse.uml2.ExceptionHandler" opposite="protectedNode" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.ExceptionHandler" opposite="protectedNode" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getHandlers();

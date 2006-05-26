@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElement.java,v 1.8 2005/11/29 20:09:38 khussey Exp $
+ * $Id: ParameterableElement.java,v 1.9 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -34,7 +34,7 @@ package org.eclipse.uml2;
  * @model abstract="true"
  * @generated
  */
-public interface ParameterableElement extends Element{
+public interface ParameterableElement extends Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,7 +84,7 @@ public interface ParameterableElement extends Element{
 	 * @see #setOwningParameter(TemplateParameter)
 	 * @see org.eclipse.uml2.UML2Package#getParameterableElement_OwningParameter()
 	 * @see org.eclipse.uml2.TemplateParameter#getOwnedParameteredElement
-	 * @model opposite="ownedParameteredElement" resolveProxies="false"
+	 * @model opposite="ownedParameteredElement"
 	 * @generated
 	 */
 	TemplateParameter getOwningParameter();

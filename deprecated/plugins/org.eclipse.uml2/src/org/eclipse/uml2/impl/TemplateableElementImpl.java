@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.23 2006/04/10 20:40:16 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.24 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,7 @@ import org.eclipse.uml2.internal.operation.TemplateableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateableElementImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  * </ul>
@@ -121,6 +122,7 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATEABLE_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,7 +133,6 @@ public abstract class TemplateableElementImpl extends ElementImpl implements Tem
 			|| eIsSet(UML2Package.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING)
 			|| eIsSet(UML2Package.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

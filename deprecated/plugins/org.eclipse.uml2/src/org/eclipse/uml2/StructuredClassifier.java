@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.14 2006/04/10 20:40:25 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.15 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -61,7 +61,7 @@ public interface StructuredClassifier extends Classifier {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.Property" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Property" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -170,7 +170,7 @@ public interface StructuredClassifier extends Classifier {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_Role()
-	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRoles();
@@ -214,7 +214,7 @@ public interface StructuredClassifier extends Classifier {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStructuredClassifier_OwnedConnector()
-	 * @model type="org.eclipse.uml2.Connector" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Connector" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedConnectors();

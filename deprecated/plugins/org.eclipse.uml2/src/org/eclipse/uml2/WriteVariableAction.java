@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableAction.java,v 1.10 2006/04/10 20:40:21 khussey Exp $
+ * $Id: WriteVariableAction.java,v 1.11 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface WriteVariableAction extends VariableAction {
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getWriteVariableAction_Value()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	InputPin getValue();

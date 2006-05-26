@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.20 2006/04/10 20:40:18 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.21 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,6 +47,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getSpecific <em>Specific</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.GeneralizationImpl#isSubstitutable <em>Is Substitutable</em>}</li>
@@ -140,6 +143,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,7 +154,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 			|| eIsSet(UML2Package.GENERALIZATION__SPECIFIC);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -160,6 +163,16 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.GENERALIZATION__SPECIFIC};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,6 +192,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.GENERALIZATION__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,7 +202,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.GENERALIZATION__GENERAL);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -410,6 +423,7 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,7 +433,6 @@ public class GeneralizationImpl extends DirectedRelationshipImpl implements Gene
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.GENERALIZATION__SPECIFIC);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

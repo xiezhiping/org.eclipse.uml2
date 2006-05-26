@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.11 2006/04/10 20:40:26 khussey Exp $
+ * $Id: Expression.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface Expression extends OpaqueExpression {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getExpression_Operand()
-	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.ValueSpecification" containment="true"
 	 * @generated
 	 */
 	EList getOperands();

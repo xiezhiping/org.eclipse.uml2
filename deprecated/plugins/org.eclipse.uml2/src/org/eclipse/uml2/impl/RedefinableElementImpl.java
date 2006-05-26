@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.26 2006/04/10 20:40:18 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.27 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,6 +51,8 @@ import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableElementImpl#isLeaf <em>Is Leaf</em>}</li>
  * </ul>
  * </p>
@@ -428,6 +430,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,7 +439,6 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	public boolean isSetRedefinedElements() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

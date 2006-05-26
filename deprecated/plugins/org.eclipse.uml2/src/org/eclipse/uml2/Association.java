@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.17 2006/04/10 20:40:20 khussey Exp $
+ * $Id: Association.java,v 1.18 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -94,7 +94,7 @@ public interface Association extends Classifier, Relationship {
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.Property#getOwningAssociation
-	 * @model type="org.eclipse.uml2.Property" opposite="owningAssociation" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Property" opposite="owningAssociation" containment="true"
 	 * @generated
 	 */
 	EList getOwnedEnds();

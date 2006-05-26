@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.15 2006/04/10 20:40:20 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.16 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -211,7 +211,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup {
 	 * @return the value of the '<em>Subgroup</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_Subgroup()
 	 * @see org.eclipse.uml2.ActivityPartition#getSuperPartition
-	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="superPartition" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityPartition" opposite="superPartition" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubgroups();
@@ -275,7 +275,7 @@ public interface ActivityPartition extends NamedElement, ActivityGroup {
 	 * @see #setSuperPartition(ActivityPartition)
 	 * @see org.eclipse.uml2.UML2Package#getActivityPartition_SuperPartition()
 	 * @see org.eclipse.uml2.ActivityPartition#getSubgroups
-	 * @model opposite="subgroup" resolveProxies="false"
+	 * @model opposite="subgroup"
 	 * @generated
 	 */
 	ActivityPartition getSuperPartition();

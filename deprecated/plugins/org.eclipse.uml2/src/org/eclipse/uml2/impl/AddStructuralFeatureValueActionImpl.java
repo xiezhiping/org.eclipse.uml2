@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.24 2006/04/10 20:40:17 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.25 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.AddStructuralFeatureValueActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AddStructuralFeatureValueActionImpl#isReplaceAll <em>Is Replace All</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AddStructuralFeatureValueActionImpl#getInsertAt <em>Insert At</em>}</li>
  * </ul>
@@ -130,6 +131,7 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -139,7 +141,6 @@ public class AddStructuralFeatureValueActionImpl extends WriteStructuralFeatureA
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.

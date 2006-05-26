@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.35 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.36 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,12 +16,16 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
+
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -51,6 +55,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.ClassifierOperations;
 
@@ -61,6 +67,10 @@ import org.eclipse.uml2.internal.operation.ClassifierOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getAttributes <em>Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ArtifactImpl#getNestedArtifacts <em>Nested Artifact</em>}</li>
@@ -163,6 +173,26 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getFeatures() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -176,6 +206,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ARTIFACT__FEATURE, FEATURE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,7 +216,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		return super.isSetFeatures()
 			|| eIsSet(UML2Package.ARTIFACT__OWNED_OPERATION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,6 +235,7 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.ARTIFACT__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,7 +245,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		return super.isSetAttributes()
 			|| eIsSet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -615,26 +645,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 		return clientDependencies;
 	}
 
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getManifestations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] MANIFESTATION_ESUPERSETS = new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1073,7 +1083,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			|| eIsSet(UML2Package.ARTIFACT__MANIFESTATION);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1093,6 +1102,32 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @ordered
 	 */
 	protected static final int[] FEATURE_ESUBSETS = new int[] {UML2Package.ARTIFACT__ATTRIBUTE, UML2Package.ARTIFACT__OWNED_OPERATION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1121,7 +1156,6 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 			|| eIsSet(UML2Package.ARTIFACT__OWNED_ATTRIBUTE);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1141,6 +1175,26 @@ public class ArtifactImpl extends ClassifierImpl implements Artifact {
 	 * @ordered
 	 */
 	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.ARTIFACT__OWNED_ATTRIBUTE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.ARTIFACT__SUBSTITUTION, UML2Package.ARTIFACT__MANIFESTATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManifestations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] MANIFESTATION_ESUPERSETS = new int[] {UML2Package.ARTIFACT__CLIENT_DEPENDENCY};
 
 	// <!-- begin-custom-operations -->
 	

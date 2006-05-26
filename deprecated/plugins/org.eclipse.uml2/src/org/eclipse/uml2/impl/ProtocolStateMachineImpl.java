@@ -8,15 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.36 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.37 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -40,6 +44,9 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Protocol State Machine</b></em>'.
@@ -47,6 +54,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolStateMachineImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolStateMachineImpl#getConformances <em>Conformance</em>}</li>
  * </ul>
  * </p>
@@ -88,6 +96,26 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.PROTOCOL_STATE_MACHINE;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -940,7 +968,6 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.PROTOCOL_STATE_MACHINE__CONFORMANCE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

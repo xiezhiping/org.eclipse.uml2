@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.17 2006/04/10 20:40:16 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.18 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -30,6 +30,10 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * An implementation of the model object '<em><b>Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -60,7 +64,6 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 		return UML2Package.Literals.RELATIONSHIP;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +82,51 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.RELATIONSHIP__RELATED_ELEMENT, null);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UML2Package.RELATIONSHIP__EANNOTATIONS:
+				return getEAnnotations();
+			case UML2Package.RELATIONSHIP__OWNED_ELEMENT:
+				return getOwnedElements();
+			case UML2Package.RELATIONSHIP__OWNER:
+				if (resolve) return getOwner();
+				return basicGetOwner();
+			case UML2Package.RELATIONSHIP__OWNED_COMMENT:
+				return getOwnedComments();
+			case UML2Package.RELATIONSHIP__RELATED_ELEMENT:
+				return getRelatedElements();
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UML2Package.RELATIONSHIP__EANNOTATIONS:
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UML2Package.RELATIONSHIP__OWNED_ELEMENT:
+				return isSetOwnedElements();
+			case UML2Package.RELATIONSHIP__OWNER:
+				return isSetOwner();
+			case UML2Package.RELATIONSHIP__OWNED_COMMENT:
+				return ownedComments != null && !ownedComments.isEmpty();
+			case UML2Package.RELATIONSHIP__RELATED_ELEMENT:
+				return isSetRelatedElements();
+		}
+		return eDynamicIsSet(featureID);
+	}
+
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,6 +135,5 @@ public abstract class RelationshipImpl extends ElementImpl implements Relationsh
 	public boolean isSetRelatedElements() {
 		return false;
 	}
-
 
 } //RelationshipImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.14 2006/04/10 20:40:25 khussey Exp $
+ * $Id: DataType.java,v 1.15 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * DataType defines a kind of classifier in which operations are all pure functions (i.e., they can return data values but they cannot change data values, because they have no identity). For example, an ìaddî operation on a number with another number as an argument yields a third number as a result; the target and argument are unchanged. A DataType may also contain attributes to support the modeling of structured data types. 
+ * DataType defines a kind of classifier in which operations are all pure functions (i.e., they can return data values but they cannot change data values, because they have no identity). For example, an ‚Äúadd‚Äù operation on a number with another number as an argument yields a third number as a result; the target and argument are unchanged. A DataType may also contain attributes to support the modeling of structured data types. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -63,7 +63,7 @@ public interface DataType extends Classifier {
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedAttribute()
 	 * @see org.eclipse.uml2.Property#getDatatype
-	 * @model type="org.eclipse.uml2.Property" opposite="datatype" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Property" opposite="datatype" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -130,7 +130,7 @@ public interface DataType extends Classifier {
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDataType_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getDatatype
-	 * @model type="org.eclipse.uml2.Operation" opposite="datatype" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Operation" opposite="datatype" containment="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();

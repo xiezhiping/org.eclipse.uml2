@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImplementationImpl.java,v 1.27 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ImplementationImpl.java,v 1.28 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -43,6 +43,8 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.CacheAdapter;
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
@@ -53,6 +55,8 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ImplementationImpl#getContract <em>Contract</em>}</li>
@@ -118,7 +122,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 			|| eIsSet(UML2Package.IMPLEMENTATION__CONTRACT);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,7 +141,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		return super.isSetSources()
 			|| eIsSet(UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,16 +350,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER, UML2Package.IMPLEMENTATION__CONTRACT};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -369,16 +361,6 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 		return clients;
 	}
 
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -399,6 +381,26 @@ public class ImplementationImpl extends RealizationImpl implements Implementatio
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.IMPLEMENTATION__REALIZING_CLASSIFIER, UML2Package.IMPLEMENTATION__CONTRACT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.IMPLEMENTATION__ABSTRACTION, UML2Package.IMPLEMENTATION__IMPLEMENTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartOwnedBehaviorAction.java,v 1.10 2006/04/10 20:40:27 khussey Exp $
+ * $Id: StartOwnedBehaviorAction.java,v 1.11 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface StartOwnedBehaviorAction extends Action {
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.UML2Package#getStartOwnedBehaviorAction_Object()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	InputPin getObject();

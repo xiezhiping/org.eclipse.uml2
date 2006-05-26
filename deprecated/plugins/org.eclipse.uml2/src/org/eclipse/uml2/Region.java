@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.12 2006/04/10 20:40:29 khussey Exp $
+ * $Id: Region.java,v 1.13 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @return the value of the '<em>Subvertex</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Subvertex()
 	 * @see org.eclipse.uml2.Vertex#getContainer
-	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Vertex" opposite="container" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubvertices();
@@ -111,7 +111,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRegion_Transition()
 	 * @see org.eclipse.uml2.Transition#getContainer
-	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Transition" opposite="container" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getTransitions();
@@ -175,7 +175,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @see #setStateMachine(StateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getRegion_StateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getRegions
-	 * @model opposite="region" resolveProxies="false"
+	 * @model opposite="region"
 	 * @generated
 	 */
 	StateMachine getStateMachine();
@@ -204,7 +204,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * @see #setState(State)
 	 * @see org.eclipse.uml2.UML2Package#getRegion_State()
 	 * @see org.eclipse.uml2.State#getRegions
-	 * @model opposite="region" resolveProxies="false"
+	 * @model opposite="region"
 	 * @generated
 	 */
 	State getState();
@@ -258,7 +258,7 @@ public interface Region extends Namespace, RedefinableElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
-	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();

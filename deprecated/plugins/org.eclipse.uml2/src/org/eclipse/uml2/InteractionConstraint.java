@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraint.java,v 1.10 2006/04/10 20:40:29 khussey Exp $
+ * $Id: InteractionConstraint.java,v 1.11 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface InteractionConstraint extends Constraint {
 	 * @return the value of the '<em>Minint</em>' containment reference.
 	 * @see #setMinint(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionConstraint_Minint()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ValueSpecification getMinint();
@@ -98,7 +98,7 @@ public interface InteractionConstraint extends Constraint {
 	 * @return the value of the '<em>Maxint</em>' containment reference.
 	 * @see #setMaxint(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInteractionConstraint_Maxint()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ValueSpecification getMaxint();

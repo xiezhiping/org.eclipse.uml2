@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.25 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.26 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,6 +57,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
@@ -165,6 +168,16 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.ACTIVITY_EDGE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -355,6 +368,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_EDGE__IN_GROUP, IN_GROUP_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -364,7 +378,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return eIsSet(UML2Package.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
 			|| eIsSet(UML2Package.ACTIVITY_EDGE__IN_PARTITION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInGroups() <em>In Group</em>}' reference list.
@@ -394,6 +407,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_EDGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -404,7 +418,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 			|| eIsSet(UML2Package.ACTIVITY_EDGE__GUARD)
 			|| eIsSet(UML2Package.ACTIVITY_EDGE__WEIGHT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -838,6 +851,7 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -847,7 +861,6 @@ public abstract class ActivityEdgeImpl extends RedefinableElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.ACTIVITY_EDGE__ACTIVITY);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

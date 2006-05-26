@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.14 2006/04/10 20:40:25 khussey Exp $
+ * $Id: Behavior.java,v 1.15 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution. A classifier behavior is always a definition of behavior and not an illustration. It describes the sequence of state changes an instance of a classifier may undergo in the course of its lifetime. Its precise semantics depends on the kind of classifier. For example, the classifier behavior of a collaboration represents emergent behavior of all the parts, whereas the classifier behavior of a class is just the behavior of instances of the class separated from the behaviors of any of its parts. When a behavior is associated as the method of a behavioral feature, it defines the implementation of that feature; i.e., the computation that generates the effects of the behavioral feature. As a classifier, a behavior can be specialized. Instantiating a behavior is referred to as ìinvocatingî the behavior, an instantiated behavior is also called a behavior ìexecution.î A behavior may be invoked directly or its invocation may be the result of invoking the behavioral feature that specifies this behavior. A behavior can also be instantiated as an object in virtue of it being a class. The specification of a behavior can take a number of forms, as described in the subclasses of Behavior. Behavior is an abstract metaclass factoring out the commonalities of these different specification mechanisms. When a behavior is invoked, its execution receives a set of input values that are used to affect the course of execution and as a result of its execution it produces a set of output values which are returned, as specified by its parameters. The observable effects of a behavior execution may include changes of values of various objects involved in the execution, the creation and destruction of objects, generation of communications between objects, as well as an explicit set of output values. 
+ * Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution. A classifier behavior is always a definition of behavior and not an illustration. It describes the sequence of state changes an instance of a classifier may undergo in the course of its lifetime. Its precise semantics depends on the kind of classifier. For example, the classifier behavior of a collaboration represents emergent behavior of all the parts, whereas the classifier behavior of a class is just the behavior of instances of the class separated from the behaviors of any of its parts. When a behavior is associated as the method of a behavioral feature, it defines the implementation of that feature; i.e., the computation that generates the effects of the behavioral feature. As a classifier, a behavior can be specialized. Instantiating a behavior is referred to as ‚Äúinvocating‚Äù the behavior, an instantiated behavior is also called a behavior ‚Äúexecution.‚Äù A behavior may be invoked directly or its invocation may be the result of invoking the behavioral feature that specifies this behavior. A behavior can also be instantiated as an object in virtue of it being a class. The specification of a behavior can take a number of forms, as described in the subclasses of Behavior. Behavior is an abstract metaclass factoring out the commonalities of these different specification mechanisms. When a behavior is invoked, its execution receives a set of input values that are used to affect the course of execution and as a result of its execution it produces a set of output values which are returned, as specified by its parameters. The observable effects of a behavior execution may include changes of values of various objects involved in the execution, the creation and destruction of objects, generation of communications between objects, as well as an explicit set of output values. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -99,7 +99,7 @@ public interface Behavior extends org.eclipse.uml2.Class {
 	 * @see #setContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Context()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedBehaviors
-	 * @model opposite="ownedBehavior" resolveProxies="false"
+	 * @model opposite="ownedBehavior"
 	 * @generated
 	 */
 	BehavioredClassifier getContext();
@@ -202,7 +202,7 @@ public interface Behavior extends org.eclipse.uml2.Class {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_Parameter()
-	 * @model type="org.eclipse.uml2.Parameter" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Parameter" containment="true"
 	 * @generated
 	 */
 	EList getParameters();
@@ -426,7 +426,7 @@ public interface Behavior extends org.eclipse.uml2.Class {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavior_OwnedParameterSet()
-	 * @model type="org.eclipse.uml2.ParameterSet" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.ParameterSet" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedParameterSets();

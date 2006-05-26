@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Abstraction.java,v 1.11 2006/04/10 20:40:27 khussey Exp $
+ * $Id: Abstraction.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface Abstraction extends Dependency {
 	 * @return the value of the '<em>Mapping</em>' containment reference.
 	 * @see #setMapping(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getAbstraction_Mapping()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	OpaqueExpression getMapping();

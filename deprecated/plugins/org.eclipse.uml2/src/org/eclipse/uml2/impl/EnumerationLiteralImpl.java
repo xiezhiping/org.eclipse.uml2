@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.20 2006/04/10 20:40:16 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.21 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.EnumerationLiteralImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.EnumerationLiteralImpl#getEnumeration <em>Enumeration</em>}</li>
  * </ul>
  * </p>
@@ -72,6 +73,16 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.ENUMERATION_LITERAL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
 	}
 
 	/**
@@ -218,6 +229,7 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -227,7 +239,6 @@ public class EnumerationLiteralImpl extends InstanceSpecificationImpl implements
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.ENUMERATION_LITERAL__ENUMERATION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

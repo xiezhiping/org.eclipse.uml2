@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.29 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.30 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -64,12 +64,14 @@ import org.eclipse.uml2.internal.operation.ParameterOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ParameterImpl#getDirection <em>Direction</em>}</li>
@@ -369,6 +371,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PARAMETER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,7 +383,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 			|| eIsSet(UML2Package.PARAMETER__LOWER_VALUE)
 			|| eIsSet(UML2Package.PARAMETER__DEFAULT_VALUE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -563,6 +565,16 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1048,6 +1060,7 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1057,7 +1070,6 @@ public class ParameterImpl extends ConnectableElementImpl implements Parameter {
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.PARAMETER__OPERATION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

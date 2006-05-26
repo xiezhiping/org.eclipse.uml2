@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.17 2006/04/10 20:40:25 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.18 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -66,7 +66,7 @@ public interface BehavioredClassifier extends Classifier {
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedBehavior()
 	 * @see org.eclipse.uml2.Behavior#getContext
-	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Behavior" opposite="context" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedBehaviors();
@@ -153,7 +153,7 @@ public interface BehavioredClassifier extends Classifier {
 	 * @return the value of the '<em>Implementation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_Implementation()
 	 * @see org.eclipse.uml2.Implementation#getImplementingClassifier
-	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Implementation" opposite="implementingClassifier" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getImplementations();
@@ -215,7 +215,7 @@ public interface BehavioredClassifier extends Classifier {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedTrigger()
-	 * @model type="org.eclipse.uml2.Trigger" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Trigger" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedTriggers();
@@ -269,7 +269,7 @@ public interface BehavioredClassifier extends Classifier {
 	 * @return the value of the '<em>Owned State Machine</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getBehavioredClassifier_OwnedStateMachine()
 	 * @see org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext
-	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.StateMachine" opposite="stateMachine_redefinitionContext" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedStateMachines();

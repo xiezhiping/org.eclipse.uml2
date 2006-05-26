@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformance.java,v 1.8 2005/11/29 20:09:38 khussey Exp $
+ * $Id: ProtocolConformance.java,v 1.9 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -29,7 +29,7 @@ package org.eclipse.uml2;
  * @model
  * @generated
  */
-public interface ProtocolConformance extends DirectedRelationship{
+public interface ProtocolConformance extends DirectedRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53,7 +53,7 @@ public interface ProtocolConformance extends DirectedRelationship{
 	 * @see #setSpecificMachine(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.UML2Package#getProtocolConformance_SpecificMachine()
 	 * @see org.eclipse.uml2.ProtocolStateMachine#getConformances
-	 * @model opposite="conformance" resolveProxies="false" required="true"
+	 * @model opposite="conformance" required="true"
 	 * @generated
 	 */
 	ProtocolStateMachine getSpecificMachine();

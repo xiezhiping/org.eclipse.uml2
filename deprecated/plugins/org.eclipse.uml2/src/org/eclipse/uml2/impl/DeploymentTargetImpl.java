@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.26 2006/04/10 20:40:16 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.27 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.internal.operation.DeploymentTargetOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentTargetImpl#getDeployedElements <em>Deployed Element</em>}</li>
@@ -116,6 +117,7 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPLOYMENT_TARGET__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,7 +127,6 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -316,6 +317,16 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.DEPLOYMENT_TARGET__OWNED_COMMENT, UML2Package.DEPLOYMENT_TARGET__TEMPLATE_BINDING, UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE, UML2Package.DEPLOYMENT_TARGET__NAME_EXPRESSION, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -334,16 +345,6 @@ public abstract class DeploymentTargetImpl extends NamedElementImpl implements D
 	 * @ordered
 	 */
 	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[] {UML2Package.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.DEPLOYMENT_TARGET__OWNED_COMMENT, UML2Package.DEPLOYMENT_TARGET__TEMPLATE_BINDING, UML2Package.DEPLOYMENT_TARGET__OWNED_TEMPLATE_SIGNATURE, UML2Package.DEPLOYMENT_TARGET__NAME_EXPRESSION, UML2Package.DEPLOYMENT_TARGET__DEPLOYMENT};
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.13 2006/04/10 20:40:26 khussey Exp $
+ * $Id: State.java,v 1.14 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -154,7 +154,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_Connection()
-	 * @model type="org.eclipse.uml2.ConnectionPointReference" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.ConnectionPointReference" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnections();
@@ -286,7 +286,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getState_Region()
 	 * @see org.eclipse.uml2.Region#getState
-	 * @model type="org.eclipse.uml2.Region" opposite="state" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Region" opposite="state" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();
@@ -348,7 +348,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * @return the value of the '<em>Entry</em>' containment reference.
 	 * @see #setEntry(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_Entry()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Activity getEntry();
@@ -397,7 +397,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * @return the value of the '<em>Exit</em>' containment reference.
 	 * @see #setExit(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_Exit()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Activity getExit();
@@ -446,7 +446,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * @return the value of the '<em>Do Activity</em>' containment reference.
 	 * @see #setDoActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getState_DoActivity()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Activity getDoActivity();
@@ -495,7 +495,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * @return the value of the '<em>State Invariant</em>' containment reference.
 	 * @see #setStateInvariant(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getState_StateInvariant()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Constraint getStateInvariant();
@@ -544,7 +544,7 @@ public interface State extends Namespace, RedefinableElement, Vertex {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
-	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();

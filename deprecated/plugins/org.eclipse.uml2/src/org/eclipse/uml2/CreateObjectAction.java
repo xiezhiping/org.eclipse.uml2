@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectAction.java,v 1.10 2006/04/10 20:40:27 khussey Exp $
+ * $Id: CreateObjectAction.java,v 1.11 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -87,7 +87,7 @@ public interface CreateObjectAction extends Action {
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getCreateObjectAction_Result()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OutputPin getResult();

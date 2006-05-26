@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.22 2006/04/10 20:40:17 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.23 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -39,6 +39,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PackageableElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageableElementImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageableElementImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageableElementImpl#getPackageableElement_visibility <em>Packageable Element visibility</em>}</li>
@@ -91,6 +92,16 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.PACKAGEABLE_ELEMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -328,6 +339,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -337,7 +349,6 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.PACKAGEABLE_ELEMENT__OWNING_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

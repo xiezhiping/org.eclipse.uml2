@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.47 2006/04/10 20:40:16 khussey Exp $
+ * $Id: PackageImpl.java,v 1.48 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -17,6 +17,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,6 +26,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -62,6 +65,8 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.internal.operation.PackageOperations;
 import org.eclipse.uml2.internal.operation.ProfileOperations;
@@ -73,9 +78,12 @@ import org.eclipse.uml2.internal.operation.ProfileOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageableElement_visibility <em>Packageable Element visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImpl#getNestedPackages <em>Nested Package</em>}</li>
@@ -173,6 +181,16 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.PACKAGE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -330,6 +348,16 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList getNestedPackages() {
@@ -381,21 +409,11 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.eclipse.uml2.Package getNestingPackage() {
-		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();
-		return nestingPackage != null && nestingPackage.eIsProxy() ? (org.eclipse.uml2.Package)eResolveProxy((InternalEObject)nestingPackage) : nestingPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public org.eclipse.uml2.Package basicGetNestingPackage() {
-		EObject eInternalContainer = eInternalContainer();
-		return eInternalContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eInternalContainer : null;
+	public org.eclipse.uml2.Package getNestingPackage() {
+		EObject eContainer = eContainer();
+		return eContainer instanceof org.eclipse.uml2.Package ? (org.eclipse.uml2.Package) eContainer : null;
 	}
 
 
@@ -631,6 +649,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -640,7 +659,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.PACKAGE__OWNING_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -802,12 +820,33 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
-		org.eclipse.uml2.Package nestingPackage = basicGetNestingPackage();			
+		org.eclipse.uml2.Package nestingPackage = getNestingPackage();			
 		if (nestingPackage != null) {
 			return nestingPackage;
 		}
 		return super.basicGetNamespace();
 	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -818,7 +857,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.PACKAGE__NESTING_PACKAGE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -868,6 +906,16 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.PACKAGE__OWNED_COMMENT, UML2Package.PACKAGE__TEMPLATE_BINDING, UML2Package.PACKAGE__OWNED_TEMPLATE_SIGNATURE, UML2Package.PACKAGE__NAME_EXPRESSION, UML2Package.PACKAGE__ELEMENT_IMPORT, UML2Package.PACKAGE__PACKAGE_IMPORT, UML2Package.PACKAGE__PACKAGE_MERGE, UML2Package.PACKAGE__PACKAGE_EXTENSION};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -906,16 +954,6 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 	 * @ordered
 	 */
 	protected static final int[] APPLIED_PROFILE_ESUPERSETS = new int[] {UML2Package.PACKAGE__PACKAGE_IMPORT};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.PACKAGE__OWNED_COMMENT, UML2Package.PACKAGE__TEMPLATE_BINDING, UML2Package.PACKAGE__OWNED_TEMPLATE_SIGNATURE, UML2Package.PACKAGE__NAME_EXPRESSION, UML2Package.PACKAGE__ELEMENT_IMPORT, UML2Package.PACKAGE__PACKAGE_IMPORT, UML2Package.PACKAGE__PACKAGE_MERGE, UML2Package.PACKAGE__PACKAGE_EXTENSION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -967,8 +1005,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return getNestedPackages();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
-				if (resolve) return getNestingPackage();
-				return basicGetNestingPackage();
+				return getNestingPackage();
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return getOwnedTypes();
 			case UML2Package.PACKAGE__OWNED_MEMBER:
@@ -1172,7 +1209,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 			case UML2Package.PACKAGE__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.PACKAGE__NESTING_PACKAGE:
-				return basicGetNestingPackage() != null;
+				return getNestingPackage() != null;
 			case UML2Package.PACKAGE__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.PACKAGE__OWNED_MEMBER:

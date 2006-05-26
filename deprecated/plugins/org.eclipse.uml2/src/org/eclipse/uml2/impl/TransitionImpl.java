@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.27 2006/04/10 20:40:17 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.28 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -61,6 +61,8 @@ import org.eclipse.uml2.internal.operation.StateMachineOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TransitionImpl#getSource <em>Source</em>}</li>
@@ -186,6 +188,16 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -199,6 +211,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TRANSITION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -209,7 +222,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 			|| eIsSet(UML2Package.TRANSITION__GUARD)
 			|| eIsSet(UML2Package.TRANSITION__EFFECT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -816,6 +828,7 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -825,7 +838,6 @@ public class TransitionImpl extends RedefinableElementImpl implements Transition
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.TRANSITION__CONTAINER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

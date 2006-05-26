@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.26 2006/04/10 20:40:20 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.27 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -55,6 +55,10 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getExtendedCase <em>Extended Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getExtension <em>Extension</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExtendImpl#getCondition <em>Condition</em>}</li>
@@ -138,6 +142,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,7 +152,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return isSetSources()
 			|| isSetTargets();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
@@ -438,6 +442,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -446,7 +451,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public boolean isSetTargets() {
 		return eIsSet(UML2Package.EXTEND__EXTENDED_CASE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -466,6 +470,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -475,7 +480,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.EXTEND__CONDITION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -495,6 +499,7 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXTEND__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -503,7 +508,6 @@ public class ExtendImpl extends NamedElementImpl implements Extend {
 	public boolean isSetSources() {
 		return eIsSet(UML2Package.EXTEND__EXTENSION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.12 2006/04/10 20:40:21 khussey Exp $
+ * $Id: LinkEndData.java,v 1.13 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -51,7 +51,7 @@ public interface LinkEndData extends Element {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an ìopenî end for reading.
+	 * Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an ‚Äúopen‚Äù end for reading.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(InputPin)
@@ -116,7 +116,7 @@ public interface LinkEndData extends Element {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getLinkEndData_Qualifier()
-	 * @model type="org.eclipse.uml2.QualifierValue" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.QualifierValue" containment="true"
 	 * @generated
 	 */
 	EList getQualifiers();

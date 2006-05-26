@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.18 2006/04/10 20:40:18 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.19 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -30,6 +30,12 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * An implementation of the model object '<em><b>Directed Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DirectedRelationshipImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DirectedRelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DirectedRelationshipImpl#getTargets <em>Target</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -60,7 +66,6 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 		return UML2Package.Literals.DIRECTED_RELATIONSHIP;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +84,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__SOURCE, null);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,7 +93,6 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public boolean isSetSources() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,6 +112,7 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +123,6 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 			|| isSetSources()
 			|| isSetTargets();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
@@ -147,6 +152,59 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.DIRECTED_RELATIONSHIP__TARGET, null);
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case UML2Package.DIRECTED_RELATIONSHIP__EANNOTATIONS:
+				return getEAnnotations();
+			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_ELEMENT:
+				return getOwnedElements();
+			case UML2Package.DIRECTED_RELATIONSHIP__OWNER:
+				if (resolve) return getOwner();
+				return basicGetOwner();
+			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_COMMENT:
+				return getOwnedComments();
+			case UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT:
+				return getRelatedElements();
+			case UML2Package.DIRECTED_RELATIONSHIP__SOURCE:
+				return getSources();
+			case UML2Package.DIRECTED_RELATIONSHIP__TARGET:
+				return getTargets();
+		}
+		return eDynamicGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case UML2Package.DIRECTED_RELATIONSHIP__EANNOTATIONS:
+				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_ELEMENT:
+				return isSetOwnedElements();
+			case UML2Package.DIRECTED_RELATIONSHIP__OWNER:
+				return isSetOwner();
+			case UML2Package.DIRECTED_RELATIONSHIP__OWNED_COMMENT:
+				return ownedComments != null && !ownedComments.isEmpty();
+			case UML2Package.DIRECTED_RELATIONSHIP__RELATED_ELEMENT:
+				return isSetRelatedElements();
+			case UML2Package.DIRECTED_RELATIONSHIP__SOURCE:
+				return isSetSources();
+			case UML2Package.DIRECTED_RELATIONSHIP__TARGET:
+				return isSetTargets();
+		}
+		return eDynamicIsSet(featureID);
+	}
+
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,6 +213,5 @@ public abstract class DirectedRelationshipImpl extends RelationshipImpl implemen
 	public boolean isSetTargets() {
 		return false;
 	}
-
 
 } //DirectedRelationshipImpl

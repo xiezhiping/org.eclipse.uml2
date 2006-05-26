@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.9 2005/11/29 20:09:38 khussey Exp $
+ * $Id: PackageMerge.java,v 1.10 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ package org.eclipse.uml2;
  * @model
  * @generated
  */
-public interface PackageMerge extends DirectedRelationship{
+public interface PackageMerge extends DirectedRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,7 +57,7 @@ public interface PackageMerge extends DirectedRelationship{
 	 * @see #setMergingPackage(org.eclipse.uml2.Package)
 	 * @see org.eclipse.uml2.UML2Package#getPackageMerge_MergingPackage()
 	 * @see org.eclipse.uml2.Package#getPackageMerges
-	 * @model opposite="packageMerge" resolveProxies="false" required="true"
+	 * @model opposite="packageMerge" required="true"
 	 * @generated
 	 */
 	org.eclipse.uml2.Package getMergingPackage();

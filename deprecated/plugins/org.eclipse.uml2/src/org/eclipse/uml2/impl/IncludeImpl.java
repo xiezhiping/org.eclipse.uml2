@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.24 2006/04/10 20:40:19 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.25 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getIncludingCase <em>Including Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.IncludeImpl#getAddition <em>Addition</em>}</li>
  * </ul>
@@ -110,6 +113,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +123,6 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return isSetSources()
 			|| isSetTargets();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
@@ -297,6 +300,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -305,7 +309,6 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public boolean isSetSources() {
 		return eIsSet(UML2Package.INCLUDE__INCLUDING_CASE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
@@ -335,6 +338,7 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INCLUDE__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,7 +347,6 @@ public class IncludeImpl extends NamedElementImpl implements Include {
 	public boolean isSetTargets() {
 		return eIsSet(UML2Package.INCLUDE__ADDITION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.

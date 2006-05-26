@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.25 2006/04/10 20:40:17 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.26 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.CallOperationActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CallOperationActionImpl#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.CallOperationActionImpl#getTarget <em>Target</em>}</li>
  * </ul>
@@ -121,6 +122,7 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.CALL_OPERATION_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,7 +132,6 @@ public class CallOperationActionImpl extends CallActionImpl implements CallOpera
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.CALL_OPERATION_ACTION__TARGET);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.

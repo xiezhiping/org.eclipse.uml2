@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOccurrenceImpl.java,v 1.22 2006/04/10 20:40:17 khussey Exp $
+ * $Id: InteractionOccurrenceImpl.java,v 1.23 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,6 +51,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getRefersTo <em>Refers To</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getActualGates <em>Actual Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOccurrenceImpl#getArguments <em>Argument</em>}</li>
@@ -133,6 +134,7 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INTERACTION_OCCURRENCE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,7 +144,6 @@ public class InteractionOccurrenceImpl extends InteractionFragmentImpl implement
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.INTERACTION_OCCURRENCE__ACTUAL_GATE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

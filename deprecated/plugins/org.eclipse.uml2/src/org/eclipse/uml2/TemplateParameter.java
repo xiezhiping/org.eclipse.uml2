@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.11 2006/04/10 20:40:26 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,7 +59,7 @@ public interface TemplateParameter extends Element {
 	 * @see #setSignature(TemplateSignature)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_Signature()
 	 * @see org.eclipse.uml2.TemplateSignature#getOwnedParameters
-	 * @model opposite="ownedParameter" resolveProxies="false" required="true"
+	 * @model opposite="ownedParameter" required="true"
 	 * @generated
 	 */
 	TemplateSignature getSignature();
@@ -117,7 +117,7 @@ public interface TemplateParameter extends Element {
 	 * @see #setOwnedParameteredElement(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_OwnedParameteredElement()
 	 * @see org.eclipse.uml2.ParameterableElement#getOwningParameter
-	 * @model opposite="owningParameter" containment="true" resolveProxies="false"
+	 * @model opposite="owningParameter" containment="true"
 	 * @generated
 	 */
 	ParameterableElement getOwnedParameteredElement();
@@ -185,7 +185,7 @@ public interface TemplateParameter extends Element {
 	 * @return the value of the '<em>Owned Default</em>' containment reference.
 	 * @see #setOwnedDefault(ParameterableElement)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameter_OwnedDefault()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ParameterableElement getOwnedDefault();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTrigger.java,v 1.11 2006/04/10 20:40:29 khussey Exp $
+ * $Id: ChangeTrigger.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface ChangeTrigger extends Trigger {
 	 * @return the value of the '<em>Change Expression</em>' containment reference.
 	 * @see #setChangeExpression(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getChangeTrigger_ChangeExpression()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ValueSpecification getChangeExpression();

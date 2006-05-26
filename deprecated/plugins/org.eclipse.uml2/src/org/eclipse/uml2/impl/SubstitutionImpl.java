@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.26 2006/04/10 20:40:17 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.27 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -41,6 +41,8 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.CacheAdapter;
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
@@ -51,6 +53,8 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.SubstitutionImpl#getContract <em>Contract</em>}</li>
@@ -116,7 +120,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 			|| eIsSet(UML2Package.SUBSTITUTION__CONTRACT);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -136,7 +139,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 		return super.isSetSources()
 			|| eIsSet(UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -346,16 +348,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -367,16 +359,6 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 		return clients;
 	}
 
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -397,6 +379,26 @@ public class SubstitutionImpl extends RealizationImpl implements Substitution {
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__REALIZING_CLASSIFIER, UML2Package.SUBSTITUTION__CONTRACT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.SUBSTITUTION__ABSTRACTION, UML2Package.SUBSTITUTION__SUBSTITUTING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->

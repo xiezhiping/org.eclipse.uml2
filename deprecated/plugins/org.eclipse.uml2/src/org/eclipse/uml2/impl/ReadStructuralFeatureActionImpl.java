@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionImpl.java,v 1.24 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ReadStructuralFeatureActionImpl.java,v 1.25 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReadStructuralFeatureActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadStructuralFeatureActionImpl#getResult <em>Result</em>}</li>
  * </ul>
  * </p>
@@ -110,6 +111,7 @@ public class ReadStructuralFeatureActionImpl extends StructuralFeatureActionImpl
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_STRUCTURAL_FEATURE_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +121,6 @@ public class ReadStructuralFeatureActionImpl extends StructuralFeatureActionImpl
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.READ_STRUCTURAL_FEATURE_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

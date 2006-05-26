@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.13 2006/04/10 20:40:20 khussey Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.14 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface TemplateParameterSubstitution extends Element {
 	 * @see #setTemplateBinding(TemplateBinding)
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_TemplateBinding()
 	 * @see org.eclipse.uml2.TemplateBinding#getParameterSubstitutions
-	 * @model opposite="parameterSubstitution" resolveProxies="false" required="true"
+	 * @model opposite="parameterSubstitution" required="true"
 	 * @generated
 	 */
 	TemplateBinding getTemplateBinding();
@@ -140,7 +140,7 @@ public interface TemplateParameterSubstitution extends Element {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Actual</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getTemplateParameterSubstitution_OwnedActual()
-	 * @model type="org.eclipse.uml2.ParameterableElement" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.ParameterableElement" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedActuals();

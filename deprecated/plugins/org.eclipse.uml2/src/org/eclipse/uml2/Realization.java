@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Realization.java,v 1.8 2005/11/29 20:09:40 khussey Exp $
+ * $Id: Realization.java,v 1.9 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ package org.eclipse.uml2;
  * @model
  * @generated
  */
-public interface Realization extends Abstraction{
+public interface Realization extends Abstraction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,7 +54,7 @@ public interface Realization extends Abstraction{
 	 * @see #setAbstraction(Component)
 	 * @see org.eclipse.uml2.UML2Package#getRealization_Abstraction()
 	 * @see org.eclipse.uml2.Component#getRealizations
-	 * @model opposite="realization" resolveProxies="false"
+	 * @model opposite="realization"
 	 * @generated
 	 */
 	Component getAbstraction();

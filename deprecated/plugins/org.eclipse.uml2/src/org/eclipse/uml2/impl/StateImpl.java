@@ -8,13 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.30 2006/04/10 20:40:16 khussey Exp $
+ * $Id: StateImpl.java,v 1.31 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
+
+import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +25,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -56,6 +61,8 @@ import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 import org.eclipse.uml2.internal.operation.StateMachineOperations;
 
@@ -71,6 +78,8 @@ import org.eclipse.uml2.internal.operation.StateMachineOperations;
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StateImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isOrthogonal <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateImpl#isSimple <em>Is Simple</em>}</li>
@@ -465,6 +474,26 @@ public class StateImpl extends NamespaceImpl implements State {
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1764,7 +1793,6 @@ public class StateImpl extends NamespaceImpl implements State {
 			|| eIsSet(UML2Package.STATE__STATE_INVARIANT);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1774,6 +1802,32 @@ public class StateImpl extends NamespaceImpl implements State {
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.STATE__OWNED_COMMENT, UML2Package.STATE__TEMPLATE_BINDING, UML2Package.STATE__OWNED_TEMPLATE_SIGNATURE, UML2Package.STATE__NAME_EXPRESSION, UML2Package.STATE__ELEMENT_IMPORT, UML2Package.STATE__PACKAGE_IMPORT, UML2Package.STATE__CONNECTION, UML2Package.STATE__ENTRY, UML2Package.STATE__EXIT, UML2Package.STATE__DO_ACTIVITY, UML2Package.STATE__STATE_INVARIANT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1797,7 +1851,6 @@ public class StateImpl extends NamespaceImpl implements State {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.STATE__REGION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.8 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Include.java,v 1.9 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ package org.eclipse.uml2;
  * @model
  * @generated
  */
-public interface Include extends NamedElement, DirectedRelationship{
+public interface Include extends NamedElement, DirectedRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,7 +57,7 @@ public interface Include extends NamedElement, DirectedRelationship{
 	 * @see #setIncludingCase(UseCase)
 	 * @see org.eclipse.uml2.UML2Package#getInclude_IncludingCase()
 	 * @see org.eclipse.uml2.UseCase#getIncludes
-	 * @model opposite="include" resolveProxies="false" required="true"
+	 * @model opposite="include" required="true"
 	 * @generated
 	 */
 	UseCase getIncludingCase();

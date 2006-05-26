@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.13 2006/04/10 20:40:27 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.14 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,7 +62,7 @@ public interface ActivityEdge extends RedefinableElement {
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Activity()
 	 * @see org.eclipse.uml2.Activity#getEdges
-	 * @model opposite="edge" resolveProxies="false"
+	 * @model opposite="edge"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -147,7 +147,7 @@ public interface ActivityEdge extends RedefinableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InGroup()
-	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();
@@ -164,7 +164,7 @@ public interface ActivityEdge extends RedefinableElement {
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Guard()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ValueSpecification getGuard();
@@ -248,7 +248,7 @@ public interface ActivityEdge extends RedefinableElement {
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedEdges
-	 * @model opposite="containedEdge" resolveProxies="false"
+	 * @model opposite="containedEdge"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();
@@ -317,7 +317,7 @@ public interface ActivityEdge extends RedefinableElement {
 	 * @return the value of the '<em>Weight</em>' containment reference.
 	 * @see #setWeight(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getActivityEdge_Weight()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ValueSpecification getWeight();

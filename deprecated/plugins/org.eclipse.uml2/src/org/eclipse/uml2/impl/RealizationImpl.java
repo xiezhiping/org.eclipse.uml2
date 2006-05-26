@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RealizationImpl.java,v 1.26 2006/04/10 20:40:19 khussey Exp $
+ * $Id: RealizationImpl.java,v 1.27 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -41,6 +41,8 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.CacheAdapter;
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
@@ -51,6 +53,9 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RealizationImpl#getAbstraction <em>Abstraction</em>}</li>
@@ -116,7 +121,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 			|| eIsSet(UML2Package.REALIZATION__ABSTRACTION);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -136,7 +140,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.REALIZATION__REALIZING_CLASSIFIER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,6 +340,7 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -346,7 +350,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.REALIZATION__ABSTRACTION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -362,16 +365,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.REALIZATION__ABSTRACTION};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -385,16 +378,6 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER};
-
-	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -405,6 +388,16 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.REALIZATION__ABSTRACTION};
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -413,6 +406,26 @@ public class RealizationImpl extends AbstractionImpl implements Realization {
 	 * @ordered
 	 */
 	protected static final int[] TARGET_ESUBSETS = new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.REALIZATION__ABSTRACTION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.REALIZATION__REALIZING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->

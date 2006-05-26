@@ -8,12 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.39 2006/04/10 20:40:16 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.40 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
+
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,6 +25,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -66,6 +71,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.DeploymentTargetOperations;
 import org.eclipse.uml2.internal.operation.PropertyOperations;
 
@@ -76,12 +83,17 @@ import org.eclipse.uml2.internal.operation.PropertyOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getEnds <em>End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDeployedElements <em>Deployed Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PropertyImpl#isComposite <em>Is Composite</em>}</li>
@@ -294,6 +306,16 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
@@ -442,6 +464,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROPERTY__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -453,7 +476,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.PROPERTY__DEFAULT_VALUE)
 			|| eIsSet(UML2Package.PROPERTY__QUALIFIER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -587,6 +609,16 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getFeaturingClassifiers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -600,6 +632,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return new DerivedUnionEObjectEList(Classifier.class, this, UML2Package.PROPERTY__FEATURING_CLASSIFIER, FEATURING_CLASSIFIER_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,7 +644,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.PROPERTY__OWNING_ASSOCIATION)
 			|| eIsSet(UML2Package.PROPERTY__DATATYPE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1160,6 +1192,16 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.PROPERTY__OWNED_COMMENT, UML2Package.PROPERTY__TEMPLATE_BINDING, UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE, UML2Package.PROPERTY__NAME_EXPRESSION, UML2Package.PROPERTY__UPPER_VALUE, UML2Package.PROPERTY__LOWER_VALUE, UML2Package.PROPERTY__DEPLOYMENT, UML2Package.PROPERTY__DEFAULT_VALUE, UML2Package.PROPERTY__QUALIFIER};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1180,16 +1222,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[] {UML2Package.PROPERTY__CLIENT_DEPENDENCY};
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.PROPERTY__OWNED_COMMENT, UML2Package.PROPERTY__TEMPLATE_BINDING, UML2Package.PROPERTY__OWNED_TEMPLATE_SIGNATURE, UML2Package.PROPERTY__NAME_EXPRESSION, UML2Package.PROPERTY__UPPER_VALUE, UML2Package.PROPERTY__LOWER_VALUE, UML2Package.PROPERTY__DEPLOYMENT, UML2Package.PROPERTY__DEFAULT_VALUE, UML2Package.PROPERTY__QUALIFIER};
-
-	/**
 	 * The array of subset feature identifiers for the '{@link #getFeaturingClassifiers() <em>Featuring Classifier</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1198,6 +1230,32 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @ordered
 	 */
 	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[] {UML2Package.PROPERTY__CLASS_, UML2Package.PROPERTY__OWNING_ASSOCIATION, UML2Package.PROPERTY__DATATYPE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getRedefinedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
+				EList redefinedElements = (EList) cache.get(eResource(), this, method);
+				if (redefinedElements == null) {
+					List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, redefinedElements = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return redefinedElements;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1472,6 +1530,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1483,7 +1542,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.PROPERTY__OWNING_ASSOCIATION)
 			|| eIsSet(UML2Package.PROPERTY__DATATYPE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1509,7 +1567,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UML2Package.PROPERTY__REDEFINED_PROPERTY);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
@@ -1538,6 +1595,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1548,7 +1606,6 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 			|| eIsSet(UML2Package.PROPERTY__OWNING_PARAMETER)
 			|| eIsSet(UML2Package.PROPERTY__ASSOCIATION_END);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

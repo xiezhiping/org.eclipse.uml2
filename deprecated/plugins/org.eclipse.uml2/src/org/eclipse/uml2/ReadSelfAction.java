@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfAction.java,v 1.10 2006/04/10 20:40:27 khussey Exp $
+ * $Id: ReadSelfAction.java,v 1.11 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Every action is ultimately a part of some activity, which is in turn optionally attached in some way to the specification of a classifier—for example as the body of a method or as part of a state machine. When the activity executes, it does so in the context of some specific host instance of that classifier. This action produces this host instance, if any, on its output pin. The type of the output pin is the classifier to which the activity is associated in the user model. 
+ * Every action is ultimately a part of some activity, which is in turn optionally attached in some way to the specification of a classifierâ€”for example as the body of a method or as part of a state machine. When the activity executes, it does so in the context of some specific host instance of that classifier. This action produces this host instance, if any, on its output pin. The type of the output pin is the classifier to which the activity is associated in the user model. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,7 +56,7 @@ public interface ReadSelfAction extends Action {
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadSelfAction_Result()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OutputPin getResult();

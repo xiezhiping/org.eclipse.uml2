@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.23 2006/04/10 20:40:17 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.24 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,8 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getFormal <em>Formal</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterSubstitutionImpl#getTemplateBinding <em>Template Binding</em>}</li>
@@ -118,6 +120,16 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -131,6 +143,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,7 +153,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,16 +253,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getActuals() <em>Actual</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActuals()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ACTUAL_ESUBSETS = new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -264,16 +266,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 
 
 	/**
-	 * The array of superset feature identifiers for the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedActuals()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ACTUAL_ESUPERSETS = new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL};
-
-	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -282,6 +274,26 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT, UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getActuals() <em>Actual</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ACTUAL_ESUBSETS = new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedActuals()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ACTUAL_ESUPERSETS = new int[] {UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -359,6 +371,7 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -368,7 +381,6 @@ public class TemplateParameterSubstitutionImpl extends ElementImpl implements Te
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

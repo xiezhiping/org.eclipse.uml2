@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.49 2006/04/10 20:40:17 khussey Exp $
+ * $Id: ClassImpl.java,v 1.50 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,12 +16,15 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -58,6 +61,8 @@ import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 
 import org.eclipse.uml2.internal.operation.ClassOperations;
@@ -72,6 +77,11 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getRoles <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getParts <em>Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassImpl#getOwnedConnectors <em>Owned Connector</em>}</li>
@@ -344,6 +354,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return new DerivedUnionEObjectEList(ConnectableElement.class, this, UML2Package.CLASS__ROLE, ROLE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -352,7 +363,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	public boolean isSetRoles() {
 		return isSetOwnedAttributes();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRoles() <em>Role</em>}' reference list.
@@ -408,6 +418,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASS__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,7 +429,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			|| isSetOwnedAttributes();
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -428,6 +438,32 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @ordered
 	 */
 	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.CLASS__OWNED_ATTRIBUTE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -447,6 +483,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.CLASS__FEATURE, FEATURE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -459,7 +496,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			|| eIsSet(UML2Package.CLASS__OWNED_OPERATION)
 			|| eIsSet(UML2Package.CLASS__OWNED_RECEPTION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -504,7 +540,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 			|| eIsSet(UML2Package.CLASS__OWNED_RECEPTION);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -514,6 +549,26 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @ordered
 	 */
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.CLASS__OWNED_RULE, UML2Package.CLASS__OWNED_USE_CASE, UML2Package.CLASS__OWNED_BEHAVIOR, UML2Package.CLASS__OWNED_TRIGGER, UML2Package.CLASS__OWNED_ATTRIBUTE, UML2Package.CLASS__OWNED_CONNECTOR, UML2Package.CLASS__OWNED_PORT, UML2Package.CLASS__OWNED_OPERATION, UML2Package.CLASS__NESTED_CLASSIFIER, UML2Package.CLASS__OWNED_RECEPTION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList members = (EList) cache.get(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER);
+			if (members == null) {
+				List union = getMembersHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER, members = new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray()));
+			}
+			return members;
+		}
+		List union = getMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getFeatures() <em>Feature</em>}' reference list.
@@ -549,7 +604,6 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 		return super.isSetMembers()
 			|| isSetRoles();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

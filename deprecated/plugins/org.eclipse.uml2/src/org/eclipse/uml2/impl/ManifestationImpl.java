@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.25 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.26 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -36,6 +36,8 @@ import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+//import org.eclipse.uml2.common.util.CacheAdapter;
+//import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 /**
@@ -45,6 +47,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ManifestationImpl#getUtilizedElement <em>Utilized Element</em>}</li>
  * </ul>
@@ -107,7 +110,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.MANIFESTATION__UTILIZED_ELEMENT);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -401,16 +403,6 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT};
-
-	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,5 +411,15 @@ public class ManifestationImpl extends AbstractionImpl implements Manifestation 
 	 * @ordered
 	 */
 	protected static final int[] TARGET_ESUBSETS = new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.MANIFESTATION__UTILIZED_ELEMENT};
 
 } //ManifestationImpl

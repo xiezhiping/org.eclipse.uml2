@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.23 2006/04/10 20:40:16 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.24 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -44,6 +44,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRelatedElements <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InformationFlowImpl#getConveyeds <em>Conveyed</em>}</li>
  * </ul>
@@ -115,6 +118,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,7 +128,6 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return isSetSources()
 			|| isSetTargets();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRelatedElements() <em>Related Element</em>}' reference list.
@@ -154,6 +157,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__SOURCE, null);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,7 +166,6 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	public boolean isSetSources() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,6 +185,7 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INFORMATION_FLOW__TARGET, null);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -190,7 +194,6 @@ public class InformationFlowImpl extends PackageableElementImpl implements Infor
 	public boolean isSetTargets() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

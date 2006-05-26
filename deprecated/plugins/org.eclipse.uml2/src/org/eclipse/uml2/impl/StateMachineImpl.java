@@ -8,18 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.39 2006/04/10 20:40:16 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.40 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
+
+import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -48,6 +54,9 @@ import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.TypeOperations;
 
 /**
@@ -57,6 +66,7 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StateMachineImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateMachineImpl#getConnectionPoints <em>Connection Point</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StateMachineImpl#getExtendedStateMachine <em>Extended State Machine</em>}</li>
@@ -121,6 +131,32 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.STATE_MACHINE;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1210,7 +1246,6 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			|| eIsSet(UML2Package.STATE_MACHINE__REGION)
 			|| eIsSet(UML2Package.STATE_MACHINE__CONNECTION_POINT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.14 2006/04/10 20:40:27 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.15 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -65,7 +65,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @return the value of the '<em>Slot</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Slot()
 	 * @see org.eclipse.uml2.Slot#getOwningInstance
-	 * @model type="org.eclipse.uml2.Slot" opposite="owningInstance" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Slot" opposite="owningInstance" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getSlots();
@@ -151,7 +151,7 @@ public interface InstanceSpecification extends PackageableElement, DeploymentTar
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getInstanceSpecification_Specification()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ValueSpecification getSpecification();

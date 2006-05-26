@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.23 2006/04/10 20:40:18 khussey Exp $
+ * $Id: PinImpl.java,v 1.24 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,6 +56,7 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PinImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PinImpl#getLower <em>Lower</em>}</li>
@@ -192,6 +193,7 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PIN__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,7 +204,6 @@ public abstract class PinImpl extends ObjectNodeImpl implements Pin {
 			|| eIsSet(UML2Package.PIN__UPPER_VALUE)
 			|| eIsSet(UML2Package.PIN__LOWER_VALUE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

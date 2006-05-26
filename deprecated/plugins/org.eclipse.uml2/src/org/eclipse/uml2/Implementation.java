@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Implementation.java,v 1.9 2005/11/29 20:09:39 khussey Exp $
+ * $Id: Implementation.java,v 1.10 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -33,7 +33,7 @@ package org.eclipse.uml2;
  * @model
  * @generated
  */
-public interface Implementation extends Realization{
+public interface Implementation extends Realization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,7 +87,7 @@ public interface Implementation extends Realization{
 	 * @see #setImplementingClassifier(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getImplementation_ImplementingClassifier()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getImplementations
-	 * @model opposite="implementation" resolveProxies="false" required="true"
+	 * @model opposite="implementation" required="true"
 	 * @generated
 	 */
 	BehavioredClassifier getImplementingClassifier();

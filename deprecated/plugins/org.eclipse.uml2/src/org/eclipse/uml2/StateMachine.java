@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.12 2006/04/10 20:40:27 khussey Exp $
+ * $Id: StateMachine.java,v 1.13 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -56,7 +56,7 @@ public interface StateMachine extends Behavior {
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_Region()
 	 * @see org.eclipse.uml2.Region#getStateMachine
-	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Region" opposite="stateMachine" containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();
@@ -118,7 +118,7 @@ public interface StateMachine extends Behavior {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_ConnectionPoint()
-	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Pseudostate" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnectionPoints();
@@ -209,7 +209,7 @@ public interface StateMachine extends Behavior {
 	 * @see #setStateMachine_redefinitionContext(BehavioredClassifier)
 	 * @see org.eclipse.uml2.UML2Package#getStateMachine_StateMachine_redefinitionContext()
 	 * @see org.eclipse.uml2.BehavioredClassifier#getOwnedStateMachines
-	 * @model opposite="ownedStateMachine" resolveProxies="false"
+	 * @model opposite="ownedStateMachine"
 	 * @generated
 	 */
 	BehavioredClassifier getStateMachine_redefinitionContext();
@@ -236,7 +236,7 @@ public interface StateMachine extends Behavior {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
-	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();

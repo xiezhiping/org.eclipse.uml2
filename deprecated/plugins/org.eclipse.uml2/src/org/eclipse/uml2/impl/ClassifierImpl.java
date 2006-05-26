@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.47 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.48 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -87,11 +87,20 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPackageableElement_visibility <em>Packageable Element visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getPackage <em>Package</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#getOccurrences <em>Occurrence</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ClassifierImpl#isAbstract <em>Is Abstract</em>}</li>
@@ -280,6 +289,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TemplateParameter getTemplateParameter() {
 		if (templateParameter != null && templateParameter.eIsProxy()) {
 			InternalEObject oldTemplateParameter = (InternalEObject)templateParameter;
@@ -426,6 +445,16 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 */
 	public boolean isSetPackageableElement_visibility() {
 		return visibility != PACKAGEABLE_ELEMENT_VISIBILITY_EDEFAULT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
 	}
 
 	/**
@@ -587,6 +616,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.CLASSIFIER__FEATURE, FEATURE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -595,7 +625,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isSetFeatures() {
 		return isSetAttributes();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -622,6 +651,46 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList members = (EList) cache.get(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER);
+			if (members == null) {
+				List union = getMembersHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER, members = new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray()));
+			}
+			return members;
+		}
+		List union = getMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -655,7 +724,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			|| eIsSet(UML2Package.CLASSIFIER__INHERITED_MEMBER);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -686,7 +754,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 			|| eIsSet(UML2Package.CLASSIFIER__SUBSTITUTION)
 			|| eIsSet(UML2Package.CLASSIFIER__OCCURRENCE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -860,6 +927,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.CLASSIFIER__ATTRIBUTE, null);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -868,7 +936,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isSetAttributes() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -901,6 +968,32 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected EList getOwnedMembersHelper(EList ownedMembers) {
 		super.getOwnedMembersHelper(ownedMembers);
 		if (eIsSet(UML2Package.CLASSIFIER__OWNED_USE_CASE)) {
@@ -918,7 +1011,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.CLASSIFIER__OWNED_USE_CASE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1278,6 +1370,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1287,7 +1380,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.CLASSIFIER__OWNING_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1359,6 +1451,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1368,7 +1461,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.CLASSIFIER__PACKAGE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1695,6 +1787,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1703,7 +1796,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	public boolean isSetRedefinedElements() {
 		return eIsSet(UML2Package.CLASSIFIER__REDEFINED_CLASSIFIER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1745,36 +1837,6 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.CLASSIFIER__SUBSTITUTION};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOccurrences() <em>Occurrence</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOccurrences()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OCCURRENCE_ESUBSETS = new int[] {UML2Package.CLASSIFIER__REPRESENTATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubstitutions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUBSTITUTION_ESUPERSETS = new int[] {UML2Package.CLASSIFIER__CLIENT_DEPENDENCY};
-
-	/**
 	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1813,6 +1875,36 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @ordered
 	 */
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.CLASSIFIER__OWNED_RULE, UML2Package.CLASSIFIER__OWNED_USE_CASE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.CLASSIFIER__SUBSTITUTION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOccurrences() <em>Occurrence</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccurrences()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OCCURRENCE_ESUBSETS = new int[] {UML2Package.CLASSIFIER__REPRESENTATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubstitutions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUBSTITUTION_ESUPERSETS = new int[] {UML2Package.CLASSIFIER__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->

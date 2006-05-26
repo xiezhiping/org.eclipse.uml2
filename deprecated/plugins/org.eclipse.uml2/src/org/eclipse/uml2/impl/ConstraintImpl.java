@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.28 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.29 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,6 +54,8 @@ import org.eclipse.uml2.internal.operation.ConstraintOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getContext <em>Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConstraintImpl#getConstrainedElements <em>Constrained Element</em>}</li>
@@ -126,6 +128,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -135,7 +138,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.CONSTRAINT__SPECIFICATION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -154,7 +156,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	 */
 	public Namespace getContext() {
 		Namespace context = basicGetContext();
-		return context == null ? null : (Namespace)eResolveProxy((InternalEObject)context);
+		return context != null && context.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)context) : context;
 	}
 
 	/**
@@ -165,7 +167,6 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 	public boolean isSetContext() {
 		return isSetNamespace();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,6 +179,7 @@ public class ConstraintImpl extends PackageableElementImpl implements Constraint
 		}
 		return null;
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

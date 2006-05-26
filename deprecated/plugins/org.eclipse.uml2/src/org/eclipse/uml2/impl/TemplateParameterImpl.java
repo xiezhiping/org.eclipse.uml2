@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.26 2006/04/10 20:40:18 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.27 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -45,6 +45,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
@@ -126,6 +128,16 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -139,6 +151,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_PARAMETER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,7 +162,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 			|| eIsSet(UML2Package.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT)
 			|| eIsSet(UML2Package.TEMPLATE_PARAMETER__OWNED_DEFAULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -531,6 +543,7 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -540,7 +553,6 @@ public class TemplateParameterImpl extends ElementImpl implements TemplateParame
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.TEMPLATE_PARAMETER__SIGNATURE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

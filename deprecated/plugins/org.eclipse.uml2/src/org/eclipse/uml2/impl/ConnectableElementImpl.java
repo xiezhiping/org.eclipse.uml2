@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.20 2006/04/10 20:40:17 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.21 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ConnectableElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConnectableElementImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConnectableElementImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ConnectableElementImpl#getEnds <em>End</em>}</li>
@@ -94,6 +95,16 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.CONNECTABLE_ELEMENT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -317,6 +328,7 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -326,7 +338,6 @@ public abstract class ConnectableElementImpl extends NamedElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.CONNECTABLE_ELEMENT__OWNING_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

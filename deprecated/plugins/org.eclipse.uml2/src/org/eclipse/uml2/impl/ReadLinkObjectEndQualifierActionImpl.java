@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.25 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.26 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getObject <em>Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getResult <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadLinkObjectEndQualifierActionImpl#getQualifier <em>Qualifier</em>}</li>
@@ -132,6 +134,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,7 +144,6 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
@@ -171,6 +173,7 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,7 +183,6 @@ public class ReadLinkObjectEndQualifierActionImpl extends ActionImpl implements 
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

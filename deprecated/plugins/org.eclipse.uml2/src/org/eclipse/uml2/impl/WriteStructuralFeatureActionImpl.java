@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.24 2006/04/10 20:40:17 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.25 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.WriteStructuralFeatureActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.WriteStructuralFeatureActionImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
@@ -109,6 +110,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,7 +120,6 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.

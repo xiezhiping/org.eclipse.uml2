@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.25 2006/04/10 20:40:18 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.26 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,9 @@ import org.eclipse.uml2.internal.operation.PackageImportOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getImportedPackage <em>Imported Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.PackageImportImpl#getImportingNamespace <em>Importing Namespace</em>}</li>
@@ -131,6 +134,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_IMPORT__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,7 +144,6 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.PACKAGE_IMPORT__IMPORTED_PACKAGE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -170,6 +173,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PACKAGE_IMPORT__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,7 +184,6 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 			|| eIsSet(UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -190,6 +193,16 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -370,6 +383,7 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -379,7 +393,6 @@ public class PackageImportImpl extends DirectedRelationshipImpl implements Packa
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,16 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.30 2006/04/10 20:40:16 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.31 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
+
+import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Iterator;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -43,6 +49,8 @@ import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Encapsulated Classifier</b></em>'.
@@ -50,6 +58,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.EncapsulatedClassifierImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.EncapsulatedClassifierImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.EncapsulatedClassifierImpl#getOwnedPorts <em>Owned Port</em>}</li>
  * </ul>
  * </p>
@@ -110,6 +120,7 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.ENCAPSULATED_CLASSIFIER__FEATURE, FEATURE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,7 +131,6 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 			|| eIsSet(UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getFeatures() <em>Feature</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -130,6 +140,32 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 	 * @ordered
 	 */
 	protected static final int[] FEATURE_ESUBSETS = new int[] {UML2Package.ENCAPSULATED_CLASSIFIER__ATTRIBUTE, UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR, UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_PORT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -656,7 +692,6 @@ public abstract class EncapsulatedClassifierImpl extends StructuredClassifierImp
 		return super.isSetOwnedMembers()
 			|| eIsSet(UML2Package.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.

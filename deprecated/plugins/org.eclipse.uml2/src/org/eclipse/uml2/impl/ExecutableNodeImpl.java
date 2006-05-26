@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.23 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.24 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ExecutableNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExecutableNodeImpl#getHandlers <em>Handler</em>}</li>
  * </ul>
  * </p>
@@ -108,6 +109,7 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.EXECUTABLE_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +119,6 @@ public abstract class ExecutableNodeImpl extends ActivityNodeImpl implements Exe
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.EXECUTABLE_NODE__HANDLER);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

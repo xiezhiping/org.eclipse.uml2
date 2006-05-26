@@ -8,18 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.42 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.43 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -50,6 +54,8 @@ import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.ComponentOperations;
 
@@ -60,6 +66,7 @@ import org.eclipse.uml2.internal.operation.ComponentOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#isIndirectlyInstantiated <em>Is Indirectly Instantiated</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ComponentImpl#getRequireds <em>Required</em>}</li>
@@ -136,6 +143,26 @@ public class ComponentImpl extends ClassImpl implements Component {
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.COMPONENT;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -530,26 +557,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 		return clientDependencies;
 	}
 
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRealizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] REALIZATION_ESUPERSETS = new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1136,6 +1143,26 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.COMPONENT__OWNED_COMMENT, UML2Package.COMPONENT__TEMPLATE_BINDING, UML2Package.COMPONENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.COMPONENT__NAME_EXPRESSION, UML2Package.COMPONENT__ELEMENT_IMPORT, UML2Package.COMPONENT__PACKAGE_IMPORT, UML2Package.COMPONENT__GENERALIZATION, UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__OCCURRENCE, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_DEPENDENCY_ESUBSETS = new int[] {UML2Package.COMPONENT__SUBSTITUTION, UML2Package.COMPONENT__IMPLEMENTATION, UML2Package.COMPONENT__REALIZATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REALIZATION_ESUPERSETS = new int[] {UML2Package.COMPONENT__CLIENT_DEPENDENCY};
 
 	// <!-- begin-custom-operations -->
 

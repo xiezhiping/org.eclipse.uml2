@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.20 2006/04/10 20:40:19 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.21 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -46,6 +46,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StringExpressionImpl#getOwningExpression <em>Owning Expression</em>}</li>
  * </ul>
@@ -107,6 +109,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.STRING_EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +120,6 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 			|| eIsSet(UML2Package.STRING_EXPRESSION__SUB_EXPRESSION);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -127,6 +129,16 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.STRING_EXPRESSION__OWNED_COMMENT, UML2Package.STRING_EXPRESSION__TEMPLATE_BINDING, UML2Package.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE, UML2Package.STRING_EXPRESSION__SUB_EXPRESSION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,6 +300,7 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -297,7 +310,6 @@ public class StringExpressionImpl extends TemplateableElementImpl implements Str
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.STRING_EXPRESSION__OWNING_EXPRESSION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

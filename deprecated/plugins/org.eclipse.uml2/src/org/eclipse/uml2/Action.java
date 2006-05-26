@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.15 2006/04/10 20:40:26 khussey Exp $
+ * $Id: Action.java,v 1.16 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -84,7 +84,7 @@ public interface Action extends ExecutableNode {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Output()
-	 * @model type="org.eclipse.uml2.OutputPin" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.OutputPin" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList getOutputs();
@@ -124,7 +124,7 @@ public interface Action extends ExecutableNode {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_Input()
-	 * @model type="org.eclipse.uml2.InputPin" transient="true" changeable="false" derived="true"
+	 * @model type="org.eclipse.uml2.InputPin" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList getInputs();
@@ -184,7 +184,7 @@ public interface Action extends ExecutableNode {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPrecondition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getLocalPreconditions();
@@ -249,7 +249,7 @@ public interface Action extends ExecutableNode {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getAction_LocalPostcondition()
-	 * @model type="org.eclipse.uml2.Constraint" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Constraint" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getLocalPostconditions();

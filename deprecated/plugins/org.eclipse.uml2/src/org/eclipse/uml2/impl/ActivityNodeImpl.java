@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.22 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.23 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,6 +56,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
@@ -240,6 +242,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return new DerivedUnionEObjectEList(ActivityGroup.class, this, UML2Package.ACTIVITY_NODE__IN_GROUP, IN_GROUP_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -251,7 +254,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 			|| eIsSet(UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInGroups() <em>In Group</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -261,6 +263,16 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 	 * @ordered
 	 */
 	protected static final int[] IN_GROUP_ESUBSETS = new int[] {UML2Package.ACTIVITY_NODE__IN_STRUCTURED_NODE, UML2Package.ACTIVITY_NODE__IN_PARTITION, UML2Package.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -548,6 +560,7 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -557,7 +570,6 @@ public abstract class ActivityNodeImpl extends RedefinableElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.ACTIVITY_NODE__ACTIVITY);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

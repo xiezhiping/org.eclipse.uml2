@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.28 2006/04/10 20:40:17 khussey Exp $
+ * $Id: ActionImpl.java,v 1.29 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,6 +51,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getOutputs <em>Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActionImpl#getLocalPreconditions <em>Local Precondition</em>}</li>
@@ -170,6 +173,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACTION__OUTPUT, null);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -178,7 +182,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public boolean isSetOutputs() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -222,6 +225,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -234,7 +238,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			|| eIsSet(UML2Package.ACTION__LOCAL_PRECONDITION)
 			|| eIsSet(UML2Package.ACTION__LOCAL_POSTCONDITION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -264,6 +267,7 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.ACTION__INPUT, null);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -272,7 +276,6 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	public boolean isSetInputs() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

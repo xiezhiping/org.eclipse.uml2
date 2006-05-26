@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.19 2006/04/10 20:40:26 khussey Exp $
+ * $Id: Operation.java,v 1.20 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -98,7 +98,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getOperation_OwnedParameter()
 	 * @see org.eclipse.uml2.Parameter#getOperation
-	 * @model type="org.eclipse.uml2.Parameter" opposite="operation" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Parameter" opposite="operation" containment="true"
 	 * @generated
 	 */
 	EList getOwnedParameters();
@@ -162,7 +162,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @see #setClass_(org.eclipse.uml2.Class)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Class_()
 	 * @see org.eclipse.uml2.Class#getOwnedOperations
-	 * @model opposite="ownedOperation" resolveProxies="false"
+	 * @model opposite="ownedOperation"
 	 * @generated
 	 */
 	org.eclipse.uml2.Class getClass_();
@@ -191,7 +191,7 @@ public interface Operation extends BehavioralFeature, TypedElement, Multiplicity
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.UML2Package#getOperation_Datatype()
 	 * @see org.eclipse.uml2.DataType#getOwnedOperations
-	 * @model opposite="ownedOperation" resolveProxies="false"
+	 * @model opposite="ownedOperation"
 	 * @generated
 	 */
 	DataType getDatatype();

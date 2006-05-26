@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.26 2006/04/10 20:40:16 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.27 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -47,6 +47,7 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.MultiplicityElementImpl#getLower <em>Lower</em>}</li>
@@ -183,6 +184,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.MULTIPLICITY_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,7 +195,6 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 			|| eIsSet(UML2Package.MULTIPLICITY_ELEMENT__UPPER_VALUE)
 			|| eIsSet(UML2Package.MULTIPLICITY_ELEMENT__LOWER_VALUE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

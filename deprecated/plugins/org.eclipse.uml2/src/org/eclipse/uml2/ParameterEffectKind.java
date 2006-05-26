@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterEffectKind.java,v 1.7 2005/11/04 22:23:04 khussey Exp $
+ * $Id: ParameterEffectKind.java,v 1.8 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of its parameters (see ìParameter (as specialized)î on page 354). 
+ * The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of its parameters (see ‚ÄúParameter (as specialized)‚Äù on page 354). 
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.UML2Package#getParameterEffectKind()
  * @model

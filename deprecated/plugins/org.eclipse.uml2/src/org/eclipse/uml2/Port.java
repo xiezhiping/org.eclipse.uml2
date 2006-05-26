@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.12 2006/04/10 20:40:20 khussey Exp $
+ * $Id: Port.java,v 1.13 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -57,7 +57,7 @@ public interface Port extends Property {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier (see ìBehavioredClassifier (from BasicBehaviors)î on page 387). Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain. The default value is false.
+	 * Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier (see ‚ÄúBehavioredClassifier (from BasicBehaviors)‚Äù on page 387). Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain. The default value is false.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Behavior</em>' attribute.
 	 * @see #setIsBehavior(boolean)

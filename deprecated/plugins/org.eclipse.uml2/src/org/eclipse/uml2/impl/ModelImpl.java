@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.25 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ModelImpl.java,v 1.26 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -159,8 +159,7 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__NESTED_PACKAGE:
 				return getNestedPackages();
 			case UML2Package.MODEL__NESTING_PACKAGE:
-				if (resolve) return getNestingPackage();
-				return basicGetNestingPackage();
+				return getNestingPackage();
 			case UML2Package.MODEL__OWNED_TYPE:
 				return getOwnedTypes();
 			case UML2Package.MODEL__OWNED_MEMBER:
@@ -372,7 +371,7 @@ public class ModelImpl extends PackageImpl implements Model {
 			case UML2Package.MODEL__NESTED_PACKAGE:
 				return !getNestedPackages().isEmpty();
 			case UML2Package.MODEL__NESTING_PACKAGE:
-				return basicGetNestingPackage() != null;
+				return getNestingPackage() != null;
 			case UML2Package.MODEL__OWNED_TYPE:
 				return !getOwnedTypes().isEmpty();
 			case UML2Package.MODEL__OWNED_MEMBER:

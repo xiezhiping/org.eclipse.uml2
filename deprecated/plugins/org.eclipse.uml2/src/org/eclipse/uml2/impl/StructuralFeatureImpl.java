@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.28 2006/04/10 20:40:16 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.29 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -54,6 +54,7 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureImpl#getLower <em>Lower</em>}</li>
@@ -262,6 +263,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.STRUCTURAL_FEATURE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -272,7 +274,6 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 			|| eIsSet(UML2Package.STRUCTURAL_FEATURE__UPPER_VALUE)
 			|| eIsSet(UML2Package.STRUCTURAL_FEATURE__LOWER_VALUE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

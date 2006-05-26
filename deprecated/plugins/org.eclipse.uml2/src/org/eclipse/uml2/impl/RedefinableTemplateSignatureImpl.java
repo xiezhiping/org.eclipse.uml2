@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.24 2006/04/10 20:40:19 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.25 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -52,6 +52,8 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RedefinableTemplateSignatureImpl#getNestedSignatures <em>Nested Signature</em>}</li>
@@ -146,6 +148,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,7 +158,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,16 +173,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] PARAMETER_ESUBSETS = new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -194,6 +186,26 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PARAMETER_ESUBSETS = new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
 	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -204,14 +216,14 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER};
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
 	 * @generated
-	 * @ordered
 	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE_BINDING, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_TEMPLATE_SIGNATURE, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__NAME_EXPRESSION, UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -451,6 +463,7 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -460,7 +473,6 @@ public class RedefinableTemplateSignatureImpl extends RedefinableElementImpl imp
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

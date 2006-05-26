@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.12 2006/04/10 20:40:21 khussey Exp $
+ * $Id: Lifeline.java,v 1.13 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A lifeline represents an individual participant in the Interaction. While Parts and StructuralFeatures may have multiplicity greater than 1, Lifelines represent only one interacting entity. Lifeline is a specialization of NamedElement. If the referenced ConnectableElement is multivalued (i.e. has a multiplicity > 1), then the Lifeline may have an expression (the ‘selector’) that specifies which particular part is represented by this Lifeline. If the selector is omitted this means that an arbitrary representative of the multivalued ConnectableElement is chosen. 
+ * A lifeline represents an individual participant in the Interaction. While Parts and StructuralFeatures may have multiplicity greater than 1, Lifelines represent only one interacting entity. Lifeline is a specialization of NamedElement. If the referenced ConnectableElement is multivalued (i.e. has a multiplicity > 1), then the Lifeline may have an expression (the â€˜selectorâ€™) that specifies which particular part is represented by this Lifeline. If the selector is omitted this means that an arbitrary representative of the multivalued ConnectableElement is chosen. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -137,7 +137,7 @@ public interface Lifeline extends NamedElement {
 	 * @see #setInteraction(Interaction)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Interaction()
 	 * @see org.eclipse.uml2.Interaction#getLifelines
-	 * @model opposite="lifeline" resolveProxies="false" required="true"
+	 * @model opposite="lifeline" required="true"
 	 * @generated
 	 */
 	Interaction getInteraction();
@@ -167,7 +167,7 @@ public interface Lifeline extends NamedElement {
 	 * @return the value of the '<em>Selector</em>' containment reference.
 	 * @see #setSelector(OpaqueExpression)
 	 * @see org.eclipse.uml2.UML2Package#getLifeline_Selector()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	OpaqueExpression getSelector();

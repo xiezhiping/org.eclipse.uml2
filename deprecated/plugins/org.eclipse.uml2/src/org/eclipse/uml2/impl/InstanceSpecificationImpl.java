@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.33 2006/04/10 20:40:17 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.34 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -66,6 +66,7 @@ import org.eclipse.uml2.internal.operation.InstanceSpecificationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InstanceSpecificationImpl#getDeployedElements <em>Deployed Element</em>}</li>
@@ -161,6 +162,7 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.INSTANCE_SPECIFICATION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,7 +174,6 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 			|| eIsSet(UML2Package.INSTANCE_SPECIFICATION__SLOT)
 			|| eIsSet(UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -542,6 +543,16 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.INSTANCE_SPECIFICATION__OWNED_COMMENT, UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING, UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE, UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, UML2Package.INSTANCE_SPECIFICATION__SLOT, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,16 +571,6 @@ public class InstanceSpecificationImpl extends PackageableElementImpl implements
 	 * @ordered
 	 */
 	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[] {UML2Package.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.INSTANCE_SPECIFICATION__OWNED_COMMENT, UML2Package.INSTANCE_SPECIFICATION__TEMPLATE_BINDING, UML2Package.INSTANCE_SPECIFICATION__OWNED_TEMPLATE_SIGNATURE, UML2Package.INSTANCE_SPECIFICATION__NAME_EXPRESSION, UML2Package.INSTANCE_SPECIFICATION__DEPLOYMENT, UML2Package.INSTANCE_SPECIFICATION__SLOT, UML2Package.INSTANCE_SPECIFICATION__SPECIFICATION};
 
 	/**
 	 * <!-- begin-user-doc -->

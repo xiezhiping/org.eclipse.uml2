@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.13 2006/04/10 20:40:26 khussey Exp $
+ * $Id: ActivityNode.java,v 1.14 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -144,7 +144,7 @@ public interface ActivityNode extends RedefinableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InGroup()
-	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.ActivityGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getInGroups();
@@ -163,7 +163,7 @@ public interface ActivityNode extends RedefinableElement {
 	 * @see #setActivity(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_Activity()
 	 * @see org.eclipse.uml2.Activity#getNodes
-	 * @model opposite="node" resolveProxies="false"
+	 * @model opposite="node"
 	 * @generated
 	 */
 	Activity getActivity();
@@ -236,7 +236,7 @@ public interface ActivityNode extends RedefinableElement {
 	 * @see #setInStructuredNode(StructuredActivityNode)
 	 * @see org.eclipse.uml2.UML2Package#getActivityNode_InStructuredNode()
 	 * @see org.eclipse.uml2.StructuredActivityNode#getContainedNodes
-	 * @model opposite="containedNode" resolveProxies="false"
+	 * @model opposite="containedNode"
 	 * @generated
 	 */
 	StructuredActivityNode getInStructuredNode();

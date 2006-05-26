@@ -8,17 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.24 2006/04/10 20:40:17 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.25 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -44,6 +48,9 @@ import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Interaction Operand</b></em>'.
@@ -51,6 +58,8 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InteractionOperandImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InteractionOperandImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOperandImpl#getCovereds <em>Covered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOperandImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InteractionOperandImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
@@ -127,6 +136,26 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.INTERACTION_OPERAND;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -555,6 +584,7 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -564,7 +594,6 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.INTERACTION_OPERAND__ENCLOSING_OPERAND);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -876,7 +905,6 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 			|| eIsSet(UML2Package.INTERACTION_OPERAND__GUARD);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -886,5 +914,15 @@ public class InteractionOperandImpl extends NamespaceImpl implements Interaction
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.INTERACTION_OPERAND__OWNED_COMMENT, UML2Package.INTERACTION_OPERAND__TEMPLATE_BINDING, UML2Package.INTERACTION_OPERAND__OWNED_TEMPLATE_SIGNATURE, UML2Package.INTERACTION_OPERAND__NAME_EXPRESSION, UML2Package.INTERACTION_OPERAND__ELEMENT_IMPORT, UML2Package.INTERACTION_OPERAND__PACKAGE_IMPORT, UML2Package.INTERACTION_OPERAND__GENERAL_ORDERING, UML2Package.INTERACTION_OPERAND__GUARD};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
+	}
 
 } //InteractionOperandImpl

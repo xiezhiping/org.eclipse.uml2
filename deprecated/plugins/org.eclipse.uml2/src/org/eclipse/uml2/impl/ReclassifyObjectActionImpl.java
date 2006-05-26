@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.24 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.25 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -51,6 +51,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReclassifyObjectActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReclassifyObjectActionImpl#isReplaceAll <em>Is Replace All</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReclassifyObjectActionImpl#getOldClassifiers <em>Old Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReclassifyObjectActionImpl#getNewClassifiers <em>New Classifier</em>}</li>
@@ -154,6 +155,7 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.RECLASSIFY_OBJECT_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -163,7 +165,6 @@ public class ReclassifyObjectActionImpl extends ActionImpl implements Reclassify
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.RECLASSIFY_OBJECT_ACTION__OBJECT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.

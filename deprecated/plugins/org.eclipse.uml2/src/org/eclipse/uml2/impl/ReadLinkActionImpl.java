@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionImpl.java,v 1.24 2006/04/10 20:40:20 khussey Exp $
+ * $Id: ReadLinkActionImpl.java,v 1.25 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReadLinkActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadLinkActionImpl#getResult <em>Result</em>}</li>
  * </ul>
  * </p>
@@ -108,6 +109,7 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_LINK_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +119,6 @@ public class ReadLinkActionImpl extends LinkActionImpl implements ReadLinkAction
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.READ_LINK_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

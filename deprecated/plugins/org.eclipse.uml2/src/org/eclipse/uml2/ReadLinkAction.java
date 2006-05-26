@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkAction.java,v 1.10 2006/04/10 20:40:27 khussey Exp $
+ * $Id: ReadLinkAction.java,v 1.11 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This action navigates an association towards one end, which is the end that does not have an input pin to take its object (the ìopenî end). The objects put on the result output pin are the ones participating in the association at the open end, conforming to the specified qualifiers, in order if the end is ordered. The semantics is undefined for reading a link that violates the navigability or visibility of the open end. 
+ * This action navigates an association towards one end, which is the end that does not have an input pin to take its object (the ‚Äúopen‚Äù end). The objects put on the result output pin are the ones participating in the association at the open end, conforming to the specified qualifiers, in order if the end is ordered. The semantics is undefined for reading a link that violates the navigability or visibility of the open end. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,7 +56,7 @@ public interface ReadLinkAction extends LinkAction {
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.UML2Package#getReadLinkAction_Result()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OutputPin getResult();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.16 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.17 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -44,6 +44,7 @@ import org.eclipse.uml2.UML2Package;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ExceptionHandlerImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExceptionHandlerImpl#getProtectedNode <em>Protected Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExceptionHandlerImpl#getHandlerBody <em>Handler Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ExceptionHandlerImpl#getExceptionInput <em>Exception Input</em>}</li>
@@ -107,6 +108,16 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.EXCEPTION_HANDLER;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -334,6 +345,7 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,7 +355,6 @@ public class ExceptionHandlerImpl extends ElementImpl implements ExceptionHandle
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.EXCEPTION_HANDLER__PROTECTED_NODE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

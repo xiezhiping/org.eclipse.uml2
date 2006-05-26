@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.28 2006/04/10 20:40:16 khussey Exp $
+ * $Id: RegionImpl.java,v 1.29 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +23,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -49,6 +52,8 @@ import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
 import org.eclipse.uml2.internal.operation.StateMachineOperations;
 
@@ -61,6 +66,8 @@ import org.eclipse.uml2.internal.operation.StateMachineOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getSubvertices <em>Subvertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getTransitions <em>Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.RegionImpl#getStateMachine <em>State Machine</em>}</li>
@@ -194,6 +201,26 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.REGION__IS_LEAF, oldIsLeaf, newIsLeaf));
 
 
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 
 
@@ -693,6 +720,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -703,7 +731,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			|| eIsSet(UML2Package.REGION__STATE_MACHINE)
 			|| eIsSet(UML2Package.REGION__STATE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1029,7 +1056,6 @@ public class RegionImpl extends NamespaceImpl implements Region {
 			|| eIsSet(UML2Package.REGION__TRANSITION);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1039,5 +1065,15 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.REGION__OWNED_COMMENT, UML2Package.REGION__TEMPLATE_BINDING, UML2Package.REGION__OWNED_TEMPLATE_SIGNATURE, UML2Package.REGION__NAME_EXPRESSION, UML2Package.REGION__ELEMENT_IMPORT, UML2Package.REGION__PACKAGE_IMPORT, UML2Package.REGION__SUBVERTEX, UML2Package.REGION__TRANSITION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
+	}
 
 } //RegionImpl

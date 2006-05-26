@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfActionImpl.java,v 1.24 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ReadSelfActionImpl.java,v 1.25 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReadSelfActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReadSelfActionImpl#getResult <em>Result</em>}</li>
  * </ul>
  * </p>
@@ -108,6 +109,7 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.READ_SELF_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,7 +119,6 @@ public class ReadSelfActionImpl extends ActionImpl implements ReadSelfAction {
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.READ_SELF_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

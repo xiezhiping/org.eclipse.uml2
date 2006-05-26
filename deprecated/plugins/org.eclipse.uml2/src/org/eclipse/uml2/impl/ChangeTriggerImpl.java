@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeTriggerImpl.java,v 1.22 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ChangeTriggerImpl.java,v 1.23 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -46,6 +46,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ChangeTriggerImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ChangeTriggerImpl#getChangeExpression <em>Change Expression</em>}</li>
  * </ul>
  * </p>
@@ -106,6 +107,7 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.CHANGE_TRIGGER__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,7 +117,6 @@ public class ChangeTriggerImpl extends TriggerImpl implements ChangeTrigger {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.CHANGE_TRIGGER__CHANGE_EXPRESSION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

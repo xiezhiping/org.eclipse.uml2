@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.26 2006/04/10 20:40:17 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.27 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -56,6 +56,9 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
@@ -132,7 +135,6 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			|| eIsSet(UML2Package.DEPLOYMENT__DEPLOYED_ARTIFACT);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,7 +155,6 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 			|| eIsSet(UML2Package.DEPLOYMENT__LOCATION);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,6 +173,7 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.DEPLOYMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,7 +183,6 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.DEPLOYMENT__CONFIGURATION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -438,16 +439,6 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.DEPLOYMENT__DEPLOYED_ARTIFACT};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -459,26 +450,6 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 		return clients;
 	}
 
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.DEPLOYMENT__LOCATION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployedArtifacts()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[] {UML2Package.DEPLOYMENT__SUPPLIER};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -509,6 +480,36 @@ public class DeploymentImpl extends DependencyImpl implements Deployment {
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.DEPLOYMENT__OWNED_COMMENT, UML2Package.DEPLOYMENT__TEMPLATE_BINDING, UML2Package.DEPLOYMENT__OWNED_TEMPLATE_SIGNATURE, UML2Package.DEPLOYMENT__NAME_EXPRESSION, UML2Package.DEPLOYMENT__CONFIGURATION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUPPLIER_ESUBSETS = new int[] {UML2Package.DEPLOYMENT__DEPLOYED_ARTIFACT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClients()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CLIENT_ESUBSETS = new int[] {UML2Package.DEPLOYMENT__LOCATION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] DEPLOYED_ARTIFACT_ESUPERSETS = new int[] {UML2Package.DEPLOYMENT__SUPPLIER};
 
 	/**
 	 * <!-- begin-user-doc -->

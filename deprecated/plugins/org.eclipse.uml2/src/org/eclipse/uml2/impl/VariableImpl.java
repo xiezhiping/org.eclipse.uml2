@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.25 2006/04/10 20:40:16 khussey Exp $
+ * $Id: VariableImpl.java,v 1.26 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -57,12 +57,14 @@ import org.eclipse.uml2.internal.operation.MultiplicityElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.VariableImpl#getScope <em>Scope</em>}</li>
  * </ul>
  * </p>
@@ -245,6 +247,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.VARIABLE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -255,7 +258,6 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 			|| eIsSet(UML2Package.VARIABLE__UPPER_VALUE)
 			|| eIsSet(UML2Package.VARIABLE__LOWER_VALUE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -438,6 +440,16 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -715,6 +727,7 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -724,7 +737,6 @@ public class VariableImpl extends ConnectableElementImpl implements Variable {
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.VARIABLE__SCOPE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

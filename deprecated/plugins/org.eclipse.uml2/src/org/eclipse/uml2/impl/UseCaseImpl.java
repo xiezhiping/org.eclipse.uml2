@@ -8,16 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.31 2006/04/10 20:40:18 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.32 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
+
+import java.lang.reflect.Method;
 
 import java.util.Collection;
 import java.util.Iterator;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -42,6 +48,9 @@ import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.UseCase;
 import org.eclipse.uml2.VisibilityKind;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Use Case</b></em>'.
@@ -49,6 +58,7 @@ import org.eclipse.uml2.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.UseCaseImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.UseCaseImpl#getIncludes <em>Include</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.UseCaseImpl#getExtends <em>Extend</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.UseCaseImpl#getExtensionPoints <em>Extension Point</em>}</li>
@@ -123,6 +133,32 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.USE_CASE;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -952,7 +988,6 @@ public class UseCaseImpl extends BehavioredClassifierImpl implements UseCase {
 			|| eIsSet(UML2Package.USE_CASE__EXTEND)
 			|| eIsSet(UML2Package.USE_CASE__EXTENSION_POINT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.

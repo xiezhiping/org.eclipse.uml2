@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNode.java,v 1.12 2006/04/10 20:40:25 khussey Exp $
+ * $Id: ConditionalNode.java,v 1.13 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -108,7 +108,7 @@ public interface ConditionalNode extends StructuredActivityNode {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clause</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Clause()
-	 * @model type="org.eclipse.uml2.Clause" containment="true" resolveProxies="false" required="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Clause" containment="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getClauses();
@@ -150,7 +150,7 @@ public interface ConditionalNode extends StructuredActivityNode {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getConditionalNode_Result()
-	 * @model type="org.eclipse.uml2.OutputPin" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
 	 * @generated
 	 */
 	EList getResults();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionActionImpl.java,v 1.24 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ApplyFunctionActionImpl.java,v 1.25 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -52,6 +52,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl#getFunction <em>Function</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl#getArguments <em>Argument</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ApplyFunctionActionImpl#getResults <em>Result</em>}</li>
@@ -134,6 +136,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.APPLY_FUNCTION_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,7 +146,6 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.APPLY_FUNCTION_ACTION__ARGUMENT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.
@@ -173,6 +175,7 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.APPLY_FUNCTION_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -182,7 +185,6 @@ public class ApplyFunctionActionImpl extends ActionImpl implements ApplyFunction
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.APPLY_FUNCTION_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

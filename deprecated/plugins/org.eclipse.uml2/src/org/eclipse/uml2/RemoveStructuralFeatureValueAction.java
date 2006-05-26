@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueAction.java,v 1.6 2005/05/18 16:38:29 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueAction.java,v 1.7 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -19,7 +19,7 @@ package org.eclipse.uml2;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the value’s multiplicity is 1..1. 
+ * The object to access is specified dynamically, by referring to an input pin on which the object will be placed at runtime. The type of the value of this pin is the classifier that owns the specified structural feature, and the valueâ€™s multiplicity is 1..1. 
  * <!-- end-model-doc -->
  *
  *
@@ -27,7 +27,7 @@ package org.eclipse.uml2;
  * @model
  * @generated
  */
-public interface RemoveStructuralFeatureValueAction extends WriteStructuralFeatureAction{
+public interface RemoveStructuralFeatureValueAction extends WriteStructuralFeatureAction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

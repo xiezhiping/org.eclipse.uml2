@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.23 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.24 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,7 +49,10 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSuperGroup <em>Super Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getActivityGroup_activity <em>Activity Group activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
@@ -436,6 +439,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ACTIVITY_PARTITION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -445,7 +449,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return super.isSetOwnedElements()
 			|| isSetSubgroups();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -706,6 +709,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -716,7 +720,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 			|| isSetSuperGroup()
 			|| isSetActivityGroup_activity();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -731,6 +734,17 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 		return null;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -738,7 +752,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 */
 	public ActivityGroup getSuperGroup() {
 		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
+		return superGroup != null && superGroup.eIsProxy() ? (ActivityGroup)eResolveProxy((InternalEObject)superGroup) : superGroup;
 	}
 
 	/**
@@ -749,7 +763,6 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	public boolean isSetSuperGroup() {
 		return eIsSet(UML2Package.ACTIVITY_PARTITION__SUPER_PARTITION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

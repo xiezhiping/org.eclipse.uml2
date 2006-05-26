@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.22 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.23 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getReplyToCall <em>Reply To Call</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getReplyValues <em>Reply Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ReplyActionImpl#getReturnInformation <em>Return Information</em>}</li>
@@ -130,6 +131,7 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.REPLY_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,7 +142,6 @@ public class ReplyActionImpl extends ActionImpl implements ReplyAction {
 			|| eIsSet(UML2Package.REPLY_ACTION__REPLY_VALUE)
 			|| eIsSet(UML2Package.REPLY_ACTION__RETURN_INFORMATION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.

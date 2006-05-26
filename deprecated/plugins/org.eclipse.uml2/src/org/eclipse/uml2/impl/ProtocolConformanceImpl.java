@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.19 2006/04/10 20:40:19 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.20 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -44,6 +44,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getSpecificMachine <em>Specific Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolConformanceImpl#getGeneralMachine <em>General Machine</em>}</li>
  * </ul>
@@ -105,6 +108,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,7 +119,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 			|| eIsSet(UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -125,6 +128,16 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,6 +157,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_CONFORMANCE__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -153,7 +167,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.PROTOCOL_CONFORMANCE__GENERAL_MACHINE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -310,6 +323,7 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,7 +333,6 @@ public class ProtocolConformanceImpl extends DirectedRelationshipImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.35 2006/04/10 20:40:16 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.36 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -16,12 +16,16 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
+
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -52,6 +56,8 @@ import org.eclipse.uml2.VisibilityKind;
 
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.ClassifierOperations;
 import org.eclipse.uml2.internal.operation.TypeOperations;
@@ -63,6 +69,10 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getOwnedAttributes <em>Owned Attribute</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getOwnedOperations <em>Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.InterfaceImpl#getRedefinedInterfaces <em>Redefined Interface</em>}</li>
@@ -178,6 +188,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return new DerivedUnionEObjectEList(Property.class, this, UML2Package.INTERFACE__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,7 +199,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.INTERFACE__OWNED_ATTRIBUTE);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getAttributes() <em>Attribute</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -198,6 +208,32 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * @ordered
 	 */
 	protected static final int[] ATTRIBUTE_ESUBSETS = new int[] {UML2Package.INTERFACE__OWNED_ATTRIBUTE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,6 +253,7 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return new DerivedUnionEObjectEList(Feature.class, this, UML2Package.INTERFACE__FEATURE, FEATURE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -227,7 +264,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.INTERFACE__OWNED_OPERATION)
 			|| eIsSet(UML2Package.INTERFACE__OWNED_RECEPTION);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1098,7 +1134,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 			|| eIsSet(UML2Package.INTERFACE__PROTOCOL);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1124,6 +1159,32 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getRedefinedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
+				EList redefinedElements = (EList) cache.get(eResource(), this, method);
+				if (redefinedElements == null) {
+					List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, redefinedElements = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return redefinedElements;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected EList getRedefinedElementsHelper(EList redefinedElements) {
 		super.getRedefinedElementsHelper(redefinedElements);
 		if (eIsSet(UML2Package.INTERFACE__REDEFINED_INTERFACE)) {
@@ -1143,7 +1204,6 @@ public class InterfaceImpl extends ClassifierImpl implements Interface {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UML2Package.INTERFACE__REDEFINED_INTERFACE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.

@@ -8,17 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.40 2006/04/10 20:40:16 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.41 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
+
 import java.util.Collection;
 import java.util.Iterator;
+
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -48,6 +54,8 @@ import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.internal.operation.BehaviorOperations;
 
@@ -58,6 +66,8 @@ import org.eclipse.uml2.internal.operation.BehaviorOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getRedefinedElements <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#isReentrant <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehaviorImpl#getContext <em>Context</em>}</li>
@@ -179,6 +189,32 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.BEHAVIOR;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getRedefinedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getRedefinedElements", null); //$NON-NLS-1$
+				EList redefinedElements = (EList) cache.get(eResource(), this, method);
+				if (redefinedElements == null) {
+					List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, redefinedElements = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return redefinedElements;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getRedefinedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -830,36 +866,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_RULE_ESUBSETS = new int[] {UML2Package.BEHAVIOR__PRECONDITION, UML2Package.BEHAVIOR__POSTCONDITION};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] PRECONDITION_ESUPERSETS = new int[] {UML2Package.BEHAVIOR__OWNED_RULE};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] POSTCONDITION_ESUPERSETS = new int[] {UML2Package.BEHAVIOR__OWNED_RULE};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1484,7 +1490,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			|| eIsSet(UML2Package.BEHAVIOR__REDEFINED_BEHAVIOR);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1494,6 +1499,32 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @ordered
 	 */
 	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[] {UML2Package.BEHAVIOR__REDEFINED_CLASSIFIER, UML2Package.BEHAVIOR__REDEFINED_BEHAVIOR};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1518,7 +1549,6 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 			|| eIsSet(UML2Package.BEHAVIOR__PARAMETER);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1528,5 +1558,35 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @ordered
 	 */
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {UML2Package.BEHAVIOR__OWNED_RULE, UML2Package.BEHAVIOR__OWNED_USE_CASE, UML2Package.BEHAVIOR__OWNED_BEHAVIOR, UML2Package.BEHAVIOR__OWNED_TRIGGER, UML2Package.BEHAVIOR__OWNED_ATTRIBUTE, UML2Package.BEHAVIOR__OWNED_CONNECTOR, UML2Package.BEHAVIOR__OWNED_PORT, UML2Package.BEHAVIOR__OWNED_OPERATION, UML2Package.BEHAVIOR__NESTED_CLASSIFIER, UML2Package.BEHAVIOR__OWNED_RECEPTION, UML2Package.BEHAVIOR__PARAMETER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[] {UML2Package.BEHAVIOR__PRECONDITION, UML2Package.BEHAVIOR__POSTCONDITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PRECONDITION_ESUPERSETS = new int[] {UML2Package.BEHAVIOR__OWNED_RULE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[] {UML2Package.BEHAVIOR__OWNED_RULE};
 
 } //BehaviorImpl

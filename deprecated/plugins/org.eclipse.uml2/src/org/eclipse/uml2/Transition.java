@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.13 2006/04/10 20:40:21 khussey Exp $
+ * $Id: Transition.java,v 1.14 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -93,7 +93,7 @@ public interface Transition extends RedefinableElement {
 	 * @see #setContainer(Region)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Container()
 	 * @see org.eclipse.uml2.Region#getTransitions
-	 * @model opposite="transition" resolveProxies="false" required="true"
+	 * @model opposite="transition" required="true"
 	 * @generated
 	 */
 	Region getContainer();
@@ -258,7 +258,7 @@ public interface Transition extends RedefinableElement {
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Guard()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Constraint getGuard();
@@ -309,7 +309,7 @@ public interface Transition extends RedefinableElement {
 	 * @return the value of the '<em>Effect</em>' containment reference.
 	 * @see #setEffect(Activity)
 	 * @see org.eclipse.uml2.UML2Package#getTransition_Effect()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Activity getEffect();
@@ -359,7 +359,7 @@ public interface Transition extends RedefinableElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Element</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getRedefinableElement_RedefinedElement()
-	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.RedefinableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getRedefinedElements();

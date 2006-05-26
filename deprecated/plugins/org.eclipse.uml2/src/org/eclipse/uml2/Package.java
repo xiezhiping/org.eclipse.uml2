@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.23 2006/04/10 20:40:29 khussey Exp $
+ * $Id: Package.java,v 1.24 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -71,7 +71,7 @@ public interface Package extends Namespace, PackageableElement {
 	 * @return the value of the '<em>Nested Package</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_NestedPackage()
 	 * @see org.eclipse.uml2.Package#getNestingPackage
-	 * @model type="org.eclipse.uml2.Package" opposite="nestingPackage" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Package" opposite="nestingPackage" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getNestedPackages();
@@ -113,7 +113,7 @@ public interface Package extends Namespace, PackageableElement {
 	 * @return the value of the '<em>Nesting Package</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_NestingPackage()
 	 * @see org.eclipse.uml2.Package#getNestedPackages
-	 * @model opposite="nestedPackage" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model opposite="nestedPackage" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	Package getNestingPackage();
@@ -135,7 +135,7 @@ public interface Package extends Namespace, PackageableElement {
 	 * @return the value of the '<em>Owned Type</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_OwnedType()
 	 * @see org.eclipse.uml2.Type#getPackage
-	 * @model type="org.eclipse.uml2.Type" opposite="package" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Type" opposite="package" resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedTypes();
@@ -233,7 +233,7 @@ public interface Package extends Namespace, PackageableElement {
 	 * @return the value of the '<em>Package Merge</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_PackageMerge()
 	 * @see org.eclipse.uml2.PackageMerge#getMergingPackage
-	 * @model type="org.eclipse.uml2.PackageMerge" opposite="mergingPackage" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.PackageMerge" opposite="mergingPackage" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackageMerges();
@@ -289,7 +289,7 @@ public interface Package extends Namespace, PackageableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Package Extension</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getPackage_PackageExtension()
-	 * @model type="org.eclipse.uml2.PackageMerge" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.PackageMerge" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackageExtensions();

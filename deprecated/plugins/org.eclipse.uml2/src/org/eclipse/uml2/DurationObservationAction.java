@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationAction.java,v 1.13 2006/04/10 20:40:27 khussey Exp $
+ * $Id: DurationObservationAction.java,v 1.14 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -58,7 +58,7 @@ public interface DurationObservationAction extends WriteStructuralFeatureAction 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Duration</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDurationObservationAction_Duration()
-	 * @model type="org.eclipse.uml2.Duration" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Duration" containment="true"
 	 * @generated
 	 */
 	EList getDurations();

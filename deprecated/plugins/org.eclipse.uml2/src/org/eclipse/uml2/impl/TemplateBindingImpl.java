@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.22 2006/04/10 20:40:16 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.23 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,10 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getBoundElement <em>Bound Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateBindingImpl#getParameterSubstitutions <em>Parameter Substitution</em>}</li>
@@ -107,6 +111,16 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getSources() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -120,6 +134,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,7 +144,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.isSetSources()
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
@@ -159,6 +173,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,7 +183,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__SIGNATURE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -198,6 +212,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_BINDING__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,7 +222,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -410,6 +424,7 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,7 +434,6 @@ public class TemplateBindingImpl extends DirectedRelationshipImpl implements Tem
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.TEMPLATE_BINDING__BOUND_ELEMENT);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

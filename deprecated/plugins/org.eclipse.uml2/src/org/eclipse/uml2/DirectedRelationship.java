@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.11 2005/11/29 20:09:39 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface DirectedRelationship extends Relationship{
+public interface DirectedRelationship extends Relationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,7 +57,7 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Source()
-	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getSources();
@@ -77,7 +77,7 @@ public interface DirectedRelationship extends Relationship{
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference list.
 	 * @see org.eclipse.uml2.UML2Package#getDirectedRelationship_Target()
-	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" derived="true" ordered="false"
+	 * @model type="org.eclipse.uml2.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList getTargets();

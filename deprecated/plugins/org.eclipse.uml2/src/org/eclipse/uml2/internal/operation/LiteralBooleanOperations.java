@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanOperations.java,v 1.5 2006/01/05 22:42:56 khussey Exp $
+ * $Id: LiteralBooleanOperations.java,v 1.6 2006/05/26 18:16:53 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -22,8 +22,8 @@ import org.eclipse.uml2.LiteralBoolean;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralBoolean#booleanValue() <em>Boolean Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralBoolean#isComputable() <em>Is Computable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralBoolean#booleanValue() <em>Boolean Value</em>}</li>
  * </ul>
  * </p>
  *

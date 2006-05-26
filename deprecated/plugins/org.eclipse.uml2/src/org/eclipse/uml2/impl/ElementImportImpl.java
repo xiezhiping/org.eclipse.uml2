@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.24 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.25 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,9 @@ import org.eclipse.uml2.internal.operation.ElementImportOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getSources <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getAlias <em>Alias</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImportImpl#getImportedElement <em>Imported Element</em>}</li>
@@ -153,6 +156,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT_IMPORT__TARGET, TARGET_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,7 +166,6 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return super.isSetTargets()
 			|| eIsSet(UML2Package.ELEMENT_IMPORT__IMPORTED_ELEMENT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
@@ -192,6 +195,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT_IMPORT__SOURCE, SOURCE_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,7 +206,6 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 			|| eIsSet(UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSources() <em>Source</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -212,6 +215,16 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 	 * @ordered
 	 */
 	protected static final int[] SOURCE_ESUBSETS = new int[] {UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -437,6 +450,7 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -446,7 +460,6 @@ public class ElementImportImpl extends DirectedRelationshipImpl implements Eleme
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

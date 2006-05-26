@@ -8,17 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.25 2006/04/10 20:40:17 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.26 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -46,6 +50,8 @@ import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Loop Node</b></em>'.
@@ -53,6 +59,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#getOutputs <em>Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#isTestedFirst <em>Is Tested First</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#getBodyParts <em>Body Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.LoopNodeImpl#getSetupParts <em>Setup Part</em>}</li>
@@ -211,6 +220,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.LOOP_NODE__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -221,7 +231,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 			|| eIsSet(UML2Package.LOOP_NODE__RESULT);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -231,6 +240,26 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * @ordered
 	 */
 	protected static final int[] OUTPUT_ESUBSETS = new int[] {UML2Package.LOOP_NODE__RESULT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -250,6 +279,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.LOOP_NODE__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,7 +289,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.LOOP_NODE__LOOP_VARIABLE_INPUT);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1264,7 +1293,6 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.LOOP_NODE__LOOP_VARIABLE);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

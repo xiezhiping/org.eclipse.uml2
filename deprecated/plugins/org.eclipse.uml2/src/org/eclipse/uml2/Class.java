@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.26 2006/04/10 20:40:29 khussey Exp $
+ * $Id: Class.java,v 1.27 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -97,7 +97,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedOperation()
 	 * @see org.eclipse.uml2.Operation#getClass_
-	 * @model type="org.eclipse.uml2.Operation" opposite="class_" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Operation" opposite="class_" containment="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -248,7 +248,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_NestedClassifier()
-	 * @model type="org.eclipse.uml2.Classifier" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Classifier" containment="true"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
@@ -303,7 +303,7 @@ public interface Class extends BehavioredClassifier, EncapsulatedClassifier {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getClass_OwnedReception()
-	 * @model type="org.eclipse.uml2.Reception" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Reception" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedReceptions();

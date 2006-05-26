@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.17 2006/04/10 20:40:25 khussey Exp $
+ * $Id: Property.java,v 1.18 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association (see semantics of Association). Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the propertyís type. Package AssociationClasses (ìAssociationClassesî on page 107) A property may have other properties (attributes) that serve as qualifiers. 
+ * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association (see semantics of Association). Property is indirectly a subclass of Constructs::TypedElement. The range of valid values represented by the property can be controlled by setting the property‚Äôs type. Package AssociationClasses (‚ÄúAssociationClasses‚Äù on page 107) A property may have other properties (attributes) that serve as qualifiers. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -240,7 +240,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setOwningAssociation(Association)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_OwningAssociation()
 	 * @see org.eclipse.uml2.Association#getOwnedEnds
-	 * @model opposite="ownedEnd" resolveProxies="false"
+	 * @model opposite="ownedEnd"
 	 * @generated
 	 */
 	Association getOwningAssociation();
@@ -354,7 +354,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Datatype()
 	 * @see org.eclipse.uml2.DataType#getOwnedAttributes
-	 * @model opposite="ownedAttribute" resolveProxies="false"
+	 * @model opposite="ownedAttribute"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -416,7 +416,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_DefaultValue()
-	 * @model containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -456,7 +456,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getProperty_Qualifier()
 	 * @see org.eclipse.uml2.Property#getAssociationEnd
-	 * @model type="org.eclipse.uml2.Property" opposite="associationEnd" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Property" opposite="associationEnd" containment="true"
 	 * @generated
 	 */
 	EList getQualifiers();
@@ -520,7 +520,7 @@ public interface Property extends StructuralFeature, ConnectableElement, Deploym
 	 * @see #setAssociationEnd(Property)
 	 * @see org.eclipse.uml2.UML2Package#getProperty_AssociationEnd()
 	 * @see org.eclipse.uml2.Property#getQualifiers
-	 * @model opposite="qualifier" resolveProxies="false"
+	 * @model opposite="qualifier"
 	 * @generated
 	 */
 	Property getAssociationEnd();

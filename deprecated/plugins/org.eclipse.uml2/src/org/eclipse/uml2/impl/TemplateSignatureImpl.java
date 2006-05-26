@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.21 2006/04/10 20:40:19 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.22 2006/05/26 18:16:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,8 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getParameters <em>Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TemplateSignatureImpl#getNestedSignatures <em>Nested Signature</em>}</li>
@@ -143,6 +145,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.TEMPLATE_SIGNATURE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,7 +155,6 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,16 +170,6 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] PARAMETER_ESUBSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -191,6 +183,26 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PARAMETER_ESUBSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+
+	/**
 	 * The array of superset feature identifiers for the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,14 +213,14 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 	protected static final int[] OWNED_PARAMETER_ESUPERSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__PARAMETER};
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
 	 * @generated
-	 * @ordered
 	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.TEMPLATE_SIGNATURE__OWNED_COMMENT, UML2Package.TEMPLATE_SIGNATURE__OWNED_PARAMETER};
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -432,6 +444,7 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -441,7 +454,6 @@ public class TemplateSignatureImpl extends ElementImpl implements TemplateSignat
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.TEMPLATE_SIGNATURE__TEMPLATE);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

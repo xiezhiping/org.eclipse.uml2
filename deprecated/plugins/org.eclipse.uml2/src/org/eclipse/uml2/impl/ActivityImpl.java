@@ -8,17 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.41 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.42 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -51,6 +55,8 @@ import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
 
+import org.eclipse.uml2.common.util.UnionEObjectEList;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Activity</b></em>'.
@@ -58,6 +64,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getGroups <em>Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityImpl#getBody <em>Body</em>}</li>
@@ -217,6 +224,26 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.ACTIVITY;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList ownedElements = (EList) cache.get(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, ownedElements = new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray()));
+			}
+			return ownedElements;
+		}
+		List union = getOwnedElementsHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
+	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -554,16 +581,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getNodes() <em>Node</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] NODE_ESUBSETS = new int[] {UML2Package.ACTIVITY__ACTION};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -617,16 +634,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 
 
 	/**
-	 * The array of superset feature identifiers for the '{@link #getActions() <em>Action</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ACTION_ESUPERSETS = new int[] {UML2Package.ACTIVITY__NODE};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -676,16 +683,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 		return new DerivedEObjectEList(StructuredActivityNode.class, this,
 			UML2Package.ACTIVITY__STRUCTURED_NODE, STRUCTURED_NODE_ESUPERSETS);
 	}
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getStructuredNodes() <em>Structured Node</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStructuredNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[] {UML2Package.ACTIVITY__NODE, UML2Package.ACTIVITY__GROUP};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1438,7 +1435,6 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 			|| eIsSet(UML2Package.ACTIVITY__NODE);
 	}
 
-
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -1448,5 +1444,35 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @ordered
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[] {UML2Package.ACTIVITY__OWNED_COMMENT, UML2Package.ACTIVITY__TEMPLATE_BINDING, UML2Package.ACTIVITY__OWNED_TEMPLATE_SIGNATURE, UML2Package.ACTIVITY__NAME_EXPRESSION, UML2Package.ACTIVITY__ELEMENT_IMPORT, UML2Package.ACTIVITY__PACKAGE_IMPORT, UML2Package.ACTIVITY__GENERALIZATION, UML2Package.ACTIVITY__SUBSTITUTION, UML2Package.ACTIVITY__OCCURRENCE, UML2Package.ACTIVITY__IMPLEMENTATION, UML2Package.ACTIVITY__EDGE, UML2Package.ACTIVITY__GROUP, UML2Package.ACTIVITY__NODE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getNodes() <em>Node</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] NODE_ESUBSETS = new int[] {UML2Package.ACTIVITY__ACTION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getActions() <em>Action</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ACTION_ESUPERSETS = new int[] {UML2Package.ACTIVITY__NODE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getStructuredNodes() <em>Structured Node</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStructuredNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[] {UML2Package.ACTIVITY__NODE, UML2Package.ACTIVITY__GROUP};
 
 } //ActivityImpl

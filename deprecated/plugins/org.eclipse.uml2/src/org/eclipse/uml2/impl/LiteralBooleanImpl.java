@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.17 2006/04/10 20:40:16 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.18 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -119,6 +119,7 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	public boolean isComputable() {
 		return LiteralBooleanOperations.isComputable(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -311,7 +312,6 @@ public class LiteralBooleanImpl extends LiteralSpecificationImpl implements Lite
 	public boolean booleanValue() {
 		return LiteralBooleanOperations.booleanValue(this);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

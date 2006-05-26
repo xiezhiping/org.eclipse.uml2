@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.42 2006/04/10 20:40:16 khussey Exp $
+ * $Id: ElementImpl.java,v 1.43 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,6 +65,8 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
  * </p>
@@ -126,6 +128,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,7 +137,6 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	public boolean isSetOwnedElements() {
 		return eIsSet(UML2Package.ELEMENT__OWNED_COMMENT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -153,7 +155,7 @@ public abstract class ElementImpl extends EModelElementImpl implements Element {
 	 */
 	public Element getOwner() {
 		Element owner = basicGetOwner();
-		return owner == null ? null : (Element)eResolveProxy((InternalEObject)owner);
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**

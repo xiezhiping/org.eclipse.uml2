@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.24 2006/04/10 20:40:19 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.25 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.AbstractionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AbstractionImpl#getMapping <em>Mapping</em>}</li>
  * </ul>
  * </p>
@@ -109,6 +110,7 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.ABSTRACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,7 +120,6 @@ public class AbstractionImpl extends DependencyImpl implements Abstraction {
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.ABSTRACTION__MAPPING);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

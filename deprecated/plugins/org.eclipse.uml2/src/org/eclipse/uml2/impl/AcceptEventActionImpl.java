@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.20 2006/04/10 20:40:18 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.21 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -41,6 +41,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.AcceptEventActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AcceptEventActionImpl#getTriggers <em>Trigger</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AcceptEventActionImpl#getResults <em>Result</em>}</li>
  * </ul>
@@ -113,6 +114,7 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 		return new DerivedUnionEObjectEList(OutputPin.class, this, UML2Package.ACCEPT_EVENT_ACTION__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -122,7 +124,6 @@ public class AcceptEventActionImpl extends ActionImpl implements AcceptEventActi
 		return super.isSetOutputs()
 			|| eIsSet(UML2Package.ACCEPT_EVENT_ACTION__RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.

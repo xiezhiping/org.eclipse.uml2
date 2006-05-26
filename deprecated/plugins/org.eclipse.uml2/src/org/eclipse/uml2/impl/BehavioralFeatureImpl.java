@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.30 2006/04/10 20:40:16 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.31 2006/05/26 18:16:42 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,8 +68,14 @@ import org.eclipse.uml2.internal.operation.RedefinableElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isLeaf <em>Is Leaf</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#isStatic <em>Is Static</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getParameters <em>Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getMembers <em>Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getFormalParameters <em>Formal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getReturnResults <em>Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.BehavioralFeatureImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
@@ -511,6 +517,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return new DerivedUnionEObjectEList(Parameter.class, this, UML2Package.BEHAVIORAL_FEATURE__PARAMETER, PARAMETER_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -520,7 +527,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return eIsSet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER)
 			|| eIsSet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getParameters() <em>Parameter</em>}' reference list.
@@ -561,6 +567,52 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList getMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			EList members = (EList) cache.get(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER);
+			if (members == null) {
+				List union = getMembersHelper(new UniqueEList.FastCompare());
+				cache.put(eResource(), this, UML2Package.Literals.NAMESPACE__MEMBER, members = new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray()));
+			}
+			return members;
+		}
+		List union = getMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, UML2Package.Literals.NAMESPACE__MEMBER, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList getOwnedMembers() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			try {
+				Method method = getClass().getMethod("getOwnedMembers", null); //$NON-NLS-1$
+				EList ownedMembers = (EList) cache.get(eResource(), this, method);
+				if (ownedMembers == null) {
+					List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+					cache.put(eResource(), this, method, ownedMembers = new UnionEObjectEList(this, null, union.size(), union.toArray()));
+				}
+				return ownedMembers;
+			}
+			catch (NoSuchMethodException nsme) {
+				// ignore
+			}
+		}
+		List union = getOwnedMembersHelper(new UniqueEList.FastCompare());
+		return new UnionEObjectEList(this, null, union.size(), union.toArray());
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected EList getMembersHelper(EList members) {
 		super.getMembersHelper(members);
 		if (isSetParameters()) {
@@ -580,7 +632,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return super.isSetMembers()
 			|| isSetParameters();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -608,7 +659,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 			|| eIsSet(UML2Package.BEHAVIORAL_FEATURE__FORMAL_PARAMETER)
 			|| eIsSet(UML2Package.BEHAVIORAL_FEATURE__RETURN_RESULT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
@@ -875,6 +925,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -883,7 +934,6 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	public boolean isSetRedefinedElements() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

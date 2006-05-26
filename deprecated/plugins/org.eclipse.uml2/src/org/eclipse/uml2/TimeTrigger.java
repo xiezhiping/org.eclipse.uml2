@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeTrigger.java,v 1.12 2006/04/10 20:40:27 khussey Exp $
+ * $Id: TimeTrigger.java,v 1.13 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -87,7 +87,7 @@ public interface TimeTrigger extends Trigger {
 	 * @return the value of the '<em>When</em>' containment reference.
 	 * @see #setWhen(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getTimeTrigger_When()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ValueSpecification getWhen();

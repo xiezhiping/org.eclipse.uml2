@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.25 2006/04/10 20:40:18 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.26 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -49,6 +49,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureActionImpl#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureActionImpl#getStructuralFeature <em>Structural Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuralFeatureActionImpl#getObject <em>Object</em>}</li>
  * </ul>
@@ -120,6 +121,7 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 		return new DerivedUnionEObjectEList(InputPin.class, this, UML2Package.STRUCTURAL_FEATURE_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,7 +131,6 @@ public abstract class StructuralFeatureActionImpl extends ActionImpl implements 
 		return super.isSetInputs()
 			|| eIsSet(UML2Package.STRUCTURAL_FEATURE_ACTION__OBJECT);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getInputs() <em>Input</em>}' reference list.

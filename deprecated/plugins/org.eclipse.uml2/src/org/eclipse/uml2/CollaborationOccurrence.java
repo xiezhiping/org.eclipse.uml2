@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationOccurrence.java,v 1.12 2006/04/10 20:40:21 khussey Exp $
+ * $Id: CollaborationOccurrence.java,v 1.13 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -86,7 +86,7 @@ public interface CollaborationOccurrence extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Role Binding</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getCollaborationOccurrence_RoleBinding()
-	 * @model type="org.eclipse.uml2.Dependency" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Dependency" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getRoleBindings();

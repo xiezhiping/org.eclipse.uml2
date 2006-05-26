@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.21 2006/04/10 20:40:18 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.22 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -42,6 +42,7 @@ import org.eclipse.uml2.internal.operation.ValueSpecificationOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ValueSpecificationImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ValueSpecificationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ValueSpecificationImpl#getOwningParameter <em>Owning Parameter</em>}</li>
  * </ul>
@@ -83,6 +84,16 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.VALUE_SPECIFICATION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -221,6 +232,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,7 +242,6 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		return super.isSetOwner()
 			|| eIsSet(UML2Package.VALUE_SPECIFICATION__OWNING_PARAMETER);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

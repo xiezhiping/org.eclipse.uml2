@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.22 2006/04/10 20:40:17 khussey Exp $
+ * $Id: TypeImpl.java,v 1.23 2006/05/26 18:16:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.uml2.AggregationKind;
 import org.eclipse.uml2.Association;
 import org.eclipse.uml2.Namespace;
@@ -28,6 +30,7 @@ import org.eclipse.uml2.internal.operation.TypeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.TypeImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.TypeImpl#getPackage <em>Package</em>}</li>
  * </ul>
  * </p>
@@ -58,6 +61,16 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 	 */
 	protected EClass eStaticClass() {
 		return UML2Package.Literals.TYPE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy() ? (Namespace)eResolveProxy((InternalEObject)namespace) : namespace;
 	}
 
 	/**
@@ -176,6 +189,7 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 		return super.basicGetNamespace();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,7 +199,6 @@ public abstract class TypeImpl extends PackageableElementImpl implements Type {
 		return super.isSetNamespace()
 			|| eIsSet(UML2Package.TYPE__PACKAGE);
 	}
-
 
 	// <!-- begin-custom-operations -->
 

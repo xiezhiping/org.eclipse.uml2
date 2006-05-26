@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.16 2006/04/10 20:40:19 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.17 2006/05/26 18:16:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -121,7 +121,6 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 		return LiteralStringOperations.isComputable(this);
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,6 +129,7 @@ public class LiteralStringImpl extends LiteralSpecificationImpl implements Liter
 	public String stringValue() {
 		return LiteralStringOperations.stringValue(this);
 	}
+
 
 	/**
 	 * <!-- begin-user-doc -->

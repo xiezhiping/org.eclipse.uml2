@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.13 2005/11/29 20:09:39 khussey Exp $
+ * $Id: ElementImport.java,v 1.14 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -39,7 +39,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model
  * @generated
  */
-public interface ElementImport extends DirectedRelationship{
+public interface ElementImport extends DirectedRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,7 +157,7 @@ public interface ElementImport extends DirectedRelationship{
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getElementImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.Namespace#getElementImports
-	 * @model opposite="elementImport" resolveProxies="false" required="true"
+	 * @model opposite="elementImport" required="true"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();

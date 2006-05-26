@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.24 2006/04/10 20:40:20 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.25 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -50,6 +50,10 @@ import org.eclipse.uml2.common.util.UnionEObjectEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getSuperGroup <em>Super Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getSubgroups <em>Subgroup</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getActivityGroup_activity <em>Activity Group activity</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
@@ -92,7 +96,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	public ActivityGroup getSuperGroup() {
 		ActivityGroup superGroup = basicGetSuperGroup();
-		return superGroup == null ? null : (ActivityGroup)eResolveProxy((InternalEObject)superGroup);
+		return superGroup != null && superGroup.eIsProxy() ? (ActivityGroup)eResolveProxy((InternalEObject)superGroup) : superGroup;
 	}
 
 	/**
@@ -104,7 +108,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return false;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,6 +115,17 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	 */
 	public ActivityGroup basicGetSuperGroup() {
 		return null;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy() ? (Element)eResolveProxy((InternalEObject)owner) : owner;
 	}
 
 	/**
@@ -192,6 +206,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return new UnionEObjectEList(this, null, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -200,7 +215,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 	public boolean isSetSubgroups() {
 		return false;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -236,6 +250,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return new UnionEObjectEList(this, UML2Package.Literals.ELEMENT__OWNED_ELEMENT, union.size(), union.toArray());
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,7 +260,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return super.isSetOwnedElements()
 			|| isSetSubgroups();
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
@@ -426,6 +440,7 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 		return super.basicGetOwner();
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,7 +451,6 @@ public abstract class ActivityGroupImpl extends ElementImpl implements ActivityG
 			|| isSetSuperGroup()
 			|| isSetActivityGroup_activity();
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->

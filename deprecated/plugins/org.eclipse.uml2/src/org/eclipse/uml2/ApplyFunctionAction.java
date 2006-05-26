@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyFunctionAction.java,v 1.11 2006/04/10 20:40:29 khussey Exp $
+ * $Id: ApplyFunctionAction.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -90,7 +90,7 @@ public interface ApplyFunctionAction extends Action {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Argument</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Argument()
-	 * @model type="org.eclipse.uml2.InputPin" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.InputPin" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getArguments();
@@ -155,7 +155,7 @@ public interface ApplyFunctionAction extends Action {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getApplyFunctionAction_Result()
-	 * @model type="org.eclipse.uml2.OutputPin" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.OutputPin" containment="true"
 	 * @generated
 	 */
 	EList getResults();

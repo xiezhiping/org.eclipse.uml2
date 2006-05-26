@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.11 2006/04/10 20:40:27 khussey Exp $
+ * $Id: Artifact.java,v 1.12 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -85,7 +85,7 @@ public interface Artifact extends Classifier, DeployedArtifact {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_NestedArtifact()
-	 * @model type="org.eclipse.uml2.Artifact" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Artifact" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getNestedArtifacts();
@@ -147,7 +147,7 @@ public interface Artifact extends Classifier, DeployedArtifact {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_Manifestation()
-	 * @model type="org.eclipse.uml2.Manifestation" containment="true" resolveProxies="false" ordered="false"
+	 * @model type="org.eclipse.uml2.Manifestation" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList getManifestations();
@@ -205,7 +205,7 @@ public interface Artifact extends Classifier, DeployedArtifact {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_OwnedOperation()
-	 * @model type="org.eclipse.uml2.Operation" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Operation" containment="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -263,7 +263,7 @@ public interface Artifact extends Classifier, DeployedArtifact {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.UML2Package#getArtifact_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.Property" containment="true" resolveProxies="false"
+	 * @model type="org.eclipse.uml2.Property" containment="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();

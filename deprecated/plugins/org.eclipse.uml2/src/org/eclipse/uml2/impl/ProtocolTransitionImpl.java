@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.25 2006/04/10 20:40:20 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.26 2006/05/26 18:16:51 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -58,6 +58,7 @@ import org.eclipse.uml2.internal.operation.ProtocolTransitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.ProtocolTransitionImpl#getReferreds <em>Referred</em>}</li>
@@ -131,6 +132,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		return new DerivedUnionEObjectEList(Element.class, this, UML2Package.PROTOCOL_TRANSITION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,7 +142,6 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 		return super.isSetOwnedElements()
 			|| eIsSet(UML2Package.PROTOCOL_TRANSITION__POST_CONDITION);
 	}
-
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.

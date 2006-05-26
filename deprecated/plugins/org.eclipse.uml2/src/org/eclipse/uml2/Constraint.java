@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.15 2006/04/10 20:40:26 khussey Exp $
+ * $Id: Constraint.java,v 1.16 2006/05/26 18:16:52 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association ìxorî constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used. Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to that element. Constraint contains an optional name, although they are commonly unnamed. 
+ * Constraint contains a ValueSpecification that specifies additional semantics for one or more elements. Certain kinds of constraints (such as an association ‚Äúxor‚Äù constraint) are predefined in UML, others may be user-defined. A user-defined Constraint is described using a specified language, whose syntax and interpretation is a tool responsibility. One predefined language for writing constraints is OCL. In some situations, a programming language such as Java may be appropriate for expressing a constraint. In other situations natural language may be used. Constraint is a condition (a Boolean expression) that restricts the extension of the associated element beyond what is imposed by the other language constructs applied to that element. Constraint contains an optional name, although they are commonly unnamed. 
  * <!-- end-model-doc -->
  *
  * <p>
@@ -63,7 +63,7 @@ public interface Constraint extends PackageableElement {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Context()
-	 * @model transient="true" changeable="false" derived="true"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	Namespace getContext();
@@ -82,7 +82,7 @@ public interface Constraint extends PackageableElement {
 	 * @see #setNamespace(Namespace)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Namespace()
 	 * @see org.eclipse.uml2.Namespace#getOwnedRules
-	 * @model opposite="ownedRule" resolveProxies="false"
+	 * @model opposite="ownedRule"
 	 * @generated
 	 */
 	Namespace getNamespace();
@@ -112,7 +112,7 @@ public interface Constraint extends PackageableElement {
 	 * @return the value of the '<em>Specification</em>' containment reference.
 	 * @see #setSpecification(ValueSpecification)
 	 * @see org.eclipse.uml2.UML2Package#getConstraint_Specification()
-	 * @model containment="true" resolveProxies="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ValueSpecification getSpecification();
