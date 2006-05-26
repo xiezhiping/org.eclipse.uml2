@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
+ * $Id: Stereotype.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface Stereotype
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Icon</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Icon()
-	 * @model type="org.eclipse.uml2.uml.Image" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Image" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getIcons();
@@ -95,6 +95,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (required) extension of the specified metaclass with this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false" isRequiredDataType="org.eclipse.uml2.uml.Boolean" isRequiredRequired="true" isRequiredOrdered="false"
 	 * @generated
 	 */
@@ -104,6 +107,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profile that owns this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -112,6 +118,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the localized keyword for this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
 	 * @generated
 	 */
@@ -120,6 +129,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the keyword for this stereotype, localized if indicated.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
 	 */
@@ -128,6 +140,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the metaclasses extended by this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
 	 * @generated
 	 */
@@ -136,6 +151,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the metaclasses extended by this stereotype, including the metaclasses extended by its superstereotypes.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
 	 * @generated
 	 */
@@ -144,6 +162,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the current definition (Ecore representation) of this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -152,6 +173,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an icon with the specified location for this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" locationDataType="org.eclipse.uml2.uml.String" locationRequired="true" locationOrdered="false"
 	 * @generated
 	 */
@@ -160,6 +184,9 @@ public interface Stereotype
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an icon with the specified format and content for this stereotype.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" formatDataType="org.eclipse.uml2.uml.String" formatRequired="true" formatOrdered="false" contentDataType="org.eclipse.uml2.uml.String" contentRequired="true" contentOrdered="false"
 	 * @generated
 	 */

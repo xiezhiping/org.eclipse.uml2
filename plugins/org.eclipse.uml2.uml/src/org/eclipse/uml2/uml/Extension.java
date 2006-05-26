@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extension.java,v 1.9 2006/05/12 20:38:06 khussey Exp $
+ * $Id: Extension.java,v 1.10 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -98,6 +98,9 @@ public interface Extension
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the extension end that is typed by a stereotype (as opposed to a metaclass).
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -106,6 +109,9 @@ public interface Extension
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype that extends a metaclass through this extension.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */

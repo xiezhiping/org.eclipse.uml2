@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.6 2006/02/22 20:48:14 khussey Exp $
+ * $Id: Expression.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,7 +103,7 @@ public interface Expression
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpression_Operand()
-	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true"
+	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOperands();

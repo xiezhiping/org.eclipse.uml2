@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueAction.java,v 1.7 2006/05/12 20:38:06 khussey Exp $
+ * $Id: AddStructuralFeatureValueAction.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,7 +78,7 @@ public interface AddStructuralFeatureValueAction
 	 * @return the value of the '<em>Insert At</em>' containment reference.
 	 * @see #setInsertAt(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAddStructuralFeatureValueAction_InsertAt()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getInsertAt();

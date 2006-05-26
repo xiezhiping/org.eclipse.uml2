@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
+ * $Id: Classifier.java,v 1.18 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -97,7 +97,7 @@ public interface Classifier
 	 * @return the value of the '<em>Generalization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Generalization()
 	 * @see org.eclipse.uml2.uml.Generalization#getSpecific
-	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="specific" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="specific" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getGeneralizations();
@@ -314,7 +314,7 @@ public interface Classifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Use Case</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_OwnedUseCase()
-	 * @model type="org.eclipse.uml2.uml.UseCase" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.UseCase" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedUseCases();
@@ -407,7 +407,7 @@ public interface Classifier
 	 * @return the value of the '<em>Substitution</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Substitution()
 	 * @see org.eclipse.uml2.uml.Substitution#getSubstitutingClassifier
-	 * @model type="org.eclipse.uml2.uml.Substitution" opposite="substitutingClassifier" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Substitution" opposite="substitutingClassifier" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubstitutions();
@@ -539,7 +539,7 @@ public interface Classifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Collaboration Use</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_CollaborationUse()
-	 * @model type="org.eclipse.uml2.uml.CollaborationUse" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.CollaborationUse" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getCollaborationUses();
@@ -668,6 +668,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the attributes of this classifier, including those inherited from its parents.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
@@ -676,6 +679,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the operations of this classifier.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Operation" ordered="false"
 	 * @generated
 	 */
@@ -684,6 +690,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the operations of this classifier, including those inherited from its parents.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Operation" ordered="false"
 	 * @generated
 	 */
@@ -692,6 +701,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the first operation with the specified name, parameter names, and parameter types from this classifier.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
 	 * @generated
 	 */
@@ -701,6 +713,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the first operation with the specified name, parameter names, and parameter types from this classifier, ignoring case if indicated.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.uml.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
 	 * @generated
 	 */
@@ -710,6 +725,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the interfaces on which this classifier has a usage dependency.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */
@@ -718,6 +736,9 @@ public interface Classifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the interfaces on which this classifier or any of its parents has a usage dependency.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */

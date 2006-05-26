@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkObjectAction.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
+ * $Id: CreateLinkObjectAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ public interface CreateLinkObjectAction
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getCreateLinkObjectAction_Result()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getResult();

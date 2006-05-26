@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Slot.java,v 1.7 2006/05/12 20:38:10 khussey Exp $
+ * $Id: Slot.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,7 +103,7 @@ public interface Slot
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSlot_Value()
-	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true"
+	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getValues();

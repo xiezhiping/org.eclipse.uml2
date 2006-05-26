@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectAction.java,v 1.6 2006/05/12 20:38:03 khussey Exp $
+ * $Id: DestroyObjectAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -105,7 +105,7 @@ public interface DestroyObjectAction
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDestroyObjectAction_Target()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getTarget();

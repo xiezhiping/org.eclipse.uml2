@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkAction.java,v 1.6 2006/05/12 20:38:03 khussey Exp $
+ * $Id: ReadLinkAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,7 +50,7 @@ public interface ReadLinkAction
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReadLinkAction_Result()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getResult();

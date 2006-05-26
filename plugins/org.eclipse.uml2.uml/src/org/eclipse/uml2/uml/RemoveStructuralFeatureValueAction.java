@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueAction.java,v 1.7 2006/05/12 20:38:05 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueAction.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,7 +78,7 @@ public interface RemoveStructuralFeatureValueAction
 	 * @return the value of the '<em>Remove At</em>' containment reference.
 	 * @see #setRemoveAt(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRemoveStructuralFeatureValueAction_RemoveAt()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getRemoveAt();

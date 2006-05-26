@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueAction.java,v 1.6 2006/05/12 20:38:04 khussey Exp $
+ * $Id: RemoveVariableValueAction.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,7 +78,7 @@ public interface RemoveVariableValueAction
 	 * @return the value of the '<em>Remove At</em>' containment reference.
 	 * @see #setRemoveAt(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRemoveVariableValueAction_RemoveAt()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getRemoveAt();

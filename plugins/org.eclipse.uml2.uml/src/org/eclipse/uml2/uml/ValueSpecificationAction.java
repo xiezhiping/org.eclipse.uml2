@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationAction.java,v 1.5 2006/05/12 20:38:08 khussey Exp $
+ * $Id: ValueSpecificationAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface ValueSpecificationAction
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getValueSpecificationAction_Value()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getValue();
@@ -90,7 +90,7 @@ public interface ValueSpecificationAction
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getValueSpecificationAction_Result()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getResult();

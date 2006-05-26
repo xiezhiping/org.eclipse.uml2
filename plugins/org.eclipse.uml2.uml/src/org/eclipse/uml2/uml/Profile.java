@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.12 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Profile.java,v 1.13 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -233,6 +233,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
 	 */
@@ -241,6 +244,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
@@ -249,6 +255,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this profile is defined.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
@@ -257,6 +266,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines this profile by (re)creating Ecore representations of its current contents.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
 	 */
@@ -265,6 +277,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the current definition (Ecore representation) of this profile.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -273,6 +288,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the current definition (Ecore representation) of the specified named element in this profile.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" namedElementRequired="true" namedElementOrdered="false"
 	 * @generated
 	 */
@@ -281,6 +299,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the metaclasses referenced by this profile.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
 	 * @generated
 	 */
@@ -289,6 +310,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the metamodels referenced by this profile.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Model" ordered="false"
 	 * @generated
 	 */
@@ -297,6 +321,9 @@ public interface Profile
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the extensions owned by this profile, excluding non-required extensions if indicated.
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Extension" ordered="false" requiredOnlyDataType="org.eclipse.uml2.uml.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
 	 * @generated
 	 */

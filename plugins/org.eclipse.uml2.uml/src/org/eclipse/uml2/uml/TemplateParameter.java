@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameter.java,v 1.7 2006/05/12 20:38:03 khussey Exp $
+ * $Id: TemplateParameter.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -84,7 +84,7 @@ public interface TemplateParameter
 	 * @see #setOwnedParameteredElement(ParameterableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateParameter_OwnedParameteredElement()
 	 * @see org.eclipse.uml2.uml.ParameterableElement#getOwningTemplateParameter
-	 * @model opposite="owningTemplateParameter" containment="true" ordered="false"
+	 * @model opposite="owningTemplateParameter" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ParameterableElement getOwnedParameteredElement();
@@ -145,7 +145,7 @@ public interface TemplateParameter
 	 * @return the value of the '<em>Owned Default</em>' containment reference.
 	 * @see #setOwnedDefault(ParameterableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateParameter_OwnedDefault()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ParameterableElement getOwnedDefault();

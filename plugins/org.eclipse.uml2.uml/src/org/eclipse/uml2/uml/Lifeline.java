@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.9 2006/05/12 20:38:09 khussey Exp $
+ * $Id: Lifeline.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -109,7 +109,7 @@ public interface Lifeline
 	 * @return the value of the '<em>Selector</em>' containment reference.
 	 * @see #setSelector(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLifeline_Selector()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getSelector();

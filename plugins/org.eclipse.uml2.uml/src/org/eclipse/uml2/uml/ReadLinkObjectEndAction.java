@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndAction.java,v 1.4 2006/05/12 20:38:06 khussey Exp $
+ * $Id: ReadLinkObjectEndAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface ReadLinkObjectEndAction
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReadLinkObjectEndAction_Object()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getObject();
@@ -128,7 +128,7 @@ public interface ReadLinkObjectEndAction
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReadLinkObjectEndAction_Result()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getResult();

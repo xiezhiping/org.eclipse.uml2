@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.8 2006/05/12 20:38:04 khussey Exp $
+ * $Id: Extend.java,v 1.9 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -82,7 +82,7 @@ public interface Extend
 	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtend_Condition()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getCondition();

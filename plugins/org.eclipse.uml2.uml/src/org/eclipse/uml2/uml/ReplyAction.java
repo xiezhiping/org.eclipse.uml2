@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.5 2006/05/12 20:38:07 khussey Exp $
+ * $Id: ReplyAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -80,7 +80,7 @@ public interface ReplyAction
 	 * @return the value of the '<em>Return Information</em>' containment reference.
 	 * @see #setReturnInformation(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReplyAction_ReturnInformation()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getReturnInformation();
@@ -130,7 +130,7 @@ public interface ReplyAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reply Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReplyAction_ReplyValue()
-	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getReplyValues();

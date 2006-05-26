@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.7 2006/05/12 20:38:09 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -90,7 +90,7 @@ public interface InteractionFragment
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General Ordering</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionFragment_GeneralOrdering()
-	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getGeneralOrderings();

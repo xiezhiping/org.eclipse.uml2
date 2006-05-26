@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.6 2006/05/12 20:38:08 khussey Exp $
+ * $Id: Type.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -69,6 +69,9 @@ public interface Type
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (binary) association between this type and the specified other type, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this type's nearest package.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.uml.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.uml.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1TypeRequired="true" end1TypeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.uml.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.uml.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
 	 * @generated
 	 */
@@ -81,6 +84,9 @@ public interface Type
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the associations in which this type is involved.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Association" ordered="false"
 	 * @generated
 	 */

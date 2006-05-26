@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.6 2006/05/24 20:54:29 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -207,7 +207,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedConnector()
-	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedConnectors();
@@ -263,6 +263,9 @@ public interface StructuredClassifier
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this structured classifier.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated
 	 */

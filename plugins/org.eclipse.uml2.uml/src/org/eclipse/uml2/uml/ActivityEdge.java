@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.11 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.12 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -241,7 +241,7 @@ public interface ActivityEdge
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_Guard()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getGuard();
@@ -279,7 +279,7 @@ public interface ActivityEdge
 	 * @return the value of the '<em>Weight</em>' containment reference.
 	 * @see #setWeight(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_Weight()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getWeight();

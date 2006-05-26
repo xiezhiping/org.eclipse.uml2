@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureAction.java,v 1.5 2006/05/12 20:38:09 khussey Exp $
+ * $Id: StructuralFeatureAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,7 +78,7 @@ public interface StructuralFeatureAction
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuralFeatureAction_Object()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getObject();

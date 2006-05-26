@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
+ * $Id: Deployment.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -94,7 +94,7 @@ public interface Deployment
 	 * @return the value of the '<em>Configuration</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Configuration()
 	 * @see org.eclipse.uml2.uml.DeploymentSpecification#getDeployment
-	 * @model type="org.eclipse.uml2.uml.DeploymentSpecification" opposite="deployment" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.DeploymentSpecification" opposite="deployment" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getConfigurations();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.10 2006/05/12 20:38:04 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.11 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface BehavioralFeature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameter()
-	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedParameters();
@@ -247,7 +247,7 @@ public interface BehavioralFeature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameterSet()
-	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedParameterSets();

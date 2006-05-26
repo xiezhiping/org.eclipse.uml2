@@ -61,88 +61,195 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="destroy" ordered="false" lowerBound="1"/>
+    <eOperations name="destroy" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Destroys this element by removing all cross references to/from it and removing it from its containing resource or object."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="hasKeyword" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this element has the specified keyword."/>
+      </eAnnotations>
       <eParameters name="keyword" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="getKeywords" ordered="false" upperBound="-1" eType="#//String"/>
+    <eOperations name="getKeywords" ordered="false" upperBound="-1" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the keywords for this element."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="addKeyword" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Adds the specified keyword to this element."/>
+      </eAnnotations>
       <eParameters name="keyword" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="removeKeyword" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Removes the specified keyword from this element."/>
+      </eAnnotations>
       <eParameters name="keyword" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="getNearestPackage" ordered="false" eType="#//Package"/>
-    <eOperations name="getModel" ordered="false" eType="#//Model"/>
+    <eOperations name="getNearestPackage" ordered="false" eType="#//Package">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the nearest package that owns (either directly or indirectly) this element, or the element itself (if it is a package)."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getModel" ordered="false" eType="#//Model">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the model that owns (either directly or indirectly) this element."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isStereotypeApplicable" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether the specified stereotype is applicable to this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
     <eOperations name="isStereotypeRequired" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether the specified stereotype is required for this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
     <eOperations name="isStereotypeApplied" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether the specified stereotype is applied to this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
     <eOperations name="applyStereotype" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Applies the specified stereotype to this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
     <eOperations name="unapplyStereotype" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unapplies the specified stereotype from this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
-    <eOperations name="getApplicableStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype"/>
+    <eOperations name="getApplicableStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotypes that are applicable to this element, including those that are required and/or may already be applied."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getApplicableStereotype" ordered="false" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotype with the specified qualified name that is applicable to this element, or null if no such stereotype is applicable."/>
+      </eAnnotations>
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="getStereotypeApplications" ordered="false" upperBound="-1"
-        eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+        eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotype applications for this element."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getStereotypeApplication" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the application of the specified stereotype for this element, or null if no such stereotype application exists."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
-    <eOperations name="getRequiredStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype"/>
+    <eOperations name="getRequiredStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotypes that are required for this element."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getRequiredStereotype" ordered="false" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotype with the specified qualified name that is required for this element, or null if no such stereotype is required."/>
+      </eAnnotations>
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="getAppliedStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype"/>
+    <eOperations name="getAppliedStereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotypes that are applied to this element."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getAppliedStereotype" ordered="false" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is  applied."/>
+      </eAnnotations>
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="getAppliedSubstereotypes" ordered="false" upperBound="-1" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the substereotypes of the specified stereotype that are applied to this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
     </eOperations>
     <eOperations name="getAppliedSubstereotype" ordered="false" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the substereotype of the specified stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is applied."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="hasValue" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this element has a (non-default) value for the property with the specified name in the specified stereotype."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
       <eParameters name="propertyName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="getValue" ordered="false" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the value of the property with the specified name in the specified stereotype for this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
       <eParameters name="propertyName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="setValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the value of the property with the specified name in the specified stereotype for this element."/>
+      </eAnnotations>
       <eParameters name="stereotype" ordered="false" lowerBound="1" eType="#//Stereotype"/>
       <eParameters name="propertyName" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="newValue" ordered="false" lowerBound="1" eType="ecore:EDataType ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
     </eOperations>
     <eOperations name="createEAnnotation" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EAnnotation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an annotation with the specified source and this element as its model element."/>
+      </eAnnotations>
       <eParameters name="source" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="getRelationships" ordered="false" upperBound="-1" eType="#//Relationship"/>
     <eOperations name="getRelationships" ordered="false" upperBound="-1" eType="#//Relationship">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the relationships in which this element is involved."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRelationships" ordered="false" upperBound="-1" eType="#//Relationship">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the relationships of the specified type in which this element is involved."/>
+      </eAnnotations>
       <eParameters name="eClass" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     </eOperations>
     <eOperations name="getSourceDirectedRelationships" ordered="false" upperBound="-1"
-        eType="#//DirectedRelationship"/>
+        eType="#//DirectedRelationship">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the directed relationships for which this element is a source."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getSourceDirectedRelationships" ordered="false" upperBound="-1"
         eType="#//DirectedRelationship">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the directed relationships of the specified type for which this element is a source."/>
+      </eAnnotations>
       <eParameters name="eClass" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     </eOperations>
     <eOperations name="getTargetDirectedRelationships" ordered="false" upperBound="-1"
-        eType="#//DirectedRelationship"/>
+        eType="#//DirectedRelationship">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the directed relationships for which this element is a target."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getTargetDirectedRelationships" ordered="false" upperBound="-1"
         eType="#//DirectedRelationship">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the directed relationships of the specified type for which this element is a target."/>
+      </eAnnotations>
       <eParameters name="eClass" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
     </eOperations>
     <eOperations name="allOwnedElements" ordered="false" upperBound="-1" eType="#//Element">
@@ -200,46 +307,95 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createOwnedClass" ordered="false" lowerBound="1" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a(n) (abstract) class with the specified name as an owned type of this package."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="isAbstract" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="createOwnedEnumeration" ordered="false" lowerBound="1" eType="#//Enumeration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a enumeration with the specified name as an owned type of this package."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="createOwnedPrimitiveType" ordered="false" lowerBound="1" eType="#//PrimitiveType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a primitive type with the specified name as an owned type of this package."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="createOwnedInterface" ordered="false" lowerBound="1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an interface with the specified name as an owned type of this package."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="isProfileApplied" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether the specified profile is applied to this package."/>
+      </eAnnotations>
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
     </eOperations>
     <eOperations name="applyProfile" ordered="false" upperBound="-1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Applies the current definition of the specified profile to this package and automatically applies required stereotypes in the profile to elements within this package's namespace hieararchy. If a different definition is already applied, automatically migrates any associated stereotype values on a &quot;best effort&quot; basis (matching classifiers and structural features by name)."/>
+      </eAnnotations>
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
     </eOperations>
     <eOperations name="unapplyProfile" ordered="false" upperBound="-1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy."/>
+      </eAnnotations>
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
     </eOperations>
-    <eOperations name="getAppliedProfiles" ordered="false" upperBound="-1" eType="#//Profile"/>
-    <eOperations name="getAllAppliedProfiles" ordered="false" upperBound="-1" eType="#//Profile"/>
+    <eOperations name="getAppliedProfiles" ordered="false" upperBound="-1" eType="#//Profile">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the profiles that are applied to this package."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAllAppliedProfiles" ordered="false" upperBound="-1" eType="#//Profile">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the profiles that are applied to this package, including profiles applied to its nesting package(s)."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getAppliedProfile" ordered="false" eType="#//Profile">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the profile with the specified qualified name that is applied to this package, or null if no such profile is applied."/>
+      </eAnnotations>
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="getAppliedProfile" ordered="false" eType="#//Profile">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the profile with the specified qualified name that is applied to this package or any of its nesting packages (if indicated), or null if no such profile is applied."/>
+      </eAnnotations>
       <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="recurse" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="getAllProfileApplications" ordered="false" upperBound="-1"
-        eType="#//ProfileApplication"/>
+        eType="#//ProfileApplication">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the profile applications for this package, including profile applications for its nesting package(s)."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getProfileApplication" ordered="false" eType="#//ProfileApplication">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the application of the specified profile to this package, or null if no such profile is applied."/>
+      </eAnnotations>
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
     </eOperations>
     <eOperations name="getProfileApplication" ordered="false" eType="#//ProfileApplication">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the application of the specified profile to this package or any of its nesting packages (if indicated), or null if no such profile is applied."/>
+      </eAnnotations>
       <eParameters name="profile" ordered="false" lowerBound="1" eType="#//Profile"/>
       <eParameters name="recurse" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
-    <eOperations name="isModelLibrary" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    <eOperations name="isModelLibrary" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this package is a model library."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="visibleMembers" ordered="false" upperBound="-1" eType="#//PackageableElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query visibleMembers() defines which members of a Package can be accessed outside it.&#xD;&#xA;result = member->select( m | self.makesVisible(m))"/>
@@ -337,10 +493,20 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createDependency" ordered="false" lowerBound="1" eType="#//Dependency">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a dependency between this named element and the specified supplier, owned by this named element's nearest package."/>
+      </eAnnotations>
       <eParameters name="supplier" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
-    <eOperations name="getLabel" ordered="false" eType="#//String"/>
     <eOperations name="getLabel" ordered="false" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves a localized label for this named element."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getLabel" ordered="false" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves a label for this named element, localized if indicated."/>
+      </eAnnotations>
       <eParameters name="localize" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="#//String">
@@ -504,15 +670,29 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createElementImport" ordered="false" lowerBound="1" eType="#//ElementImport">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an import of the specified element into this namespace with the specified visibility."/>
+      </eAnnotations>
       <eParameters name="element" ordered="false" lowerBound="1" eType="#//PackageableElement"/>
       <eParameters name="visibility" ordered="false" lowerBound="1" eType="#//VisibilityKind"/>
     </eOperations>
     <eOperations name="createPackageImport" ordered="false" lowerBound="1" eType="#//PackageImport">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an import of the specified package into this namespace with the specified visibility."/>
+      </eAnnotations>
       <eParameters name="package_" ordered="false" lowerBound="1" eType="#//Package"/>
       <eParameters name="visibility" ordered="false" lowerBound="1" eType="#//VisibilityKind"/>
     </eOperations>
-    <eOperations name="getImportedElements" ordered="false" upperBound="-1" eType="#//PackageableElement"/>
-    <eOperations name="getImportedPackages" ordered="false" upperBound="-1" eType="#//Package"/>
+    <eOperations name="getImportedElements" ordered="false" upperBound="-1" eType="#//PackageableElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the elements imported by this namespace."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getImportedPackages" ordered="false" upperBound="-1" eType="#//Package">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the packages imported by this namespace."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getImportedMembers" ordered="false" upperBound="-1" eType="#//PackageableElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.&#xD;&#xA;The importedMember property is derived from the ElementImports and the PackageImports.&#xD;&#xA;result = self.importMembers(self.elementImport.importedElement.asSet()-&#xA;>union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))"/>
@@ -791,6 +971,9 @@
       <details key="documentation" value="A type is a named element that is used as the type for a typed element. A type can be contained in a package.&#xD;&#xA;A type constrains the values represented by a typed element."/>
     </eAnnotations>
     <eOperations name="createAssociation" ordered="false" lowerBound="1" eType="#//Association">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a(n) (binary) association between this type and the specified other type, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this type's nearest package."/>
+      </eAnnotations>
       <eParameters name="end1IsNavigable" ordered="false" lowerBound="1" eType="#//Boolean"/>
       <eParameters name="end1Aggregation" ordered="false" lowerBound="1" eType="#//AggregationKind"/>
       <eParameters name="end1Name" ordered="false" lowerBound="1" eType="#//String"/>
@@ -803,7 +986,11 @@
       <eParameters name="end2Lower" ordered="false" lowerBound="1" eType="#//Integer"/>
       <eParameters name="end2Upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
-    <eOperations name="getAssociations" ordered="false" upperBound="-1" eType="#//Association"/>
+    <eOperations name="getAssociations" ordered="false" upperBound="-1" eType="#//Association">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the associations in which this type is involved."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="conformsTo" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.&#xD;&#xA;result = false"/>
@@ -850,7 +1037,11 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="isBinary" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    <eOperations name="isBinary" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this association is a binary association, i.e. whether it has exactly two member ends."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getEndTypes" upperBound="-1" eType="#//Type">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="endType is derived from the types of the member ends.&#xD;&#xA;result = self.memberEnd->collect(e | e.type)"/>
@@ -948,22 +1139,48 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getAllAttributes" ordered="false" upperBound="-1" eType="#//Property"/>
-    <eOperations name="getOperations" ordered="false" upperBound="-1" eType="#//Operation"/>
-    <eOperations name="getAllOperations" ordered="false" upperBound="-1" eType="#//Operation"/>
+    <eOperations name="getAllAttributes" ordered="false" upperBound="-1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the attributes of this classifier, including those inherited from its parents."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getOperations" ordered="false" upperBound="-1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the operations of this classifier."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAllOperations" ordered="false" upperBound="-1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the operations of this classifier, including those inherited from its parents."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getOperation" ordered="false" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the first operation with the specified name, parameter names, and parameter types from this classifier."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
     </eOperations>
     <eOperations name="getOperation" ordered="false" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the first operation with the specified name, parameter names, and parameter types from this classifier, ignoring case if indicated."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="ignoreCase" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
-    <eOperations name="getUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
-    <eOperations name="getAllUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the interfaces on which this classifier has a usage dependency."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAllUsedInterfaces" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the interfaces on which this classifier or any of its parents has a usage dependency."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getGenerals" ordered="false" upperBound="-1" eType="#//Classifier">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The general classifiers are the classifiers referenced by the generalization relationships.&#xD;&#xA;result = self.parents()"/>
@@ -1640,18 +1857,34 @@
     </eOperations>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
     <eOperations name="setBooleanDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this parameter to the specified Boolean value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setIntegerDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this parameter to the specified integer value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setStringDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this parameter to the specified string value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="setUnlimitedNaturalDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this parameter to the specified unlimited natural value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
-    <eOperations name="setNullDefaultValue" ordered="false" lowerBound="1"/>
+    <eOperations name="setNullDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this parameter to the null value."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterSet" ordered="false"
         upperBound="-1" eType="#//ParameterSet" eOpposite="#//ParameterSet/parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2025,22 +2258,45 @@
     </eOperations>
     <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
     <eOperations name="setIsNavigable" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the navigability of this property as indicated."/>
+      </eAnnotations>
       <eParameters name="isNavigable" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
-    <eOperations name="getOtherEnd" ordered="false" eType="#//Property"/>
+    <eOperations name="getOtherEnd" ordered="false" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the other end of the (binary) association in which this property is a member end."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="setBooleanDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this property to the specified Boolean value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setIntegerDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this property to the specified integer value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setStringDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this property to the specified string value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="setUnlimitedNaturalDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this property to the specified unlimited natural value."/>
+      </eAnnotations>
       <eParameters name="value" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
-    <eOperations name="setNullDefaultValue" ordered="false" lowerBound="1"/>
+    <eOperations name="setNullDefaultValue" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sets the default value for this property to the null value."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isAttribute" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query isAttribute() is true if the Property is defined as an attribute of some classifier.&#xD;&#xA;result = Classifier.allInstances->exists(c | c.attribute->includes(p))"/>
@@ -2263,12 +2519,18 @@
       <details key="documentation" value="An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.&#xD;&#xA;An artifact is the source of a deployment to a node."/>
     </eAnnotations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this artifact."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this artifact."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
@@ -2387,7 +2649,11 @@
     <eOperations name="setUpper" ordered="false" lowerBound="1">
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
-    <eOperations name="getReturnResult" ordered="false" eType="#//Parameter"/>
+    <eOperations name="getReturnResult" ordered="false" eType="#//Parameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the (only) return result parameter for this operation."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isOrdered" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().isOrdered else false endif"/>
@@ -2683,12 +2949,19 @@
     </eOperations>
     <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension"/>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this class."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
-    <eOperations name="isMetaclass" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    <eOperations name="isMetaclass" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this class is a metaclass."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedClassifier" upperBound="-1"
         eType="#//Classifier" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2743,9 +3016,17 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getImplementedInterfaces" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getImplementedInterfaces" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the interfaces on which this behaviored classifier has an interface realization dependency."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getAllImplementedInterfaces" ordered="false" upperBound="-1"
-        eType="#//Interface"/>
+        eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the interfaces on which this behaviored classifier or any of its parents has an interface realization dependency."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedBehavior" ordered="false"
         upperBound="-1" eType="#//Behavior" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2803,12 +3084,18 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this interface."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this interface."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
@@ -2880,6 +3167,9 @@
       <details key="documentation" value="A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence."/>
     </eAnnotations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this signal."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
@@ -3846,6 +4136,9 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this structured classifier."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
@@ -4015,8 +4308,16 @@
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
-    <eOperations name="getStereotypeEnd" ordered="false" eType="#//Property"/>
-    <eOperations name="getStereotype" ordered="false" eType="#//Stereotype"/>
+    <eOperations name="getStereotypeEnd" ordered="false" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the extension end that is typed by a stereotype (as opposed to a metaclass)."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getStereotype" ordered="false" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the stereotype that extends a metaclass through this extension."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="metaclassEnd" ordered="false" lowerBound="1" eType="#//Property">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).&#xD;&#xA;result = memberEnd->reject(ownedEnd)"/>
@@ -4115,22 +4416,54 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="createExtension" ordered="false" lowerBound="1" eType="#//Extension">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a(n) (required) extension of the specified metaclass with this stereotype."/>
+      </eAnnotations>
       <eParameters name="metaclass" ordered="false" lowerBound="1" eType="#//Class"/>
       <eParameters name="isRequired" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
-    <eOperations name="getProfile" ordered="false" eType="#//Profile"/>
-    <eOperations name="getKeyword" ordered="false" lowerBound="1" eType="#//String"/>
+    <eOperations name="getProfile" ordered="false" eType="#//Profile">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the profile that owns this stereotype."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getKeyword" ordered="false" lowerBound="1" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the localized keyword for this stereotype."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getKeyword" ordered="false" lowerBound="1" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the keyword for this stereotype, localized if indicated."/>
+      </eAnnotations>
       <eParameters name="localize" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
-    <eOperations name="getExtendedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
+    <eOperations name="getExtendedMetaclasses" ordered="false" upperBound="-1" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the metaclasses extended by this stereotype."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getAllExtendedMetaclasses" ordered="false" upperBound="-1"
-        eType="#//Class"/>
-    <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+        eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves all the metaclasses extended by this stereotype, including the metaclasses extended by its superstereotypes."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the current definition (Ecore representation) of this stereotype."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="createIcon" ordered="false" lowerBound="1" eType="#//Image">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an icon with the specified location for this stereotype."/>
+      </eAnnotations>
       <eParameters name="location" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="createIcon" ordered="false" lowerBound="1" eType="#//Image">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an icon with the specified format and content for this stereotype."/>
+      </eAnnotations>
       <eParameters name="format" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="content" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
@@ -4183,21 +4516,53 @@
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
     </eOperations>
     <eOperations name="create" ordered="false" lowerBound="1" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile."/>
+      </eAnnotations>
       <eParameters name="classifier" ordered="false" lowerBound="1" eType="#//Classifier"/>
     </eOperations>
     <eOperations name="createOwnedStereotype" ordered="false" lowerBound="1" eType="#//Stereotype">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="isAbstract" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
-    <eOperations name="isDefined" ordered="false" lowerBound="1" eType="#//Boolean"/>
-    <eOperations name="define" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
-    <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
+    <eOperations name="isDefined" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this profile is defined."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="define" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Defines this profile by (re)creating Ecore representations of its current contents."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the current definition (Ecore representation) of this profile."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the current definition (Ecore representation) of the specified named element in this profile."/>
+      </eAnnotations>
       <eParameters name="namedElement" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
-    <eOperations name="getReferencedMetaclasses" ordered="false" upperBound="-1" eType="#//Class"/>
-    <eOperations name="getReferencedMetamodels" ordered="false" upperBound="-1" eType="#//Model"/>
+    <eOperations name="getReferencedMetaclasses" ordered="false" upperBound="-1" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the metaclasses referenced by this profile."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getReferencedMetamodels" ordered="false" upperBound="-1" eType="#//Model">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the metamodels referenced by this profile."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getOwnedExtensions" ordered="false" upperBound="-1" eType="#//Extension">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the extensions owned by this profile, excluding non-required extensions if indicated."/>
+      </eAnnotations>
       <eParameters name="requiredOnly" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStereotype" ordered="false"
@@ -4226,7 +4591,11 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail."/>
     </eAnnotations>
-    <eOperations name="isMetamodel" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    <eOperations name="isMetamodel" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines whether this model is a metamodel."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewpoint" ordered="false"
         eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4308,12 +4677,18 @@
       </contents>
     </eAnnotations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this data type."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="parameterNames" ordered="false" upperBound="-1" eType="#//String"/>
       <eParameters name="parameterTypes" ordered="false" upperBound="-1" eType="#//Type"/>
       <eParameters name="returnType" ordered="false" eType="#//Type"/>
     </eOperations>
     <eOperations name="createOwnedAttribute" ordered="false" lowerBound="1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this data type."/>
+      </eAnnotations>
       <eParameters name="name" ordered="false" eType="#//String"/>
       <eParameters name="type" ordered="false" eType="#//Type"/>
       <eParameters name="lower" ordered="false" lowerBound="1" eType="#//Integer"/>
@@ -4787,8 +5162,15 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A profile application is used to show which profiles have been applied to a package."/>
     </eAnnotations>
-    <eOperations name="getAppliedDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
+    <eOperations name="getAppliedDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the definition (Ecore representation) of the profile associated with this profile application."/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="getAppliedDefinition" ordered="false" eType="ecore:EClass ../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the definition (Ecore representation) of the specified named element in the profile associated with this profile application."/>
+      </eAnnotations>
       <eParameters name="namedElement" ordered="false" lowerBound="1" eType="#//NamedElement"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="appliedProfile" ordered="false"

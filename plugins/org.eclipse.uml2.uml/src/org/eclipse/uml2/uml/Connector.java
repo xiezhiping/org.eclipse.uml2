@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.10 2006/05/15 22:13:41 khussey Exp $
+ * $Id: Connector.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -123,7 +123,7 @@ public interface Connector
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_End()
-	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" containment="true" lower="2"
+	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" containment="true" resolveProxies="true" lower="2"
 	 * @generated
 	 */
 	EList getEnds();

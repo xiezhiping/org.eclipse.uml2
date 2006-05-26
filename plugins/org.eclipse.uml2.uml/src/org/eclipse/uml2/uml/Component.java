@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.16 2006/05/15 22:13:41 khussey Exp $
+ * $Id: Component.java,v 1.17 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -156,7 +156,7 @@ public interface Component
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_PackagedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackagedElements();
@@ -211,7 +211,7 @@ public interface Component
 	 * @return the value of the '<em>Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_Realization()
 	 * @see org.eclipse.uml2.uml.ComponentRealization#getAbstraction
-	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getRealizations();

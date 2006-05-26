@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.10 2006/05/12 20:38:06 khussey Exp $
+ * $Id: Region.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,7 +59,7 @@ public interface Region
 	 * @return the value of the '<em>Subvertex</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Subvertex()
 	 * @see org.eclipse.uml2.uml.Vertex#getContainer
-	 * @model type="org.eclipse.uml2.uml.Vertex" opposite="container" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Vertex" opposite="container" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getSubvertices();
@@ -114,7 +114,7 @@ public interface Region
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Transition()
 	 * @see org.eclipse.uml2.uml.Transition#getContainer
-	 * @model type="org.eclipse.uml2.uml.Transition" opposite="container" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Transition" opposite="container" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getTransitions();

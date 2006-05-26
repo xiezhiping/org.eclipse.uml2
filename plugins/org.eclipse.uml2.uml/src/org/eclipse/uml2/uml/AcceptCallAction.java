@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.4 2006/05/15 22:13:41 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ public interface AcceptCallAction
 	 * @return the value of the '<em>Return Information</em>' containment reference.
 	 * @see #setReturnInformation(OutputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptCallAction_ReturnInformation()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	OutputPin getReturnInformation();

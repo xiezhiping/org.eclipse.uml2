@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueAction.java,v 1.6 2006/05/15 22:13:41 khussey Exp $
+ * $Id: OpaqueAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -129,7 +129,7 @@ public interface OpaqueAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_InputValue()
-	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getInputValues();
@@ -212,7 +212,7 @@ public interface OpaqueAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_OutputValue()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOutputValues();

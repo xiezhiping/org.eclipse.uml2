@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureAction.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
+ * $Id: WriteStructuralFeatureAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface WriteStructuralFeatureAction
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getWriteStructuralFeatureAction_Value()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getValue();

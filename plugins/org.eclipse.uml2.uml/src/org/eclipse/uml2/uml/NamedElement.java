@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.14 2006/05/24 20:54:29 khussey Exp $
+ * $Id: NamedElement.java,v 1.15 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -238,7 +238,7 @@ public interface NamedElement
 	 * @return the value of the '<em>Name Expression</em>' containment reference.
 	 * @see #setNameExpression(StringExpression)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_NameExpression()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	StringExpression getNameExpression();
@@ -307,6 +307,9 @@ public interface NamedElement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a dependency between this named element and the specified supplier, owned by this named element's nearest package.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" supplierRequired="true" supplierOrdered="false"
 	 * @generated
 	 */
@@ -315,6 +318,9 @@ public interface NamedElement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves a localized label for this named element.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
@@ -323,6 +329,9 @@ public interface NamedElement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves a label for this named element, localized if indicated.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.19 2006/05/12 20:38:04 khussey Exp $
+ * $Id: Property.java,v 1.20 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -378,7 +378,7 @@ public interface Property
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_DefaultValue()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -485,7 +485,7 @@ public interface Property
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Qualifier()
 	 * @see org.eclipse.uml2.uml.Property#getAssociationEnd
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getQualifiers();
@@ -711,6 +711,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the navigability of this property as indicated.
+	 * <!-- end-model-doc -->
 	 * @model isNavigableDataType="org.eclipse.uml2.uml.Boolean" isNavigableRequired="true" isNavigableOrdered="false"
 	 * @generated
 	 */
@@ -719,6 +722,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the other end of the (binary) association in which this property is a member end.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -727,6 +733,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified Boolean value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -735,6 +744,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified integer value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -743,6 +755,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified string value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -751,6 +766,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified unlimited natural value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -759,6 +777,9 @@ public interface Property
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the null value.
+	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */

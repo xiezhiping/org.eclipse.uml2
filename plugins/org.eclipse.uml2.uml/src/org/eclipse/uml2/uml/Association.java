@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.10 2006/05/12 20:38:08 khussey Exp $
+ * $Id: Association.java,v 1.11 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -238,7 +238,7 @@ public interface Association
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.uml.Property#getOwningAssociation
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedEnds();
@@ -348,6 +348,9 @@ public interface Association
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this association is a binary association, i.e. whether it has exactly two member ends.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */

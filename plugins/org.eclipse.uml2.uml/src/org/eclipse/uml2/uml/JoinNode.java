@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
+ * $Id: JoinNode.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -79,7 +79,7 @@ public interface JoinNode
 	 * @return the value of the '<em>Join Spec</em>' containment reference.
 	 * @see #setJoinSpec(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getJoinNode_JoinSpec()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getJoinSpec();

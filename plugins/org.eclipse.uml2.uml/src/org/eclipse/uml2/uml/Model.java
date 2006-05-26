@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Model.java,v 1.5 2006/05/12 20:38:05 khussey Exp $
+ * $Id: Model.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -90,6 +90,9 @@ public interface Model
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this model is a metamodel.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePin.java,v 1.4 2006/05/16 15:07:26 khussey Exp $
+ * $Id: ValuePin.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface ValuePin
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getValuePin_Value()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getValue();

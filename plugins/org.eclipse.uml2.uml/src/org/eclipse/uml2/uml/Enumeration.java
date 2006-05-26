@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Enumeration.java,v 1.6 2006/05/12 20:38:05 khussey Exp $
+ * $Id: Enumeration.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,7 +50,7 @@ public interface Enumeration
 	 * @return the value of the '<em>Owned Literal</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEnumeration_OwnedLiteral()
 	 * @see org.eclipse.uml2.uml.EnumerationLiteral#getEnumeration
-	 * @model type="org.eclipse.uml2.uml.EnumerationLiteral" opposite="enumeration" containment="true"
+	 * @model type="org.eclipse.uml2.uml.EnumerationLiteral" opposite="enumeration" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedLiterals();

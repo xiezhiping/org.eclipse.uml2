@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.10 2006/05/12 20:38:06 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -122,6 +122,9 @@ public interface ProfileApplication
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the definition (Ecore representation) of the profile associated with this profile application.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -130,6 +133,9 @@ public interface ProfileApplication
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the definition (Ecore representation) of the specified named element in the profile associated with this profile application.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" namedElementRequired="true" namedElementOrdered="false"
 	 * @generated
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Node.java,v 1.5 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Node.java,v 1.6 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -54,7 +54,7 @@ public interface Node
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNode_NestedNode()
-	 * @model type="org.eclipse.uml2.uml.Node" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Node" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getNestedNodes();

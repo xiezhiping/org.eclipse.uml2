@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface ProtocolStateMachine
 	 * @return the value of the '<em>Conformance</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolStateMachine_Conformance()
 	 * @see org.eclipse.uml2.uml.ProtocolConformance#getSpecificMachine
-	 * @model type="org.eclipse.uml2.uml.ProtocolConformance" opposite="specificMachine" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ProtocolConformance" opposite="specificMachine" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getConformances();

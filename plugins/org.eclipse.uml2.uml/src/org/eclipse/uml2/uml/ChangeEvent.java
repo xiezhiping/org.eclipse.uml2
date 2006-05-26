@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEvent.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
+ * $Id: ChangeEvent.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,7 @@ public interface ChangeEvent
 	 * @return the value of the '<em>Change Expression</em>' containment reference.
 	 * @see #setChangeExpression(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getChangeEvent_ChangeExpression()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getChangeExpression();

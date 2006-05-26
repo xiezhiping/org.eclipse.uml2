@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.9 2006/05/24 20:54:29 khussey Exp $
+ * $Id: Namespace.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Namespace
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.uml.ElementImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.uml.ElementImport" opposite="importingNamespace" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ElementImport" opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getElementImports();
@@ -112,7 +112,7 @@ public interface Namespace
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.uml.PackageImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.uml.PackageImport" opposite="importingNamespace" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageImport" opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackageImports();
@@ -165,7 +165,7 @@ public interface Namespace
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.uml.Constraint#getContext
-	 * @model type="org.eclipse.uml2.uml.Constraint" opposite="context" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Constraint" opposite="context" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedRules();
@@ -357,6 +357,9 @@ public interface Namespace
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an import of the specified element into this namespace with the specified visibility.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" elementRequired="true" elementOrdered="false" visibilityRequired="true" visibilityOrdered="false"
 	 * @generated
 	 */
@@ -366,6 +369,9 @@ public interface Namespace
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an import of the specified package into this namespace with the specified visibility.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" package_Required="true" package_Ordered="false" visibilityRequired="true" visibilityOrdered="false"
 	 * @generated
 	 */
@@ -375,6 +381,9 @@ public interface Namespace
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the elements imported by this namespace.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.PackageableElement" ordered="false"
 	 * @generated
 	 */
@@ -383,6 +392,9 @@ public interface Namespace
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the packages imported by this namespace.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Package" ordered="false"
 	 * @generated
 	 */

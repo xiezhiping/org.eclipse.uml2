@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.7 2006/05/12 20:38:10 khussey Exp $
+ * $Id: DataType.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface DataType
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDataType_OwnedAttribute()
 	 * @see org.eclipse.uml2.uml.Property#getDatatype
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="datatype" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Property" opposite="datatype" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -122,7 +122,7 @@ public interface DataType
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDataType_OwnedOperation()
 	 * @see org.eclipse.uml2.uml.Operation#getDatatype
-	 * @model type="org.eclipse.uml2.uml.Operation" opposite="datatype" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Operation" opposite="datatype" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -175,6 +175,9 @@ public interface DataType
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this data type.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
@@ -184,6 +187,9 @@ public interface DataType
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this data type.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated
 	 */

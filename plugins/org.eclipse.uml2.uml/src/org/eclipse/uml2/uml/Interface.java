@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.9 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Interface.java,v 1.10 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -128,7 +128,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_NestedClassifier()
-	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getNestedClassifiers();
@@ -219,7 +219,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedReception()
-	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedReceptions();
@@ -279,7 +279,7 @@ public interface Interface
 	 * @return the value of the '<em>Protocol</em>' containment reference.
 	 * @see #setProtocol(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_Protocol()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ProtocolStateMachine getProtocol();
@@ -317,7 +317,7 @@ public interface Interface
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedOperation()
 	 * @see org.eclipse.uml2.uml.Operation#getInterface
-	 * @model type="org.eclipse.uml2.uml.Operation" opposite="interface" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Operation" opposite="interface" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -382,6 +382,9 @@ public interface Interface
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this interface.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
@@ -391,6 +394,9 @@ public interface Interface
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this interface.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated
 	 */

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPin.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: ActionInputPin.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface ActionInputPin
 	 * @return the value of the '<em>From Action</em>' containment reference.
 	 * @see #setFromAction(Action)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActionInputPin_FromAction()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	Action getFromAction();

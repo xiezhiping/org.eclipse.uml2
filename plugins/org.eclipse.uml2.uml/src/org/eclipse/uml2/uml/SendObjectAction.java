@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectAction.java,v 1.4 2006/05/12 20:38:04 khussey Exp $
+ * $Id: SendObjectAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,7 @@ public interface SendObjectAction
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSendObjectAction_Target()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getTarget();
@@ -98,7 +98,7 @@ public interface SendObjectAction
 	 * @return the value of the '<em>Request</em>' containment reference.
 	 * @see #setRequest(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSendObjectAction_Request()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getRequest();

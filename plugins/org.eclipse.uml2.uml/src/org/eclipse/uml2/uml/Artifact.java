@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.9 2006/05/12 20:38:05 khussey Exp $
+ * $Id: Artifact.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -108,7 +108,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_NestedArtifact()
-	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getNestedArtifacts();
@@ -172,7 +172,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_Manifestation()
-	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getManifestations();
@@ -229,7 +229,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedOperation()
-	 * @model type="org.eclipse.uml2.uml.Operation" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Operation" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedOperations();
@@ -291,7 +291,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true"
+	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getOwnedAttributes();
@@ -352,6 +352,9 @@ public interface Artifact
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this artifact.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
@@ -361,6 +364,9 @@ public interface Artifact
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this artifact.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated
 	 */

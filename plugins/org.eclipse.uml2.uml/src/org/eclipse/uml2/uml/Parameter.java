@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.15 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Parameter.java,v 1.16 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -198,7 +198,7 @@ public interface Parameter
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_DefaultValue()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getDefaultValue();
@@ -396,6 +396,9 @@ public interface Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified Boolean value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -404,6 +407,9 @@ public interface Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified integer value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -412,6 +418,9 @@ public interface Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified string value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -420,6 +429,9 @@ public interface Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified unlimited natural value.
+	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
@@ -428,6 +440,9 @@ public interface Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the null value.
+	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */

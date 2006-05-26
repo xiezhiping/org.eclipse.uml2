@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.14 2006/05/24 20:54:29 khussey Exp $
+ * $Id: Element.java,v 1.15 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,7 +91,7 @@ public interface Element
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedComment()
-	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getOwnedComments();
@@ -133,6 +133,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype applications for this element.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.emf.ecore.EObject" ordered="false"
 	 * @generated
 	 */
@@ -141,6 +144,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the application of the specified stereotype for this element, or null if no such stereotype application exists.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -149,6 +155,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotypes that are required for this element.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
@@ -157,6 +166,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype with the specified qualified name that is required for this element, or null if no such stereotype is required.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
@@ -165,6 +177,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotypes that are applied to this element.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
@@ -173,6 +188,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is  applied.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
@@ -181,6 +199,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the substereotypes of the specified stereotype that are applied to this element.
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Stereotype" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -189,6 +210,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the substereotype of the specified stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is applied.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
@@ -198,6 +222,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this element has a (non-default) value for the property with the specified name in the specified stereotype.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
 	 * @generated
 	 */
@@ -206,6 +233,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the value of the property with the specified name in the specified stereotype for this element.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
 	 * @generated
 	 */
@@ -214,6 +244,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the value of the property with the specified name in the specified stereotype for this element.
+	 * <!-- end-model-doc -->
 	 * @model stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
 	 * @generated
 	 */
@@ -222,6 +255,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an annotation with the specified source and this element as its model element.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" sourceDataType="org.eclipse.uml2.uml.String" sourceRequired="true" sourceOrdered="false"
 	 * @generated
 	 */
@@ -230,6 +266,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the relationships in which this element is involved.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Relationship" ordered="false"
 	 * @generated
 	 */
@@ -238,6 +277,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the relationships of the specified type in which this element is involved.
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Relationship" ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
@@ -246,6 +288,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships for which this element is a source.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
 	 * @generated
 	 */
@@ -254,6 +299,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships of the specified type for which this element is a source.
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
@@ -262,6 +310,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships for which this element is a target.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
 	 * @generated
 	 */
@@ -270,6 +321,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships of the specified type for which this element is a target.
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
@@ -278,6 +332,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the keywords for this element.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="java.lang.String" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
@@ -286,6 +343,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Adds the specified keyword to this element.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
 	 * @generated
 	 */
@@ -294,6 +354,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Removes the specified keyword from this element.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
 	 * @generated
 	 */
@@ -302,6 +365,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the nearest package that owns (either directly or indirectly) this element, or the element itself (if it is a package).
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -310,6 +376,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the model that owns (either directly or indirectly) this element.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
@@ -318,6 +387,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified stereotype is applicable to this element.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -326,6 +398,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified stereotype is required for this element.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -334,6 +409,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified stereotype is applied to this element.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -342,6 +420,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Applies the specified stereotype to this element.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -350,6 +431,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Unapplies the specified stereotype from this element.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
@@ -358,6 +442,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotypes that are applicable to this element, including those that are required and/or may already be applied.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
@@ -366,6 +453,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype with the specified qualified name that is applicable to this element, or null if no such stereotype is applicable.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
@@ -374,6 +464,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this element has the specified keyword.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
 	 * @generated
 	 */
@@ -382,6 +475,9 @@ public interface Element
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Destroys this element by removing all cross references to/from it and removing it from its containing resource or object.
+	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
 	 */

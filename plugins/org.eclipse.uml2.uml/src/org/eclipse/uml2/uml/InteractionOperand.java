@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.6 2006/05/12 20:38:09 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -54,7 +54,7 @@ public interface InteractionOperand
 	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(InteractionConstraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionOperand_Guard()
-	 * @model containment="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	InteractionConstraint getGuard();
@@ -92,7 +92,7 @@ public interface InteractionOperand
 	 * @return the value of the '<em>Fragment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionOperand_Fragment()
 	 * @see org.eclipse.uml2.uml.InteractionFragment#getEnclosingOperand
-	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingOperand" containment="true"
+	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingOperand" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getFragments();

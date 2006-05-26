@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.9 2006/05/15 22:13:41 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -79,7 +79,7 @@ public interface AcceptEventAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptEventAction_Result()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getResults();
@@ -146,7 +146,7 @@ public interface AcceptEventAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAcceptEventAction_Trigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" required="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getTriggers();

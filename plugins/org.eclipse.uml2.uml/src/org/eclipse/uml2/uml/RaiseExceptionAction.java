@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionAction.java,v 1.4 2006/05/12 20:38:07 khussey Exp $
+ * $Id: RaiseExceptionAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,7 @@ public interface RaiseExceptionAction
 	 * @return the value of the '<em>Exception</em>' containment reference.
 	 * @see #setException(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRaiseExceptionAction_Exception()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getException();

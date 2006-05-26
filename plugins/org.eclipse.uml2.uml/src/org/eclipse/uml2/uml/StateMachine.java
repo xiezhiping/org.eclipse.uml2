@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.9 2006/05/12 20:38:05 khussey Exp $
+ * $Id: StateMachine.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface StateMachine
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_Region()
 	 * @see org.eclipse.uml2.uml.Region#getStateMachine
-	 * @model type="org.eclipse.uml2.uml.Region" opposite="stateMachine" containment="true" required="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Region" opposite="stateMachine" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList getRegions();
@@ -151,7 +151,7 @@ public interface StateMachine
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ConnectionPoint()
 	 * @see org.eclipse.uml2.uml.Pseudostate#getStateMachine
-	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="stateMachine" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="stateMachine" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getConnectionPoints();

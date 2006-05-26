@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.15 2006/05/13 04:46:32 khussey Exp $
+ * $Id: Package.java,v 1.16 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface Package
 	 * @return the value of the '<em>Package Merge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackageMerge()
 	 * @see org.eclipse.uml2.uml.PackageMerge#getReceivingPackage
-	 * @model type="org.eclipse.uml2.uml.PackageMerge" opposite="receivingPackage" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageMerge" opposite="receivingPackage" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackageMerges();
@@ -111,7 +111,7 @@ public interface Package
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackagedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getPackagedElements();
@@ -304,7 +304,7 @@ public interface Package
 	 * @return the value of the '<em>Profile Application</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_ProfileApplication()
 	 * @see org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage
-	 * @model type="org.eclipse.uml2.uml.ProfileApplication" opposite="applyingPackage" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.ProfileApplication" opposite="applyingPackage" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getProfileApplications();
@@ -346,6 +346,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (abstract) class with the specified name as an owned type of this package.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
@@ -354,6 +357,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a enumeration with the specified name as an owned type of this package.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
@@ -362,6 +368,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a primitive type with the specified name as an owned type of this package.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
@@ -370,6 +379,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified profile is applied to this package.
+	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
@@ -378,6 +390,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Applies the current definition of the specified profile to this package and automatically applies required stereotypes in the profile to elements within this package's namespace hieararchy. If a different definition is already applied, automatically migrates any associated stereotype values on a "best effort" basis (matching classifiers and structural features by name).
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
@@ -386,6 +401,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.
+	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
@@ -394,6 +412,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profiles that are applied to this package.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
 	 * @generated
 	 */
@@ -402,6 +423,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profile with the specified qualified name that is applied to this package, or null if no such profile is applied.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
@@ -410,6 +434,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profile with the specified qualified name that is applied to this package or any of its nesting packages (if indicated), or null if no such profile is applied.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
 	 */
@@ -418,6 +445,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the profile applications for this package, including profile applications for its nesting package(s).
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.ProfileApplication" ordered="false"
 	 * @generated
 	 */
@@ -426,6 +456,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the application of the specified profile to this package, or null if no such profile is applied.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
@@ -434,6 +467,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the application of the specified profile to this package or any of its nesting packages (if indicated), or null if no such profile is applied.
+	 * <!-- end-model-doc -->
 	 * @model ordered="false" profileRequired="true" profileOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
 	 */
@@ -442,6 +478,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an interface with the specified name as an owned type of this package.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
@@ -450,6 +489,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this package is a model library.
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
@@ -458,6 +500,9 @@ public interface Package
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the profiles that are applied to this package, including profiles applied to its nesting package(s).
+	 * <!-- end-model-doc -->
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
 	 * @generated
 	 */

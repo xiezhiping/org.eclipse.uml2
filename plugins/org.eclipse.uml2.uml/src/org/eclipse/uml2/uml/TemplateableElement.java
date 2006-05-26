@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.7 2006/05/12 20:38:04 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface TemplateableElement
 	 * @return the value of the '<em>Template Binding</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateableElement_TemplateBinding()
 	 * @see org.eclipse.uml2.uml.TemplateBinding#getBoundElement
-	 * @model type="org.eclipse.uml2.uml.TemplateBinding" opposite="boundElement" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.TemplateBinding" opposite="boundElement" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getTemplateBindings();
@@ -104,7 +104,7 @@ public interface TemplateableElement
 	 * @see #setOwnedTemplateSignature(TemplateSignature)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateableElement_OwnedTemplateSignature()
 	 * @see org.eclipse.uml2.uml.TemplateSignature#getTemplate
-	 * @model opposite="template" containment="true" ordered="false"
+	 * @model opposite="template" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	TemplateSignature getOwnedTemplateSignature();

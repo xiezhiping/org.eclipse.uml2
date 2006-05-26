@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNode.java,v 1.4 2006/02/22 20:48:15 khussey Exp $
+ * $Id: SequenceNode.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ public interface SequenceNode
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Executable Node</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSequenceNode_ExecutableNode()
-	 * @model type="org.eclipse.uml2.uml.ExecutableNode" containment="true"
+	 * @model type="org.eclipse.uml2.uml.ExecutableNode" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList getExecutableNodes();

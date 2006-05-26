@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationAction.java,v 1.4 2006/05/12 20:38:04 khussey Exp $
+ * $Id: ClearAssociationAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface ClearAssociationAction
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClearAssociationAction_Object()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getObject();

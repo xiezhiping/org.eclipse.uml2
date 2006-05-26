@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariant.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
+ * $Id: StateInvariant.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,7 @@ public interface StateInvariant
 	 * @return the value of the '<em>Invariant</em>' containment reference.
 	 * @see #setInvariant(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateInvariant_Invariant()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getInvariant();

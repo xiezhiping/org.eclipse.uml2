@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTarget.java,v 1.5 2006/05/12 20:38:08 khussey Exp $
+ * $Id: DeploymentTarget.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface DeploymentTarget
 	 * @return the value of the '<em>Deployment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_Deployment()
 	 * @see org.eclipse.uml2.uml.Deployment#getLocation
-	 * @model type="org.eclipse.uml2.uml.Deployment" opposite="location" containment="true" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Deployment" opposite="location" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList getDeployments();

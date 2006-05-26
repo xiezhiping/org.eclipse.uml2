@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEvent.java,v 1.8 2006/05/12 20:38:03 khussey Exp $
+ * $Id: TimeEvent.java,v 1.9 2006/05/26 16:34:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -79,7 +79,7 @@ public interface TimeEvent
 	 * @return the value of the '<em>When</em>' containment reference.
 	 * @see #setWhen(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeEvent_When()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getWhen();
