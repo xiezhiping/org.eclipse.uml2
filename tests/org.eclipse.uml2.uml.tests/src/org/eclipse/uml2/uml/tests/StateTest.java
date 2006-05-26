@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateTest.java,v 1.3 2006/05/24 20:54:02 khussey Exp $
+ * $Id: StateTest.java,v 1.4 2006/05/26 17:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,11 +24,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isOrthogonal() <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isSimple() <em>Is Simple</em>}</li>
@@ -105,18 +101,6 @@ public class StateTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements()
-	 * @generated
-	 */
-	public void testGetRedefinedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -319,42 +303,6 @@ public class StateTest
 	 * @generated
 	 */
 	public void testContainingStateMachine() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespace() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

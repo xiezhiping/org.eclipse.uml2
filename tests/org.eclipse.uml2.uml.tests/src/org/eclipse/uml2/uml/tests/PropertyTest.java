@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.5 2006/05/24 20:54:03 khussey Exp $
+ * $Id: PropertyTest.java,v 1.6 2006/05/26 17:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,12 +24,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getClass_() <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefault() <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isComposite() <em>Is Composite</em>}</li>
@@ -538,66 +533,6 @@ public class PropertyTest
 	 * @generated
 	 */
 	public void testIsConsistentWith__RedefinableElement() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwner() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespace() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Feature#getFeaturingClassifiers()
-	 * @generated
-	 */
-	public void testGetFeaturingClassifiers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements()
-	 * @generated
-	 */
-	public void testGetRedefinedElements() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTest.java,v 1.4 2006/05/24 20:54:03 khussey Exp $
+ * $Id: ClassifierTest.java,v 1.5 2006/05/26 17:28:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -21,16 +21,7 @@ import org.eclipse.uml2.uml.Classifier;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Type#getPackage() <em>Package</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getInheritedMembers() <em>Inherited Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals() <em>General</em>}</li>
  * </ul>
@@ -95,30 +86,6 @@ public abstract class ClassifierTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements()
-	 * @generated
-	 */
-	public void testGetRedefinedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts()
-	 * @generated
-	 */
-	public void testGetRedefinitionContexts() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Type#getPackage() <em>Package</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,66 +105,6 @@ public abstract class ClassifierTest
 	 * @generated
 	 */
 	public void testSetPackage() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Classifier#getFeatures()
-	 * @generated
-	 */
-	public void testGetFeatures() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getMembers()
-	 * @generated
-	 */
-	public void testGetMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Classifier#getAttributes()
-	 * @generated
-	 */
-	public void testGetAttributes() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembers() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -570,30 +477,6 @@ public abstract class ClassifierTest
 	 * @generated
 	 */
 	public void testAllParents() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwner() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespace() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

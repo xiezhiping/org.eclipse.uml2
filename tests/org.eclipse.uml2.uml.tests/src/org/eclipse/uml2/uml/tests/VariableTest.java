@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableTest.java,v 1.6 2006/05/24 20:54:03 khussey Exp $
+ * $Id: VariableTest.java,v 1.7 2006/05/26 17:28:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,10 +24,8 @@ import org.eclipse.uml2.uml.Variable;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper() <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLower() <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -103,18 +101,6 @@ public class VariableTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -329,18 +315,6 @@ public class VariableTest
 	 * @generated
 	 */
 	public void testIsAccessibleBy__Action() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespace() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

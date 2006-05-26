@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementTest.java,v 1.4 2006/05/24 20:54:02 khussey Exp $
+ * $Id: ElementTest.java,v 1.5 2006/05/26 17:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -20,13 +20,6 @@ import org.eclipse.uml2.uml.Element;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Element</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
- * </ul>
- * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -109,18 +102,6 @@ public abstract class ElementTest
 	 */
 	private Element getFixture() {
 		return fixture;
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
@@ -551,18 +532,6 @@ public abstract class ElementTest
 	 * @generated
 	 */
 	public void testMustBeOwned() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwner() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

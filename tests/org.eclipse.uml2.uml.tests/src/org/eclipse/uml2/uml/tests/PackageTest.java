@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageTest.java,v 1.4 2006/05/24 20:54:03 khussey Exp $
+ * $Id: PackageTest.java,v 1.5 2006/05/26 17:28:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -23,10 +23,6 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes() <em>Owned Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestedPackages() <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestingPackage() <em>Nesting Package</em>}</li>
@@ -436,54 +432,6 @@ public class PackageTest
 	 * @generated
 	 */
 	public void testMustBeOwned() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwner() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespace() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

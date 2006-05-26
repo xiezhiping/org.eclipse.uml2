@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeTest.java,v 1.3 2006/05/24 20:54:03 khussey Exp $
+ * $Id: StructuredActivityNodeTest.java,v 1.4 2006/05/26 17:28:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,15 +24,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getImportedMembers() <em>Imported Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getSubgroups() <em>Subgroup</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getSuperGroup() <em>Super Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges() <em>Contained Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#getContainedNodes() <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredActivityNode#getActivity() <em>Activity</em>}</li>
  * </ul>
  * </p>
@@ -111,42 +103,6 @@ public class StructuredActivityNodeTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getMembers()
-	 * @generated
-	 */
-	public void testGetMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getImportedMembers() <em>Imported Member</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -154,18 +110,6 @@ public class StructuredActivityNodeTest
 	 * @generated
 	 */
 	public void testGetImportedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ActivityGroup#getSubgroups() <em>Subgroup</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ActivityGroup#getSubgroups()
-	 * @generated
-	 */
-	public void testGetSubgroups() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -346,54 +290,6 @@ public class StructuredActivityNodeTest
 	 * @generated
 	 */
 	public void testValidateEdges__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ActivityGroup#getSuperGroup() <em>Super Group</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ActivityGroup#getSuperGroup()
-	 * @generated
-	 */
-	public void testGetSuperGroup() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwner() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges() <em>Contained Edge</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ActivityGroup#getContainedEdges()
-	 * @generated
-	 */
-	public void testGetContainedEdges() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.ActivityGroup#getContainedNodes() <em>Contained Node</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.ActivityGroup#getContainedNodes()
-	 * @generated
-	 */
-	public void testGetContainedNodes() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierTest.java,v 1.4 2006/05/24 20:54:03 khussey Exp $
+ * $Id: BehavioredClassifierTest.java,v 1.5 2006/05/26 17:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -18,13 +18,6 @@ import org.eclipse.uml2.uml.BehavioredClassifier;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Behaviored Classifier</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}</li>
- * </ul>
- * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -56,30 +49,6 @@ public abstract class BehavioredClassifierTest
 	 */
 	private BehavioredClassifier getFixture() {
 		return (BehavioredClassifier) fixture;
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembers() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
