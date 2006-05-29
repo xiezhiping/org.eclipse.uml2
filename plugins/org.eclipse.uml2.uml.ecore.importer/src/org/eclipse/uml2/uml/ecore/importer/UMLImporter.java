@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.3 2006/05/25 16:42:17 khussey Exp $
+ * $Id: UMLImporter.java,v 1.4 2006/05/29 17:49:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -240,10 +240,9 @@ public class UMLImporter
 		}
 	}
 
-	protected void loadOriginalGenModel(URI genModelURI)
+	protected void handleOriginalGenModel()
 			throws DiagnosticException {
-		super.loadOriginalGenModel(genModelURI);
-
+		URI genModelURI = getOriginalGenModel().eResource().getURI();
 		StringBuffer text = new StringBuffer();
 		GenModel originalGenModel = getOriginalGenModel();
 
