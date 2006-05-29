@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
+ * $Id: ActivityPartitionTest.java,v 1.4 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -27,12 +27,6 @@ import org.eclipse.uml2.UML2Package;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Activity Partition</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.ActivityGroup#getActivityGroup_activity() <em>Activity Group activity</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ActivityPartitionTest extends NamedElementTest {
@@ -93,21 +87,9 @@ public class ActivityPartitionTest extends NamedElementTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getActivityGroup_activity() <em>Activity Group activity</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getActivityGroup_activity()
-	 * @generated
-	 */
-	public void testGetActivityGroup_activityGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
 
 	public void testGetActivityGroup_activity() {
-		testGetActivityGroup_activityGen();
-		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		activity.getGroups().add(getFixture());
@@ -119,23 +101,7 @@ public class ActivityPartitionTest extends NamedElementTest {
 		assertSame(null, getFixture().getActivityGroup_activity());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#setActivityGroup_activity(org.eclipse.uml2.Activity) <em>Activity Group activity</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#setActivityGroup_activity(org.eclipse.uml2.Activity)
-	 * @generated
-	 */
-	public void testSetActivityGroup_activityGen() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-
-
 	public void testSetActivityGroup_activity() {
-		testSetActivityGroup_activityGen();
-		
 		Activity activity = UML2Factory.eINSTANCE.createActivity();
 
 		getFixture().setActivityGroup_activity(activity);
@@ -198,41 +164,13 @@ public class ActivityPartitionTest extends NamedElementTest {
 		assertSame(getFixture().getActivity(), getFixture().getActivityGroup_activity());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElementsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedElements() {
-		testGetOwnedElementsGen();
-		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getSubgroups()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwnerGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwner() {
-		testGetOwnerGen();
-		
 		super.testGetOwner();
 
 		assertSame(getFixture().getSuperGroup(), getFixture().getOwner());
@@ -242,21 +180,7 @@ public class ActivityPartitionTest extends NamedElementTest {
 		assertSame(getFixture().getActivityGroup_activity(), getFixture().getOwner());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getSuperGroup() <em>Super Group</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getSuperGroup()
-	 * @generated
-	 */
-	public void testGetSuperGroupGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetSuperGroup() {
-		testGetSuperGroupGen();
-		
 		getFixture().setSuperPartition(UML2Factory.eINSTANCE.createActivityPartition());
 
 		assertSame(getFixture().getSuperPartition(), getFixture().getSuperGroup());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterTest.java,v 1.4 2006/04/10 20:38:09 khussey Exp $
+ * $Id: TemplateParameterTest.java,v 1.5 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -86,7 +86,6 @@ public class TemplateParameterTest extends ElementTest {
 	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
-
 
 
 	public void testGetSignature() {
@@ -255,40 +254,13 @@ public class TemplateParameterTest extends ElementTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwnerGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwner() {
-		testGetOwnerGen();
-		
 		super.testGetOwner();
 
 		assertSame(getFixture().getSignature(), getFixture().getOwner());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElementsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 	public void testGetOwnedElements() {
-		testGetOwnedElementsGen();
-		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getOwnedDefault()));

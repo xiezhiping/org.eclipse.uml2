@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
+ * $Id: CollaborationTest.java,v 1.3 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -102,7 +102,6 @@ public class CollaborationTest extends BehavioredClassifierTest {
 	}
 
 
-
 	public void testGetParts() {
 		testGetPartsGen();
 		
@@ -131,96 +130,29 @@ public class CollaborationTest extends BehavioredClassifierTest {
 		assertFalse(getFixture().getParts().contains(property2));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#getAttributes() <em>Attribute</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#getAttributes()
-	 * @generated
-	 */
-	public void testGetAttributesGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetAttributes() {
-		testGetAttributesGen();
-		
 		super.testGetAttributes();
 
 		assertTrue(getFixture().getAttributes().containsAll(getFixture().getOwnedAttributes()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedMembers() {
-		testGetOwnedMembersGen();
-		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedAttributes()));
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getOwnedConnectors()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getMembers() <em>Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getMembers()
-	 * @generated
-	 */
-	public void testGetMembersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetMembers() {
-		testGetMembersGen();
-		
 		super.testGetMembers();
 
 		assertTrue(getFixture().getMembers().containsAll(getFixture().getRoles()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Classifier#getFeatures() <em>Feature</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Classifier#getFeatures()
-	 * @generated
-	 */
-	public void testGetFeaturesGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 	public void testGetFeatures() {
-		testGetFeaturesGen();
-		
 		super.testGetFeatures();
 
 		assertTrue(getFixture().getFeatures().containsAll(getFixture().getOwnedConnectors()));
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.StructuredClassifier#getRoles() <em>Role</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StructuredClassifier#getRoles()
-	 * @generated
-	 */
-	public void testGetRoles() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/* (non-Javadoc)

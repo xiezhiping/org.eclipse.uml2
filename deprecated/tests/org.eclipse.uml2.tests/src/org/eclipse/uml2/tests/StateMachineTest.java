@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
+ * $Id: StateMachineTest.java,v 1.4 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -21,12 +21,6 @@ import org.eclipse.uml2.UML2Factory;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>State Machine</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext() <em>State Machine redefinition Context</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class StateMachineTest extends BehaviorTest {
@@ -87,30 +81,6 @@ public class StateMachineTest extends BehaviorTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext() <em>State Machine redefinition Context</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StateMachine#getStateMachine_redefinitionContext()
-	 * @generated
-	 */
-	public void testGetStateMachine_redefinitionContext() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.StateMachine#setStateMachine_redefinitionContext(org.eclipse.uml2.BehavioredClassifier) <em>State Machine redefinition Context</em>}' feature setter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.StateMachine#setStateMachine_redefinitionContext(org.eclipse.uml2.BehavioredClassifier)
-	 * @generated
-	 */
-	public void testSetStateMachine_redefinitionContext() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 
 
 	/**
@@ -148,21 +118,7 @@ public class StateMachineTest extends BehaviorTest {
 		assertTrue(getFixture().getRedefinitionContexts().isEmpty());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedMembers() {
-		testGetOwnedMembersGen();
-		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getConnectionPoints()));

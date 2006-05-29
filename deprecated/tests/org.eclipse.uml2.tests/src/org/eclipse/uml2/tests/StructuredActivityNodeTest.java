@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeTest.java,v 1.3 2005/05/18 17:04:27 khussey Exp $
+ * $Id: StructuredActivityNodeTest.java,v 1.4 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -103,21 +103,7 @@ public class StructuredActivityNodeTest extends ActionTest {
 		setFixture(null);
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getMembers() <em>Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getMembers()
-	 * @generated
-	 */
-	public void testGetMembersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetMembers() {
-		testGetMembersGen();
-		
 		setUpOwnedMembers();
 
 		ElementImport elementImport = UML2Factory.eINSTANCE.createElementImport();
@@ -141,18 +127,6 @@ public class StructuredActivityNodeTest extends ActionTest {
 	 */
 	public void testGetImportedMembers() {
 		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getSuperGroup() <em>Super Group</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getSuperGroup()
-	 * @generated
-	 */
-	public void testGetSuperGroup() {
-		// TODO: implement this union feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
@@ -242,21 +216,7 @@ public class StructuredActivityNodeTest extends ActionTest {
 
 
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElementsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedElements() {
-		testGetOwnedElementsGen();
-		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getElementImports()));
@@ -264,33 +224,7 @@ public class StructuredActivityNodeTest extends ActionTest {
 		assertTrue(getFixture().getOwnedElements().containsAll(getFixture().getPackageImports()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.ActivityGroup#getSubgroups() <em>Subgroup</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.ActivityGroup#getSubgroups()
-	 * @generated
-	 */
-	public void testGetSubgroups() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwnerGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwner() {
-		testGetOwnerGen();
-		
 		super.testGetOwner();
 
 		assertSame(getFixture().getActivityGroup_activity(), getFixture().getOwner());
@@ -377,21 +311,7 @@ public class StructuredActivityNodeTest extends ActionTest {
 		assertNotSame(activity, getFixture().getActivityGroup_activity());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedMembers() {
-		testGetOwnedMembersGen();
-		
 		setUpOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getVariables()));

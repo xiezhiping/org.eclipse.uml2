@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTest.java,v 1.5 2005/08/29 19:23:17 khussey Exp $
+ * $Id: OperationTest.java,v 1.6 2006/05/29 17:27:33 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -463,42 +463,14 @@ public class OperationTest extends BehavioralFeatureTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwnedElements() <em>Owned Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwnedElements()
-	 * @generated
-	 */
-	public void testGetOwnedElementsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedElements() {
-		testGetOwnedElementsGen();
-		
 		super.testGetOwnedElements();
 
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getLowerValue()));
 		assertTrue(getFixture().getOwnedElements().contains(getFixture().getUpperValue()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwnerGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwner() {
-		testGetOwnerGen();
-		
 		super.testGetOwner();
 
 		assertSame(getFixture().getOwningParameter(), getFixture().getOwner());
@@ -874,21 +846,7 @@ public class OperationTest extends BehavioralFeatureTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.RedefinableElement#getRedefinitionContexts()
-	 * @generated
-	 */
-	public void testGetRedefinitionContextsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetRedefinitionContexts() {
-		testGetRedefinitionContextsGen();
-		
 		super.testGetRedefinitionContexts();
 
 		assertTrue(getFixture().getRedefinitionContexts().contains(getFixture().getClass_()));
@@ -898,21 +856,7 @@ public class OperationTest extends BehavioralFeatureTest {
 		assertTrue(getFixture().getRedefinitionContexts().contains(getFixture().getDatatype()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.NamedElement#getNamespace() <em>Namespace</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.NamedElement#getNamespace()
-	 * @generated
-	 */
-	public void testGetNamespaceGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetNamespace() {
-		testGetNamespaceGen();
-		
 		super.testGetNamespace();
 
 		assertSame(getFixture().getClass_(), getFixture().getNamespace());
@@ -921,21 +865,7 @@ public class OperationTest extends BehavioralFeatureTest {
 		assertSame(getFixture().getDatatype(), getFixture().getNamespace());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Feature#getFeaturingClassifiers()
-	 * @generated
-	 */
-	public void testGetFeaturingClassifiersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetFeaturingClassifiers() {
-		testGetFeaturingClassifiersGen();
-		
 		super.testGetFeaturingClassifiers();
 
 		assertTrue(getFixture().getFeaturingClassifiers().contains(getFixture().getClass_()));
@@ -947,21 +877,7 @@ public class OperationTest extends BehavioralFeatureTest {
 		}
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Namespace#getOwnedMembers() <em>Owned Member</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Namespace#getOwnedMembers()
-	 * @generated
-	 */
-	public void testGetOwnedMembersGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetOwnedMembers() {
-		testGetOwnedMembersGen();
-		
 		super.testGetOwnedMembers();
 
 		assertTrue(getFixture().getOwnedMembers().contains(getFixture().getBodyCondition()));
@@ -969,21 +885,7 @@ public class OperationTest extends BehavioralFeatureTest {
 		assertTrue(getFixture().getOwnedMembers().containsAll(getFixture().getPreconditions()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.RedefinableElement#getRedefinedElements()
-	 * @generated
-	 */
-	public void testGetRedefinedElementsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetRedefinedElements() {
-		testGetRedefinedElementsGen();
-		
 		super.testGetRedefinedElements();
 
 		assertTrue(getFixture().getRedefinedElements().containsAll(getFixture().getRedefinedOperations()));

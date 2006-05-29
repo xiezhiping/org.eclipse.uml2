@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionTest.java,v 1.2 2005/05/18 17:04:27 khussey Exp $
+ * $Id: ReadStructuralFeatureActionTest.java,v 1.3 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -82,21 +82,7 @@ public class ReadStructuralFeatureActionTest extends StructuralFeatureActionTest
 	}
 
 
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Action#getOutputs() <em>Output</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Action#getOutputs()
-	 * @generated
-	 */
-	public void testGetOutputsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 	public void testGetOutputs() {
-		testGetOutputsGen();
-		
 		super.testGetOutputs();
 
 		assertTrue(getFixture().getOutputs().contains(getFixture().getResult()));

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionTest.java,v 1.2 2005/05/18 17:04:28 khussey Exp $
+ * $Id: ExtensionTest.java,v 1.3 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -133,8 +133,6 @@ public class ExtensionTest extends AssociationTest {
 
 
 	public void testGetMetaclass() {
-		testGetMembersGen();
-		
 		Property property = UML2Factory.eINSTANCE.createProperty();
 		property.setType(UML2Factory.eINSTANCE.createClass());
 		getFixture().getMemberEnds().add(property);

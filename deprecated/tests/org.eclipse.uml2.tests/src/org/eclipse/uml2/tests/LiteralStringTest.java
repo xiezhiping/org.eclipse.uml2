@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringTest.java,v 1.6 2005/10/05 15:24:23 khussey Exp $
+ * $Id: LiteralStringTest.java,v 1.7 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -24,8 +24,8 @@ import org.eclipse.uml2.UML2Factory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.LiteralString#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.LiteralString#stringValue() <em>String Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.LiteralString#isComputable() <em>Is Computable</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -100,6 +100,7 @@ public class LiteralStringTest extends LiteralSpecificationTest {
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
+
 	public void testIsComputable() {
 		testIsComputableGen();
 		
@@ -117,7 +118,6 @@ public class LiteralStringTest extends LiteralSpecificationTest {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
-
 
 	public void testStringValue() {
 		testStringValueGen();

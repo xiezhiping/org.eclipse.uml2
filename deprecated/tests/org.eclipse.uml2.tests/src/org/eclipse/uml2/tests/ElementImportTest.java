@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportTest.java,v 1.3 2005/05/18 17:04:28 khussey Exp $
+ * $Id: ElementImportTest.java,v 1.4 2006/05/29 17:27:34 khussey Exp $
  */
 package org.eclipse.uml2.tests;
 
@@ -163,7 +163,6 @@ public class ElementImportTest extends DirectedRelationshipTest {
 	}
 
 
-
 	public void testGetName() {
 		testGetNameGen();
 		
@@ -176,60 +175,19 @@ public class ElementImportTest extends DirectedRelationshipTest {
 		assertEquals(getFixture().getAlias(), getFixture().getName());
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getTargets() <em>Target</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DirectedRelationship#getTargets()
-	 * @generated
-	 */
-	public void testGetTargetsGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetTargets() {
-		testGetTargetsGen();
-		
 		super.testGetTargets();
 
 		assertTrue(getFixture().getTargets().contains(getFixture().getImportedElement()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.DirectedRelationship#getSources() <em>Source</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.DirectedRelationship#getSources()
-	 * @generated
-	 */
-	public void testGetSourcesGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
 	public void testGetSources() {
-		testGetSourcesGen();
-		
 		super.testGetSources();
 
 		assertTrue(getFixture().getSources().contains(getFixture().getImportingNamespace()));
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.Element#getOwner() <em>Owner</em>}' feature getter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.Element#getOwner()
-	 * @generated
-	 */
-	public void testGetOwnerGen() {
-		// TODO: implement this union feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
 	public void testGetOwner() {
-		testGetOwnerGen();
-		
 		super.testGetOwner();
 
 		assertSame(getFixture().getImportingNamespace(), getFixture().getOwner());
