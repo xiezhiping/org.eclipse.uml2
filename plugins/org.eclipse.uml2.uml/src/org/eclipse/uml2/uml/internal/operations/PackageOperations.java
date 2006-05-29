@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.26 2006/05/23 17:32:16 khussey Exp $
+ * $Id: PackageOperations.java,v 1.27 2006/05/29 20:29:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -609,7 +609,7 @@ public class PackageOperations
 				.next()).getAppliedProfile();
 
 			if (appliedProfile != null
-				&& appliedProfile.getQualifiedName().equals(qualifiedName)) {
+				&& safeEquals(appliedProfile.getQualifiedName(), qualifiedName)) {
 
 				return appliedProfile;
 			}
