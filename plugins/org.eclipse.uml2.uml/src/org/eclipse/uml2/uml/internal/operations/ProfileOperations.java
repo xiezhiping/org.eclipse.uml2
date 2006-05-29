@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.27 2006/05/16 14:59:38 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.28 2006/05/29 21:10:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -41,14 +42,12 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.VisibilityKind;
-
-import org.eclipse.uml2.uml.Profile;
-
-import org.eclipse.uml2.uml.Stereotype;
 
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -112,9 +111,22 @@ public class ProfileOperations
 			org.eclipse.uml2.uml.Class referencedMetaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
 				.next();
 
-			if (containsSpecializations(profile, referencedMetaclass)) {
-				result = false;
-			} else {
+			for (Iterator allContents = getAllContents(profile, true, false); allContents
+				.hasNext();) {
+
+				Object object = allContents.next();
+
+				if (object instanceof org.eclipse.uml2.uml.Package
+					&& containsSpecializations(
+						(org.eclipse.uml2.uml.Package) object,
+						referencedMetaclass)) {
+
+					result = false;
+					break;
+				}
+			}
+
+			if (result) {
 
 				for (Iterator allParents = referencedMetaclass.allParents()
 					.iterator(); allParents.hasNext();) {
