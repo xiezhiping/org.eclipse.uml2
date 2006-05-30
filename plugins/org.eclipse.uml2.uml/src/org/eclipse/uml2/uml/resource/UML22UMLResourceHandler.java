@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.24 2006/05/18 16:55:40 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.25 2006/05/30 14:02:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -56,6 +56,7 @@ import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DestructionEvent;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservation;
@@ -104,6 +105,7 @@ import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.TimeObservation;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -1582,6 +1584,20 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseTimeExpression(timeExpression);
+			}
+
+			public Object caseTransition(Transition transition) {
+				Constraint guard = transition.getGuard();
+
+				if (guard != null) {
+					EList ownedRules = transition.getOwnedRules();
+
+					if (!ownedRules.contains(guard)) {
+						ownedRules.add(guard);
+					}
+				}
+
+				return super.caseTransition(transition);
 			}
 
 			public Object caseTrigger(Trigger trigger) {
