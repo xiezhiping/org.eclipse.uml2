@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.25 2006/05/30 14:02:34 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.26 2006/06/01 16:52:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1179,7 +1179,17 @@ public class UML22UMLResourceHandler
 					ProfileApplication profileApplication) {
 				caseElement(profileApplication);
 
-				removeExtension(resource, profileApplication);
+				AnyType extension = removeExtension(resource,
+					profileApplication);
+
+				if (extension != null) {
+					Object value = getValue(extension.getMixed(),
+						"importedPackage", true); //$NON-NLS-1$
+
+					if (value instanceof Profile) {
+						removeExtension(resource, (Profile) value);
+					}
+				}
 
 				String profileName = null;
 				InternalEObject internalEObject = (InternalEObject) profileApplication
