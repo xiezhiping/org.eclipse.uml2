@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.10 2006/02/21 14:31:31 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.11 2006/06/03 00:55:51 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -73,17 +73,20 @@ public class CacheAdapter
 	}
 
 	protected void addAdapter(EObject eObject) {
-		Resource eResource = eObject.eResource();
 
-		if (eResource == null) {
-			addAdapter(EcoreUtil.getRootContainer(eObject).eAdapters());
-		} else {
-			ResourceSet resourceSet = eResource.getResourceSet();
+		if (eObject != null && !eObject.eIsProxy()) {
+			Resource eResource = eObject.eResource();
 
-			if (resourceSet == null) {
-				addAdapter(eResource.eAdapters());
+			if (eResource == null) {
+				addAdapter(EcoreUtil.getRootContainer(eObject).eAdapters());
 			} else {
-				addAdapter(resourceSet.eAdapters());
+				ResourceSet resourceSet = eResource.getResourceSet();
+
+				if (resourceSet == null) {
+					addAdapter(eResource.eAdapters());
+				} else {
+					addAdapter(resourceSet.eAdapters());
+				}
 			}
 		}
 	}
