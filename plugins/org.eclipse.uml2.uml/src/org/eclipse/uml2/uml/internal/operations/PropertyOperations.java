@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.29 2006/05/12 20:17:54 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.30 2006/06/05 20:32:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -857,8 +857,8 @@ public class PropertyOperations
 	public static boolean isConsistentWith(Property property,
 			RedefinableElement redefinee) {
 
-		if (redefinee.isRedefinitionContextValid(property)
-			&& redefinee instanceof Property) {
+		if (redefinee instanceof Property
+			&& redefinee.isRedefinitionContextValid(property)) {
 
 			Property prop = (Property) redefinee;
 
@@ -868,8 +868,8 @@ public class PropertyOperations
 			Type propType = prop.getType();
 			int propUpperBound = prop.upperBound();
 
-			return (type == null
-				? propType == null
+			return (propType == null
+				? type == null
 				: propType.conformsTo(type))
 				&& prop.lowerBound() >= property.lowerBound()
 				&& (upperBound == LiteralUnlimitedNatural.UNLIMITED || (propUpperBound != LiteralUnlimitedNatural.UNLIMITED && propUpperBound <= upperBound))

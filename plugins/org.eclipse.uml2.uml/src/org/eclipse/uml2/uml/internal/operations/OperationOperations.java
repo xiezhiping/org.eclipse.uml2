@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.10 2006/03/13 20:50:41 khussey Exp $
+ * $Id: OperationOperations.java,v 1.11 2006/06/05 20:32:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -372,8 +372,8 @@ public class OperationOperations
 	public static boolean isConsistentWith(Operation operation,
 			RedefinableElement redefinee) {
 
-		if (redefinee.isRedefinitionContextValid(operation)
-			&& redefinee instanceof Operation) {
+		if (redefinee instanceof Operation
+			&& redefinee.isRedefinitionContextValid(operation)) {
 
 			Operation op = (Operation) redefinee;
 
