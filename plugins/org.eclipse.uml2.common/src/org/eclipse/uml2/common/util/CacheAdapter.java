@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.11 2006/06/03 00:55:51 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.12 2006/06/06 22:22:28 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -112,6 +112,18 @@ public class CacheAdapter
 		if (!adapting) {
 			super.setTarget(target);
 		}
+	}
+
+	protected void unsetTarget(EObject target) {
+		super.unsetTarget(target);
+
+		clear(target.eResource());
+	}
+
+	protected void unsetTarget(Resource target) {
+		super.unsetTarget(target);
+
+		clear(target);
 	}
 
 	public void notifyChanged(Notification msg) {
