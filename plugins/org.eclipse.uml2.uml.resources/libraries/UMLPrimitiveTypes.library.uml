@@ -5,11 +5,11 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Integer" name="Integer"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="String" name="String"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="UnlimitedNatural" name="UnlimitedNatural"/>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_profileApplication.0">
+      <eAnnotations xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
   <Standard:ModelLibrary xmi:id="_R_t2UXMkEdq-w6X-VZUD9Q" base_Package="_0"/>

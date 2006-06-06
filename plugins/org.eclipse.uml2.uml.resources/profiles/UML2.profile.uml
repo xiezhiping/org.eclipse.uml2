@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w">
   <uml:Profile xmi:id="_0" name="UML2" metamodelReference="_packageImport.0">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__n5r8NSTEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <eAnnotations xmi:id="__n5r8NSTEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <contents xmi:type="ecore:EPackage" xmi:id="_dhEUENSUEdqN9tnr0j3PAQ" name="UML2" nsURI="http://www.eclipse.org/uml2/schemas/UML2/0" nsPrefix="UML2">
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUEdSUEdqN9tnr0j3PAQ" name="Action">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUEtSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Action"/>
+          <eAnnotations xmi:id="_dhEUEtSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Action"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUE9SUEdqN9tnr0j3PAQ" name="base_Action" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Action"/>
           </eStructuralFeatures>
@@ -13,7 +13,7 @@
           </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUFdSUEdqN9tnr0j3PAQ" name="Activity">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUFtSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Activity"/>
+          <eAnnotations xmi:id="_dhEUFtSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Activity"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUF9SUEdqN9tnr0j3PAQ" name="base_Activity" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Activity"/>
           </eStructuralFeatures>
@@ -25,7 +25,7 @@
           </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUGtSUEdqN9tnr0j3PAQ" name="Comment">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUG9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Comment"/>
+          <eAnnotations xmi:id="_dhEUG9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Comment"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUHNSUEdqN9tnr0j3PAQ" name="base_Comment" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Comment"/>
           </eStructuralFeatures>
@@ -34,7 +34,7 @@
           </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUHtSUEdqN9tnr0j3PAQ" name="Message">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUH9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Message"/>
+          <eAnnotations xmi:id="_dhEUH9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Message"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUINSUEdqN9tnr0j3PAQ" name="base_Message" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Message"/>
           </eStructuralFeatures>
@@ -43,7 +43,7 @@
           </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_dhEUItSUEdqN9tnr0j3PAQ" name="TemplateSignature">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dhEUI9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="TemplateSignature"/>
+          <eAnnotations xmi:id="_dhEUI9SUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="TemplateSignature"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_dhEUJNSUEdqN9tnr0j3PAQ" name="base_TemplateSignature" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//TemplateSignature"/>
           </eStructuralFeatures>
@@ -55,7 +55,7 @@
           </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_3Bb8Z-CPEdqoz4RYXIwjlw" name="Expression">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3Bb8aOCPEdqoz4RYXIwjlw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Expression"/>
+          <eAnnotations xmi:id="_3Bb8aOCPEdqoz4RYXIwjlw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Expression"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3Bb8aeCPEdqoz4RYXIwjlw" name="base_OpaqueExpression" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//OpaqueExpression"/>
           </eStructuralFeatures>
@@ -67,7 +67,7 @@
           </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_3Bb8bOCPEdqoz4RYXIwjlw" name="OpaqueExpression">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3Bb8beCPEdqoz4RYXIwjlw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="OpaqueExpression"/>
+          <eAnnotations xmi:id="_3Bb8beCPEdqoz4RYXIwjlw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="OpaqueExpression"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3Bb8buCPEdqoz4RYXIwjlw" name="base_Expression" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Expression"/>
           </eStructuralFeatures>
@@ -83,17 +83,17 @@
         </eClassifiers>
       </contents>
     </eAnnotations>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
+    <elementImport xmi:id="_elementImport.0">
       <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </elementImport>
-    <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.0">
+    <packageImport xmi:id="_packageImport.0">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
     </packageImport>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Action" name="Action">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Action-base_Action" name="base_Action" association="Action_Action">
+      <ownedAttribute xmi:id="Action-base_Action" name="base_Action" association="Action_Action">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Action"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Action-effect" name="effect">
+      <ownedAttribute xmi:id="Action-effect" name="effect">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Action-effect-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Action-effect-_lowerValue"/>
@@ -105,15 +105,15 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Activity" name="Activity">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-base_Activity" name="base_Activity" association="Activity_Activity">
+      <ownedAttribute xmi:id="Activity-base_Activity" name="base_Activity" association="Activity_Activity">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Activity"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-body" name="body">
+      <ownedAttribute xmi:id="Activity-body" name="body">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Activity-body-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Activity-body-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Activity-language" name="language">
+      <ownedAttribute xmi:id="Activity-language" name="language">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Activity-language-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Activity-language-_lowerValue"/>
@@ -125,10 +125,10 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Comment" name="Comment">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Comment-base_Comment" name="base_Comment" association="Comment_Comment">
+      <ownedAttribute xmi:id="Comment-base_Comment" name="base_Comment" association="Comment_Comment">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Comment"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Comment-bodyExpression" name="bodyExpression" aggregation="composite">
+      <ownedAttribute xmi:id="Comment-bodyExpression" name="bodyExpression" aggregation="composite">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#StringExpression"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Comment-bodyExpression-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Comment-bodyExpression-_lowerValue"/>
@@ -140,10 +140,10 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Message" name="Message">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Message-base_Message" name="base_Message" association="Message_Message">
+      <ownedAttribute xmi:id="Message-base_Message" name="base_Message" association="Message_Message">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Message"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Message-signature" name="signature">
+      <ownedAttribute xmi:id="Message-signature" name="signature">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Message-signature-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Message-signature-_lowerValue"/>
@@ -155,15 +155,15 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="TemplateSignature" name="TemplateSignature">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="TemplateSignature-base_TemplateSignature" name="base_TemplateSignature" association="TemplateSignature_TemplateSignature">
+      <ownedAttribute xmi:id="TemplateSignature-base_TemplateSignature" name="base_TemplateSignature" association="TemplateSignature_TemplateSignature">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TemplateSignature"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="TemplateSignature-nestedSignature" name="nestedSignature">
+      <ownedAttribute xmi:id="TemplateSignature-nestedSignature" name="nestedSignature">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TemplateSignature"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TemplateSignature-nestedSignature-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TemplateSignature-nestedSignature-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="TemplateSignature-nestingSignature" name="nestingSignature">
+      <ownedAttribute xmi:id="TemplateSignature-nestingSignature" name="nestingSignature">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#TemplateSignature"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="TemplateSignature-nestingSignature-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TemplateSignature-nestingSignature-_lowerValue"/>
@@ -175,15 +175,15 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Expression" name="Expression">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Expression-base_OpaqueExpression" name="base_OpaqueExpression" association="OpaqueExpression_Expression">
+      <ownedAttribute xmi:id="Expression-base_OpaqueExpression" name="base_OpaqueExpression" association="OpaqueExpression_Expression">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#OpaqueExpression"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Expression-operand" name="operand" aggregation="composite">
+      <ownedAttribute xmi:id="Expression-operand" name="operand" aggregation="composite">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ValueSpecification"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Expression-operand-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Expression-operand-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="Expression-symbol" name="symbol">
+      <ownedAttribute xmi:id="Expression-symbol" name="symbol">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Expression-symbol-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Expression-symbol-_lowerValue"/>
@@ -195,20 +195,20 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="OpaqueExpression" name="OpaqueExpression">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-base_Expression" name="base_Expression" association="Expression_OpaqueExpression">
+      <ownedAttribute xmi:id="OpaqueExpression-base_Expression" name="base_Expression" association="Expression_OpaqueExpression">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Expression"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-behavior" name="behavior">
+      <ownedAttribute xmi:id="OpaqueExpression-behavior" name="behavior">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Behavior"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OpaqueExpression-behavior-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression-behavior-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-body" name="body">
+      <ownedAttribute xmi:id="OpaqueExpression-body" name="body">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OpaqueExpression-body-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression-body-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="OpaqueExpression-language" name="language">
+      <ownedAttribute xmi:id="OpaqueExpression-language" name="language">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="OpaqueExpression-language-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="OpaqueExpression-language-_lowerValue"/>
@@ -219,11 +219,11 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Expression_OpaqueExpression-extension_OpaqueExpression-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_profileApplication.0">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VFz_AdSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_profileApplication.0">
+      <eAnnotations xmi:id="_VFz_AdSUEdqN9tnr0j3PAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
       </eAnnotations>
-      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Profile>
   <Ecore:EPackage xmi:id="_WI_TQNSUEdqN9tnr0j3PAQ" base_Package="_0" nsURI="http://www.eclipse.org/uml2/schemas/UML2/0"/>
