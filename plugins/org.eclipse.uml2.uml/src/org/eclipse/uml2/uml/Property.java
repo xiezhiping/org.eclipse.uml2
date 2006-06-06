@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.20 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Property.java,v 1.21 2006/06/06 22:20:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -816,7 +816,6 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isNavigable indicates whether it is possible to navigate across the property.
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
 	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
 	 * <!-- end-model-doc -->

@@ -2154,7 +2154,7 @@
       <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
           lowerBound="1" eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.&#xD;&#xA;The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined attribute is property.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))"/>
+          <details key="documentation" value="The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.&#xD;&#xA;redefinee.isRedefinitionContextValid(self)&#xD;&#xA;result = redefinee.oclIsKindOf(Property) and &#xA;  let prop : Property = redefinee.oclAsType(Property) in &#xA;  (prop.type.conformsTo(self.type) and &#xA;  ((prop.lowerBound()->notEmpty() and self.lowerBound()->notEmpty()) implies prop.lowerBound() >= self.lowerBound()) and &#xA;  ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() &lt;= self.lowerBound()) and &#xA;  (self.isDerived implies prop.isDerived) and&#xA;  (self.isComposite implies prop.isComposite))"/>
         </eAnnotations>
         <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
         <eParameters name="redefinee" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
@@ -2320,7 +2320,7 @@
     </eOperations>
     <eOperations name="isNavigable" ordered="false" lowerBound="1" eType="#//Boolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The query isNavigable indicates whether it is possible to navigate across the property.&#xD;&#xA;The query isNavigable() indicates whether it is possible to navigate across the property.&#xD;&#xA;result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)"/>
+        <details key="documentation" value="The query isNavigable() indicates whether it is possible to navigate across the property.&#xD;&#xA;result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" ordered="false"
@@ -2758,7 +2758,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation.&#xD;&#xA;The DataType that owns this Property."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.30 2006/06/05 20:32:55 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.31 2006/06/06 22:23:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -842,7 +842,6 @@ public class PropertyOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.
-	 * The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined attribute is property.
 	 * redefinee.isRedefinitionContextValid(self)
 	 * result = redefinee.oclIsKindOf(Property) and 
 	 *   let prop : Property = redefinee.oclAsType(Property) in 
