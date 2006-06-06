@@ -8,17 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.7 2006/04/25 21:01:44 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.8 2006/06/06 21:05:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.XMLSave.XMLTypeInfo;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
 /**
@@ -69,9 +74,23 @@ public class UMLResourceFactoryImpl
 		Map defaultSaveOptions = resource.getDefaultSaveOptions();
 
 		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
 		defaultSaveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		defaultSaveOptions.put(XMIResource.OPTION_USE_XMI_TYPE, Boolean.TRUE);
+
+		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
+			new XMLTypeInfo() {
+
+				public boolean shouldSaveType(EClass objectType,
+						EClassifier featureType, EStructuralFeature feature) {
+					return objectType != featureType
+						&& objectType != XMLTypePackage.Literals.ANY_TYPE;
+				}
+
+				public boolean shouldSaveType(EClass objectType,
+						EClass featureType, EStructuralFeature feature) {
+					return objectType != featureType;
+				}
+			});
 
 		return resource;
 	}
