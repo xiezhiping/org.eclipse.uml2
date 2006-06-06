@@ -13850,7 +13850,7 @@
           </returnResult>
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D430B77C7031C" name="isNavigable" type="_3ADC7B74022D3CA010AC0090" isQuery="true" bodyCondition="_rm0PyhTaEdqZu-3Jy1-uYg">
-          <ownedComment xmi:id="_rm0PxhTaEdqZu-3Jy1-uYg" body="The query isNavigable indicates whether it is possible to navigate across the property." annotatedElement="_3ADC7B74022D430B77C7031C">
+          <ownedComment xmi:id="_rm0PxhTaEdqZu-3Jy1-uYg" body="The query isNavigable() indicates whether it is possible to navigate across the property." annotatedElement="_3ADC7B74022D430B77C7031C">
             <eAnnotations xmi:id="_rm0PxxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rm0PyBTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
