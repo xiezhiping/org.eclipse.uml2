@@ -854,7 +854,6 @@
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_PyCx8GveEdq4DLWZOhbdEA" name="InstanceValue">
     <ownedOperation xmi:id="_QUJ-oWWKEdq-f4093SZhVA" name="stringValue" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw" isQuery="true">
-      <eAnnotations xmi:id="_SQIjIGWKEdq-f4093SZhVA" source="keywords"/>
       <returnResult xmi:id="_T0RPYGWKEdq-f4093SZhVA" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
   </ownedMember>
@@ -1785,18 +1784,23 @@
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind"/>
   <ownedMember xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_-Ixo8H4XEdq7cMP_l1l5Gg" name="Duration">
-    <ownedOperation xmi:id="_I3a88H4YEdq7cMP_l1l5Gg" name="stringValue" type="_aAyVgGvsEdqG6fBIPwe-mw" isQuery="true">
+    <ownedOperation xmi:id="_I3a88H4YEdq7cMP_l1l5Gg" name="stringValue" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw" isQuery="true">
       <returnResult xmi:id="_I3a88X4YEdq7cMP_l1l5Gg" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_DylKEH4YEdq7cMP_l1l5Gg" name="TimeExpression">
-    <ownedOperation xmi:id="_JdkW8H4YEdq7cMP_l1l5Gg" name="stringValue" type="_aAyVgGvsEdqG6fBIPwe-mw" isQuery="true">
+    <ownedOperation xmi:id="_JdkW8H4YEdq7cMP_l1l5Gg" name="stringValue" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw" isQuery="true">
       <returnResult xmi:id="_JdkW8X4YEdq7cMP_l1l5Gg" type="_aAyVgGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_nDq0wJPzEdqpjIDDFZ2Hgw" name="Image"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_rHT3YKOsEdqi_5gqUMOQtA" name="BehavioralFeature" isAbstract="true">
     <ownedOperation xmi:id="_3Y0aYKOuEdqi_5gqUMOQtA" name="createReturnResult" type="_KyaPMGveEdq4DLWZOhbdEA">
+      <ownedComment xmi:id="_WdHFYPZPEdqYHf-imTcTdw" body="Creates a return result parameter with the specified name and type." annotatedElement="_3Y0aYKOuEdqi_5gqUMOQtA">
+        <eAnnotations xmi:id="_WdHFYfZPEdqYHf-imTcTdw" source="appliedStereotypes">
+          <contents xmi:type="Default_0:Default__Documentation" xmi:id="_WdHFYvZPEdqYHf-imTcTdw"/>
+        </eAnnotations>
+      </ownedComment>
       <returnResult xmi:id="_8N3dwKOuEdqi_5gqUMOQtA" type="_KyaPMGveEdq4DLWZOhbdEA" direction="return"/>
       <ownedParameter xmi:id="_ESyWcKOvEdqi_5gqUMOQtA" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__VyJkaOxEdqi_5gqUMOQtA" value="1"/>
@@ -1812,19 +1816,39 @@
   <ownedMember xmi:type="uml:Class" xmi:id="_JBgfoKPAEdqi_5gqUMOQtA" name="DirectedRelationship" isAbstract="true"/>
   <ownedMember xmi:type="uml:Class" xmi:id="_DAbfwa69EdqjppZik4kD8A" name="Component">
     <ownedOperation xmi:id="_IJwKAK69EdqjppZik4kD8A" name="createOwnedClass" type="_00owUGvdEdq4DLWZOhbdEA">
+      <ownedComment xmi:id="_gykdUPZPEdqYHf-imTcTdw" body="Creates a(n) (abstract) class with the specified name as a packaged element of this component." annotatedElement="_IJwKAK69EdqjppZik4kD8A">
+        <eAnnotations xmi:id="_gykdUfZPEdqYHf-imTcTdw" source="appliedStereotypes">
+          <contents xmi:type="Default_0:Default__Documentation" xmi:id="_gykdUvZPEdqYHf-imTcTdw"/>
+        </eAnnotations>
+      </ownedComment>
       <returnResult xmi:id="_IJwKAa69EdqjppZik4kD8A" type="_00owUGvdEdq4DLWZOhbdEA" direction="return"/>
       <ownedParameter xmi:id="_IJwKAq69EdqjppZik4kD8A" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
       <ownedParameter xmi:id="_IJwKA669EdqjppZik4kD8A" name="isAbstract" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_IJwKBK69EdqjppZik4kD8A" name="createOwnedEnumeration" type="_I6N3UGwGEdq7X4sGURiZYA">
+      <ownedComment xmi:id="_lEKOUPZPEdqYHf-imTcTdw" body="Creates a enumeration with the specified name as a packaged element of this component." annotatedElement="_IJwKBK69EdqjppZik4kD8A">
+        <eAnnotations xmi:id="_lEKOUfZPEdqYHf-imTcTdw" source="appliedStereotypes">
+          <contents xmi:type="Default_0:Default__Documentation" xmi:id="_lEKOUvZPEdqYHf-imTcTdw"/>
+        </eAnnotations>
+      </ownedComment>
       <returnResult xmi:id="_IJwKBa69EdqjppZik4kD8A" type="_I6N3UGwGEdq7X4sGURiZYA" direction="return"/>
       <ownedParameter xmi:id="_IJwKBq69EdqjppZik4kD8A" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_IJwKB669EdqjppZik4kD8A" name="createOwnedPrimitiveType" type="_V6vuYGwGEdq7X4sGURiZYA">
+      <ownedComment xmi:id="_o0qrgPZPEdqYHf-imTcTdw" body="Creates a primitive type with the specified name as a packaged element of this component." annotatedElement="_IJwKB669EdqjppZik4kD8A">
+        <eAnnotations xmi:id="_o0qrgfZPEdqYHf-imTcTdw" source="appliedStereotypes">
+          <contents xmi:type="Default_0:Default__Documentation" xmi:id="_o0qrgvZPEdqYHf-imTcTdw"/>
+        </eAnnotations>
+      </ownedComment>
       <returnResult xmi:id="_IJwKCK69EdqjppZik4kD8A" type="_V6vuYGwGEdq7X4sGURiZYA" direction="return"/>
       <ownedParameter xmi:id="_IJwKCa69EdqjppZik4kD8A" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
     <ownedOperation xmi:id="_IJwKCq69EdqjppZik4kD8A" name="createOwnedInterface" type="_8Ugn8GvtEdqG6fBIPwe-mw">
+      <ownedComment xmi:id="_s-DiwPZPEdqYHf-imTcTdw" body="Creates an interface with the specified name as a packaged element of this component." annotatedElement="_IJwKCq69EdqjppZik4kD8A">
+        <eAnnotations xmi:id="_s-DiwfZPEdqYHf-imTcTdw" source="appliedStereotypes">
+          <contents xmi:type="Default_0:Default__Documentation" xmi:id="_s-DiwvZPEdqYHf-imTcTdw"/>
+        </eAnnotations>
+      </ownedComment>
       <returnResult xmi:id="_IJwKC669EdqjppZik4kD8A" type="_8Ugn8GvtEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_IJwKDK69EdqjppZik4kD8A" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
     </ownedOperation>
