@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.9 2006/05/26 16:34:03 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -142,11 +142,10 @@ public interface BehavioredClassifier
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InterfaceRealization}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier <em>Implementing Classifier</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Interface Realization</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interface Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_InterfaceRealization()
 	 * @see org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier

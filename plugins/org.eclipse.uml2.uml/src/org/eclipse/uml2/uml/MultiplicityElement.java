@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.14 2006/05/26 16:34:02 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.15 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,6 @@ public interface MultiplicityElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered..
 	 * For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
@@ -106,7 +105,6 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the upper bound of the multiplicity interval.
-	 * Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
@@ -133,7 +131,6 @@ public interface MultiplicityElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the lower bound of the multiplicity interval.
-	 * Specifies the lower bound of the multiplicity interval, if it is expressed as an integer.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.9 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Constraint.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -65,8 +65,6 @@ public interface Constraint
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A condition that must be true when evaluated in order for the constraint to be satisfied.
-	 * 
 	 * A condition that must be true when evaluated in order for the constraint to be satisfied.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specification</em>' containment reference.

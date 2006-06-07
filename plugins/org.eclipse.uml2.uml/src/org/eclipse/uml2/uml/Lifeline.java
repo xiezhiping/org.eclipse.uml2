@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Lifeline.java,v 1.11 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -167,10 +167,6 @@ public interface Lifeline
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InteractionFragment}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InteractionFragment#getCovereds <em>Covered</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Covered By</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the InteractionFragments in which this Lifeline takes part.

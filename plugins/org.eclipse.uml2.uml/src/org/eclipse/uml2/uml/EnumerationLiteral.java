@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteral.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
+ * $Id: EnumerationLiteral.java,v 1.5 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,6 @@ public interface EnumerationLiteral
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The enumeration that this literal belongs to.
 	 * The Enumeration that this EnumerationLiteral is a member of.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Enumeration</em>' container reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Connector.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -80,8 +80,7 @@ public interface Connector
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector.
-	 * The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
+	 * A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_RedefinedConnector()
@@ -197,10 +196,6 @@ public interface Connector
 	 * Returns the value of the '<em><b>Contract</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Behavior}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Contract</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The set of Behaviors that specify the valid interaction patterns across the connector.

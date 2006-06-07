@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Type.java,v 1.8 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,6 @@ public interface Type
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the owning package of a package.
 	 * Specifies the owning package of this classifier, if any.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealization.java,v 1.3 2006/05/12 20:38:06 khussey Exp $
+ * $Id: ComponentRealization.java,v 1.4 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -40,10 +40,6 @@ public interface ComponentRealization
 	 * Returns the value of the '<em><b>Abstraction</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Component#getRealizations <em>Realization</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Abstraction</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
@@ -70,10 +66,6 @@ public interface ComponentRealization
 	/**
 	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Realizing Classifier</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A classifier that is involved in the implementation of the Component that owns this ComponentRealization.

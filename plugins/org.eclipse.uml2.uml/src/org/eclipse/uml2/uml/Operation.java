@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.13 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Operation.java,v 1.14 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -89,7 +89,7 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property from Basic to derive this information from the return result for this Operation.
+	 * This information is derived from the return result for this Operation.
 	 * Specifies whether the return parameter is ordered or not, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
@@ -116,7 +116,7 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property from Basic to derive this information from the return result for this Operation.
+	 * This information is derived from the return result for this Operation.
 	 * Specifies whether the return parameter is unique or not, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
@@ -143,7 +143,7 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property from Basic to derive this information from the return result for this Operation.
+	 * This information is derived from the return result for this Operation.
 	 * Specifies the lower multiplicity of the return parameter, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
@@ -170,7 +170,7 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property from Basic to derive this information from the return result for this Operation.
+	 * This information is derived from the return result for this Operation.
 	 * Specifies the upper multiplicity of the return parameter, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
@@ -198,7 +198,6 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The class that owns the operation.
-	 * The class that owns this operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' container reference.
 	 * @see #setClass_(org.eclipse.uml2.uml.Class)
@@ -398,7 +397,6 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DataType that owns this Operation.
-	 * The DataType that owns this Property.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
 	 * @see #setDatatype(DataType)
@@ -472,7 +470,7 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property from Basic to derive this information from the return result for this Operation.
+	 * This information is derived from the return result for this Operation.
 	 * Specifies the return result of the operation, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
@@ -560,8 +558,6 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
-	 * If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
-	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
@@ -574,8 +570,6 @@ public interface Operation
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
-	 * If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
-	 * 
 	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.9 2006/05/13 04:46:32 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -90,9 +90,7 @@ public interface OpaqueExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the language. If languages are unspecified, it might be implicit from the expression body or the context. Languages are matched to body strings by order.
 	 * Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' attribute list.
 	 * @see #isSetLanguages()

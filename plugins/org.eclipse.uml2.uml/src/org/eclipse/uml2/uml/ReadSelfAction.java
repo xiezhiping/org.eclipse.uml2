@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ReadSelfAction.java,v 1.7 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,7 +45,6 @@ public interface ReadSelfAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Gives the output pin on which the hosting object is placed.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)

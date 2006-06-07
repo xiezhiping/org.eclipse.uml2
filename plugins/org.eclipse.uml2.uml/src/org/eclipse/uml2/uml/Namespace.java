@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Namespace.java,v 1.11 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -225,7 +225,6 @@ public interface Namespace
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property of Abstractions::Namespaces::Namespace.
 	 * A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member</em>' reference list.
@@ -306,7 +305,6 @@ public interface Namespace
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property of Abstractions::Namespaces::Namespace.
 	 * A collection of NamedElements owned by the Namespace.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Member</em>' reference list.
@@ -404,7 +402,7 @@ public interface Namespace
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query getNamesOfMember() is overridden to take account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
+	 * The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
 	 * The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
 	 * result = if self.ownedMember ->includes(element)
 	 * then Set{}->include(element.name)

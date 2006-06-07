@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.12 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.13 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -87,8 +87,7 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Groups containing the edge. Multiplicity specialized to [0..1] for StructuredActivityGroup.
-	 * Groups containing the edge. Multiplicity specialized to [0..1] for StructuredActivity-Group.
+	 * Groups containing the edge.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityEdge_InGroup()

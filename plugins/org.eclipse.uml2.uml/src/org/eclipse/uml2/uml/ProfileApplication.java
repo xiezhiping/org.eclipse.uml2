@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -95,11 +95,10 @@ public interface ProfileApplication
 	 * Returns the value of the '<em><b>Applying Package</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Applying Package</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The package that owns the profile application.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applying Package</em>' container reference.
 	 * @see #setApplyingPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_ApplyingPackage()

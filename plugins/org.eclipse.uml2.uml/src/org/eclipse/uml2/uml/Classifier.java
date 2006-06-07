@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.18 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Classifier.java,v 1.19 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -149,7 +149,7 @@ public interface Classifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding association in Abstractions.  Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
+	 * Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
 	 * Specifies each feature defined in the classifier.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Feature</em>' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.14 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.15 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -190,7 +190,7 @@ public interface ActivityPartition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Partitions immediately contained in the partition. Specialized from Activity-Group::subgroup.
+	 * Partitions immediately contained in the partition.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subpartition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Subpartition()

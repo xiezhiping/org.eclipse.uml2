@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Feature.java,v 1.7 2006/05/24 20:54:29 khussey Exp $
+ * $Id: Feature.java,v 1.8 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,7 +73,6 @@ public interface Feature
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding association in Abstractions.
 	 * The Classifiers that have this Feature as a feature.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Featuring Classifier</em>' reference list.

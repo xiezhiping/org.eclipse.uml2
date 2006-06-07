@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElement.java,v 1.3 2006/05/12 20:38:03 khussey Exp $
+ * $Id: TypedElement.java,v 1.4 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,7 @@ public interface TypedElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Redefines the corresponding property from Basic to derive this information from the return result for this Operation.
+	 * This information is derived from the return result for this Operation.
 	 * The type of the TypedElement.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.

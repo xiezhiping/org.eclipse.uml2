@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.11 2006/05/26 16:34:03 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,6 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the ordered set of formal parameters of this BehavioralFeature.
-	 * Specifies the ordered set of formal parameters owned by this BehavioralFeature. The parameter direction can be 'in', 'inout', 'out', pr 'return' to specify input, output, or return parameters.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameter()
@@ -291,6 +290,9 @@ public interface BehavioralFeature
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a return result parameter with the specified name and type.
+	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false"
 	 * @generated
 	 */

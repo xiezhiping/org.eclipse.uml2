@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.9 2006/05/24 20:54:29 khussey Exp $
+ * $Id: ActivityNode.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -98,7 +98,7 @@ public interface ActivityNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Groups containing the node. Multiplicity specialized to [0..1] for StructuredActivity-Group.
+	 * Groups containing the node.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>In Group</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityNode_InGroup()

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.16 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Parameter.java,v 1.17 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -97,7 +97,6 @@ public interface Parameter
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Operation for which this is a formal parameter.
 	 * References the Operation owning this parameter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' reference.

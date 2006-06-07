@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionKind.java,v 1.3 2006/05/12 20:38:03 khussey Exp $
+ * $Id: TransitionKind.java,v 1.4 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -40,7 +40,7 @@ public final class TransitionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * kind=internal implies that the transition, if triggered, occurs without exiting or entering the source state. Thus, it does not cause a state change. This means that the entry or exit condition of the source state will not be invoked. An internal transition can be taken even if the state machine is in one or more regions nested within this state.
+	 * Implies that the transition, if triggered, occurs without exiting or entering the source state. Thus, it does not cause a state change. This means that the entry or exit condition of the source state will not be invoked. An internal transition can be taken even if the state machine is in one or more regions nested within this state.
 	 * <!-- end-model-doc -->
 	 * @see #INTERNAL_LITERAL
 	 * @model name="internal"
@@ -54,7 +54,7 @@ public final class TransitionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * kind=local implies that the transition, if triggered, will not exit the composite (source) state, but it will apply to any state within the composite state, and these will be exited and entered.
+	 * Implies that the transition, if triggered, will not exit the composite (source) state, but it will apply to any state within the composite state, and these will be exited and entered.
 	 * <!-- end-model-doc -->
 	 * @see #LOCAL_LITERAL
 	 * @model name="local"
@@ -68,7 +68,7 @@ public final class TransitionKind
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * kind=external implies that the transition, if triggered, will exit the composite (source) state.
+	 * Implies that the transition, if triggered, will exit the composite (source) state.
 	 * <!-- end-model-doc -->
 	 * @see #EXTERNAL_LITERAL
 	 * @model name="external"

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierAction.java,v 1.6 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,7 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * (Specialized from Action:input) Gives the input pin from which the link object is obtained.
+	 * Gives the input pin from which the link object is obtained.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
@@ -98,7 +98,7 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Pin where the result value is placed
+	 * Pin where the result value is placed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)

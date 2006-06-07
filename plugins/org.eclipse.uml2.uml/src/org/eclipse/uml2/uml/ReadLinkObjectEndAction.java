@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ReadLinkObjectEndAction.java,v 1.6 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -123,7 +123,7 @@ public interface ReadLinkObjectEndAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Pin where the result value is placed
+	 * Pin where the result value is placed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Substitution.java,v 1.2 2006/05/12 20:38:05 khussey Exp $
+ * $Id: Substitution.java,v 1.3 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -39,11 +39,10 @@ public interface Substitution
 	/**
 	 * Returns the value of the '<em><b>Contract</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Contract</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The contract with which the substituting classifier complies.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference.
 	 * @see #setContract(Classifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSubstitution_Contract()
@@ -66,11 +65,10 @@ public interface Substitution
 	 * Returns the value of the '<em><b>Substituting Classifier</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Classifier#getSubstitutions <em>Substitution</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Substituting Classifier</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Substituting Classifier</em>' container reference.
 	 * @see #setSubstitutingClassifier(Classifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSubstitution_SubstitutingClassifier()

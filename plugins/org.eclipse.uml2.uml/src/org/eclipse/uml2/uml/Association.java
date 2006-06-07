@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.11 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Association.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -119,7 +119,6 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Each end represents participation of instances of the classifier connected to the end in links of the association. This is an ordered association.
 	 * Each end represents participation of instances of the classifier connected to the end in links of the association.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member End</em>' reference list.
@@ -232,7 +231,6 @@ public interface Association
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The ends that are owned by the association itself. This is an ordered association.
 	 * The ends that are owned by the association itself.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned End</em>' containment reference list.

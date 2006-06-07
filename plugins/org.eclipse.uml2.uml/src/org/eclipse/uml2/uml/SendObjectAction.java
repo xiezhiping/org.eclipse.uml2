@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: SendObjectAction.java,v 1.6 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -93,7 +93,7 @@ public interface SendObjectAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved. (Specialized from InvocationActon.argument)
+	 * The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Request</em>' containment reference.
 	 * @see #setRequest(InputPin)

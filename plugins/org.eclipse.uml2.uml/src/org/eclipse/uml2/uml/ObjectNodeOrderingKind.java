@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeOrderingKind.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: ObjectNodeOrderingKind.java,v 1.2 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -36,11 +36,10 @@ public final class ObjectNodeOrderingKind
 	/**
 	 * The '<em><b>Unordered</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Unordered</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that object node tokens are unordered.
+	 * <!-- end-model-doc -->
 	 * @see #UNORDERED_LITERAL
 	 * @model name="unordered"
 	 * @generated
@@ -51,11 +50,10 @@ public final class ObjectNodeOrderingKind
 	/**
 	 * The '<em><b>Ordered</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Ordered</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that object node tokens are ordered.
+	 * <!-- end-model-doc -->
 	 * @see #ORDERED_LITERAL
 	 * @model name="ordered"
 	 * @generated
@@ -66,11 +64,10 @@ public final class ObjectNodeOrderingKind
 	/**
 	 * The '<em><b>LIFO</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LIFO</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that object node tokens are queued in a last in, first out manner.
+	 * <!-- end-model-doc -->
 	 * @see #LIFO_LITERAL
 	 * @model
 	 * @generated
@@ -81,11 +78,10 @@ public final class ObjectNodeOrderingKind
 	/**
 	 * The '<em><b>FIFO</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>FIFO</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that object node tokens are queued in a first in, first out manner.
+	 * <!-- end-model-doc -->
 	 * @see #FIFO_LITERAL
 	 * @model
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.21 2006/06/06 22:20:45 khussey Exp $
+ * $Id: Property.java,v 1.22 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -68,9 +68,7 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The DataType that owns this Operation.
 	 * The DataType that owns this Property.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Datatype</em>' container reference.
 	 * @see #setDatatype(DataType)
@@ -256,10 +254,6 @@ public interface Property
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Class </em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Class that owns the Property.
@@ -320,7 +314,6 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the owning association of this property, if any.
-	 * References the owning association of this property.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owning Association</em>' container reference.
 	 * @see #setOwningAssociation(Association)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.16 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Behavior.java,v 1.17 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -189,11 +189,10 @@ public interface Behavior
 	 * Returns the value of the '<em><b>Precondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Precondition</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Precondition()
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
@@ -254,11 +253,10 @@ public interface Behavior
 	 * Returns the value of the '<em><b>Postcondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Postcondition</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Postcondition()
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"

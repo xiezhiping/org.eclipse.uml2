@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterEffectKind.java,v 1.1 2005/11/14 22:26:00 khussey Exp $
+ * $Id: ParameterEffectKind.java,v 1.2 2006/06/07 21:39:13 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -36,11 +36,10 @@ public final class ParameterEffectKind
 	/**
 	 * The '<em><b>Create</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Create</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the behavior creates values.
+	 * <!-- end-model-doc -->
 	 * @see #CREATE_LITERAL
 	 * @model name="create"
 	 * @generated
@@ -51,11 +50,10 @@ public final class ParameterEffectKind
 	/**
 	 * The '<em><b>Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Read</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the behavior reads values.
+	 * <!-- end-model-doc -->
 	 * @see #READ_LITERAL
 	 * @model name="read"
 	 * @generated
@@ -66,11 +64,10 @@ public final class ParameterEffectKind
 	/**
 	 * The '<em><b>Update</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Update</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the behavior updates values.
+	 * <!-- end-model-doc -->
 	 * @see #UPDATE_LITERAL
 	 * @model name="update"
 	 * @generated
@@ -81,11 +78,10 @@ public final class ParameterEffectKind
 	/**
 	 * The '<em><b>Delete</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Delete</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the behavior deletes values.
+	 * <!-- end-model-doc -->
 	 * @see #DELETE_LITERAL
 	 * @model name="delete"
 	 * @generated
