@@ -13244,7 +13244,7 @@
           </returnResult>
         </ownedOperation>
         <ownedOperation xmi:id="_3ADC7B74022D3E142BF301A2" name="getNamesOfMember" type="_3ADC7B74022D3CA010B103C3" isQuery="true" bodyCondition="_rln85BTaEdqZu-3Jy1-uYg">
-          <ownedComment xmi:id="_rln83xTaEdqZu-3Jy1-uYg" body="The query getNamesOfMember() importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package." annotatedElement="_3ADC7B74022D3E142BF301A2">
+          <ownedComment xmi:id="_rln83xTaEdqZu-3Jy1-uYg" body="The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package." annotatedElement="_3ADC7B74022D3E142BF301A2">
             <eAnnotations xmi:id="_rln84BTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
               <contents xmi:type="Default_0:Default__Documentation" xmi:id="_rln84RTaEdqZu-3Jy1-uYg"/>
             </eAnnotations>
@@ -16105,6 +16105,11 @@
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_l1JQAF0oEdq3-fC14hmVtA"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3ADC7B74022D3CA1877301D1" name="applyingPackage" type="_3ADC7B74022D3CA18745029B" subsettedProperty="_3ADC7B74022D3DFCAC7900D9 _3ADC7B74022D3DFCA80700BE" association="_3ADC7B74022D3CA187710277">
+        <ownedComment xmi:id="_6Jad4PZcEdqYHf-imTcTdw" body="The package that owns the profile application." annotatedElement="_3ADC7B74022D3CA1877301D1">
+          <eAnnotations xmi:id="_6Jad4fZcEdqYHf-imTcTdw" source="appliedStereotypes">
+            <contents xmi:type="Default_0:Default__Documentation" xmi:id="_6Jad4vZcEdqYHf-imTcTdw"/>
+          </eAnnotations>
+        </ownedComment>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ruQ7hhTaEdqZu-3Jy1-uYg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ruQ7hRTaEdqZu-3Jy1-uYg" value="1"/>
       </ownedAttribute>
