@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.32 2006/05/24 20:12:54 khussey Exp $
+ * $Id: UMLUtil.java,v 1.33 2006/06/07 01:47:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1872,13 +1872,18 @@ public class UMLUtil
 						eType = EcorePackage.eINSTANCE.getEShort();
 					} else if (qualifiedName
 						.startsWith("EcorePrimitiveTypes::")) { //$NON-NLS-1$
+
 						eType = EcorePackage.eINSTANCE.getEClassifier(type
 							.getName());
 					}
 				}
 
 				if (eType == null) {
-					eType = (EClassifier) doSwitch(type);
+					Object eObject = doSwitch(type);
+
+					if (eObject instanceof EClassifier) {
+						eType = (EClassifier) eObject;
+					}
 				}
 			}
 
