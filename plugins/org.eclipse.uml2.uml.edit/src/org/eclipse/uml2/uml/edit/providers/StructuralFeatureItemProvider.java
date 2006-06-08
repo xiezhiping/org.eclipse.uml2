@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureItemProvider.java,v 1.7 2006/06/08 17:10:11 khussey Exp $
+ * $Id: StructuralFeatureItemProvider.java,v 1.8 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -290,7 +290,7 @@ public class StructuralFeatureItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StructuralFeature.class)) {
@@ -310,6 +310,20 @@ public class StructuralFeatureItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+
+		switch (notification.getFeatureID(StructuralFeature.class)) {
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
+				updateChildren(notification);
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, true));
+				return;
+		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**

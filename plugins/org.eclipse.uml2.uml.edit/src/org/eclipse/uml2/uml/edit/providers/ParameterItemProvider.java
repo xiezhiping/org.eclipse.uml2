@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterItemProvider.java,v 1.11 2006/06/08 17:10:11 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.12 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -32,6 +32,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.uml.LiteralSpecification;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Type;
@@ -468,15 +469,17 @@ public class ParameterItemProvider
 	}
 
 	public void notifyChanged(Notification notification) {
-		notifyChangedGen(notification);
 
 		switch (notification.getFeatureID(Parameter.class)) {
+			case UMLPackage.PARAMETER__UPPER_VALUE :
+			case UMLPackage.PARAMETER__LOWER_VALUE :
+				updateChildren(notification);
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, true));
 			case UMLPackage.PARAMETER__NAME :
 			case UMLPackage.PARAMETER__TYPE :
 			case UMLPackage.PARAMETER__UPPER :
 			case UMLPackage.PARAMETER__LOWER :
-			case UMLPackage.PARAMETER__UPPER_VALUE :
-			case UMLPackage.PARAMETER__LOWER_VALUE :
 				Object notifier = notification.getNotifier();
 
 				if (notifier instanceof EObject) {
@@ -487,7 +490,13 @@ public class ParameterItemProvider
 							eContainer, false, true));
 					}
 				}
+
+				if (notifier instanceof LiteralSpecification) {
+					return;
+				}
 		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**

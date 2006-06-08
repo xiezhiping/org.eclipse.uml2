@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinItemProvider.java,v 1.9 2006/06/08 17:10:11 khussey Exp $
+ * $Id: PinItemProvider.java,v 1.10 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -279,7 +279,7 @@ public class PinItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Pin.class)) {
@@ -298,6 +298,20 @@ public class PinItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+
+		switch (notification.getFeatureID(Pin.class)) {
+			case UMLPackage.PIN__UPPER_VALUE :
+			case UMLPackage.PIN__LOWER_VALUE :
+				updateChildren(notification);
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, true));
+				return;
+		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**

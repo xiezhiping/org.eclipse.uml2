@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
+ * $Id: LiteralIntegerItemProvider.java,v 1.7 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -144,27 +144,29 @@ public class LiteralIntegerItemProvider
 	}
 
 	public void notifyChanged(Notification notification) {
-		notifyChangedGen(notification);
 
-		if (notification.getFeatureID(LiteralInteger.class) == UMLPackage.LITERAL_INTEGER__VALUE) {
-			Object notifier = notification.getNotifier();
+		switch (notification.getFeatureID(LiteralInteger.class)) {
+			case UMLPackage.LITERAL_INTEGER__VALUE :
+				Object notifier = notification.getNotifier();
 
-			if (notifier instanceof EObject) {
-				EObject eContainer = ((EObject) notifier).eContainer();
+				if (notifier instanceof EObject) {
+					EObject eContainer = ((EObject) notifier).eContainer();
 
-				if (eContainer instanceof MultiplicityElement) {
-					fireNotifyChanged(new ViewerNotification(notification,
-						eContainer, false, true));
-
-					eContainer = eContainer.eContainer();
-
-					if (eContainer instanceof Operation) {
+					if (eContainer instanceof MultiplicityElement) {
 						fireNotifyChanged(new ViewerNotification(notification,
 							eContainer, false, true));
+
+						eContainer = eContainer.eContainer();
+
+						if (eContainer instanceof Operation) {
+							fireNotifyChanged(new ViewerNotification(
+								notification, eContainer, false, true));
+						}
 					}
 				}
-			}
 		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**

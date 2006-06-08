@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureItemProvider.java,v 1.4 2006/05/15 21:06:22 khussey Exp $
+ * $Id: BehavioralFeatureItemProvider.java,v 1.5 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -355,7 +355,7 @@ public class BehavioralFeatureItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(BehavioralFeature.class)) {
@@ -373,6 +373,19 @@ public class BehavioralFeatureItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+
+		switch (notification.getFeatureID(BehavioralFeature.class)) {
+			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
+				updateChildren(notification);
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, true));
+				return;
+		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**

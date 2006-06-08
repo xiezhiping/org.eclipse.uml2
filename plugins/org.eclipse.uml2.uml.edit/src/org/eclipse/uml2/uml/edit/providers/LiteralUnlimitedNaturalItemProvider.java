@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.7 2006/06/08 17:40:25 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.8 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -147,27 +147,29 @@ public class LiteralUnlimitedNaturalItemProvider
 	}
 
 	public void notifyChanged(Notification notification) {
-		notifyChangedGen(notification);
 
-		if (notification.getFeatureID(LiteralUnlimitedNatural.class) == UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE) {
-			Object notifier = notification.getNotifier();
+		switch (notification.getFeatureID(LiteralUnlimitedNatural.class)) {
+			case UMLPackage.LITERAL_UNLIMITED_NATURAL__VALUE :
+				Object notifier = notification.getNotifier();
 
-			if (notifier instanceof EObject) {
-				EObject eContainer = ((EObject) notifier).eContainer();
+				if (notifier instanceof EObject) {
+					EObject eContainer = ((EObject) notifier).eContainer();
 
-				if (eContainer instanceof MultiplicityElement) {
-					fireNotifyChanged(new ViewerNotification(notification,
-						eContainer, false, true));
-
-					eContainer = eContainer.eContainer();
-
-					if (eContainer instanceof Operation) {
+					if (eContainer instanceof MultiplicityElement) {
 						fireNotifyChanged(new ViewerNotification(notification,
 							eContainer, false, true));
+
+						eContainer = eContainer.eContainer();
+
+						if (eContainer instanceof Operation) {
+							fireNotifyChanged(new ViewerNotification(
+								notification, eContainer, false, true));
+						}
 					}
 				}
-			}
 		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**

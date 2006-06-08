@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
+ * $Id: MultiplicityElementItemProvider.java,v 1.7 2006/06/08 18:28:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -249,7 +249,7 @@ public class MultiplicityElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MultiplicityElement.class)) {
@@ -267,6 +267,20 @@ public class MultiplicityElementItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+
+		switch (notification.getFeatureID(MultiplicityElement.class)) {
+			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
+			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
+				updateChildren(notification);
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, true));
+				return;
+		}
+
+		notifyChangedGen(notification);
 	}
 
 	/**
