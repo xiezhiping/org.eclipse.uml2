@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerItemProvider.java,v 1.5 2006/05/15 21:06:21 khussey Exp $
+ * $Id: LiteralIntegerItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -31,6 +32,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -128,7 +131,7 @@ public class LiteralIntegerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LiteralInteger.class)) {
@@ -138,6 +141,30 @@ public class LiteralIntegerItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+		notifyChangedGen(notification);
+
+		if (notification.getFeatureID(LiteralInteger.class) == UMLPackage.LITERAL_INTEGER__VALUE) {
+			Object notifier = notification.getNotifier();
+
+			if (notifier instanceof EObject) {
+				EObject eContainer = ((EObject) notifier).eContainer();
+
+				if (eContainer instanceof MultiplicityElement) {
+					fireNotifyChanged(new ViewerNotification(notification,
+						eContainer, false, true));
+
+					eContainer = eContainer.eContainer();
+
+					if (eContainer instanceof Operation) {
+						fireNotifyChanged(new ViewerNotification(notification,
+							eContainer, false, true));
+					}
+				}
+			}
+		}
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinItemProvider.java,v 1.11 2006/05/15 21:06:20 khussey Exp $
+ * $Id: ActionInputPinItemProvider.java,v 1.12 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -126,9 +126,9 @@ public class ActionInputPinItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ActionInputPin_type"), object).toString(); //$NON-NLS-1$
+		return MultiplicityElementItemProvider.appendMultiplicity(
+			appendLabel(appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_ActionInputPin_type"), object), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

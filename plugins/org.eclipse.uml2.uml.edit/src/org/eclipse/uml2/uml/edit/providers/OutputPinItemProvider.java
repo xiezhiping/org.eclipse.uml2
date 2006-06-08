@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPinItemProvider.java,v 1.5 2006/01/24 22:46:31 khussey Exp $
+ * $Id: OutputPinItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -84,9 +84,9 @@ public class OutputPinItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_OutputPin_type"), object).toString(); //$NON-NLS-1$
+		return MultiplicityElementItemProvider.appendMultiplicity(
+			appendLabel(appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_OutputPin_type"), object), object).toString(); //$NON-NLS-1$
 	}
 
 	/**

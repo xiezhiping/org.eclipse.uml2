@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.14 2006/05/15 21:06:21 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.15 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -487,13 +487,22 @@ public class ElementItemProvider
 		return text.append('<').append(getTypeText(object)).append('>');
 	}
 
+	protected boolean shouldAppendType() {
+		return true;
+	}
+
 	protected StringBuffer appendType(StringBuffer text, String key) {
 
-		if (text.length() > 0) {
-			text.append(' ');
+		if (shouldAppendType()) {
+
+			if (text.length() > 0) {
+				text.append(' ');
+			}
+
+			text.append('<').append(getString(key)).append('>');
 		}
 
-		return text.append('<').append(getString(key)).append('>');
+		return text;
 	}
 
 	protected StringBuffer appendLabel(StringBuffer text, Object object) {

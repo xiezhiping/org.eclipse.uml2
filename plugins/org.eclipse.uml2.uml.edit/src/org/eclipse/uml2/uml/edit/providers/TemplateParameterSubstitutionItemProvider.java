@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.11 2006/05/15 21:06:21 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.12 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -190,6 +190,10 @@ public class TemplateParameterSubstitutionItemProvider
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
 			"full/obj16/TemplateParameterSubstitution")); //$NON-NLS-1$
+	}
+
+	protected boolean shouldAppendType() {
+		return false;
 	}
 
 	/**

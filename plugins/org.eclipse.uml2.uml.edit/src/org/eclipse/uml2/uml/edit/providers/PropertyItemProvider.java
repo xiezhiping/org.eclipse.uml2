@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.13 2006/05/15 21:06:23 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.14 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -48,6 +48,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.Property} object.
@@ -584,17 +585,14 @@ public class PropertyItemProvider
 	}
 
 	/**
-	 * This returns Property_{visibility}.gif.
+	 * This returns Property.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator()
-				.getImage(
-					"full/obj16/Property_" + ((Property) object).getVisibility().getName())); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Property")); //$NON-NLS-1$
 	}
 
 	/**
@@ -608,25 +606,35 @@ public class PropertyItemProvider
 			object), "_UI_Property_type"); //$NON-NLS-1$
 
 		Property property = (Property) object;
+		Type type = property.getType();
+
+		if (property.isDerived()) {
+			appendString(text, "/"); //$NON-NLS-1$
+		}
+
 		String label = property.getLabel(shouldTranslate());
 
 		if (!UML2Util.isEmpty(label)) {
 			appendString(text, label);
-		} else if (property.getAssociation() != null) {
-			Type type = property.getType();
+		} else if (property.getAssociation() != null && type != null) {
+			String typeName = type.getName();
 
-			if (type != null) {
-				String typeName = type.getName();
-
-				if (!UML2Util.isEmpty(typeName)) {
-					appendString(text, Character
-						.toLowerCase(typeName.charAt(0))
-						+ typeName.substring(1));
-				}
+			if (!UML2Util.isEmpty(typeName)) {
+				appendString(text, Character.toLowerCase(typeName.charAt(0))
+					+ typeName.substring(1));
 			}
 		}
 
-		return text.toString();
+		if (type != null) {
+			String typeLabel = type.getLabel(shouldTranslate());
+
+			if (!UMLUtil.isEmpty(typeLabel)) {
+				appendString(text, ": " + typeLabel); //$NON-NLS-1$
+			}
+		}
+
+		return MultiplicityElementItemProvider.appendMultiplicity(text, object)
+			.toString();
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndItemProvider.java,v 1.5 2006/03/08 19:01:13 khussey Exp $
+ * $Id: ExtensionEndItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.ExtensionEnd} object.
@@ -91,24 +92,34 @@ public class ExtensionEndItemProvider
 			object), "_UI_ExtensionEnd_type"); //$NON-NLS-1$
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) object;
+		Type type = extensionEnd.getType();
+
+		if (extensionEnd.isDerived()) {
+			appendString(text, "/"); //$NON-NLS-1$
+		}
+
 		String label = extensionEnd.getLabel(shouldTranslate());
 
 		if (!UML2Util.isEmpty(label)) {
 			appendString(text, label);
-		} else if (extensionEnd.getAssociation() != null) {
-			Type type = extensionEnd.getType();
+		} else if (extensionEnd.getAssociation() != null && type != null) {
+			String typeName = type.getName();
 
-			if (type != null) {
-				String typeName = type.getName();
-
-				if (!UML2Util.isEmpty(typeName)) {
-					appendString(text, Extension.STEREOTYPE_ROLE_PREFIX
-						+ typeName);
-				}
+			if (!UML2Util.isEmpty(typeName)) {
+				appendString(text, Extension.STEREOTYPE_ROLE_PREFIX + typeName);
 			}
 		}
 
-		return text.toString();
+		if (type != null) {
+			String typeLabel = type.getLabel(shouldTranslate());
+
+			if (!UMLUtil.isEmpty(typeLabel)) {
+				appendString(text, ": " + typeLabel); //$NON-NLS-1$
+			}
+		}
+
+		return MultiplicityElementItemProvider.appendMultiplicity(text, object)
+			.toString();
 	}
 
 	/**

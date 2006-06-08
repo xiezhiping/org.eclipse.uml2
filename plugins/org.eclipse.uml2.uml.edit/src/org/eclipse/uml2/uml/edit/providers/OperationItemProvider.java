@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.11 2006/05/15 21:06:21 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.12 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -29,7 +30,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -42,11 +42,15 @@ import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
+
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.Operation} object.
@@ -466,17 +470,14 @@ public class OperationItemProvider
 	}
 
 	/**
-	 * This returns Operation_{visibility}.gif.
+	 * This returns Operation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Object getImage(Object object) {
-		return overlayImage(
-			object,
-			getResourceLocator()
-				.getImage(
-					"full/obj16/Operation_" + ((Operation) object).getVisibility().getName())); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage(
+			"full/obj16/Operation")); //$NON-NLS-1$
 	}
 
 	/**
@@ -486,9 +487,63 @@ public class OperationItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Operation_type"), object).toString(); //$NON-NLS-1$
+		StringBuffer text = appendLabel(appendType(appendKeywords(
+			new StringBuffer(), object), "_UI_Operation_type"), object); //$NON-NLS-1$
+
+		Operation operation = (Operation) object;
+
+		appendString(text, "("); //$NON-NLS-1$
+
+		List parameters = new ArrayList(operation.getOwnedParameters());
+		parameters.removeAll(operation.returnResult());
+
+		for (Iterator p = parameters.iterator(); p.hasNext();) {
+			Parameter parameter = (Parameter) p.next();
+			String label = parameter.getLabel(shouldTranslate());
+
+			if (UMLUtil.isEmpty(label)) {
+				text.append('<').append(getTypeText(parameter)).append('>');
+			} else {
+				text.append(label);
+			}
+
+			Type type = parameter.getType();
+
+			if (type != null) {
+				String typeLabel = type.getLabel(shouldTranslate());
+
+				if (!UMLUtil.isEmpty(typeLabel)) {
+					appendString(text, ": " + typeLabel); //$NON-NLS-1$
+				}
+			}
+
+			MultiplicityElementItemProvider.appendMultiplicity(text, parameter);
+
+			if (p.hasNext()) {
+				text.append(", "); //$NON-NLS-1$
+			}
+		}
+
+		text.append(')');
+
+		Parameter returnResult = operation.getReturnResult();
+
+		if (returnResult != null) {
+			Type type = returnResult.getType();
+
+			if (type != null) {
+				String typeLabel = type.getLabel(shouldTranslate());
+
+				if (!UMLUtil.isEmpty(typeLabel)) {
+					appendString(text, ": " + typeLabel); //$NON-NLS-1$
+				}
+			}
+
+			MultiplicityElementItemProvider.appendMultiplicity(text,
+				returnResult);
+		}
+
+		return text.toString();
 	}
 
 	/**
@@ -660,13 +715,6 @@ public class OperationItemProvider
 				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
-	}
-
-	protected ComposedImage getComposedImage(Object object, Object image) {
-		List images = new ArrayList();
-		images.add(image);
-
-		return new ComposedImage(images);
 	}
 
 }

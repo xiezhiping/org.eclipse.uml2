@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementItemProvider.java,v 1.5 2006/05/15 21:06:23 khussey Exp $
+ * $Id: MultiplicityElementItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -490,9 +490,31 @@ public class MultiplicityElementItemProvider
 		return composedImage;
 	}
 
-	protected ComposedImage getComposedImage(Object object, Object image) {
-		return composeMultiplicityImage(object, super.getComposedImage(object,
-			image));
+	protected static StringBuffer appendMultiplicity(StringBuffer text,
+			Object object) {
+
+		if (object instanceof MultiplicityElement) {
+			MultiplicityElement multiplicityElement = (MultiplicityElement) object;
+
+			if (multiplicityElement
+				.eIsSet(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER)
+				|| multiplicityElement
+					.eIsSet(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER)) {
+
+				if (text.length() > 0) {
+					text.append(' ');
+				}
+
+				int upper = multiplicityElement.getUpper();
+
+				text
+					.append('[')
+					.append(multiplicityElement.getLower())
+					.append("..").append(upper == LiteralUnlimitedNatural.UNLIMITED ? "*" : String.valueOf(upper)).append(']'); //$NON-NLS-1$ //$NON-NLS-2$
+			}
+		}
+
+		return text;
 	}
 
 }

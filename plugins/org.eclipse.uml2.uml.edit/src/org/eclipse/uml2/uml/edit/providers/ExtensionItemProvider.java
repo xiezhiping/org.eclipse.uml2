@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionItemProvider.java,v 1.7 2006/05/15 21:06:21 khussey Exp $
+ * $Id: ExtensionItemProvider.java,v 1.8 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -139,6 +139,11 @@ public class ExtensionItemProvider
 			object), "_UI_Extension_type"); //$NON-NLS-1$
 
 		Extension extension = (Extension) object;
+
+		if (extension.isDerived()) {
+			appendString(text, "/"); //$NON-NLS-1$
+		}
+		
 		String label = extension.getLabel(shouldTranslate());
 
 		if (!UML2Util.isEmpty(label)) {

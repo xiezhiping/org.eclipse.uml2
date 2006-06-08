@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.4 2006/05/15 21:06:22 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.5 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -212,6 +212,10 @@ public class NamedElementItemProvider
 				.add(UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION);
 		}
 		return childrenFeatures;
+	}
+
+	protected boolean shouldAppendType() {
+		return false;
 	}
 
 	/**

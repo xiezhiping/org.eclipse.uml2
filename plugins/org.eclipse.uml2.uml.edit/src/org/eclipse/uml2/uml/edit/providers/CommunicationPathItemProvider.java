@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathItemProvider.java,v 1.4 2006/02/21 21:40:13 khussey Exp $
+ * $Id: CommunicationPathItemProvider.java,v 1.5 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -90,6 +90,11 @@ public class CommunicationPathItemProvider
 			object), "_UI_CommunicationPath_type"); //$NON-NLS-1$
 
 		CommunicationPath communicationPath = (CommunicationPath) object;
+
+		if (communicationPath.isDerived()) {
+			appendString(text, "/"); //$NON-NLS-1$
+		}
+		
 		String label = communicationPath.getLabel(shouldTranslate());
 
 		if (!UML2Util.isEmpty(label)) {

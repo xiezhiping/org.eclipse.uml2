@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinItemProvider.java,v 1.8 2006/05/15 21:06:21 khussey Exp $
+ * $Id: PinItemProvider.java,v 1.9 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,7 +23,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -269,9 +267,9 @@ public class PinItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Pin_type"), object).toString(); //$NON-NLS-1$
+		return MultiplicityElementItemProvider.appendMultiplicity(
+			appendLabel(appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Pin_type"), object), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -458,14 +456,6 @@ public class PinItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
-	}
-
-	protected ComposedImage getComposedImage(Object object, Object image) {
-		List images = new ArrayList();
-		images.add(image);
-
-		return MultiplicityElementItemProvider.composeMultiplicityImage(object,
-			new ComposedImage(images));
 	}
 
 }

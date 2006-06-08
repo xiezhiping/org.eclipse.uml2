@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterItemProvider.java,v 1.10 2006/05/15 21:06:23 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.11 2006/06/08 17:10:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,10 +20,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,11 +32,14 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.Parameter} object.
@@ -415,9 +417,21 @@ public class ParameterItemProvider
 	 * @generated NOT
 	 */
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Parameter_type"), object).toString(); //$NON-NLS-1$
+		StringBuffer text = appendLabel(appendType(appendKeywords(
+			new StringBuffer(), object), "_UI_Parameter_type"), object); //$NON-NLS-1$
+
+		Type type = ((Parameter) object).getType();
+
+		if (type != null) {
+			String typeLabel = type.getLabel(shouldTranslate());
+
+			if (!UMLUtil.isEmpty(typeLabel)) {
+				appendString(text, ": " + typeLabel); //$NON-NLS-1$
+			}
+		}
+
+		return MultiplicityElementItemProvider.appendMultiplicity(text, object)
+			.toString();
 	}
 
 	/**
@@ -427,7 +441,7 @@ public class ParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Parameter.class)) {
@@ -451,6 +465,29 @@ public class ParameterItemProvider
 				return;
 		}
 		super.notifyChanged(notification);
+	}
+
+	public void notifyChanged(Notification notification) {
+		notifyChangedGen(notification);
+
+		switch (notification.getFeatureID(Parameter.class)) {
+			case UMLPackage.PARAMETER__NAME :
+			case UMLPackage.PARAMETER__TYPE :
+			case UMLPackage.PARAMETER__UPPER :
+			case UMLPackage.PARAMETER__LOWER :
+			case UMLPackage.PARAMETER__UPPER_VALUE :
+			case UMLPackage.PARAMETER__LOWER_VALUE :
+				Object notifier = notification.getNotifier();
+
+				if (notifier instanceof EObject) {
+					EObject eContainer = ((EObject) notifier).eContainer();
+
+					if (eContainer instanceof Operation) {
+						fireNotifyChanged(new ViewerNotification(notification,
+							eContainer, false, true));
+					}
+				}
+		}
 	}
 
 	/**
@@ -665,14 +702,6 @@ public class ParameterItemProvider
 	 */
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
-	}
-
-	protected ComposedImage getComposedImage(Object object, Object image) {
-		List images = new ArrayList();
-		images.add(image);
-
-		return MultiplicityElementItemProvider.composeMultiplicityImage(object,
-			new ComposedImage(images));
 	}
 
 }
