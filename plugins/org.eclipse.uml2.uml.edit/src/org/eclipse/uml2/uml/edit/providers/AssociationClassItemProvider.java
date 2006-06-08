@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.10 2006/06/08 17:10:11 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.11 2006/06/08 17:40:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -253,7 +253,7 @@ public class AssociationClassItemProvider
 		if (associationClass.isDerived()) {
 			appendString(text, "/"); //$NON-NLS-1$
 		}
-		
+
 		String label = associationClass.getLabel(shouldTranslate());
 
 		if (!UML2Util.isEmpty(label)) {

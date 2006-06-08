@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.11 2006/06/08 17:10:11 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.12 2006/06/08 17:40:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -266,7 +266,7 @@ public class AssociationItemProvider
 			object), "_UI_Association_type"); //$NON-NLS-1$
 
 		Association association = (Association) object;
-		
+
 		if (association.isDerived()) {
 			appendString(text, "/"); //$NON-NLS-1$
 		}

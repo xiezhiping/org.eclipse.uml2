@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.17 2006/04/10 19:16:57 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.18 2006/06/08 17:40:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4822,8 +4822,6 @@ public class UMLItemProviderAdapterFactory
 			pinItemProvider.dispose();
 		if (inputPinItemProvider != null)
 			inputPinItemProvider.dispose();
-		if (valuePinItemProvider != null)
-			valuePinItemProvider.dispose();
 		if (sendSignalActionItemProvider != null)
 			sendSignalActionItemProvider.dispose();
 		if (callOperationActionItemProvider != null)
@@ -4840,6 +4838,8 @@ public class UMLItemProviderAdapterFactory
 			initialNodeItemProvider.dispose();
 		if (activityParameterNodeItemProvider != null)
 			activityParameterNodeItemProvider.dispose();
+		if (valuePinItemProvider != null)
+			valuePinItemProvider.dispose();
 		if (messageItemProvider != null)
 			messageItemProvider.dispose();
 		if (interactionItemProvider != null)

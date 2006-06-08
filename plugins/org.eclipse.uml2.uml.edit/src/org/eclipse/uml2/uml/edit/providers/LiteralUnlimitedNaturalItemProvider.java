@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.6 2006/06/08 17:10:11 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalItemProvider.java,v 1.7 2006/06/08 17:40:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -171,11 +171,10 @@ public class LiteralUnlimitedNaturalItemProvider
 	}
 
 	/**
-	 * This adds to the collection of
-	 * {@link org.eclipse.emf.edit.command.CommandParameter}s describing all of
-	 * the children that can be created under this object. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * 
+	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing all of the children that can be created under this object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
