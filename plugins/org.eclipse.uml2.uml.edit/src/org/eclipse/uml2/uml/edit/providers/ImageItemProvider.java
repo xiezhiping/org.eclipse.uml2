@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImageItemProvider.java,v 1.10 2006/06/08 17:10:11 khussey Exp $
+ * $Id: ImageItemProvider.java,v 1.11 2006/06/12 20:07:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -139,10 +139,6 @@ public class ImageItemProvider
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
 			"full/obj16/Image")); //$NON-NLS-1$
-	}
-
-	protected boolean shouldAppendType() {
-		return false;
 	}
 
 	/**

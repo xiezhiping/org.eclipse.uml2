@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotItemProvider.java,v 1.8 2006/06/08 17:10:11 khussey Exp $
+ * $Id: SlotItemProvider.java,v 1.9 2006/06/12 20:07:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -157,10 +157,6 @@ public class SlotItemProvider
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
 			"full/obj16/Slot")); //$NON-NLS-1$
-	}
-
-	protected boolean shouldAppendType() {
-		return false;
 	}
 
 	/**

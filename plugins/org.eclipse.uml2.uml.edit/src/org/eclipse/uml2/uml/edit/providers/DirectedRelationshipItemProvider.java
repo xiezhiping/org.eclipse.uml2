@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipItemProvider.java,v 1.4 2006/06/08 17:10:11 khussey Exp $
+ * $Id: DirectedRelationshipItemProvider.java,v 1.5 2006/06/12 20:07:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -108,10 +108,6 @@ public class DirectedRelationshipItemProvider
 				false, false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
-	}
-
-	protected boolean shouldAppendType() {
-		return false;
 	}
 
 	/**
