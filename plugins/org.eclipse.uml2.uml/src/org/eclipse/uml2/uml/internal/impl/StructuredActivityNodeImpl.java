@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.28 2006/05/24 20:54:27 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.29 2006/06/12 14:23:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -929,7 +929,7 @@ public class StructuredActivityNodeImpl
 	 * @generated NOT
 	 */
 	public void setActivity(Activity newActivity) {
-		throw new UnsupportedOperationException();
+		super.setActivity(newActivity);
 	}
 
 	/**
