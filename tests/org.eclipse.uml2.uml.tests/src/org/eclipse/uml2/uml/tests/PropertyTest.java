@@ -8,14 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.6 2006/05/26 17:28:10 khussey Exp $
+ * $Id: PropertyTest.java,v 1.7 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import junit.textui.TestRunner;
 
+import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralNull;
+import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -410,11 +421,62 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#setIsNavigable(boolean)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetIsNavigable__boolean() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		try {
+			getFixture().setIsNavigable(true);
+			fail();
+		} catch (IllegalStateException ise) {
+			// pass
+		}
+
+		Property property = UMLFactory.eINSTANCE.createProperty();
+		property.getQualifiers().add(getFixture());
+
+		try {
+			getFixture().setIsNavigable(true);
+			fail();
+		} catch (IllegalStateException ise) {
+			// pass
+		}
+
+		org.eclipse.uml2.uml.Class class_ = UMLFactory.eINSTANCE.createClass();
+		class_.getOwnedAttributes().add(getFixture());
+
+		try {
+			getFixture().setIsNavigable(true);
+		} catch (IllegalStateException ise) {
+			fail();
+		}
+
+		try {
+			getFixture().setIsNavigable(false);
+			fail();
+		} catch (IllegalStateException ise) {
+			// pass
+		}
+
+		Association association = UMLFactory.eINSTANCE.createAssociation();
+		association.getMemberEnds().add(getFixture());
+
+		try {
+			getFixture().setIsNavigable(false);
+		} catch (IllegalStateException ise) {
+			fail();
+		}
+
+		assertTrue(association.getOwnedEnds().contains(getFixture()));
+		assertFalse(association.getNavigableOwnedEnds().contains(getFixture()));
+
+		try {
+			getFixture().setIsNavigable(true);
+		} catch (IllegalStateException ise) {
+			fail();
+		}
+
+		assertTrue(association.getNavigableOwnedEnds().contains(getFixture()));
 	}
 
 	/**
@@ -434,11 +496,22 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#setBooleanDefaultValue(boolean)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetBooleanDefaultValue__boolean() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setBooleanDefaultValue(true);
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralBoolean);
+		assertEquals(true, ((LiteralBoolean) defaultValue).isValue());
+
+		getFixture().setBooleanDefaultValue(false);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertEquals(false, ((LiteralBoolean) defaultValue).isValue());
 	}
 
 	/**
@@ -446,23 +519,48 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#setIntegerDefaultValue(int)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetIntegerDefaultValue__int() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
+
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setIntegerDefaultValue(Integer.MIN_VALUE);
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralInteger);
+		assertEquals(Integer.MIN_VALUE, ((LiteralInteger) defaultValue)
+			.getValue());
+
+		getFixture().setIntegerDefaultValue(Integer.MAX_VALUE);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertEquals(Integer.MAX_VALUE, ((LiteralInteger) defaultValue)
+			.getValue());
+		}
 
 	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Property#setStringDefaultValue(java.lang.String) <em>Set String Default Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#setStringDefaultValue(java.lang.String)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetStringDefaultValue__String() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setStringDefaultValue(getName());
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralString);
+		assertEquals(getName(), ((LiteralString) defaultValue).getValue());
+
+		getFixture().setStringDefaultValue(null);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertNull(((LiteralString) defaultValue).getValue());
 	}
 
 	/**
@@ -473,8 +571,21 @@ public class PropertyTest
 	 * @generated
 	 */
 	public void testSetUnlimitedNaturalDefaultValue__int() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setUnlimitedNaturalDefaultValue(
+			LiteralUnlimitedNatural.UNLIMITED);
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralUnlimitedNatural);
+		assertEquals(LiteralUnlimitedNatural.UNLIMITED,
+			((LiteralUnlimitedNatural) defaultValue).getValue());
+
+		getFixture().setUnlimitedNaturalDefaultValue(0);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertEquals(0, ((LiteralUnlimitedNatural) defaultValue).getValue());
 	}
 
 	/**
@@ -482,11 +593,16 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#setNullDefaultValue()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetNullDefaultValue() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setNullDefaultValue();
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralNull);
 	}
 
 	/**
@@ -518,11 +634,24 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#isNavigable()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testIsNavigable() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().isNavigable());
+
+		org.eclipse.uml2.uml.Class class_ = UMLFactory.eINSTANCE.createClass();
+		class_.getOwnedAttributes().add(getFixture());
+
+		assertTrue(getFixture().isNavigable());
+
+		Association association = UMLFactory.eINSTANCE.createAssociation();
+		association.getOwnedEnds().add(getFixture());
+
+		assertFalse(getFixture().isNavigable());
+
+		association.getNavigableOwnedEnds().add(getFixture());
+
+		assertTrue(getFixture().isNavigable());
 	}
 
 	/**
@@ -530,11 +659,92 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testIsConsistentWith__RedefinableElement() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().isConsistentWith(null));
+
+		Property redefinee = UMLFactory.eINSTANCE.createProperty();
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		StructuredClassifier redefinitionContext = UMLFactory.eINSTANCE
+			.createClass();
+		redefinitionContext.getOwnedAttributes().add(getFixture());
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		StructuredClassifier redefineeRedefinitionContext = UMLFactory.eINSTANCE
+			.createClass();
+		redefineeRedefinitionContext.getOwnedAttributes().add(redefinee);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		redefineeRedefinitionContext.createGeneralization(redefinitionContext);
+
+		assertTrue(getFixture().isConsistentWith(redefinee));
+
+		Classifier type = UMLFactory.eINSTANCE.createDataType();
+
+		getFixture().setType(type);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		Classifier redefineeType = UMLFactory.eINSTANCE.createDataType();
+
+		redefinee.setType(redefineeType);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		redefineeType.createGeneralization(type);
+
+		assertTrue(getFixture().isConsistentWith(redefinee));
+
+		LiteralInteger lowerValue = (LiteralInteger) getFixture()
+			.createLowerValue(null, null, UMLPackage.Literals.LITERAL_INTEGER);
+		LiteralInteger redefineeLowerValue = (LiteralInteger) redefinee
+			.createLowerValue(null, null, UMLPackage.Literals.LITERAL_INTEGER);
+
+		lowerValue.setValue(1);
+		redefineeLowerValue.setValue(0);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		lowerValue.setValue(0);
+
+		assertTrue(getFixture().isConsistentWith(redefinee));
+
+		LiteralUnlimitedNatural upperValue = (LiteralUnlimitedNatural) getFixture()
+			.createUpperValue(null, null,
+				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL);
+		LiteralUnlimitedNatural redefineeUpperValue = (LiteralUnlimitedNatural) redefinee
+			.createUpperValue(null, null,
+				UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL);
+
+		upperValue.setValue(1);
+		redefineeUpperValue.setValue(Integer.MAX_VALUE);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		upperValue.setValue(LiteralUnlimitedNatural.UNLIMITED);
+
+		assertTrue(getFixture().isConsistentWith(redefinee));
+
+		getFixture().setIsDerived(true);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		redefinee.setIsDerived(true);
+
+		assertTrue(getFixture().isConsistentWith(redefinee));
+
+		getFixture().setAggregation(AggregationKind.COMPOSITE_LITERAL);
+
+		assertFalse(getFixture().isConsistentWith(redefinee));
+
+		redefinee.setAggregation(AggregationKind.COMPOSITE_LITERAL);
+
+		assertTrue(getFixture().isConsistentWith(redefinee));
 	}
 
 } //PropertyTest

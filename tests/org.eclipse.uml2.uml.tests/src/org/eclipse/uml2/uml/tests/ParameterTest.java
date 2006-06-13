@@ -8,14 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterTest.java,v 1.8 2006/05/26 17:28:10 khussey Exp $
+ * $Id: ParameterTest.java,v 1.9 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import junit.textui.TestRunner;
 
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralNull;
+import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -430,11 +436,22 @@ public class ParameterTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Parameter#setBooleanDefaultValue(boolean)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetBooleanDefaultValue__boolean() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setBooleanDefaultValue(true);
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralBoolean);
+		assertEquals(true, ((LiteralBoolean) defaultValue).isValue());
+
+		getFixture().setBooleanDefaultValue(false);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertEquals(false, ((LiteralBoolean) defaultValue).isValue());
 	}
 
 	/**
@@ -442,11 +459,24 @@ public class ParameterTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Parameter#setIntegerDefaultValue(int)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetIntegerDefaultValue__int() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setIntegerDefaultValue(Integer.MIN_VALUE);
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralInteger);
+		assertEquals(Integer.MIN_VALUE, ((LiteralInteger) defaultValue)
+			.getValue());
+
+		getFixture().setIntegerDefaultValue(Integer.MAX_VALUE);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertEquals(Integer.MAX_VALUE, ((LiteralInteger) defaultValue)
+			.getValue());
 	}
 
 	/**
@@ -454,11 +484,22 @@ public class ParameterTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Parameter#setStringDefaultValue(java.lang.String)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetStringDefaultValue__String() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setStringDefaultValue(getName());
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralString);
+		assertEquals(getName(), ((LiteralString) defaultValue).getValue());
+
+		getFixture().setStringDefaultValue(null);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertNull(((LiteralString) defaultValue).getValue());
 	}
 
 	/**
@@ -466,11 +507,24 @@ public class ParameterTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Parameter#setUnlimitedNaturalDefaultValue(int)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetUnlimitedNaturalDefaultValue__int() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setUnlimitedNaturalDefaultValue(
+			LiteralUnlimitedNatural.UNLIMITED);
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralUnlimitedNatural);
+		assertEquals(LiteralUnlimitedNatural.UNLIMITED,
+			((LiteralUnlimitedNatural) defaultValue).getValue());
+
+		getFixture().setUnlimitedNaturalDefaultValue(0);
+
+		assertSame(defaultValue, getFixture().getDefaultValue());
+		assertEquals(0, ((LiteralUnlimitedNatural) defaultValue).getValue());
 	}
 
 	/**
@@ -478,11 +532,16 @@ public class ParameterTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Parameter#setNullDefaultValue()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetNullDefaultValue() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getDefaultValue());
+
+		getFixture().setNullDefaultValue();
+
+		ValueSpecification defaultValue = getFixture().getDefaultValue();
+
+		assertTrue(defaultValue instanceof LiteralNull);
 	}
 
 } //ParameterTest

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageTest.java,v 1.5 2006/05/26 17:28:11 khussey Exp $
+ * $Id: PackageTest.java,v 1.6 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -429,11 +429,10 @@ public class PackageTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Package#mustBeOwned()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testMustBeOwned() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().mustBeOwned());
 	}
 
 } //PackageTest

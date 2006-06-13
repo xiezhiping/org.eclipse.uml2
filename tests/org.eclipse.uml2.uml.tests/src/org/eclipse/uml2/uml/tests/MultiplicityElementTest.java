@@ -8,11 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementTest.java,v 1.7 2006/05/26 17:28:10 khussey Exp $
+ * $Id: MultiplicityElementTest.java,v 1.8 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,11 +87,23 @@ public abstract class MultiplicityElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.MultiplicityElement#setUpper(int)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetUpper() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getUpperValue());
+
+		getFixture().setUpper(LiteralUnlimitedNatural.UNLIMITED);
+
+		ValueSpecification upperValue = getFixture().getUpperValue();
+
+		assertTrue(upperValue instanceof LiteralUnlimitedNatural);
+		assertEquals(LiteralUnlimitedNatural.UNLIMITED,
+			((LiteralUnlimitedNatural) upperValue).getValue());
+
+		getFixture().setUpper(1);
+
+		assertSame(upperValue, getFixture().getUpperValue());
+		assertEquals(1, ((LiteralUnlimitedNatural) upperValue).getValue());
 	}
 
 	/**
@@ -108,11 +123,22 @@ public abstract class MultiplicityElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.MultiplicityElement#setLower(int)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetLower() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getLowerValue());
+
+		getFixture().setLower(0);
+
+		ValueSpecification lowerValue = getFixture().getLowerValue();
+
+		assertTrue(lowerValue instanceof LiteralInteger);
+		assertEquals(0, ((LiteralInteger) lowerValue).getValue());
+
+		getFixture().setLower(1);
+
+		assertSame(lowerValue, getFixture().getLowerValue());
+		assertEquals(1, ((LiteralInteger) lowerValue).getValue());
 	}
 
 	/**

@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityTest.java,v 1.4 2006/05/26 17:28:10 khussey Exp $
+ * $Id: ActivityTest.java,v 1.5 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import junit.textui.TestRunner;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.UMLFactory;
 
 /**
@@ -96,11 +97,23 @@ public class ActivityTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Activity#getStructuredNodes()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetStructuredNodes() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		StructuredActivityNode structuredNode1 = UMLFactory.eINSTANCE
+			.createStructuredActivityNode();
+		getFixture().getNodes().add(structuredNode1);
+
+		assertSame(getFixture(), structuredNode1.getActivity());
+
+		StructuredActivityNode structuredNode2 = UMLFactory.eINSTANCE
+			.createStructuredActivityNode();
+		getFixture().getGroups().add(structuredNode2);
+
+		assertSame(getFixture(), structuredNode2.getActivity());
+
+		assertTrue(getFixture().getStructuredNodes().contains(structuredNode1));
+		assertTrue(getFixture().getStructuredNodes().contains(structuredNode2));
 	}
 
 	/**

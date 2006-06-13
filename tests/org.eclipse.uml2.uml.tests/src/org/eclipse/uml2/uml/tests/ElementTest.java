@@ -8,13 +8,36 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementTest.java,v 1.5 2006/05/26 17:28:10 khussey Exp $
+ * $Id: ElementTest.java,v 1.6 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
+import java.util.Date;
+import java.util.Iterator;
+
 import junit.framework.TestCase;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.UniqueEList;
+
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.UMLPackage;
+
+import org.eclipse.uml2.uml.resource.UMLResource;
+
+import org.eclipse.uml2.uml.util.UMLSwitch;
 
 /**
  * <!-- begin-user-doc -->
@@ -136,8 +159,72 @@ public abstract class ElementTest
 	 * @generated
 	 */
 	public void testDestroy() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		final Comment comment1 = UMLFactory.eINSTANCE.createComment();
+		new ResourceSetImpl().createResource(
+			URI.createFileURI(String.valueOf(new Date().getTime()))
+				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents()
+			.add(comment1);
+
+		ResourceSet resourceSet = new ResourceSetImpl();
+
+		Comment comment2 = UMLFactory.eINSTANCE.createComment();
+		resourceSet.createResource(
+			URI.createFileURI(String.valueOf(new Date().getTime()))
+				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents()
+			.add(comment2);
+
+		EList contents = resourceSet.createResource(
+			URI.createFileURI(String.valueOf(new Date().getTime()))
+				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents();
+
+		Model model = UMLFactory.eINSTANCE.createModel();
+		contents.add(model);
+
+		contents.add(getFixture());
+
+		assertTrue(contents.contains(getFixture()));
+
+		getFixture().destroy();
+
+		assertFalse(contents.contains(getFixture()));
+
+		final EList annotatedElements1 = comment1.getAnnotatedElements();
+		final EList annotatedElements2 = comment2.getAnnotatedElements();
+
+		annotatedElements1.add(getFixture());
+		annotatedElements2.add(getFixture());
+
+		final EList packagedElements = model.getPackagedElements();
+
+		new UMLSwitch() {
+
+			public Object caseElement(Element element) {
+				assertTrue(annotatedElements1.contains(element));
+				assertTrue(annotatedElements2.contains(element));
+
+				element.destroy();
+
+				assertFalse(annotatedElements1.contains(element));
+				assertFalse(annotatedElements2.contains(element));
+
+				return this;
+			}
+
+			public Object casePackageableElement(
+					PackageableElement packageableElement) {
+				caseElement(packageableElement);
+
+				packagedElements.add(packageableElement);
+
+				assertTrue(packagedElements.contains(packageableElement));
+
+				packageableElement.destroy();
+
+				assertFalse(packagedElements.contains(packageableElement));
+
+				return this;
+			}
+		}.doSwitch(getFixture());
 	}
 
 	/**
@@ -145,11 +232,15 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#hasKeyword(java.lang.String)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testHasKeyword__String() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().hasKeyword(getName()));
+
+		getFixture().createEAnnotation(UMLPackage.eNS_URI).getDetails().put(
+			getName(), null);
+
+		assertTrue(getFixture().hasKeyword(getName()));
 	}
 
 	/**
@@ -193,11 +284,41 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#getNearestPackage()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetNearestPackage() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		new UMLSwitch() {
+
+			public Object caseElement(Element element) {
+				assertNull(element.getNearestPackage());
+
+				return element;
+			}
+
+			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+				assertSame(package_, package_.getNearestPackage());
+
+				return package_;
+			}
+
+			public Object casePackageableElement(
+					PackageableElement packageableElement) {
+				caseElement(packageableElement);
+
+				org.eclipse.uml2.uml.Package nestingPackage = UMLFactory.eINSTANCE
+					.createPackage();
+				org.eclipse.uml2.uml.Package nestedPackage = nestingPackage
+					.createNestedPackage(null);
+
+				nestedPackage.getPackagedElements().add(packageableElement);
+
+				assertSame(nestedPackage, packageableElement
+					.getNearestPackage());
+
+				return packageableElement;
+			}
+		}.doSwitch(getFixture());
 	}
 
 	/**
@@ -205,11 +326,39 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#getModel()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetModel() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		new UMLSwitch() {
+
+			public Object caseElement(Element element) {
+				assertNull(element.getModel());
+
+				return element;
+			}
+
+			public Object caseModel(Model model) {
+				assertSame(model, model.getModel());
+
+				return model;
+			}
+
+			public Object casePackageableElement(
+					PackageableElement packageableElement) {
+				caseElement(packageableElement);
+
+				Model model = UMLFactory.eINSTANCE.createModel();
+				org.eclipse.uml2.uml.Package nestedPackage = model
+					.createNestedPackage(null);
+
+				nestedPackage.getPackagedElements().add(packageableElement);
+
+				assertSame(model, packageableElement.getModel());
+
+				return packageableElement;
+			}
+		}.doSwitch(getFixture());
 	}
 
 	/**
@@ -433,11 +582,18 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#createEAnnotation(java.lang.String)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testCreateEAnnotation__String() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		EAnnotation eAnnotation = getFixture().createEAnnotation(null);
+
+		assertSame(getFixture(), eAnnotation.getEModelElement());
+		assertNull(eAnnotation.getSource());
+
+		eAnnotation = getFixture().createEAnnotation(getName());
+
+		assertSame(getFixture(), eAnnotation.getEModelElement());
+		assertSame(getName(), eAnnotation.getSource());
 	}
 
 	/**
@@ -517,11 +673,18 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#allOwnedElements()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testAllOwnedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		EList allOwnedElements = getFixture().allOwnedElements();
+
+		assertTrue(allOwnedElements
+			.containsAll(getFixture().getOwnedElements()));
+
+		for (Iterator aoe = allOwnedElements.iterator(); aoe.hasNext();) {
+			assertTrue(allOwnedElements.containsAll(((Element) aoe.next())
+				.allOwnedElements()));
+		}
 	}
 
 	/**
@@ -529,11 +692,30 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#mustBeOwned()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testMustBeOwned() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertTrue(getFixture().mustBeOwned());
+	}
+
+	protected EList getEAllSubClasses(EClass eClass) {
+		EList eAllSubClasses = new UniqueEList.FastCompare();
+
+		for (Iterator eClassifiers = UMLPackage.eINSTANCE.getEClassifiers()
+			.iterator(); eClassifiers.hasNext();) {
+
+			Object eClassifier = eClassifiers.next();
+
+			if (eClassifier instanceof EClass) {
+				EClass umlEClass = (EClass) eClassifier;
+
+				if (eClass.isSuperTypeOf(umlEClass) && !umlEClass.isAbstract()) {
+					eAllSubClasses.add(umlEClass);
+				}
+			}
+		}
+
+		return eAllSubClasses;
 	}
 
 } //ElementTest

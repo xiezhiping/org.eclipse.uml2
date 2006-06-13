@@ -8,11 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceTest.java,v 1.4 2006/05/26 17:28:10 khussey Exp $
+ * $Id: NamespaceTest.java,v 1.5 2006/06/13 17:35:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,11 +100,55 @@ public abstract class NamespaceTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Namespace#createElementImport(org.eclipse.uml2.uml.PackageableElement, org.eclipse.uml2.uml.VisibilityKind)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testCreateElementImport__PackageableElement_VisibilityKind() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		try {
+			getFixture().createElementImport(null,
+				VisibilityKind.PRIVATE_LITERAL);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		EList packageableElementSubClasses = getEAllSubClasses(UMLPackage.Literals.PACKAGEABLE_ELEMENT);
+
+		for (int i = 0; i < packageableElementSubClasses.size(); i++) {
+			PackageableElement packageableElement = (PackageableElement) UMLFactory.eINSTANCE
+				.create((EClass) packageableElementSubClasses.get(i));
+
+			try {
+				getFixture().createElementImport(packageableElement, null);
+				fail();
+			} catch (IllegalArgumentException iae) {
+				// pass
+			}
+
+			try {
+				getFixture().createElementImport(packageableElement,
+					VisibilityKind.PRIVATE_LITERAL);
+			} catch (IllegalArgumentException iae) {
+				fail();
+			}
+
+			assertEquals(i + 1, getFixture().getElementImports().size());
+
+			ElementImport elementImport = (ElementImport) getFixture()
+				.getElementImports().get(i);
+
+			assertSame(packageableElement, elementImport.getImportedElement());
+			assertSame(VisibilityKind.PRIVATE_LITERAL, elementImport
+				.getVisibility());
+
+			try {
+				getFixture().createElementImport(packageableElement,
+					VisibilityKind.PRIVATE_LITERAL);
+				fail();
+			} catch (IllegalArgumentException iae) {
+				// pass
+			}
+		}
 	}
 
 	/**
@@ -107,8 +159,48 @@ public abstract class NamespaceTest
 	 * @generated
 	 */
 	public void testCreatePackageImport__Package_VisibilityKind() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		try {
+			getFixture().createPackageImport(null,
+				VisibilityKind.PRIVATE_LITERAL);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		org.eclipse.uml2.uml.Package package_ = UMLFactory.eINSTANCE
+			.createPackage();
+
+		try {
+			getFixture().createPackageImport(package_, null);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
+
+		try {
+			getFixture().createPackageImport(package_,
+				VisibilityKind.PRIVATE_LITERAL);
+		} catch (IllegalArgumentException iae) {
+			fail();
+		}
+
+		assertEquals(1, getFixture().getPackageImports().size());
+
+		PackageImport packageImport = (PackageImport) getFixture()
+			.getPackageImports().get(0);
+
+		assertSame(package_, packageImport.getImportedPackage());
+		assertSame(VisibilityKind.PRIVATE_LITERAL, packageImport
+			.getVisibility());
+
+		try {
+			getFixture().createPackageImport(package_,
+				VisibilityKind.PRIVATE_LITERAL);
+			fail();
+		} catch (IllegalArgumentException iae) {
+			// pass
+		}
 	}
 
 	/**
@@ -116,11 +208,20 @@ public abstract class NamespaceTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Namespace#getImportedElements()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetImportedElements() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertEquals(0, getFixture().getImportedElements().size());
+
+		org.eclipse.uml2.uml.Class class_ = UMLFactory.eINSTANCE.createClass();
+
+		ElementImport elementImport = getFixture().createElementImport(null);
+		elementImport.setImportedElement(class_);
+
+		EList importedElements = getFixture().getImportedElements();
+
+		assertEquals(1, importedElements.size());
+		assertTrue(importedElements.contains(class_));
 	}
 
 	/**
@@ -128,11 +229,21 @@ public abstract class NamespaceTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Namespace#getImportedPackages()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetImportedPackages() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertEquals(0, getFixture().getImportedPackages().size());
+
+		org.eclipse.uml2.uml.Package package_ = UMLFactory.eINSTANCE
+			.createPackage();
+
+		PackageImport packageImport = getFixture().createPackageImport(null);
+		packageImport.setImportedPackage(package_);
+
+		EList importedPackages = getFixture().getImportedPackages();
+
+		assertEquals(1, importedPackages.size());
+		assertTrue(importedPackages.contains(package_));
 	}
 
 	/**
