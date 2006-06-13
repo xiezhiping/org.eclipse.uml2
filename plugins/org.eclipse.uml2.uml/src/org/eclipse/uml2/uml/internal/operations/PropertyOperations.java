@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.31 2006/06/06 22:23:21 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.32 2006/06/13 15:33:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -675,7 +675,8 @@ public class PropertyOperations
 	public static boolean isNavigable(Property property) {
 		Association owningAssociation = property.getOwningAssociation();
 		return owningAssociation == null
-			|| owningAssociation.getNavigableOwnedEnds().contains(property);
+			? property.eGet(UMLPackage.Literals.ELEMENT__OWNER, false) instanceof Classifier
+			: owningAssociation.getNavigableOwnedEnds().contains(property);
 	}
 
 	/**
