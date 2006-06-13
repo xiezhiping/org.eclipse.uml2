@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.33 2006/06/07 01:47:17 khussey Exp $
+ * $Id: UMLUtil.java,v 1.34 2006/06/13 15:29:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -374,11 +374,16 @@ public class UMLUtil
 		protected void mergeNamedElement_Visibility(
 				NamedElement receivingNamedElement,
 				NamedElement mergedNamedElement) {
-			receivingNamedElement
-				.setVisibility(receivingNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL
-					&& mergedNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL
-					? VisibilityKind.PRIVATE_LITERAL
-					: VisibilityKind.PUBLIC_LITERAL);
+
+			if (receivingNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL
+				&& mergedNamedElement.getVisibility() == VisibilityKind.PRIVATE_LITERAL) {
+
+				receivingNamedElement
+					.setVisibility(VisibilityKind.PRIVATE_LITERAL);
+			} else if (receivingNamedElement.isSetVisibility()) {
+				receivingNamedElement
+					.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+			}
 		}
 
 		protected void mergeProperty_IsDerived(Property receivingProperty,
