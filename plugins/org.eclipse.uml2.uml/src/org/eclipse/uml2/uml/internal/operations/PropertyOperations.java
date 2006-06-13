@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.32 2006/06/13 15:33:23 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.33 2006/06/13 17:25:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -797,13 +797,14 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static void setIsNavigable(Property property, boolean isNavigable) {
-		Association association = property.getAssociation();
-
-		if (association == null) {
-			throw new IllegalStateException();
-		}
 
 		if (property.isNavigable() != isNavigable) {
+			Association association = property.getAssociation();
+
+			if (association == null) {
+				throw new IllegalStateException();
+			}
+
 			EList navigableOwnedEnds = association.getNavigableOwnedEnds();
 
 			if (isNavigable) {
