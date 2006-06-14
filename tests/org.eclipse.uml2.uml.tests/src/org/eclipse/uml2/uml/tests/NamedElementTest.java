@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementTest.java,v 1.4 2006/05/26 17:28:10 khussey Exp $
+ * $Id: NamedElementTest.java,v 1.5 2006/06/14 22:09:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -177,11 +177,10 @@ public abstract class NamedElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.NamedElement#separator()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSeparator() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertSame(NamedElement.SEPARATOR, getFixture().separator());
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.7 2006/06/13 17:35:02 khussey Exp $
+ * $Id: PropertyTest.java,v 1.8 2006/06/14 22:09:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -289,11 +289,14 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.TemplateableElement#isTemplate()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testIsTemplate() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().isTemplate());
+
+		getFixture().createOwnedTemplateSignature();
+
+		assertTrue(getFixture().isTemplate());
 	}
 
 	/**

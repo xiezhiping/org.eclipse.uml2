@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementTest.java,v 1.6 2006/06/13 17:35:02 khussey Exp $
+ * $Id: ElementTest.java,v 1.7 2006/06/14 22:09:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+
+import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
@@ -132,11 +134,33 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#validateNotOwnSelf(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testValidateNotOwnSelf__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		new UMLSwitch() {
+
+			public Object caseComment(Comment comment) {
+				caseElement(comment);
+
+				try {
+					comment.createOwnedComment().getOwnedComments()
+						.add(comment);
+				} catch (IllegalStateException ise) {
+					// ignore
+				}
+
+				assertFalse(comment.validateNotOwnSelf(null, null));
+
+				return comment;
+			}
+
+			public Object caseElement(Element element) {
+				assertTrue(element.validateNotOwnSelf(null, null));
+
+				return element;
+			}
+		}.doSwitch(getFixture());
 	}
 
 	/**
@@ -144,11 +168,36 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#validateHasOwner(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testValidateHasOwner__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+
+		new UMLSwitch() {
+
+			public Object caseElement(Element element) {
+				assertFalse(getFixture().validateHasOwner(null, null));
+
+				return element;
+			}
+
+			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+				assertTrue(getFixture().validateHasOwner(null, null));
+
+				return package_;
+			}
+
+			public Object casePackageableElement(
+					PackageableElement packageableElement) {
+				caseElement(packageableElement);
+
+				UMLFactory.eINSTANCE.createPackage().getPackagedElements().add(
+					packageableElement);
+
+				assertTrue(getFixture().validateHasOwner(null, null));
+
+				return packageableElement;
+			}
+		}.doSwitch(getFixture());
 	}
 
 	/**
@@ -156,7 +205,7 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#destroy()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testDestroy() {
 		final Comment comment1 = UMLFactory.eINSTANCE.createComment();
@@ -207,7 +256,7 @@ public abstract class ElementTest
 				assertFalse(annotatedElements1.contains(element));
 				assertFalse(annotatedElements2.contains(element));
 
-				return this;
+				return element;
 			}
 
 			public Object casePackageableElement(
@@ -222,7 +271,7 @@ public abstract class ElementTest
 
 				assertFalse(packagedElements.contains(packageableElement));
 
-				return this;
+				return packageableElement;
 			}
 		}.doSwitch(getFixture());
 	}
@@ -237,8 +286,8 @@ public abstract class ElementTest
 	public void testHasKeyword__String() {
 		assertFalse(getFixture().hasKeyword(getName()));
 
-		getFixture().createEAnnotation(UMLPackage.eNS_URI).getDetails().put(
-			getName(), null);
+		UML2Util.createEAnnotation(getFixture(), UMLPackage.eNS_URI)
+			.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().hasKeyword(getName()));
 	}
@@ -248,11 +297,15 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#getKeywords()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testGetKeywords() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertTrue(getFixture().getKeywords().isEmpty());
+
+		UML2Util.createEAnnotation(getFixture(), UMLPackage.eNS_URI)
+			.getDetails().put(getName(), null);
+
+		assertTrue(getFixture().getKeywords().contains(getName()));
 	}
 
 	/**
@@ -260,11 +313,22 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#addKeyword(java.lang.String)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testAddKeyword__String() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertNull(getFixture().getEAnnotation(UMLPackage.eNS_URI));
+
+		assertTrue(getFixture().addKeyword(getName()));
+
+		EAnnotation eAnnotation = getFixture().getEAnnotation(
+			UMLPackage.eNS_URI);
+		assertNotNull(eAnnotation);
+		assertTrue(eAnnotation.getDetails().containsKey(getName()));
+
+		assertFalse(getFixture().addKeyword(getName()));
+
+		assertEquals(1, eAnnotation.getDetails().size());
+		assertTrue(eAnnotation.getDetails().containsKey(getName()));
 	}
 
 	/**
@@ -272,11 +336,20 @@ public abstract class ElementTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Element#removeKeyword(java.lang.String)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testRemoveKeyword__String() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().removeKeyword(getName()));
+
+		EAnnotation eAnnotation = UML2Util.createEAnnotation(getFixture(),
+			UMLPackage.eNS_URI);
+		eAnnotation.getDetails().put(getName(), null);
+
+		assertTrue(getFixture().removeKeyword(getName()));
+
+		assertFalse(eAnnotation.getDetails().containsKey(getName()));
+
+		assertFalse(getFixture().removeKeyword(getName()));
 	}
 
 	/**

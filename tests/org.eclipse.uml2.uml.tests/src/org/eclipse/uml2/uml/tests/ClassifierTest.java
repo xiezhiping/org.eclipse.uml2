@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTest.java,v 1.5 2006/05/26 17:28:11 khussey Exp $
+ * $Id: ClassifierTest.java,v 1.6 2006/06/14 22:09:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.UMLPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -246,11 +247,15 @@ public abstract class ClassifierTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Classifier#isTemplate()
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testIsTemplate() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
+		assertFalse(getFixture().isTemplate());
+
+		getFixture().createOwnedTemplateSignature(
+			UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE);
+
+		assertTrue(getFixture().isTemplate());
 	}
 
 	/**
