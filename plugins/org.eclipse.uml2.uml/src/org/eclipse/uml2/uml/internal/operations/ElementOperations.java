@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.40 2006/05/11 04:16:53 khussey Exp $
+ * $Id: ElementOperations.java,v 1.41 2006/06/14 22:04:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1417,6 +1417,22 @@ public class ElementOperations
 		destroy((EObject) element);
 	}
 
+	protected static EList allOwnedElements(Element element,
+			EList allOwnedElements) {
+
+		for (Iterator ownedElements = element.getOwnedElements().iterator(); ownedElements
+			.hasNext();) {
+
+			Element ownedElement = (Element) ownedElements.next();
+
+			if (allOwnedElements.add(ownedElement)) {
+				allOwnedElements(ownedElement, allOwnedElements);
+			}
+		}
+
+		return allOwnedElements;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1427,14 +1443,8 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static EList allOwnedElements(Element element) {
-		EList ownedElements = element.getOwnedElements();
-		EList allOwnedElements = new UniqueEList.FastCompare(ownedElements);
-
-		for (Iterator oe = ownedElements.iterator(); oe.hasNext();) {
-			allOwnedElements.addAll(((Element) oe.next()).allOwnedElements());
-		}
-
-		return ECollections.unmodifiableEList(allOwnedElements);
+		return ECollections.unmodifiableEList(allOwnedElements(element,
+			new UniqueEList.FastCompare()));
 	}
 
 	/**
