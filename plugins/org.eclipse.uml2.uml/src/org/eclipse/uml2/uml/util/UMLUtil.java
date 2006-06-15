@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.34 2006/06/13 15:29:20 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35 2006/06/15 14:04:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -258,8 +258,6 @@ public class UMLUtil
 		public static final int ASSOCIATION_SPECIALIZATION = DIAGNOSTIC_CODE_OFFSET + 8;
 
 		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 9;
-
-		protected static final String ANNOTATION_SOURCE__CAPABILITIES = "capabilities"; //$NON-NLS-1$
 
 		protected org.eclipse.uml2.uml.Package receivingPackage = null;
 
@@ -1619,7 +1617,7 @@ public class UMLUtil
 
 							getEAnnotation(
 								getEAnnotation(resultingPackage,
-									ANNOTATION_SOURCE__CAPABILITIES, true),
+									UMLPackage.eNS_URI, true),
 								mergedPackage.getQualifiedName(), true)
 								.getReferences().add(resultingEObject);
 						} else if (OPTION__REPORT.equals(options
