@@ -1,6 +1,9 @@
 # The current direcotry
 currentPath=$PWD
 
+# export JAVA_HOME=/opt/sun-java2-5.0
+export JAVA_HOME_1_4=/opt/ibm-java2-1.4
+
 # The eclipse directory
 eclipseDir=$1
 
@@ -8,7 +11,7 @@ eclipseDir=$1
 destDir=$eclipseDir/plugins/org.eclipse.uml2.doc/references/javadoc
 
 # Don't execute if the destination directory has files
-if [ -d $destDir ]; then
+if [ -d "$destDir" ]; then
 	exit
 fi
 
@@ -55,17 +58,21 @@ packagesets=""
 for pluginDir in $pluginDirs; do
 	pluginDir=`echo $pluginDir | sed -e 's/\/runtime$//g'`
 	srcDir=$pluginDir/src
-	if [ -d $srcDir ]; then
+	if [ -d "$srcDir" ]; then
         packagesets=$packagesets"<packageset dir=\"$srcDir\">"
         packagesets=$packagesets"<exclude name=\"**/impl/**\"/>"
         packagesets=$packagesets"<exclude name=\"**/internal/**\"/>"
         packagesets=$packagesets"</packageset>"
+	copydocfiles=$copydocfiles"<copyDocFiles pluginDir=\"$pluginDir\"/>"
 	fi
 done
 
 # Replaces the token @packagesets@ in the template by the actual value
 packagesets=`echo $packagesets | sed -e 's/\//\\\\\\//g' | sed -e 's/\./\\\\\./g'`
 sed -e "s/\@packagesets\@/${packagesets}/g" $currentPath/javadoc.xml.template > javadoc.xml
+# Replaces the token @copydocfiles@ in the template by the actual value
+copydocfiles=`echo $copydocfiles | sed -e 's/\//\\\\\\//g' | sed -e 's/\./\\\\\./g'`
+sed -e "s/\@copydocfiles\@/${copydocfiles}/g" $currentPath/javadoc.xml.template2 > javadoc.xml
 
 # Executes the ant script
 ant	-f javadoc.xml \

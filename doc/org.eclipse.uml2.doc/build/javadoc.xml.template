@@ -22,16 +22,15 @@
 
 	<target name="javadoc" depends="extractPlatformJavadoc,extractEMFJavadoc">
 
-	<echo message="Get Doclet and compile it with JDK1.4 for use with javadoc"/>
-	<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/tools" 
-		package="org.eclipse.emf.releng.build/org.eclipse.emf.build" 
-		reallyquiet="yes"/>
-	<delete dir="org.eclipse.emf.releng.build/org.eclipse.emf.build/src/CVS"/>
-	<move todir="."><fileset dir="org.eclipse.emf.releng.build/org.eclipse.emf.build/src"/></move>
+		<echo message="Get Doclet and compile it with JDK1.4 for use with javadoc"/>
+		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/tools" 
+			package="org.eclipse.emf.releng.build/org.eclipse.emf.build" 
+			reallyquiet="yes"/>
+		<delete dir="org.eclipse.emf.releng.build/org.eclipse.emf.build/src/CVS"/>
+		<move todir="."><fileset dir="org.eclipse.emf.releng.build/org.eclipse.emf.build/src"/></move>
 	
-	<!-- requires JDK1.4 for compilation -->
-	<javac srcdir="org/eclipse/emf/build/doclet" classpath=".:${java.home}/../lib/tools.jar" failonerror="true"/>
-
+		<!-- requires JDK1.4 for compilation -->
+		<javac srcdir="org/eclipse/emf/build/doclet" classpath=".:${javaHome1.4}/lib/tools.jar" failonerror="true"/>
 		<javadoc 
 			destdir="${destDir}" 
 			classpath="${classpath}"
@@ -51,6 +50,7 @@
 			noindex="false" 
 			nonavbar="false" 
 			notree="false" 
+			source="1.4"
 			splitindex="true" 
 			use="true" 
 			version="true"> 
@@ -90,5 +90,18 @@
 @packagesets@
 				
 		</javadoc>
+
+		<!-- make sure the doc-files are copied -->
+		<macrodef name="copyDocFiles">
+			<attribute name="pluginDir"/>
+			<sequential>
+				<copy todir="${destDir}" failonerror="false">
+				        <fileset dir="@{pluginDir}/src" includes="**/doc-files/**"/>
+				</copy>		
+			</sequential>
+		</macrodef>
+
+@copydocfiles@
+
 	</target>
 </project>
