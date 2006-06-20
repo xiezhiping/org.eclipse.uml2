@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.41 2006/06/14 22:04:27 khussey Exp $
+ * $Id: ElementOperations.java,v 1.42 2006/06/20 21:58:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1345,7 +1345,9 @@ public class ElementOperations
 						Stereotype stereotype = (Stereotype) ownedStereotypes
 							.next();
 
-						if (profileApplication.getAppliedDefinition(stereotype) != null
+						if (!stereotype.isAbstract()
+							&& profileApplication
+								.getAppliedDefinition(stereotype) != null
 							&& getExtension(element, stereotype) != null) {
 
 							applicableStereotypes.add(stereotype);
