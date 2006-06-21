@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.8 2006/06/14 22:09:58 khussey Exp $
+ * $Id: PropertyTest.java,v 1.9 2006/06/21 15:32:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -541,7 +541,7 @@ public class PropertyTest
 		assertSame(defaultValue, getFixture().getDefaultValue());
 		assertEquals(Integer.MAX_VALUE, ((LiteralInteger) defaultValue)
 			.getValue());
-		}
+	}
 
 	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Property#setStringDefaultValue(java.lang.String) <em>Set String Default Value</em>}' operation.
@@ -571,7 +571,7 @@ public class PropertyTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Property#setUnlimitedNaturalDefaultValue(int)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testSetUnlimitedNaturalDefaultValue__int() {
 		assertNull(getFixture().getDefaultValue());

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceTest.java,v 1.5 2006/06/13 17:35:02 khussey Exp $
+ * $Id: NamespaceTest.java,v 1.6 2006/06/21 15:32:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -156,7 +156,7 @@ public abstract class NamespaceTest
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Namespace#createPackageImport(org.eclipse.uml2.uml.Package, org.eclipse.uml2.uml.VisibilityKind)
-	 * @generated
+	 * @generated NOT
 	 */
 	public void testCreatePackageImport__Package_VisibilityKind() {
 
