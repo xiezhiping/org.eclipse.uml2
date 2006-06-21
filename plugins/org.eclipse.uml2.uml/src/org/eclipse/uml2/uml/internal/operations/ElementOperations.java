@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.43 2006/06/20 23:33:05 khussey Exp $
+ * $Id: ElementOperations.java,v 1.44 2006/06/21 13:33:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -250,10 +252,11 @@ public class ElementOperations
 
 						Stereotype stereotype = (Stereotype) ownedStereotypes
 							.next();
+						ENamedElement appliedDefinition = profileApplication
+							.getAppliedDefinition(stereotype);
 
-						if (!stereotype.isAbstract()
-							&& profileApplication
-								.getAppliedDefinition(stereotype) != null) {
+						if (appliedDefinition instanceof EClass
+							&& !((EClass) appliedDefinition).isAbstract()) {
 
 							Extension extension = getExtension(element,
 								stereotype);
@@ -1070,15 +1073,9 @@ public class ElementOperations
 		return null;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isStereotypeApplicable(Element element,
-			Stereotype stereotype) {
+	protected static EClass getDefinition(Element element, Stereotype stereotype) {
 
-		if (stereotype != null && !stereotype.isAbstract()) {
+		if (stereotype != null) {
 			Profile profile = stereotype.getProfile();
 
 			if (profile != null) {
@@ -1089,17 +1086,35 @@ public class ElementOperations
 					ProfileApplication profileApplication = package_
 						.getProfileApplication(profile, true);
 
-					if (profileApplication != null
-						&& profileApplication.getAppliedDefinition(stereotype) != null
-						&& getExtension(element, stereotype) != null) {
+					if (profileApplication != null) {
+						ENamedElement appliedDefinition = profileApplication
+							.getAppliedDefinition(stereotype);
 
-						return true;
+						if (appliedDefinition instanceof EClass) {
+							EClass eClass = (EClass) appliedDefinition;
+
+							if (!eClass.isAbstract()) {
+								return eClass;
+							}
+						}
 					}
 				}
 			}
 		}
 
-		return false;
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static boolean isStereotypeApplicable(Element element,
+			Stereotype stereotype) {
+
+		return getDefinition(element, stereotype) != null
+			&& getExtension(element, stereotype) != null;
 	}
 
 	/**
@@ -1110,28 +1125,10 @@ public class ElementOperations
 	public static boolean isStereotypeRequired(Element element,
 			Stereotype stereotype) {
 
-		if (stereotype != null && !stereotype.isAbstract()) {
-			Profile profile = stereotype.getProfile();
+		if (getDefinition(element, stereotype) != null) {
+			Extension extension = getExtension(element, stereotype);
 
-			if (profile != null) {
-				org.eclipse.uml2.uml.Package package_ = element
-					.getNearestPackage();
-
-				if (package_ != null) {
-					ProfileApplication profileApplication = package_
-						.getProfileApplication(profile, true);
-
-					if (profileApplication != null
-						&& profileApplication.getAppliedDefinition(stereotype) != null) {
-
-						Extension extension = getExtension(element, stereotype);
-
-						if (extension != null && extension.isRequired()) {
-							return true;
-						}
-					}
-				}
-			}
+			return extension != null && extension.isRequired();
 		}
 
 		return false;
@@ -1148,23 +1145,32 @@ public class ElementOperations
 	}
 
 	protected static EList applyAllStereotypes(Element element,
-			EList extensions, EList stereotypeApplications) {
+			Map definitions, EList stereotypeApplications) {
 
 		if (!element.eIsProxy()) {
 
-			for (Iterator e = extensions.iterator(); e.hasNext();) {
-				Extension extension = (Extension) e.next();
-				org.eclipse.uml2.uml.Class metaclass = extension.getMetaclass();
+			for (Iterator stereotypeEntries = definitions.entrySet().iterator(); stereotypeEntries
+				.hasNext();) {
 
-				if (metaclass != null) {
-					EClassifier eClassifier = getEClassifier(metaclass);
+				Map.Entry stereotypeEntry = (Map.Entry) stereotypeEntries
+					.next();
 
-					if (eClassifier != null && eClassifier.isInstance(element)) {
-						Stereotype stereotype = extension.getStereotype();
+				if (((EClassifier) stereotypeEntry.getKey())
+					.isInstance(element)) {
 
-						if (!element.isStereotypeApplied(stereotype)) {
+					for (Iterator definitionEntries = ((Map) stereotypeEntry
+						.getValue()).entrySet().iterator(); definitionEntries
+						.hasNext();) {
+
+						Map.Entry definitionEntry = (Map.Entry) definitionEntries
+							.next();
+
+						if (!element
+							.isStereotypeApplied((Stereotype) definitionEntry
+								.getKey())) {
+
 							stereotypeApplications.add(applyStereotype(element,
-								stereotype.getDefinition()));
+								(EClass) definitionEntry.getValue()));
 						}
 					}
 				}
@@ -1175,10 +1181,10 @@ public class ElementOperations
 	}
 
 	protected static EList applyAllStereotypes(Element element,
-			EList extensions, boolean resolve) {
+			Map definitions, boolean resolve) {
 		EList stereotypeApplications = new UniqueEList.FastCompare();
 
-		applyAllStereotypes(element, extensions, stereotypeApplications);
+		applyAllStereotypes(element, definitions, stereotypeApplications);
 
 		if (!element.eContents().isEmpty()) {
 
@@ -1188,7 +1194,7 @@ public class ElementOperations
 				EObject eObject = (EObject) allContents.next();
 
 				if (eObject instanceof Element) {
-					applyAllStereotypes((Element) eObject, extensions,
+					applyAllStereotypes((Element) eObject, definitions,
 						stereotypeApplications);
 				}
 			}
@@ -1206,19 +1212,66 @@ public class ElementOperations
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
-			EList allRequiredExtensions = new UniqueEList.FastCompare();
+			Map definitions = new HashMap();
 
-			for (Iterator allAppliedProfiles = package_.getAllAppliedProfiles()
-				.iterator(); allAppliedProfiles.hasNext();) {
+			for (Iterator allProfileApplications = package_
+				.getAllProfileApplications().iterator(); allProfileApplications
+				.hasNext();) {
 
-				ProfileOperations.getOwnedExtensions(
-					(Profile) allAppliedProfiles.next(), true,
-					allRequiredExtensions);
+				ProfileApplication profileApplication = (ProfileApplication) allProfileApplications
+					.next();
+				Profile appliedProfile = profileApplication.getAppliedProfile();
+
+				if (appliedProfile != null) {
+
+					for (Iterator ownedExtensions = appliedProfile
+						.getOwnedExtensions(true).iterator(); ownedExtensions
+						.hasNext();) {
+
+						Extension ownedExtension = (Extension) ownedExtensions
+							.next();
+						org.eclipse.uml2.uml.Class metaclass = ownedExtension
+							.getMetaclass();
+
+						if (metaclass != null) {
+							EClassifier eClassifier = getEClassifier(metaclass);
+
+							if (eClassifier != null) {
+								Stereotype stereotype = ownedExtension
+									.getStereotype();
+
+								if (stereotype != null) {
+									ENamedElement appliedDefinition = profileApplication
+										.getAppliedDefinition(stereotype);
+
+									if (appliedDefinition instanceof EClass
+										&& !((EClass) appliedDefinition)
+											.isAbstract()) {
+
+										Map stereotypes = (Map) definitions
+											.get(eClassifier);
+
+										if (stereotypes == null) {
+											definitions.put(eClassifier,
+												stereotypes = new HashMap());
+										}
+
+										if (!stereotypes
+											.containsKey(stereotype)) {
+
+											stereotypes.put(stereotype,
+												appliedDefinition);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 
-			if (!allRequiredExtensions.isEmpty()) {
-				return applyAllStereotypes(element, allRequiredExtensions,
-					resolve);
+			if (!definitions.isEmpty()) {
+				return applyAllStereotypes(element, definitions, resolve);
 			}
 		}
 
@@ -1231,19 +1284,15 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static EObject applyStereotype(Element element, Stereotype stereotype) {
+		EClass definition = getDefinition(element, stereotype);
 
-		if (stereotype == null || !element.isStereotypeApplicable(stereotype)) {
+		if (definition == null || getExtension(element, stereotype) == null
+			|| element.getStereotypeApplication(stereotype) != null) {
+
 			throw new IllegalArgumentException(String.valueOf(stereotype));
 		}
 
-		EObject stereotypeApplication = element
-			.getStereotypeApplication(stereotype);
-
-		if (stereotypeApplication != null) {
-			throw new IllegalArgumentException(String.valueOf(stereotype));
-		}
-
-		return applyStereotype(element, stereotype.getDefinition());
+		return applyStereotype(element, definition);
 	}
 
 	protected static EList unapplyAllNonApplicableStereotypes(Element element,
@@ -1347,10 +1396,11 @@ public class ElementOperations
 
 						Stereotype stereotype = (Stereotype) ownedStereotypes
 							.next();
+						ENamedElement appliedDefinition = profileApplication
+							.getAppliedDefinition(stereotype);
 
-						if (!stereotype.isAbstract()
-							&& profileApplication
-								.getAppliedDefinition(stereotype) != null
+						if (appliedDefinition instanceof EClass
+							&& !((EClass) appliedDefinition).isAbstract()
 							&& getExtension(element, stereotype) != null) {
 
 							applicableStereotypes.add(stereotype);
