@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.66 2006/03/28 16:22:52 khussey Exp $
+ * $Id: UML2Util.java,v 1.67 2006/10/03 15:26:07 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -19,6 +19,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -4282,7 +4283,57 @@ public class UML2Util
 
 		protected Collection mergedPackages = null;
 
-		protected final Map resultingToMergedEObjectMap = new HashMap();
+		protected final Map resultingToMergedEObjectMap = new LinkedHashMap();
+
+		private final Map copierMap = new LinkedHashMap();
+
+		public void clear() {
+			copierMap.clear();
+		}
+
+		public boolean containsKey(Object key) {
+			return copierMap.containsKey(key);
+		}
+
+		public boolean containsValue(Object value) {
+			return copierMap.containsValue(value);
+		}
+
+		public Set entrySet() {
+			return copierMap.entrySet();
+		}
+
+		public Object get(Object key) {
+			return copierMap.get(key);
+		}
+
+		public boolean isEmpty() {
+			return copierMap.isEmpty();
+		}
+
+		public Set keySet() {
+			return copierMap.keySet();
+		}
+
+		public Object put(Object key, Object value) {
+			return copierMap.put(key, value);
+		}
+
+		public void putAll(Map t) {
+			copierMap.putAll(t);
+		}
+
+		public Object remove(Object key) {
+			return copierMap.remove(key);
+		}
+
+		public int size() {
+			return copierMap.size();
+		}
+
+		public Collection values() {
+			return copierMap.values();
+		}
 
 		protected List getMatchCandidates(EObject eObject) {
 			EStructuralFeature eContainingFeature = eObject
@@ -4594,11 +4645,14 @@ public class UML2Util
 
 						if (copyReferencedEObject == null) {
 
-							if (!isBidirectional
-								&& !targetList.contains(referencedEObject)) {
+							if (!isBidirectional) {
 
-								targetList
-									.addUnique(index++, referencedEObject);
+								if (!targetList.contains(referencedEObject)) {
+									targetList.addUnique(index,
+										referencedEObject);
+								}
+
+								index++;
 							}
 						} else {
 
@@ -4607,19 +4661,20 @@ public class UML2Util
 									.indexOf(copyReferencedEObject);
 
 								if (position == -1) {
-									targetList.addUnique(index++,
+									targetList.addUnique(index,
 										copyReferencedEObject);
 								} else if (index != position) {
-									targetList.move(index < targetList.size()
-										? index++
-										: --index, copyReferencedEObject);
+									targetList.move(index,
+										copyReferencedEObject);
 								}
 							} else if (!targetList
 								.contains(copyReferencedEObject)) {
 
-								targetList.addUnique(index++,
+								targetList.addUnique(index,
 									copyReferencedEObject);
 							}
+
+							index++;
 						}
 					}
 				} else {
@@ -5384,7 +5439,7 @@ public class UML2Util
 		protected void processEmptyUnions(Map options,
 				DiagnosticChain diagnostics, Map context) {
 
-			Map unionToSubsettingPropertyMap = new HashMap();
+			Map unionToSubsettingPropertyMap = new LinkedHashMap();
 
 			for (Iterator resultingEObjects = resultingToMergedEObjectMap
 				.keySet().iterator(); resultingEObjects.hasNext();) {
@@ -5398,7 +5453,7 @@ public class UML2Util
 						&& !unionToSubsettingPropertyMap.containsKey(property)) {
 
 						unionToSubsettingPropertyMap.put(property,
-							new HashSet());
+							new UniqueEList.FastCompare());
 					}
 
 					for (Iterator subsettedProperties = property
@@ -5409,13 +5464,14 @@ public class UML2Util
 							.next();
 
 						if (subsettedProperty.isDerivedUnion()) {
-							Set subsettingProperties = (Set) unionToSubsettingPropertyMap
+							List subsettingProperties = (List) unionToSubsettingPropertyMap
 								.get(subsettedProperty);
 
 							if (null == subsettingProperties) {
-								unionToSubsettingPropertyMap.put(
-									subsettedProperty,
-									subsettingProperties = new HashSet());
+								unionToSubsettingPropertyMap
+									.put(
+										subsettedProperty,
+										subsettingProperties = new UniqueEList.FastCompare());
 							}
 
 							subsettingProperties.add(property);
@@ -5429,7 +5485,7 @@ public class UML2Util
 
 				Map.Entry entry = (Map.Entry) entries.next();
 
-				if (((Set) entry.getValue()).isEmpty()) {
+				if (((List) entry.getValue()).isEmpty()) {
 					Property unionProperty = (Property) entry.getKey();
 
 					if (OPTION__PROCESS.equals(options
