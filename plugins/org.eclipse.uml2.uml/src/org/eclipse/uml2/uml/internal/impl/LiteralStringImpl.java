@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.11 2006/04/10 19:16:19 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.12 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -140,6 +140,24 @@ public class LiteralStringImpl
 	 */
 	public boolean isSetValue() {
 		return (eFlags & VALUE_ESETFLAG) != 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int integerValue() {
+		return LiteralStringOperations.integerValue(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int unlimitedValue() {
+		return LiteralStringOperations.unlimitedValue(this);
 	}
 
 	/**

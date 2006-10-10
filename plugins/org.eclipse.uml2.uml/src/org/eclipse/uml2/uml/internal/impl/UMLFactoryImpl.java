@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.14 2006/05/16 15:07:26 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.15 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -3183,7 +3183,7 @@ public class UMLFactoryImpl
 			String initialValue) {
 		return initialValue == null
 			? null
-			: (initialValue.equals("*") //$NON-NLS-1$
+			: ("*".equals(initialValue) //$NON-NLS-1$
 				? new Integer(LiteralUnlimitedNatural.UNLIMITED)
 				: Integer.valueOf(initialValue));
 	}

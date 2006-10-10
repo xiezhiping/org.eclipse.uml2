@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathItemProvider.java,v 1.6 2006/06/08 17:40:25 khussey Exp $
+ * $Id: CommunicationPathItemProvider.java,v 1.7 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -29,6 +29,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.CommunicationPath;
+import org.eclipse.uml2.uml.UMLPackage;
+
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -163,6 +165,30 @@ public class CommunicationPathItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END
+			|| childFeature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseItemProvider.java,v 1.6 2006/05/15 21:06:20 khussey Exp $
+ * $Id: UseCaseItemProvider.java,v 1.7 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -251,6 +251,30 @@ public class UseCaseItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.USE_CASE__EXTENSION_POINT, UMLFactory.eINSTANCE
 				.createExtensionPoint()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

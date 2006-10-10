@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ElementImpl.java,v 1.32 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -332,17 +332,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getRelationships(EClass eClass) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(29));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(29), result = ElementOperations.getRelationships(this,
-					eClass));
-			}
-			return result;
-		}
 		return ElementOperations.getRelationships(this, eClass);
 	}
 
@@ -372,17 +361,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getSourceDirectedRelationships(EClass eClass) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(31));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(31), result = ElementOperations
-					.getSourceDirectedRelationships(this, eClass));
-			}
-			return result;
-		}
 		return ElementOperations.getSourceDirectedRelationships(this, eClass);
 	}
 
@@ -412,17 +390,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getTargetDirectedRelationships(EClass eClass) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(33));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(33), result = ElementOperations
-					.getTargetDirectedRelationships(this, eClass));
-			}
-			return result;
-		}
 		return ElementOperations.getTargetDirectedRelationships(this, eClass);
 	}
 
@@ -781,9 +748,10 @@ public abstract class ElementImpl
 		return basicGetOwner() != null;
 	}
 
-	protected void eBasicSetContainer(InternalEObject newContainer,
-			int newContainerFeatureID) {
-		super.eBasicSetContainer(newContainer, newContainerFeatureID);
+	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
+			int newContainerFeatureID, NotificationChain msgs) {
+		msgs = super.eBasicSetContainer(newContainer, newContainerFeatureID,
+			msgs);
 
 		if (newContainer != null) {
 			Resource.Internal eInternalResource = eInternalResource();
@@ -794,16 +762,22 @@ public abstract class ElementImpl
 				ElementOperations.applyAllRequiredStereotypes(this, false);
 			}
 		}
+
+		return msgs;
 	}
+
+	private static final int ADAPTING = 1 << 7;
 
 	public EList eAdapters() {
 		EList eAdapters = super.eAdapters();
 
-		if (eAdapters.isEmpty()) {
+		if ((eFlags & ADAPTING) == 0 && eAdapters.isEmpty()) {
 			CacheAdapter cacheAdapter = getCacheAdapter();
 
 			if (cacheAdapter != null) {
-				eAdapters.add(cacheAdapter);
+				eFlags |= ADAPTING;
+				cacheAdapter.adapt(this);
+				eFlags &= ~ADAPTING;
 			}
 		}
 

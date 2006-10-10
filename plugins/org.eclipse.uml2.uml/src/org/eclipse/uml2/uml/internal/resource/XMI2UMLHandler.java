@@ -8,20 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLHandler.java,v 1.2 2006/04/26 17:22:39 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.3 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
-
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
-
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
@@ -46,28 +45,33 @@ public class XMI2UMLHandler
 
 	protected static final String ECORE_EXTENSION_TYPE = "ecoreExtension"; //$NON-NLS-1$
 
-	public XMI2UMLHandler(XMLResource xmiResource, XMLHelper helper,
-			Map options) {
+	protected final static String XMI_IDREF = "idref"; //$NON-NLS-1$
+
+	protected final static String IDREF_ATTRIB = XMIResource.XMI_NS + ':' + XMI_IDREF;
+
+	public XMI2UMLHandler(XMLResource xmiResource, XMLHelper helper, Map options) {
 		super(xmiResource, helper, options);
 	}
 
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
-		
+
 		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
-			
+
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
-				 uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
+				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_INTEGER)) {
-				 uriLiteral = PRIMITIVE_TYPE_INTEGER_URI;
+				uriLiteral = PRIMITIVE_TYPE_INTEGER_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_STRING)) {
-				 uriLiteral = PRIMITIVE_TYPE_STRING_URI;
+				uriLiteral = PRIMITIVE_TYPE_STRING_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_UNLIMITED_NATURAL)) {
-				 uriLiteral = PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI;
+				uriLiteral = PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI;
 			} else {
-				uriLiteral = UMLResource.UML_METAMODEL_URI + uriLiteral.substring(uriLiteral.indexOf('#'));				
+				uriLiteral = UMLResource.UML_METAMODEL_URI
+					+ uriLiteral.substring(uriLiteral.indexOf('#'));
 			}
 		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)) {
-			uriLiteral = UMLResource.STANDARD_PROFILE_URI + uriLiteral.substring(uriLiteral.indexOf('#'));
+			uriLiteral = UMLResource.STANDARD_PROFILE_URI
+				+ uriLiteral.substring(uriLiteral.indexOf('#'));
 		}
 
 		super.handleProxy(proxy, uriLiteral);
@@ -96,6 +100,17 @@ public class XMI2UMLHandler
 			mixedTargets.pop();
 		} else {
 			super.endElement(uri, localName, name);
+		}
+	}
+
+	protected void setAttribValue(EObject object, String name, String value) {
+
+		if (IDREF_ATTRIB.equals(name)
+			&& (!recordUnknownFeature || types.peek() != UNKNOWN_FEATURE_TYPE)) {
+
+			handleProxy((InternalEObject) object, '#' + value);
+		} else {
+			super.setAttribValue(object, name, value);
 		}
 	}
 

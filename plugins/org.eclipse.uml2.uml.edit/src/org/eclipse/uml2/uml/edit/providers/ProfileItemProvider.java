@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileItemProvider.java,v 1.8 2006/05/15 21:06:22 khussey Exp $
+ * $Id: ProfileItemProvider.java,v 1.9 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -34,10 +34,13 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
-//import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -169,6 +172,15 @@ public class ProfileItemProvider
 	 */
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Profile.class)) {
+			case UMLPackage.PROFILE__OWNED_STEREOTYPE :
+			case UMLPackage.PROFILE__METACLASS_REFERENCE :
+			case UMLPackage.PROFILE__METAMODEL_REFERENCE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -182,6 +194,18 @@ public class ProfileItemProvider
 	protected void collectNewChildDescriptors(Collection newChildDescriptors,
 			Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE, UMLFactory.eINSTANCE
+				.createStereotype()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROFILE__METACLASS_REFERENCE,
+			UMLFactory.eINSTANCE.createElementImport()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE,
+			UMLFactory.eINSTANCE.createPackageImport()));
 	}
 
 	/**
@@ -197,7 +221,14 @@ public class ProfileItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
+			|| childFeature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT
+			|| childFeature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE
+			|| childFeature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT
+			|| childFeature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE
+			|| childFeature == UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE
+			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringTest.java,v 1.1 2006/02/21 16:32:26 khussey Exp $
+ * $Id: LiteralStringTest.java,v 1.2 2006/10/10 20:40:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,6 +24,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralString#integerValue() <em>Integer Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralString#unlimitedValue() <em>Unlimited Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralString#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralString#stringValue() <em>String Value</em>}</li>
  * </ul>
@@ -82,6 +84,30 @@ public class LiteralStringTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LiteralString#integerValue() <em>Integer Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LiteralString#integerValue()
+	 * @generated
+	 */
+	public void testIntegerValue() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LiteralString#unlimitedValue() <em>Unlimited Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LiteralString#unlimitedValue()
+	 * @generated
+	 */
+	public void testUnlimitedValue() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**

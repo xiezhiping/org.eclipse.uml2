@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: LiteralStringOperations.java,v 1.5 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,6 +23,8 @@ import org.eclipse.uml2.uml.LiteralString;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralString#integerValue() <em>Integer Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralString#unlimitedValue() <em>Unlimited Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralString#isComputable() <em>Is Computable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LiteralString#stringValue() <em>String Value</em>}</li>
  * </ul>
@@ -39,6 +42,37 @@ public class LiteralStringOperations
 	 */
 	protected LiteralStringOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static int integerValue(LiteralString literalString) {
+
+		try {
+			return Integer.parseInt(literalString.getValue());
+		} catch (NumberFormatException nfe) {
+			throw new UnsupportedOperationException();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static int unlimitedValue(LiteralString literalString) {
+
+		try {
+			String value = literalString.getValue();
+			return "*".equals(value) //$NON-NLS-1$
+				? LiteralUnlimitedNatural.UNLIMITED
+				: Integer.parseInt(value);
+		} catch (NumberFormatException nfe) {
+			throw new UnsupportedOperationException();
+		}
 	}
 
 	/**

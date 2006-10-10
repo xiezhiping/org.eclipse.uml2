@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.11 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface OpaqueExpression
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueExpression_Body()
-	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model type="java.lang.String" unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */

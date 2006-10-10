@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.12 2006/05/15 21:06:22 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.13 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -342,6 +342,11 @@ public class PackageItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(org.eclipse.uml2.uml.Package.class)) {
+			case UMLPackage.PACKAGE__OWNED_TYPE :
+			case UMLPackage.PACKAGE__NESTED_PACKAGE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
@@ -376,6 +381,114 @@ public class PackageItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createAssociation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createArtifact()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createDeploymentSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createInterface()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createSignal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createExtension()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createStereotype()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createDataType()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createCollaboration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createUseCase()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createEnumeration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createPrimitiveType()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createActor()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createComponent()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createDevice()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createExecutionEnvironment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createCommunicationPath()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createInformationItem()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__OWNED_TYPE, UMLFactory.eINSTANCE
+				.createAssociationClass()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGE_MERGE, UMLFactory.eINSTANCE
@@ -686,6 +799,18 @@ public class PackageItemProvider
 				.createAssociationClass()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__NESTED_PACKAGE, UMLFactory.eINSTANCE
+				.createPackage()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__NESTED_PACKAGE, UMLFactory.eINSTANCE
+				.createProfile()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__NESTED_PACKAGE, UMLFactory.eINSTANCE
+				.createModel()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PROFILE_APPLICATION,
 			UMLFactory.eINSTANCE.createProfileApplication()));
 	}
@@ -703,7 +828,9 @@ public class PackageItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE
+			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

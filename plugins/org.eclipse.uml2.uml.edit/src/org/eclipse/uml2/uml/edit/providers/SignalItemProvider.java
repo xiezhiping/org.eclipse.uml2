@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalItemProvider.java,v 1.6 2006/05/15 21:06:23 khussey Exp $
+ * $Id: SignalItemProvider.java,v 1.7 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -171,6 +171,28 @@ public class SignalItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.SIGNAL__OWNED_ATTRIBUTE, UMLFactory.eINSTANCE
 				.createExtensionEnd()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

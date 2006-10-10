@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToUMLModelAction.java,v 1.1 2006/04/24 02:05:38 khussey Exp $
+ * $Id: ConvertToUMLModelAction.java,v 1.2 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -69,7 +69,7 @@ public class ConvertToUMLModelAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof EPackage) {
+			&& collection.iterator().next() instanceof EPackage) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -80,7 +80,7 @@ public class ConvertToUMLModelAction
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
-			final EPackage ePackage = (EPackage) collection.toArray()[0];
+			final EPackage ePackage = (EPackage) collection.iterator().next();
 
 			final Shell shell = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell();

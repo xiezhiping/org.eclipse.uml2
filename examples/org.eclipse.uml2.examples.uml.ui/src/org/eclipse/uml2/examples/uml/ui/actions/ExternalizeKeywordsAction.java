@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeKeywordsAction.java,v 1.2 2006/03/29 18:52:02 khussey Exp $
+ * $Id: ExternalizeKeywordsAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -33,16 +33,19 @@ public class ExternalizeKeywordsAction
 	protected Command createActionCommand(EditingDomain editingDomain,
 			Collection collection) {
 
-		return collection.size() == 1
-			&& collection.toArray()[0] instanceof Profile
-			? (Command) IdentityCommand.INSTANCE
-			: (Command) UnexecutableCommand.INSTANCE;
+		if (collection.size() == 1
+			&& collection.iterator().next() instanceof Profile) {
+
+			return IdentityCommand.INSTANCE;
+		}
+
+		return UnexecutableCommand.INSTANCE;
 	}
 
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
-			final Profile profile = (Profile) collection.toArray()[0];
+			final Profile profile = (Profile) collection.iterator().next();
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(profile);
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.17 2006/04/10 19:15:59 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.18 2006/10/10 20:40:40 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -286,14 +286,15 @@ public class GenFeatureImpl
 
 	public boolean isEffectiveContainsSubset() {
 
-		for (Iterator subsettedGenFeatures = getSubsettedGenFeatures()
-			.iterator(); subsettedGenFeatures.hasNext();) {
+		for (Iterator subsettedEcoreFeatures = Generator
+			.getSubsettedEcoreFeatures(getEcoreFeature()).iterator(); subsettedEcoreFeatures
+			.hasNext();) {
 
-			GenFeature subsettedGenFeature = (GenFeature) subsettedGenFeatures
+			EStructuralFeature.Internal subsettedEcoreFeature = (EStructuralFeature.Internal) subsettedEcoreFeatures
 				.next();
 
-			if (subsettedGenFeature.isContains()
-				&& !subsettedGenFeature.isDerived()) {
+			if (subsettedEcoreFeature.isContainment()
+				&& !subsettedEcoreFeature.isDerived()) {
 
 				return true;
 			}
@@ -643,6 +644,20 @@ public class GenFeatureImpl
 		super.reconcileSettings(oldGenFeatureVersion);
 
 		setKey(UML2GenModelUtil.isKey(oldGenFeatureVersion));
+	}
+
+	public void initialize(EStructuralFeature eFeature) {
+
+		if (eFeature != getEcoreFeature()) {
+			super.initialize(eFeature);
+
+			if (isEffectiveContainsSubset()) {
+				setCreateChild(true);
+				setNotify(true);
+			}
+		} else {
+			super.initialize(eFeature);
+		}
 	}
 
 } // GenFeatureImpl

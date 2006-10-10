@@ -8,33 +8,125 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.12 2006/06/06 22:22:28 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.13 2006/10/10 20:40:41 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class CacheAdapter
 		extends ECrossReferenceAdapter {
 
-	public static final CacheAdapter INSTANCE = new CacheAdapter();
+	protected class InverseCrossReferencer
+			extends ECrossReferenceAdapter.InverseCrossReferencer {
 
-	private final Map values = Collections.synchronizedMap(new HashMap());
+		private URI normalizeURI(URI uri, Resource resourceContext) {
+			String fragment = uri.fragment();
+
+			if (fragment != null) {
+				int length = fragment.length();
+
+				if (length > 0 && fragment.charAt(0) != '/'
+					&& fragment.charAt(length - 1) == '?') {
+
+					int index = fragment.lastIndexOf('?', length - 2);
+
+					if (index > 0) {
+						uri = uri.trimFragment().appendFragment(
+							fragment.substring(0, index));
+					}
+				}
+			}
+
+			if (uriConverter != null) {
+				return uriConverter.normalize(uri);
+			} else if (resourceContext != null) {
+				ResourceSet resourceSetContext = resourceContext
+					.getResourceSet();
+
+				if (resourceSetContext != null) {
+					return resourceSetContext.getURIConverter().normalize(uri);
+				}
+			}
+
+			return uri;
+		}
+
+		protected URI normalizeURI(URI uri, EObject objectContext) {
+			return normalizeURI(uri, objectContext.eResource());
+		}
+
+		protected void addProxy(EObject proxy, EObject context) {
+
+			if (proxy.eIsProxy()) {
+
+				if (proxyMap == null) {
+					proxyMap = createHashMap();
+				}
+
+				Resource resource = context.eResource();
+
+				if (resource != null) {
+					addAdapter(resource);
+				}
+
+				URI uri = normalizeURI(((InternalEObject) proxy).eProxyURI(),
+					resource);
+				List proxies = (List) proxyMap.get(uri);
+
+				if (proxies == null) {
+					proxyMap.put(uri, proxies = new BasicEList.FastCompare());
+				}
+
+				proxies.add(proxy);
+			}
+		}
+	}
+
+	public static final CacheAdapter INSTANCE = createCacheAdapter();
+
+	private static CacheAdapter createCacheAdapter() {
+		String property = System
+			.getProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
+
+		if (!UML2Util.isEmpty(property)) {
+
+			try {
+				return (CacheAdapter) Class.forName(property).newInstance();
+			} catch (Exception e) {
+				// ignore
+			}
+		}
+
+		return new CacheAdapter();
+	}
+
+	private final Map values = Collections.synchronizedMap(createHashMap());
 
 	protected boolean adapting = false;
+
+	private URIConverter uriConverter = null;
 
 	public static CacheAdapter getCacheAdapter(Notifier notifier) {
 		List eAdapters = notifier.eAdapters();
@@ -48,6 +140,90 @@ public class CacheAdapter
 		}
 
 		return null;
+	}
+
+	public CacheAdapter() {
+		super();
+
+		unloadedResources = new Set() {
+
+			Map map = new WeakHashMap();
+
+			public boolean add(Object o) {
+
+				if (map.containsKey(o)) {
+					return false;
+				}
+
+				map.put(o, null);
+				return true;
+			}
+
+			public boolean addAll(Collection c) {
+				boolean result = false;
+
+				for (Iterator i = c.iterator(); i.hasNext();) {
+
+					if (add(i.next())) {
+						result = true;
+					}
+				}
+
+				return result;
+			}
+
+			public void clear() {
+				map.keySet().clear();
+			}
+
+			public boolean contains(Object o) {
+				return map.keySet().contains(o);
+			}
+
+			public boolean containsAll(Collection c) {
+				return map.keySet().containsAll(c);
+			}
+
+			public boolean isEmpty() {
+				return map.keySet().isEmpty();
+			}
+
+			public Iterator iterator() {
+				return map.keySet().iterator();
+			}
+
+			public boolean remove(Object o) {
+				return map.keySet().remove(o);
+			}
+
+			public boolean removeAll(Collection c) {
+				return map.keySet().removeAll(c);
+			}
+
+			public boolean retainAll(Collection c) {
+				return map.keySet().retainAll(c);
+			}
+
+			public int size() {
+				return map.keySet().size();
+			}
+
+			public Object[] toArray() {
+				return map.keySet().toArray();
+			}
+
+			public Object[] toArray(Object[] a) {
+				return map.keySet().toArray(a);
+			}
+		};
+	}
+
+	protected Map createHashMap() {
+		return new HashMap();
+	}
+
+	protected ECrossReferenceAdapter.InverseCrossReferencer createInverseCrossReferencer() {
+		return new InverseCrossReferencer();
 	}
 
 	protected boolean addAdapter(EList adapters) {
@@ -135,8 +311,32 @@ public class CacheAdapter
 			clear(((EObject) notifier).eResource());
 		} else if (notifier instanceof Resource) {
 
-			if (msg.getFeatureID(Resource.class) == Resource.RESOURCE__CONTENTS) {
-				clear();
+			switch (msg.getFeatureID(Resource.class)) {
+				case Resource.RESOURCE__CONTENTS : {
+					clear();
+
+					if (uriConverter == null) {
+						Resource resource = (Resource) notifier;
+
+						if (!resource.isLoaded()) {
+							ResourceSet resourceSet = resource.getResourceSet();
+
+							if (resourceSet != null) {
+								uriConverter = resourceSet.getURIConverter();
+							}
+						}
+					}
+
+					break;
+				}
+				case Resource.RESOURCE__IS_LOADED : {
+
+					if (!msg.getNewBooleanValue()) {
+						uriConverter = null;
+					}
+
+					break;
+				}
 			}
 		}
 	}
@@ -200,10 +400,14 @@ public class CacheAdapter
 			throw new IllegalArgumentException(String.valueOf(key));
 		}
 
+		if (resource != null) {
+			addAdapter(resource);
+		}
+
 		Map resourceMap = (Map) values.get(resource);
 
 		if (resourceMap == null) {
-			resourceMap = new HashMap();
+			resourceMap = createHashMap();
 
 			values.put(resource, resourceMap);
 		}
@@ -211,7 +415,7 @@ public class CacheAdapter
 		Map eObjectMap = (Map) resourceMap.get(eObject);
 
 		if (eObjectMap == null) {
-			eObjectMap = new HashMap();
+			eObjectMap = createHashMap();
 
 			resourceMap.put(eObject, eObjectMap);
 		}
@@ -221,6 +425,10 @@ public class CacheAdapter
 
 	protected boolean resolve() {
 		return false;
+	}
+
+	protected boolean isIncluded(EReference eReference) {
+		return super.isIncluded(eReference) && eReference.isChangeable();
 	}
 
 }

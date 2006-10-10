@@ -851,8 +851,8 @@
     <eOperations name="isIntegral" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="isPositive" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="isNonNegative" ordered="false" lowerBound="1" eType="#//Boolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" unique="false" upperBound="-1"
+        eType="#//String" unsettable="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
       </eAnnotations>
@@ -1332,7 +1332,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" ordered="false"
         eType="#//DataType" eOpposite="#//DataType/ownedOperation">
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">
@@ -2614,6 +2614,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralString" eSuperTypes="#//LiteralSpecification">
     <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="integerValue" ordered="false" lowerBound="1"
+          eType="#//Integer">
+        <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="unlimitedValue" ordered="false"
+          lowerBound="1" eType="#//UnlimitedNatural">
+        <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
+      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
           eType="#//Boolean">
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>
@@ -2685,8 +2693,8 @@
         lowerBound="1" eType="#//UnlimitedNatural" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OpaqueBehavior" eSuperTypes="#//Behavior">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" unique="false" upperBound="-1"
+        eType="#//String" unsettable="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
       </eAnnotations>
@@ -2705,8 +2713,8 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OpaqueAction" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" unique="false" upperBound="-1"
+        eType="#//String" unsettable="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
       </eAnnotations>

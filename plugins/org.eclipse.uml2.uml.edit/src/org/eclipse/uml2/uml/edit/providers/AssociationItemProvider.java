@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.12 2006/06/08 17:40:25 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.13 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -330,6 +330,7 @@ public class AssociationItemProvider
 		switch (notification.getFeatureID(Association.class)) {
 			case UMLPackage.ASSOCIATION__MEMBER_END :
 			case UMLPackage.ASSOCIATION__IS_DERIVED :
+			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -363,6 +364,42 @@ public class AssociationItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
 				.createExtensionEnd()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
+			UMLFactory.eINSTANCE.createProperty()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
+			UMLFactory.eINSTANCE.createPort()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END
+			|| childFeature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionItemProvider.java,v 1.10 2006/05/15 21:06:22 khussey Exp $
+ * $Id: ProtocolTransitionItemProvider.java,v 1.11 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -144,23 +144,6 @@ public class ProtocolTransitionItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Collection getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION);
-		}
-		return childrenFeatures;
-	}
-
-	/**
 	 * This returns ProtocolTransition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,7 +179,7 @@ public class ProtocolTransitionItemProvider
 		switch (notification.getFeatureID(ProtocolTransition.class)) {
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+					notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);

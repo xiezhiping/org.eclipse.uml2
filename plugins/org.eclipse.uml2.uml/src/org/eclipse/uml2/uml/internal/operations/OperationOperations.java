@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.11 2006/06/05 20:32:55 khussey Exp $
+ * $Id: OperationOperations.java,v 1.12 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -146,9 +146,9 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static boolean isOrdered(Operation operation) {
-		EList returnResult = operation.returnResult();
-		return returnResult.size() == 1
-			? ((Parameter) returnResult.get(0)).isOrdered()
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? returnResult.isOrdered()
 			: false;
 	}
 
@@ -165,9 +165,9 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static boolean isUnique(Operation operation) {
-		EList returnResult = operation.returnResult();
-		return returnResult.size() == 1
-			? ((Parameter) returnResult.get(0)).isUnique()
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? returnResult.isUnique()
 			: true;
 	}
 
@@ -184,9 +184,9 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static int lowerBound(Operation operation) {
-		EList returnResult = operation.returnResult();
-		return returnResult.size() == 1
-			? ((Parameter) returnResult.get(0)).lowerBound()
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? returnResult.lowerBound()
 			: 1;
 	}
 
@@ -203,9 +203,9 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static int upperBound(Operation operation) {
-		EList returnResult = operation.returnResult();
-		return returnResult.size() == 1
-			? ((Parameter) returnResult.get(0)).upperBound()
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? returnResult.upperBound()
 			: 1;
 	}
 
@@ -219,10 +219,10 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static Type getType(Operation operation) {
-		EList returnResult = operation.returnResult();
-		return returnResult.size() == 1
-			? (Type) ((Parameter) returnResult.get(0)).eGet(
-				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false)
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? (Type) returnResult.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
+				false)
 			: null;
 	}
 
@@ -275,11 +275,14 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static void setIsOrdered(Operation operation, boolean newIsOrdered) {
-		EList returnResult = operation.returnResult();
+		Parameter returnResult = operation.getReturnResult();
 
-		if (returnResult.size() == 1) {
-			((Parameter) returnResult.get(0)).setIsOrdered(newIsOrdered);
+		if (returnResult == null) {
+			returnResult = operation.createOwnedParameter(null, null);
+			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 		}
+
+		returnResult.setIsOrdered(newIsOrdered);
 	}
 
 	/**
@@ -288,11 +291,14 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static void setIsUnique(Operation operation, boolean newIsUnique) {
-		EList returnResult = operation.returnResult();
+		Parameter returnResult = operation.getReturnResult();
 
-		if (returnResult.size() == 1) {
-			((Parameter) returnResult.get(0)).setIsUnique(newIsUnique);
+		if (returnResult == null) {
+			returnResult = operation.createOwnedParameter(null, null);
+			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 		}
+
+		returnResult.setIsUnique(newIsUnique);
 	}
 
 	/**
@@ -301,11 +307,14 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static void setLower(Operation operation, int newLower) {
-		EList returnResult = operation.returnResult();
+		Parameter returnResult = operation.getReturnResult();
 
-		if (returnResult.size() == 1) {
-			((Parameter) returnResult.get(0)).setLower(newLower);
+		if (returnResult == null) {
+			returnResult = operation.createOwnedParameter(null, null);
+			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 		}
+
+		returnResult.setLower(newLower);
 	}
 
 	/**
@@ -314,11 +323,14 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static void setUpper(Operation operation, int newUpper) {
-		EList returnResult = operation.returnResult();
+		Parameter returnResult = operation.getReturnResult();
 
-		if (returnResult.size() == 1) {
-			((Parameter) returnResult.get(0)).setUpper(newUpper);
+		if (returnResult == null) {
+			returnResult = operation.createOwnedParameter(null, null);
+			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 		}
+
+		returnResult.setUpper(newUpper);
 	}
 
 	/**
@@ -347,11 +359,14 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static void setType(Operation operation, Type newType) {
-		EList returnResult = operation.returnResult();
+		Parameter returnResult = operation.getReturnResult();
 
-		if (returnResult.size() == 1) {
-			((Parameter) returnResult.get(0)).setType(newType);
+		if (returnResult == null) {
+			returnResult = operation.createOwnedParameter(null, null);
+			returnResult.setDirection(ParameterDirectionKind.RETURN_LITERAL);
 		}
+
+		returnResult.setType(newType);
 	}
 
 	/**

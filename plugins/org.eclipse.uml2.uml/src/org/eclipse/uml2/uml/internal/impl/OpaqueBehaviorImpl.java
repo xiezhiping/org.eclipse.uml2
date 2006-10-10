@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.18 2006/05/02 21:51:04 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.19 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -93,7 +94,7 @@ public class OpaqueBehaviorImpl
 	 */
 	public EList getBodies() {
 		if (bodies == null) {
-			bodies = new EDataTypeUniqueEList.Unsettable(String.class, this,
+			bodies = new EDataTypeEList.Unsettable(String.class, this,
 				UMLPackage.OPAQUE_BEHAVIOR__BODY);
 		}
 		return bodies;

@@ -8,16 +8,34 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: XMI2UMLExtendedMetaData.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: XMI2UMLExtendedMetaData.java,v 1.2 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
 import org.eclipse.uml2.uml.UMLPackage;
 
 public class XMI2UMLExtendedMetaData
 		extends BasicExtendedMetaData {
+
+	protected static Map uriMap = null;
+
+	public static Map getURIMap() {
+
+		if (uriMap == null) {
+			uriMap = new HashMap();
+
+			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI), URI
+				.createURI(UMLResource.STANDARD_PROFILE_URI));
+		}
+
+		return uriMap;
+	}
 
 	public XMI2UMLExtendedMetaData(EPackage.Registry registry) {
 		super(registry);

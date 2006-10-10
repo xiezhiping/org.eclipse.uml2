@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.10 2006/03/08 19:03:02 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.11 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,8 +27,7 @@ import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.PrimitiveType;
-
-import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.Realization;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Usage;
@@ -125,7 +124,11 @@ public class ComponentOperations
 	 */
 	public static EList realizedInterfaces(Component component,
 			Classifier classifier) {
+		return realizedInterfaces(component, classifier, true);
+	}
 
+	protected static EList realizedInterfaces(Component component,
+			Classifier classifier, boolean resolve) {
 		EList realizedInterfaces = new UniqueEList.FastCompare();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
@@ -133,11 +136,13 @@ public class ComponentOperations
 
 			Dependency dependency = (Dependency) clientDependencies.next();
 
-			if (dependency instanceof ComponentRealization) {
+			if (dependency instanceof Realization) {
+				Iterator suppliers = resolve
+					? dependency.getSuppliers().iterator()
+					: ((InternalEList) dependency.getSuppliers())
+						.basicIterator();
 
-				for (Iterator suppliers = ((InternalEList) dependency
-					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
-
+				while (suppliers.hasNext()) {
 					Object supplier = suppliers.next();
 
 					if (supplier instanceof Interface) {
@@ -163,6 +168,11 @@ public class ComponentOperations
 	 */
 	public static EList usedInterfaces(Component component,
 			Classifier classifier) {
+		return usedInterfaces(component, classifier, true);
+	}
+
+	protected static EList usedInterfaces(Component component,
+			Classifier classifier, boolean resolve) {
 		EList usedInterfaces = new UniqueEList.FastCompare();
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
@@ -171,10 +181,12 @@ public class ComponentOperations
 			Dependency dependency = (Dependency) clientDependencies.next();
 
 			if (dependency instanceof Usage) {
+				Iterator suppliers = resolve
+					? dependency.getSuppliers().iterator()
+					: ((InternalEList) dependency.getSuppliers())
+						.basicIterator();
 
-				for (Iterator suppliers = ((InternalEList) dependency
-					.getSuppliers()).basicIterator(); suppliers.hasNext();) {
-
+				while (suppliers.hasNext()) {
 					Object supplier = suppliers.next();
 
 					if (supplier instanceof Interface) {
@@ -204,8 +216,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList getRequireds(Component component) {
-		EList requireds = new UniqueEList.FastCompare(component
-			.usedInterfaces(component));
+		EList requireds = new UniqueEList.FastCompare(usedInterfaces(component,
+			component, false));
 
 		for (Iterator realizations = component.getRealizations().iterator(); realizations
 			.hasNext();) {
@@ -214,7 +226,15 @@ public class ComponentOperations
 				.next()).getRealizingClassifier();
 
 			if (realizingClassifier != null) {
-				requireds.addAll(component.usedInterfaces(realizingClassifier));
+				requireds.addAll(usedInterfaces(component, realizingClassifier,
+					false));
+
+				for (Iterator allParents = realizingClassifier.allParents()
+					.iterator(); allParents.hasNext();) {
+
+					requireds.addAll(usedInterfaces(component,
+						(Classifier) allParents.next(), false));
+				}
 			}
 		}
 
@@ -249,22 +269,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList getProvideds(Component component) {
-		EList provideds = new UniqueEList.FastCompare();
-
-		for (Iterator interfaceRealizations = component
-			.getInterfaceRealizations().iterator(); interfaceRealizations
-			.hasNext();) {
-
-			Interface contract = (Interface) ((InterfaceRealization) interfaceRealizations
-				.next()).eGet(
-				UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT, false);
-
-			if (contract != null) {
-				provideds.add(contract);
-			}
-		}
-
-		provideds.addAll(component.realizedInterfaces(component));
+		EList provideds = new UniqueEList.FastCompare(realizedInterfaces(
+			component, component, false));
 
 		for (Iterator realizations = component.getRealizations().iterator(); realizations
 			.hasNext();) {
@@ -273,8 +279,15 @@ public class ComponentOperations
 				.next()).getRealizingClassifier();
 
 			if (realizingClassifier != null) {
-				provideds.addAll(component
-					.realizedInterfaces(realizingClassifier));
+				provideds.addAll(realizedInterfaces(component,
+					realizingClassifier, false));
+
+				for (Iterator allParents = realizingClassifier.allParents()
+					.iterator(); allParents.hasNext();) {
+
+					provideds.addAll(realizedInterfaces(component,
+						(Classifier) allParents.next(), false));
+				}
 			}
 		}
 
@@ -288,6 +301,46 @@ public class ComponentOperations
 		return new UnionEObjectEList((InternalEObject) component,
 			UMLPackage.Literals.COMPONENT__PROVIDED, provideds.size(),
 			provideds.toArray());
+	}
+
+	protected static EList getAllProvideds(Component component,
+			EList allProvideds) {
+		allProvideds.addAll(component.getProvideds());
+
+		for (Iterator allParents = component.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Object parent = allParents.next();
+
+			if (parent instanceof Component) {
+				allProvideds.addAll(((Component) parent).getProvideds());
+			} else {
+				allProvideds.addAll(realizedInterfaces(component,
+					(Classifier) parent));
+			}
+		}
+
+		return allProvideds;
+	}
+
+	protected static EList getAllRequireds(Component component,
+			EList allRequireds) {
+		allRequireds.addAll(component.getRequireds());
+
+		for (Iterator allParents = component.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Object parent = allParents.next();
+
+			if (parent instanceof Component) {
+				allRequireds.addAll(((Component) parent).getRequireds());
+			} else {
+				allRequireds.addAll(usedInterfaces(component,
+					(Classifier) parent));
+			}
+		}
+
+		return allRequireds;
 	}
 
 } // ComponentOperations

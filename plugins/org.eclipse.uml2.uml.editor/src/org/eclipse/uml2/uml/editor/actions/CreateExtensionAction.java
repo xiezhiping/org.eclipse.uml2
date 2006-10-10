@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.3 2006/04/19 20:02:41 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.4 2006/10/10 20:40:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -43,7 +43,7 @@ public class CreateExtensionAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof Stereotype) {
+			&& collection.iterator().next() instanceof Stereotype) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -54,7 +54,8 @@ public class CreateExtensionAction
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
-			final Stereotype stereotype = (Stereotype) collection.toArray()[0];
+			final Stereotype stereotype = (Stereotype) collection.iterator()
+				.next();
 			EList allExtendedMetaclasses = stereotype
 				.getAllExtendedMetaclasses();
 

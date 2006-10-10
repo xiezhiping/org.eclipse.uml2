@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyStereotypeAction.java,v 1.3 2006/01/05 16:17:45 khussey Exp $
+ * $Id: ApplyStereotypeAction.java,v 1.4 2006/10/10 20:40:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -40,7 +40,7 @@ public class ApplyStereotypeAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof Element) {
+			&& collection.iterator().next() instanceof Element) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -51,7 +51,7 @@ public class ApplyStereotypeAction
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
-			final Element element = (Element) collection.toArray()[0];
+			final Element element = (Element) collection.iterator().next();
 
 			List choiceOfValues = new ArrayList();
 

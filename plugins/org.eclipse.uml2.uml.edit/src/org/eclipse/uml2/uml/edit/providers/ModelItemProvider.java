@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelItemProvider.java,v 1.5 2006/05/15 21:06:23 khussey Exp $
+ * $Id: ModelItemProvider.java,v 1.6 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -156,7 +156,9 @@ public class ModelItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE;
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE
+			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

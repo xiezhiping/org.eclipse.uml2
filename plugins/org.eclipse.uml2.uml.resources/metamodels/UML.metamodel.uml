@@ -121,6 +121,12 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="LiteralString-value-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="LiteralString-value-_lowerValue"/>
       </ownedAttribute>
+      <ownedOperation xmi:id="LiteralString-integerValue" name="integerValue" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="LiteralString-integerValue-_ownedParameter.0" type="Integer" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="LiteralString-unlimitedValue" name="unlimitedValue" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="LiteralString-unlimitedValue-_ownedParameter.0" type="UnlimitedNatural" direction="return"/>
+      </ownedOperation>
       <ownedOperation xmi:id="LiteralString-isComputable" name="isComputable" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralString-isComputable-spec">
         <ownedComment xmi:id="LiteralString-isComputable-_ownedComment.0" annotatedElement="LiteralString-isComputable">
           <body>The query isComputable() is redefined to be true.</body>
@@ -1009,22 +1015,22 @@
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedElement_owner" name="A_ownedElement_owner" visibility="private" memberEnd="Element-owner Element-ownedElement"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_source_directedRelationship" name="A_source_directedRelationship" visibility="private" memberEnd="A_source_directedRelationship-_ownedEnd.0 DirectedRelationship-source">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedElement_owner" name="A_ownedElement_owner" visibility="private" memberEnd="Element-ownedElement Element-owner"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_source_directedRelationship" name="A_source_directedRelationship" visibility="private" memberEnd="DirectedRelationship-source A_source_directedRelationship-_ownedEnd.0">
       <generalization xmi:id="A_source_directedRelationship-_generalization.0" general="A_relatedElement_relationship"/>
       <ownedEnd xmi:id="A_source_directedRelationship-_ownedEnd.0" type="DirectedRelationship" redefinedProperty="A_relatedElement_relationship-_ownedEnd.0" association="A_source_directedRelationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_target_directedRelationship" name="A_target_directedRelationship" visibility="private" memberEnd="A_target_directedRelationship-_ownedEnd.0 DirectedRelationship-target">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_target_directedRelationship" name="A_target_directedRelationship" visibility="private" memberEnd="DirectedRelationship-target A_target_directedRelationship-_ownedEnd.0">
       <generalization xmi:id="A_target_directedRelationship-_generalization.0" general="A_relatedElement_relationship"/>
       <ownedEnd xmi:id="A_target_directedRelationship-_ownedEnd.0" type="DirectedRelationship" redefinedProperty="A_relatedElement_relationship-_ownedEnd.0" association="A_target_directedRelationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_constrainedElement_constraint" name="A_constrainedElement_constraint" visibility="private" memberEnd="A_constrainedElement_constraint-_ownedEnd.0 Constraint-constrainedElement">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_constrainedElement_constraint" name="A_constrainedElement_constraint" visibility="private" memberEnd="Constraint-constrainedElement A_constrainedElement_constraint-_ownedEnd.0">
       <ownedEnd xmi:id="A_constrainedElement_constraint-_ownedEnd.0" type="Constraint" association="A_constrainedElement_constraint"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_type_typedElement" name="A_type_typedElement" visibility="private" memberEnd="A_type_typedElement-_ownedEnd.0 TypedElement-type">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_type_typedElement" name="A_type_typedElement" visibility="private" memberEnd="TypedElement-type A_type_typedElement-_ownedEnd.0">
       <ownedEnd xmi:id="A_type_typedElement-_ownedEnd.0" type="TypedElement" association="A_type_typedElement"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_generalization_specific" name="A_generalization_specific" visibility="private" memberEnd="Generalization-specific Classifier-generalization">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_generalization_specific" name="A_generalization_specific" visibility="private" memberEnd="Classifier-generalization Generalization-specific">
       <generalization xmi:id="A_generalization_specific-_generalization.0" general="A_ownedElement_owner"/>
       <generalization xmi:id="A_generalization_specific-_generalization.1" general="A_source_directedRelationship"/>
     </packagedElement>
@@ -1035,7 +1041,7 @@
     <packagedElement xmi:type="uml:Association" xmi:id="A_feature_featuringClassifier" name="A_feature_featuringClassifier" visibility="private" memberEnd="Classifier-feature Feature-featuringClassifier">
       <generalization xmi:id="A_feature_featuringClassifier-_generalization.0" general="A_member_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedParameter_ownerFormalParam" name="A_ownedParameter_ownerFormalParam" visibility="private" memberEnd="A_ownedParameter_ownerFormalParam-ownerFormalParam BehavioralFeature-ownedParameter">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedParameter_ownerFormalParam" name="A_ownedParameter_ownerFormalParam" visibility="private" memberEnd="BehavioralFeature-ownedParameter A_ownedParameter_ownerFormalParam-ownerFormalParam">
       <generalization xmi:id="A_ownedParameter_ownerFormalParam-_generalization.0" general="A_ownedMember_namespace"/>
       <ownedEnd xmi:id="A_ownedParameter_ownerFormalParam-ownerFormalParam" name="ownerFormalParam" type="BehavioralFeature" subsettedProperty="NamedElement-namespace" association="A_ownedParameter_ownerFormalParam">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_ownedParameter_ownerFormalParam-ownerFormalParam-_upperValue" value="1"/>
@@ -1051,21 +1057,21 @@
     <packagedElement xmi:type="uml:Association" xmi:id="A_definingFeature_slot" name="A_definingFeature_slot" visibility="private" memberEnd="Slot-definingFeature A_definingFeature_slot-_ownedEnd.0">
       <ownedEnd xmi:id="A_definingFeature_slot-_ownedEnd.0" type="Slot" association="A_definingFeature_slot"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_annotatedElement_comment" name="A_annotatedElement_comment" visibility="private" memberEnd="A_annotatedElement_comment-_ownedEnd.0 Comment-annotatedElement">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_annotatedElement_comment" name="A_annotatedElement_comment" visibility="private" memberEnd="Comment-annotatedElement A_annotatedElement_comment-_ownedEnd.0">
       <ownedEnd xmi:id="A_annotatedElement_comment-_ownedEnd.0" type="Comment" association="A_annotatedElement_comment"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedComment_owningElement" name="A_ownedComment_owningElement" visibility="private" memberEnd="A_ownedComment_owningElement-owningElement Element-ownedComment">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedComment_owningElement" name="A_ownedComment_owningElement" visibility="private" memberEnd="Element-ownedComment A_ownedComment_owningElement-owningElement">
       <generalization xmi:id="A_ownedComment_owningElement-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_ownedComment_owningElement-owningElement" name="owningElement" type="Element" subsettedProperty="Element-owner" association="A_ownedComment_owningElement">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_ownedComment_owningElement-owningElement-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_ownedComment_owningElement-owningElement-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_importedElement_elementImport" name="A_importedElement_elementImport" visibility="private" memberEnd="A_importedElement_elementImport-_ownedEnd.0 ElementImport-importedElement">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_importedElement_elementImport" name="A_importedElement_elementImport" visibility="private" memberEnd="ElementImport-importedElement A_importedElement_elementImport-_ownedEnd.0">
       <generalization xmi:id="A_importedElement_elementImport-_generalization.0" general="A_target_directedRelationship"/>
       <ownedEnd xmi:id="A_importedElement_elementImport-_ownedEnd.0" type="ElementImport" redefinedProperty="A_target_directedRelationship-_ownedEnd.0" association="A_importedElement_elementImport"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_inheritedMember_classifier" name="A_inheritedMember_classifier" visibility="private" memberEnd="A_inheritedMember_classifier-_ownedEnd.0 Classifier-inheritedMember">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_inheritedMember_classifier" name="A_inheritedMember_classifier" visibility="private" memberEnd="Classifier-inheritedMember A_inheritedMember_classifier-_ownedEnd.0">
       <generalization xmi:id="A_inheritedMember_classifier-_generalization.0" general="A_member_namespace"/>
       <ownedEnd xmi:id="A_inheritedMember_classifier-_ownedEnd.0" type="Classifier" redefinedProperty="A_member_namespace-_ownedEnd.0" association="A_inheritedMember_classifier"/>
     </packagedElement>
@@ -1086,25 +1092,25 @@
       <generalization xmi:id="A_ownedOperation_class-_generalization.1" general="A_ownedMember_namespace"/>
       <generalization xmi:id="A_ownedOperation_class-_generalization.2" general="A_redefinitionContext_redefinableElement"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_precondition_preContext" name="A_precondition_preContext" visibility="private" memberEnd="A_precondition_preContext-preContext Operation-precondition">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_precondition_preContext" name="A_precondition_preContext" visibility="private" memberEnd="Operation-precondition A_precondition_preContext-preContext">
       <generalization xmi:id="A_precondition_preContext-_generalization.0" general="A_ownedRule_context"/>
       <ownedEnd xmi:id="A_precondition_preContext-preContext" name="preContext" type="Operation" subsettedProperty="Constraint-context" association="A_precondition_preContext">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_precondition_preContext-preContext-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_precondition_preContext-preContext-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_postcondition_postContext" name="A_postcondition_postContext" visibility="private" memberEnd="A_postcondition_postContext-postContext Operation-postcondition">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_postcondition_postContext" name="A_postcondition_postContext" visibility="private" memberEnd="Operation-postcondition A_postcondition_postContext-postContext">
       <generalization xmi:id="A_postcondition_postContext-_generalization.0" general="A_ownedRule_context"/>
       <ownedEnd xmi:id="A_postcondition_postContext-postContext" name="postContext" type="Operation" subsettedProperty="Constraint-context" association="A_postcondition_postContext">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_postcondition_postContext-postContext-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_postcondition_postContext-postContext-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinedOperation_operation" name="A_redefinedOperation_operation" visibility="private" memberEnd="A_redefinedOperation_operation-_ownedEnd.0 Operation-redefinedOperation">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinedOperation_operation" name="A_redefinedOperation_operation" visibility="private" memberEnd="Operation-redefinedOperation A_redefinedOperation_operation-_ownedEnd.0">
       <generalization xmi:id="A_redefinedOperation_operation-_generalization.0" general="A_redefinedElement_redefinableElement"/>
       <ownedEnd xmi:id="A_redefinedOperation_operation-_ownedEnd.0" type="Operation" redefinedProperty="A_redefinedElement_redefinableElement-_ownedEnd.0" association="A_redefinedOperation_operation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinedProperty_property" name="A_redefinedProperty_property" visibility="private" memberEnd="A_redefinedProperty_property-_ownedEnd.0 Property-redefinedProperty">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinedProperty_property" name="A_redefinedProperty_property" visibility="private" memberEnd="Property-redefinedProperty A_redefinedProperty_property-_ownedEnd.0">
       <generalization xmi:id="A_redefinedProperty_property-_generalization.0" general="A_redefinedElement_redefinableElement"/>
       <ownedEnd xmi:id="A_redefinedProperty_property-_ownedEnd.0" type="Property" redefinedProperty="A_redefinedElement_redefinableElement-_ownedEnd.0" association="A_redefinedProperty_property"/>
     </packagedElement>
@@ -1117,23 +1123,23 @@
       <generalization xmi:id="A_ownedAttribute_datatype-_generalization.0" general="A_attribute_classifier"/>
       <generalization xmi:id="A_ownedAttribute_datatype-_generalization.1" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedOperation_datatype" name="A_ownedOperation_datatype" visibility="private" memberEnd="Operation-datatype DataType-ownedOperation">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedOperation_datatype" name="A_ownedOperation_datatype" visibility="private" memberEnd="DataType-ownedOperation Operation-datatype">
       <generalization xmi:id="A_ownedOperation_datatype-_generalization.0" general="A_feature_featuringClassifier"/>
       <generalization xmi:id="A_ownedOperation_datatype-_generalization.1" general="A_ownedMember_namespace"/>
       <generalization xmi:id="A_ownedOperation_datatype-_generalization.2" general="A_redefinitionContext_redefinableElement"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedLiteral_enumeration" name="A_ownedLiteral_enumeration" visibility="private" memberEnd="EnumerationLiteral-enumeration Enumeration-ownedLiteral">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedLiteral_enumeration" name="A_ownedLiteral_enumeration" visibility="private" memberEnd="Enumeration-ownedLiteral EnumerationLiteral-enumeration">
       <generalization xmi:id="A_ownedLiteral_enumeration-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_elementImport_importingNamespace" name="A_elementImport_importingNamespace" visibility="private" memberEnd="ElementImport-importingNamespace Namespace-elementImport">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_elementImport_importingNamespace" name="A_elementImport_importingNamespace" visibility="private" memberEnd="Namespace-elementImport ElementImport-importingNamespace">
       <generalization xmi:id="A_elementImport_importingNamespace-_generalization.0" general="A_ownedElement_owner"/>
       <generalization xmi:id="A_elementImport_importingNamespace-_generalization.1" general="A_source_directedRelationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_packageImport_importingNamespace" name="A_packageImport_importingNamespace" visibility="private" memberEnd="PackageImport-importingNamespace Namespace-packageImport">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_packageImport_importingNamespace" name="A_packageImport_importingNamespace" visibility="private" memberEnd="Namespace-packageImport PackageImport-importingNamespace">
       <generalization xmi:id="A_packageImport_importingNamespace-_generalization.0" general="A_ownedElement_owner"/>
       <generalization xmi:id="A_packageImport_importingNamespace-_generalization.1" general="A_source_directedRelationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_importedPackage_packageImport" name="A_importedPackage_packageImport" visibility="private" memberEnd="A_importedPackage_packageImport-_ownedEnd.0 PackageImport-importedPackage">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_importedPackage_packageImport" name="A_importedPackage_packageImport" visibility="private" memberEnd="PackageImport-importedPackage A_importedPackage_packageImport-_ownedEnd.0">
       <generalization xmi:id="A_importedPackage_packageImport-_generalization.0" general="A_target_directedRelationship"/>
       <ownedEnd xmi:id="A_importedPackage_packageImport-_ownedEnd.0" type="PackageImport" redefinedProperty="A_target_directedRelationship-_ownedEnd.0" association="A_importedPackage_packageImport"/>
     </packagedElement>
@@ -1141,7 +1147,7 @@
       <generalization xmi:id="A_redefinedClassifier_classifier-_generalization.0" general="A_redefinedElement_redefinableElement"/>
       <ownedEnd xmi:id="A_redefinedClassifier_classifier-_ownedEnd.0" type="Classifier" redefinedProperty="A_redefinedElement_redefinableElement-_ownedEnd.0" association="A_redefinedClassifier_classifier"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_specification_owningConstraint" name="A_specification_owningConstraint" visibility="private" memberEnd="A_specification_owningConstraint-owningConstraint Constraint-specification">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_specification_owningConstraint" name="A_specification_owningConstraint" visibility="private" memberEnd="Constraint-specification A_specification_owningConstraint-owningConstraint">
       <generalization xmi:id="A_specification_owningConstraint-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_specification_owningConstraint-owningConstraint" name="owningConstraint" type="Constraint" subsettedProperty="Element-owner" association="A_specification_owningConstraint">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_specification_owningConstraint-owningConstraint-_upperValue" value="1"/>
@@ -1162,16 +1168,16 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_defaultValue_owningProperty-owningProperty-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedRule_context" name="A_ownedRule_context" visibility="private" memberEnd="Constraint-context Namespace-ownedRule">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedRule_context" name="A_ownedRule_context" visibility="private" memberEnd="Namespace-ownedRule Constraint-context">
       <generalization xmi:id="A_ownedRule_context-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_member_namespace" name="A_member_namespace" visibility="private" memberEnd="A_member_namespace-_ownedEnd.0 Namespace-member">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_member_namespace" name="A_member_namespace" visibility="private" memberEnd="Namespace-member A_member_namespace-_ownedEnd.0">
       <ownedEnd xmi:id="A_member_namespace-_ownedEnd.0" type="Namespace" association="A_member_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_relatedElement_relationship" name="A_relatedElement_relationship" visibility="private" memberEnd="A_relatedElement_relationship-_ownedEnd.0 Relationship-relatedElement">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_relatedElement_relationship" name="A_relatedElement_relationship" visibility="private" memberEnd="Relationship-relatedElement A_relatedElement_relationship-_ownedEnd.0">
       <ownedEnd xmi:id="A_relatedElement_relationship-_ownedEnd.0" type="Relationship" association="A_relatedElement_relationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_endType_association" name="A_endType_association" visibility="private" memberEnd="A_endType_association-_ownedEnd.0 Association-endType">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_endType_association" name="A_endType_association" visibility="private" memberEnd="Association-endType A_endType_association-_ownedEnd.0">
       <generalization xmi:id="A_endType_association-_generalization.0" general="A_relatedElement_relationship"/>
       <ownedEnd xmi:id="A_endType_association-_ownedEnd.0" type="Association" redefinedProperty="A_relatedElement_relationship-_ownedEnd.0" association="A_endType_association"/>
     </packagedElement>
@@ -1193,7 +1199,7 @@
       <generalization xmi:id="A_receivingPackage_packageMerge-_generalization.0" general="A_ownedElement_owner"/>
       <generalization xmi:id="A_receivingPackage_packageMerge-_generalization.1" general="A_source_directedRelationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_mergedPackage_packageMerge" name="A_mergedPackage_packageMerge" visibility="private" memberEnd="A_mergedPackage_packageMerge-_ownedEnd.0 PackageMerge-mergedPackage">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_mergedPackage_packageMerge" name="A_mergedPackage_packageMerge" visibility="private" memberEnd="PackageMerge-mergedPackage A_mergedPackage_packageMerge-_ownedEnd.0">
       <generalization xmi:id="A_mergedPackage_packageMerge-_generalization.0" general="A_target_directedRelationship"/>
       <ownedEnd xmi:id="A_mergedPackage_packageMerge-_ownedEnd.0" type="PackageMerge" redefinedProperty="A_target_directedRelationship-_ownedEnd.0" association="A_mergedPackage_packageMerge"/>
     </packagedElement>
@@ -1214,73 +1220,73 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_specification_owningInstanceSpec-owningInstanceSpec-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_packagedElement_owningPackage" name="A_packagedElement_owningPackage" visibility="private" memberEnd="A_packagedElement_owningPackage-owningPackage Package-packagedElement">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_packagedElement_owningPackage" name="A_packagedElement_owningPackage" visibility="private" memberEnd="Package-packagedElement A_packagedElement_owningPackage-owningPackage">
       <generalization xmi:id="A_packagedElement_owningPackage-_generalization.0" general="A_ownedMember_namespace"/>
       <ownedEnd xmi:id="A_packagedElement_owningPackage-owningPackage" name="owningPackage" type="Package" subsettedProperty="NamedElement-namespace" association="A_packagedElement_owningPackage">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_packagedElement_owningPackage-owningPackage-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_packagedElement_owningPackage-owningPackage-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_importedMember_namespace" name="A_importedMember_namespace" visibility="private" memberEnd="A_importedMember_namespace-_ownedEnd.0 Namespace-importedMember">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_importedMember_namespace" name="A_importedMember_namespace" visibility="private" memberEnd="Namespace-importedMember A_importedMember_namespace-_ownedEnd.0">
       <generalization xmi:id="A_importedMember_namespace-_generalization.0" general="A_member_namespace"/>
       <ownedEnd xmi:id="A_importedMember_namespace-_ownedEnd.0" type="Namespace" redefinedProperty="A_member_namespace-_ownedEnd.0" association="A_importedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_opposite_property" name="A_opposite_property" visibility="private" memberEnd="A_opposite_property-_ownedEnd.0 Property-opposite">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_opposite_property" name="A_opposite_property" visibility="private" memberEnd="Property-opposite A_opposite_property-_ownedEnd.0">
       <ownedEnd xmi:id="A_opposite_property-_ownedEnd.0" type="Property" association="A_opposite_property"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_subsettedProperty_property" name="A_subsettedProperty_property" visibility="private" memberEnd="A_subsettedProperty_property-_ownedEnd.0 Property-subsettedProperty">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_subsettedProperty_property" name="A_subsettedProperty_property" visibility="private" memberEnd="Property-subsettedProperty A_subsettedProperty_property-_ownedEnd.0">
       <ownedEnd xmi:id="A_subsettedProperty_property-_ownedEnd.0" type="Property" association="A_subsettedProperty_property"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_memberEnd_association" name="A_memberEnd_association" visibility="private" memberEnd="Property-association Association-memberEnd">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_memberEnd_association" name="A_memberEnd_association" visibility="private" memberEnd="Association-memberEnd Property-association">
       <generalization xmi:id="A_memberEnd_association-_generalization.0" general="A_member_namespace"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_ownedType_package" name="A_ownedType_package" visibility="private" memberEnd="Package-ownedType Type-package">
       <generalization xmi:id="A_ownedType_package-_generalization.0" general="A_packagedElement_owningPackage"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_nestedPackage_nestingPackage" name="A_nestedPackage_nestingPackage" visibility="private" memberEnd="Package-nestingPackage Package-nestedPackage">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_nestedPackage_nestingPackage" name="A_nestedPackage_nestingPackage" visibility="private" memberEnd="Package-nestedPackage Package-nestingPackage">
       <generalization xmi:id="A_nestedPackage_nestingPackage-_generalization.0" general="A_packagedElement_owningPackage"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinedElement_redefinableElement" name="A_redefinedElement_redefinableElement" visibility="private" memberEnd="A_redefinedElement_redefinableElement-_ownedEnd.0 RedefinableElement-redefinedElement">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinedElement_redefinableElement" name="A_redefinedElement_redefinableElement" visibility="private" memberEnd="RedefinableElement-redefinedElement A_redefinedElement_redefinableElement-_ownedEnd.0">
       <ownedEnd xmi:id="A_redefinedElement_redefinableElement-_ownedEnd.0" type="RedefinableElement" association="A_redefinedElement_redefinableElement">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_redefinedElement_redefinableElement-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_redefinedElement_redefinableElement-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinitionContext_redefinableElement" name="A_redefinitionContext_redefinableElement" visibility="private" memberEnd="A_redefinitionContext_redefinableElement-_ownedEnd.0 RedefinableElement-redefinitionContext">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_redefinitionContext_redefinableElement" name="A_redefinitionContext_redefinableElement" visibility="private" memberEnd="RedefinableElement-redefinitionContext A_redefinitionContext_redefinableElement-_ownedEnd.0">
       <ownedEnd xmi:id="A_redefinitionContext_redefinableElement-_ownedEnd.0" type="RedefinableElement" association="A_redefinitionContext_redefinableElement"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_general_classifier" name="A_general_classifier" visibility="private" memberEnd="A_general_classifier-_ownedEnd.0 Classifier-general">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_general_classifier" name="A_general_classifier" visibility="private" memberEnd="Classifier-general A_general_classifier-_ownedEnd.0">
       <ownedEnd xmi:id="A_general_classifier-_ownedEnd.0" type="Classifier" association="A_general_classifier"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_superClass_class" name="A_superClass_class" visibility="private" memberEnd="A_superClass_class-_ownedEnd.0 Class-superClass">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_superClass_class" name="A_superClass_class" visibility="private" memberEnd="Class-superClass A_superClass_class-_ownedEnd.0">
       <generalization xmi:id="A_superClass_class-_generalization.0" general="A_general_classifier"/>
       <ownedEnd xmi:id="A_superClass_class-_ownedEnd.0" type="Class" redefinedProperty="A_general_classifier-_ownedEnd.0" association="A_superClass_class"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_bodyCondition_bodyContext" name="A_bodyCondition_bodyContext" visibility="private" memberEnd="A_bodyCondition_bodyContext-bodyContext Operation-bodyCondition">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_bodyCondition_bodyContext" name="A_bodyCondition_bodyContext" visibility="private" memberEnd="Operation-bodyCondition A_bodyCondition_bodyContext-bodyContext">
       <generalization xmi:id="A_bodyCondition_bodyContext-_generalization.0" general="A_ownedRule_context"/>
       <ownedEnd xmi:id="A_bodyCondition_bodyContext-bodyContext" name="bodyContext" type="Operation" subsettedProperty="Constraint-context" association="A_bodyCondition_bodyContext">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_bodyCondition_bodyContext-bodyContext-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_bodyCondition_bodyContext-bodyContext-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_type_operation" name="A_type_operation" visibility="private" memberEnd="A_type_operation-_ownedEnd.0 Operation-type">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_type_operation" name="A_type_operation" visibility="private" memberEnd="Operation-type A_type_operation-_ownedEnd.0">
       <ownedEnd xmi:id="A_type_operation-_ownedEnd.0" type="Operation" association="A_type_operation"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_ownedParameter_operation" name="A_ownedParameter_operation" visibility="private" memberEnd="Operation-ownedParameter Parameter-operation">
       <generalization xmi:id="A_ownedParameter_operation-_generalization.0" general="A_ownedParameter_ownerFormalParam"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_operand_expression" name="A_operand_expression" visibility="private" memberEnd="A_operand_expression-expression Expression-operand">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_operand_expression" name="A_operand_expression" visibility="private" memberEnd="Expression-operand A_operand_expression-expression">
       <generalization xmi:id="A_operand_expression-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_operand_expression-expression" name="expression" type="Expression" subsettedProperty="Element-owner" association="A_operand_expression">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_operand_expression-expression-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_operand_expression-expression-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_raisedException_operation" name="A_raisedException_operation" visibility="private" memberEnd="A_raisedException_operation-_ownedEnd.0 Operation-raisedException">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_raisedException_operation" name="A_raisedException_operation" visibility="private" memberEnd="Operation-raisedException A_raisedException_operation-_ownedEnd.0">
       <generalization xmi:id="A_raisedException_operation-_generalization.0" general="A_raisedException_behavioralFeature"/>
       <ownedEnd xmi:id="A_raisedException_operation-_ownedEnd.0" type="Operation" redefinedProperty="A_raisedException_behavioralFeature-_ownedEnd.0" association="A_raisedException_operation"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_navigableOwnedEnd_association" name="A_navigableOwnedEnd_association" visibility="private" memberEnd="A_navigableOwnedEnd_association-_ownedEnd.0 Association-navigableOwnedEnd">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_navigableOwnedEnd_association" name="A_navigableOwnedEnd_association" visibility="private" memberEnd="Association-navigableOwnedEnd A_navigableOwnedEnd_association-_ownedEnd.0">
       <generalization xmi:id="A_navigableOwnedEnd_association-_generalization.0" general="A_ownedEnd_owningAssociation"/>
       <ownedEnd xmi:id="A_navigableOwnedEnd_association-_ownedEnd.0" type="Association" redefinedProperty="A_member_namespace-_ownedEnd.0" association="A_navigableOwnedEnd_association"/>
     </packagedElement>
@@ -1319,7 +1325,7 @@
         </specification>
       </ownedRule>
       <generalization xmi:id="OpaqueExpression-_generalization.0" general="ValueSpecification"/>
-      <ownedAttribute xmi:id="OpaqueExpression-body" name="body" type="String" isOrdered="true" aggregation="composite">
+      <ownedAttribute xmi:id="OpaqueExpression-body" name="body" type="String" isOrdered="true" isUnique="false" aggregation="composite">
         <ownedComment xmi:id="OpaqueExpression-body-_ownedComment.0" annotatedElement="OpaqueExpression-body">
           <body>The text of the expression, possibly in multiple languages.</body>
         </ownedComment>
@@ -1428,7 +1434,7 @@
         <body>An behavior with implementation-specific semantics.</body>
       </ownedComment>
       <generalization xmi:id="OpaqueBehavior-_generalization.0" general="Behavior"/>
-      <ownedAttribute xmi:id="OpaqueBehavior-body" name="body" type="String" isOrdered="true" aggregation="composite">
+      <ownedAttribute xmi:id="OpaqueBehavior-body" name="body" type="String" isOrdered="true" isUnique="false" aggregation="composite">
         <ownedComment xmi:id="OpaqueBehavior-body-_ownedComment.0" annotatedElement="OpaqueBehavior-body">
           <body>Specifies the behavior in one or more languages.</body>
         </ownedComment>
@@ -1467,7 +1473,7 @@
       </ownedRule>
       <generalization xmi:id="FunctionBehavior-_generalization.0" general="OpaqueBehavior"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_behavioredClassifier_ownedBehavior" name="A_behavioredClassifier_ownedBehavior" visibility="private" memberEnd="BehavioredClassifier-ownedBehavior A_behavioredClassifier_ownedBehavior-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_behavioredClassifier_ownedBehavior" name="A_behavioredClassifier_ownedBehavior" visibility="private" memberEnd="A_behavioredClassifier_ownedBehavior-_ownedEnd.0 BehavioredClassifier-ownedBehavior">
       <generalization xmi:id="A_behavioredClassifier_ownedBehavior-_generalization.0" general="A_ownedMember_namespace"/>
       <ownedEnd xmi:id="A_behavioredClassifier_ownedBehavior-_ownedEnd.0" type="BehavioredClassifier" association="A_behavioredClassifier_ownedBehavior">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_behavioredClassifier_ownedBehavior-_ownedEnd.0-_upperValue" value="1"/>
@@ -1488,8 +1494,8 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_redefinedBehavior_behavior-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_method_specification" name="A_method_specification" visibility="private" memberEnd="Behavior-specification BehavioralFeature-method"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_behavior_ownedParameter" name="A_behavior_ownedParameter" visibility="private" memberEnd="Behavior-ownedParameter A_behavior_ownedParameter-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_method_specification" name="A_method_specification" visibility="private" memberEnd="BehavioralFeature-method Behavior-specification"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_behavior_ownedParameter" name="A_behavior_ownedParameter" visibility="private" memberEnd="A_behavior_ownedParameter-_ownedEnd.0 Behavior-ownedParameter">
       <generalization xmi:id="A_behavior_ownedParameter-_generalization.0" general="A_ownedMember_namespace"/>
       <ownedEnd xmi:id="A_behavior_ownedParameter-_ownedEnd.0" type="Behavior" association="A_behavior_ownedParameter">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_behavior_ownedParameter-_ownedEnd.0-_upperValue" value="1"/>
@@ -1534,7 +1540,7 @@
         <body>An action with implementation-specific semantics.</body>
       </ownedComment>
       <generalization xmi:id="OpaqueAction-_generalization.0" general="Action"/>
-      <ownedAttribute xmi:id="OpaqueAction-body" name="body" type="String" isOrdered="true" aggregation="composite">
+      <ownedAttribute xmi:id="OpaqueAction-body" name="body" type="String" isOrdered="true" isUnique="false" aggregation="composite">
         <ownedComment xmi:id="OpaqueAction-body-_ownedComment.0" annotatedElement="OpaqueAction-body">
           <body>Specifies the action in one or more languages.</body>
         </ownedComment>
@@ -2017,14 +2023,14 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
       <generalization xmi:id="A_argument_invocationAction-_generalization.0" general="A_action_input"/>
       <ownedEnd xmi:id="A_argument_invocationAction-_ownedEnd.0" type="InvocationAction" redefinedProperty="A_action_input-_ownedEnd.0" association="A_argument_invocationAction"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_action_output" name="A_action_output" visibility="private" memberEnd="Action-output A_action_output-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_action_output" name="A_action_output" visibility="private" memberEnd="A_action_output-_ownedEnd.0 Action-output">
       <generalization xmi:id="A_action_output-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_action_output-_ownedEnd.0" type="Action" association="A_action_output">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_action_output-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_action_output-_ownedEnd.0-_lowerValue" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_action_input" name="A_action_input" visibility="private" memberEnd="Action-input A_action_input-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_action_input" name="A_action_input" visibility="private" memberEnd="A_action_input-_ownedEnd.0 Action-input">
       <generalization xmi:id="A_action_input-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_action_input-_ownedEnd.0" type="Action" association="A_action_input">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_action_input-_ownedEnd.0-_upperValue" value="1"/>
@@ -2048,7 +2054,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
       <generalization xmi:id="A_outputValue_opaqueAction-_generalization.0" general="A_action_output"/>
       <ownedEnd xmi:id="A_outputValue_opaqueAction-_ownedEnd.0" type="OpaqueAction" redefinedProperty="A_action_output-_ownedEnd.0" association="A_outputValue_opaqueAction"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_subgroup_superGroup" name="A_subgroup_superGroup" visibility="private" memberEnd="ActivityGroup-superGroup ActivityGroup-subgroup">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_subgroup_superGroup" name="A_subgroup_superGroup" visibility="private" memberEnd="ActivityGroup-subgroup ActivityGroup-superGroup">
       <generalization xmi:id="A_subgroup_superGroup-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="SequenceNode" name="SequenceNode">
@@ -2100,26 +2106,26 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
     <packagedElement xmi:type="uml:Association" xmi:id="A_node_inStructuredNode" name="A_node_inStructuredNode" visibility="private" memberEnd="StructuredActivityNode-node ActivityNode-inStructuredNode">
       <generalization xmi:id="A_node_inStructuredNode-_generalization.0" general="A_containedNode_inGroup"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_clause_test" name="A_clause_test" visibility="private" memberEnd="Clause-test A_clause_test-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_clause_test" name="A_clause_test" visibility="private" memberEnd="A_clause_test-_ownedEnd.0 Clause-test">
       <ownedEnd xmi:id="A_clause_test-_ownedEnd.0" type="Clause" association="A_clause_test">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_clause_test-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_clause_test-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_clause_body" name="A_clause_body" visibility="private" memberEnd="Clause-body A_clause_body-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_clause_body" name="A_clause_body" visibility="private" memberEnd="A_clause_body-_ownedEnd.0 Clause-body">
       <ownedEnd xmi:id="A_clause_body-_ownedEnd.0" type="Clause" association="A_clause_body">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_clause_body-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_clause_body-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_predecessorClause_successorClause" name="A_predecessorClause_successorClause" visibility="private" memberEnd="Clause-predecessorClause Clause-successorClause"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_loopNode_bodyPart" name="A_loopNode_bodyPart" visibility="private" memberEnd="LoopNode-bodyPart A_loopNode_bodyPart-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_loopNode_bodyPart" name="A_loopNode_bodyPart" visibility="private" memberEnd="A_loopNode_bodyPart-_ownedEnd.0 LoopNode-bodyPart">
       <ownedEnd xmi:id="A_loopNode_bodyPart-_ownedEnd.0" type="LoopNode" association="A_loopNode_bodyPart">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_loopNode_bodyPart-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_loopNode_bodyPart-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_loopNode_setupPart" name="A_loopNode_setupPart" visibility="private" memberEnd="LoopNode-setupPart A_loopNode_setupPart-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_loopNode_setupPart" name="A_loopNode_setupPart" visibility="private" memberEnd="A_loopNode_setupPart-_ownedEnd.0 LoopNode-setupPart">
       <ownedEnd xmi:id="A_loopNode_setupPart-_ownedEnd.0" type="LoopNode" association="A_loopNode_setupPart">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_loopNode_setupPart-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_loopNode_setupPart-_ownedEnd.0-_lowerValue"/>
@@ -2150,7 +2156,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_test_loopNode-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_activity_structuredNode" name="A_activity_structuredNode" visibility="private" memberEnd="Activity-structuredNode StructuredActivityNode-activity">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_activity_structuredNode" name="A_activity_structuredNode" visibility="private" memberEnd="StructuredActivityNode-activity Activity-structuredNode">
       <generalization xmi:id="A_activity_structuredNode-_generalization.0" general="A_node_activity"/>
       <generalization xmi:id="A_activity_structuredNode-_generalization.1" general="A_group_inActivity"/>
     </packagedElement>
@@ -2164,7 +2170,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_executableNode_sequenceNode-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_node_activity" name="A_node_activity" visibility="private" memberEnd="ActivityNode-activity Activity-node">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_node_activity" name="A_node_activity" visibility="private" memberEnd="Activity-node ActivityNode-activity">
       <generalization xmi:id="A_node_activity-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Usage" name="Usage">
@@ -2428,7 +2434,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
       <generalization xmi:id="A_substitution_substitutingClassifier-_generalization.0" general="A_ownedElement_owner"/>
       <generalization xmi:id="A_substitution_substitutingClassifier-_generalization.1" general="A_clientDependency_client"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_supplierDependency_supplier" name="A_supplierDependency_supplier" visibility="private" memberEnd="Dependency-supplier A_supplierDependency_supplier-supplierDependency">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_supplierDependency_supplier" name="A_supplierDependency_supplier" visibility="private" memberEnd="A_supplierDependency_supplier-supplierDependency Dependency-supplier">
       <generalization xmi:id="A_supplierDependency_supplier-_generalization.0" general="A_target_directedRelationship"/>
       <ownedEnd xmi:id="A_supplierDependency_supplier-supplierDependency" name="supplierDependency" type="Dependency" association="A_supplierDependency_supplier">
         <ownedComment xmi:id="A_supplierDependency_supplier-supplierDependency-_ownedComment.0" annotatedElement="A_supplierDependency_supplier-supplierDependency">
@@ -2441,7 +2447,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
     <packagedElement xmi:type="uml:Association" xmi:id="A_clientDependency_client" name="A_clientDependency_client" visibility="private" memberEnd="NamedElement-clientDependency Dependency-client">
       <generalization xmi:id="A_clientDependency_client-_generalization.0" general="A_source_directedRelationship"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedMember_namespace" name="A_ownedMember_namespace" visibility="private" memberEnd="NamedElement-namespace Namespace-ownedMember">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedMember_namespace" name="A_ownedMember_namespace" visibility="private" memberEnd="Namespace-ownedMember NamedElement-namespace">
       <generalization xmi:id="A_ownedMember_namespace-_generalization.0" general="A_member_namespace"/>
       <generalization xmi:id="A_ownedMember_namespace-_generalization.1" general="A_ownedElement_owner"/>
     </packagedElement>
@@ -2465,7 +2471,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="InterfaceRealization-implementingClassifier-_lowerValue" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_interface_ownedAttribute" name="A_interface_ownedAttribute" visibility="private" memberEnd="Interface-ownedAttribute A_interface_ownedAttribute-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_interface_ownedAttribute" name="A_interface_ownedAttribute" visibility="private" memberEnd="A_interface_ownedAttribute-_ownedEnd.0 Interface-ownedAttribute">
       <generalization xmi:id="A_interface_ownedAttribute-_generalization.0" general="A_attribute_classifier"/>
       <generalization xmi:id="A_interface_ownedAttribute-_generalization.1" general="A_ownedMember_namespace"/>
       <ownedEnd xmi:id="A_interface_ownedAttribute-_ownedEnd.0" type="Interface" subsettedProperty="A_attribute_classifier-classifier NamedElement-namespace Feature-featuringClassifier" association="A_interface_ownedAttribute">
@@ -2473,7 +2479,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_interface_ownedAttribute-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_interface_ownedOperation" name="A_interface_ownedOperation" visibility="private" memberEnd="Interface-ownedOperation Operation-interface">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_interface_ownedOperation" name="A_interface_ownedOperation" visibility="private" memberEnd="Operation-interface Interface-ownedOperation">
       <generalization xmi:id="A_interface_ownedOperation-_generalization.0" general="A_redefinitionContext_redefinableElement"/>
       <generalization xmi:id="A_interface_ownedOperation-_generalization.1" general="A_feature_featuringClassifier"/>
       <generalization xmi:id="A_interface_ownedOperation-_generalization.2" general="A_ownedMember_namespace"/>
@@ -2497,7 +2503,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_nestedClassifier_interface-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_interface_redefinedInterface" name="A_interface_redefinedInterface" visibility="private" memberEnd="Interface-redefinedInterface A_interface_redefinedInterface-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_interface_redefinedInterface" name="A_interface_redefinedInterface" visibility="private" memberEnd="A_interface_redefinedInterface-_ownedEnd.0 Interface-redefinedInterface">
       <generalization xmi:id="A_interface_redefinedInterface-_generalization.0" general="A_redefinedElement_redefinableElement"/>
       <ownedEnd xmi:id="A_interface_redefinedInterface-_ownedEnd.0" type="Interface" association="A_interface_redefinedInterface">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_interface_redefinedInterface-_ownedEnd.0-_upperValue" value="*"/>
@@ -2620,7 +2626,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_definingEnd_connectorEnd-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_end_role" name="A_end_role" visibility="private" memberEnd="ConnectorEnd-role ConnectableElement-end"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_end_role" name="A_end_role" visibility="private" memberEnd="ConnectableElement-end ConnectorEnd-role"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_attribute_classifier" name="A_attribute_classifier" visibility="private" memberEnd="Classifier-attribute A_attribute_classifier-classifier">
       <generalization xmi:id="A_attribute_classifier-_generalization.0" general="A_feature_featuringClassifier"/>
       <generalization xmi:id="A_attribute_classifier-_generalization.1" general="A_redefinitionContext_redefinableElement"/>
@@ -2752,7 +2758,7 @@ Associated dependencies map features of the collaboration type to features in th
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_roleBinding_collaborationUse-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_classifier_representation" name="A_classifier_representation" visibility="private" memberEnd="Classifier-representation A_classifier_representation-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_classifier_representation" name="A_classifier_representation" visibility="private" memberEnd="A_classifier_representation-_ownedEnd.0 Classifier-representation">
       <generalization xmi:id="A_classifier_representation-_generalization.0" general="A_collaborationUse_classifier"/>
       <ownedEnd xmi:id="A_classifier_representation-_ownedEnd.0" type="Classifier" redefinedProperty="A_collaborationUse_classifier-_ownedEnd.0" association="A_classifier_representation">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_classifier_representation-_ownedEnd.0-_upperValue" value="1"/>
@@ -2909,11 +2915,11 @@ Associated dependencies map features of the collaboration type to features in th
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ValuePin-value-_lowerValue" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_activity_edge" name="A_activity_edge" visibility="private" memberEnd="Activity-edge ActivityEdge-activity">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_activity_edge" name="A_activity_edge" visibility="private" memberEnd="ActivityEdge-activity Activity-edge">
       <generalization xmi:id="A_activity_edge-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source" name="A_outgoing_source" visibility="private" memberEnd="ActivityEdge-source ActivityNode-outgoing"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_target_incoming" name="A_target_incoming" visibility="private" memberEnd="ActivityNode-incoming ActivityEdge-target"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source" name="A_outgoing_source" visibility="private" memberEnd="ActivityNode-outgoing ActivityEdge-source"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_target_incoming" name="A_target_incoming" visibility="private" memberEnd="ActivityEdge-target ActivityNode-incoming"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_parameter_activityParameterNode" name="A_parameter_activityParameterNode" visibility="private" memberEnd="ActivityParameterNode-parameter A_parameter_activityParameterNode-_ownedEnd.0">
       <ownedEnd xmi:id="A_parameter_activityParameterNode-_ownedEnd.0" type="ActivityParameterNode" association="A_parameter_activityParameterNode"/>
     </packagedElement>
@@ -3404,7 +3410,7 @@ v) attributes of the class owning the Interaction
         <body>This association shows the lifelines that make up an interaction. A lifeline may be part of more than one interaction use.</body>
       </ownedComment>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_executionSpecification_start" name="A_executionSpecification_start" visibility="private" memberEnd="ExecutionSpecification-start A_executionSpecification_start-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_executionSpecification_start" name="A_executionSpecification_start" visibility="private" memberEnd="A_executionSpecification_start-_ownedEnd.0 ExecutionSpecification-start">
       <ownedComment xmi:id="A_executionSpecification_start-_ownedComment.0" annotatedElement="A_executionSpecification_start">
         <body>The event shows the time point at which the action begins execution.</body>
       </ownedComment>
@@ -3413,7 +3419,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_executionSpecification_start-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_executionSpecification_finish" name="A_executionSpecification_finish" visibility="private" memberEnd="ExecutionSpecification-finish A_executionSpecification_finish-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_executionSpecification_finish" name="A_executionSpecification_finish" visibility="private" memberEnd="A_executionSpecification_finish-_ownedEnd.0 ExecutionSpecification-finish">
       <ownedComment xmi:id="A_executionSpecification_finish-_ownedComment.0" annotatedElement="A_executionSpecification_finish">
         <body>The event shows the time point at which the action completes execution.</body>
       </ownedComment>
@@ -3422,7 +3428,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_executionSpecification_finish-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_lifeline_represents" name="A_lifeline_represents" visibility="private" memberEnd="Lifeline-represents A_lifeline_represents-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_lifeline_represents" name="A_lifeline_represents" visibility="private" memberEnd="A_lifeline_represents-_ownedEnd.0 Lifeline-represents">
       <ownedComment xmi:id="A_lifeline_represents-_ownedComment.0" annotatedElement="A_lifeline_represents">
         <body>If a Part has multiplicity, multiple lifelines might be used to show it.</body>
       </ownedComment>
@@ -3431,7 +3437,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_lifeline_represents-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_lifeline_interaction" name="A_lifeline_interaction" visibility="private" memberEnd="Lifeline-interaction Interaction-lifeline">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_lifeline_interaction" name="A_lifeline_interaction" visibility="private" memberEnd="Interaction-lifeline Lifeline-interaction">
       <generalization xmi:id="A_lifeline_interaction-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_receiveEvent_message" name="A_receiveEvent_message" visibility="private" memberEnd="Message-receiveEvent A_receiveEvent_message-_ownedEnd.0">
@@ -3446,7 +3452,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_sendEvent_message-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_events_covered" name="A_events_covered" visibility="private" memberEnd="OccurrenceSpecification-covered A_events_covered-events">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_events_covered" name="A_events_covered" visibility="private" memberEnd="A_events_covered-events OccurrenceSpecification-covered">
       <generalization xmi:id="A_events_covered-_generalization.0" general="A_covered_coveredBy"/>
       <ownedEnd xmi:id="A_events_covered-events" name="events" type="OccurrenceSpecification" isOrdered="true" association="A_events_covered">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_events_covered-events-_upperValue" value="*"/>
@@ -3469,7 +3475,7 @@ v) attributes of the class owning the Interaction
     <packagedElement xmi:type="uml:Association" xmi:id="A_message_interaction" name="A_message_interaction" visibility="private" memberEnd="Interaction-message Message-interaction">
       <generalization xmi:id="A_message_interaction-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_before_toAfter" name="A_before_toAfter" visibility="private" memberEnd="OccurrenceSpecification-toAfter GeneralOrdering-before"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_before_toAfter" name="A_before_toAfter" visibility="private" memberEnd="GeneralOrdering-before OccurrenceSpecification-toAfter"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_toBefore_after" name="A_toBefore_after" visibility="private" memberEnd="OccurrenceSpecification-toBefore GeneralOrdering-after"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_argument_message" name="A_argument_message" visibility="private" memberEnd="Message-argument A_argument_message-_ownedEnd.0">
       <generalization xmi:id="A_argument_message-_generalization.0" general="A_ownedElement_owner"/>
@@ -3482,7 +3488,7 @@ v) attributes of the class owning the Interaction
       <generalization xmi:id="A_invariant_stateInvariant-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_invariant_stateInvariant-_ownedEnd.0" type="StateInvariant" association="A_invariant_stateInvariant"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_stateInvariant_covered" name="A_stateInvariant_covered" visibility="private" memberEnd="StateInvariant-covered A_stateInvariant_covered-stateInvariant">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_stateInvariant_covered" name="A_stateInvariant_covered" visibility="private" memberEnd="A_stateInvariant_covered-stateInvariant StateInvariant-covered">
       <generalization xmi:id="A_stateInvariant_covered-_generalization.0" general="A_covered_coveredBy"/>
       <ownedEnd xmi:id="A_stateInvariant_covered-stateInvariant" name="stateInvariant" type="StateInvariant" association="A_stateInvariant_covered">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_stateInvariant_covered-stateInvariant-_upperValue" value="*"/>
@@ -3496,7 +3502,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_generalOrdering_interactionFragment-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_enclosingInteraction_fragment" name="A_enclosingInteraction_fragment" visibility="private" memberEnd="Interaction-fragment InteractionFragment-enclosingInteraction">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_enclosingInteraction_fragment" name="A_enclosingInteraction_fragment" visibility="private" memberEnd="InteractionFragment-enclosingInteraction Interaction-fragment">
       <generalization xmi:id="A_enclosingInteraction_fragment-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_behavior_behaviorExecutionSpecification" name="A_behavior_behaviorExecutionSpecification" visibility="private" memberEnd="BehaviorExecutionSpecification-behavior A_behavior_behaviorExecutionSpecification-_ownedEnd.0">
@@ -4004,7 +4010,7 @@ v) attributes of the class owning the Interaction
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_reception_signal" name="A_reception_signal" visibility="private" memberEnd="Reception-signal A_reception_signal-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_reception_signal" name="A_reception_signal" visibility="private" memberEnd="A_reception_signal-_ownedEnd.0 Reception-signal">
       <ownedEnd xmi:id="A_reception_signal-_ownedEnd.0" type="Reception" association="A_reception_signal">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_reception_signal-_ownedEnd.0-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_reception_signal-_ownedEnd.0-_lowerValue"/>
@@ -4277,7 +4283,7 @@ v) attributes of the class owning the Interaction
       </ownedComment>
       <generalization xmi:id="ActivityFinalNode-_generalization.0" general="FinalNode"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_edge_inPartition" name="A_edge_inPartition" visibility="private" memberEnd="ActivityEdge-inPartition ActivityPartition-edge">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_edge_inPartition" name="A_edge_inPartition" visibility="private" memberEnd="ActivityPartition-edge ActivityEdge-inPartition">
       <generalization xmi:id="A_edge_inPartition-_generalization.0" general="A_containedEdge_inGroup"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_inPartition_node" name="A_inPartition_node" visibility="private" memberEnd="ActivityNode-inPartition ActivityPartition-node">
@@ -4292,7 +4298,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_represents_activityPartition-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_activityEdge_guard" name="A_activityEdge_guard" visibility="private" memberEnd="ActivityEdge-guard A_activityEdge_guard-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_activityEdge_guard" name="A_activityEdge_guard" visibility="private" memberEnd="A_activityEdge_guard-_ownedEnd.0 ActivityEdge-guard">
       <generalization xmi:id="A_activityEdge_guard-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_activityEdge_guard-_ownedEnd.0" type="ActivityEdge" association="A_activityEdge_guard"/>
     </packagedElement>
@@ -4309,7 +4315,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_partition_activity-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_group_inActivity" name="A_group_inActivity" visibility="private" memberEnd="ActivityGroup-inActivity Activity-group">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_group_inActivity" name="A_group_inActivity" visibility="private" memberEnd="Activity-group ActivityGroup-inActivity">
       <generalization xmi:id="A_group_inActivity-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EncapsulatedClassifier" name="EncapsulatedClassifier" isAbstract="true">
@@ -4393,7 +4399,7 @@ v) attributes of the class owning the Interaction
         <ownedParameter xmi:id="ConnectorEnd-getDefiningEnd-_ownedParameter.0" type="Property" direction="return"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_encapsulatedClassifier_ownedPort" name="A_encapsulatedClassifier_ownedPort" visibility="private" memberEnd="EncapsulatedClassifier-ownedPort A_encapsulatedClassifier_ownedPort-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_encapsulatedClassifier_ownedPort" name="A_encapsulatedClassifier_ownedPort" visibility="private" memberEnd="A_encapsulatedClassifier_ownedPort-_ownedEnd.0 EncapsulatedClassifier-ownedPort">
       <generalization xmi:id="A_encapsulatedClassifier_ownedPort-_generalization.0" general="A_ownedAttribute_structuredClassifier"/>
       <ownedEnd xmi:id="A_encapsulatedClassifier_ownedPort-_ownedEnd.0" type="EncapsulatedClassifier" redefinedProperty="A_ownedAttribute_structuredClassifier-_ownedEnd.0" subsettedProperty="RedefinableElement-redefinitionContext" association="A_encapsulatedClassifier_ownedPort">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_encapsulatedClassifier_ownedPort-_ownedEnd.0-_upperValue" value="1"/>
@@ -4447,7 +4453,7 @@ v) attributes of the class owning the Interaction
         <body>Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.</body>
       </ownedComment>
       <ownedComment xmi:id="Connector-_ownedComment.1" annotatedElement="Connector">
-        <body>A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component’s parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.&#xD;
+        <body>A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component's parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.&#xD;
 An assembly connector is a connector between two components that defines that one component provides the services that another component requires. An assembly connector is a connector that is defined from a required interface or port to a provided interface or port.</body>
       </ownedComment>
       <ownedRule xmi:id="Connector-types" name="types" constrainedElement="Connector">
@@ -4580,7 +4586,7 @@ An assembly connector is a connector between two components that defines that on
     <packagedElement xmi:type="uml:Association" xmi:id="A_provided_component" name="A_provided_component" visibility="private" memberEnd="Component-provided A_provided_component-_ownedEnd.0">
       <ownedEnd xmi:id="A_provided_component-_ownedEnd.0" type="Component" association="A_provided_component"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_realization_abstraction" name="A_realization_abstraction" visibility="private" memberEnd="ComponentRealization-abstraction Component-realization">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_realization_abstraction" name="A_realization_abstraction" visibility="private" memberEnd="Component-realization ComponentRealization-abstraction">
       <generalization xmi:id="A_realization_abstraction-_generalization.0" general="A_ownedElement_owner"/>
       <generalization xmi:id="A_realization_abstraction-_generalization.1" general="A_clientDependency_client"/>
     </packagedElement>
@@ -5490,7 +5496,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_lifeline_decomposedAs" name="A_lifeline_decomposedAs" visibility="private" memberEnd="Lifeline-decomposedAs A_lifeline_decomposedAs-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_lifeline_decomposedAs" name="A_lifeline_decomposedAs" visibility="private" memberEnd="A_lifeline_decomposedAs-_ownedEnd.0 Lifeline-decomposedAs">
       <ownedEnd xmi:id="A_lifeline_decomposedAs-_ownedEnd.0" type="Lifeline" association="A_lifeline_decomposedAs"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_guard_interactionOperand" name="A_guard_interactionOperand" visibility="private" memberEnd="InteractionOperand-guard A_guard_interactionOperand-_ownedEnd.0">
@@ -5520,7 +5526,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_cfragmentGate_combinedFragment-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_interactionUse_actualGate" name="A_interactionUse_actualGate" visibility="private" memberEnd="InteractionUse-actualGate A_interactionUse_actualGate-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_interactionUse_actualGate" name="A_interactionUse_actualGate" visibility="private" memberEnd="A_interactionUse_actualGate-_ownedEnd.0 InteractionUse-actualGate">
       <generalization xmi:id="A_interactionUse_actualGate-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_interactionUse_actualGate-_ownedEnd.0" type="InteractionUse" association="A_interactionUse_actualGate">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_interactionUse_actualGate-_ownedEnd.0-_upperValue" value="1"/>
@@ -6367,7 +6373,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_result_readSelfAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_structuralFeatureAction_structuralFeature" name="A_structuralFeatureAction_structuralFeature" visibility="private" memberEnd="StructuralFeatureAction-structuralFeature A_structuralFeatureAction_structuralFeature-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_structuralFeatureAction_structuralFeature" name="A_structuralFeatureAction_structuralFeature" visibility="private" memberEnd="A_structuralFeatureAction_structuralFeature-_ownedEnd.0 StructuralFeatureAction-structuralFeature">
       <ownedEnd xmi:id="A_structuralFeatureAction_structuralFeature-_ownedEnd.0" type="StructuralFeatureAction" association="A_structuralFeatureAction_structuralFeature">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_structuralFeatureAction_structuralFeature-_ownedEnd.0-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_structuralFeatureAction_structuralFeature-_ownedEnd.0-_lowerValue"/>
@@ -6760,7 +6766,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
     <packagedElement xmi:type="uml:Association" xmi:id="A_observation_timeExpression" name="A_observation_timeExpression" visibility="private" memberEnd="TimeExpression-observation A_observation_timeExpression-_ownedEnd.0">
       <ownedEnd xmi:id="A_observation_timeExpression-_ownedEnd.0" type="TimeExpression" association="A_observation_timeExpression"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_when_timeEvent" name="A_when_timeEvent" visibility="private" memberEnd="A_when_timeEvent-_ownedEnd.0 TimeEvent-when">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_when_timeEvent" name="A_when_timeEvent" visibility="private" memberEnd="TimeEvent-when A_when_timeEvent-_ownedEnd.0">
       <generalization xmi:id="A_when_timeEvent-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_when_timeEvent-_ownedEnd.0" type="TimeEvent" association="A_when_timeEvent"/>
     </packagedElement>
@@ -7019,7 +7025,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
       </ownedRule>
       <ownedRule xmi:id="Transition-initial_transition" name="initial_transition" constrainedElement="Transition">
         <ownedComment xmi:id="Transition-initial_transition-_ownedComment.0" annotatedElement="Transition-initial_transition">
-          <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype «create».</body>
+          <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype &lt;&lt;create>>.</body>
         </ownedComment>
         <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-initial_transition-_specification">
           <language>OCL</language>
@@ -7529,15 +7535,15 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_container_subvertex" name="A_container_subvertex" visibility="private" memberEnd="Region-subvertex Vertex-container">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_container_subvertex" name="A_container_subvertex" visibility="private" memberEnd="Vertex-container Region-subvertex">
       <generalization xmi:id="A_container_subvertex-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_container_transition" name="A_container_transition" visibility="private" memberEnd="Region-transition Transition-container">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_container_transition" name="A_container_transition" visibility="private" memberEnd="Transition-container Region-transition">
       <generalization xmi:id="A_container_transition-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source.1" name="A_outgoing_source" visibility="private" memberEnd="Vertex-outgoing Transition-source"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_incoming_target" name="A_incoming_target" visibility="private" memberEnd="Vertex-incoming Transition-target"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_submachineState_submachine" name="A_submachineState_submachine" visibility="private" memberEnd="State-submachine StateMachine-submachineState"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_submachineState_submachine" name="A_submachineState_submachine" visibility="private" memberEnd="StateMachine-submachineState State-submachine"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_entry_connectionPointReference" name="A_entry_connectionPointReference" visibility="private" memberEnd="ConnectionPointReference-entry A_entry_connectionPointReference-_ownedEnd.0">
       <ownedEnd xmi:id="A_entry_connectionPointReference-_ownedEnd.0" type="ConnectionPointReference" association="A_entry_connectionPointReference">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_entry_connectionPointReference-_ownedEnd.0-_upperValue" value="1"/>
@@ -7567,23 +7573,23 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_exit_connectionPointReference-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_region_stateMachine" name="A_region_stateMachine" visibility="private" memberEnd="Region-stateMachine StateMachine-region">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_region_stateMachine" name="A_region_stateMachine" visibility="private" memberEnd="StateMachine-region Region-stateMachine">
       <generalization xmi:id="A_region_stateMachine-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_connectionPoint_stateMachine" name="A_connectionPoint_stateMachine" visibility="private" memberEnd="StateMachine-connectionPoint Pseudostate-stateMachine">
       <generalization xmi:id="A_connectionPoint_stateMachine-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_region_state" name="A_region_state" visibility="private" memberEnd="Region-state State-region">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_region_state" name="A_region_state" visibility="private" memberEnd="State-region Region-state">
       <generalization xmi:id="A_region_state-_generalization.0" general="A_ownedMember_namespace"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_region_extendedRegion" name="A_region_extendedRegion" visibility="private" memberEnd="Region-extendedRegion A_region_extendedRegion-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_region_extendedRegion" name="A_region_extendedRegion" visibility="private" memberEnd="A_region_extendedRegion-_ownedEnd.0 Region-extendedRegion">
       <generalization xmi:id="A_region_extendedRegion-_generalization.0" general="A_redefinedElement_redefinableElement"/>
       <ownedEnd xmi:id="A_region_extendedRegion-_ownedEnd.0" type="Region" redefinedProperty="A_redefinedElement_redefinableElement-_ownedEnd.0" association="A_region_extendedRegion">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_region_extendedRegion-_ownedEnd.0-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_region_extendedRegion-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_stateMachine_extendedStateMachine" name="A_stateMachine_extendedStateMachine" visibility="private" memberEnd="StateMachine-extendedStateMachine A_stateMachine_extendedStateMachine-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_stateMachine_extendedStateMachine" name="A_stateMachine_extendedStateMachine" visibility="private" memberEnd="A_stateMachine_extendedStateMachine-_ownedEnd.0 StateMachine-extendedStateMachine">
       <generalization xmi:id="A_stateMachine_extendedStateMachine-_generalization.0" general="A_redefinedElement_redefinableElement"/>
       <ownedEnd xmi:id="A_stateMachine_extendedStateMachine-_ownedEnd.0" type="StateMachine" redefinedProperty="A_redefinedElement_redefinableElement-_ownedEnd.0" association="A_stateMachine_extendedStateMachine">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_stateMachine_extendedStateMachine-_ownedEnd.0-_upperValue" value="1"/>
@@ -7604,14 +7610,14 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_redefinitionContext_region-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_state_redefinitionContext" name="A_state_redefinitionContext" visibility="private" memberEnd="State-redefinitionContext A_state_redefinitionContext-_ownedEnd.0" isDerived="true">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_state_redefinitionContext" name="A_state_redefinitionContext" visibility="private" memberEnd="A_state_redefinitionContext-_ownedEnd.0 State-redefinitionContext" isDerived="true">
       <generalization xmi:id="A_state_redefinitionContext-_generalization.0" general="A_redefinitionContext_redefinableElement"/>
       <ownedEnd xmi:id="A_state_redefinitionContext-_ownedEnd.0" type="State" association="A_state_redefinitionContext">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_state_redefinitionContext-_ownedEnd.0-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_state_redefinitionContext-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_transition_redefinitionContext" name="A_transition_redefinitionContext" visibility="private" memberEnd="Transition-redefinitionContext A_transition_redefinitionContext-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_transition_redefinitionContext" name="A_transition_redefinitionContext" visibility="private" memberEnd="A_transition_redefinitionContext-_ownedEnd.0 Transition-redefinitionContext">
       <generalization xmi:id="A_transition_redefinitionContext-_generalization.0" general="A_redefinitionContext_redefinableElement"/>
       <ownedEnd xmi:id="A_transition_redefinitionContext-_ownedEnd.0" type="Transition" association="A_transition_redefinitionContext">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_transition_redefinitionContext-_ownedEnd.0-_upperValue" value="*"/>
@@ -9032,7 +9038,7 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Generalization-generalizationSet-_lowerValue"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_powertypeExtent_powertype" name="A_powertypeExtent_powertype" visibility="private" memberEnd="GeneralizationSet-powertype Classifier-powertypeExtent"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_powertypeExtent_powertype" name="A_powertypeExtent_powertype" visibility="private" memberEnd="Classifier-powertypeExtent GeneralizationSet-powertype"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_generalizationSet_generalization" name="A_generalizationSet_generalization" visibility="private" memberEnd="Generalization-generalizationSet GeneralizationSet-generalization"/>
     <packagedElement xmi:type="uml:Class" xmi:id="InformationItem" name="InformationItem">
       <ownedComment xmi:id="InformationItem-_ownedComment.0" annotatedElement="InformationItem">
@@ -10185,7 +10191,7 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_result_createLinkObjectAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_reclassifyObjectAction_object" name="A_reclassifyObjectAction_object" visibility="private" memberEnd="ReclassifyObjectAction-object A_reclassifyObjectAction_object-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_reclassifyObjectAction_object" name="A_reclassifyObjectAction_object" visibility="private" memberEnd="A_reclassifyObjectAction_object-_ownedEnd.0 ReclassifyObjectAction-object">
       <generalization xmi:id="A_reclassifyObjectAction_object-_generalization.0" general="A_action_input"/>
       <ownedEnd xmi:id="A_reclassifyObjectAction_object-_ownedEnd.0" type="ReclassifyObjectAction" redefinedProperty="A_action_input-_ownedEnd.0" association="A_reclassifyObjectAction_object"/>
     </packagedElement>
@@ -11218,16 +11224,16 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_transformation_objectFlow-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_action_localPrecondition" name="A_action_localPrecondition" visibility="private" memberEnd="Action-localPrecondition A_action_localPrecondition-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_action_localPrecondition" name="A_action_localPrecondition" visibility="private" memberEnd="A_action_localPrecondition-_ownedEnd.0 Action-localPrecondition">
       <generalization xmi:id="A_action_localPrecondition-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_action_localPrecondition-_ownedEnd.0" type="Action" association="A_action_localPrecondition"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_action_localPostcondition" name="A_action_localPostcondition" visibility="private" memberEnd="Action-localPostcondition A_action_localPostcondition-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_action_localPostcondition" name="A_action_localPostcondition" visibility="private" memberEnd="A_action_localPostcondition-_ownedEnd.0 Action-localPostcondition">
       <generalization xmi:id="A_action_localPostcondition-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_action_localPostcondition-_ownedEnd.0" type="Action" association="A_action_localPostcondition"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_interruptingEdge_interrupts" name="A_interruptingEdge_interrupts" visibility="private" memberEnd="ActivityEdge-interrupts InterruptibleActivityRegion-interruptingEdge"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_inInterruptibleRegion_node" name="A_inInterruptibleRegion_node" visibility="private" memberEnd="InterruptibleActivityRegion-node ActivityNode-inInterruptibleRegion">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_interruptingEdge_interrupts" name="A_interruptingEdge_interrupts" visibility="private" memberEnd="InterruptibleActivityRegion-interruptingEdge ActivityEdge-interrupts"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_inInterruptibleRegion_node" name="A_inInterruptibleRegion_node" visibility="private" memberEnd="ActivityNode-inInterruptibleRegion InterruptibleActivityRegion-node">
       <generalization xmi:id="A_inInterruptibleRegion_node-_generalization.0" general="A_containedNode_inGroup"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_selection_objectFlow" name="A_selection_objectFlow" visibility="private" memberEnd="ObjectFlow-selection A_selection_objectFlow-_ownedEnd.0">
@@ -11260,7 +11266,7 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_ownedParameterSet_behavior-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_containedNode_inGroup" name="A_containedNode_inGroup" visibility="private" memberEnd="ActivityNode-inGroup ActivityGroup-containedNode"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_containedNode_inGroup" name="A_containedNode_inGroup" visibility="private" memberEnd="ActivityGroup-containedNode ActivityNode-inGroup"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_joinSpec_joinNode" name="A_joinSpec_joinNode" visibility="private" memberEnd="JoinNode-joinSpec A_joinSpec_joinNode-_ownedEnd.0">
       <generalization xmi:id="A_joinSpec_joinNode-_generalization.0" general="A_ownedElement_owner"/>
       <ownedEnd xmi:id="A_joinSpec_joinNode-_ownedEnd.0" type="JoinNode" association="A_joinSpec_joinNode"/>
@@ -11739,7 +11745,7 @@ If false, the body is executed once before the test is performed.
     <packagedElement xmi:type="uml:Association" xmi:id="A_edge_inStructuredNode" name="A_edge_inStructuredNode" visibility="private" memberEnd="StructuredActivityNode-edge ActivityEdge-inStructuredNode">
       <generalization xmi:id="A_edge_inStructuredNode-_generalization.0" general="A_containedEdge_inGroup"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_containedEdge_inGroup" name="A_containedEdge_inGroup" visibility="private" memberEnd="ActivityEdge-inGroup ActivityGroup-containedEdge" isDerived="true"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_containedEdge_inGroup" name="A_containedEdge_inGroup" visibility="private" memberEnd="ActivityGroup-containedEdge ActivityEdge-inGroup" isDerived="true"/>
     <packagedElement xmi:type="uml:Class" xmi:id="ExpansionNode" name="ExpansionNode">
       <ownedComment xmi:id="ExpansionNode-_ownedComment.0" annotatedElement="ExpansionNode">
         <body>An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.</body>
@@ -11927,7 +11933,7 @@ stream: a stream of values flows into a single execution&#xD;
       <generalization xmi:id="Component-_generalization.1" general="Namespace"/>
       <ownedAttribute xmi:id="Component-isIndirectlyInstantiated" name="isIndirectlyInstantiated" type="Boolean">
         <ownedComment xmi:id="Component-isIndirectlyInstantiated-_ownedComment.0" annotatedElement="Component-isIndirectlyInstantiated">
-          <body>The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. «specification», «focus», «subsystem».</body>
+          <body>The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. &lt;&lt;specification>>, &lt;&lt;focus>>, &lt;&lt;subsystem>>.</body>
         </ownedComment>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="Component-isIndirectlyInstantiated-_defaultValue" value="true"/>
       </ownedAttribute>
@@ -12045,7 +12051,7 @@ stream: a stream of values flows into a single execution&#xD;
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_component_packagedElement" name="A_component_packagedElement" visibility="private" memberEnd="Component-packagedElement A_component_packagedElement-_ownedEnd.0">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_component_packagedElement" name="A_component_packagedElement" visibility="private" memberEnd="A_component_packagedElement-_ownedEnd.0 Component-packagedElement">
       <generalization xmi:id="A_component_packagedElement-_generalization.0" general="A_ownedMember_namespace"/>
       <ownedEnd xmi:id="A_component_packagedElement-_ownedEnd.0" type="Component" association="A_component_packagedElement">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_component_packagedElement-_ownedEnd.0-_upperValue" value="1"/>
@@ -12945,7 +12951,7 @@ stream: a stream of values flows into a single execution&#xD;
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_qualifier_associationEnd" name="A_qualifier_associationEnd" visibility="private" memberEnd="Property-associationEnd Property-qualifier">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_qualifier_associationEnd" name="A_qualifier_associationEnd" visibility="private" memberEnd="Property-qualifier Property-associationEnd">
       <generalization xmi:id="A_qualifier_associationEnd-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="TemplateSignature" name="TemplateSignature">
@@ -13602,7 +13608,7 @@ define a collating sequence between operands and subexpressions).
         </ownedComment>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="Property-isComposite-_defaultValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="Property-class" name="class" type="Class" subsettedProperty="A_attribute_classifier-classifier NamedElement-namespace Feature-featuringClassifier" association="A_ownedAttribute_class">
+      <ownedAttribute xmi:id="Property-class" name="class" type="Class" subsettedProperty="NamedElement-namespace Feature-featuringClassifier A_attribute_classifier-classifier" association="A_ownedAttribute_class">
         <ownedComment xmi:id="Property-class-_ownedComment.0" annotatedElement="Property-class">
           <body>References the Class that owns the Property.</body>
         </ownedComment>
@@ -14034,7 +14040,7 @@ define a collating sequence between operands and subexpressions).
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Operation-redefinedOperation-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Operation-redefinedOperation-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="Operation-datatype" name="datatype" type="DataType" subsettedProperty="NamedElement-namespace RedefinableElement-redefinitionContext Feature-featuringClassifier" association="A_ownedOperation_datatype">
+      <ownedAttribute xmi:id="Operation-datatype" name="datatype" type="DataType" subsettedProperty="RedefinableElement-redefinitionContext NamedElement-namespace Feature-featuringClassifier" association="A_ownedOperation_datatype">
         <ownedComment xmi:id="Operation-datatype-_ownedComment.0" annotatedElement="Operation-datatype">
           <body>The DataType that owns this Operation.</body>
         </ownedComment>
@@ -15078,17 +15084,17 @@ define a collating sequence between operands and subexpressions).
       <generalization xmi:id="A_signature_templateBinding-_generalization.0" general="A_target_directedRelationship"/>
       <ownedEnd xmi:id="A_signature_templateBinding-_ownedEnd.0" type="TemplateBinding" redefinedProperty="A_target_directedRelationship-_ownedEnd.0" association="A_signature_templateBinding"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_parameterSubstitution_templateBinding" name="A_parameterSubstitution_templateBinding" visibility="private" memberEnd="TemplateParameterSubstitution-templateBinding TemplateBinding-parameterSubstitution">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_parameterSubstitution_templateBinding" name="A_parameterSubstitution_templateBinding" visibility="private" memberEnd="TemplateBinding-parameterSubstitution TemplateParameterSubstitution-templateBinding">
       <generalization xmi:id="A_parameterSubstitution_templateBinding-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_actual_templateParameterSubstitution" name="A_actual_templateParameterSubstitution" visibility="private" memberEnd="TemplateParameterSubstitution-actual A_actual_templateParameterSubstitution-_ownedEnd.0">
       <ownedEnd xmi:id="A_actual_templateParameterSubstitution-_ownedEnd.0" type="TemplateParameterSubstitution" association="A_actual_templateParameterSubstitution"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_parameteredElement_templateParameter" name="A_parameteredElement_templateParameter" visibility="private" memberEnd="ParameterableElement-templateParameter TemplateParameter-parameteredElement"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_subExpression_owningExpression" name="A_subExpression_owningExpression" visibility="private" memberEnd="StringExpression-owningExpression StringExpression-subExpression">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_parameteredElement_templateParameter" name="A_parameteredElement_templateParameter" visibility="private" memberEnd="TemplateParameter-parameteredElement ParameterableElement-templateParameter"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_subExpression_owningExpression" name="A_subExpression_owningExpression" visibility="private" memberEnd="StringExpression-subExpression StringExpression-owningExpression">
       <generalization xmi:id="A_subExpression_owningExpression-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedTemplateSignature_template" name="A_ownedTemplateSignature_template" visibility="private" memberEnd="TemplateSignature-template TemplateableElement-ownedTemplateSignature">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_ownedTemplateSignature_template" name="A_ownedTemplateSignature_template" visibility="private" memberEnd="TemplateableElement-ownedTemplateSignature TemplateSignature-template">
       <generalization xmi:id="A_ownedTemplateSignature_template-_generalization.0" general="A_ownedElement_owner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_ownedParameteredElement_owningTemplateParameter" name="A_ownedParameteredElement_owningTemplateParameter" visibility="private" memberEnd="TemplateParameter-ownedParameteredElement ParameterableElement-owningTemplateParameter">
@@ -15129,7 +15135,7 @@ define a collating sequence between operands and subexpressions).
       <generalization xmi:id="A_inheritedParameter_redefinableTemplateSignature-_generalization.0" general="A_parameter_templateSignature"/>
       <ownedEnd xmi:id="A_inheritedParameter_redefinableTemplateSignature-_ownedEnd.0" type="RedefinableTemplateSignature" redefinedProperty="A_parameter_templateSignature-_ownedEnd.0" association="A_inheritedParameter_redefinableTemplateSignature"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_templateParameter_parameteredElement" name="A_templateParameter_parameteredElement" visibility="private" memberEnd="ClassifierTemplateParameter-parameteredElement Classifier-templateParameter">
+    <packagedElement xmi:type="uml:Association" xmi:id="A_templateParameter_parameteredElement" name="A_templateParameter_parameteredElement" visibility="private" memberEnd="Classifier-templateParameter ClassifierTemplateParameter-parameteredElement">
       <generalization xmi:id="A_templateParameter_parameteredElement-_generalization.0" general="A_parameteredElement_templateParameter"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_nameExpression_namedElement" name="A_nameExpression_namedElement" visibility="private" memberEnd="NamedElement-nameExpression A_nameExpression_namedElement-_ownedEnd.0">

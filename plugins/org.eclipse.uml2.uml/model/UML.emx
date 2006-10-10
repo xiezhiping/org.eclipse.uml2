@@ -657,6 +657,13 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_ChRfcGveEdq4DLWZOhbdEA" name="OpaqueExpression">
+    <ownedAttribute xmi:id="_EOZfkC4xEduBJv9HKGdiyg" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+      <eAnnotations xmi:id="_YgZaEC7qEdutFcse1QllAQ" source="appliedStereotypes">
+        <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_YgZaES7qEdutFcse1QllAQ" isUnsettable="true" xmlFeatureKind="Element"/>
+      </eAnnotations>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KIvXES4xEduBJv9HKGdiyg" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KIvXEC4xEduBJv9HKGdiyg"/>
+    </ownedAttribute>
     <ownedOperation xmi:id="_mv9LcFYiEdqB6vblk3tuMA" name="getResult" visibility="protected" type="_KyaPMGveEdq4DLWZOhbdEA" isQuery="true">
       <returnResult xmi:id="_vXTbwFYiEdqB6vblk3tuMA" type="_KyaPMGveEdq4DLWZOhbdEA" direction="return">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0JhNkVYiEdqB6vblk3tuMA" value="1"/>
@@ -1851,6 +1858,32 @@
       </ownedComment>
       <returnResult xmi:id="_IJwKC669EdqjppZik4kD8A" type="_8Ugn8GvtEdqG6fBIPwe-mw" direction="return"/>
       <ownedParameter xmi:id="_IJwKDK69EdqjppZik4kD8A" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
+    </ownedOperation>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_OUnikC7qEdutFcse1QllAQ" name="OpaqueAction">
+    <ownedAttribute xmi:id="_c_GaAC7qEdutFcse1QllAQ" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+      <eAnnotations xmi:id="_hxBQ4C7qEdutFcse1QllAQ" source="appliedStereotypes">
+        <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_hxBQ4S7qEdutFcse1QllAQ" isUnsettable="true" xmlFeatureKind="Element"/>
+      </eAnnotations>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_e2muMS7qEdutFcse1QllAQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_e2muMC7qEdutFcse1QllAQ"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_ldWYsC7qEdutFcse1QllAQ" name="OpaqueBehavior">
+    <ownedAttribute xmi:id="_ldWYsS7qEdutFcse1QllAQ" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+      <eAnnotations xmi:id="_ldWYsi7qEdutFcse1QllAQ" source="appliedStereotypes">
+        <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_ldWYsy7qEdutFcse1QllAQ" isUnsettable="true" xmlFeatureKind="Element"/>
+      </eAnnotations>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ldWYtC7qEdutFcse1QllAQ" value="-1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ldWYtS7qEdutFcse1QllAQ"/>
+    </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_5jXJsTEkEdu9VoNTbEBQkQ" name="LiteralString">
+    <ownedOperation xmi:id="_-SmgADEkEdu9VoNTbEBQkQ" name="integerValue" visibility="protected" type="_XqvEIGvsEdqG6fBIPwe-mw" isQuery="true">
+      <returnResult xmi:id="_-SmgATEkEdu9VoNTbEBQkQ" type="_XqvEIGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_FbLFMDElEdu9VoNTbEBQkQ" name="unlimitedValue" visibility="protected" type="_dRZxsGvsEdqG6fBIPwe-mw" isQuery="true">
+      <returnResult xmi:id="_FbLFMTElEdu9VoNTbEBQkQ" type="_dRZxsGvsEdqG6fBIPwe-mw" direction="return"/>
     </ownedOperation>
   </ownedMember>
   <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">

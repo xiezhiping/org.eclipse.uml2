@@ -62,6 +62,7 @@ for pluginDir in $pluginDirs; do
         packagesets=$packagesets"<packageset dir=\"$srcDir\">"
         packagesets=$packagesets"<exclude name=\"**/impl/**\"/>"
         packagesets=$packagesets"<exclude name=\"**/internal/**\"/>"
+        packagesets=$packagesets"<exclude name=\"**/templates/**\"/>"
         packagesets=$packagesets"</packageset>"
 	fi
 done

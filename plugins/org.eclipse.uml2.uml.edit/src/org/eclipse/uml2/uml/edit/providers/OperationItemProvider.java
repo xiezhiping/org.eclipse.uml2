@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationItemProvider.java,v 1.12 2006/06/08 17:10:11 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.13 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -562,6 +562,9 @@ public class OperationItemProvider
 			case UMLPackage.OPERATION__IS_UNIQUE :
 			case UMLPackage.OPERATION__LOWER :
 			case UMLPackage.OPERATION__UPPER :
+			case UMLPackage.OPERATION__PRECONDITION :
+			case UMLPackage.OPERATION__POSTCONDITION :
+			case UMLPackage.OPERATION__BODY_CONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -596,6 +599,90 @@ public class OperationItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
+				.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
+				.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
+				.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
+				.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
+				.createDurationConstraint()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.OPERATION__PRECONDITION
+			|| childFeature == UMLPackage.Literals.OPERATION__POSTCONDITION
+			|| childFeature == UMLPackage.Literals.OPERATION__BODY_CONDITION;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

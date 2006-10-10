@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierItemProvider.java,v 1.8 2006/05/15 21:06:21 khussey Exp $
+ * $Id: ClassifierItemProvider.java,v 1.9 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -592,6 +592,7 @@ public class ClassifierItemProvider
 		switch (notification.getFeatureID(Classifier.class)) {
 			case UMLPackage.CLASSIFIER__IS_LEAF :
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
+			case UMLPackage.CLASSIFIER__REPRESENTATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -640,12 +641,38 @@ public class ClassifierItemProvider
 				.createSubstitution()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__REPRESENTATION,
+			UMLFactory.eINSTANCE.createCollaborationUse()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE,
 			UMLFactory.eINSTANCE.createCollaborationUse()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE,
 			UMLFactory.eINSTANCE.createUseCase()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

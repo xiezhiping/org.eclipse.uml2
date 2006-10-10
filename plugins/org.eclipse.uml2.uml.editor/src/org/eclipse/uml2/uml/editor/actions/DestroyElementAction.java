@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyElementAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: DestroyElementAction.java,v 1.2 2006/10/10 20:40:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
@@ -32,23 +34,33 @@ public class DestroyElementAction
 			Collection collection) {
 
 		if (collection.size() == 1) {
-			final Object element = collection.toArray()[0];
+			Object object = collection.iterator().next();
 
-			if (element instanceof Element
-				&& ((Element) element).getOwner() != null) {
+			if (object instanceof Element
+				&& ((Element) object).getOwner() != null) {
 
-				return new ChangeCommand(editingDomain, new Runnable() {
-
-					public void run() {
-						((Element) element).destroy();
-					}
-				}, UMLEditorPlugin.INSTANCE.getString(
-					"_UI_DestroyElementActionCommand_label", //$NON-NLS-1$
-					new Object[]{getLabelProvider().getText(element)}));
+				return IdentityCommand.INSTANCE;
 			}
 		}
 
 		return UnexecutableCommand.INSTANCE;
+	}
+
+	public void run(IAction action) {
+
+		if (command != UnexecutableCommand.INSTANCE) {
+			final Element element = (Element) collection.iterator().next();
+
+			editingDomain.getCommandStack().execute(
+				new ChangeCommand(editingDomain, new Runnable() {
+
+					public void run() {
+						element.destroy();
+					}
+				}, UMLEditorPlugin.INSTANCE.getString(
+					"_UI_DestroyElementActionCommand_label", //$NON-NLS-1$
+					new Object[]{getLabelProvider().getText(element)})));
+		}
 	}
 
 }

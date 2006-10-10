@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.28 2006/05/29 21:10:14 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.29 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -49,7 +49,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -324,65 +323,51 @@ public class ProfileOperations
 		return null;
 	}
 
-	protected static ENamedElement getDefinition(final Profile profile,
-			NamedElement namedElement, final EPackage profileDefinition) {
+	protected static ENamedElement getDefinition(Profile profile,
+			NamedElement namedElement, EPackage profileDefinition) {
 
-		return (ENamedElement) new UMLSwitch() {
+		if (namedElement instanceof Classifier) {
 
-			public Object caseClassifier(Classifier classifier) {
+			if (profileDefinition != null) {
 
-				if (profileDefinition != null) {
+				for (Iterator eClassifiers = profileDefinition
+					.getEClassifiers().iterator(); eClassifiers.hasNext();) {
 
-					for (Iterator eClassifiers = profileDefinition
-						.getEClassifiers().iterator(); eClassifiers.hasNext();) {
+					EClassifier eClassifier = (EClassifier) eClassifiers.next();
+					EAnnotation eAnnotation = eClassifier
+						.getEAnnotation(UMLPackage.eNS_URI);
 
-						EClassifier eClassifier = (EClassifier) eClassifiers
-							.next();
-						EAnnotation eAnnotation = eClassifier
-							.getEAnnotation(UMLPackage.eNS_URI);
+					if (eAnnotation != null
+						&& eAnnotation.getReferences().contains(namedElement)) {
 
-						if (eAnnotation != null
-							&& eAnnotation.getReferences().contains(classifier)) {
-
-							return eClassifier;
-						}
+						return eClassifier;
 					}
 				}
-
-				return null;
 			}
 
-			public Object caseEnumerationLiteral(
-					EnumerationLiteral enumerationLiteral) {
-				Object enumerationDefinition = doSwitch(enumerationLiteral
-					.getEnumeration());
-				return enumerationDefinition instanceof EEnum
-					? ((EEnum) enumerationDefinition)
-						.getEEnumLiteral(enumerationLiteral.getName())
-					: null;
-			}
-
-			public Object caseProperty(Property property) {
-				Object namespaceDefinition = doSwitch(property.getNamespace());
-				return namespaceDefinition instanceof EClass
-					? ((EClass) namespaceDefinition)
-						.getEStructuralFeature(getValidJavaIdentifier(property
-							.getName()))
-					: null;
-			}
-
-			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
-				return package_ == profile
-					? profileDefinition
-					: null;
-			}
-
-			public Object doSwitch(EObject eObject) {
-				return eObject == null
-					? null
-					: super.doSwitch(eObject);
-			}
-		}.doSwitch(namedElement);
+			return null;
+		} else if (namedElement instanceof Property) {
+			ENamedElement namespaceDefinition = getDefinition(profile,
+				namedElement.getNamespace(), profileDefinition);
+			return namespaceDefinition instanceof EClass
+				? ((EClass) namespaceDefinition)
+					.getEStructuralFeature(getValidJavaIdentifier(namedElement
+						.getName()))
+				: null;
+		} else if (namedElement instanceof EnumerationLiteral) {
+			ENamedElement namespaceDefinition = getDefinition(profile,
+				namedElement.getNamespace(), profileDefinition);
+			return namespaceDefinition instanceof EEnum
+				? ((EEnum) namespaceDefinition).getEEnumLiteral(namedElement
+					.getName())
+				: null;
+		} else if (namedElement instanceof org.eclipse.uml2.uml.Package) {
+			return namedElement == profile
+				? profileDefinition
+				: null;
+		} else {
+			return null;
+		}
 	}
 
 	/**

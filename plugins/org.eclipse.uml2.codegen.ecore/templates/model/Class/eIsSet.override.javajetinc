@@ -7,8 +7,7 @@
 	{
 		switch (featureID)
 		{
-<%for (Iterator i=genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
-  <%if (!genModel.isMinimalReflectiveMethods() || genClass.getImplementedGenFeatures().contains(genFeature)) {%>
+<%for (Iterator i=genModel.isMinimalReflectiveMethods() ? genClass.getImplementedGenFeatures().iterator() : genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
 			case <%=genClass.getQualifiedFeatureID(genFeature)%>:
   <%if (UML2GenModelUtil.isUnion(genFeature) || UML2GenModelUtil.isRedefinition(genFeature) || UML2GenModelUtil.isRedefined(genClass, genFeature)) {%>
 				return isSet<%=genFeature.getAccessorName()%>();
@@ -80,7 +79,6 @@
         <%}%>
       <%}%>
     <%}%>
-  <%}%>
   <%}%>
 <%}%>
 		}

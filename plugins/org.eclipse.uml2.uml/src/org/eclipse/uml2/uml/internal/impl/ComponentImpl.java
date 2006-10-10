@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.27 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.28 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -460,17 +460,6 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList realizedInterfaces(Classifier classifier) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.COMPONENT.getEOperations().get(4));
-			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
-					.getEOperations().get(4), result = ComponentOperations
-					.realizedInterfaces(this, classifier));
-			}
-			return result;
-		}
 		return ComponentOperations.realizedInterfaces(this, classifier);
 	}
 
@@ -480,17 +469,6 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList usedInterfaces(Classifier classifier) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
-				UMLPackage.Literals.COMPONENT.getEOperations().get(5));
-			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.COMPONENT
-					.getEOperations().get(5), result = ComponentOperations
-					.usedInterfaces(this, classifier));
-			}
-			return result;
-		}
 		return ComponentOperations.usedInterfaces(this, classifier);
 	}
 

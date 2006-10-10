@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.16 2006/05/02 21:51:04 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.17 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -116,7 +117,7 @@ public class OpaqueExpressionImpl
 	 */
 	public EList getBodies() {
 		if (bodies == null) {
-			bodies = new EDataTypeUniqueEList.Unsettable(String.class, this,
+			bodies = new EDataTypeEList.Unsettable(String.class, this,
 				UMLPackage.OPAQUE_EXPRESSION__BODY);
 		}
 		return bodies;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentItemProvider.java,v 1.11 2006/05/15 21:06:21 khussey Exp $
+ * $Id: ComponentItemProvider.java,v 1.12 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -593,9 +593,14 @@ public class ComponentItemProvider
 			|| childFeature == UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__SUBSTITUTION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE
+			|| childFeature == UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION
 			|| childFeature == UMLPackage.Literals.COMPONENT__REALIZATION;
 

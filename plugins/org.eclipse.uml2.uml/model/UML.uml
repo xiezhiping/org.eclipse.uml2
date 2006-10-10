@@ -358,6 +358,10 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ChRfcGveEdq4DLWZOhbdEA" name="OpaqueExpression">
+      <ownedAttribute xmi:id="_EOZfkC4xEduBJv9HKGdiyg" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KIvXES4xEduBJv9HKGdiyg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KIvXEC4xEduBJv9HKGdiyg"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_mv9LcFYiEdqB6vblk3tuMA" name="getResult" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_vXTbwFYiEdqB6vblk3tuMA" type="_KyaPMGveEdq4DLWZOhbdEA" direction="return">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0JhNkVYiEdqB6vblk3tuMA" value="1"/>
@@ -1363,6 +1367,26 @@
         <ownedParameter xmi:id="_IJwKDK69EdqjppZik4kD8A" name="name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_OUnikC7qEdutFcse1QllAQ" name="OpaqueAction">
+      <ownedAttribute xmi:id="_c_GaAC7qEdutFcse1QllAQ" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_e2muMS7qEdutFcse1QllAQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_e2muMC7qEdutFcse1QllAQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ldWYsC7qEdutFcse1QllAQ" name="OpaqueBehavior">
+      <ownedAttribute xmi:id="_ldWYsS7qEdutFcse1QllAQ" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ldWYtC7qEdutFcse1QllAQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ldWYtS7qEdutFcse1QllAQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5jXJsTEkEdu9VoNTbEBQkQ" name="LiteralString">
+      <ownedOperation xmi:id="_-SmgADEkEdu9VoNTbEBQkQ" name="integerValue" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="_-SmgATEkEdu9VoNTbEBQkQ" type="_XqvEIGvsEdqG6fBIPwe-mw" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_FbLFMDElEdu9VoNTbEBQkQ" name="unlimitedValue" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="_FbLFMTElEdu9VoNTbEBQkQ" type="_dRZxsGvsEdqG6fBIPwe-mw" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
     <profileApplication xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
@@ -1371,8 +1395,11 @@
     </profileApplication>
   </uml:Model>
   <Ecore:EPackage xmi:id="_YtGBofZoEdqhaqw0kkQfPQ" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EAttribute xmi:id="_Z5ewEC7uEduf17E0MwaY9g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
   <Ecore:EDataType xmi:id="_YtitkPZoEdqhaqw0kkQfPQ" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
   <Ecore:EDataType xmi:id="_YtitkfZoEdqhaqw0kkQfPQ" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
   <Ecore:EDataType xmi:id="_YtitkvZoEdqhaqw0kkQfPQ" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
   <Ecore:EDataType xmi:id="_Ytitk_ZoEdqhaqw0kkQfPQ" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EAttribute xmi:id="_Z57cAS7uEduf17E0MwaY9g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
+  <Ecore:EAttribute xmi:id="_Z57cAi7uEduf17E0MwaY9g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
 </xmi:XMI>

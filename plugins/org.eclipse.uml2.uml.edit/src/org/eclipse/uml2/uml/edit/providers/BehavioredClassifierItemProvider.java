@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierItemProvider.java,v 1.8 2006/05/15 21:06:22 khussey Exp $
+ * $Id: BehavioredClassifierItemProvider.java,v 1.9 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -223,6 +223,10 @@ public class BehavioredClassifierItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(BehavioredClassifier.class)) {
+			case UMLPackage.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR :
 			case UMLPackage.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION :
 			case UMLPackage.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER :
@@ -269,12 +273,60 @@ public class BehavioredClassifierItemProvider
 			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			UMLFactory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
 			UMLFactory.eINSTANCE.createInterfaceRealization()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_TRIGGER,
 			UMLFactory.eINSTANCE.createTrigger()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

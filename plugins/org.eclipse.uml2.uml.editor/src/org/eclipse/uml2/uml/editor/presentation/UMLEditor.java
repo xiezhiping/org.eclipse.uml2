@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.24 2006/05/16 13:08:37 khussey Exp $
+ * $Id: UMLEditor.java,v 1.25 2006/10/10 20:40:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -181,6 +181,7 @@ import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 /**
@@ -903,11 +904,14 @@ public class UMLEditor
 		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
 			XMI2UMLResource.Factory.INSTANCE);
 
-		Map uriMap = UML22UMLExtendedMetaData.getURIMap();
-		resourceSet.getURIConverter().getURIMap().putAll(uriMap);
+		Map uriMap = resourceSet.getURIConverter().getURIMap();
+
+		uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
 
 		createModelGen();
 
+		boolean saveNeeded = false;
 		Map resourceToURIMap = new HashMap();
 		EList resources = resourceSet.getResources();
 
@@ -936,6 +940,8 @@ public class UMLEditor
 
 						setInputWithNotify(editorInput);
 						setPartName(editorInput.getName());
+
+						saveNeeded = true;
 					}
 				}
 
@@ -950,6 +956,14 @@ public class UMLEditor
 
 			Map.Entry entry = (Map.Entry) entries.next();
 			((Resource) entry.getKey()).setURI((URI) entry.getValue());
+		}
+		
+		if (saveNeeded) {
+			IProgressMonitor progressMonitor = getActionBars()
+				.getStatusLineManager() != null
+				? getActionBars().getStatusLineManager().getProgressMonitor()
+				: new NullProgressMonitor();
+			doSave(progressMonitor);
 		}
 	}
 

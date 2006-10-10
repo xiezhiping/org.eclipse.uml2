@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.8 2006/04/11 19:53:24 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.9 2006/10/10 20:40:41 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -608,21 +609,8 @@ public class DerivedEObjectEList
 
 	protected NotificationImpl createNotification(int eventType,
 			Object oldObject, Object newObject, int index, boolean wasSet) {
-		return new NotificationImpl(eventType, oldObject, newObject, index,
-			wasSet) {
-
-			public Object getNotifier() {
-				return owner;
-			}
-
-			public Object getFeature() {
-				return getEStructuralFeature();
-			}
-
-			public int getFeatureID(Class expectedClass) {
-				return featureID;
-			}
-		};
+		return new ENotificationImpl(owner, eventType, featureID, oldObject,
+			newObject, index, wasSet);
 	}
 
 	protected void dispatchNotification(Notification notification) {

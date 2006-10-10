@@ -8,10 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.4 2006/05/13 04:43:26 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.5 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -21,6 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Enumeration;
@@ -42,6 +48,18 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 
 public abstract class GenerateProfileAction
 		extends UMLCommandAction {
+
+	protected Command createActionCommand(EditingDomain editingDomain,
+			Collection collection) {
+
+		if (collection.size() == 1
+			&& collection.iterator().next() instanceof Profile) {
+
+			return IdentityCommand.INSTANCE;
+		}
+
+		return UnexecutableCommand.INSTANCE;
+	}
 
 	protected PrimitiveType getImportedUMLPrimitiveType(
 			org.eclipse.uml2.uml.Package package_, String name) {

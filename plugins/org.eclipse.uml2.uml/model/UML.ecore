@@ -1789,8 +1789,8 @@
         <details key="documentation" value="The query isNonNegative() tells whether an integer expression has a non-negative value.&#xD;&#xA;self.isIntegral()&#xD;&#xA;result = false"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" unique="false" upperBound="-1"
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The text of the expression, possibly in multiple languages."/>
       </eAnnotations>
@@ -2764,7 +2764,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The DataType that owns this Operation."/>
       </eAnnotations>
-      <eAnnotations source="subsets" references="#//NamedElement/namespace #//RedefinableElement/redefinitionContext #//Feature/featuringClassifier"/>
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext #//NamedElement/namespace #//Feature/featuringClassifier"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
         eType="#//Constraint">
@@ -3542,7 +3542,7 @@
     </eOperations>
     <eOperations name="initial_transition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype «create».&#xD;&#xA;self.source.oclIsKindOf(Pseudostate) implies&#xA;(self.source.oclAsType(Pseudostate).kind = #initial) implies&#xA;(self.source.container = self.stateMachine.top) implies&#xA;((self.trigger->isEmpty) or&#xA;(self.trigger.stereotype.name = 'create'))&#xA;"/>
+        <details key="documentation" value="An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype &lt;&lt;create>>.&#xD;&#xA;self.source.oclIsKindOf(Pseudostate) implies&#xA;(self.source.oclAsType(Pseudostate).kind = #initial) implies&#xA;(self.source.container = self.stateMachine.top) implies&#xA;((self.trigger->isEmpty) or&#xA;(self.trigger.stereotype.name = 'create'))&#xA;"/>
       </eAnnotations>
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
       <eParameters name="context" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap"/>
@@ -4196,7 +4196,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Connector" eSuperTypes="#//Feature">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.&#xD;&#xA;A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component’s parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.&#xD;&#xA;An assembly connector is a connector between two components that defines that one component provides the services that another component requires. An assembly connector is a connector that is defined from a required interface or port to a provided interface or port."/>
+      <details key="documentation" value="Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.&#xD;&#xA;A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component's parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.&#xD;&#xA;An assembly connector is a connector between two components that defines that one component provides the services that another component requires. An assembly connector is a connector that is defined from a required interface or port to a provided interface or port."/>
     </eAnnotations>
     <eOperations name="types" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5379,6 +5379,14 @@
       <details key="documentation" value="A literal string is a specification of a string value."/>
     </eAnnotations>
     <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="integerValue" ordered="false" lowerBound="1"
+          eType="#//Integer">
+        <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="unlimitedValue" ordered="false"
+          lowerBound="1" eType="#//UnlimitedNatural">
+        <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
+      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
           eType="#//Boolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5505,8 +5513,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An behavior with implementation-specific semantics."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" unique="false" upperBound="-1"
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the behavior in one or more languages."/>
       </eAnnotations>
@@ -5544,8 +5552,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An action with implementation-specific semantics."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" upperBound="-1" eType="#//String"
-        unsettable="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" unique="false" upperBound="-1"
+        eType="#//String" unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the action in one or more languages."/>
       </eAnnotations>
@@ -7576,7 +7584,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isIndirectlyInstantiated"
         ordered="false" lowerBound="1" eType="#//Boolean" defaultValueLiteral="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. «specification», «focus», «subsystem»."/>
+        <details key="documentation" value="The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. &lt;&lt;specification>>, &lt;&lt;focus>>, &lt;&lt;subsystem>>."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="required" ordered="false"

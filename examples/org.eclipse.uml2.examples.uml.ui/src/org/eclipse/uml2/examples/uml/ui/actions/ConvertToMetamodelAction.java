@@ -8,18 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToMetamodelAction.java,v 1.2 2006/04/24 22:15:34 khussey Exp $
+ * $Id: ConvertToMetamodelAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
-import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Model;
@@ -36,75 +34,64 @@ public class ConvertToMetamodelAction
 
 	protected static final String STEREOTYPE_NAME__METAMODEL = "Metamodel"; //$NON-NLS-1$
 
-	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+	public void run(IAction action) {
 
-		if (collection.size() == 1) {
-			Object object = collection.toArray()[0];
+		if (command != UnexecutableCommand.INSTANCE) {
+			final Model model = (Model) collection.iterator().next();
 
-			if (object instanceof Model) {
-				final Model model = (Model) object;
+			editingDomain.getCommandStack().execute(
+				new RefreshingChangeCommand(editingDomain, new Runnable() {
 
-				return new RefreshingChangeCommand(editingDomain,
-					new Runnable() {
+					public void run() {
+						EcoreUtil.resolveAll(model);
 
-						public void run() {
-							EcoreUtil.resolveAll(model);
+						Profile umlProfile = applyProfile(model,
+							UMLResource.STANDARD_PROFILE_URI);
 
-							Profile umlProfile = applyProfile(model,
-								UMLResource.STANDARD_PROFILE_URI);
+						if (umlProfile != null) {
+							applyStereotype(model, umlProfile
+								.getOwnedStereotype(STEREOTYPE_NAME__METAMODEL));
+						}
 
-							if (umlProfile != null) {
-								applyStereotype(
-									model,
-									umlProfile
-										.getOwnedStereotype(STEREOTYPE_NAME__METAMODEL));
+						final Stereotype metaclassStereotype = umlProfile == null
+							? null
+							: umlProfile
+								.getOwnedStereotype(STEREOTYPE_NAME__METACLASS);
+
+						new UMLSwitch() {
+
+							public Object caseClass(
+									org.eclipse.uml2.uml.Class class_) {
+								applyStereotype(class_, metaclassStereotype);
+
+								return defaultCase(class_);
 							}
 
-							final Stereotype metaclassStereotype = umlProfile == null
-								? null
-								: umlProfile
-									.getOwnedStereotype(STEREOTYPE_NAME__METACLASS);
+							public Object caseClassifier(Classifier classifier) {
+								classifier
+									.setVisibility(VisibilityKind.PRIVATE_LITERAL);
 
-							new UMLSwitch() {
+								return defaultCase(classifier);
+							}
 
-								public Object caseClass(
-										org.eclipse.uml2.uml.Class class_) {
-									applyStereotype(class_, metaclassStereotype);
+							public Object defaultCase(EObject eObject) {
+								setID(eObject);
 
-									return defaultCase(class_);
+								for (Iterator eContents = eObject.eContents()
+									.iterator(); eContents.hasNext();) {
+
+									doSwitch((EObject) eContents.next());
 								}
 
-								public Object caseClassifier(
-										Classifier classifier) {
-									classifier
-										.setVisibility(VisibilityKind.PRIVATE_LITERAL);
+								return this;
+							}
+						}.doSwitch(model);
 
-									return defaultCase(classifier);
-								}
-
-								public Object defaultCase(EObject eObject) {
-									setID(eObject);
-
-									for (Iterator eContents = eObject
-										.eContents().iterator(); eContents
-										.hasNext();) {
-
-										doSwitch((EObject) eContents.next());
-									}
-
-									return this;
-								}
-							}.doSwitch(model);
-
-						}
-					}, UMLExamplesUIPlugin.INSTANCE.getString(
-						"_UI_ConvertToMetamodelActionCommand_label", //$NON-NLS-1$
-						new Object[]{getLabelProvider().getText(model)}));
-			}
+					}
+				}, UMLExamplesUIPlugin.INSTANCE.getString(
+					"_UI_ConvertToMetamodelActionCommand_label", //$NON-NLS-1$
+					new Object[]{getLabelProvider().getText(model)})));
 		}
-
-		return UnexecutableCommand.INSTANCE;
 	}
 
 }

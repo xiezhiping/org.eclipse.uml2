@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.3 2006/03/29 19:54:02 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.4 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -34,17 +34,20 @@ public class ExternalizeLabelsAction
 	protected Command createActionCommand(EditingDomain editingDomain,
 			Collection collection) {
 
-		return collection.size() == 1
-			&& collection.toArray()[0] instanceof org.eclipse.uml2.uml.Package
-			? (Command) IdentityCommand.INSTANCE
-			: (Command) UnexecutableCommand.INSTANCE;
+		if (collection.size() == 1
+			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
+
+			return IdentityCommand.INSTANCE;
+		}
+
+		return UnexecutableCommand.INSTANCE;
 	}
 
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
-				.toArray()[0];
+				.iterator().next();
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(package_);
 

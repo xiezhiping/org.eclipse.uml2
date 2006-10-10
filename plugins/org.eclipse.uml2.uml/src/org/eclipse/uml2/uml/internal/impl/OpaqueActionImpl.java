@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.19 2006/10/10 20:41:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
@@ -174,7 +175,7 @@ public class OpaqueActionImpl
 	 */
 	public EList getBodies() {
 		if (bodies == null) {
-			bodies = new EDataTypeUniqueEList.Unsettable(String.class, this,
+			bodies = new EDataTypeEList.Unsettable(String.class, this,
 				UMLPackage.OPAQUE_ACTION__BODY);
 		}
 		return bodies;

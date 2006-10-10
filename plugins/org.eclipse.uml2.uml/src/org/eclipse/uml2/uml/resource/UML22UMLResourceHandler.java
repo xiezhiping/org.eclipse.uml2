@@ -8,16 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.26 2006/06/01 16:52:35 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.27 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -235,12 +237,17 @@ public class UML22UMLResourceHandler
 		return internalEObject;
 	}
 
-	protected EObject reincarnate(EObject eObject, EClass eClass) {
+	protected EObject reincarnate(EObject eObject, EClass eClass,
+			XMLResource resource) {
 
 		if (eObject.eClass() == eClass) {
 			return eObject;
 		} else {
 			EObject newEObject = EcoreUtil.create(eClass);
+
+			if (resource != null) {
+				resource.setID(newEObject, resource.getID(eObject));
+			}
 
 			for (Iterator eAllStructuralFeatures = eObject.eClass()
 				.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
@@ -292,6 +299,10 @@ public class UML22UMLResourceHandler
 
 			return newEObject;
 		}
+	}
+
+	protected EObject reincarnate(EObject eObject, EClass eClass) {
+		return reincarnate(eObject, eClass, null);
 	}
 
 	protected Profile getUML2Profile(Element element) {
@@ -385,11 +396,14 @@ public class UML22UMLResourceHandler
 					EList ownedParameters = behavioralFeature
 						.getOwnedParameters();
 
-					for (Iterator values = getValues(extension.getMixed(),
-						"returnResult", true).iterator(); values //$NON-NLS-1$
-						.hasNext();) {
+					List returnResult = Arrays.asList(getValues(
+						extension.getMixed(), "returnResult", true).toArray()); //$NON-NLS-1$
 
-						Object value = values.next();
+					for (ListIterator values = returnResult
+						.listIterator(returnResult.size()); values
+						.hasPrevious();) {
+
+						Object value = values.previous();
 
 						if (value instanceof Parameter) {
 							ownedParameters.add(0, value);
@@ -508,7 +522,7 @@ public class UML22UMLResourceHandler
 									.getEObject((String) value);
 
 								if (eObject instanceof NamedElement) {
-									events.add((NamedElement) eObject);
+									events.add(eObject);
 									firstEvents.add(isFirstEvent);
 								}
 							}
@@ -752,7 +766,6 @@ public class UML22UMLResourceHandler
 				Message message = messageOccurrenceSpecification.getMessage();
 
 				if (message == null) {
-					String id = resource.getID(messageOccurrenceSpecification);
 
 					if (extension != null) {
 						Collection values = getValues(extension
@@ -764,13 +777,10 @@ public class UML22UMLResourceHandler
 						}
 
 						if (values.isEmpty()) {
-							OccurrenceSpecification occurrenceSpecification = (OccurrenceSpecification) reincarnate(
+							return caseOccurrenceSpecification((OccurrenceSpecification) reincarnate(
 								messageOccurrenceSpecification,
-								UMLPackage.Literals.OCCURRENCE_SPECIFICATION);
-
-							resource.setID(occurrenceSpecification, id);
-
-							return caseOccurrenceSpecification(occurrenceSpecification);
+								UMLPackage.Literals.OCCURRENCE_SPECIFICATION,
+								resource));
 						}
 
 						for (Iterator v = values.iterator(); v.hasNext();) {
@@ -797,10 +807,8 @@ public class UML22UMLResourceHandler
 
 									ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) reincarnate(
 										messageOccurrenceSpecification,
-										UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION);
-
-									resource.setID(
-										executionOccurrenceSpecification, id);
+										UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION,
+										resource);
 
 									executionOccurrenceSpecification
 										.setExecution(execution);
@@ -1158,6 +1166,16 @@ public class UML22UMLResourceHandler
 				return super.caseOpaqueExpression(opaqueExpression);
 			}
 
+			public Object caseOperation(Operation operation) {
+				Parameter returnResult = operation.getReturnResult();
+
+				if (returnResult != null) {
+					returnResult.destroy();
+				}
+
+				return super.caseOperation(operation);
+			}
+
 			public Object casePackageableElement(
 					PackageableElement packageableElement) {
 				AnyType extension = getExtension(resource, packageableElement);
@@ -1439,29 +1457,21 @@ public class UML22UMLResourceHandler
 
 						doSwitch(parameterableElement);
 
-						String id = resource.getID(templateParameter);
-
 						if (parameterableElement instanceof Classifier) {
-							resource
-								.setID(
-									templateParameter = (TemplateParameter) reincarnate(
-										templateParameter,
-										UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
-									id);
+							templateParameter = (TemplateParameter) reincarnate(
+								templateParameter,
+								UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
+								resource);
 						} else if (parameterableElement instanceof ConnectableElement) {
-							resource
-								.setID(
-									templateParameter = (TemplateParameter) reincarnate(
-										templateParameter,
-										UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
-									id);
+							templateParameter = (TemplateParameter) reincarnate(
+								templateParameter,
+								UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER,
+								resource);
 						} else if (parameterableElement instanceof Operation) {
-							resource
-								.setID(
-									templateParameter = (TemplateParameter) reincarnate(
-										templateParameter,
-										UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
-									id);
+							templateParameter = (TemplateParameter) reincarnate(
+								templateParameter,
+								UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER,
+								resource);
 						}
 
 						templateParameter
@@ -1481,29 +1491,21 @@ public class UML22UMLResourceHandler
 
 								doSwitch(parameterableElement);
 
-								String id = resource.getID(templateParameter);
-
 								if (parameterableElement instanceof Classifier) {
-									resource
-										.setID(
-											templateParameter = (TemplateParameter) reincarnate(
-												templateParameter,
-												UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER),
-											id);
+									templateParameter = (TemplateParameter) reincarnate(
+										templateParameter,
+										UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
+										resource);
 								} else if (parameterableElement instanceof ConnectableElement) {
-									resource
-										.setID(
-											templateParameter = (TemplateParameter) reincarnate(
-												templateParameter,
-												UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER),
-											id);
+									templateParameter = (TemplateParameter) reincarnate(
+										templateParameter,
+										UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER,
+										resource);
 								} else if (parameterableElement instanceof Operation) {
-									resource
-										.setID(
-											templateParameter = (TemplateParameter) reincarnate(
-												templateParameter,
-												UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER),
-											id);
+									templateParameter = (TemplateParameter) reincarnate(
+										templateParameter,
+										UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER,
+										resource);
 								}
 
 								templateParameter

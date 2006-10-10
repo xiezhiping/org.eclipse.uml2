@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassItemProvider.java,v 1.11 2006/06/08 17:40:25 khussey Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.12 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -313,6 +313,7 @@ public class AssociationClassItemProvider
 		switch (notification.getFeatureID(AssociationClass.class)) {
 			case UMLPackage.ASSOCIATION_CLASS__MEMBER_END :
 			case UMLPackage.ASSOCIATION_CLASS__IS_DERIVED :
+			case UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -346,6 +347,18 @@ public class AssociationClassItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
 				.createExtensionEnd()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
+			UMLFactory.eINSTANCE.createProperty()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
+			UMLFactory.eINSTANCE.createPort()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 	}
 
 	/**
@@ -359,11 +372,16 @@ public class AssociationClassItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE
 			|| childFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END
-			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
+			|| childFeature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END
+			|| childFeature == UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

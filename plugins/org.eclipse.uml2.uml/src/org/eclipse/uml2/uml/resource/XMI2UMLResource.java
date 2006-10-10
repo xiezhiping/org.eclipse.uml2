@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: XMI2UMLResource.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: XMI2UMLResource.java,v 1.2 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -35,7 +35,7 @@ public interface XMI2UMLResource
 
 	String UML_METAMODEL_URI = "http://schema.omg.org/spec/UML/2.1/uml.xml"; //$NON-NLS-1$
 
-	String UML_PRIMITIVE_TYPES_LIBRARY_URI = UML_METAMODEL_URI; //$NON-NLS-1$
+	String UML_PRIMITIVE_TYPES_LIBRARY_URI = UML_METAMODEL_URI;
 
 	String XMI_NS_URI = XMI_NAMESPACE_PREFIX + "2.1"; //$NON-NLS-1$
 

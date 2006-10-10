@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ApplyProfileAction.java,v 1.5 2006/01/25 18:51:44 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.6 2006/10/10 20:40:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -46,7 +46,7 @@ public class ApplyProfileAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof org.eclipse.uml2.uml.Package) {
+			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -58,7 +58,7 @@ public class ApplyProfileAction
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
-				.toArray()[0];
+				.iterator().next();
 
 			final List choiceOfValues = new ArrayList();
 

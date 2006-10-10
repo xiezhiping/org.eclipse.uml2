@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.11 2006/05/15 21:06:22 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.12 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -322,7 +322,6 @@ public class TransitionItemProvider
 	public Collection getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.TRANSITION__GUARD);
 			childrenFeatures.add(UMLPackage.Literals.TRANSITION__EFFECT);
 			childrenFeatures.add(UMLPackage.Literals.TRANSITION__TRIGGER);
 		}
@@ -380,10 +379,10 @@ public class TransitionItemProvider
 		switch (notification.getFeatureID(Transition.class)) {
 			case UMLPackage.TRANSITION__IS_LEAF :
 			case UMLPackage.TRANSITION__KIND :
+			case UMLPackage.TRANSITION__GUARD :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.TRANSITION__GUARD :
 			case UMLPackage.TRANSITION__EFFECT :
 			case UMLPackage.TRANSITION__TRIGGER :
 				fireNotifyChanged(new ViewerNotification(notification,

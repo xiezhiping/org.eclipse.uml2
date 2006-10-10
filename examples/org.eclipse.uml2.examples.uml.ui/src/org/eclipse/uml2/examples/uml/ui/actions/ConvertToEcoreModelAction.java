@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToEcoreModelAction.java,v 1.2 2006/05/02 21:42:28 khussey Exp $
+ * $Id: ConvertToEcoreModelAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -64,7 +64,7 @@ public class ConvertToEcoreModelAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof org.eclipse.uml2.uml.Package) {
+			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -76,7 +76,7 @@ public class ConvertToEcoreModelAction
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
-				.toArray()[0];
+				.iterator().next();
 
 			final Shell shell = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell();

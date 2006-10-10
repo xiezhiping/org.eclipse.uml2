@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.44 2006/06/21 13:33:12 khussey Exp $
+ * $Id: ElementOperations.java,v 1.45 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -129,7 +129,7 @@ public class ElementOperations
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		if (element.allOwnedElements().contains(element)) {
+		if (EcoreUtil.isAncestor(element, element.getOwner())) {
 			result = false;
 
 			if (diagnostics != null) {
@@ -556,7 +556,7 @@ public class ElementOperations
 						: eObject.eGet(eStructuralFeature);
 				}
 
-				if (eType instanceof EEnum) {
+				if (eType instanceof EEnum && value instanceof EEnumLiteral) {
 					EAnnotation eAnnotation = eType
 						.getEAnnotation(UMLPackage.eNS_URI);
 
@@ -1058,13 +1058,21 @@ public class ElementOperations
 			Association association = attribute.getAssociation();
 
 			if (association instanceof Extension) {
-				Type type = attribute.getType();
+				String name = attribute.getName();
 
-				if (type instanceof org.eclipse.uml2.uml.Class) {
-					EClassifier eClassifier = getEClassifier((org.eclipse.uml2.uml.Class) type);
+				if (!isEmpty(name)
+					&& name.startsWith(Extension.METACLASS_ROLE_PREFIX)) {
 
-					if (eClassifier != null && eClassifier.isInstance(element)) {
-						return (Extension) association;
+					Type type = attribute.getType();
+
+					if (type instanceof org.eclipse.uml2.uml.Class) {
+						EClassifier eClassifier = getEClassifier((org.eclipse.uml2.uml.Class) type);
+
+						if (eClassifier != null
+							&& eClassifier.isInstance(element)) {
+
+							return (Extension) association;
+						}
 					}
 				}
 			}

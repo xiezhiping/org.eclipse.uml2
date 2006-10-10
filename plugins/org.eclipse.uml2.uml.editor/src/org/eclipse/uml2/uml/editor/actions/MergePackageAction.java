@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.1 2005/12/22 20:21:06 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.2 2006/10/10 20:40:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -50,7 +50,7 @@ public class MergePackageAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof org.eclipse.uml2.uml.Package) {
+			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -62,7 +62,7 @@ public class MergePackageAction
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
-				.toArray()[0];
+				.iterator().next();
 
 			final Shell shell = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell();

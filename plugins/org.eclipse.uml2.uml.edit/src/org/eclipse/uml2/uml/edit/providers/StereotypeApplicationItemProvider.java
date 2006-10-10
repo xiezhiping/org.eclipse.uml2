@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.3 2006/05/15 21:06:22 khussey Exp $
+ * $Id: StereotypeApplicationItemProvider.java,v 1.4 2006/10/10 20:40:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -32,9 +32,11 @@ import org.eclipse.emf.edit.command.ReplaceCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
@@ -137,6 +139,23 @@ class StereotypeApplicationItemProvider
 	public void notifyChanged(Notification notification) {
 		fireNotifyChanged(new ViewerNotification(notification, UMLUtil
 			.getBaseElement((EObject) notification.getNotifier()), true, false));
+	}
+
+	public String getText(Object object) {
+		String text = super.getText(object);
+
+		Element baseElement = UMLUtil.getBaseElement((EObject) object);
+
+		if (baseElement != null) {
+			IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory
+				.adapt(baseElement, IItemLabelProvider.class);
+
+			if (itemLabelProvider != null) {
+				text += " -> " + itemLabelProvider.getText(baseElement); //$NON-NLS-1$
+			}
+		}
+
+		return text;
 	}
 
 }

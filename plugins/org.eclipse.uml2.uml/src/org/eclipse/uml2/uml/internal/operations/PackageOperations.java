@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.27 2006/05/29 20:29:25 khussey Exp $
+ * $Id: PackageOperations.java,v 1.28 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -310,12 +310,6 @@ public class PackageOperations
 				} catch (Exception e) {
 					UMLPlugin.INSTANCE.log(e);
 				}
-			}
-
-			try {
-				super.copyReference(eReference, eObject, copyEObject);
-			} catch (Exception e) {
-				UMLPlugin.INSTANCE.log(e);
 			}
 		}
 	}

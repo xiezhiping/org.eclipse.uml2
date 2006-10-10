@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.15 2006/05/16 13:06:55 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.16 2006/10/10 20:41:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -354,9 +354,16 @@ public class MultiplicityElementOperations
 	public static int lowerBound(MultiplicityElement multiplicityElement) {
 		ValueSpecification lowerValue = multiplicityElement.getLowerValue();
 
-		return lowerValue instanceof LiteralInteger
-			? lowerValue.integerValue()
-			: 1;
+		if (lowerValue != null) {
+
+			try {
+				return lowerValue.integerValue();
+			} catch (UnsupportedOperationException uoe) {
+				// do nothing
+			}
+		}
+
+		return 1;
 	}
 
 	/**
@@ -371,9 +378,16 @@ public class MultiplicityElementOperations
 	public static int upperBound(MultiplicityElement multiplicityElement) {
 		ValueSpecification upperValue = multiplicityElement.getUpperValue();
 
-		return upperValue instanceof LiteralUnlimitedNatural
-			? upperValue.unlimitedValue()
-			: 1;
+		if (upperValue != null) {
+
+			try {
+				return upperValue.unlimitedValue();
+			} catch (UnsupportedOperationException uoe) {
+				// do nothing
+			}
+		}
+
+		return 1;
 	}
 
 	/**

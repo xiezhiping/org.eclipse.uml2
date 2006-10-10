@@ -8,15 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateStandardStereotypesAction.java,v 1.2 2006/04/04 16:20:55 khussey Exp $
+ * $Id: GenerateStandardStereotypesAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
 import org.eclipse.uml2.uml.Profile;
@@ -26,16 +23,13 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class GenerateStandardStereotypesAction
 		extends GenerateProfileAction {
 
-	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+	public void run(IAction action) {
 
-		if (collection.size() == 1) {
-			Object object = collection.toArray()[0];
+		if (command != UnexecutableCommand.INSTANCE) {
+			final Profile profile = (Profile) collection.iterator().next();
 
-			if (object instanceof Profile) {
-				final Profile profile = (Profile) object;
-
-				return new ChangeCommand(editingDomain, new Runnable() {
+			editingDomain.getCommandStack().execute(
+				new ChangeCommand(editingDomain, new Runnable() {
 
 					public void run() {
 						Stereotype auxiliaryStereotype = generateOwnedStereotype(
@@ -224,11 +218,8 @@ public class GenerateStandardStereotypesAction
 					}
 				}, UMLExamplesUIPlugin.INSTANCE.getString(
 					"_UI_GenerateStandardStereotypesActionCommand_label", //$NON-NLS-1$
-					new Object[]{getLabelProvider().getText(profile)}));
-			}
+					new Object[]{getLabelProvider().getText(profile)})));
 		}
-
-		return UnexecutableCommand.INSTANCE;
 	}
 
 }

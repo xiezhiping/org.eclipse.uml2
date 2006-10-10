@@ -10093,7 +10093,7 @@ define a collating sequence between operands and subexpressions).
           <generalization xmi:id="_rdzBwEcHEdq0rbStTpEubg" general="_3ADC7B74022D3CC0E4E5029C"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3E02573803AE" name="isIndirectlyInstantiated">
             <ownedComment xmi:id="_saqujxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E02573803AE">
-              <body>The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. «specification», «focus», «subsystem».</body>
+              <body>The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. &lt;&lt;specification>>, &lt;&lt;focus>>, &lt;&lt;subsystem>>.</body>
             </ownedComment>
             <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
             <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_5bDVEF0nEdq3-fC14hmVtA" value="true"/>
@@ -10198,7 +10198,7 @@ define a collating sequence between operands and subexpressions).
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E0259870386" name="Connector">
           <ownedComment xmi:id="_sa0feBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0259870386">
-            <body>A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component’s parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.&#xD;
+            <body>A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component's parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.&#xD;
 An assembly connector is a connector between two components that defines that one component provides the services that another component requires. An assembly connector is a connector that is defined from a required interface or port to a provided interface or port.</body>
           </ownedComment>
           <ownedRule xmi:id="_sa0fgBTaEdqZu-3Jy1-uYg" name="between_interfaces_ports" constrainedElement="_3ADC7B74022D3E0259870386">
@@ -13014,7 +13014,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           </ownedRule>
           <ownedRule xmi:id="_sflqvBTaEdqZu-3Jy1-uYg" name="initial_transition" constrainedElement="_3ADC7B74022D3288D70A0212">
             <ownedComment xmi:id="_sflquBTaEdqZu-3Jy1-uYg" annotatedElement="_sflqvBTaEdqZu-3Jy1-uYg">
-              <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype «create».</body>
+              <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype &lt;&lt;create>>.</body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sflqvRTaEdqZu-3Jy1-uYg">
               <language>OCL</language>

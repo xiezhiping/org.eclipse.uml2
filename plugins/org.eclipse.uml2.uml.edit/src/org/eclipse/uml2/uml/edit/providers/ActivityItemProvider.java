@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityItemProvider.java,v 1.16 2006/06/08 17:40:25 khussey Exp $
+ * $Id: ActivityItemProvider.java,v 1.17 2006/10/10 20:40:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -313,6 +313,7 @@ public class ActivityItemProvider
 
 		switch (notification.getFeatureID(Activity.class)) {
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
+			case UMLPackage.ACTIVITY__PARTITION :
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
@@ -580,6 +581,10 @@ public class ActivityItemProvider
 				.createObjectFlow()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTIVITY__PARTITION, UMLFactory.eINSTANCE
+				.createActivityPartition()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTIVITY__GROUP, UMLFactory.eINSTANCE
 				.createStructuredActivityNode()));
 
@@ -622,11 +627,17 @@ public class ActivityItemProvider
 		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
+			|| childFeature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE
+			|| childFeature == UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT
 			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR
 			|| childFeature == UMLPackage.Literals.ACTIVITY__NODE
-			|| childFeature == UMLPackage.Literals.ACTIVITY__GROUP;
+			|| childFeature == UMLPackage.Literals.ACTIVITY__GROUP
+			|| childFeature == UMLPackage.Literals.ACTIVITY__PARTITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

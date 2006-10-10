@@ -8,17 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertModelAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: ConvertModelAction.java,v 1.2 2006/10/10 20:40:47 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -26,6 +33,18 @@ import org.eclipse.uml2.uml.editor.actions.UMLCommandAction;
 
 public abstract class ConvertModelAction
 		extends UMLCommandAction {
+
+	protected Command createActionCommand(EditingDomain editingDomain,
+			Collection collection) {
+
+		if (collection.size() == 1
+			&& collection.iterator().next() instanceof Model) {
+
+			return IdentityCommand.INSTANCE;
+		}
+
+		return UnexecutableCommand.INSTANCE;
+	}
 
 	protected Profile applyProfile(org.eclipse.uml2.uml.Package package_,
 			String uri) {
@@ -63,4 +82,5 @@ public abstract class ConvertModelAction
 
 		return null;
 	}
+
 }
