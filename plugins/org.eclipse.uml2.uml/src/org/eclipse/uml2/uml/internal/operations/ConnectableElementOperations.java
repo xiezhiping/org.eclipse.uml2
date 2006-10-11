@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementOperations.java,v 1.2 2006/10/10 20:41:29 khussey Exp $
+ * $Id: ConnectableElementOperations.java,v 1.3 2006/10/11 16:30:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
-import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ConnectableElement;
@@ -50,8 +49,17 @@ public class ConnectableElementOperations
 				ComponentOperations.getAllRequireds((Component) type,
 					requiredInterfaces);
 			} else if (type instanceof Classifier) {
-				requiredInterfaces.addAll(((Classifier) type)
-					.getAllUsedInterfaces());
+				Classifier classifier = (Classifier) type;
+				ComponentOperations.usedInterfaces(null, classifier, true,
+					requiredInterfaces);
+
+				for (Iterator allParents = classifier.allParents().iterator(); allParents
+					.hasNext();) {
+
+					ComponentOperations.usedInterfaces(null,
+						(Classifier) allParents.next(), true,
+						requiredInterfaces);
+				}
 			}
 		}
 
@@ -86,9 +94,18 @@ public class ConnectableElementOperations
 					providedInterfaces);
 			} else if (type instanceof Interface) {
 				providedInterfaces.add(type);
-			} else if (type instanceof BehavioredClassifier) {
-				providedInterfaces.addAll(((BehavioredClassifier) type)
-					.getAllImplementedInterfaces());
+			} else if (type instanceof Classifier) {
+				Classifier classifier = (Classifier) type;
+				ComponentOperations.realizedInterfaces(null, classifier, true,
+					providedInterfaces);
+
+				for (Iterator allParents = classifier.allParents().iterator(); allParents
+					.hasNext();) {
+
+					ComponentOperations.realizedInterfaces(null,
+						(Classifier) allParents.next(), true,
+						providedInterfaces);
+				}
 			}
 		}
 

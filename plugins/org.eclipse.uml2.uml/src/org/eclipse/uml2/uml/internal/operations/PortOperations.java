@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.11 2006/04/05 19:26:35 khussey Exp $
+ * $Id: PortOperations.java,v 1.12 2006/10/11 16:30:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -25,7 +26,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
-import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Port;
@@ -202,9 +202,17 @@ public class PortOperations
 
 		if (type instanceof Interface) {
 			provideds.add(type);
-		} else if (type instanceof BehavioredClassifier) {
-			BehavioredClassifierOperations.getAllRealizedInterfaces(
-				(BehavioredClassifier) port.getType(), provideds);
+		} else if (type instanceof Classifier) {
+			Classifier classifier = (Classifier) port.getType();
+			ComponentOperations.realizedInterfaces(null, classifier, false,
+				provideds);
+
+			for (Iterator allParents = classifier.allParents().iterator(); allParents
+				.hasNext();) {
+
+				ComponentOperations.realizedInterfaces(null,
+					(Classifier) allParents.next(), false, provideds);
+			}
 		}
 
 		return new UnionEObjectEList((InternalEObject) port,
@@ -224,8 +232,16 @@ public class PortOperations
 			false);
 
 		if (type instanceof Classifier && !(type instanceof Interface)) {
-			ClassifierOperations.getAllUsedInterfaces((Classifier) port
-				.getType(), requireds);
+			Classifier classifier = (Classifier) port.getType();
+			ComponentOperations.usedInterfaces(null, classifier, false,
+				requireds);
+
+			for (Iterator allParents = classifier.allParents().iterator(); allParents
+				.hasNext();) {
+
+				ComponentOperations.usedInterfaces(null,
+					(Classifier) allParents.next(), false, requireds);
+			}
 		}
 
 		return new UnionEObjectEList((InternalEObject) port,

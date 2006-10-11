@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.11 2006/10/10 20:41:28 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.12 2006/10/11 16:30:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -124,12 +124,18 @@ public class ComponentOperations
 	 */
 	public static EList realizedInterfaces(Component component,
 			Classifier classifier) {
-		return realizedInterfaces(component, classifier, true);
+		return ECollections.unmodifiableEList(realizedInterfaces(component,
+			classifier, true));
 	}
 
 	protected static EList realizedInterfaces(Component component,
 			Classifier classifier, boolean resolve) {
-		EList realizedInterfaces = new UniqueEList.FastCompare();
+		return realizedInterfaces(component, classifier, resolve,
+			new UniqueEList.FastCompare());
+	}
+
+	protected static EList realizedInterfaces(Component component,
+			Classifier classifier, boolean resolve, EList realizedInterfaces) {
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -152,7 +158,7 @@ public class ComponentOperations
 			}
 		}
 
-		return ECollections.unmodifiableEList(realizedInterfaces);
+		return realizedInterfaces;
 	}
 
 	/**
@@ -168,12 +174,18 @@ public class ComponentOperations
 	 */
 	public static EList usedInterfaces(Component component,
 			Classifier classifier) {
-		return usedInterfaces(component, classifier, true);
+		return ECollections.unmodifiableEList(usedInterfaces(component,
+			classifier, true));
 	}
 
 	protected static EList usedInterfaces(Component component,
 			Classifier classifier, boolean resolve) {
-		EList usedInterfaces = new UniqueEList.FastCompare();
+		return usedInterfaces(component, classifier, resolve,
+			new UniqueEList.FastCompare());
+	}
+
+	protected static EList usedInterfaces(Component component,
+			Classifier classifier, boolean resolve, EList usedInterfaces) {
 
 		for (Iterator clientDependencies = classifier.getClientDependencies()
 			.iterator(); clientDependencies.hasNext();) {
@@ -196,7 +208,7 @@ public class ComponentOperations
 			}
 		}
 
-		return ECollections.unmodifiableEList(usedInterfaces);
+		return usedInterfaces;
 	}
 
 	/**
@@ -216,8 +228,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList getRequireds(Component component) {
-		EList requireds = new UniqueEList.FastCompare(usedInterfaces(component,
-			component, false));
+		EList requireds = usedInterfaces(component, component, false,
+			new UniqueEList.FastCompare());
 
 		for (Iterator realizations = component.getRealizations().iterator(); realizations
 			.hasNext();) {
@@ -226,14 +238,13 @@ public class ComponentOperations
 				.next()).getRealizingClassifier();
 
 			if (realizingClassifier != null) {
-				requireds.addAll(usedInterfaces(component, realizingClassifier,
-					false));
+				usedInterfaces(component, realizingClassifier, false, requireds);
 
 				for (Iterator allParents = realizingClassifier.allParents()
 					.iterator(); allParents.hasNext();) {
 
-					requireds.addAll(usedInterfaces(component,
-						(Classifier) allParents.next(), false));
+					usedInterfaces(component, (Classifier) allParents.next(),
+						false, requireds);
 				}
 			}
 		}
@@ -269,8 +280,8 @@ public class ComponentOperations
 	 * @generated NOT
 	 */
 	public static EList getProvideds(Component component) {
-		EList provideds = new UniqueEList.FastCompare(realizedInterfaces(
-			component, component, false));
+		EList provideds = realizedInterfaces(component, component, false,
+			new UniqueEList.FastCompare());
 
 		for (Iterator realizations = component.getRealizations().iterator(); realizations
 			.hasNext();) {
@@ -279,14 +290,14 @@ public class ComponentOperations
 				.next()).getRealizingClassifier();
 
 			if (realizingClassifier != null) {
-				provideds.addAll(realizedInterfaces(component,
-					realizingClassifier, false));
+				realizedInterfaces(component, realizingClassifier, false,
+					provideds);
 
 				for (Iterator allParents = realizingClassifier.allParents()
 					.iterator(); allParents.hasNext();) {
 
-					provideds.addAll(realizedInterfaces(component,
-						(Classifier) allParents.next(), false));
+					realizedInterfaces(component, (Classifier) allParents
+						.next(), false, provideds);
 				}
 			}
 		}
@@ -315,8 +326,8 @@ public class ComponentOperations
 			if (parent instanceof Component) {
 				allProvideds.addAll(((Component) parent).getProvideds());
 			} else {
-				allProvideds.addAll(realizedInterfaces(component,
-					(Classifier) parent));
+				realizedInterfaces(component, (Classifier) parent, true,
+					allProvideds);
 			}
 		}
 
@@ -335,8 +346,8 @@ public class ComponentOperations
 			if (parent instanceof Component) {
 				allRequireds.addAll(((Component) parent).getRequireds());
 			} else {
-				allRequireds.addAll(usedInterfaces(component,
-					(Classifier) parent));
+				usedInterfaces(component, (Classifier) parent, true,
+					allRequireds);
 			}
 		}
 
