@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.36 2006/10/10 20:41:36 khussey Exp $
+ * $Id: UMLUtil.java,v 1.37 2006/10/18 18:46:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -104,14 +104,31 @@ import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
+/**
+ * Utilities for working with UML elements and resources.
+ * 
+ * @since 2.0
+ */
 public class UMLUtil
 		extends UML2Util {
 
+	/**
+	 * A qualified text provider that uses names of named elements as qualified
+	 * text segments and :: as a separator.
+	 */
 	public static class QualifiedTextProvider
 			extends UML2Util.QualifiedTextProvider {
 
+		/**
+		 * The default instance.
+		 */
 		public static final QualifiedTextProvider DEFAULT = new QualifiedTextProvider();
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider#getText(org.eclipse.emf.ecore.EObject)
+		 */
 		public String getText(EObject eObject) {
 
 			return eObject instanceof NamedElement
@@ -119,12 +136,21 @@ public class UMLUtil
 				: super.getText(eObject);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider#getSeparator()
+		 */
 		public String getSeparator() {
 			return NamedElement.SEPARATOR;
 		}
 
 	}
 
+	/**
+	 * A copier that merges the contents of packages involved in package merge
+	 * relationships based on the rules defined in the UML specification.
+	 */
 	public static class PackageMerger
 			extends EcoreUtil.Copier {
 
@@ -222,42 +248,123 @@ public class UMLUtil
 
 		private static final boolean DEBUG = false;
 
+		/**
+		 * The option for handling cases where the staticity of merged
+		 * properties does not match. Supported choices are
+		 * <code>OPTION__IGNORE</code> and <code>OPTION__REPORT</code>.
+		 */
 		public static final String OPTION__DIFFERENT_PROPERTY_STATICITY = "DIFFERENT_PROPERTY_STATICITY"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where the uniqueness of merged
+		 * properties does not match. Supported choices are
+		 * <code>OPTION__IGNORE</code> and <code>OPTION__REPORT</code>.
+		 */
 		public static final String OPTION__DIFFERENT_PROPERTY_UNIQUENESS = "DIFFERENT_PROPERTY_UNIQUENESS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a redundant generalization is
+		 * detected. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__DISCARD</code>.
+		 */
 		public static final String OPTION__REDUNDANT_GENERALIZATIONS = "REDUNDANT_GENERALIZATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an implicit redefinition is
+		 * detected. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__IMPLICIT_REDEFINITIONS = "IMPLICIT_REDEFINITIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an invalid redefinition is
+		 * detected. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, <code>OPTION__DISCARD</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__INVALID_REDEFINITIONS = "INVALID_REDEFINITIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an invalid subset is detected.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, <code>OPTION__DISCARD</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__INVALID_SUBSETS = "INVALID_SUBSETS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an empty union is detected.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__EMPTY_UNIONS = "EMPTY_UNIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an association specialization is
+		 * missing. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__ASSOCIATION_SPECIALIZATIONS = "ASSOCIATION_SPECIALIZATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where capability information is
+		 * missing. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__CAPABILITIES = "CAPABILITIES"; //$NON-NLS-1$
 
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
 
+		/**
+		 * The diagnostic code for cases where the staticity of merged
+		 * properties does not match.
+		 */
 		public static final int DIFFERENT_PROPERTY_STATICITY = DIAGNOSTIC_CODE_OFFSET + 1;
 
+		/**
+		 * The diagnostic code for cases where the uniqueness of merged
+		 * properties does not match.
+		 */
 		public static final int DIFFERENT_PROPERTY_UNIQUENESS = DIAGNOSTIC_CODE_OFFSET + 2;
 
+		/**
+		 * The diagnostic code for cases where a redundant generalization is
+		 * detected.
+		 */
 		public static final int REDUNDANT_GENERALIZATION = DIAGNOSTIC_CODE_OFFSET + 3;
 
+		/**
+		 * The diagnostic code for cases where an implicit redefinition is
+		 * detected.
+		 */
 		public static final int IMPLICIT_REDEFINITION = DIAGNOSTIC_CODE_OFFSET + 4;
 
+		/**
+		 * The diagnostic code for cases where an invalid redefinition is
+		 * detected.
+		 */
 		public static final int INVALID_REDEFINITION = DIAGNOSTIC_CODE_OFFSET + 5;
 
+		/**
+		 * The diagnostic code for cases where an invalid subset is detected.
+		 */
 		public static final int INVALID_SUBSET = DIAGNOSTIC_CODE_OFFSET + 6;
 
+		/**
+		 * The diagnostic code for cases where an empty union is detected.
+		 */
 		public static final int EMPTY_UNION = DIAGNOSTIC_CODE_OFFSET + 7;
 
+		/**
+		 * The diagnostic code for cases where an association specialization is
+		 * missing.
+		 */
 		public static final int ASSOCIATION_SPECIALIZATION = DIAGNOSTIC_CODE_OFFSET + 8;
 
+		/**
+		 * The diagnostic code for cases where capability information is
+		 * missing.
+		 */
 		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 9;
 
 		protected org.eclipse.uml2.uml.Package receivingPackage = null;
@@ -268,50 +375,110 @@ public class UMLUtil
 
 		private final Map copierMap = new LinkedHashMap();
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#clear()
+		 */
 		public void clear() {
 			copierMap.clear();
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#containsKey(java.lang.Object)
+		 */
 		public boolean containsKey(Object key) {
 			return copierMap.containsKey(key);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#containsValue(java.lang.Object)
+		 */
 		public boolean containsValue(Object value) {
 			return copierMap.containsValue(value);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#entrySet()
+		 */
 		public Set entrySet() {
 			return copierMap.entrySet();
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#get(java.lang.Object)
+		 */
 		public Object get(Object key) {
 			return copierMap.get(key);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#isEmpty()
+		 */
 		public boolean isEmpty() {
 			return copierMap.isEmpty();
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#keySet()
+		 */
 		public Set keySet() {
 			return copierMap.keySet();
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#put(K, V)
+		 */
 		public Object put(Object key, Object value) {
 			return copierMap.put(key, value);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#putAll(java.util.Map)
+		 */
 		public void putAll(Map t) {
 			copierMap.putAll(t);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#remove(java.lang.Object)
+		 */
 		public Object remove(Object key) {
 			return copierMap.remove(key);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#size()
+		 */
 		public int size() {
 			return copierMap.size();
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see java.util.HashMap#values()
+		 */
 		public Collection values() {
 			return copierMap.values();
 		}
@@ -904,6 +1071,11 @@ public class UMLUtil
 			}.doSwitch(eObject);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreUtil.Copier#copy(org.eclipse.emf.ecore.EObject)
+		 */
 		public EObject copy(EObject eObject) {
 			EObject copyEObject = super.copy(eObject);
 
@@ -927,6 +1099,11 @@ public class UMLUtil
 			return copyEObject;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreUtil.Copier#copyAll(java.util.Collection)
+		 */
 		public Collection copyAll(Collection eObjects) {
 			Collection result = new ArrayList(eObjects.size());
 
@@ -1751,6 +1928,21 @@ public class UMLUtil
 			}
 		}
 
+		/**
+		 * Merges the contents of (all of) the packages merged by the specified
+		 * package using the specified options, reporting problems to the
+		 * specified diagnostics, within the specified context.
+		 * 
+		 * @param package_
+		 *            The receiving package.
+		 * @param options
+		 *            The options to use.
+		 * @param diagnostics
+		 *            The chain of diagnostics to which problems are to be
+		 *            appended.
+		 * @param context
+		 *            The cache of context-specific information.
+		 */
 		public void merge(org.eclipse.uml2.uml.Package package_, Map options,
 				DiagnosticChain diagnostics, Map context) {
 			receivingPackage = package_;
@@ -1768,6 +1960,10 @@ public class UMLUtil
 		}
 	}
 
+	/**
+	 * A converter that converts UML elements to representative Ecore model
+	 * elements.
+	 */
 	public static class UML2EcoreConverter
 			extends UMLSwitch
 			implements Converter {
@@ -1831,54 +2027,163 @@ public class UMLUtil
 
 		private static final boolean DEBUG = false;
 
+		/**
+		 * The option for handling cases where an Ecore tagged value is
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__ECORE_TAGGED_VALUES = "ECORE_TAGGED_VALUES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a redefining operation is
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__REDEFINING_OPERATIONS = "REDEFINING_OPERATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a redefining property is
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__REDEFINING_PROPERTIES = "REDEFINING_PROPERTIES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a subsetting property is
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__SUBSETTING_PROPERTIES = "SUBSETTING_PROPERTIES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a derived union property is
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__UNION_PROPERTIES = "UNION_PROPERTIES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a derived feature is encountered.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__DERIVED_FEATURES = "DERIVED_FEATURES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a duplicate operation is
+		 * detected. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, <code>OPTION__DISCARD</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__DUPLICATE_OPERATIONS = "DUPLICATE_OPERATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where an operation is inherited more
+		 * than once. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, <code>OPTION__DISCARD</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__DUPLICATE_OPERATION_INHERITANCE = "DUPLICATE_OPERATION_INHERITANCE"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a duplicate feature is detected.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, <code>OPTION__DISCARD</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__DUPLICATE_FEATURES = "DUPLICATE_FEATURES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a feature is inherited more than
+		 * once. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, <code>OPTION__DISCARD</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__DUPLICATE_FEATURE_INHERITANCE = "DUPLICATE_FEATURE_INHERITANCE"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where superclasses are not ordered.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__SUPER_CLASS_ORDER = "SUPER_CLASS_ORDER"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where annotation details are
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__ANNOTATION_DETAILS = "ANNOTATION_DETAILS"; //$NON-NLS-1$
 
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
+		/**
+		 * The diagnostic code for cases where an Ecore tagged value is
+		 * encountered.
+		 */
 		public static final int ECORE_TAGGED_VALUE = DIAGNOSTIC_CODE_OFFSET + 1;
 
+		/**
+		 * The diagnostic code for cases where a redefining operation is
+		 * encountered.
+		 */
 		public static final int REDEFINING_OPERATION = DIAGNOSTIC_CODE_OFFSET + 2;
 
+		/**
+		 * The diagnostic code for cases where a redefining property is
+		 * encountered.
+		 */
 		public static final int REDEFINING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 3;
 
+		/**
+		 * The diagnostic code for cases where a subsetting property is
+		 * encountered.
+		 */
 		public static final int SUBSETTING_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 4;
 
+		/**
+		 * The diagnostic code for cases where a derived union property is
+		 * encountered.
+		 */
 		public static final int UNION_PROPERTY = DIAGNOSTIC_CODE_OFFSET + 5;
 
+		/**
+		 * The diagnostic code for cases where a derived feature is encountered.
+		 */
 		public static final int DERIVED_FEATURE = DIAGNOSTIC_CODE_OFFSET + 6;
 
+		/**
+		 * The diagnostic code for cases where a duplicate operation is
+		 * detected.
+		 */
 		public static final int DUPLICATE_OPERATION = DIAGNOSTIC_CODE_OFFSET + 7;
 
+		/**
+		 * The diagnostic code for cases where an operation is inherited more
+		 * than once.
+		 */
 		public static final int DUPLICATE_OPERATION_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 8;
 
+		/**
+		 * The diagnostic code for cases where a duplicate feature is detected.
+		 */
 		public static final int DUPLICATE_FEATURE = DIAGNOSTIC_CODE_OFFSET + 9;
 
+		/**
+		 * The diagnostic code for cases where a feature is inherited more than
+		 * once.
+		 */
 		public static final int DUPLICATE_FEATURE_INHERITANCE = DIAGNOSTIC_CODE_OFFSET + 10;
 
+		/**
+		 * The diagnostic code for cases where superclasses are not ordered.
+		 */
 		public static final int SUPER_CLASS_ORDER = DIAGNOSTIC_CODE_OFFSET + 11;
 
+		/**
+		 * The diagnostic code for cases where annotation details are
+		 * encountered.
+		 */
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 12;
 
 		protected final Map elementToEModelElementMap = new LinkedHashMap();
@@ -1959,6 +2264,11 @@ public class UMLUtil
 				+ NamedElement.SEPARATOR + name);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseClass(org.eclipse.uml2.uml.Class)
+		 */
 		public Object caseClass(org.eclipse.uml2.uml.Class class_) {
 			org.eclipse.uml2.uml.Package package_ = class_.getNearestPackage();
 
@@ -1981,6 +2291,11 @@ public class UMLUtil
 			return super.caseClass(class_);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseComment(org.eclipse.uml2.uml.Comment)
+		 */
 		public Object caseComment(Comment comment) {
 
 			for (Iterator annotatedElements = comment.getAnnotatedElements()
@@ -1997,6 +2312,11 @@ public class UMLUtil
 			return super.caseComment(comment);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseConstraint(org.eclipse.uml2.uml.Constraint)
+		 */
 		public Object caseConstraint(Constraint constraint) {
 			Namespace context = constraint.getContext();
 
@@ -2071,10 +2391,20 @@ public class UMLUtil
 			return super.caseConstraint(constraint);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseEModelElement(org.eclipse.emf.ecore.EModelElement)
+		 */
 		public Object caseEModelElement(EModelElement eModelElement) {
 			return eModelElement;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseEnumeration(org.eclipse.uml2.uml.Enumeration)
+		 */
 		public Object caseEnumeration(Enumeration enumeration) {
 			org.eclipse.uml2.uml.Package package_ = enumeration
 				.getNearestPackage();
@@ -2096,6 +2426,11 @@ public class UMLUtil
 			return super.caseEnumeration(enumeration);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseEnumerationLiteral(org.eclipse.uml2.uml.EnumerationLiteral)
+		 */
 		public Object caseEnumerationLiteral(
 				EnumerationLiteral enumerationLiteral) {
 			Enumeration enumeration = enumerationLiteral.getEnumeration();
@@ -2134,6 +2469,11 @@ public class UMLUtil
 			return super.caseEnumerationLiteral(enumerationLiteral);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseGeneralization(org.eclipse.uml2.uml.Generalization)
+		 */
 		public Object caseGeneralization(Generalization generalization) {
 			Classifier specific = generalization.getSpecific();
 
@@ -2162,6 +2502,11 @@ public class UMLUtil
 			return super.caseGeneralization(generalization);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseInterfaceRealization(org.eclipse.uml2.uml.InterfaceRealization)
+		 */
 		public Object caseInterfaceRealization(
 				InterfaceRealization interfaceRealization) {
 			BehavioredClassifier implementingClassifier = interfaceRealization
@@ -2188,6 +2533,11 @@ public class UMLUtil
 			return super.caseInterfaceRealization(interfaceRealization);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseInterface(org.eclipse.uml2.uml.Interface)
+		 */
 		public Object caseInterface(Interface interface_) {
 			org.eclipse.uml2.uml.Package package_ = interface_
 				.getNearestPackage();
@@ -2212,6 +2562,11 @@ public class UMLUtil
 			return super.caseInterface(interface_);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseMultiplicityElement(org.eclipse.uml2.uml.MultiplicityElement)
+		 */
 		public Object caseMultiplicityElement(
 				MultiplicityElement multiplicityElement) {
 			Object eModelElement = elementToEModelElementMap
@@ -2241,6 +2596,11 @@ public class UMLUtil
 			}
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseOperation(org.eclipse.uml2.uml.Operation)
+		 */
 		public Object caseOperation(Operation operation) {
 			Namespace namespace = operation.getNamespace();
 
@@ -2294,6 +2654,11 @@ public class UMLUtil
 			return super.caseOperation(operation);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#casePackage(org.eclipse.uml2.uml.Package)
+		 */
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 			EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
 			elementToEModelElementMap.put(package_, ePackage);
@@ -2328,6 +2693,11 @@ public class UMLUtil
 			return ePackage;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseParameter(org.eclipse.uml2.uml.Parameter)
+		 */
 		public Object caseParameter(Parameter parameter) {
 			Operation operation = parameter.getOperation();
 
@@ -2354,6 +2724,11 @@ public class UMLUtil
 			return super.caseParameter(parameter);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#casePrimitiveType(org.eclipse.uml2.uml.PrimitiveType)
+		 */
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
 			org.eclipse.uml2.uml.Package package_ = primitiveType
 				.getNearestPackage();
@@ -2377,6 +2752,11 @@ public class UMLUtil
 			return super.casePrimitiveType(primitiveType);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseProperty(org.eclipse.uml2.uml.Property)
+		 */
 		public Object caseProperty(Property property) {
 			Namespace namespace = property.getNamespace();
 
@@ -2444,6 +2824,11 @@ public class UMLUtil
 			return super.caseProperty(property);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseTypedElement(org.eclipse.uml2.uml.TypedElement)
+		 */
 		public Object caseTypedElement(TypedElement typedElement) {
 			Object eModelElement = elementToEModelElementMap.get(typedElement);
 
@@ -2458,6 +2843,11 @@ public class UMLUtil
 			return super.caseTypedElement(typedElement);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
+		 */
 		public Object defaultCase(EObject eObject) {
 
 			for (Iterator eContents = eObject.eContents().iterator(); eContents
@@ -2469,6 +2859,11 @@ public class UMLUtil
 			return super.defaultCase(eObject);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+		 */
 		public Object doSwitch(EObject eObject) {
 
 			if (!elementToEModelElementMap.containsKey(eObject)) {
@@ -4342,6 +4737,13 @@ public class UMLUtil
 			}
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.common.util.UML2Util.Converter#convert(java.util.Collection,
+		 *      java.util.Map, org.eclipse.emf.common.util.DiagnosticChain,
+		 *      java.util.Map)
+		 */
 		public Collection convert(Collection eObjects, Map options,
 				DiagnosticChain diagnostics, Map context) {
 			packages = EcoreUtil.getObjectsByType(eObjects,
@@ -4362,9 +4764,17 @@ public class UMLUtil
 
 	}
 
+	/**
+	 * A converter that converts UML profiles to representative Ecore packages.
+	 */
 	public static class Profile2EPackageConverter
 			extends UML2EcoreConverter {
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#casePackage(org.eclipse.uml2.uml.Package)
+		 */
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 
 			if (packages.contains(package_)) {
@@ -4376,6 +4786,11 @@ public class UMLUtil
 			}
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseProfile(org.eclipse.uml2.uml.Profile)
+		 */
 		public Object caseProfile(Profile profile) {
 			EPackage ePackage = (EPackage) casePackage(profile);
 
@@ -4469,6 +4884,11 @@ public class UMLUtil
 			}.doSwitch(namedElement);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#doSwitch(org.eclipse.emf.ecore.EObject)
+		 */
 		public Object doSwitch(EObject eObject) {
 			Object eModelElement = super.doSwitch(eObject);
 
@@ -4485,30 +4905,81 @@ public class UMLUtil
 		}
 	}
 
+	/**
+	 * A converter that converts Ecore model elements to representative UML
+	 * elements.
+	 */
 	public static class Ecore2UMLConverter
 			extends EcoreSwitch
 			implements Converter {
 
+		/**
+		 * The option for handling cases where an Ecore tagged value is
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__ECORE_TAGGED_VALUES = "ECORE_TAGGED_VALUES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a <code>redefines</code>
+		 * annotation is encountered. Supported choices are
+		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__REDEFINES_ANNOTATIONS = "REDEFINES_ANNOTATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a <code>subsets</code>
+		 * annotation is encountered. Supported choices are
+		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code>, and
+		 * <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__SUBSETS_ANNOTATIONS = "SUBSETS_ANNOTATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a <code>union</code> annotation
+		 * is encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__UNION_ANNOTATIONS = "UNION_ANNOTATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where annotation details are
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
 		public static final String OPTION__ANNOTATION_DETAILS = "ANNOTATION_DETAILS"; //$NON-NLS-1$
 
 		private static final int DIAGNOSTIC_CODE_OFFSET = 3000;
 
+		/**
+		 * The diagnostic code for cases where an Ecore tagged value is
+		 * encountered.
+		 */
 		public static final int ECORE_TAGGED_VALUE = DIAGNOSTIC_CODE_OFFSET + 1;
 
+		/**
+		 * The diagnostic code for cases where a <code>redefines</code>
+		 * annotation is encountered.
+		 */
 		public static final int REDEFINES_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 2;
 
+		/**
+		 * The diagnostic code for cases where a <code>subsets</code>
+		 * annotation is encountered.
+		 */
 		public static final int SUBSETS_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 3;
 
+		/**
+		 * The diagnostic code for cases where a <code>union</code> annotation
+		 * is encountered.
+		 */
 		public static final int UNION_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 4;
 
+		/**
+		 * The diagnostic code for cases where annotation details are
+		 * encountered.
+		 */
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 5;
 
 		protected final Map eModelElementToElementMap = new LinkedHashMap();
@@ -4648,6 +5119,11 @@ public class UMLUtil
 			return getType(eTypedElement, eTypedElement.getEType());
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEAttribute(org.eclipse.emf.ecore.EAttribute)
+		 */
 		public Object caseEAttribute(EAttribute eAttribute) {
 			EClass eContainingClass = eAttribute.getEContainingClass();
 
@@ -4673,6 +5149,11 @@ public class UMLUtil
 			return super.caseEAttribute(eAttribute);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEClass(org.eclipse.emf.ecore.EClass)
+		 */
 		public Object caseEClass(EClass eClass) {
 			EPackage ePackage = eClass.getEPackage();
 
@@ -4720,6 +5201,11 @@ public class UMLUtil
 			return super.caseEClass(eClass);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEDataType(org.eclipse.emf.ecore.EDataType)
+		 */
 		public Object caseEDataType(EDataType eDataType) {
 			EPackage ePackage = eDataType.getEPackage();
 
@@ -4741,6 +5227,11 @@ public class UMLUtil
 			return super.caseEDataType(eDataType);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEEnum(org.eclipse.emf.ecore.EEnum)
+		 */
 		public Object caseEEnum(EEnum eEnum) {
 			EPackage ePackage = eEnum.getEPackage();
 
@@ -4762,6 +5253,11 @@ public class UMLUtil
 			return super.caseEEnum(eEnum);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEEnumLiteral(org.eclipse.emf.ecore.EEnumLiteral)
+		 */
 		public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
 			EEnum eEnum = eEnumLiteral.getEEnum();
 
@@ -4791,10 +5287,20 @@ public class UMLUtil
 			return super.caseEEnumLiteral(eEnumLiteral);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEModelElement(org.eclipse.emf.ecore.EModelElement)
+		 */
 		public Object caseEModelElement(EModelElement eModelElement) {
 			return eModelElement;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEOperation(org.eclipse.emf.ecore.EOperation)
+		 */
 		public Object caseEOperation(EOperation eOperation) {
 			EClass eContainingClass = eOperation.getEContainingClass();
 
@@ -4854,6 +5360,11 @@ public class UMLUtil
 			return super.caseEOperation(eOperation);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEPackage(org.eclipse.emf.ecore.EPackage)
+		 */
 		public Object caseEPackage(EPackage ePackage) {
 			org.eclipse.uml2.uml.Package package_ = ePackage.getESuperPackage() == null
 				? UMLFactory.eINSTANCE.createModel()
@@ -4876,6 +5387,11 @@ public class UMLUtil
 			return package_;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEParameter(org.eclipse.emf.ecore.EParameter)
+		 */
 		public Object caseEParameter(EParameter eParameter) {
 			EOperation eOperation = eParameter.getEOperation();
 
@@ -4898,6 +5414,11 @@ public class UMLUtil
 			return super.caseEParameter(eParameter);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEReference(org.eclipse.emf.ecore.EReference)
+		 */
 		public Object caseEReference(EReference eReference) {
 			EClass eContainingClass = eReference.getEContainingClass();
 
@@ -4965,6 +5486,11 @@ public class UMLUtil
 			return super.caseEReference(eReference);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseETypedElement(org.eclipse.emf.ecore.ETypedElement)
+		 */
 		public Object caseETypedElement(ETypedElement eTypedElement) {
 			Object element = eModelElementToElementMap.get(eTypedElement);
 
@@ -5001,6 +5527,11 @@ public class UMLUtil
 			return super.caseETypedElement(eTypedElement);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
+		 */
 		public Object defaultCase(EObject eObject) {
 
 			for (Iterator eContents = eObject.eContents().iterator(); eContents
@@ -5012,6 +5543,11 @@ public class UMLUtil
 			return super.defaultCase(eObject);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+		 */
 		public Object doSwitch(EObject eObject) {
 
 			if (!eModelElementToElementMap.containsKey(eObject)) {
@@ -5771,6 +6307,13 @@ public class UMLUtil
 			}
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.common.util.UML2Util.Converter#convert(java.util.Collection,
+		 *      java.util.Map, org.eclipse.emf.common.util.DiagnosticChain,
+		 *      java.util.Map)
+		 */
 		public Collection convert(Collection eObjects, Map options,
 				DiagnosticChain diagnostics, Map context) {
 			ePackages = EcoreUtil.getObjectsByType(eObjects,
@@ -5790,12 +6333,24 @@ public class UMLUtil
 		}
 	}
 
+	/**
+	 * Represents an option choice of 'discard'.
+	 */
 	public static final String OPTION__DISCARD = "DISCARD"; //$NON-NLS-1$
 
+	/**
+	 * Represents an option choice of 'ignore'.
+	 */
 	public static final String OPTION__IGNORE = "IGNORE"; //$NON-NLS-1$
 
+	/**
+	 * Represents an option choice of 'process'.
+	 */
 	public static final String OPTION__PROCESS = "PROCESS"; //$NON-NLS-1$
 
+	/**
+	 * Represents an option choice of 'report'.
+	 */
 	public static final String OPTION__REPORT = "REPORT"; //$NON-NLS-1$
 
 	protected static final String ANNOTATION__DUPLICATES = "duplicates"; //$NON-NLS-1$
@@ -5842,72 +6397,179 @@ public class UMLUtil
 
 	protected static final String ENUMERATION__VISIBILITY_KIND = "VisibilityKind"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EAttribute' stereotype.
+	 */
 	public static final String STEREOTYPE__E_ATTRIBUTE = "EAttribute"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EClass' stereotype.
+	 */
 	public static final String STEREOTYPE__E_CLASS = "EClass"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EDataType' stereotype.
+	 */
 	public static final String STEREOTYPE__E_DATA_TYPE = "EDataType"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EEnum' stereotype.
+	 */
 	public static final String STEREOTYPE__E_ENUM = "EEnum"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EEnumLiteral' stereotype.
+	 */
 	public static final String STEREOTYPE__E_ENUM_LITERAL = "EEnumLiteral"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EOperation' stereotype.
+	 */
 	public static final String STEREOTYPE__E_OPERATION = "EOperation"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EPackage' stereotype.
+	 */
 	public static final String STEREOTYPE__E_PACKAGE = "EPackage"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EParameter' stereotype.
+	 */
 	public static final String STEREOTYPE__E_PARAMETER = "EParameter"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'EReference' stereotype.
+	 */
 	public static final String STEREOTYPE__E_REFERENCE = "EReference"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'attributeName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__ATTRIBUTE_NAME = "attributeName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'basePackage' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__BASE_PACKAGE = "basePackage"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'className' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__CLASS_NAME = "className"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'dataTypeName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__DATA_TYPE_NAME = "dataTypeName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'enumName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__ENUM_NAME = "enumName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'enumLiteralName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__ENUM_LITERAL_NAME = "enumLiteralName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'instanceClassName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__INSTANCE_CLASS_NAME = "instanceClassName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'isID' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__IS_ID = "isID"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'isResolveProxies' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__IS_RESOLVE_PROXIES = "isResolveProxies"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'isTransient' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__IS_TRANSIENT = "isTransient"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'isUnsettable' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__IS_UNSETTABLE = "isUnsettable"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'isVolatile' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__IS_VOLATILE = "isVolatile"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'nsPrefix' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'nsURI' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__NS_URI = "nsURI"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'operationName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__OPERATION_NAME = "operationName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'packageName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__PACKAGE_NAME = "packageName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'parameterName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__PARAMETER_NAME = "parameterName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'prefix' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__PREFIX = "prefix"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'referenceName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__REFERENCE_NAME = "referenceName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'visibility' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__VISIBILITY = "visibility"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'xmlContentKind' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__XML_CONTENT_KIND = "xmlContentKind"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'xmlFeatureKind' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__XML_FEATURE_KIND = "xmlFeatureKind"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'xmlName' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__XML_NAME = "xmlName"; //$NON-NLS-1$
 
+	/**
+	 * The name of the 'xmlNamespace' stereotype property.
+	 */
 	public static final String TAG_DEFINITION__XML_NAMESPACE = "xmlNamespace"; //$NON-NLS-1$
 
+	/**
+	 * Retrieves a qualified textual representation of the specified object
+	 * using the default qualified text provider.
+	 * 
+	 * @param eObject
+	 *            The object for which to retrieve qualified text.
+	 * @return A qualified textual representation of the object.
+	 */
 	public static String getQualifiedText(EObject eObject) {
 		return getQualifiedText(eObject, QualifiedTextProvider.DEFAULT);
 	}
@@ -5938,17 +6600,55 @@ public class UMLUtil
 		return qualifiedName.toString();
 	}
 
+	/**
+	 * Retrieves the named element(s) with the specified qualified name from the
+	 * specified resource set.
+	 * 
+	 * @param resourceSet
+	 *            The resource set in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @return The named element(s).
+	 */
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName) {
 		return findNamedElements(resourceSet, qualifiedName, false);
 	}
 
+	/**
+	 * Retrieves the named element(s) with the specified qualified name from the
+	 * specified resource set, optionally ignoring case when doing name
+	 * comparisons.
+	 * 
+	 * @param resourceSet
+	 *            The resource set in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @param ignoreCase
+	 *            Whether to ignore case when doing name comparisons.
+	 * @return The named element(s).
+	 */
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName, boolean ignoreCase) {
 		return findNamedElements(resourceSet, qualifiedName, ignoreCase,
 			UMLPackage.Literals.NAMED_ELEMENT);
 	}
 
+	/**
+	 * Retrieves the named element(s) of the specified type with the specified
+	 * qualified name from the specified resource set, optionally ignoring case
+	 * when doing name comparisons.
+	 * 
+	 * @param resourceSet
+	 *            The resource set in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @param ignoreCase
+	 *            Whether to ignore case when doing name comparisons.
+	 * @param eClass
+	 *            The type of the element(s) to be found.
+	 * @return The named element(s).
+	 */
 	public static Collection findNamedElements(ResourceSet resourceSet,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
 
@@ -5974,17 +6674,54 @@ public class UMLUtil
 		return ECollections.EMPTY_ELIST;
 	}
 
+	/**
+	 * Retrieves the named element(s) with the specified qualified name from the
+	 * specified resource.
+	 * 
+	 * @param resource
+	 *            The resource in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @return The named element(s).
+	 */
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName) {
 		return findNamedElements(resource, qualifiedName, false);
 	}
 
+	/**
+	 * Retrieves the named element(s) with the specified qualified name from the
+	 * specified resource, optionally ignoring case when doing name comparisons.
+	 * 
+	 * @param resource
+	 *            The resource in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @param ignoreCase
+	 *            Whether to ignore case when doing name comparisons.
+	 * @return The named element(s).
+	 */
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase) {
 		return findNamedElements(resource, qualifiedName, ignoreCase,
 			UMLPackage.Literals.NAMED_ELEMENT);
 	}
 
+	/**
+	 * Retrieves the named element(s) of the specified type with the specified
+	 * qualified name from the specified resource, optionally ignoring case when
+	 * doing name comparisons.
+	 * 
+	 * @param resource
+	 *            The resource in which to search.
+	 * @param qualifiedName
+	 *            The qualified name of the element(s) to be found.
+	 * @param ignoreCase
+	 *            Whether to ignore case when doing name comparisons.
+	 * @param eClass
+	 *            The type of the element(s) to be found.
+	 * @return The named element(s).
+	 */
 	public static Collection findNamedElements(Resource resource,
 			String qualifiedName, boolean ignoreCase, EClass eClass) {
 
@@ -6049,6 +6786,14 @@ public class UMLUtil
 		return namedElements;
 	}
 
+	/**
+	 * Retrieves the profile for which the specified package represents a
+	 * definition.
+	 * 
+	 * @param definition
+	 *            The package.
+	 * @return The profile.
+	 */
 	public static Profile getProfile(EPackage definition) {
 		EObject eContainer = definition.eContainer();
 
@@ -6132,12 +6877,28 @@ public class UMLUtil
 			: null;
 	}
 
+	/**
+	 * Retrieves the stereotype for which the specified object represents an
+	 * application.
+	 * 
+	 * @param stereotypeApplication
+	 *            The object.
+	 * @return The stereotype.
+	 */
 	public static Stereotype getStereotype(EObject stereotypeApplication) {
 		return stereotypeApplication == null
 			? null
 			: getStereotype(stereotypeApplication.eClass());
 	}
 
+	/**
+	 * Retrieves the base element for the specified stereotype application, i.e.
+	 * the element to which the stereotype is applied.
+	 * 
+	 * @param stereotypeApplication
+	 *            The stereotype application.
+	 * @return The base element.
+	 */
 	public static Element getBaseElement(EObject stereotypeApplication) {
 
 		if (stereotypeApplication != null) {
@@ -6169,6 +6930,15 @@ public class UMLUtil
 		return null;
 	}
 
+	/**
+	 * Sets the base element for the specified stereotype application to the
+	 * specified element.
+	 * 
+	 * @param stereotypeApplication
+	 *            The stereotype application.
+	 * @param element
+	 *            The new base element.
+	 */
 	public static void setBaseElement(EObject stereotypeApplication,
 			Element element) {
 
@@ -6212,6 +6982,16 @@ public class UMLUtil
 		return stereotypeApplication;
 	}
 
+	/**
+	 * Safely applies the specified stereotype to the specified element, i.e.
+	 * applies the profile if not already applied.
+	 * 
+	 * @param element
+	 *            The element to which to apply the stereotype.
+	 * @param stereotype
+	 *            The stereotype to apply.
+	 * @return The stereotype application.
+	 */
 	public static EObject safeApplyStereotype(Element element,
 			Stereotype stereotype) {
 
@@ -6272,6 +7052,21 @@ public class UMLUtil
 			: element.getValue(stereotype, propertyName);
 	}
 
+	/**
+	 * Sets the value of the specified property of the specified stereotype
+	 * application on the specified element.
+	 * 
+	 * @param element
+	 *            The element to which the stereotype is applied.
+	 * @param stereotype
+	 *            The stereotype.
+	 * @param propertyName
+	 *            The name of the stereotype property.
+	 * @param value
+	 *            The new value.
+	 * @return <code>true</code> if the value was successfully set;
+	 *         <code>false</code> otherwise.
+	 */
 	public static boolean setTaggedValue(Element element,
 			Stereotype stereotype, String propertyName, Object value) {
 
@@ -6489,6 +7284,16 @@ public class UMLUtil
 		return subsettedProperties;
 	}
 
+	/**
+	 * Merges the contents of (all of) the packages merged by the specified
+	 * package using the specified options. If a supported option is not
+	 * specified, it will be defaulted to <code>OPTION__IGNORE</code>.
+	 * 
+	 * @param package_
+	 *            The receiving package.
+	 * @param options
+	 *            The options to use.
+	 */
 	public static void merge(org.eclipse.uml2.uml.Package package_, Map options) {
 
 		if (options == null) {
@@ -6548,6 +7353,21 @@ public class UMLUtil
 		merge(package_, options, null, null);
 	}
 
+	/**
+	 * Merges the contents of (all of) the packages merged by the specified
+	 * package using the specified options, reporting problems to the specified
+	 * diagnostics, within the specified context. If a supported option is not
+	 * specified, it will be defaulted to <code>OPTION__REPORT</code>.
+	 * 
+	 * @param package_
+	 *            The receiving package.
+	 * @param options
+	 *            The options to use.
+	 * @param diagnostics
+	 *            The chain of diagnostics to which problems are to be appended.
+	 * @param context
+	 *            The cache of context-specific information.
+	 */
 	public static void merge(org.eclipse.uml2.uml.Package package_,
 			Map options, DiagnosticChain diagnostics, Map context) {
 
@@ -6608,6 +7428,17 @@ public class UMLUtil
 		new PackageMerger().merge(package_, options, diagnostics, context);
 	}
 
+	/**
+	 * Converts the specified package (and its contents) to Ecore using the
+	 * specified options. If a supported option is not specified, it will be
+	 * defaulted to <code>OPTION__IGNORE</code>.
+	 * 
+	 * @param package_
+	 *            The package to convert.
+	 * @param options
+	 *            The options to use.
+	 * @return An Ecore representation of the package.
+	 */
 	public static Collection convertToEcore(
 			org.eclipse.uml2.uml.Package package_, Map options) {
 
@@ -6694,6 +7525,22 @@ public class UMLUtil
 		return convertToEcore(package_, options, null, null);
 	}
 
+	/**
+	 * Converts the specified package (and its contents) to Ecore using the
+	 * specified options, reporting problems to the specified diagnostics,
+	 * within the specified context. If a supported option is not specified, it
+	 * will be defaulted to <code>OPTION__REPORT</code>.
+	 * 
+	 * @param package_
+	 *            The package to convert.
+	 * @param options
+	 *            The options to use.
+	 * @param diagnostics
+	 *            The chain of diagnostics to which problems are to be appended.
+	 * @param context
+	 *            The cache of context-specific information.
+	 * @return An Ecore representation of the package.
+	 */
 	public static Collection convertToEcore(
 			org.eclipse.uml2.uml.Package package_, Map options,
 			DiagnosticChain diagnostics, Map context) {
@@ -6782,6 +7629,17 @@ public class UMLUtil
 			Collections.singleton(package_), options, diagnostics, context);
 	}
 
+	/**
+	 * Converts the specified profile (and its contents) to Ecore using the
+	 * specified options. If a supported option is not specified, it will be
+	 * defaulted to <code>OPTION__IGNORE</code>.
+	 * 
+	 * @param profile
+	 *            The profile to convert.
+	 * @param options
+	 *            The options to use.
+	 * @return An Ecore representation of the profile.
+	 */
 	public static Collection convertToEcore(Profile profile, Map options) {
 
 		if (options == null) {
@@ -6867,6 +7725,22 @@ public class UMLUtil
 		return convertToEcore(profile, options, null, null);
 	}
 
+	/**
+	 * Converts the specified profile (and its contents) to Ecore using the
+	 * specified options, reporting problems to the specified diagnostics,
+	 * within the specified context. If a supported option is not specified, it
+	 * will be defaulted to <code>OPTION__REPORT</code>.
+	 * 
+	 * @param profile
+	 *            The profile to convert.
+	 * @param options
+	 *            The options to use.
+	 * @param diagnostics
+	 *            The chain of diagnostics to which problems are to be appended.
+	 * @param context
+	 *            The cache of context-specific information.
+	 * @return An Ecore representation of the profile.
+	 */
 	public static Collection convertToEcore(Profile profile, Map options,
 			DiagnosticChain diagnostics, Map context) {
 
@@ -6988,6 +7862,16 @@ public class UMLUtil
 		return ePackages;
 	}
 
+	/**
+	 * Converts the specified Ecore package (and its contents) to UML using the
+	 * specified options.
+	 * 
+	 * @param ePackage
+	 *            The Ecore package to convert.
+	 * @param options
+	 *            The options to use.
+	 * @return A UML representation of the Ecore package.
+	 */
 	public static Collection convertFromEcore(EPackage ePackage, Map options) {
 
 		if (options == null) {
@@ -6997,6 +7881,21 @@ public class UMLUtil
 		return convertFromEcore(ePackage, options, null, null);
 	}
 
+	/**
+	 * Converts the specified Ecore package (and its contents) to UML using the
+	 * specified options, reporting problems to the specified diagnostics,
+	 * within the specified context.
+	 * 
+	 * @param ePackage
+	 *            The Ecore package to convert.
+	 * @param options
+	 *            The options to use.
+	 * @param diagnostics
+	 *            The chain of diagnostics to which problems are to be appended.
+	 * @param context
+	 *            The cache of context-specific information.
+	 * @return A UML representation of the Ecore package.
+	 */
 	public static Collection convertFromEcore(EPackage ePackage, Map options,
 			DiagnosticChain diagnostics, Map context) {
 

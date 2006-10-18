@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.6 2006/04/10 19:05:45 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.7 2006/10/18 18:46:45 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -21,6 +21,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+/**
+ * @since 1.2
+ */
 public class DerivedSubsetEObjectEList
 		extends DerivedEObjectEList {
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.23 2006/05/13 04:43:20 khussey Exp $
+ * $Id: UML2Util.java,v 1.24 2006/10/18 18:46:45 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -58,6 +58,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.framework.Bundle;
 
 /**
+ * Utilities for working with EMF-based objects and resources.
+ * 
  * @since 1.2
  */
 public class UML2Util {
@@ -66,23 +68,50 @@ public class UML2Util {
 		super();
 	}
 
+	/**
+	 * An interface for classes that can determine matches based on some
+	 * criteria.
+	 */
 	public static interface EObjectMatcher {
 
+		/**
+		 * Determines whether the specified object matches some criteria.
+		 * 
+		 * @param eObject
+		 *            The candidate object.
+		 * @return <code>true</code> if the object meets the criteria;
+		 *         <code>false</code> otherwise.
+		 */
 		public boolean matches(EObject eObject);
 
 	}
 
+	/**
+	 * A matcher that determines matches based on the class of candidate
+	 * objects.
+	 */
 	public static class EClassMatcher
 			implements EObjectMatcher {
 
 		protected final EObject eObject;
 
+		/**
+		 * Constructs a new class matcher based on the specified object.
+		 * 
+		 * @param eObject
+		 *            The object whose class is to be used as a match criterion.
+		 */
 		public EClassMatcher(EObject eObject) {
 			super();
 
 			this.eObject = eObject;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.common.util.UML2Util.EObjectMatcher#matches(org.eclipse.emf.ecore.EObject)
+		 */
 		public boolean matches(EObject otherEObject) {
 			return eObject == null
 				? false
@@ -92,18 +121,37 @@ public class UML2Util {
 		}
 	}
 
+	/**
+	 * A matcher that determines matches based on the class of, and the value
+	 * for a specific structural feature held by, candidate objects.
+	 */
 	public static class EStructuralFeatureMatcher
 			extends EClassMatcher {
 
 		protected final EStructuralFeature eStructuralFeature;
 
+		/**
+		 * Constructs a new structural feature matcher based on the specified
+		 * object.
+		 * 
+		 * @param eObject
+		 *            The object whose class is to be used as a match criterion.
+		 * @param eStructuralFeature
+		 *            The structural feature whose value is to be used as a
+		 *            match criterion.
+		 */
 		public EStructuralFeatureMatcher(EObject eObject,
-				EStructuralFeature EStructuralFeature) {
+				EStructuralFeature eStructuralFeature) {
 			super(eObject);
 
-			this.eStructuralFeature = EStructuralFeature;
+			this.eStructuralFeature = eStructuralFeature;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.common.util.UML2Util.EClassMatcher#matches(org.eclipse.emf.ecore.EObject)
+		 */
 		public boolean matches(EObject otherEObject) {
 			return super.matches(eObject)
 				&& safeEquals(eObject.eGet(eStructuralFeature), otherEObject
@@ -111,15 +159,45 @@ public class UML2Util {
 		}
 	}
 
+	/**
+	 * An interface for classes that can convert objects to another
+	 * representation.
+	 */
 	public static interface Converter {
 
+		/**
+		 * Converts the specified objects using the specified options, reporting
+		 * problems to the specified diagnostics, within the specified context.
+		 * 
+		 * @param eObjects
+		 *            The objects to be converted.
+		 * @param options
+		 *            The options to use.
+		 * @param diagnostics
+		 *            The chain of diagnostics to which problems are to be
+		 *            appended.
+		 * @param context
+		 *            The cache of context-specific information.
+		 * @return Another representation of the objects.
+		 */
 		Collection convert(Collection eObjects, Map options,
 				DiagnosticChain diagnostics, Map context);
 
 	}
 
+	/**
+	 * The abstract parent of classes that can provide a textual representation
+	 * of objects, classes, and features.
+	 */
 	public static abstract class QualifiedTextProvider {
 
+		/**
+		 * Retrieves a textual representation of the specified object.
+		 * 
+		 * @param eObject
+		 *            The object for which to retrieve text.
+		 * @return A textual representation of the object.
+		 */
 		public String getText(EObject eObject) {
 
 			return eObject instanceof ENamedElement
@@ -127,12 +205,32 @@ public class UML2Util {
 				: EMPTY_STRING;
 		}
 
+		/**
+		 * Retrieves the string used to separate segments of qualified text.
+		 * 
+		 * @return The separator to be used.
+		 */
 		public abstract String getSeparator();
 
+		/**
+		 * Retrieves a textual representation of the specified structural
+		 * feature.
+		 * 
+		 * @param eStructuralFeature
+		 *            The feature for which to retrieve text.
+		 * @return A textual representation of the feature.
+		 */
 		public String getFeatureText(EStructuralFeature eStructuralFeature) {
 			return eStructuralFeature.getName();
 		}
 
+		/**
+		 * Retrieves a textual representation of the specified object's class.
+		 * 
+		 * @param eObject
+		 *            The object for which to retrieve text.
+		 * @return A textual representation of the object's class.
+		 */
 		public String getClassText(EObject eObject) {
 			return eObject.eClass().getName();
 		}
@@ -412,6 +510,16 @@ public class UML2Util {
 		return string;
 	}
 
+	/**
+	 * Retrieves a qualified textual representation of the specified object
+	 * using the specified qualified text provider.
+	 * 
+	 * @param eObject
+	 *            The object for which to retrieve qualified text.
+	 * @param qualifiedTextProvider
+	 *            The provider to be used.
+	 * @return A qualified textual representation of the object.
+	 */
 	public static String getQualifiedText(EObject eObject,
 			QualifiedTextProvider qualifiedTextProvider) {
 
@@ -531,20 +639,61 @@ public class UML2Util {
 			getMessageSubstitution(context, object2)};
 	}
 
+	/**
+	 * Safely determines whether <code>object</code> equals
+	 * <code>otherObject</code>, i.e. without throwing an exception if
+	 * <code>object</code> is <code>null</code>.
+	 * 
+	 * @param object
+	 *            The first object to compare.
+	 * @param otherObject
+	 *            The second object to compare.
+	 * @return <code>true</code> if <code>object</code> equals
+	 *         <code>otherObject</code>; <code>false</code> otherwise.
+	 */
 	public static boolean safeEquals(Object object, Object otherObject) {
 		return object == null
 			? otherObject == null
 			: object.equals(otherObject);
 	}
 
+	/**
+	 * Determines whether the specified string is empty, i.e. is
+	 * <code>null</code> or has a length of zero.
+	 * 
+	 * @param string
+	 *            The string in question.
+	 * @return <code>true</code> if the string is empty; <code>false</code>
+	 *         otherwise.
+	 */
 	public static boolean isEmpty(String string) {
 		return string == null || string.length() == 0;
 	}
 
+	/**
+	 * Retrieves the first of the specified objects that matches the criteria
+	 * used by the specified matcher.
+	 * 
+	 * @param eObjects
+	 *            The collection of candidate objects.
+	 * @param filter
+	 *            The matcher to be used.
+	 * @return The first object that matches the criteria.
+	 */
 	public static EObject findEObject(Collection eObjects, EObjectMatcher filter) {
 		return findEObject(eObjects.iterator(), filter);
 	}
 
+	/**
+	 * Retrieves the first of the specified objects that matches the criteria
+	 * used by the specified matcher.
+	 * 
+	 * @param iterator
+	 *            The iterator for the candidate objects.
+	 * @param filter
+	 *            The matcher to be used.
+	 * @return The first object that matches the criteria.
+	 */
 	public static EObject findEObject(Iterator iterator, EObjectMatcher filter) {
 
 		while (iterator.hasNext()) {
@@ -734,6 +883,14 @@ public class UML2Util {
 		return validNCName;
 	}
 
+	/**
+	 * Obtains a valid XMI identifier for the specified object based on the URI
+	 * fragment segments of its containment hierarchy.
+	 * 
+	 * @param internalEObject
+	 *            The object for which to obtain an XMI identifier.
+	 * @return An XMI identifier for the object.
+	 */
 	public static String getXMIIdentifier(InternalEObject internalEObject) {
 		return getXMIIdentifier(internalEObject, new StringBuffer()).toString();
 	}
@@ -776,6 +933,15 @@ public class UML2Util {
 		return xmiIdentifier;
 	}
 
+	/**
+	 * Counts the number of instances of the specified classifier.
+	 * 
+	 * @param iterator
+	 *            The iterator for the candidate objects.
+	 * @param eClassifier
+	 *            The classifier in question.
+	 * @return The number of the instances of the classifier.
+	 */
 	public static int getInstanceCount(Iterator iterator,
 			EClassifier eClassifier) {
 		int count = 0;
@@ -829,6 +995,19 @@ public class UML2Util {
 		return rootContainers;
 	}
 
+	/**
+	 * Retrieves an iterator over the content tree of the specified object which
+	 * optionally includes the root object and/or copies contents while
+	 * iterating.
+	 * 
+	 * @param eObject
+	 *            The root of the content hierarchy.
+	 * @param includeRoot
+	 *            Whether to include the root object.
+	 * @param defensiveCopy
+	 *            Whether to copy contents while iterating.
+	 * @return A content tree iterator.
+	 */
 	public static TreeIterator getAllContents(EObject eObject,
 			boolean includeRoot, final boolean defensiveCopy) {
 		return new AbstractTreeIterator(eObject, includeRoot) {
@@ -841,6 +1020,16 @@ public class UML2Util {
 		};
 	}
 
+	/**
+	 * Creates an annotation with the specified source on the specified model
+	 * element.
+	 * 
+	 * @param eModelElement
+	 *            The model element on which to create the annotation.
+	 * @param source
+	 *            The source for the new annotation.
+	 * @return A new annotation.
+	 */
 	public static EAnnotation createEAnnotation(EModelElement eModelElement,
 			String source) {
 		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
@@ -849,6 +1038,19 @@ public class UML2Util {
 		return eAnnotation;
 	}
 
+	/**
+	 * Retrieves the annotation with the specified source on the specified model
+	 * element, optionally creating one on demand if no such annotation exists.
+	 * 
+	 * @param eModelElement
+	 *            The model element from/on which to retrieve/create the
+	 *            annotation.
+	 * @param source
+	 *            The source for the (new) annotation.
+	 * @param createOnDemand
+	 *            Whether to create one if no such annotation exists.
+	 * @return The (new) annotation.
+	 */
 	public static EAnnotation getEAnnotation(EModelElement eModelElement,
 			String source, boolean createOnDemand) {
 		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
@@ -858,6 +1060,14 @@ public class UML2Util {
 			: eAnnotation;
 	}
 
+	/**
+	 * Retrieves a collection of non-navigable inverse references to the
+	 * specified object.
+	 * 
+	 * @param eObject
+	 *            The referenced object.
+	 * @return The non-navigable inverse references to the object.
+	 */
 	public static Collection getNonNavigableInverseReferences(EObject eObject) {
 		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
 			.getCrossReferenceAdapter(eObject);
@@ -866,6 +1076,13 @@ public class UML2Util {
 			: crossReferenceAdapter.getNonNavigableInverseReferences(eObject);
 	}
 
+	/**
+	 * Retrieves a collection of inverse references to the specified object.
+	 * 
+	 * @param eObject
+	 *            The referenced object.
+	 * @return The inverse references to the object.
+	 */
 	public static Collection getInverseReferences(EObject eObject) {
 		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
 			.getCrossReferenceAdapter(eObject);
@@ -940,6 +1157,19 @@ public class UML2Util {
 		}
 	}
 
+	/**
+	 * Loads a resource with the specified URI into the specified resource set
+	 * and retrieves the first instance of the specified class from its
+	 * contents.
+	 * 
+	 * @param resourceSet
+	 *            The resource set into which to load the resource.
+	 * @param uri
+	 *            The URI of the resource to be loaded.
+	 * @param eClass
+	 *            The class of the object to be retrieved.
+	 * @return The first instance of the class in the resource.
+	 */
 	public static Object load(ResourceSet resourceSet, URI uri, EClass eClass) {
 
 		try {

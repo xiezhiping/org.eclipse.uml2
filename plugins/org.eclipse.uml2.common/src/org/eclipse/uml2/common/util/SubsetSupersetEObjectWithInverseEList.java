@@ -8,13 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectWithInverseEList.java,v 1.1 2006/01/05 13:49:53 khussey Exp $
+ * $Id: SubsetSupersetEObjectWithInverseEList.java,v 1.2 2006/10/18 18:46:45 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.InternalEObject;
 
+/**
+ * @since 1.2
+ */
 public class SubsetSupersetEObjectWithInverseEList
 		extends SubsetSupersetEObjectEList {
 

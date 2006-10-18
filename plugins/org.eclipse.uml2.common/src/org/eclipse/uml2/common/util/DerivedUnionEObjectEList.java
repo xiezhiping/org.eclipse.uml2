@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedUnionEObjectEList.java,v 1.3 2005/11/29 17:44:48 khussey Exp $
+ * $Id: DerivedUnionEObjectEList.java,v 1.4 2006/10/18 18:46:45 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -18,6 +18,9 @@ import java.util.ListIterator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
+/**
+ * @since 1.2
+ */
 public class DerivedUnionEObjectEList
 		extends DerivedEObjectEList {
 

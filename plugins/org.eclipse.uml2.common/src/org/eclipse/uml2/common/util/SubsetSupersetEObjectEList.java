@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectEList.java,v 1.2 2006/03/01 16:28:17 khussey Exp $
+ * $Id: SubsetSupersetEObjectEList.java,v 1.3 2006/10/18 18:46:45 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -23,6 +23,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
+/**
+ * @since 1.2
+ */
 public class SubsetSupersetEObjectEList
 		extends EObjectEList {
 
