@@ -3077,18 +3077,18 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_goE_K2vXEdq4DLWZOhbdEA"/>
     </ownedAttribute>
     <ownedOperation xmi:id="_439EC3AE03B53D07246C02E3" name="isSuperTypeOf" type="_439EC3AE03B53D0672EC0024">
-      <returnResult xmi:id="_glF8q2vXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0672EC0024"/>
+      <returnResult xmi:id="_glF8q2vXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0672EC0024" direction="return"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E20197" name="someClass" type="_439EC3AE03B53903D5BF000A"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B5426A6C920097" name="getFeatureCount" type="_439EC3AE03B53D0674720115">
-      <returnResult xmi:id="_glY3gmvXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0674720115"/>
+      <returnResult xmi:id="_glY3gmvXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0674720115" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53D08992A0381" name="getEStructuralFeature" type="_439EC3AE03B53903D59D0230">
       <returnResult xmi:id="_glY3hGvXEdq4DLWZOhbdEA" type="_439EC3AE03B53903D59D0230" direction="return"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E201DD" name="featureID" type="_439EC3AE03B53D0674720115"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B5426A4284013B" name="getFeatureID" type="_439EC3AE03B53D0674720115">
-      <returnResult xmi:id="_glY3h2vXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0674720115"/>
+      <returnResult xmi:id="_glY3h2vXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0674720115" direction="return"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E201DF" name="feature" type="_439EC3AE03B53903D59D0230"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53D0899C801D0" name="getEStructuralFeature" type="_439EC3AE03B53903D59D0230">
@@ -3119,11 +3119,11 @@
       </eAnnotations>
     </ownedAttribute>
     <ownedOperation xmi:id="_439EC3AE03B53D086856016B" name="isInstance" type="_439EC3AE03B53D0672EC0024">
-      <returnResult xmi:id="_gliog2vXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0672EC0024"/>
+      <returnResult xmi:id="_gliog2vXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0672EC0024" direction="return"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E201FA" name="object" type="_439EC3AE03B53ACDF8200182"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53D089C8A0135" name="getClassifierID" type="_439EC3AE03B53D0674720115">
-      <returnResult xmi:id="_gliohmvXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0674720115"/>
+      <returnResult xmi:id="_gliohmvXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0674720115" direction="return"/>
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_439EC3AE03B53903D525033E" name="EDataType">
@@ -3189,7 +3189,7 @@
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E20236" name="literalValue" type="_439EC3AE03B539EB7E000186"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53D089BF603A9" name="convertToString" type="_439EC3AE03B539EB7E000186">
-      <returnResult xmi:id="_glsZnGvXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B539EB7E000186"/>
+      <returnResult xmi:id="_glsZnGvXEdq4DLWZOhbdEA" type="_439EC3AE03B539EB7E000186" direction="return"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E20238" name="eDataType" type="_439EC3AE03B53903D525033E"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E20239" name="instanceValue" type="_439EC3AE03B53ACDF8200182"/>
     </ownedOperation>
@@ -3218,7 +3218,7 @@
       <returnResult xmi:id="_glsZqWvXEdq4DLWZOhbdEA" type="_439EC3AE03B53903D5BF000A" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53D1204AC028F" name="eIsProxy" type="_439EC3AE03B53D0672EC0024">
-      <returnResult xmi:id="_glsZq2vXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0672EC0024"/>
+      <returnResult xmi:id="_glsZq2vXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0672EC0024" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53C4F21D90335" name="eResource" type="_439EC3AE03B53C4F231001FC">
       <returnResult xmi:id="_glsZrWvXEdq4DLWZOhbdEA" type="_439EC3AE03B53C4F231001FC" direction="return"/>
@@ -3255,7 +3255,7 @@
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E20255" name="newValue" type="_439EC3AE03B53ACDF8200182"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53C4F26DE0225" name="eIsSet" type="_439EC3AE03B53D0672EC0024">
-      <returnResult xmi:id="_gl1jfWvXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0672EC0024"/>
+      <returnResult xmi:id="_gl1jfWvXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0672EC0024" direction="return"/>
       <ownedParameter xmi:id="_439EC3AE03B5439EC3E20257" name="feature" type="_439EC3AE03B53903D59D0230"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53C4F26B4004E" name="eUnset">
@@ -3403,7 +3403,7 @@
       </eAnnotations>
     </ownedAttribute>
     <ownedOperation xmi:id="_439EC3AE03B53D089D7103B8" name="getFeatureID" type="_439EC3AE03B53D0674720115">
-      <returnResult xmi:id="_gl_Uc2vXEdq4DLWZOhbdEA" direction="return" type="_439EC3AE03B53D0674720115"/>
+      <returnResult xmi:id="_gl_Uc2vXEdq4DLWZOhbdEA" type="_439EC3AE03B53D0674720115" direction="return"/>
     </ownedOperation>
     <ownedOperation xmi:id="_439EC3AE03B53D089D9B01CE" name="getContainerClass" type="_439EC3AE03B53B1531690285">
       <returnResult xmi:id="_gl_UdWvXEdq4DLWZOhbdEA" type="_439EC3AE03B53B1531690285" direction="return"/>

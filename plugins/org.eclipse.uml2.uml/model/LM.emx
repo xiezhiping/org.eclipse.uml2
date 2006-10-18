@@ -2,7 +2,7 @@
 <!--xtools2_universal_type_manager-->
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_0="http:///Ecore_0.profile.uml2" xmlns:notation="http://www.ibm.com/xtools/1.5.0/Notation" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.0/Umlnotation" xsi:schemaLocation="http:///Ecore_0.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_v9VUsK87Edi5QpYeY_yIpg" xmi:id="_FA4sgBmMEdqvcs97umGEYQ" name="LM" clientDependency="_3ADC7B74022D419269F5039D _zEP8oGf_EdqfYrlcy8iLFA" appliedProfile="_FA4shBmMEdqvcs97umGEYQ _FA4shxmMEdqvcs97umGEYQ _FA4sihmMEdqvcs97umGEYQ _FA4sjRmMEdqvcs97umGEYQ _FA4skBmMEdqvcs97umGEYQ _FETz8BmMEdqvcs97umGEYQ">
   <eAnnotations xmi:id="_s2iLEBTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-    <contents xmi:type="Ecore_0:Ecore__EPackage" xmi:id="_s2iLERTaEdqZu-3Jy1-uYg" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1/umlLM.xml"/>
+    <contents xmi:type="Ecore_0:Ecore__EPackage" xmi:id="_s2iLERTaEdqZu-3Jy1-uYg" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1.1/umlLM.xml"/>
   </eAnnotations>
   <eAnnotations xmi:id="_s2iLFRTaEdqZu-3Jy1-uYg" source="uml2.diagrams" references="_3ADC7B74022D42FB50FE02AE">
     <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D42FB50FE02AE" type="Class" name="LM">

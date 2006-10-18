@@ -2,7 +2,7 @@
 <!--xtools2_universal_type_manager-->
 <uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_0="http:///Ecore_0.profile.uml2" xmlns:notation="http://www.ibm.com/xtools/1.5.0/Notation" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.0/Umlnotation" xsi:schemaLocation="http:///Ecore_0.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_v9VUsK87Edi5QpYeY_yIpg" xmi:id="_EBtHcBmMEdqvcs97umGEYQ" name="L3" clientDependency="_3ADC7B74022D3E10BF9602BF _3ADC7B74022D3E10BBD50245 _3ADC7B74022D3E10BC920215 _3ADC7B74022D3E10BCA201B4 _3ADC7B74022D3E10BCE80088 _3ADC7B74022D3E10BDB500F1 _3ADC7B74022D3E10BDCE0179 _3ADC7B74022D3E10BDDB0146 _3ADC7B74022D3E10BE6A01BA _3ADC7B74022D3E10C02A029A _3ADC7B74022D3E10C19B0313 _3ADC7B74022D3E10FA2A0164 _3ADC7B74022D41F1594D02A2 _w-2EkHxyEdq7cMP_l1l5Gg _8CNEUHxyEdq7cMP_l1l5Gg" appliedProfile="_EBtHdBmMEdqvcs97umGEYQ _EBtHdxmMEdqvcs97umGEYQ _EBtHehmMEdqvcs97umGEYQ _EBtHfRmMEdqvcs97umGEYQ _EBtHgBmMEdqvcs97umGEYQ _EF31wBmMEdqvcs97umGEYQ">
   <eAnnotations xmi:id="_s2FfIxTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-    <contents xmi:type="Ecore_0:Ecore__EPackage" xmi:id="_s2FfJBTaEdqZu-3Jy1-uYg" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1/uml.xml"/>
+    <contents xmi:type="Ecore_0:Ecore__EPackage" xmi:id="_s2FfJBTaEdqZu-3Jy1-uYg" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1.1/uml.xml"/>
   </eAnnotations>
   <eAnnotations xmi:id="_s2PQUhTaEdqZu-3Jy1-uYg" source="uml2.diagrams" references="_3ADC7B74022D3E10B3E30223">
     <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D3E10B3E30223" type="Class" name="L3">

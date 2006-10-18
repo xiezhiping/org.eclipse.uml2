@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLHandler.java,v 1.3 2006/10/10 20:41:29 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.4 2006/10/18 18:30:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -55,7 +55,8 @@ public class XMI2UMLHandler
 
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
@@ -69,7 +70,9 @@ public class XMI2UMLHandler
 				uriLiteral = UMLResource.UML_METAMODEL_URI
 					+ uriLiteral.substring(uriLiteral.indexOf('#'));
 			}
-		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)) {
+		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)) {
+
 			uriLiteral = UMLResource.STANDARD_PROFILE_URI
 				+ uriLiteral.substring(uriLiteral.indexOf('#'));
 		}

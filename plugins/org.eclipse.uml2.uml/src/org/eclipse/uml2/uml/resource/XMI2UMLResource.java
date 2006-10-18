@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: XMI2UMLResource.java,v 1.2 2006/10/10 20:41:29 khussey Exp $
+ * $Id: XMI2UMLResource.java,v 1.3 2006/10/18 18:30:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -27,15 +27,25 @@ public interface XMI2UMLResource
 
 	String FILE_EXTENSION = "xmi"; //$NON-NLS-1$
 
-	String STANDARD_PROFILE_NS_URI = "http://schema.omg.org/spec/UML/2.1/StandardProfileL2"; //$NON-NLS-1$
+	String STANDARD_PROFILE_NS_URI = "http://schema.omg.org/spec/UML/2.1.1/StandardProfileL2"; //$NON-NLS-1$
 	
-	String STANDARD_PROFILE_URI = "http://schema.omg.org/spec/UML/2.1/StandardProfileL2.xmi"; //$NON-NLS-1$
+	String STANDARD_PROFILE_URI = "http://schema.omg.org/spec/UML/2.1.1/StandardProfileL2.xmi"; //$NON-NLS-1$
 
-	String UML_METAMODEL_NS_URI = "http://schema.omg.org/spec/UML/2.1"; //$NON-NLS-1$
+	String UML_METAMODEL_NS_URI = "http://schema.omg.org/spec/UML/2.1.1"; //$NON-NLS-1$
 
-	String UML_METAMODEL_URI = "http://schema.omg.org/spec/UML/2.1/uml.xml"; //$NON-NLS-1$
+	String UML_METAMODEL_URI = "http://schema.omg.org/spec/UML/2.1.1/uml.xml"; //$NON-NLS-1$
 
 	String UML_PRIMITIVE_TYPES_LIBRARY_URI = UML_METAMODEL_URI;
+
+	String STANDARD_PROFILE_2_1_NS_URI = "http://schema.omg.org/spec/UML/2.1/StandardProfileL2"; //$NON-NLS-1$
+	
+	String STANDARD_PROFILE_2_1_URI = "http://schema.omg.org/spec/UML/2.1/StandardProfileL2.xmi"; //$NON-NLS-1$
+
+	String UML_METAMODEL_2_1_NS_URI = "http://schema.omg.org/spec/UML/2.1"; //$NON-NLS-1$
+
+	String UML_METAMODEL_2_1_URI = "http://schema.omg.org/spec/UML/2.1/uml.xml"; //$NON-NLS-1$
+
+	String UML_PRIMITIVE_TYPES_LIBRARY_2_1_URI = UML_METAMODEL_2_1_URI;
 
 	String XMI_NS_URI = XMI_NAMESPACE_PREFIX + "2.1"; //$NON-NLS-1$
 

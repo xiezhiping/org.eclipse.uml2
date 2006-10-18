@@ -1394,12 +1394,12 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_YtGBofZoEdqhaqw0kkQfPQ" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
-  <Ecore:EAttribute xmi:id="_Z5ewEC7uEduf17E0MwaY9g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
-  <Ecore:EDataType xmi:id="_YtitkPZoEdqhaqw0kkQfPQ" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_YtitkfZoEdqhaqw0kkQfPQ" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_YtitkvZoEdqhaqw0kkQfPQ" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_Ytitk_ZoEdqhaqw0kkQfPQ" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EAttribute xmi:id="_Z57cAS7uEduf17E0MwaY9g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
-  <Ecore:EAttribute xmi:id="_Z57cAi7uEduf17E0MwaY9g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
+  <Ecore:EPackage xmi:id="_tYLfUFouEduqL61CEsqW6g" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EAttribute xmi:id="_tYLfUVouEduqL61CEsqW6g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
+  <Ecore:EDataType xmi:id="_tYUpQFouEduqL61CEsqW6g" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_tYUpQVouEduqL61CEsqW6g" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_tYUpQlouEduqL61CEsqW6g" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_tYUpQ1ouEduqL61CEsqW6g" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EAttribute xmi:id="_tYeaQFouEduqL61CEsqW6g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
+  <Ecore:EAttribute xmi:id="_tYeaQVouEduqL61CEsqW6g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
 </xmi:XMI>
