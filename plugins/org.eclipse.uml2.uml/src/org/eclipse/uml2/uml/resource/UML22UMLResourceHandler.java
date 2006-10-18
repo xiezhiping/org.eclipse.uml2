@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.27 2006/10/10 20:41:29 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.28 2006/10/18 18:50:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -766,22 +767,24 @@ public class UML22UMLResourceHandler
 				Message message = messageOccurrenceSpecification.getMessage();
 
 				if (message == null) {
+					Collection values = Collections.EMPTY_LIST;
 
 					if (extension != null) {
-						Collection values = getValues(extension
-							.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
+						values = getValues(extension.getAnyAttribute(),
+							"startExec", true); //$NON-NLS-1$
 
 						if (values.isEmpty()) {
 							values = getValues(extension.getAnyAttribute(),
 								"finishExec", true); //$NON-NLS-1$
 						}
+					}
 
-						if (values.isEmpty()) {
-							return caseOccurrenceSpecification((OccurrenceSpecification) reincarnate(
-								messageOccurrenceSpecification,
-								UMLPackage.Literals.OCCURRENCE_SPECIFICATION,
-								resource));
-						}
+					if (values.isEmpty()) {
+						return caseOccurrenceSpecification((OccurrenceSpecification) reincarnate(
+							messageOccurrenceSpecification,
+							UMLPackage.Literals.OCCURRENCE_SPECIFICATION,
+							resource));
+					} else {
 
 						for (Iterator v = values.iterator(); v.hasNext();) {
 							Object value = v.next();
