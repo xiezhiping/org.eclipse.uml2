@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.37 2006/10/18 18:46:44 khussey Exp $
+ * $Id: UMLUtil.java,v 1.38 2006/10/20 23:49:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4831,6 +4831,9 @@ public class UMLUtil
 				nsURI.append(profileParentQualifiedName);
 				nsURI.append("/schemas/"); //$NON-NLS-1$
 				nsURI.append(profileName);
+				nsURI.append('/');
+				// ensure profiles with same name have different namespace URIs
+				nsURI.append(EcoreUtil.generateUUID());
 				nsURI.append('/');
 				nsURI.append(version);
 
