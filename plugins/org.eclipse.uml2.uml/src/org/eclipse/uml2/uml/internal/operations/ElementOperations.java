@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.45 2006/10/10 20:41:29 khussey Exp $
+ * $Id: ElementOperations.java,v 1.46 2006/10/20 23:40:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,6 +44,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
@@ -1466,18 +1468,29 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static void destroy(Element element) {
+		destroy((EObject) element);
+	}
 
-		for (Iterator allContents = getAllContents(element, true, false); allContents
+	protected static void destroy(EObject eObject) {
+
+		for (Iterator allContents = getAllContents(eObject, true, false); allContents
 			.hasNext();) {
 
-			EObject eObject = (EObject) allContents.next();
+			Object object = allContents.next();
 
-			if (eObject instanceof Element) {
-				destroyAll(((Element) eObject).getStereotypeApplications());
+			if (object instanceof Element) {
+				destroyAll(((Element) object).getStereotypeApplications());
 			}
 		}
 
-		destroy((EObject) element);
+		UML2Util.destroy(eObject);
+	}
+
+	protected static void destroyAll(Collection eObjects) {
+
+		for (Iterator o = eObjects.iterator(); o.hasNext();) {
+			destroy((EObject) o.next());
+		}
 	}
 
 	protected static EList allOwnedElements(Element element,
