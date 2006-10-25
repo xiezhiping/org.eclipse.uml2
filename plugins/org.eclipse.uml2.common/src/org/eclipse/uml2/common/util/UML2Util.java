@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.24 2006/10/18 18:46:45 khussey Exp $
+ * $Id: UML2Util.java,v 1.25 2006/10/25 18:12:16 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -1091,60 +1091,78 @@ public class UML2Util {
 			: crossReferenceAdapter.getInverseReferences(eObject);
 	}
 
-	protected static void destroy(EObject eObject) {
+	protected static void removeReferences(EObject eObject,
+			EObject ancestorEObject) {
+		List nonNavigableInverseReferences = new ArrayList(
+			getNonNavigableInverseReferences(eObject));
 
-		for (Iterator allContents = getAllContents(eObject, true, false); allContents
+		for (Iterator nnir = nonNavigableInverseReferences.iterator(); nnir
 			.hasNext();) {
 
-			EObject containedEObject = (EObject) allContents.next();
-			List nonNavigableInverseReferences = new ArrayList(
-				getNonNavigableInverseReferences(containedEObject));
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+				.next();
 
-			for (Iterator nnir = nonNavigableInverseReferences.iterator(); nnir
-				.hasNext();) {
+			if (setting.getEStructuralFeature().isChangeable()
+				&& (ancestorEObject == null || !EcoreUtil.isAncestor(
+					ancestorEObject, setting.getEObject()))) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
-					.next();
-
-				if (setting.getEStructuralFeature().isChangeable()
-					&& !EcoreUtil.isAncestor(eObject, setting.getEObject())) {
-
-					EcoreUtil.remove(setting, containedEObject);
-				}
+				EcoreUtil.remove(setting, eObject);
 			}
+		}
 
-			for (Iterator eAllReferences = containedEObject.eClass()
-				.getEAllReferences().iterator(); eAllReferences.hasNext();) {
+		for (Iterator eAllReferences = eObject.eClass().getEAllReferences()
+			.iterator(); eAllReferences.hasNext();) {
 
-				EReference eReference = (EReference) eAllReferences.next();
+			EReference eReference = (EReference) eAllReferences.next();
 
-				if (eReference.isChangeable() && !eReference.isContainer()
-					&& !eReference.isContainment()
-					&& containedEObject.eIsSet(eReference)) {
+			if (eReference.isChangeable() && !eReference.isContainer()
+				&& !eReference.isContainment() && eObject.eIsSet(eReference)) {
 
-					if (eReference.isMany()) {
+				if (eReference.isMany()) {
 
-						for (Iterator values = ((List) containedEObject
-							.eGet(eReference)).iterator(); values.hasNext();) {
+					for (Iterator values = ((List) eObject.eGet(eReference))
+						.iterator(); values.hasNext();) {
 
-							if (!EcoreUtil.isAncestor(eObject, (EObject) values
-								.next())) {
+						Object value = values.next();
 
-								values.remove();
-							}
+						if (ancestorEObject == null
+							|| !EcoreUtil.isAncestor(ancestorEObject,
+								(EObject) value)) {
+
+							values.remove();
 						}
-					} else {
+					}
+				} else {
 
-						if (!EcoreUtil.isAncestor(eObject,
-							(EObject) containedEObject.eGet(eReference))) {
+					if (ancestorEObject == null
+						|| !EcoreUtil.isAncestor(ancestorEObject,
+							(EObject) eObject.eGet(eReference))) {
 
-							containedEObject.eUnset(eReference);
-						}
+						eObject.eUnset(eReference);
 					}
 				}
 			}
+		}
+	}
 
-			containedEObject.eAdapters().clear();
+	protected static void destroy(EObject eObject) {
+
+		if (eObject.eContents().isEmpty()) {
+			removeReferences(eObject, eObject);
+			eObject.eAdapters().clear();
+		} else {
+
+			for (Iterator allContents = getAllContents(eObject, true, false); allContents
+				.hasNext();) {
+
+				removeReferences((EObject) allContents.next(), eObject);
+			}
+
+			for (Iterator allContents = getAllContents(eObject, true, false); allContents
+				.hasNext();) {
+
+				((EObject) allContents.next()).eAdapters().clear();
+			}
 		}
 
 		EcoreUtil.remove(eObject);

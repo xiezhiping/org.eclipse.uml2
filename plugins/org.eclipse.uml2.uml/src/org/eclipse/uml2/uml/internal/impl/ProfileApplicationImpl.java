@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.18 2006/10/25 18:12:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 

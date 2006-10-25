@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.46 2006/10/20 23:40:01 khussey Exp $
+ * $Id: ElementOperations.java,v 1.47 2006/10/25 18:12:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -44,7 +44,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
@@ -1471,19 +1470,54 @@ public class ElementOperations
 		destroy((EObject) element);
 	}
 
-	protected static void destroy(EObject eObject) {
+	protected static void destroy(EObject ancestorEObject) {
 
-		for (Iterator allContents = getAllContents(eObject, true, false); allContents
-			.hasNext();) {
+		if (ancestorEObject.eContents().isEmpty()) {
 
-			Object object = allContents.next();
+			if (ancestorEObject instanceof Element) {
+				destroyAll(((Element) ancestorEObject)
+					.getStereotypeApplications());
+				removeReferences(ancestorEObject, ancestorEObject);
+				ancestorEObject.eAdapters().clear();
+			} else {
+				removeReferences(ancestorEObject, null);
+			}
+		} else {
 
-			if (object instanceof Element) {
-				destroyAll(((Element) object).getStereotypeApplications());
+			for (Iterator allContents = getAllContents(ancestorEObject, true,
+				false); allContents.hasNext();) {
+
+				Object object = allContents.next();
+
+				if (object instanceof Element) {
+					destroyAll(((Element) object).getStereotypeApplications());
+				}
+			}
+
+			for (Iterator allContents = getAllContents(ancestorEObject, true,
+				false); allContents.hasNext();) {
+
+				EObject eObject = (EObject) allContents.next();
+
+				if (eObject instanceof Element) {
+					removeReferences(eObject, ancestorEObject);
+				} else {
+					removeReferences(eObject, null);
+				}
+			}
+
+			for (Iterator allContents = getAllContents(ancestorEObject, true,
+				false); allContents.hasNext();) {
+
+				Object object = allContents.next();
+
+				if (object instanceof Element) {
+					((Element) object).eAdapters().clear();
+				}
 			}
 		}
 
-		UML2Util.destroy(eObject);
+		EcoreUtil.remove(ancestorEObject);
 	}
 
 	protected static void destroyAll(Collection eObjects) {
