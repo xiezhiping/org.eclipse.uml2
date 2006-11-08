@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.18 2006/06/14 22:04:27 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.19 2006/11/08 20:26:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.Dependency;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -323,12 +322,10 @@ public class NamedElementOperations
 	public static EList allOwningPackages(NamedElement namedElement) {
 		EList allOwningPackages = new UniqueEList.FastCompare();
 
-		for (Element owner = namedElement.getOwner(); owner != null; owner = owner
-			.getOwner()) {
+		while ((namedElement = (NamedElement) getOwningElement(namedElement,
+			UMLPackage.Literals.PACKAGE, true)) != null) {
 
-			if (owner instanceof org.eclipse.uml2.uml.Package) {
-				allOwningPackages.add(owner);
-			}
+			allOwningPackages.add(namedElement);
 		}
 
 		return ECollections.unmodifiableEList(allOwningPackages);
