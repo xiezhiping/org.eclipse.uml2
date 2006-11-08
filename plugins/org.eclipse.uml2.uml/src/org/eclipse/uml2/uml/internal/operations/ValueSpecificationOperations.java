@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.8 2006/02/01 21:55:09 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.9 2006/11/08 20:26:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -172,7 +172,7 @@ public class ValueSpecificationOperations
 
 			public Object caseDuration(Duration duration) {
 				ValueSpecification expr = duration.getExpr();
-				return expr == null
+				return expr == null || expr instanceof Duration
 					? null
 					: doSwitch(expr);
 			}
@@ -238,7 +238,7 @@ public class ValueSpecificationOperations
 
 			public Object caseTimeExpression(TimeExpression timeExpression) {
 				ValueSpecification expr = timeExpression.getExpr();
-				return expr == null
+				return expr == null || expr instanceof TimeExpression
 					? null
 					: doSwitch(expr);
 			}

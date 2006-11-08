@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionOperations.java,v 1.2 2006/01/05 22:43:24 khussey Exp $
+ * $Id: TimeExpressionOperations.java,v 1.3 2006/11/08 20:26:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,7 +48,7 @@ public class TimeExpressionOperations
 	 */
 	public static String stringValue(TimeExpression timeExpression) {
 		ValueSpecification expr = timeExpression.getExpr();
-		return expr == null
+		return expr == null || expr instanceof TimeExpression
 			? ValueSpecificationOperations.stringValue(timeExpression)
 			: expr.stringValue();
 	}
