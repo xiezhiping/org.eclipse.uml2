@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.9 2006/01/10 13:10:22 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.10 2006/11/08 20:27:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -285,11 +285,12 @@ public class StateMachineOperations
 	 */
 	public static boolean isRedefinitionContextValid(StateMachine stateMachine,
 			StateMachine redefined) {
-		BehavioredClassifier context = stateMachine.getContext();
 
-		if (context != null && redefined != null) {
-			return context.getRedefinedClassifiers().contains(
-				redefined.getContext());
+		if (redefined != null) {
+			BehavioredClassifier context = stateMachine.getContext();
+
+			return context != null
+				&& context.allParents().contains(redefined.getContext());
 		}
 
 		return false;
