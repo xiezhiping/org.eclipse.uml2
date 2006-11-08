@@ -7,6 +7,7 @@ Bundle-ClassPath: uml2.uml.ecore.importer.jar
 Bundle-Activator: org.eclipse.uml2.uml.ecore.importer.UMLImporterPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.uml2.uml.ecore.importer,
  org.eclipse.uml2.uml.ecore.importer.ui
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)",

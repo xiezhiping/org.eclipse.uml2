@@ -7,6 +7,7 @@ Bundle-ClassPath: uml2.codegen.ecore.jar
 Bundle-Activator: org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.uml2.codegen.ecore,
  org.eclipse.uml2.codegen.ecore.genmodel,
  org.eclipse.uml2.codegen.ecore.genmodel.generator,
@@ -17,7 +18,7 @@ Export-Package: org.eclipse.uml2.codegen.ecore,
  org.eclipse.uml2.codegen.ecore.templates.model.tests;x-internal:=true
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)",
  org.eclipse.core.resources;bundle-version="[3.2.0,4.0.0)",
- org.eclipse.emf.ecore;bundle-version="[2.2.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore;bundle-version="[2.3.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.codegen.ecore;bundle-version="[2.3.0,2.4.0)";visibility:=reexport,
- org.eclipse.jdt.core;bundle-version="[3.2.0,4.0.0)"
+ org.eclipse.jdt.core;bundle-version="[3.3.0,4.0.0)"
 Eclipse-LazyStart: true

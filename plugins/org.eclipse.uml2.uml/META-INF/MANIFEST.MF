@@ -7,6 +7,7 @@ Bundle-ClassPath: uml2.uml.jar
 Bundle-Activator: org.eclipse.uml2.uml.UMLPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.internal.impl;x-internal:=true,
  org.eclipse.uml2.uml.internal.operations;x-internal:=true,
