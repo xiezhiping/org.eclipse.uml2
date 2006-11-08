@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.25 2006/10/10 20:40:49 khussey Exp $
+ * $Id: UMLEditor.java,v 1.26 2006/11/08 17:22:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -870,7 +870,7 @@ public class UMLEditor
 		//
 		IFileEditorInput modelFile = (IFileEditorInput) getEditorInput();
 		URI resourceURI = URI.createPlatformResourceURI(modelFile.getFile()
-			.getFullPath().toString());;
+			.getFullPath().toString(), true);;
 		Exception exception = null;
 		Resource resource = null;
 		try {
@@ -957,7 +957,7 @@ public class UMLEditor
 			Map.Entry entry = (Map.Entry) entries.next();
 			((Resource) entry.getKey()).setURI((URI) entry.getValue());
 		}
-		
+
 		if (saveNeeded) {
 			IProgressMonitor progressMonitor = getActionBars()
 				.getStatusLineManager() != null
@@ -1028,6 +1028,8 @@ public class UMLEditor
 			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(
 				adapterFactory));
 			selectionViewer.setInput(editingDomain.getResourceSet());
+			selectionViewer.setSelection(new StructuredSelection(editingDomain
+				.getResourceSet().getResources().get(0)), true);
 
 			new AdapterFactoryTreeEditor(selectionViewer.getTree(),
 				adapterFactory);
@@ -1165,11 +1167,9 @@ public class UMLEditor
 						.isEmpty()) {
 						// Select the root object in the view.
 						//
-						ArrayList selection = new ArrayList();
-						selection.add(editingDomain.getResourceSet()
-							.getResources().get(0));
 						contentOutlineViewer.setSelection(
-							new StructuredSelection(selection), true);
+							new StructuredSelection(editingDomain
+								.getResourceSet().getResources().get(0)), true);
 					}
 				}
 
@@ -1401,7 +1401,7 @@ public class UMLEditor
 
 			if (file != null) {
 				URI uri = URI.createPlatformResourceURI(file.getFullPath()
-					.toString());
+					.toString(), true);
 
 				ResourceSet resourceSet = editingDomain.getResourceSet();
 				EList resources = resourceSet.getResources();

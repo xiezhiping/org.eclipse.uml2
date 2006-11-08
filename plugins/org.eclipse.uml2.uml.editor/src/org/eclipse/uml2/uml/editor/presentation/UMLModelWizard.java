@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLModelWizard.java,v 1.4 2006/01/12 02:19:27 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.5 2006/11/08 17:22:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -248,7 +248,7 @@ public class UMLModelWizard
 						// Get the URI of the model file.
 						//
 						URI fileURI = URI.createPlatformResourceURI(modelFile
-							.getFullPath().toString());
+							.getFullPath().toString(), true);
 
 						// Create a resource for this file.
 						//

@@ -2690,6 +2690,7 @@ public class Class
   protected final String TEXT_2672 = ");";
   protected final String TEXT_2673 = NL + "\t}" + NL;
   protected final String TEXT_2674 = NL + "} //";
+  protected final String TEXT_2675 = NL;
 
   public String generate(Object argument)
   {
@@ -8801,6 +8802,7 @@ public class Class
     stringBuffer.append(isInterface ? " " + genClass.getInterfaceName() : genClass.getClassName());
     // TODO fix the space above
     genModel.emitSortedImports();
+    stringBuffer.append(TEXT_2675);
     return stringBuffer.toString();
   }
 }

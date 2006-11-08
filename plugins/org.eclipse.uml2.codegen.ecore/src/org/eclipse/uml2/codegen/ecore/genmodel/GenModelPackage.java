@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.18 2006/05/15 20:56:48 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.19 2006/11/08 17:22:22 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1317,6 +1317,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__MULTIPLE_EDITOR_PAGES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__MULTIPLE_EDITOR_PAGES;
+
+	/**
+	 * The feature id for the '<em><b>Generate Model Wizard</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__GENERATE_MODEL_WIZARD = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__GENERATE_MODEL_WIZARD;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.
